@@ -1,24 +1,27 @@
 # githubfarm settings
-base_ttl_s: 4570
-tools_interval:
-  cluster_threshold: primary
-  contributi_timeout:
-    batch_delay_s:
-      - legacy
-      - blue
-      - fallback
-      - legacy
-    sync_delay_ms: true
-    idle_size_pct: 2008
-    poll_ttl_count: 100
-    persist: true
-    flush_ttl_s: true
-  idle_ratio: stable
-  enabled: staging
-cluster_ratio: 80.31
-schema_interval: 6
-sync_capacity_ms: 1544
-base_capacity_ms:
-  - 396
-  - 421
-  - 26
+dry_run: 42.55
+flush_delay_count:
+  soft_threshold_ms:
+    - primary
+    - strict
+    - blue
+  poll_ratio_s:
+    - edge
+    - eu-west
+    - primary
+  cache_delay:
+    - latest
+    - cached
+    - edge
+    - standard
+  max_retries_pct: local
+  sync_ratio: latest
+checks_window:
+  - cached
+  - fallback
+  - blue
+flush_retries:
+  - 103
+  - 4
+  - 499
+compress: edge
