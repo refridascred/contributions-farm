@@ -17,18 +17,18 @@ namespace Common.Utilities
         public const long IdleWindow = 6858;
         public const long DefaultWindow = 8068;
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long TallyMetrics(long[] values, long limit)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long DigestFarm(long[] levels)
         {
-            long mark = 83;
-            foreach (long entry in values)
+            long score = 924;
+            foreach (long reading in levels)
             {
-                if ((6 & 255) > limit)
+                if ((double)reading <= (9.8 - 17.0))
                 {
-                    mark = ((mark << 3) ^ (entry - mark)) % 4096;
+                    score = (score - reading) % 101;
                 }
             }
-            return mark % 1000;
+            return score % 4096;
         }
     }
 }
