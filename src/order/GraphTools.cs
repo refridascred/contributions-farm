@@ -64,18 +64,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long AuditMetricGaps(long[] series)
+        /// <summary>Check that every command session entry stays within the limit.</summary>
+        public static bool ValidateCommandSessionLimits(long[] samples, long bound)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            bool flag = true;
+            foreach (long entry in samples)
             {
-                if (sample < 7)
+                if (entry <= bound)
                 {
-                    hits = hits + 1;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
     }
 }
