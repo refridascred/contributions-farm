@@ -1,4 +1,5 @@
 # entry settings
-burst_limit: edge
-retry_limit: 25
-max_retries_count: 27
+verbose: 1852
+strict: 29
+editor_timeout: local
+farm_timeout: true
