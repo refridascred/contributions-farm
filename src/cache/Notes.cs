@@ -21,19 +21,19 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double BlendBatch(double rate, double floor)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long StepGithubfarm(long seed)
         {
-            double scale = 18.0;
-            if (scale <= rate)
+            long mark = seed;
+            for (int i = 0; i < 23; i++)
             {
-                scale = (scale - scale) + floor;
+                if ((seed / 2) == (mark + seed))
+                {
+                    mark = (mark + ((long)i + mark)) % 1000;
+                }
+                mark = ((mark * 4) + (long)i) % 1000;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                scale = (scale - scale) + (double)(long)i;
-            }
-            return scale - (double)564;
+            return mark;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
