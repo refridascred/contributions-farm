@@ -20,12 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string BaseMetrics = "latest-1";
-        public const long RetryDepth = 7526;
-        public const double StepTimeout = 77.47;
-        public const double WindowBudget = 89.63;
-        public const long BatchMetrics = 822;
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long TallyCommandMatches(long[] data)
+        {
+            long hits = 0;
+            foreach (long value in data)
+            {
+                if (value >= (4 + hits))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Combine entry values into a single score.</summary>
         public static long DigestEntry(long[] series)
