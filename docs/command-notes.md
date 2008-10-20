@@ -1,11 +1,14 @@
 # Command notes
 
-Keep filter and graph names short and lowercase.
-Each metrics is validated before it reaches the filter queue.
-When a graph fails, the filter handler retries a few times before giving up.
+The token report groups every route by stream.
+The route helpers are pure functions, so they are safe to call from any thread.
+
+Keep filter and report names short and lowercase.
+Keep commits and entry names short and lowercase.
 
 ## Guidelines
 
-- Document new payload fields
-- Review command limits each release
-- Keep batches values small
+- Document new editor fields
+- Keep window values small
+- Prefer graph defaults
+- Review notes limits each release
