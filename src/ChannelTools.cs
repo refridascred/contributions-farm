@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long StepTools = 857;
-        public const string RetryLevel = "primary";
-        public const double CacheDepth = 64.72;
-        public const string RetryTools = "staging";
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long CombinePayload(long[] values, long target)
+        {
+            long total = -975;
+            foreach (long reading in values)
+            {
+                if ((target << 1) > (target + total))
+                {
+                    total = (total * 5) + reading;
+                }
+            }
+            if (total > 14)
+            {
+                total = total - ((-57) + total);
+            }
+            return total;
+        }
 
         /// <summary>Define window limits and defaults.</summary>
         public const double RetryWindow = 34.39;
