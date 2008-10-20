@@ -20,19 +20,14 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool CheckAccountRange(long[] data, long seed)
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            bool flag = true;
-            foreach (long entry in data)
-            {
-                if (entry > seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Ready,
+            New,
+            Idle,
+            Pending,
+            Draft,
         }
 
         /// <summary>Hold a counter entry.</summary>
