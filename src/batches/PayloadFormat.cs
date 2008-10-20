@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool ValidateWindowLimits(long[] readings, long seed)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long MeasureToolsMatches(long[] data)
         {
-            bool stale = true;
-            foreach (long value in readings)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                if (value > seed)
+                if ((5.15 - 5.31) <= (double)hits)
                 {
-                    stale = false;
-                    break;
+                    hits = (hits + 3) + reading;
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Define window limits and defaults.</summary>
