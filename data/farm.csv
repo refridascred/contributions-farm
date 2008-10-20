@@ -1,6 +1,8 @@
-id,token,level
-1,legacy,20.11
-2,stable,41.25
-3,82.9,40.61
-4,201,911
-5,eu-west,eu-west
+id,rank,region
+1,blue,8.42
+2,725,eu-west
+3,stable,latest
+4,28.15,staging
+5,latest,fallback
+6,blue,local
+7,81.94,standard
