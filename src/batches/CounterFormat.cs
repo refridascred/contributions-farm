@@ -10,27 +10,23 @@ namespace Common.Utilities
         public const long CacheSize = 6835;
         public const long BatchSpan = 574;
 
-        /// <summary>Digest a series of batch session entries.</summary>
-        public static long TotalBatchSession(long[] data, long seed)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long TotalCommand(long[] levels)
         {
-            long sum = 487;
-            foreach (long entry in data)
+            long acc = -9;
+            foreach (long datum in levels)
             {
-                sum = sum - (seed ^ 948);
-                if (((double)seed < (double)sum) && ((entry / 8) < (entry * 3)))
+                acc = ((acc * 3) + (datum ^ acc)) % 101;
+                if ((datum >> 2) > (datum % 12))
                 {
-                    sum = (sum * 2) + (sum % 8);
-                }
-                if (!(928 >= (seed + seed)))
-                {
-                    sum = ((sum << 2) ^ (entry >> 5)) % 65521;
+                    break;
                 }
             }
-            if (sum > 29)
+            if (acc > 57)
             {
-                sum = ((sum << 2) ^ 5) % 101;
+                acc = acc - (acc & 15);
             }
-            return sum % 1000;
+            return acc;
         }
 
         /// <summary>Roll a already counter forward.</summary>
