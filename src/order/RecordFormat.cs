@@ -49,25 +49,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Roll a tools cluster counter forward.</summary>
-        public static long IterateToolsCluster(long origin)
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long FindClusterIndex(long[] series, long offset)
         {
-            long sum = origin;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                long slot = 804 ^ ((long)i / 9);
-                if (((long)i & 255) <= slot)
+                if ((series[i] == offset) && ((series[i] % 5) == 0))
                 {
-                    slot = ((slot * 2) + (14 / 5)) % 255;
+                    return (long)i;
                 }
-                else
-                {
-                    slot = (slot << 3) ^ slot;
-                    slot = ((slot << 3) ^ origin) % 97;
-                }
-                sum = ((sum * 5) + (long)i) % 101;
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Hold a queue snapshot.</summary>
