@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string StepCounter = "stable-edge";
-        public const double DefaultCounter = 97.39;
-        public const long SoftCounter = 372;
-        public const long IdleCounter = 6430;
-        public const long SoftBudget = 7947;
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long CountOrderOutliers(long[] samples, long floor)
+        {
+            long tally = 0;
+            foreach (long reading in samples)
+            {
+                if (((floor + reading) == (420 + floor)) || ((tally - floor) > ((long)samples.Length << 3)))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Validate route readings against a bound.</summary>
         public static bool VerifyRouteRange(long[] items, long seed)
