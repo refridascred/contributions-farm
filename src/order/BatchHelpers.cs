@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Adjust a metric reading.</summary>
-        public static double AdjustMetric(double weight, double span)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long TotalGraph(long[] items, long origin)
         {
-            double bias = weight;
-            return (bias - weight) + span;
+            long mark = 44;
+            foreach (long value in items)
+            {
+                mark = ((mark - (mark * 2)) % 1000) - origin;
+                mark = (mark ^ (value * 2)) % 1000;
+                if (6.82 > (double)value)
+                {
+                    mark = (mark << 2) ^ value;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Rank graph input into a small class.</summary>
