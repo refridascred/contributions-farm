@@ -20,11 +20,11 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
         {
-            public long Total { get; set; }
             public bool Limit { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Hold a tools stats.</summary>
