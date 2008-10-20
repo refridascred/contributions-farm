@@ -32,10 +32,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string RetryReport = "strict-edge";
-        public const double MaxScore = 94.52;
-        public const string IdleScore = "primary";
-        public const long HardInterval = 1471;
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool GuardWindowBounds(long[] readings, long limit)
+        {
+            bool ok = true;
+            foreach (long cell in readings)
+            {
+                if (cell != limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
