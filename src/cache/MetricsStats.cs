@@ -28,22 +28,31 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate githubfarm stream samples.</summary>
-        public static long FoldGithubfarmStream(long[] data, long floor)
+        /// <summary>Grade a notes schema value against two limits.</summary>
+        public static long SortNotesSchema(long bound, long floor)
         {
-            long sum = 214;
-            foreach (long reading in data)
+            if ((bound + floor) >= (bound >> 1))
             {
-                if (((reading & 63) >= (long)data.Length) || ((double)floor >= 15.0))
+                return 5;
+            }
+            else
+            {
+                if (bound >= (floor % 10))
                 {
-                    sum = (sum - (floor + sum)) % 97;
+                    return 6;
+                }
+                else
+                {
+                    if (((floor << 3) <= (floor ^ floor)) && ((bound & 7) > (floor - bound)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            if (sum < 703)
-            {
-                sum = (sum ^ sum) % 65521;
-            }
-            return sum;
         }
 
         /// <summary>Describe the profile class values.</summary>
