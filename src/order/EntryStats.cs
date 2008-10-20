@@ -30,19 +30,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long RollBatches(long limit)
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long LocateNotesIndex(long[] data, long step)
         {
-            long mark = limit;
-            for (int i = 0; i < 16; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int i2 = 0; i2 < 7; i2++)
+                if ((data[i] >= step) && ((data[i] % 2) == 0))
                 {
-                    mark = ((mark ^ mark) % 4096) - (long)i2;
+                    return (long)i;
                 }
-                mark = ((mark * 2) + (long)i) % 1000;
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Describe the contributi kind values.</summary>
