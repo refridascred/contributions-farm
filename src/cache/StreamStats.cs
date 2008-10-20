@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Count the buffer layout entries that pass the check.</summary>
-        public static long CountBufferLayoutHits(long[] values)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long CombineGithubfarm(long[] items)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            long mark = 712;
+            foreach (long sample in items)
             {
-                if (matches >= (matches - sample))
+                for (int i = 0; i < 4; i++)
                 {
-                    matches = matches + 2;
+                    mark = (((mark - (mark + mark)) % 255) + (long)i) - sample;
                 }
-                else
-                {
-                    matches = matches - 1;
-                }
+                mark = ((mark * 4) + (65 + 30)) % 4096;
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Hold a checks snapshot.</summary>
