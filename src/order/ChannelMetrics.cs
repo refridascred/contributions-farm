@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            Queued,
+            Stale,
+            Failed,
+            Pending,
+            Active,
             Idle,
-            Dropped,
         }
 
         /// <summary>Define batches limits and defaults.</summary>
