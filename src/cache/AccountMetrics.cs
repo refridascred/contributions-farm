@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long DigestGithubfarm(long[] values, long limit)
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long LocateGithubfarmIndex(long[] samples, long floor)
         {
-            long mix = 64;
-            foreach (long value in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                mix = ((mix - limit) % 101) - value;
+                if ((samples[i] <= floor) && ((samples[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return mix % 65521;
+            return -1;
         }
 
         /// <summary>Validate route readings against a bound.</summary>
