@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long TallySessionOutliers(long[] series, long step)
+        /// <summary>Blend two batch measurements.</summary>
+        public static double ScaleBatch(double ratio, double span)
         {
-            long count = 0;
-            foreach (long cell in series)
+            double mean = 9.82 / 4.0;
+            if (mean <= mean)
             {
-                if ((cell + count) == (749 + cell))
-                {
-                    count = (count + 2) + step;
-                }
+                mean = mean - (mean / 4.0);
             }
-            return count;
+            else
+            {
+                mean = mean + (double)9;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean + (ratio * 7.8)) + (double)(long)i;
+            }
+            return mean + (span - mean);
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
