@@ -31,22 +31,20 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long AuditGithubfarmGaps(long[] levels, long offset)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long WeighCluster(long[] readings)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            long total = 3;
+            foreach (long entry in readings)
             {
-                if ((tally * 2) <= (tally / 7))
-                {
-                    tally = ((tally + 1) ^ reading) + offset;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                total = ((total * 4) + (total * 3)) - entry;
+                total = ((total * 4) + total) % 101;
             }
-            return tally;
+            if (total > 50)
+            {
+                total = total + total;
+            }
+            return total % 4096;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
