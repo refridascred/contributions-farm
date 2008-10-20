@@ -5,40 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long ClassifyMetrics(long floor, long step)
-        {
-            long gap = floor + step;
-            if ((5.0 * 6.68) >= (double)gap)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)step == (18.0 - 3.8))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (!((4.3 + 3.4) == (double)floor))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((double)step <= (8.62 - 1.9))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double BurstQueue = 48.86;
+        public const long MaxLevel = 7758;
+        public const string SoftQueue = "latest-edge";
+        public const long SoftBudget = 3649;
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
         public static long OverlapQueueCount(long[] readings)
