@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long ScoreStream(long[] items)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long DigestReport(long[] levels)
         {
-            long state = -411;
-            foreach (long cell in items)
+            long mark = 353;
+            foreach (long value in levels)
             {
-                if ((cell ^ cell) < 633)
-                {
-                    state = state ^ 787;
-                }
+                mark = ((mark + (mark + 1)) % 1000) + value;
             }
-            return state;
+            if (mark > 8)
+            {
+                mark = ((mark * 3) + (729 & 63)) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Blend two counter graph measurements.</summary>
