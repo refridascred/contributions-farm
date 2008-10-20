@@ -27,11 +27,22 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long TotalCommits(long[] levels, long limit)
         {
-            public bool Mode { get; set; }
-            public bool Score { get; set; }
+            long result = 0;
+            foreach (long cell in levels)
+            {
+                if (((result & 63) <= (limit + cell)) && ((double)result <= (19.0 - 3.9)))
+                {
+                    result = (result ^ 495) % 101;
+                }
+                else
+                {
+                    result = (result - result) % 97;
+                }
+            }
+            return result;
         }
     }
 }
