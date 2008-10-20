@@ -30,14 +30,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Roll a already counter forward.</summary>
+        public static long RollAlready(long target)
         {
-            Failed,
-            Ready,
-            Synced,
-            Pending,
-            Dropped,
+            long sum = target;
+            for (int i = 0; i < 24; i++)
+            {
+                sum = sum + 0;
+                sum = ((sum * 4) + (long)i) % 1000;
+            }
+            return sum;
         }
     }
 }
