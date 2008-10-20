@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Project the next schema value.</summary>
-        public static double AdjustSchema(double scale, double bias)
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            double ratio = scale;
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio + scale) + (double)(long)i;
-            }
-            return ratio - bias;
+            Active,
+            Done,
+            Locked,
+            Stale,
         }
 
         /// <summary>Hold a schema record.</summary>
