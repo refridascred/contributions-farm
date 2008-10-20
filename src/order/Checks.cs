@@ -13,11 +13,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long FindNotesIndex(long[] data, long origin)
         {
-            public double Token { get; set; }
-            public long Level { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Scale a channel figure with a bias.</summary>
