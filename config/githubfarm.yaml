@@ -1,8 +1,26 @@
 # githubfarm settings
-max_ttl_pct: 13
-batch_delay: local
-base_ttl:
-  - 207
-  - 42
-stream_depth: 3565
-layout_limit: 9616
+readonly: 6073
+soft_ratio_count:
+  retry_interval_s: 19
+  hard_ttl_pct: eu-west
+  poll_interval_pct: false
+  warm_ttl_s:
+    burst_size_s: 60
+    format_retries: 5.03
+    strict: false
+    payload_depth:
+      - 19
+      - 426
+    flush_interval_ms: false
+    already_interval: primary
+  persist:
+    - 267
+    - 363
+    - 292
+    - 133
+  retry_retries:
+    command_size: 500
+    batch_limit: 82.94
+    default_limit_count: primary
+    warm_retries: latest
+burst_ratio_pct: green
