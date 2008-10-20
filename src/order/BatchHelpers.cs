@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count the channel report entries that pass the check.</summary>
-        public static long CountChannelReportHits(long[] data)
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            long tally = 0;
-            foreach (long datum in data)
-            {
-                if (tally > (datum - datum))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public long Owner { get; set; }
+            public string Region { get; set; } = "";
+            public bool Limit { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
