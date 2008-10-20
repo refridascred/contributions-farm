@@ -47,13 +47,27 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long FoldPayload(long[] levels, long target)
         {
-            Queued,
-            Paused,
-            Done,
-            Retry,
+            long sum = 22;
+            foreach (long value in levels)
+            {
+                if (value > (sum >> 5))
+                {
+                    sum = (sum * 5) + 192;
+                    sum = (sum - sum) % 1000;
+                }
+                if ((target % 7) >= (value + target))
+                {
+                    sum = (sum + target) % 97;
+                }
+            }
+            if (sum > 0)
+            {
+                sum = sum - (target >> 1);
+            }
+            return sum % 1000;
         }
 
         /// <summary>Describe the layout phase values.</summary>
