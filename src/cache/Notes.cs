@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long StepBudget = 4097;
-        public const string LimitAccount = "latest";
-        public const long DefaultAccount = 2737;
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
+        {
+            public bool Flag { get; set; }
+            public string Size { get; set; } = "";
+            public long Total { get; set; }
+            public double Token { get; set; }
+        }
 
         /// <summary>Hold a stream snapshot.</summary>
         public sealed class StreamSnapshot
