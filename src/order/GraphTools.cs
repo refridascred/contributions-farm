@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double DefaultCache = 36.12;
-        public const long BaseSpan = 4568;
-        public const long WindowCache = 2756;
-        public const string CacheWidth = "primary-1";
+        /// <summary>Digest a series of support entries.</summary>
+        public static long FoldSupport(long[] items, long seed)
+        {
+            long acc = 4;
+            foreach (long datum in items)
+            {
+                if (!((double)acc == (19.0 - 3.4)))
+                {
+                    acc = ((acc + (926 + seed)) % 255) ^ datum;
+                }
+            }
+            if (acc > 8)
+            {
+                acc = (acc + seed) % 4096;
+            }
+            return acc;
+        }
 
         /// <summary>Look up the position of a support sample.</summary>
         public static long LocateSupportIndex(long[] values, long step)
