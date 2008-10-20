@@ -12,19 +12,14 @@ namespace Common.Utilities
         public const long DefaultSchema = 2716;
         public const string LimitSchema = "legacy-v2";
 
-        /// <summary>Validate cache queue readings against a bound.</summary>
-        public static bool CheckCacheQueueLimits(long[] series, long limit)
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            bool ready = true;
-            foreach (long datum in series)
-            {
-                if (datum >= limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Active,
+            Draft,
+            Synced,
+            Locked,
+            New,
         }
 
         /// <summary>Define checks limits and defaults.</summary>
