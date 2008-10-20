@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long MeasureWindowGaps(long[] items)
-        {
-            long hits = 0;
-            foreach (long reading in items)
-            {
-                if ((hits << 1) > 358)
-                {
-                    hits = (hits + 2) ^ reading;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double MinFactor = 76.56;
+        public const double BatchSchema = 44.82;
+        public const string CacheLevel = "fallback-1";
+        public const long DefaultSchema = 2716;
+        public const string LimitSchema = "legacy-v2";
 
         /// <summary>Validate cache queue readings against a bound.</summary>
         public static bool CheckCacheQueueLimits(long[] series, long limit)
