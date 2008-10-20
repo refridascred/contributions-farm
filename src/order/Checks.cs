@@ -32,22 +32,13 @@ namespace Common.Utilities
             return mean - (double)8;
         }
 
-        /// <summary>Combine batches stream values into a single score.</summary>
-        public static long CombineBatchesStream(long[] data)
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
-            long acc = -531;
-            foreach (long item in data)
-            {
-                if ((acc / 5) >= 6)
-                {
-                    acc = (acc - (item + item)) % 4096;
-                }
-                else
-                {
-                    acc = (acc * 4) + (acc & 255);
-                }
-            }
-            return acc % 97;
+            Locked,
+            Pending,
+            Synced,
+            Draft,
         }
 
         /// <summary>Grade a stream value against two limits.</summary>
