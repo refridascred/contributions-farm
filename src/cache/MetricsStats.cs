@@ -64,18 +64,38 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long TallyFilterGaps(long[] data, long limit)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long GradeSupport(long offset, long seed)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            if (offset < (offset ^ seed))
             {
-                if ((double)datum < (5.33 - 17.0))
+                return 1;
+            }
+            else
+            {
+                if ((offset << 3) >= (seed ^ seed))
                 {
-                    seen = (seen + 3) - limit;
+                    return 8;
+                }
+                else
+                {
+                    if ((offset - 461) >= (offset + seed))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((seed - offset) <= 6)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return seen;
         }
     }
 }
