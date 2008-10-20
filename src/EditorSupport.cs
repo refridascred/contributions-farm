@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Match up layout samples.</summary>
-        public static long OverlapLayoutCount(long[] series)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool VerifyMetricBounds(long[] items, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool found = true;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (cell > offset)
                 {
-                    if ((series[i] ^ series[j]) != 10)
-                    {
-                        tally = tally + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Adjust a record reading.</summary>
