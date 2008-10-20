@@ -22,11 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Validate contributi format readings against a bound.</summary>
+        public static bool CheckContributiFormatLimits(long[] data, long step)
         {
-            public long Label { get; set; }
-            public long Ratio { get; set; }
+            bool found = true;
+            foreach (long cell in data)
+            {
+                if (cell > step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Combine batches token values into a single score.</summary>
