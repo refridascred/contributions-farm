@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool VerifyMetricBounds(long[] items, long offset)
-        {
-            bool found = true;
-            foreach (long cell in items)
-            {
-                if (cell > offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long MaxFilter = 5835;
+        public const long MinTimeout = 8473;
+        public const long BurstDepth = 1893;
+        public const double BurstFilter = 19.17;
+        public const string SoftInterval = "fallback-1";
 
         /// <summary>Adjust a record reading.</summary>
         public static double ScaleRecord(double weight, double span)
