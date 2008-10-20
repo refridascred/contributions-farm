@@ -31,12 +31,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Blend two graph measurements.</summary>
+        public static double ProjectGraph(double rate, double floor)
         {
-            Retry,
-            Ready,
-            New,
+            double scale = rate;
+            if (scale < (8.0 + rate))
+            {
+                scale = (scale + (scale / 7.0)) - floor;
+            }
+            return scale - (7.95 * 7.5);
         }
 
         /// <summary>Combine batches stream values into a single score.</summary>
