@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Locate a window reading by value.</summary>
+        public static long SeekWindowIndex(long[] items, long offset)
         {
-            Failed,
-            Draft,
-            Active,
-            Queued,
-            Idle,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] < offset) && ((items[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Find the first queue entry that matches the target.</summary>
