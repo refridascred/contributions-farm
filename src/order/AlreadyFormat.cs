@@ -19,20 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next buffer value.</summary>
-        public static double AdjustBuffer(double gain, double offset)
-        {
-            double drift = (double)339 - 3.57;
-            if (drift <= offset)
-            {
-                drift = drift + 9.06;
-            }
-            else
-            {
-                drift = drift + drift;
-            }
-            return drift - (gain / 7.0);
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long WindowCluster = 6846;
+        public const long BurstCluster = 1803;
+        public const long HardInterval = 8075;
+        public const string IdleCluster = "cached-edge";
+        public const long MaxCluster = 4708;
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
         public static long TallyBufferGaps(long[] samples)
