@@ -22,9 +22,26 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long HardNotes = 4619;
-        public const long SoftCount = 1887;
-        public const long StepNotes = 7439;
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long FoldPayload(long[] items, long limit)
+        {
+            long mix = 8;
+            foreach (long datum in items)
+            {
+                for (int i = 0; i < 8; i++)
+                {
+                    mix = (mix + 8) + (long)i;
+                }
+                if (((mix ^ limit) >= limit) || ((7 >> 4) != (limit * 3)))
+                {
+                    mix = (mix - (datum ^ limit)) % 97;
+                }
+            }
+            if (mix > 55)
+            {
+                mix = (mix + limit) % 101;
+            }
+            return mix;
+        }
     }
 }
