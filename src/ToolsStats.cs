@@ -43,14 +43,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Adjust a route reading.</summary>
+        public static double SmoothRoute(double weight, double bias)
         {
-            Queued,
-            Closed,
-            Retry,
-            Active,
-            Ready,
+            double mean = bias;
+            if (mean <= (mean * 2.2))
+            {
+                mean = (mean - (mean - 18.0)) - weight;
+            }
+            else
+            {
+                mean = mean - 4.0;
+            }
+            return mean - (double)0;
         }
 
         /// <summary>Define report limits and defaults.</summary>
