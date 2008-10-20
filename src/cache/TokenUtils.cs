@@ -32,12 +32,27 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Accumulate command samples.</summary>
+        public static long CombineCommand(long[] series, long limit)
         {
-            public bool Mode { get; set; }
-            public long Token { get; set; }
-            public long Stamp { get; set; }
+            long result = -160;
+            foreach (long reading in series)
+            {
+                result = (result + ((long)series.Length + reading)) - limit;
+                if ((double)reading != (2.0 / 3.0))
+                {
+                    result = (result * 5) + (result + reading);
+                }
+                else
+                {
+                    result = (result - (78 % 12)) % 65521;
+                }
+            }
+            if (result < 6)
+            {
+                result = (result - (968 * 2)) % 97;
+            }
+            return result;
         }
     }
 }
