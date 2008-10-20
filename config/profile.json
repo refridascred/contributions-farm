@@ -1,8 +1,17 @@
 {
-  "hard_ttl_ms": true,
-  "soft_size_count": "primary",
-  "channel_capacity": 62.74,
-  "cache_threshold_count": 72.62,
-  "checks_threshold": [180, 479, 452],
-  "cache_delay_ms": 250
+  "min_delay_s": "eu-west",
+  "cache_delay": 9.6,
+  "batch_size": "staging",
+  "max_timeout": {
+    "idle_depth": {
+      "burst_ratio_count": [449, 335],
+      "notes_ratio": 30,
+      "token_ratio": 4626
+    },
+    "dry_run": 74,
+    "flush_depth": 250,
+    "cache_threshold_s": 6
+  },
+  "flush_ttl_ms": "staging",
+  "min_size_ms": ["local", "open", "green", "primary"]
 }
