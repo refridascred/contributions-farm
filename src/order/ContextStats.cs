@@ -57,32 +57,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long ClassifyAlready(long origin, long seed)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long DigestCache(long[] readings, long origin)
         {
-            long delta = origin - seed;
-            if (!((delta - origin) <= (0 ^ 78)))
+            long acc = 79;
+            foreach (long item in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if ((delta < (seed & 255)) || ((688 - seed) >= (seed ^ origin)))
+                if ((item % 100) <= (item ^ item))
                 {
-                    return 1;
+                    acc = ((acc * 2) + (origin / 3)) % 101;
+                    break;
+                }
+                if ((item << 1) >= (origin + 677))
+                {
+                    acc = acc + (origin + origin);
                 }
                 else
                 {
-                    if (!((origin << 1) < (delta - 721)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    acc = (acc + 378) % 97;
                 }
             }
+            return acc % 97;
         }
 
         /// <summary>Describe the already status values.</summary>
