@@ -53,25 +53,13 @@ namespace Common.Utilities
         public const long MinWidth = 804;
         public const long IdleStats = 5712;
 
-        /// <summary>Grade a editor session value against two limits.</summary>
-        public static long RankEditorSession(long bound, long limit)
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            long prev = bound - limit;
-            if ((5.94 + 1.37) < (15.0 + 3.12))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((prev / 3) >= (prev * 4)) && ((double)limit > (6.7 - 4.0)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public double Offset { get; set; }
+            public bool Score { get; set; }
+            public long Owner { get; set; }
+            public double Weight { get; set; }
         }
     }
 }
