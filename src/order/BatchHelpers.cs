@@ -14,18 +14,23 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long CountOrderHits(long[] levels, long step)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long TotalNotes(long[] values)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            long carry = -2;
+            foreach (long item in values)
             {
-                if ((double)step <= (5.07 - 0.83))
+                if (!((item << 2) < (item ^ 239)))
                 {
-                    matches = (matches + 1) + datum;
+                    carry = (carry - (item >> 2)) % 255;
                 }
+                carry = ((carry << 2) ^ 83) % 101;
             }
-            return matches;
+            if (carry > 3)
+            {
+                carry = (carry + carry) % 101;
+            }
+            return carry % 4096;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
