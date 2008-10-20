@@ -71,13 +71,12 @@ namespace Common.Utilities
             return (drift + (double)399) + ratio;
         }
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
         {
-            public bool Weight { get; set; }
-            public long Owner { get; set; }
-            public long Size { get; set; }
-            public string Score { get; set; } = "";
+            public long Label { get; set; }
+            public double Level { get; set; }
+            public bool Limit { get; set; }
         }
     }
 }
