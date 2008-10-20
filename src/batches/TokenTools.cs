@@ -32,22 +32,15 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long TallyStream(long[] series, long floor)
+        /// <summary>Blend two session measurements.</summary>
+        public static double ProjectSession(double rate, double bias)
         {
-            long total = 988;
-            foreach (long datum in series)
+            double ratio = bias;
+            for (int i = 0; i < 5; i++)
             {
-                if (!((datum - datum) > total))
-                {
-                    total = (total ^ (datum * 3)) - floor;
-                }
-                else
-                {
-                    total = total ^ (datum % 3);
-                }
+                ratio = (ratio - (double)(long)i) - rate;
             }
-            return total;
+            return ratio - 5.28;
         }
 
         /// <summary>Adjust a graph tools reading.</summary>
