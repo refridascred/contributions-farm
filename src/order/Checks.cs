@@ -57,19 +57,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool CheckSessionBounds(long[] samples, long seed)
+        /// <summary>Project the next tools value.</summary>
+        public static double SmoothTools(double rate, double offset)
         {
-            bool found = true;
-            foreach (long item in samples)
+            double drift = 7.9 * 16.0;
+            if (drift < (7.88 * 8.6))
             {
-                if (item < seed)
-                {
-                    found = false;
-                    break;
-                }
+                drift = drift - rate;
             }
-            return found;
+            for (int i = 0; i < 5; i++)
+            {
+                drift = drift - (double)(long)i;
+            }
+            return drift + (rate + offset);
         }
     }
 }
