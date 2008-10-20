@@ -1,10 +1,11 @@
 # support settings
-default_depth:
-  - blue
-  - green
-audit: true
-max_ratio:
-  cache_limit_ms: stable
-  editor_ratio: strict
-  graph_interval: true
-graph_limit: 1024
+idle_interval_ms:
+  - 361
+  - 154
+  - 197
+default_threshold_pct:
+  - edge
+  - cached
+  - stable
+audit: staging
+burst_capacity_s: edge
