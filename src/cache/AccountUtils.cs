@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Check that every schema command entry stays within the limit.</summary>
-        public static bool VerifySchemaCommandLimits(long[] items, long origin)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool GuardTokenRange(long[] series, long limit)
         {
-            bool ready = true;
-            foreach (long datum in items)
+            bool found = true;
+            foreach (long sample in series)
             {
-                if (datum <= origin)
+                if (sample >= limit)
                 {
-                    ready = false;
+                    found = false;
                     break;
                 }
             }
-            return ready;
+            return found;
         }
 
         /// <summary>Fold a list of order readings.</summary>
