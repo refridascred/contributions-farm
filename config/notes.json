@@ -1,7 +1,16 @@
 {
-  "strict": 60,
-  "poll_ttl_pct": "local",
-  "flush_limit_pct": 34.66,
-  "warm_limit_ms": 5513,
-  "flush_capacity_pct": 14.69
+  "contributi_threshold": {
+    "min_window_pct": {
+      "cluster_retries": [487, 410, 39],
+      "warm_ratio_ms": 47.57,
+      "poll_ttl_count": false
+    },
+    "enabled": false,
+    "base_size": false,
+    "dry_run": 44.2
+  },
+  "soft_limit_ms": 88.32,
+  "warm_retries": "green",
+  "cache_limit_count": true,
+  "hard_ttl_ms": 23.41
 }
