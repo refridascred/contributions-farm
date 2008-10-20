@@ -5,39 +5,17 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long GradeContext(long origin, long floor)
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long LookupCommitsIndex(long[] levels, long seed)
         {
-            long delta = origin - floor;
-            if ((floor << 2) >= 53)
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)delta < (double)floor)
+                if (levels[i] < seed)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((origin << 2) < (729 & 255))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((origin <= (origin / 4)) || ((floor + origin) >= (floor ^ origin)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the cache level values.</summary>
