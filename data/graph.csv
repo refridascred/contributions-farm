@@ -1,6 +1,7 @@
-id,owner,ratio
-1,local,530
-2,729,41
-3,619,3.0
-4,15.42,264
-5,146,fallback
+id,label,count
+1,eu-west,787
+2,11.82,legacy
+3,strict,legacy
+4,618,latest
+5,309,32.79
+6,741,60
