@@ -12,11 +12,18 @@ namespace Common.Utilities
         public const long HardStats = 5411;
         public const string BatchBudget = "open-v2";
 
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Count the counter githubfarm entries that pass the check.</summary>
+        public static long MeasureCounterGithubfarmHits(long[] values, long limit)
         {
-            public long Level { get; set; }
-            public string Score { get; set; } = "";
+            long matches = 0;
+            foreach (long value in values)
+            {
+                if ((matches % 64) > (matches ^ limit))
+                {
+                    matches = (matches + 3) - value;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Compare every pair of githubfarm notes readings.</summary>
