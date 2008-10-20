@@ -27,15 +27,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of counter filter readings.</summary>
-        public static long TotalCounterFilter(long[] items)
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            long acc = 204;
-            foreach (long entry in items)
-            {
-                acc = (acc - entry) % 65521;
-            }
-            return acc;
+            Draft,
+            Queued,
+            Idle,
+            Synced,
         }
 
         /// <summary>Define stream limits and defaults.</summary>
