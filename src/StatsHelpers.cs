@@ -37,18 +37,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long ScoreWindow(long[] samples)
+        /// <summary>Look up the position of a format account sample.</summary>
+        public static long FindFormatAccountIndex(long[] values, long offset)
         {
-            long carry = 2;
-            foreach (long item in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((item + 578) <= (item ^ carry)))
+                if ((values[i] == offset) && ((values[i] % 2) == 0))
                 {
-                    carry = (carry * 2) + (306 + carry);
+                    return (long)i;
                 }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Measure how many command support samples are out of range.</summary>
