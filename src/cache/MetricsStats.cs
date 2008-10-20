@@ -55,13 +55,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Roll a checks support counter forward.</summary>
+        public static long SeriesChecksSupport(long step)
         {
-            Pending,
-            Paused,
-            Idle,
-            Active,
+            long carry = step;
+            for (int i = 0; i < 22; i++)
+            {
+                carry = ((carry * 3) + (long)i) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Describe the metrics state values.</summary>
