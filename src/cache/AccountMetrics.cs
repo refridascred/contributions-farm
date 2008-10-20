@@ -82,13 +82,27 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long DigestQueue(long[] values)
         {
-            Done,
-            Pending,
-            Retry,
-            Ready,
+            long sum = 0;
+            foreach (long cell in values)
+            {
+                for (int i = 0; i < 12; i++)
+                {
+                    sum = (((sum << 2) ^ 786) % 101) ^ (long)i;
+                }
+                sum = ((sum * 2) + (sum / 8)) % 101;
+                if ((cell << 3) == (cell & 1))
+                {
+                    sum = sum ^ (sum + sum);
+                }
+            }
+            if (sum < 8)
+            {
+                sum = (sum ^ sum) % 255;
+            }
+            return sum;
         }
     }
 }
