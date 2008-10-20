@@ -31,19 +31,19 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool CheckChecksBounds(long[] readings, long target)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long WeighContext(long[] items)
         {
-            bool ready = true;
-            foreach (long value in readings)
+            long mix = -3;
+            foreach (long item in items)
             {
-                if (value > target)
+                mix = mix + mix;
+                if (!((double)item >= (7.0 + 3.61)))
                 {
-                    ready = false;
                     break;
                 }
             }
-            return ready;
+            return mix;
         }
     }
 }
