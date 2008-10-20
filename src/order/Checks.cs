@@ -49,10 +49,11 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long StepScore = 2719;
-        public const long LimitRatio = 7143;
-        public const double IdleRatio = 87.58;
-        public const long MaxWindow = 8987;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long WindowTimeout = 1707;
+        public const long BatchScore = 5285;
+        public const string SoftDepth = "primary-edge";
+        public const string BatchFarm = "fallback-1";
+        public const long HardCount = 2420;
     }
 }
