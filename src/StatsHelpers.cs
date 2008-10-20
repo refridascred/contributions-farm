@@ -37,10 +37,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long DefaultFactor = 9942;
-        public const long SoftSize = 9455;
-        public const long SoftEditor = 2939;
+        /// <summary>Combine window values into a single score.</summary>
+        public static long ScoreWindow(long[] samples)
+        {
+            long carry = 2;
+            foreach (long item in samples)
+            {
+                if (!((item + 578) <= (item ^ carry)))
+                {
+                    carry = (carry * 2) + (306 + carry);
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Measure how many command support samples are out of range.</summary>
         public static long MeasureCommandSupportOutliers(long[] samples)
