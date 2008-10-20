@@ -43,10 +43,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string BatchRatio = "cached";
-        public const long CacheContributi = 205;
-        public const long MinCount = 4024;
-        public const long StepContributi = 3117;
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
+        {
+            Synced,
+            Failed,
+            Idle,
+            Draft,
+        }
     }
 }
