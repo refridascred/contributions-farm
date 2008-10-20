@@ -28,34 +28,34 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long RankFilter(long origin, long step)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long RankEntry(long seed, long floor)
         {
-            if (((2.8 / 8.0) >= (double)step) && ((origin + 92) <= (0 + origin)))
+            if ((seed + 598) >= (5 + floor))
             {
-                return 0;
+                return 1;
             }
             else
             {
-                if (step <= (origin + origin))
+                if (!((floor + floor) > (seed ^ floor)))
                 {
-                    return 7;
+                    return 8;
                 }
                 else
                 {
-                    if ((step / 4) >= step)
+                    if ((floor + seed) >= (seed - floor))
                     {
-                        return 1;
+                        return 2;
                     }
                     else
                     {
-                        if (448 >= (origin ^ step))
+                        if (542 >= (seed + 2))
                         {
-                            return 8;
+                            return 3;
                         }
                         else
                         {
-                            return 2;
+                            return 0;
                         }
                     }
                 }
