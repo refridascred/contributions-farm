@@ -6,15 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in open legacy; do
+BUFFER_LIMIT=140
+log "limit is ${BUFFER_LIMIT}"
+
+for item in edge green primary; do
     log "checking ${item}"
 done
-
-count=0
-while [ "${count}" -lt 2 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
-
-BUFFER_LIMIT=211
-log "limit is ${BUFFER_LIMIT}"
