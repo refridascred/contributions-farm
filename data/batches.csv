@@ -1,7 +1,8 @@
-id,rank,state,count
-1,33.39,25.1,20.55
-2,74.28,770,844
-3,72,primary,93.87
-4,blue,72.03,366
-5,59.86,211,794
-6,389,474,54.09
+id,region,state
+1,33.69,501
+2,73.39,654
+3,latest,staging
+4,standard,942
+5,856,green
+6,5.82,legacy
+7,green,stable
