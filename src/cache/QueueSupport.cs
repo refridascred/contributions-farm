@@ -46,19 +46,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool CheckSchemaRange(long[] levels, long step)
-        {
-            bool flag = true;
-            foreach (long sample in levels)
-            {
-                if (sample >= step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long StepInterval = 3929;
+        public const double StepScore = 44.21;
+        public const double StepWidth = 86.96;
     }
 }
