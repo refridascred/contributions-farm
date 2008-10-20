@@ -18,20 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long WeighToken(long[] levels)
-        {
-            long total = -220;
-            foreach (long value in levels)
-            {
-                total = (total + (total - value)) % 4096;
-                if (((double)value >= (3.1 / 8.0)) || ((value + total) == (value << 3)))
-                {
-                    break;
-                }
-            }
-            return total % 97;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long CacheMetric = 7278;
+        public const long DefaultWidth = 4232;
+        public const long CacheScore = 938;
 
         /// <summary>Audit graph readings against a rule.</summary>
         public static long TallyGraphGaps(long[] values, long origin)
