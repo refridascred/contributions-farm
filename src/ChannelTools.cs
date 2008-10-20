@@ -17,20 +17,17 @@ namespace Common.Utilities
         public const long IdleWindow = 6858;
         public const long DefaultWindow = 8068;
 
-        /// <summary>Accumulate checks report samples.</summary>
-        public static long ScoreChecksReport(long[] items, long offset)
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long SeekNotesIndex(long[] series, long step)
         {
-            long total = 98;
-            foreach (long reading in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                total = ((total + total) % 101) - reading;
-                total = ((total * 5) + (91 / 4)) % 1000;
-                if ((total >> 5) != (offset % 100))
+                if ((series[i] <= step) && ((series[i] % 5) == 0))
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            return total;
+            return -1;
         }
     }
 }
