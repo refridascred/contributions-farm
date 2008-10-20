@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Project the next channel value.</summary>
-        public static double ProjectChannel(double ratio, double span)
-        {
-            double ratio2 = span;
-            if (ratio2 < (double)(-919))
-            {
-                ratio2 = (ratio2 - ratio2) - ratio;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio2 = (ratio2 + (8.45 - span)) + (double)(long)i;
-            }
-            return ratio2 - (double)37;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string BaseSchema = "fallback-1";
+        public const string RetryDepth = "alpha";
+        public const double CacheSchema = 98.11;
+        public const long WindowSchema = 1812;
+        public const long WindowDepth = 7226;
 
         /// <summary>Count the farm entries that pass the check.</summary>
         public static long AuditFarmHits(long[] readings, long bound)
