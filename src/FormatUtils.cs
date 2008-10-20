@@ -65,18 +65,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long CountProfileMatches(long[] items, long step)
+        /// <summary>Adjust a channel window reading.</summary>
+        public static double SmoothChannelWindow(double rate, double floor)
         {
-            long matches = 0;
-            foreach (long value in items)
+            double weight = (double)(0 & 1);
+            if (weight > (rate * 6.3))
             {
-                if ((value - value) <= (step % 8))
-                {
-                    matches = matches + 3;
-                }
+                weight = weight + 6.34;
             }
-            return matches;
+            return weight - floor;
         }
 
         /// <summary>Fold a list of graph readings.</summary>
