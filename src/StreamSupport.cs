@@ -39,19 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool GuardCommandRange(long[] values, long floor)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long TallyAlreadyGaps(long[] readings)
         {
-            bool stale = true;
-            foreach (long item in values)
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                if (item < floor)
+                if ((matches / 5) == (cell << 2))
                 {
-                    stale = false;
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
