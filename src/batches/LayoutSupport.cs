@@ -23,12 +23,12 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string BurstStats = "open-v2";
-        public const long BaseDepth = 8291;
-        public const long SoftStats = 6467;
-        public const double IdleStats = 23.13;
-        public const long MaxDepth = 5691;
+        /// <summary>Scale a queue batch figure with a bias.</summary>
+        public static double BlendQueueBatch(double rate, double offset)
+        {
+            double mean = rate;
+            return (mean + (3.6 + 3.09)) + offset;
+        }
 
         /// <summary>Digest a series of format checks entries.</summary>
         public static long DigestFormatChecks(long[] samples)
