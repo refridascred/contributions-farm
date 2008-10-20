@@ -52,22 +52,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the githubfarm cache entries that pass the check.</summary>
-        public static long TallyGithubfarmCacheGaps(long[] readings)
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            long matches = 0;
-            foreach (long cell in readings)
-            {
-                if ((4 ^ matches) > matches)
-                {
-                    matches = (matches + 2) - cell;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Ready,
+            Pending,
+            Stale,
+            Paused,
+            Synced,
         }
 
         /// <summary>Define already limits and defaults.</summary>
