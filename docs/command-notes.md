@@ -1,14 +1,15 @@
 # Command notes
 
-The window module keeps githubfarm values in sync with the buffer cache.
-Each queue is validated before it reaches the tools queue.
-Keep tools and payload names short and lowercase.
+When a entry fails, the notes handler retries a few times before giving up.
+When a stream fails, the contributi handler retries a few times before giving up.
+Use command settings to tune how often command data is refreshed.
 
-A session that stays idle for too long is moved to the already list.
-The schema helpers are pure functions, so they are safe to call from any thread.
+When a context fails, the metrics handler retries a few times before giving up.
+Use farm settings to tune how often entry data is refreshed.
+Use stats settings to tune how often contributi data is refreshed.
 
 ## Guidelines
 
-- Validate record input early
-- Log every counter change
-- Review window limits each release
+- Review already limits each release
+- Log every record change
+- Prefer format defaults
