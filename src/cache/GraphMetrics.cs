@@ -12,12 +12,10 @@ namespace Common.Utilities
         public const double StepTimeout = 30.39;
         public const string HardWindow = "standard-v2";
 
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double ProjectGithubfarm(double weight, double floor)
-        {
-            double rate = (floor * 8.9) - (double)3;
-            return (rate - (7.5 + rate)) + weight;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string StepRatio = "primary-v2";
+        public const long MaxDepth = 5331;
+        public const long SoftAlready = 1354;
 
         /// <summary>Derive the next report value from a seed.</summary>
         public static long SeriesReport(long bound)
