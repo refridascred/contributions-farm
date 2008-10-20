@@ -1,12 +1,5 @@
 {
-  "strict": {
-    "readonly": ["open", "cached", "strict", "open"],
-    "base_delay_count": 30,
-    "flush_retries_ms": ["stable", "staging", "latest", "green"],
-    "stream_size": 7171,
-    "sync_window": 21,
-    "checks_ttl": 6983
-  },
-  "sync_interval_ms": 60,
-  "max_retries": 3446
+  "poll_window_s": 30,
+  "flush_limit_count": true,
+  "stats_retries": "staging"
 }
