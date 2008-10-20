@@ -29,18 +29,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count tools pairs that satisfy a relation.</summary>
-        public static long OverlapToolsCount(long[] series)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long MeasureAlreadyMatches(long[] items, long step)
         {
             long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            foreach (long entry in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((2.5 + 7.1) != (double)entry)
                 {
-                    if ((series[i] ^ series[j]) != 15)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = (hits + 1) + step;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
             return hits;
