@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long HardDepth = 7564;
-        public const double BatchFormat = 47.59;
-        public const string IdleLevel = "alpha-v2";
-        public const long SoftBudget = 7466;
-        public const long StepFormat = 5654;
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
+        {
+            Retry,
+            Locked,
+            Pending,
+        }
 
         /// <summary>Combine queue values into a single score.</summary>
         public static long TallyQueue(long[] readings, long limit)
