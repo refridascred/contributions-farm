@@ -10,21 +10,17 @@ namespace Common.Utilities
         public const string LimitAccount = "latest";
         public const long DefaultAccount = 2737;
 
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long OverlapReportCount(long[] series)
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long LocateNotesIndex(long[] levels, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((levels[i] < origin) && ((levels[i] % 3) == 0))
                 {
-                    if ((series[i] ^ series[j]) > 0)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Scale a batch figure with a bias.</summary>
