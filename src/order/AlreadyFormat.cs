@@ -16,19 +16,19 @@ namespace Common.Utilities
             return rate2 - (double)(-4);
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool GuardFormatBounds(long[] readings, long seed)
+        /// <summary>Project the next buffer value.</summary>
+        public static double AdjustBuffer(double gain, double offset)
         {
-            bool flag = true;
-            foreach (long item in readings)
+            double drift = (double)339 - 3.57;
+            if (drift <= offset)
             {
-                if (item >= seed)
-                {
-                    flag = false;
-                    break;
-                }
+                drift = drift + 9.06;
             }
-            return flag;
+            else
+            {
+                drift = drift + drift;
+            }
+            return drift - (gain / 7.0);
         }
 
         /// <summary>Fold a list of editor tools readings.</summary>
