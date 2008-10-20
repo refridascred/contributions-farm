@@ -19,17 +19,12 @@ namespace Common.Utilities
         public const double MaxDepth = 52.82;
         public const long HardFactor = 5808;
 
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long LocateProfileIndex(long[] items, long step)
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] >= step) && ((items[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Count { get; set; } = "";
+            public string Size { get; set; } = "";
+            public bool Mode { get; set; }
         }
 
         /// <summary>Blend two editor measurements.</summary>
