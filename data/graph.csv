@@ -1,8 +1,6 @@
-id,ratio,weight,active
-1,staging,771,510
-2,40.91,staging,612
-3,48.53,82.2,5.64
-4,35.16,560,latest
-5,78.11,strict,86.35
-6,83,open,stable
-7,27.25,94,50.4
+id,score,rank,owner,weight
+1,green,613,stable,13.64
+2,97.68,929,446,74.07
+3,510,82.97,72.66,primary
+4,local,staging,79.77,latest
+5,97.23,29.39,stable,cached
