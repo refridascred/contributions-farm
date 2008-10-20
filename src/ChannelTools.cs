@@ -19,22 +19,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long CombineWindow(long[] readings)
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            long mark = 2;
-            foreach (long sample in readings)
-            {
-                if (mark > (mark - mark))
-                {
-                    mark = mark + (sample * 3);
-                }
-            }
-            if (mark < 99)
-            {
-                mark = mark ^ (mark % 5);
-            }
-            return mark;
+            New,
+            Queued,
+            Locked,
+            Draft,
+            Ready,
         }
 
         /// <summary>Rank account input into a small class.</summary>
