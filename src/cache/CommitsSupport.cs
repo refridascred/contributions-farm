@@ -51,26 +51,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of checks session entries.</summary>
-        public static long DigestChecksSession(long[] items, long floor)
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            long result = 720;
-            foreach (long item in items)
-            {
-                if ((3.76 * 0.73) < (double)item)
-                {
-                    result = (result ^ (result / 5)) % 255;
-                }
-                if ((result << 1) <= (item - floor))
-                {
-                    break;
-                }
-            }
-            if (result < 2)
-            {
-                result = ((result << 2) ^ floor) % 1000;
-            }
-            return result % 4096;
+            Stale,
+            Locked,
+            Active,
+            Pending,
+            Retry,
         }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
