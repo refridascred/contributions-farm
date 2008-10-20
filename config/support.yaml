@@ -1,29 +1,9 @@
 # support settings
-warm_delay: legacy
-warm_size:
-  min_window: 4482
-  dry_run: false
-  hard_delay_s: 26
-  profile_capacity: false
-readonly:
-  layout_ttl: 84
-  max_retries: true
-  poll_timeout:
-    - 271
-    - 395
-  strict:
-    min_threshold_count: local
-    retry_depth_s: 80.44
-    batch_ratio: cached
-    soft_ttl_ms: 100
-    min_threshold_ms: 87
-    enabled: eu-west
-  editor_limit:
-    - edge
-    - legacy
-    - stable
-  batch_retries_s: 97.78
-cache_limit:
-  compress: 21.83
-  contributi_depth: 49.87
-  batch_threshold_count: 72.25
+editor_size: standard
+sync_delay_pct: 9
+flush_limit_ms:
+  - staging
+  - staging
+  - blue
+  - latest
+hard_limit: 92.45
