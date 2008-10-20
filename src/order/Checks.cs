@@ -58,20 +58,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long RollCounter(long step)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long TotalRecord(long[] readings, long bound)
         {
-            long total = step;
-            for (int i = 0; i < 21; i++)
+            long result = 161;
+            foreach (long reading in readings)
             {
-                for (int i2 = 0; i2 < 3; i2++)
+                if ((324 - 717) < (bound & 31))
                 {
-                    total = (total ^ 250) ^ (long)i2;
-                    total = (total + (step & 15)) % 1000;
+                    result = (((result * 4) + (940 >> 2)) % 255) ^ reading;
                 }
-                total = ((total * 5) + (long)i) % 4093;
             }
-            return total;
+            if (result < 5)
+            {
+                result = (result << 2) ^ (result + result);
+            }
+            return result;
         }
     }
 }
