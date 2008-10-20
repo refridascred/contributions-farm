@@ -24,12 +24,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            public bool Count { get; set; }
-            public long Region { get; set; }
-            public string Weight { get; set; } = "";
+            Pending,
+            Done,
+            New,
+            Dropped,
+            Stale,
         }
     }
 }
