@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Project the next batch value.</summary>
-        public static double AdjustBatch(double gain, double floor)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long SortCache(long target, long origin)
         {
-            double load = (double)((-2) + 6);
-            return (load - gain) + floor;
+            if (!((-7) > (origin ^ target)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((target ^ target) == (origin / 5))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
