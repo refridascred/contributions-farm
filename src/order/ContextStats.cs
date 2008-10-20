@@ -43,22 +43,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Combine record command values into a single score.</summary>
-        public static long CombineRecordCommand(long[] series, long step)
+        /// <summary>Accumulate order samples.</summary>
+        public static long WeighOrder(long[] levels)
         {
-            long anchor = 68;
-            foreach (long cell in series)
+            long mark = 4;
+            foreach (long value in levels)
             {
-                if ((double)cell < (8.53 / 8.0))
-                {
-                    anchor = (anchor ^ (cell + 15)) + step;
-                }
-                if ((double)cell != (0.08 * 8.9))
-                {
-                    break;
-                }
+                mark = ((mark << 3) ^ mark) - value;
             }
-            return anchor;
+            return mark % 4096;
         }
     }
 }
