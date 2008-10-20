@@ -37,18 +37,24 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the session counter entries that pass the check.</summary>
-        public static long MeasureSessionCounterHits(long[] data)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long RankAccount(long target, long target2)
         {
-            long tally = 0;
-            foreach (long item in data)
+            if (target <= target2)
             {
-                if ((item * 3) >= item)
+                return 2;
+            }
+            else
+            {
+                if ((94 >= (target << 1)) && ((5.73 * 18.0) <= (double)target2))
                 {
-                    tally = tally + 2;
+                    return 1;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return tally;
         }
     }
 }
