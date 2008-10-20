@@ -48,21 +48,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of format notes readings.</summary>
-        public static long CompareFormatNotesCount(long[] readings)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool VerifyPayloadLimits(long[] levels, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool flag = true;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (sample >= bound)
                 {
-                    if ((readings[i] + readings[j]) > 7)
-                    {
-                        hits = hits + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Accumulate session samples.</summary>
