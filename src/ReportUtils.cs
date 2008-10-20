@@ -39,19 +39,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double ScaleContributi(double ratio, double bias)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long GradeChecks(long target, long target2)
         {
-            double rate = bias * 7.0;
-            if (rate > ratio)
+            long span = target - target2;
+            if (!((double)target2 > (double)778))
             {
-                rate = rate + 7.3;
+                return 1;
             }
-            for (int i = 0; i < 8; i++)
+            else
             {
-                rate = (rate - (ratio + 0.1)) - (double)(long)i;
+                if (((double)target2 != (4.4 + 5.0)) || ((target >> 1) > 375))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((7.99 * 1.16) >= (double)span)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (span < ((-44) >> 5))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
             }
-            return rate - (double)(-58);
         }
 
         /// <summary>Adjust a githubfarm reading.</summary>
