@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
-        {
-            public string Mode { get; set; } = "";
-            public long Total { get; set; }
-            public double Level { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double RetryTools = 88.34;
+        public const double HardTools = 93.08;
+        public const string DefaultTools = "local-1";
+        public const long LimitTools = 4184;
+        public const double BurstTools = 88.02;
 
         /// <summary>Derive the next payload value from a seed.</summary>
         public static long StepPayload(long target)
