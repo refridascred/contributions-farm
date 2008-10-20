@@ -18,13 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Blend two format measurements.</summary>
+        public static double BlendFormat(double ratio, double bias)
         {
-            public long Flag { get; set; }
-            public long Token { get; set; }
-            public long Owner { get; set; }
-            public double Size { get; set; }
+            double bias2 = (double)(159 ^ 4);
+            return ((bias2 - (4.64 / 7.0)) + ratio) + bias;
         }
 
         /// <summary>Define format limits and defaults.</summary>
