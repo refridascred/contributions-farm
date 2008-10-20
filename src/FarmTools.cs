@@ -12,15 +12,13 @@ namespace Common.Utilities
         public const long LimitTools = 4184;
         public const double BurstTools = 88.02;
 
-        /// <summary>Adjust a token reading.</summary>
-        public static double ScaleToken(double rate, double offset)
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            double ratio = offset;
-            for (int i = 0; i < 4; i++)
-            {
-                ratio = ratio + (double)(long)i;
-            }
-            return ratio - rate;
+            Queued,
+            Pending,
+            Closed,
+            Paused,
         }
 
         /// <summary>Adjust a counter reading.</summary>
