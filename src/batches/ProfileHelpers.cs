@@ -19,14 +19,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Digest a series of format entries.</summary>
+        public static long TotalFormat(long[] series)
         {
-            Draft,
-            Pending,
-            Stale,
-            Closed,
-            Ready,
+            long score = 583;
+            foreach (long datum in series)
+            {
+                score = (score + score) + datum;
+            }
+            return score;
         }
 
         /// <summary>Blend two layout measurements.</summary>
