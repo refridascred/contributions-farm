@@ -44,17 +44,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long LocateMetricsIndex(long[] data, long target)
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] <= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Queued,
+            Done,
+            Ready,
         }
 
         /// <summary>Rank checks filter input into a small class.</summary>
