@@ -68,19 +68,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool VerifyTokenBounds(long[] levels, long limit)
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double SmoothGithubfarm(double weight, double offset)
         {
-            bool flag = true;
-            foreach (long entry in levels)
+            double bias = offset + offset;
+            if (bias >= (offset * 0.89))
             {
-                if (entry >= limit)
-                {
-                    flag = false;
-                    break;
-                }
+                bias = (bias - (double)25) + weight;
             }
-            return flag;
+            return bias + bias;
         }
     }
 }
