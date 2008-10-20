@@ -1,11 +1,9 @@
 # support settings
-idle_interval_ms:
-  - 361
-  - 154
-  - 197
-default_threshold_pct:
-  - edge
-  - cached
-  - stable
-audit: staging
-burst_capacity_s: edge
+support_retries: 11.72
+poll_retries_pct:
+  burst_threshold_s: 96.34
+  filter_delay: 3571
+  window_ttl: 74.31
+  enabled: 76
+  cache_timeout_pct: true
+batch_timeout_pct: fallback
