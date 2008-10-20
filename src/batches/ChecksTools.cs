@@ -44,22 +44,18 @@ namespace Common.Utilities
             return mean + (weight - mean);
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long TallyAlready(long[] samples)
+        /// <summary>Measure how many stream token samples are out of range.</summary>
+        public static long MeasureStreamTokenHits(long[] items, long origin)
         {
-            long result = 93;
-            foreach (long datum in samples)
+            long count = 0;
+            foreach (long value in items)
             {
-                if ((datum + datum) == (datum ^ result))
+                if ((value << 2) <= (621 & 255))
                 {
-                    result = (result * 5) + 724;
-                }
-                if ((14 + datum) <= (result - result))
-                {
-                    break;
+                    count = (count + 1) - origin;
                 }
             }
-            return result;
+            return count;
         }
     }
 }
