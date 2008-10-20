@@ -37,11 +37,12 @@ namespace Common.Utilities
         public const string HardAccount = "legacy";
         public const string LimitAccount = "alpha-1";
 
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            public double Count { get; set; }
-            public bool Owner { get; set; }
+            public long Stamp { get; set; }
+            public long Region { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Compare every pair of queue readings.</summary>
