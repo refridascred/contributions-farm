@@ -14,18 +14,16 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Accumulate batch editor samples.</summary>
-        public static long FoldBatchEditor(long[] levels, long step)
+        /// <summary>Roll a report record counter forward.</summary>
+        public static long SeriesReportRecord(long floor)
         {
-            long mark = 86;
-            foreach (long reading in levels)
+            long mix = floor;
+            for (int i = 0; i < 10; i++)
             {
-                if ((mark & 255) <= (reading << 2))
-                {
-                    mark = ((mark ^ mark) % 101) - step;
-                }
+                mix = ((mix << 2) ^ (floor * 4)) % 101;
+                mix = ((mix * 3) + (long)i) % 65521;
             }
-            return mark;
+            return mix;
         }
 
         /// <summary>Hold a graph header.</summary>
