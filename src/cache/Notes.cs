@@ -60,22 +60,13 @@ namespace Common.Utilities
             return rate + (bias * 0.09);
         }
 
-        /// <summary>Count the profile contributi entries that pass the check.</summary>
-        public static long AuditProfileContributiGaps(long[] readings)
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            long hits = 0;
-            foreach (long value in readings)
-            {
-                if ((double)hits == (6.02 / 3.0))
-                {
-                    hits = (hits + 3) - value;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public string Region { get; set; } = "";
+            public bool Total { get; set; }
+            public string Ratio { get; set; } = "";
+            public string Size { get; set; } = "";
         }
     }
 }
