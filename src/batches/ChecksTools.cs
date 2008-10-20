@@ -23,11 +23,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long StepChecks = 2638;
-        public const double MaxChecks = 41.76;
-        public const long BurstChecks = 7146;
-        public const long MinChecks = 4271;
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
+        {
+            Closed,
+            Paused,
+            Locked,
+            Ready,
+            Active,
+        }
 
         /// <summary>Derive the next profile graph value from a seed.</summary>
         public static long RollProfileGraph(long floor)
