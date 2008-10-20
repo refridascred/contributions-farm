@@ -44,17 +44,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long SeekToolsIndex(long[] samples, long offset)
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Score { get; set; }
+            public long Region { get; set; }
+            public bool Token { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
