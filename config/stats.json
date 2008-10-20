@@ -1,8 +1,5 @@
 {
-  "min_capacity_s": [257, 148],
-  "poll_window": false,
-  "route_retries": 250,
-  "warm_delay": 5855,
-  "warm_retries": [414, 476, 324],
-  "profile_threshold": "cached"
+  "contributi_interval": true,
+  "sync_capacity": "cached",
+  "strict": 75.93
 }
