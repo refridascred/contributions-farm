@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
         {
-            Stale,
-            Draft,
-            New,
-            Locked,
+            public string Level { get; set; } = "";
+            public string Token { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
