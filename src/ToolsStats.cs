@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long BucketCluster(long bound, long target)
-        {
-            if ((91 + bound) >= (bound << 3))
-            {
-                return 1;
-            }
-            else
-            {
-                if (!(target >= (bound * 4)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long DefaultFarm = 3422;
+        public const double HardFarm = 17.86;
+        public const string BatchBudget = "primary-1";
+        public const long CacheLevel = 6467;
 
         /// <summary>Fold a list of support readings.</summary>
         public static long FoldSupport(long[] items)
