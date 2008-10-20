@@ -18,22 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit stats window readings against a rule.</summary>
-        public static long AuditStatsWindowHits(long[] levels)
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            long count = 0;
-            foreach (long cell in levels)
-            {
-                if ((cell * 2) <= (99 * 4))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public long Label { get; set; }
+            public string Limit { get; set; } = "";
+            public bool Owner { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Hold a support entry.</summary>
