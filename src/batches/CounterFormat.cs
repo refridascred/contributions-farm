@@ -24,24 +24,18 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long BucketStats(long seed, long floor)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long TallySessionHits(long[] readings)
         {
-            if ((double)seed <= (6.0 - 1.57))
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)floor > (5.99 - 10.0))
+                if ((4.64 - 5.4) > (double)entry)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 1;
+                    tally = tally + 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Scale a githubfarm figure with a bias.</summary>
