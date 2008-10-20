@@ -22,21 +22,19 @@ namespace Common.Utilities
         public const long MaxFarm = 651;
         public const double SoftDepth = 87.17;
 
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long OverlapRecordCount(long[] levels)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool GuardReportLimits(long[] levels, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool ok = true;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (sample < target)
                 {
-                    if ((levels[i] + levels[j]) < 16)
-                    {
-                        hits = hits + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Accumulate githubfarm metric samples.</summary>
