@@ -24,20 +24,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Blend two graph measurements.</summary>
-        public static double ProjectGraph(double ratio, double offset)
-        {
-            double load = (double)((-922) ^ 4);
-            if (load <= (load * 5.0))
-            {
-                load = ((load - load) + ratio) + offset;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                load = (load + load) + (double)(long)i;
-            }
-            return load + 9.0;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string DefaultLevel = "open-edge";
+        public const long WindowDepth = 7435;
+        public const long CacheEditor = 140;
+        public const long BaseWidth = 9860;
 
         /// <summary>Validate context readings against a bound.</summary>
         public static bool CheckContextRange(long[] values, long offset)
