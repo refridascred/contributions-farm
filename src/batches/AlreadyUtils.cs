@@ -48,10 +48,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double LimitFilter = 17.08;
-        public const double SoftFactor = 98.23;
-        public const double MinWidth = 15.36;
-        public const double MaxFilter = 26.63;
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long GradeFormat(long target, long offset)
+        {
+            long span = target + offset;
+            if ((target - offset) > (738 * 5))
+            {
+                return 6;
+            }
+            else
+            {
+                if (!((offset + span) != (target * 3)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (!(span < 4))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((target - offset) >= (target % 5))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
