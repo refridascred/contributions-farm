@@ -20,12 +20,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            Done,
-            Synced,
-            New,
+            Idle,
+            Draft,
+            Retry,
+            Ready,
         }
 
         /// <summary>Audit session contributi readings against a rule.</summary>
