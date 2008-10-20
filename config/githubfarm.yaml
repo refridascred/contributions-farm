@@ -1,22 +1,25 @@
 # githubfarm settings
-min_capacity: eu-west
-flush_retries:
-  default_retries_pct: local
-  min_capacity_count:
-    - 75
-    - 286
-    - 140
-    - 47
-  batch_timeout_pct: 14.72
-  batch_retries: 13
-  flush_limit_ms: true
-  hard_interval_ms:
-    idle_interval_count: 2344
-    graph_delay: blue
-    max_timeout: false
-    sync_delay_pct: edge
-    dry_run: edge
-command_timeout:
-  warm_ratio_pct: true
-  persist: local
-  verbose: local
+audit:
+  sync_timeout_ms: 803
+  dry_run: false
+  flush_limit_ms:
+    - primary
+    - staging
+    - open
+    - latest
+  filter_timeout: true
+  default_timeout: 94
+  metric_timeout:
+    - edge
+    - cached
+    - eu-west
+soft_ratio_ms:
+  support_delay: latest
+  sync_window_pct: 73.13
+  token_limit: 15.8
+  default_capacity_s: true
+  cache_ttl: 100
+entry_timeout: eu-west
+warm_depth_ms: latest
+metrics_limit: true
+strict: 3631
