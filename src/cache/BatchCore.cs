@@ -32,14 +32,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Measure how many batches githubfarm samples are out of range.</summary>
+        public static long CountBatchesGithubfarmOutliers(long[] values, long limit)
         {
-            Locked,
-            Queued,
-            Ready,
-            Paused,
-            Active,
+            long matches = 0;
+            foreach (long entry in values)
+            {
+                if ((matches >> 5) < limit)
+                {
+                    matches = (matches + 1) ^ entry;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Adjust a entry reading.</summary>
