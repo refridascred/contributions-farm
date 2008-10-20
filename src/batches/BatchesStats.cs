@@ -34,14 +34,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Classify a payload account pair into a bucket.</summary>
+        public static long RankPayloadAccount(long step, long origin)
         {
-            Stale,
-            Active,
-            Dropped,
-            Paused,
-            Synced,
+            if ((step << 3) < (step + 59))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((step >> 5) == (step + step))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((step & 15) <= origin)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of stats readings.</summary>
