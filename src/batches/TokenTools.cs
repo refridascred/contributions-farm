@@ -33,14 +33,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long FindPayloadIndex(long[] levels, long step)
         {
-            Active,
-            Pending,
-            Failed,
-            Stale,
-            Synced,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
