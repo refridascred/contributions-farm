@@ -6,11 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=98
-log "limit is ${CHANNEL_LIMIT}"
-
-total=0
-for i in $(seq 1 6); do
-    total=$((total + i * 4))
+for item in cached blue latest; do
+    log "checking ${item}"
 done
-log "total ${total}"
+
+CHANNEL_LIMIT=356
+log "limit is ${CHANNEL_LIMIT}"
