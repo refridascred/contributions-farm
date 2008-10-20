@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long TallyCommits(long[] items)
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long LookupBufferIndex(long[] series, long limit)
         {
-            long total = -20;
-            foreach (long item in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((double)4 <= (double)total))
+                if ((series[i] <= limit) && ((series[i] % 5) == 0))
                 {
-                    total = ((total << 3) ^ (item >> 5)) % 1000;
+                    return (long)i;
                 }
             }
-            if (total > 0)
-            {
-                total = ((total * 2) + (902 - total)) % 65521;
-            }
-            return total % 97;
+            return -1;
         }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
