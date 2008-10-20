@@ -85,24 +85,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long RankGraph(long bound, long target)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long CountCommitsHits(long[] readings)
         {
-            if (target > (413 + bound))
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if ((bound % 3) <= (bound << 1))
+                if ((entry + seen) == (seen - 1))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
+                    seen = seen + 3;
                 }
             }
+            return seen;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
