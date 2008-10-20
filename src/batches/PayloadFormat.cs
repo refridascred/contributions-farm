@@ -20,15 +20,21 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long ScoreFarm(long[] values, long origin)
+        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
+        public static long MatchGithubfarmCount(long[] levels)
         {
-            long mix = 9;
-            foreach (long value in values)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                mix = ((mix + (mix * 2)) + value) + origin;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) == 17)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return mix % 65521;
+            return count;
         }
 
         /// <summary>Hold a tools stats.</summary>
