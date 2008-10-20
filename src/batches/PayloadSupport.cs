@@ -27,19 +27,19 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool CheckContextRange(long[] values, long offset)
+        /// <summary>Check that every account batches entry stays within the limit.</summary>
+        public static bool ValidateAccountBatchesLimits(long[] series, long floor)
         {
-            bool ok = true;
-            foreach (long reading in values)
+            bool ready = true;
+            foreach (long sample in series)
             {
-                if (reading > offset)
+                if (sample >= floor)
                 {
-                    ok = false;
+                    ready = false;
                     break;
                 }
             }
-            return ok;
+            return ready;
         }
     }
 }
