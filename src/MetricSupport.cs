@@ -20,17 +20,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long LocateQueueIndex(long[] values, long bound)
+        /// <summary>Roll a session command counter forward.</summary>
+        public static long StepSessionCommand(long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            long total = target;
+            for (int i = 0; i < 16; i++)
             {
-                if ((values[i] == bound) && ((values[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                long diff = (total - total) - (9 * 2);
+                diff = ((diff << 2) ^ (long)i) % 65521;
+                total = (total - (target - diff)) % 1000;
+                total = ((total * 5) + (long)i) % 1000;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Adjust a profile reading.</summary>
