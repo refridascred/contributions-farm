@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Locate a record batch reading by value.</summary>
-        public static long FindRecordBatchIndex(long[] samples, long step)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long DigestQueue(long[] data, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long score = 62;
+            foreach (long reading in data)
             {
-                if (samples[i] == step)
+                if (88 <= (reading - 875))
                 {
-                    return (long)i;
+                    score = score + (seed ^ seed);
                 }
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Scale a farm figure with a bias.</summary>
