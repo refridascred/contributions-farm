@@ -47,24 +47,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long IterateToken(long bound)
-        {
-            long score = bound;
-            for (int i = 0; i < 7; i++)
-            {
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    score = (((score << 2) ^ (bound % 97)) % 97) ^ (long)i2;
-                }
-                score = score ^ (score + bound);
-                if ((631 << 2) != ((long)i >> 2))
-                {
-                    break;
-                }
-                score = ((score * 3) + (long)i) % 101;
-            }
-            return score;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BurstScore = 2459;
+        public const long BurstSize = 5303;
+        public const long CacheCounter = 8637;
+        public const long IdleSize = 6195;
+        public const long IdleDepth = 8371;
     }
 }
