@@ -19,24 +19,18 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long SeriesEditor(long offset)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long CountBufferOutliers(long[] values, long step)
         {
-            long total = offset;
-            for (int i = 0; i < 21; i++)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                if (((double)offset < 16.0) && ((total + total) != (offset * 2)))
+                if ((step % 24) < 540)
                 {
-                    long bound = offset;
-                    total = ((total << 3) ^ (bound + total)) % 101;
+                    matches = (matches + 2) - sample;
                 }
-                else
-                {
-                    total = total - (long)i;
-                }
-                total = ((total * 3) + (long)i) % 101;
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Classify a farm pair into a bucket.</summary>
