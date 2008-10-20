@@ -26,39 +26,22 @@ namespace Common.Utilities
         public const long IdleChecks = 1808;
         public const double SoftBudget = 82.2;
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long GradeStats(long offset, long step)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long DigestStream(long[] readings)
         {
-            long slot = offset + step;
-            if ((4.85 * 0.07) >= (4.6 + 14.0))
+            long result = 23;
+            foreach (long item in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if (step < ((-68) + slot))
+                if ((855 + item) >= (item - item))
                 {
-                    return 4;
+                    result = ((result * 5) + 981) % 101;
                 }
                 else
                 {
-                    if ((double)offset == (4.2 - 8.98))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((15.0 - 3.6) >= (double)slot) && ((double)step < 9.0))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    result = ((result * 2) + 29) % 65521;
                 }
             }
+            return result;
         }
 
         /// <summary>Describe the stats state values.</summary>
