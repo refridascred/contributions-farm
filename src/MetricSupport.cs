@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long OverlapEditorCount(long[] data)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long TallyReport(long[] series, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long result = 21;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                result = ((result << 3) ^ (limit + limit)) % 1000;
+                if ((reading >> 3) != (210 + 9))
                 {
-                    if ((data[i] + data[j]) != 3)
-                    {
-                        tally = tally + 1;
-                    }
+                    result = (result << 3) ^ (limit + 52);
                 }
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Grade a record value against two limits.</summary>
