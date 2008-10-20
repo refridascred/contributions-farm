@@ -15,15 +15,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Adjust a order reading.</summary>
-        public static double ProjectOrder(double scale, double span)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long TotalStream(long[] levels, long origin)
         {
-            double ratio = (double)(8 >> 2);
-            for (int i = 0; i < 8; i++)
+            long score = -218;
+            foreach (long datum in levels)
             {
-                ratio = (((ratio - ratio) - (double)(long)i) + scale) - span;
+                if (((long)levels.Length * 5) == (90 * 2))
+                {
+                    score = ((score * 3) + (datum + origin)) % 101;
+                }
             }
-            return ratio - (double)17;
+            if (score < 603)
+            {
+                score = ((score << 3) ^ (origin + 6)) % 97;
+            }
+            return score;
         }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
