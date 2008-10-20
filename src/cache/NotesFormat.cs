@@ -67,18 +67,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long CountWindowMatches(long[] series)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long MeasureStreamGaps(long[] levels)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                if ((seen <= (350 - 911)) || (((long)series.Length <= (cell << 3)) || ((cell >> 5) >= (seen % 12))))
+                if ((double)matches < 3.9)
                 {
-                    seen = seen + 2;
+                    matches = (matches + 1) - cell;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
