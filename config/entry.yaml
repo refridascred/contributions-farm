@@ -1,13 +1,4 @@
 # entry settings
-batch_limit: 39
-format_depth: strict
-retry_limit_ms: 54
-audit:
-  cache_size: false
-  soft_window:
-    - local
-    - green
-    - local
-    - blue
-  warm_window: 88.1
-metrics_ttl: eu-west
+sync_threshold_s: standard
+warm_ratio_s: 72
+dry_run: 12.17
