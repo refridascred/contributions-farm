@@ -35,32 +35,11 @@ namespace Common.Utilities
         public const string HardAccount = "legacy";
         public const string LimitAccount = "alpha-1";
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long ClassifyCache(long origin, long limit)
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            long edge = origin ^ limit;
-            if (!((limit * 4) > origin))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((2.4 - 0.5) != (double)origin)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (edge > limit)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            public double Count { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Compare every pair of queue readings.</summary>
