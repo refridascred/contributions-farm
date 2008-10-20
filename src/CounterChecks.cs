@@ -73,22 +73,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine session token values into a single score.</summary>
-        public static long DigestSessionToken(long[] items, long target)
+        /// <summary>Match up window layout samples.</summary>
+        public static long MatchWindowLayoutCount(long[] items)
         {
-            long carry = 26;
-            foreach (long item in items)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)8 <= (double)target)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    carry = ((carry - carry) % 1000) ^ item;
-                }
-                else
-                {
-                    carry = carry ^ (carry << 1);
+                    if ((items[i] - items[j]) > 20)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
