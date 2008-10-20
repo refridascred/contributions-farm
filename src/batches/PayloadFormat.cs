@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            public long Total { get; set; }
-            public long Token { get; set; }
-            public string Flag { get; set; } = "";
+            public long Stamp { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Define window limits and defaults.</summary>
