@@ -31,14 +31,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long DeriveFilter(long step)
         {
-            Draft,
-            Closed,
-            Ready,
-            Locked,
-            Failed,
+            long score = step;
+            for (int i = 0; i < 22; i++)
+            {
+                score = ((score * 3) + (long)i) % 4093;
+            }
+            return score;
         }
     }
 }
