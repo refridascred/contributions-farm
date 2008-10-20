@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long TallyStatsHits(long[] readings, long seed)
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            long count = 0;
-            foreach (long item in readings)
-            {
-                if ((double)item >= (0.08 + 3.7))
-                {
-                    count = (count + 1) + seed;
-                }
-            }
-            return count;
+            Active,
+            Queued,
+            Draft,
         }
 
         /// <summary>Define editor limits and defaults.</summary>
