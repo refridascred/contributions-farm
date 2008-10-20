@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long LocateGithubfarmIndex(long[] samples, long floor)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] <= floor) && ((samples[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long WindowRatio = 4987;
+        public const long CacheRatio = 9573;
+        public const double SoftWindow = 66.07;
 
         /// <summary>Locate a stats reading by value.</summary>
         public static long LocateStatsIndex(long[] samples, long origin)
