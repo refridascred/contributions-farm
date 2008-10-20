@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool VerifyChecksBounds(long[] series, long step)
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            bool found = true;
-            foreach (long value in series)
-            {
-                if (value >= step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Done,
+            Draft,
+            Closed,
+            Locked,
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
