@@ -84,22 +84,12 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long ScoreOrder(long[] samples, long step)
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            long sum = 449;
-            foreach (long item in samples)
-            {
-                if ((double)item < (1.1 * 7.6))
-                {
-                    sum = (sum - step) % 97;
-                }
-                else
-                {
-                    sum = (sum ^ step) % 101;
-                }
-            }
-            return sum;
+            public string Limit { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public long Size { get; set; }
         }
     }
 }
