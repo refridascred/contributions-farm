@@ -34,18 +34,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit tools token readings against a rule.</summary>
-        public static long TallyToolsTokenGaps(long[] data, long bound)
-        {
-            long matches = 0;
-            foreach (long sample in data)
-            {
-                if ((double)matches <= 10.0)
-                {
-                    matches = ((matches + 3) ^ sample) + bound;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double SoftCount = 22.4;
+        public const double MinScore = 80.78;
+        public const double BaseInterval = 3.12;
+        public const double LimitBatches = 29.79;
+        public const long MaxBatches = 7976;
     }
 }
