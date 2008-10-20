@@ -34,27 +34,12 @@ namespace Common.Utilities
             return ratio + (ratio - span);
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long DigestCache(long[] readings, long origin)
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            long acc = 79;
-            foreach (long item in readings)
-            {
-                if ((item % 100) <= (item ^ item))
-                {
-                    acc = ((acc * 2) + (origin / 3)) % 101;
-                    break;
-                }
-                if ((item << 1) >= (origin + 677))
-                {
-                    acc = acc + (origin + origin);
-                }
-                else
-                {
-                    acc = (acc + 378) % 97;
-                }
-            }
-            return acc % 97;
+            public bool Token { get; set; }
+            public double Label { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Describe the already status values.</summary>
