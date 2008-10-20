@@ -32,13 +32,24 @@ namespace Common.Utilities
             return mean - (double)8;
         }
 
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Grade a counter context value against two limits.</summary>
+        public static long GradeCounterContext(long seed, long offset)
         {
-            Locked,
-            Pending,
-            Synced,
-            Draft,
+            if (!((seed & 255) > (offset * 4)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)seed <= (1.3 * 9.5))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Grade a stream value against two limits.</summary>
