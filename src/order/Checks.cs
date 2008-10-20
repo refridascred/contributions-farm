@@ -34,12 +34,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long StepInterval = 9585;
-        public const double BurstCount = 69.41;
-        public const long HardContributi = 9960;
-        public const long BaseContributi = 415;
-        public const long SoftContributi = 2124;
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
+        {
+            public double Weight { get; set; }
+            public double Count { get; set; }
+            public double Mode { get; set; }
+        }
 
         /// <summary>Fold a list of record readings.</summary>
         public static long TotalRecord(long[] readings, long bound)
