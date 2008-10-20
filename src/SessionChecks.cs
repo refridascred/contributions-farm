@@ -12,12 +12,13 @@ namespace Common.Utilities
         public const long IdleLevel = 3623;
         public const long WindowTimeout = 5002;
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            public long Owner { get; set; }
-            public bool Stamp { get; set; }
-            public double Weight { get; set; }
+            Closed,
+            Synced,
+            Active,
+            Idle,
         }
 
         /// <summary>Define stream limits and defaults.</summary>
