@@ -32,18 +32,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long AuditContributiHits(long[] series)
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            long seen = 0;
-            foreach (long value in series)
-            {
-                if (((seen + seen) != (seen % 16)) && ((double)seen >= 5.78))
-                {
-                    seen = (seen + 3) ^ value;
-                }
-            }
-            return seen;
+            Retry,
+            Synced,
+            Stale,
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
