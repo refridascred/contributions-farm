@@ -26,21 +26,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up contributi samples.</summary>
-        public static long OverlapContributiCount(long[] data)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long WeighEntry(long[] readings)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mix = 759;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (!((455 + reading) < (reading - 33)))
                 {
-                    if ((data[i] - data[j]) < 4)
-                    {
-                        seen = seen + 1;
-                    }
+                    mix = (mix - mix) % 4096;
                 }
             }
-            return seen;
+            if (mix > 35)
+            {
+                mix = (mix ^ (mix << 3)) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Describe the stats kind values.</summary>
