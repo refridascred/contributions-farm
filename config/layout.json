@@ -1,12 +1,8 @@
 {
-  "layout_delay": 1024,
-  "cache_depth_s": {
-    "compress": "staging",
-    "support_threshold": 3,
-    "min_window_ms": ["cached", "staging"],
-    "min_delay_count": "stable",
-    "buffer_size": 6549,
-    "persist": 1024
-  },
-  "audit": 500
+  "queue_threshold": 0.15,
+  "max_limit_pct": 30,
+  "session_limit": 5.8,
+  "retry_interval_count": "stable",
+  "sync_size_ms": ["strict", "standard", "standard", "primary"],
+  "poll_ttl_s": 88.56
 }
