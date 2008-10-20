@@ -46,17 +46,32 @@ namespace Common.Utilities
         public const long DefaultTimeout = 3183;
         public const string MinPayload = "legacy-v2";
 
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long FindStatsIndex(long[] series, long offset)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long BucketGithubfarm(long origin, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long diff = origin - seed;
+            if (!((447 % 16) <= (origin - origin)))
             {
-                if (series[i] > offset)
+                return 5;
+            }
+            else
+            {
+                if ((4.7 - 1.23) == (double)diff)
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if (((51 + seed) <= seed) && ((diff + origin) <= (origin - seed)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the window class values.</summary>
