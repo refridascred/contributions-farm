@@ -39,39 +39,10 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long ClassifyAccount(long target, long step)
-        {
-            long offset = target ^ step;
-            if ((target / 7) < (offset * 2))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((15.0 * 3.7) != (double)step)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (step >= (7 - target))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((72 <= (offset & 1)) || ((6.19 / 8.0) <= (double)target))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BurstTimeout = 5424;
+        public const long IdleWindow = 6940;
+        public const long RetryTimeout = 6341;
+        public const double MaxWidth = 9.64;
     }
 }
