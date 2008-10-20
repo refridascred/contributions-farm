@@ -42,15 +42,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long DigestProfile(long[] values)
+        /// <summary>Count the stats cache entries that pass the check.</summary>
+        public static long AuditStatsCacheHits(long[] values)
         {
-            long acc = 429;
-            foreach (long value in values)
+            long seen = 0;
+            foreach (long item in values)
             {
-                acc = (((acc << 2) ^ (acc / 6)) % 1000) ^ value;
+                if (seen > (seen & 15))
+                {
+                    seen = (seen + 1) ^ item;
+                }
             }
-            return acc % 65521;
+            return seen;
         }
     }
 }
