@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double HardProfile = 58.83;
-        public const string CacheSpan = "cached-edge";
-        public const long BaseProfile = 488;
-        public const string StepBudget = "staging-edge";
-        public const string IdleProfile = "latest";
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double AdjustCluster(double ratio, double offset)
+        {
+            double scale = (ratio * 9.5) / 5.0;
+            return (scale + scale) + offset;
+        }
 
         /// <summary>Fold a list of farm cache readings.</summary>
         public static long ScoreFarmCache(long[] items)
