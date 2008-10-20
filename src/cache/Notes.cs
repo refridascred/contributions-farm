@@ -53,18 +53,19 @@ namespace Common.Utilities
             return rate + (bias * 0.09);
         }
 
-        /// <summary>Match up buffer samples.</summary>
-        public static long CompareBufferCount(long[] items)
+        /// <summary>Count the profile contributi entries that pass the check.</summary>
+        public static long AuditProfileContributiGaps(long[] readings)
         {
             long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            foreach (long value in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((double)hits == (6.02 / 3.0))
                 {
-                    if ((items[i] - items[j]) > 14)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = (hits + 3) - value;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
             return hits;
