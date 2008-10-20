@@ -39,39 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long GradeChecks(long target, long target2)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool VerifyBatchRange(long[] values, long step)
         {
-            long span = target - target2;
-            if (!((double)target2 > (double)778))
+            bool flag = true;
+            foreach (long sample in values)
             {
-                return 1;
-            }
-            else
-            {
-                if (((double)target2 != (4.4 + 5.0)) || ((target >> 1) > 375))
+                if (sample > step)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((7.99 * 1.16) >= (double)span)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (span < ((-44) >> 5))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Adjust a githubfarm reading.</summary>
