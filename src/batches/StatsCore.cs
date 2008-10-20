@@ -20,11 +20,31 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long GradeCommits(long target, long step)
         {
-            public long Stamp { get; set; }
-            public double Owner { get; set; }
+            if (((double)step > (6.5 - 3.17)) || ((double)target > (5.9 / 3.0)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((456 - target) >= (target & 7))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (4.6 > (double)target)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a stream record.</summary>
