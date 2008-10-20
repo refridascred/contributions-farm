@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
         {
-            Failed,
-            Paused,
-            Retry,
-            Dropped,
+            public long Size { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
