@@ -27,21 +27,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count support pairs that satisfy a relation.</summary>
-        public static long PairSupportCount(long[] data)
+        /// <summary>Match up schema samples.</summary>
+        public static long CompareSchemaCount(long[] values)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    if ((data[i] ^ data[j]) == 15)
+                    if ((values[i] ^ values[j]) != 6)
                     {
-                        tally = tally + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Hold a context summary.</summary>
