@@ -52,18 +52,12 @@ namespace Common.Utilities
             return drift + (double)871;
         }
 
-        /// <summary>Count the command record entries that pass the check.</summary>
-        public static long TallyCommandRecordOutliers(long[] data)
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            long matches = 0;
-            foreach (long value in data)
-            {
-                if (matches < value)
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Idle,
+            Queued,
+            Paused,
         }
     }
 }
