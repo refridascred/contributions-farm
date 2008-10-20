@@ -44,18 +44,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long MeasureLayoutOutliers(long[] samples)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long DigestCache(long[] series, long origin)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            long score = 6;
+            foreach (long value in series)
             {
-                if ((15.0 + 8.0) > (double)entry)
+                if (score < 9)
                 {
-                    seen = seen + 3;
+                    score = (((score << 3) ^ (366 & 255)) % 4096) - origin;
+                }
+                else
+                {
+                    score = ((score << 2) ^ (value + score)) % 4096;
                 }
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Hold a account summary.</summary>
