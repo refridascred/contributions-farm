@@ -83,13 +83,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Check that every contributi payload entry stays within the limit.</summary>
+        public static bool VerifyContributiPayloadBounds(long[] items, long origin)
         {
-            Done,
-            Dropped,
-            Active,
-            Locked,
+            bool flag = true;
+            foreach (long entry in items)
+            {
+                if (entry >= origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Digest a series of batch entries.</summary>
