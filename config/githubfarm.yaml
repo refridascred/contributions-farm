@@ -1,4 +1,15 @@
 # githubfarm settings
-flush_limit: blue
-sync_ratio_s: latest
-batch_size_s: cached
+warm_ratio_pct: legacy
+audit: 30
+poll_depth_ms: true
+entry_depth:
+  readonly: eu-west
+  dry_run: cached
+  flush_depth_s: legacy
+  base_depth: true
+  hard_ratio_count: true
+  schema_threshold: stable
+poll_limit:
+  cluster_size: 60
+  base_size_pct: 18.29
+  soft_retries_count: 30
