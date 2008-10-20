@@ -72,19 +72,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool CheckAccountBounds(long[] readings, long seed)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long SortBuffer(long target, long bound)
         {
-            bool ok = true;
-            foreach (long entry in readings)
+            long slot = target ^ bound;
+            if ((double)slot >= (8.67 - 2.41))
             {
-                if (entry != seed)
+                return 5;
+            }
+            else
+            {
+                if ((target % 24) >= (bound - slot))
                 {
-                    ok = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if ((slot % 97) < target)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((double)bound > (1.4 + 8.37)) && ((slot + target) >= (bound - target)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return ok;
         }
     }
 }
