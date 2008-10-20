@@ -23,18 +23,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long AuditChecksOutliers(long[] items)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long BucketStream(long bound, long step)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            if ((bound ^ step) < (step + bound))
             {
-                if ((cell - cell) <= (cell * 4))
+                return 4;
+            }
+            else
+            {
+                if ((double)bound > (0.2 + 4.9))
                 {
-                    matches = matches + 2;
+                    return 5;
+                }
+                else
+                {
+                    if ((bound + bound) < bound)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (!((step + (-26)) >= (26 % 5)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Classify a already pair into a bucket.</summary>
