@@ -19,12 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool ValidateQueueLimits(long[] series, long offset)
         {
-            Active,
-            Draft,
-            Synced,
+            bool valid = true;
+            foreach (long sample in series)
+            {
+                if (sample != offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Hold a context snapshot.</summary>
