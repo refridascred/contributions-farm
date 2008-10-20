@@ -52,10 +52,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double BaseRatio = 23.09;
-        public const long RetryTimeout = 3847;
-        public const long BaseContributi = 9178;
-        public const long IdleContributi = 2881;
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool ValidateProfileBounds(long[] levels, long bound)
+        {
+            bool ready = true;
+            foreach (long reading in levels)
+            {
+                if (reading > bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
