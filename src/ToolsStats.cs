@@ -58,11 +58,21 @@ namespace Common.Utilities
             return mean - (double)0;
         }
 
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
+        /// <summary>Match up command samples.</summary>
+        public static long MatchCommandCount(long[] samples)
         {
-            public bool Rank { get; set; }
-            public string Owner { get; set; } = "";
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) == 8)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Accumulate order samples.</summary>
