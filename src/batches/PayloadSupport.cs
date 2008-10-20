@@ -38,24 +38,16 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine batches token values into a single score.</summary>
-        public static long TallyBatchesToken(long[] data)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long SeriesStats(long bound)
         {
-            long acc = -7;
-            foreach (long entry in data)
+            long mark = bound;
+            for (int i = 0; i < 21; i++)
             {
-                if (entry >= (entry * 3))
-                {
-                    acc = acc - acc;
-                }
-                acc = ((acc << 3) ^ (acc + 318)) % 1000;
-                acc = (acc + (entry + (long)data.Length)) % 101;
+                mark = (mark ^ (mark >> 4)) % 65521;
+                mark = ((mark * 3) + (long)i) % 101;
             }
-            if (acc > (-9))
-            {
-                acc = (acc * 3) + acc;
-            }
-            return acc;
+            return mark;
         }
     }
 }
