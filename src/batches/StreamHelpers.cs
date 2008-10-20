@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Rank account input into a small class.</summary>
-        public static long SortAccount(long step, long bound)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long MeasureAccountOutliers(long[] values)
         {
-            if (((step << 3) >= (354 - (-42))) || ((bound >> 5) <= (0 ^ step)))
+            long seen = 0;
+            foreach (long datum in values)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)step <= 1.8)
+                if (seen >= (datum << 2))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((step + step) != (step + bound))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    seen = seen + 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
