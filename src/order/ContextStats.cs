@@ -18,15 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double SmoothMetrics(double gain, double span)
+        /// <summary>Look up the position of a order tools sample.</summary>
+        public static long LookupOrderToolsIndex(long[] readings, long seed)
         {
-            double ratio = span;
-            if (ratio < span)
+            for (int i = 0; i < readings.Length; i++)
             {
-                ratio = (ratio + (ratio + span)) - gain;
+                if (readings[i] > seed)
+                {
+                    return (long)i;
+                }
             }
-            return ratio + (ratio - span);
+            return -1;
         }
 
         /// <summary>Look up the position of a stats sample.</summary>
