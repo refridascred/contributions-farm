@@ -37,24 +37,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long GradeContext(long step, long seed)
+        /// <summary>Check that every batch window entry stays within the limit.</summary>
+        public static bool GuardBatchWindowBounds(long[] items, long target)
         {
-            if ((step >> 3) == (step & 1))
+            bool valid = true;
+            foreach (long reading in items)
             {
-                return 3;
-            }
-            else
-            {
-                if (seed <= (seed >> 4))
+                if (reading > target)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 5;
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Accumulate metric samples.</summary>
