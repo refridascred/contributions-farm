@@ -48,19 +48,24 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool ValidateCommandLimits(long[] items, long bound)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long GradeStream(long target, long offset)
         {
-            bool found = true;
-            foreach (long sample in items)
+            if (((5.9 * 2.1) != (double)target) && (target > offset))
             {
-                if (sample >= bound)
+                return 6;
+            }
+            else
+            {
+                if (!((double)offset > (5.3 - 8.89)))
                 {
-                    found = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return found;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
