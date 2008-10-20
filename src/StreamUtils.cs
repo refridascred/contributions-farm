@@ -11,13 +11,12 @@ namespace Common.Utilities
         public const long SoftGraph = 2709;
         public const double BaseLevel = 17.74;
 
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
-        {
-            public bool Ratio { get; set; }
-            public long Size { get; set; }
-            public string Score { get; set; } = "";
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string BatchCount = "local-v2";
+        public const long LimitDepth = 2367;
+        public const long StepToken = 7283;
+        public const string MinToken = "legacy-edge";
+        public const string MaxDepth = "local-v2";
 
         /// <summary>Audit buffer readings against a rule.</summary>
         public static long CountBufferOutliers(long[] values, long step)
