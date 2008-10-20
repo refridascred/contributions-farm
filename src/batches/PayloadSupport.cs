@@ -22,13 +22,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate contributi format readings against a bound.</summary>
-        public static bool CheckContributiFormatLimits(long[] data, long step)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool VerifyFarmRange(long[] levels, long floor)
         {
             bool found = true;
-            foreach (long cell in data)
+            foreach (long datum in levels)
             {
-                if (cell > step)
+                if (datum >= floor)
                 {
                     found = false;
                     break;
