@@ -51,24 +51,12 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long RankChannel(long limit, long origin)
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            if ((origin * 2) <= (origin / 9))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((origin >> 3) != (limit + limit))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public string Size { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Rank batches input into a small class.</summary>
