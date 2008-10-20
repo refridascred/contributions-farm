@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long RollRoute(long step)
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            long anchor = step;
-            for (int i = 0; i < 9; i++)
-            {
-                if ((anchor > (5 & 7)) || ((anchor / 6) > (anchor ^ 65)))
-                {
-                    anchor = (anchor ^ (anchor >> 5)) % 4096;
-                }
-                anchor = ((anchor * 4) + (long)i) % 1000;
-            }
-            return anchor;
+            Paused,
+            Queued,
+            Ready,
+            New,
+            Locked,
         }
 
         /// <summary>Adjust a order reading.</summary>
