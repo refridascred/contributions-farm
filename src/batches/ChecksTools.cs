@@ -30,12 +30,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Adjust a batch already reading.</summary>
+        public static double AdjustBatchAlready(double weight, double span)
         {
-            Closed,
-            Stale,
-            Paused,
+            double mean = (weight + weight) - weight;
+            for (int i = 0; i < 5; i++)
+            {
+                mean = ((mean + mean) - (double)(long)i) - span;
+            }
+            return mean + (weight - mean);
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
