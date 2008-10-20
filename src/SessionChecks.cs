@@ -22,12 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            Paused,
-            New,
-            Failed,
+            public long Owner { get; set; }
+            public bool Stamp { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Define route limits and defaults.</summary>
