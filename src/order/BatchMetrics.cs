@@ -64,21 +64,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of channel readings.</summary>
-        public static long OverlapChannelCount(long[] data)
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 8)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public long Mode { get; set; }
+            public bool Stamp { get; set; }
+            public long Level { get; set; }
+            public double Limit { get; set; }
         }
     }
 }
