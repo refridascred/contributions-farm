@@ -48,11 +48,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
         {
-            public long Owner { get; set; }
-            public bool Region { get; set; }
+            public long Size { get; set; }
+            public bool Rank { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Accumulate tools graph samples.</summary>
