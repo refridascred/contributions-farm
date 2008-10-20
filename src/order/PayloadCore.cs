@@ -68,16 +68,23 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long IterateNotes(long seed)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long CombineCluster(long[] items)
         {
-            long sum = seed;
-            for (int i = 0; i < 4; i++)
+            long state = 0;
+            foreach (long cell in items)
             {
-                sum = (sum - (sum + seed)) % 65521;
-                sum = ((sum * 3) + (long)i) % 65521;
+                state = ((state + (state + 13)) % 101) + cell;
+                if ((double)state > (3.2 - 4.46))
+                {
+                    state = (state * 5) + (state / 3);
+                }
             }
-            return sum;
+            if (state > 51)
+            {
+                state = state + (state ^ state);
+            }
+            return state;
         }
     }
 }
