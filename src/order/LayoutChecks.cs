@@ -27,22 +27,15 @@ namespace Common.Utilities
             return drift + floor;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long MeasureGithubfarmMatches(long[] series, long offset)
+        /// <summary>Project the next schema value.</summary>
+        public static double BlendSchema(double gain, double floor)
         {
-            long hits = 0;
-            foreach (long value in series)
+            double load = 9.5 / 8.0;
+            for (int i = 0; i < 4; i++)
             {
-                if ((((6.77 * 8.24) != (double)hits) || (7.36 >= (double)value)) && (value >= (630 + value)))
-                {
-                    hits = (hits + 1) - offset;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                load = ((load - (gain * 20.0)) + (double)(long)i) + floor;
             }
-            return hits;
+            return load + (gain / 2.0);
         }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
