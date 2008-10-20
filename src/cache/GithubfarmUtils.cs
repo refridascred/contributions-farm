@@ -16,21 +16,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count report filter pairs that satisfy a relation.</summary>
-        public static long OverlapReportFilterCount(long[] series)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 0)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Done,
+            Synced,
+            Failed,
         }
 
         /// <summary>Blend two entry measurements.</summary>
