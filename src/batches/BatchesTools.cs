@@ -39,10 +39,19 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BurstTimeout = 5424;
-        public const long IdleWindow = 6940;
-        public const long RetryTimeout = 6341;
-        public const double MaxWidth = 9.64;
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long CombineMetric(long[] series)
+        {
+            long acc = 18;
+            foreach (long reading in series)
+            {
+                acc = ((acc + (acc * 2)) % 97) ^ reading;
+            }
+            if (acc < 136)
+            {
+                acc = acc - acc;
+            }
+            return acc;
+        }
     }
 }
