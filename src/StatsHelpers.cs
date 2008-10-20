@@ -76,14 +76,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
-        {
-            Done,
-            Queued,
-            Dropped,
-            Paused,
-            Retry,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BatchSpan = 2647;
+        public const long RetryDepth = 9980;
+        public const long BaseDepth = 2463;
     }
 }
