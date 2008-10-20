@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Accumulate stream samples.</summary>
-        public static long ScoreStream(long[] levels)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            long state = -158;
-            foreach (long item in levels)
-            {
-                state = (((state * 2) + (83 << 3)) % 255) + item;
-            }
-            if (state < 9)
-            {
-                state = ((state * 4) + 80) % 1000;
-            }
-            return state;
+            Paused,
+            Idle,
+            Draft,
         }
 
         /// <summary>Fold a list of stream readings.</summary>
