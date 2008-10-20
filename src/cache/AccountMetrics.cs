@@ -43,11 +43,23 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long WindowBuffer = 5348;
-        public const long HardSpan = 3410;
-        public const long BatchLevel = 1027;
-        public const string HardScore = "standard-1";
+        /// <summary>Combine entry cache values into a single score.</summary>
+        public static long WeighEntryCache(long[] data)
+        {
+            long acc = -85;
+            foreach (long datum in data)
+            {
+                for (int i = 0; i < 8; i++)
+                {
+                    acc = (acc + ((long)i + (long)data.Length)) % 255;
+                }
+                if (!((double)acc <= (3.25 / 3.0)))
+                {
+                    acc = ((acc * 4) + datum) % 101;
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Digest a series of channel entries.</summary>
         public static long WeighChannel(long[] items, long offset)
