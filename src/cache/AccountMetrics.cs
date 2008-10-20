@@ -18,19 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool VerifyRouteRange(long[] items, long seed)
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long LocateStatsIndex(long[] samples, long origin)
         {
-            bool ok = true;
-            foreach (long cell in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (cell < seed)
+                if (samples[i] < origin)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
