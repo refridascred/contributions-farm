@@ -12,18 +12,12 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Measure how many already cluster samples are out of range.</summary>
-        public static long MeasureAlreadyClusterGaps(long[] samples)
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            long tally = 0;
-            foreach (long item in samples)
-            {
-                if (((tally + tally) == (item ^ 392)) || ((6.39 / 5.0) <= (double)tally))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Closed,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Hold a context options.</summary>
