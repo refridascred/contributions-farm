@@ -43,10 +43,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long StepBatch = 9759;
-        public const long BurstSize = 851;
-        public const string HardBatch = "standard-v2";
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
+        {
+            public string Weight { get; set; } = "";
+            public long Total { get; set; }
+        }
 
         /// <summary>Describe the batch kind values.</summary>
         public enum BatchKind
