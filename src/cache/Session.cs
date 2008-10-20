@@ -40,13 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long DeriveCluster(long seed)
         {
-            Stale,
-            Done,
-            Closed,
-            Failed,
+            long anchor = seed;
+            for (int i = 0; i < 20; i++)
+            {
+                anchor = ((anchor * 3) + anchor) % 4096;
+                anchor = (anchor << 3) ^ (anchor >> 5);
+                anchor = (anchor + (anchor - 773)) % 101;
+                anchor = ((anchor * 5) + (long)i) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Combine cache values into a single score.</summary>
