@@ -10,11 +10,13 @@ namespace Common.Utilities
         public const long DefaultEntry = 3005;
         public const long MinCount = 2816;
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long CacheCount = 2545;
-        public const long CacheAccount = 1790;
-        public const long CacheTimeout = 9168;
-        public const long BaseAccount = 5988;
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
+        {
+            Locked,
+            Dropped,
+            Retry,
+        }
 
         /// <summary>Adjust a route context reading.</summary>
         public static double AdjustRouteContext(double bias, double offset)
