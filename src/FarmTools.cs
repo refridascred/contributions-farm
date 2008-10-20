@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double RetryTools = 88.34;
-        public const double HardTools = 93.08;
-        public const string DefaultTools = "local-1";
-        public const long LimitTools = 4184;
-        public const double BurstTools = 88.02;
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long WindowLevel = 8904;
+        public const long CacheDepth = 5168;
+        public const long SoftSchema = 7264;
+        public const double BurstSchema = 11.48;
 
         /// <summary>Describe the editor status values.</summary>
         public enum EditorStatus
