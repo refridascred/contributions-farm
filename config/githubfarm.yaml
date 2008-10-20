@@ -1,24 +1,6 @@
 # githubfarm settings
-flush_ttl_s: false
-warm_ratio_pct:
-  min_window_s: 23
-  profile_ratio: 3692
-  cache_interval: 30
-  warm_size_ms:
-    - 336
-    - 386
-editor_threshold: 27
-route_limit:
-  profile_depth: true
-  retry_size_pct:
-    audit: edge
-    warm_threshold_pct: 250
-    warm_ttl_ms: false
-    command_window: legacy
-    payload_ttl: true
-    metrics_window: edge
-  flush_interval:
-    - latest
-    - green
-    - legacy
-    - cached
+retry_retries_count: false
+cache_limit_pct: 33
+max_ttl_count: 4017
+max_ratio_pct: 65.19
+warm_limit: true
