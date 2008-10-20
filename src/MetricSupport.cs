@@ -40,12 +40,11 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
-        {
-            Retry,
-            Locked,
-            Failed,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long CacheBatch = 3915;
+        public const double WindowRatio = 86.69;
+        public const double BaseBatch = 62.53;
+        public const long MinWidth = 2393;
+        public const double HardBatch = 57.38;
     }
 }
