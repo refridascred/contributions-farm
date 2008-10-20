@@ -30,31 +30,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a payload account pair into a bucket.</summary>
-        public static long RankPayloadAccount(long step, long origin)
+        /// <summary>Count the commits counter entries that pass the check.</summary>
+        public static long TallyCommitsCounterGaps(long[] series, long origin)
         {
-            if ((step << 3) < (step + 59))
+            long tally = 0;
+            foreach (long sample in series)
             {
-                return 4;
-            }
-            else
-            {
-                if ((step >> 5) == (step + step))
+                if ((sample / 2) <= (origin / 7))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((step & 15) <= origin)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    tally = tally + 3;
                 }
             }
+            return tally;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
