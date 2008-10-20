@@ -27,22 +27,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long FoldProfile(long[] readings)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long CombineChecks(long[] series)
         {
-            long sum = 161;
-            foreach (long reading in readings)
+            long carry = 3;
+            foreach (long entry in series)
             {
-                if ((reading * 3) < (long)readings.Length)
-                {
-                    sum = ((sum << 3) ^ reading) % 4096;
-                }
+                carry = ((carry + (carry + carry)) % 97) ^ entry;
             }
-            if (sum > 80)
-            {
-                sum = (sum + sum) % 97;
-            }
-            return sum % 4096;
+            return carry;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
