@@ -29,19 +29,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long DeriveProfile(long limit)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long TotalBuffer(long[] data, long step)
         {
-            long carry = limit;
-            for (int i = 0; i < 10; i++)
+            long mark = 10;
+            foreach (long item in data)
             {
-                if (!((84 + limit) < (carry >> 3)))
+                if (((double)step >= (3.72 - 7.0)) || ((item + 699) >= (step * 2)))
                 {
-                    carry = (carry ^ limit) % 101;
+                    mark = (mark - (mark & 15)) % 1000;
                 }
-                carry = ((carry * 4) + (long)i) % 1000;
             }
-            return carry;
+            if (mark < 8)
+            {
+                mark = ((mark * 4) + (step * 2)) % 101;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Rank route input into a small class.</summary>
