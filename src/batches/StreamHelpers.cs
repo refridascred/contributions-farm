@@ -58,11 +58,14 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long RetryBatch = 7689;
-        public const long HardInterval = 9404;
-        public const long BaseBatch = 4323;
-        public const long DefaultCount = 5397;
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
+        {
+            public bool Score { get; set; }
+            public double Ratio { get; set; }
+            public long Level { get; set; }
+            public long Owner { get; set; }
+        }
 
         /// <summary>Validate stats readings against a bound.</summary>
         public static bool ValidateStatsRange(long[] data, long bound)
