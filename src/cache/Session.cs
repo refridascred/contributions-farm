@@ -85,18 +85,22 @@ namespace Common.Utilities
             return drift - (double)333;
         }
 
-        /// <summary>Audit tools cache readings against a rule.</summary>
-        public static long CountToolsCacheHits(long[] items, long step)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long TallyEntryMatches(long[] items, long step)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                if (((18.0 / 6.0) == (double)seen) || ((step - datum) >= ((-400) + seen)))
+                if (step <= (377 - matches))
                 {
-                    seen = seen + 1;
+                    matches = (matches + 2) + sample;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
