@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long RankProfile(long seed, long seed2)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long CountEntryMatches(long[] values, long step)
         {
-            if ((seed2 - seed) >= seed)
+            long count = 0;
+            foreach (long value in values)
             {
-                return 5;
-            }
-            else
-            {
-                if ((seed2 >> 5) == (seed2 ^ seed))
+                if (((count * 3) > (step ^ 37)) || !((7.0 - 0.79) >= (double)step))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((7.0 + 3.76) <= 2.9)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    count = (count + 3) + value;
                 }
             }
+            return count;
         }
 
         /// <summary>Define route limits and defaults.</summary>
