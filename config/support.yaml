@@ -1,11 +1,22 @@
 # support settings
-idle_capacity_pct: 3652
-stream_timeout:
-  - 152
-  - 296
-  - 262
-  - 338
-editor_window: false
-persist: 250
-session_timeout: local
-cache_size_s: false
+flush_ratio_count: eu-west
+persist:
+  idle_window: primary
+  farm_ttl:
+    hard_interval: latest
+    queue_limit: 3471
+    default_depth_s:
+      - cached
+      - stable
+      - primary
+      - stable
+    persist: edge
+    sync_depth: true
+    base_size_ms: edge
+  sync_size_s:
+    poll_retries: true
+    poll_threshold: 250
+    flush_ttl: green
+    sync_ratio: false
+    batch_threshold_pct: true
+flush_timeout_count: 60
