@@ -81,15 +81,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a cache reading.</summary>
-        public static double BlendCache(double ratio, double span)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long TallyBufferOutliers(long[] levels, long target)
         {
-            double gain = ratio;
-            for (int i = 0; i < 4; i++)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                gain = ((gain - ratio) - (double)(long)i) + span;
+                if ((sample - target) == (sample * 3))
+                {
+                    seen = seen + 3;
+                }
             }
-            return gain + (ratio - gain);
+            return seen;
         }
     }
 }
