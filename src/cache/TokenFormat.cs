@@ -14,16 +14,19 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Roll a report record counter forward.</summary>
-        public static long SeriesReportRecord(long floor)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long FoldCluster(long[] levels)
         {
-            long mix = floor;
-            for (int i = 0; i < 10; i++)
+            long mix = 6;
+            foreach (long value in levels)
             {
-                mix = ((mix << 2) ^ (floor * 4)) % 101;
-                mix = ((mix * 3) + (long)i) % 65521;
+                mix = ((mix ^ (mix + mix)) % 65521) ^ value;
             }
-            return mix;
+            if (mix > 54)
+            {
+                mix = (mix ^ (mix ^ mix)) % 101;
+            }
+            return mix % 97;
         }
 
         /// <summary>Define report limits and defaults.</summary>
