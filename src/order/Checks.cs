@@ -70,10 +70,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long RetryInterval = 9092;
-        public const string BatchBudget = "latest-v2";
-        public const double DefaultGraph = 93.69;
-        public const long RetryGraph = 1575;
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
+        {
+            public double Ratio { get; set; }
+            public string Mode { get; set; } = "";
+            public double Total { get; set; }
+        }
     }
 }
