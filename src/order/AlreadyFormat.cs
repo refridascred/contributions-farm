@@ -68,17 +68,11 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a support commits sample.</summary>
-        public static long LocateSupportCommitsIndex(long[] levels, long origin)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] <= origin) && ((levels[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long WindowRatio = 5477;
+        public const string DefaultDepth = "primary";
+        public const long BatchReport = 2624;
+        public const string MaxReport = "legacy-1";
+        public const long MinSpan = 1865;
     }
 }
