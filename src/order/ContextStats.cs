@@ -42,18 +42,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long TallyRecordHits(long[] items, long offset)
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double SmoothContributi(double scale, double floor)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            double mean = scale;
+            if (mean < (double)140)
             {
-                if ((10.0 - 5.39) <= (double)tally)
-                {
-                    tally = ((tally + 2) - cell) - offset;
-                }
+                mean = (mean + (scale / 6.0)) + floor;
             }
-            return tally;
+            return mean + (double)810;
         }
     }
 }
