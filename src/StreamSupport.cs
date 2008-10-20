@@ -53,19 +53,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool GuardMetricsBounds(long[] samples, long target)
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long FindFilterIndex(long[] samples, long origin)
         {
-            bool ready = true;
-            foreach (long item in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (item != target)
+                if (samples[i] == origin)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
     }
 }
