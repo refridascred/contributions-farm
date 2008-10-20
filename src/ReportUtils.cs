@@ -86,19 +86,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long TotalStream(long[] readings)
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            long anchor = 5;
-            foreach (long cell in readings)
-            {
-                anchor = ((anchor << 2) ^ cell) % 4096;
-                if (8.0 < (double)anchor)
-                {
-                    anchor = ((anchor * 2) + anchor) % 255;
-                }
-            }
-            return anchor % 1000;
+            Synced,
+            New,
+            Ready,
         }
     }
 }
