@@ -1,5 +1,12 @@
 # support settings
-dry_run: 89.49
-min_capacity: 5418
-burst_delay_count: 98
-enabled: 36.57
+verbose:
+  - open
+  - standard
+  - local
+soft_capacity_s: true
+persist: true
+cache_ttl:
+  - 97
+  - 238
+batch_threshold_ms: local
+layout_capacity: 19.83
