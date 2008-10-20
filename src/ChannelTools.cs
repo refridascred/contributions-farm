@@ -19,14 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Accumulate report samples.</summary>
+        public static long TallyReport(long[] levels)
         {
-            New,
-            Queued,
-            Locked,
-            Draft,
-            Ready,
+            long acc = 889;
+            foreach (long sample in levels)
+            {
+                acc = acc - (sample - acc);
+            }
+            if (acc < 9)
+            {
+                acc = ((acc << 2) ^ (900 - acc)) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Rank account input into a small class.</summary>
