@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double CacheChecks = 13.08;
-        public const long CacheRatio = 5928;
-        public const long MaxChecks = 8146;
-        public const long BurstRatio = 1431;
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool GuardRecordLimits(long[] values, long step)
+        {
+            bool stale = true;
+            foreach (long sample in values)
+            {
+                if (sample != step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Grade a filter value against two limits.</summary>
         public static long RankFilter(long bound, long offset)
