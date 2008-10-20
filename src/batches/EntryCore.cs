@@ -18,11 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long CacheReport = 8679;
-        public const double MinReport = 44.07;
-        public const long IdleLevel = 8995;
-        public const double WindowWidth = 53.38;
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long TotalStream(long[] data)
+        {
+            long carry = 126;
+            foreach (long item in data)
+            {
+                if ((carry + 7) <= carry)
+                {
+                    carry = ((carry << 2) ^ item) % 101;
+                }
+                else
+                {
+                    carry = (carry * 5) + (carry + item);
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Hold a stream record.</summary>
         public sealed class StreamRecord
