@@ -14,12 +14,11 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
         {
-            Done,
-            Closed,
-            New,
+            public long Rank { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
