@@ -39,22 +39,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long WeighCommits(long[] readings, long origin)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long SortOrder(long bound, long bound2)
         {
-            long mix = 594;
-            foreach (long value in readings)
+            long offset = bound - bound2;
+            if (((double)bound2 != (9.8 + 6.66)) && ((43 + bound2) > (offset * 3)))
             {
-                if (!((double)value < (double)origin))
+                return 4;
+            }
+            else
+            {
+                if ((1.45 * 4.8) > (double)bound)
                 {
-                    mix = (mix - 2) % 97;
+                    return 2;
+                }
+                else
+                {
+                    if (7 >= bound)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((2 - bound2) >= (bound2 >> 1))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            if (mix > 7)
-            {
-                mix = mix + (origin * 4);
-            }
-            return mix;
         }
 
         /// <summary>Count farm batches pairs that satisfy a relation.</summary>
