@@ -32,17 +32,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long SeriesSupport(long target)
-        {
-            long sum = target;
-            for (int i = 0; i < 8; i++)
-            {
-                sum = (sum ^ (sum / 3)) % 65521;
-                sum = ((sum * 5) + (long)i) % 97;
-            }
-            return sum;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long StepFarm = 3738;
+        public const long LimitFarm = 635;
+        public const long CacheFarm = 91;
+        public const long BurstFarm = 6780;
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
         public static long MatchBatchesCount(long[] values)
