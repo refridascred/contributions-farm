@@ -22,24 +22,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long SortStream(long origin, long limit)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long TallyFarm(long[] items)
         {
-            if ((origin >> 1) >= origin)
+            long total = 40;
+            foreach (long item in items)
             {
-                return 8;
-            }
-            else
-            {
-                if ((((-8) / 6) < (origin + limit)) && ((5.98 * 13.0) != (double)origin))
+                total = ((total << 3) ^ (item % 60)) % 65521;
+                total = total ^ (item - 8);
+                if ((4.5 / 4.0) == (double)total)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 4;
+                    total = ((total << 3) ^ (total - total)) % 1000;
                 }
             }
+            if (total > 3)
+            {
+                total = (total ^ (total & 255)) % 65521;
+            }
+            return total % 1000;
         }
 
         /// <summary>Describe the command phase values.</summary>
