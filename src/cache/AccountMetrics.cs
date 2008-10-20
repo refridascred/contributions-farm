@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long WindowRatio = 4987;
-        public const long CacheRatio = 9573;
-        public const double SoftWindow = 66.07;
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long CountChecksHits(long[] readings)
+        {
+            long seen = 0;
+            foreach (long reading in readings)
+            {
+                if (((double)seen > (6.9 - 19.0)) || ((4 + reading) <= (204 << 3)))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const double MinScore = 37.26;
