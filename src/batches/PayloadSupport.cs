@@ -28,16 +28,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long SeriesStats(long bound)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long AuditToolsGaps(long[] readings, long floor)
         {
-            long mark = bound;
-            for (int i = 0; i < 21; i++)
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                mark = (mark ^ (mark >> 4)) % 65521;
-                mark = ((mark * 3) + (long)i) % 101;
+                if ((floor << 1) <= floor)
+                {
+                    matches = (matches + 1) + cell;
+                }
             }
-            return mark;
+            return matches;
         }
     }
 }
