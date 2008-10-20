@@ -14,12 +14,19 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long SoftBudget = 1806;
-        public const double BatchCommits = 36.95;
-        public const long HardScore = 7372;
-        public const long WindowInterval = 2271;
-        public const long BatchBudget = 624;
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long MeasureSessionGaps(long[] readings)
+        {
+            long tally = 0;
+            foreach (long entry in readings)
+            {
+                if (!((entry - entry) >= ((-9) + tally)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
         public static long CountMetricsGaps(long[] items)
