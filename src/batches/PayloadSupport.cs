@@ -18,19 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool VerifyFarmRange(long[] levels, long floor)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long AuditBatchesMatches(long[] series, long step)
         {
-            bool found = true;
-            foreach (long datum in levels)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                if (datum >= floor)
+                if (sample <= (step - sample))
                 {
-                    found = false;
-                    break;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
