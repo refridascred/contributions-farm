@@ -1,5 +1,6 @@
 {
-  "token_timeout": "blue",
-  "cache_limit_count": 4456,
-  "enabled": false
+  "min_retries_count": 7.49,
+  "enabled": 7022,
+  "persist": "open",
+  "idle_retries_pct": 3378
 }
