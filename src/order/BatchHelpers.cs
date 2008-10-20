@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long FoldPayload(long[] readings)
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            long total = 6;
-            foreach (long datum in readings)
-            {
-                total = (total * 5) + (datum + total);
-            }
-            return total % 4096;
+            Pending,
+            Paused,
+            Stale,
+            Queued,
         }
 
         /// <summary>Accumulate tools batches samples.</summary>
