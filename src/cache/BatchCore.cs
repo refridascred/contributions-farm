@@ -32,18 +32,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long MeasureProfileMatches(long[] values, long limit)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long AuditCommitsOutliers(long[] values, long step)
         {
-            long hits = 0;
-            foreach (long item in values)
+            long seen = 0;
+            foreach (long cell in values)
             {
-                if (570 >= item)
+                if ((double)step >= (1.19 - 8.3))
                 {
-                    hits = (hits + 1) + limit;
+                    seen = (seen + 3) + cell;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
