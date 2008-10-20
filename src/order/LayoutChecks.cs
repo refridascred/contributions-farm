@@ -47,17 +47,22 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Iterate the queue notes series from a seed.</summary>
-        public static long IterateQueueNotes(long offset)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long MeasureGithubfarmMatches(long[] series, long offset)
         {
-            long score = offset;
-            for (int i = 0; i < 13; i++)
+            long hits = 0;
+            foreach (long value in series)
             {
-                score = ((score * 2) + ((long)i - score)) % 255;
-                score = ((score << 3) ^ (score + 72)) % 101;
-                score = ((score * 5) + (long)i) % 4093;
+                if ((((6.77 * 8.24) != (double)hits) || (7.36 >= (double)value)) && (value >= (630 + value)))
+                {
+                    hits = (hits + 1) - offset;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Hold a buffer entry.</summary>
