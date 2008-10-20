@@ -5,10 +5,39 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double DefaultWidth = 95.28;
-        public const long StepStream = 509;
-        public const long BatchTimeout = 6836;
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long BucketCluster(long floor, long bound)
+        {
+            if ((double)floor != (8.0 * 3.1))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((floor + bound) < floor)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((bound + floor) <= floor)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((double)floor >= (double)bound)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Fold a list of context graph readings.</summary>
         public static long WeighContextGraph(long[] samples)
