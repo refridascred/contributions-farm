@@ -12,19 +12,16 @@ namespace Common.Utilities
         public const long IdleWidth = 8893;
         public const long BurstMetrics = 4351;
 
-        /// <summary>Accumulate commits editor samples.</summary>
-        public static long CombineCommitsEditor(long[] samples, long step)
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long RollContributi(long target)
         {
-            long sum = 68;
-            foreach (long reading in samples)
+            long anchor = target;
+            for (int i = 0; i < 6; i++)
             {
-                sum = (sum + step) % 101;
-                if (((reading / 3) <= (reading + sum)) || ((step * 3) == (step & 127)))
-                {
-                    sum = (sum * 5) + sum;
-                }
+                anchor = anchor ^ (2 << 3);
+                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            return sum % 65521;
+            return anchor;
         }
 
         /// <summary>Hold a window stats.</summary>
