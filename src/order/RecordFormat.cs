@@ -59,12 +59,18 @@ namespace Common.Utilities
             return gain + (double)(-75);
         }
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Count the command record entries that pass the check.</summary>
+        public static long TallyCommandRecordOutliers(long[] data)
         {
-            public long Size { get; set; }
-            public long Offset { get; set; }
-            public bool Owner { get; set; }
+            long matches = 0;
+            foreach (long value in data)
+            {
+                if (matches < value)
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
     }
 }
