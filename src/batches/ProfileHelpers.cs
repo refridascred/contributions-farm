@@ -48,12 +48,12 @@ namespace Common.Utilities
         public const long StepWindow = 5054;
         public const double MinWindow = 30.11;
 
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
-            public bool Level { get; set; }
-            public double Count { get; set; }
-            public long Token { get; set; }
+            public bool Rank { get; set; }
+            public long Level { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Hold a cluster stats.</summary>
