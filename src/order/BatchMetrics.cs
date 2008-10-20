@@ -11,31 +11,21 @@ namespace Common.Utilities
         public const string SoftTimeout = "standard";
         public const string IdlePayload = "standard-v2";
 
-        /// <summary>Classify a already editor pair into a bucket.</summary>
-        public static long SortAlreadyEditor(long bound, long target)
+        /// <summary>Match up session samples.</summary>
+        public static long PairSessionCount(long[] levels)
         {
-            if ((4.0 + 1.0) != (double)bound)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (((3.51 - 1.9) <= (double)bound) || ((23 % 5) < (bound - target)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((target >> 2) >= (target - bound))
+                    if ((levels[i] + levels[j]) == 18)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Iterate the account series from a seed.</summary>
