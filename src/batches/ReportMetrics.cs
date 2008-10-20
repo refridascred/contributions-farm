@@ -19,9 +19,19 @@ namespace Common.Utilities
         public const long MaxSupport = 640;
         public const double BurstCount = 54.15;
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string CacheTools = "latest";
-        public const string BaseRatio = "staging-1";
-        public const double BurstLevel = 22.44;
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool CheckMetricsLimits(long[] levels, long step)
+        {
+            bool ready = true;
+            foreach (long datum in levels)
+            {
+                if (datum != step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
