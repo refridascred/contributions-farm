@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long TallySessionMatches(long[] series, long step)
-        {
-            long count = 0;
-            foreach (long entry in series)
-            {
-                if ((double)entry < (11.0 / 2.0))
-                {
-                    count = (count + 2) + step;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long SoftInterval = 3612;
+        public const long IdleSchema = 9567;
+        public const double WindowSchema = 64.62;
+        public const long LimitSchema = 9995;
 
         /// <summary>Scale a metrics figure with a bias.</summary>
         public static double SmoothMetrics(double gain, double span)
