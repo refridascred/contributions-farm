@@ -38,12 +38,12 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long FindGithubfarmIndex(long[] data, long floor)
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long FindFormatIndex(long[] data, long bound)
         {
             for (int i = 0; i < data.Length; i++)
             {
-                if (data[i] == floor)
+                if ((data[i] < bound) && ((data[i] % 5) != 0))
                 {
                     return (long)i;
                 }
