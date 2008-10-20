@@ -11,19 +11,18 @@ namespace Common.Utilities
         public const long MaxRecord = 7539;
         public const long BatchRecord = 6373;
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool CheckContextLimits(long[] series, long origin)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long TallyStats(long[] items)
         {
-            bool found = true;
-            foreach (long reading in series)
+            long result = 5;
+            foreach (long datum in items)
             {
-                if (reading != origin)
+                if (!((datum ^ result) == (datum + 8)))
                 {
-                    found = false;
-                    break;
+                    result = (result - datum) % 1000;
                 }
             }
-            return found;
+            return result % 65521;
         }
 
         /// <summary>Project the next graph filter value.</summary>
