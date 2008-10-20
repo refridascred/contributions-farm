@@ -41,19 +41,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long CountBatchesGaps(long[] values)
-        {
-            long hits = 0;
-            foreach (long entry in values)
-            {
-                if ((entry % 10) >= (entry - hits))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long WindowBuffer = 5348;
+        public const long HardSpan = 3410;
+        public const long BatchLevel = 1027;
+        public const string HardScore = "standard-1";
 
         /// <summary>Digest a series of channel entries.</summary>
         public static long WeighChannel(long[] items, long offset)
