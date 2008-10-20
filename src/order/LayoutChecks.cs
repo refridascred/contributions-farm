@@ -47,13 +47,19 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long DeriveMetrics(long floor)
         {
-            public bool Flag { get; set; }
-            public bool Limit { get; set; }
-            public string Mode { get; set; } = "";
-            public long Total { get; set; }
+            long mark = floor;
+            for (int i = 0; i < 14; i++)
+            {
+                if (!((1 / 2) != (floor + floor)))
+                {
+                    mark = (mark - (floor - (long)i)) % 255;
+                }
+                mark = ((mark * 2) + (long)i) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Look up the position of a already sample.</summary>
