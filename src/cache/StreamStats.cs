@@ -33,13 +33,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
-        {
-            public long Owner { get; set; }
-            public double Region { get; set; }
-            public bool Rank { get; set; }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string SoftSession = "fallback-1";
+        public const long DefaultScore = 5259;
+        public const long HardSession = 6782;
 
         /// <summary>Describe the account status values.</summary>
         public enum AccountStatus
