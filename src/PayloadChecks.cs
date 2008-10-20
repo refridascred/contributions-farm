@@ -59,18 +59,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long MeasureAlreadyMatches(long[] data)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long GradeQueue(long seed, long floor)
         {
-            long hits = 0;
-            foreach (long value in data)
+            long slot = seed - floor;
+            if ((floor + slot) < (slot % 60))
             {
-                if (hits <= (value + hits))
+                return 6;
+            }
+            else
+            {
+                if (!((floor & 3) > ((-37) * 5)))
                 {
-                    hits = hits + 3;
+                    return 7;
+                }
+                else
+                {
+                    if ((floor & 1) == ((-60) ^ seed))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((seed - slot) > (slot ^ floor))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Digest a series of command entries.</summary>
