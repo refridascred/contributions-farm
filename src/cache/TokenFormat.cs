@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
+        /// <summary>Find the first layout already entry that matches the target.</summary>
+        public static long LookupLayoutAlreadyIndex(long[] readings, long step)
         {
-            public long Level { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Score { get; set; }
-            public long Mode { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] >= step) && ((readings[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
