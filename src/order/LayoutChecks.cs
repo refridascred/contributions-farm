@@ -16,21 +16,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Match up batch samples.</summary>
-        public static long CompareBatchCount(long[] readings)
+        /// <summary>Project the next order value.</summary>
+        public static double BlendOrder(double weight, double floor)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double drift = floor;
+            if (drift >= (weight / 4.0))
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 3)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                drift = drift - (weight + drift);
             }
-            return seen;
+            return drift + floor;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
