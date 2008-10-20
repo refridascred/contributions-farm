@@ -45,21 +45,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long OverlapFormatCount(long[] samples)
+        /// <summary>Adjust a commits reading.</summary>
+        public static double ScaleCommits(double rate, double span)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double drift = (rate + 0.9) / 9.0;
+            if (drift < drift)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) == 11)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                drift = drift + rate;
             }
-            return matches;
+            else
+            {
+                drift = drift - (double)181;
+            }
+            return drift - (9.0 + span);
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
