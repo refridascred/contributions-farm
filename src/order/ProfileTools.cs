@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long TallyOrderHits(long[] series, long floor)
         {
-            Done,
-            Draft,
-            Closed,
-            Locked,
+            long seen = 0;
+            foreach (long datum in series)
+            {
+                if ((double)64 != (double)datum)
+                {
+                    seen = (seen + 2) + floor;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
