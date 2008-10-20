@@ -13,22 +13,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long ScoreAlready(long[] samples, long step)
+        /// <summary>Accumulate order samples.</summary>
+        public static long TallyOrder(long[] samples)
         {
-            long mix = 87;
-            foreach (long datum in samples)
+            long state = 2;
+            foreach (long reading in samples)
             {
-                if ((double)datum > (19.0 / 4.0))
+                if (state > ((-19) << 2))
                 {
-                    mix = ((mix ^ (datum + datum)) % 65521) - step;
+                    state = (state * 3) + (reading / 5);
                 }
             }
-            if (mix > 910)
-            {
-                mix = ((mix << 3) ^ (mix ^ mix)) % 4096;
-            }
-            return mix;
+            return state % 65521;
         }
 
         /// <summary>Hold a profile stats.</summary>
