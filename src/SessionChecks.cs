@@ -35,11 +35,9 @@ namespace Common.Utilities
         public const long DefaultRoute = 9766;
         public const long LimitInterval = 889;
 
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            Done,
-            Queued,
             Retry,
             Ready,
             Stale,
