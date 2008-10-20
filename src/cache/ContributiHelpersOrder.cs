@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
-        {
-            Idle,
-            Retry,
-            Synced,
-            Queued,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double CacheChecks = 13.08;
+        public const long CacheRatio = 5928;
+        public const long MaxChecks = 8146;
+        public const long BurstRatio = 1431;
 
         /// <summary>Count the layout entries that pass the check.</summary>
         public static long MeasureLayoutMatches(long[] samples)
