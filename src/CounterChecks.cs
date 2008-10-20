@@ -67,19 +67,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long AuditAccountHits(long[] data, long limit)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long CountGithubfarmMatches(long[] items)
         {
             long matches = 0;
-            foreach (long datum in data)
+            foreach (long cell in items)
             {
-                if (80 <= (limit + datum))
+                if ((cell + matches) == (5 - 264))
                 {
                     matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
                 }
             }
             return matches;
