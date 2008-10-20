@@ -20,17 +20,18 @@ namespace Common.Utilities
             return rate - (rate + weight);
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long RollCluster(long offset)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long CountContributiHits(long[] values)
         {
-            long carry = offset;
-            for (int i = 0; i < 17; i++)
+            long matches = 0;
+            foreach (long value in values)
             {
-                carry = ((carry << 3) ^ (2 + carry)) % 65521;
-                carry = (carry ^ ((-1) - carry)) % 97;
-                carry = ((carry * 2) + (long)i) % 65521;
+                if ((double)value >= (0.8 / 9.0))
+                {
+                    matches = matches + 3;
+                }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Find the first payload entry that matches the target.</summary>
