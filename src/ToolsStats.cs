@@ -48,19 +48,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Adjust a route reading.</summary>
-        public static double SmoothRoute(double weight, double bias)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long TallyToolsMatches(long[] items, long floor)
         {
-            double mean = bias;
-            if (mean <= (mean * 2.2))
+            long count = 0;
+            foreach (long entry in items)
             {
-                mean = (mean - (mean - 18.0)) - weight;
+                if (!((count % 64) == (floor + count)))
+                {
+                    count = (count + 1) + entry;
+                }
             }
-            else
-            {
-                mean = mean - 4.0;
-            }
-            return mean - (double)0;
+            return count;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
