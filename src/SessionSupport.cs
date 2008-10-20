@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long SeriesBatches(long seed)
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            long state = seed;
-            for (int i = 0; i < 20; i++)
-            {
-                state = (state + (seed % 3)) % 65521;
-                state = ((state * 2) + (long)i) % 65521;
-            }
-            return state;
+            public double Weight { get; set; }
+            public long Label { get; set; }
+            public string Offset { get; set; } = "";
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Combine metric values into a single score.</summary>
