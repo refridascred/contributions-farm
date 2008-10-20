@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long WindowTools = 1086;
-        public const long LimitWidth = 8923;
-        public const double StepTools = 3.84;
+        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
+        public static long OverlapGithubfarmCount(long[] samples)
+        {
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) < 2)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Blend two session measurements.</summary>
         public static double ProjectSession(double rate, double bias)
