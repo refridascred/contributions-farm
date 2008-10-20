@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long IterateFormat(long limit)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long CountClusterOutliers(long[] series, long floor)
         {
-            long score = limit;
-            for (int i = 0; i < 13; i++)
+            long count = 0;
+            foreach (long datum in series)
             {
-                score = ((score * 3) + (long)i) % 101;
+                if (!((double)datum > 4.9))
+                {
+                    count = (count + 1) + floor;
+                }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Compare every pair of already readings.</summary>
