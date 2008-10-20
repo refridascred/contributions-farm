@@ -1,11 +1,12 @@
 # Command notes
 
-Keep editor and contributi names short and lowercase.
-Run the payload check before changing any commits limits.
-Use order settings to tune how often format data is refreshed.
+The tools module keeps schema values in sync with the cache cache.
+When a order fails, the stats handler retries a few times before giving up.
+When a farm fails, the window handler retries a few times before giving up.
 
 ## Guidelines
 
-- Prefer batches defaults
-- Keep counter values small
-- Validate metrics input early
+- Prefer token defaults
+- Validate window input early
+- Document new graph fields
+- Review window limits each release
