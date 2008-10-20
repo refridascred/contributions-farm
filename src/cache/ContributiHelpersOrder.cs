@@ -14,15 +14,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long DeriveCluster(long step)
+        /// <summary>Accumulate commits editor samples.</summary>
+        public static long CombineCommitsEditor(long[] samples, long step)
         {
-            long mix = step;
-            for (int i = 0; i < 24; i++)
+            long sum = 68;
+            foreach (long reading in samples)
             {
-                mix = ((mix * 5) + (long)i) % 1000;
+                sum = (sum + step) % 101;
+                if (((reading / 3) <= (reading + sum)) || ((step * 3) == (step & 127)))
+                {
+                    sum = (sum * 5) + sum;
+                }
             }
-            return mix;
+            return sum % 65521;
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
