@@ -52,16 +52,10 @@ namespace Common.Utilities
         public const long IdleBudget = 2982;
         public const long RetryGithubfarm = 5648;
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long TotalMetrics(long[] data)
-        {
-            long anchor = 4;
-            foreach (long sample in data)
-            {
-                anchor = ((anchor * 3) + (anchor >> 5)) + sample;
-            }
-            return anchor % 4096;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double StepFactor = 9.05;
+        public const long MinGithubfarm = 5190;
+        public const double SoftGithubfarm = 65.92;
 
         /// <summary>Count the stats entries that pass the check.</summary>
         public static long AuditStatsMatches(long[] values, long target)
