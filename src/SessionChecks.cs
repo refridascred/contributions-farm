@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long FoldLayout(long[] items, long step)
         {
-            public long Total { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Rank { get; set; }
+            long mark = 0;
+            foreach (long item in items)
+            {
+                if ((mark * 5) > (mark >> 4))
+                {
+                    mark = ((mark - item) % 255) - step;
+                }
+                else
+                {
+                    mark = mark + (item & 31);
+                }
+            }
+            return mark;
         }
 
         /// <summary>Describe the profile mode values.</summary>
