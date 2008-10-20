@@ -1,17 +1,5 @@
 {
-  "cache_ttl_ms": {
-    "burst_size_s": [34, 460, 378, 2],
-    "metric_threshold": {
-      "dry_run": 4790,
-      "support_ratio": 100,
-      "githubfarm_retries": [389, 122, 58],
-      "metrics_size": 60,
-      "cache_ttl_s": 250
-    },
-    "base_size": "open"
-  },
-  "dry_run": "local",
-  "payload_retries": "eu-west",
-  "commits_depth": 87,
-  "compress": 66
+  "strict": 55.75,
+  "warm_interval_s": 54.08,
+  "persist": 5883
 }
