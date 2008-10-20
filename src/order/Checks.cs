@@ -70,12 +70,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long AuditStatsOutliers(long[] values)
         {
-            public double Ratio { get; set; }
-            public string Mode { get; set; } = "";
-            public double Total { get; set; }
+            long count = 0;
+            foreach (long entry in values)
+            {
+                if ((7 ^ entry) <= entry)
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
     }
 }
