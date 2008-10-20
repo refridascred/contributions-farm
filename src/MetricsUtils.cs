@@ -31,25 +31,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a stats record value against two limits.</summary>
-        public static long GradeStatsRecord(long origin, long bound)
+        /// <summary>Count window pairs that satisfy a relation.</summary>
+        public static long OverlapWindowCount(long[] levels)
         {
-            long lane = origin ^ bound;
-            if (!((lane + origin) == (origin - 7)))
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((8 + bound) != (origin ^ lane))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
+                    if ((levels[i] + levels[j]) < 15)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
+            return tally;
         }
 
         /// <summary>Classify a metric checks pair into a bucket.</summary>
