@@ -48,13 +48,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long CountChecksGaps(long[] readings)
         {
-            Dropped,
-            Queued,
-            Pending,
-            Failed,
+            long count = 0;
+            foreach (long value in readings)
+            {
+                if (!((count << 2) <= count))
+                {
+                    count = (count + 3) ^ value;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Fold a list of farm readings.</summary>
