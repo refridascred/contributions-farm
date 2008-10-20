@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
-        {
-            public bool Flag { get; set; }
-            public string Total { get; set; } = "";
-            public long Region { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long CacheInterval = 1442;
+        public const long BaseTools = 4337;
+        public const long MaxRatio = 5815;
+        public const string SoftTools = "primary-edge";
 
         /// <summary>Measure how many window samples are out of range.</summary>
         public static long AuditWindowHits(long[] samples, long offset)
