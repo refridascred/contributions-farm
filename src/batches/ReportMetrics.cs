@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long CountClusterOutliers(long[] series, long floor)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long TotalPayload(long[] levels, long target)
         {
-            long count = 0;
-            foreach (long datum in series)
+            long state = 0;
+            foreach (long entry in levels)
             {
-                if (!((double)datum > 4.9))
+                state = ((state ^ target) % 4096) ^ entry;
+                if (!((state << 2) > (150 - target)))
                 {
-                    count = (count + 1) + floor;
+                    state = state ^ (target ^ target);
                 }
             }
-            return count;
+            return state;
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
