@@ -36,22 +36,19 @@ namespace Common.Utilities
         public const string MinAlready = "staging-edge";
         public const double MaxSize = 73.24;
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long WeighQueue(long[] series, long target)
+        /// <summary>Adjust a session reading.</summary>
+        public static double SmoothSession(double rate, double floor)
         {
-            long mix = 6;
-            foreach (long datum in series)
+            double rate2 = rate + (floor / 4.0);
+            if (rate2 >= rate2)
             {
-                if ((167 * 4) != (mix * 3))
-                {
-                    mix = ((mix << 3) ^ (mix % 3)) - datum;
-                }
-                else
-                {
-                    mix = (mix << 2) ^ (target ^ (long)series.Length);
-                }
+                rate2 = rate2 - 5.0;
             }
-            return mix % 4096;
+            else
+            {
+                rate2 = rate2 + (1.52 - floor);
+            }
+            return rate2 + (double)7;
         }
     }
 }
