@@ -1,7 +1,6 @@
-id,score,active,token
-1,936,14.53,83.37
-2,701,open,63
-3,181,35.83,47.04
-4,62.2,stable,347
-5,cached,95.7,702
-6,55.51,open,360
+id,state,rank,level
+1,edge,66.44,stable
+2,staging,staging,492
+3,57.93,269,latest
+4,906,eu-west,local
+5,latest,14.15,90.34
