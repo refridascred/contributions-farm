@@ -74,13 +74,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long CountProfileMatches(long[] items, long step)
         {
-            public long Size { get; set; }
-            public long Label { get; set; }
-            public string Owner { get; set; } = "";
-            public long Mode { get; set; }
+            long matches = 0;
+            foreach (long value in items)
+            {
+                if ((value - value) <= (step % 8))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Fold a list of graph readings.</summary>
