@@ -19,24 +19,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long ClassifyNotes(long bound, long limit)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long TallyChecks(long[] series, long floor)
         {
-            if ((bound > (3 & 1)) || ((bound & 7) == (limit >> 2)))
+            long mix = 8;
+            foreach (long entry in series)
             {
-                return 8;
-            }
-            else
-            {
-                if (((9.8 + 6.6) >= (double)limit) || ((double)limit <= (14.0 * 9.4)))
+                if ((entry % 60) <= (entry / 5))
                 {
-                    return 2;
+                    mix = ((mix * 2) + (84 & 127)) % 97;
                 }
                 else
                 {
-                    return 4;
+                    mix = (mix - mix) % 101;
                 }
             }
+            if (mix < 5)
+            {
+                mix = (mix + (floor + 851)) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Hold a batches snapshot.</summary>
