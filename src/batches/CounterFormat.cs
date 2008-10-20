@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double AdjustCluster(double ratio, double offset)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool VerifyTokenRange(long[] levels, long origin)
         {
-            double scale = (ratio * 9.5) / 5.0;
-            return (scale + scale) + offset;
+            bool flag = true;
+            foreach (long reading in levels)
+            {
+                if (reading <= origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Locate a stats reading by value.</summary>
