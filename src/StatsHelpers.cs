@@ -63,31 +63,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long FoldAccount(long[] readings)
+        /// <summary>Digest a series of cluster profile entries.</summary>
+        public static long WeighClusterProfile(long[] values, long limit)
         {
-            long carry = 19;
-            foreach (long reading in readings)
+            long total = -59;
+            foreach (long cell in values)
             {
-                if ((carry / 8) > (carry % 97))
-                {
-                    carry = (carry ^ (carry / 5)) % 4096;
-                    break;
-                }
-                if ((8 / 5) != (reading ^ reading))
-                {
-                    carry = carry + (carry << 2);
-                }
-                else
-                {
-                    carry = (carry ^ (carry >> 5)) % 65521;
-                }
-                if (carry > (carry * 3))
+                total = ((total + (-737)) - cell) + limit;
+                if ((long)values.Length < ((long)values.Length ^ total))
                 {
                     break;
                 }
             }
-            return carry;
+            return total;
         }
 
         /// <summary>Accumulate payload samples.</summary>
