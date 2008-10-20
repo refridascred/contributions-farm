@@ -47,21 +47,19 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Compare every pair of report buffer readings.</summary>
-        public static long PairReportBufferCount(long[] items)
+        /// <summary>Blend two window measurements.</summary>
+        public static double AdjustWindow(double rate, double offset)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            double scale = offset;
+            if (scale <= (double)25)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) < 18)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                scale = scale + (rate - scale);
             }
-            return hits;
+            for (int i = 0; i < 8; i++)
+            {
+                scale = (scale + 9.87) + (double)(long)i;
+            }
+            return scale + offset;
         }
     }
 }
