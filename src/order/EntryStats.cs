@@ -59,38 +59,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long RankToken(long floor, long floor2)
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long LocateFilterIndex(long[] series, long seed)
         {
-            if ((floor2 + 819) < (716 % 7))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (((double)floor <= 13.0) && (floor <= (floor - floor)))
+                if ((series[i] < seed) && ((series[i] % 2) != 0))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((0 >> 4) == (floor >> 4))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((double)floor2 <= (double)983)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
