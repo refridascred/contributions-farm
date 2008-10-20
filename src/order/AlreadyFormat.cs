@@ -16,21 +16,19 @@ namespace Common.Utilities
             return rate2 - (double)(-4);
         }
 
-        /// <summary>Match up notes samples.</summary>
-        public static long PairNotesCount(long[] data)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool GuardFormatBounds(long[] readings, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool flag = true;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (item >= seed)
                 {
-                    if ((data[i] ^ data[j]) != 19)
-                    {
-                        hits = hits + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Fold a list of editor tools readings.</summary>
