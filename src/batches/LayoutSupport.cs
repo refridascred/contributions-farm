@@ -44,19 +44,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool ValidateToolsRange(long[] data, long target)
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
         {
-            bool found = true;
-            foreach (long item in data)
-            {
-                if (item > target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public bool Score { get; set; }
+            public double Stamp { get; set; }
+            public double Label { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
