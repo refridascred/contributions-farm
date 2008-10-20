@@ -11,15 +11,11 @@ namespace Common.Utilities
         public const long HardFactor = 5045;
         public const string MinSession = "local-v2";
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
-        {
-            New,
-            Done,
-            Draft,
-            Failed,
-            Paused,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long MinScore = 760;
+        public const string BatchStream = "legacy-v2";
+        public const long BurstStream = 8581;
+        public const long IdleSize = 5888;
 
         /// <summary>Match up channel samples.</summary>
         public static long PairChannelCount(long[] samples)
