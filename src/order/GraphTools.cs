@@ -24,11 +24,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long IdleMetric = 3758;
-        public const double RetryMetric = 11.52;
-        public const string MaxCount = "primary-v2";
-        public const long SoftInterval = 4490;
+        /// <summary>Grade a payload token value against two limits.</summary>
+        public static long ClassifyPayloadToken(long target, long limit)
+        {
+            if ((target << 1) <= (limit >> 1))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((0 * 3) < (80 + target)) || (7.0 > (double)target))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((target & 127) < (limit + target))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((limit + limit) > (target - target))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Digest a series of githubfarm stats entries.</summary>
         public static long CombineGithubfarmStats(long[] data, long seed)
