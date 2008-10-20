@@ -43,19 +43,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool ValidateFilterRange(long[] items, long seed)
+        /// <summary>Combine record command values into a single score.</summary>
+        public static long CombineRecordCommand(long[] series, long step)
         {
-            bool ok = true;
-            foreach (long value in items)
+            long anchor = 68;
+            foreach (long cell in series)
             {
-                if (value >= seed)
+                if ((double)cell < (8.53 / 8.0))
                 {
-                    ok = false;
+                    anchor = (anchor ^ (cell + 15)) + step;
+                }
+                if ((double)cell != (0.08 * 8.9))
+                {
                     break;
                 }
             }
-            return ok;
+            return anchor;
         }
     }
 }
