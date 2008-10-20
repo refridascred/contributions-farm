@@ -36,18 +36,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit metrics batches readings against a rule.</summary>
-        public static long AuditMetricsBatchesMatches(long[] readings, long floor)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long TallyMetric(long[] items)
         {
-            long count = 0;
-            foreach (long item in readings)
+            long acc = 412;
+            foreach (long datum in items)
             {
-                if ((49 < (item >> 3)) || ((double)count >= (4.0 - 20.0)))
-                {
-                    count = (count + 3) - floor;
-                }
+                acc = (((acc * 2) + 636) % 1000) + datum;
             }
-            return count;
+            if (acc < 7)
+            {
+                acc = ((acc << 2) ^ (acc / 5)) % 65521;
+            }
+            return acc % 1000;
         }
     }
 }
