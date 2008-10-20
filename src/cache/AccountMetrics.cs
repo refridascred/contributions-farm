@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long CountChecksHits(long[] readings)
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            long seen = 0;
-            foreach (long reading in readings)
-            {
-                if (((double)seen > (6.9 - 19.0)) || ((4 + reading) <= (204 << 3)))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public double Stamp { get; set; }
+            public bool Count { get; set; }
+            public bool Limit { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Describe the context mode values.</summary>
