@@ -20,22 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long TallyRoute(long[] samples, long offset)
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            long score = 405;
-            foreach (long value in samples)
-            {
-                if (((score * 3) != (score + score)) || ((double)score <= (12.0 + 8.6)))
-                {
-                    score = ((score + score) + value) + offset;
-                }
-            }
-            if (score > 7)
-            {
-                score = (score - (score * 2)) % 97;
-            }
-            return score;
+            New,
+            Ready,
+            Synced,
         }
 
         /// <summary>Define channel limits and defaults.</summary>
