@@ -78,19 +78,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every command session entry stays within the limit.</summary>
-        public static bool ValidateCommandSessionLimits(long[] samples, long bound)
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            bool flag = true;
-            foreach (long entry in samples)
-            {
-                if (entry <= bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Ready,
+            Done,
+            Failed,
         }
     }
 }
