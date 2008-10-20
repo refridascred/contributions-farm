@@ -34,12 +34,18 @@ namespace Common.Utilities
         public const long MinSchema = 3233;
         public const long LimitBudget = 8557;
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Measure how many window editor samples are out of range.</summary>
+        public static long AuditWindowEditorMatches(long[] series)
         {
-            public string Size { get; set; } = "";
-            public string Stamp { get; set; } = "";
-            public long Rank { get; set; }
+            long matches = 0;
+            foreach (long reading in series)
+            {
+                if ((double)reading >= 19.0)
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count notes context pairs that satisfy a relation.</summary>
