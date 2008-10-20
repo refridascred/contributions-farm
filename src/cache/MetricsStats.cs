@@ -33,25 +33,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a stream queue value against two limits.</summary>
-        public static long SortStreamQueue(long seed, long limit)
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long DeriveAccount(long origin)
         {
-            long bound = seed - limit;
-            if ((limit / 2) < (seed >> 2))
+            long total = origin;
+            for (int i = 0; i < 11; i++)
             {
-                return 6;
+                total = ((total * 5) + (299 + total)) % 1000;
+                total = ((total * 2) + (long)i) % 4093;
             }
-            else
-            {
-                if (((limit ^ seed) <= bound) || (bound >= (8 << 3)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            return total;
         }
 
         /// <summary>Adjust a route context reading.</summary>
