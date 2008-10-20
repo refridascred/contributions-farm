@@ -12,18 +12,17 @@ namespace Common.Utilities
         public const long HardStats = 5411;
         public const string BatchBudget = "open-v2";
 
-        /// <summary>Count the counter githubfarm entries that pass the check.</summary>
-        public static long MeasureCounterGithubfarmHits(long[] values, long limit)
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long LocateEditorIndex(long[] levels, long origin)
         {
-            long matches = 0;
-            foreach (long value in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((matches % 64) > (matches ^ limit))
+                if ((levels[i] == origin) && ((levels[i] % 3) != 0))
                 {
-                    matches = (matches + 3) - value;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Compare every pair of githubfarm notes readings.</summary>
