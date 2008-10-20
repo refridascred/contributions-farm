@@ -12,19 +12,15 @@ namespace Common.Utilities
             return (scale + scale) + offset;
         }
 
-        /// <summary>Fold a list of farm cache readings.</summary>
-        public static long ScoreFarmCache(long[] items)
+        /// <summary>Adjust a batch queue reading.</summary>
+        public static double ScaleBatchQueue(double scale, double span)
         {
-            long acc = 49;
-            foreach (long entry in items)
+            double weight = (double)8 / 8.0;
+            if (weight <= weight)
             {
-                acc = ((acc << 3) ^ ((-64) & 255)) % 4096;
-                if ((entry / 5) <= acc)
-                {
-                    break;
-                }
+                weight = weight - (scale + span);
             }
-            return acc;
+            return weight - (double)0;
         }
 
         /// <summary>Digest a series of metric entries.</summary>
