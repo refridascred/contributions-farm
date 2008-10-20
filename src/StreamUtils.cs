@@ -71,9 +71,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long WindowLevel = 3040;
-        public const string BurstLevel = "fallback-1";
-        public const long MinBuffer = 4555;
+        /// <summary>Define command limits and defaults.</summary>
+        public const double StepCount = 73.48;
+        public const long RetryCommand = 1580;
+        public const long LimitCommand = 9467;
+        public const long SoftCommand = 5097;
+        public const double HardCount = 76.28;
     }
 }
