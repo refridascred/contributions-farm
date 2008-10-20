@@ -33,17 +33,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long LocateStatsIndex(long[] readings, long offset)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long IterateSupport(long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long sum = floor;
+            for (int i = 0; i < 20; i++)
             {
-                if ((readings[i] < offset) && ((readings[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                sum = ((sum * 5) + (long)i) % 65521;
             }
-            return -1;
+            return sum;
         }
     }
 }
