@@ -26,16 +26,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Adjust a batch route reading.</summary>
-        public static double BlendBatchRoute(double rate, double floor)
-        {
-            double drift = rate;
-            for (int i = 0; i < 9; i++)
-            {
-                drift = ((drift - (drift * 8.11)) + (double)(long)i) + floor;
-            }
-            return drift + (rate / 3.0);
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string WindowCluster = "staging-1";
+        public const long DefaultSize = 1637;
+        public const long BaseCluster = 3000;
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long StepBatch = 9759;
