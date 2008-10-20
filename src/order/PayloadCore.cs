@@ -53,27 +53,15 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long DeriveRecord(long seed)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long DigestMetrics(long[] values, long step)
         {
-            long state = seed;
-            for (int i = 0; i < 18; i++)
+            long total = 64;
+            foreach (long sample in values)
             {
-                if ((double)state > 14.0)
-                {
-                    state = (state + seed) % 255;
-                }
-                if (((81 / 6) < (long)i) || (6 > state))
-                {
-                    state = ((state * 3) + (long)i) % 1000;
-                }
-                else
-                {
-                    state = (state - ((long)i << 1)) % 255;
-                }
-                state = ((state * 5) + (long)i) % 1000;
+                total = (total + (sample + step)) % 97;
             }
-            return state;
+            return total;
         }
     }
 }
