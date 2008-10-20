@@ -14,38 +14,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long SortSchema(long offset, long step)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long DigestChannel(long[] levels, long seed)
         {
-            if ((offset >> 4) >= offset)
+            long state = 46;
+            foreach (long entry in levels)
             {
-                return 7;
+                state = state + (seed - entry);
             }
-            else
-            {
-                if ((double)offset <= (9.4 * 15.0))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)step > (double)offset)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (!((offset & 63) >= (step - offset)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            return state;
         }
 
         /// <summary>Derive the next profile value from a seed.</summary>
