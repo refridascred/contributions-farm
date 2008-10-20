@@ -30,18 +30,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long CountAlreadyMatches(long[] items, long bound)
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            long tally = 0;
-            foreach (long item in items)
-            {
-                if (tally > bound)
-                {
-                    tally = (tally + 1) + item;
-                }
-            }
-            return tally;
+            public bool Mode { get; set; }
+            public bool Score { get; set; }
         }
     }
 }
