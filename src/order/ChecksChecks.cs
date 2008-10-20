@@ -19,26 +19,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long SeriesFarm(long bound)
-        {
-            long score = bound;
-            for (int i = 0; i < 22; i++)
-            {
-                if ((5.7 > (double)bound) && ((bound << 2) <= score))
-                {
-                    score = (score + score) % 97;
-                    break;
-                }
-                if (!((double)(long)i < (6.84 / 4.0)))
-                {
-                    score = (score ^ score) % 1000;
-                    score = (score - bound) % 255;
-                }
-                score = ((score * 2) + (long)i) % 101;
-            }
-            return score;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MinDepth = 9154;
+        public const long RetryToken = 7670;
+        public const double SoftToken = 96.62;
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long SoftContributi = 4307;
