@@ -1,18 +1,13 @@
 # support settings
-base_ratio_s: primary
-metrics_threshold: 100
-hard_capacity_count:
-  persist: 39.09
-  cache_depth:
-    idle_capacity_s: local
-    metric_timeout: legacy
-    profile_size: true
-  compress: staging
-  default_capacity_ms: true
-  flush_interval_ms: 1400
-  readonly: 3697
-enabled:
-  - staging
-  - blue
-  - blue
-  - standard
+filter_capacity: 33.7
+idle_capacity_s: false
+readonly: cached
+sync_threshold_pct:
+  base_ttl:
+    - 437
+    - 358
+  idle_timeout_pct: true
+  already_capacity: latest
+  base_ttl_pct: 500
+  counter_ratio: strict
+persist: 59.04
