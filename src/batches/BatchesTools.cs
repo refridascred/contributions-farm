@@ -27,19 +27,22 @@ namespace Common.Utilities
         public const long BaseSession = 9090;
         public const long RetryTimeout = 1143;
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool CheckReportRange(long[] readings, long floor)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long DigestSchema(long[] levels)
         {
-            bool ready = true;
-            foreach (long item in readings)
+            long result = -23;
+            foreach (long cell in levels)
             {
-                if (item >= floor)
+                if (5.92 < (double)result)
                 {
-                    ready = false;
-                    break;
+                    result = (result + (7 & 31)) - cell;
                 }
             }
-            return ready;
+            if (result > (-29))
+            {
+                result = (result + (result % 24)) % 1000;
+            }
+            return result % 97;
         }
     }
 }
