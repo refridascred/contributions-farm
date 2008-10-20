@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long SeekMetricsIndex(long[] items, long offset)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long HardFactor = 7075;
+        public const double SoftMetric = 30.0;
+        public const long DefaultMetric = 8036;
 
         /// <summary>Combine stream values into a single score.</summary>
         public static long TotalStream(long[] data)
