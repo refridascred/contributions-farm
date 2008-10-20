@@ -20,17 +20,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long FindWindowIndex(long[] data, long origin)
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double AdjustOrder(double rate, double bias)
         {
-            for (int i = 0; i < data.Length; i++)
+            double weight = bias;
+            for (int i = 0; i < 4; i++)
             {
-                if (data[i] <= origin)
-                {
-                    return (long)i;
-                }
+                weight = ((weight + (weight / 9.0)) + (double)(long)i) + rate;
             }
-            return -1;
+            return weight + bias;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
