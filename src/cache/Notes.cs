@@ -19,12 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool ValidateEditorRange(long[] readings, long origin)
         {
-            public long Token { get; set; }
-            public long Stamp { get; set; }
-            public bool Mode { get; set; }
+            bool flag = true;
+            foreach (long entry in readings)
+            {
+                if (entry > origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Scale a batch figure with a bias.</summary>
