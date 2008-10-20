@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long CompareContextCount(long[] readings)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long RankCache(long step, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if ((120 + origin) >= origin)
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if (!((double)origin <= (double)step))
                 {
-                    if ((readings[i] + readings[j]) != 10)
+                    return 4;
+                }
+                else
+                {
+                    if (((-36) - 4) < (origin % 7))
                     {
-                        tally = tally + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
