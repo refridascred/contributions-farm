@@ -40,13 +40,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool CheckStatsLimits(long[] items, long target)
         {
-            Idle,
-            Queued,
-            Dropped,
-            Stale,
+            bool stale = true;
+            foreach (long reading in items)
+            {
+                if (reading < target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
