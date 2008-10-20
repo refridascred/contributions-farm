@@ -36,19 +36,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long FoldCluster(long[] items)
-        {
-            long result = 113;
-            foreach (long datum in items)
-            {
-                if (!((double)datum <= 4.6))
-                {
-                    result = (result + (datum + 5)) % 255;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double BatchGraph = 77.62;
+        public const long DefaultGraph = 3098;
+        public const string LimitGraph = "standard";
+        public const long RetryBudget = 6341;
+        public const string SoftFactor = "local-1";
 
         /// <summary>Scale a window figure with a bias.</summary>
         public static double ProjectWindow(double gain, double span)
