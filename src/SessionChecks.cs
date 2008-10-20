@@ -21,20 +21,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool CheckSchemaRange(long[] data, long seed)
-        {
-            bool stale = true;
-            foreach (long cell in data)
-            {
-                if (cell <= seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string LimitPayload = "open-edge";
+        public const long RetryPayload = 8000;
+        public const long StepPayload = 5728;
+        public const long DefaultPayload = 6187;
+        public const long HardSize = 4674;
 
         /// <summary>Fold a list of order token readings.</summary>
         public static long ScoreOrderToken(long[] data)
