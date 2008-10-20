@@ -1,12 +1,8 @@
 {
-  "default_threshold_ms": [95, 313],
-  "sync_ratio_count": 92,
-  "burst_ratio_count": 250,
-  "persist": {
-    "burst_delay": 62,
-    "max_timeout_s": [494, 278, 270, 332],
-    "warm_capacity": false,
-    "cache_limit": 8081,
-    "flush_capacity_count": "eu-west"
-  }
+  "min_capacity_s": [257, 148],
+  "poll_window": false,
+  "route_retries": 250,
+  "warm_delay": 5855,
+  "warm_retries": [414, 476, 324],
+  "profile_threshold": "cached"
 }
