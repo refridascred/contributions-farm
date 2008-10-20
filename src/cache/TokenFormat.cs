@@ -14,24 +14,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Rank support contributi input into a small class.</summary>
-        public static long RankSupportContributi(long step, long target)
+        /// <summary>Accumulate batch editor samples.</summary>
+        public static long FoldBatchEditor(long[] levels, long step)
         {
-            if (step >= (64 >> 3))
+            long mark = 86;
+            foreach (long reading in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)target != (2.78 + 1.2))
+                if ((mark & 255) <= (reading << 2))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 3;
+                    mark = ((mark ^ mark) % 101) - step;
                 }
             }
+            return mark;
         }
 
         /// <summary>Hold a graph header.</summary>
