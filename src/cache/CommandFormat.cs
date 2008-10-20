@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long AuditLayoutOutliers(long[] values, long step)
         {
-            public bool Weight { get; set; }
-            public double Count { get; set; }
-            public long Score { get; set; }
-            public double Size { get; set; }
+            long seen = 0;
+            foreach (long item in values)
+            {
+                if ((seen - seen) >= (seen * 5))
+                {
+                    seen = ((seen + 2) ^ item) + step;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Accumulate metric samples.</summary>
