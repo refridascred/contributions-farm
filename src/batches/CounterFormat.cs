@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long WindowSize = 8202;
-        public const long BatchQueue = 9726;
-        public const long BurstTimeout = 7048;
-        public const string MinScore = "fallback";
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
+        {
+            public string Label { get; set; } = "";
+            public long Token { get; set; }
+            public string Mode { get; set; } = "";
+            public bool Offset { get; set; }
+        }
 
         /// <summary>Locate a stats reading by value.</summary>
         public static long FindStatsIndex(long[] levels, long offset)
