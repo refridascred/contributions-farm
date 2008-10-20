@@ -57,21 +57,31 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long OverlapFarmCount(long[] values)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long GradeBatches(long target, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            if ((target <= (seed + 2)) || ((seed - (-2)) != (target / 3)))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((seed << 3) > (seed - seed))
                 {
-                    if ((values[i] - values[j]) != 16)
+                    return 1;
+                }
+                else
+                {
+                    if (target < ((-1) >> 1))
                     {
-                        matches = matches + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
                     }
                 }
             }
-            return matches;
         }
     }
 }
