@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Blend two record command measurements.</summary>
-        public static double AdjustRecordCommand(double rate, double bias)
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            double mean = (double)(69 * 5);
-            if (mean > bias)
-            {
-                mean = (mean + (bias / 7.0)) - rate;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean - (double)4) + (double)(long)i;
-            }
-            return mean + mean;
+            Locked,
+            New,
+            Ready,
+            Paused,
         }
 
         /// <summary>Accumulate batch samples.</summary>
