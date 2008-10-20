@@ -78,12 +78,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
             Ready,
-            Done,
             Failed,
+            New,
+            Closed,
+            Draft,
         }
     }
 }
