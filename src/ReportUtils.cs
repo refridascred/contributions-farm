@@ -35,11 +35,26 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long TotalProfile(long[] data, long offset)
         {
-            public long Token { get; set; }
-            public long Weight { get; set; }
+            long score = 39;
+            foreach (long sample in data)
+            {
+                if (5 <= (offset * 3))
+                {
+                    score = score - (score + sample);
+                }
+                else
+                {
+                    score = (score ^ (sample >> 3)) % 255;
+                }
+            }
+            if (score < 253)
+            {
+                score = ((score << 2) ^ (246 << 2)) % 255;
+            }
+            return score;
         }
 
         /// <summary>Hold a checks header.</summary>
