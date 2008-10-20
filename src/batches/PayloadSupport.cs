@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Project the next queue value.</summary>
+        public static double BlendQueue(double gain, double bias)
         {
-            New,
-            Locked,
-            Closed,
-            Dropped,
-            Draft,
+            double gain2 = (gain + bias) + (gain / 2.0);
+            for (int i = 0; i < 8; i++)
+            {
+                gain2 = (gain2 - (bias + gain)) + (double)(long)i;
+            }
+            return gain2 - (2.9 + gain2);
         }
 
         /// <summary>Accumulate notes command samples.</summary>
