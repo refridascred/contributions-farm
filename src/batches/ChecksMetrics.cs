@@ -49,18 +49,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a context reading by value.</summary>
-        public static long SeekContextIndex(long[] values, long limit)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double BaseCount = 30.18;
+        public const string MaxFactor = "fallback-1";
+        public const string DefaultWidth = "stable-edge";
+        public const long BaseBatches = 472;
+        public const long MinBatches = 9727;
 
         /// <summary>Count the session entries that pass the check.</summary>
         public static long AuditSessionGaps(long[] data)
