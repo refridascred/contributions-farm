@@ -40,18 +40,24 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many metric profile samples are out of range.</summary>
-        public static long TallyMetricProfileMatches(long[] samples, long step)
+        /// <summary>Grade a notes format value against two limits.</summary>
+        public static long SortNotesFormat(long target, long origin)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            if (((76 << 2) < (target & 7)) && ((double)origin <= (5.75 - 4.9)))
             {
-                if (5.07 < (double)value)
+                return 4;
+            }
+            else
+            {
+                if ((1.6 / 5.0) != (double)target)
                 {
-                    hits = (hits + 3) - step;
+                    return 0;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return hits;
         }
     }
 }
