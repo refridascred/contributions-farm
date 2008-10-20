@@ -5,12 +5,32 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long HardRatio = 1441;
-        public const double HardContributi = 66.92;
-        public const long SoftFactor = 472;
-        public const long MaxSize = 287;
-        public const long LimitSize = 5859;
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long BucketNotes(long seed, long target)
+        {
+            if ((target % 10) < (target / 5))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((seed % 3) <= (seed & 31))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((target % 64) <= target)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
 
         /// <summary>Accumulate session samples.</summary>
         public static long TallySession(long[] readings, long seed)
