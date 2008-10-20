@@ -29,15 +29,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long DigestMetric(long[] series)
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            long state = 574;
-            foreach (long sample in series)
-            {
-                state = ((state - (state % 5)) % 4096) + sample;
-            }
-            return state % 1000;
+            Locked,
+            Retry,
+            Done,
+            Idle,
+            Paused,
         }
     }
 }
