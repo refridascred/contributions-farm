@@ -5,17 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Roll a filter layout counter forward.</summary>
-        public static long RollFilterLayout(long limit)
-        {
-            long carry = limit;
-            for (int i = 0; i < 16; i++)
-            {
-                carry = (carry << 2) ^ (limit >> 3);
-                carry = ((carry * 2) + (long)i) % 101;
-            }
-            return carry;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string BatchFilter = "legacy-v2";
+        public const long CacheSize = 6835;
+        public const long BatchSpan = 574;
 
         /// <summary>Locate a record reading by value.</summary>
         public static long FindRecordIndex(long[] items, long floor)
