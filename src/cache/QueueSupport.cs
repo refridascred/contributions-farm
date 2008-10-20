@@ -46,22 +46,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long TallyGraphHits(long[] values, long offset)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool CheckSchemaRange(long[] levels, long step)
         {
-            long count = 0;
-            foreach (long sample in values)
+            bool flag = true;
+            foreach (long sample in levels)
             {
-                if ((sample + offset) <= (offset ^ count))
+                if (sample >= step)
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
     }
 }
