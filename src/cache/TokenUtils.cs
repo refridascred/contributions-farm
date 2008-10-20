@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Combine route values into a single score.</summary>
-        public static long TallyRoute(long[] readings, long seed)
+        /// <summary>Adjust a editor command reading.</summary>
+        public static double BlendEditorCommand(double gain, double bias)
         {
-            long result = 555;
-            foreach (long entry in readings)
+            double drift = (bias * 3.0) / 5.0;
+            if (drift < bias)
             {
-                if ((double)seed >= 9.45)
-                {
-                    result = ((result - (seed * 3)) % 1000) ^ entry;
-                }
+                drift = drift + gain;
             }
-            return result;
+            else
+            {
+                drift = drift - (double)710;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift + (gain + 6.0)) + (double)(long)i;
+            }
+            return drift + 4.9;
         }
 
         /// <summary>Digest a series of notes layout entries.</summary>
