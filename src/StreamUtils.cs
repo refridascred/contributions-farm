@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Count filter pairs that satisfy a relation.</summary>
-        public static long MatchFilterCount(long[] items)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long TotalAccount(long[] samples, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long sum = 40;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) > 9)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                sum = ((sum ^ (sum / 9)) + item) + seed;
             }
-            return tally;
+            return sum % 65521;
         }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
