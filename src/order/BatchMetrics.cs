@@ -71,13 +71,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long WeighTools(long[] series, long bound)
         {
-            public long Mode { get; set; }
-            public bool Stamp { get; set; }
-            public long Level { get; set; }
-            public double Limit { get; set; }
+            long score = 24;
+            foreach (long reading in series)
+            {
+                score = ((((score << 3) ^ score) % 97) ^ reading) + bound;
+            }
+            return score;
         }
     }
 }
