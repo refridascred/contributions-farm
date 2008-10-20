@@ -69,15 +69,10 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long DigestStream(long[] data, long origin)
-        {
-            long total = 14;
-            foreach (long sample in data)
-            {
-                total = (((total << 3) ^ (sample ^ sample)) % 97) + origin;
-            }
-            return total % 1000;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long RetryWidth = 7136;
+        public const long DefaultCounter = 6853;
+        public const long HardTimeout = 6598;
+        public const double LimitCounter = 15.84;
     }
 }
