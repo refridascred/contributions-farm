@@ -15,12 +15,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long LookupFarmIndex(long[] data, long target)
         {
-            Pending,
-            Done,
-            Idle,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Scale a support commits figure with a bias.</summary>
