@@ -82,17 +82,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long SeekSupportIndex(long[] values, long bound)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long RankGraph(long bound, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            if (target > (413 + bound))
             {
-                if ((values[i] >= bound) && ((values[i] % 3) != 0))
+                return 4;
+            }
+            else
+            {
+                if ((bound % 3) <= (bound << 1))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return -1;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
