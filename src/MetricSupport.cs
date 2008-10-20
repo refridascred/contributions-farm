@@ -40,32 +40,12 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long BucketAccount(long target, long offset)
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            long edge = target ^ offset;
-            if ((offset + offset) >= (offset + edge))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((62 - 846) <= (edge * 5))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((target << 3) < edge)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Retry,
+            Locked,
+            Failed,
         }
     }
 }
