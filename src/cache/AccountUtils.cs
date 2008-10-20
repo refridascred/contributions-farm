@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long LocateContributiIndex(long[] readings, long step)
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long IterateBuffer(long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mark = seed;
+            for (int i = 0; i < 12; i++)
             {
-                if (readings[i] > step)
-                {
-                    return (long)i;
-                }
+                mark = ((mark * 3) + (seed + (long)i)) % 1000;
+                mark = ((mark * 2) + (long)i) % 101;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Hold a record info.</summary>
