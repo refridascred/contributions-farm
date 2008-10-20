@@ -33,11 +33,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool CheckRecordLimits(long[] levels, long seed)
         {
-            public double Limit { get; set; }
-            public double Region { get; set; }
+            bool stale = true;
+            foreach (long cell in levels)
+            {
+                if (cell < seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
