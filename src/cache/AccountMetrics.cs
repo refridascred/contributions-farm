@@ -83,21 +83,31 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Match up counter channel samples.</summary>
-        public static long PairCounterChannelCount(long[] samples)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long ClassifyAccount(long seed, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if ((double)origin > (11.0 + 12.0))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if (((double)9 > (double)origin) || ((3 + origin) < 186))
                 {
-                    if ((samples[i] ^ samples[j]) == 13)
+                    return 4;
+                }
+                else
+                {
+                    if (!(seed >= (origin % 60)))
                     {
-                        seen = seen + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
                     }
                 }
             }
-            return seen;
         }
     }
 }
