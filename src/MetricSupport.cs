@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
         {
-            Idle,
-            Locked,
-            Ready,
-            Dropped,
-            Draft,
+            public double Mode { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
