@@ -19,15 +19,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a buffer cluster counter forward.</summary>
-        public static long RollBufferCluster(long seed)
+        /// <summary>Compare every pair of already readings.</summary>
+        public static long OverlapAlreadyCount(long[] samples)
         {
-            long total = seed;
-            for (int i = 0; i < 19; i++)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                total = ((total * 4) + (long)i) % 4093;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) != 3)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
