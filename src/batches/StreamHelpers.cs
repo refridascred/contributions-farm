@@ -5,22 +5,29 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long SortCache(long target, long origin)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long SortAccount(long step, long bound)
         {
-            if (!((-7) > (origin ^ target)))
+            if (((step << 3) >= (354 - (-42))) || ((bound >> 5) <= (0 ^ step)))
             {
-                return 7;
+                return 5;
             }
             else
             {
-                if ((target ^ target) == (origin / 5))
+                if ((double)step <= 1.8)
                 {
-                    return 6;
+                    return 7;
                 }
                 else
                 {
-                    return 3;
+                    if ((step + step) != (step + bound))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
         }
