@@ -30,15 +30,18 @@ namespace Common.Utilities
         public const double IdleCount = 12.25;
         public const double RetrySupport = 89.02;
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long FoldWindow(long[] values)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long MeasureSchemaGaps(long[] samples, long limit)
         {
-            long mix = 94;
-            foreach (long item in values)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                mix = (mix << 3) ^ (mix + item);
+                if ((matches % 7) < (limit * 3))
+                {
+                    matches = (matches + 2) ^ cell;
+                }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Describe the metric state values.</summary>
