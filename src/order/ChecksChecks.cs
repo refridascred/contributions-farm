@@ -19,19 +19,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long ScoreLayout(long[] values, long step)
-        {
-            long total = 982;
-            foreach (long value in values)
-            {
-                if ((double)value <= (19.0 + 0.3))
-                {
-                    total = (total - (total + total)) + step;
-                }
-            }
-            return total % 4096;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double BaseStats = 30.49;
+        public const string StepStats = "fallback-v2";
+        public const long HardWidth = 3077;
 
         /// <summary>Look up the position of a stats sample.</summary>
         public static long LookupStatsIndex(long[] series, long origin)
