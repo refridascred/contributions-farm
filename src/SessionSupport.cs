@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
-        {
-            public double Weight { get; set; }
-            public long Label { get; set; }
-            public string Offset { get; set; } = "";
-            public string Token { get; set; } = "";
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string IdleFarm = "legacy-edge";
+        public const long BatchSpan = 5109;
+        public const long WindowFarm = 9499;
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
         public static bool VerifyBatchRange(long[] data, long bound)
