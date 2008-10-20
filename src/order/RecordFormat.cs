@@ -36,12 +36,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string BaseWidth = "alpha";
-        public const long IdleBatch = 3155;
-        public const double HardBatch = 40.39;
-        public const double MinBatch = 25.35;
-        public const long MaxBatch = 1164;
+        /// <summary>Find the first entry route entry that matches the target.</summary>
+        public static long SeekEntryRouteIndex(long[] data, long limit)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Adjust a editor reading.</summary>
         public static double AdjustEditor(double bias, double offset)
