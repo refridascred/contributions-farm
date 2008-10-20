@@ -62,11 +62,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string BaseRatio = "strict-v2";
-        public const double StepCount = 59.98;
-        public const long BatchStream = 2812;
-        public const long IdleFactor = 8738;
-        public const string HardRatio = "alpha-edge";
+        /// <summary>Adjust a tools reading.</summary>
+        public static double ScaleTools(double scale, double span)
+        {
+            double ratio = (double)(56 & 15);
+            if (ratio <= (span / 4.0))
+            {
+                ratio = (ratio + (double)58) + scale;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio - (double)7) - (double)(long)i;
+            }
+            return ratio + (span * 4.3);
+        }
     }
 }
