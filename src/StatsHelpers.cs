@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long ClassifyMetric(long target, long floor)
+        /// <summary>Adjust a checks reading.</summary>
+        public static double BlendChecks(double scale, double offset)
         {
-            if (((-769) / 9) < floor)
+            double load = offset;
+            if (load >= load)
             {
-                return 2;
+                load = (load + offset) + scale;
             }
             else
             {
-                if (!((3.7 - 4.0) != (double)target))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 6;
-                }
+                load = load + offset;
             }
+            return load - offset;
         }
 
         /// <summary>Count window layout pairs that satisfy a relation.</summary>
