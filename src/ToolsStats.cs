@@ -13,22 +13,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long PairCommandCount(long[] items)
-        {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) > 2)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string MaxCount = "standard-edge";
+        public const long IdleBudget = 4902;
+        public const string LimitRatio = "staging-1";
+        public const double MaxScore = 81.45;
+        public const long StepDepth = 3026;
 
         /// <summary>Hold a window header.</summary>
         public sealed class WindowHeader
