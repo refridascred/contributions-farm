@@ -31,18 +31,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long CountReportMatches(long[] series, long origin)
+        /// <summary>Validate counter filter readings against a bound.</summary>
+        public static bool GuardCounterFilterRange(long[] samples, long seed)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            bool valid = true;
+            foreach (long value in samples)
             {
-                if ((double)entry >= (9.27 + 0.7))
+                if (value != seed)
                 {
-                    matches = (matches + 2) - origin;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
     }
 }
