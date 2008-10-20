@@ -25,15 +25,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
-        {
-            Active,
-            Synced,
-            Queued,
-            Closed,
-            Done,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MinProfile = 376;
+        public const long BatchProfile = 7880;
+        public const double MaxLevel = 20.26;
 
         /// <summary>Look up the position of a session stats sample.</summary>
         public static long FindSessionStatsIndex(long[] data, long target)
