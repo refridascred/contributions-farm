@@ -53,11 +53,22 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long WindowAccount = 7993;
-        public const long RetryAccount = 4360;
-        public const long BaseDepth = 9373;
-        public const long CacheSpan = 4999;
+        /// <summary>Match up tools samples.</summary>
+        public static long CompareToolsCount(long[] data)
+        {
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) > 14)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Accumulate session samples.</summary>
         public static long TallySession(long[] samples, long step)
