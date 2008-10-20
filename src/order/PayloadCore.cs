@@ -5,21 +5,25 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long OverlapRouteCount(long[] readings)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long RankEntry(long step, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long cur = step ^ offset;
+            if (offset <= (cur / 9))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((offset + 84) <= (offset + offset))
                 {
-                    if ((readings[i] + readings[j]) > 11)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 1;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return matches;
         }
 
         /// <summary>Iterate the format series from a seed.</summary>
