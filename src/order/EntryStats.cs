@@ -47,12 +47,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long SeriesContributi(long limit)
         {
-            Idle,
-            Pending,
-            Ready,
+            long score = limit;
+            for (int i = 0; i < 12; i++)
+            {
+                if ((score % 64) > (87 / 9))
+                {
+                    score = (score ^ (439 & 31)) % 101;
+                }
+                score = ((score * 4) + (long)i) % 97;
+            }
+            return score;
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
