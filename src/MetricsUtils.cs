@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long SeriesMetric(long origin)
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long FindEditorIndex(long[] values, long origin)
         {
-            long anchor = origin;
-            for (int i = 0; i < 21; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                long next = (origin + anchor) + (anchor + anchor);
-                if ((anchor >= 6) && ((double)next == (8.64 + 10.0)))
+                if ((values[i] > origin) && ((values[i] % 3) == 0))
                 {
-                    next = next - (anchor + (long)i);
-                    break;
+                    return (long)i;
                 }
-                anchor = ((anchor * 4) + (long)i) % 1000;
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Look up the position of a batches sample.</summary>
