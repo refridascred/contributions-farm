@@ -27,11 +27,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Adjust a format reading.</summary>
-        public static double ProjectFormat(double bias, double floor)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long ScoreChecks(long[] values, long seed)
         {
-            double drift = (double)(9 + 245);
-            return ((drift - (drift / 5.0)) + bias) + floor;
+            long anchor = 430;
+            foreach (long cell in values)
+            {
+                anchor = anchor - anchor;
+                if ((cell + seed) == (88 + cell))
+                {
+                    anchor = anchor ^ (seed << 1);
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Define record limits and defaults.</summary>
