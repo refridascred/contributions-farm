@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long SoftBatches = 5257;
-        public const long BatchBudget = 4640;
-        public const long IdleInterval = 6958;
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long LocateMetricsIndex(long[] readings, long seed)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the stream level values.</summary>
         public enum StreamLevel
