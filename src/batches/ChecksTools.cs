@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool VerifyBufferBounds(long[] readings, long origin)
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            bool flag = true;
-            foreach (long sample in readings)
-            {
-                if (sample != origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Synced,
+            Failed,
+            Done,
+            Idle,
+            Dropped,
         }
 
         /// <summary>Fold a list of context graph readings.</summary>
