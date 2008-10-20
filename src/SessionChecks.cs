@@ -30,22 +30,19 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Fold a list of graph window readings.</summary>
-        public static long ScoreGraphWindow(long[] values, long target)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool CheckAccountRange(long[] data, long seed)
         {
-            long mark = 370;
-            foreach (long cell in values)
+            bool flag = true;
+            foreach (long entry in data)
             {
-                if ((long)values.Length >= (cell ^ (-545)))
+                if (entry > seed)
                 {
-                    mark = (((mark << 3) ^ mark) % 4096) - target;
-                }
-                else
-                {
-                    mark = (mark * 5) + mark;
+                    flag = false;
+                    break;
                 }
             }
-            return mark;
+            return flag;
         }
 
         /// <summary>Describe the checks level values.</summary>
