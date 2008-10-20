@@ -46,11 +46,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool ValidateToolsRange(long[] data, long target)
         {
-            public string Weight { get; set; } = "";
-            public long Total { get; set; }
+            bool found = true;
+            foreach (long item in data)
+            {
+                if (item > target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Describe the batch kind values.</summary>
