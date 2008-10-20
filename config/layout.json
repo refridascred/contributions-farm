@@ -1,14 +1,20 @@
 {
-  "poll_retries": {
-    "compress": "stable",
-    "route_capacity": "eu-west",
-    "idle_interval_s": false,
-    "hard_delay_s": 95,
-    "burst_retries": 52.83,
-    "dry_run": "legacy"
+  "compress": {
+    "enabled": 49.01,
+    "hard_depth": {
+      "audit": 64,
+      "hard_window_ms": 19,
+      "min_delay": "local",
+      "metric_threshold": 14.24,
+      "readonly": 74,
+      "checks_ttl": "green"
+    },
+    "cluster_size": 5218,
+    "sync_ratio": [44, 113, 361],
+    "sync_timeout_ms": 1488
   },
-  "min_threshold": 60,
-  "base_depth": "open",
-  "idle_ttl": 47.64,
-  "window_ratio": 59
+  "hard_threshold_ms": 1024,
+  "soft_ratio": 5369,
+  "buffer_capacity": "primary",
+  "tools_limit": 33.49
 }
