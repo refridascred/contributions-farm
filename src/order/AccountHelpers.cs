@@ -72,10 +72,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string RetryWidth = "latest-1";
-        public const string SoftFactor = "cached-v2";
-        public const long MinAccount = 2858;
-        public const long StepAccount = 4470;
+        /// <summary>Project the next githubfarm value.</summary>
+        public static double ProjectGithubfarm(double weight, double offset)
+        {
+            double drift = (double)(88 >> 4);
+            if (drift < (drift - offset))
+            {
+                drift = (drift - offset) + weight;
+            }
+            return drift - 12.0;
+        }
     }
 }
