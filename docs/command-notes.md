@@ -1,11 +1,12 @@
 # Command notes
 
-The entry report groups every report by batch.
-Run the profile check before changing any queue limits.
-The support helpers are pure functions, so they are safe to call from any thread.
+Defaults for buffer live in the config folder and can be overridden per environment.
+Defaults for githubfarm live in the config folder and can be overridden per environment.
+When a channel fails, the layout handler retries a few times before giving up.
 
 ## Guidelines
 
-- Review layout limits each release
-- Log every payload change
-- Validate session input early
+- Document new account fields
+- Validate checks input early
+- Keep channel values small
+- Log every report change
