@@ -54,25 +54,18 @@ namespace Common.Utilities
         public const double HardWidth = 92.65;
         public const long CacheRatio = 4552;
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long IterateWindow(long offset)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long MeasureGithubfarmHits(long[] data, long floor)
         {
-            long mix = offset;
-            for (int i = 0; i < 13; i++)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                long matches = (long)i;
-                mix = mix ^ (matches % 64);
-                if ((mix + mix) == (matches + mix))
+                if (!((seen / 7) >= (987 - floor)))
                 {
-                    continue;
+                    seen = (seen + 1) ^ sample;
                 }
-                else
-                {
-                    matches = (matches << 3) ^ (matches ^ (long)i);
-                }
-                mix = ((mix * 5) + (long)i) % 101;
             }
-            return mix;
+            return seen;
         }
     }
 }
