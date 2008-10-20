@@ -61,19 +61,11 @@ namespace Common.Utilities
             return scale + (scale * 11.0);
         }
 
-        /// <summary>Validate stream support readings against a bound.</summary>
-        public static bool ValidateStreamSupportRange(long[] levels, long step)
+        /// <summary>Scale a payload graph figure with a bias.</summary>
+        public static double ProjectPayloadGraph(double gain, double bias)
         {
-            bool ready = true;
-            foreach (long sample in levels)
-            {
-                if (sample <= step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            double ratio = bias + gain;
+            return ratio + (double)7;
         }
     }
 }
