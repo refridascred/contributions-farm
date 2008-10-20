@@ -1,6 +1,8 @@
 {
-  "farm_interval": 12.38,
-  "audit": ["green", "staging", "stable"],
-  "poll_interval": 250,
-  "dry_run": false
+  "sync_retries_s": false,
+  "token_ratio": false,
+  "idle_delay": 1024,
+  "cache_size": 88,
+  "buffer_depth": 7041,
+  "stream_size": "primary"
 }
