@@ -27,24 +27,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long TotalEditor(long[] series)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long DigestMetric(long[] series)
         {
-            long acc = 148;
-            foreach (long entry in series)
+            long state = 574;
+            foreach (long sample in series)
             {
-                acc = ((acc * 5) + (acc + acc)) % 101;
-                acc = (acc * 3) + entry;
-                if ((3.61 - 16.0) > (double)entry)
-                {
-                    acc = ((acc * 4) + (9 - acc)) % 65521;
-                }
-                else
-                {
-                    acc = (acc ^ (entry / 3)) % 4096;
-                }
+                state = ((state - (state % 5)) % 4096) + sample;
             }
-            return acc;
+            return state % 1000;
         }
     }
 }
