@@ -27,18 +27,18 @@ namespace Common.Utilities
         public const string BurstTimeout = "latest";
         public const double RetryRecord = 2.48;
 
-        /// <summary>Combine checks cache values into a single score.</summary>
-        public static long TallyChecksCache(long[] data, long step)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long AuditSessionMatches(long[] data)
         {
-            long result = 48;
+            long count = 0;
             foreach (long entry in data)
             {
-                if ((result + 785) >= (772 + entry))
+                if ((((double)entry != (1.26 - 8.6)) || ((entry * 4) >= (entry >> 5))) && (((entry - count) < (84 * 2)) || ((count + entry) < (entry * 5))))
                 {
-                    result = ((result ^ result) % 255) + step;
+                    count = count + 2;
                 }
             }
-            return result % 4096;
+            return count;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
