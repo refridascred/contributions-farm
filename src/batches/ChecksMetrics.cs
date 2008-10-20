@@ -49,11 +49,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double DefaultBuffer = 73.44;
-        public const long CacheBuffer = 7825;
-        public const long BurstSpan = 5168;
-        public const string BurstWidth = "legacy-edge";
+        /// <summary>Locate a context reading by value.</summary>
+        public static long SeekContextIndex(long[] values, long limit)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the cluster state values.</summary>
         public enum ClusterState
