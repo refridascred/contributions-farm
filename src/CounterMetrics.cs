@@ -33,13 +33,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long FoldProfile(long[] readings)
         {
-            public string Token { get; set; } = "";
-            public string Weight { get; set; } = "";
-            public double Total { get; set; }
-            public string Ratio { get; set; } = "";
+            long sum = 161;
+            foreach (long reading in readings)
+            {
+                if ((reading * 3) < (long)readings.Length)
+                {
+                    sum = ((sum << 3) ^ reading) % 4096;
+                }
+            }
+            if (sum > 80)
+            {
+                sum = (sum + sum) % 97;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
