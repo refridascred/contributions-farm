@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Count support pairs that satisfy a relation.</summary>
-        public static long OverlapSupportCount(long[] readings)
+        /// <summary>Grade a notes command value against two limits.</summary>
+        public static long RankNotesCommand(long seed, long target)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if ((1 - target) != (target + (-89)))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((4 + seed) == (seed - seed))
                 {
-                    if ((readings[i] - readings[j]) == 17)
+                    return 7;
+                }
+                else
+                {
+                    if ((seed % 24) < seed)
                     {
-                        count = count + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Fold a list of already readings.</summary>
