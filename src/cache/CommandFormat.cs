@@ -37,12 +37,19 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long MaxContext = 2646;
-        public const long HardContext = 8515;
-        public const long IdleContext = 8257;
-        public const long BatchContext = 9401;
-        public const string SoftRatio = "primary";
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long TallyGraphGaps(long[] values, long origin)
+        {
+            long matches = 0;
+            foreach (long cell in values)
+            {
+                if ((double)matches <= (19.0 / 9.0))
+                {
+                    matches = ((matches + 1) ^ cell) + origin;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
         public static long TallyChecksOutliers(long[] series)
