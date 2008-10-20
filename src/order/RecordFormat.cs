@@ -57,9 +57,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long DefaultRatio = 3685;
-        public const long BurstFactor = 8377;
-        public const long MaxRoute = 5742;
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
+        {
+            public long Size { get; set; }
+            public long Offset { get; set; }
+            public bool Owner { get; set; }
+        }
     }
 }
