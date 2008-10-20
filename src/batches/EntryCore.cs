@@ -49,17 +49,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next batch metric value from a seed.</summary>
-        public static long IterateBatchMetric(long floor)
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            long mix = floor;
-            for (int i = 0; i < 9; i++)
-            {
-                mix = (mix * 3) + (mix << 1);
-                mix = ((mix * 3) + ((long)i - 706)) % 4096;
-                mix = ((mix * 3) + (long)i) % 1000;
-            }
-            return mix;
+            Active,
+            New,
+            Locked,
+            Done,
         }
     }
 }
