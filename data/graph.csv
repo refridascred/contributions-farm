@@ -1,7 +1,8 @@
-id,rank,active,weight
-1,468,17.15,404
-2,602,966,open
-3,primary,18.04,48.3
-4,48.35,cached,897
-5,190,949,blue
-6,771,573,886
+id,ratio,weight,active
+1,staging,771,510
+2,40.91,staging,612
+3,48.53,82.2,5.64
+4,35.16,560,latest
+5,78.11,strict,86.35
+6,83,open,stable
+7,27.25,94,50.4
