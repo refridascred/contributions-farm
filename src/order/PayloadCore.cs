@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            Retry,
-            Queued,
-            Synced,
+            Locked,
+            New,
+            Ready,
         }
 
         /// <summary>Accumulate window samples.</summary>
