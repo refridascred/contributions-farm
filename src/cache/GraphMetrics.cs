@@ -12,12 +12,22 @@ namespace Common.Utilities
         public const double StepTimeout = 30.39;
         public const string HardWindow = "standard-v2";
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double MaxCache = 8.51;
-        public const double BaseCache = 17.97;
-        public const double StepScore = 50.66;
-        public const string LimitCache = "latest-edge";
-        public const long BurstCache = 5053;
+        /// <summary>Compare every pair of queue batch readings.</summary>
+        public static long PairQueueBatchCount(long[] data)
+        {
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) > 16)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Derive the next report value from a seed.</summary>
         public static long SeriesReport(long bound)
