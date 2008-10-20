@@ -27,24 +27,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long ClassifyGraph(long seed, long origin)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long TallyContributiOutliers(long[] samples)
         {
-            if (((origin & 15) <= (seed + origin)) || ((double)seed > (double)4))
+            long count = 0;
+            foreach (long datum in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if ((seed % 3) == (1 * 4))
+                if (((count & 255) != (datum % 10)) && ((17.0 / 8.0) == (double)datum))
                 {
-                    return 5;
+                    count = count + 3;
                 }
                 else
                 {
-                    return 3;
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
