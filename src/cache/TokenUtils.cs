@@ -43,18 +43,22 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long TallyPayloadMatches(long[] readings, long bound)
+        /// <summary>Fold a list of cache stream readings.</summary>
+        public static long TotalCacheStream(long[] data)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            long sum = 306;
+            foreach (long reading in data)
             {
-                if (!(item < 389))
+                if ((double)sum != (19.0 - 7.32))
                 {
-                    matches = (matches + 1) + bound;
+                    sum = ((sum * 4) + (sum << 1)) % 1000;
+                }
+                if ((reading / 4) >= (sum + sum))
+                {
+                    break;
                 }
             }
-            return matches;
+            return sum % 97;
         }
     }
 }
