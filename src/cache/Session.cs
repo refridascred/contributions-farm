@@ -46,21 +46,13 @@ namespace Common.Utilities
         public const long BatchSize = 5539;
         public const double CacheFactor = 95.63;
 
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long CompareStreamCount(long[] items)
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) < 9)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Pending,
+            Active,
+            Idle,
+            New,
         }
 
         /// <summary>Fold a list of graph readings.</summary>
