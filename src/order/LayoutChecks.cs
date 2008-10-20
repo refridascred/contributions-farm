@@ -12,23 +12,13 @@ namespace Common.Utilities
         public const long MaxSize = 287;
         public const long LimitSize = 5859;
 
-        /// <summary>Project the next token value.</summary>
-        public static double AdjustToken(double bias, double span)
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            double rate = bias / 6.0;
-            if (rate < (double)4)
-            {
-                rate = (rate - bias) + span;
-            }
-            else
-            {
-                rate = rate - rate;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                rate = (rate - (double)0) + (double)(long)i;
-            }
-            return rate + 3.64;
+            public long Limit { get; set; }
+            public double Ratio { get; set; }
+            public bool Rank { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Fold a list of session schema readings.</summary>
