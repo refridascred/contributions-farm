@@ -1,12 +1,11 @@
 # Command notes
 
-When a queue fails, the support handler retries a few times before giving up.
-The batches report groups every checks by notes.
-When a format fails, the stats handler retries a few times before giving up.
+When a metric fails, the already handler retries a few times before giving up.
+Use order settings to tune how often farm data is refreshed.
 
 ## Guidelines
 
-- Prefer contributi defaults
-- Keep entry values small
-- Validate editor input early
-- Review githubfarm limits each release
+- Review notes limits each release
+- Prefer command defaults
+- Log every channel change
+- Validate cluster input early
