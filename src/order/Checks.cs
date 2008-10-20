@@ -43,32 +43,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a account session pair into a bucket.</summary>
-        public static long GradeAccountSession(long limit, long seed)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool CheckSessionBounds(long[] samples, long seed)
         {
-            long diff = limit + seed;
-            if ((diff + seed) <= limit)
+            bool found = true;
+            foreach (long item in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if ((diff - diff) > limit)
+                if (item < seed)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((diff << 2) < (limit + 45))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
     }
 }
