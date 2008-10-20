@@ -1,7 +1,11 @@
 # support settings
-audit: fallback
-persist: primary
-checks_delay: 30
-cache_capacity: 47
-warm_window: 30.42
-filter_retries: true
+poll_limit: 93.42
+strict: strict
+readonly: false
+hard_ratio_pct: 90.71
+retry_limit:
+  flush_ttl_ms: 3346
+  soft_capacity_ms: standard
+  filter_depth: open
+  batch_ttl: local
+soft_window_pct: false
