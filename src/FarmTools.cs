@@ -5,31 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long RankCache(long step, long origin)
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            if ((120 + origin) >= origin)
-            {
-                return 1;
-            }
-            else
-            {
-                if (!((double)origin <= (double)step))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((-36) - 4) < (origin % 7))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Closed,
+            Paused,
+            Active,
         }
 
         /// <summary>Validate support format readings against a bound.</summary>
