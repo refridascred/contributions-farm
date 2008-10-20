@@ -6,21 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-stable}"
-case "${mode}" in
-    standard)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-COMMAND_LIMIT=421
-log "limit is ${COMMAND_LIMIT}"
-
-total=0
-for i in $(seq 1 7); do
-    total=$((total + i * 5))
+count=0
+while [ "${count}" -lt 7 ]; do
+    count=$((count + 1))
 done
-log "total ${total}"
+log "ran ${count} rounds"
+
+for item in edge local cached; do
+    log "checking ${item}"
+done
