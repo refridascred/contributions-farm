@@ -1,13 +1,8 @@
 # support settings
-filter_capacity: 33.7
-idle_capacity_s: false
-readonly: cached
-sync_threshold_pct:
-  base_ttl:
-    - 437
-    - 358
-  idle_timeout_pct: true
-  already_capacity: latest
-  base_ttl_pct: 500
-  counter_ratio: strict
-persist: 59.04
+soft_threshold_ms:
+  audit: 3195
+  cache_ratio_ms: cached
+  retry_ttl_s: 250
+channel_retries: 500
+enabled: 9750
+cache_limit: 45
