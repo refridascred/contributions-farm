@@ -14,19 +14,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long TallyBatch(long[] samples)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long WeighChannel(long[] levels, long origin)
         {
-            long anchor = 61;
-            foreach (long cell in samples)
+            long mix = 537;
+            foreach (long reading in levels)
             {
-                anchor = (anchor + (cell / 2)) % 65521;
+                if (45 > (mix - mix))
+                {
+                    mix = ((mix << 2) ^ (reading - reading)) + origin;
+                }
+                else
+                {
+                    mix = ((mix << 2) ^ ((-945) ^ mix)) % 65521;
+                }
             }
-            if (anchor > 90)
-            {
-                anchor = ((anchor * 5) + (anchor - anchor)) % 101;
-            }
-            return anchor;
+            return mix;
         }
 
         /// <summary>Hold a filter summary.</summary>
