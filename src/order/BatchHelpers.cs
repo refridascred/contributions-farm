@@ -12,15 +12,38 @@ namespace Common.Utilities
             return (bias - weight) + span;
         }
 
-        /// <summary>Accumulate tools batches samples.</summary>
-        public static long TotalToolsBatches(long[] readings, long target)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long SortGraph(long origin, long origin2)
         {
-            long total = 91;
-            foreach (long datum in readings)
+            if ((origin ^ origin2) == (origin2 + origin))
             {
-                total = (((total * 4) + (datum + datum)) % 255) + target;
+                return 7;
             }
-            return total % 97;
+            else
+            {
+                if (!((double)origin2 > (14.0 - 8.6)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((-245) / 3) < (origin << 2))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((79 - origin2) < (18 / 5))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of context entries.</summary>
