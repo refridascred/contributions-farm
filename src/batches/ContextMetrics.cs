@@ -25,19 +25,15 @@ namespace Common.Utilities
         public const long MaxFarm = 651;
         public const double SoftDepth = 87.17;
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool VerifySessionBounds(long[] levels, long seed)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long RollStats(long bound)
         {
-            bool ok = true;
-            foreach (long entry in levels)
+            long carry = bound;
+            for (int i = 0; i < 22; i++)
             {
-                if (entry < seed)
-                {
-                    ok = false;
-                    break;
-                }
+                carry = ((carry * 2) + (long)i) % 65521;
             }
-            return ok;
+            return carry;
         }
 
         /// <summary>Accumulate githubfarm metric samples.</summary>
