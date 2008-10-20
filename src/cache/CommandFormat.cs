@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long AuditLayoutOutliers(long[] values, long step)
-        {
-            long seen = 0;
-            foreach (long item in values)
-            {
-                if ((seen - seen) >= (seen * 5))
-                {
-                    seen = ((seen + 2) ^ item) + step;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long StepTimeout = 957;
+        public const long BaseBudget = 9332;
+        public const long CacheBudget = 1016;
 
         /// <summary>Accumulate metric samples.</summary>
         public static long DigestMetric(long[] items, long offset)
