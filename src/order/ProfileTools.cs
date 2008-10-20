@@ -13,21 +13,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Compare every pair of notes stream readings.</summary>
-        public static long MatchNotesStreamCount(long[] levels)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long DigestWindow(long[] levels)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mix = 241;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) == 9)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mix = ((mix * 4) + (mix + datum)) % 4096;
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Define command limits and defaults.</summary>
