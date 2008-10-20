@@ -1,4 +1,4 @@
 # githubfarm settings
-base_threshold_ms: 3086
-order_timeout: 60
-base_ttl: edge
+enabled: 207
+verbose: 1672
+idle_ttl_ms: green
