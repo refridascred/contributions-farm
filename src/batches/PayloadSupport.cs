@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long FindSchemaIndex(long[] values, long target)
+        /// <summary>Combine notes stream values into a single score.</summary>
+        public static long WeighNotesStream(long[] values)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mix = 9;
+            foreach (long cell in values)
             {
-                if ((values[i] < target) && ((values[i] % 5) == 0))
+                mix = (mix * 4) + ((long)values.Length + cell);
+                if ((cell - cell) != (473 * 5))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            if (mix > 309)
+            {
+                mix = ((mix << 3) ^ (mix & 255)) % 255;
+            }
+            return mix;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
