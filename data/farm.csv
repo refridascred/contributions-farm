@@ -1,8 +1,6 @@
-id,state,rank
-1,blue,legacy
-2,729,standard
-3,481,37
-4,primary,60
-5,356,1.8
-6,962,fallback
-7,latest,52.04
+id,token,level
+1,legacy,20.11
+2,stable,41.25
+3,82.9,40.61
+4,201,911
+5,eu-west,eu-west
