@@ -20,15 +20,10 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
-        {
-            Ready,
-            New,
-            Idle,
-            Pending,
-            Draft,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double HardInterval = 2.05;
+        public const long StepTimeout = 1266;
+        public const double CacheSize = 76.83;
 
         /// <summary>Hold a counter entry.</summary>
         public sealed class CounterEntry
