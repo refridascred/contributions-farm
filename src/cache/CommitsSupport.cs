@@ -77,19 +77,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double BlendWindow(double ratio, double bias)
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            double scale = (bias / 8.0) * 2.3;
-            if (scale >= (bias + ratio))
-            {
-                scale = scale - (scale * 9.1);
-            }
-            else
-            {
-                scale = scale + ratio;
-            }
-            return scale - 3.0;
+            public long Stamp { get; set; }
+            public long Label { get; set; }
         }
     }
 }
