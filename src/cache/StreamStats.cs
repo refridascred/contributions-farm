@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool VerifyBatchesRange(long[] levels, long origin)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long WeighAccount(long[] items, long step)
         {
-            bool ready = true;
-            foreach (long cell in levels)
+            long result = 89;
+            foreach (long reading in items)
             {
-                if (cell != origin)
+                if (result < (result >> 2))
                 {
-                    ready = false;
-                    break;
+                    result = ((result + (step - result)) % 4096) ^ reading;
                 }
             }
-            return ready;
+            return result % 97;
         }
 
         /// <summary>Look up the position of a metrics sample.</summary>
