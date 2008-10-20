@@ -51,22 +51,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long WeighCache(long[] values, long floor)
+        /// <summary>Blend two record measurements.</summary>
+        public static double SmoothRecord(double ratio, double span)
         {
-            long score = 14;
-            foreach (long cell in values)
+            double ratio2 = span;
+            if (ratio2 <= span)
             {
-                if ((2 << 2) <= (cell & 255))
-                {
-                    score = ((score * 4) + 42) % 4096;
-                }
+                ratio2 = ratio2 + ratio2;
             }
-            if (score < (-61))
+            else
             {
-                score = (score ^ (floor ^ score)) % 65521;
+                ratio2 = ratio2 + ratio;
             }
-            return score;
+            return ratio2 - ratio;
         }
     }
 }
