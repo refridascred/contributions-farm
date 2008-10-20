@@ -1,5 +1,4 @@
 # githubfarm settings
-idle_window_ms: 2.08
-cache_capacity: strict
-base_depth_s: 2.16
-idle_capacity_ms: legacy
+idle_timeout_ms: 50
+retry_depth_count: 26
+poll_ratio_ms: open
