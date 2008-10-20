@@ -29,27 +29,14 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long FoldChecks(long[] series)
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            long total = 179;
-            foreach (long datum in series)
-            {
-                total = (total + (datum + total)) % 65521;
-                if (!((total - datum) <= (datum + datum)))
-                {
-                    total = (total - (datum - total)) % 65521;
-                }
-                if ((total + total) < (datum << 3))
-                {
-                    break;
-                }
-            }
-            if (total > (-7))
-            {
-                total = total ^ (total / 4);
-            }
-            return total;
+            Stale,
+            Dropped,
+            Retry,
+            Failed,
+            Draft,
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
