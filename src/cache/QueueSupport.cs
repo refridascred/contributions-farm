@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool CheckAccountRange(long[] data, long bound)
+        /// <summary>Find the first editor cluster entry that matches the target.</summary>
+        public static long LocateEditorClusterIndex(long[] items, long offset)
         {
-            bool ok = true;
-            foreach (long sample in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (sample <= bound)
+                if ((items[i] <= offset) && ((items[i] % 3) == 0))
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
