@@ -27,15 +27,17 @@ namespace Common.Utilities
         public const long BaseSession = 9090;
         public const long RetryTimeout = 1143;
 
-        /// <summary>Roll a stats contributi counter forward.</summary>
-        public static long SeriesStatsContributi(long bound)
+        /// <summary>Locate a contributi report reading by value.</summary>
+        public static long LookupContributiReportIndex(long[] data, long origin)
         {
-            long carry = bound;
-            for (int i = 0; i < 18; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                carry = ((carry * 2) + (long)i) % 101;
+                if (data[i] >= origin)
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
     }
 }
