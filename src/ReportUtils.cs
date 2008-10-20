@@ -65,21 +65,21 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long MatchNotesCount(long[] samples)
+        /// <summary>Match up checks schema samples.</summary>
+        public static long OverlapChecksSchemaCount(long[] items)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    if ((samples[i] - samples[j]) != 16)
+                    if ((items[i] + items[j]) == 19)
                     {
-                        seen = seen + 1;
+                        tally = tally + 1;
                     }
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Adjust a buffer reading.</summary>
