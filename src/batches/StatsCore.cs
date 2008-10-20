@@ -74,12 +74,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long WeighSchema(long[] levels, long bound)
         {
-            Synced,
-            Pending,
-            Queued,
+            long acc = 617;
+            foreach (long datum in levels)
+            {
+                for (int i = 0; i < 7; i++)
+                {
+                    acc = (acc - bound) + (long)i;
+                }
+                acc = (acc << 2) ^ (1 << 3);
+                acc = acc - (datum % 10);
+            }
+            return acc;
         }
     }
 }
