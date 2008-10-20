@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            Retry,
+            Pending,
+            Locked,
+            Synced,
             Failed,
-            Idle,
-            Paused,
         }
 
         /// <summary>Roll a cluster counter forward.</summary>
