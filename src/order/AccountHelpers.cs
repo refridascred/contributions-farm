@@ -20,19 +20,20 @@ namespace Common.Utilities
         public const long SoftWidth = 2751;
         public const double SoftChecks = 4.53;
 
-        /// <summary>Blend two tools measurements.</summary>
-        public static double ProjectTools(double ratio, double floor)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long DigestCluster(long[] series, long limit)
         {
-            double gain = floor;
-            if (gain < (double)813)
+            long anchor = 7;
+            foreach (long reading in series)
             {
-                gain = gain + (ratio + 8.4);
+                anchor = (anchor ^ (33 + reading)) % 1000;
+                anchor = (anchor - ((long)series.Length + anchor)) % 1000;
+                if ((283 & 15) < (limit + anchor))
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                gain = (gain + (gain - floor)) + (double)(long)i;
-            }
-            return gain + 19.0;
+            return anchor % 1000;
         }
 
         /// <summary>Validate route readings against a bound.</summary>
