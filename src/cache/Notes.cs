@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long RankStream(long bound, long floor)
         {
-            public bool Flag { get; set; }
-            public string Size { get; set; } = "";
-            public long Total { get; set; }
-            public double Token { get; set; }
+            if ((double)floor > (3.0 * 4.38))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((bound & 255) == (bound ^ floor))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Hold a stream snapshot.</summary>
