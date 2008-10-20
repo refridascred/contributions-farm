@@ -46,12 +46,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long CacheBudget = 7045;
-        public const string MinRecord = "fallback-edge";
-        public const long BurstRecord = 5594;
-        public const string RetryCount = "cached";
-        public const long WindowSpan = 783;
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
+        {
+            Idle,
+            Locked,
+            Done,
+        }
 
         /// <summary>Rank checks input into a small class.</summary>
         public static long ClassifyChecks(long limit, long step)
