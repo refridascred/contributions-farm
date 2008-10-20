@@ -45,22 +45,12 @@ namespace Common.Utilities
         public const string MinInterval = "stable";
         public const double BaseNotes = 91.62;
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long MeasureFormatMatches(long[] data, long target)
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
         {
-            long matches = 0;
-            foreach (long item in data)
-            {
-                if ((double)item == (6.0 / 7.0))
-                {
-                    matches = (matches + 1) - target;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public long Weight { get; set; }
+            public bool Offset { get; set; }
+            public long Region { get; set; }
         }
     }
 }
