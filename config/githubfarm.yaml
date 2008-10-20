@@ -1,12 +1,13 @@
 # githubfarm settings
-idle_retries_pct: standard
-contributi_threshold: 30
-queue_interval:
-  - standard
-  - eu-west
-  - fallback
-dry_run: legacy
-filter_retries:
-  - 172
-  - 300
-  - 368
+retry_ttl_pct: 60
+poll_interval: false
+payload_window: 2
+warm_window: false
+schema_ratio: 22
+cache_size_s:
+  notes_threshold:
+    - fallback
+    - green
+    - latest
+  base_delay: latest
+  burst_capacity: 45
