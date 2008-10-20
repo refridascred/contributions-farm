@@ -1,5 +1,18 @@
 {
-  "burst_size_count": "open",
-  "max_timeout": 25.7,
-  "contributi_size": 60
+  "readonly": "open",
+  "persist": 500,
+  "default_retries": 1357,
+  "cluster_retries": {
+    "min_window_count": "cached",
+    "retry_window_count": {
+      "poll_window_s": 90.23,
+      "compress": 4.64,
+      "verbose": [466, 270, 153]
+    },
+    "default_interval_s": 69.86,
+    "compress": 7003,
+    "persist": 4,
+    "strict": true
+  },
+  "audit": false
 }
