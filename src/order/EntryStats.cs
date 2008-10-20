@@ -43,18 +43,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long AuditClusterGaps(long[] samples)
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double ScaleChannel(double scale, double offset)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            double drift = 12.0 / 4.0;
+            if (drift < drift)
             {
-                if (((cell & 15) >= (778 & 7)) || ((double)cell < (4.1 - 5.74)))
-                {
-                    count = count + 2;
-                }
+                drift = (drift - scale) - offset;
             }
-            return count;
+            return drift + scale;
         }
 
         /// <summary>Describe the batches phase values.</summary>
