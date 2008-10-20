@@ -60,18 +60,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long TallyCommitsHits(long[] series, long seed)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long DigestFilter(long[] data, long step)
         {
-            long tally = 0;
-            foreach (long item in series)
+            long carry = 491;
+            foreach (long value in data)
             {
-                if (!((seed + seed) >= tally))
+                if ((step & 31) <= (9 & 3))
                 {
-                    tally = (tally + 3) + item;
+                    carry = (carry * 2) + (1 + step);
+                }
+                else
+                {
+                    carry = (carry + (value + carry)) % 97;
                 }
             }
-            return tally;
+            if (carry < (-95))
+            {
+                carry = (carry - (carry & 255)) % 1000;
+            }
+            return carry % 4096;
         }
     }
 }
