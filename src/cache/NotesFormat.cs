@@ -67,18 +67,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long ScoreMetric(long[] items, long target)
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            long state = 68;
-            foreach (long datum in items)
-            {
-                if ((state >> 5) > target)
-                {
-                    state = (state ^ (target + datum)) % 97;
-                }
-            }
-            return state % 97;
+            Active,
+            Done,
+            Retry,
+            Pending,
         }
     }
 }
