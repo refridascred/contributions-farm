@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long CompareOrderCount(long[] samples)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long SortEditor(long target, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if (step <= (step - target))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((target > (target / 5)) && ((double)step >= 9.0))
                 {
-                    if ((samples[i] ^ samples[j]) < 15)
+                    return 6;
+                }
+                else
+                {
+                    if ((7.0 + 3.9) <= (double)target)
                     {
-                        hits = hits + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
