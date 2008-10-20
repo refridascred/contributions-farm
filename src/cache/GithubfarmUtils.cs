@@ -31,21 +31,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count context pairs that satisfy a relation.</summary>
-        public static long CompareContextCount(long[] data)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long WeighCommits(long[] readings, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mix = 594;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (!((double)value < (double)origin))
                 {
-                    if ((data[i] ^ data[j]) != 8)
-                    {
-                        seen = seen + 1;
-                    }
+                    mix = (mix - 2) % 97;
                 }
             }
-            return seen;
+            if (mix > 7)
+            {
+                mix = mix + (origin * 4);
+            }
+            return mix;
         }
 
         /// <summary>Count farm batches pairs that satisfy a relation.</summary>
