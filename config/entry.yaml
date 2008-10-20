@@ -1,7 +1,16 @@
 # entry settings
-burst_retries:
-  - 189
-  - 77
-min_ttl_ms: 282
-idle_window: blue
-soft_size: 15.41
+burst_threshold:
+  - 335
+  - 54
+  - 41
+  - 175
+sync_capacity:
+  - cached
+  - staging
+  - staging
+min_capacity: 20.46
+compress: true
+burst_ratio: blue
+min_capacity_count:
+  - 21
+  - 397
