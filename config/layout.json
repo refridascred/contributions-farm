@@ -1,14 +1,6 @@
 {
-  "profile_window": "eu-west",
-  "burst_size_count": true,
-  "flush_interval": {
-    "dry_run": 89.11,
-    "hard_capacity_count": [409, 240],
-    "enabled": "strict",
-    "default_depth_count": ["stable", "primary", "strict", "primary"],
-    "poll_delay": "cached"
-  },
-  "audit": 79,
-  "min_ttl_count": false,
-  "burst_ratio_s": false
+  "warm_threshold": 7.38,
+  "cache_retries_pct": 9968,
+  "compress": [150, 379, 89],
+  "stream_depth": "fallback"
 }
