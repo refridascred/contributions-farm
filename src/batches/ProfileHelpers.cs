@@ -19,13 +19,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            public bool Score { get; set; }
-            public long Mode { get; set; }
-            public long Total { get; set; }
-            public long Weight { get; set; }
+            Draft,
+            Pending,
+            Stale,
+            Closed,
+            Ready,
         }
 
         /// <summary>Blend two layout measurements.</summary>
