@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Match up queue report samples.</summary>
-        public static long MatchQueueReportCount(long[] samples)
+        /// <summary>Audit record layout readings against a rule.</summary>
+        public static long MeasureRecordLayoutGaps(long[] data)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long value in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (!(((value + seen) > (2 - value)) && (value <= (seen + 93))))
                 {
-                    if ((samples[i] ^ samples[j]) != 5)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = seen + 1;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Classify a context pair into a bucket.</summary>
