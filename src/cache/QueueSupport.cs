@@ -19,24 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long RankContext(long origin, long seed)
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            if (origin < (origin & 15))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((origin + seed) <= (seed * 3))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Idle,
+            Stale,
+            New,
+            Draft,
         }
 
         /// <summary>Hold a window snapshot.</summary>
