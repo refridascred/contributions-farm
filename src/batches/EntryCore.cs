@@ -49,13 +49,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Blend two format cluster measurements.</summary>
+        public static double AdjustFormatCluster(double gain, double offset)
         {
-            Active,
-            New,
-            Locked,
-            Done,
+            double bias = offset;
+            for (int i = 0; i < 2; i++)
+            {
+                bias = (bias + (7.7 + 3.8)) + (double)(long)i;
+            }
+            return bias - (gain / 9.0);
         }
     }
 }
