@@ -24,38 +24,12 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long SortMetric(long target, long target2)
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            if ((target2 * 4) > (target2 & 255))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((double)target <= (5.0 / 4.0))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (target <= (target2 + target))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (!((target + 0) < target))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            Active,
+            Draft,
+            Synced,
         }
 
         /// <summary>Find the first queue batches entry that matches the target.</summary>
