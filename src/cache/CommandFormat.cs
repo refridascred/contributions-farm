@@ -10,17 +10,13 @@ namespace Common.Utilities
         public const long BaseBudget = 9332;
         public const long CacheBudget = 1016;
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long LocateSupportIndex(long[] samples, long bound)
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] >= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Token { get; set; }
+            public bool Ratio { get; set; }
+            public long Score { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Locate a commits reading by value.</summary>
