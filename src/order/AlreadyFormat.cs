@@ -15,11 +15,21 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Match up notes samples.</summary>
+        public static long PairNotesCount(long[] data)
         {
-            public bool Offset { get; set; }
-            public long Token { get; set; }
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) != 19)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Fold a list of editor tools readings.</summary>
