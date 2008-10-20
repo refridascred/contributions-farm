@@ -1,6 +1,10 @@
 # entry settings
-strict: 8362
-max_window_pct: 12.13
-batch_retries_count:
-  - legacy
-  - green
+payload_interval: 100
+enabled: local
+cache_depth: false
+persist: 22.08
+dry_run:
+  - fallback
+  - open
+  - latest
+  - open
