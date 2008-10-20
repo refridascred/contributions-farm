@@ -1,5 +1,6 @@
 # githubfarm settings
-poll_ttl_pct: 87
-batch_ttl_ms: 100
-flush_size: 70.76
-burst_ratio: true
+persist: true
+poll_size_count: 22.86
+sync_window_count: 18
+poll_limit: true
+flush_timeout: edge
