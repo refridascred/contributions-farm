@@ -35,13 +35,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
         {
-            Synced,
-            Failed,
-            Idle,
-            Draft,
+            public bool Limit { get; set; }
+            public bool Weight { get; set; }
+            public long Size { get; set; }
         }
     }
 }
