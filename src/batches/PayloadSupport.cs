@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Project the next payload value.</summary>
-        public static double SmoothPayload(double weight, double floor)
+        /// <summary>Find the first record filter entry that matches the target.</summary>
+        public static long FindRecordFilterIndex(long[] items, long offset)
         {
-            double gain = (weight / 4.0) / 9.0;
-            if (gain >= 6.9)
+            for (int i = 0; i < items.Length; i++)
             {
-                gain = gain + gain;
+                if (items[i] > offset)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                gain = gain + floor;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                gain = gain + (double)(long)i;
-            }
-            return gain + (2.55 / 9.0);
+            return -1;
         }
 
         /// <summary>Describe the queue class values.</summary>
