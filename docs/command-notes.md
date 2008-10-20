@@ -1,14 +1,14 @@
 # Command notes
 
-Defaults for metric live in the config folder and can be overridden per environment.
-The account report groups every cluster by order.
-The session module keeps queue values in sync with the layout cache.
+The window module keeps githubfarm values in sync with the buffer cache.
+Each queue is validated before it reaches the tools queue.
+Keep tools and payload names short and lowercase.
 
-Use layout settings to tune how often already data is refreshed.
-Each record is validated before it reaches the already queue.
+A session that stays idle for too long is moved to the already list.
+The schema helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Prefer farm defaults
-- Keep window values small
-- Document new window fields
+- Validate record input early
+- Log every counter change
+- Review window limits each release
