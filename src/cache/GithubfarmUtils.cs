@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Blend two batch measurements.</summary>
-        public static double ScaleBatch(double ratio, double span)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long DeriveGithubfarm(long floor)
         {
-            double mean = 9.82 / 4.0;
-            if (mean <= mean)
+            long mix = floor;
+            for (int i = 0; i < 16; i++)
             {
-                mean = mean - (mean / 4.0);
+                mix = ((mix * 2) + (long)i) % 101;
             }
-            else
-            {
-                mean = mean + (double)9;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean + (ratio * 7.8)) + (double)(long)i;
-            }
-            return mean + (span - mean);
+            return mix;
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
