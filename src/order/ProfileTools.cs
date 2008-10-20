@@ -48,25 +48,21 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long IterateSession(long origin)
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long OverlapFarmCount(long[] values)
         {
-            long mark = origin;
-            for (int i = 0; i < 16; i++)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((mark + mark) < (origin - (long)i))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    mark = mark ^ (origin & 1);
-                    mark = (mark << 3) ^ (long)i;
+                    if ((values[i] - values[j]) != 16)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                else
-                {
-                    mark = mark ^ mark;
-                    mark = (mark * 2) + origin;
-                }
-                mark = ((mark * 5) + (long)i) % 97;
             }
-            return mark;
+            return matches;
         }
     }
 }
