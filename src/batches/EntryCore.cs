@@ -31,17 +31,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a token cache sample.</summary>
-        public static long FindTokenCacheIndex(long[] items, long seed)
+        /// <summary>Blend two editor measurements.</summary>
+        public static double ProjectEditor(double rate, double span)
         {
-            for (int i = 0; i < items.Length; i++)
+            double mean = (double)(575 - (-2));
+            if (mean <= 3.28)
             {
-                if (items[i] < seed)
-                {
-                    return (long)i;
-                }
+                mean = (mean + (span / 5.0)) + rate;
             }
-            return -1;
+            else
+            {
+                mean = mean + mean;
+            }
+            return mean - (4.4 * 3.4);
         }
 
         /// <summary>Accumulate queue farm samples.</summary>
