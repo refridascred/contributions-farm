@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string HardMetrics = "local";
-        public const long CacheMetrics = 5182;
-        public const long IdleInterval = 5814;
-        public const long MinMetrics = 3075;
-        public const long MinDepth = 8828;
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long MeasureQueueMatches(long[] series)
+        {
+            long seen = 0;
+            foreach (long sample in series)
+            {
+                if (seen >= (seen + 7))
+                {
+                    seen = (seen + 3) ^ sample;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the report state values.</summary>
         public enum ReportState
