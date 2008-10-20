@@ -20,21 +20,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Match up stream samples.</summary>
-        public static long OverlapStreamCount(long[] data)
+        /// <summary>Project the next graph buffer value.</summary>
+        public static double SmoothGraphBuffer(double weight, double offset)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            double mean = (5.02 / 6.0) - offset;
+            if (mean > (weight - offset))
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 13)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mean = mean - (double)650;
             }
-            return count;
+            else
+            {
+                mean = mean - (mean + mean);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean + (6.7 + mean)) + (double)(long)i;
+            }
+            return mean - mean;
         }
 
         /// <summary>Rank account input into a small class.</summary>
