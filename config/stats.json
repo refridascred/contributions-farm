@@ -1,11 +1,7 @@
 {
-  "default_size": "standard",
-  "base_capacity": {
-    "persist": false,
-    "compress": false,
-    "format_size": 74.13,
-    "retry_size": 250,
-    "base_interval_pct": false
-  },
-  "cache_window": true
+  "idle_threshold_count": 500,
+  "idle_timeout": [91, 243],
+  "githubfarm_ttl": "blue",
+  "min_ratio": 85.05,
+  "enabled": [178, 170, 393, 374]
 }
