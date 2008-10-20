@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long CountSupportMatches(long[] series, long seed)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long RollFilter(long origin)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            long mark = origin;
+            for (int i = 0; i < 22; i++)
             {
-                if ((double)seed < (double)cell)
+                mark = ((mark * 5) + (origin + (long)i)) % 255;
+                if ((mark * 5) >= (952 + (long)i))
                 {
-                    matches = matches + 2;
+                    mark = ((mark << 2) ^ ((long)i * 3)) % 4096;
                 }
+                mark = ((mark * 5) + (long)i) % 65521;
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Combine window values into a single score.</summary>
