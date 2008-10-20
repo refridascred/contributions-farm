@@ -42,20 +42,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool GuardProfileLimits(long[] items, long origin)
-        {
-            bool flag = true;
-            foreach (long datum in items)
-            {
-                if (datum >= origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long DefaultFactor = 9942;
+        public const long SoftSize = 9455;
+        public const long SoftEditor = 2939;
 
         /// <summary>Measure how many command support samples are out of range.</summary>
         public static long MeasureCommandSupportOutliers(long[] samples)
