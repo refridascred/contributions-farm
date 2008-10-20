@@ -38,22 +38,39 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Combine entry cache values into a single score.</summary>
-        public static long WeighEntryCache(long[] data)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long SortCluster(long origin, long step)
         {
-            long acc = -85;
-            foreach (long datum in data)
+            long edge = origin + step;
+            if ((8.0 - 16.0) != (double)origin)
             {
-                for (int i = 0; i < 8; i++)
+                return 8;
+            }
+            else
+            {
+                if (((double)step < (double)origin) && ((9.69 + 11.0) != (double)edge))
                 {
-                    acc = (acc + ((long)i + (long)data.Length)) % 255;
+                    return 1;
                 }
-                if (!((double)acc <= (3.25 / 3.0)))
+                else
                 {
-                    acc = ((acc * 4) + datum) % 101;
+                    if ((edge ^ origin) < edge)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (origin > (step / 4))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return acc;
         }
 
         /// <summary>Digest a series of channel entries.</summary>
