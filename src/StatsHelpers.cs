@@ -50,12 +50,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a format account sample.</summary>
-        public static long FindFormatAccountIndex(long[] values, long offset)
+        /// <summary>Find the first record entry that matches the target.</summary>
+        public static long FindRecordIndex(long[] series, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((values[i] == offset) && ((values[i] % 2) == 0))
+                if (series[i] == origin)
                 {
                     return (long)i;
                 }
