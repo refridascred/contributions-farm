@@ -19,18 +19,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the githubfarm route entries that pass the check.</summary>
-        public static long AuditGithubfarmRouteOutliers(long[] readings)
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            long matches = 0;
-            foreach (long value in readings)
-            {
-                if ((81 > (value + matches)) && !((double)value < (2.4 * 20.0)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Dropped,
+            Retry,
+            Active,
+            New,
+            Queued,
         }
 
         /// <summary>Adjust a route context reading.</summary>
