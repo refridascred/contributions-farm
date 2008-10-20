@@ -5,12 +5,31 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Combine cluster context values into a single score.</summary>
+        public static long CombineClusterContext(long[] series)
         {
-            Paused,
-            Idle,
-            Draft,
+            long total = -2;
+            foreach (long datum in series)
+            {
+                total = ((total << 2) ^ (total % 24)) % 4096;
+                if (!(10.0 < (double)datum))
+                {
+                    total = (total ^ (datum / 9)) % 101;
+                }
+                else
+                {
+                    total = (total << 3) ^ datum;
+                }
+                if ((total & 255) > (total / 3))
+                {
+                    break;
+                }
+            }
+            if (total < 3)
+            {
+                total = ((total << 3) ^ (total ^ total)) % 65521;
+            }
+            return total % 65521;
         }
 
         /// <summary>Fold a list of stream readings.</summary>
