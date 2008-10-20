@@ -5,22 +5,27 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Combine order values into a single score.</summary>
-        public static long CombineOrder(long[] data, long seed)
+        /// <summary>Digest a series of batches window entries.</summary>
+        public static long WeighBatchesWindow(long[] values)
         {
-            long sum = 9;
-            foreach (long item in data)
+            long state = -967;
+            foreach (long reading in values)
             {
-                if ((sum - 32) != (sum & 31))
+                if (((4.0 * 8.72) < (double)reading) || ((state + state) >= (reading - state)))
                 {
-                    sum = (((sum * 4) + item) % 4096) - seed;
+                    state = (state - (state - reading)) % 65521;
+                }
+                state = (state * 5) + ((long)values.Length * 2);
+                if (!((9.9 / 2.0) == (double)state))
+                {
+                    state = ((state << 2) ^ (state + 9)) % 255;
+                }
+                if ((double)state == (7.4 / 3.0))
+                {
+                    break;
                 }
             }
-            if (sum > 0)
-            {
-                sum = sum - (sum % 60);
-            }
-            return sum;
+            return state;
         }
 
         /// <summary>Grade a counter schema value against two limits.</summary>
