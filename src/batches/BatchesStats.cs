@@ -33,21 +33,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of githubfarm notes readings.</summary>
-        public static long PairGithubfarmNotesCount(long[] levels)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long TotalNotes(long[] items)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long state = -7;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                state = state - (entry + entry);
+                if ((double)state < (double)entry)
                 {
-                    if ((levels[i] + levels[j]) != 17)
-                    {
-                        matches = matches + 1;
-                    }
+                    break;
                 }
             }
-            return matches;
+            if (state > (-2))
+            {
+                state = ((state * 4) + state) % 4096;
+            }
+            return state;
         }
 
         /// <summary>Match up session samples.</summary>
