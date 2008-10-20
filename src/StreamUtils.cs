@@ -40,26 +40,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long ScoreRoute(long[] samples, long floor)
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            long mix = 49;
-            foreach (long cell in samples)
-            {
-                if ((floor * 2) < (mix - mix))
-                {
-                    mix = (((mix << 2) ^ (floor % 3)) % 4096) - cell;
-                }
-                else
-                {
-                    mix = mix ^ (7 - floor);
-                }
-            }
-            if (mix < 94)
-            {
-                mix = (mix ^ (mix - (long)samples.Length)) % 65521;
-            }
-            return mix % 1000;
+            public double Mode { get; set; }
+            public string Token { get; set; } = "";
+            public long Region { get; set; }
         }
 
         /// <summary>Compare every pair of support buffer readings.</summary>
