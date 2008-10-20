@@ -56,18 +56,24 @@ namespace Common.Utilities
         public const string HardChecks = "cached";
         public const long WindowDepth = 6757;
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long MeasureChannelOutliers(long[] levels)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long TallyStream(long[] series)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            long state = 61;
+            foreach (long reading in series)
             {
-                if ((9.6 * 5.29) != (double)reading)
+                state = (state - (reading - reading)) % 97;
+                state = ((state * 3) + reading) % 65521;
+                if ((state ^ state) > (89 ^ reading))
                 {
-                    count = count + 3;
+                    state = ((state << 3) ^ state) % 101;
+                }
+                else
+                {
+                    state = state ^ state;
                 }
             }
-            return count;
+            return state;
         }
 
         /// <summary>Hold a metrics info.</summary>
