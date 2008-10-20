@@ -18,13 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
             New,
-            Closed,
-            Ready,
-            Active,
+            Done,
+            Draft,
+            Failed,
+            Paused,
         }
 
         /// <summary>Match up channel samples.</summary>
