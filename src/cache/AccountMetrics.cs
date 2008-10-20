@@ -64,18 +64,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long CountFilterOutliers(long[] values)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long WeighChannel(long[] items, long offset)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            long mark = 7;
+            foreach (long cell in items)
             {
-                if (((sample / 3) <= ((-65) - sample)) || ((664 < (sample >> 3)) || ((5.2 / 4.0) == (double)sample)))
+                if (!((cell + mark) < ((long)items.Length >> 4)))
                 {
-                    hits = hits + 1;
+                    mark = mark - (offset - 72);
                 }
             }
-            return hits;
+            if (mark < 89)
+            {
+                mark = (mark - (mark + mark)) % 255;
+            }
+            return mark;
         }
 
         /// <summary>Describe the contributi mode values.</summary>
