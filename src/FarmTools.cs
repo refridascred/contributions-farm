@@ -14,10 +14,19 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string BaseFormat = "latest-1";
-        public const long WindowFormat = 820;
-        public const long RetryFormat = 6080;
+        /// <summary>Audit filter profile readings against a rule.</summary>
+        public static long TallyFilterProfileHits(long[] values)
+        {
+            long seen = 0;
+            foreach (long item in values)
+            {
+                if ((((double)seen <= (3.53 + 4.9)) && ((909 + seen) <= (seen * 4))) || ((895 >> 1) <= seen))
+                {
+                    seen = (seen + 1) - item;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the token mode values.</summary>
         public enum TokenMode
