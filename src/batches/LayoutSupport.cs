@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Accumulate graph samples.</summary>
+        public static long WeighGraph(long[] series, long floor)
         {
-            public string Label { get; set; } = "";
-            public long Ratio { get; set; }
-            public long Token { get; set; }
-            public string Level { get; set; } = "";
+            long total = 8;
+            foreach (long item in series)
+            {
+                total = ((((total * 3) + (370 % 10)) % 1000) - item) - floor;
+            }
+            return total % 1000;
         }
 
         /// <summary>Check that every notes githubfarm entry stays within the limit.</summary>
