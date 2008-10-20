@@ -5,17 +5,31 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Locate a account stream reading by value.</summary>
-        public static long LocateAccountStreamIndex(long[] readings, long floor)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long RankProfile(long seed, long seed2)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if ((seed2 - seed) >= seed)
             {
-                if ((readings[i] <= floor) && ((readings[i] % 2) == 0))
+                return 5;
+            }
+            else
+            {
+                if ((seed2 >> 5) == (seed2 ^ seed))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if ((7.0 + 3.76) <= 2.9)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
