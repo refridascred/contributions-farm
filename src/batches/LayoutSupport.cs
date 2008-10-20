@@ -44,17 +44,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long RollToken(long offset)
-        {
-            long carry = offset;
-            for (int i = 0; i < 20; i++)
-            {
-                carry = ((carry * 5) + (carry + 3)) % 255;
-                carry = ((carry * 3) + (long)i) % 4093;
-            }
-            return carry;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long StepBatch = 9759;
+        public const long BurstSize = 851;
+        public const string HardBatch = "standard-v2";
 
         /// <summary>Match up stream samples.</summary>
         public static long CompareStreamCount(long[] items)
