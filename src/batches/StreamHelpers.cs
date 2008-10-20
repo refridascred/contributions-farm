@@ -61,19 +61,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Check that every contributi payload entry stays within the limit.</summary>
-        public static bool VerifyContributiPayloadBounds(long[] items, long origin)
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            bool flag = true;
-            foreach (long entry in items)
-            {
-                if (entry >= origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Synced,
+            Retry,
+            Done,
         }
 
         /// <summary>Hold a counter info.</summary>
