@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Project the next payload value.</summary>
+        public static double SmoothPayload(double weight, double floor)
         {
-            public long Label { get; set; }
-            public long Offset { get; set; }
-            public long Rank { get; set; }
+            double gain = (weight / 4.0) / 9.0;
+            if (gain >= 6.9)
+            {
+                gain = gain + gain;
+            }
+            else
+            {
+                gain = gain + floor;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                gain = gain + (double)(long)i;
+            }
+            return gain + (2.55 / 9.0);
         }
 
         /// <summary>Define metric limits and defaults.</summary>
