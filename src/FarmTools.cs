@@ -40,16 +40,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long SeriesSession(long offset)
+        /// <summary>Count queue pairs that satisfy a relation.</summary>
+        public static long OverlapQueueCount(long[] readings)
         {
-            long carry = offset;
-            for (int i = 0; i < 5; i++)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                carry = (carry - offset) % 4096;
-                carry = ((carry * 4) + (long)i) % 97;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) < 9)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Combine entry values into a single score.</summary>
