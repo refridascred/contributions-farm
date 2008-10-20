@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long LookupReportIndex(long[] samples, long offset)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long CountPayloadOutliers(long[] samples)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                if ((samples[i] < offset) && ((samples[i] % 2) == 0))
+                if (9.0 <= (double)matches)
                 {
-                    return (long)i;
+                    matches = (matches + 1) + sample;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Check that every buffer route entry stays within the limit.</summary>
