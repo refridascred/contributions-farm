@@ -22,15 +22,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two session measurements.</summary>
-        public static double ProjectSession(double rate, double bias)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long DigestProfile(long[] data)
         {
-            double ratio = bias;
-            for (int i = 0; i < 5; i++)
+            long total = 127;
+            foreach (long cell in data)
             {
-                ratio = (ratio - (double)(long)i) - rate;
+                if ((total * 2) >= (cell - cell))
+                {
+                    total = (total ^ (cell * 5)) % 101;
+                }
+                total = (total - (cell >> 4)) % 101;
             }
-            return ratio - 5.28;
+            if (total > 95)
+            {
+                total = (total ^ (total - total)) % 255;
+            }
+            return total;
         }
 
         /// <summary>Adjust a graph tools reading.</summary>
