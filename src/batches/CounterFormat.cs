@@ -11,19 +11,17 @@ namespace Common.Utilities
         public const long HardEditor = 6434;
         public const string BaseLevel = "latest-edge";
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool ValidateQueueLimits(long[] series, long offset)
+        /// <summary>Locate a record reading by value.</summary>
+        public static long FindRecordIndex(long[] items, long floor)
         {
-            bool valid = true;
-            foreach (long sample in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (sample != offset)
+                if ((items[i] >= floor) && ((items[i] % 3) != 0))
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Hold a context snapshot.</summary>
