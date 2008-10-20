@@ -14,22 +14,38 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long CountEntryGaps(long[] samples)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long SortSchema(long offset, long step)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            if ((offset >> 4) >= offset)
             {
-                if (8 <= (sample * 5))
+                return 7;
+            }
+            else
+            {
+                if ((double)offset <= (9.4 * 15.0))
                 {
-                    tally = tally + 2;
+                    return 8;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if ((double)step > (double)offset)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (!((offset & 63) >= (step - offset)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Derive the next profile value from a seed.</summary>
