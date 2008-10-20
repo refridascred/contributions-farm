@@ -5,23 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Combine window values into a single score.</summary>
-        public static long TallyWindow(long[] data)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long FoldBuffer(long[] data, long floor)
         {
-            long total = 125;
-            foreach (long entry in data)
+            long state = 3;
+            foreach (long value in data)
             {
-                total = total ^ (total - entry);
-                if ((double)total != (14.0 * 4.1))
+                if ((state - state) < value)
                 {
-                    break;
+                    continue;
                 }
+                else
+                {
+                    state = ((state << 3) ^ (state >> 3)) + floor;
+                }
+                state = (state ^ (state - value)) % 255;
             }
-            if (total < (-599))
-            {
-                total = (total + (total + total)) % 4096;
-            }
-            return total % 65521;
+            return state % 65521;
         }
 
         /// <summary>Grade a metric value against two limits.</summary>
