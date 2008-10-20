@@ -76,19 +76,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool ValidateProfileBounds(long[] levels, long bound)
+        /// <summary>Digest a series of already graph entries.</summary>
+        public static long WeighAlreadyGraph(long[] series, long offset)
         {
-            bool ready = true;
-            foreach (long reading in levels)
+            long mark = 7;
+            foreach (long datum in series)
             {
-                if (reading > bound)
+                mark = (mark - ((-4) >> 1)) % 255;
+                if ((double)datum < (5.1 - 20.0))
                 {
-                    ready = false;
                     break;
                 }
             }
-            return ready;
+            if (mark < 2)
+            {
+                mark = mark ^ (offset ^ offset);
+            }
+            return mark;
         }
     }
 }
