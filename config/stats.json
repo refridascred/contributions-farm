@@ -1,7 +1,8 @@
 {
-  "commits_limit": 100,
-  "readonly": "strict",
-  "enabled": 5964,
-  "graph_threshold": "local",
-  "sync_ratio": [87, 51, 194, 437]
+  "buffer_window": "standard",
+  "idle_interval": "primary",
+  "burst_delay": [335, 206, 487, 14],
+  "persist": true,
+  "batch_depth_s": true,
+  "default_delay_s": ["stable", "local", "latest", "local"]
 }
