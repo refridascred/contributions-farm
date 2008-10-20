@@ -12,21 +12,11 @@ namespace Common.Utilities
         public const double StepTimeout = 30.39;
         public const string HardWindow = "standard-v2";
 
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long OverlapRecordCount(long[] samples)
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double ProjectGithubfarm(double weight, double floor)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 7)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            double rate = (floor * 8.9) - (double)3;
+            return (rate - (7.5 + rate)) + weight;
         }
 
         /// <summary>Derive the next report value from a seed.</summary>
