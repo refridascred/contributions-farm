@@ -36,15 +36,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long ScoreContributi(long[] readings)
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            long mark = -7;
-            foreach (long entry in readings)
-            {
-                mark = ((mark * 5) + (entry >> 3)) % 255;
-            }
-            return mark % 4096;
+            public long Label { get; set; }
+            public long Weight { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Blend two window measurements.</summary>
