@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Find the first stats cache entry that matches the target.</summary>
+        public static long LookupStatsCacheIndex(long[] data, long step)
         {
-            public long Ratio { get; set; }
-            public string Label { get; set; } = "";
-            public long Count { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Iterate the counter series from a seed.</summary>
