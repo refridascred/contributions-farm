@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Measure how many editor notes samples are out of range.</summary>
-        public static long TallyEditorNotesMatches(long[] values)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long IterateFormat(long limit)
         {
-            long tally = 0;
-            foreach (long item in values)
+            long score = limit;
+            for (int i = 0; i < 13; i++)
             {
-                if ((tally / 4) != (6 - item))
-                {
-                    tally = tally + 3;
-                }
+                score = ((score * 3) + (long)i) % 101;
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Compare every pair of already readings.</summary>
