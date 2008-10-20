@@ -40,11 +40,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long LimitWidth = 6535;
-        public const long DefaultScore = 2839;
-        public const long SoftSpan = 9433;
-        public const double SoftStats = 87.76;
-        public const string BaseWidth = "primary-1";
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long SoftContributi = 4307;
+        public const string BatchContributi = "latest";
+        public const long MaxContributi = 8034;
+        public const long WindowContributi = 4965;
     }
 }
