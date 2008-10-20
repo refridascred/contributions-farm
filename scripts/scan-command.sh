@@ -6,15 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
+mode="${1:-stable}"
+case "${mode}" in
+    fallback)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
 total=0
-for i in $(seq 1 5); do
-    total=$((total + i * 5))
+for i in $(seq 1 10); do
+    total=$((total + i * 2))
 done
 log "total ${total}"
-
-COMMAND_LIMIT=148
-log "limit is ${COMMAND_LIMIT}"
-
-for item in eu-west blue stable local; do
-    log "checking ${item}"
-done
