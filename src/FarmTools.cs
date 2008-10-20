@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Project the next entry value.</summary>
-        public static double ProjectEntry(double bias, double span)
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
         {
-            double ratio = (double)7;
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = (((ratio + (ratio * 4.0)) + (double)(long)i) + bias) + span;
-            }
-            return ratio + (ratio / 7.0);
+            public bool Score { get; set; }
+            public long Limit { get; set; }
+            public string Weight { get; set; } = "";
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Define format limits and defaults.</summary>
