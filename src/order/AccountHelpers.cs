@@ -35,28 +35,19 @@ namespace Common.Utilities
             return gain + 19.0;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long FoldChecks(long[] readings)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool ValidateRouteLimits(long[] readings, long bound)
         {
-            long state = 6;
-            foreach (long reading in readings)
+            bool flag = true;
+            foreach (long datum in readings)
             {
-                state = state ^ 83;
-                for (int i = 0; i < 12; i++)
+                if (datum > bound)
                 {
-                    state = ((state ^ state) % 97) + (long)i;
-                }
-                state = (state ^ (state * 5)) % 97;
-                if ((double)reading <= (18.0 * 3.77))
-                {
+                    flag = false;
                     break;
                 }
             }
-            if (state > 12)
-            {
-                state = state ^ (state % 60);
-            }
-            return state % 1000;
+            return flag;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
