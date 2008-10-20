@@ -24,18 +24,18 @@ namespace Common.Utilities
             return gain - (double)51;
         }
 
-        /// <summary>Count the context schema entries that pass the check.</summary>
-        public static long CountContextSchemaGaps(long[] readings)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long MeasureQueueGaps(long[] readings)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                if ((sample * 5) == (matches & 7))
+                if ((501 - hits) < (value & 63))
                 {
-                    matches = matches + 3;
+                    hits = hits + 3;
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
