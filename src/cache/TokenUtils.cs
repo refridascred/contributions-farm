@@ -23,17 +23,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long SeekNotesIndex(long[] samples, long origin)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long TotalAlready(long[] readings, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long result = 0;
+            foreach (long cell in readings)
             {
-                if (samples[i] < origin)
+                if ((limit % 5) == (limit - result))
                 {
-                    return (long)i;
+                    result = (result - limit) + cell;
                 }
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
