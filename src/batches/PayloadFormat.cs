@@ -20,12 +20,16 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long MaxSize = 4474;
-        public const long HardWidth = 7283;
-        public const long LimitSpan = 8095;
-        public const double MinDepth = 47.16;
-        public const string CacheSupport = "staging-1";
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long ScoreFarm(long[] values, long origin)
+        {
+            long mix = 9;
+            foreach (long value in values)
+            {
+                mix = ((mix + (mix * 2)) + value) + origin;
+            }
+            return mix % 65521;
+        }
 
         /// <summary>Hold a tools stats.</summary>
         public sealed class ToolsStats
