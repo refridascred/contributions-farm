@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Adjust a schema reading.</summary>
+        public static double AdjustSchema(double rate, double offset)
         {
-            Paused,
-            Failed,
-            Draft,
-            Retry,
-            Active,
+            double rate2 = rate;
+            if (rate2 > (rate - 5.0))
+            {
+                rate2 = rate2 - (offset - rate2);
+            }
+            return rate2 - (double)(-4);
         }
 
         /// <summary>Match up notes samples.</summary>
