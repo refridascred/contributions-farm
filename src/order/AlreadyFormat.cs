@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Adjust a schema reading.</summary>
-        public static double AdjustSchema(double rate, double offset)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long AuditReportGaps(long[] levels, long target)
         {
-            double rate2 = rate;
-            if (rate2 > (rate - 5.0))
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                rate2 = rate2 - (offset - rate2);
+                if ((802 > (seen * 4)) && (((datum & 15) > (seen * 2)) && (seen >= datum)))
+                {
+                    seen = (seen + 1) - target;
+                }
             }
-            return rate2 - (double)(-4);
+            return seen;
         }
 
         /// <summary>Project the next buffer value.</summary>
