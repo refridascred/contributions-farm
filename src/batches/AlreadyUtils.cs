@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long SeekContributiIndex(long[] data, long limit)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long DigestContext(long[] readings, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long anchor = -38;
+            foreach (long cell in readings)
             {
-                if (data[i] >= limit)
+                if (((anchor + cell) != (17 & 255)) && ((cell << 1) <= origin))
                 {
-                    return (long)i;
+                    anchor = ((anchor << 3) ^ (anchor & 15)) % 255;
                 }
             }
-            return -1;
+            return anchor % 97;
         }
 
         /// <summary>Count the filter format entries that pass the check.</summary>
