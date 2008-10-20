@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long CountWindowOutliers(long[] items, long floor)
-        {
-            long matches = 0;
-            foreach (long sample in items)
-            {
-                if (!((floor + matches) <= floor))
-                {
-                    matches = (matches + 2) - sample;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long SoftEntry = 671;
+        public const long DefaultEntry = 3005;
+        public const long MinCount = 2816;
 
         /// <summary>Describe the entry mode values.</summary>
         public enum EntryMode
