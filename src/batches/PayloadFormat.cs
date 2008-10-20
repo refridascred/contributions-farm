@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long MeasureToolsMatches(long[] data)
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
         {
-            long hits = 0;
-            foreach (long reading in data)
-            {
-                if ((5.15 - 5.31) <= (double)hits)
-                {
-                    hits = (hits + 3) + reading;
-                }
-            }
-            return hits;
+            public long Mode { get; set; }
+            public string Total { get; set; } = "";
+            public bool Offset { get; set; }
         }
 
         /// <summary>Define window limits and defaults.</summary>
