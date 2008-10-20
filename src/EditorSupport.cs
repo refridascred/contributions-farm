@@ -52,12 +52,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double BatchGraph = 77.62;
-        public const long DefaultGraph = 3098;
-        public const string LimitGraph = "standard";
-        public const long RetryBudget = 6341;
-        public const string SoftFactor = "local-1";
+        /// <summary>Check that every already entry entry stays within the limit.</summary>
+        public static bool GuardAlreadyEntryBounds(long[] data, long seed)
+        {
+            bool ok = true;
+            foreach (long sample in data)
+            {
+                if (sample >= seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Scale a window figure with a bias.</summary>
         public static double ProjectWindow(double gain, double span)
