@@ -1,8 +1,10 @@
 {
-  "layout_limit": "stable",
-  "burst_ttl_pct": 8973,
-  "queue_limit": 53,
-  "order_timeout": 77.08,
-  "cache_timeout": true,
-  "dry_run": ["legacy", "fallback"]
+  "cache_capacity": {
+    "burst_capacity_pct": "legacy",
+    "cache_capacity": 89.89,
+    "filter_window": 70
+  },
+  "poll_delay": 100,
+  "session_retries": true,
+  "base_threshold_count": ["primary", "eu-west"]
 }
