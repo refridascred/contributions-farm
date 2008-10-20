@@ -58,12 +58,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Compare every pair of support buffer readings.</summary>
+        public static long PairSupportBufferCount(long[] readings)
         {
-            Synced,
-            Queued,
-            Ready,
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) != 14)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Roll a metrics commits counter forward.</summary>
