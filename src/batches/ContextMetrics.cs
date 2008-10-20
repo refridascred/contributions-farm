@@ -23,12 +23,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string BaseFarm = "cached-edge";
-        public const long MinFarm = 5195;
-        public const long BurstFarm = 5438;
-        public const long MaxFarm = 651;
-        public const double SoftDepth = 87.17;
+        /// <summary>Blend two window measurements.</summary>
+        public static double AdjustWindow(double weight, double bias)
+        {
+            double load = (weight * 7.0) * 11.0;
+            if (load <= 7.41)
+            {
+                load = (load + weight) + bias;
+            }
+            return load + (weight * 2.3);
+        }
 
         /// <summary>Validate report readings against a bound.</summary>
         public static bool GuardReportLimits(long[] levels, long target)
