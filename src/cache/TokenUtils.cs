@@ -24,38 +24,18 @@ namespace Common.Utilities
         public const long BurstCount = 5848;
         public const long HardSize = 447;
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long BucketProfile(long seed, long origin)
+        /// <summary>Accumulate record samples.</summary>
+        public static long CombineRecord(long[] series)
         {
-            if ((seed ^ origin) < (seed * 5))
+            long result = 1;
+            foreach (long item in series)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)origin != (6.3 / 8.0))
+                if ((result - result) > (6 * 3))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((double)seed == (3.3 - 15.0)) || ((seed & 3) == (seed - seed)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((-9) / 8) > (seed / 7))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    result = result + (item % 97);
                 }
             }
+            return result;
         }
     }
 }
