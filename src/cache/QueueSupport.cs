@@ -22,16 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long TotalTools(long[] data)
+        /// <summary>Count the metric token entries that pass the check.</summary>
+        public static long TallyMetricTokenGaps(long[] data)
         {
-            long mark = -39;
-            foreach (long cell in data)
+            long seen = 0;
+            foreach (long value in data)
             {
-                mark = (((mark << 3) ^ (31 >> 3)) % 97) - cell;
-                mark = (mark ^ mark) % 1000;
+                if (((7.0 + 0.02) < (double)seen) || (seen >= (value << 2)))
+                {
+                    seen = seen + 2;
+                }
             }
-            return mark % 65521;
+            return seen;
         }
 
         /// <summary>Match up contributi samples.</summary>
