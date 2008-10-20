@@ -1,5 +1,11 @@
 {
-  "contributi_interval": true,
-  "sync_capacity": "cached",
-  "strict": 75.93
+  "warm_retries": {
+    "base_threshold_s": 76,
+    "strict": 8988,
+    "max_limit": 500
+  },
+  "base_window": "eu-west",
+  "base_delay_count": false,
+  "soft_timeout_pct": 10.08,
+  "retry_ratio": 60
 }
