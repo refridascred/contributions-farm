@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            public long Offset { get; set; }
-            public bool Limit { get; set; }
-            public bool Count { get; set; }
+            Ready,
+            Stale,
+            Closed,
+            New,
+            Pending,
         }
 
         /// <summary>Hold a layout stats.</summary>
