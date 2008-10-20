@@ -69,12 +69,15 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double ProjectBuffer(double scale, double span)
         {
-            Synced,
-            New,
-            Ready,
+            double rate = (double)52 / 4.0;
+            if (rate < rate)
+            {
+                rate = (rate + rate) + span;
+            }
+            return rate + scale;
         }
     }
 }
