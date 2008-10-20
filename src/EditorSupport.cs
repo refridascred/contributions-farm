@@ -67,15 +67,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double ProjectWindow(double gain, double span)
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            double scale = (double)(424 / 6);
-            if (scale <= (double)23)
-            {
-                scale = scale - (gain - span);
-            }
-            return scale + (scale * 11.0);
+            Closed,
+            Paused,
+            Locked,
+            Stale,
         }
 
         /// <summary>Scale a payload graph figure with a bias.</summary>
