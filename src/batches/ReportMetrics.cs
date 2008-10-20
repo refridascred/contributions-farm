@@ -31,15 +31,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long SeriesEditor(long origin)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long CountReportMatches(long[] series, long origin)
         {
-            long state = origin;
-            for (int i = 0; i < 18; i++)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                state = ((state * 3) + (long)i) % 65521;
+                if ((double)entry >= (9.27 + 0.7))
+                {
+                    matches = (matches + 2) - origin;
+                }
             }
-            return state;
+            return matches;
         }
     }
 }
