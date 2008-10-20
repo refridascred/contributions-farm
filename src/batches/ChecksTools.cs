@@ -23,21 +23,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a schema context counter forward.</summary>
-        public static long StepSchemaContext(long limit)
-        {
-            long mark = limit;
-            for (int i = 0; i < 16; i++)
-            {
-                mark = (mark * 2) + mark;
-                if (!((long)i <= ((long)i & 127)))
-                {
-                    mark = mark ^ 584;
-                }
-                mark = ((mark * 5) + (long)i) % 97;
-            }
-            return mark;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long StepChecks = 2638;
+        public const double MaxChecks = 41.76;
+        public const long BurstChecks = 7146;
+        public const long MinChecks = 4271;
 
         /// <summary>Derive the next profile graph value from a seed.</summary>
         public static long RollProfileGraph(long floor)
