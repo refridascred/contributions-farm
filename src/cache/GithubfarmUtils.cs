@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long DeriveGithubfarm(long floor)
-        {
-            long mix = floor;
-            for (int i = 0; i < 16; i++)
-            {
-                mix = ((mix * 2) + (long)i) % 101;
-            }
-            return mix;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string DefaultProfile = "latest-1";
+        public const long BatchProfile = 1699;
+        public const long IdleLevel = 3293;
 
         /// <summary>Check that every session entry stays within the limit.</summary>
         public static bool ValidateSessionRange(long[] series, long origin)
