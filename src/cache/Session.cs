@@ -40,19 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long TallyBatchMatches(long[] items)
-        {
-            long hits = 0;
-            foreach (long item in items)
-            {
-                if (hits <= (item >> 2))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string BurstGraph = "standard-1";
+        public const double StepSize = 16.41;
+        public const long BatchSize = 5539;
+        public const double CacheFactor = 95.63;
 
         /// <summary>Derive the next command value from a seed.</summary>
         public static long StepCommand(long seed)
