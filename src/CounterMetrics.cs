@@ -14,18 +14,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long WeighSession(long[] series, long origin)
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            long mark = 539;
-            foreach (long entry in series)
-            {
-                if ((origin / 9) < entry)
-                {
-                    mark = (mark ^ (entry >> 1)) % 65521;
-                }
-            }
-            return mark;
+            public double Mode { get; set; }
+            public long Token { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Audit order readings against a rule.</summary>
