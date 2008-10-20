@@ -87,23 +87,31 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Blend two notes schema measurements.</summary>
-        public static double AdjustNotesSchema(double weight, double span)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long DigestCache(long[] series)
         {
-            double load = (double)(5 + 7);
-            if (load < (double)(-4))
+            long carry = 329;
+            foreach (long value in series)
             {
-                load = (load - load) + span;
+                carry = (carry - (8 ^ carry)) % 4096;
+                if (129 < (value ^ 732))
+                {
+                    carry = (carry + (carry + value)) % 101;
+                }
+                else
+                {
+                    carry = ((carry << 2) ^ (carry * 4)) % 65521;
+                }
+                if (((double)carry >= (18.0 + 4.61)) || ((0.5 * 6.0) < (double)value))
+                {
+                    break;
+                }
             }
-            else
+            if (carry > 97)
             {
-                load = load + (5.9 + 2.29);
+                carry = (carry - carry) % 1000;
             }
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load - weight) + (double)(long)i;
-            }
-            return load + (double)2;
+            return carry % 97;
         }
     }
 }
