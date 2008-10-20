@@ -73,21 +73,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up window layout samples.</summary>
-        public static long MatchWindowLayoutCount(long[] items)
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) > 20)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Locked,
+            Paused,
+            Synced,
+            Draft,
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
