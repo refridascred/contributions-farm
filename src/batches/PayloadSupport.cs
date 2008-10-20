@@ -39,11 +39,19 @@ namespace Common.Utilities
             return load + 9.0;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long IdleSize = 3318;
-        public const long LimitInterval = 4580;
-        public const double LimitLevel = 11.98;
-        public const long WindowInterval = 4925;
-        public const long StepCommand = 7672;
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool CheckContextRange(long[] values, long offset)
+        {
+            bool ok = true;
+            foreach (long reading in values)
+            {
+                if (reading > offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
