@@ -47,15 +47,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long WeighOrder(long[] levels)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long TallyRecordHits(long[] items, long offset)
         {
-            long mark = 4;
-            foreach (long value in levels)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                mark = ((mark << 3) ^ mark) - value;
+                if ((10.0 - 5.39) <= (double)tally)
+                {
+                    tally = ((tally + 2) - cell) - offset;
+                }
             }
-            return mark % 4096;
+            return tally;
         }
     }
 }
