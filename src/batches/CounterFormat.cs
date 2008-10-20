@@ -38,11 +38,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double SmoothGithubfarm(double weight, double floor)
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            double mean = (weight * 8.91) * 5.0;
-            return (mean - (double)84) + floor;
+            Paused,
+            Closed,
+            Draft,
+            Active,
         }
     }
 }
