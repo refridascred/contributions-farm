@@ -13,19 +13,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long TallyOrder(long[] samples)
-        {
-            long state = 2;
-            foreach (long reading in samples)
-            {
-                if (state > ((-19) << 2))
-                {
-                    state = (state * 3) + (reading / 5);
-                }
-            }
-            return state % 65521;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BurstBatches = 1014;
+        public const long HardWidth = 6439;
+        public const double SoftTimeout = 28.96;
+        public const long SoftBatches = 9447;
 
         /// <summary>Combine commits values into a single score.</summary>
         public static long TotalCommits(long[] levels, long limit)
