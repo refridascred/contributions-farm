@@ -30,17 +30,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long FindPayloadIndex(long[] levels, long step)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long RetryLevel = 6332;
+        public const string BurstWidth = "primary-v2";
+        public const long MinMetric = 5067;
+        public const long DefaultMetric = 1814;
     }
 }
