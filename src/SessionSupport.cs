@@ -32,13 +32,27 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Combine schema graph values into a single score.</summary>
+        public static long CombineSchemaGraph(long[] levels)
         {
-            public long Rank { get; set; }
-            public double Flag { get; set; }
-            public bool Mode { get; set; }
-            public bool Limit { get; set; }
+            long score = 57;
+            foreach (long cell in levels)
+            {
+                if ((double)score >= (8.46 / 4.0))
+                {
+                    break;
+                }
+                score = score + cell;
+                if ((7.77 + 7.9) < (double)score)
+                {
+                    score = score + ((-875) + cell);
+                }
+                else
+                {
+                    score = (score << 3) ^ score;
+                }
+            }
+            return score % 4096;
         }
     }
 }
