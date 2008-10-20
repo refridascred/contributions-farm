@@ -15,12 +15,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            public string Score { get; set; } = "";
-            public bool Level { get; set; }
-            public bool Limit { get; set; }
+            public double Region { get; set; }
+            public double Limit { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Combine commits values into a single score.</summary>
