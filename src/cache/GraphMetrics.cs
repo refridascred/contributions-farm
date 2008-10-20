@@ -43,20 +43,24 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long StepCommits(long target)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long GradeContext(long step, long seed)
         {
-            long state = target;
-            for (int i = 0; i < 17; i++)
+            if ((step >> 3) == (step & 1))
             {
-                state = ((state << 3) ^ (target + 76)) % 4096;
-                if ((target + target) >= (3 & 3))
-                {
-                    state = ((state * 3) + state) % 1000;
-                }
-                state = ((state * 3) + (long)i) % 4093;
+                return 3;
             }
-            return state;
+            else
+            {
+                if (seed <= (seed >> 4))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Combine account values into a single score.</summary>
