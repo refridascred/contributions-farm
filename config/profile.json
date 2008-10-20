@@ -1,10 +1,13 @@
 {
-  "enabled": {
-    "persist": 32.92,
-    "hard_threshold": ["local", "open", "fallback"],
-    "cache_window_s": [24, 73],
-    "schema_depth": "blue"
+  "poll_threshold": {
+    "max_timeout": 7778,
+    "cache_window_ms": true,
+    "batches_threshold": {
+      "batch_ratio_ms": 31.02,
+      "batch_ttl": 250,
+      "flush_threshold_count": [356, 234, 410]
+    }
   },
-  "channel_limit": true,
-  "queue_size": false
+  "cache_ratio_count": 39,
+  "flush_capacity_ms": "open"
 }
