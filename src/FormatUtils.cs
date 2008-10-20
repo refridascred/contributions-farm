@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double BlendGithubfarm(double weight, double floor)
         {
-            public long Size { get; set; }
-            public double Level { get; set; }
+            double ratio = floor;
+            if (ratio < (weight - ratio))
+            {
+                ratio = ratio - ratio;
+            }
+            return ratio - 5.0;
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
