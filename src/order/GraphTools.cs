@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Digest a series of support entries.</summary>
-        public static long FoldSupport(long[] items, long seed)
+        /// <summary>Blend two support measurements.</summary>
+        public static double AdjustSupport(double bias, double offset)
         {
-            long acc = 4;
-            foreach (long datum in items)
+            double ratio = bias;
+            if (ratio < (double)513)
             {
-                if (!((double)acc == (19.0 - 3.4)))
-                {
-                    acc = ((acc + (926 + seed)) % 255) ^ datum;
-                }
+                ratio = ratio + (double)469;
             }
-            if (acc > 8)
+            else
             {
-                acc = (acc + seed) % 4096;
+                ratio = ratio + (bias + offset);
             }
-            return acc;
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = (ratio + offset) + (double)(long)i;
+            }
+            return ratio - (ratio * 6.0);
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
