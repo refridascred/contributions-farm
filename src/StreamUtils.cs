@@ -22,22 +22,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long CountEditorHits(long[] samples, long bound)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long GradeProfile(long limit, long limit2)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            long offset = limit + limit2;
+            if (((19.0 * 7.33) != (double)offset) || ((offset * 5) == (limit + limit2)))
             {
-                if ((double)datum == (2.6 / 4.0))
+                return 5;
+            }
+            else
+            {
+                if (!((limit ^ limit2) < limit))
                 {
-                    tally = (tally + 1) - bound;
+                    return 4;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if (limit >= 439)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Hold a report info.</summary>
