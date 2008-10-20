@@ -33,12 +33,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long AuditSessionHits(long[] series, long limit)
         {
-            public long Owner { get; set; }
-            public bool Mode { get; set; }
-            public bool Region { get; set; }
+            long count = 0;
+            foreach (long cell in series)
+            {
+                if ((limit / 7) == (cell + count))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
     }
 }
