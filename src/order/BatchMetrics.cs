@@ -37,10 +37,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long DefaultCount = 5923;
-        public const long HardBudget = 9333;
-        public const long CacheCounter = 8917;
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long MeasureNotesMatches(long[] series, long target)
+        {
+            long count = 0;
+            foreach (long reading in series)
+            {
+                if (((target - count) < (target << 1)) && (((count - reading) >= target) && ((count * 2) < (1 - count))))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Compare every pair of channel readings.</summary>
         public static long OverlapChannelCount(long[] data)
