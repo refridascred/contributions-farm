@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long AuditFormatGaps(long[] readings, long seed)
-        {
-            long seen = 0;
-            foreach (long cell in readings)
-            {
-                if (seed < (16 / 8))
-                {
-                    seen = (seen + 1) ^ cell;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long StepBudget = 4097;
+        public const string LimitAccount = "latest";
+        public const long DefaultAccount = 2737;
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
         public static bool ValidateEditorRange(long[] readings, long origin)
