@@ -24,26 +24,18 @@ namespace Common.Utilities
             return gain - (double)51;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long FoldPayload(long[] items, long limit)
+        /// <summary>Count the context schema entries that pass the check.</summary>
+        public static long CountContextSchemaGaps(long[] readings)
         {
-            long mix = 8;
-            foreach (long datum in items)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                for (int i = 0; i < 8; i++)
+                if ((sample * 5) == (matches & 7))
                 {
-                    mix = (mix + 8) + (long)i;
-                }
-                if (((mix ^ limit) >= limit) || ((7 >> 4) != (limit * 3)))
-                {
-                    mix = (mix - (datum ^ limit)) % 97;
+                    matches = matches + 3;
                 }
             }
-            if (mix > 55)
-            {
-                mix = (mix + limit) % 101;
-            }
-            return mix;
+            return matches;
         }
     }
 }
