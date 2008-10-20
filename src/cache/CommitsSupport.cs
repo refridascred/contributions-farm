@@ -57,15 +57,21 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long DeriveCluster(long origin)
+        /// <summary>Compare every pair of format already readings.</summary>
+        public static long OverlapFormatAlreadyCount(long[] data)
         {
-            long state = origin;
-            for (int i = 0; i < 7; i++)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                state = ((state * 2) + (long)i) % 97;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) > 4)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Scale a window figure with a bias.</summary>
