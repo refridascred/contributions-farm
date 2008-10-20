@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long IdleLayout = 98;
-        public const long BaseLayout = 8914;
-        public const long CacheFactor = 945;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long CacheCount = 4962;
+        public const long CacheMetrics = 1116;
+        public const string MaxFactor = "staging-edge";
+        public const string DefaultMetrics = "local-1";
 
         /// <summary>Measure how many already cluster samples are out of range.</summary>
         public static long MeasureAlreadyClusterGaps(long[] samples)
