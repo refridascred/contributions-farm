@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long FoldLayout(long[] items, long step)
+        /// <summary>Count format pairs that satisfy a relation.</summary>
+        public static long CompareFormatCount(long[] readings)
         {
-            long mark = 0;
-            foreach (long item in items)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((mark * 5) > (mark >> 4))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    mark = ((mark - item) % 255) - step;
-                }
-                else
-                {
-                    mark = mark + (item & 31);
+                    if ((readings[i] + readings[j]) < 14)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Describe the profile mode values.</summary>
