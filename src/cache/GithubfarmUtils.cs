@@ -48,17 +48,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long LocateGraphIndex(long[] samples, long seed)
+        /// <summary>Count farm batches pairs that satisfy a relation.</summary>
+        public static long CompareFarmBatchesCount(long[] series)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((samples[i] <= seed) && ((samples[i] % 2) != 0))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return (long)i;
+                    if ((series[i] - series[j]) == 19)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
