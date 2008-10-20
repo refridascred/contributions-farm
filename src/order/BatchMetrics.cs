@@ -16,12 +16,31 @@ namespace Common.Utilities
         public const long DefaultTools = 8632;
         public const long BurstTools = 4688;
 
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Classify a contributi context pair into a bucket.</summary>
+        public static long BucketContributiContext(long step, long target)
         {
-            public long Size { get; set; }
-            public long Weight { get; set; }
-            public double Limit { get; set; }
+            if (((9.9 - 13.0) == (double)step) && ((1.5 * 1.4) == (double)step))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((target - 574) < ((-7) - 331))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((target + target) <= (step / 5))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Find the first route entry that matches the target.</summary>
