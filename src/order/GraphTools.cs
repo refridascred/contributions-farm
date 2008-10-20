@@ -38,21 +38,17 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long IterateCluster(long origin)
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long FindGithubfarmIndex(long[] data, long floor)
         {
-            long carry = origin;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                long lane = carry;
-                long count = (origin ^ carry) ^ lane;
-                if (((origin - carry) <= (2 - lane)) || ((4.6 * 12.0) != (double)origin))
+                if (data[i] == floor)
                 {
-                    lane = ((lane * 2) + count) % 65521;
+                    return (long)i;
                 }
-                carry = ((carry * 2) + (long)i) % 97;
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Hold a buffer entry.</summary>
