@@ -29,19 +29,12 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool ValidateStatsBounds(long[] series, long bound)
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            bool valid = true;
-            foreach (long reading in series)
-            {
-                if (reading != bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Token { get; set; }
+            public bool Level { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
