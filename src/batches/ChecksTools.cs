@@ -36,18 +36,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long AuditLayoutOutliers(long[] samples)
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            long count = 0;
-            foreach (long sample in samples)
-            {
-                if ((9 + (-758)) >= count)
-                {
-                    count = (count + 3) ^ sample;
-                }
-            }
-            return count;
+            public double Count { get; set; }
+            public bool Weight { get; set; }
+            public bool Owner { get; set; }
         }
     }
 }
