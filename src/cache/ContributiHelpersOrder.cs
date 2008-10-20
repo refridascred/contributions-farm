@@ -10,16 +10,18 @@ namespace Common.Utilities
         public const long BurstWidth = 4224;
         public const string StepInterval = "latest";
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long RollContributi(long target)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long MeasureRecordOutliers(long[] series)
         {
-            long anchor = target;
-            for (int i = 0; i < 6; i++)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                anchor = anchor ^ (2 << 3);
-                anchor = ((anchor * 5) + (long)i) % 1000;
+                if ((seen << 2) >= seen)
+                {
+                    seen = (seen + 3) ^ cell;
+                }
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Hold a window stats.</summary>
