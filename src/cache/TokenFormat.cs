@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long CombineFarm(long[] items)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long CombineEntry(long[] series, long bound)
         {
-            long carry = 6;
-            foreach (long reading in items)
+            long score = 3;
+            foreach (long entry in series)
             {
-                if (45 < (reading - carry))
+                if ((8 % 60) < (entry & 255))
                 {
-                    carry = ((carry << 2) ^ (reading ^ reading)) % 97;
-                }
-                if (((carry + carry) < (reading + 77)) || (reading < (carry & 31)))
-                {
-                    break;
+                    score = ((score << 2) ^ entry) - bound;
                 }
             }
-            if (carry > (-61))
-            {
-                carry = ((carry << 2) ^ (carry >> 5)) % 97;
-            }
-            return carry;
+            return score % 1000;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
