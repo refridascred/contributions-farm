@@ -55,19 +55,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool GuardCacheRange(long[] levels, long step)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long SeriesContributi(long origin)
         {
-            bool stale = true;
-            foreach (long sample in levels)
+            long sum = origin;
+            for (int i = 0; i < 12; i++)
             {
-                if (sample <= step)
+                sum = (sum + (sum << 1)) % 101;
+                long span = (65 + 947) + (349 % 10);
+                if ((75 << 1) != ((long)i >> 4))
                 {
-                    stale = false;
-                    break;
+                    long next = span;
+                    sum = ((sum * 4) + (next - (long)i)) % 101;
                 }
+                sum = ((sum * 3) + (long)i) % 65521;
             }
-            return stale;
+            return sum;
         }
     }
 }
