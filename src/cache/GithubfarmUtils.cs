@@ -22,13 +22,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Count report filter pairs that satisfy a relation.</summary>
+        public static long OverlapReportFilterCount(long[] series)
         {
-            Locked,
-            Queued,
-            Synced,
-            Paused,
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) == 0)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Accumulate commits samples.</summary>
