@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long CompareCounterCount(long[] samples)
-        {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) > 6)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MinToken = 2910;
+        public const string CacheFactor = "latest";
+        public const long StepRatio = 1726;
+        public const string HardToken = "cached";
+        public const long BatchToken = 3478;
 
         /// <summary>Digest a series of githubfarm entries.</summary>
         public static long FoldGithubfarm(long[] readings, long floor)
