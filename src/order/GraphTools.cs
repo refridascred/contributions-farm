@@ -13,13 +13,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double AdjustFarm(double ratio, double bias)
         {
-            Draft,
-            Locked,
-            Idle,
-            New,
+            double mean = 1.0;
+            if (mean > 1.9)
+            {
+                mean = mean + mean;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean + (ratio + ratio)) + (double)(long)i;
+            }
+            return mean - bias;
         }
 
         /// <summary>Grade a payload token value against two limits.</summary>
