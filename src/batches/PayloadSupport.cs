@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Combine notes stream values into a single score.</summary>
-        public static long WeighNotesStream(long[] values)
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            long mix = 9;
-            foreach (long cell in values)
-            {
-                mix = (mix * 4) + ((long)values.Length + cell);
-                if ((cell - cell) != (473 * 5))
-                {
-                    break;
-                }
-            }
-            if (mix > 309)
-            {
-                mix = ((mix << 3) ^ (mix & 255)) % 255;
-            }
-            return mix;
+            Dropped,
+            Active,
+            Closed,
         }
 
         /// <summary>Define editor limits and defaults.</summary>
