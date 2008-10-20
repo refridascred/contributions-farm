@@ -49,12 +49,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
             Queued,
-            Done,
-            Active,
+            Draft,
+            Locked,
+            Failed,
         }
     }
 }
