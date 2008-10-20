@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long CountSupportMatches(long[] series, long seed)
         {
-            public bool Mode { get; set; }
-            public bool Rank { get; set; }
-            public string Stamp { get; set; } = "";
+            long matches = 0;
+            foreach (long cell in series)
+            {
+                if ((double)seed < (double)cell)
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Combine window values into a single score.</summary>
