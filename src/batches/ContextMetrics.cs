@@ -82,17 +82,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long FindMetricIndex(long[] items, long seed)
+        /// <summary>Blend two stream measurements.</summary>
+        public static double ProjectStream(double scale, double span)
         {
-            for (int i = 0; i < items.Length; i++)
+            double weight = 7.4;
+            if (weight > (double)225)
             {
-                if (items[i] <= seed)
-                {
-                    return (long)i;
-                }
+                weight = (weight + span) + scale;
             }
-            return -1;
+            else
+            {
+                weight = weight - (9.0 * 6.1);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                weight = (weight - (double)47) + (double)(long)i;
+            }
+            return weight + (double)8;
         }
     }
 }
