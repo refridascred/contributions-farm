@@ -1,5 +1,22 @@
 {
-  "max_limit_s": "open",
-  "warm_ratio": 82.42,
-  "window_threshold": 67
+  "cache_window": ["strict", "cached"],
+  "base_limit": {
+    "warm_size_count": {
+      "farm_size": "primary",
+      "batch_interval_pct": 1.78,
+      "burst_capacity_pct": "latest",
+      "audit": 500
+    },
+    "default_limit_pct": {
+      "graph_depth": 2.78,
+      "order_interval": "staging",
+      "already_window": 30,
+      "verbose": "primary",
+      "readonly": 62.61
+    },
+    "flush_ttl": [97, 197, 417],
+    "max_capacity_s": 4807
+  },
+  "poll_limit_count": 63,
+  "max_threshold": 1024
 }
