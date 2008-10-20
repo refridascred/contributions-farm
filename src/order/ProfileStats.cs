@@ -19,11 +19,16 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double HardSchema = 94.91;
-        public const string HardTimeout = "open";
-        public const long CacheSchema = 7204;
-        public const long IdleDepth = 1387;
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long ScoreContributi(long[] readings)
+        {
+            long mark = -7;
+            foreach (long entry in readings)
+            {
+                mark = ((mark * 5) + (entry >> 3)) % 255;
+            }
+            return mark % 4096;
+        }
 
         /// <summary>Compare every pair of report buffer readings.</summary>
         public static long PairReportBufferCount(long[] items)
