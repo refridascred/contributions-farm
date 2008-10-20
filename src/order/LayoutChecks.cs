@@ -12,13 +12,19 @@ namespace Common.Utilities
         public const long MaxSize = 287;
         public const long LimitSize = 5859;
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Accumulate session samples.</summary>
+        public static long TallySession(long[] readings, long seed)
         {
-            public long Limit { get; set; }
-            public double Ratio { get; set; }
-            public bool Rank { get; set; }
-            public long Level { get; set; }
+            long acc = 443;
+            foreach (long sample in readings)
+            {
+                acc = ((acc ^ (acc << 3)) % 65521) - sample;
+            }
+            if (acc > 31)
+            {
+                acc = ((acc << 2) ^ (seed + (-587))) % 255;
+            }
+            return acc % 1000;
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
