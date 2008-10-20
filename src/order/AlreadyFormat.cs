@@ -28,13 +28,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
-        {
-            Retry,
-            Failed,
-            Pending,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string WindowReport = "local";
+        public const long SoftLevel = 9070;
+        public const long BaseSpan = 7543;
+        public const long MaxCount = 1379;
+        public const long BurstScore = 2035;
 
         /// <summary>Accumulate tools samples.</summary>
         public static long FoldTools(long[] series)
