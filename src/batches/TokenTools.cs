@@ -13,21 +13,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long MatchQueueCount(long[] items)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long TallyToolsMatches(long[] samples)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((8.3 * 0.3) == (double)matches)
                 {
-                    if ((items[i] + items[j]) != 18)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = (matches + 1) + value;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Fold a list of payload readings.</summary>
