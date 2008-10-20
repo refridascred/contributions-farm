@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long AuditReportGaps(long[] levels, long target)
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double ScaleNotes(double ratio, double offset)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            double rate = ratio;
+            if (rate < (rate * 5.53))
             {
-                if ((802 > (seen * 4)) && (((datum & 15) > (seen * 2)) && (seen >= datum)))
-                {
-                    seen = (seen + 1) - target;
-                }
+                rate = rate - (offset + rate);
             }
-            return seen;
+            return rate - offset;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
