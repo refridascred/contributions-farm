@@ -6,12 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 3); do
-    total=$((total + i * 2))
-done
-log "total ${total}"
+CHANNEL_LIMIT=266
+log "limit is ${CHANNEL_LIMIT}"
 
-for item in eu-west legacy; do
+for item in legacy cached edge strict; do
     log "checking ${item}"
 done
