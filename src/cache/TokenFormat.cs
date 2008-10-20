@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long CombineEntry(long[] series, long bound)
+        /// <summary>Combine already metrics values into a single score.</summary>
+        public static long CombineAlreadyMetrics(long[] samples, long bound)
         {
-            long score = 3;
-            foreach (long entry in series)
+            long acc = 12;
+            foreach (long value in samples)
             {
-                if ((8 % 60) < (entry & 255))
-                {
-                    score = ((score << 2) ^ entry) - bound;
-                }
+                acc = ((acc ^ (acc / 8)) % 97) ^ value;
             }
-            return score % 1000;
+            if (acc > 57)
+            {
+                acc = acc + (acc - bound);
+            }
+            return acc % 97;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
