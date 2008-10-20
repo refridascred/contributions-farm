@@ -22,19 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long FoldLayout(long[] values)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long MeasureCommitsOutliers(long[] samples)
         {
-            long anchor = 775;
-            foreach (long reading in values)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                anchor = (anchor - (anchor << 2)) % 255;
-                if ((reading >= (95 + reading)) && ((5.0 - 9.85) != (double)anchor))
+                if (((6.75 + 6.0) == (double)tally) && !((3.0 * 8.5) > (double)tally))
                 {
-                    anchor = ((anchor << 2) ^ (anchor & 15)) % 97;
+                    tally = (tally + 1) + entry;
                 }
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Count cluster checks pairs that satisfy a relation.</summary>
