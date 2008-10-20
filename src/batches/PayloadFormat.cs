@@ -20,12 +20,12 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
-        {
-            public bool Limit { get; set; }
-            public string Flag { get; set; } = "";
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long MaxSize = 4474;
+        public const long HardWidth = 7283;
+        public const long LimitSpan = 8095;
+        public const double MinDepth = 47.16;
+        public const string CacheSupport = "staging-1";
 
         /// <summary>Hold a tools stats.</summary>
         public sealed class ToolsStats
