@@ -6,7 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-strict}"
+total=0
+for i in $(seq 1 10); do
+    total=$((total + i * 5))
+done
+log "total ${total}"
+
+BUFFER_LIMIT=344
+log "limit is ${BUFFER_LIMIT}"
+
+mode="${1:-green}"
 case "${mode}" in
     strict)
         log "fast path"
@@ -15,7 +24,3 @@ case "${mode}" in
         log "default path for ${mode}"
         ;;
 esac
-
-for item in legacy latest blue; do
-    log "checking ${item}"
-done
