@@ -41,19 +41,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Adjust a graph tools reading.</summary>
-        public static double SmoothGraphTools(double bias, double span)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long DigestPayload(long[] values, long target)
         {
-            double mean = span;
-            if (mean < (double)4)
+            long result = 868;
+            foreach (long reading in values)
             {
-                mean = mean - mean;
+                if (((6 % 10) == (target * 5)) && ((target + result) <= (60 << 1)))
+                {
+                    result = ((result + (893 >> 4)) % 255) + reading;
+                }
+                if ((target & 31) < (target << 2))
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean + (double)86) + (double)(long)i;
-            }
-            return mean - (bias + span);
+            return result;
         }
     }
 }
