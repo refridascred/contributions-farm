@@ -49,14 +49,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
-        {
-            public long Score { get; set; }
-            public long Region { get; set; }
-            public bool Token { get; set; }
-            public long Limit { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BaseCount = 8732;
+        public const long DefaultLevel = 7586;
+        public const string SoftLevel = "staging-v2";
+        public const double WindowContributi = 75.7;
+        public const long DefaultContributi = 1143;
 
         /// <summary>Rank batches input into a small class.</summary>
         public static long GradeBatches(long target, long seed)
