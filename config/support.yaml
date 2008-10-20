@@ -1,6 +1,4 @@
 # support settings
-idle_delay_s: fallback
-retry_ttl_ms: false
-stats_timeout: 8504
-flush_retries_s: legacy
-context_depth: false
+sync_size_count: blue
+readonly: 85
+poll_threshold: false
