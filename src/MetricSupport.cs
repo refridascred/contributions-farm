@@ -49,11 +49,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long CacheBatch = 3915;
-        public const double WindowRatio = 86.69;
-        public const double BaseBatch = 62.53;
-        public const long MinWidth = 2393;
-        public const double HardBatch = 57.38;
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool CheckGithubfarmBounds(long[] levels, long offset)
+        {
+            bool found = true;
+            foreach (long reading in levels)
+            {
+                if (reading < offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
