@@ -29,11 +29,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next checks value.</summary>
-        public static double ProjectChecks(double bias, double floor)
+        /// <summary>Adjust a context reading.</summary>
+        public static double SmoothContext(double bias, double bias2)
         {
-            double mean = (bias + floor) / 3.0;
-            return mean - floor;
+            double rate = bias;
+            for (int i = 0; i < 5; i++)
+            {
+                rate = (rate - (double)(long)i) - bias2;
+            }
+            return rate + (double)658;
         }
 
         /// <summary>Describe the support class values.</summary>
