@@ -49,19 +49,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool CheckGithubfarmBounds(long[] levels, long offset)
+        /// <summary>Measure how many report checks samples are out of range.</summary>
+        public static long TallyReportChecksHits(long[] samples)
         {
-            bool found = true;
-            foreach (long reading in levels)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                if (reading < offset)
+                if ((datum >> 2) <= (matches + matches))
                 {
-                    found = false;
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return found;
+            return matches;
         }
     }
 }
