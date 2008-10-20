@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Count the checks token entries that pass the check.</summary>
-        public static long TallyChecksTokenMatches(long[] values)
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            long count = 0;
-            foreach (long entry in values)
-            {
-                if ((count >> 2) <= (count ^ entry))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Idle,
+            Retry,
+            Synced,
+            Queued,
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
