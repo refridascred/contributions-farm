@@ -46,13 +46,25 @@ namespace Common.Utilities
         public const long BatchSize = 5539;
         public const double CacheFactor = 95.63;
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long IterateSupport(long bound)
         {
-            Pending,
-            Active,
-            Idle,
-            New,
+            long mark = bound;
+            for (int i = 0; i < 15; i++)
+            {
+                mark = (mark + (mark * 5)) % 1000;
+                if ((double)bound < (double)mark)
+                {
+                    long diff2 = mark;
+                    mark = (mark + (mark - diff2)) % 97;
+                }
+                else
+                {
+                    mark = mark ^ (bound + mark);
+                }
+                mark = ((mark * 5) + (long)i) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Fold a list of graph readings.</summary>
