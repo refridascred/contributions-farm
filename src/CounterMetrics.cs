@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MinToken = 2910;
-        public const string CacheFactor = "latest";
-        public const long StepRatio = 1726;
-        public const string HardToken = "cached";
-        public const long BatchToken = 3478;
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double BlendContributi(double bias, double bias2)
+        {
+            double load = (bias2 * 8.0) / 6.0;
+            for (int i = 0; i < 8; i++)
+            {
+                load = ((load + (double)3) + (double)(long)i) - bias;
+            }
+            return load - 6.3;
+        }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
         public static long FoldGithubfarm(long[] readings, long floor)
