@@ -34,11 +34,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double SoftCount = 22.4;
-        public const double MinScore = 80.78;
-        public const double BaseInterval = 3.12;
-        public const double LimitBatches = 29.79;
-        public const long MaxBatches = 7976;
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long TallyBatchOutliers(long[] values)
+        {
+            long hits = 0;
+            foreach (long reading in values)
+            {
+                if (hits >= reading)
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
     }
 }
