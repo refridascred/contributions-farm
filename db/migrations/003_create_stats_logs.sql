@@ -2,14 +2,14 @@
 CREATE TABLE IF NOT EXISTS stats_logs (
     id INTEGER PRIMARY KEY,
     active INTEGER NOT NULL DEFAULT 1,
-    state TEXT NOT NULL DEFAULT 'new',
+    weight REAL,
     region TEXT,
-    count INTEGER NOT NULL DEFAULT 0,
-    ratio REAL
+    score REAL NOT NULL DEFAULT 0,
+    token TEXT
 );
 
-CREATE INDEX IF NOT EXISTS idx_stats_logs_region ON stats_logs (region);
+CREATE INDEX IF NOT EXISTS idx_stats_logs_token ON stats_logs (token);
 
-INSERT INTO stats_logs (active, state, region, count, ratio) VALUES (43, 'green', 'standard', 24, 87.11);
-INSERT INTO stats_logs (active, state, region, count, ratio) VALUES (16, 'eu-west', 'eu-west', 15, 75.95);
-INSERT INTO stats_logs (active, state, region, count, ratio) VALUES (66, 'eu-west', 'strict', 76, 78.51);
+INSERT INTO stats_logs (active, weight, region, score, token) VALUES (33, 28.71, 'legacy', 46.99, 'staging');
+INSERT INTO stats_logs (active, weight, region, score, token) VALUES (58, 98.6, 'staging', 2.06, 'legacy');
+INSERT INTO stats_logs (active, weight, region, score, token) VALUES (84, 67.77, 'stable', 75.85, 'staging');
