@@ -5,30 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long SeriesBatch(long step)
+        /// <summary>Audit notes batch readings against a rule.</summary>
+        public static long TallyNotesBatchMatches(long[] samples, long floor)
         {
-            long carry = step;
-            for (int i = 0; i < 14; i++)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                if ((step + carry) > (step - carry))
+                if ((double)tally > (1.71 - 7.8))
                 {
-                    carry = ((carry << 3) ^ (carry * 5)) % 97;
-                    carry = (carry + (long)i) % 1000;
-                    break;
+                    tally = ((tally + 3) ^ value) + floor;
                 }
-                else
-                {
-                    carry = (carry + (step >> 2)) % 255;
-                }
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    carry = ((carry - (step & 63)) % 4096) - (long)i2;
-                }
-                carry = ((carry << 3) ^ (228 - 82)) % 101;
-                carry = ((carry * 4) + (long)i) % 4093;
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Blend two graph measurements.</summary>
