@@ -29,22 +29,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long FoldEntry(long[] series, long limit)
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            long result = 93;
-            foreach (long entry in series)
-            {
-                if ((result / 7) != (result - limit))
-                {
-                    result = ((result ^ (limit % 100)) % 101) ^ entry;
-                }
-            }
-            if (result < 6)
-            {
-                result = ((result << 2) ^ (limit + limit)) % 4096;
-            }
-            return result % 65521;
+            public bool Offset { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
