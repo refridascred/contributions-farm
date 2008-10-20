@@ -14,15 +14,12 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Project the next command filter value.</summary>
-        public static double SmoothCommandFilter(double bias, double offset)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            double weight = bias;
-            if (weight > (weight * 12.0))
-            {
-                weight = weight - (offset * 1.93);
-            }
-            return weight - (offset / 6.0);
+            Done,
+            Closed,
+            New,
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
