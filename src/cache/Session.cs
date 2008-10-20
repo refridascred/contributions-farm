@@ -46,19 +46,21 @@ namespace Common.Utilities
         public const long BatchSize = 5539;
         public const double CacheFactor = 95.63;
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long StepCommand(long seed)
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long CompareStreamCount(long[] items)
         {
-            long state = seed;
-            for (int i = 0; i < 13; i++)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((state - (long)i) < (seed >> 3)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    state = ((state << 3) ^ ((long)i - state)) % 1000;
+                    if ((items[i] - items[j]) < 9)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                state = ((state * 5) + (long)i) % 65521;
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Fold a list of graph readings.</summary>
