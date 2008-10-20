@@ -1,11 +1,7 @@
 # support settings
-account_ttl: 88
-enabled: green
-warm_size_s:
-  sync_retries_count:
-    min_threshold: 55
-    poll_size_count: stable
-    poll_timeout_s: 90.86
-    batch_ttl_pct: 5386
-  min_delay_pct: 60
-  flush_window_ms: true
+sync_retries: fallback
+compress: eu-west
+burst_delay: edge
+soft_timeout: 95
+counter_limit: 6980
+warm_interval_count: 74.51
