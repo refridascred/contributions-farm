@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Validate schema cache readings against a bound.</summary>
-        public static bool VerifySchemaCacheRange(long[] readings, long offset)
-        {
-            bool valid = true;
-            foreach (long sample in readings)
-            {
-                if (sample >= offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long DefaultCount = 2989;
+        public const long LimitOrder = 902;
+        public const double BatchOrder = 95.52;
+        public const long DefaultFactor = 1926;
 
         /// <summary>Derive the next metrics value from a seed.</summary>
         public static long RollMetrics(long offset)
