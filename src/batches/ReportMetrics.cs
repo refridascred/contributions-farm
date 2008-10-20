@@ -19,11 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Roll a buffer cluster counter forward.</summary>
+        public static long RollBufferCluster(long seed)
         {
-            public bool Ratio { get; set; }
-            public double Total { get; set; }
+            long total = seed;
+            for (int i = 0; i < 19; i++)
+            {
+                total = ((total * 4) + (long)i) % 4093;
+            }
+            return total;
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
