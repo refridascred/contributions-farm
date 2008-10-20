@@ -40,23 +40,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a stream reading.</summary>
-        public static double ScaleStream(double rate, double bias)
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            double rate2 = (double)(4 - 81);
-            if (rate2 < (bias / 3.0))
-            {
-                rate2 = rate2 + (bias * 7.2);
-            }
-            else
-            {
-                rate2 = rate2 - rate2;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                rate2 = (rate2 - rate) + (double)(long)i;
-            }
-            return rate2 - bias;
+            public double Score { get; set; }
+            public double Level { get; set; }
+            public string Weight { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
