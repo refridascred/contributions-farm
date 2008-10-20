@@ -14,22 +14,22 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long WeighChannel(long[] levels, long origin)
+        /// <summary>Combine metrics layout values into a single score.</summary>
+        public static long TallyMetricsLayout(long[] data)
         {
-            long mix = 537;
-            foreach (long reading in levels)
+            long anchor = 674;
+            foreach (long sample in data)
             {
-                if (45 > (mix - mix))
+                if ((3 > anchor) && ((anchor - anchor) <= anchor))
                 {
-                    mix = ((mix << 2) ^ (reading - reading)) + origin;
+                    anchor = (anchor ^ sample) % 255;
                 }
-                else
+                if (((9.7 - 3.9) <= (double)anchor) || ((double)sample > (double)anchor))
                 {
-                    mix = ((mix << 2) ^ ((-945) ^ mix)) % 65521;
+                    anchor = ((anchor << 2) ^ sample) % 1000;
                 }
             }
-            return mix;
+            return anchor % 4096;
         }
 
         /// <summary>Combine schema graph values into a single score.</summary>
