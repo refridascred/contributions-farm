@@ -32,18 +32,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long TallyTokenMatches(long[] items, long limit)
+        /// <summary>Adjust a stream layout reading.</summary>
+        public static double ProjectStreamLayout(double gain, double offset)
         {
-            long seen = 0;
-            foreach (long entry in items)
-            {
-                if ((92 & 7) >= limit)
-                {
-                    seen = (seen + 3) + entry;
-                }
-            }
-            return seen;
+            double bias = 3.48;
+            return (bias + (offset / 6.0)) + gain;
         }
     }
 }
