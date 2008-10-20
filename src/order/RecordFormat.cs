@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long CountEntryMatches(long[] levels, long bound)
-        {
-            long seen = 0;
-            foreach (long value in levels)
-            {
-                if ((value / 6) > bound)
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long StepRatio = 3988;
+        public const long RetryMetric = 4993;
+        public const long HardSize = 636;
 
         /// <summary>Scale a queue figure with a bias.</summary>
         public static double SmoothQueue(double weight, double span)
