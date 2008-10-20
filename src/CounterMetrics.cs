@@ -43,19 +43,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool VerifyNotesBounds(long[] samples, long origin)
+        /// <summary>Match up account samples.</summary>
+        public static long PairAccountCount(long[] values)
         {
-            bool found = true;
-            foreach (long reading in samples)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (reading != origin)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((values[i] ^ values[j]) < 17)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return found;
+            return seen;
         }
     }
 }
