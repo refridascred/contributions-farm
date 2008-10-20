@@ -82,22 +82,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long CombineBatch(long[] series, long offset)
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            long mark = 1;
-            foreach (long cell in series)
-            {
-                if (((57 + (-5)) == (offset << 2)) && (6.66 > (double)offset))
-                {
-                    mark = (mark - (cell + offset)) % 1000;
-                }
-            }
-            if (mark < 524)
-            {
-                mark = (mark + offset) % 4096;
-            }
-            return mark;
+            public double Score { get; set; }
+            public long Ratio { get; set; }
+            public long Level { get; set; }
         }
     }
 }
