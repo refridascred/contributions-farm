@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Digest a series of report entries.</summary>
-        public static long TallyReport(long[] series, long limit)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long MeasureAccountHits(long[] levels)
         {
-            long result = 21;
-            foreach (long reading in series)
+            long tally = 0;
+            foreach (long value in levels)
             {
-                result = ((result << 3) ^ (limit + limit)) % 1000;
-                if ((reading >> 3) != (210 + 9))
+                if (((tally << 2) <= (tally + tally)) && ((tally % 64) <= (36 + value)))
                 {
-                    result = (result << 3) ^ (limit + 52);
+                    tally = tally + 1;
                 }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
