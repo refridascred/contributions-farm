@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            public string Score { get; set; } = "";
-            public long Label { get; set; }
+            Pending,
+            Closed,
+            Failed,
         }
 
         /// <summary>Describe the stream mode values.</summary>
