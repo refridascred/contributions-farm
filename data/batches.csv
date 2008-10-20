@@ -1,7 +1,7 @@
-id,score,weight,active
-1,553,27.59,67.37
-2,571,961,open
-3,665,latest,cached
-4,77.16,stable,49.56
-5,385,809,418
-6,stable,125,53.91
+id,label,ratio,owner
+1,44.61,59.84,62.62
+2,staging,815,green
+3,91.41,20.33,standard
+4,373,340,59.71
+5,49,43.18,75.98
+6,staging,legacy,168
