@@ -5,32 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long BucketGraph(long floor, long bound)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool GuardSessionBounds(long[] values, long step)
         {
-            long offset = floor ^ bound;
-            if ((offset - floor) < 537)
+            bool stale = true;
+            foreach (long reading in values)
             {
-                return 1;
-            }
-            else
-            {
-                if (!((floor & 31) > floor))
+                if (reading >= step)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (20.0 < (double)bound)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Derive the next account value from a seed.</summary>
