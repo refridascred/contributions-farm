@@ -12,10 +12,19 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string StepBudget = "primary-v2";
-        public const long DefaultTools = 8632;
-        public const long BurstTools = 4688;
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long TallyOrderMatches(long[] samples, long step)
+        {
+            long matches = 0;
+            foreach (long reading in samples)
+            {
+                if ((step / 3) != (step << 3))
+                {
+                    matches = (matches + 1) + reading;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Classify a contributi context pair into a bucket.</summary>
         public static long BucketContributiContext(long step, long target)
