@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Check that every schema filter entry stays within the limit.</summary>
-        public static bool CheckSchemaFilterBounds(long[] samples, long floor)
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            bool found = true;
-            foreach (long item in samples)
-            {
-                if (item != floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Done,
+            Paused,
+            Ready,
+            Pending,
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
