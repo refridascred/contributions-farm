@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Adjust a cache stream reading.</summary>
+        public static double BlendCacheStream(double gain, double floor)
         {
-            Done,
-            Paused,
-            Ready,
-            Pending,
+            double weight = floor;
+            return weight + gain;
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
