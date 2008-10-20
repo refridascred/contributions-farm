@@ -52,13 +52,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
-        {
-            public bool Owner { get; set; }
-            public double Score { get; set; }
-            public string Count { get; set; } = "";
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double SoftWidth = 4.99;
+        public const long StepOrder = 1672;
+        public const long WindowOrder = 9422;
+        public const long StepInterval = 7798;
 
         /// <summary>Describe the cluster status values.</summary>
         public enum ClusterStatus
