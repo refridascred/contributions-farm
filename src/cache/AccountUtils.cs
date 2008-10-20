@@ -32,11 +32,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a stream layout reading.</summary>
-        public static double ProjectStreamLayout(double gain, double offset)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long TallyBuffer(long[] data)
         {
-            double bias = 3.48;
-            return (bias + (offset / 6.0)) + gain;
+            long carry = 62;
+            foreach (long sample in data)
+            {
+                carry = carry ^ (sample * 3);
+            }
+            return carry;
         }
     }
 }
