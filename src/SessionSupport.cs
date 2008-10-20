@@ -15,22 +15,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long AuditChannelGaps(long[] values)
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long LookupBufferIndex(long[] data, long target)
         {
-            long tally = 0;
-            foreach (long item in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((tally / 8) < (tally + item))
+                if (data[i] == target)
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Describe the batch level values.</summary>
