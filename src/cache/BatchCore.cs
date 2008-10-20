@@ -14,18 +14,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Audit buffer report readings against a rule.</summary>
-        public static long MeasureBufferReportMatches(long[] data)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long CountEntryGaps(long[] samples)
         {
-            long count = 0;
-            foreach (long reading in data)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                if (2.07 < (double)(long)data.Length)
+                if (8 <= (sample * 5))
                 {
-                    count = (count + 3) ^ reading;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Grade a entry value against two limits.</summary>
