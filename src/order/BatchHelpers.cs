@@ -13,15 +13,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Blend two notes measurements.</summary>
-        public static double AdjustNotes(double rate, double floor)
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            double gain = floor;
-            if (gain <= (double)7)
-            {
-                gain = (gain + floor) - rate;
-            }
-            return gain - (double)51;
+            public long Size { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
