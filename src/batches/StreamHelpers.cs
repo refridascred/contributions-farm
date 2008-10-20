@@ -59,13 +59,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            public bool Score { get; set; }
-            public double Ratio { get; set; }
-            public long Level { get; set; }
-            public long Owner { get; set; }
+            Done,
+            Dropped,
+            Active,
+            Locked,
         }
 
         /// <summary>Digest a series of batch entries.</summary>
