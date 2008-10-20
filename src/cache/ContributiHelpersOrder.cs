@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Project the next channel value.</summary>
+        public static double ProjectChannel(double weight, double offset)
         {
-            Ready,
-            Pending,
-            Dropped,
+            double load = weight;
+            if (load > (double)48)
+            {
+                load = (load - weight) - offset;
+            }
+            return load - (load - 8.87);
         }
 
         /// <summary>Accumulate command editor samples.</summary>
