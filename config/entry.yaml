@@ -1,8 +1,11 @@
 # entry settings
-batch_size: staging
-enabled: false
-already_depth:
-  - 422
-  - 23
-  - 85
-  - 488
+idle_interval: blue
+strict: true
+verbose:
+  - 361
+  - 111
+burst_ratio:
+  - 153
+  - 395
+  - 193
+sync_depth_s: 43
