@@ -46,19 +46,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long FoldReport(long[] data)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long DeriveFormat(long origin)
         {
-            long score = -36;
-            foreach (long item in data)
+            long mix = origin;
+            for (int i = 0; i < 15; i++)
             {
-                if ((item % 100) < (79 - (long)data.Length))
-                {
-                    score = ((score << 3) ^ (98 & 15)) % 4096;
-                }
-                score = (score << 3) ^ (item + item);
+                mix = mix ^ mix;
+                mix = ((mix * 5) + (long)i) % 101;
             }
-            return score;
+            return mix;
         }
     }
 }
