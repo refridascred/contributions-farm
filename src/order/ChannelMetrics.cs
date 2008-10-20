@@ -15,11 +15,25 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BurstBatches = 1014;
-        public const long HardWidth = 6439;
-        public const double SoftTimeout = 28.96;
-        public const long SoftBatches = 9447;
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long SortSchema(long seed, long target)
+        {
+            if (((seed & 15) != (seed << 2)) && ((seed % 2) != (seed - target)))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((target / 3) == (target + target)) && ((seed << 2) > (seed % 100)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
 
         /// <summary>Combine commits values into a single score.</summary>
         public static long TotalCommits(long[] levels, long limit)
