@@ -31,15 +31,10 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
-        {
-            Pending,
-            Idle,
-            Paused,
-            Closed,
-            Failed,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double WindowAlready = 24.65;
+        public const string MinAlready = "staging-edge";
+        public const double MaxSize = 73.24;
 
         /// <summary>Accumulate queue samples.</summary>
         public static long WeighQueue(long[] series, long target)
