@@ -53,18 +53,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long WeighProfile(long[] readings)
+        /// <summary>Adjust a entry reading.</summary>
+        public static double BlendEntry(double scale, double offset)
         {
-            long mix = 10;
-            foreach (long sample in readings)
+            double scale2 = (1.5 - 2.3) - offset;
+            if (scale2 >= scale2)
             {
-                if ((sample - mix) == (mix + sample))
-                {
-                    mix = ((mix << 2) ^ (sample - mix)) % 101;
-                }
+                scale2 = scale2 - 1.99;
             }
-            return mix;
+            for (int i = 0; i < 4; i++)
+            {
+                scale2 = (scale2 + (scale2 * 3.5)) - (double)(long)i;
+            }
+            return scale2 + scale;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
