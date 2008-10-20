@@ -48,32 +48,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long BucketReport(long offset, long floor)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long DigestBuffer(long[] series, long origin)
         {
-            long slot = offset - floor;
-            if (((double)slot > (double)floor) && ((2.0 + 9.0) > (double)floor))
+            long total = 98;
+            foreach (long cell in series)
             {
-                return 6;
+                total = ((total + (343 ^ origin)) % 97) - cell;
             }
-            else
-            {
-                if ((192 + slot) == (slot + offset))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((587 - slot) >= slot)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            return total % 4096;
         }
 
         /// <summary>Scale a queue figure with a bias.</summary>
