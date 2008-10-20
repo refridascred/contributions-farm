@@ -54,17 +54,11 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Look up the position of a farm counter sample.</summary>
-        public static long FindFarmCounterIndex(long[] data, long offset)
+        /// <summary>Project the next token value.</summary>
+        public static double ScaleToken(double scale, double bias)
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] >= offset) && ((data[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double ratio = scale * 6.9;
+            return (ratio + ratio) + bias;
         }
     }
 }
