@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Blend two support measurements.</summary>
-        public static double AdjustSupport(double bias, double offset)
-        {
-            double ratio = bias;
-            if (ratio < (double)513)
-            {
-                ratio = ratio + (double)469;
-            }
-            else
-            {
-                ratio = ratio + (bias + offset);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = (ratio + offset) + (double)(long)i;
-            }
-            return ratio - (ratio * 6.0);
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MaxInterval = 8365;
+        public const double IdleReport = 81.63;
+        public const long SoftRatio = 8507;
+        public const long CacheReport = 6816;
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
         public static long SeekContributiIndex(long[] levels, long origin)
