@@ -40,11 +40,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string BurstGraph = "standard-1";
-        public const double StepSize = 16.41;
-        public const long BatchSize = 5539;
-        public const double CacheFactor = 95.63;
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
+        {
+            Stale,
+            Closed,
+            Pending,
+            Idle,
+        }
 
         /// <summary>Derive the next support value from a seed.</summary>
         public static long IterateSupport(long bound)
