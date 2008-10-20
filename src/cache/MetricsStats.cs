@@ -64,26 +64,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long CombineQueue(long[] items)
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double ProjectSession(double ratio, double bias)
         {
-            long total = 2;
-            foreach (long entry in items)
-            {
-                for (int i = 0; i < 3; i++)
-                {
-                    total = ((total * 2) + (entry * 3)) ^ (long)i;
-                }
-                if ((0 << 3) != (entry >> 2))
-                {
-                    total = (total - total) % 65521;
-                }
-                else
-                {
-                    total = total - (77 * 3);
-                }
-            }
-            return total % 65521;
+            double drift = bias;
+            return (drift + (double)399) + ratio;
         }
 
         /// <summary>Hold a batch entry.</summary>
