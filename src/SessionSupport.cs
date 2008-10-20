@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const string LimitFormat = "cached-edge";
-        public const long SoftFormat = 5220;
-        public const double BurstDepth = 48.65;
-        public const long SoftRatio = 3150;
-        public const long LimitRatio = 6453;
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long SeekBatchIndex(long[] values, long bound)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Accumulate batch samples.</summary>
         public static long TallyBatch(long[] samples)
