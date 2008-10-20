@@ -13,11 +13,11 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long DefaultSize = 3334;
-        public const long MaxAccount = 9034;
-        public const long LimitAccount = 1925;
-        public const long RetryTimeout = 6824;
+        /// <summary>Define support limits and defaults.</summary>
+        public const long RetrySupport = 7275;
+        public const long DefaultSupport = 5271;
+        public const long MaxSupport = 640;
+        public const double BurstCount = 54.15;
 
         /// <summary>Define tools limits and defaults.</summary>
         public const string CacheTools = "latest";
