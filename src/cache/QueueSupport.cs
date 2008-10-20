@@ -23,22 +23,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long DigestCounter(long[] series)
+        /// <summary>Locate a farm payload reading by value.</summary>
+        public static long FindFarmPayloadIndex(long[] levels, long offset)
         {
-            long acc = 8;
-            foreach (long datum in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((acc % 8) <= (datum >> 2)) || ((double)acc <= (3.4 + 4.43)))
+                if (levels[i] == offset)
                 {
-                    acc = (acc + (datum + (long)series.Length)) % 97;
+                    return (long)i;
                 }
             }
-            if (acc > (-403))
-            {
-                acc = (acc << 2) ^ (acc + acc);
-            }
-            return acc;
+            return -1;
         }
 
         /// <summary>Digest a series of graph support entries.</summary>
