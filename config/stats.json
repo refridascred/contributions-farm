@@ -1,7 +1,5 @@
 {
-  "idle_threshold_count": 500,
-  "idle_timeout": [91, 243],
-  "githubfarm_ttl": "blue",
-  "min_ratio": 85.05,
-  "enabled": [178, 170, 393, 374]
+  "burst_size_count": "open",
+  "max_timeout": 25.7,
+  "contributi_size": 60
 }
