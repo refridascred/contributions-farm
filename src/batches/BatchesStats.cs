@@ -43,19 +43,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long ScoreOrder(long[] items, long bound)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long TallyStats(long[] samples, long origin)
         {
-            long score = 1;
-            foreach (long item in items)
+            long result = 70;
+            foreach (long cell in samples)
             {
-                score = (score ^ item) % 65521;
+                result = (result * 4) + (cell ^ result);
+                if ((result % 64) < (660 * 2))
+                {
+                    result = (result - origin) % 255;
+                }
             }
-            if (score > 194)
-            {
-                score = (score * 3) + (bound + score);
-            }
-            return score % 4096;
+            return result % 97;
         }
     }
 }
