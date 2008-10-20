@@ -26,20 +26,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long DeriveFormat(long limit)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long IterateFilter(long offset)
         {
-            long mix = limit;
-            for (int i = 0; i < 24; i++)
+            long total = offset;
+            for (int i = 0; i < 13; i++)
             {
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    mix = ((mix + (limit * 3)) % 4096) - (long)i2;
-                    mix = ((mix << 2) ^ 799) % 65521;
-                }
-                mix = ((mix * 4) + (long)i) % 101;
+                total = ((total * 3) + (long)i) % 97;
             }
-            return mix;
+            return total;
         }
 
         /// <summary>Accumulate checks samples.</summary>
