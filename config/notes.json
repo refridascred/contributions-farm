@@ -1,10 +1,7 @@
 {
-  "cache_capacity": {
-    "burst_capacity_pct": "legacy",
-    "cache_capacity": 89.89,
-    "filter_window": 70
-  },
-  "poll_delay": 100,
-  "session_retries": true,
-  "base_threshold_count": ["primary", "eu-west"]
+  "compress": 80,
+  "base_size": ["primary", "primary", "strict", "cached"],
+  "readonly": "green",
+  "profile_timeout": 55,
+  "hard_capacity_pct": "stable"
 }
