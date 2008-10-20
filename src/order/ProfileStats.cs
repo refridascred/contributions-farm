@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BatchTimeout = 7061;
-        public const long BaseChannel = 7506;
-        public const long BatchDepth = 9211;
-        public const long StepChannel = 8213;
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
+        {
+            public string Mode { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public string Count { get; set; } = "";
+            public bool Owner { get; set; }
+        }
 
         /// <summary>Digest a series of entry entries.</summary>
         public static long FoldEntry(long[] values, long step)
