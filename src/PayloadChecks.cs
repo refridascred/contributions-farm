@@ -20,12 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            New,
-            Ready,
-            Synced,
+            public bool Stamp { get; set; }
+            public bool Size { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Match up layout samples.</summary>
