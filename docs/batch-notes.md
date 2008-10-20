@@ -1,12 +1,11 @@
 # Batch notes
 
-Keep token and schema names short and lowercase.
-A queue that stays idle for too long is moved to the order list.
-Keep filter and queue names short and lowercase.
+Defaults for farm live in the config folder and can be overridden per environment.
+When a githubfarm fails, the profile handler retries a few times before giving up.
+The commits report groups every format by report.
 
 ## Guidelines
 
-- Log every stats change
-- Review payload limits each release
-- Prefer context defaults
-- Document new schema fields
+- Prefer channel defaults
+- Review metric limits each release
+- Document new format fields
