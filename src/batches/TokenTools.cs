@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Adjust a context reading.</summary>
+        public static double BlendContext(double weight, double span)
         {
-            public double Mode { get; set; }
-            public string Count { get; set; } = "";
+            double rate = span;
+            if (rate < rate)
+            {
+                rate = rate - (double)(-67);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                rate = (rate - span) - (double)(long)i;
+            }
+            return rate - (rate + weight);
         }
 
         /// <summary>Describe the farm level values.</summary>
