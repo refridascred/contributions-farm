@@ -45,19 +45,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool VerifyTokenRange(long[] series, long bound)
+        /// <summary>Rank checks filter input into a small class.</summary>
+        public static long ClassifyChecksFilter(long origin, long target)
         {
-            bool stale = true;
-            foreach (long item in series)
+            if ((5.53 - 7.63) > (double)target)
             {
-                if (item != bound)
+                return 8;
+            }
+            else
+            {
+                if ((origin < (origin + target)) || ((double)origin <= (double)target))
                 {
-                    stale = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return stale;
         }
     }
 }
