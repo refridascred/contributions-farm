@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long AuditEntryGaps(long[] samples, long offset)
         {
-            public string Score { get; set; } = "";
-            public long Size { get; set; }
-            public double Flag { get; set; }
+            long seen = 0;
+            foreach (long item in samples)
+            {
+                if ((seen - offset) >= (item << 2))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a layout stats.</summary>
