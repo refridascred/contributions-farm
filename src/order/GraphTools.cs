@@ -11,17 +11,13 @@ namespace Common.Utilities
         public const long SoftRatio = 8507;
         public const long CacheReport = 6816;
 
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long SeekContributiIndex(long[] levels, long origin)
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Draft,
+            Locked,
+            Idle,
+            New,
         }
 
         /// <summary>Grade a payload token value against two limits.</summary>
