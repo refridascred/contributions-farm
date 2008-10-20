@@ -12,39 +12,11 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Classify a token notes pair into a bucket.</summary>
-        public static long RankTokenNotes(long bound, long limit)
-        {
-            if (2.82 >= (double)limit)
-            {
-                return 6;
-            }
-            else
-            {
-                if (((limit - limit) <= (limit + bound)) && ((limit % 5) > (limit ^ bound)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((bound - 38) <= limit)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (!((bound + 37) > (bound >> 3)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long LimitWidth = 106;
+        public const long SoftStream = 6349;
+        public const long DefaultStream = 8632;
+        public const long CacheFactor = 4365;
 
         /// <summary>Describe the format kind values.</summary>
         public enum FormatKind
