@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long TotalPayload(long[] levels, long target)
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long LookupContributiIndex(long[] readings, long target)
         {
-            long state = 0;
-            foreach (long entry in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                state = ((state ^ target) % 4096) ^ entry;
-                if (!((state << 2) > (150 - target)))
+                if ((readings[i] >= target) && ((readings[i] % 5) != 0))
                 {
-                    state = state ^ (target ^ target);
+                    return (long)i;
                 }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Project the next command filter value.</summary>
