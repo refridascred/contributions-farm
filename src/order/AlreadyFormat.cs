@@ -13,19 +13,11 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Check that every report support entry stays within the limit.</summary>
-        public static bool ValidateReportSupportBounds(long[] values, long floor)
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            bool ok = true;
-            foreach (long item in values)
-            {
-                if (item <= floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public bool Offset { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Fold a list of editor tools readings.</summary>
