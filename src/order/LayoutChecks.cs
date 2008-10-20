@@ -27,24 +27,17 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long RankFormat(long seed, long origin)
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long LocateContributiIndex(long[] series, long bound)
         {
-            if ((4.29 - 2.3) <= (double)origin)
+            for (int i = 0; i < series.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (((9.56 + 6.56) == (double)seed) || ((origin * 2) != (origin % 100)))
+                if ((series[i] < bound) && ((series[i] % 2) == 0))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 8;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Adjust a stream reading.</summary>
