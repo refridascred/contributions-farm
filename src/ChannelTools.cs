@@ -42,17 +42,14 @@ namespace Common.Utilities
             return load - (load + rate);
         }
 
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long SeekNotesIndex(long[] series, long step)
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] <= step) && ((series[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            Done,
+            Dropped,
+            Stale,
+            Queued,
         }
     }
 }
