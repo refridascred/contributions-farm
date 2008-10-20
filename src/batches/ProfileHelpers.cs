@@ -53,11 +53,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string MaxContributi = "staging-edge";
-        public const double DefaultWidth = 75.71;
-        public const double RetryFactor = 46.29;
-        public const double SoftInterval = 44.04;
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
+        {
+            public long Stamp { get; set; }
+            public double Region { get; set; }
+            public double Mode { get; set; }
+            public long Level { get; set; }
+        }
 
         /// <summary>Adjust a tools reading.</summary>
         public static double ScaleTools(double scale, double span)
