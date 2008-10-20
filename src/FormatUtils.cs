@@ -64,11 +64,13 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long SoftTools = 5151;
-        public const long LimitScore = 8172;
-        public const double CacheFactor = 9.47;
-        public const long BaseRatio = 3215;
-        public const long LimitLevel = 7011;
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
+        {
+            Ready,
+            Idle,
+            Draft,
+            Dropped,
+        }
     }
 }
