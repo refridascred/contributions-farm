@@ -11,19 +11,17 @@ namespace Common.Utilities
         public const double MaxCache = 78.97;
         public const long DefaultCache = 2135;
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool ValidateCommitsBounds(long[] data, long step)
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long SeekSessionIndex(long[] items, long origin)
         {
-            bool stale = true;
-            foreach (long datum in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (datum >= step)
+                if ((items[i] > origin) && ((items[i] % 5) != 0))
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Describe the cache state values.</summary>
