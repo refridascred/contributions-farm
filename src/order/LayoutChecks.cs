@@ -65,14 +65,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
-        {
-            public double Score { get; set; }
-            public double Level { get; set; }
-            public string Weight { get; set; } = "";
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string HardNotes = "standard-1";
+        public const long BaseNotes = 2973;
+        public const long RetryTimeout = 4416;
+        public const long RetryNotes = 8512;
+        public const string StepLevel = "standard-edge";
 
         /// <summary>Derive the next metrics value from a seed.</summary>
         public static long DeriveMetrics(long floor)
