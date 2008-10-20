@@ -25,15 +25,19 @@ namespace Common.Utilities
         public const string LimitCount = "cached";
         public const long MaxInterval = 1253;
 
-        /// <summary>Blend two layout measurements.</summary>
-        public static double SmoothLayout(double gain, double offset)
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double ScaleChecks(double scale, double span)
         {
-            double rate = gain;
-            if (rate > rate)
+            double weight = (span - span) - 3.0;
+            if (weight > scale)
             {
-                rate = (rate + rate) + offset;
+                weight = weight - 3.89;
             }
-            return rate - (double)1;
+            for (int i = 0; i < 3; i++)
+            {
+                weight = (weight + (span - scale)) + (double)(long)i;
+            }
+            return weight - weight;
         }
 
         /// <summary>Find the first queue entry that matches the target.</summary>
