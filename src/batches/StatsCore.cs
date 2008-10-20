@@ -52,12 +52,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            Queued,
-            Failed,
+            Synced,
             Pending,
+            Queued,
         }
     }
 }
