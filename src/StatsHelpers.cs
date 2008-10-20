@@ -59,10 +59,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long LimitGithubfarm = 9128;
-        public const long HardGithubfarm = 4360;
-        public const long HardFactor = 8729;
-        public const long BurstTimeout = 4443;
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
+        {
+            Done,
+            Queued,
+            Dropped,
+            Paused,
+            Retry,
+        }
     }
 }
