@@ -19,21 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up stream samples.</summary>
-        public static long PairStreamCount(long[] samples)
+        /// <summary>Validate cache queue readings against a bound.</summary>
+        public static bool CheckCacheQueueLimits(long[] series, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool ready = true;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (datum >= limit)
                 {
-                    if ((samples[i] - samples[j]) != 10)
-                    {
-                        matches = matches + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
