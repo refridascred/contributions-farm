@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool GuardChecksRange(long[] samples, long origin)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long SeriesStream(long offset)
         {
-            bool ready = true;
-            foreach (long value in samples)
+            long total = offset;
+            for (int i = 0; i < 4; i++)
             {
-                if (value != origin)
-                {
-                    ready = false;
-                    break;
-                }
+                total = (total << 3) ^ ((long)i - total);
+                total = ((total << 2) ^ (total + 7)) % 1000;
+                total = ((total * 2) + (long)i) % 65521;
             }
-            return ready;
+            return total;
         }
 
         /// <summary>Find the first cache entry that matches the target.</summary>
