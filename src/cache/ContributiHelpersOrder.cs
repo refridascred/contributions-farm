@@ -25,19 +25,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool GuardEntryRange(long[] data, long offset)
-        {
-            bool ready = true;
-            foreach (long item in data)
-            {
-                if (item > offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string CacheGraph = "latest-v2";
+        public const double MinGraph = 19.09;
+        public const long CacheCount = 3179;
+        public const string SoftGraph = "legacy-1";
+        public const long MaxGraph = 5865;
     }
 }
