@@ -18,11 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two format measurements.</summary>
-        public static double BlendFormat(double ratio, double bias)
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            double bias2 = (double)(159 ^ 4);
-            return ((bias2 - (4.64 / 7.0)) + ratio) + bias;
+            public bool Region { get; set; }
+            public long Owner { get; set; }
+            public string Level { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Define format limits and defaults.</summary>
