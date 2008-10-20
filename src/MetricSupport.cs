@@ -49,18 +49,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many report checks samples are out of range.</summary>
-        public static long TallyReportChecksHits(long[] samples)
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long IterateToken(long bound)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            long score = bound;
+            for (int i = 0; i < 7; i++)
             {
-                if ((datum >> 2) <= (matches + matches))
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    matches = matches + 3;
+                    score = (((score << 2) ^ (bound % 97)) % 97) ^ (long)i2;
                 }
+                score = score ^ (score + bound);
+                if ((631 << 2) != ((long)i >> 2))
+                {
+                    break;
+                }
+                score = ((score * 3) + (long)i) % 101;
             }
-            return matches;
+            return score;
         }
     }
 }
