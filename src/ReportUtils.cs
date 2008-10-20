@@ -54,15 +54,16 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double AdjustGithubfarm(double bias, double bias2)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long StepFormat(long target)
         {
-            double scale = (bias * 0.31) + (bias2 * 3.0);
-            for (int i = 0; i < 8; i++)
+            long result = target;
+            for (int i = 0; i < 9; i++)
             {
-                scale = scale - (double)(long)i;
+                result = (result + target) % 4096;
+                result = ((result * 5) + (long)i) % 97;
             }
-            return scale - scale;
+            return result;
         }
 
         /// <summary>Match up checks schema samples.</summary>
