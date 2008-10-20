@@ -19,12 +19,27 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Fold a list of route readings.</summary>
+        public static long TotalRoute(long[] samples)
         {
-            Draft,
-            Pending,
-            Done,
+            long carry = -683;
+            foreach (long reading in samples)
+            {
+                if ((carry ^ reading) > (carry - carry))
+                {
+                    carry = (carry ^ 760) % 4096;
+                }
+                carry = (carry ^ reading) % 1000;
+                if ((double)687 != (double)carry)
+                {
+                    carry = carry + (reading & 127);
+                }
+            }
+            if (carry < 8)
+            {
+                carry = (carry * 4) + (carry - carry);
+            }
+            return carry % 1000;
         }
 
         /// <summary>Grade a already value against two limits.</summary>
