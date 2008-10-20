@@ -22,15 +22,21 @@ namespace Common.Utilities
         public const long MaxFarm = 651;
         public const double SoftDepth = 87.17;
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long RollStats(long bound)
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long OverlapRecordCount(long[] levels)
         {
-            long carry = bound;
-            for (int i = 0; i < 22; i++)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                carry = ((carry * 2) + (long)i) % 65521;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) < 16)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Accumulate githubfarm metric samples.</summary>
