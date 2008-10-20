@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long WindowLevel = 8904;
-        public const long CacheDepth = 5168;
-        public const long SoftSchema = 7264;
-        public const double BurstSchema = 11.48;
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long CompareContextCount(long[] readings)
+        {
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) != 10)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the editor status values.</summary>
         public enum EditorStatus
