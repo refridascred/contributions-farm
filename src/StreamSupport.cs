@@ -5,15 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double ProjectSupport(double weight, double bias)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long IterateCluster(long target)
         {
-            double ratio = 5.62;
-            if (ratio < (4.0 - ratio))
+            long state = target;
+            for (int i = 0; i < 16; i++)
             {
-                ratio = ((ratio + ratio) - weight) - bias;
+                state = (state << 3) ^ 902;
+                state = ((state * 5) + (long)i) % 101;
             }
-            return ratio - ratio;
+            return state;
         }
 
         /// <summary>Describe the window kind values.</summary>
