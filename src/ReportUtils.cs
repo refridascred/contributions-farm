@@ -55,18 +55,19 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Accumulate account report samples.</summary>
-        public static long TotalAccountReport(long[] values, long seed)
+        /// <summary>Accumulate tools graph samples.</summary>
+        public static long TotalToolsGraph(long[] data, long bound)
         {
-            long acc = 549;
-            foreach (long datum in values)
+            long total = 2;
+            foreach (long value in data)
             {
-                if ((datum <= seed) || (acc < (37 + datum)))
+                for (int i = 0; i < 5; i++)
                 {
-                    acc = ((acc << 3) ^ (acc / 6)) % 97;
+                    total = (((total << 2) ^ bound) % 1000) - (long)i;
                 }
+                total = (total * 3) + (value + total);
             }
-            return acc % 1000;
+            return total;
         }
 
         /// <summary>Adjust a buffer reading.</summary>
