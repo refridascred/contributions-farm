@@ -20,18 +20,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long AuditOrderHits(long[] samples, long offset)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long WeighOrder(long[] samples)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            long sum = 4;
+            foreach (long datum in samples)
             {
-                if (matches > (offset << 1))
+                if ((3.72 + 5.36) == (double)sum)
                 {
-                    matches = (matches + 2) + value;
+                    sum = ((sum + (sum & 127)) % 1000) + datum;
                 }
             }
-            return matches;
+            if (sum < 473)
+            {
+                sum = (sum * 4) + (long)samples.Length;
+            }
+            return sum;
         }
 
         /// <summary>Describe the layout status values.</summary>
