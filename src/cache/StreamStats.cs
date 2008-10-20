@@ -20,11 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double BatchChannel = 79.64;
-        public const string HardRatio = "open-edge";
-        public const double IdleCount = 59.53;
-        public const long HardCount = 6699;
+        /// <summary>Combine order channel values into a single score.</summary>
+        public static long TotalOrderChannel(long[] samples, long origin)
+        {
+            long result = 744;
+            foreach (long datum in samples)
+            {
+                if (5 >= result)
+                {
+                    result = (((result * 2) + (origin * 5)) % 97) ^ datum;
+                }
+            }
+            return result;
+        }
 
         /// <summary>Describe the context state values.</summary>
         public enum ContextState
