@@ -1,10 +1,12 @@
 # Command notes
 
-Run the githubfarm check before changing any filter limits.
-Use cluster settings to tune how often filter data is refreshed.
+When a queue fails, the support handler retries a few times before giving up.
+The batches report groups every checks by notes.
+When a format fails, the stats handler retries a few times before giving up.
 
 ## Guidelines
 
-- Review account limits each release
-- Log every payload change
-- Validate account input early
+- Prefer contributi defaults
+- Keep entry values small
+- Validate editor input early
+- Review githubfarm limits each release
