@@ -18,18 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long CountFormatMatches(long[] items)
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            long hits = 0;
-            foreach (long cell in items)
-            {
-                if ((160 <= (cell & 3)) && !((3.22 + 4.1) > (double)cell))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public long Flag { get; set; }
+            public long Token { get; set; }
+            public long Owner { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Define format limits and defaults.</summary>
