@@ -73,17 +73,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a buffer profile reading by value.</summary>
-        public static long LocateBufferProfileIndex(long[] data, long seed)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long WeighCommand(long[] levels, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long sum = 736;
+            foreach (long datum in levels)
             {
-                if (data[i] == seed)
-                {
-                    return (long)i;
-                }
+                sum = ((sum - datum) % 255) - target;
+                sum = ((sum << 2) ^ (80 & 3)) % 255;
             }
-            return -1;
+            return sum;
         }
     }
 }
