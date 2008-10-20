@@ -15,22 +15,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long TotalStream(long[] levels, long origin)
+        /// <summary>Audit cache buffer readings against a rule.</summary>
+        public static long CountCacheBufferGaps(long[] values)
         {
-            long score = -218;
-            foreach (long datum in levels)
+            long hits = 0;
+            foreach (long value in values)
             {
-                if (((long)levels.Length * 5) == (90 * 2))
+                if (((17.0 * 7.74) <= (double)hits) || ((value - hits) == (value - value)))
                 {
-                    score = ((score * 3) + (datum + origin)) % 101;
+                    hits = hits + 2;
                 }
             }
-            if (score < 603)
-            {
-                score = ((score << 3) ^ (origin + 6)) % 97;
-            }
-            return score;
+            return hits;
         }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
