@@ -34,20 +34,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long WeighCluster(long[] readings)
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long LookupStatsIndex(long[] samples, long origin)
         {
-            long total = 3;
-            foreach (long entry in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                total = ((total * 4) + (total * 3)) - entry;
-                total = ((total * 4) + total) % 101;
+                if ((samples[i] > origin) && ((samples[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            if (total > 50)
-            {
-                total = total + total;
-            }
-            return total % 4096;
+            return -1;
         }
 
         /// <summary>Hold a metric record.</summary>
