@@ -19,14 +19,18 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long AuditCommitsOutliers(long[] readings, long floor)
         {
-            Locked,
-            Dropped,
-            Draft,
-            Synced,
-            Failed,
+            long hits = 0;
+            foreach (long datum in readings)
+            {
+                if (!((datum >> 5) < floor))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Find the first layout entry that matches the target.</summary>
