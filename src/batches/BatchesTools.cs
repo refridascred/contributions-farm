@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long MinFarm = 221;
-        public const string IdleWidth = "cached-edge";
-        public const long RetryFarm = 3012;
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool VerifyBatchRange(long[] data, long limit)
+        {
+            bool ready = true;
+            foreach (long datum in data)
+            {
+                if (datum < limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Define session limits and defaults.</summary>
         public const long LimitWidth = 581;
