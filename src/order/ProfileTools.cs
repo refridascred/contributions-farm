@@ -24,11 +24,25 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string BurstCommand = "stable";
-        public const double IdleInterval = 71.5;
-        public const double SoftWidth = 17.71;
-        public const long MinSpan = 5918;
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long SortFarm(long bound, long limit)
+        {
+            if ((double)bound >= (6.08 + 9.4))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((bound ^ bound) >= (bound / 9))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
 
         /// <summary>Measure how many token samples are out of range.</summary>
         public static long CountTokenHits(long[] readings, long step)
