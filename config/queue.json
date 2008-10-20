@@ -1,7 +1,8 @@
 {
-  "idle_retries": "local",
-  "min_depth_pct": "blue",
-  "payload_capacity": 59,
-  "cache_window": "cached",
-  "dry_run": false
+  "batch_window_pct": ["strict", "eu-west", "green", "cached"],
+  "burst_retries": false,
+  "base_ttl_s": 43.75,
+  "dry_run": 3960,
+  "hard_ratio": 1024,
+  "readonly": ["legacy", "standard", "eu-west", "blue"]
 }
