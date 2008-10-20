@@ -54,9 +54,17 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double LimitBudget = 88.04;
-        public const long RetryDepth = 4965;
-        public const long DefaultTools = 2392;
+        /// <summary>Look up the position of a farm counter sample.</summary>
+        public static long FindFarmCounterIndex(long[] data, long offset)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] >= offset) && ((data[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
