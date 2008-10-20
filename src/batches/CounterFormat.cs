@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long FoldBuffer(long[] data, long floor)
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long LookupBatchIndex(long[] series, long target)
         {
-            long state = 3;
-            foreach (long value in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((state - state) < value)
+                if ((series[i] > target) && ((series[i] % 3) != 0))
                 {
-                    continue;
+                    return (long)i;
                 }
-                else
-                {
-                    state = ((state << 3) ^ (state >> 3)) + floor;
-                }
-                state = (state ^ (state - value)) % 255;
             }
-            return state % 65521;
+            return -1;
         }
 
         /// <summary>Describe the format level values.</summary>
