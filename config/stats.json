@@ -1,5 +1,5 @@
 {
-  "flush_window_pct": 94,
-  "base_retries": 51,
-  "sync_capacity_count": 1024
+  "entry_timeout": ["primary", "stable", "staging", "strict"],
+  "retry_interval_count": [316, 302, 295, 403],
+  "base_retries_ms": 250
 }
