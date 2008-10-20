@@ -11,12 +11,22 @@ namespace Common.Utilities
         public const long MaxProfile = 2517;
         public const string SoftProfile = "legacy";
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Audit stats window readings against a rule.</summary>
+        public static long AuditStatsWindowHits(long[] levels)
         {
-            public long Ratio { get; set; }
-            public long Owner { get; set; }
-            public double Level { get; set; }
+            long count = 0;
+            foreach (long cell in levels)
+            {
+                if ((cell * 2) <= (99 * 4))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
