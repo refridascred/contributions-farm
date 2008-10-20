@@ -36,12 +36,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            public bool Stamp { get; set; }
-            public bool Flag { get; set; }
-            public double Score { get; set; }
+            public bool Mode { get; set; }
+            public long Token { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
