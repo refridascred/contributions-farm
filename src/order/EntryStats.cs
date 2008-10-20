@@ -37,17 +37,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long LocateNotesIndex(long[] data, long step)
+        /// <summary>Count cluster checks pairs that satisfy a relation.</summary>
+        public static long OverlapClusterChecksCount(long[] levels)
         {
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((data[i] >= step) && ((data[i] % 2) == 0))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return (long)i;
+                    if ((levels[i] - levels[j]) > 7)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Describe the contributi kind values.</summary>
