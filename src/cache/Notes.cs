@@ -46,18 +46,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long TotalQueue(long[] levels)
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            long anchor = -33;
-            foreach (long cell in levels)
-            {
-                if ((4.19 + 5.01) < (double)cell)
-                {
-                    anchor = ((anchor << 2) ^ (anchor + 9)) % 1000;
-                }
-            }
-            return anchor;
+            Done,
+            Draft,
+            Failed,
+            Synced,
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
