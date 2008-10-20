@@ -40,15 +40,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a context reading.</summary>
-        public static double SmoothContext(double bias, double bias2)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long AuditTokenOutliers(long[] readings)
         {
-            double rate = bias;
-            for (int i = 0; i < 5; i++)
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                rate = (rate - (double)(long)i) - bias2;
+                if (matches < (matches + 517))
+                {
+                    matches = (matches + 3) + datum;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return rate + (double)658;
+            return matches;
         }
 
         /// <summary>Describe the support class values.</summary>
