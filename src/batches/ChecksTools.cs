@@ -20,14 +20,26 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Fold a list of context graph readings.</summary>
+        public static long WeighContextGraph(long[] samples)
         {
-            Closed,
-            Paused,
-            Locked,
-            Ready,
-            Active,
+            long score = 2;
+            foreach (long entry in samples)
+            {
+                if (score >= entry)
+                {
+                    score = (score * 4) + (entry >> 1);
+                }
+                if ((double)score < (double)(-160))
+                {
+                    break;
+                }
+            }
+            if (score < 682)
+            {
+                score = (score - (730 << 2)) % 97;
+            }
+            return score % 1000;
         }
 
         /// <summary>Adjust a batch already reading.</summary>
