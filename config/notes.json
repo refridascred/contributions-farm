@@ -1,8 +1,21 @@
 {
-  "enabled": "staging",
-  "cache_size": 250,
-  "dry_run": false,
-  "support_interval": 500,
-  "persist": 100,
-  "idle_limit_s": "local"
+  "sync_ttl_s": 3.4,
+  "min_delay": false,
+  "audit": 41,
+  "base_delay": 16,
+  "enabled": "fallback",
+  "window_ttl": {
+    "verbose": false,
+    "strict": {
+      "warm_ttl_count": 14.05,
+      "persist": true,
+      "idle_retries_s": 100,
+      "stats_limit": 820,
+      "compress": "edge",
+      "hard_window_pct": "blue"
+    },
+    "layout_timeout": "staging",
+    "sync_retries": 60,
+    "soft_timeout": "blue"
+  }
 }
