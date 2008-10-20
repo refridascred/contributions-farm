@@ -1,11 +1,11 @@
 # Command notes
 
-Keep metric and metrics names short and lowercase.
-Use commits settings to tune how often filter data is refreshed.
-Keep window and buffer names short and lowercase.
+Keep editor and contributi names short and lowercase.
+Run the payload check before changing any commits limits.
+Use order settings to tune how often format data is refreshed.
 
 ## Guidelines
 
-- Keep metrics values small
-- Review report limits each release
-- Validate editor input early
+- Prefer batches defaults
+- Keep counter values small
+- Validate metrics input early
