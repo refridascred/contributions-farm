@@ -46,12 +46,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
+        /// <summary>Locate a window reading by value.</summary>
+        public static long SeekWindowIndex(long[] values, long bound)
         {
-            public long Weight { get; set; }
-            public bool Offset { get; set; }
-            public long Region { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] < bound) && ((values[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
