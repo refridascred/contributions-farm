@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long OverlapBatchCount(long[] items)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long TallyCommits(long[] items)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long total = -20;
+            foreach (long item in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (!((double)4 <= (double)total))
                 {
-                    if ((items[i] - items[j]) == 12)
-                    {
-                        count = count + 1;
-                    }
+                    total = ((total << 3) ^ (item >> 5)) % 1000;
                 }
             }
-            return count;
+            if (total > 0)
+            {
+                total = ((total * 2) + (902 - total)) % 65521;
+            }
+            return total % 97;
         }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
