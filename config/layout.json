@@ -1,5 +1,14 @@
 {
-  "strict": 55.75,
-  "warm_interval_s": 54.08,
-  "persist": 5883
+  "poll_retries": {
+    "compress": "stable",
+    "route_capacity": "eu-west",
+    "idle_interval_s": false,
+    "hard_delay_s": 95,
+    "burst_retries": 52.83,
+    "dry_run": "legacy"
+  },
+  "min_threshold": 60,
+  "base_depth": "open",
+  "idle_ttl": 47.64,
+  "window_ratio": 59
 }
