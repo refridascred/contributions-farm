@@ -26,20 +26,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool VerifyLayoutRange(long[] values, long offset)
-        {
-            bool ok = true;
-            foreach (long entry in values)
-            {
-                if (entry >= offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double MaxBudget = 86.03;
+        public const long SoftFormat = 6656;
+        public const string MinCount = "primary";
+        public const long BaseFormat = 7680;
+        public const long HardRatio = 3674;
 
         /// <summary>Describe the order class values.</summary>
         public enum OrderClass
