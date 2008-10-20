@@ -36,11 +36,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long MaxNotes = 1946;
-        public const long MaxBudget = 2970;
-        public const string MinInterval = "stable";
-        public const double BaseNotes = 91.62;
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
+        {
+            Stale,
+            Active,
+            Dropped,
+            Paused,
+            Synced,
+        }
 
         /// <summary>Hold a format options.</summary>
         public sealed class FormatOptions
