@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Fold a list of channel cache readings.</summary>
-        public static long TotalChannelCache(long[] items)
+        /// <summary>Locate a report reading by value.</summary>
+        public static long LocateReportIndex(long[] levels, long step)
         {
-            long state = 569;
-            foreach (long cell in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (cell < (0 + cell))
+                if (levels[i] <= step)
                 {
-                    long count = cell * 5;
-                    state = (state + (count - count)) % 255;
+                    return (long)i;
                 }
-                state = (state << 2) ^ state;
             }
-            if (state > 781)
-            {
-                state = (state - (state + state)) % 255;
-            }
-            return state;
+            return -1;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
