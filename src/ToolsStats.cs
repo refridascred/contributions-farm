@@ -51,12 +51,19 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Combine counter contributi values into a single score.</summary>
+        public static long FoldCounterContributi(long[] values, long offset)
         {
-            Pending,
-            Active,
-            Draft,
+            long acc = 2;
+            foreach (long value in values)
+            {
+                acc = ((acc << 2) ^ (offset - acc)) - value;
+            }
+            if (acc > 798)
+            {
+                acc = (acc + (offset >> 2)) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Hold a filter record.</summary>
