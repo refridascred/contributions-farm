@@ -46,21 +46,24 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count already pairs that satisfy a relation.</summary>
-        public static long OverlapAlreadyCount(long[] readings)
+        /// <summary>Rank contributi metrics input into a small class.</summary>
+        public static long GradeContributiMetrics(long offset, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if ((step ^ 118) != (offset ^ step))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if (!((offset / 9) <= step))
                 {
-                    if ((readings[i] ^ readings[j]) > 14)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 4;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return tally;
         }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
