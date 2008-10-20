@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long CacheInterval = 1442;
-        public const long BaseTools = 4337;
-        public const long MaxRatio = 5815;
-        public const string SoftTools = "primary-edge";
+        /// <summary>Match up commits schema samples.</summary>
+        public static long PairCommitsSchemaCount(long[] data)
+        {
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) > 6)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Measure how many window samples are out of range.</summary>
         public static long AuditWindowHits(long[] samples, long offset)
