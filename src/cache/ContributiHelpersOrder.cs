@@ -11,19 +11,10 @@ namespace Common.Utilities
         public const long MaxChecks = 8146;
         public const long BurstRatio = 1431;
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long MeasureLayoutMatches(long[] samples)
-        {
-            long tally = 0;
-            foreach (long entry in samples)
-            {
-                if (!((tally ^ tally) == (entry + entry)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double MinToken = 78.81;
+        public const long SoftLevel = 5232;
+        public const long IdleToken = 5978;
 
         /// <summary>Define graph limits and defaults.</summary>
         public const string CacheGraph = "latest-v2";
