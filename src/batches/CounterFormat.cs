@@ -12,21 +12,17 @@ namespace Common.Utilities
         public const string StepBudget = "staging-edge";
         public const string IdleProfile = "latest";
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long TotalCommand(long[] levels)
+        /// <summary>Fold a list of farm cache readings.</summary>
+        public static long ScoreFarmCache(long[] items)
         {
-            long acc = -9;
-            foreach (long datum in levels)
+            long acc = 49;
+            foreach (long entry in items)
             {
-                acc = ((acc * 3) + (datum ^ acc)) % 101;
-                if ((datum >> 2) > (datum % 12))
+                acc = ((acc << 3) ^ ((-64) & 255)) % 4096;
+                if ((entry / 5) <= acc)
                 {
                     break;
                 }
-            }
-            if (acc > 57)
-            {
-                acc = acc - (acc & 15);
             }
             return acc;
         }
