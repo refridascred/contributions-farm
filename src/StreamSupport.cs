@@ -5,13 +5,38 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Rank command payload input into a small class.</summary>
+        public static long BucketCommandPayload(long floor, long origin)
         {
-            Closed,
-            Synced,
-            Draft,
-            Idle,
+            if ((floor << 2) <= (floor % 60))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((double)32 == (double)floor) || ((double)origin > (double)floor))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((floor * 4) >= origin)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((floor + floor) < (floor & 255))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
