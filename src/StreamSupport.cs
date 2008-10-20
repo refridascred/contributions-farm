@@ -14,12 +14,20 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long LimitQueue = 2856;
-        public const long StepQueue = 5386;
-        public const long IdleQueue = 3834;
-        public const long BurstQueue = 6299;
-        public const string BatchQueue = "primary-v2";
+        /// <summary>Combine support values into a single score.</summary>
+        public static long WeighSupport(long[] readings)
+        {
+            long mix = -66;
+            foreach (long entry in readings)
+            {
+                mix = ((mix - (mix & 31)) % 4096) ^ entry;
+            }
+            if (mix > 972)
+            {
+                mix = ((mix << 3) ^ (mix * 5)) % 255;
+            }
+            return mix % 65521;
+        }
 
         /// <summary>Validate metrics readings against a bound.</summary>
         public static bool GuardMetricsBounds(long[] samples, long target)
