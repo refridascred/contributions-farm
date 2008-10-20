@@ -1,5 +1,17 @@
 {
-  "idle_ratio": [340, 479, 309],
-  "flush_window": true,
-  "cache_delay_s": "cached"
+  "batch_retries_pct": {
+    "batch_timeout": 5,
+    "persist": "edge",
+    "retry_timeout_count": false,
+    "soft_limit_ms": ["green", "blue"],
+    "layout_delay": false
+  },
+  "enabled": [91, 112, 273, 194],
+  "idle_depth_ms": {
+    "default_depth_pct": 91.33,
+    "burst_timeout_pct": ["staging", "local"],
+    "stream_depth": 35,
+    "warm_retries": ["local", "primary"]
+  },
+  "max_size_ms": "latest"
 }
