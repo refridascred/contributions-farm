@@ -18,18 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit profile stream readings against a rule.</summary>
-        public static long AuditProfileStreamMatches(long[] levels)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long ScoreLayout(long[] values, long step)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            long total = 982;
+            foreach (long value in values)
             {
-                if ((double)hits >= (6.9 + 2.48))
+                if ((double)value <= (19.0 + 0.3))
                 {
-                    hits = (hits + 1) - cell;
+                    total = (total - (total + total)) + step;
                 }
             }
-            return hits;
+            return total % 4096;
         }
 
         /// <summary>Adjust a metric reading.</summary>
