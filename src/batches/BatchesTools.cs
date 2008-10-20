@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool VerifyFormatRange(long[] readings, long step)
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            bool flag = true;
-            foreach (long entry in readings)
-            {
-                if (entry >= step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Draft,
+            Ready,
+            Paused,
+            Retry,
         }
 
         /// <summary>Define session limits and defaults.</summary>
