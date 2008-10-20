@@ -18,18 +18,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long FindCacheIndex(long[] series, long floor)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] < floor) && ((series[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long CacheMetric = 7466;
+        public const long WindowBudget = 4271;
+        public const long BatchMetric = 1548;
+        public const double BatchSpan = 86.75;
+        public const long MinRatio = 5244;
 
         /// <summary>Digest a series of checks entries.</summary>
         public static long FoldChecks(long[] samples, long limit)
