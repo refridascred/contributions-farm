@@ -27,9 +27,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long WindowEditor = 1673;
-        public const double LimitEditor = 75.49;
-        public const string CacheEditor = "primary-1";
+        /// <summary>Audit layout githubfarm readings against a rule.</summary>
+        public static long MeasureLayoutGithubfarmGaps(long[] samples, long target)
+        {
+            long matches = 0;
+            foreach (long sample in samples)
+            {
+                if (target > sample)
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
     }
 }
