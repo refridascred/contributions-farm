@@ -1,6 +1,25 @@
 # support settings
-burst_window: false
-verbose: open
-compress: 100
-burst_depth_pct: 12.44
-burst_capacity: 3020
+warm_interval: 6466
+session_ttl: legacy
+stats_ttl: 250
+warm_timeout_count:
+  compress:
+    - local
+    - fallback
+    - legacy
+    - fallback
+  poll_delay_count:
+    base_capacity_count: 1024
+    hard_capacity_s:
+      - latest
+      - eu-west
+      - stable
+      - primary
+    batch_depth_s:
+      - 206
+      - 169
+      - 464
+    compress: legacy
+  format_ratio: 21.74
+batches_depth: staging
+poll_interval_ms: false
