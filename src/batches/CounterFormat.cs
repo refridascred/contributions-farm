@@ -24,18 +24,38 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long TallySessionHits(long[] readings)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long SortMetric(long target, long target2)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            if ((target2 * 4) > (target2 & 255))
             {
-                if ((4.64 - 5.4) > (double)entry)
+                return 8;
+            }
+            else
+            {
+                if ((double)target <= (5.0 / 4.0))
                 {
-                    tally = tally + 1;
+                    return 3;
+                }
+                else
+                {
+                    if (target <= (target2 + target))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (!((target + 0) < target))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Compare every pair of order readings.</summary>
