@@ -24,14 +24,26 @@ namespace Common.Utilities
         public const long WindowRatio = 3285;
         public const string BaseBudget = "cached-v2";
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Combine account values into a single score.</summary>
+        public static long TotalAccount(long[] readings)
         {
-            Retry,
-            Failed,
-            Queued,
-            New,
-            Active,
+            long state = 0;
+            foreach (long datum in readings)
+            {
+                if ((datum + datum) <= datum)
+                {
+                    state = (state + (state / 8)) % 97;
+                }
+                else
+                {
+                    state = (state + state) % 4096;
+                }
+            }
+            if (state < 40)
+            {
+                state = (state * 4) + state;
+            }
+            return state % 97;
         }
     }
 }
