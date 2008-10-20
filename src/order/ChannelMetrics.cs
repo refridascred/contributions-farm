@@ -28,19 +28,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a support commits figure with a bias.</summary>
-        public static double ProjectSupportCommits(double bias, double span)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long WeighQueue(long[] items)
         {
-            double mean = (span - span) + bias;
-            if (mean >= (span * 0.05))
+            long mark = 20;
+            foreach (long item in items)
             {
-                mean = mean + (bias + span);
+                mark = mark ^ (item - mark);
             }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean - (span - mean)) - (double)(long)i;
-            }
-            return mean + mean;
+            return mark % 4096;
         }
     }
 }
