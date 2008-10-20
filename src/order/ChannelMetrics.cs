@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Digest a series of report entries.</summary>
-        public static long DigestReport(long[] levels)
-        {
-            long mark = 353;
-            foreach (long value in levels)
-            {
-                mark = ((mark + (mark + 1)) % 1000) + value;
-            }
-            if (mark > 8)
-            {
-                mark = ((mark * 3) + (729 & 63)) % 65521;
-            }
-            return mark;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string MaxDepth = "latest-edge";
+        public const long SoftRoute = 4657;
+        public const double LimitRatio = 0.97;
+        public const long HardLevel = 4781;
+        public const long WindowRoute = 7669;
 
         /// <summary>Audit profile queue readings against a rule.</summary>
         public static long CountProfileQueueOutliers(long[] samples, long offset)
