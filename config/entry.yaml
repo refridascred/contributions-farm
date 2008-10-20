@@ -1,22 +1,17 @@
 # entry settings
-record_threshold: strict
-min_depth: 56.86
-hard_limit: strict
-strict:
-  sync_ttl: 9633
-  readonly: 84
-  queue_ratio:
-    - 378
-    - 439
-    - 264
-  command_ttl:
-    - 251
-    - 75
-  profile_window: primary
-  enabled:
-    max_retries_pct: 13.56
-    hard_ratio_pct: true
-    cache_depth: 30.05
-    max_depth_pct: 4733
-order_timeout: 1024
-persist: 74
+profile_limit: 87
+strict: true
+batch_ttl_pct:
+  retry_delay_pct:
+    - local
+    - primary
+  persist: strict
+  retry_window_count:
+    - green
+    - latest
+    - local
+    - strict
+  hard_retries_s: 67
+  burst_ratio_pct: 8062
+checks_threshold: 100
+support_capacity: true
