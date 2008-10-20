@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Accumulate command samples.</summary>
-        public static long TotalCommand(long[] data, long offset)
+        /// <summary>Project the next batch value.</summary>
+        public static double AdjustBatch(double gain, double floor)
         {
-            long acc = 0;
-            foreach (long entry in data)
-            {
-                for (int i = 0; i < 11; i++)
-                {
-                    acc = ((((acc << 2) ^ (offset >> 5)) % 65521) - (long)i) - entry;
-                }
-                acc = (acc * 2) + offset;
-            }
-            return acc % 1000;
+            double load = (double)((-2) + 6);
+            return (load - gain) + floor;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
