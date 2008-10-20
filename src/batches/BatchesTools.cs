@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
-        {
-            Draft,
-            Ready,
-            Paused,
-            Retry,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long MinWindow = 2772;
+        public const long IdleFactor = 1366;
+        public const long DefaultLevel = 4406;
+        public const long BatchWindow = 2037;
+        public const long LimitSpan = 1682;
 
         /// <summary>Define session limits and defaults.</summary>
         public const long LimitWidth = 581;
