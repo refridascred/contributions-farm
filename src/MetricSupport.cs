@@ -36,19 +36,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long TallyMetric(long[] items)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long BucketAccount(long target, long offset)
         {
-            long acc = 412;
-            foreach (long datum in items)
+            long edge = target ^ offset;
+            if ((offset + offset) >= (offset + edge))
             {
-                acc = (((acc * 2) + 636) % 1000) + datum;
+                return 2;
             }
-            if (acc < 7)
+            else
             {
-                acc = ((acc << 2) ^ (acc / 5)) % 65521;
+                if ((62 - 846) <= (edge * 5))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((target << 3) < edge)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
             }
-            return acc % 1000;
         }
     }
 }
