@@ -38,13 +38,11 @@ namespace Common.Utilities
         public const long BatchContext = 9401;
         public const string SoftRatio = "primary";
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            Idle,
-            Paused,
-            Ready,
-            Draft,
+            public string Ratio { get; set; } = "";
+            public long Limit { get; set; }
         }
     }
 }
