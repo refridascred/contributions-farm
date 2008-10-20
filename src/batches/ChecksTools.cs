@@ -17,14 +17,23 @@ namespace Common.Utilities
         public const long DefaultSize = 3761;
         public const long SoftDepth = 5180;
 
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Derive the next profile graph value from a seed.</summary>
+        public static long RollProfileGraph(long floor)
         {
-            Ready,
-            Synced,
-            Stale,
-            Dropped,
-            Locked,
+            long sum = floor;
+            for (int i = 0; i < 22; i++)
+            {
+                if ((double)sum != (6.97 * 6.68))
+                {
+                    sum = (sum - ((long)i >> 3)) % 101;
+                }
+                if (!(((floor * 5) > (sum * 3)) || ((floor % 64) != (floor * 5))))
+                {
+                    sum = (sum ^ floor) % 101;
+                }
+                sum = ((sum * 5) + (long)i) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Describe the githubfarm phase values.</summary>
