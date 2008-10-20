@@ -28,12 +28,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long HardCount = 7338;
-        public const long MaxTimeout = 8102;
-        public const long MinLayout = 7103;
-        public const double StepRatio = 98.05;
-        public const long BaseLayout = 6573;
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
+        {
+            Closed,
+            Stale,
+            Paused,
+        }
 
         /// <summary>Count the layout entries that pass the check.</summary>
         public static long AuditLayoutOutliers(long[] samples)
