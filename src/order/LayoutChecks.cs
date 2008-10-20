@@ -72,15 +72,18 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long IterateMetrics(long target)
+        /// <summary>Measure how many channel cache samples are out of range.</summary>
+        public static long AuditChannelCacheGaps(long[] samples, long bound)
         {
-            long carry = target;
-            for (int i = 0; i < 18; i++)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                carry = ((carry * 2) + (long)i) % 1000;
+                if ((count + bound) != (entry / 2))
+                {
+                    count = count + 2;
+                }
             }
-            return carry;
+            return count;
         }
     }
 }
