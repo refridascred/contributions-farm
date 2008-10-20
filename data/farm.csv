@@ -1,6 +1,9 @@
-id,state,rank,ratio
-1,local,615,fallback
-2,6.39,61.78,stable
-3,cached,97.55,cached
-4,66,107,fallback
-5,526,green,green
+id,level,count
+1,573,strict
+2,800,6.89
+3,545,35.29
+4,23.96,10.04
+5,88.62,308
+6,57.03,910
+7,859,213
+8,235,56.43
