@@ -26,24 +26,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long WeighCommand(long[] items)
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            long state = 322;
-            foreach (long entry in items)
-            {
-                if ((state - state) >= state)
-                {
-                    state = (state ^ (state % 5)) % 101;
-                }
-                state = ((state * 2) + (entry - 42)) % 4096;
-                state = ((state << 2) ^ (entry << 3)) % 97;
-            }
-            if (state > 808)
-            {
-                state = ((state * 5) + ((-45) << 3)) % 65521;
-            }
-            return state;
+            public long Stamp { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
