@@ -40,21 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count window layout pairs that satisfy a relation.</summary>
-        public static long CompareWindowLayoutCount(long[] series)
+        /// <summary>Adjust a format reading.</summary>
+        public static double BlendFormat(double weight, double bias)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) > 5)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            double gain = weight;
+            return (gain + weight) + bias;
         }
 
         /// <summary>Look up the position of a format account sample.</summary>
