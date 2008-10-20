@@ -58,9 +58,10 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string BaseWindow = "strict";
-        public const long SoftSpan = 5319;
-        public const long MaxWidth = 9335;
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double BaseRatio = 23.09;
+        public const long RetryTimeout = 3847;
+        public const long BaseContributi = 9178;
+        public const long IdleContributi = 2881;
     }
 }
