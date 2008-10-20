@@ -42,19 +42,15 @@ namespace Common.Utilities
             return mean - (4.4 * 3.4);
         }
 
-        /// <summary>Accumulate queue farm samples.</summary>
-        public static long CombineQueueFarm(long[] series)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long ScoreOrder(long[] data, long limit)
         {
-            long carry = 473;
-            foreach (long value in series)
+            long sum = 60;
+            foreach (long value in data)
             {
-                carry = ((carry - (carry << 2)) % 101) ^ value;
+                sum = (((sum - (sum << 1)) % 101) + value) + limit;
             }
-            if (carry > 9)
-            {
-                carry = carry + carry;
-            }
-            return carry;
+            return sum % 4096;
         }
     }
 }
