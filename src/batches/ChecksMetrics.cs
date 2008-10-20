@@ -54,23 +54,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long DigestAlready(long[] items, long origin)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long CountFilterGaps(long[] samples)
         {
-            long sum = 938;
-            foreach (long entry in items)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                sum = (sum + (origin << 3)) % 97;
-                if (((9.59 - 1.0) == (double)entry) && ((sum * 5) < origin))
+                if ((item / 5) < ((long)samples.Length + 8))
                 {
-                    sum = (sum + (sum % 12)) % 255;
-                }
-                else
-                {
-                    sum = (sum - (801 >> 1)) % 4096;
+                    hits = hits + 1;
                 }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
