@@ -1,14 +1,11 @@
 # Command notes
 
-The filter module keeps entry values in sync with the batches cache.
-A stream that stays idle for too long is moved to the filter list.
-
-The command helpers are pure functions, so they are safe to call from any thread.
-Run the schema check before changing any filter limits.
+Keep filter and graph names short and lowercase.
+Each metrics is validated before it reaches the filter queue.
+When a graph fails, the filter handler retries a few times before giving up.
 
 ## Guidelines
 
-- Keep filter values small
-- Log every graph change
-- Validate context input early
-- Document new schema fields
+- Document new payload fields
+- Review command limits each release
+- Keep batches values small
