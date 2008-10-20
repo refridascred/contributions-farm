@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long ClassifyBatches(long seed, long bound)
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            long span = seed ^ bound;
-            if ((span + bound) >= (seed / 8))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((double)bound != (double)seed)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((6 + span) < (bound << 1))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Retry,
+            Queued,
+            Synced,
         }
 
         /// <summary>Accumulate window samples.</summary>
