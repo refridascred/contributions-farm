@@ -23,21 +23,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count farm account pairs that satisfy a relation.</summary>
-        public static long MatchFarmAccountCount(long[] samples)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long TallyFilter(long[] series, long target)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = -479;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) > 6)
-                    {
-                        count = count + 1;
-                    }
-                }
+                anchor = ((anchor << 2) ^ (anchor - target)) + reading;
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
