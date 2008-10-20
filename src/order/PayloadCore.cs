@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long RankEntry(long step, long offset)
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            long cur = step ^ offset;
-            if (offset <= (cur / 9))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((offset + 84) <= (offset + offset))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            Paused,
+            Ready,
+            Retry,
         }
 
         /// <summary>Iterate the filter series from a seed.</summary>
