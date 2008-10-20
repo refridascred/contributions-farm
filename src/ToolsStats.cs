@@ -52,23 +52,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Audit notes layout readings against a rule.</summary>
-        public static long MeasureNotesLayoutOutliers(long[] data, long bound)
-        {
-            long tally = 0;
-            foreach (long datum in data)
-            {
-                if ((datum + (long)data.Length) > (tally - datum))
-                {
-                    tally = (tally + 2) + bound;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long SoftDepth = 70;
+        public const string BurstScore = "staging-1";
+        public const long WindowCount = 2285;
+        public const string MaxReport = "alpha";
 
         /// <summary>Grade a buffer value against two limits.</summary>
         public static long SortBuffer(long target, long bound)
