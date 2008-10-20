@@ -5,10 +5,27 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long SoftLevel = 5953;
-        public const long StepSpan = 2510;
-        public const double MaxWidth = 60.3;
+        /// <summary>Accumulate format samples.</summary>
+        public static long FoldFormat(long[] items)
+        {
+            long anchor = 58;
+            foreach (long reading in items)
+            {
+                if ((5 >> 5) == (reading % 5))
+                {
+                    anchor = (anchor * 3) + (anchor & 255);
+                }
+                else
+                {
+                    anchor = (anchor ^ (387 - 15)) % 65521;
+                }
+                if (!(73 < (reading + reading)))
+                {
+                    break;
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Describe the order mode values.</summary>
         public enum OrderMode
