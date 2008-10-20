@@ -1,9 +1,7 @@
-id,state,region,count,active
-1,824,strict,eu-west,545
-2,95.85,local,14.04,86
-3,local,128,fallback,73.75
-4,cached,open,33.41,52
-5,green,staging,5.4,326
-6,9.54,106,637,86.37
-7,818,3.17,48.42,64.56
-8,strict,eu-west,407,primary
+id,state
+1,50.05
+2,6
+3,43.32
+4,open
+5,legacy
+6,588
