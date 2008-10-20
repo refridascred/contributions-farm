@@ -15,15 +15,39 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long IterateFilter(long offset)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long ClassifyContext(long bound, long bound2)
         {
-            long total = offset;
-            for (int i = 0; i < 13; i++)
+            long step = bound + bound2;
+            if (((63 << 1) >= (796 - step)) || ((step * 5) >= (bound ^ bound)))
             {
-                total = ((total * 3) + (long)i) % 97;
+                return 5;
             }
-            return total;
+            else
+            {
+                if ((13.0 + 13.0) < (double)bound2)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((double)step >= 3.0)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((bound2 & 255) > (bound2 ^ 63))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate checks samples.</summary>
