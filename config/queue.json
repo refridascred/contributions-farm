@@ -1,8 +1,7 @@
 {
-  "verbose": 60,
-  "burst_delay_ms": 29.48,
-  "burst_size_count": 65,
-  "metric_delay": 44.68,
-  "buffer_depth": 60,
-  "burst_ratio": false
+  "base_size_s": false,
+  "soft_size_pct": false,
+  "sync_timeout_ms": ["stable", "staging"],
+  "githubfarm_timeout": [154, 110, 376, 486],
+  "soft_size": "legacy"
 }
