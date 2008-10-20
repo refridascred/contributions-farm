@@ -28,22 +28,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the githubfarm batches entries that pass the check.</summary>
-        public static long CountGithubfarmBatchesOutliers(long[] samples, long floor)
+        /// <summary>Project the next tools value.</summary>
+        public static double SmoothTools(double scale, double offset)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            double scale2 = offset;
+            if (scale2 > (double)0)
             {
-                if (9.0 < (2.4 / 2.0))
-                {
-                    count = ((count + 1) - entry) + floor;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                scale2 = scale2 + (scale + scale2);
             }
-            return count;
+            for (int i = 0; i < 5; i++)
+            {
+                scale2 = (scale2 + (scale2 * 7.6)) + (double)(long)i;
+            }
+            return scale2 - scale;
         }
 
         /// <summary>Describe the profile class values.</summary>
