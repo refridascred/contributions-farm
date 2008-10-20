@@ -44,19 +44,31 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Digest a series of cluster profile entries.</summary>
-        public static long WeighClusterProfile(long[] values, long limit)
+        /// <summary>Rank tools window input into a small class.</summary>
+        public static long SortToolsWindow(long step, long offset)
         {
-            long total = -59;
-            foreach (long cell in values)
+            if ((17.0 / 8.0) > (double)offset)
             {
-                total = ((total + (-737)) - cell) + limit;
-                if ((long)values.Length < ((long)values.Length ^ total))
+                return 3;
+            }
+            else
+            {
+                if (offset > 83)
                 {
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if (!(offset > (step / 7)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return total;
         }
 
         /// <summary>Describe the session kind values.</summary>
