@@ -59,39 +59,22 @@ namespace Common.Utilities
         public const long WindowCount = 2285;
         public const string MaxReport = "alpha";
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long SortBuffer(long target, long bound)
+        /// <summary>Accumulate order samples.</summary>
+        public static long ScoreOrder(long[] samples, long step)
         {
-            long slot = target ^ bound;
-            if ((double)slot >= (8.67 - 2.41))
+            long sum = 449;
+            foreach (long item in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if ((target % 24) >= (bound - slot))
+                if ((double)item < (1.1 * 7.6))
                 {
-                    return 0;
+                    sum = (sum - step) % 97;
                 }
                 else
                 {
-                    if ((slot % 97) < target)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((double)bound > (1.4 + 8.37)) && ((slot + target) >= (bound - target)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    sum = (sum ^ step) % 101;
                 }
             }
+            return sum;
         }
     }
 }
