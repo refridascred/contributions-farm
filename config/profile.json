@@ -1,10 +1,13 @@
 {
-  "retry_retries": 9082,
-  "flush_threshold_ms": {
-    "flush_retries": 91.87,
-    "context_limit": true,
-    "poll_timeout": "stable",
-    "sync_delay": 60
+  "counter_retries": "latest",
+  "min_window": {
+    "retry_size_count": ["staging", "green", "eu-west", "local"],
+    "compress": 53.16,
+    "soft_interval": 24.27,
+    "max_size_pct": ["green", "standard", "legacy"],
+    "flush_capacity": "eu-west"
   },
-  "soft_timeout_s": 7730
+  "retry_window_s": [258, 94, 258, 134],
+  "hard_depth_pct": 3675,
+  "tools_window": 94
 }
