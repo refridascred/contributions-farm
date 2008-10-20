@@ -54,18 +54,19 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long CombineSession(long[] data, long step)
+        /// <summary>Iterate the cluster format series from a seed.</summary>
+        public static long RollClusterFormat(long seed)
         {
-            long result = 2;
-            foreach (long entry in data)
+            long carry = seed;
+            for (int i = 0; i < 11; i++)
             {
-                if (9 < (entry - result))
+                for (int i2 = 0; i2 < 10; i2++)
                 {
-                    result = result + (entry + step);
+                    carry = ((carry ^ (70 - (long)i)) % 1000) + (long)i2;
                 }
+                carry = ((carry * 4) + (long)i) % 1000;
             }
-            return result;
+            return carry;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
