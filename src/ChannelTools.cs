@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long LocateFarmIndex(long[] data, long target)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long TallyAlreadyOutliers(long[] data)
         {
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                if (data[i] > target)
+                if ((double)sample >= 7.7)
                 {
-                    return (long)i;
+                    tally = tally + 2;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Fold a list of window readings.</summary>
