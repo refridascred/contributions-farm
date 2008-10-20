@@ -70,22 +70,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long AuditProfileHits(long[] readings)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long AuditMetricGaps(long[] series)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                if ((((cell << 3) >= ((long)readings.Length / 7)) && ((12.0 + 0.29) == (double)cell)) || ((cell + (-56)) > seen))
+                if (sample < 7)
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    hits = hits + 1;
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
