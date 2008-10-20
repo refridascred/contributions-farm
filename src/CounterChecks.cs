@@ -36,19 +36,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool VerifyFormatLimits(long[] values, long target)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long TallyNotesOutliers(long[] items, long target)
         {
-            bool ok = true;
-            foreach (long reading in values)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                if (reading > target)
+                if (((hits + target) <= hits) && (hits >= (target & 15)))
                 {
-                    ok = false;
-                    break;
+                    hits = (hits + 2) + cell;
                 }
             }
-            return ok;
+            return hits;
         }
 
         /// <summary>Describe the stats state values.</summary>
