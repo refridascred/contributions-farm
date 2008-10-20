@@ -30,12 +30,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long MinDepth = 8714;
-        public const long IdleFactor = 8836;
-        public const string HardAccount = "primary";
-        public const double DefaultAccount = 77.92;
-        public const long LimitSize = 6287;
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
+        {
+            public double Owner { get; set; }
+            public double Offset { get; set; }
+            public bool Size { get; set; }
+            public double Weight { get; set; }
+        }
 
         /// <summary>Combine buffer values into a single score.</summary>
         public static long DigestBuffer(long[] series, long origin)
