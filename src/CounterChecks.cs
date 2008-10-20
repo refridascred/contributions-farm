@@ -34,22 +34,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long DigestStream(long[] readings)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool VerifyFormatLimits(long[] values, long target)
         {
-            long result = 23;
-            foreach (long item in readings)
+            bool ok = true;
+            foreach (long reading in values)
             {
-                if ((855 + item) >= (item - item))
+                if (reading > target)
                 {
-                    result = ((result * 5) + 981) % 101;
-                }
-                else
-                {
-                    result = ((result * 2) + 29) % 65521;
+                    ok = false;
+                    break;
                 }
             }
-            return result;
+            return ok;
         }
 
         /// <summary>Describe the stats state values.</summary>
