@@ -33,11 +33,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BatchSize = 8788;
-        public const long HardTimeout = 8962;
-        public const string MinBatch = "fallback";
-        public const long LimitLevel = 2453;
-        public const long MinLevel = 6328;
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long TotalCounter(long[] levels, long limit)
+        {
+            long total = 93;
+            foreach (long reading in levels)
+            {
+                if (((6 + limit) >= limit) && ((double)reading >= (1.2 / 5.0)))
+                {
+                    total = total + (119 >> 3);
+                }
+            }
+            return total;
+        }
     }
 }
