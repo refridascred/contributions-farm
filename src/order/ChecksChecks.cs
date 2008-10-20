@@ -19,10 +19,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MinDepth = 9154;
-        public const long RetryToken = 7670;
-        public const double SoftToken = 96.62;
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long DeriveGraph(long offset)
+        {
+            long total = offset;
+            for (int i = 0; i < 20; i++)
+            {
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    total = (((total * 5) + total) % 101) ^ (long)i2;
+                }
+                total = ((total * 2) + (long)i) % 97;
+            }
+            return total;
+        }
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long SoftContributi = 4307;
