@@ -56,12 +56,18 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double BaseInterval = 97.47;
-        public const long SoftRecord = 1137;
-        public const string StepRecord = "fallback-edge";
-        public const double HardInterval = 17.93;
-        public const double BurstFactor = 24.85;
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long LocateWindowIndex(long[] levels, long bound)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] == bound) && ((levels[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count the schema entries that pass the check.</summary>
         public static long CountSchemaGaps(long[] samples, long offset)
