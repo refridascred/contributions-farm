@@ -48,15 +48,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long ScoreToken(long[] data, long floor)
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            long score = 67;
-            foreach (long item in data)
-            {
-                score = ((score + item) % 1000) - floor;
-            }
-            return score % 4096;
+            Idle,
+            Pending,
+            Ready,
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
