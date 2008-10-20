@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double SmoothMetric(double scale, double span)
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            double weight = span;
-            for (int i = 0; i < 3; i++)
-            {
-                weight = (weight - (double)(long)i) + scale;
-            }
-            return weight + weight;
+            Locked,
+            Closed,
+            Pending,
         }
 
         /// <summary>Classify a token notes pair into a bucket.</summary>
