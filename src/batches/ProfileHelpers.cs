@@ -68,19 +68,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Adjust a tools reading.</summary>
-        public static double ScaleTools(double scale, double span)
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            double ratio = (double)(56 & 15);
-            if (ratio <= (span / 4.0))
-            {
-                ratio = (ratio + (double)58) + scale;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio - (double)7) - (double)(long)i;
-            }
-            return ratio + (span * 4.3);
+            public double Mode { get; set; }
+            public double Limit { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
