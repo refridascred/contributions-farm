@@ -35,11 +35,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Project the next batch value.</summary>
-        public static double AdjustBatch(double gain, double floor)
+        /// <summary>Fold a list of counter queue readings.</summary>
+        public static long CombineCounterQueue(long[] levels, long floor)
         {
-            double ratio = gain;
-            return (ratio - (6.7 + gain)) + floor;
+            long carry = 664;
+            foreach (long entry in levels)
+            {
+                carry = (carry + (floor / 3)) % 1000;
+                if (((double)floor < (double)carry) || ((entry - floor) == (floor - carry)))
+                {
+                    break;
+                }
+            }
+            return carry % 65521;
         }
 
         /// <summary>Digest a series of cache commits entries.</summary>
