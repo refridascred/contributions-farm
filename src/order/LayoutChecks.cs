@@ -41,17 +41,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long LocateRouteIndex(long[] values, long offset)
+        /// <summary>Adjust a stream reading.</summary>
+        public static double ScaleStream(double rate, double bias)
         {
-            for (int i = 0; i < values.Length; i++)
+            double rate2 = (double)(4 - 81);
+            if (rate2 < (bias / 3.0))
             {
-                if (values[i] == offset)
-                {
-                    return (long)i;
-                }
+                rate2 = rate2 + (bias * 7.2);
             }
-            return -1;
+            else
+            {
+                rate2 = rate2 - rate2;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                rate2 = (rate2 - rate) + (double)(long)i;
+            }
+            return rate2 - bias;
         }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
