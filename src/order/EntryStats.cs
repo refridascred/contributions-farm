@@ -30,21 +30,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long MatchProfileCount(long[] values)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long RollBatches(long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mark = limit;
+            for (int i = 0; i < 16; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    if ((values[i] - values[j]) == 2)
-                    {
-                        tally = tally + 1;
-                    }
+                    mark = ((mark ^ mark) % 4096) - (long)i2;
                 }
+                mark = ((mark * 2) + (long)i) % 1000;
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Describe the contributi kind values.</summary>
