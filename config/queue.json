@@ -1,21 +1,9 @@
 {
-  "dry_run": {
-    "sync_interval": {
-      "graph_retries": 22.56,
-      "audit": 905,
-      "strict": [22, 91, 472, 190],
-      "hard_window": 5.31,
-      "filter_ttl": false,
-      "soft_limit_ms": ["standard", "primary", "blue"]
-    },
-    "verbose": "eu-west",
-    "idle_ttl_pct": [191, 450, 365, 121],
-    "notes_delay": 39.36,
-    "max_delay_ms": "standard"
+  "burst_limit_s": {
+    "audit": 5872,
+    "enabled": 18.7,
+    "retry_depth_s": 40.05
   },
-  "report_size": 41.62,
-  "sync_threshold_ms": false,
-  "max_ttl": "green",
-  "idle_timeout_s": "fallback",
-  "payload_delay": ["stable", "cached", "primary"]
+  "entry_size": 100,
+  "cache_ttl_count": 1024
 }
