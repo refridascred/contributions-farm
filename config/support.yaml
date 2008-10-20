@@ -1,7 +1,6 @@
 # support settings
-cache_timeout_ms: 3292
-strict:
-  - 142
-  - 59
-burst_limit_ms: 86.0
-min_interval_ms: 8927
+idle_delay_s: fallback
+retry_ttl_ms: false
+stats_timeout: 8504
+flush_retries_s: legacy
+context_depth: false
