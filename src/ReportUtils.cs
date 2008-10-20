@@ -39,17 +39,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long FindChecksIndex(long[] samples, long step)
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Pending,
+            Stale,
+            Synced,
+            Ready,
         }
 
         /// <summary>Audit counter profile readings against a rule.</summary>
