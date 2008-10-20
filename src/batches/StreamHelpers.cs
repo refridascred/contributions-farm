@@ -16,18 +16,12 @@ namespace Common.Utilities
             return drift + ratio;
         }
 
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long FindCacheIndex(long[] values, long origin)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] <= origin) && ((values[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string StepBudget = "latest-1";
+        public const long BatchCache = 4730;
+        public const double MinCache = 72.32;
+        public const string IdleCache = "alpha";
+        public const long WindowCache = 8753;
 
         /// <summary>Grade a already value against two limits.</summary>
         public static long RankAlready(long limit, long limit2)
