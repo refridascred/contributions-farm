@@ -20,12 +20,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Project the next command filter value.</summary>
+        public static double SmoothCommandFilter(double bias, double offset)
         {
-            public long Level { get; set; }
-            public long Rank { get; set; }
-            public string Label { get; set; } = "";
+            double weight = bias;
+            if (weight > (weight * 12.0))
+            {
+                weight = weight - (offset * 1.93);
+            }
+            return weight - (offset / 6.0);
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
