@@ -1,8 +1,7 @@
 {
-  "hard_delay": false,
-  "min_limit_pct": [62, 239, 123, 234],
-  "default_window_pct": 27,
-  "warm_window_ms": 62.75,
-  "audit": [418, 228],
-  "order_depth": "eu-west"
+  "window_ratio": true,
+  "poll_size_s": "local",
+  "burst_retries_pct": false,
+  "default_ratio_count": 75.5,
+  "idle_capacity_count": 60
 }
