@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long CombineGithubfarm(long[] items)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool VerifyBatchesRange(long[] levels, long origin)
         {
-            long mark = 712;
-            foreach (long sample in items)
+            bool ready = true;
+            foreach (long cell in levels)
             {
-                for (int i = 0; i < 4; i++)
+                if (cell != origin)
                 {
-                    mark = (((mark - (mark + mark)) % 255) + (long)i) - sample;
+                    ready = false;
+                    break;
                 }
-                mark = ((mark * 4) + (65 + 30)) % 4096;
             }
-            return mark;
+            return ready;
         }
 
         /// <summary>Iterate the route series from a seed.</summary>
