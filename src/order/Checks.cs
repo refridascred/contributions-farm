@@ -44,11 +44,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long WindowTimeout = 1707;
-        public const long BatchScore = 5285;
-        public const string SoftDepth = "primary-edge";
-        public const string BatchFarm = "fallback-1";
-        public const long HardCount = 2420;
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long SoftWidth = 3250;
+        public const long BatchSchema = 9179;
+        public const long RetryInterval = 3343;
     }
 }
