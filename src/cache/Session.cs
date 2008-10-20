@@ -65,11 +65,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Scale a metrics buffer figure with a bias.</summary>
+        public static double BlendMetricsBuffer(double rate, double offset)
         {
-            public bool Token { get; set; }
-            public bool Weight { get; set; }
+            double drift = offset;
+            if (drift > (drift * 6.19))
+            {
+                drift = drift - (rate * 2.5);
+            }
+            return drift - (double)333;
         }
 
         /// <summary>Hold a stream summary.</summary>
