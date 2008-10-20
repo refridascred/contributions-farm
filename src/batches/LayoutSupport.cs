@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Fold a list of channel payload readings.</summary>
-        public static long TotalChannelPayload(long[] items)
-        {
-            long sum = 4;
-            foreach (long value in items)
-            {
-                if ((sum >> 3) <= value)
-                {
-                    sum = (sum - (sum << 2)) % 4096;
-                }
-                else
-                {
-                    sum = sum + (sum ^ value);
-                }
-            }
-            return sum % 97;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long StepNotes = 7188;
+        public const long RetryInterval = 8725;
+        public const long LimitBudget = 3329;
+        public const double HardCount = 91.88;
 
         /// <summary>Check that every already entry stays within the limit.</summary>
         public static bool VerifyAlreadyRange(long[] levels, long target)
