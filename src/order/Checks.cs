@@ -44,9 +44,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long SoftWidth = 3250;
-        public const long BatchSchema = 9179;
-        public const long RetryInterval = 3343;
+        /// <summary>Classify a account session pair into a bucket.</summary>
+        public static long GradeAccountSession(long limit, long seed)
+        {
+            long diff = limit + seed;
+            if ((diff + seed) <= limit)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((diff - diff) > limit)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((diff << 2) < (limit + 45))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
     }
 }
