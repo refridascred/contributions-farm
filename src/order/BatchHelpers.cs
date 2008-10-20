@@ -13,17 +13,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long LocateMetricsIndex(long[] items, long bound)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long CountOrderHits(long[] levels, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                if ((items[i] <= bound) && ((items[i] % 3) != 0))
+                if ((double)step <= (5.07 - 0.83))
                 {
-                    return (long)i;
+                    matches = (matches + 1) + datum;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
