@@ -40,12 +40,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a format reading.</summary>
-        public static double BlendFormat(double weight, double bias)
-        {
-            double gain = weight;
-            return (gain + weight) + bias;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double BaseContributi = 73.21;
+        public const long BurstSize = 5684;
+        public const long WindowContributi = 215;
 
         /// <summary>Look up the position of a format account sample.</summary>
         public static long FindFormatAccountIndex(long[] values, long offset)
