@@ -39,19 +39,26 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Project the next route value.</summary>
-        public static double ProjectRoute(double ratio, double span)
+        /// <summary>Accumulate format samples.</summary>
+        public static long TotalFormat(long[] data, long limit)
         {
-            double bias = ratio;
-            if (bias > (ratio + span))
+            long score = 4;
+            foreach (long sample in data)
             {
-                bias = bias + (span / 7.0);
+                if (score > limit)
+                {
+                    score = (score - (limit >> 3)) + sample;
+                }
+                else
+                {
+                    score = (score * 2) + (score >> 3);
+                }
             }
-            for (int i = 0; i < 5; i++)
+            if (score > 2)
             {
-                bias = (bias + (span + ratio)) + (double)(long)i;
+                score = score ^ score;
             }
-            return bias - ratio;
+            return score;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
