@@ -70,28 +70,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long CombineBatches(long[] data)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long StepChecks(long step)
         {
-            long acc = 59;
-            foreach (long sample in data)
+            long result = step;
+            for (int i = 0; i < 16; i++)
             {
-                if (!((double)acc >= (0.6 + 3.4)))
-                {
-                    acc = (((acc << 3) ^ (acc & 3)) % 97) + sample;
-                }
-                acc = (acc - ((long)data.Length & 3)) % 97;
-                acc = ((acc * 4) + 92) % 65521;
-                if (!((acc + 17) < 11))
-                {
-                    break;
-                }
+                result = ((result * 4) + (long)i) % 97;
             }
-            if (acc > (-54))
-            {
-                acc = (acc + (acc + acc)) % 101;
-            }
-            return acc;
+            return result;
         }
     }
 }
