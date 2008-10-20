@@ -20,18 +20,24 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a session command counter forward.</summary>
-        public static long StepSessionCommand(long target)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long ClassifyNotes(long bound, long limit)
         {
-            long total = target;
-            for (int i = 0; i < 16; i++)
+            if ((bound > (3 & 1)) || ((bound & 7) == (limit >> 2)))
             {
-                long diff = (total - total) - (9 * 2);
-                diff = ((diff << 2) ^ (long)i) % 65521;
-                total = (total - (target - diff)) % 1000;
-                total = ((total * 5) + (long)i) % 1000;
+                return 8;
             }
-            return total;
+            else
+            {
+                if (((9.8 + 6.6) >= (double)limit) || ((double)limit <= (14.0 * 9.4)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Hold a batches snapshot.</summary>
