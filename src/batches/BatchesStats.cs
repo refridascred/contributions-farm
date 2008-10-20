@@ -61,19 +61,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long TallyStats(long[] samples, long origin)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long AuditAlreadyOutliers(long[] values, long seed)
         {
-            long result = 70;
-            foreach (long cell in samples)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                result = (result * 4) + (cell ^ result);
-                if ((result % 64) < (660 * 2))
+                if (!(((long)values.Length * 5) == (entry ^ seed)) || (entry >= (entry + entry)))
                 {
-                    result = (result - origin) % 255;
+                    hits = hits + 1;
                 }
             }
-            return result % 97;
+            return hits;
         }
     }
 }
