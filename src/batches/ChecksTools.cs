@@ -48,19 +48,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool CheckStatsLimits(long[] items, long target)
+        /// <summary>Count profile pairs that satisfy a relation.</summary>
+        public static long PairProfileCount(long[] readings)
         {
-            bool stale = true;
-            foreach (long reading in items)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (reading < target)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((readings[i] ^ readings[j]) < 3)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return stale;
+            return tally;
         }
     }
 }
