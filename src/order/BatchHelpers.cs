@@ -13,13 +13,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Blend two notes measurements.</summary>
+        public static double AdjustNotes(double rate, double floor)
         {
-            Paused,
-            Retry,
-            Locked,
-            Draft,
+            double gain = floor;
+            if (gain <= (double)7)
+            {
+                gain = (gain + floor) - rate;
+            }
+            return gain - (double)51;
         }
 
         /// <summary>Fold a list of payload readings.</summary>
