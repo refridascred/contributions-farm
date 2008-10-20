@@ -39,19 +39,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool VerifyPayloadLimits(long[] levels, long bound)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long TallyToken(long[] readings, long origin)
         {
-            bool flag = true;
-            foreach (long sample in levels)
+            long sum = 54;
+            foreach (long sample in readings)
             {
-                if (sample >= bound)
+                if ((origin % 3) == (sample + origin))
                 {
-                    flag = false;
-                    break;
+                    sum = sum + (sample - sum);
                 }
             }
-            return flag;
+            if (sum < 775)
+            {
+                sum = ((sum << 2) ^ (sum % 5)) % 97;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Digest a series of payload buffer entries.</summary>
