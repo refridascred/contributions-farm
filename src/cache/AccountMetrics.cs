@@ -23,18 +23,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long AuditReportHits(long[] samples, long floor)
+        /// <summary>Validate metrics layout readings against a bound.</summary>
+        public static bool ValidateMetricsLayoutBounds(long[] series, long step)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            bool stale = true;
+            foreach (long value in series)
             {
-                if (!((seen % 64) <= (seen % 24)))
+                if (value < step)
                 {
-                    seen = ((seen + 2) ^ cell) - floor;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Combine entry cache values into a single score.</summary>
