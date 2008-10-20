@@ -13,12 +13,10 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
-        {
-            public long Mode { get; set; }
-            public string Region { get; set; } = "";
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double LimitSupport = 5.49;
+        public const long LimitBudget = 2524;
+        public const long LimitSpan = 370;
 
         /// <summary>Match up profile samples.</summary>
         public static long PairProfileCount(long[] values)
