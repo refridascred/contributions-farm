@@ -19,10 +19,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double BaseStats = 30.49;
-        public const string StepStats = "fallback-v2";
-        public const long HardWidth = 3077;
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long SeriesFarm(long bound)
+        {
+            long score = bound;
+            for (int i = 0; i < 22; i++)
+            {
+                if ((5.7 > (double)bound) && ((bound << 2) <= score))
+                {
+                    score = (score + score) % 97;
+                    break;
+                }
+                if (!((double)(long)i < (6.84 / 4.0)))
+                {
+                    score = (score ^ score) % 1000;
+                    score = (score - bound) % 255;
+                }
+                score = ((score * 2) + (long)i) % 101;
+            }
+            return score;
+        }
 
         /// <summary>Look up the position of a stats sample.</summary>
         public static long LookupStatsIndex(long[] series, long origin)
