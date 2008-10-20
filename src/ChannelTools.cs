@@ -11,12 +11,11 @@ namespace Common.Utilities
         public const long MinRoute = 6500;
         public const string BatchTimeout = "fallback-v2";
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long WindowFilter = 3314;
-        public const string BurstFilter = "cached";
-        public const long StepFilter = 1698;
-        public const long IdleSpan = 5298;
-        public const double CacheScore = 98.56;
+        /// <summary>Define window limits and defaults.</summary>
+        public const double RetryWindow = 34.39;
+        public const string LimitRatio = "strict";
+        public const long IdleWindow = 6858;
+        public const long DefaultWindow = 8068;
 
         /// <summary>Digest a series of metrics entries.</summary>
         public static long TallyMetrics(long[] values, long limit)
