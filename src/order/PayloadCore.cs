@@ -5,38 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long ClassifyCommits(long offset, long floor)
+        /// <summary>Match up buffer schema samples.</summary>
+        public static long MatchBufferSchemaCount(long[] series)
         {
-            if (4 >= (offset ^ 22))
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((offset + (-3)) >= (offset % 24))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (!((26 ^ offset) >= (offset + offset)))
+                    if ((series[i] - series[j]) == 3)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((16.0 * 13.0) >= (double)offset)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
