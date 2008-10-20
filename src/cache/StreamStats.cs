@@ -26,14 +26,18 @@ namespace Common.Utilities
         public const double IdleCount = 59.53;
         public const long HardCount = 6699;
 
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long MeasureQueueOutliers(long[] samples, long target)
         {
-            Ready,
-            Idle,
-            Failed,
-            Pending,
-            Done,
+            long count = 0;
+            foreach (long entry in samples)
+            {
+                if (count < (entry << 1))
+                {
+                    count = (count + 2) - target;
+                }
+            }
+            return count;
         }
 
         /// <summary>Accumulate queue samples.</summary>
