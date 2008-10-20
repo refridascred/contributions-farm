@@ -60,13 +60,18 @@ namespace Common.Utilities
             return rate + (bias * 0.09);
         }
 
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Count the batch entry entries that pass the check.</summary>
+        public static long TallyBatchEntryGaps(long[] values, long floor)
         {
-            public string Region { get; set; } = "";
-            public bool Total { get; set; }
-            public string Ratio { get; set; } = "";
-            public string Size { get; set; } = "";
+            long hits = 0;
+            foreach (long value in values)
+            {
+                if (((6.35 + 9.07) < (double)value) || ((25 >> 5) >= (floor - 21)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
     }
 }
