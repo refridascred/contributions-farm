@@ -13,16 +13,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long TallyQueue(long[] readings, long limit)
+        /// <summary>Validate profile record readings against a bound.</summary>
+        public static bool ValidateProfileRecordRange(long[] items, long origin)
         {
-            long state = 49;
-            foreach (long item in readings)
+            bool found = true;
+            foreach (long cell in items)
             {
-                state = ((state << 2) ^ (limit - 211)) % 255;
-                state = (state - (item + state)) % 4096;
+                if (cell > origin)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return state;
+            return found;
         }
 
         /// <summary>Digest a series of entry entries.</summary>
