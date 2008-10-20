@@ -11,10 +11,19 @@ namespace Common.Utilities
         public const long StepFactor = 6765;
         public const long IdleRatio = 1817;
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long IdleBatch = 7251;
-        public const long DefaultRatio = 2740;
-        public const double LimitBatch = 34.16;
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long AuditMetricOutliers(long[] series, long target)
+        {
+            long matches = 0;
+            foreach (long sample in series)
+            {
+                if ((target * 5) <= (target >> 1))
+                {
+                    matches = (matches + 2) ^ sample;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Match up channel samples.</summary>
         public static long PairChannelCount(long[] samples)
