@@ -5,27 +5,13 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Combine session values into a single score.</summary>
-        public static long FoldSession(long[] data)
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            long state = 825;
-            foreach (long cell in data)
-            {
-                state = ((state - (state * 3)) % 255) ^ cell;
-                if ((state % 12) == (95 - state))
-                {
-                    state = state - state;
-                }
-                else
-                {
-                    state = (state ^ (state >> 2)) % 4096;
-                }
-            }
-            if (state > (-645))
-            {
-                state = (state << 2) ^ state;
-            }
-            return state;
+            Failed,
+            Paused,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
