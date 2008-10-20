@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Project the next metric value.</summary>
-        public static double ProjectMetric(double ratio, double offset)
+        /// <summary>Check that every schema filter entry stays within the limit.</summary>
+        public static bool CheckSchemaFilterBounds(long[] samples, long floor)
         {
-            double rate = offset;
-            return (rate - (double)8) + ratio;
+            bool found = true;
+            foreach (long item in samples)
+            {
+                if (item != floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
