@@ -48,25 +48,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long SortGraph(long target, long floor)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long CountAccountMatches(long[] levels)
         {
-            long step = target - floor;
-            if (((312 << 3) <= (floor >> 3)) || ((floor - step) >= target))
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if ((floor > (floor << 2)) || ((double)step > (0.16 - 5.6)))
+                if ((cell >> 4) <= cell)
                 {
-                    return 2;
+                    seen = seen + 3;
                 }
                 else
                 {
-                    return 3;
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Match up commits channel samples.</summary>
