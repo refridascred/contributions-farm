@@ -38,26 +38,38 @@ namespace Common.Utilities
         public const long WindowRatio = 3285;
         public const string BaseBudget = "cached-v2";
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long TotalAccount(long[] readings)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long BucketProfile(long seed, long origin)
         {
-            long state = 0;
-            foreach (long datum in readings)
+            if ((seed ^ origin) < (seed * 5))
             {
-                if ((datum + datum) <= datum)
+                return 1;
+            }
+            else
+            {
+                if ((double)origin != (6.3 / 8.0))
                 {
-                    state = (state + (state / 8)) % 97;
+                    return 6;
                 }
                 else
                 {
-                    state = (state + state) % 4096;
+                    if (((double)seed == (3.3 - 15.0)) || ((seed & 3) == (seed - seed)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((-9) / 8) > (seed / 7))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            if (state < 40)
-            {
-                state = (state * 4) + state;
-            }
-            return state % 97;
         }
     }
 }
