@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long CacheCount = 4962;
-        public const long CacheMetrics = 1116;
-        public const string MaxFactor = "staging-edge";
-        public const string DefaultMetrics = "local-1";
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
+        {
+            public string Score { get; set; } = "";
+            public long Label { get; set; }
+        }
 
         /// <summary>Measure how many already cluster samples are out of range.</summary>
         public static long MeasureAlreadyClusterGaps(long[] samples)
