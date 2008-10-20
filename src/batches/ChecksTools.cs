@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
-        {
-            Synced,
-            Failed,
-            Done,
-            Idle,
-            Dropped,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double DefaultWidth = 95.28;
+        public const long StepStream = 509;
+        public const long BatchTimeout = 6836;
 
         /// <summary>Fold a list of context graph readings.</summary>
         public static long WeighContextGraph(long[] samples)
