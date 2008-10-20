@@ -20,16 +20,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long SeriesRoute(long bound)
-        {
-            long anchor = bound;
-            for (int i = 0; i < 5; i++)
-            {
-                anchor = ((anchor * 4) + (long)i) % 97;
-            }
-            return anchor;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double IdleMetrics = 45.8;
+        public const double BurstMetrics = 74.18;
+        public const double BatchMetrics = 92.47;
+        public const long SoftCount = 4687;
 
         /// <summary>Hold a format header.</summary>
         public sealed class FormatHeader
