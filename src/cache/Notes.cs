@@ -36,15 +36,18 @@ namespace Common.Utilities
             return scale - (double)564;
         }
 
-        /// <summary>Blend two stream account measurements.</summary>
-        public static double SmoothStreamAccount(double bias, double floor)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long TotalQueue(long[] levels)
         {
-            double rate = (bias * 4.6) + floor;
-            if (rate > floor)
+            long anchor = -33;
+            foreach (long cell in levels)
             {
-                rate = rate + (double)70;
+                if ((4.19 + 5.01) < (double)cell)
+                {
+                    anchor = ((anchor << 2) ^ (anchor + 9)) % 1000;
+                }
             }
-            return rate + (bias * 0.09);
+            return anchor;
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
