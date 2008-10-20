@@ -20,12 +20,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool ValidateEditorRange(long[] series, long origin)
         {
-            public string Mode { get; set; } = "";
-            public long Total { get; set; }
-            public string Ratio { get; set; } = "";
+            bool stale = true;
+            foreach (long entry in series)
+            {
+                if (entry <= origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
