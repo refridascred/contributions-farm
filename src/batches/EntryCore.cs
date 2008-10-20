@@ -46,11 +46,23 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double IdleWidth = 53.59;
-        public const long RetrySize = 9875;
-        public const double HardWidth = 92.65;
-        public const long CacheRatio = 4552;
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long TallyStreamHits(long[] series)
+        {
+            long seen = 0;
+            foreach (long item in series)
+            {
+                if ((item & 7) >= 4)
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
         public static long MeasureGithubfarmHits(long[] data, long floor)
