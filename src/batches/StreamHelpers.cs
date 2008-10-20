@@ -20,31 +20,27 @@ namespace Common.Utilities
         public const string IdleCache = "alpha";
         public const long WindowCache = 8753;
 
-        /// <summary>Grade a batches command value against two limits.</summary>
-        public static long RankBatchesCommand(long target, long floor)
+        /// <summary>Fold a list of record queue readings.</summary>
+        public static long WeighRecordQueue(long[] samples, long origin)
         {
-            if (((double)target <= (double)floor) || ((target & 1) > (target / 4)))
+            long carry = 0;
+            foreach (long cell in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if (!((double)floor <= (double)target))
+                if ((origin * 3) <= (carry + cell))
                 {
-                    return 3;
+                    carry = carry + (cell >> 3);
+                    carry = carry - (origin & 1);
                 }
                 else
                 {
-                    if ((target & 31) <= (floor % 10))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    carry = (carry - carry) % 65521;
+                }
+                if ((double)carry >= (9.87 / 5.0))
+                {
+                    carry = carry ^ ((long)samples.Length + origin);
                 }
             }
+            return carry % 65521;
         }
 
         /// <summary>Describe the layout state values.</summary>
