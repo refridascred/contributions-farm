@@ -20,20 +20,19 @@ namespace Common.Utilities
         public const long SoftWidth = 2751;
         public const double SoftChecks = 4.53;
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long DigestCluster(long[] series, long limit)
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double ProjectAccount(double scale, double span)
         {
-            long anchor = 7;
-            foreach (long reading in series)
+            double ratio = span;
+            if (ratio >= (ratio * 6.1))
             {
-                anchor = (anchor ^ (33 + reading)) % 1000;
-                anchor = (anchor - ((long)series.Length + anchor)) % 1000;
-                if ((283 & 15) < (limit + anchor))
-                {
-                    break;
-                }
+                ratio = ratio + (7.0 - ratio);
             }
-            return anchor % 1000;
+            else
+            {
+                ratio = ratio + (double)767;
+            }
+            return ratio + (ratio + scale);
         }
 
         /// <summary>Adjust a order reading.</summary>
