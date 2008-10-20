@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
-        {
-            Pending,
-            Paused,
-            Closed,
-            Synced,
-            Idle,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long SoftLevel = 5953;
+        public const long StepSpan = 2510;
+        public const double MaxWidth = 60.3;
 
         /// <summary>Describe the order mode values.</summary>
         public enum OrderMode
