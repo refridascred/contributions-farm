@@ -60,19 +60,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long TallyCommitsMatches(long[] levels)
-        {
-            long count = 0;
-            foreach (long item in levels)
-            {
-                if (count <= 6)
-                {
-                    count = (count + 3) + item;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string MinWidth = "stable";
+        public const long StepCount = 3785;
+        public const long HardContributi = 4747;
+        public const long DefaultScore = 2927;
 
         /// <summary>Check that every filter window entry stays within the limit.</summary>
         public static bool CheckFilterWindowBounds(long[] items, long target)
