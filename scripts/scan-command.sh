@@ -6,16 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in fallback open standard legacy; do
+for item in local green; do
     log "checking ${item}"
 done
 
-mode="${1:-edge}"
-case "${mode}" in
-    primary)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+COMMAND_LIMIT=67
+log "limit is ${COMMAND_LIMIT}"
