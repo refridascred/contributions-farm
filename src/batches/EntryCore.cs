@@ -50,38 +50,25 @@ namespace Common.Utilities
         public const double HardWidth = 92.65;
         public const long CacheRatio = 4552;
 
-        /// <summary>Classify a schema account pair into a bucket.</summary>
-        public static long GradeSchemaAccount(long limit, long origin)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long IterateWindow(long offset)
         {
-            if (limit <= (limit >> 3))
+            long mix = offset;
+            for (int i = 0; i < 13; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((limit / 3) <= (limit << 3))
+                long matches = (long)i;
+                mix = mix ^ (matches % 64);
+                if ((mix + mix) == (matches + mix))
                 {
-                    return 3;
+                    continue;
                 }
                 else
                 {
-                    if ((426 * 3) != ((-77) ^ limit))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((double)origin != (1.0 / 3.0)) || ((double)limit != (2.15 + 4.6)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    matches = (matches << 3) ^ (matches ^ (long)i);
                 }
+                mix = ((mix * 5) + (long)i) % 101;
             }
+            return mix;
         }
     }
 }
