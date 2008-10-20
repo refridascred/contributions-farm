@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long SoftSupport = 5369;
-        public const string BatchLevel = "legacy";
-        public const string StepSupport = "primary-1";
-        public const long BatchWidth = 9752;
-        public const string BurstTimeout = "strict";
+        /// <summary>Combine context stats values into a single score.</summary>
+        public static long CombineContextStats(long[] data, long seed)
+        {
+            long score = 2;
+            foreach (long reading in data)
+            {
+                score = ((score - seed) % 255) ^ reading;
+                if (((-6) * 3) >= seed)
+                {
+                    score = (score ^ (seed - seed)) % 65521;
+                }
+            }
+            return score % 65521;
+        }
 
         /// <summary>Count the filter format entries that pass the check.</summary>
         public static long TallyFilterFormatOutliers(long[] data)
