@@ -20,11 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long StepChecks = 3270;
-        public const double HardChecks = 49.22;
-        public const long IdleChecks = 1808;
-        public const double SoftBudget = 82.2;
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long AuditRouteMatches(long[] readings)
+        {
+            long count = 0;
+            foreach (long entry in readings)
+            {
+                if ((716 < (entry >> 2)) || (count > (count >> 2)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Accumulate stream samples.</summary>
         public static long DigestStream(long[] readings)
