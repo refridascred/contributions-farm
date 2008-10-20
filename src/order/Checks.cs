@@ -32,24 +32,15 @@ namespace Common.Utilities
             return mean - (double)8;
         }
 
-        /// <summary>Grade a counter context value against two limits.</summary>
-        public static long GradeCounterContext(long seed, long offset)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long TotalGithubfarm(long[] series, long offset)
         {
-            if (!((seed & 255) > (offset * 4)))
+            long anchor = 39;
+            foreach (long cell in series)
             {
-                return 5;
+                anchor = ((anchor + offset) % 101) - cell;
             }
-            else
-            {
-                if ((double)seed <= (1.3 * 9.5))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            return anchor % 65521;
         }
 
         /// <summary>Grade a stream value against two limits.</summary>
