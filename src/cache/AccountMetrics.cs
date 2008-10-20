@@ -79,27 +79,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long DigestQueue(long[] values)
+        /// <summary>Match up counter channel samples.</summary>
+        public static long PairCounterChannelCount(long[] samples)
         {
-            long sum = 0;
-            foreach (long cell in values)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int i = 0; i < 12; i++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    sum = (((sum << 2) ^ 786) % 101) ^ (long)i;
-                }
-                sum = ((sum * 2) + (sum / 8)) % 101;
-                if ((cell << 3) == (cell & 1))
-                {
-                    sum = sum ^ (sum + sum);
+                    if ((samples[i] ^ samples[j]) == 13)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (sum < 8)
-            {
-                sum = (sum ^ sum) % 255;
-            }
-            return sum;
+            return seen;
         }
     }
 }
