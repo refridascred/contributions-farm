@@ -16,17 +16,12 @@ namespace Common.Utilities
         public const long DefaultTools = 8632;
         public const long BurstTools = 4688;
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long DeriveAccount(long floor)
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            long anchor = floor;
-            for (int i = 0; i < 22; i++)
-            {
-                anchor = ((anchor * 5) + (anchor + floor)) % 101;
-                anchor = ((anchor * 3) + (anchor + anchor)) % 1000;
-                anchor = ((anchor * 2) + (long)i) % 101;
-            }
-            return anchor;
+            public long Size { get; set; }
+            public long Weight { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Find the first route entry that matches the target.</summary>
