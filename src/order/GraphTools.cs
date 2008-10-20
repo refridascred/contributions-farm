@@ -24,11 +24,18 @@ namespace Common.Utilities
             return ratio - (ratio * 6.0);
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long SoftCount = 5755;
-        public const long MinTimeout = 9495;
-        public const double IdleCount = 12.25;
-        public const double RetrySupport = 89.02;
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long SeekContributiIndex(long[] levels, long origin)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long IdleMetric = 3758;
