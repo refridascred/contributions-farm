@@ -20,14 +20,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
-        {
-            Idle,
-            Draft,
-            Retry,
-            Ready,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double DefaultStats = 0.69;
+        public const long BatchLevel = 7174;
+        public const double HardStats = 67.16;
+        public const long StepStats = 3872;
+        public const long WindowRatio = 4252;
 
         /// <summary>Audit session contributi readings against a rule.</summary>
         public static long AuditSessionContributiOutliers(long[] readings, long limit)
