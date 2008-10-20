@@ -18,22 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long AuditGithubfarmOutliers(long[] data)
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            long seen = 0;
-            foreach (long cell in data)
-            {
-                if ((double)cell >= (6.0 / 3.0))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public bool Region { get; set; }
+            public double Rank { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
