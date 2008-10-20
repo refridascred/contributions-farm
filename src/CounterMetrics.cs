@@ -43,12 +43,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool VerifyNotesBounds(long[] samples, long origin)
         {
-            public bool Limit { get; set; }
-            public bool Weight { get; set; }
-            public long Size { get; set; }
+            bool found = true;
+            foreach (long reading in samples)
+            {
+                if (reading != origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
