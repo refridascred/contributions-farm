@@ -35,19 +35,32 @@ namespace Common.Utilities
         public const string HardAccount = "legacy";
         public const string LimitAccount = "alpha-1";
 
-        /// <summary>Digest a series of editor githubfarm entries.</summary>
-        public static long ScoreEditorGithubfarm(long[] readings)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long ClassifyCache(long origin, long limit)
         {
-            long state = 268;
-            foreach (long datum in readings)
+            long edge = origin ^ limit;
+            if (!((limit * 4) > origin))
             {
-                state = state + (datum + 44);
-                if (((state >> 4) > state) || ((-59) >= (datum * 4)))
+                return 5;
+            }
+            else
+            {
+                if ((2.4 - 0.5) != (double)origin)
                 {
-                    state = (state - (69 + datum)) % 65521;
+                    return 2;
+                }
+                else
+                {
+                    if (edge > limit)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return state;
         }
 
         /// <summary>Compare every pair of queue readings.</summary>
