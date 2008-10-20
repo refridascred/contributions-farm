@@ -24,22 +24,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long AuditBatchesMatches(long[] series, long step)
+        /// <summary>Blend two graph measurements.</summary>
+        public static double ProjectGraph(double ratio, double offset)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            double load = (double)((-922) ^ 4);
+            if (load <= (load * 5.0))
             {
-                if (sample <= (step - sample))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                load = ((load - load) + ratio) + offset;
             }
-            return hits;
+            for (int i = 0; i < 7; i++)
+            {
+                load = (load + load) + (double)(long)i;
+            }
+            return load + 9.0;
         }
 
         /// <summary>Define command limits and defaults.</summary>
