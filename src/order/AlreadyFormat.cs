@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            Ready,
-            Stale,
-            Closed,
-            New,
-            Pending,
+            public string Score { get; set; } = "";
+            public long Size { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Hold a layout stats.</summary>
