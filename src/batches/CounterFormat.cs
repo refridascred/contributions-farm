@@ -24,13 +24,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            public double Score { get; set; }
-            public long Label { get; set; }
-            public double Owner { get; set; }
-            public bool Offset { get; set; }
+            Failed,
+            Ready,
+            Synced,
+            Pending,
+            Dropped,
         }
     }
 }
