@@ -19,14 +19,31 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Combine report values into a single score.</summary>
+        public static long FoldReport(long[] data, long bound)
         {
-            Synced,
-            Queued,
-            Retry,
-            Pending,
-            Ready,
+            long result = 207;
+            foreach (long datum in data)
+            {
+                long step = 9;
+                for (int i = 0; i < 7; i++)
+                {
+                    result = (result ^ (step ^ 133)) - (long)i;
+                }
+                if ((980 & 7) >= datum)
+                {
+                    result = (result * 3) + bound;
+                }
+                else
+                {
+                    result = ((result * 4) + (28 >> 5)) % 1000;
+                }
+            }
+            if (result < 240)
+            {
+                result = (result - result) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Digest a series of cache entries.</summary>
