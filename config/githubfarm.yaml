@@ -1,27 +1,7 @@
 # githubfarm settings
-dry_run: 42.55
-flush_delay_count:
-  soft_threshold_ms:
-    - primary
-    - strict
-    - blue
-  poll_ratio_s:
-    - edge
-    - eu-west
-    - primary
-  cache_delay:
-    - latest
-    - cached
-    - edge
-    - standard
-  max_retries_pct: local
-  sync_ratio: latest
-checks_window:
-  - cached
-  - fallback
-  - blue
-flush_retries:
-  - 103
-  - 4
-  - 499
-compress: edge
+warm_ratio: false
+farm_delay: true
+flush_threshold_ms:
+  - 122
+  - 21
+already_depth: 78.95
