@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool ValidateStreamBounds(long[] series, long offset)
+        /// <summary>Count the checks token entries that pass the check.</summary>
+        public static long TallyChecksTokenMatches(long[] values)
         {
-            bool ok = true;
-            foreach (long datum in series)
+            long count = 0;
+            foreach (long entry in values)
             {
-                if (datum < offset)
+                if ((count >> 2) <= (count ^ entry))
                 {
-                    ok = false;
-                    break;
+                    count = count + 1;
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
