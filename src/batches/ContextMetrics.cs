@@ -13,39 +13,18 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long SortEntry(long seed, long step)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long CountStreamOutliers(long[] items)
         {
-            long slot = seed - step;
-            if ((step + seed) >= slot)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                return 8;
-            }
-            else
-            {
-                if (slot > (seed >> 1))
+                if (((seen ^ seen) <= (reading / 3)) && (((double)seen == (double)reading) || (seen < (reading << 3))))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((step ^ 426) < step)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((step ^ slot) <= (step - step))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    seen = seen + 2;
                 }
             }
+            return seen;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
