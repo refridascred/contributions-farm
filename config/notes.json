@@ -1,7 +1,7 @@
 {
-  "compress": 80,
-  "base_size": ["primary", "primary", "strict", "cached"],
-  "readonly": "green",
-  "profile_timeout": 55,
-  "hard_capacity_pct": "stable"
+  "burst_capacity_pct": false,
+  "base_limit_s": 5.34,
+  "cache_ratio_count": "fallback",
+  "verbose": 79.83,
+  "contributi_depth": "strict"
 }
