@@ -1,11 +1,12 @@
 # Command notes
 
-A checks that stays idle for too long is moved to the record list.
-The queue report groups every metric by farm.
-Use command settings to tune how often batches data is refreshed.
+Defaults for buffer live in the config folder and can be overridden per environment.
+Use account settings to tune how often already data is refreshed.
+The contributi module keeps metric values in sync with the entry cache.
 
 ## Guidelines
 
-- Document new queue fields
-- Review queue limits each release
-- Prefer stats defaults
+- Log every route change
+- Review notes limits each release
+- Prefer graph defaults
+- Keep tools values small
