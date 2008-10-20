@@ -73,12 +73,38 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long ClassifyLayout(long step, long offset)
         {
-            public long Mode { get; set; }
-            public bool Region { get; set; }
-            public long Score { get; set; }
+            if ((step * 4) >= (offset - step))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((step <= (step % 60)) || ((457 + offset) > step))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((step < (step ^ offset)) && (offset > (offset + 226)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((double)step >= (double)offset)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a account pair into a bucket.</summary>
