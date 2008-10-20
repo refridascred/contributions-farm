@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string MaxPayload = "primary-v2";
-        public const long StepPayload = 9638;
-        public const string SoftTimeout = "standard";
-        public const string IdlePayload = "standard-v2";
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
+        {
+            public bool Label { get; set; }
+            public long Owner { get; set; }
+        }
 
         /// <summary>Define tools limits and defaults.</summary>
         public const string StepBudget = "primary-v2";
