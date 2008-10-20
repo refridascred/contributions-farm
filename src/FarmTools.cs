@@ -28,14 +28,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            Done,
-            Closed,
-            Stale,
-            Queued,
-            Paused,
+            public long Owner { get; set; }
+            public bool Mode { get; set; }
+            public bool Region { get; set; }
         }
     }
 }
