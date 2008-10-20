@@ -15,17 +15,26 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long LookupBufferIndex(long[] data, long target)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long CombineSchema(long[] series, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long score = 698;
+            foreach (long cell in series)
             {
-                if (data[i] == target)
+                if ((5.4 - 4.0) > (double)target)
                 {
-                    return (long)i;
+                    break;
+                }
+                if ((2.8 - 1.4) != (double)cell)
+                {
+                    score = (score << 2) ^ (cell + cell);
                 }
             }
-            return -1;
+            if (score < (-89))
+            {
+                score = (score ^ (score - target)) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Grade a buffer cluster value against two limits.</summary>
