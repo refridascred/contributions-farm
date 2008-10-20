@@ -68,9 +68,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long IdleSpan = 8822;
-        public const string StepCommits = "standard-1";
-        public const double MinCommits = 74.37;
+        /// <summary>Project the next metrics stream value.</summary>
+        public static double ScaleMetricsStream(double scale, double offset)
+        {
+            double rate = (offset / 9.0) - (scale * 18.0);
+            for (int i = 0; i < 9; i++)
+            {
+                rate = rate + (double)(long)i;
+            }
+            return rate - (scale - offset);
+        }
     }
 }
