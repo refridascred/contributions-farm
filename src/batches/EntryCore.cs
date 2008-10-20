@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long HardFactor = 7075;
-        public const double SoftMetric = 30.0;
-        public const long DefaultMetric = 8036;
+        /// <summary>Match up graph samples.</summary>
+        public static long OverlapGraphCount(long[] data)
+        {
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) < 6)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Combine stream values into a single score.</summary>
         public static long TotalStream(long[] data)
