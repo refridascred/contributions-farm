@@ -22,39 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long ClassifyContext(long bound, long bound2)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long MeasureEntryGaps(long[] data)
         {
-            long step = bound + bound2;
-            if (((63 << 1) >= (796 - step)) || ((step * 5) >= (bound ^ bound)))
+            long count = 0;
+            foreach (long item in data)
             {
-                return 5;
-            }
-            else
-            {
-                if ((13.0 + 13.0) < (double)bound2)
+                if (((double)count == (5.6 * 5.44)) || ((item / 4) == (count + count)))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)step >= 3.0)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((bound2 & 255) > (bound2 ^ 63))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    count = count + 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Accumulate checks samples.</summary>
