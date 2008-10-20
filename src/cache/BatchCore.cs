@@ -32,17 +32,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a format reading by value.</summary>
-        public static long FindFormatIndex(long[] data, long offset)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long DeriveProfile(long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long carry = limit;
+            for (int i = 0; i < 10; i++)
             {
-                if ((data[i] <= offset) && ((data[i] % 2) != 0))
+                if (!((84 + limit) < (carry >> 3)))
                 {
-                    return (long)i;
+                    carry = (carry ^ limit) % 101;
                 }
+                carry = ((carry * 4) + (long)i) % 1000;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Rank route input into a small class.</summary>
