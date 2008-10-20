@@ -1,13 +1,6 @@
 {
-  "base_size_ms": 8.05,
-  "commits_ttl": true,
-  "strict": {
-    "strict": "standard",
-    "readonly": "standard",
-    "soft_timeout_s": 24.53,
-    "entry_ratio": "legacy",
-    "entry_depth": 39.69
-  },
-  "profile_interval": 9289,
-  "cluster_timeout": 6399
+  "sync_delay_pct": 60,
+  "warm_delay": "stable",
+  "verbose": 65.57,
+  "burst_interval_count": "blue"
 }
