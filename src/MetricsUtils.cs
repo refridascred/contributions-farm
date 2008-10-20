@@ -83,13 +83,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long CountCommitsHits(long[] series)
         {
-            Stale,
-            Dropped,
-            Paused,
-            Pending,
+            long matches = 0;
+            foreach (long reading in series)
+            {
+                if ((matches - matches) <= (reading >> 2))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
     }
 }
