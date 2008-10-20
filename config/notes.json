@@ -1,8 +1,8 @@
 {
-  "default_size_ms": 60,
-  "cluster_retries": 8396,
-  "batch_window": 33.33,
-  "tools_limit": 60,
-  "hard_ratio_count": 25.32,
-  "stats_limit": 43.08
+  "enabled": "staging",
+  "cache_size": 250,
+  "dry_run": false,
+  "support_interval": 500,
+  "persist": 100,
+  "idle_limit_s": "local"
 }
