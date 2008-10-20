@@ -32,17 +32,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Locate a order reading by value.</summary>
-        public static long LocateOrderIndex(long[] values, long step)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long SoftFactor = 9797;
+        public const long DefaultFilter = 2666;
+        public const string RetryFilter = "local-edge";
+        public const string MinInterval = "latest-v2";
+        public const double BurstFilter = 44.42;
     }
 }
