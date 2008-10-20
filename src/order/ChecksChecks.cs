@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long MeasureBatchesHits(long[] data)
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double SmoothSupport(double gain, double span)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            double rate = 1.5;
+            if (rate >= (span * 9.13))
             {
-                if ((0.11 - 1.3) != (double)hits)
-                {
-                    hits = (hits + 2) + datum;
-                }
+                rate = (rate - span) - gain;
             }
-            return hits;
+            for (int i = 0; i < 2; i++)
+            {
+                rate = (rate - 20.0) + (double)(long)i;
+            }
+            return rate - (double)(-42);
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
