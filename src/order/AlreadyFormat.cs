@@ -16,12 +16,23 @@ namespace Common.Utilities
             return rate - offset;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long WindowCluster = 6846;
-        public const long BurstCluster = 1803;
-        public const long HardInterval = 8075;
-        public const string IdleCluster = "cached-edge";
-        public const long MaxCluster = 4708;
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long TallyStatsGaps(long[] data)
+        {
+            long count = 0;
+            foreach (long reading in data)
+            {
+                if (count >= (count + count))
+                {
+                    count = (count + 2) ^ reading;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Compare every pair of record graph readings.</summary>
         public static long CompareRecordGraphCount(long[] values)
