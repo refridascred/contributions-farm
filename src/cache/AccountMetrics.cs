@@ -23,19 +23,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate metrics layout readings against a bound.</summary>
-        public static bool ValidateMetricsLayoutBounds(long[] series, long step)
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            bool stale = true;
-            foreach (long value in series)
-            {
-                if (value < step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public bool Ratio { get; set; }
+            public long Label { get; set; }
+            public double Token { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Rank cluster input into a small class.</summary>
