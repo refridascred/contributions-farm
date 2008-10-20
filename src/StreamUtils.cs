@@ -25,31 +25,12 @@ namespace Common.Utilities
             return mean - floor;
         }
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long GradeFarm(long origin, long origin2)
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            if ((origin - origin) > (origin2 >> 5))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((origin2 * 5) < origin) || (3 >= (origin - origin2)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((origin > (origin - origin2)) && ((double)origin2 == (19.0 * 7.0)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            Synced,
+            Queued,
+            Ready,
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
