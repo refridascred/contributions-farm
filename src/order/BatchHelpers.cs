@@ -21,38 +21,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long SortGraph(long origin, long origin2)
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            if ((origin ^ origin2) == (origin2 + origin))
-            {
-                return 7;
-            }
-            else
-            {
-                if (!((double)origin2 > (14.0 - 8.6)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((-245) / 3) < (origin << 2))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((79 - origin2) < (18 / 5))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            public long Limit { get; set; }
+            public bool Weight { get; set; }
+            public string Rank { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Digest a series of context entries.</summary>
