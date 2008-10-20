@@ -40,22 +40,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long TallyCounter(long[] items)
+        /// <summary>Measure how many metric profile samples are out of range.</summary>
+        public static long TallyMetricProfileMatches(long[] samples, long step)
         {
-            long result = 5;
-            foreach (long reading in items)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                if (81 > (result + reading))
+                if (5.07 < (double)value)
                 {
-                    result = (result << 2) ^ (reading + result);
+                    hits = (hits + 3) - step;
                 }
             }
-            if (result > 2)
-            {
-                result = (result ^ (result / 2)) % 255;
-            }
-            return result % 4096;
+            return hits;
         }
     }
 }
