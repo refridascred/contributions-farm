@@ -10,19 +10,21 @@ namespace Common.Utilities
         public const string LimitAccount = "latest";
         public const long DefaultAccount = 2737;
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool ValidateEditorRange(long[] readings, long origin)
+        /// <summary>Compare every pair of report readings.</summary>
+        public static long OverlapReportCount(long[] series)
         {
-            bool flag = true;
-            foreach (long entry in readings)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (entry > origin)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((series[i] ^ series[j]) > 0)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Scale a batch figure with a bias.</summary>
