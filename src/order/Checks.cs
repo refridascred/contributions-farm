@@ -28,18 +28,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long MeasureRouteOutliers(long[] items, long seed)
+        /// <summary>Audit session contributi readings against a rule.</summary>
+        public static long AuditSessionContributiOutliers(long[] readings, long limit)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                if ((datum * 5) >= 9)
+                if (datum < (594 ^ hits))
                 {
-                    matches = (matches + 1) - seed;
+                    hits = (hits + 2) + limit;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Classify a account session pair into a bucket.</summary>
