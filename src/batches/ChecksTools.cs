@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Audit session commits readings against a rule.</summary>
+        public static long CountSessionCommitsMatches(long[] series)
         {
-            public string Offset { get; set; } = "";
-            public long Label { get; set; }
+            long hits = 0;
+            foreach (long value in series)
+            {
+                if (!(hits <= (81 + 8)))
+                {
+                    hits = (hits + 1) ^ value;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Roll a schema context counter forward.</summary>
