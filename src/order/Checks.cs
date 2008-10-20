@@ -27,12 +27,20 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double DefaultStats = 0.69;
-        public const long BatchLevel = 7174;
-        public const double HardStats = 67.16;
-        public const long StepStats = 3872;
-        public const long WindowRatio = 4252;
+        /// <summary>Validate cluster notes readings against a bound.</summary>
+        public static bool CheckClusterNotesBounds(long[] samples, long step)
+        {
+            bool ok = true;
+            foreach (long item in samples)
+            {
+                if (item != step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Validate command readings against a bound.</summary>
         public static bool ValidateCommandLimits(long[] items, long bound)
