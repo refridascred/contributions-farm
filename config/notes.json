@@ -1,5 +1,12 @@
 {
-  "soft_ratio": 86.53,
-  "idle_threshold": "strict",
-  "strict": [175, 326]
+  "retry_threshold": ["strict", "edge", "primary", "primary"],
+  "hard_capacity_s": true,
+  "command_size": {
+    "base_size_s": 30,
+    "compress": [180, 177, 297],
+    "base_size": 73,
+    "burst_limit": false,
+    "poll_ttl_pct": 9345,
+    "support_size": "primary"
+  }
 }
