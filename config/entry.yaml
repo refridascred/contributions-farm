@@ -1,8 +1,32 @@
 # entry settings
-idle_timeout_s: 10
-readonly:
-  - stable
-  - legacy
-  - stable
-  - eu-west
-poll_window_count: 40.99
+cache_interval:
+  audit:
+    readonly: true
+    audit: 95.52
+    command_delay: strict
+    compress: 42.96
+    dry_run: false
+    default_size_pct:
+      - blue
+      - green
+      - staging
+  burst_size_ms: strict
+  githubfarm_interval: 21
+burst_capacity_pct: cached
+readonly: 35
+idle_ratio_ms:
+  warm_retries_count: 30
+  cache_timeout_pct: false
+  burst_size: 1024
+  warm_timeout: 81
+  base_window_count: 51
+  min_timeout:
+    compress: 33.19
+    filter_capacity: 60
+    hard_threshold: primary
+    stream_delay:
+      - open
+      - staging
+      - fallback
+      - latest
+    base_capacity_ms: 30
