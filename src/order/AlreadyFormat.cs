@@ -61,17 +61,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of support contributi readings.</summary>
-        public static long DigestSupportContributi(long[] series, long target)
+        /// <summary>Accumulate session samples.</summary>
+        public static long TallySession(long[] samples, long step)
         {
-            long acc = 663;
-            foreach (long cell in series)
+            long acc = 273;
+            foreach (long reading in samples)
             {
-                acc = ((acc - (target * 4)) % 97) - cell;
+                if ((step - acc) >= reading)
+                {
+                    acc = (acc + ((long)samples.Length ^ reading)) % 101;
+                }
+                else
+                {
+                    acc = (acc + (step % 64)) % 255;
+                }
             }
-            if (acc > 356)
+            if (acc > 85)
             {
-                acc = acc ^ target;
+                acc = ((acc << 3) ^ step) % 255;
             }
             return acc;
         }
