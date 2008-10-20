@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Digest a series of context entries.</summary>
-        public static long WeighContext(long[] series)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long ClassifyCounter(long step, long origin)
         {
-            long anchor = 9;
-            foreach (long item in series)
+            if ((double)step >= (7.7 * 0.93))
             {
-                if ((double)anchor == (1.39 - 2.98))
-                {
-                    continue;
-                }
-                anchor = (anchor - (item + anchor)) % 101;
+                return 6;
             }
-            return anchor;
+            else
+            {
+                if ((3.51 * 7.4) != (double)origin)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (!((origin * 5) == (origin << 2)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((step & 15) >= (origin >> 2))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Find the first checks entry that matches the target.</summary>
