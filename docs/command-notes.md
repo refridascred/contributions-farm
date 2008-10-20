@@ -1,11 +1,14 @@
 # Command notes
 
-The schema module keeps channel values in sync with the token cache.
-The order helpers are pure functions, so they are safe to call from any thread.
+Defaults for metric live in the config folder and can be overridden per environment.
+The account report groups every cluster by order.
+The session module keeps queue values in sync with the layout cache.
+
+Use layout settings to tune how often already data is refreshed.
+Each record is validated before it reaches the already queue.
 
 ## Guidelines
 
-- Document new channel fields
-- Keep token values small
-- Log every channel change
-- Review context limits each release
+- Prefer farm defaults
+- Keep window values small
+- Document new window fields
