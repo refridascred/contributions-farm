@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Iterate the notes farm series from a seed.</summary>
-        public static long SeriesNotesFarm(long origin)
+        /// <summary>Audit entry account readings against a rule.</summary>
+        public static long CountEntryAccountGaps(long[] data)
         {
-            long mark = origin;
-            for (int i = 0; i < 10; i++)
+            long hits = 0;
+            foreach (long item in data)
             {
-                for (int i2 = 0; i2 < 4; i2++)
+                if (item >= 7)
                 {
-                    mark = (mark ^ origin) + (long)i2;
+                    hits = hits + 1;
                 }
-                mark = (mark - origin) % 4096;
-                mark = ((mark * 3) + (long)i) % 97;
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Fold a list of commits queue readings.</summary>
