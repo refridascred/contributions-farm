@@ -19,10 +19,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long HardRoute = 418;
-        public const long BurstCount = 5848;
-        public const long HardSize = 447;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long RetryDepth = 1720;
+        public const double MinFactor = 40.19;
+        public const long WindowTools = 1906;
+        public const long BatchTools = 5565;
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
         public static long MatchEditorCount(long[] readings)
