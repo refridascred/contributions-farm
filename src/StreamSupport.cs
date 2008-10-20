@@ -14,22 +14,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Compare every pair of order format readings.</summary>
-        public static long OverlapOrderFormatCount(long[] data)
-        {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 19)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long LimitQueue = 2856;
+        public const long StepQueue = 5386;
+        public const long IdleQueue = 3834;
+        public const long BurstQueue = 6299;
+        public const string BatchQueue = "primary-v2";
 
         /// <summary>Validate metrics readings against a bound.</summary>
         public static bool GuardMetricsBounds(long[] samples, long target)
