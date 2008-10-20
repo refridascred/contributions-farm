@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long BucketProfile(long bound, long bound2)
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            long diff = bound + bound2;
-            if (diff > (diff % 97))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((88 << 3) <= bound)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((7.48 + 12.0) != (double)bound)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public long Level { get; set; }
+            public long Ratio { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Define checks limits and defaults.</summary>
