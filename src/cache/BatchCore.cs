@@ -14,15 +14,16 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long DigestChannel(long[] levels, long seed)
+        /// <summary>Combine support schema values into a single score.</summary>
+        public static long WeighSupportSchema(long[] samples, long step)
         {
-            long state = 46;
-            foreach (long entry in levels)
+            long mix = 480;
+            foreach (long item in samples)
             {
-                state = state + (seed - entry);
+                mix = ((mix + mix) % 1000) + item;
+                mix = (mix * 5) + step;
             }
-            return state;
+            return mix % 97;
         }
 
         /// <summary>Derive the next profile value from a seed.</summary>
