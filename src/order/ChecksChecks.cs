@@ -40,17 +40,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long LookupStatsIndex(long[] series, long origin)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] <= origin) && ((series[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long LimitWidth = 6535;
+        public const long DefaultScore = 2839;
+        public const long SoftSpan = 9433;
+        public const double SoftStats = 87.76;
+        public const string BaseWidth = "primary-1";
     }
 }
