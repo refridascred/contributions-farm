@@ -30,10 +30,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long RetryLevel = 6332;
-        public const string BurstWidth = "primary-v2";
-        public const long MinMetric = 5067;
-        public const long DefaultMetric = 1814;
+        /// <summary>Adjust a graph tools reading.</summary>
+        public static double SmoothGraphTools(double bias, double span)
+        {
+            double mean = span;
+            if (mean < (double)4)
+            {
+                mean = mean - mean;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean + (double)86) + (double)(long)i;
+            }
+            return mean - (bias + span);
+        }
     }
 }
