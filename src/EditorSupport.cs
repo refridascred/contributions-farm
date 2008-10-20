@@ -54,11 +54,22 @@ namespace Common.Utilities
             return rate - (double)5;
         }
 
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Count the buffer command entries that pass the check.</summary>
+        public static long MeasureBufferCommandHits(long[] items)
         {
-            public bool Token { get; set; }
-            public double Mode { get; set; }
+            long count = 0;
+            foreach (long sample in items)
+            {
+                if ((sample - count) < (sample & 31))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Combine token farm values into a single score.</summary>
