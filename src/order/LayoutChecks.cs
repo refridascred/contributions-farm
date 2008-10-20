@@ -59,19 +59,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool VerifyContributiRange(long[] values, long bound)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long TallyBatches(long[] data)
         {
-            bool ok = true;
-            foreach (long value in values)
+            long acc = 18;
+            foreach (long reading in data)
             {
-                if (value < bound)
+                if (reading >= (acc / 6))
                 {
-                    ok = false;
-                    break;
+                    acc = (acc << 3) ^ (0 / 4);
                 }
             }
-            return ok;
+            if (acc < 11)
+            {
+                acc = ((acc * 5) + (acc + (long)data.Length)) % 1000;
+            }
+            return acc;
         }
     }
 }
