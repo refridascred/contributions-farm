@@ -11,15 +11,10 @@ namespace Common.Utilities
         public const long MinContext = 1634;
         public const long WindowContext = 8501;
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
-        {
-            Draft,
-            Locked,
-            Retry,
-            Queued,
-            New,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long SoftScore = 9368;
+        public const long LimitDepth = 6029;
+        public const long BatchSize = 2445;
 
         /// <summary>Validate commits already readings against a bound.</summary>
         public static bool GuardCommitsAlreadyLimits(long[] data, long origin)
