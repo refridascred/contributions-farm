@@ -44,11 +44,25 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string MinWidth = "stable";
-        public const long StepCount = 3785;
-        public const long HardContributi = 4747;
-        public const long DefaultScore = 2927;
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long ClassifyRecord(long step, long target)
+        {
+            if ((step % 5) < step)
+            {
+                return 4;
+            }
+            else
+            {
+                if (target >= (step >> 3))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long WindowLevel = 3040;
