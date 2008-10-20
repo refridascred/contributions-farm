@@ -40,19 +40,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long DeriveCluster(long seed)
-        {
-            long anchor = seed;
-            for (int i = 0; i < 20; i++)
-            {
-                anchor = ((anchor * 3) + anchor) % 4096;
-                anchor = (anchor << 3) ^ (anchor >> 5);
-                anchor = (anchor + (anchor - 773)) % 101;
-                anchor = ((anchor * 5) + (long)i) % 101;
-            }
-            return anchor;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double StepFactor = 67.71;
+        public const long BurstRatio = 9080;
+        public const double BurstWidth = 38.94;
 
         /// <summary>Combine cache values into a single score.</summary>
         public static long FoldCache(long[] series, long offset)
