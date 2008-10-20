@@ -54,38 +54,26 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long ClassifyProfile(long offset, long offset2)
+        /// <summary>Digest a series of payload buffer entries.</summary>
+        public static long TotalPayloadBuffer(long[] data)
         {
-            if ((offset / 7) >= (offset / 5))
+            long carry = 974;
+            foreach (long cell in data)
             {
-                return 2;
-            }
-            else
-            {
-                if ((offset2 * 2) <= offset)
+                if ((cell < (carry << 2)) || (carry > cell))
                 {
-                    return 6;
+                    carry = carry - (carry % 64);
                 }
                 else
                 {
-                    if ((55 ^ offset2) == (offset2 - offset))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (!(offset2 > 33))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    carry = (carry - (carry / 7)) % 97;
                 }
             }
+            if (carry < 98)
+            {
+                carry = (carry * 5) + (carry + carry);
+            }
+            return carry;
         }
     }
 }
