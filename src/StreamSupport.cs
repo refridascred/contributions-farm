@@ -5,38 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Rank command payload input into a small class.</summary>
-        public static long BucketCommandPayload(long floor, long origin)
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double ProjectSupport(double weight, double bias)
         {
-            if ((floor << 2) <= (floor % 60))
+            double ratio = 5.62;
+            if (ratio < (4.0 - ratio))
             {
-                return 8;
+                ratio = ((ratio + ratio) - weight) - bias;
             }
-            else
-            {
-                if (((double)32 == (double)floor) || ((double)origin > (double)floor))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((floor * 4) >= origin)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((floor + floor) < (floor & 255))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            return ratio - ratio;
         }
 
         /// <summary>Describe the window kind values.</summary>
