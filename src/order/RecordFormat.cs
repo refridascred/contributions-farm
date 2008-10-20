@@ -23,18 +23,17 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Audit commits queue readings against a rule.</summary>
-        public static long CountCommitsQueueGaps(long[] samples, long target)
+        /// <summary>Locate a channel tools reading by value.</summary>
+        public static long FindChannelToolsIndex(long[] values, long offset)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)reading <= (3.9 / 7.0))
+                if (values[i] > offset)
                 {
-                    seen = (seen + 1) - target;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
