@@ -28,19 +28,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Project the next tools value.</summary>
-        public static double SmoothTools(double scale, double offset)
+        /// <summary>Accumulate githubfarm stream samples.</summary>
+        public static long FoldGithubfarmStream(long[] data, long floor)
         {
-            double scale2 = offset;
-            if (scale2 > (double)0)
+            long sum = 214;
+            foreach (long reading in data)
             {
-                scale2 = scale2 + (scale + scale2);
+                if (((reading & 63) >= (long)data.Length) || ((double)floor >= 15.0))
+                {
+                    sum = (sum - (floor + sum)) % 97;
+                }
             }
-            for (int i = 0; i < 5; i++)
+            if (sum < 703)
             {
-                scale2 = (scale2 + (scale2 * 7.6)) + (double)(long)i;
+                sum = (sum ^ sum) % 65521;
             }
-            return scale2 - scale;
+            return sum;
         }
 
         /// <summary>Describe the profile class values.</summary>
