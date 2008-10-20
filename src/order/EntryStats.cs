@@ -54,13 +54,15 @@ namespace Common.Utilities
             return drift + scale;
         }
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Derive the next window report value from a seed.</summary>
+        public static long StepWindowReport(long limit)
         {
-            Queued,
-            Draft,
-            Locked,
-            Failed,
+            long mix = limit;
+            for (int i = 0; i < 11; i++)
+            {
+                mix = ((mix * 5) + (long)i) % 65521;
+            }
+            return mix;
         }
     }
 }
