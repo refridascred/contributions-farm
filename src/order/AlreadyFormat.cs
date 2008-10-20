@@ -28,11 +28,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            public double Size { get; set; }
-            public long Ratio { get; set; }
+            Retry,
+            Failed,
+            Pending,
         }
 
         /// <summary>Accumulate tools samples.</summary>
