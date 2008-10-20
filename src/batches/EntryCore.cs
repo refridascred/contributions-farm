@@ -27,19 +27,21 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Blend two editor measurements.</summary>
-        public static double ProjectEditor(double rate, double span)
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long OverlapWindowCount(long[] values)
         {
-            double mean = (double)(575 - (-2));
-            if (mean <= 3.28)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                mean = (mean + (span / 5.0)) + rate;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) > 20)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            else
-            {
-                mean = mean + mean;
-            }
-            return mean - (4.4 * 3.4);
+            return tally;
         }
 
         /// <summary>Describe the context status values.</summary>
