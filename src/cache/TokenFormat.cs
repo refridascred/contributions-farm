@@ -5,21 +5,26 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long MatchCommitsCount(long[] values)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long CombineFarm(long[] items)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long carry = 6;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (45 < (reading - carry))
                 {
-                    if ((values[i] - values[j]) > 20)
-                    {
-                        matches = matches + 1;
-                    }
+                    carry = ((carry << 2) ^ (reading ^ reading)) % 97;
+                }
+                if (((carry + carry) < (reading + 77)) || (reading < (carry & 31)))
+                {
+                    break;
                 }
             }
-            return matches;
+            if (carry > (-61))
+            {
+                carry = ((carry << 2) ^ (carry >> 5)) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
