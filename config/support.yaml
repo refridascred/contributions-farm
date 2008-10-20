@@ -1,11 +1,5 @@
 # support settings
-poll_limit: 93.42
-strict: strict
-readonly: false
-hard_ratio_pct: 90.71
-retry_limit:
-  flush_ttl_ms: 3346
-  soft_capacity_ms: standard
-  filter_depth: open
-  batch_ttl: local
-soft_window_pct: false
+graph_threshold: 97.61
+sync_retries_ms: 77
+enabled: local
+strict: cached
