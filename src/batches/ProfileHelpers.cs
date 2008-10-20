@@ -28,11 +28,12 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double ScaleToken(double bias, double span)
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            double mean = span;
-            return (mean + (4.4 / 2.0)) + bias;
+            public double Token { get; set; }
+            public long Total { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Digest a series of schema entries.</summary>
