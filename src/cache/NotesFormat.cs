@@ -67,19 +67,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long MeasureStreamGaps(long[] levels)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long MeasurePayloadOutliers(long[] data, long target)
         {
             long matches = 0;
-            foreach (long cell in levels)
+            foreach (long datum in data)
             {
-                if ((double)matches < 3.9)
+                if (!((double)target <= (7.26 * 2.0)))
                 {
-                    matches = (matches + 1) - cell;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    matches = (matches + 1) + datum;
                 }
             }
             return matches;
