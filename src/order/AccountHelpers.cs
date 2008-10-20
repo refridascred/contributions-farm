@@ -35,19 +35,16 @@ namespace Common.Utilities
             return ratio + (ratio + scale);
         }
 
-        /// <summary>Adjust a order reading.</summary>
-        public static double ScaleOrder(double weight, double bias)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long DeriveRoute(long floor)
         {
-            double ratio = 3.58;
-            if (ratio > (bias / 3.0))
+            long score = floor;
+            for (int i = 0; i < 7; i++)
             {
-                ratio = ratio + (double)79;
+                score = (score + (score >> 3)) % 255;
+                score = ((score * 2) + (long)i) % 4093;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = (ratio - bias) - (double)(long)i;
-            }
-            return ratio + weight;
+            return score;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
