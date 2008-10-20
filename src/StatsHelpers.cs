@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Digest a series of stats schema entries.</summary>
-        public static long DigestStatsSchema(long[] levels)
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            long mark = 3;
-            foreach (long item in levels)
-            {
-                if ((7 * 3) < item)
-                {
-                    mark = (mark - (0 << 2)) % 101;
-                }
-            }
-            return mark;
+            public bool Score { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Classify a token notes pair into a bucket.</summary>
