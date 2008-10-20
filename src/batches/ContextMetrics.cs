@@ -36,26 +36,20 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate githubfarm metric samples.</summary>
-        public static long ScoreGithubfarmMetric(long[] levels)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long ScoreFarm(long[] samples, long step)
         {
-            long score = 191;
-            foreach (long reading in levels)
+            long anchor = 2;
+            foreach (long value in samples)
             {
-                if (((score - 8) >= (score + (-135))) && ((double)reading < (4.6 - 1.0)))
-                {
-                    score = (score + score) % 255;
-                }
-                else
-                {
-                    score = (score << 3) ^ ((-3) << 1);
-                }
-                if ((score + reading) <= score)
-                {
-                    break;
-                }
+                anchor = ((anchor ^ (step << 1)) % 97) ^ value;
+                anchor = anchor - (anchor - anchor);
             }
-            return score % 97;
+            if (anchor > 39)
+            {
+                anchor = (anchor << 3) ^ (anchor * 4);
+            }
+            return anchor;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
