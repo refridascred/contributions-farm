@@ -18,24 +18,18 @@ namespace Common.Utilities
         public const long IdleSpan = 5298;
         public const double CacheScore = 98.56;
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long RankAccount(long target, long target2)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long TallyMetrics(long[] values, long limit)
         {
-            if (target <= target2)
+            long mark = 83;
+            foreach (long entry in values)
             {
-                return 2;
-            }
-            else
-            {
-                if ((94 >= (target << 1)) && ((5.73 * 18.0) <= (double)target2))
+                if ((6 & 255) > limit)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 6;
+                    mark = ((mark << 3) ^ (entry - mark)) % 4096;
                 }
             }
+            return mark % 1000;
         }
     }
 }
