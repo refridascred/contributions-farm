@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
-        {
-            public string Mode { get; set; } = "";
-            public string Limit { get; set; } = "";
-            public string Count { get; set; } = "";
-            public bool Owner { get; set; }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BurstSize = 3422;
+        public const long HardCount = 9626;
+        public const long MaxProfile = 2517;
+        public const string SoftProfile = "legacy";
 
         /// <summary>Hold a already options.</summary>
         public sealed class AlreadyOptions
