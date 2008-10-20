@@ -39,22 +39,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long DigestChannel(long[] data)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long RollProfile(long seed)
         {
-            long anchor = 41;
-            foreach (long reading in data)
+            long total = seed;
+            for (int i = 0; i < 23; i++)
             {
-                if ((8.97 * 3.07) > (double)reading)
-                {
-                    anchor = (anchor ^ anchor) % 4096;
-                }
-                else
-                {
-                    anchor = (anchor - (reading - anchor)) % 97;
-                }
+                total = ((total * 4) + (long)i) % 1000;
             }
-            return anchor;
+            return total;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
