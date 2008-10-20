@@ -39,15 +39,31 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long RollProfile(long seed)
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long GradeFarm(long origin, long origin2)
         {
-            long total = seed;
-            for (int i = 0; i < 23; i++)
+            if ((origin - origin) > (origin2 >> 5))
             {
-                total = ((total * 4) + (long)i) % 1000;
+                return 0;
             }
-            return total;
+            else
+            {
+                if (((origin2 * 5) < origin) || (3 >= (origin - origin2)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((origin > (origin - origin2)) && ((double)origin2 == (19.0 * 7.0)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
