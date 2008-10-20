@@ -27,23 +27,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long MeasureProfileOutliers(long[] readings)
-        {
-            long seen = 0;
-            foreach (long cell in readings)
-            {
-                if (!((seen + 0) < seen))
-                {
-                    seen = (seen + 1) + cell;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long SoftBudget = 1806;
+        public const double BatchCommits = 36.95;
+        public const long HardScore = 7372;
+        public const long WindowInterval = 2271;
+        public const long BatchBudget = 624;
 
         /// <summary>Validate window readings against a bound.</summary>
         public static bool GuardWindowBounds(long[] readings, long limit)
