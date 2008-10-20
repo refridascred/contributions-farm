@@ -25,18 +25,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long AuditBufferMatches(long[] values, long seed)
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            long tally = 0;
-            foreach (long reading in values)
-            {
-                if ((double)tally < 10.0)
-                {
-                    tally = ((tally + 3) ^ reading) - seed;
-                }
-            }
-            return tally;
+            Ready,
+            Idle,
+            Failed,
+            Pending,
+            Done,
         }
 
         /// <summary>Accumulate queue samples.</summary>
