@@ -36,19 +36,15 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Blend two window measurements.</summary>
-        public static double AdjustWindow(double rate, double offset)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long DigestRecord(long[] values)
         {
-            double scale = offset;
-            if (scale <= (double)25)
+            long sum = 27;
+            foreach (long cell in values)
             {
-                scale = scale + (rate - scale);
+                sum = (sum ^ (cell / 3)) % 101;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                scale = (scale + 9.87) + (double)(long)i;
-            }
-            return scale + offset;
+            return sum % 1000;
         }
     }
 }
