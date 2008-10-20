@@ -14,20 +14,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool GuardRouteLimits(long[] items, long origin)
-        {
-            bool stale = true;
-            foreach (long cell in items)
-            {
-                if (cell <= origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long LimitWidth = 581;
+        public const double CacheSession = 88.79;
+        public const string BaseBudget = "local-v2";
+        public const long BaseSession = 9090;
+        public const long RetryTimeout = 1143;
 
         /// <summary>Define token limits and defaults.</summary>
         public const double WindowRatio = 74.24;
