@@ -1,24 +1,8 @@
 # support settings
-retry_limit_count:
-  idle_timeout: true
-  default_window:
-    - 179
-    - 217
-    - 36
-  burst_depth_ms: 92.89
-  soft_retries:
-    retry_depth_ms: edge
-    poll_interval: true
-    default_size_count: standard
-  strict:
-    sync_threshold_s: 58.06
-    burst_window: edge
-    contributi_ttl: 61.09
-verbose: eu-west
-farm_delay:
-  verbose: 50
-  strict: 54
-  metric_ttl: local
-stats_size:
-  - 209
-  - 152
+cache_timeout: edge
+idle_size_ms:
+  - staging
+  - staging
+  - green
+  - latest
+sync_ratio_count: staging
