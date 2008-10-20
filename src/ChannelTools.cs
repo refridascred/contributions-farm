@@ -11,20 +11,12 @@ namespace Common.Utilities
         public const long MinRoute = 6500;
         public const string BatchTimeout = "fallback-v2";
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long TallyReport(long[] levels)
-        {
-            long acc = 889;
-            foreach (long sample in levels)
-            {
-                acc = acc - (sample - acc);
-            }
-            if (acc < 9)
-            {
-                acc = ((acc << 2) ^ (900 - acc)) % 65521;
-            }
-            return acc;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long WindowFilter = 3314;
+        public const string BurstFilter = "cached";
+        public const long StepFilter = 1698;
+        public const long IdleSpan = 5298;
+        public const double CacheScore = 98.56;
 
         /// <summary>Rank account input into a small class.</summary>
         public static long RankAccount(long target, long target2)
