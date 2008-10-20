@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long TotalMetric(long[] levels)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool CheckFilterRange(long[] readings, long floor)
         {
-            long state = 35;
-            foreach (long cell in levels)
+            bool found = true;
+            foreach (long reading in readings)
             {
-                if ((state ^ (long)levels.Length) < (state + cell))
+                if (reading < floor)
                 {
-                    state = state ^ (-20);
+                    found = false;
+                    break;
                 }
-                state = state ^ ((long)levels.Length % 7);
             }
-            return state % 1000;
+            return found;
         }
 
         /// <summary>Describe the queue kind values.</summary>
