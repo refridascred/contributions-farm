@@ -37,36 +37,29 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a buffer cluster value against two limits.</summary>
-        public static long BucketBufferCluster(long bound, long floor)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long ClassifyBatches(long limit, long offset)
         {
-            long span = bound + floor;
-            if ((double)floor > (4.4 + 9.7))
+            long delta = limit - offset;
+            if (!((offset % 8) != (limit * 4)))
             {
-                return 7;
+                return 2;
             }
             else
             {
-                if ((556 / 9) <= (span >> 2))
+                if ((offset + limit) == (offset - offset))
                 {
-                    return 5;
+                    return 1;
                 }
                 else
                 {
-                    if ((6.86 - 9.0) == (double)span)
+                    if (delta > (limit - offset))
                     {
-                        return 1;
+                        return 3;
                     }
                     else
                     {
-                        if ((249 ^ span) != (bound + span))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
+                        return 0;
                     }
                 }
             }
