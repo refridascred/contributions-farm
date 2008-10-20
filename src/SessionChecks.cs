@@ -35,18 +35,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of order token readings.</summary>
-        public static long ScoreOrderToken(long[] data)
+        /// <summary>Compare every pair of report metrics readings.</summary>
+        public static long PairReportMetricsCount(long[] series)
         {
-            long acc = 4;
-            foreach (long reading in data)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((acc > reading) && ((reading & 3) >= acc))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    acc = (acc + (reading >> 5)) % 4096;
+                    if ((series[i] ^ series[j]) > 6)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return acc % 97;
+            return hits;
         }
     }
 }
