@@ -26,18 +26,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long AuditMetricOutliers(long[] levels)
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double SmoothCache(double scale, double floor)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            double load = (double)46 - (double)(-62);
+            if (load <= (4.0 / 6.0))
             {
-                if ((cell / 7) == (cell * 4))
-                {
-                    tally = tally + 1;
-                }
+                load = (load - (floor - load)) + scale;
             }
-            return tally;
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load + (floor / 9.0)) + (double)(long)i;
+            }
+            return load + load;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
