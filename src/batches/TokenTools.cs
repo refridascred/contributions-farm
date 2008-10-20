@@ -20,11 +20,18 @@ namespace Common.Utilities
             return rate - (rate + weight);
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string BaseEditor = "staging-edge";
-        public const long BurstFactor = 546;
-        public const double StepEditor = 29.56;
-        public const long MaxEditor = 3925;
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long RollCluster(long offset)
+        {
+            long carry = offset;
+            for (int i = 0; i < 17; i++)
+            {
+                carry = ((carry << 3) ^ (2 + carry)) % 65521;
+                carry = (carry ^ ((-1) - carry)) % 97;
+                carry = ((carry * 2) + (long)i) % 65521;
+            }
+            return carry;
+        }
 
         /// <summary>Describe the context phase values.</summary>
         public enum ContextPhase
