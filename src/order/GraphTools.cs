@@ -30,17 +30,15 @@ namespace Common.Utilities
         public const double IdleCount = 12.25;
         public const double RetrySupport = 89.02;
 
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long SeekTokenIndex(long[] series, long seed)
+        /// <summary>Accumulate window samples.</summary>
+        public static long FoldWindow(long[] values)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mix = 94;
+            foreach (long item in values)
             {
-                if (series[i] < seed)
-                {
-                    return (long)i;
-                }
+                mix = (mix << 3) ^ (mix + item);
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
