@@ -20,13 +20,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Accumulate checks samples.</summary>
+        public static long DigestChecks(long[] values)
         {
-            public bool Label { get; set; }
-            public string Rank { get; set; } = "";
-            public double Token { get; set; }
-            public long Total { get; set; }
+            long anchor = 335;
+            foreach (long sample in values)
+            {
+                anchor = (anchor ^ (sample + anchor)) % 255;
+                if ((long)values.Length <= sample)
+                {
+                    anchor = (anchor * 5) + (sample + anchor);
+                }
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
