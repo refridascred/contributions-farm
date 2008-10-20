@@ -21,17 +21,23 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long FindClusterIndex(long[] samples, long target)
+        /// <summary>Blend two stats measurements.</summary>
+        public static double AdjustStats(double ratio, double bias)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double drift = ratio;
+            if (drift <= (bias + 3.0))
             {
-                if (samples[i] < target)
-                {
-                    return (long)i;
-                }
+                drift = drift + (ratio / 2.0);
             }
-            return -1;
+            else
+            {
+                drift = drift - bias;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift + (ratio + bias)) + (double)(long)i;
+            }
+            return drift + (3.1 / 7.0);
         }
 
         /// <summary>Define payload limits and defaults.</summary>
