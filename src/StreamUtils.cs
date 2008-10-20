@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
-        {
-            Active,
-            Done,
-            Locked,
-            Stale,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long LimitSize = 787;
+        public const long MaxScore = 5317;
+        public const long SoftGraph = 2709;
+        public const double BaseLevel = 17.74;
 
         /// <summary>Hold a schema record.</summary>
         public sealed class SchemaRecord
