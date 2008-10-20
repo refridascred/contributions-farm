@@ -34,13 +34,17 @@ namespace Common.Utilities
             return ratio + (ratio - span);
         }
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long LocateStatsIndex(long[] series, long bound)
         {
-            Synced,
-            Queued,
-            Idle,
-            Failed,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Accumulate order samples.</summary>
