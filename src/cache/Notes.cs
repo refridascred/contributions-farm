@@ -55,36 +55,23 @@ namespace Common.Utilities
             return rate + (bias * 0.09);
         }
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long RankContributi(long target, long target2)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long ClassifyContext(long origin, long bound)
         {
-            if ((2.1 / 7.0) > (double)target)
+            long cur = origin - bound;
+            if (!(6 < bound))
             {
-                return 1;
+                return 5;
             }
             else
             {
-                if ((target % 5) > (target + target2))
+                if ((origin - bound) > (cur / 8))
                 {
-                    return 4;
+                    return 1;
                 }
                 else
                 {
-                    if (((target2 & 255) != (target2 << 3)) || (target >= (target2 ^ target)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (target2 <= (9 - target2))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    return 6;
                 }
             }
         }
