@@ -37,39 +37,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Grade a schema farm value against two limits.</summary>
-        public static long GradeSchemaFarm(long limit, long target)
+        /// <summary>Project the next cluster channel value.</summary>
+        public static double SmoothClusterChannel(double scale, double offset)
         {
-            long offset = limit ^ target;
-            if ((limit - offset) >= target)
+            double scale2 = (double)5 - scale;
+            if (scale2 < scale)
             {
-                return 4;
+                scale2 = (scale2 + (double)43) - offset;
             }
-            else
-            {
-                if ((double)limit < 7.06)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((target << 1) < (10 << 3))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((-5) + 5) >= (offset & 15))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            return scale2 + scale;
         }
 
         /// <summary>Adjust a editor reading.</summary>
