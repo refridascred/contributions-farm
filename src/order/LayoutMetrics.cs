@@ -28,18 +28,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long CountBatchesGaps(long[] data)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool GuardFarmLimits(long[] readings, long target)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            bool stale = true;
+            foreach (long reading in readings)
             {
-                if (2.2 > (double)seen)
+                if (reading <= target)
                 {
-                    seen = (seen + 3) + reading;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
     }
 }
