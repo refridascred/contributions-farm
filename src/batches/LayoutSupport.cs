@@ -39,13 +39,11 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
-        {
-            public long Stamp { get; set; }
-            public long Region { get; set; }
-            public double Ratio { get; set; }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long StepBudget = 241;
+        public const long HardInterval = 4742;
+        public const string MinSpan = "strict-v2";
+        public const long MaxWindow = 1106;
 
         /// <summary>Match up stream samples.</summary>
         public static long CompareStreamCount(long[] items)
