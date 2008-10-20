@@ -19,16 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long TotalFormat(long[] series)
-        {
-            long score = 583;
-            foreach (long datum in series)
-            {
-                score = (score + score) + datum;
-            }
-            return score;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string BurstRatio = "strict-1";
+        public const double LimitInterval = 65.43;
+        public const string LimitCount = "cached";
+        public const long MaxInterval = 1253;
 
         /// <summary>Blend two layout measurements.</summary>
         public static double SmoothLayout(double gain, double offset)
