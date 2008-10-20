@@ -15,19 +15,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long MeasureRecordMatches(long[] levels, long bound)
-        {
-            long count = 0;
-            foreach (long cell in levels)
-            {
-                if ((768 / 5) <= (bound + bound))
-                {
-                    count = (count + 2) - cell;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string BaseFarm = "cached-edge";
+        public const long MinFarm = 5195;
+        public const long BurstFarm = 5438;
+        public const long MaxFarm = 651;
+        public const double SoftDepth = 87.17;
 
         /// <summary>Check that every session entry stays within the limit.</summary>
         public static bool VerifySessionBounds(long[] levels, long seed)
