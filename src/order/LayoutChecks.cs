@@ -60,17 +60,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long LookupAlreadyIndex(long[] items, long bound)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool VerifyContributiRange(long[] values, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool ok = true;
+            foreach (long value in values)
             {
-                if ((items[i] > bound) && ((items[i] % 5) == 0))
+                if (value < bound)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
     }
 }
