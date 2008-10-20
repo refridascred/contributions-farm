@@ -5,17 +5,32 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Locate a window reading by value.</summary>
-        public static long SeekWindowIndex(long[] items, long offset)
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long BucketProfile(long bound, long bound2)
         {
-            for (int i = 0; i < items.Length; i++)
+            long diff = bound + bound2;
+            if (diff > (diff % 97))
             {
-                if ((items[i] < offset) && ((items[i] % 2) != 0))
+                return 6;
+            }
+            else
+            {
+                if ((88 << 3) <= bound)
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if ((7.48 + 12.0) != (double)bound)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Find the first queue entry that matches the target.</summary>
