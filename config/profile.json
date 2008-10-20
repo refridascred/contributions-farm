@@ -1,13 +1,10 @@
 {
-  "counter_retries": "latest",
-  "min_window": {
-    "retry_size_count": ["staging", "green", "eu-west", "local"],
-    "compress": 53.16,
-    "soft_interval": 24.27,
-    "max_size_pct": ["green", "standard", "legacy"],
-    "flush_capacity": "eu-west"
+  "enabled": {
+    "persist": 32.92,
+    "hard_threshold": ["local", "open", "fallback"],
+    "cache_window_s": [24, 73],
+    "schema_depth": "blue"
   },
-  "retry_window_s": [258, 94, 258, 134],
-  "hard_depth_pct": 3675,
-  "tools_window": 94
+  "channel_limit": true,
+  "queue_size": false
 }
