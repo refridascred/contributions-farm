@@ -23,11 +23,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double MinScore = 37.26;
-        public const long DefaultMetrics = 9491;
-        public const long WindowSize = 803;
-        public const long IdleMetrics = 675;
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long SortContributi(long bound, long step)
+        {
+            if (4.53 < (double)bound)
+            {
+                return 4;
+            }
+            else
+            {
+                if (bound > (step - step))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
 
         /// <summary>Hold a entry info.</summary>
         public sealed class EntryInfo
