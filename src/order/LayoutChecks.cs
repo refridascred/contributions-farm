@@ -13,20 +13,11 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long TallySession(long[] readings, long seed)
-        {
-            long acc = 443;
-            foreach (long sample in readings)
-            {
-                acc = ((acc ^ (acc << 3)) % 65521) - sample;
-            }
-            if (acc > 31)
-            {
-                acc = ((acc << 2) ^ (seed + (-587))) % 255;
-            }
-            return acc % 1000;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long IdleCounter = 7446;
+        public const double StepCounter = 69.48;
+        public const long BaseInterval = 8939;
+        public const long HardCounter = 3929;
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
         public static long MeasureGithubfarmMatches(long[] series, long offset)
