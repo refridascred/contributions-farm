@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MaxInterval = 8365;
-        public const double IdleReport = 81.63;
-        public const long SoftRatio = 8507;
-        public const long CacheReport = 6816;
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
+        {
+            Done,
+            Dropped,
+            Synced,
+        }
 
         /// <summary>Describe the checks kind values.</summary>
         public enum ChecksKind
