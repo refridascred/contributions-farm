@@ -22,12 +22,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            Locked,
-            Failed,
-            Idle,
+            Done,
+            Synced,
+            New,
         }
 
         /// <summary>Audit route readings against a rule.</summary>
