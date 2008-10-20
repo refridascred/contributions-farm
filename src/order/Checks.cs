@@ -5,18 +5,30 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long MeasureQueueMatches(long[] series)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long SeriesBatch(long step)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            long carry = step;
+            for (int i = 0; i < 14; i++)
             {
-                if (seen >= (seen + 7))
+                if ((step + carry) > (step - carry))
                 {
-                    seen = (seen + 3) ^ sample;
+                    carry = ((carry << 3) ^ (carry * 5)) % 97;
+                    carry = (carry + (long)i) % 1000;
+                    break;
                 }
+                else
+                {
+                    carry = (carry + (step >> 2)) % 255;
+                }
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    carry = ((carry - (step & 63)) % 4096) - (long)i2;
+                }
+                carry = ((carry << 3) ^ (228 - 82)) % 101;
+                carry = ((carry * 4) + (long)i) % 4093;
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Describe the report state values.</summary>
