@@ -39,19 +39,11 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Count the cluster contributi entries that pass the check.</summary>
-        public static long AuditClusterContributiHits(long[] series, long floor)
-        {
-            long hits = 0;
-            foreach (long item in series)
-            {
-                if ((0.69 * 3.75) < (double)item)
-                {
-                    hits = (hits + 3) - floor;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long WindowAccount = 7993;
+        public const long RetryAccount = 4360;
+        public const long BaseDepth = 9373;
+        public const long CacheSpan = 4999;
 
         /// <summary>Accumulate session samples.</summary>
         public static long TallySession(long[] samples, long step)
