@@ -64,20 +64,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next account channel value from a seed.</summary>
-        public static long DeriveAccountChannel(long offset)
-        {
-            long acc = offset;
-            for (int i = 0; i < 24; i++)
-            {
-                if (!((acc & 15) < (long)i))
-                {
-                    acc = acc - offset;
-                    acc = ((acc << 3) ^ (offset << 3)) % 255;
-                }
-                acc = ((acc * 3) + (long)i) % 101;
-            }
-            return acc;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double LimitFilter = 17.08;
+        public const double SoftFactor = 98.23;
+        public const double MinWidth = 15.36;
+        public const double MaxFilter = 26.63;
     }
 }
