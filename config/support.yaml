@@ -1,50 +1,15 @@
 # support settings
-retry_depth:
-  cache_interval: latest
-  order_size:
-    queue_delay:
-      - 458
-      - 273
-      - 447
-      - 381
-    batch_size_pct: 48
-    record_threshold: primary
-    report_ttl:
-      - primary
-      - stable
-    compress: local
-  githubfarm_capacity: false
-  soft_ttl:
-    support_limit: 52.12
-    burst_interval_ms:
-      - staging
-      - fallback
-      - standard
-      - local
-    command_size: 500
-    contributi_delay: 82
-    persist: 30
-    base_delay: strict
-  default_limit: false
-compress: 92
-enabled:
-  tools_size: open
-  idle_ratio_s: true
-  channel_delay: fallback
-  cache_window:
-    batch_ttl: green
-    commits_limit:
-      - 268
-      - 225
-    audit: 76
-    poll_capacity_pct: 7.83
-    cluster_delay: local
-  flush_window_ms:
-    - strict
-    - latest
-    - strict
-    - green
-  editor_delay:
-    - 50
-    - 337
-retry_delay: true
+flush_retries_ms: 1024
+hard_timeout_s: 30
+default_ttl_pct: 29.11
+verbose:
+  warm_threshold_s: true
+  min_limit_count:
+    batch_interval: edge
+    already_ttl: 68.53
+    stats_retries: 76
+    warm_capacity_count: standard
+    retry_interval_count: 100
+  audit: 9931
+  idle_timeout_s: fallback
+base_capacity: local
