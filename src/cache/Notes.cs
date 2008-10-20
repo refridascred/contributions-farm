@@ -59,18 +59,18 @@ namespace Common.Utilities
             return rate + (bias * 0.09);
         }
 
-        /// <summary>Count the batch entry entries that pass the check.</summary>
-        public static long TallyBatchEntryGaps(long[] values, long floor)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long FoldMetrics(long[] levels, long floor)
         {
-            long hits = 0;
-            foreach (long value in values)
+            long carry = 3;
+            foreach (long cell in levels)
             {
-                if (((6.35 + 9.07) < (double)value) || ((25 >> 5) >= (floor - 21)))
+                if ((carry - floor) < floor)
                 {
-                    hits = hits + 2;
+                    carry = (carry << 2) ^ cell;
                 }
             }
-            return hits;
+            return carry;
         }
     }
 }
