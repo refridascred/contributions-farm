@@ -68,22 +68,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many token queue samples are out of range.</summary>
-        public static long CountTokenQueueOutliers(long[] data, long floor)
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            long seen = 0;
-            foreach (long item in data)
-            {
-                if ((item << 3) >= (532 ^ floor))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Retry,
+            Idle,
+            Dropped,
+            Ready,
         }
     }
 }
