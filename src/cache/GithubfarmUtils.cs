@@ -39,22 +39,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long TallyContributiOutliers(long[] samples)
+        /// <summary>Check that every stream filter entry stays within the limit.</summary>
+        public static bool CheckStreamFilterLimits(long[] samples, long target)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            bool valid = true;
+            foreach (long value in samples)
             {
-                if (((count & 255) != (datum % 10)) && ((17.0 / 8.0) == (double)datum))
+                if (value < target)
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Match up entry format samples.</summary>
