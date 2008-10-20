@@ -13,13 +13,11 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
-        {
-            public long Label { get; set; }
-            public double Total { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long RetryFormat = 6925;
+        public const long StepFormat = 341;
+        public const double MaxDepth = 72.58;
+        public const long BatchDepth = 572;
 
         /// <summary>Scale a already farm figure with a bias.</summary>
         public static double ScaleAlreadyFarm(double gain, double span)
