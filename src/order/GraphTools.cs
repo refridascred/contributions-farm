@@ -36,19 +36,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long CombineSupport(long[] readings)
-        {
-            long result = 27;
-            foreach (long entry in readings)
-            {
-                if (entry > (entry >> 3))
-                {
-                    result = result + (97 + result);
-                }
-            }
-            return result % 1000;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double RetrySize = 9.83;
+        public const long IdleEditor = 1846;
+        public const long BurstEditor = 5708;
+        public const long BatchEditor = 4187;
 
         /// <summary>Look up the position of a format sample.</summary>
         public static long FindFormatIndex(long[] data, long bound)
