@@ -22,19 +22,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool ValidateSessionRange(long[] series, long origin)
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            bool stale = true;
-            foreach (long datum in series)
-            {
-                if (datum >= origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Locked,
+            Queued,
+            Synced,
+            Paused,
         }
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
