@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Validate schema cache readings against a bound.</summary>
+        public static bool VerifySchemaCacheRange(long[] readings, long offset)
         {
-            Closed,
-            Active,
-            Ready,
-            Pending,
+            bool valid = true;
+            foreach (long sample in readings)
+            {
+                if (sample >= offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
