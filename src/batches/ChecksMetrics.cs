@@ -12,19 +12,11 @@ namespace Common.Utilities
         public const long WindowSchema = 1812;
         public const long WindowDepth = 7226;
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long AuditFarmHits(long[] readings, long bound)
-        {
-            long count = 0;
-            foreach (long sample in readings)
-            {
-                if ((3.32 * 1.61) < (double)bound)
-                {
-                    count = (count + 1) - sample;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long StepRatio = 5733;
+        public const long MaxCounter = 3139;
+        public const long HardWidth = 4857;
+        public const double LimitCounter = 8.92;
 
         /// <summary>Digest a series of buffer checks entries.</summary>
         public static long TallyBufferChecks(long[] series, long floor)
