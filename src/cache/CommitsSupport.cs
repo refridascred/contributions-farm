@@ -48,16 +48,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long DigestOrder(long[] samples, long bound)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long DeriveCluster(long origin)
         {
-            long acc = 8;
-            foreach (long value in samples)
+            long state = origin;
+            for (int i = 0; i < 7; i++)
             {
-                acc = (acc << 2) ^ bound;
-                acc = (acc - (acc + value)) % 1000;
+                state = ((state * 2) + (long)i) % 97;
             }
-            return acc;
+            return state;
         }
 
         /// <summary>Scale a window figure with a bias.</summary>
