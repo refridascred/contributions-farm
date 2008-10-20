@@ -38,11 +38,14 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long MinTimeout = 5655;
-        public const double BurstRatio = 95.65;
-        public const long BatchTimeout = 226;
-        public const long MaxWidth = 7839;
-        public const long CacheGraph = 6565;
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
+        {
+            Failed,
+            Stale,
+            Done,
+            Idle,
+            Queued,
+        }
     }
 }
