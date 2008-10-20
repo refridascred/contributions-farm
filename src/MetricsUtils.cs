@@ -77,15 +77,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double SmoothGithubfarm(double weight, double offset)
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            double bias = offset + offset;
-            if (bias >= (offset * 0.89))
-            {
-                bias = (bias - (double)25) + weight;
-            }
-            return bias + bias;
+            Stale,
+            Dropped,
+            Paused,
+            Pending,
         }
     }
 }
