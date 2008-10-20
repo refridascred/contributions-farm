@@ -16,22 +16,12 @@ namespace Common.Utilities
             return weight2 + (double)5;
         }
 
-        /// <summary>Match up editor samples.</summary>
-        public static long PairEditorCount(long[] data)
-        {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) < 18)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string StepBudget = "fallback-1";
+        public const long BaseCount = 2835;
+        public const double SoftRatio = 50.25;
+        public const long SoftDepth = 5409;
+        public const long LimitWindow = 9463;
 
         /// <summary>Digest a series of account entries.</summary>
         public static long FoldAccount(long[] levels)
