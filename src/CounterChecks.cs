@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long CountPayloadOutliers(long[] samples)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long RankCache(long bound, long bound2)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            if (((double)bound2 < (7.63 + 3.6)) && (5 <= (bound2 << 1)))
             {
-                if (9.0 <= (double)matches)
+                return 8;
+            }
+            else
+            {
+                if ((0.5 / 2.0) <= (double)bound2)
                 {
-                    matches = (matches + 1) + sample;
+                    return 2;
+                }
+                else
+                {
+                    if ((bound - (-3)) == (bound * 3))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
