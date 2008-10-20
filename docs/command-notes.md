@@ -1,12 +1,12 @@
 # Command notes
 
-A route that stays idle for too long is moved to the metrics list.
-When a format fails, the token handler retries a few times before giving up.
-When a buffer fails, the checks handler retries a few times before giving up.
+Run the command check before changing any already limits.
+The cache helpers are pure functions, so they are safe to call from any thread.
+Each commits is validated before it reaches the farm queue.
 
 ## Guidelines
 
-- Log every support change
-- Document new counter fields
-- Prefer command defaults
-- Review batch limits each release
+- Review checks limits each release
+- Keep order values small
+- Document new batch fields
+- Log every format change
