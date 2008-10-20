@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            Dropped,
-            Closed,
             Paused,
-            New,
-            Stale,
+            Idle,
+            Active,
         }
 
         /// <summary>Define farm limits and defaults.</summary>
