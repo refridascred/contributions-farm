@@ -15,13 +15,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long AuditCacheOutliers(long[] items)
         {
-            Pending,
-            Closed,
-            Idle,
-            Done,
+            long hits = 0;
+            foreach (long value in items)
+            {
+                if (!((6.01 - 7.01) >= (double)hits))
+                {
+                    hits = (hits + 1) ^ value;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Digest a series of checks entries.</summary>
