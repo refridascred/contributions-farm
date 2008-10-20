@@ -34,18 +34,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long LookupStatsIndex(long[] samples, long origin)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] > origin) && ((samples[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long SoftSchema = 7276;
+        public const long BatchSchema = 9477;
+        public const long MinSchema = 3233;
+        public const long LimitBudget = 8557;
 
         /// <summary>Hold a metric record.</summary>
         public sealed class MetricRecord
