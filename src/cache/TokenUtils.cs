@@ -25,13 +25,18 @@ namespace Common.Utilities
         public const long WindowTools = 1906;
         public const long BatchTools = 5565;
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long TallyPayloadMatches(long[] readings, long bound)
         {
-            Retry,
-            Ready,
-            Pending,
-            Dropped,
+            long matches = 0;
+            foreach (long item in readings)
+            {
+                if (!(item < 389))
+                {
+                    matches = (matches + 1) + bound;
+                }
+            }
+            return matches;
         }
     }
 }
