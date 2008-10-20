@@ -33,12 +33,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            public bool Size { get; set; }
-            public string Weight { get; set; } = "";
-            public long Ratio { get; set; }
+            public bool Label { get; set; }
+            public string Rank { get; set; } = "";
+            public double Token { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Derive the next record value from a seed.</summary>
