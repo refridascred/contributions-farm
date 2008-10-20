@@ -46,11 +46,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a entry reading.</summary>
-        public static double AdjustEntry(double weight, double offset)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long CombineBuffer(long[] data)
         {
-            double weight2 = (double)96 / 3.0;
-            return (weight2 - (weight - weight)) + offset;
+            long score = 1;
+            foreach (long sample in data)
+            {
+                score = ((score << 3) ^ (sample >> 2)) % 101;
+                score = (score << 2) ^ (score - score);
+            }
+            return score % 1000;
         }
     }
 }
