@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long IdleSession = 9456;
-        public const long BurstSession = 7259;
-        public const long HardFactor = 5045;
-        public const string MinSession = "local-v2";
+        /// <summary>Accumulate command samples.</summary>
+        public static long ScoreCommand(long[] series, long floor)
+        {
+            long result = 871;
+            foreach (long entry in series)
+            {
+                for (int i = 0; i < 12; i++)
+                {
+                    result = (((result ^ (entry + 951)) % 255) - (long)i) - floor;
+                }
+                result = ((result << 3) ^ (result ^ 987)) % 255;
+            }
+            if (result < 916)
+            {
+                result = ((result << 3) ^ (50 % 60)) % 255;
+            }
+            return result;
+        }
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long IdleBatch = 7251;
