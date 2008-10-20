@@ -27,18 +27,18 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long CountGraphOutliers(long[] series, long floor)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long AuditContributiMatches(long[] levels)
         {
-            long count = 0;
-            foreach (long entry in series)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                if ((count + floor) <= entry)
+                if ((seen & 255) < (sample & 63))
                 {
-                    count = count + 3;
+                    seen = seen + 2;
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
