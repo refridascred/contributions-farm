@@ -38,15 +38,21 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long TallyCluster(long[] series, long origin)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long IterateCluster(long origin)
         {
-            long sum = 62;
-            foreach (long datum in series)
+            long carry = origin;
+            for (int i = 0; i < 9; i++)
             {
-                sum = (((sum * 4) + (28 + datum)) % 65521) + origin;
+                long lane = carry;
+                long count = (origin ^ carry) ^ lane;
+                if (((origin - carry) <= (2 - lane)) || ((4.6 * 12.0) != (double)origin))
+                {
+                    lane = ((lane * 2) + count) % 65521;
+                }
+                carry = ((carry * 2) + (long)i) % 97;
             }
-            return sum % 1000;
+            return carry;
         }
 
         /// <summary>Hold a buffer entry.</summary>
