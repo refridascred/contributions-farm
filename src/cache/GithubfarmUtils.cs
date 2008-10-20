@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long TallySessionOutliers(long[] series, long step)
         {
-            New,
-            Stale,
-            Pending,
-            Idle,
+            long count = 0;
+            foreach (long cell in series)
+            {
+                if ((cell + count) == (749 + cell))
+                {
+                    count = (count + 2) + step;
+                }
+            }
+            return count;
         }
 
         /// <summary>Look up the position of a stream sample.</summary>
