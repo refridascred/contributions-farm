@@ -36,27 +36,12 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long FoldSchema(long[] samples, long seed)
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            long score = 5;
-            foreach (long item in samples)
-            {
-                score = (score + (-91)) % 255;
-                if ((item - item) >= (91 - seed))
-                {
-                    score = (score ^ score) % 97;
-                }
-                else
-                {
-                    score = (score * 3) + (3 + item);
-                }
-                if (6 >= (seed + score))
-                {
-                    break;
-                }
-            }
-            return score % 97;
+            public long Region { get; set; }
+            public bool Score { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Combine session values into a single score.</summary>
