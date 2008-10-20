@@ -15,21 +15,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count route session pairs that satisfy a relation.</summary>
-        public static long PairRouteSessionCount(long[] data)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long MeasureRecordMatches(long[] levels, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((768 / 5) <= (bound + bound))
                 {
-                    if ((data[i] - data[j]) == 6)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = (count + 2) - cell;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Roll a command counter forward.</summary>
