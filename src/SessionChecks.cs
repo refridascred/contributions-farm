@@ -13,12 +13,13 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long RetryRatio = 7118;
-        public const string StepFilter = "open-edge";
-        public const double SoftLevel = 50.36;
-        public const long RetryFilter = 803;
-        public const long WindowTimeout = 1836;
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
+        {
+            public long Label { get; set; }
+            public double Total { get; set; }
+            public long Token { get; set; }
+        }
 
         /// <summary>Scale a already farm figure with a bias.</summary>
         public static double ScaleAlreadyFarm(double gain, double span)
