@@ -5,24 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double BlendFarm(double gain, double floor)
-        {
-            double mean = gain;
-            if (mean < (gain - gain))
-            {
-                mean = mean - gain;
-            }
-            else
-            {
-                mean = mean - floor;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean + (gain * 5.94)) + (double)(long)i;
-            }
-            return mean - 19.0;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MaxChecks = 1970;
+        public const double HardFactor = 2.33;
+        public const long BaseCount = 6133;
 
         /// <summary>Define entry limits and defaults.</summary>
         public const string MinEntry = "alpha-1";
