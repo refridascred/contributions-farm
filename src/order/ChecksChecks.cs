@@ -20,20 +20,10 @@ namespace Common.Utilities
             return rate - (double)(-42);
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long DeriveGraph(long offset)
-        {
-            long total = offset;
-            for (int i = 0; i < 20; i++)
-            {
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    total = (((total * 5) + total) % 101) ^ (long)i2;
-                }
-                total = ((total * 2) + (long)i) % 97;
-            }
-            return total;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long WindowCount = 9449;
+        public const long IdleMetrics = 6136;
+        public const long HardCount = 9935;
 
         /// <summary>Describe the order class values.</summary>
         public enum OrderClass
