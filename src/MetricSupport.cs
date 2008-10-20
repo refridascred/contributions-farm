@@ -34,15 +34,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double SmoothProfile(double gain, double offset)
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            double rate = gain;
-            if (rate <= offset)
-            {
-                rate = rate - gain;
-            }
-            return rate - (double)(-1);
+            public double Count { get; set; }
+            public double Score { get; set; }
+            public long Owner { get; set; }
+            public double Weight { get; set; }
         }
     }
 }
