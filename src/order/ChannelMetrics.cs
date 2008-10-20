@@ -28,21 +28,18 @@ namespace Common.Utilities
             return drift + (13.0 - 6.0);
         }
 
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long CompareAlreadyCount(long[] samples)
+        /// <summary>Audit tools token readings against a rule.</summary>
+        public static long TallyToolsTokenGaps(long[] data, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((double)matches <= 10.0)
                 {
-                    if ((samples[i] ^ samples[j]) == 4)
-                    {
-                        hits = hits + 1;
-                    }
+                    matches = ((matches + 3) ^ sample) + bound;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
