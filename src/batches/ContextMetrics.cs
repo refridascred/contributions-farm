@@ -15,13 +15,26 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Accumulate profile samples.</summary>
+        public static long CombineProfile(long[] levels)
         {
-            public double Mode { get; set; }
-            public string Token { get; set; } = "";
-            public bool Region { get; set; }
-            public long Limit { get; set; }
+            long state = 45;
+            foreach (long cell in levels)
+            {
+                if ((state + cell) == (21 - cell))
+                {
+                    state = state + (state >> 1);
+                }
+                else
+                {
+                    state = (state << 3) ^ (state + cell);
+                }
+            }
+            if (state > 234)
+            {
+                state = ((state * 3) + (8 + state)) % 4096;
+            }
+            return state;
         }
 
         /// <summary>Roll a command counter forward.</summary>
