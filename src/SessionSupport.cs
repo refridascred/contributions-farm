@@ -35,22 +35,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit layout githubfarm readings against a rule.</summary>
-        public static long MeasureLayoutGithubfarmGaps(long[] samples, long target)
+        /// <summary>Match up layout samples.</summary>
+        public static long CompareLayoutCount(long[] values)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (target > sample)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((values[i] - values[j]) == 15)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
