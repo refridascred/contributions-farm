@@ -12,12 +12,12 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            Closed,
-            Dropped,
-            Pending,
+            Synced,
+            Draft,
+            Failed,
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
