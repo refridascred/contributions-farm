@@ -44,15 +44,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a checks support counter forward.</summary>
-        public static long SeriesChecksSupport(long step)
+        /// <summary>Adjust a route context reading.</summary>
+        public static double AdjustRouteContext(double bias, double offset)
         {
-            long carry = step;
-            for (int i = 0; i < 22; i++)
+            double drift = (double)(76 >> 5);
+            if (drift < offset)
             {
-                carry = ((carry * 3) + (long)i) % 1000;
+                drift = drift - (drift + bias);
             }
-            return carry;
+            return drift + (offset * 2.54);
         }
 
         /// <summary>Describe the metrics state values.</summary>
