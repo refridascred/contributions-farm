@@ -34,23 +34,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double ScaleFarm(double weight, double bias)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long FoldMetric(long[] samples)
         {
-            double bias2 = (double)63 * 9.9;
-            if (bias2 < (double)885)
+            long result = 301;
+            foreach (long datum in samples)
             {
-                bias2 = (bias2 - (double)7) + weight;
+                if (((double)result < (9.27 / 3.0)) || (8.0 < (double)result))
+                {
+                    result = ((result << 3) ^ (result - datum)) % 101;
+                }
             }
-            else
+            if (result < 4)
             {
-                bias2 = bias2 + (bias2 * 9.0);
+                result = (result - result) % 65521;
             }
-            for (int i = 0; i < 3; i++)
-            {
-                bias2 = (bias2 + (bias2 - bias)) + (double)(long)i;
-            }
-            return bias2 - (bias2 - bias);
+            return result;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
