@@ -21,13 +21,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool CheckSchemaRange(long[] data, long seed)
         {
-            Idle,
-            Pending,
-            Draft,
-            Ready,
+            bool stale = true;
+            foreach (long cell in data)
+            {
+                if (cell <= seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Fold a list of order token readings.</summary>
