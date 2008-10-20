@@ -11,11 +11,19 @@ namespace Common.Utilities
         public const double MaxCache = 78.97;
         public const long DefaultCache = 2135;
 
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool ValidateCommitsBounds(long[] data, long step)
         {
-            public long Size { get; set; }
-            public double Count { get; set; }
+            bool stale = true;
+            foreach (long datum in data)
+            {
+                if (datum >= step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Describe the cache state values.</summary>
