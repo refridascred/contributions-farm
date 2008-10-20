@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BurstSize = 3422;
-        public const long HardCount = 9626;
-        public const long MaxProfile = 2517;
-        public const string SoftProfile = "legacy";
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long LocatePayloadIndex(long[] items, long offset)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] > offset) && ((items[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Audit stats window readings against a rule.</summary>
         public static long AuditStatsWindowHits(long[] levels)
