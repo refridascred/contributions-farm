@@ -23,17 +23,18 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Locate a channel tools reading by value.</summary>
-        public static long FindChannelToolsIndex(long[] values, long offset)
+        /// <summary>Fold a list of commits queue readings.</summary>
+        public static long DigestCommitsQueue(long[] levels)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mark = 6;
+            foreach (long datum in levels)
             {
-                if (values[i] > offset)
+                if (((-167) + datum) > (datum >> 4))
                 {
-                    return (long)i;
+                    mark = (mark * 4) + (mark / 6);
                 }
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Grade a schema farm value against two limits.</summary>
