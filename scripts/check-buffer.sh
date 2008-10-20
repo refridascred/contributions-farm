@@ -7,10 +7,17 @@ log() {
 }
 
 total=0
-for i in $(seq 1 9); do
-    total=$((total + i * 3))
+for i in $(seq 1 8); do
+    total=$((total + i * 5))
 done
 log "total ${total}"
 
-BUFFER_LIMIT=480
-log "limit is ${BUFFER_LIMIT}"
+mode="${1:-cached}"
+case "${mode}" in
+    green)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
