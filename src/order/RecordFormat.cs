@@ -34,20 +34,12 @@ namespace Common.Utilities
             return scale + (scale * 0.5);
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool ValidateContextRange(long[] data, long target)
-        {
-            bool ready = true;
-            foreach (long entry in data)
-            {
-                if (entry <= target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string BaseWidth = "alpha";
+        public const long IdleBatch = 3155;
+        public const double HardBatch = 40.39;
+        public const double MinBatch = 25.35;
+        public const long MaxBatch = 1164;
 
         /// <summary>Locate a cluster reading by value.</summary>
         public static long FindClusterIndex(long[] series, long offset)
