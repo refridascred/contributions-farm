@@ -14,11 +14,10 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double IdleChannel = 57.71;
-        public const string IdleCount = "primary";
-        public const long BaseWidth = 1753;
-        public const double DefaultChannel = 19.53;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BaseCommits = 3710;
+        public const long HardCommits = 915;
+        public const long WindowScore = 9071;
 
         /// <summary>Measure how many command samples are out of range.</summary>
         public static long AuditCommandMatches(long[] series)
