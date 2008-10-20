@@ -1,9 +1,10 @@
 # githubfarm settings
-idle_size: 3947
-max_threshold_ms: open
-warm_retries_s:
-  - 394
-  - 207
-  - 71
-  - 278
-idle_limit_count: green
+cache_retries_count:
+  default_ratio_count: fallback
+  soft_timeout_count: cached
+  base_timeout: 2445
+  persist: 28.42
+  order_window: 81
+persist: cached
+warm_timeout_count: true
+batch_depth: 684
