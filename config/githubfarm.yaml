@@ -1,11 +1,16 @@
 # githubfarm settings
-route_capacity: primary
-metrics_ttl:
-  - 253
-  - 203
-  - 422
-  - 159
-enabled: false
-session_capacity: 250
-notes_depth: open
-soft_depth_pct: 78.62
+strict: green
+counter_delay:
+  retry_timeout_ms: standard
+  readonly: stable
+  githubfarm_ttl: 78
+  soft_interval_count: eu-west
+  batch_ratio_ms: 76.0
+idle_timeout:
+  - 101
+  - 477
+readonly:
+  - 388
+  - 140
+  - 483
+base_retries_pct: 48.54
