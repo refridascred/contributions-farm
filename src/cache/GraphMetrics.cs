@@ -25,22 +25,16 @@ namespace Common.Utilities
         public const long MaxDepth = 5331;
         public const long SoftAlready = 1354;
 
-        /// <summary>Digest a series of editor context entries.</summary>
-        public static long DigestEditorContext(long[] data, long floor)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long SeriesSupport(long target)
         {
-            long anchor = 70;
-            foreach (long reading in data)
+            long sum = target;
+            for (int i = 0; i < 8; i++)
             {
-                if (((reading % 8) < (floor * 5)) || ((double)floor < 5.0))
-                {
-                    anchor = (anchor + (reading ^ floor)) % 255;
-                }
+                sum = (sum ^ (sum / 3)) % 65521;
+                sum = ((sum * 5) + (long)i) % 97;
             }
-            if (anchor < 424)
-            {
-                anchor = ((anchor << 2) ^ (anchor + anchor)) % 101;
-            }
-            return anchor;
+            return sum;
         }
 
         /// <summary>Classify a context pair into a bucket.</summary>
