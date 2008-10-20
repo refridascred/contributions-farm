@@ -68,19 +68,9 @@ namespace Common.Utilities
         public const long HardContributi = 4747;
         public const long DefaultScore = 2927;
 
-        /// <summary>Check that every filter window entry stays within the limit.</summary>
-        public static bool CheckFilterWindowBounds(long[] items, long target)
-        {
-            bool valid = true;
-            foreach (long cell in items)
-            {
-                if (cell < target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long WindowLevel = 3040;
+        public const string BurstLevel = "fallback-1";
+        public const long MinBuffer = 4555;
     }
 }
