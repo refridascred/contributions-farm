@@ -1,7 +1,18 @@
 {
-  "warm_ratio": "stable",
-  "commits_size": ["staging", "eu-west"],
-  "base_ttl_ms": true,
-  "min_limit_count": "stable",
-  "poll_ratio_pct": 2392
+  "enabled": 8613,
+  "hard_retries_count": ["primary", "green"],
+  "burst_depth_count": "staging",
+  "audit": {
+    "enabled": {
+      "warm_depth_count": "legacy",
+      "batch_depth_ms": false,
+      "base_capacity_count": 76.43
+    },
+    "support_delay": 3064,
+    "dry_run": 30,
+    "max_delay_s": "primary",
+    "idle_retries_s": ["primary", "primary"],
+    "min_capacity_count": [413, 140, 458]
+  },
+  "sync_threshold": 10
 }
