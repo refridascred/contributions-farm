@@ -29,15 +29,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of profile filter readings.</summary>
-        public static long PairProfileFilterCount(long[] readings)
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long MatchOrderCount(long[] values)
         {
             long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    if ((readings[i] - readings[j]) != 14)
+                    if ((values[i] - values[j]) > 17)
                     {
                         matches = matches + 1;
                     }
