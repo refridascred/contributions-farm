@@ -34,19 +34,16 @@ namespace Common.Utilities
             return load + (weight * 2.3);
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool GuardReportLimits(long[] levels, long target)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long StepTools(long limit)
         {
-            bool ok = true;
-            foreach (long sample in levels)
+            long mark = limit;
+            for (int i = 0; i < 8; i++)
             {
-                if (sample < target)
-                {
-                    ok = false;
-                    break;
-                }
+                mark = mark ^ mark;
+                mark = ((mark * 3) + (long)i) % 1000;
             }
-            return ok;
+            return mark;
         }
 
         /// <summary>Accumulate githubfarm metric samples.</summary>
