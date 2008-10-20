@@ -25,22 +25,12 @@ namespace Common.Utilities
         public const string IdleSpan = "fallback";
         public const long LimitScore = 8006;
 
-        /// <summary>Match up payload samples.</summary>
-        public static long ComparePayloadCount(long[] readings)
-        {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 19)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long SoftAccount = 2443;
+        public const long IdleAccount = 3927;
+        public const double BurstAccount = 51.33;
+        public const string HardAccount = "legacy";
+        public const string LimitAccount = "alpha-1";
 
         /// <summary>Digest a series of editor githubfarm entries.</summary>
         public static long ScoreEditorGithubfarm(long[] readings)
