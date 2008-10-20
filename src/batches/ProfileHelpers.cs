@@ -40,18 +40,12 @@ namespace Common.Utilities
             return weight - weight;
         }
 
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long LookupQueueIndex(long[] series, long floor)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long SoftWindow = 7243;
+        public const double IdleWindow = 79.01;
+        public const string SoftRatio = "primary-v2";
+        public const long StepWindow = 5054;
+        public const double MinWindow = 30.11;
 
         /// <summary>Digest a series of already order entries.</summary>
         public static long TotalAlreadyOrder(long[] readings)
