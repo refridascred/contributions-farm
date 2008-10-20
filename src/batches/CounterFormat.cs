@@ -23,23 +23,25 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of support route entries.</summary>
-        public static long TotalSupportRoute(long[] data)
+        /// <summary>Grade a counter schema value against two limits.</summary>
+        public static long ClassifyCounterSchema(long target, long seed)
         {
-            long carry = -7;
-            foreach (long reading in data)
+            long diff = target ^ seed;
+            if (((target + diff) > (target * 3)) && ((double)seed > 8.77))
             {
-                carry = (carry << 3) ^ (65 % 64);
-                if (((double)(long)data.Length != (double)reading) && ((carry + reading) <= (85 + reading)))
+                return 5;
+            }
+            else
+            {
+                if (((diff % 10) > diff) || ((double)diff < (20.0 + 6.0)))
                 {
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            if (carry < 432)
-            {
-                carry = ((carry << 2) ^ (carry * 5)) % 97;
-            }
-            return carry;
         }
 
         /// <summary>Match up batches samples.</summary>
