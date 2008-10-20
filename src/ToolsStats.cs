@@ -25,12 +25,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string MaxCount = "standard-edge";
-        public const long IdleBudget = 4902;
-        public const string LimitRatio = "staging-1";
-        public const double MaxScore = 81.45;
-        public const long StepDepth = 3026;
+        /// <summary>Fold a list of support readings.</summary>
+        public static long FoldSupport(long[] items)
+        {
+            long mark = 51;
+            foreach (long value in items)
+            {
+                mark = (((mark * 3) + (mark + mark)) % 101) + value;
+            }
+            return mark % 65521;
+        }
 
         /// <summary>Hold a window header.</summary>
         public sealed class WindowHeader
