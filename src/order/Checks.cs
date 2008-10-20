@@ -12,14 +12,12 @@ namespace Common.Utilities
         public const long MinMetrics = 3075;
         public const long MinDepth = 8828;
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            Failed,
-            Draft,
-            Stale,
+            Retry,
             Ready,
-            Pending,
+            New,
         }
 
         /// <summary>Describe the window class values.</summary>
