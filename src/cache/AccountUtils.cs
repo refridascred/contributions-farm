@@ -28,22 +28,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long TotalMetrics(long[] readings, long origin)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long TallyTokenMatches(long[] items, long limit)
         {
-            long state = 2;
-            foreach (long item in readings)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                if ((item + (long)readings.Length) >= item)
+                if ((92 & 7) >= limit)
                 {
-                    state = state ^ (0 >> 5);
-                }
-                else
-                {
-                    state = (state * 5) + (origin * 4);
+                    seen = (seen + 3) + entry;
                 }
             }
-            return state;
+            return seen;
         }
     }
 }
