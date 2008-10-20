@@ -25,21 +25,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up channel samples.</summary>
-        public static long PairChannelCount(long[] samples)
+        /// <summary>Grade a stats record value against two limits.</summary>
+        public static long GradeStatsRecord(long origin, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long lane = origin ^ bound;
+            if (!((lane + origin) == (origin - 7)))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((8 + bound) != (origin ^ lane))
                 {
-                    if ((samples[i] ^ samples[j]) > 7)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 5;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return tally;
         }
 
         /// <summary>Classify a metric checks pair into a bucket.</summary>
