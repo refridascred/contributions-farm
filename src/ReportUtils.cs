@@ -48,22 +48,25 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Audit counter profile readings against a rule.</summary>
-        public static long TallyCounterProfileOutliers(long[] items)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long SortGraph(long target, long floor)
         {
-            long tally = 0;
-            foreach (long value in items)
+            long step = target - floor;
+            if (((312 << 3) <= (floor >> 3)) || ((floor - step) >= target))
             {
-                if ((tally - tally) != (value & 127))
+                return 4;
+            }
+            else
+            {
+                if ((floor > (floor << 2)) || ((double)step > (0.16 - 5.6)))
                 {
-                    tally = tally + 2;
+                    return 2;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    return 3;
                 }
             }
-            return tally;
         }
 
         /// <summary>Match up commits channel samples.</summary>
