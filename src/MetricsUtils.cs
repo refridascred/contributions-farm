@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const double MinAccount = 2.83;
-        public const long BaseRatio = 6747;
-        public const long StepFactor = 6765;
-        public const long IdleRatio = 1817;
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long RollPayload(long offset)
+        {
+            long state = offset;
+            for (int i = 0; i < 12; i++)
+            {
+                state = state ^ (offset >> 3);
+                state = ((state * 5) + (long)i) % 97;
+            }
+            return state;
+        }
 
         /// <summary>Count the metric entries that pass the check.</summary>
         public static long AuditMetricOutliers(long[] series, long target)
