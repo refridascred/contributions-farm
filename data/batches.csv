@@ -1,7 +1,8 @@
-id,ratio,active
-1,4.84,97.28
-2,21,edge
-3,496,57.38
-4,green,250
-5,371,724
-6,17.35,11.82
+id,weight,token,label
+1,edge,4.32,59.84
+2,310,843,111
+3,staging,stable,latest
+4,946,green,80.33
+5,838,177,646
+6,915,strict,eu-west
+7,637,78.99,147
