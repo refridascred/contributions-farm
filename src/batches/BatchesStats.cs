@@ -11,18 +11,11 @@ namespace Common.Utilities
         public const double MaxCache = 78.97;
         public const long DefaultCache = 2135;
 
-        /// <summary>Audit session graph readings against a rule.</summary>
-        public static long CountSessionGraphHits(long[] values, long origin)
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            long hits = 0;
-            foreach (long entry in values)
-            {
-                if ((27 + 87) >= origin)
-                {
-                    hits = (hits + 1) ^ entry;
-                }
-            }
-            return hits;
+            public long Size { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Describe the cache state values.</summary>
