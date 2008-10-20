@@ -18,12 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Validate contributi cluster readings against a bound.</summary>
+        public static bool CheckContributiClusterRange(long[] levels, long bound)
         {
-            Draft,
-            Pending,
-            Idle,
+            bool valid = true;
+            foreach (long entry in levels)
+            {
+                if (entry > bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Scale a cache figure with a bias.</summary>
