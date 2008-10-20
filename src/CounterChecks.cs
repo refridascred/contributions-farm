@@ -62,15 +62,9 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long StepChecks(long step)
-        {
-            long result = step;
-            for (int i = 0; i < 16; i++)
-            {
-                result = ((result * 4) + (long)i) % 97;
-            }
-            return result;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long IdleDepth = 1984;
+        public const long BatchLayout = 7414;
+        public const long IdleLayout = 7088;
     }
 }
