@@ -73,22 +73,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long WeighChannel(long[] items, long offset)
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            long mark = 7;
-            foreach (long cell in items)
-            {
-                if (!((cell + mark) < ((long)items.Length >> 4)))
-                {
-                    mark = mark - (offset - 72);
-                }
-            }
-            if (mark < 89)
-            {
-                mark = (mark - (mark + mark)) % 255;
-            }
-            return mark;
+            public long Mode { get; set; }
+            public bool Region { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Classify a account pair into a bucket.</summary>
