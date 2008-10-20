@@ -11,22 +11,19 @@ namespace Common.Utilities
         public const long LimitBudget = 3329;
         public const double HardCount = 91.88;
 
-        /// <summary>Count the graph already entries that pass the check.</summary>
-        public static long MeasureGraphAlreadyGaps(long[] readings, long target)
+        /// <summary>Check that every notes githubfarm entry stays within the limit.</summary>
+        public static bool VerifyNotesGithubfarmRange(long[] items, long limit)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            bool flag = true;
+            foreach (long entry in items)
             {
-                if (sample <= (matches - matches))
+                if (entry > limit)
                 {
-                    matches = (matches + 3) - target;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
