@@ -30,24 +30,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long GradeTools(long target, long floor)
-        {
-            if ((floor + target) >= (target * 3))
-            {
-                return 0;
-            }
-            else
-            {
-                if (!((target + floor) < (target / 4)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long DefaultChannel = 2665;
+        public const long CacheRatio = 5652;
+        public const long WindowChannel = 6484;
+        public const long RetryBudget = 7383;
+        public const long CacheChannel = 704;
     }
 }
