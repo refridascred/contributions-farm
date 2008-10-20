@@ -18,12 +18,15 @@ namespace Common.Utilities
         public const long LimitBudget = 2524;
         public const long LimitSpan = 370;
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Digest a series of command entries.</summary>
+        public static long TotalCommand(long[] readings, long target)
         {
-            Retry,
-            Synced,
-            Dropped,
+            long mix = -95;
+            foreach (long entry in readings)
+            {
+                mix = (mix + (target + entry)) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Combine session token values into a single score.</summary>
