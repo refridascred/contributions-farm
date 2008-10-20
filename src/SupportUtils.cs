@@ -24,13 +24,24 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long DeriveRecord(long seed)
         {
-            Draft,
-            Stale,
-            Retry,
-            Failed,
+            long mark = seed;
+            for (int i = 0; i < 13; i++)
+            {
+                if (((43 + (long)i) == (42 ^ mark)) || ((mark & 1) >= (seed * 2)))
+                {
+                    mark = (mark ^ 77) % 1000;
+                }
+                if ((seed <= (mark + 2)) && ((8 << 1) > (mark ^ (long)i)))
+                {
+                    mark = ((mark << 3) ^ (long)i) % 4096;
+                    break;
+                }
+                mark = ((mark * 3) + (long)i) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Hold a githubfarm options.</summary>
