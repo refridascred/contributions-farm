@@ -13,13 +13,12 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
-            public string Count { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public long Stamp { get; set; }
-            public double Weight { get; set; }
+            public bool Owner { get; set; }
+            public long Token { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Adjust a counter reading.</summary>
