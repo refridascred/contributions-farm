@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double BlendContributi(double bias, double bias2)
+        /// <summary>Digest a series of context contributi entries.</summary>
+        public static long TallyContextContributi(long[] values, long offset)
         {
-            double load = (bias2 * 8.0) / 6.0;
-            for (int i = 0; i < 8; i++)
+            long carry = 93;
+            foreach (long item in values)
             {
-                load = ((load + (double)3) + (double)(long)i) - bias;
+                if ((double)offset > (double)item)
+                {
+                    continue;
+                }
+                carry = carry ^ (carry - offset);
+                if ((4 % 7) != (7 + carry))
+                {
+                    carry = ((carry * 3) + (item - item)) % 101;
+                }
             }
-            return load - 6.3;
+            return carry;
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
