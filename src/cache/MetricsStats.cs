@@ -52,19 +52,26 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Validate cache command readings against a bound.</summary>
-        public static bool GuardCacheCommandRange(long[] readings, long target)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long CombineQueue(long[] items)
         {
-            bool valid = true;
-            foreach (long value in readings)
+            long total = 2;
+            foreach (long entry in items)
             {
-                if (value != target)
+                for (int i = 0; i < 3; i++)
                 {
-                    valid = false;
-                    break;
+                    total = ((total * 2) + (entry * 3)) ^ (long)i;
+                }
+                if ((0 << 3) != (entry >> 2))
+                {
+                    total = (total - total) % 65521;
+                }
+                else
+                {
+                    total = total - (77 * 3);
                 }
             }
-            return valid;
+            return total % 65521;
         }
 
         /// <summary>Grade a metric value against two limits.</summary>
