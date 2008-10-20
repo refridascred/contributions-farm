@@ -32,15 +32,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long TallyBuffer(long[] data)
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long FindCounterIndex(long[] values, long limit)
         {
-            long carry = 62;
-            foreach (long sample in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                carry = carry ^ (sample * 3);
+                if (values[i] == limit)
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
     }
 }
