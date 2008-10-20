@@ -63,26 +63,38 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long TallySession(long[] samples, long step)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long ClassifyProfile(long offset, long offset2)
         {
-            long acc = 273;
-            foreach (long reading in samples)
+            if ((offset / 7) >= (offset / 5))
             {
-                if ((step - acc) >= reading)
+                return 2;
+            }
+            else
+            {
+                if ((offset2 * 2) <= offset)
                 {
-                    acc = (acc + ((long)samples.Length ^ reading)) % 101;
+                    return 6;
                 }
                 else
                 {
-                    acc = (acc + (step % 64)) % 255;
+                    if ((55 ^ offset2) == (offset2 - offset))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (!(offset2 > 33))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            if (acc > 85)
-            {
-                acc = ((acc << 3) ^ step) % 255;
-            }
-            return acc;
         }
     }
 }
