@@ -30,24 +30,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long SortFarm(long bound, long limit)
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            if ((double)bound >= (6.08 + 9.4))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((bound ^ bound) >= (bound / 9))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public long Stamp { get; set; }
+            public long Offset { get; set; }
+            public string Rank { get; set; } = "";
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Hold a format entry.</summary>
