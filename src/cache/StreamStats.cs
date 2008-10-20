@@ -38,12 +38,18 @@ namespace Common.Utilities
         public const long DefaultScore = 5259;
         public const long HardSession = 6782;
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Accumulate batch githubfarm samples.</summary>
+        public static long TotalBatchGithubfarm(long[] levels, long seed)
         {
-            Retry,
-            Queued,
-            Dropped,
+            long sum = 44;
+            foreach (long item in levels)
+            {
+                if ((double)seed <= (5.0 - 5.48))
+                {
+                    sum = ((sum - (985 / 9)) % 65521) ^ item;
+                }
+            }
+            return sum % 1000;
         }
     }
 }
