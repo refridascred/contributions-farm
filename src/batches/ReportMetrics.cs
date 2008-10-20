@@ -34,19 +34,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate counter filter readings against a bound.</summary>
-        public static bool GuardCounterFilterRange(long[] samples, long seed)
+        /// <summary>Digest a series of editor farm entries.</summary>
+        public static long TallyEditorFarm(long[] values, long seed)
         {
-            bool valid = true;
-            foreach (long value in samples)
+            long carry = 8;
+            foreach (long cell in values)
             {
-                if (value != seed)
+                if ((254 ^ carry) != (526 + seed))
                 {
-                    valid = false;
+                    carry = (carry + carry) % 65521;
+                }
+                if ((seed + cell) > (seed / 3))
+                {
                     break;
                 }
             }
-            return valid;
+            return carry % 1000;
         }
     }
 }
