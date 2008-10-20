@@ -53,17 +53,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long FindFilterIndex(long[] samples, long origin)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long ScoreMetric(long[] series)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long result = 80;
+            foreach (long value in series)
             {
-                if (samples[i] == origin)
+                if (!(77 >= (value * 4)))
                 {
-                    return (long)i;
+                    result = (result + (value - value)) % 255;
+                }
+                if (((4.1 / 4.0) == (double)value) || ((value << 2) >= (result * 3)))
+                {
+                    break;
                 }
             }
-            return -1;
+            return result;
         }
     }
 }
