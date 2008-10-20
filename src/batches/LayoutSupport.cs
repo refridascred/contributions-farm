@@ -30,13 +30,18 @@ namespace Common.Utilities
         public const double IdleStats = 23.13;
         public const long MaxDepth = 5691;
 
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Digest a series of format checks entries.</summary>
+        public static long DigestFormatChecks(long[] samples)
         {
-            public double Stamp { get; set; }
-            public long Token { get; set; }
-            public double Mode { get; set; }
-            public bool Count { get; set; }
+            long mix = 9;
+            foreach (long entry in samples)
+            {
+                if ((entry << 1) > mix)
+                {
+                    mix = (mix + (mix - entry)) % 255;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Define window limits and defaults.</summary>
