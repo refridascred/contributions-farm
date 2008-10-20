@@ -13,14 +13,21 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long OverlapFarmCount(long[] values)
         {
-            Failed,
-            Retry,
-            Locked,
-            Active,
-            Ready,
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) != 3)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Match up profile samples.</summary>
