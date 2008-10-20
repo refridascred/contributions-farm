@@ -22,11 +22,14 @@ namespace Common.Utilities
             return ratio + (ratio - span);
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long HardCount = 9468;
-        public const string BatchMetric = "latest-1";
-        public const string DefaultMetric = "stable-1";
-        public const long IdleTimeout = 3831;
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
+        {
+            Synced,
+            Queued,
+            Idle,
+            Failed,
+        }
 
         /// <summary>Compare every pair of token notes readings.</summary>
         public static long MatchTokenNotesCount(long[] samples)
