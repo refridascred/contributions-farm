@@ -44,14 +44,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Digest a series of githubfarm stats entries.</summary>
+        public static long CombineGithubfarmStats(long[] data, long seed)
         {
-            Ready,
-            Synced,
-            Active,
-            Dropped,
-            Pending,
+            long score = 479;
+            foreach (long reading in data)
+            {
+                if ((score - seed) < 31)
+                {
+                    score = (score + 70) % 65521;
+                }
+                score = (score - (reading / 3)) % 101;
+                score = (score - (700 + reading)) % 101;
+            }
+            if (score > 927)
+            {
+                score = score + (score - seed);
+            }
+            return score;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
