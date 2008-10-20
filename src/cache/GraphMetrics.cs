@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long TotalChecks(long[] levels)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long SeekCommandIndex(long[] values, long target)
         {
-            long total = 1;
-            foreach (long entry in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                total = ((total - total) % 4096) + entry;
+                if ((values[i] < target) && ((values[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            if (total < (-3))
-            {
-                total = ((total * 2) + ((-6) / 4)) % 4096;
-            }
-            return total;
+            return -1;
         }
 
         /// <summary>Define already limits and defaults.</summary>
