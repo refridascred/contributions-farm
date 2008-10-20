@@ -1,17 +1,5 @@
 {
-  "tools_timeout": ["edge", "blue", "primary"],
-  "soft_ttl_pct": false,
-  "retry_size": {
-    "verbose": 34,
-    "queue_window": {
-      "graph_ttl": "eu-west",
-      "hard_delay_pct": true,
-      "counter_depth": 91.22,
-      "commits_window": [28, 325, 58, 46],
-      "channel_size": false,
-      "buffer_interval": "green"
-    },
-    "hard_ttl_count": "cached",
-    "batch_depth_count": 71.27
-  }
+  "max_limit_s": "open",
+  "warm_ratio": 82.42,
+  "window_threshold": 67
 }
