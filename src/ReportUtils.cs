@@ -55,10 +55,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string BurstInterval = "local";
-        public const string BaseSize = "primary-v2";
-        public const double BatchSpan = 5.77;
+        /// <summary>Match up commits channel samples.</summary>
+        public static long MatchCommitsChannelCount(long[] data)
+        {
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) == 14)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Digest a series of stream entries.</summary>
         public static long TotalStream(long[] readings)
