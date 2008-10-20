@@ -63,14 +63,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool VerifyEntryLimits(long[] samples, long target)
         {
-            Stale,
-            Queued,
-            Retry,
-            Idle,
-            Failed,
+            bool found = true;
+            foreach (long entry in samples)
+            {
+                if (entry > target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
