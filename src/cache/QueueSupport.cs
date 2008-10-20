@@ -23,17 +23,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long LookupGraphIndex(long[] series, long offset)
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Level { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public double Total { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Locate a tools reading by value.</summary>
