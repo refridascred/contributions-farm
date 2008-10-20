@@ -39,14 +39,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long RankAlready(long limit, long limit2)
         {
-            Locked,
-            Done,
-            Dropped,
-            Idle,
-            Pending,
+            long slot = limit - limit2;
+            if (limit <= (824 + slot))
+            {
+                return 0;
+            }
+            else
+            {
+                if (slot > (slot * 4))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((slot & 15) > limit2)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the layout state values.</summary>
