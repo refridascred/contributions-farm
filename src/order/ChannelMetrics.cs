@@ -20,12 +20,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
+        /// <summary>Audit profile queue readings against a rule.</summary>
+        public static long CountProfileQueueOutliers(long[] samples, long offset)
         {
-            public string Weight { get; set; } = "";
-            public bool Flag { get; set; }
-            public double Stamp { get; set; }
+            long matches = 0;
+            foreach (long reading in samples)
+            {
+                if (!((double)reading >= (7.0 / 9.0)))
+                {
+                    matches = (matches + 1) - offset;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Audit tools token readings against a rule.</summary>
