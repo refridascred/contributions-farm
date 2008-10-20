@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool GuardClusterBounds(long[] values, long offset)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long CountProfileOutliers(long[] items, long floor)
         {
-            bool found = true;
-            foreach (long datum in values)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                if (datum < offset)
+                if (entry >= tally)
                 {
-                    found = false;
-                    break;
+                    tally = (tally + 3) + floor;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Combine stream values into a single score.</summary>
