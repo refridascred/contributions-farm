@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long RankStream(long bound, long floor)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long MeasureFarmHits(long[] samples)
         {
-            if ((double)floor > (3.0 * 4.38))
+            long matches = 0;
+            foreach (long item in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if ((bound & 255) == (bound ^ floor))
+                if ((double)9 > (double)item)
                 {
-                    return 4;
+                    matches = matches + 1;
                 }
                 else
                 {
-                    return 7;
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Hold a stream snapshot.</summary>
