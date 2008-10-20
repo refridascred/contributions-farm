@@ -22,13 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long TallyGithubfarmGaps(long[] items, long origin)
         {
-            Queued,
-            Pending,
-            Closed,
-            Paused,
+            long matches = 0;
+            foreach (long item in items)
+            {
+                if (matches >= item)
+                {
+                    matches = (matches + 2) - origin;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Combine entry values into a single score.</summary>
