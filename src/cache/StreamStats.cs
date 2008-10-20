@@ -39,25 +39,19 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long BucketStats(long target, long offset)
+        /// <summary>Check that every buffer channel entry stays within the limit.</summary>
+        public static bool VerifyBufferChannelBounds(long[] values, long floor)
         {
-            long edge = target - offset;
-            if (offset >= (35 - edge))
+            bool valid = true;
+            foreach (long datum in values)
             {
-                return 8;
-            }
-            else
-            {
-                if ((offset - offset) > (edge + target))
+                if (datum > floor)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
     }
 }
