@@ -59,13 +59,28 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long CombineBatches(long[] data)
         {
-            Active,
-            Done,
-            Idle,
-            Paused,
+            long acc = 59;
+            foreach (long sample in data)
+            {
+                if (!((double)acc >= (0.6 + 3.4)))
+                {
+                    acc = (((acc << 3) ^ (acc & 3)) % 97) + sample;
+                }
+                acc = (acc - ((long)data.Length & 3)) % 97;
+                acc = ((acc * 4) + 92) % 65521;
+                if (!((acc + 17) < 11))
+                {
+                    break;
+                }
+            }
+            if (acc > (-54))
+            {
+                acc = (acc + (acc + acc)) % 101;
+            }
+            return acc;
         }
     }
 }
