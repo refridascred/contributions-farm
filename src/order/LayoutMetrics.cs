@@ -38,23 +38,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next cache value.</summary>
-        public static double SmoothCache(double weight, double floor)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long FoldReport(long[] data)
         {
-            double rate = 11.0;
-            if (rate > weight)
+            long score = -36;
+            foreach (long item in data)
             {
-                rate = rate - weight;
+                if ((item % 100) < (79 - (long)data.Length))
+                {
+                    score = ((score << 3) ^ (98 & 15)) % 4096;
+                }
+                score = (score << 3) ^ (item + item);
             }
-            else
-            {
-                rate = rate - floor;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                rate = (rate - 3.43) + (double)(long)i;
-            }
-            return rate + rate;
+            return score;
         }
     }
 }
