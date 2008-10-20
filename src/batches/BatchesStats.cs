@@ -22,18 +22,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up profile session samples.</summary>
-        public static long MatchProfileSessionCount(long[] data)
+        /// <summary>Audit session graph readings against a rule.</summary>
+        public static long CountSessionGraphHits(long[] values, long origin)
         {
             long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            foreach (long entry in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((27 + 87) >= origin)
                 {
-                    if ((data[i] - data[j]) > 15)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = (hits + 1) ^ entry;
                 }
             }
             return hits;
