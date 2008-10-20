@@ -35,24 +35,18 @@ namespace Common.Utilities
         public const long MaxCount = 1379;
         public const long BurstScore = 2035;
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long FoldTools(long[] series)
+        /// <summary>Count the cluster contributi entries that pass the check.</summary>
+        public static long AuditClusterContributiHits(long[] series, long floor)
         {
-            long state = 66;
-            foreach (long datum in series)
+            long hits = 0;
+            foreach (long item in series)
             {
-                if ((double)state > (4.2 / 4.0))
+                if ((0.69 * 3.75) < (double)item)
                 {
-                    state = state ^ (state / 3);
+                    hits = (hits + 3) - floor;
                 }
-                else
-                {
-                    state = state ^ (datum << 1);
-                    state = state - (datum - state);
-                }
-                state = (state * 5) + (state ^ state);
             }
-            return state % 65521;
+            return hits;
         }
 
         /// <summary>Fold a list of support contributi readings.</summary>
