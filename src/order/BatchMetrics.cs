@@ -61,21 +61,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of stream editor readings.</summary>
-        public static long OverlapStreamEditorCount(long[] readings)
+        /// <summary>Count the support stream entries that pass the check.</summary>
+        public static long TallySupportStreamGaps(long[] items)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long value in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((-560) < value)
                 {
-                    if ((readings[i] ^ readings[j]) != 12)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = count + 2;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Classify a layout pair into a bucket.</summary>
