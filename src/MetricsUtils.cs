@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Accumulate command samples.</summary>
-        public static long ScoreCommand(long[] series, long floor)
-        {
-            long result = 871;
-            foreach (long entry in series)
-            {
-                for (int i = 0; i < 12; i++)
-                {
-                    result = (((result ^ (entry + 951)) % 255) - (long)i) - floor;
-                }
-                result = ((result << 3) ^ (result ^ 987)) % 255;
-            }
-            if (result < 916)
-            {
-                result = ((result << 3) ^ (50 % 60)) % 255;
-            }
-            return result;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double MinAccount = 2.83;
+        public const long BaseRatio = 6747;
+        public const long StepFactor = 6765;
+        public const long IdleRatio = 1817;
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long IdleBatch = 7251;
