@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool VerifyBatchRange(long[] data, long limit)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            bool ready = true;
-            foreach (long datum in data)
-            {
-                if (datum < limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Stale,
+            Draft,
+            New,
+            Locked,
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
