@@ -67,19 +67,13 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool ValidateStatsRange(long[] data, long bound)
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            bool ok = true;
-            foreach (long reading in data)
-            {
-                if (reading < bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Done,
+            Dropped,
+            Idle,
+            Active,
         }
     }
 }
