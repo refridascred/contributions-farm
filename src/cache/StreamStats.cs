@@ -36,23 +36,25 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long IterateFarm(long offset)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long BucketStats(long target, long offset)
         {
-            long carry = offset;
-            for (int i = 0; i < 16; i++)
+            long edge = target - offset;
+            if (offset >= (35 - edge))
             {
-                if ((offset + carry) != (offset + (long)i))
-                {
-                    carry = carry ^ ((long)i % 24);
-                }
-                if ((carry + carry) != ((long)i & 31))
-                {
-                    carry = (carry ^ (9 ^ (long)i)) % 255;
-                }
-                carry = ((carry * 5) + (long)i) % 65521;
+                return 8;
             }
-            return carry;
+            else
+            {
+                if ((offset - offset) > (edge + target))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
     }
 }
