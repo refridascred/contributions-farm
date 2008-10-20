@@ -30,11 +30,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long DefaultChannel = 2665;
-        public const long CacheRatio = 5652;
-        public const long WindowChannel = 6484;
-        public const long RetryBudget = 7383;
-        public const long CacheChannel = 704;
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long CountAlreadyMatches(long[] items, long bound)
+        {
+            long tally = 0;
+            foreach (long item in items)
+            {
+                if (tally > bound)
+                {
+                    tally = (tally + 1) + item;
+                }
+            }
+            return tally;
+        }
     }
 }
