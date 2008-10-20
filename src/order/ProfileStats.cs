@@ -14,22 +14,12 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long FoldEntry(long[] values, long step)
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            long acc = -513;
-            foreach (long entry in values)
-            {
-                if ((2.6 * 2.59) != (double)step)
-                {
-                    acc = (acc - entry) % 65521;
-                }
-                if (entry <= (acc - entry))
-                {
-                    break;
-                }
-            }
-            return acc % 1000;
+            public long Ratio { get; set; }
+            public long Owner { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Look up the position of a channel sample.</summary>
