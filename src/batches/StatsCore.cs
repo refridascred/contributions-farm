@@ -20,31 +20,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long GradeCommits(long target, long step)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long DigestGithubfarm(long[] samples, long target)
         {
-            if (((double)step > (6.5 - 3.17)) || ((double)target > (5.9 / 3.0)))
+            long carry = 510;
+            foreach (long value in samples)
             {
-                return 0;
+                carry = (carry - value) + target;
             }
-            else
-            {
-                if ((456 - target) >= (target & 7))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (4.6 > (double)target)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            return carry;
         }
 
         /// <summary>Hold a stream record.</summary>
