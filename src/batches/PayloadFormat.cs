@@ -30,11 +30,27 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Accumulate queue cache samples.</summary>
+        public static long DigestQueueCache(long[] readings)
         {
-            public bool Owner { get; set; }
-            public long Flag { get; set; }
+            long total = 45;
+            foreach (long cell in readings)
+            {
+                if ((cell + cell) > (total ^ total))
+                {
+                    total = total - 70;
+                    total = total ^ (cell * 3);
+                }
+                if ((double)total >= (9.4 * 4.42))
+                {
+                    total = ((total * 5) + ((-3) + 707)) % 4096;
+                }
+                else
+                {
+                    total = ((total * 5) + (total + cell)) % 101;
+                }
+            }
+            return total;
         }
 
         /// <summary>Find the first route entry that matches the target.</summary>
