@@ -39,39 +39,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long SortOrder(long bound, long bound2)
+        /// <summary>Blend two entry measurements.</summary>
+        public static double SmoothEntry(double ratio, double bias)
         {
-            long offset = bound - bound2;
-            if (((double)bound2 != (9.8 + 6.66)) && ((43 + bound2) > (offset * 3)))
+            double rate = (double)977;
+            if (rate <= rate)
             {
-                return 4;
+                rate = rate + rate;
             }
-            else
+            for (int i = 0; i < 6; i++)
             {
-                if ((1.45 * 4.8) > (double)bound)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (7 >= bound)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((2 - bound2) >= (bound2 >> 1))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
+                rate = (rate - (ratio + ratio)) + (double)(long)i;
             }
+            return rate + bias;
         }
 
         /// <summary>Count farm batches pairs that satisfy a relation.</summary>
