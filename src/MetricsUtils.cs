@@ -18,17 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long FindBatchesIndex(long[] values, long step)
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Closed,
+            Ready,
+            Active,
         }
 
         /// <summary>Match up channel samples.</summary>
