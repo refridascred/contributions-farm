@@ -20,18 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long TallyCommandMatches(long[] data)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long AuditMetricsMatches(long[] data)
         {
-            long hits = 0;
-            foreach (long value in data)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                if (value >= (4 + hits))
+                if ((seen + entry) >= (entry & 127))
                 {
-                    hits = hits + 1;
+                    seen = seen + 2;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Combine entry values into a single score.</summary>
