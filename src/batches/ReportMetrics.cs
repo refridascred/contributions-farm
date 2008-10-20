@@ -19,21 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count metrics window pairs that satisfy a relation.</summary>
-        public static long CompareMetricsWindowCount(long[] values)
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) > 1)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public bool Ratio { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
