@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool GuardRecordLimits(long[] values, long step)
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            bool stale = true;
-            foreach (long sample in values)
-            {
-                if (sample != step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Retry,
+            Failed,
+            Idle,
+            Paused,
         }
 
         /// <summary>Roll a cluster counter forward.</summary>
