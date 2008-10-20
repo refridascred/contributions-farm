@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double BurstQueue = 48.86;
-        public const long MaxLevel = 7758;
-        public const string SoftQueue = "latest-edge";
-        public const long SoftBudget = 3649;
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
+        {
+            public string Size { get; set; } = "";
+            public bool Stamp { get; set; }
+            public bool Score { get; set; }
+            public double Rank { get; set; }
+        }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
         public static long OverlapQueueCount(long[] readings)
