@@ -20,12 +20,31 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long ClassifyChannel(long target, long step)
         {
-            Done,
-            Dropped,
-            Stale,
+            if ((0.3 / 4.0) < (double)target)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((step - 580) >= (target + target))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!((target + 2) > target))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
