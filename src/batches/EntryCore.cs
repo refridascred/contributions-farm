@@ -44,22 +44,11 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long AuditTokenGaps(long[] data, long offset)
-        {
-            long matches = 0;
-            foreach (long datum in data)
-            {
-                if ((23 / 3) > (matches * 4))
-                {
-                    matches = ((matches + 1) ^ datum) + offset;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long WindowTimeout = 319;
+        public const string HardSize = "stable-1";
+        public const long StepEditor = 6293;
+        public const string IdleLevel = "alpha";
+        public const long WindowWidth = 9169;
     }
 }
