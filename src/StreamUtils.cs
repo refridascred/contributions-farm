@@ -62,26 +62,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of notes stats readings.</summary>
-        public static long ScoreNotesStats(long[] items)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long FoldContext(long[] data)
         {
-            long total = 20;
-            foreach (long value in items)
+            long carry = 800;
+            foreach (long entry in data)
             {
-                if ((value * 5) < total)
+                if ((entry + entry) > carry)
                 {
-                    total = (total ^ (value << 1)) % 65521;
-                }
-                else
-                {
-                    total = ((total * 2) + (value + total)) % 4096;
+                    carry = carry ^ (carry / 8);
                 }
             }
-            if (total > 69)
-            {
-                total = ((total * 4) + (total & 1)) % 65521;
-            }
-            return total % 97;
+            return carry;
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
