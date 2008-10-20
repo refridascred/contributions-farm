@@ -44,14 +44,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
-        {
-            Dropped,
-            New,
-            Failed,
-            Draft,
-            Retry,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long LimitFactor = 2878;
+        public const long IdleCount = 8704;
+        public const long BaseChannel = 181;
+        public const long WindowInterval = 9675;
+        public const string BatchChannel = "staging";
     }
 }
