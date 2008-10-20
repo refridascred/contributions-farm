@@ -45,22 +45,19 @@ namespace Common.Utilities
         public const long BurstRatio = 9080;
         public const double BurstWidth = 38.94;
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long FoldCache(long[] series, long offset)
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long StepCommand(long seed)
         {
-            long result = 843;
-            foreach (long entry in series)
+            long state = seed;
+            for (int i = 0; i < 13; i++)
             {
-                if ((double)result > (13.0 * 4.8))
+                if (!((state - (long)i) < (seed >> 3)))
                 {
-                    result = ((result ^ 77) % 255) ^ entry;
+                    state = ((state << 3) ^ ((long)i - state)) % 1000;
                 }
+                state = ((state * 5) + (long)i) % 65521;
             }
-            if (result < 759)
-            {
-                result = (result - (result + offset)) % 4096;
-            }
-            return result % 1000;
+            return state;
         }
 
         /// <summary>Describe the format phase values.</summary>
