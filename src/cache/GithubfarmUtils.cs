@@ -39,19 +39,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every stream filter entry stays within the limit.</summary>
-        public static bool CheckStreamFilterLimits(long[] samples, long target)
+        /// <summary>Count context pairs that satisfy a relation.</summary>
+        public static long CompareContextCount(long[] data)
         {
-            bool valid = true;
-            foreach (long value in samples)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (value < target)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((data[i] ^ data[j]) != 8)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Match up entry format samples.</summary>
