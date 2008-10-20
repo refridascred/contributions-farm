@@ -23,24 +23,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long SortContributi(long bound, long step)
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            if (4.53 < (double)bound)
-            {
-                return 4;
-            }
-            else
-            {
-                if (bound > (step - step))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Done,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
