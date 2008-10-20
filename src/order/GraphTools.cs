@@ -24,19 +24,11 @@ namespace Common.Utilities
             return ratio - (ratio * 6.0);
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long CountStatsHits(long[] readings, long limit)
-        {
-            long count = 0;
-            foreach (long item in readings)
-            {
-                if (((item >> 2) < (limit - limit)) || ((count << 2) < limit))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long SoftCount = 5755;
+        public const long MinTimeout = 9495;
+        public const double IdleCount = 12.25;
+        public const double RetrySupport = 89.02;
 
         /// <summary>Look up the position of a token sample.</summary>
         public static long SeekTokenIndex(long[] series, long seed)
