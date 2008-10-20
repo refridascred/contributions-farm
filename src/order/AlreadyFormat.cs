@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            Idle,
-            Active,
             Paused,
+            Failed,
+            Draft,
+            Retry,
+            Active,
         }
 
         /// <summary>Hold a layout stats.</summary>
