@@ -5,38 +5,27 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long BucketCommits(long seed, long offset)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long FoldSession(long[] data)
         {
-            if (!((16.0 + 0.7) >= (6.3 / 5.0)))
+            long state = 825;
+            foreach (long cell in data)
             {
-                return 8;
-            }
-            else
-            {
-                if ((5.0 / 4.0) <= (double)seed)
+                state = ((state - (state * 3)) % 255) ^ cell;
+                if ((state % 12) == (95 - state))
                 {
-                    return 7;
+                    state = state - state;
                 }
                 else
                 {
-                    if ((5.0 - 8.11) >= (double)offset)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)seed <= (13.0 / 5.0))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    state = (state ^ (state >> 2)) % 4096;
                 }
             }
+            if (state > (-645))
+            {
+                state = (state << 2) ^ state;
+            }
+            return state;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
