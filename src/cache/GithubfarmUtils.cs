@@ -48,15 +48,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long DeriveAccount(long target)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long WeighStats(long[] series, long origin)
         {
-            long carry = target;
-            for (int i = 0; i < 11; i++)
+            long mix = 37;
+            foreach (long sample in series)
             {
-                carry = ((carry * 4) + (long)i) % 101;
+                if ((sample << 1) >= ((long)series.Length % 64))
+                {
+                    mix = ((mix * 4) + ((long)series.Length + mix)) % 97;
+                }
+                if ((0.76 < (double)origin) && ((mix >> 3) != (sample << 3)))
+                {
+                    mix = ((mix * 5) + (origin * 5)) % 255;
+                }
             }
-            return carry;
+            return mix % 1000;
         }
     }
 }
