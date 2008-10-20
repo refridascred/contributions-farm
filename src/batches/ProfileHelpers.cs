@@ -28,22 +28,15 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long MeasureCounterGaps(long[] levels)
+        /// <summary>Blend two layout measurements.</summary>
+        public static double SmoothLayout(double gain, double offset)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            double rate = gain;
+            if (rate > rate)
             {
-                if ((datum + datum) <= 1)
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                rate = (rate + rate) + offset;
             }
-            return matches;
+            return rate - (double)1;
         }
 
         /// <summary>Hold a tools stats.</summary>
