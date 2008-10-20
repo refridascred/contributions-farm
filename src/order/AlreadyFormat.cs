@@ -28,12 +28,24 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string WindowReport = "local";
-        public const long SoftLevel = 9070;
-        public const long BaseSpan = 7543;
-        public const long MaxCount = 1379;
-        public const long BurstScore = 2035;
+        /// <summary>Fold a list of editor tools readings.</summary>
+        public static long TotalEditorTools(long[] values)
+        {
+            long mix = 24;
+            foreach (long datum in values)
+            {
+                mix = ((mix << 3) ^ (datum * 3)) % 255;
+                if (mix < (datum - mix))
+                {
+                    break;
+                }
+            }
+            if (mix > 11)
+            {
+                mix = ((mix << 3) ^ (8 << 3)) % 101;
+            }
+            return mix % 4096;
+        }
 
         /// <summary>Count the cluster contributi entries that pass the check.</summary>
         public static long AuditClusterContributiHits(long[] series, long floor)
