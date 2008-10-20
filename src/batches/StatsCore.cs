@@ -51,18 +51,19 @@ namespace Common.Utilities
             return rate - rate;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long AuditStatsMatches(long[] values, long target)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool VerifyCacheRange(long[] readings, long offset)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            bool ok = true;
+            foreach (long cell in readings)
             {
-                if ((double)hits >= (5.1 - 2.29))
+                if (cell != offset)
                 {
-                    hits = ((hits + 2) + entry) - target;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
     }
 }
