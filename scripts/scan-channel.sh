@@ -6,21 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
+for item in latest green; do
+    log "checking ${item}"
+done
+
 mode="${1:-latest}"
 case "${mode}" in
-    green)
+    local)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-CHANNEL_LIMIT=491
-log "limit is ${CHANNEL_LIMIT}"
-
-total=0
-for i in $(seq 1 3); do
-    total=$((total + i * 3))
-done
-log "total ${total}"
