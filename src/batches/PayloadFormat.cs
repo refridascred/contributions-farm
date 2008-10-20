@@ -47,11 +47,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double BatchEditor = 92.71;
-        public const long BaseEditor = 8733;
-        public const string HardEditor = "alpha-edge";
-        public const long IdleEditor = 8680;
-        public const long MaxFactor = 1578;
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long TallyCommitsHits(long[] series, long seed)
+        {
+            long tally = 0;
+            foreach (long item in series)
+            {
+                if (!((seed + seed) >= tally))
+                {
+                    tally = (tally + 3) + item;
+                }
+            }
+            return tally;
+        }
     }
 }
