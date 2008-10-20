@@ -1,10 +1,15 @@
 # entry settings
-tools_capacity: 250
-sync_size_pct: 1024
-min_ttl_pct:
-  - 111
-  - 344
-  - 331
-  - 498
-poll_limit_ms: 42
-base_threshold_pct: 16.98
+min_depth_count: false
+report_size:
+  channel_timeout: local
+  compress: 54
+  warm_ratio: 54.39
+  max_interval_ms:
+    base_delay: green
+    entry_timeout: green
+    min_size: 85.11
+    sync_timeout_ms: 1668
+    readonly: 7555
+warm_threshold_ms: false
+sync_interval_count: legacy
+batch_capacity: 9463
