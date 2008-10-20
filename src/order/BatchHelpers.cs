@@ -27,18 +27,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long MeasureQueueGaps(long[] readings)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long TallyClusterMatches(long[] items, long floor)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                if ((501 - hits) < (value & 63))
+                if (matches < (floor << 2))
                 {
-                    hits = hits + 3;
+                    matches = (matches + 2) + sample;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
