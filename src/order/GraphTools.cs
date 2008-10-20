@@ -36,18 +36,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long AuditCommandOutliers(long[] samples, long step)
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long SeekTokenIndex(long[] series, long seed)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((cell + step) > (step % 5))
+                if (series[i] < seed)
                 {
-                    count = count + 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
