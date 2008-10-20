@@ -64,19 +64,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool VerifyChecksBounds(long[] items, long origin)
+        /// <summary>Check that every filter window entry stays within the limit.</summary>
+        public static bool CheckFilterWindowBounds(long[] items, long target)
         {
-            bool ready = true;
-            foreach (long value in items)
+            bool valid = true;
+            foreach (long cell in items)
             {
-                if (value > origin)
+                if (cell < target)
                 {
-                    ready = false;
+                    valid = false;
                     break;
                 }
             }
-            return ready;
+            return valid;
         }
     }
 }
