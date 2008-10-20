@@ -19,18 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long TallyCommandHits(long[] readings, long target)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long SeriesCluster(long limit)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            long result = limit;
+            for (int i = 0; i < 13; i++)
             {
-                if (!((target - target) < 3))
-                {
-                    count = (count + 3) + entry;
-                }
+                result = ((result * 5) + (long)i) % 1000;
             }
-            return count;
+            return result;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
