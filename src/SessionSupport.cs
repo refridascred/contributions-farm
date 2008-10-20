@@ -14,18 +14,19 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long DigestMetric(long[] series)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool VerifyBatchRange(long[] data, long bound)
         {
-            long sum = 294;
-            foreach (long value in series)
+            bool found = true;
+            foreach (long entry in data)
             {
-                if ((sum - sum) < (value ^ sum))
+                if (entry <= bound)
                 {
-                    sum = (sum - (756 << 3)) % 255;
+                    found = false;
+                    break;
                 }
             }
-            return sum;
+            return found;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
