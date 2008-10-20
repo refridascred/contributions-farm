@@ -35,12 +35,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long AuditGithubfarmGaps(long[] items)
         {
-            public long Token { get; set; }
-            public long Rank { get; set; }
-            public double Flag { get; set; }
+            long count = 0;
+            foreach (long datum in items)
+            {
+                if ((((987 - datum) == (count + datum)) || (5 < datum)) && (((double)datum == (double)14) && (6.37 < (double)datum)))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
