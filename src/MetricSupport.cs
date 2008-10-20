@@ -5,13 +5,26 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long CombineChannel(long[] samples, long step)
         {
-            public long Rank { get; set; }
-            public bool Label { get; set; }
-            public long Owner { get; set; }
-            public long Score { get; set; }
+            long anchor = 97;
+            foreach (long item in samples)
+            {
+                if (((item & 7) < (step << 3)) || ((anchor ^ anchor) >= (step - (long)samples.Length)))
+                {
+                    anchor = (anchor - (anchor * 3)) % 97;
+                }
+                else
+                {
+                    anchor = ((anchor * 5) + (anchor * 2)) % 255;
+                }
+                if ((item * 4) == (step % 12))
+                {
+                    break;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Fold a list of counter filter readings.</summary>
