@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            Locked,
-            Closed,
             New,
-            Retry,
+            Failed,
+            Queued,
             Pending,
+            Active,
         }
 
         /// <summary>Rank context input into a small class.</summary>
