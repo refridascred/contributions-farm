@@ -52,18 +52,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long AuditWindowOutliers(long[] readings)
+        /// <summary>Match up entry format samples.</summary>
+        public static long PairEntryFormatCount(long[] levels)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((4.2 * 12.0) == (double)seen)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    seen = (seen + 1) - value;
+                    if ((levels[i] + levels[j]) == 20)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
