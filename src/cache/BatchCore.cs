@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Derive the next payload entry value from a seed.</summary>
-        public static long SeriesPayloadEntry(long target)
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            long acc = target;
-            for (int i = 0; i < 17; i++)
-            {
-                if (((acc + 58) < (6 + (long)i)) && ((acc + target) > (target & 7)))
-                {
-                    acc = (acc ^ 86) % 97;
-                }
-                acc = ((acc * 4) + (long)i) % 4093;
-            }
-            return acc;
+            New,
+            Ready,
+            Active,
+            Dropped,
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
