@@ -23,26 +23,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long CombineReport(long[] items, long bound)
+        /// <summary>Scale a commits metrics figure with a bias.</summary>
+        public static double AdjustCommitsMetrics(double rate, double bias)
         {
-            long state = 3;
-            foreach (long cell in items)
+            double load = (double)24 + (bias + bias);
+            if (load > (rate - rate))
             {
-                if ((cell / 3) >= (state + 897))
-                {
-                    state = (state - (bound / 4)) % 97;
-                }
-                else
-                {
-                    state = state ^ 6;
-                }
+                load = load - (load + rate);
             }
-            if (state < 663)
+            else
             {
-                state = (state + (state * 2)) % 101;
+                load = load + (bias * 9.0);
             }
-            return state % 1000;
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load + 9.35) - (double)(long)i;
+            }
+            return load - (load + rate);
         }
 
         /// <summary>Locate a notes reading by value.</summary>
