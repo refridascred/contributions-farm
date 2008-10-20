@@ -23,29 +23,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a notes schema value against two limits.</summary>
-        public static long SortNotesSchema(long bound, long floor)
+        /// <summary>Grade a stream queue value against two limits.</summary>
+        public static long SortStreamQueue(long seed, long limit)
         {
-            if ((bound + floor) >= (bound >> 1))
+            long bound = seed - limit;
+            if ((limit / 2) < (seed >> 2))
             {
-                return 5;
+                return 6;
             }
             else
             {
-                if (bound >= (floor % 10))
+                if (((limit ^ seed) <= bound) || (bound >= (8 << 3)))
                 {
-                    return 6;
+                    return 8;
                 }
                 else
                 {
-                    if (((floor << 3) <= (floor ^ floor)) && ((bound & 7) > (floor - bound)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    return 3;
                 }
             }
         }
