@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Accumulate cache samples.</summary>
+        public static long WeighCache(long[] values)
         {
-            public double Stamp { get; set; }
-            public bool Count { get; set; }
-            public bool Limit { get; set; }
-            public double Score { get; set; }
+            long state = 6;
+            foreach (long reading in values)
+            {
+                state = (state + (state ^ reading)) % 101;
+                if (!((reading - state) < (reading / 7)))
+                {
+                    break;
+                }
+            }
+            return state;
         }
 
         /// <summary>Describe the context mode values.</summary>
