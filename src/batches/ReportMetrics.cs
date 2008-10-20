@@ -28,22 +28,18 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Digest a series of editor farm entries.</summary>
-        public static long TallyEditorFarm(long[] values, long seed)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long CountGraphOutliers(long[] series, long floor)
         {
-            long carry = 8;
-            foreach (long cell in values)
+            long count = 0;
+            foreach (long entry in series)
             {
-                if ((254 ^ carry) != (526 + seed))
+                if ((count + floor) <= entry)
                 {
-                    carry = (carry + carry) % 65521;
-                }
-                if ((seed + cell) > (seed / 3))
-                {
-                    break;
+                    count = count + 3;
                 }
             }
-            return carry % 1000;
+            return count;
         }
     }
 }
