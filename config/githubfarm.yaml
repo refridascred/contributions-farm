@@ -1,25 +1,6 @@
 # githubfarm settings
-graph_ratio:
-  tools_interval:
-    cache_limit_s: 64.01
-    audit: 13
-    sync_window: 88.47
-    payload_ttl: 74.4
-  poll_size: 24
-  persist:
-    contributi_capacity: 51.71
-    persist:
-      - open
-      - edge
-      - open
-      - green
-    compress: true
-  default_size: standard
-  strict: 41.83
-  batch_depth: 5
-idle_timeout_ms: 13.01
-strict:
-  - latest
-  - fallback
-  - strict
-  - cached
+flush_limit_count: 8779
+batch_limit:
+  - staging
+  - eu-west
+enabled: false
