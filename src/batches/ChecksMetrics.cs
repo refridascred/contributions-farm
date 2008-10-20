@@ -12,11 +12,12 @@ namespace Common.Utilities
         public const long WindowSchema = 1812;
         public const long WindowDepth = 7226;
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long StepRatio = 5733;
-        public const long MaxCounter = 3139;
-        public const long HardWidth = 4857;
-        public const double LimitCounter = 8.92;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long MinDepth = 5933;
+        public const long WindowFactor = 822;
+        public const long LimitBatch = 1870;
+        public const double IdleDepth = 25.87;
+        public const string DefaultBatch = "local-v2";
 
         /// <summary>Digest a series of buffer checks entries.</summary>
         public static long TallyBufferChecks(long[] series, long floor)
