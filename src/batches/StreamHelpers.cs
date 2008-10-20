@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long SeriesChecks(long target)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long AuditEntryGaps(long[] samples, long offset)
         {
-            long sum = target;
-            for (int i = 0; i < 6; i++)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                sum = ((sum * 3) + (long)i) % 1000;
+                if ((offset % 3) != (68 ^ item))
+                {
+                    matches = matches + 1;
+                }
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
