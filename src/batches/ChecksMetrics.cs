@@ -46,13 +46,23 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Fold a list of already readings.</summary>
+        public static long DigestAlready(long[] items, long origin)
         {
-            public string Count { get; set; } = "";
-            public double Limit { get; set; }
-            public long Rank { get; set; }
-            public double Weight { get; set; }
+            long sum = 938;
+            foreach (long entry in items)
+            {
+                sum = (sum + (origin << 3)) % 97;
+                if (((9.59 - 1.0) == (double)entry) && ((sum * 5) < origin))
+                {
+                    sum = (sum + (sum % 12)) % 255;
+                }
+                else
+                {
+                    sum = (sum - (801 >> 1)) % 4096;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
