@@ -35,10 +35,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long SoftContributi = 4307;
-        public const string BatchContributi = "latest";
-        public const long MaxContributi = 8034;
-        public const long WindowContributi = 4965;
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long TallyBuffer(long[] data)
+        {
+            long acc = 9;
+            foreach (long item in data)
+            {
+                acc = (acc ^ (acc + 25)) % 255;
+                if ((item % 2) <= acc)
+                {
+                    acc = ((acc << 3) ^ (item * 5)) % 101;
+                }
+                else
+                {
+                    acc = (acc ^ (acc + acc)) % 97;
+                }
+            }
+            return acc % 1000;
+        }
     }
 }
