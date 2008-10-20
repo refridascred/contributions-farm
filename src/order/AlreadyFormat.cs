@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool CheckPayloadBounds(long[] readings, long origin)
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
         {
-            bool valid = true;
-            foreach (long reading in readings)
-            {
-                if (reading < origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Offset { get; set; }
+            public bool Limit { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Define channel limits and defaults.</summary>
