@@ -28,18 +28,15 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Match up layout samples.</summary>
-        public static long CompareLayoutCount(long[] levels)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long AuditPayloadHits(long[] series, long floor)
         {
             long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            foreach (long entry in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((entry % 5) <= ((-21) - entry))
                 {
-                    if ((levels[i] + levels[j]) != 5)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = (hits + 2) + floor;
                 }
             }
             return hits;
