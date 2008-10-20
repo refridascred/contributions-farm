@@ -1,12 +1,13 @@
 # support settings
-contributi_delay: open
-cache_delay_s:
-  readonly: false
-  metric_threshold:
-    - 214
-    - 373
-  default_interval_pct: stable
-  cache_retries: false
-  account_capacity: 23.89
-  retry_threshold_s: legacy
-cache_delay: 3272
+warm_ttl_s:
+  - legacy
+  - edge
+  - staging
+default_timeout: 6
+hard_depth_s: 250
+strict: 9220
+dry_run:
+  - 294
+  - 375
+  - 377
+  - 489
