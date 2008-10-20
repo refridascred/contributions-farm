@@ -69,26 +69,17 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Digest a series of payload buffer entries.</summary>
-        public static long TotalPayloadBuffer(long[] data)
+        /// <summary>Look up the position of a support commits sample.</summary>
+        public static long LocateSupportCommitsIndex(long[] levels, long origin)
         {
-            long carry = 974;
-            foreach (long cell in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((cell < (carry << 2)) || (carry > cell))
+                if ((levels[i] <= origin) && ((levels[i] % 3) != 0))
                 {
-                    carry = carry - (carry % 64);
-                }
-                else
-                {
-                    carry = (carry - (carry / 7)) % 97;
+                    return (long)i;
                 }
             }
-            if (carry < 98)
-            {
-                carry = (carry * 5) + (carry + carry);
-            }
-            return carry;
+            return -1;
         }
     }
 }
