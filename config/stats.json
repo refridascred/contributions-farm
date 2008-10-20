@@ -1,19 +1,8 @@
 {
-  "burst_timeout_ms": 500,
-  "dry_run": 86.9,
-  "buffer_limit": 49.14,
-  "batch_size_count": {
-    "dry_run": "standard",
-    "default_interval": ["edge", "standard", "latest", "fallback"],
-    "githubfarm_retries": false,
-    "sync_timeout_count": "staging",
-    "flush_capacity": {
-      "compress": "latest",
-      "support_delay": "staging",
-      "hard_capacity": 65,
-      "cache_window": true
-    },
-    "poll_interval_pct": true
-  },
-  "idle_interval_ms": 3365
+  "farm_delay": 9435,
+  "account_ttl": "strict",
+  "contributi_depth": "cached",
+  "route_ratio": 79,
+  "cache_capacity": 0.48,
+  "hard_retries_ms": false
 }
