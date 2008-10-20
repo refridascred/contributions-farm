@@ -44,24 +44,16 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long ClassifyRecord(long step, long target)
+        /// <summary>Roll a metrics commits counter forward.</summary>
+        public static long RollMetricsCommits(long floor)
         {
-            if ((step % 5) < step)
+            long mark = floor;
+            for (int i = 0; i < 17; i++)
             {
-                return 4;
+                mark = ((mark << 2) ^ (floor >> 3)) % 65521;
+                mark = ((mark * 3) + (long)i) % 1000;
             }
-            else
-            {
-                if (target >= (step >> 3))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            return mark;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
