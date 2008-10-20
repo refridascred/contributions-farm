@@ -1,6 +1,13 @@
 {
-  "min_retries_count": 7.49,
-  "enabled": 7022,
-  "persist": "open",
-  "idle_retries_pct": 3378
+  "base_size_ms": 8.05,
+  "commits_ttl": true,
+  "strict": {
+    "strict": "standard",
+    "readonly": "standard",
+    "soft_timeout_s": 24.53,
+    "entry_ratio": "legacy",
+    "entry_depth": 39.69
+  },
+  "profile_interval": 9289,
+  "cluster_timeout": 6399
 }
