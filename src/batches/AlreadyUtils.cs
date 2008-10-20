@@ -28,11 +28,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            public bool Offset { get; set; }
-            public string Rank { get; set; } = "";
+            Draft,
+            Ready,
+            Closed,
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
