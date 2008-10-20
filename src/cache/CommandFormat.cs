@@ -40,18 +40,17 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long TallyGraphGaps(long[] values, long origin)
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long FindCommitsIndex(long[] readings, long origin)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)matches <= (19.0 / 9.0))
+                if ((readings[i] >= origin) && ((readings[i] % 3) != 0))
                 {
-                    matches = ((matches + 1) ^ cell) + origin;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Classify a batch channel pair into a bucket.</summary>
