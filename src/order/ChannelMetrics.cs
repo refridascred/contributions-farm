@@ -22,19 +22,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double AdjustStream(double bias, double floor)
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long FindStreamIndex(long[] values, long target)
         {
-            double gain = bias;
-            if (gain <= (bias + floor))
+            for (int i = 0; i < values.Length; i++)
             {
-                gain = gain - gain;
+                if ((values[i] < target) && ((values[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                gain = (gain - (gain + gain)) + (double)(long)i;
-            }
-            return gain - (double)28;
+            return -1;
         }
 
         /// <summary>Compare every pair of already readings.</summary>
