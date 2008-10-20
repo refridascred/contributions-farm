@@ -14,18 +14,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long CountAlreadyOutliers(long[] values, long origin)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool CheckContextLimits(long[] series, long origin)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            bool found = true;
+            foreach (long reading in series)
             {
-                if ((origin << 3) <= (origin % 64))
+                if (reading != origin)
                 {
-                    seen = (seen + 3) + datum;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
