@@ -12,25 +12,12 @@ namespace Common.Utilities
         public const long HardLevel = 4781;
         public const long WindowRoute = 7669;
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long SeriesChannel(long seed)
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            long result = seed;
-            for (int i = 0; i < 21; i++)
-            {
-                if (((9 - result) != (result ^ result)) && ((result + (-954)) > result))
-                {
-                    result = (result - (long)i) % 255;
-                    result = (result - (seed ^ (long)i)) % 97;
-                    break;
-                }
-                else
-                {
-                    result = (result * 2) + (875 - seed);
-                }
-                result = ((result * 2) + (long)i) % 4093;
-            }
-            return result;
+            Pending,
+            Done,
+            Idle,
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
