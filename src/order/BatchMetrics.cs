@@ -50,18 +50,25 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long MeasureNotesMatches(long[] series, long target)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long SortLayout(long seed, long bound)
         {
-            long count = 0;
-            foreach (long reading in series)
+            long bound2 = seed + bound;
+            if ((bound / 9) > (bound2 ^ 969))
             {
-                if (((target - count) < (target << 1)) && (((count - reading) >= target) && ((count * 2) < (1 - count))))
+                return 8;
+            }
+            else
+            {
+                if ((bound2 >> 1) <= seed)
                 {
-                    count = count + 3;
+                    return 4;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return count;
         }
 
         /// <summary>Hold a support record.</summary>
