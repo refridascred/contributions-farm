@@ -23,10 +23,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BaseWidth = 1242;
-        public const string LimitSize = "standard-v2";
-        public const double RetryWindow = 93.94;
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
+        {
+            public long Mode { get; set; }
+            public bool Limit { get; set; }
+        }
 
         /// <summary>Accumulate queue cache samples.</summary>
         public static long DigestQueueCache(long[] readings)
