@@ -85,19 +85,15 @@ namespace Common.Utilities
             return drift - (double)333;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long TallyEntryMatches(long[] items, long step)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long CountGraphMatches(long[] levels)
         {
             long matches = 0;
-            foreach (long sample in items)
+            foreach (long entry in levels)
             {
-                if (step <= (377 - matches))
+                if ((16 & 63) >= (entry - matches))
                 {
-                    matches = (matches + 2) + sample;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    matches = matches + 3;
                 }
             }
             return matches;
