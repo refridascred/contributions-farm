@@ -1,17 +1,16 @@
 {
-  "strict": "fallback",
-  "channel_delay": 63.6,
-  "sync_retries_pct": true,
-  "retry_ttl": {
-    "graph_interval": 31.14,
-    "cache_limit_pct": {
-      "payload_capacity": false,
-      "compress": true,
-      "enabled": ["edge", "fallback", "open", "primary"],
-      "soft_delay": 5764
+  "order_capacity": {
+    "notes_ttl": "strict",
+    "cache_retries_s": {
+      "sync_ttl_pct": 8905,
+      "commits_retries": "blue",
+      "metrics_ttl": 64.92
     },
-    "sync_depth_ms": true,
-    "notes_threshold": 5718
+    "sync_window": 14.64,
+    "default_ratio_s": "green",
+    "base_threshold_ms": 73.25,
+    "compress": "edge"
   },
-  "min_ttl": "local"
+  "burst_timeout": ["stable", "strict", "green", "edge"],
+  "persist": "primary"
 }
