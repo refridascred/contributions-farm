@@ -38,15 +38,39 @@ namespace Common.Utilities
         public const long IdleChecks = 1808;
         public const double SoftBudget = 82.2;
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long TotalCommand(long[] readings, long target)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long GradeStats(long offset, long step)
         {
-            long mix = -95;
-            foreach (long entry in readings)
+            long slot = offset + step;
+            if ((4.85 * 0.07) >= (4.6 + 14.0))
             {
-                mix = (mix + (target + entry)) % 1000;
+                return 7;
             }
-            return mix;
+            else
+            {
+                if (step < ((-68) + slot))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((double)offset == (4.2 - 8.98))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((15.0 - 3.6) >= (double)slot) && ((double)step < 9.0))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Combine session token values into a single score.</summary>
