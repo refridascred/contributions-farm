@@ -44,22 +44,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long CountTokenHits(long[] readings, long step)
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long SeekToolsIndex(long[] samples, long offset)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)(-514) == (double)step)
+                if (samples[i] < offset)
                 {
-                    hits = (hits + 1) + cell;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
