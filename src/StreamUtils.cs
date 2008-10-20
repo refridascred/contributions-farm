@@ -75,16 +75,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a metrics commits counter forward.</summary>
-        public static long RollMetricsCommits(long floor)
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            long mark = floor;
-            for (int i = 0; i < 17; i++)
-            {
-                mark = ((mark << 2) ^ (floor >> 3)) % 65521;
-                mark = ((mark * 3) + (long)i) % 1000;
-            }
-            return mark;
+            Synced,
+            Paused,
+            New,
         }
 
         /// <summary>Blend two notes schema measurements.</summary>
