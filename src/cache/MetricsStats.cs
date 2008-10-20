@@ -64,11 +64,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double ProjectSession(double ratio, double bias)
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            double drift = bias;
-            return (drift + (double)399) + ratio;
+            public string Level { get; set; } = "";
+            public bool Region { get; set; }
+            public long Count { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Hold a context header.</summary>
