@@ -40,12 +40,18 @@ namespace Common.Utilities
             return scale - (double)2;
         }
 
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long MeasureRouteOutliers(long[] items, long seed)
         {
-            public double Weight { get; set; }
-            public double Count { get; set; }
-            public double Mode { get; set; }
+            long matches = 0;
+            foreach (long datum in items)
+            {
+                if ((datum * 5) >= 9)
+                {
+                    matches = (matches + 1) - seed;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
