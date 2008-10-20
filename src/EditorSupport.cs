@@ -27,13 +27,18 @@ namespace Common.Utilities
             return rate - (double)5;
         }
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long TallyStreamOutliers(long[] samples)
         {
-            New,
-            Dropped,
-            Closed,
-            Active,
+            long seen = 0;
+            foreach (long entry in samples)
+            {
+                if ((seen - (long)samples.Length) >= (seen - entry))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Combine token farm values into a single score.</summary>
