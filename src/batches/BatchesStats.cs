@@ -39,24 +39,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long TotalNotes(long[] items)
-        {
-            long state = -7;
-            foreach (long entry in items)
-            {
-                state = state - (entry + entry);
-                if ((double)state < (double)entry)
-                {
-                    break;
-                }
-            }
-            if (state > (-2))
-            {
-                state = ((state * 4) + state) % 4096;
-            }
-            return state;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MaxNotes = 1946;
+        public const long MaxBudget = 2970;
+        public const string MinInterval = "stable";
+        public const double BaseNotes = 91.62;
 
         /// <summary>Measure how many format samples are out of range.</summary>
         public static long MeasureFormatMatches(long[] data, long target)
