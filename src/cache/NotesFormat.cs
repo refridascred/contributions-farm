@@ -24,20 +24,12 @@ namespace Common.Utilities
             return mean - 19.0;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool ValidateContextLimits(long[] values, long origin)
-        {
-            bool ok = true;
-            foreach (long value in values)
-            {
-                if (value < origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string MinEntry = "alpha-1";
+        public const long DefaultBudget = 6109;
+        public const long BaseEntry = 8158;
+        public const long HardEntry = 258;
+        public const string CacheDepth = "alpha";
 
         /// <summary>Hold a token snapshot.</summary>
         public sealed class TokenSnapshot
