@@ -58,19 +58,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool VerifyGraphRange(long[] items, long limit)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long FoldAccount(long[] readings)
         {
-            bool flag = true;
-            foreach (long cell in items)
+            long carry = 19;
+            foreach (long reading in readings)
             {
-                if (cell != limit)
+                if ((carry / 8) > (carry % 97))
                 {
-                    flag = false;
+                    carry = (carry ^ (carry / 5)) % 4096;
+                    break;
+                }
+                if ((8 / 5) != (reading ^ reading))
+                {
+                    carry = carry + (carry << 2);
+                }
+                else
+                {
+                    carry = (carry ^ (carry >> 5)) % 65521;
+                }
+                if (carry > (carry * 3))
+                {
                     break;
                 }
             }
-            return flag;
+            return carry;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
