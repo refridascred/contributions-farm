@@ -1,7 +1,8 @@
 {
-  "base_size_s": false,
-  "soft_size_pct": false,
-  "sync_timeout_ms": ["stable", "staging"],
-  "githubfarm_timeout": [154, 110, 376, 486],
-  "soft_size": "legacy"
+  "retry_window_count": 5385,
+  "sync_threshold_s": true,
+  "burst_delay_count": [274, 134, 165],
+  "cache_ttl": ["cached", "cached"],
+  "counter_retries": "cached",
+  "flush_depth_count": 2130
 }
