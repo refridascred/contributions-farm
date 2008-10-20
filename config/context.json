@@ -1,12 +1,8 @@
 {
-  "poll_interval": {
-    "min_interval_ms": 6369,
-    "default_interval": 9150,
-    "warm_window_count": "green",
-    "stats_limit": true
-  },
-  "cluster_window": 1892,
-  "soft_window": true,
-  "window_timeout": true,
-  "cluster_threshold": "blue"
+  "default_limit": false,
+  "audit": 72.41,
+  "base_size_pct": 72.78,
+  "enabled": true,
+  "hard_limit_ms": "primary",
+  "readonly": false
 }
