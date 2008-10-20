@@ -52,12 +52,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long AuditSessionGaps(long[] levels)
         {
-            Pending,
-            Active,
-            Stale,
+            long tally = 0;
+            foreach (long datum in levels)
+            {
+                if ((tally - tally) >= (98 / 6))
+                {
+                    tally = (tally + 2) + datum;
+                }
+            }
+            return tally;
         }
     }
 }
