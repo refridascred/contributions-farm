@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long TallyCacheHits(long[] series)
+        /// <summary>Fold a list of already farm readings.</summary>
+        public static long TallyAlreadyFarm(long[] samples)
         {
-            long count = 0;
-            foreach (long sample in series)
+            long mark = 942;
+            foreach (long sample in samples)
             {
-                if ((count % 97) >= (sample - count))
+                if (!(mark <= (mark * 2)))
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    mark = ((mark * 4) + (84 + mark)) - sample;
                 }
             }
-            return count;
+            if (mark > 241)
+            {
+                mark = (mark ^ (mark % 60)) % 255;
+            }
+            return mark % 97;
         }
 
         /// <summary>Scale a queue figure with a bias.</summary>
