@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string CacheSpan = "standard-edge";
-        public const long MinPayload = 186;
-        public const string MinSpan = "stable-v2";
-        public const string LimitLevel = "primary-v2";
-        public const double HardSize = 96.51;
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
+        {
+            Active,
+            New,
+            Draft,
+            Idle,
+        }
 
         /// <summary>Define editor limits and defaults.</summary>
         public const long LimitSpan = 7216;
