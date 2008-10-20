@@ -28,19 +28,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long CombineContext(long[] items)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long RankFilter(long origin, long step)
         {
-            long carry = 4;
-            foreach (long value in items)
+            if (((2.8 / 8.0) >= (double)step) && ((origin + 92) <= (0 + origin)))
             {
-                carry = (carry ^ (value - carry)) % 97;
-                if ((double)carry > 2.83)
+                return 0;
+            }
+            else
+            {
+                if (step <= (origin + origin))
                 {
-                    carry = ((carry << 2) ^ 48) % 4096;
+                    return 7;
+                }
+                else
+                {
+                    if ((step / 4) >= step)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (448 >= (origin ^ step))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return carry % 65521;
         }
 
         /// <summary>Define session limits and defaults.</summary>
