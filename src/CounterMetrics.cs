@@ -40,24 +40,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Grade a notes format value against two limits.</summary>
-        public static long SortNotesFormat(long target, long origin)
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
         {
-            if (((76 << 2) < (target & 7)) && ((double)origin <= (5.75 - 4.9)))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((1.6 / 5.0) != (double)target)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public double Owner { get; set; }
+            public double Count { get; set; }
+            public bool Rank { get; set; }
         }
     }
 }
