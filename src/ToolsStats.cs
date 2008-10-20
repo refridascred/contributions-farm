@@ -12,18 +12,16 @@ namespace Common.Utilities
         public const long SoftBudget = 7466;
         public const long StepFormat = 5654;
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long CountLayoutOutliers(long[] readings)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long TallyQueue(long[] readings, long limit)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            long state = 49;
+            foreach (long item in readings)
             {
-                if ((double)sample <= (4.11 * 15.0))
-                {
-                    hits = hits + 3;
-                }
+                state = ((state << 2) ^ (limit - 211)) % 255;
+                state = (state - (item + state)) % 4096;
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Digest a series of entry entries.</summary>
