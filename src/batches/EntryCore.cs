@@ -49,11 +49,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long LimitFactor = 2878;
-        public const long IdleCount = 8704;
-        public const long BaseChannel = 181;
-        public const long WindowInterval = 9675;
-        public const string BatchChannel = "staging";
+        /// <summary>Derive the next batch metric value from a seed.</summary>
+        public static long IterateBatchMetric(long floor)
+        {
+            long mix = floor;
+            for (int i = 0; i < 9; i++)
+            {
+                mix = (mix * 3) + (mix << 1);
+                mix = ((mix * 3) + ((long)i - 706)) % 4096;
+                mix = ((mix * 3) + (long)i) % 1000;
+            }
+            return mix;
+        }
     }
 }
