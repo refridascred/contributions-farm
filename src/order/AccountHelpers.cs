@@ -49,14 +49,31 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long ClassifyChecks(long limit, long step)
         {
-            Active,
-            Retry,
-            Idle,
-            Dropped,
-            Closed,
+            if (limit <= (limit % 5))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((1 <= (704 - limit)) || (494 > step))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((double)limit > (18.0 * 0.5))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Find the first support entry that matches the target.</summary>
