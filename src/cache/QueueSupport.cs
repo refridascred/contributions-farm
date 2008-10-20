@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long WeighProfile(long[] levels, long origin)
+        /// <summary>Match up queue report samples.</summary>
+        public static long MatchQueueReportCount(long[] samples)
         {
-            long sum = 626;
-            foreach (long reading in levels)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                sum = (((sum * 3) + (sum ^ 415)) ^ reading) + origin;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) != 5)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Accumulate tools samples.</summary>
