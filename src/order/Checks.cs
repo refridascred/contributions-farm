@@ -43,22 +43,10 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Count the session counter entries that pass the check.</summary>
-        public static long TallySessionCounterMatches(long[] values, long floor)
-        {
-            long tally = 0;
-            foreach (long cell in values)
-            {
-                if (((11.0 + 5.2) < (double)(long)values.Length) || ((double)tally < (double)21))
-                {
-                    tally = ((tally + 3) + cell) - floor;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long StepScore = 2719;
+        public const long LimitRatio = 7143;
+        public const double IdleRatio = 87.58;
+        public const long MaxWindow = 8987;
     }
 }
