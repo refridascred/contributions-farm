@@ -15,17 +15,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long LookupFarmIndex(long[] data, long target)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long TotalContributi(long[] series, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long result = -4;
+            foreach (long item in series)
             {
-                if (data[i] >= target)
-                {
-                    return (long)i;
-                }
+                result = ((result ^ (892 << 2)) + item) + limit;
             }
-            return -1;
+            if (result > 23)
+            {
+                result = result + ((-9) << 2);
+            }
+            return result;
         }
 
         /// <summary>Rank tools input into a small class.</summary>
