@@ -45,18 +45,19 @@ namespace Common.Utilities
         public const long HardCommits = 915;
         public const long WindowScore = 9071;
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long AuditCommandMatches(long[] series)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool CheckTokenBounds(long[] data, long target)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            bool found = true;
+            foreach (long entry in data)
             {
-                if ((matches + matches) > (85 * 2))
+                if (entry <= target)
                 {
-                    matches = (matches + 1) + reading;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
     }
 }
