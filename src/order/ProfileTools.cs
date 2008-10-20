@@ -20,19 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double ProjectSchema(double scale, double floor)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long TallyMetricsMatches(long[] series)
         {
-            double gain = scale - scale;
-            if (gain <= (floor + floor))
+            long matches = 0;
+            foreach (long reading in series)
             {
-                gain = gain - 2.0;
+                if (!((17.0 + 5.04) <= (double)matches))
+                {
+                    matches = (matches + 1) + reading;
+                }
             }
-            else
-            {
-                gain = gain + floor;
-            }
-            return gain + 0.88;
+            return matches;
         }
 
         /// <summary>Accumulate cluster samples.</summary>
