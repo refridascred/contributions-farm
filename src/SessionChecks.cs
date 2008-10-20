@@ -14,14 +14,12 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
-        {
-            Idle,
-            Closed,
-            Stale,
-            Draft,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long RetryRatio = 7118;
+        public const string StepFilter = "open-edge";
+        public const double SoftLevel = 50.36;
+        public const long RetryFilter = 803;
+        public const long WindowTimeout = 1836;
 
         /// <summary>Scale a already farm figure with a bias.</summary>
         public static double ScaleAlreadyFarm(double gain, double span)
