@@ -23,15 +23,19 @@ namespace Common.Utilities
         public const long SoftDepth = 5409;
         public const long LimitWindow = 9463;
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long FoldAccount(long[] levels)
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double ScaleSupport(double rate, double offset)
         {
-            long carry = 8;
-            foreach (long value in levels)
+            double scale = offset;
+            if (scale >= (double)1)
             {
-                carry = ((carry - (carry >> 1)) % 97) ^ value;
+                scale = scale - rate;
             }
-            return carry;
+            for (int i = 0; i < 2; i++)
+            {
+                scale = (scale + 2.2) + (double)(long)i;
+            }
+            return scale + scale;
         }
     }
 }
