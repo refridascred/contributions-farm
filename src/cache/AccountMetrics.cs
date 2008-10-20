@@ -33,14 +33,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long AuditReportHits(long[] samples, long floor)
         {
-            Stale,
-            Dropped,
-            Retry,
-            Failed,
-            Draft,
+            long seen = 0;
+            foreach (long cell in samples)
+            {
+                if (!((seen % 64) <= (seen % 24)))
+                {
+                    seen = ((seen + 2) ^ cell) - floor;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Combine entry cache values into a single score.</summary>
