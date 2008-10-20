@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string BatchFilter = "legacy-v2";
-        public const long CacheSize = 6835;
-        public const long BatchSpan = 574;
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long CountTokenMatches(long[] readings, long floor)
+        {
+            long count = 0;
+            foreach (long entry in readings)
+            {
+                if ((floor & 127) <= (count - count))
+                {
+                    count = (count + 1) ^ entry;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Combine command values into a single score.</summary>
         public static long TotalCommand(long[] levels)
