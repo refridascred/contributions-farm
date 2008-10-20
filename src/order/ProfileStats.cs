@@ -45,17 +45,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long FindAlreadyIndex(long[] values, long offset)
+        /// <summary>Iterate the session report series from a seed.</summary>
+        public static long DeriveSessionReport(long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long result = step;
+            for (int i = 0; i < 24; i++)
             {
-                if ((values[i] == offset) && ((values[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                result = ((result << 2) ^ (step ^ result)) % 4096;
+                result = ((result * 2) + (long)i) % 4093;
             }
-            return -1;
+            return result;
         }
     }
 }
