@@ -87,12 +87,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Count farm pairs that satisfy a relation.</summary>
+        public static long OverlapFarmCount(long[] samples)
         {
-            public bool Level { get; set; }
-            public long Flag { get; set; }
-            public string Stamp { get; set; } = "";
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) != 11)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
