@@ -35,12 +35,18 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long RetryCommits = 1194;
-        public const long BatchInterval = 8905;
-        public const long LimitCommits = 3377;
-        public const long IdleCommits = 5609;
-        public const string MaxCommits = "cached-v2";
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long FindStatsIndex(long[] series, long offset)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a support options.</summary>
         public sealed class SupportOptions
