@@ -1,8 +1,12 @@
 {
-  "verbose": 80,
-  "retry_limit_count": false,
-  "min_window": ["standard", "latest", "primary", "green"],
-  "base_window": 1,
-  "retry_capacity_s": 1024,
-  "strict": 60
+  "burst_window_s": 7318,
+  "warm_ttl": {
+    "enabled": 41,
+    "dry_run": "edge",
+    "command_capacity": 52.55,
+    "warm_ttl_ms": 32.77,
+    "poll_capacity_pct": ["open", "legacy"],
+    "entry_interval": 58.83
+  },
+  "entry_capacity": false
 }
