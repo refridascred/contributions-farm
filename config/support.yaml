@@ -1,19 +1,7 @@
 # support settings
-hard_threshold_s: 44.59
-metric_retries: 26.96
-burst_retries_pct:
-  strict: 250
-  flush_delay_count:
-    - green
-    - local
-    - stable
-    - blue
-  farm_window:
-    burst_delay_count: 20
-    cache_ratio_ms:
-      - 367
-      - 250
-    soft_depth_pct: cached
-    strict: 1
-    compress: false
-    enabled: 500
+audit: fallback
+persist: primary
+checks_delay: 30
+cache_capacity: 47
+warm_window: 30.42
+filter_retries: true
