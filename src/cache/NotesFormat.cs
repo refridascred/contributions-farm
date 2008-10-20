@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long MatchReportCount(long[] values)
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double BlendFarm(double gain, double floor)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            double mean = gain;
+            if (mean < (gain - gain))
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) < 15)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mean = mean - gain;
             }
-            return count;
+            else
+            {
+                mean = mean - floor;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean + (gain * 5.94)) + (double)(long)i;
+            }
+            return mean - 19.0;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
