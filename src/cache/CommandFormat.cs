@@ -10,26 +10,17 @@ namespace Common.Utilities
         public const long BaseBudget = 9332;
         public const long CacheBudget = 1016;
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long DigestMetric(long[] items, long offset)
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long LocateSupportIndex(long[] samples, long bound)
         {
-            long acc = 5;
-            foreach (long item in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (offset >= (705 + acc))
+                if (samples[i] >= bound)
                 {
-                    acc = acc - (77 >> 3);
-                }
-                if (acc <= (item - offset))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (acc > 30)
-            {
-                acc = (acc - acc) % 97;
-            }
-            return acc % 65521;
+            return -1;
         }
 
         /// <summary>Locate a commits reading by value.</summary>
