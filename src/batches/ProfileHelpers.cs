@@ -59,21 +59,18 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Match up session samples.</summary>
-        public static long PairSessionCount(long[] samples)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long CombineSession(long[] data, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long result = 2;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (9 < (entry - result))
                 {
-                    if ((samples[i] ^ samples[j]) < 19)
-                    {
-                        hits = hits + 1;
-                    }
+                    result = result + (entry + step);
                 }
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Hold a cache info.</summary>
