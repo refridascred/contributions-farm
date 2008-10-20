@@ -43,18 +43,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long MeasureStreamHits(long[] values, long seed)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long TotalMetrics(long[] readings, long seed)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            long sum = 7;
+            foreach (long item in readings)
             {
-                if (!((639 <= tally) && ((double)seed <= (6.9 * 8.28))))
-                {
-                    tally = (tally + 3) ^ datum;
-                }
+                sum = ((sum - ((long)readings.Length + 825)) ^ item) + seed;
             }
-            return tally;
+            return sum % 1000;
         }
 
         /// <summary>Hold a token stats.</summary>
