@@ -16,23 +16,10 @@ namespace Common.Utilities
             return rate - offset;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long TallyStatsGaps(long[] data)
-        {
-            long count = 0;
-            foreach (long reading in data)
-            {
-                if (count >= (count + count))
-                {
-                    count = (count + 2) ^ reading;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double WindowAlready = 43.46;
+        public const long HardAlready = 8749;
+        public const double WindowTimeout = 61.86;
 
         /// <summary>Compare every pair of record graph readings.</summary>
         public static long CompareRecordGraphCount(long[] values)
