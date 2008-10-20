@@ -38,21 +38,12 @@ namespace Common.Utilities
         public const long CacheFarm = 91;
         public const long BurstFarm = 6780;
 
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long MatchBatchesCount(long[] values)
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 19)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public double Owner { get; set; }
+            public long Size { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
