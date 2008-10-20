@@ -26,15 +26,18 @@ namespace Common.Utilities
         public const double IdleCount = 59.53;
         public const long HardCount = 6699;
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long MeasureQueueOutliers(long[] samples, long target)
+        /// <summary>Compare every pair of githubfarm readings.</summary>
+        public static long PairGithubfarmCount(long[] series)
         {
             long count = 0;
-            foreach (long entry in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (count < (entry << 1))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    count = (count + 2) - target;
+                    if ((series[i] ^ series[j]) == 14)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
