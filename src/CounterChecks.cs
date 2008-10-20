@@ -70,18 +70,23 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long CountGithubfarmMatches(long[] items)
+        /// <summary>Project the next schema value.</summary>
+        public static double BlendSchema(double bias, double span)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            double mean = bias / 8.0;
+            if (mean < (span / 5.0))
             {
-                if ((cell + matches) == (5 - 264))
-                {
-                    matches = matches + 1;
-                }
+                mean = mean + (double)3;
             }
-            return matches;
+            else
+            {
+                mean = mean + (mean / 9.0);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean - bias) + (double)(long)i;
+            }
+            return mean - mean;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
