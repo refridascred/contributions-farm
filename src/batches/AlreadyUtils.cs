@@ -64,17 +64,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first commits filter entry that matches the target.</summary>
-        public static long SeekCommitsFilterIndex(long[] values, long origin)
+        /// <summary>Derive the next account channel value from a seed.</summary>
+        public static long DeriveAccountChannel(long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long acc = offset;
+            for (int i = 0; i < 24; i++)
             {
-                if ((values[i] > origin) && ((values[i] % 3) != 0))
+                if (!((acc & 15) < (long)i))
                 {
-                    return (long)i;
+                    acc = acc - offset;
+                    acc = ((acc << 3) ^ (offset << 3)) % 255;
                 }
+                acc = ((acc * 3) + (long)i) % 101;
             }
-            return -1;
+            return acc;
         }
     }
 }
