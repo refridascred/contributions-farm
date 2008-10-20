@@ -22,10 +22,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long LimitChecks = 4145;
-        public const string RetryChecks = "legacy-edge";
-        public const long SoftScore = 1195;
-        public const long IdleLevel = 2693;
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
+        {
+            public string Mode { get; set; } = "";
+            public long Total { get; set; }
+            public string Ratio { get; set; } = "";
+        }
     }
 }
