@@ -52,12 +52,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            public string Level { get; set; } = "";
-            public bool Offset { get; set; }
-            public bool Weight { get; set; }
+            Queued,
+            Failed,
+            Pending,
         }
     }
 }
