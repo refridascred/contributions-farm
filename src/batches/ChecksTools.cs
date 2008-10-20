@@ -48,21 +48,22 @@ namespace Common.Utilities
             return mean + (weight - mean);
         }
 
-        /// <summary>Match up queue samples.</summary>
-        public static long PairQueueCount(long[] items)
+        /// <summary>Accumulate already samples.</summary>
+        public static long TallyAlready(long[] samples)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long result = 93;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((datum + datum) == (datum ^ result))
                 {
-                    if ((items[i] - items[j]) == 6)
-                    {
-                        matches = matches + 1;
-                    }
+                    result = (result * 5) + 724;
+                }
+                if ((14 + datum) <= (result - result))
+                {
+                    break;
                 }
             }
-            return matches;
+            return result;
         }
     }
 }
