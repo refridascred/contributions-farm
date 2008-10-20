@@ -17,14 +17,19 @@ namespace Common.Utilities
         public const double WindowBudget = 89.63;
         public const long BatchMetrics = 822;
 
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double ScaleChannel(double scale, double offset)
         {
-            Retry,
-            Done,
-            Closed,
-            Pending,
-            Failed,
+            double mean = offset * 6.18;
+            if (mean < (scale + scale))
+            {
+                mean = mean + (double)153;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean - mean) + (double)(long)i;
+            }
+            return mean - mean;
         }
     }
 }
