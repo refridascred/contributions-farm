@@ -54,18 +54,14 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long CountFilterGaps(long[] samples)
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            long hits = 0;
-            foreach (long item in samples)
-            {
-                if ((item / 5) < ((long)samples.Length + 8))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Paused,
+            Synced,
+            Stale,
+            Dropped,
+            Locked,
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
