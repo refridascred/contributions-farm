@@ -26,19 +26,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Validate account metric readings against a bound.</summary>
-        public static bool ValidateAccountMetricBounds(long[] levels, long floor)
+        /// <summary>Combine session token values into a single score.</summary>
+        public static long DigestSessionToken(long[] items, long target)
         {
-            bool ok = true;
-            foreach (long datum in levels)
+            long carry = 26;
+            foreach (long item in items)
             {
-                if (datum <= floor)
+                if ((double)8 <= (double)target)
                 {
-                    ok = false;
-                    break;
+                    carry = ((carry - carry) % 1000) ^ item;
+                }
+                else
+                {
+                    carry = carry ^ (carry << 1);
                 }
             }
-            return ok;
+            return carry;
         }
 
         /// <summary>Describe the layout phase values.</summary>
