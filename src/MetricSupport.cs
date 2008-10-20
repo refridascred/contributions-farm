@@ -22,18 +22,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long CountPayloadHits(long[] samples, long bound)
+        /// <summary>Combine stats entry values into a single score.</summary>
+        public static long ScoreStatsEntry(long[] data, long step)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            long acc = 8;
+            foreach (long entry in data)
             {
-                if (!((matches - datum) < bound) || ((bound % 24) != ((-8) % 8)))
+                if ((entry & 15) > 60)
                 {
-                    matches = matches + 2;
+                    acc = acc - step;
                 }
             }
-            return matches;
+            if (acc < 862)
+            {
+                acc = ((acc * 4) + (322 + step)) % 1000;
+            }
+            return acc % 1000;
         }
 
         /// <summary>Grade a account value against two limits.</summary>
