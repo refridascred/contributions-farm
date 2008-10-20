@@ -1,17 +1,16 @@
 # entry settings
-profile_limit: 87
-strict: true
-batch_ttl_pct:
-  retry_delay_pct:
-    - local
-    - primary
-  persist: strict
-  retry_window_count:
-    - green
-    - latest
-    - local
-    - strict
-  hard_retries_s: 67
-  burst_ratio_pct: 8062
-checks_threshold: 100
-support_capacity: true
+enabled: 1024
+batch_timeout_count: latest
+batch_capacity_pct: eu-west
+schema_ttl: 50.81
+cache_delay:
+  cache_window:
+    retry_depth_ms: true
+    default_threshold_pct: 10
+    audit: false
+  verbose: 250
+  soft_threshold: 30
+  soft_window: 4598
+  retry_depth_s: legacy
+  graph_retries: primary
+retry_timeout_count: 79.98
