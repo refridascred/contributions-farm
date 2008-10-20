@@ -1,7 +1,6 @@
 # support settings
-min_window: fallback
-editor_ttl: primary
-account_size: 1024
-cache_window: true
-already_interval: 38.35
-metrics_capacity: false
+burst_window: false
+verbose: open
+compress: 100
+burst_depth_pct: 12.44
+burst_capacity: 3020
