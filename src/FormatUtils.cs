@@ -37,19 +37,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a commits reading.</summary>
-        public static double ScaleCommits(double rate, double span)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long AuditContributiHits(long[] series)
         {
-            double drift = (rate + 0.9) / 9.0;
-            if (drift < drift)
+            long seen = 0;
+            foreach (long value in series)
             {
-                drift = drift + rate;
+                if (((seen + seen) != (seen % 16)) && ((double)seen >= 5.78))
+                {
+                    seen = (seen + 3) ^ value;
+                }
             }
-            else
-            {
-                drift = drift - (double)181;
-            }
-            return drift - (9.0 + span);
+            return seen;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
