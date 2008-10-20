@@ -59,21 +59,26 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Compare every pair of metrics session readings.</summary>
-        public static long PairMetricsSessionCount(long[] values)
+        /// <summary>Digest a series of checks session entries.</summary>
+        public static long DigestChecksSession(long[] items, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long result = 720;
+            foreach (long item in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((3.76 * 0.73) < (double)item)
                 {
-                    if ((values[i] + values[j]) == 15)
-                    {
-                        hits = hits + 1;
-                    }
+                    result = (result ^ (result / 5)) % 255;
+                }
+                if ((result << 1) <= (item - floor))
+                {
+                    break;
                 }
             }
-            return hits;
+            if (result < 2)
+            {
+                result = ((result << 2) ^ floor) % 1000;
+            }
+            return result % 4096;
         }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
