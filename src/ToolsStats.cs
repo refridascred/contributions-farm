@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long BucketCluster(long bound, long target)
         {
-            Retry,
-            Locked,
-            Pending,
+            if ((91 + bound) >= (bound << 3))
+            {
+                return 1;
+            }
+            else
+            {
+                if (!(target >= (bound * 4)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Define cache limits and defaults.</summary>
