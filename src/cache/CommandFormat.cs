@@ -28,23 +28,22 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long ScoreSupport(long[] items, long seed)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long CountEditorOutliers(long[] samples)
         {
-            long mark = -6;
-            foreach (long reading in items)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                mark = ((mark << 2) ^ (8 + reading)) % 65521;
-                if (seed >= (mark / 9))
+                if ((sample - sample) <= 33)
                 {
-                    mark = ((mark << 2) ^ (mark + 150)) % 101;
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            if (mark < 503)
-            {
-                mark = (mark - seed) % 4096;
-            }
-            return mark;
+            return matches;
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
