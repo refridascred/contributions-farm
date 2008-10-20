@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            public bool Size { get; set; }
-            public bool Weight { get; set; }
-            public long Region { get; set; }
-            public long Mode { get; set; }
+            Failed,
+            Idle,
+            Dropped,
         }
 
         /// <summary>Combine farm values into a single score.</summary>
