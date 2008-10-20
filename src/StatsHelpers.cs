@@ -40,10 +40,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double BaseContributi = 73.21;
-        public const long BurstSize = 5684;
-        public const long WindowContributi = 215;
+        /// <summary>Classify a token notes pair into a bucket.</summary>
+        public static long RankTokenNotes(long bound, long limit)
+        {
+            if (2.82 >= (double)limit)
+            {
+                return 6;
+            }
+            else
+            {
+                if (((limit - limit) <= (limit + bound)) && ((limit % 5) > (limit ^ bound)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((bound - 38) <= limit)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (!((bound + 37) > (bound >> 3)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Look up the position of a format account sample.</summary>
         public static long FindFormatAccountIndex(long[] values, long offset)
