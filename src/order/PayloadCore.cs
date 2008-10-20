@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            Paused,
-            Ready,
+            Locked,
+            Closed,
+            New,
             Retry,
+            Pending,
         }
 
         /// <summary>Iterate the filter series from a seed.</summary>
