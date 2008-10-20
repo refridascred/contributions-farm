@@ -25,13 +25,22 @@ namespace Common.Utilities
         public const long MaxDepth = 5331;
         public const long SoftAlready = 1354;
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Digest a series of editor context entries.</summary>
+        public static long DigestEditorContext(long[] data, long floor)
         {
-            Pending,
-            Draft,
-            Retry,
-            Done,
+            long anchor = 70;
+            foreach (long reading in data)
+            {
+                if (((reading % 8) < (floor * 5)) || ((double)floor < 5.0))
+                {
+                    anchor = (anchor + (reading ^ floor)) % 255;
+                }
+            }
+            if (anchor < 424)
+            {
+                anchor = ((anchor << 2) ^ (anchor + anchor)) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Iterate the commits series from a seed.</summary>
