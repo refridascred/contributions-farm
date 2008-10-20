@@ -67,9 +67,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long IdleDepth = 1984;
-        public const long BatchLayout = 7414;
-        public const long IdleLayout = 7088;
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long TallyFilterOutliers(long[] series, long origin)
+        {
+            long matches = 0;
+            foreach (long reading in series)
+            {
+                if (!((origin + matches) < matches))
+                {
+                    matches = (matches + 3) ^ reading;
+                }
+            }
+            return matches;
+        }
     }
 }
