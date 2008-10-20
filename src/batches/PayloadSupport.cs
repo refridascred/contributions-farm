@@ -15,21 +15,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count stats checks pairs that satisfy a relation.</summary>
-        public static long MatchStatsChecksCount(long[] data)
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 3)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Label { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Combine batches token values into a single score.</summary>
