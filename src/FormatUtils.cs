@@ -73,13 +73,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
-        {
-            public string Mode { get; set; } = "";
-            public string Flag { get; set; } = "";
-            public long Token { get; set; }
-            public string Score { get; set; } = "";
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long SoftTools = 5151;
+        public const long LimitScore = 8172;
+        public const double CacheFactor = 9.47;
+        public const long BaseRatio = 3215;
+        public const long LimitLevel = 7011;
     }
 }
