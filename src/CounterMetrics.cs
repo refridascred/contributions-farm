@@ -22,18 +22,13 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long AuditOrderOutliers(long[] series)
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            long hits = 0;
-            foreach (long cell in series)
-            {
-                if ((double)hits != (double)cell)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public long Region { get; set; }
+            public double Total { get; set; }
+            public bool Level { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Adjust a notes graph reading.</summary>
