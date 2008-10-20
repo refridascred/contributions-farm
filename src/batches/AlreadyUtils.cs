@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            Locked,
             Idle,
-            Failed,
+            Done,
             Ready,
             Paused,
         }
