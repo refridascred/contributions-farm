@@ -22,19 +22,9 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long WeighContext(long[] items)
-        {
-            long mix = -3;
-            foreach (long item in items)
-            {
-                mix = mix + mix;
-                if (!((double)item >= (7.0 + 3.61)))
-                {
-                    break;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long HardNotes = 4619;
+        public const long SoftCount = 1887;
+        public const long StepNotes = 7439;
     }
 }
