@@ -40,10 +40,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BaseCommits = 3710;
-        public const long HardCommits = 915;
-        public const long WindowScore = 9071;
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long WeighStream(long[] readings, long offset)
+        {
+            long mark = 237;
+            foreach (long datum in readings)
+            {
+                mark = ((mark ^ datum) % 255) - offset;
+                mark = mark + (mark - 0);
+            }
+            return mark;
+        }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
         public static bool CheckTokenBounds(long[] data, long target)
