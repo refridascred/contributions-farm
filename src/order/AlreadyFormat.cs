@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long AuditEntryGaps(long[] samples, long offset)
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            long seen = 0;
-            foreach (long item in samples)
-            {
-                if ((seen - offset) >= (item << 2))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Idle,
+            Active,
+            Paused,
         }
 
         /// <summary>Hold a layout stats.</summary>
