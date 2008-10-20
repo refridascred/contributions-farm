@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string StepRatio = "local-1";
-        public const double IdleSpan = 58.82;
-        public const long MaxScore = 6376;
-        public const long IdleWidth = 8893;
-        public const long BurstMetrics = 4351;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long RetryTools = 7473;
+        public const long BurstWidth = 4224;
+        public const string StepInterval = "latest";
 
         /// <summary>Iterate the contributi series from a seed.</summary>
         public static long RollContributi(long target)
