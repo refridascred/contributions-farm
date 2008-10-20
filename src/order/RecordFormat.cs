@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long StepRatio = 3988;
-        public const long RetryMetric = 4993;
-        public const long HardSize = 636;
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool GuardSessionBounds(long[] readings, long origin)
+        {
+            bool ok = true;
+            foreach (long reading in readings)
+            {
+                if (reading < origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Scale a queue figure with a bias.</summary>
         public static double SmoothQueue(double weight, double span)
