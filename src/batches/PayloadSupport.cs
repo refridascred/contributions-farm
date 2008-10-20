@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long SeriesStream(long offset)
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            long total = offset;
-            for (int i = 0; i < 4; i++)
-            {
-                total = (total << 3) ^ ((long)i - total);
-                total = ((total << 2) ^ (total + 7)) % 1000;
-                total = ((total * 2) + (long)i) % 65521;
-            }
-            return total;
+            public long Label { get; set; }
+            public long Offset { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Define metric limits and defaults.</summary>
