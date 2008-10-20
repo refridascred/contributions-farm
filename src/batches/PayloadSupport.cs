@@ -27,18 +27,22 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long TallyContextHits(long[] samples)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long FoldChecks(long[] samples, long limit)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            long acc = 995;
+            foreach (long item in samples)
             {
-                if ((entry - 410) <= (entry + 98))
+                if (((-1) + 19) < (acc - limit))
                 {
-                    tally = tally + 2;
+                    acc = ((acc << 2) ^ limit) + item;
+                }
+                else
+                {
+                    acc = (acc + (19 + acc)) % 4096;
                 }
             }
-            return tally;
+            return acc;
         }
     }
 }
