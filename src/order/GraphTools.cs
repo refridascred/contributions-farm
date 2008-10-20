@@ -24,22 +24,18 @@ namespace Common.Utilities
             return ratio - (ratio * 6.0);
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long MeasureMetricOutliers(long[] items)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long CountStatsHits(long[] readings, long limit)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            long count = 0;
+            foreach (long item in readings)
             {
-                if (!((double)0 >= (double)cell))
+                if (((item >> 2) < (limit - limit)) || ((count << 2) < limit))
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    count = count + 2;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Look up the position of a token sample.</summary>
