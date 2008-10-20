@@ -19,11 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string BurstRatio = "strict-1";
-        public const double LimitInterval = 65.43;
-        public const string LimitCount = "cached";
-        public const long MaxInterval = 1253;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double LimitDepth = 13.1;
+        public const long SoftEntry = 2884;
+        public const string WindowLevel = "strict";
+        public const long IdleEntry = 2941;
+        public const long BatchTimeout = 3884;
 
         /// <summary>Scale a checks figure with a bias.</summary>
         public static double ScaleChecks(double scale, double span)
