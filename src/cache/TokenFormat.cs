@@ -16,18 +16,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long MeasureSessionGaps(long[] readings)
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long OverlapFilterCount(long[] samples)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((entry - entry) >= ((-9) + tally)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    tally = tally + 3;
+                    if ((samples[i] - samples[j]) == 13)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Locate a stats reading by value.</summary>
