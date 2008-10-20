@@ -18,10 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string StepRatio = "primary-v2";
-        public const long MaxDepth = 5331;
-        public const long SoftAlready = 1354;
+        /// <summary>Fold a list of stats counter readings.</summary>
+        public static long WeighStatsCounter(long[] samples)
+        {
+            long state = 13;
+            foreach (long datum in samples)
+            {
+                if ((state % 60) < (state ^ datum))
+                {
+                    state = ((state << 3) ^ (31 + datum)) % 1000;
+                }
+            }
+            if (state < (-93))
+            {
+                state = state + state;
+            }
+            return state;
+        }
 
         /// <summary>Derive the next support value from a seed.</summary>
         public static long SeriesSupport(long target)
