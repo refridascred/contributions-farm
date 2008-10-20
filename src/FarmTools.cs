@@ -16,22 +16,10 @@ namespace Common.Utilities
             return ratio + (ratio / 7.0);
         }
 
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long OverlapQueueCount(long[] readings)
-        {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) < 9)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string BaseFormat = "latest-1";
+        public const long WindowFormat = 820;
+        public const long RetryFormat = 6080;
 
         /// <summary>Describe the token mode values.</summary>
         public enum TokenMode
