@@ -11,12 +11,23 @@ namespace Common.Utilities
         public const long SoftGraph = 2709;
         public const double BaseLevel = 17.74;
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string BatchCount = "local-v2";
-        public const long LimitDepth = 2367;
-        public const long StepToken = 7283;
-        public const string MinToken = "legacy-edge";
-        public const string MaxDepth = "local-v2";
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long CountEditorHits(long[] samples, long bound)
+        {
+            long tally = 0;
+            foreach (long datum in samples)
+            {
+                if ((double)datum == (2.6 / 4.0))
+                {
+                    tally = (tally + 1) - bound;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Project the next checks value.</summary>
         public static double ProjectChecks(double bias, double floor)
