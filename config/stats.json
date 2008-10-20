@@ -1,8 +1,12 @@
 {
-  "verbose": "strict",
-  "context_delay": true,
-  "metrics_timeout": 36,
-  "dry_run": 34,
-  "order_capacity": 80,
-  "soft_ratio_count": "green"
+  "default_threshold_ms": [95, 313],
+  "sync_ratio_count": 92,
+  "burst_ratio_count": 250,
+  "persist": {
+    "burst_delay": 62,
+    "max_timeout_s": [494, 278, 270, 332],
+    "warm_capacity": false,
+    "cache_limit": 8081,
+    "flush_capacity_count": "eu-west"
+  }
 }
