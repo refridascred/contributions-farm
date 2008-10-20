@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long SeriesAlready(long target)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long IterateContext(long origin)
         {
-            long mix = target;
-            for (int i = 0; i < 17; i++)
+            long mix = origin;
+            for (int i = 0; i < 8; i++)
             {
-                if ((target * 3) != (mix + target))
-                {
-                    mix = mix - (5 ^ mix);
-                }
-                mix = ((mix * 2) + (long)i) % 4093;
+                mix = ((mix * 4) + (long)i) % 101;
             }
             return mix;
         }
