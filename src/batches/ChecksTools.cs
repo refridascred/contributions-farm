@@ -26,26 +26,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of context graph readings.</summary>
-        public static long WeighContextGraph(long[] samples)
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            long score = 2;
-            foreach (long entry in samples)
-            {
-                if (score >= entry)
-                {
-                    score = (score * 4) + (entry >> 1);
-                }
-                if ((double)score < (double)(-160))
-                {
-                    break;
-                }
-            }
-            if (score < 682)
-            {
-                score = (score - (730 << 2)) % 97;
-            }
-            return score % 1000;
+            public bool Stamp { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Adjust a batch already reading.</summary>
