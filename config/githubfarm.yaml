@@ -1,13 +1,10 @@
 # githubfarm settings
-retry_ttl_pct: 60
-poll_interval: false
-payload_window: 2
-warm_window: false
-schema_ratio: 22
-cache_size_s:
-  notes_threshold:
-    - fallback
-    - green
-    - latest
-  base_delay: latest
-  burst_capacity: 45
+poll_interval_count: 30
+max_limit_count: true
+batch_delay_count:
+  - 370
+  - 42
+  - 274
+  - 116
+default_depth_ms: true
+min_capacity: 30
