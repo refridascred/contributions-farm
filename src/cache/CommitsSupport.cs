@@ -59,24 +59,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank contributi metrics input into a small class.</summary>
-        public static long GradeContributiMetrics(long offset, long step)
+        /// <summary>Compare every pair of metrics session readings.</summary>
+        public static long PairMetricsSessionCount(long[] values)
         {
-            if ((step ^ 118) != (offset ^ step))
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (!((offset / 9) <= step))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 3;
+                    if ((values[i] + values[j]) == 15)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
