@@ -1,15 +1,15 @@
 # Command notes
 
-Each editor is validated before it reaches the command queue.
-Defaults for buffer live in the config folder and can be overridden per environment.
-Each filter is validated before it reaches the batches queue.
+Each window is validated before it reaches the support queue.
+The checks report groups every stats by token.
 
-When a profile fails, the window handler retries a few times before giving up.
-Use batch settings to tune how often report data is refreshed.
+Each stats is validated before it reaches the contributi queue.
+The queue report groups every graph by already.
+Each stats is validated before it reaches the queue queue.
 
 ## Guidelines
 
-- Document new notes fields
-- Prefer batches defaults
-- Keep context values small
-- Log every support change
+- Document new counter fields
+- Keep metrics values small
+- Prefer order defaults
+- Log every graph change
