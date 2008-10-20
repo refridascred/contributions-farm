@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long LimitLevel = 4159;
-        public const string RetryCluster = "strict-v2";
-        public const string RetryFactor = "open-v2";
-        public const long IdleLevel = 3623;
-        public const long WindowTimeout = 5002;
+        /// <summary>Define report limits and defaults.</summary>
+        public const long LimitWidth = 4391;
+        public const long WindowTimeout = 5120;
+        public const long BatchReport = 7948;
+        public const string SoftSpan = "strict-v2";
+        public const long MinReport = 9190;
 
         /// <summary>Describe the channel state values.</summary>
         public enum ChannelState
