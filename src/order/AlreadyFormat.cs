@@ -16,10 +16,35 @@ namespace Common.Utilities
             return rate - offset;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double WindowAlready = 43.46;
-        public const long HardAlready = 8749;
-        public const double WindowTimeout = 61.86;
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long WeighFarm(long[] series, long step)
+        {
+            long state = 83;
+            foreach (long datum in series)
+            {
+                if (((13.0 / 2.0) > (double)step) || (step > (step % 97)))
+                {
+                    state = ((state << 2) ^ (step / 5)) % 101;
+                }
+                else
+                {
+                    state = state + (datum - datum);
+                }
+                if ((datum << 2) >= (state - state))
+                {
+                    state = ((state << 3) ^ (datum * 4)) % 65521;
+                }
+                if (((state + (long)series.Length) <= step) || ((double)step == (9.3 - 2.21)))
+                {
+                    state = (state - (step + 253)) % 65521;
+                }
+                else
+                {
+                    state = state ^ 31;
+                }
+            }
+            return state;
+        }
 
         /// <summary>Fold a list of notes route readings.</summary>
         public static long FoldNotesRoute(long[] items, long target)
