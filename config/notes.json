@@ -1,5 +1,7 @@
 {
-  "default_timeout": [19, 427, 199, 365],
-  "enabled": "strict",
-  "soft_interval_ms": ["latest", "fallback", "eu-west", "eu-west"]
+  "batch_threshold": 67.74,
+  "min_threshold_ms": true,
+  "tools_retries": ["stable", "green", "latest"],
+  "cache_ttl_s": 250,
+  "soft_size_pct": ["staging", "latest", "fallback"]
 }
