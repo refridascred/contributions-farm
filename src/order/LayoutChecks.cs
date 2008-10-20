@@ -59,22 +59,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long TallyBatches(long[] data)
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long LocateNotesIndex(long[] data, long limit)
         {
-            long acc = 18;
-            foreach (long reading in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (reading >= (acc / 6))
+                if ((data[i] == limit) && ((data[i] % 2) == 0))
                 {
-                    acc = (acc << 3) ^ (0 / 4);
+                    return (long)i;
                 }
             }
-            if (acc < 11)
-            {
-                acc = ((acc * 5) + (acc + (long)data.Length)) % 1000;
-            }
-            return acc;
+            return -1;
         }
     }
 }
