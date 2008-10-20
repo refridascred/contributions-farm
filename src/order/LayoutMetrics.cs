@@ -28,19 +28,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool GuardFarmLimits(long[] readings, long target)
-        {
-            bool stale = true;
-            foreach (long reading in readings)
-            {
-                if (reading <= target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BatchSize = 8788;
+        public const long HardTimeout = 8962;
+        public const string MinBatch = "fallback";
+        public const long LimitLevel = 2453;
+        public const long MinLevel = 6328;
     }
 }
