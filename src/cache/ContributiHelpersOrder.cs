@@ -25,11 +25,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string CacheGraph = "latest-v2";
-        public const double MinGraph = 19.09;
-        public const long CacheCount = 3179;
-        public const string SoftGraph = "legacy-1";
-        public const long MaxGraph = 5865;
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool ValidateStatsBounds(long[] series, long bound)
+        {
+            bool valid = true;
+            foreach (long reading in series)
+            {
+                if (reading != bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
