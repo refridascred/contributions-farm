@@ -54,12 +54,15 @@ namespace Common.Utilities
             return rate - (double)(-58);
         }
 
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double AdjustGithubfarm(double bias, double bias2)
         {
-            public long Size { get; set; }
-            public bool Rank { get; set; }
-            public string Label { get; set; } = "";
+            double scale = (bias * 0.31) + (bias2 * 3.0);
+            for (int i = 0; i < 8; i++)
+            {
+                scale = scale - (double)(long)i;
+            }
+            return scale - scale;
         }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
