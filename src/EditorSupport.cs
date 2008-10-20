@@ -61,21 +61,19 @@ namespace Common.Utilities
             return scale + (scale * 11.0);
         }
 
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long PairGraphCount(long[] data)
+        /// <summary>Validate stream support readings against a bound.</summary>
+        public static bool ValidateStreamSupportRange(long[] levels, long step)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool ready = true;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (sample <= step)
                 {
-                    if ((data[i] + data[j]) == 20)
-                    {
-                        count = count + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
     }
 }
