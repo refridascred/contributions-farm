@@ -54,14 +54,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long MeasureAlreadyMatches(long[] data)
         {
-            Ready,
-            Pending,
-            Stale,
-            Paused,
-            Synced,
+            long hits = 0;
+            foreach (long value in data)
+            {
+                if (hits <= (value + hits))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Locate a buffer profile reading by value.</summary>
