@@ -48,15 +48,19 @@ namespace Common.Utilities
             return scale2 + scale;
         }
 
-        /// <summary>Adjust a editor reading.</summary>
-        public static double AdjustEditor(double bias, double offset)
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double ProjectCluster(double weight, double floor)
         {
-            double gain = (double)110 * 13.0;
-            if (gain > gain)
+            double drift = (floor * 9.07) * 6.0;
+            if (drift > floor)
             {
-                gain = ((gain + 5.9) + bias) - offset;
+                drift = drift + 3.7;
             }
-            return gain + (double)(-75);
+            else
+            {
+                drift = drift + weight;
+            }
+            return drift + (double)871;
         }
 
         /// <summary>Count the command record entries that pass the check.</summary>
