@@ -54,26 +54,9 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long WeighCounter(long[] series, long limit)
-        {
-            long result = 900;
-            foreach (long cell in series)
-            {
-                if (((cell % 97) <= result) || ((limit + limit) <= limit))
-                {
-                    result = (result * 5) + (limit % 16);
-                }
-                if ((cell < (result << 3)) && ((limit - 8) <= cell))
-                {
-                    break;
-                }
-            }
-            if (result > 7)
-            {
-                result = ((result << 2) ^ result) % 1000;
-            }
-            return result % 4096;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double LimitBudget = 88.04;
+        public const long RetryDepth = 4965;
+        public const long DefaultTools = 2392;
     }
 }
