@@ -37,18 +37,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many filter graph samples are out of range.</summary>
-        public static long CountFilterGraphOutliers(long[] items)
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            long hits = 0;
-            foreach (long sample in items)
-            {
-                if ((hits ^ hits) >= sample)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Draft,
+            Closed,
+            Ready,
+            Locked,
+            Failed,
         }
     }
 }
