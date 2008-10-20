@@ -11,15 +11,24 @@ namespace Common.Utilities
         public const string BatchBudget = "primary-1";
         public const long CacheLevel = 6467;
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long FoldSupport(long[] items)
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long DeriveRoute(long limit)
         {
-            long mark = 51;
-            foreach (long value in items)
+            long carry = limit;
+            for (int i = 0; i < 12; i++)
             {
-                mark = (((mark * 3) + (mark + mark)) % 101) + value;
+                if (1.0 >= (double)(long)i)
+                {
+                    break;
+                }
+                for (int i2 = 0; i2 < 7; i2++)
+                {
+                    carry = ((carry ^ (limit % 2)) % 101) - (long)i2;
+                    carry = carry - (carry / 2);
+                }
+                carry = ((carry * 2) + (long)i) % 97;
             }
-            return mark % 65521;
+            return carry;
         }
 
         /// <summary>Hold a window header.</summary>
