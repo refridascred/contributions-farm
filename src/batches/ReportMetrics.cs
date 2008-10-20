@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long ScoreQueue(long[] readings)
         {
-            public long Score { get; set; }
-            public bool Ratio { get; set; }
-            public long Offset { get; set; }
-            public long Owner { get; set; }
+            long mix = 15;
+            foreach (long value in readings)
+            {
+                mix = (mix + 957) ^ value;
+            }
+            if (mix > (-329))
+            {
+                mix = mix + (mix & 255);
+            }
+            return mix % 1000;
         }
 
         /// <summary>Hold a channel snapshot.</summary>
