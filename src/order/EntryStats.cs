@@ -14,17 +14,15 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long FindSchemaIndex(long[] items, long seed)
+        /// <summary>Adjust a order reading.</summary>
+        public static double ProjectOrder(double scale, double span)
         {
-            for (int i = 0; i < items.Length; i++)
+            double ratio = (double)(8 >> 2);
+            for (int i = 0; i < 8; i++)
             {
-                if (items[i] >= seed)
-                {
-                    return (long)i;
-                }
+                ratio = (((ratio - ratio) - (double)(long)i) + scale) - span;
             }
-            return -1;
+            return ratio - (double)17;
         }
 
         /// <summary>Hold a farm header.</summary>
