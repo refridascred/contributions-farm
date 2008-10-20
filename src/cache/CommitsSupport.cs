@@ -27,21 +27,23 @@ namespace Common.Utilities
         public const long LimitDepth = 6029;
         public const long BatchSize = 2445;
 
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long CompareWindowCount(long[] values)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long TotalBatch(long[] samples)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long acc = 18;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((((long)samples.Length << 3) == (entry - acc)) || (acc > (797 ^ acc)))
                 {
-                    if ((values[i] ^ values[j]) < 5)
-                    {
-                        hits = hits + 1;
-                    }
+                    acc = ((acc * 2) + (acc & 127)) % 101;
                 }
+                if ((14.0 * 16.0) >= (double)entry)
+                {
+                    acc = ((acc << 2) ^ acc) % 4096;
+                }
+                acc = (acc ^ (acc >> 4)) % 65521;
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
