@@ -43,13 +43,11 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
-        {
-            Paused,
-            Dropped,
-            Active,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double DefaultBuffer = 73.44;
+        public const long CacheBuffer = 7825;
+        public const long BurstSpan = 5168;
+        public const string BurstWidth = "legacy-edge";
 
         /// <summary>Describe the cluster state values.</summary>
         public enum ClusterState
