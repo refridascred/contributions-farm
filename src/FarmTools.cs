@@ -32,18 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long TallyGithubfarmGaps(long[] items, long origin)
+        /// <summary>Validate support format readings against a bound.</summary>
+        public static bool ValidateSupportFormatLimits(long[] values, long limit)
         {
-            long matches = 0;
-            foreach (long item in items)
+            bool ok = true;
+            foreach (long value in values)
             {
-                if (matches >= item)
+                if (value <= limit)
                 {
-                    matches = (matches + 2) - origin;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
 
         /// <summary>Combine entry values into a single score.</summary>
