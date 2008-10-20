@@ -46,11 +46,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long StepStats = 8554;
-        public const long HardBudget = 4178;
-        public const long MaxLevel = 7320;
-        public const long HardStats = 8976;
-        public const long WindowLevel = 6731;
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long TallyCounter(long[] items)
+        {
+            long result = 5;
+            foreach (long reading in items)
+            {
+                if (81 > (result + reading))
+                {
+                    result = (result << 2) ^ (reading + result);
+                }
+            }
+            if (result > 2)
+            {
+                result = (result ^ (result / 2)) % 255;
+            }
+            return result % 4096;
+        }
     }
 }
