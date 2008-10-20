@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool CheckTokenLimits(long[] items, long bound)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool VerifyBufferBounds(long[] readings, long origin)
         {
-            bool found = true;
-            foreach (long sample in items)
+            bool flag = true;
+            foreach (long sample in readings)
             {
-                if (sample >= bound)
+                if (sample != origin)
                 {
-                    found = false;
+                    flag = false;
                     break;
                 }
             }
-            return found;
+            return flag;
         }
 
         /// <summary>Fold a list of context graph readings.</summary>
