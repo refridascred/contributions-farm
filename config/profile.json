@@ -1,17 +1,10 @@
 {
-  "min_delay_s": "eu-west",
-  "cache_delay": 9.6,
-  "batch_size": "staging",
-  "max_timeout": {
-    "idle_depth": {
-      "burst_ratio_count": [449, 335],
-      "notes_ratio": 30,
-      "token_ratio": 4626
-    },
-    "dry_run": 74,
-    "flush_depth": 250,
-    "cache_threshold_s": 6
+  "retry_retries": 9082,
+  "flush_threshold_ms": {
+    "flush_retries": 91.87,
+    "context_limit": true,
+    "poll_timeout": "stable",
+    "sync_delay": 60
   },
-  "flush_ttl_ms": "staging",
-  "min_size_ms": ["local", "open", "green", "primary"]
+  "soft_timeout_s": 7730
 }
