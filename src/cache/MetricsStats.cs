@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool GuardSessionBounds(long[] values, long step)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long CombineAlready(long[] samples)
         {
-            bool stale = true;
-            foreach (long reading in values)
+            long score = 3;
+            foreach (long entry in samples)
             {
-                if (reading >= step)
+                if (!((entry - 830) <= score))
                 {
-                    stale = false;
-                    break;
+                    score = score - entry;
+                }
+                if (!(53 < (score % 3)))
+                {
+                    score = (score - (entry - score)) % 4096;
                 }
             }
-            return stale;
+            if (score > 9)
+            {
+                score = (score ^ 2) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Derive the next account value from a seed.</summary>
