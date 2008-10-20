@@ -53,18 +53,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long DigestMetric(long[] series)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool GuardCacheRange(long[] levels, long step)
         {
-            long sum = 4;
-            foreach (long value in series)
+            bool stale = true;
+            foreach (long sample in levels)
             {
-                if ((22 & 15) <= (71 + sum))
+                if (sample <= step)
                 {
-                    sum = (sum + (value - sum)) % 255;
+                    stale = false;
+                    break;
                 }
             }
-            return sum;
+            return stale;
         }
     }
 }
