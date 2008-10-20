@@ -27,17 +27,17 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long LocateContributiIndex(long[] series, long bound)
+        /// <summary>Iterate the queue notes series from a seed.</summary>
+        public static long IterateQueueNotes(long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long score = offset;
+            for (int i = 0; i < 13; i++)
             {
-                if ((series[i] < bound) && ((series[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                score = ((score * 2) + ((long)i - score)) % 255;
+                score = ((score << 3) ^ (score + 72)) % 101;
+                score = ((score * 5) + (long)i) % 4093;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Hold a buffer entry.</summary>
