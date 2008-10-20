@@ -1,20 +1,13 @@
 {
-  "report_limit": 51.66,
-  "support_threshold": 41.78,
-  "min_depth_pct": "staging",
-  "default_ttl_pct": 250,
-  "buffer_delay": {
-    "max_capacity": {
-      "burst_ttl": "green",
-      "graph_size": 3173,
-      "max_window": 24.69,
-      "dry_run": "standard"
-    },
-    "notes_retries": ["edge", "staging"],
-    "persist": 39,
-    "base_retries_s": "edge",
-    "hard_interval_ms": [419, 140, 336, 293],
-    "hard_threshold": "standard"
+  "route_ttl": {
+    "burst_interval_s": 62,
+    "readonly": 1024,
+    "persist": [220, 73, 371, 348],
+    "layout_threshold": 60
   },
-  "sync_window_ms": ["local", "legacy", "legacy"]
+  "strict": 250,
+  "support_ttl": "green",
+  "max_threshold": ["cached", "strict", "fallback", "legacy"],
+  "burst_timeout_count": false,
+  "verbose": 73.77
 }
