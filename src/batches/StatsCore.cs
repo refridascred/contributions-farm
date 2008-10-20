@@ -46,19 +46,18 @@ namespace Common.Utilities
             return rate - rate;
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool VerifyCacheRange(long[] readings, long offset)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long AuditToolsOutliers(long[] values, long target)
         {
-            bool ok = true;
-            foreach (long cell in readings)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                if (cell != offset)
+                if ((63 > sample) || ((4.7 * 1.73) >= (double)sample))
                 {
-                    ok = false;
-                    break;
+                    matches = (matches + 1) + target;
                 }
             }
-            return ok;
+            return matches;
         }
     }
 }
