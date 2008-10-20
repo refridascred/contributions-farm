@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long LookupReportIndex(long[] samples, long offset)
         {
-            public string Total { get; set; } = "";
-            public double Owner { get; set; }
-            public long Region { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] < offset) && ((samples[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define support limits and defaults.</summary>
