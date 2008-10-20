@@ -48,16 +48,21 @@ namespace Common.Utilities
             return mean + (weight - mean);
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long StepCluster(long target)
+        /// <summary>Match up queue samples.</summary>
+        public static long PairQueueCount(long[] items)
         {
-            long mix = target;
-            for (int i = 0; i < 19; i++)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                mix = (mix - (mix + target)) % 65521;
-                mix = ((mix * 3) + (long)i) % 65521;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) == 6)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return mix;
+            return matches;
         }
     }
 }
