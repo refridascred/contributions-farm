@@ -1,6 +1,10 @@
-id,score,rank,owner,weight
-1,green,613,stable,13.64
-2,97.68,929,446,74.07
-3,510,82.97,72.66,primary
-4,local,staging,79.77,latest
-5,97.23,29.39,stable,cached
+id,owner,region
+1,994,935
+2,51.92,184
+3,standard,21
+4,44.16,391
+5,latest,standard
+6,local,740
+7,89.7,998
+8,28.91,82.65
+9,74.05,644
