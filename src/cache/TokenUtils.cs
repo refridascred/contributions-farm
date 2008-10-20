@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Grade a notes command value against two limits.</summary>
-        public static long RankNotesCommand(long seed, long target)
+        /// <summary>Locate a account stream reading by value.</summary>
+        public static long LocateAccountStreamIndex(long[] readings, long floor)
         {
-            if ((1 - target) != (target + (-89)))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((4 + seed) == (seed - seed))
+                if ((readings[i] <= floor) && ((readings[i] % 2) == 0))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((seed % 24) < seed)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Fold a list of already readings.</summary>
