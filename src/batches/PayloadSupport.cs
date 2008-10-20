@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const string SoftAlready = "strict-v2";
-        public const long SoftSize = 2337;
-        public const double BaseAlready = 37.25;
-        public const long BaseFactor = 4389;
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool GuardChecksRange(long[] samples, long origin)
+        {
+            bool ready = true;
+            foreach (long value in samples)
+            {
+                if (value != origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Hold a farm snapshot.</summary>
         public sealed class FarmSnapshot
