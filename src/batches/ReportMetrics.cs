@@ -20,18 +20,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of checks command entries.</summary>
-        public static long CombineChecksCommand(long[] levels)
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            long mix = 835;
-            foreach (long cell in levels)
-            {
-                if (cell <= (mix * 2))
-                {
-                    mix = mix - (mix >> 2);
-                }
-            }
-            return mix;
+            public long Level { get; set; }
+            public long Rank { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Digest a series of editor farm entries.</summary>
