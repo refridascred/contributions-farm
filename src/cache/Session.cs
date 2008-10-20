@@ -67,19 +67,9 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long DigestGraph(long[] items)
-        {
-            long score = 494;
-            foreach (long item in items)
-            {
-                score = ((score - score) % 65521) + item;
-            }
-            if (score > 7)
-            {
-                score = score - (1 ^ 4);
-            }
-            return score % 1000;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long DefaultRecord = 1705;
+        public const long SoftRecord = 5856;
+        public const long HardRatio = 8041;
     }
 }
