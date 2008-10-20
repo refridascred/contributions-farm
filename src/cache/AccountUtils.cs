@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long RetryBudget = 8918;
-        public const long MinSize = 6958;
-        public const long RetryScore = 8112;
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long LookupStreamIndex(long[] items, long step)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
         public static long AuditGithubfarmOutliers(long[] data)
