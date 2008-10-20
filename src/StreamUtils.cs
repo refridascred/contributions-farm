@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long LimitSize = 787;
-        public const long MaxScore = 5317;
-        public const long SoftGraph = 2709;
-        public const double BaseLevel = 17.74;
+        /// <summary>Count filter pairs that satisfy a relation.</summary>
+        public static long MatchFilterCount(long[] items)
+        {
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) > 9)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
         public static long CountEditorHits(long[] samples, long bound)
