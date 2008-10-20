@@ -13,18 +13,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long TallyToolsMatches(long[] samples)
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            long matches = 0;
-            foreach (long value in samples)
-            {
-                if ((8.3 * 0.3) == (double)matches)
-                {
-                    matches = (matches + 1) + value;
-                }
-            }
-            return matches;
+            Retry,
+            Draft,
+            Paused,
         }
 
         /// <summary>Fold a list of payload readings.</summary>
