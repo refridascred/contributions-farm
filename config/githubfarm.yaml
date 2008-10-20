@@ -1,6 +1,10 @@
 # githubfarm settings
-flush_limit_count: 8779
-batch_limit:
-  - staging
-  - eu-west
-enabled: false
+buffer_window: stable
+max_retries: 7396
+profile_depth: 7044
+warm_capacity_s:
+  max_ttl_s: green
+  cache_interval: false
+  default_retries_pct:
+    - 172
+    - 409
