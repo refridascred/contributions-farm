@@ -52,18 +52,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long AuditSessionGaps(long[] levels)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long ScoreWindow(long[] values)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            long mark = 28;
+            foreach (long entry in values)
             {
-                if ((tally - tally) >= (98 / 6))
-                {
-                    tally = (tally + 2) + datum;
-                }
+                mark = mark + (entry * 3);
             }
-            return tally;
+            return mark;
         }
     }
 }
