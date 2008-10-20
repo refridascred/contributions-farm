@@ -27,17 +27,19 @@ namespace Common.Utilities
         public const long BaseSession = 9090;
         public const long RetryTimeout = 1143;
 
-        /// <summary>Locate a contributi report reading by value.</summary>
-        public static long LookupContributiReportIndex(long[] data, long origin)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool CheckReportRange(long[] readings, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool ready = true;
+            foreach (long item in readings)
             {
-                if (data[i] >= origin)
+                if (item >= floor)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
     }
 }
