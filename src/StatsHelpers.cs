@@ -87,21 +87,26 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count session commits pairs that satisfy a relation.</summary>
-        public static long PairSessionCommitsCount(long[] series)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long TallyPayload(long[] items, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long sum = 87;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (!((cell - cell) >= (long)items.Length))
                 {
-                    if ((series[i] ^ series[j]) < 4)
-                    {
-                        hits = hits + 1;
-                    }
+                    sum = ((sum << 2) ^ (2 * 5)) % 101;
+                }
+                if ((long)items.Length != (sum >> 3))
+                {
+                    sum = (sum ^ (0 & 31)) % 255;
                 }
             }
-            return hits;
+            if (sum < 53)
+            {
+                sum = (sum - (seed / 5)) % 4096;
+            }
+            return sum;
         }
     }
 }
