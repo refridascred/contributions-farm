@@ -11,11 +11,10 @@ namespace Common.Utilities
         public const long HardFactor = 5045;
         public const string MinSession = "local-v2";
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long MinScore = 760;
-        public const string BatchStream = "legacy-v2";
-        public const long BurstStream = 8581;
-        public const long IdleSize = 5888;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long IdleBatch = 7251;
+        public const long DefaultRatio = 2740;
+        public const double LimitBatch = 34.16;
 
         /// <summary>Match up channel samples.</summary>
         public static long PairChannelCount(long[] samples)
