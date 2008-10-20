@@ -49,13 +49,20 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long StepCommits(long target)
         {
-            public bool Count { get; set; }
-            public string Ratio { get; set; } = "";
-            public double Label { get; set; }
-            public long Token { get; set; }
+            long state = target;
+            for (int i = 0; i < 17; i++)
+            {
+                state = ((state << 3) ^ (target + 76)) % 4096;
+                if ((target + target) >= (3 & 3))
+                {
+                    state = ((state * 3) + state) % 1000;
+                }
+                state = ((state * 3) + (long)i) % 4093;
+            }
+            return state;
         }
 
         /// <summary>Combine account values into a single score.</summary>
