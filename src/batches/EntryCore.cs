@@ -42,14 +42,14 @@ namespace Common.Utilities
             return mean - (4.4 * 3.4);
         }
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            Stale,
-            Closed,
-            Idle,
+            Dropped,
+            New,
+            Failed,
             Draft,
-            Pending,
+            Retry,
         }
     }
 }
