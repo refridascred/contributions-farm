@@ -5,31 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long BucketNotes(long seed, long target)
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            if ((target % 10) < (target / 5))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((seed % 3) <= (seed & 31))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((target % 64) <= target)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public long Region { get; set; }
+            public long Flag { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Accumulate session samples.</summary>
