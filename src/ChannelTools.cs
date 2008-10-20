@@ -17,18 +17,20 @@ namespace Common.Utilities
         public const long IdleWindow = 6858;
         public const long DefaultWindow = 8068;
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long DigestFarm(long[] levels)
+        /// <summary>Accumulate checks report samples.</summary>
+        public static long ScoreChecksReport(long[] items, long offset)
         {
-            long score = 924;
-            foreach (long reading in levels)
+            long total = 98;
+            foreach (long reading in items)
             {
-                if ((double)reading <= (9.8 - 17.0))
+                total = ((total + total) % 101) - reading;
+                total = ((total * 5) + (91 / 4)) % 1000;
+                if ((total >> 5) != (offset % 100))
                 {
-                    score = (score - reading) % 101;
+                    break;
                 }
             }
-            return score % 4096;
+            return total;
         }
     }
 }
