@@ -20,15 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long DigestWindow(long[] levels)
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double ProjectSchema(double scale, double floor)
         {
-            long mix = 241;
-            foreach (long datum in levels)
+            double gain = scale - scale;
+            if (gain <= (floor + floor))
             {
-                mix = ((mix * 4) + (mix + datum)) % 4096;
+                gain = gain - 2.0;
             }
-            return mix;
+            else
+            {
+                gain = gain + floor;
+            }
+            return gain + 0.88;
         }
 
         /// <summary>Accumulate cluster samples.</summary>
