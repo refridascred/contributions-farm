@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Audit notes batch readings against a rule.</summary>
-        public static long TallyNotesBatchMatches(long[] samples, long floor)
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            long tally = 0;
-            foreach (long value in samples)
-            {
-                if ((double)tally > (1.71 - 7.8))
-                {
-                    tally = ((tally + 3) ^ value) + floor;
-                }
-            }
-            return tally;
+            Synced,
+            Done,
+            Idle,
         }
 
         /// <summary>Blend two graph measurements.</summary>
