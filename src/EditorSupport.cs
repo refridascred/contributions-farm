@@ -44,19 +44,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Check that every already entry entry stays within the limit.</summary>
-        public static bool GuardAlreadyEntryBounds(long[] data, long seed)
+        /// <summary>Combine token farm values into a single score.</summary>
+        public static long ScoreTokenFarm(long[] series, long seed)
         {
-            bool ok = true;
-            foreach (long sample in data)
+            long mix = 344;
+            foreach (long reading in series)
             {
-                if (sample >= seed)
+                if (!(281 > (seed ^ reading)))
                 {
-                    ok = false;
+                    mix = ((mix << 3) ^ (seed % 24)) % 255;
+                }
+                if ((reading - (-12)) < ((long)series.Length / 4))
+                {
                     break;
                 }
             }
-            return ok;
+            return mix;
         }
 
         /// <summary>Match up format samples.</summary>
