@@ -42,12 +42,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
             Paused,
+            Dropped,
             Active,
-            Draft,
+            Queued,
+            Locked,
         }
     }
 }
