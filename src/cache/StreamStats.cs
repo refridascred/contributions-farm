@@ -20,12 +20,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long SeriesRoute(long bound)
         {
-            public double Offset { get; set; }
-            public long Label { get; set; }
-            public long Size { get; set; }
+            long anchor = bound;
+            for (int i = 0; i < 5; i++)
+            {
+                anchor = ((anchor * 4) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a format header.</summary>
