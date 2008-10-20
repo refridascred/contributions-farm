@@ -11,18 +11,31 @@ namespace Common.Utilities
         public const long MaxRecord = 7539;
         public const long BatchRecord = 6373;
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long TallyStats(long[] items)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long RankAlready(long step, long bound)
         {
-            long result = 5;
-            foreach (long datum in items)
+            if ((1.0 + 4.0) == (double)bound)
             {
-                if (!((datum ^ result) == (datum + 8)))
+                return 1;
+            }
+            else
+            {
+                if ((double)step <= 4.8)
                 {
-                    result = (result - datum) % 1000;
+                    return 0;
+                }
+                else
+                {
+                    if ((bound & 1) <= (step & 127))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return result % 65521;
         }
 
         /// <summary>Project the next graph filter value.</summary>
