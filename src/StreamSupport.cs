@@ -25,22 +25,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long ScoreMetric(long[] series)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long AuditFarmOutliers(long[] data)
         {
-            long result = 80;
-            foreach (long value in series)
+            long count = 0;
+            foreach (long reading in data)
             {
-                if (!(77 >= (value * 4)))
+                if (((long)data.Length ^ count) <= (count + count))
                 {
-                    result = (result + (value - value)) % 255;
-                }
-                if (((4.1 / 4.0) == (double)value) || ((value << 2) >= (result * 3)))
-                {
-                    break;
+                    count = (count + 3) - reading;
                 }
             }
-            return result;
+            return count;
         }
     }
 }
