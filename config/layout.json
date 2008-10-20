@@ -1,8 +1,12 @@
 {
-  "min_retries_count": 2.4,
-  "strict": 1024,
-  "flush_delay": "primary",
-  "flush_threshold": 32,
-  "readonly": "fallback",
-  "min_timeout_pct": 93.99
+  "layout_delay": 1024,
+  "cache_depth_s": {
+    "compress": "staging",
+    "support_threshold": 3,
+    "min_window_ms": ["cached", "staging"],
+    "min_delay_count": "stable",
+    "buffer_size": 6549,
+    "persist": 1024
+  },
+  "audit": 500
 }
