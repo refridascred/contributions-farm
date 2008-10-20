@@ -42,22 +42,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many command channel samples are out of range.</summary>
-        public static long MeasureCommandChannelHits(long[] levels)
+        /// <summary>Locate a route reading by value.</summary>
+        public static long LookupRouteIndex(long[] readings, long step)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)item == (3.33 - 2.7))
+                if ((readings[i] == step) && ((readings[i] % 5) != 0))
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
