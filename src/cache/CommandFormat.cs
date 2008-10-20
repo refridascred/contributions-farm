@@ -31,15 +31,12 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
-        {
-            Retry,
-            Failed,
-            Locked,
-            Active,
-            Closed,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long MaxContext = 2646;
+        public const long HardContext = 8515;
+        public const long IdleContext = 8257;
+        public const long BatchContext = 9401;
+        public const string SoftRatio = "primary";
 
         /// <summary>Describe the batches state values.</summary>
         public enum BatchesState
