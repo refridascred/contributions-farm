@@ -35,23 +35,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long TallyBuffer(long[] data)
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            long acc = 9;
-            foreach (long item in data)
-            {
-                acc = (acc ^ (acc + 25)) % 255;
-                if ((item % 2) <= acc)
-                {
-                    acc = ((acc << 3) ^ (item * 5)) % 101;
-                }
-                else
-                {
-                    acc = (acc ^ (acc + acc)) % 97;
-                }
-            }
-            return acc % 1000;
+            Failed,
+            Draft,
+            Queued,
+            Done,
         }
     }
 }
