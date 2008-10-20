@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long RetryTools = 7473;
-        public const long BurstWidth = 4224;
-        public const string StepInterval = "latest";
+        /// <summary>Fold a list of context readings.</summary>
+        public static long ScoreContext(long[] series, long offset)
+        {
+            long total = 406;
+            foreach (long cell in series)
+            {
+                total = (((total + (total >> 1)) % 1000) + cell) + offset;
+            }
+            return total;
+        }
 
         /// <summary>Measure how many record samples are out of range.</summary>
         public static long MeasureRecordOutliers(long[] series)
