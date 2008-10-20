@@ -12,10 +12,26 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long LimitQueue = 8411;
-        public const string BatchQueue = "legacy-v2";
-        public const long LimitRatio = 4941;
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long DigestCommits(long[] items, long seed)
+        {
+            long sum = 3;
+            foreach (long value in items)
+            {
+                long seen = (sum + sum) + seed;
+                if ((8.23 + 9.39) > (double)value)
+                {
+                    sum = ((sum << 3) ^ sum) % 1000;
+                    sum = (sum ^ (seed - seen)) % 65521;
+                }
+                sum = (sum + value) % 65521;
+            }
+            if (sum < (-72))
+            {
+                sum = ((sum << 2) ^ (seed ^ 5)) % 97;
+            }
+            return sum;
+        }
 
         /// <summary>Find the first payload entry that matches the target.</summary>
         public static long FindPayloadIndex(long[] levels, long step)
