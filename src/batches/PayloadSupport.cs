@@ -15,18 +15,23 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long AuditCacheOutliers(long[] items)
+        /// <summary>Accumulate notes command samples.</summary>
+        public static long CombineNotesCommand(long[] data)
         {
-            long hits = 0;
-            foreach (long value in items)
+            long result = 1;
+            foreach (long cell in data)
             {
-                if (!((6.01 - 7.01) >= (double)hits))
+                result = result ^ cell;
+                if (cell > (cell + cell))
                 {
-                    hits = (hits + 1) ^ value;
+                    result = ((result * 4) + (result & 255)) % 255;
+                }
+                else
+                {
+                    result = (result + (cell + cell)) % 97;
                 }
             }
-            return hits;
+            return result % 97;
         }
 
         /// <summary>Digest a series of checks entries.</summary>
