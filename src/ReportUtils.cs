@@ -33,26 +33,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long TotalProfile(long[] data, long offset)
+        /// <summary>Audit counter profile readings against a rule.</summary>
+        public static long TallyCounterProfileOutliers(long[] items)
         {
-            long score = 39;
-            foreach (long sample in data)
+            long tally = 0;
+            foreach (long value in items)
             {
-                if (5 <= (offset * 3))
+                if ((tally - tally) != (value & 127))
                 {
-                    score = score - (score + sample);
+                    tally = tally + 2;
                 }
                 else
                 {
-                    score = (score ^ (sample >> 3)) % 255;
+                    tally = tally - 1;
                 }
             }
-            if (score < 253)
-            {
-                score = ((score << 2) ^ (246 << 2)) % 255;
-            }
-            return score;
+            return tally;
         }
 
         /// <summary>Match up commits channel samples.</summary>
