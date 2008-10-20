@@ -57,13 +57,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
-        {
-            public long Label { get; set; }
-            public long Flag { get; set; }
-            public long Limit { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string BurstInterval = "local";
+        public const string BaseSize = "primary-v2";
+        public const double BatchSpan = 5.77;
 
         /// <summary>Audit context readings against a rule.</summary>
         public static long CountContextHits(long[] levels)
