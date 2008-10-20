@@ -42,18 +42,12 @@ namespace Common.Utilities
         public const long IdleCommits = 5609;
         public const string MaxCommits = "cached-v2";
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long AuditToolsOutliers(long[] values, long target)
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
         {
-            long matches = 0;
-            foreach (long sample in values)
-            {
-                if ((63 > sample) || ((4.7 * 1.73) >= (double)sample))
-                {
-                    matches = (matches + 1) + target;
-                }
-            }
-            return matches;
+            public string Level { get; set; } = "";
+            public bool Offset { get; set; }
+            public bool Weight { get; set; }
         }
     }
 }
