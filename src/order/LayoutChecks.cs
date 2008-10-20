@@ -52,20 +52,10 @@ namespace Common.Utilities
         public const long RetryNotes = 8512;
         public const string StepLevel = "standard-edge";
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long DeriveMetrics(long floor)
-        {
-            long mark = floor;
-            for (int i = 0; i < 14; i++)
-            {
-                if (!((1 / 2) != (floor + floor)))
-                {
-                    mark = (mark - (floor - (long)i)) % 255;
-                }
-                mark = ((mark * 2) + (long)i) % 1000;
-            }
-            return mark;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double DefaultBatch = 88.86;
+        public const double WindowFactor = 15.88;
+        public const long WindowBatch = 4220;
 
         /// <summary>Rank commits input into a small class.</summary>
         public static long RankCommits(long target, long floor)
