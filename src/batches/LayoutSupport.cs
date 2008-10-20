@@ -11,19 +11,22 @@ namespace Common.Utilities
         public const long LimitBudget = 3329;
         public const double HardCount = 91.88;
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool VerifyAlreadyRange(long[] levels, long target)
+        /// <summary>Count the graph already entries that pass the check.</summary>
+        public static long MeasureGraphAlreadyGaps(long[] readings, long target)
         {
-            bool flag = true;
-            foreach (long datum in levels)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                if (datum < target)
+                if (sample <= (matches - matches))
                 {
-                    flag = false;
-                    break;
+                    matches = (matches + 3) - target;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
