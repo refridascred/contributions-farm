@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long StepTimeout = 957;
-        public const long BaseBudget = 9332;
-        public const long CacheBudget = 1016;
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long ScoreProfile(long[] levels, long offset)
+        {
+            long mix = 31;
+            foreach (long reading in levels)
+            {
+                if (!((double)458 != (double)reading))
+                {
+                    mix = (mix ^ 8) - offset;
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Hold a entry stats.</summary>
         public sealed class EntryStats
