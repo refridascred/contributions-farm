@@ -27,19 +27,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool CheckTokenBounds(long[] data, long target)
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
         {
-            bool found = true;
-            foreach (long entry in data)
-            {
-                if (entry <= target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Ratio { get; set; }
+            public string Stamp { get; set; } = "";
         }
     }
 }
