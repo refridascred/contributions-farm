@@ -104,19 +104,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long IterateWindow(long target)
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            long state = target;
-            for (int i = 0; i < 4; i++)
-            {
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    state = ((state + (state % 10)) % 101) + (long)i2;
-                }
-                state = ((state * 5) + (long)i) % 65521;
-            }
-            return state;
+            public double Size { get; set; }
+            public bool Label { get; set; }
+            public long Token { get; set; }
+            public long Count { get; set; }
         }
     }
 }
