@@ -36,38 +36,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a batch channel pair into a bucket.</summary>
-        public static long BucketBatchChannel(long limit, long origin)
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            if ((limit >> 4) == (limit - limit))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((origin ^ origin) == (origin ^ 1))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((857 + origin) <= (origin ^ origin))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (origin < (limit ^ origin))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            public long Mode { get; set; }
+            public long Token { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
