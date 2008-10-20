@@ -1,15 +1,7 @@
 {
-  "max_capacity_ms": false,
-  "idle_retries_count": ["legacy", "legacy"],
-  "flush_delay": {
-    "account_limit": {
-      "audit": 11,
-      "base_delay_ms": 16.96,
-      "graph_threshold": 6103,
-      "max_threshold_ms": true,
-      "compress": 95.78
-    },
-    "persist": 100,
-    "audit": "cached"
-  }
+  "batches_limit": true,
+  "cache_limit_count": 389,
+  "layout_ttl": ["standard", "primary"],
+  "warm_interval_pct": true,
+  "flush_ttl_count": [147, 57]
 }
