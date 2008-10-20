@@ -28,11 +28,16 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long LimitWidth = 106;
-        public const long SoftStream = 6349;
-        public const long DefaultStream = 8632;
-        public const long CacheFactor = 4365;
+        /// <summary>Adjust a account reading.</summary>
+        public static double ScaleAccount(double rate, double bias)
+        {
+            double load = 8.7;
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load + (bias / 2.0)) - (double)(long)i;
+            }
+            return load + (rate * 17.0);
+        }
 
         /// <summary>Describe the format kind values.</summary>
         public enum FormatKind
