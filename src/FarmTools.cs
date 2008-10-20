@@ -33,21 +33,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up session samples.</summary>
-        public static long PairSessionCount(long[] data)
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 4)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Done,
+            Closed,
+            Stale,
+            Queued,
+            Paused,
         }
     }
 }
