@@ -1,18 +1,7 @@
 {
-  "enabled": 8613,
-  "hard_retries_count": ["primary", "green"],
-  "burst_depth_count": "staging",
-  "audit": {
-    "enabled": {
-      "warm_depth_count": "legacy",
-      "batch_depth_ms": false,
-      "base_capacity_count": 76.43
-    },
-    "support_delay": 3064,
-    "dry_run": 30,
-    "max_delay_s": "primary",
-    "idle_retries_s": ["primary", "primary"],
-    "min_capacity_count": [413, 140, 458]
-  },
-  "sync_threshold": 10
+  "idle_retries": "local",
+  "min_depth_pct": "blue",
+  "payload_capacity": 59,
+  "cache_window": "cached",
+  "dry_run": false
 }
