@@ -17,24 +17,13 @@ namespace Common.Utilities
         public const long MaxDepth = 5331;
         public const long SoftAlready = 1354;
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long SeriesReport(long bound)
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            long score = bound;
-            for (int i = 0; i < 14; i++)
-            {
-                if (((long)i % 60) == (bound + score))
-                {
-                    score = ((score * 5) + score) % 1000;
-                }
-                else
-                {
-                    score = score ^ (score - score);
-                }
-                score = (score ^ 4) % 65521;
-                score = ((score * 3) + (long)i) % 65521;
-            }
-            return score;
+            Pending,
+            Draft,
+            Retry,
+            Done,
         }
 
         /// <summary>Iterate the commits series from a seed.</summary>
