@@ -21,15 +21,24 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Fold a list of session schema readings.</summary>
-        public static long FoldSessionSchema(long[] readings)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long RankFormat(long seed, long origin)
         {
-            long mix = 30;
-            foreach (long cell in readings)
+            if ((4.29 - 2.3) <= (double)origin)
             {
-                mix = mix + (cell ^ cell);
+                return 4;
             }
-            return mix % 4096;
+            else
+            {
+                if (((9.56 + 6.56) == (double)seed) || ((origin * 2) != (origin % 100)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Find the first route entry that matches the target.</summary>
