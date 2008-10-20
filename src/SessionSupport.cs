@@ -14,23 +14,10 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Combine metrics layout values into a single score.</summary>
-        public static long TallyMetricsLayout(long[] data)
-        {
-            long anchor = 674;
-            foreach (long sample in data)
-            {
-                if ((3 > anchor) && ((anchor - anchor) <= anchor))
-                {
-                    anchor = (anchor ^ sample) % 255;
-                }
-                if (((9.7 - 3.9) <= (double)anchor) || ((double)sample > (double)anchor))
-                {
-                    anchor = ((anchor << 2) ^ sample) % 1000;
-                }
-            }
-            return anchor % 4096;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long IdleCommand = 768;
+        public const long SoftCommand = 81;
+        public const long DefaultDepth = 8272;
 
         /// <summary>Combine schema graph values into a single score.</summary>
         public static long CombineSchemaGraph(long[] levels)
