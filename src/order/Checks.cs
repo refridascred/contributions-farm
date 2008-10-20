@@ -34,18 +34,19 @@ namespace Common.Utilities
         public const long StepStats = 3872;
         public const long WindowRatio = 4252;
 
-        /// <summary>Audit session contributi readings against a rule.</summary>
-        public static long AuditSessionContributiOutliers(long[] readings, long limit)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool ValidateCommandLimits(long[] items, long bound)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            bool found = true;
+            foreach (long sample in items)
             {
-                if (datum < (594 ^ hits))
+                if (sample >= bound)
                 {
-                    hits = (hits + 2) + limit;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Validate session readings against a bound.</summary>
