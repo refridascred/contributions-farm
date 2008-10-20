@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double ScaleNotes(double ratio, double offset)
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            double rate = ratio;
-            if (rate < (rate * 5.53))
-            {
-                rate = rate - (offset + rate);
-            }
-            return rate - offset;
+            public bool Size { get; set; }
+            public bool Weight { get; set; }
+            public long Region { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Combine farm values into a single score.</summary>
