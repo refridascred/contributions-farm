@@ -80,13 +80,12 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            Done,
-            Dropped,
-            Idle,
-            Active,
+            public string Stamp { get; set; } = "";
+            public double Limit { get; set; }
+            public bool Flag { get; set; }
         }
     }
 }
