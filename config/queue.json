@@ -1,6 +1,5 @@
 {
-  "batch_ttl": 63,
-  "audit": 14,
-  "readonly": true,
-  "enabled": "eu-west"
+  "default_limit_s": 22.6,
+  "enabled": true,
+  "route_size": 500
 }
