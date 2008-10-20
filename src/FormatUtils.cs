@@ -34,12 +34,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            Retry,
             Synced,
-            Stale,
+            Queued,
+            Retry,
+            Pending,
+            Ready,
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
