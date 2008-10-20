@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long RankCache(long bound, long bound2)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool ValidateTokenBounds(long[] values, long target)
         {
-            if (((double)bound2 < (7.63 + 3.6)) && (5 <= (bound2 << 1)))
+            bool found = true;
+            foreach (long reading in values)
             {
-                return 8;
-            }
-            else
-            {
-                if ((0.5 / 2.0) <= (double)bound2)
+                if (reading <= target)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((bound - (-3)) == (bound * 3))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
