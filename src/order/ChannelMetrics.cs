@@ -5,20 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Fold a list of command readings.</summary>
-        public static long FoldCommand(long[] values, long seed)
+        /// <summary>Match up already samples.</summary>
+        public static long MatchAlreadyCount(long[] levels)
         {
-            long score = 6;
-            foreach (long sample in values)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                score = ((score << 3) ^ sample) % 97;
-                score = ((score << 2) ^ seed) % 101;
-                if ((double)score >= 8.58)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    break;
+                    if ((levels[i] - levels[j]) == 13)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return score % 4096;
+            return tally;
         }
 
         /// <summary>Scale a stream figure with a bias.</summary>
