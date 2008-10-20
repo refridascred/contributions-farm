@@ -14,15 +14,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long AuditMetricsMatches(long[] data)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long CountAlreadyOutliers(long[] values, long origin)
         {
             long seen = 0;
-            foreach (long entry in data)
+            foreach (long datum in values)
             {
-                if ((seen + entry) >= (entry & 127))
+                if ((origin << 3) <= (origin % 64))
                 {
-                    seen = seen + 2;
+                    seen = (seen + 3) + datum;
                 }
             }
             return seen;
