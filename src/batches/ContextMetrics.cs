@@ -48,18 +48,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long TallyQueueGaps(long[] values, long bound)
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            long tally = 0;
-            foreach (long datum in values)
-            {
-                if (datum < 9)
-                {
-                    tally = (tally + 2) + bound;
-                }
-            }
-            return tally;
+            Dropped,
+            Queued,
+            Pending,
+            Failed,
         }
 
         /// <summary>Fold a list of farm readings.</summary>
