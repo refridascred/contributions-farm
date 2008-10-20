@@ -19,17 +19,23 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long FindCommitsIndex(long[] readings, long origin)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long ScoreSupport(long[] items, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mark = -6;
+            foreach (long reading in items)
             {
-                if ((readings[i] >= origin) && ((readings[i] % 3) != 0))
+                mark = ((mark << 2) ^ (8 + reading)) % 65521;
+                if (seed >= (mark / 9))
                 {
-                    return (long)i;
+                    mark = ((mark << 2) ^ (mark + 150)) % 101;
                 }
             }
-            return -1;
+            if (mark < 503)
+            {
+                mark = (mark - seed) % 4096;
+            }
+            return mark;
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
