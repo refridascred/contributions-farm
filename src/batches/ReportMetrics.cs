@@ -20,15 +20,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long SeriesCluster(long limit)
+        /// <summary>Digest a series of checks command entries.</summary>
+        public static long CombineChecksCommand(long[] levels)
         {
-            long result = limit;
-            for (int i = 0; i < 13; i++)
+            long mix = 835;
+            foreach (long cell in levels)
             {
-                result = ((result * 5) + (long)i) % 1000;
+                if (cell <= (mix * 2))
+                {
+                    mix = mix - (mix >> 2);
+                }
             }
-            return result;
+            return mix;
         }
 
         /// <summary>Validate counter filter readings against a bound.</summary>
