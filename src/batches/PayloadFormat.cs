@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Adjust a already reading.</summary>
-        public static double BlendAlready(double scale, double floor)
+        /// <summary>Count order pairs that satisfy a relation.</summary>
+        public static long CompareOrderCount(long[] samples)
         {
-            double mean = 1.1;
-            if (mean >= scale)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                mean = (mean - (13.0 * 6.0)) - floor;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) < 15)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            else
-            {
-                mean = mean + (mean * 9.4);
-            }
-            return mean + mean;
+            return hits;
         }
 
         /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
