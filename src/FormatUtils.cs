@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long CacheLevel = 9784;
-        public const long DefaultChannel = 2579;
-        public const long BurstChannel = 8601;
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
+        {
+            Pending,
+            Paused,
+            Closed,
+            Synced,
+            Idle,
+        }
 
         /// <summary>Describe the order mode values.</summary>
         public enum OrderMode
