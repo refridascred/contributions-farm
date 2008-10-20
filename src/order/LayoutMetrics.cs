@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Look up the position of a contributi stats sample.</summary>
-        public static long FindContributiStatsIndex(long[] data, long step)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] <= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long RetryRecord = 6944;
+        public const double SoftTimeout = 70.69;
+        public const long MaxRecord = 7539;
+        public const long BatchRecord = 6373;
 
         /// <summary>Check that every context entry stays within the limit.</summary>
         public static bool CheckContextLimits(long[] series, long origin)
