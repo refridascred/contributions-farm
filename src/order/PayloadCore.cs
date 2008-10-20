@@ -5,21 +5,32 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Compare every pair of cache readings.</summary>
-        public static long CompareCacheCount(long[] samples)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long ClassifyBatches(long seed, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long span = seed ^ bound;
+            if ((span + bound) >= (seed / 8))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((double)bound != (double)seed)
                 {
-                    if ((samples[i] + samples[j]) > 9)
+                    return 6;
+                }
+                else
+                {
+                    if ((6 + span) < (bound << 1))
                     {
-                        tally = tally + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
