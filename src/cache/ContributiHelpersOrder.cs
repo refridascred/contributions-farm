@@ -13,18 +13,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long MeasureRecordOutliers(long[] series)
+        /// <summary>Accumulate command editor samples.</summary>
+        public static long WeighCommandEditor(long[] samples, long offset)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            long acc = 898;
+            foreach (long entry in samples)
             {
-                if ((seen << 2) >= seen)
+                if (((9 + entry) >= offset) && ((double)offset >= 9.6))
                 {
-                    seen = (seen + 3) ^ cell;
+                    acc = ((acc * 2) + (366 - offset)) % 97;
                 }
             }
-            return seen;
+            if (acc > 7)
+            {
+                acc = acc + offset;
+            }
+            return acc;
         }
 
         /// <summary>Digest a series of cache entries.</summary>
