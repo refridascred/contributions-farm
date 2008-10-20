@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Blend two record measurements.</summary>
-        public static double ScaleRecord(double gain, double span)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long TallyBatchesHits(long[] items)
         {
-            double weight = gain;
-            return weight - span;
+            long tally = 0;
+            foreach (long value in items)
+            {
+                if (((value - value) > (269 - value)) || ((value & 15) < tally))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
