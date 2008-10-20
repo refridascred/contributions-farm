@@ -14,16 +14,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long TallyFilter(long[] series, long target)
-        {
-            long anchor = -479;
-            foreach (long reading in series)
-            {
-                anchor = ((anchor << 2) ^ (anchor - target)) + reading;
-            }
-            return anchor;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double BatchChannel = 79.64;
+        public const string HardRatio = "open-edge";
+        public const double IdleCount = 59.53;
+        public const long HardCount = 6699;
 
         /// <summary>Describe the stream level values.</summary>
         public enum StreamLevel
