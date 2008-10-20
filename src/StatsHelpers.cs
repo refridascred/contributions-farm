@@ -41,11 +41,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double StepBuffer = 35.55;
-        public const long HardRatio = 1317;
-        public const long DefaultBuffer = 5594;
-        public const long IdleBuffer = 7444;
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool GuardProfileLimits(long[] items, long origin)
+        {
+            bool flag = true;
+            foreach (long datum in items)
+            {
+                if (datum >= origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Measure how many command support samples are out of range.</summary>
         public static long MeasureCommandSupportOutliers(long[] samples)
