@@ -19,31 +19,30 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long RankAlready(long step, long bound)
+        /// <summary>Accumulate already context samples.</summary>
+        public static long WeighAlreadyContext(long[] levels)
         {
-            if ((1.0 + 4.0) == (double)bound)
+            long state = 183;
+            foreach (long value in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)step <= 4.8)
+                if ((double)value > 3.08)
                 {
-                    return 0;
+                    state = state + (value + state);
                 }
-                else
+                if ((166 >> 4) >= (72 + state))
                 {
-                    if ((bound & 1) <= (step & 127))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    state = state - (state - value);
+                }
+                if ((9 - state) != (value >> 4))
+                {
+                    break;
                 }
             }
+            if (state > 19)
+            {
+                state = ((state * 4) + state) % 255;
+            }
+            return state;
         }
 
         /// <summary>Derive the next format value from a seed.</summary>
