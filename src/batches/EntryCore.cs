@@ -61,15 +61,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two format cluster measurements.</summary>
-        public static double AdjustFormatCluster(double gain, double offset)
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            double bias = offset;
-            for (int i = 0; i < 2; i++)
-            {
-                bias = (bias + (7.7 + 3.8)) + (double)(long)i;
-            }
-            return bias - (gain / 9.0);
+            public double Mode { get; set; }
+            public double Ratio { get; set; }
+            public string Level { get; set; } = "";
         }
     }
 }
