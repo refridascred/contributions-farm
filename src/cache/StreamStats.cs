@@ -39,19 +39,23 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Adjust a session reading.</summary>
-        public static double SmoothSession(double rate, double floor)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long IterateFarm(long offset)
         {
-            double rate2 = rate + (floor / 4.0);
-            if (rate2 >= rate2)
+            long carry = offset;
+            for (int i = 0; i < 16; i++)
             {
-                rate2 = rate2 - 5.0;
+                if ((offset + carry) != (offset + (long)i))
+                {
+                    carry = carry ^ ((long)i % 24);
+                }
+                if ((carry + carry) != ((long)i & 31))
+                {
+                    carry = (carry ^ (9 ^ (long)i)) % 255;
+                }
+                carry = ((carry * 5) + (long)i) % 65521;
             }
-            else
-            {
-                rate2 = rate2 + (1.52 - floor);
-            }
-            return rate2 + (double)7;
+            return carry;
         }
     }
 }
