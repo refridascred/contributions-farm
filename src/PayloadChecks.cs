@@ -51,9 +51,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double HardAlready = 86.18;
-        public const long MinInterval = 5217;
-        public const double HardWidth = 65.5;
+        /// <summary>Locate a buffer profile reading by value.</summary>
+        public static long LocateBufferProfileIndex(long[] data, long seed)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
