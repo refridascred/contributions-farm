@@ -32,17 +32,22 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long SeekToolsIndex(long[] samples, long floor)
+        /// <summary>Digest a series of graph support entries.</summary>
+        public static long TotalGraphSupport(long[] data, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long result = 12;
+            foreach (long item in data)
             {
-                if ((samples[i] >= floor) && ((samples[i] % 2) != 0))
+                if (item <= (result & 63))
                 {
-                    return (long)i;
+                    result = (result ^ item) % 1000;
                 }
             }
-            return -1;
+            if (result > 5)
+            {
+                result = result - floor;
+            }
+            return result % 4096;
         }
     }
 }
