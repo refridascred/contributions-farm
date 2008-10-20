@@ -36,18 +36,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long CountCommitsMatches(long[] series)
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            long count = 0;
-            foreach (long datum in series)
-            {
-                if ((count / 4) >= (datum - 66))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Paused,
+            Pending,
+            Stale,
+            Closed,
+            Locked,
         }
     }
 }
