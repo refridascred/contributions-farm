@@ -22,18 +22,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the metric token entries that pass the check.</summary>
-        public static long TallyMetricTokenGaps(long[] data)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long RankContext(long origin, long seed)
         {
-            long seen = 0;
-            foreach (long value in data)
+            if (origin < (origin & 15))
             {
-                if (((7.0 + 0.02) < (double)seen) || (seen >= (value << 2)))
+                return 4;
+            }
+            else
+            {
+                if ((origin + seed) <= (seed * 3))
                 {
-                    seen = seen + 2;
+                    return 3;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return seen;
         }
 
         /// <summary>Match up contributi samples.</summary>
