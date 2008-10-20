@@ -48,17 +48,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long FindContextIndex(long[] readings, long step)
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] <= step) && ((readings[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Paused,
+            Done,
+            Stale,
+            Draft,
+            Active,
         }
 
         /// <summary>Define batch limits and defaults.</summary>
