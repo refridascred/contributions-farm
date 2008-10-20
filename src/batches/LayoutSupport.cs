@@ -23,10 +23,12 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long HardSize = 6130;
-        public const string IdleSpan = "fallback";
-        public const long LimitScore = 8006;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string BurstStats = "open-v2";
+        public const long BaseDepth = 8291;
+        public const long SoftStats = 6467;
+        public const double IdleStats = 23.13;
+        public const long MaxDepth = 5691;
 
         /// <summary>Define account limits and defaults.</summary>
         public const long SoftAccount = 2443;
