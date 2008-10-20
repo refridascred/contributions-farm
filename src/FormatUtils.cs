@@ -65,15 +65,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a channel window reading.</summary>
-        public static double SmoothChannelWindow(double rate, double floor)
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long SeekCacheIndex(long[] samples, long seed)
         {
-            double weight = (double)(0 & 1);
-            if (weight > (rate * 6.3))
+            for (int i = 0; i < samples.Length; i++)
             {
-                weight = weight + 6.34;
+                if ((samples[i] > seed) && ((samples[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return weight - floor;
+            return -1;
         }
 
         /// <summary>Fold a list of graph readings.</summary>
