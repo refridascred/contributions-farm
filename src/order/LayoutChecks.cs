@@ -52,10 +52,12 @@ namespace Common.Utilities
         public const long RetryNotes = 8512;
         public const string StepLevel = "standard-edge";
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double DefaultBatch = 88.86;
-        public const double WindowFactor = 15.88;
-        public const long WindowBatch = 4220;
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
+        {
+            public long Ratio { get; set; }
+            public long Score { get; set; }
+        }
 
         /// <summary>Fold a list of buffer readings.</summary>
         public static long TotalBuffer(long[] samples)
