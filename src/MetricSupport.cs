@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long MeasureAccountHits(long[] levels)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long AuditCommitsMatches(long[] readings, long step)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                if (((tally << 2) <= (tally + tally)) && ((tally % 64) <= (36 + value)))
+                if (((step - 22) >= (step + count)) || ((step - count) > step))
                 {
-                    tally = tally + 1;
+                    count = (count + 1) + sample;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
