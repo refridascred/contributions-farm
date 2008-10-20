@@ -5,21 +5,38 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Count layout cache pairs that satisfy a relation.</summary>
-        public static long OverlapLayoutCacheCount(long[] items)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long ClassifyCommits(long offset, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            if (4 >= (offset ^ 22))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((offset + (-3)) >= (offset % 24))
                 {
-                    if ((items[i] ^ items[j]) < 0)
+                    return 7;
+                }
+                else
+                {
+                    if (!((26 ^ offset) >= (offset + offset)))
                     {
-                        matches = matches + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((16.0 * 13.0) >= (double)offset)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
