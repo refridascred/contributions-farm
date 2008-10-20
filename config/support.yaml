@@ -1,22 +1,5 @@
 # support settings
-flush_ratio_count: eu-west
-persist:
-  idle_window: primary
-  farm_ttl:
-    hard_interval: latest
-    queue_limit: 3471
-    default_depth_s:
-      - cached
-      - stable
-      - primary
-      - stable
-    persist: edge
-    sync_depth: true
-    base_size_ms: edge
-  sync_size_s:
-    poll_retries: true
-    poll_threshold: 250
-    flush_ttl: green
-    sync_ratio: false
-    batch_threshold_pct: true
-flush_timeout_count: 60
+verbose: 15.92
+persist: false
+stream_delay: local
+strict: blue
