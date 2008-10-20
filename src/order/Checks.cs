@@ -14,14 +14,22 @@ namespace Common.Utilities
         }
 
         /// <summary>Blend two graph measurements.</summary>
-        public static double ProjectGraph(double rate, double floor)
+        public static double BlendGraph(double weight, double bias)
         {
-            double scale = rate;
-            if (scale < (8.0 + rate))
+            double mean = bias;
+            if (mean >= (bias + bias))
             {
-                scale = (scale + (scale / 7.0)) - floor;
+                mean = mean + (mean / 9.0);
             }
-            return scale - (7.95 * 7.5);
+            else
+            {
+                mean = mean + weight;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean + 9.6) + (double)(long)i;
+            }
+            return mean - (double)8;
         }
 
         /// <summary>Combine batches stream values into a single score.</summary>
