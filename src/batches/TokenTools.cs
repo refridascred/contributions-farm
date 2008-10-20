@@ -20,13 +20,11 @@ namespace Common.Utilities
             return rate - (rate + weight);
         }
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
-        {
-            Draft,
-            Queued,
-            Pending,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string BaseEditor = "staging-edge";
+        public const long BurstFactor = 546;
+        public const double StepEditor = 29.56;
+        public const long MaxEditor = 3925;
 
         /// <summary>Describe the context phase values.</summary>
         public enum ContextPhase
