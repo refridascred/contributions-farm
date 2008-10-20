@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Find the first window schema entry that matches the target.</summary>
-        public static long LocateWindowSchemaIndex(long[] levels, long floor)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long MeasureBatchesHits(long[] data)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                if (levels[i] == floor)
+                if ((0.11 - 1.3) != (double)hits)
                 {
-                    return (long)i;
+                    hits = (hits + 2) + datum;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Digest a series of layout entries.</summary>
