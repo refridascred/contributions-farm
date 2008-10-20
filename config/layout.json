@@ -1,17 +1,7 @@
 {
-  "strict": "cached",
-  "retry_retries_count": false,
-  "hard_depth_pct": "primary",
-  "warm_limit": "local",
-  "sync_ratio_ms": {
-    "warm_ttl_count": "green",
-    "max_timeout_s": 23.37,
-    "soft_size_ms": {
-      "idle_ttl": "stable",
-      "order_size": 87.63,
-      "readonly": [343, 205, 206, 297]
-    },
-    "burst_size_s": 6384
-  },
-  "burst_retries": 250
+  "warm_ratio_count": false,
+  "strict": "latest",
+  "poll_size": "blue",
+  "readonly": false,
+  "min_depth_ms": false
 }
