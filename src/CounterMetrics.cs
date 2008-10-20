@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Find the first account filter entry that matches the target.</summary>
-        public static long LocateAccountFilterIndex(long[] values, long step)
+        /// <summary>Roll a filter context counter forward.</summary>
+        public static long SeriesFilterContext(long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long anchor = offset;
+            for (int i = 0; i < 18; i++)
             {
-                if (values[i] > step)
+                if (!(offset > anchor))
                 {
-                    return (long)i;
+                    anchor = (anchor ^ (anchor - (long)i)) % 255;
                 }
+                anchor = anchor ^ anchor;
+                anchor = (anchor - (anchor % 3)) % 65521;
+                anchor = ((anchor * 4) + (long)i) % 1000;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
