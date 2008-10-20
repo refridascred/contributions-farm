@@ -30,13 +30,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long AuditGithubfarmGaps(long[] levels, long offset)
         {
-            public long Stamp { get; set; }
-            public long Offset { get; set; }
-            public string Rank { get; set; } = "";
-            public string Owner { get; set; } = "";
+            long tally = 0;
+            foreach (long reading in levels)
+            {
+                if ((tally * 2) <= (tally / 7))
+                {
+                    tally = ((tally + 1) ^ reading) + offset;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a format entry.</summary>
