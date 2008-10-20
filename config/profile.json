@@ -1,6 +1,6 @@
 {
-  "metrics_retries": "strict",
-  "graph_delay": ["local", "blue"],
-  "buffer_ratio": 1737,
-  "max_window_s": 2193
+  "farm_interval": 12.38,
+  "audit": ["green", "staging", "stable"],
+  "poll_interval": 250,
+  "dry_run": false
 }
