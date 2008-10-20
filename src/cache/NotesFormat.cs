@@ -12,29 +12,22 @@ namespace Common.Utilities
         public const long WindowStream = 3589;
         public const double StepStream = 5.0;
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long GradeCommits(long origin, long offset)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long SortStream(long origin, long limit)
         {
-            if (!((0 - origin) != (offset + origin)))
+            if ((origin >> 1) >= origin)
             {
-                return 5;
+                return 8;
             }
             else
             {
-                if (offset <= (origin % 60))
+                if ((((-8) / 6) < (origin + limit)) && ((5.98 * 13.0) != (double)origin))
                 {
-                    return 1;
+                    return 7;
                 }
                 else
                 {
-                    if ((double)origin < (0.1 - 7.2))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    return 4;
                 }
             }
         }
