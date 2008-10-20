@@ -1,5 +1,7 @@
 {
-  "soft_window_count": "local",
-  "checks_threshold": 29,
-  "compress": 33
+  "sync_delay_ms": ["staging", "fallback", "open", "strict"],
+  "enabled": "cached",
+  "token_capacity": 1024,
+  "entry_retries": true,
+  "sync_ttl_s": "edge"
 }
