@@ -1,9 +1,11 @@
 # githubfarm settings
-compress:
-  - 100
-  - 434
-poll_retries_ms:
-  - legacy
-  - stable
-dry_run: standard
-metrics_capacity: edge
+route_capacity: primary
+metrics_ttl:
+  - 253
+  - 203
+  - 422
+  - 159
+enabled: false
+session_capacity: 250
+notes_depth: open
+soft_depth_pct: 78.62
