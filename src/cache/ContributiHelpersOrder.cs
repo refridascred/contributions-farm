@@ -5,35 +5,29 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Grade a layout filter value against two limits.</summary>
-        public static long GradeLayoutFilter(long offset, long seed)
+        /// <summary>Classify a stream counter pair into a bucket.</summary>
+        public static long SortStreamCounter(long floor, long limit)
         {
-            if (seed < (seed << 2))
+            long slot = floor + limit;
+            if (!(slot < (limit + limit)))
             {
-                return 2;
+                return 1;
             }
             else
             {
-                if ((offset >> 2) > (53 + (-6)))
+                if (!(7.5 <= (double)limit))
                 {
-                    return 4;
+                    return 8;
                 }
                 else
                 {
-                    if (offset >= (seed ^ 102))
+                    if ((slot + floor) != (limit / 2))
                     {
-                        return 8;
+                        return 5;
                     }
                     else
                     {
-                        if (!((double)offset != (double)seed))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
+                        return 7;
                     }
                 }
             }
