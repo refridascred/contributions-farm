@@ -58,11 +58,12 @@ namespace Common.Utilities
             return mean - (double)0;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long SoftDepth = 70;
-        public const string BurstScore = "staging-1";
-        public const long WindowCount = 2285;
-        public const string MaxReport = "alpha";
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
+        {
+            public bool Rank { get; set; }
+            public string Owner { get; set; } = "";
+        }
 
         /// <summary>Accumulate order samples.</summary>
         public static long ScoreOrder(long[] samples, long step)
