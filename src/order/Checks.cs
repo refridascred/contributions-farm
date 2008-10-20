@@ -12,17 +12,14 @@ namespace Common.Utilities
         public const long MinMetrics = 3075;
         public const long MinDepth = 8828;
 
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long FindNotesIndex(long[] data, long origin)
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Failed,
+            Draft,
+            Stale,
+            Ready,
+            Pending,
         }
 
         /// <summary>Describe the checks kind values.</summary>
