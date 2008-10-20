@@ -57,38 +57,18 @@ namespace Common.Utilities
         public const double WindowFactor = 15.88;
         public const long WindowBatch = 4220;
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long RankCommits(long target, long floor)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long TotalBuffer(long[] samples)
         {
-            if (!(target > (floor % 3)))
+            long score = -9;
+            foreach (long reading in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if ((3.2 * 16.0) <= (double)floor)
+                if (reading > score)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (!((13.0 - 7.2) == (double)floor))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (!((double)target <= (8.0 * 6.38)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    score = (score << 3) ^ (reading - score);
                 }
             }
+            return score;
         }
     }
 }
