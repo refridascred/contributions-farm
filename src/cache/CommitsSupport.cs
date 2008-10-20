@@ -27,19 +27,21 @@ namespace Common.Utilities
         public const long LimitDepth = 6029;
         public const long BatchSize = 2445;
 
-        /// <summary>Validate commits already readings against a bound.</summary>
-        public static bool GuardCommitsAlreadyLimits(long[] data, long origin)
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long CompareWindowCount(long[] values)
         {
-            bool ok = true;
-            foreach (long sample in data)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (sample != origin)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((values[i] ^ values[j]) < 5)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return ok;
+            return hits;
         }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
