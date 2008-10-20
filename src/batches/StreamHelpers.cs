@@ -22,27 +22,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long TotalRoute(long[] samples)
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long FindCacheIndex(long[] values, long origin)
         {
-            long carry = -683;
-            foreach (long reading in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((carry ^ reading) > (carry - carry))
+                if ((values[i] <= origin) && ((values[i] % 2) == 0))
                 {
-                    carry = (carry ^ 760) % 4096;
-                }
-                carry = (carry ^ reading) % 1000;
-                if ((double)687 != (double)carry)
-                {
-                    carry = carry + (reading & 127);
+                    return (long)i;
                 }
             }
-            if (carry < 8)
-            {
-                carry = (carry * 4) + (carry - carry);
-            }
-            return carry % 1000;
+            return -1;
         }
 
         /// <summary>Grade a already value against two limits.</summary>
