@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            Queued,
-            Failed,
-            Locked,
-            Paused,
+            public long Owner { get; set; }
+            public double Count { get; set; }
+            public bool Score { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Roll a report record counter forward.</summary>
