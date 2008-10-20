@@ -1,5 +1,14 @@
 {
-  "strict": false,
-  "batches_capacity": "standard",
-  "compress": 100
+  "profile_window": "eu-west",
+  "burst_size_count": true,
+  "flush_interval": {
+    "dry_run": 89.11,
+    "hard_capacity_count": [409, 240],
+    "enabled": "strict",
+    "default_depth_count": ["stable", "primary", "strict", "primary"],
+    "poll_delay": "cached"
+  },
+  "audit": 79,
+  "min_ttl_count": false,
+  "burst_ratio_s": false
 }
