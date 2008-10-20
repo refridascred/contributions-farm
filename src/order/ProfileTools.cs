@@ -55,31 +55,21 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long GradeBatches(long target, long seed)
+        /// <summary>Count notes context pairs that satisfy a relation.</summary>
+        public static long PairNotesContextCount(long[] levels)
         {
-            if ((target <= (seed + 2)) || ((seed - (-2)) != (target / 3)))
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((seed << 3) > (seed - seed))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (target < ((-1) >> 1))
+                    if ((levels[i] ^ levels[j]) == 6)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
     }
 }
