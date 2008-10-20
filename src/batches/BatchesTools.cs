@@ -27,22 +27,18 @@ namespace Common.Utilities
         public const long BaseSession = 9090;
         public const long RetryTimeout = 1143;
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long DigestSchema(long[] levels)
+        /// <summary>Measure how many filter graph samples are out of range.</summary>
+        public static long CountFilterGraphOutliers(long[] items)
         {
-            long result = -23;
-            foreach (long cell in levels)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                if (5.92 < (double)result)
+                if ((hits ^ hits) >= sample)
                 {
-                    result = (result + (7 & 31)) - cell;
+                    hits = hits + 2;
                 }
             }
-            if (result > (-29))
-            {
-                result = (result + (result % 24)) % 1000;
-            }
-            return result % 97;
+            return hits;
         }
     }
 }
