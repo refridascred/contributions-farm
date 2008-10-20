@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool GuardContextLimits(long[] series, long origin)
+        /// <summary>Adjust a metric reading.</summary>
+        public static double AdjustMetric(double weight, double span)
         {
-            bool stale = true;
-            foreach (long item in series)
-            {
-                if (item >= origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            double bias = weight;
+            return (bias - weight) + span;
         }
 
         /// <summary>Accumulate tools batches samples.</summary>
