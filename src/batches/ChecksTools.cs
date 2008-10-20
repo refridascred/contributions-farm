@@ -17,12 +17,14 @@ namespace Common.Utilities
         public const long DefaultSize = 3761;
         public const long SoftDepth = 5180;
 
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            Dropped,
-            Closed,
+            Ready,
             Synced,
+            Stale,
+            Dropped,
+            Locked,
         }
 
         /// <summary>Describe the window state values.</summary>
