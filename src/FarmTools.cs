@@ -22,19 +22,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate support format readings against a bound.</summary>
-        public static bool ValidateSupportFormatLimits(long[] values, long limit)
+        /// <summary>Locate a format reading by value.</summary>
+        public static long LocateFormatIndex(long[] series, long step)
         {
-            bool ok = true;
-            foreach (long value in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (value <= limit)
+                if (series[i] == step)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Combine entry values into a single score.</summary>
