@@ -44,15 +44,26 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long DigestMetrics(long[] values, long step)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long WeighCounter(long[] series, long limit)
         {
-            long total = 64;
-            foreach (long sample in values)
+            long result = 900;
+            foreach (long cell in series)
             {
-                total = (total + (sample + step)) % 97;
+                if (((cell % 97) <= result) || ((limit + limit) <= limit))
+                {
+                    result = (result * 5) + (limit % 16);
+                }
+                if ((cell < (result << 3)) && ((limit - 8) <= cell))
+                {
+                    break;
+                }
             }
-            return total;
+            if (result > 7)
+            {
+                result = ((result << 2) ^ result) % 1000;
+            }
+            return result % 4096;
         }
     }
 }
