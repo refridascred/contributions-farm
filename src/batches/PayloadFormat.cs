@@ -60,26 +60,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long DigestFilter(long[] data, long step)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long BucketStats(long limit, long offset)
         {
-            long carry = 491;
-            foreach (long value in data)
+            if ((limit >> 5) > (limit - limit))
             {
-                if ((step & 31) <= (9 & 3))
+                return 8;
+            }
+            else
+            {
+                if ((53 < (limit << 3)) || ((offset << 1) <= limit))
                 {
-                    carry = (carry * 2) + (1 + step);
+                    return 0;
                 }
                 else
                 {
-                    carry = (carry + (value + carry)) % 97;
+                    return 5;
                 }
             }
-            if (carry < (-95))
-            {
-                carry = (carry - (carry & 255)) % 1000;
-            }
-            return carry % 4096;
         }
     }
 }
