@@ -28,18 +28,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long DigestEntry(long[] series)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long CountBatchesGaps(long[] data)
         {
-            long anchor = 7;
-            foreach (long reading in series)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                if ((reading - 703) < (reading >> 2))
+                if (2.2 > (double)seen)
                 {
-                    anchor = ((anchor * 4) + (anchor - reading)) % 4096;
+                    seen = (seen + 3) + reading;
                 }
             }
-            return anchor % 4096;
+            return seen;
         }
     }
 }
