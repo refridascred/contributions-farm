@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long FindEditorIndex(long[] values, long origin)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] > origin) && ((values[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long IdleSession = 9456;
+        public const long BurstSession = 7259;
+        public const long HardFactor = 5045;
+        public const string MinSession = "local-v2";
 
         /// <summary>Describe the farm mode values.</summary>
         public enum FarmMode
