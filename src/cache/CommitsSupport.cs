@@ -22,10 +22,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long SoftScore = 9368;
-        public const long LimitDepth = 6029;
-        public const long BatchSize = 2445;
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long CountFarmMatches(long[] readings)
+        {
+            long matches = 0;
+            foreach (long entry in readings)
+            {
+                if (entry > (9 - 781))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Digest a series of batch entries.</summary>
         public static long TotalBatch(long[] samples)
