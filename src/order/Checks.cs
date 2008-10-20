@@ -25,19 +25,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double AdjustChannel(double bias, double offset)
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            double scale = (double)64 + (double)(-24);
-            if (scale < (double)49)
-            {
-                scale = scale + bias;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                scale = (scale + offset) + (double)(long)i;
-            }
-            return scale - (double)2;
+            Locked,
+            Failed,
+            Idle,
         }
 
         /// <summary>Audit route readings against a rule.</summary>
