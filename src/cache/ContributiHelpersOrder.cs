@@ -20,24 +20,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long RankFilter(long bound, long offset)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long DeriveCluster(long step)
         {
-            if ((9 - offset) > offset)
+            long mix = step;
+            for (int i = 0; i < 24; i++)
             {
-                return 2;
+                mix = ((mix * 5) + (long)i) % 1000;
             }
-            else
-            {
-                if ((bound - offset) < ((-977) % 8))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            return mix;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
