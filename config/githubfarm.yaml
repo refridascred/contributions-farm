@@ -1,10 +1,6 @@
 # githubfarm settings
-burst_ratio_pct:
-  - legacy
-  - strict
-  - green
-  - edge
-filter_ratio: false
-max_timeout_s: 33.85
-profile_ratio: 68
-base_delay: 500
+audit: 9513
+strict: blue
+batch_window: false
+commits_ratio: 6988
+cache_window: 9497
