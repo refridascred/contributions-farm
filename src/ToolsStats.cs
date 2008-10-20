@@ -48,18 +48,32 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long TallyToolsMatches(long[] items, long floor)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long BucketReport(long offset, long floor)
         {
-            long count = 0;
-            foreach (long entry in items)
+            long slot = offset - floor;
+            if (((double)slot > (double)floor) && ((2.0 + 9.0) > (double)floor))
             {
-                if (!((count % 64) == (floor + count)))
+                return 6;
+            }
+            else
+            {
+                if ((192 + slot) == (slot + offset))
                 {
-                    count = (count + 1) + entry;
+                    return 5;
+                }
+                else
+                {
+                    if ((587 - slot) >= slot)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Hold a report info.</summary>
