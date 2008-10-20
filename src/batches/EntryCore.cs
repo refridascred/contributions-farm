@@ -42,15 +42,14 @@ namespace Common.Utilities
             return mean - (4.4 * 3.4);
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long ScoreOrder(long[] data, long limit)
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            long sum = 60;
-            foreach (long value in data)
-            {
-                sum = (((sum - (sum << 1)) % 101) + value) + limit;
-            }
-            return sum % 4096;
+            Stale,
+            Closed,
+            Idle,
+            Draft,
+            Pending,
         }
     }
 }
