@@ -52,17 +52,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long SeekCacheIndex(long[] samples, long seed)
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] > seed) && ((samples[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Owner { get; set; }
+            public double Score { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Define tools limits and defaults.</summary>
