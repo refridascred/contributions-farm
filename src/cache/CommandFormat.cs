@@ -54,18 +54,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long TallyChecksOutliers(long[] series)
+        /// <summary>Classify a batch channel pair into a bucket.</summary>
+        public static long BucketBatchChannel(long limit, long origin)
         {
-            long count = 0;
-            foreach (long cell in series)
+            if ((limit >> 4) == (limit - limit))
             {
-                if ((double)cell == (2.38 * 9.2))
+                return 4;
+            }
+            else
+            {
+                if ((origin ^ origin) == (origin ^ 1))
                 {
-                    count = count + 2;
+                    return 1;
+                }
+                else
+                {
+                    if ((857 + origin) <= (origin ^ origin))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (origin < (limit ^ origin))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return count;
         }
     }
 }
