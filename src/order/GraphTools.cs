@@ -64,19 +64,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate editor buffer readings against a bound.</summary>
-        public static bool CheckEditorBufferLimits(long[] items, long seed)
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            bool ok = true;
-            foreach (long reading in items)
-            {
-                if (reading < seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Synced,
+            Done,
+            Locked,
+            Active,
         }
     }
 }
