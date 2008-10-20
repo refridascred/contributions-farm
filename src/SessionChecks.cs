@@ -13,11 +13,12 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long RetryFormat = 6925;
-        public const long StepFormat = 341;
-        public const double MaxDepth = 72.58;
-        public const long BatchDepth = 572;
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BaseBudget = 1732;
+        public const string SoftGraph = "strict-v2";
+        public const long RetryBudget = 7553;
+        public const string DefaultFactor = "cached-1";
+        public const long RetryGraph = 9000;
 
         /// <summary>Describe the profile level values.</summary>
         public enum ProfileLevel
