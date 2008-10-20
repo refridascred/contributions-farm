@@ -24,23 +24,22 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Grade a counter schema value against two limits.</summary>
-        public static long ClassifyCounterSchema(long target, long seed)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long BucketStats(long seed, long floor)
         {
-            long diff = target ^ seed;
-            if (((target + diff) > (target * 3)) && ((double)seed > 8.77))
+            if ((double)seed <= (6.0 - 1.57))
             {
-                return 5;
+                return 4;
             }
             else
             {
-                if (((diff % 10) > diff) || ((double)diff < (20.0 + 6.0)))
+                if ((double)floor > (5.99 - 10.0))
                 {
-                    return 0;
+                    return 5;
                 }
                 else
                 {
-                    return 4;
+                    return 1;
                 }
             }
         }
