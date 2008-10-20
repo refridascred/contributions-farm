@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            public double Region { get; set; }
-            public bool Count { get; set; }
-            public long Level { get; set; }
-            public long Mode { get; set; }
+            Synced,
+            Done,
+            Paused,
+            Draft,
+            New,
         }
 
         /// <summary>Define command limits and defaults.</summary>
