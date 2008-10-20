@@ -33,27 +33,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate cache format samples.</summary>
-        public static long FoldCacheFormat(long[] readings)
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            long result = 93;
-            foreach (long cell in readings)
-            {
-                for (int i = 0; i < 9; i++)
-                {
-                    result = (result - (result + cell)) % 97;
-                    result = ((result << 3) ^ (long)i) % 1000;
-                }
-                if (((result % 16) >= ((-241) >> 4)) && ((cell >> 3) != (21 & 63)))
-                {
-                    result = result - (result + cell);
-                }
-                else
-                {
-                    result = result ^ (result - cell);
-                }
-            }
-            return result;
+            Locked,
+            Closed,
+            New,
+            Ready,
         }
 
         /// <summary>Blend two record measurements.</summary>
