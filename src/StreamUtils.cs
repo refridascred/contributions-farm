@@ -57,18 +57,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long FoldContext(long[] data)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long TallyCommitsMatches(long[] levels)
         {
-            long carry = 800;
-            foreach (long entry in data)
+            long count = 0;
+            foreach (long item in levels)
             {
-                if ((entry + entry) > carry)
+                if (count <= 6)
                 {
-                    carry = carry ^ (carry / 8);
+                    count = (count + 3) + item;
                 }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
