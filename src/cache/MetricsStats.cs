@@ -27,16 +27,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long DeriveAccount(long origin)
+        /// <summary>Count the githubfarm route entries that pass the check.</summary>
+        public static long AuditGithubfarmRouteOutliers(long[] readings)
         {
-            long total = origin;
-            for (int i = 0; i < 11; i++)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                total = ((total * 5) + (299 + total)) % 1000;
-                total = ((total * 2) + (long)i) % 4093;
+                if ((81 > (value + matches)) && !((double)value < (2.4 * 20.0)))
+                {
+                    matches = matches + 2;
+                }
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Adjust a route context reading.</summary>
