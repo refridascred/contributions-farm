@@ -51,12 +51,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string HardNotes = "standard-1";
-        public const long BaseNotes = 2973;
-        public const long RetryTimeout = 4416;
-        public const long RetryNotes = 8512;
-        public const string StepLevel = "standard-edge";
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long TallyStreamOutliers(long[] items, long step)
+        {
+            long hits = 0;
+            foreach (long cell in items)
+            {
+                if ((hits / 7) == (81 ^ cell))
+                {
+                    hits = (hits + 1) - step;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a counter options.</summary>
         public sealed class CounterOptions
