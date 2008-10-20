@@ -1,8 +1,10 @@
 {
-  "poll_delay_count": 69.28,
-  "strict": ["staging", "green", "local", "eu-west"],
-  "hard_retries_ms": 88,
-  "hard_limit_s": "legacy",
-  "max_threshold": "legacy",
-  "audit": 13
+  "buffer_interval": false,
+  "flush_size_s": 100,
+  "hard_delay_pct": {
+    "default_limit_ms": "latest",
+    "cache_interval_s": ["local", "stable", "green"],
+    "enabled": ["eu-west", "legacy", "latest", "legacy"],
+    "queue_retries": [399, 155, 484]
+  }
 }
