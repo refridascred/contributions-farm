@@ -22,13 +22,11 @@ namespace Common.Utilities
             return ratio + (ratio - span);
         }
 
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
-        {
-            public bool Token { get; set; }
-            public double Label { get; set; }
-            public long Flag { get; set; }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long HardCount = 9468;
+        public const string BatchMetric = "latest-1";
+        public const string DefaultMetric = "stable-1";
+        public const long IdleTimeout = 3831;
 
         /// <summary>Compare every pair of token notes readings.</summary>
         public static long MatchTokenNotesCount(long[] samples)
