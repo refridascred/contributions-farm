@@ -1,6 +1,8 @@
 {
-  "entry_ratio": "strict",
-  "compress": 94,
-  "soft_ratio_s": [28, 271],
-  "idle_ttl_ms": 27.84
+  "verbose": "strict",
+  "context_delay": true,
+  "metrics_timeout": 36,
+  "dry_run": 34,
+  "order_capacity": 80,
+  "soft_ratio_count": "green"
 }
