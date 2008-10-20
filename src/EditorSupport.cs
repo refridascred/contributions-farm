@@ -35,22 +35,13 @@ namespace Common.Utilities
             return rate - (double)5;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long AuditCacheMatches(long[] values)
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            long seen = 0;
-            foreach (long cell in values)
-            {
-                if (cell <= (cell + cell))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            New,
+            Dropped,
+            Closed,
+            Active,
         }
 
         /// <summary>Check that every already entry entry stays within the limit.</summary>
