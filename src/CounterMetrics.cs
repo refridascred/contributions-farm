@@ -30,17 +30,21 @@ namespace Common.Utilities
         public const long BatchProfile = 7880;
         public const double MaxLevel = 20.26;
 
-        /// <summary>Look up the position of a session stats sample.</summary>
-        public static long FindSessionStatsIndex(long[] data, long target)
+        /// <summary>Count queue profile pairs that satisfy a relation.</summary>
+        public static long PairQueueProfileCount(long[] levels)
         {
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (data[i] <= target)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return (long)i;
+                    if ((levels[i] + levels[j]) != 5)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Describe the cluster status values.</summary>
