@@ -44,11 +44,18 @@ namespace Common.Utilities
         public const long BatchContext = 9401;
         public const string SoftRatio = "primary";
 
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long TallyChecksOutliers(long[] series)
         {
-            public string Ratio { get; set; } = "";
-            public long Limit { get; set; }
+            long count = 0;
+            foreach (long cell in series)
+            {
+                if ((double)cell == (2.38 * 9.2))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
     }
 }
