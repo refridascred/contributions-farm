@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
             Synced,
-            Done,
-            Paused,
-            Draft,
             New,
+            Ready,
+            Paused,
+            Failed,
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
