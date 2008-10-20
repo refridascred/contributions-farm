@@ -22,21 +22,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up githubfarm samples.</summary>
-        public static long CompareGithubfarmCount(long[] series)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long BucketRecord(long seed, long seed2)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            if ((seed << 2) < (seed * 2))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((seed + seed2) > seed2)
                 {
-                    if ((series[i] - series[j]) != 6)
+                    return 0;
+                }
+                else
+                {
+                    if ((seed ^ 142) >= (seed & 7))
                     {
-                        hits = hits + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
