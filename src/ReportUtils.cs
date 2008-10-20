@@ -60,17 +60,19 @@ namespace Common.Utilities
         public const string BaseSize = "primary-v2";
         public const double BatchSpan = 5.77;
 
-        /// <summary>Locate a route reading by value.</summary>
-        public static long FindRouteIndex(long[] series, long floor)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long TotalStream(long[] readings)
         {
-            for (int i = 0; i < series.Length; i++)
+            long anchor = 5;
+            foreach (long cell in readings)
             {
-                if (series[i] <= floor)
+                anchor = ((anchor << 2) ^ cell) % 4096;
+                if (8.0 < (double)anchor)
                 {
-                    return (long)i;
+                    anchor = ((anchor * 2) + anchor) % 255;
                 }
             }
-            return -1;
+            return anchor % 1000;
         }
     }
 }
