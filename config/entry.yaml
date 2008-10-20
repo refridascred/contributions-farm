@@ -1,4 +1,5 @@
 # entry settings
-idle_depth_count: 31.49
-retry_retries: 30
-warm_window_count: 19
+base_ttl_pct: 6.64
+hard_ttl_count: 6157
+retry_interval_ms: true
+layout_window: false
