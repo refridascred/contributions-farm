@@ -31,22 +31,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of window cluster entries.</summary>
-        public static long TallyWindowCluster(long[] readings)
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            long mix = 5;
-            foreach (long value in readings)
-            {
-                if ((12.0 + 6.0) > (double)value)
-                {
-                    mix = ((mix * 2) + mix) % 101;
-                }
-                else
-                {
-                    mix = (mix ^ (9 ^ value)) % 4096;
-                }
-            }
-            return mix;
+            New,
+            Ready,
+            Active,
+            Closed,
         }
 
         /// <summary>Rank checks input into a small class.</summary>
