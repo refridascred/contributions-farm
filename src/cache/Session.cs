@@ -40,10 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double StepFactor = 67.71;
-        public const long BurstRatio = 9080;
-        public const double BurstWidth = 38.94;
+        /// <summary>Define token limits and defaults.</summary>
+        public const string MaxToken = "primary-v2";
+        public const double BatchToken = 30.55;
+        public const long DefaultToken = 9968;
+        public const long DefaultScore = 6762;
 
         /// <summary>Derive the next command value from a seed.</summary>
         public static long StepCommand(long seed)
