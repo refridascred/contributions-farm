@@ -58,31 +58,28 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long ClassifyChecks(long limit, long step)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long FoldChecks(long[] readings)
         {
-            if (limit <= (limit % 5))
+            long state = 6;
+            foreach (long reading in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if ((1 <= (704 - limit)) || (494 > step))
+                state = state ^ 83;
+                for (int i = 0; i < 12; i++)
                 {
-                    return 5;
+                    state = ((state ^ state) % 97) + (long)i;
                 }
-                else
+                state = (state ^ (state * 5)) % 97;
+                if ((double)reading <= (18.0 * 3.77))
                 {
-                    if ((double)limit > (18.0 * 0.5))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    break;
                 }
             }
+            if (state > 12)
+            {
+                state = state ^ (state % 60);
+            }
+            return state % 1000;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
