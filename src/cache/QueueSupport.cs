@@ -16,17 +16,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Locate a farm payload reading by value.</summary>
-        public static long FindFarmPayloadIndex(long[] levels, long offset)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool ValidateBatchesBounds(long[] values, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool stale = true;
+            foreach (long cell in values)
             {
-                if (levels[i] == offset)
+                if (cell >= floor)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Digest a series of graph support entries.</summary>
