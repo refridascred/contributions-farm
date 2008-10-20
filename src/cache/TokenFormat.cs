@@ -34,19 +34,18 @@ namespace Common.Utilities
         public const long WindowInterval = 2271;
         public const long BatchBudget = 624;
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool GuardWindowBounds(long[] readings, long limit)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long CountMetricsGaps(long[] items)
         {
-            bool ok = true;
-            foreach (long cell in readings)
+            long tally = 0;
+            foreach (long item in items)
             {
-                if (cell != limit)
+                if ((820 * 4) < tally)
                 {
-                    ok = false;
-                    break;
+                    tally = (tally + 1) + item;
                 }
             }
-            return ok;
+            return tally;
         }
     }
 }
