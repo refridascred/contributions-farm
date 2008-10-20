@@ -1,5 +1,7 @@
 {
-  "strict": 9.26,
-  "cache_retries": 11,
-  "verbose": 95
+  "order_retries": "staging",
+  "min_size_pct": true,
+  "sync_depth_ms": false,
+  "poll_depth": 62.72,
+  "base_limit": 100
 }
