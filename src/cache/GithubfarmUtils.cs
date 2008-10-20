@@ -24,19 +24,21 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Blend two entry measurements.</summary>
-        public static double SmoothEntry(double ratio, double bias)
+        /// <summary>Count graph stream pairs that satisfy a relation.</summary>
+        public static long PairGraphStreamCount(long[] samples)
         {
-            double rate = (double)977;
-            if (rate <= rate)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                rate = rate + rate;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) != 17)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                rate = (rate - (ratio + ratio)) + (double)(long)i;
-            }
-            return rate + bias;
+            return count;
         }
 
         /// <summary>Count farm batches pairs that satisfy a relation.</summary>
