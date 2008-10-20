@@ -23,38 +23,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long BucketStream(long bound, long step)
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double SmoothMetrics(double gain, double span)
         {
-            if ((bound ^ step) < (step + bound))
+            double ratio = span;
+            if (ratio < span)
             {
-                return 4;
+                ratio = (ratio + (ratio + span)) - gain;
             }
-            else
-            {
-                if ((double)bound > (0.2 + 4.9))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((bound + bound) < bound)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (!((step + (-26)) >= (26 % 5)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            return ratio + (ratio - span);
         }
 
         /// <summary>Digest a series of cache entries.</summary>
