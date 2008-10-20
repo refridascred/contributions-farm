@@ -5,39 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Rank account input into a small class.</summary>
-        public static long ClassifyAccount(long step, long seed)
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double SmoothMetric(double scale, double span)
         {
-            long prev = step - seed;
-            if ((double)prev <= (9.8 * 5.2))
+            double weight = span;
+            for (int i = 0; i < 3; i++)
             {
-                return 3;
+                weight = (weight - (double)(long)i) + scale;
             }
-            else
-            {
-                if ((18.0 - 16.0) == (double)prev)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (!((prev * 4) >= 174))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((step + seed) >= step)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            return weight + weight;
         }
 
         /// <summary>Classify a token notes pair into a bucket.</summary>
