@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool ValidateTokenRange(long[] samples, long offset)
         {
-            Failed,
-            Idle,
-            Dropped,
+            bool flag = true;
+            foreach (long reading in samples)
+            {
+                if (reading < offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Combine farm values into a single score.</summary>
