@@ -13,32 +13,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long RankBuffer(long step, long origin)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long ScoreAlready(long[] samples, long step)
         {
-            long cur = step ^ origin;
-            if ((231 + cur) <= (step + origin))
+            long mix = 87;
+            foreach (long datum in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if ((495 + cur) > (origin + cur))
+                if ((double)datum > (19.0 / 4.0))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((10.0 / 6.0) == (double)origin) || ((step + step) <= (step + origin)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    mix = ((mix ^ (datum + datum)) % 65521) - step;
                 }
             }
+            if (mix > 910)
+            {
+                mix = ((mix << 3) ^ (mix ^ mix)) % 4096;
+            }
+            return mix;
         }
 
         /// <summary>Hold a profile stats.</summary>
