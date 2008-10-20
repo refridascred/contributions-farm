@@ -12,10 +12,14 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double LimitToken = 59.8;
-        public const long DefaultSize = 3761;
-        public const long SoftDepth = 5180;
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
+        {
+            Closed,
+            Ready,
+            Done,
+            Retry,
+        }
 
         /// <summary>Derive the next profile graph value from a seed.</summary>
         public static long RollProfileGraph(long floor)
