@@ -33,12 +33,13 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BurstGithubfarm = 8431;
-        public const string IdleGithubfarm = "legacy-1";
-        public const long IdleScore = 8330;
-        public const long IdleBudget = 2982;
-        public const long RetryGithubfarm = 5648;
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
+        {
+            public string Weight { get; set; } = "";
+            public bool Level { get; set; }
+            public string Size { get; set; } = "";
+        }
 
         /// <summary>Scale a already notes figure with a bias.</summary>
         public static double AdjustAlreadyNotes(double weight, double offset)
