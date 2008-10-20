@@ -49,15 +49,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Scale a metrics buffer figure with a bias.</summary>
-        public static double BlendMetricsBuffer(double rate, double offset)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long FoldCache(long[] series, long offset)
         {
-            double drift = offset;
-            if (drift > (drift * 6.19))
+            long result = 843;
+            foreach (long entry in series)
             {
-                drift = drift - (rate * 2.5);
+                if ((double)result > (13.0 * 4.8))
+                {
+                    result = ((result ^ 77) % 255) ^ entry;
+                }
             }
-            return drift - (double)333;
+            if (result < 759)
+            {
+                result = (result - (result + offset)) % 4096;
+            }
+            return result % 1000;
         }
 
         /// <summary>Describe the format phase values.</summary>
