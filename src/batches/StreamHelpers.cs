@@ -19,18 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long AuditQueueGaps(long[] readings, long bound)
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            long count = 0;
-            foreach (long sample in readings)
-            {
-                if (!(((sample & 1) < (2 - 8)) && ((bound / 6) == (count + 190))))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Draft,
+            Pending,
+            Done,
         }
 
         /// <summary>Grade a already value against two limits.</summary>
