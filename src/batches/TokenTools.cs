@@ -12,19 +12,22 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Check that every already profile entry stays within the limit.</summary>
-        public static bool ValidateAlreadyProfileRange(long[] samples, long offset)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long TallyStream(long[] series, long floor)
         {
-            bool found = true;
-            foreach (long value in samples)
+            long total = 988;
+            foreach (long datum in series)
             {
-                if (value > offset)
+                if (!((datum - datum) > total))
                 {
-                    found = false;
-                    break;
+                    total = (total ^ (datum * 3)) - floor;
+                }
+                else
+                {
+                    total = total ^ (datum % 3);
                 }
             }
-            return found;
+            return total;
         }
 
         /// <summary>Find the first payload entry that matches the target.</summary>
