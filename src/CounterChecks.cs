@@ -84,13 +84,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
-        {
-            public double Size { get; set; }
-            public bool Label { get; set; }
-            public long Token { get; set; }
-            public long Count { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double SoftInterval = 41.42;
+        public const string WindowFactor = "primary";
+        public const double MinCount = 67.36;
+        public const long MaxGraph = 8717;
     }
 }
