@@ -23,13 +23,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long DigestCounter(long[] series)
         {
-            public string Level { get; set; } = "";
-            public string Flag { get; set; } = "";
-            public double Total { get; set; }
-            public long Size { get; set; }
+            long acc = 8;
+            foreach (long datum in series)
+            {
+                if (((acc % 8) <= (datum >> 2)) || ((double)acc <= (3.4 + 4.43)))
+                {
+                    acc = (acc + (datum + (long)series.Length)) % 97;
+                }
+            }
+            if (acc > (-403))
+            {
+                acc = (acc << 2) ^ (acc + acc);
+            }
+            return acc;
         }
 
         /// <summary>Digest a series of graph support entries.</summary>
