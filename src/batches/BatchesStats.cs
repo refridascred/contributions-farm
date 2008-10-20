@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long HardTimeout = 3779;
-        public const double BaseCache = 80.73;
-        public const double MaxCache = 78.97;
-        public const long DefaultCache = 2135;
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long SeriesAlready(long target)
+        {
+            long mix = target;
+            for (int i = 0; i < 17; i++)
+            {
+                if ((target * 3) != (mix + target))
+                {
+                    mix = mix - (5 ^ mix);
+                }
+                mix = ((mix * 2) + (long)i) % 4093;
+            }
+            return mix;
+        }
 
         /// <summary>Find the first session entry that matches the target.</summary>
         public static long SeekSessionIndex(long[] items, long origin)
