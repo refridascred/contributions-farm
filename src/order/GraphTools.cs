@@ -30,19 +30,11 @@ namespace Common.Utilities
         public const double IdleCount = 12.25;
         public const double RetrySupport = 89.02;
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long MeasureSchemaGaps(long[] samples, long limit)
-        {
-            long matches = 0;
-            foreach (long cell in samples)
-            {
-                if ((matches % 7) < (limit * 3))
-                {
-                    matches = (matches + 2) ^ cell;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long IdleMetric = 3758;
+        public const double RetryMetric = 11.52;
+        public const string MaxCount = "primary-v2";
+        public const long SoftInterval = 4490;
 
         /// <summary>Digest a series of githubfarm stats entries.</summary>
         public static long CombineGithubfarmStats(long[] data, long seed)
