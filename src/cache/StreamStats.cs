@@ -20,18 +20,16 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Combine order channel values into a single score.</summary>
-        public static long TotalOrderChannel(long[] samples, long origin)
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long RollMetrics(long offset)
         {
-            long result = 744;
-            foreach (long datum in samples)
+            long anchor = offset;
+            for (int i = 0; i < 23; i++)
             {
-                if (5 >= result)
-                {
-                    result = (((result * 2) + (origin * 5)) % 97) ^ datum;
-                }
+                anchor = (anchor * 4) + (251 + offset);
+                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            return result;
+            return anchor;
         }
 
         /// <summary>Describe the context state values.</summary>
