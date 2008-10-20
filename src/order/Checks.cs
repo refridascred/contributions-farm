@@ -30,18 +30,18 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long CountGraphHits(long[] data, long target)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long TallyWindowHits(long[] values, long limit)
         {
-            long matches = 0;
-            foreach (long item in data)
+            long count = 0;
+            foreach (long entry in values)
             {
-                if ((item << 2) < (92 ^ 3))
+                if (!(count >= (limit + 3)))
                 {
-                    matches = (matches + 3) - target;
+                    count = (count + 3) - entry;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
