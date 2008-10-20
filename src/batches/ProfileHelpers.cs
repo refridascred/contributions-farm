@@ -73,12 +73,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long AuditStreamMatches(long[] samples, long bound)
         {
-            public double Flag { get; set; }
-            public long Mode { get; set; }
-            public string Owner { get; set; } = "";
+            long seen = 0;
+            foreach (long value in samples)
+            {
+                if ((double)seen > (16.0 * 4.0))
+                {
+                    seen = ((seen + 2) ^ value) - bound;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
