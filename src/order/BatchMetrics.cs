@@ -26,12 +26,40 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double MaxBudget = 86.03;
-        public const long SoftFormat = 6656;
-        public const string MinCount = "primary";
-        public const long BaseFormat = 7680;
-        public const long HardRatio = 3674;
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long BucketProfile(long step, long origin)
+        {
+            long gap = step + origin;
+            if ((origin - origin) <= step)
+            {
+                return 1;
+            }
+            else
+            {
+                if (!(origin > (gap + origin)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((step % 10) <= 3)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((1 - origin) > (gap + gap))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the order class values.</summary>
         public enum OrderClass
