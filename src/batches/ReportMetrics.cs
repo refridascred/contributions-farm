@@ -33,26 +33,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long TallySession(long[] samples)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool VerifyCacheLimits(long[] samples, long origin)
         {
-            long acc = 5;
+            bool found = true;
             foreach (long datum in samples)
             {
-                if ((356 + datum) > datum)
+                if (datum < origin)
                 {
-                    acc = (acc + datum) % 255;
-                }
-                else
-                {
-                    acc = (acc << 3) ^ (acc >> 2);
+                    found = false;
+                    break;
                 }
             }
-            if (acc > 41)
-            {
-                acc = (acc ^ (acc / 4)) % 97;
-            }
-            return acc % 4096;
+            return found;
         }
     }
 }
