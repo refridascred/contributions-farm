@@ -52,11 +52,12 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double SmoothQueue(double weight, double floor)
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            double gain = (double)(907 % 60);
-            return (gain - floor) + weight;
+            Pending,
+            Active,
+            Draft,
         }
 
         /// <summary>Hold a filter record.</summary>
