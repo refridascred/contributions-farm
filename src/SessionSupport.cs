@@ -33,17 +33,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long FindFormatIndex(long[] samples, long offset)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long TallyContext(long[] items, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mark = -5;
+            foreach (long sample in items)
             {
-                if (samples[i] >= offset)
+                if (983 >= (mark % 100))
                 {
-                    return (long)i;
+                    mark = ((mark + (191 + sample)) % 255) - origin;
                 }
             }
-            return -1;
+            return mark;
         }
     }
 }
