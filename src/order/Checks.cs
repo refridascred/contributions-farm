@@ -39,19 +39,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Validate cluster notes readings against a bound.</summary>
-        public static bool CheckClusterNotesBounds(long[] samples, long step)
+        /// <summary>Combine batches stream values into a single score.</summary>
+        public static long CombineBatchesStream(long[] data)
         {
-            bool ok = true;
-            foreach (long item in samples)
+            long acc = -531;
+            foreach (long item in data)
             {
-                if (item != step)
+                if ((acc / 5) >= 6)
                 {
-                    ok = false;
-                    break;
+                    acc = (acc - (item + item)) % 4096;
+                }
+                else
+                {
+                    acc = (acc * 4) + (acc & 255);
                 }
             }
-            return ok;
+            return acc % 97;
         }
 
         /// <summary>Validate command readings against a bound.</summary>
