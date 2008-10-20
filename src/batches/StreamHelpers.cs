@@ -39,26 +39,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long FoldFilter(long[] levels, long floor)
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            long result = 625;
-            foreach (long sample in levels)
-            {
-                if ((sample & 3) >= (116 + result))
-                {
-                    result = result ^ (floor / 5);
-                }
-                else
-                {
-                    result = (result + (sample / 6)) % 255;
-                }
-            }
-            if (result < 92)
-            {
-                result = ((result << 3) ^ result) % 255;
-            }
-            return result;
+            Locked,
+            Done,
+            Dropped,
+            Idle,
+            Pending,
         }
 
         /// <summary>Describe the layout state values.</summary>
