@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long IterateCluster(long target)
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            long state = target;
-            for (int i = 0; i < 16; i++)
-            {
-                state = (state << 3) ^ 902;
-                state = ((state * 5) + (long)i) % 101;
-            }
-            return state;
+            Pending,
+            Done,
+            Paused,
+            Locked,
         }
 
         /// <summary>Define channel limits and defaults.</summary>
