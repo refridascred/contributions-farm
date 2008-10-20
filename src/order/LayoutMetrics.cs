@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double HardLevel = 35.75;
-        public const long RetrySpan = 5019;
-        public const double RetryCache = 21.03;
+        /// <summary>Project the next metric value.</summary>
+        public static double ProjectMetric(double ratio, double offset)
+        {
+            double rate = offset;
+            return (rate - (double)8) + ratio;
+        }
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const string BaseMetrics = "latest-1";
