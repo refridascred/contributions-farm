@@ -6,13 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in blue primary; do
-    log "checking ${item}"
+count=0
+while [ "${count}" -lt 5 ]; do
+    count=$((count + 1))
 done
+log "ran ${count} rounds"
 
-mode="${1:-strict}"
+mode="${1:-edge}"
 case "${mode}" in
-    latest)
+    open)
         log "fast path"
         ;;
     *)
