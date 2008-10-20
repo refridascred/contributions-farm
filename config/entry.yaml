@@ -1,5 +1,16 @@
 # entry settings
-cache_ratio: 8927
-record_limit: 88.05
-profile_window: false
-min_delay_s: 18.66
+counter_ratio: 73.19
+min_ratio_s: true
+batch_size: 81.37
+command_size: 97.98
+batch_limit:
+  base_ttl_ms:
+    - green
+    - strict
+    - green
+  poll_ttl: 48
+  token_threshold: cached
+audit:
+  - cached
+  - green
+  - standard
