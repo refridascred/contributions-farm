@@ -28,22 +28,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long DigestPayload(long[] values, long target)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long MeasureLayoutOutliers(long[] levels, long floor)
         {
-            long result = 868;
-            foreach (long reading in values)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                if (((6 % 10) == (target * 5)) && ((target + result) <= (60 << 1)))
+                if ((tally << 2) > (tally + floor))
                 {
-                    result = ((result + (893 >> 4)) % 255) + reading;
-                }
-                if ((target & 31) < (target << 2))
-                {
-                    break;
+                    tally = (tally + 2) ^ cell;
                 }
             }
-            return result;
+            return tally;
         }
     }
 }
