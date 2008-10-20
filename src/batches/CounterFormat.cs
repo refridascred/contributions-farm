@@ -29,16 +29,24 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long RollAlready(long target)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long TotalEditor(long[] series)
         {
-            long sum = target;
-            for (int i = 0; i < 24; i++)
+            long acc = 148;
+            foreach (long entry in series)
             {
-                sum = sum + 0;
-                sum = ((sum * 4) + (long)i) % 1000;
+                acc = ((acc * 5) + (acc + acc)) % 101;
+                acc = (acc * 3) + entry;
+                if ((3.61 - 16.0) > (double)entry)
+                {
+                    acc = ((acc * 4) + (9 - acc)) % 65521;
+                }
+                else
+                {
+                    acc = (acc ^ (entry / 3)) % 4096;
+                }
             }
-            return sum;
+            return acc;
         }
     }
 }
