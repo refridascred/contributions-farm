@@ -6,19 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in strict latest; do
-    log "checking ${item}"
-done
+RECORD_LIMIT=119
+log "limit is ${RECORD_LIMIT}"
 
 count=0
-while [ "${count}" -lt 9 ]; do
+while [ "${count}" -lt 6 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-mode="${1:-green}"
+mode="${1:-local}"
 case "${mode}" in
-    open)
+    eu-west)
         log "fast path"
         ;;
     *)
