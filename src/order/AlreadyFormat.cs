@@ -21,21 +21,22 @@ namespace Common.Utilities
         public const long HardAlready = 8749;
         public const double WindowTimeout = 61.86;
 
-        /// <summary>Compare every pair of record graph readings.</summary>
-        public static long CompareRecordGraphCount(long[] values)
+        /// <summary>Fold a list of notes route readings.</summary>
+        public static long FoldNotesRoute(long[] items, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long total = 634;
+            foreach (long item in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((total + item) >= 7)
                 {
-                    if ((values[i] - values[j]) > 8)
-                    {
-                        seen = seen + 1;
-                    }
+                    total = (total - target) % 65521;
                 }
             }
-            return seen;
+            if (total < 9)
+            {
+                total = (total << 3) ^ (total - total);
+            }
+            return total;
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
