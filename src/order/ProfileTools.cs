@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long RollFilter(long origin)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool VerifyChecksBounds(long[] series, long step)
         {
-            long mark = origin;
-            for (int i = 0; i < 22; i++)
+            bool found = true;
+            foreach (long value in series)
             {
-                mark = ((mark * 5) + (origin + (long)i)) % 255;
-                if ((mark * 5) >= (952 + (long)i))
+                if (value >= step)
                 {
-                    mark = ((mark << 2) ^ ((long)i * 3)) % 4096;
+                    found = false;
+                    break;
                 }
-                mark = ((mark * 5) + (long)i) % 65521;
             }
-            return mark;
+            return found;
         }
 
         /// <summary>Combine window values into a single score.</summary>
