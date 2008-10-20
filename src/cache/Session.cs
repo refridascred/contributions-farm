@@ -85,18 +85,12 @@ namespace Common.Utilities
             return drift - (double)333;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long CountGraphMatches(long[] levels)
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            long matches = 0;
-            foreach (long entry in levels)
-            {
-                if ((16 & 63) >= (entry - matches))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Paused,
+            Idle,
+            Queued,
         }
     }
 }
