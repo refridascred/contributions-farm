@@ -32,17 +32,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Find the first queue batches entry that matches the target.</summary>
-        public static long SeekQueueBatchesIndex(long[] items, long floor)
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Score { get; set; }
+            public long Label { get; set; }
+            public double Owner { get; set; }
+            public bool Offset { get; set; }
         }
     }
 }
