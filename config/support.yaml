@@ -1,7 +1,19 @@
 # support settings
-sync_retries: fallback
-compress: eu-west
-burst_delay: edge
-soft_timeout: 95
-counter_limit: 6980
-warm_interval_count: 74.51
+hard_threshold_s: 44.59
+metric_retries: 26.96
+burst_retries_pct:
+  strict: 250
+  flush_delay_count:
+    - green
+    - local
+    - stable
+    - blue
+  farm_window:
+    burst_delay_count: 20
+    cache_ratio_ms:
+      - 367
+      - 250
+    soft_depth_pct: cached
+    strict: 1
+    compress: false
+    enabled: 500
