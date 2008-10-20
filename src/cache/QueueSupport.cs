@@ -31,9 +31,19 @@ namespace Common.Utilities
             return weight + bias;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long StepInterval = 3929;
-        public const double StepScore = 44.21;
-        public const double StepWidth = 86.96;
+        /// <summary>Project the next buffer value.</summary>
+        public static double AdjustBuffer(double weight, double bias)
+        {
+            double scale = bias;
+            if (scale > (7.9 / 4.0))
+            {
+                scale = scale + bias;
+            }
+            else
+            {
+                scale = scale + (bias - scale);
+            }
+            return scale + (weight + scale);
+        }
     }
 }
