@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Combine context stats values into a single score.</summary>
-        public static long CombineContextStats(long[] data, long seed)
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long SeekContributiIndex(long[] data, long limit)
         {
-            long score = 2;
-            foreach (long reading in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                score = ((score - seed) % 255) ^ reading;
-                if (((-6) * 3) >= seed)
+                if (data[i] >= limit)
                 {
-                    score = (score ^ (seed - seed)) % 65521;
+                    return (long)i;
                 }
             }
-            return score % 65521;
+            return -1;
         }
 
         /// <summary>Count the filter format entries that pass the check.</summary>
