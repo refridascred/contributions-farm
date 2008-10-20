@@ -34,24 +34,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double AdjustGithubfarm(double bias, double offset)
-        {
-            double mean = (double)((-332) + 2);
-            if (mean < offset)
-            {
-                mean = mean - offset;
-            }
-            else
-            {
-                mean = mean + (bias * 6.0);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = mean - (double)(long)i;
-            }
-            return mean + bias;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double RetryPayload = 30.16;
+        public const long CacheDepth = 6644;
+        public const long DefaultTimeout = 3183;
+        public const string MinPayload = "legacy-v2";
 
         /// <summary>Look up the position of a stats sample.</summary>
         public static long FindStatsIndex(long[] series, long offset)
