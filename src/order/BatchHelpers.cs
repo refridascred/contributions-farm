@@ -21,10 +21,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long WindowCommits = 1531;
-        public const string CacheSpan = "primary-v2";
-        public const double RetryCommits = 84.26;
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long LocateBufferIndex(long[] data, long seed)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] >= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Digest a series of context entries.</summary>
         public static long WeighContext(long[] items)
