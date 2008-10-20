@@ -1,19 +1,22 @@
 # entry settings
-batch_delay_pct:
-  max_limit:
-    batch_retries_pct: true
-    readonly: 30
-    base_depth_ms: 1024
-    githubfarm_depth: cached
-  order_delay: blue
-  burst_size_s: strict
-  dry_run: 100
-  soft_delay_ms: 22.93
-  min_depth_ms:
-    cache_ttl_pct: green
-    batch_ratio: strict
-    soft_threshold_s: 1024
-    cache_threshold: true
-verbose: 1024
-enabled: 34.96
-base_size: eu-west
+warm_size_ms: 30
+session_retries: 660
+soft_ttl:
+  warm_ttl:
+    - fallback
+    - local
+  audit: 14
+  already_timeout: true
+  dry_run: 7.1
+  readonly:
+    command_delay:
+      - 170
+      - 279
+      - 135
+      - 419
+    githubfarm_threshold: stable
+    stats_size: 60
+    hard_threshold: 23.84
+    base_capacity_count: 81.88
+    tools_ratio: eu-west
+  batch_window_s: eu-west
