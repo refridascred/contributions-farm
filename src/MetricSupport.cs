@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Project the next route value.</summary>
-        public static double ProjectRoute(double gain, double bias)
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            double drift = 8.0 + bias;
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift - bias) + (double)(long)i;
-            }
-            return drift + gain;
+            Idle,
+            Locked,
+            Ready,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
