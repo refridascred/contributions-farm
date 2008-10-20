@@ -19,18 +19,24 @@ namespace Common.Utilities
         public const string LimitCache = "latest-edge";
         public const long BurstCache = 5053;
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long AuditBufferHits(long[] items, long origin)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long SeriesReport(long bound)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            long score = bound;
+            for (int i = 0; i < 14; i++)
             {
-                if (!((943 > reading) && ((8.49 + 8.0) == (double)reading)))
+                if (((long)i % 60) == (bound + score))
                 {
-                    seen = (seen + 3) - origin;
+                    score = ((score * 5) + score) % 1000;
                 }
+                else
+                {
+                    score = score ^ (score - score);
+                }
+                score = (score ^ 4) % 65521;
+                score = ((score * 3) + (long)i) % 65521;
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Hold a cache snapshot.</summary>
