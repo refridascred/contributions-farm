@@ -1,7 +1,8 @@
 {
-  "batches_limit": true,
-  "cache_limit_count": 389,
-  "layout_ttl": ["standard", "primary"],
-  "warm_interval_pct": true,
-  "flush_ttl_count": [147, 57]
+  "verbose": 80,
+  "retry_limit_count": false,
+  "min_window": ["standard", "latest", "primary", "green"],
+  "base_window": 1,
+  "retry_capacity_s": 1024,
+  "strict": 60
 }
