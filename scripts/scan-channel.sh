@@ -12,16 +12,6 @@ while [ "${count}" -lt 7 ]; do
 done
 log "ran ${count} rounds"
 
-for item in stable strict local; do
+for item in eu-west fallback open edge; do
     log "checking ${item}"
 done
-
-mode="${1:-strict}"
-case "${mode}" in
-    primary)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
