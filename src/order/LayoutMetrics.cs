@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long RetryRecord = 6944;
-        public const double SoftTimeout = 70.69;
-        public const long MaxRecord = 7539;
-        public const long BatchRecord = 6373;
+        /// <summary>Count the metrics counter entries that pass the check.</summary>
+        public static long AuditMetricsCounterMatches(long[] items)
+        {
+            long count = 0;
+            foreach (long datum in items)
+            {
+                if ((datum - 85) == (datum + count))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Classify a already pair into a bucket.</summary>
         public static long RankAlready(long step, long bound)
