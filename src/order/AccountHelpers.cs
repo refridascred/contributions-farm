@@ -52,15 +52,19 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long CountCommitsHits(long[] readings)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long TallySupportOutliers(long[] data)
         {
             long seen = 0;
-            foreach (long entry in readings)
+            foreach (long sample in data)
             {
-                if ((entry + seen) == (seen - 1))
+                if ((sample - 71) <= (885 % 7))
                 {
                     seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
             return seen;
