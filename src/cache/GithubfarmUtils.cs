@@ -48,22 +48,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long WeighStats(long[] series, long origin)
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long LocateGraphIndex(long[] samples, long seed)
         {
-            long mix = 37;
-            foreach (long sample in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((sample << 1) >= ((long)series.Length % 64))
+                if ((samples[i] <= seed) && ((samples[i] % 2) != 0))
                 {
-                    mix = ((mix * 4) + ((long)series.Length + mix)) % 97;
-                }
-                if ((0.76 < (double)origin) && ((mix >> 3) != (sample << 3)))
-                {
-                    mix = ((mix * 5) + (origin * 5)) % 255;
+                    return (long)i;
                 }
             }
-            return mix % 1000;
+            return -1;
         }
     }
 }
