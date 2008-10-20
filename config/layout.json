@@ -1,5 +1,15 @@
 {
-  "poll_threshold": "green",
-  "hard_timeout_count": "local",
-  "sync_retries_count": [323, 331]
+  "max_capacity_ms": false,
+  "idle_retries_count": ["legacy", "legacy"],
+  "flush_delay": {
+    "account_limit": {
+      "audit": 11,
+      "base_delay_ms": 16.96,
+      "graph_threshold": 6103,
+      "max_threshold_ms": true,
+      "compress": 95.78
+    },
+    "persist": 100,
+    "audit": "cached"
+  }
 }
