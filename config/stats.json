@@ -1,6 +1,17 @@
 {
-  "batch_timeout_s": 41.13,
-  "sync_ratio_ms": 1760,
-  "payload_timeout": "local",
-  "entry_threshold": "stable"
+  "enabled": "strict",
+  "format_ttl": "green",
+  "max_window_s": {
+    "soft_size_count": 8,
+    "sync_retries": true,
+    "warm_window_s": {
+      "default_retries_s": "edge",
+      "idle_threshold_ms": "fallback",
+      "sync_threshold_s": [53, 156]
+    },
+    "readonly": "local",
+    "commits_window": 30
+  },
+  "max_depth_count": false,
+  "notes_capacity": "blue"
 }
