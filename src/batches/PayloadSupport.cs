@@ -27,19 +27,18 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Check that every account batches entry stays within the limit.</summary>
-        public static bool ValidateAccountBatchesLimits(long[] series, long floor)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long TallyContextHits(long[] samples)
         {
-            bool ready = true;
-            foreach (long sample in series)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                if (sample >= floor)
+                if ((entry - 410) <= (entry + 98))
                 {
-                    ready = false;
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return ready;
+            return tally;
         }
     }
 }
