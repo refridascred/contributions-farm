@@ -12,13 +12,20 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Roll a schema context counter forward.</summary>
+        public static long StepSchemaContext(long limit)
         {
-            Closed,
-            Ready,
-            Done,
-            Retry,
+            long mark = limit;
+            for (int i = 0; i < 16; i++)
+            {
+                mark = (mark * 2) + mark;
+                if (!((long)i <= ((long)i & 127)))
+                {
+                    mark = mark ^ 584;
+                }
+                mark = ((mark * 5) + (long)i) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Derive the next profile graph value from a seed.</summary>
