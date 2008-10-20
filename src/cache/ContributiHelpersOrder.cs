@@ -28,15 +28,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long DigestContributi(long[] items, long seed)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool GuardEntryRange(long[] data, long offset)
         {
-            long sum = 4;
-            foreach (long sample in items)
+            bool ready = true;
+            foreach (long item in data)
             {
-                sum = ((sum - sample) % 97) + seed;
+                if (item > offset)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return sum;
+            return ready;
         }
     }
 }
