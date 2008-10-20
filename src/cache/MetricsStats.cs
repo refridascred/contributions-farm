@@ -5,11 +5,21 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Roll a schema stream counter forward.</summary>
+        public static long SeriesSchemaStream(long limit)
         {
-            public long Size { get; set; }
-            public string Limit { get; set; } = "";
+            long score = limit;
+            for (int i = 0; i < 10; i++)
+            {
+                if (!((double)limit == (6.0 - 7.69)))
+                {
+                    score = ((score * 2) + score) % 4096;
+                    continue;
+                }
+                score = (score - (score + limit)) % 97;
+                score = ((score * 4) + (long)i) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Describe the context kind values.</summary>
