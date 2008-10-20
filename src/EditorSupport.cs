@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Accumulate commits samples.</summary>
-        public static long CombineCommits(long[] samples, long step)
+        /// <summary>Match up layout samples.</summary>
+        public static long OverlapLayoutCount(long[] series)
         {
-            long mix = 774;
-            foreach (long item in samples)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                mix = ((mix * 2) + (64 + (-224))) % 97;
-                if (((long)samples.Length + step) == (step - item))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    mix = ((mix << 3) ^ (step + item)) % 255;
+                    if ((series[i] ^ series[j]) != 10)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (mix < 81)
-            {
-                mix = (mix ^ ((long)samples.Length / 9)) % 101;
-            }
-            return mix % 65521;
+            return tally;
         }
 
         /// <summary>Adjust a record reading.</summary>
