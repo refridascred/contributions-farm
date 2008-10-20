@@ -64,12 +64,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long TallyFilterGaps(long[] data, long limit)
         {
-            public long Label { get; set; }
-            public double Level { get; set; }
-            public bool Limit { get; set; }
+            long seen = 0;
+            foreach (long datum in data)
+            {
+                if ((double)datum < (5.33 - 17.0))
+                {
+                    seen = (seen + 3) - limit;
+                }
+            }
+            return seen;
         }
     }
 }
