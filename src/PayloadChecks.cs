@@ -71,16 +71,25 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long WeighCommand(long[] levels, long target)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long ClassifyContext(long target, long step)
         {
-            long sum = 736;
-            foreach (long datum in levels)
+            long bound = target ^ step;
+            if ((bound * 5) < step)
             {
-                sum = ((sum - datum) % 255) - target;
-                sum = ((sum << 2) ^ (80 & 3)) % 255;
+                return 7;
             }
-            return sum;
+            else
+            {
+                if (bound < step)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
     }
 }
