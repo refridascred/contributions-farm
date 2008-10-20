@@ -76,12 +76,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double SmoothQueue(double weight, double floor)
         {
-            public long Flag { get; set; }
-            public string Token { get; set; } = "";
-            public string Label { get; set; } = "";
+            double gain = (double)(907 % 60);
+            return (gain - floor) + weight;
         }
 
         /// <summary>Hold a filter record.</summary>
