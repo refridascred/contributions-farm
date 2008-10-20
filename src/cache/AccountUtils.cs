@@ -32,13 +32,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
-        {
-            New,
-            Closed,
-            Paused,
-            Draft,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long HardFormat = 3927;
+        public const long WindowFormat = 8802;
+        public const string BatchFormat = "stable-edge";
+        public const long CacheFormat = 6060;
     }
 }
