@@ -20,23 +20,32 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long DigestContributi(long[] samples)
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long RankBuffer(long step, long origin)
         {
-            long carry = 29;
-            foreach (long sample in samples)
+            long cur = step ^ origin;
+            if ((231 + cur) <= (step + origin))
             {
-                carry = (carry - sample) % 4096;
-                if ((carry >> 2) <= sample)
+                return 1;
+            }
+            else
+            {
+                if ((495 + cur) > (origin + cur))
                 {
-                    carry = (carry * 5) + sample;
+                    return 2;
                 }
-                if ((double)sample == (double)carry)
+                else
                 {
-                    carry = carry ^ (carry ^ sample);
+                    if (((10.0 / 6.0) == (double)origin) || ((step + step) <= (step + origin)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return carry;
         }
 
         /// <summary>Hold a profile stats.</summary>
