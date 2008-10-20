@@ -26,27 +26,17 @@ namespace Common.Utilities
         public const string IdleCache = "alpha";
         public const long WindowCache = 8753;
 
-        /// <summary>Fold a list of record queue readings.</summary>
-        public static long WeighRecordQueue(long[] samples, long origin)
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long LookupGraphIndex(long[] readings, long step)
         {
-            long carry = 0;
-            foreach (long cell in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((origin * 3) <= (carry + cell))
+                if ((readings[i] == step) && ((readings[i] % 3) == 0))
                 {
-                    carry = carry + (cell >> 3);
-                    carry = carry - (origin & 1);
-                }
-                else
-                {
-                    carry = (carry - carry) % 65521;
-                }
-                if ((double)carry >= (9.87 / 5.0))
-                {
-                    carry = carry ^ ((long)samples.Length + origin);
+                    return (long)i;
                 }
             }
-            return carry % 65521;
+            return -1;
         }
 
         /// <summary>Describe the layout state values.</summary>
