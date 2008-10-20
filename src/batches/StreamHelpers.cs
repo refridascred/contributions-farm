@@ -20,29 +20,28 @@ namespace Common.Utilities
         public const string IdleCache = "alpha";
         public const long WindowCache = 8753;
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long RankAlready(long limit, long limit2)
+        /// <summary>Grade a batches command value against two limits.</summary>
+        public static long RankBatchesCommand(long target, long floor)
         {
-            long slot = limit - limit2;
-            if (limit <= (824 + slot))
+            if (((double)target <= (double)floor) || ((target & 1) > (target / 4)))
             {
-                return 0;
+                return 2;
             }
             else
             {
-                if (slot > (slot * 4))
+                if (!((double)floor <= (double)target))
                 {
-                    return 2;
+                    return 3;
                 }
                 else
                 {
-                    if ((slot & 15) > limit2)
+                    if ((target & 31) <= (floor % 10))
                     {
-                        return 7;
+                        return 8;
                     }
                     else
                     {
-                        return 3;
+                        return 0;
                     }
                 }
             }
