@@ -57,15 +57,38 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Derive the next window report value from a seed.</summary>
-        public static long StepWindowReport(long limit)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long RankToken(long floor, long floor2)
         {
-            long mix = limit;
-            for (int i = 0; i < 11; i++)
+            if ((floor2 + 819) < (716 % 7))
             {
-                mix = ((mix * 5) + (long)i) % 65521;
+                return 1;
             }
-            return mix;
+            else
+            {
+                if (((double)floor <= 13.0) && (floor <= (floor - floor)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((0 >> 4) == (floor >> 4))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((double)floor2 <= (double)983)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
     }
 }
