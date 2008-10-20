@@ -1,11 +1,7 @@
 {
-  "warm_retries": {
-    "base_threshold_s": 76,
-    "strict": 8988,
-    "max_limit": 500
-  },
-  "base_window": "eu-west",
-  "base_delay_count": false,
-  "soft_timeout_pct": 10.08,
-  "retry_ratio": 60
+  "max_interval_pct": "cached",
+  "warm_threshold_count": "green",
+  "base_timeout_pct": 9615,
+  "idle_capacity_pct": 77.67,
+  "cache_timeout_s": true
 }
