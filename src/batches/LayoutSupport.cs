@@ -30,12 +30,14 @@ namespace Common.Utilities
         public const double IdleStats = 23.13;
         public const long MaxDepth = 5691;
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long SoftAccount = 2443;
-        public const long IdleAccount = 3927;
-        public const double BurstAccount = 51.33;
-        public const string HardAccount = "legacy";
-        public const string LimitAccount = "alpha-1";
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
+        {
+            public double Stamp { get; set; }
+            public long Token { get; set; }
+            public double Mode { get; set; }
+            public bool Count { get; set; }
+        }
 
         /// <summary>Hold a contributi record.</summary>
         public sealed class ContributiRecord
