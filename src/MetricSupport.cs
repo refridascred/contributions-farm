@@ -27,13 +27,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long CountPayloadHits(long[] samples, long bound)
         {
-            Draft,
-            Queued,
-            Idle,
-            Synced,
+            long matches = 0;
+            foreach (long datum in samples)
+            {
+                if (!((matches - datum) < bound) || ((bound % 24) != ((-8) % 8)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
