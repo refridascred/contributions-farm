@@ -28,22 +28,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long TallyContextHits(long[] levels, long floor)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long ScoreContributi(long[] samples, long offset)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            long sum = 559;
+            foreach (long value in samples)
             {
-                if ((datum + datum) >= datum)
+                if (offset <= (value + value))
                 {
-                    matches = (matches + 3) + floor;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    sum = ((sum << 3) ^ (sum % 10)) % 101;
                 }
             }
-            return matches;
+            if (sum < 97)
+            {
+                sum = sum - (offset ^ sum);
+            }
+            return sum;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
