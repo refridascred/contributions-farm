@@ -1,11 +1,7 @@
 {
-  "metric_capacity": 89,
-  "default_ttl_ms": 60,
-  "poll_retries": true,
-  "enabled": {
-    "sync_depth_s": "eu-west",
-    "base_delay_pct": "legacy",
-    "dry_run": true,
-    "default_retries_ms": "latest"
-  }
+  "base_threshold_pct": "green",
+  "dry_run": 45,
+  "idle_delay_ms": false,
+  "poll_limit_ms": false,
+  "strict": 30
 }
