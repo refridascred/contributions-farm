@@ -61,39 +61,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a metric checks pair into a bucket.</summary>
-        public static long GradeMetricChecks(long bound, long target)
+        /// <summary>Validate commits metrics readings against a bound.</summary>
+        public static bool ValidateCommitsMetricsBounds(long[] series, long origin)
         {
-            long next = bound - target;
-            if (!((target ^ bound) == (next << 1)))
+            bool stale = true;
+            foreach (long datum in series)
             {
-                return 4;
-            }
-            else
-            {
-                if ((next ^ target) <= 4)
+                if (datum < origin)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (target >= (bound - target))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((next + next) >= (target + target))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
