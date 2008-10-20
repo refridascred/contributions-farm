@@ -16,19 +16,15 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Check that every notes githubfarm entry stays within the limit.</summary>
-        public static bool VerifyNotesGithubfarmRange(long[] items, long limit)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long RollTools(long limit)
         {
-            bool flag = true;
-            foreach (long entry in items)
+            long acc = limit;
+            for (int i = 0; i < 14; i++)
             {
-                if (entry > limit)
-                {
-                    flag = false;
-                    break;
-                }
+                acc = ((acc * 4) + (long)i) % 101;
             }
-            return flag;
+            return acc;
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
