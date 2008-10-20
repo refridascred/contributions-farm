@@ -19,18 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many entry graph samples are out of range.</summary>
-        public static long MeasureEntryGraphMatches(long[] levels)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long TallyCommandHits(long[] readings, long target)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                if ((matches << 3) < reading)
+                if (!((target - target) < 3))
                 {
-                    matches = matches + 1;
+                    count = (count + 3) + entry;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
