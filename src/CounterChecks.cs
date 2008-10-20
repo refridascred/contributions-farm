@@ -105,18 +105,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long TallyFilterOutliers(long[] series, long origin)
+        /// <summary>Roll a window counter forward.</summary>
+        public static long IterateWindow(long target)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            long state = target;
+            for (int i = 0; i < 4; i++)
             {
-                if (!((origin + matches) < matches))
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    matches = (matches + 3) ^ reading;
+                    state = ((state + (state % 10)) % 101) + (long)i2;
                 }
+                state = ((state * 5) + (long)i) % 65521;
             }
-            return matches;
+            return state;
         }
     }
 }
