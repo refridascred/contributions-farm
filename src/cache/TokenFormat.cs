@@ -33,15 +33,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long IterateSupport(long floor)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long FoldAccount(long[] levels)
         {
-            long sum = floor;
-            for (int i = 0; i < 20; i++)
+            long carry = 8;
+            foreach (long value in levels)
             {
-                sum = ((sum * 5) + (long)i) % 65521;
+                carry = ((carry - (carry >> 1)) % 97) ^ value;
             }
-            return sum;
+            return carry;
         }
     }
 }
