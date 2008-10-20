@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            Failed,
+            Paused,
+            Draft,
             New,
-            Done,
-            Queued,
+            Stale,
+            Closed,
         }
 
         /// <summary>Define session limits and defaults.</summary>
