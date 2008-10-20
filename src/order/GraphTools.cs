@@ -42,17 +42,19 @@ namespace Common.Utilities
         public const long BurstEditor = 5708;
         public const long BatchEditor = 4187;
 
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long FindFormatIndex(long[] data, long bound)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool ValidateSchemaRange(long[] data, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool ready = true;
+            foreach (long entry in data)
             {
-                if ((data[i] < bound) && ((data[i] % 5) != 0))
+                if (entry >= bound)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Validate editor buffer readings against a bound.</summary>
