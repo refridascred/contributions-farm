@@ -1,4 +1,13 @@
 # entry settings
-route_interval: true
-batch_ttl: 59
-burst_ttl_s: 1024
+batch_limit: 39
+format_depth: strict
+retry_limit_ms: 54
+audit:
+  cache_size: false
+  soft_window:
+    - local
+    - green
+    - local
+    - blue
+  warm_window: 88.1
+metrics_ttl: eu-west
