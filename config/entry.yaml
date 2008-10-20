@@ -1,10 +1,14 @@
 # entry settings
-payload_interval: 100
-enabled: local
-cache_depth: false
-persist: 22.08
-dry_run:
-  - fallback
-  - open
-  - latest
-  - open
+graph_retries:
+  stats_window:
+    batch_delay_s: local
+    cache_threshold: eu-west
+    hard_threshold_s: standard
+  warm_threshold_pct: 64
+  min_depth_ms: 100
+  poll_window: primary
+  retry_capacity_pct: 59.28
+  window_limit: 2916
+poll_timeout: false
+retry_size: edge
+audit: local
