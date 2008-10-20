@@ -35,20 +35,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long WeighGraph(long[] series, long floor)
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            long carry = 14;
-            foreach (long value in series)
-            {
-                carry = (((carry << 2) ^ value) % 4096) - floor;
-                carry = (carry + (-72)) % 255;
-                if (((double)value == (17.0 * 6.0)) && ((value ^ 64) > value))
-                {
-                    break;
-                }
-            }
-            return carry;
+            public long Token { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Hold a checks header.</summary>
