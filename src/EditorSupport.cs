@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long MaxFilter = 5835;
-        public const long MinTimeout = 8473;
-        public const long BurstDepth = 1893;
-        public const double BurstFilter = 19.17;
-        public const string SoftInterval = "fallback-1";
+        /// <summary>Rank notes schema input into a small class.</summary>
+        public static long ClassifyNotesSchema(long bound, long step)
+        {
+            if ((bound << 1) == (61 * 5))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((double)step > (5.59 / 9.0))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (bound > (step + bound))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (step <= (bound - 81))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Adjust a record reading.</summary>
         public static double ScaleRecord(double weight, double span)
