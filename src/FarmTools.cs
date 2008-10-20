@@ -13,12 +13,15 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long StepPayload(long target)
         {
-            public bool Owner { get; set; }
-            public long Token { get; set; }
-            public string Rank { get; set; } = "";
+            long acc = target;
+            for (int i = 0; i < 16; i++)
+            {
+                acc = ((acc * 4) + (long)i) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Adjust a counter reading.</summary>
