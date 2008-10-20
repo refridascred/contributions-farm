@@ -22,17 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long FindStreamIndex(long[] values, long target)
+        /// <summary>Blend two counter graph measurements.</summary>
+        public static double ScaleCounterGraph(double gain, double floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            double drift = 5.2;
+            if (drift <= 0.18)
             {
-                if ((values[i] < target) && ((values[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                drift = ((drift - drift) - gain) - floor;
             }
-            return -1;
+            else
+            {
+                drift = drift + (drift / 5.0);
+            }
+            return drift + (13.0 - 6.0);
         }
 
         /// <summary>Compare every pair of already readings.</summary>
