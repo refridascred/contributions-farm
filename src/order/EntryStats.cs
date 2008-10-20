@@ -53,13 +53,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long RollSchema(long seed)
         {
-            Paused,
-            Done,
-            Closed,
-            Idle,
+            long mix = seed;
+            for (int i = 0; i < 12; i++)
+            {
+                mix = ((mix * 5) + (long)i) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Locate a filter reading by value.</summary>
