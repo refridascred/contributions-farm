@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Adjust a context reading.</summary>
-        public static double BlendContext(double weight, double span)
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            double rate = span;
-            if (rate < rate)
-            {
-                rate = rate - (double)(-67);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                rate = (rate - span) - (double)(long)i;
-            }
-            return rate - (rate + weight);
+            public long Limit { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
