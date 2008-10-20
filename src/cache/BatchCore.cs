@@ -14,18 +14,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long TallyTokenMatches(long[] samples, long bound)
+        /// <summary>Audit buffer report readings against a rule.</summary>
+        public static long MeasureBufferReportMatches(long[] data)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            long count = 0;
+            foreach (long reading in data)
             {
-                if ((double)matches != (4.2 - 7.0))
+                if (2.07 < (double)(long)data.Length)
                 {
-                    matches = ((matches + 3) + sample) - bound;
+                    count = (count + 3) ^ reading;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Grade a entry value against two limits.</summary>
