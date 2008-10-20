@@ -1,13 +1,7 @@
 {
-  "poll_threshold": {
-    "max_timeout": 7778,
-    "cache_window_ms": true,
-    "batches_threshold": {
-      "batch_ratio_ms": 31.02,
-      "batch_ttl": 250,
-      "flush_threshold_count": [356, 234, 410]
-    }
-  },
-  "cache_ratio_count": 39,
-  "flush_capacity_ms": "open"
+  "account_interval": ["stable", "open", "cached", "cached"],
+  "soft_ttl_pct": "blue",
+  "soft_delay_ms": ["edge", "legacy", "edge"],
+  "max_timeout_s": 64.88,
+  "persist": "blue"
 }
