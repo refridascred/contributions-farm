@@ -49,12 +49,11 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
-        {
-            Locked,
-            Failed,
-            Stale,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long DefaultSession = 9442;
+        public const long CacheSession = 3252;
+        public const long CacheScore = 727;
+        public const long WindowSession = 4992;
+        public const long MinRatio = 2713;
     }
 }
