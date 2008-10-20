@@ -44,22 +44,11 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Count context pairs that satisfy a relation.</summary>
-        public static long PairContextCount(long[] series)
-        {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 18)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double IdleWidth = 53.59;
+        public const long RetrySize = 9875;
+        public const double HardWidth = 92.65;
+        public const long CacheRatio = 4552;
 
         /// <summary>Hold a command options.</summary>
         public sealed class CommandOptions
