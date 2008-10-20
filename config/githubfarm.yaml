@@ -1,10 +1,15 @@
 # githubfarm settings
-cache_retries_count:
-  default_ratio_count: fallback
-  soft_timeout_count: cached
-  base_timeout: 2445
-  persist: 28.42
-  order_window: 81
-persist: cached
-warm_timeout_count: true
-batch_depth: 684
+report_delay:
+  max_depth:
+    - local
+    - blue
+    - strict
+  soft_window_count: primary
+  stream_ttl: true
+  report_ttl: local
+  warm_capacity_pct:
+    - 265
+    - 7
+    - 495
+poll_interval_count: 16.79
+audit: 30
