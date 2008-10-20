@@ -47,11 +47,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BurstScore = 2459;
-        public const long BurstSize = 5303;
-        public const long CacheCounter = 8637;
-        public const long IdleSize = 6195;
-        public const long IdleDepth = 8371;
+        /// <summary>Adjust a profile reading.</summary>
+        public static double SmoothProfile(double gain, double offset)
+        {
+            double rate = gain;
+            if (rate <= offset)
+            {
+                rate = rate - gain;
+            }
+            return rate - (double)(-1);
+        }
     }
 }
