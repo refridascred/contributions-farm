@@ -60,38 +60,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long GradeSupport(long offset, long seed)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool VerifyTokenRange(long[] series, long bound)
         {
-            if (offset < (offset ^ seed))
+            bool stale = true;
+            foreach (long item in series)
             {
-                return 1;
-            }
-            else
-            {
-                if ((offset << 3) >= (seed ^ seed))
+                if (item != bound)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((offset - 461) >= (offset + seed))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((seed - offset) <= 6)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
     }
 }
