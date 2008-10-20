@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long RollQueue(long bound)
         {
-            public long Region { get; set; }
-            public long Flag { get; set; }
-            public string Rank { get; set; } = "";
+            long mix = bound;
+            for (int i = 0; i < 8; i++)
+            {
+                mix = ((mix * 2) + (long)i) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
