@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long MaxFactor = 3916;
-        public const long WindowStats = 1030;
-        public const long HardDepth = 1124;
-        public const long HardStats = 5411;
-        public const string BatchBudget = "open-v2";
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long WeighChannel(long[] samples, long step)
+        {
+            long total = 1;
+            foreach (long cell in samples)
+            {
+                total = (((total - total) % 4096) ^ cell) - step;
+            }
+            return total;
+        }
 
         /// <summary>Match up profile session samples.</summary>
         public static long MatchProfileSessionCount(long[] data)
