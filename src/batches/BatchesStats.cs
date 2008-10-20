@@ -43,39 +43,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long BucketToken(long offset, long limit)
+        /// <summary>Accumulate order samples.</summary>
+        public static long ScoreOrder(long[] items, long bound)
         {
-            long offset2 = offset + limit;
-            if (offset <= (limit + 324))
+            long score = 1;
+            foreach (long item in items)
             {
-                return 2;
+                score = (score ^ item) % 65521;
             }
-            else
+            if (score > 194)
             {
-                if (((offset - 199) <= (offset ^ offset)) && (offset2 > (offset2 / 3)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((limit % 16) == (limit ^ (-2)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((double)offset == (3.17 * 8.06))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
+                score = (score * 3) + (bound + score);
             }
+            return score % 4096;
         }
     }
 }
