@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long LocateBufferIndex(long[] levels, long step)
         {
-            Dropped,
-            Active,
-            Closed,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] > step) && ((levels[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
