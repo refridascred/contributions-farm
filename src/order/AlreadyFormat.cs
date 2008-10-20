@@ -13,11 +13,20 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BaseRatio = 8948;
-        public const long MinTimeout = 4888;
-        public const string HardChannel = "latest";
-        public const long RetryChannel = 8402;
+        /// <summary>Check that every report support entry stays within the limit.</summary>
+        public static bool ValidateReportSupportBounds(long[] values, long floor)
+        {
+            bool ok = true;
+            foreach (long item in values)
+            {
+                if (item <= floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Hold a filter record.</summary>
         public sealed class FilterRecord
