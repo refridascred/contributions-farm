@@ -32,19 +32,17 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long DigestWindow(long[] levels)
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long LocateRouteIndex(long[] values, long offset)
         {
-            long result = 73;
-            foreach (long reading in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                result = (result - (result & 63)) ^ reading;
+                if (values[i] == offset)
+                {
+                    return (long)i;
+                }
             }
-            if (result > 787)
-            {
-                result = ((result << 2) ^ (result + result)) % 97;
-            }
-            return result % 4096;
+            return -1;
         }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
