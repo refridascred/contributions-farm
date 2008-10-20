@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Blend two account metrics measurements.</summary>
-        public static double AdjustAccountMetrics(double ratio, double floor)
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long SeriesToken(long seed)
         {
-            double mean = ratio;
-            if (mean <= (8.48 * 11.0))
+            long state = seed;
+            for (int i = 0; i < 18; i++)
             {
-                mean = (mean + (mean - mean)) - floor;
+                if ((double)state <= (4.39 + 3.0))
+                {
+                    continue;
+                }
+                state = ((state * 2) + (long)i) % 4093;
             }
-            return mean - (double)(-601);
+            return state;
         }
 
         /// <summary>Locate a stats reading by value.</summary>
