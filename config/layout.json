@@ -1,14 +1,5 @@
 {
-  "dry_run": 57.03,
-  "persist": 29.36,
-  "burst_ttl_s": ["standard", "blue", "primary"],
-  "buffer_delay": 30,
-  "metric_size": {
-    "format_delay": "blue",
-    "max_retries_ms": "green",
-    "max_window_s": ["legacy", "blue", "latest", "latest"],
-    "cache_interval_count": "strict",
-    "hard_ttl_pct": false,
-    "batch_delay_count": 3373
-  }
+  "window_timeout": [226, 149, 255],
+  "poll_ratio_ms": "green",
+  "max_size": 54.06
 }
