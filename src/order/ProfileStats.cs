@@ -45,16 +45,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the session report series from a seed.</summary>
-        public static long DeriveSessionReport(long step)
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long LookupLayoutIndex(long[] levels, long target)
         {
-            long result = step;
-            for (int i = 0; i < 24; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                result = ((result << 2) ^ (step ^ result)) % 4096;
-                result = ((result * 2) + (long)i) % 4093;
+                if (levels[i] < target)
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
     }
 }
