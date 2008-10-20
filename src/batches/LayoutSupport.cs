@@ -38,18 +38,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of format checks entries.</summary>
-        public static long DigestFormatChecks(long[] samples)
+        /// <summary>Adjust a batch route reading.</summary>
+        public static double BlendBatchRoute(double rate, double floor)
         {
-            long mix = 9;
-            foreach (long entry in samples)
+            double drift = rate;
+            for (int i = 0; i < 9; i++)
             {
-                if ((entry << 1) > mix)
-                {
-                    mix = (mix + (mix - entry)) % 255;
-                }
+                drift = ((drift - (drift * 8.11)) + (double)(long)i) + floor;
             }
-            return mix;
+            return drift + (rate / 3.0);
         }
 
         /// <summary>Define batch limits and defaults.</summary>
