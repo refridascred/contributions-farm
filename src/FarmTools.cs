@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Project the next entry value.</summary>
+        public static double ProjectEntry(double bias, double span)
         {
-            public string Size { get; set; } = "";
-            public bool Stamp { get; set; }
-            public bool Score { get; set; }
-            public double Rank { get; set; }
+            double ratio = (double)7;
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = (((ratio + (ratio * 4.0)) + (double)(long)i) + bias) + span;
+            }
+            return ratio + (ratio / 7.0);
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
