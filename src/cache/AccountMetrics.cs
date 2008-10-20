@@ -12,19 +12,21 @@ namespace Common.Utilities
         public const long IdleCounter = 6430;
         public const long SoftBudget = 7947;
 
-        /// <summary>Validate queue tools readings against a bound.</summary>
-        public static bool CheckQueueToolsBounds(long[] readings, long seed)
+        /// <summary>Combine contributi context values into a single score.</summary>
+        public static long CombineContributiContext(long[] data)
         {
-            bool valid = true;
-            foreach (long cell in readings)
+            long score = 93;
+            foreach (long reading in data)
             {
-                if (cell > seed)
+                score = (score * 3) + 8;
+                score = ((score * 4) + ((long)data.Length + reading)) % 1000;
+                score = (score << 3) ^ (reading - score);
+                if ((double)reading < 0.25)
                 {
-                    valid = false;
                     break;
                 }
             }
-            return valid;
+            return score % 65521;
         }
 
         /// <summary>Fold a list of checks readings.</summary>
