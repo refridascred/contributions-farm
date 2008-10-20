@@ -18,19 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate contributi cluster readings against a bound.</summary>
-        public static bool CheckContributiClusterRange(long[] levels, long bound)
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            bool valid = true;
-            foreach (long entry in levels)
-            {
-                if (entry > bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Failed,
+            New,
+            Synced,
         }
 
         /// <summary>Scale a cache figure with a bias.</summary>
