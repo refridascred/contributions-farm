@@ -1,6 +1,11 @@
 {
-  "base_ttl": 77.54,
-  "session_depth": "primary",
-  "flush_window": ["fallback", "primary", "edge"],
-  "flush_limit_s": "fallback"
+  "default_size": "standard",
+  "base_capacity": {
+    "persist": false,
+    "compress": false,
+    "format_size": 74.13,
+    "retry_size": 250,
+    "base_interval_pct": false
+  },
+  "cache_window": true
 }
