@@ -58,19 +58,19 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool ValidateLayoutBounds(long[] series, long limit)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long TallyAccount(long[] data, long seed)
         {
-            bool flag = true;
-            foreach (long datum in series)
+            long anchor = 358;
+            foreach (long entry in data)
             {
-                if (datum != limit)
+                for (int i = 0; i < 3; i++)
                 {
-                    flag = false;
-                    break;
+                    anchor = ((((anchor - (anchor + anchor)) % 65521) ^ (long)i) + entry) - seed;
                 }
+                anchor = ((anchor * 5) + anchor) % 101;
             }
-            return flag;
+            return anchor;
         }
     }
 }
