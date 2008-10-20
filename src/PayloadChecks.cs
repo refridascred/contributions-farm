@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Locate a stats window reading by value.</summary>
+        public static long SeekStatsWindowIndex(long[] readings, long limit)
         {
-            Retry,
-            Failed,
-            New,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] <= limit) && ((readings[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
