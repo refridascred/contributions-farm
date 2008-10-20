@@ -1,14 +1,15 @@
 # Command notes
 
-The command helpers are pure functions, so they are safe to call from any thread.
-The farm module keeps metrics values in sync with the command cache.
+Use batch settings to tune how often metrics data is refreshed.
+A context that stays idle for too long is moved to the stats list.
+Keep account and metric names short and lowercase.
 
-Each record is validated before it reaches the payload queue.
-Use tools settings to tune how often tools data is refreshed.
+Each tools is validated before it reaches the commits queue.
+Keep report and profile names short and lowercase.
 
 ## Guidelines
 
-- Keep context values small
-- Prefer channel defaults
-- Validate channel input early
-- Review commits limits each release
+- Prefer queue defaults
+- Validate layout input early
+- Log every graph change
+- Document new schema fields
