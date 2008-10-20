@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Find the first layout already entry that matches the target.</summary>
-        public static long LookupLayoutAlreadyIndex(long[] readings, long step)
+        /// <summary>Iterate the format profile series from a seed.</summary>
+        public static long IterateFormatProfile(long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long state = target;
+            for (int i = 0; i < 9; i++)
             {
-                if ((readings[i] >= step) && ((readings[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                state = ((state * 3) + (long)i) % 65521;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
