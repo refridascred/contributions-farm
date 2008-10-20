@@ -68,18 +68,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long AuditEntryOutliers(long[] items, long seed)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool VerifyTokenBounds(long[] levels, long limit)
         {
-            long count = 0;
-            foreach (long datum in items)
+            bool flag = true;
+            foreach (long entry in levels)
             {
-                if ((((long)items.Length % 97) <= (datum * 5)) || ((seed / 3) > (261 - seed)))
+                if (entry >= limit)
                 {
-                    count = count + 2;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
     }
 }
