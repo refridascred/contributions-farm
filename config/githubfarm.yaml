@@ -1,25 +1,4 @@
 # githubfarm settings
-audit:
-  sync_timeout_ms: 803
-  dry_run: false
-  flush_limit_ms:
-    - primary
-    - staging
-    - open
-    - latest
-  filter_timeout: true
-  default_timeout: 94
-  metric_timeout:
-    - edge
-    - cached
-    - eu-west
-soft_ratio_ms:
-  support_delay: latest
-  sync_window_pct: 73.13
-  token_limit: 15.8
-  default_capacity_s: true
-  cache_ttl: 100
-entry_timeout: eu-west
-warm_depth_ms: latest
-metrics_limit: true
-strict: 3631
+command_window: 71.15
+command_capacity: eu-west
+hard_timeout_ms: 100
