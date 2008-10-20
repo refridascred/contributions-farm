@@ -1,16 +1,8 @@
 {
-  "report_threshold": 96,
-  "audit": "green",
-  "strict": {
-    "enabled": ["open", "primary"],
-    "idle_interval": {
-      "account_retries": "green",
-      "batch_retries_s": "staging",
-      "dry_run": 7070,
-      "strict": "blue",
-      "idle_retries_ms": 100
-    },
-    "base_window": [341, 268],
-    "verbose": [88, 471, 206]
-  }
+  "retry_ttl_count": "local",
+  "dry_run": "green",
+  "profile_ratio": "blue",
+  "default_interval_pct": "standard",
+  "hard_ratio": 6074,
+  "readonly": ["eu-west", "eu-west", "blue"]
 }
