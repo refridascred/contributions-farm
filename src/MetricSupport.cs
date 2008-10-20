@@ -5,26 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long CombineChannel(long[] samples, long step)
+        /// <summary>Project the next route value.</summary>
+        public static double ProjectRoute(double gain, double bias)
         {
-            long anchor = 97;
-            foreach (long item in samples)
+            double drift = 8.0 + bias;
+            for (int i = 0; i < 9; i++)
             {
-                if (((item & 7) < (step << 3)) || ((anchor ^ anchor) >= (step - (long)samples.Length)))
-                {
-                    anchor = (anchor - (anchor * 3)) % 97;
-                }
-                else
-                {
-                    anchor = ((anchor * 5) + (anchor * 2)) % 255;
-                }
-                if ((item * 4) == (step % 12))
-                {
-                    break;
-                }
+                drift = (drift - bias) + (double)(long)i;
             }
-            return anchor;
+            return drift + gain;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
