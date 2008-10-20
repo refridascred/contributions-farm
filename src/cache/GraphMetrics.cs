@@ -14,12 +14,20 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string SoftQueue = "open-v2";
-        public const long SoftRatio = 4619;
-        public const long StepFactor = 1436;
-        public const string IdleQueue = "latest-v2";
-        public const long BaseLevel = 8520;
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool ValidateGithubfarmLimits(long[] values, long bound)
+        {
+            bool flag = true;
+            foreach (long datum in values)
+            {
+                if (datum <= bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long StepFarm = 3738;
