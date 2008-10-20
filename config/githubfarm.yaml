@@ -1,15 +1,9 @@
 # githubfarm settings
-report_delay:
-  max_depth:
-    - local
-    - blue
-    - strict
-  soft_window_count: primary
-  stream_ttl: true
-  report_ttl: local
-  warm_capacity_pct:
-    - 265
-    - 7
-    - 495
-poll_interval_count: 16.79
-audit: 30
+compress:
+  - 100
+  - 434
+poll_retries_ms:
+  - legacy
+  - stable
+dry_run: standard
+metrics_capacity: edge
