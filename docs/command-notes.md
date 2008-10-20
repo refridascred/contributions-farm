@@ -1,12 +1,13 @@
 # Command notes
 
-The tools module keeps schema values in sync with the cache cache.
-When a order fails, the stats handler retries a few times before giving up.
-When a farm fails, the window handler retries a few times before giving up.
+The window module keeps command values in sync with the schema cache.
+Each editor is validated before it reaches the account queue.
+
+Each context is validated before it reaches the metric queue.
+The window module keeps contributi values in sync with the command cache.
 
 ## Guidelines
 
-- Prefer token defaults
-- Validate window input early
-- Document new graph fields
-- Review window limits each release
+- Log every metrics change
+- Keep already values small
+- Validate layout input early
