@@ -34,16 +34,18 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long DigestPayload(long[] items, long target)
+        /// <summary>Count the batches layout entries that pass the check.</summary>
+        public static long CountBatchesLayoutOutliers(long[] data)
         {
-            long score = 991;
-            foreach (long item in items)
+            long hits = 0;
+            foreach (long item in data)
             {
-                score = (((score * 4) + (target % 100)) % 101) + item;
-                score = (score * 4) + (2 * 3);
+                if ((hits / 9) != (item + item))
+                {
+                    hits = hits + 2;
+                }
             }
-            return score;
+            return hits;
         }
     }
 }
