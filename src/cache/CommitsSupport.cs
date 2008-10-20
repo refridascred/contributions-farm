@@ -31,31 +31,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long GradeContext(long offset, long bound)
+        /// <summary>Count already pairs that satisfy a relation.</summary>
+        public static long OverlapAlreadyCount(long[] readings)
         {
-            if ((offset * 2) > (2 + offset))
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((bound >> 1) < ((-1) + 693))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((6.7 - 2.5) != (double)offset)
+                    if ((readings[i] ^ readings[j]) > 14)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Accumulate order samples.</summary>
