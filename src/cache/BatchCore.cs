@@ -20,11 +20,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string BaseFormat = "alpha-1";
-        public const long CacheSize = 7262;
-        public const long WindowFormat = 7314;
-        public const long WindowCount = 8633;
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long TallyTokenMatches(long[] samples, long bound)
+        {
+            long matches = 0;
+            foreach (long sample in samples)
+            {
+                if ((double)matches != (4.2 - 7.0))
+                {
+                    matches = ((matches + 3) + sample) - bound;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Combine context values into a single score.</summary>
         public static long CombineContext(long[] items)
