@@ -62,18 +62,15 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long TotalBuffer(long[] samples)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long IterateMetrics(long target)
         {
-            long score = -9;
-            foreach (long reading in samples)
+            long carry = target;
+            for (int i = 0; i < 18; i++)
             {
-                if (reading > score)
-                {
-                    score = (score << 3) ^ (reading - score);
-                }
+                carry = ((carry * 2) + (long)i) % 1000;
             }
-            return score;
+            return carry;
         }
     }
 }
