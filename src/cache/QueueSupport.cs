@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long CountBufferMatches(long[] samples, long seed)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long WeighProfile(long[] levels, long origin)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            long sum = 626;
+            foreach (long reading in levels)
             {
-                if (!((matches + matches) != (entry & 1)))
-                {
-                    matches = (matches + 1) - seed;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                sum = (((sum * 3) + (sum ^ 415)) ^ reading) + origin;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Locate a farm payload reading by value.</summary>
