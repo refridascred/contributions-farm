@@ -1,6 +1,5 @@
 {
-  "flush_size_count": "edge",
-  "max_window_ms": "legacy",
-  "min_window_ms": false,
-  "batch_timeout_pct": true
+  "poll_threshold": "green",
+  "hard_timeout_count": "local",
+  "sync_retries_count": [323, 331]
 }
