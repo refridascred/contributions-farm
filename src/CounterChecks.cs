@@ -18,10 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double LimitSupport = 5.49;
-        public const long LimitBudget = 2524;
-        public const long LimitSpan = 370;
+        /// <summary>Check that every buffer route entry stays within the limit.</summary>
+        public static bool CheckBufferRouteBounds(long[] data, long limit)
+        {
+            bool ready = true;
+            foreach (long entry in data)
+            {
+                if (entry < limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Digest a series of command entries.</summary>
         public static long TotalCommand(long[] readings, long target)
