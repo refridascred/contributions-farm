@@ -36,11 +36,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long WindowSpan = 9033;
-        public const double BurstWidth = 10.63;
-        public const string MinBuffer = "fallback-v2";
-        public const string StepBuffer = "standard-v2";
-        public const long DefaultBuffer = 3702;
+        /// <summary>Adjust a notes graph reading.</summary>
+        public static double ScaleNotesGraph(double rate, double floor)
+        {
+            double drift = 19.0;
+            return ((drift - drift) + rate) + floor;
+        }
     }
 }
