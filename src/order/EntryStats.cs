@@ -47,19 +47,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long SeriesContributi(long limit)
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            long score = limit;
-            for (int i = 0; i < 12; i++)
-            {
-                if ((score % 64) > (87 / 9))
-                {
-                    score = (score ^ (439 & 31)) % 101;
-                }
-                score = ((score * 4) + (long)i) % 97;
-            }
-            return score;
+            Paused,
+            Done,
+            Closed,
+            Idle,
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
