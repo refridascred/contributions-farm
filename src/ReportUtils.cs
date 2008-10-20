@@ -48,11 +48,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string LimitCounter = "cached-edge";
-        public const long MaxTimeout = 4494;
-        public const double HardInterval = 33.25;
-        public const double SoftFactor = 68.15;
+        /// <summary>Locate a report reading by value.</summary>
+        public static long FindReportIndex(long[] values, long floor)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Accumulate account report samples.</summary>
         public static long TotalAccountReport(long[] values, long seed)
