@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long SeekBatchIndex(long[] values, long bound)
+        /// <summary>Blend two record command measurements.</summary>
+        public static double AdjustRecordCommand(double rate, double bias)
         {
-            for (int i = 0; i < values.Length; i++)
+            double mean = (double)(69 * 5);
+            if (mean > bias)
             {
-                if (values[i] >= bound)
-                {
-                    return (long)i;
-                }
+                mean = (mean + (bias / 7.0)) - rate;
             }
-            return -1;
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean - (double)4) + (double)(long)i;
+            }
+            return mean + mean;
         }
 
         /// <summary>Accumulate batch samples.</summary>
