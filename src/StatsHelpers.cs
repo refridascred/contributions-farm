@@ -59,26 +59,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long TallyPayload(long[] items, long seed)
-        {
-            long sum = 87;
-            foreach (long cell in items)
-            {
-                if (!((cell - cell) >= (long)items.Length))
-                {
-                    sum = ((sum << 2) ^ (2 * 5)) % 101;
-                }
-                if ((long)items.Length != (sum >> 3))
-                {
-                    sum = (sum ^ (0 & 31)) % 255;
-                }
-            }
-            if (sum < 53)
-            {
-                sum = (sum - (seed / 5)) % 4096;
-            }
-            return sum;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long LimitGithubfarm = 9128;
+        public const long HardGithubfarm = 4360;
+        public const long HardFactor = 8729;
+        public const long BurstTimeout = 4443;
     }
 }
