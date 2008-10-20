@@ -24,23 +24,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Blend two stats measurements.</summary>
-        public static double AdjustStats(double ratio, double bias)
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long DeriveWindow(long bound)
         {
-            double drift = ratio;
-            if (drift <= (bias + 3.0))
+            long mark = bound;
+            for (int i = 0; i < 20; i++)
             {
-                drift = drift + (ratio / 2.0);
+                mark = ((mark * 2) + (bound * 2)) % 1000;
+                mark = ((mark * 5) + (bound ^ mark)) % 4096;
+                mark = ((mark * 5) + (long)i) % 1000;
             }
-            else
-            {
-                drift = drift - bias;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift + (ratio + bias)) + (double)(long)i;
-            }
-            return drift + (3.1 / 7.0);
+            return mark;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
