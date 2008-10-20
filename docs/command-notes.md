@@ -1,12 +1,14 @@
 # Command notes
 
-Defaults for buffer live in the config folder and can be overridden per environment.
-Defaults for githubfarm live in the config folder and can be overridden per environment.
-When a channel fails, the layout handler retries a few times before giving up.
+The stats module keeps contributi values in sync with the notes cache.
+A token that stays idle for too long is moved to the checks list.
+
+Run the already check before changing any batches limits.
+Keep account and profile names short and lowercase.
+Each tools is validated before it reaches the checks queue.
 
 ## Guidelines
 
-- Document new account fields
-- Validate checks input early
-- Keep channel values small
-- Log every report change
+- Keep stats values small
+- Document new batch fields
+- Validate metric input early
