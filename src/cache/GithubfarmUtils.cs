@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Digest a series of support entries.</summary>
+        public static long DigestSupport(long[] values)
         {
-            public string Limit { get; set; } = "";
-            public long Mode { get; set; }
+            long carry = -998;
+            foreach (long value in values)
+            {
+                carry = (carry ^ 95) % 1000;
+                if (((value ^ value) < 91) || ((carry / 3) >= carry))
+                {
+                    carry = carry - 69;
+                }
+            }
+            return carry % 97;
         }
 
         /// <summary>Look up the position of a stream sample.</summary>
