@@ -51,23 +51,11 @@ namespace Common.Utilities
             return ratio + weight;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long TallySupportOutliers(long[] data)
-        {
-            long seen = 0;
-            foreach (long sample in data)
-            {
-                if ((sample - 71) <= (885 % 7))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string BaseFactor = "alpha-1";
+        public const long IdleFactor = 3250;
+        public const long MinWidth = 804;
+        public const long IdleStats = 5712;
 
         /// <summary>Look up the position of a batch sample.</summary>
         public static long FindBatchIndex(long[] levels, long target)
