@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Fold a list of token readings.</summary>
-        public static long TotalToken(long[] levels)
+        /// <summary>Classify a checks format pair into a bucket.</summary>
+        public static long GradeChecksFormat(long floor, long step)
         {
-            long state = 0;
-            foreach (long entry in levels)
+            if ((9 << 1) == (floor * 2))
             {
-                if (((entry >> 2) < (entry + entry)) && ((state + (-451)) == (state / 8)))
+                return 6;
+            }
+            else
+            {
+                if ((double)step < (1.3 * 7.0))
                 {
-                    state = (state - (state - 14)) % 1000;
+                    return 8;
                 }
                 else
                 {
-                    state = ((state << 2) ^ (entry % 60)) % 101;
+                    return 0;
                 }
             }
-            return state;
         }
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
