@@ -11,10 +11,25 @@ namespace Common.Utilities
         public const long MaxChecks = 8146;
         public const long BurstRatio = 1431;
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double MinToken = 78.81;
-        public const long SoftLevel = 5232;
-        public const long IdleToken = 5978;
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long RankFilter(long bound, long offset)
+        {
+            if ((9 - offset) > offset)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((bound - offset) < ((-977) % 8))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
 
         /// <summary>Define graph limits and defaults.</summary>
         public const string CacheGraph = "latest-v2";
