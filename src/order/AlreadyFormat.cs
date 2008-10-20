@@ -39,22 +39,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long TallyToken(long[] readings, long origin)
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            long sum = 54;
-            foreach (long sample in readings)
-            {
-                if ((origin % 3) == (sample + origin))
-                {
-                    sum = sum + (sample - sum);
-                }
-            }
-            if (sum < 775)
-            {
-                sum = ((sum << 2) ^ (sum % 5)) % 97;
-            }
-            return sum % 1000;
+            public string Stamp { get; set; } = "";
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Digest a series of payload buffer entries.</summary>
