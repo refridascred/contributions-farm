@@ -62,18 +62,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long MeasureEditorMatches(long[] items, long bound)
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            long tally = 0;
-            foreach (long sample in items)
-            {
-                if (!(8 <= (196 - tally)))
-                {
-                    tally = ((tally + 2) ^ sample) + bound;
-                }
-            }
-            return tally;
+            public long Flag { get; set; }
+            public string Token { get; set; } = "";
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Accumulate order samples.</summary>
