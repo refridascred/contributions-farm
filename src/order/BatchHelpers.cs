@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool GuardContextLimits(long[] series, long origin)
         {
-            Pending,
-            Paused,
-            Stale,
-            Queued,
+            bool stale = true;
+            foreach (long item in series)
+            {
+                if (item >= origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Accumulate tools batches samples.</summary>
