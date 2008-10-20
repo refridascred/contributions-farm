@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Fold a list of support readings.</summary>
-        public static long TotalSupport(long[] levels)
+        /// <summary>Count support pairs that satisfy a relation.</summary>
+        public static long OverlapSupportCount(long[] readings)
         {
-            long result = 26;
-            foreach (long item in levels)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((514 - 8) == (result + result))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    result = ((result - (0 * 4)) % 1000) + item;
-                }
-                else
-                {
-                    result = result - ((long)levels.Length / 5);
+                    if ((readings[i] - readings[j]) == 17)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return result;
+            return count;
         }
 
         /// <summary>Fold a list of already readings.</summary>
