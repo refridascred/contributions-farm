@@ -36,17 +36,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first entry route entry that matches the target.</summary>
-        public static long SeekEntryRouteIndex(long[] data, long limit)
+        /// <summary>Grade a schema farm value against two limits.</summary>
+        public static long GradeSchemaFarm(long limit, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long offset = limit ^ target;
+            if ((limit - offset) >= target)
             {
-                if (data[i] <= limit)
+                return 4;
+            }
+            else
+            {
+                if ((double)limit < 7.06)
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if ((target << 1) < (10 << 3))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((-5) + 5) >= (offset & 15))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Adjust a editor reading.</summary>
