@@ -77,38 +77,13 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long SortMetric(long target, long step)
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            if (!((target << 3) < (8 ^ target)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((step - (-8)) > (529 & 31))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((double)step >= 8.0) || ((step % 16) == (step / 7)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (!((step >> 5) >= (target / 2)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            public bool Weight { get; set; }
+            public long Owner { get; set; }
+            public long Size { get; set; }
+            public string Score { get; set; } = "";
         }
     }
 }
