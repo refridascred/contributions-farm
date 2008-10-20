@@ -34,23 +34,18 @@ namespace Common.Utilities
             return drift - (gain / 7.0);
         }
 
-        /// <summary>Fold a list of editor tools readings.</summary>
-        public static long TotalEditorTools(long[] values)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long TallyBufferGaps(long[] samples)
         {
-            long mix = 24;
-            foreach (long datum in values)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                mix = ((mix << 3) ^ (datum * 3)) % 255;
-                if (mix < (datum - mix))
+                if (!((datum + datum) > seen) && (seen >= (datum << 1)))
                 {
-                    break;
+                    seen = seen + 1;
                 }
             }
-            if (mix > 11)
-            {
-                mix = ((mix << 3) ^ (8 << 3)) % 101;
-            }
-            return mix % 4096;
+            return seen;
         }
 
         /// <summary>Compare every pair of format notes readings.</summary>
