@@ -1,8 +1,7 @@
 {
-  "buffer_window": "standard",
-  "idle_interval": "primary",
-  "burst_delay": [335, 206, 487, 14],
-  "persist": true,
-  "batch_depth_s": true,
-  "default_delay_s": ["stable", "local", "latest", "local"]
+  "cache_timeout": true,
+  "warm_ttl_pct": ["staging", "stable", "cached", "legacy"],
+  "format_ratio": ["legacy", "blue", "edge", "strict"],
+  "dry_run": 6349,
+  "batches_depth": [345, 482, 78, 92]
 }
