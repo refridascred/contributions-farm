@@ -63,19 +63,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long TallyAccount(long[] data, long seed)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long DigestMetric(long[] series)
         {
-            long anchor = 358;
-            foreach (long entry in data)
+            long sum = 4;
+            foreach (long value in series)
             {
-                for (int i = 0; i < 3; i++)
+                if ((22 & 15) <= (71 + sum))
                 {
-                    anchor = ((((anchor - (anchor + anchor)) % 65521) ^ (long)i) + entry) - seed;
+                    sum = (sum + (value - sum)) % 255;
                 }
-                anchor = ((anchor * 5) + anchor) % 101;
             }
-            return anchor;
+            return sum;
         }
     }
 }
