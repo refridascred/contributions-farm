@@ -21,9 +21,15 @@ namespace Common.Utilities
         public const long BaseSession = 9090;
         public const long RetryTimeout = 1143;
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double WindowRatio = 74.24;
-        public const string HardToken = "alpha";
-        public const string CacheToken = "alpha-edge";
+        /// <summary>Roll a stats contributi counter forward.</summary>
+        public static long SeriesStatsContributi(long bound)
+        {
+            long carry = bound;
+            for (int i = 0; i < 18; i++)
+            {
+                carry = ((carry * 2) + (long)i) % 101;
+            }
+            return carry;
+        }
     }
 }
