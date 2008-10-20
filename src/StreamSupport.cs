@@ -20,18 +20,18 @@ namespace Common.Utilities
         public const long BaseWidth = 1753;
         public const double DefaultChannel = 19.53;
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long AuditFarmOutliers(long[] data)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long AuditCommandMatches(long[] series)
         {
-            long count = 0;
-            foreach (long reading in data)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                if (((long)data.Length ^ count) <= (count + count))
+                if ((matches + matches) > (85 * 2))
                 {
-                    count = (count + 3) - reading;
+                    matches = (matches + 1) + reading;
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
