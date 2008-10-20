@@ -26,12 +26,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
-        {
-            public long Size { get; set; }
-            public double Region { get; set; }
-            public double Ratio { get; set; }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string RetryReport = "strict-edge";
+        public const double MaxScore = 94.52;
+        public const string IdleScore = "primary";
+        public const long HardInterval = 1471;
     }
 }
