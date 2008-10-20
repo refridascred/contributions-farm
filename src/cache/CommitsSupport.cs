@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long DeriveCommand(long target)
+        /// <summary>Accumulate account samples.</summary>
+        public static long TotalAccount(long[] series, long step)
         {
-            long acc = target;
-            for (int i = 0; i < 9; i++)
+            long state = 6;
+            foreach (long sample in series)
             {
-                acc = acc + (target + (long)i);
-                acc = (acc - (acc >> 3)) % 65521;
-                acc = ((acc * 3) + (long)i) % 65521;
+                if ((step >> 2) == (sample ^ state))
+                {
+                    state = (state + (sample << 2)) % 4096;
+                }
             }
-            return acc;
+            return state;
         }
 
         /// <summary>Describe the stats mode values.</summary>
