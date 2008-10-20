@@ -1,5 +1,13 @@
 # support settings
-graph_threshold: 97.61
-sync_retries_ms: 77
-enabled: local
-strict: cached
+warm_timeout_ms:
+  retry_retries: 60.01
+  default_delay_count: 100
+  retry_size: true
+  audit:
+    flush_retries_count: fallback
+    tools_retries: false
+    idle_timeout: 4150
+  persist: primary
+burst_interval: 76.2
+compress: 1.29
+min_delay: 60
