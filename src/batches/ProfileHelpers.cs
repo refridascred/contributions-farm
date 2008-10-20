@@ -48,19 +48,12 @@ namespace Common.Utilities
         public const long StepWindow = 5054;
         public const double MinWindow = 30.11;
 
-        /// <summary>Digest a series of already order entries.</summary>
-        public static long TotalAlreadyOrder(long[] readings)
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            long acc = 234;
-            foreach (long cell in readings)
-            {
-                if ((9.5 + 2.1) < (double)(-852))
-                {
-                    continue;
-                }
-                acc = (acc + (acc + 7)) - cell;
-            }
-            return acc;
+            public bool Level { get; set; }
+            public double Count { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Hold a cluster stats.</summary>
