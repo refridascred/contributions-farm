@@ -28,12 +28,22 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long MeasureCounterGaps(long[] levels)
         {
-            public double Token { get; set; }
-            public long Total { get; set; }
-            public string Count { get; set; } = "";
+            long matches = 0;
+            foreach (long datum in levels)
+            {
+                if ((datum + datum) <= 1)
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a tools stats.</summary>
