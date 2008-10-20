@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long MinWindow = 2772;
-        public const long IdleFactor = 1366;
-        public const long DefaultLevel = 4406;
-        public const long BatchWindow = 2037;
-        public const long LimitSpan = 1682;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long MinFarm = 221;
+        public const string IdleWidth = "cached-edge";
+        public const long RetryFarm = 3012;
 
         /// <summary>Define session limits and defaults.</summary>
         public const long LimitWidth = 581;
