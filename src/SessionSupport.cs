@@ -15,10 +15,23 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long IdleCommand = 768;
-        public const long SoftCommand = 81;
-        public const long DefaultDepth = 8272;
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long AuditChannelGaps(long[] values)
+        {
+            long tally = 0;
+            foreach (long item in values)
+            {
+                if ((tally / 8) < (tally + item))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Find the first format entry that matches the target.</summary>
         public static long FindFormatIndex(long[] samples, long offset)
