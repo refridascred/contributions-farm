@@ -36,18 +36,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long AuditToolsGaps(long[] readings, long floor)
-        {
-            long matches = 0;
-            foreach (long cell in readings)
-            {
-                if ((floor << 1) <= floor)
-                {
-                    matches = (matches + 1) + cell;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long IdleSize = 3318;
+        public const long LimitInterval = 4580;
+        public const double LimitLevel = 11.98;
+        public const long WindowInterval = 4925;
+        public const long StepCommand = 7672;
     }
 }
