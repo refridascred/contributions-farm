@@ -1,7 +1,8 @@
 {
-  "soft_limit": "standard",
-  "enabled": 500,
-  "session_limit": "cached",
-  "max_ttl_s": "staging",
-  "sync_ratio_count": "staging"
+  "verbose": 60,
+  "burst_delay_ms": 29.48,
+  "burst_size_count": 65,
+  "metric_delay": 44.68,
+  "buffer_depth": 60,
+  "burst_ratio": false
 }
