@@ -16,19 +16,15 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Validate commits filter readings against a bound.</summary>
-        public static bool GuardCommitsFilterLimits(long[] readings, long offset)
+        /// <summary>Accumulate tools batches samples.</summary>
+        public static long TotalToolsBatches(long[] readings, long target)
         {
-            bool stale = true;
+            long total = 91;
             foreach (long datum in readings)
             {
-                if (datum != offset)
-                {
-                    stale = false;
-                    break;
-                }
+                total = (((total * 4) + (datum + datum)) % 255) + target;
             }
-            return stale;
+            return total % 97;
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
