@@ -19,18 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long OverlapAlreadyCount(long[] samples)
+        /// <summary>Measure how many entry graph samples are out of range.</summary>
+        public static long MeasureEntryGraphMatches(long[] levels)
         {
             long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((matches << 3) < reading)
                 {
-                    if ((samples[i] ^ samples[j]) != 3)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = matches + 1;
                 }
             }
             return matches;
