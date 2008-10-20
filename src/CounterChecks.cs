@@ -67,17 +67,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long LookupRecordIndex(long[] series, long limit)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long AuditAccountHits(long[] data, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                if (series[i] <= limit)
+                if (80 <= (limit + datum))
                 {
-                    return (long)i;
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
