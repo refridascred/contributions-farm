@@ -5,21 +5,39 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Match up contributi context samples.</summary>
-        public static long MatchContributiContextCount(long[] levels)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long ClassifyMetrics(long floor, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long gap = floor + step;
+            if ((5.0 * 6.68) >= (double)gap)
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((double)step == (18.0 - 3.8))
                 {
-                    if ((levels[i] + levels[j]) != 6)
+                    return 8;
+                }
+                else
+                {
+                    if (!((4.3 + 3.4) == (double)floor))
                     {
-                        seen = seen + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((double)step <= (8.62 - 1.9))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Locate a format reading by value.</summary>
