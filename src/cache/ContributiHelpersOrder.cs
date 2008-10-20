@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long TallyBatchesMatches(long[] data)
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            long count = 0;
-            foreach (long datum in data)
-            {
-                if ((double)datum > (9.4 * 10.0))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public long Mode { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
