@@ -20,15 +20,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double AdjustOrder(double rate, double bias)
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            double weight = bias;
-            for (int i = 0; i < 4; i++)
-            {
-                weight = ((weight + (weight / 9.0)) + (double)(long)i) + rate;
-            }
-            return weight + bias;
+            public bool Stamp { get; set; }
+            public long Limit { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Project the next buffer value.</summary>
