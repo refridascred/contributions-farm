@@ -21,14 +21,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
-        {
-            public long Limit { get; set; }
-            public bool Weight { get; set; }
-            public string Rank { get; set; } = "";
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long WindowCommits = 1531;
+        public const string CacheSpan = "primary-v2";
+        public const double RetryCommits = 84.26;
 
         /// <summary>Digest a series of context entries.</summary>
         public static long WeighContext(long[] items)
