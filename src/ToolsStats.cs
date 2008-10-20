@@ -63,21 +63,18 @@ namespace Common.Utilities
             return mean - (double)0;
         }
 
-        /// <summary>Match up command samples.</summary>
-        public static long MatchCommandCount(long[] samples)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long MeasureEditorMatches(long[] items, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (!(8 <= (196 - tally)))
                 {
-                    if ((samples[i] ^ samples[j]) == 8)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = ((tally + 2) ^ sample) + bound;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Accumulate order samples.</summary>
