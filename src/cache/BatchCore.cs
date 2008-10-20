@@ -32,18 +32,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long AuditCommitsOutliers(long[] values, long step)
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long LookupCommitsIndex(long[] samples, long origin)
         {
-            long seen = 0;
-            foreach (long cell in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)step >= (1.19 - 8.3))
+                if ((samples[i] <= origin) && ((samples[i] % 5) != 0))
                 {
-                    seen = (seen + 3) + cell;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Rank route input into a small class.</summary>
