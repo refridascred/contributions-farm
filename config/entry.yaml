@@ -1,5 +1,7 @@
 # entry settings
-verbose: 1852
-strict: 29
-editor_timeout: local
-farm_timeout: true
+sync_size_ms: fallback
+contributi_capacity: false
+strict:
+  - 251
+  - 191
+  - 51
