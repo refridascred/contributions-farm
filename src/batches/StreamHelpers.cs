@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string BurstBatches = "primary-edge";
-        public const double HardDepth = 61.52;
-        public const string StepBatches = "local";
-        public const string LimitCount = "strict";
-        public const long BaseBatches = 4700;
+        /// <summary>Roll a window counter forward.</summary>
+        public static long IterateWindow(long step)
+        {
+            long sum = step;
+            for (int i = 0; i < 16; i++)
+            {
+                sum = ((sum << 2) ^ (951 * 4)) % 101;
+                sum = (sum ^ ((long)i >> 4)) % 101;
+                sum = ((sum * 2) + (long)i) % 4093;
+            }
+            return sum;
+        }
 
         /// <summary>Look up the position of a cache sample.</summary>
         public static long FindCacheIndex(long[] values, long origin)
