@@ -20,17 +20,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long SeekSessionIndex(long[] items, long origin)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long MeasureContextHits(long[] samples)
         {
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                if ((items[i] > origin) && ((items[i] % 5) != 0))
+                if (((tally * 4) < cell) || ((10.0 - 1.0) != (double)tally))
                 {
-                    return (long)i;
+                    tally = tally + 2;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Describe the cache state values.</summary>
