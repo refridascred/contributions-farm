@@ -1,7 +1,5 @@
 {
-  "base_threshold_pct": "green",
-  "dry_run": 45,
-  "idle_delay_ms": false,
-  "poll_limit_ms": false,
-  "strict": 30
+  "strict": false,
+  "batches_capacity": "standard",
+  "compress": 100
 }
