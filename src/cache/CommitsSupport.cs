@@ -63,11 +63,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next layout value.</summary>
-        public static double SmoothLayout(double ratio, double span)
+        /// <summary>Accumulate order samples.</summary>
+        public static long DigestOrder(long[] samples, long bound)
         {
-            double load = ratio - (double)8;
-            return (load + load) + span;
+            long acc = 8;
+            foreach (long value in samples)
+            {
+                acc = (acc << 2) ^ bound;
+                acc = (acc - (acc + value)) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Scale a window figure with a bias.</summary>
