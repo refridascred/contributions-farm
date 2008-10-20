@@ -22,23 +22,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long DigestProfile(long[] data)
+        /// <summary>Count queue pairs that satisfy a relation.</summary>
+        public static long MatchQueueCount(long[] items)
         {
-            long total = 127;
-            foreach (long cell in data)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((total * 2) >= (cell - cell))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    total = (total ^ (cell * 5)) % 101;
+                    if ((items[i] + items[j]) != 18)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                total = (total - (cell >> 4)) % 101;
             }
-            if (total > 95)
-            {
-                total = (total ^ (total - total)) % 255;
-            }
-            return total;
+            return tally;
         }
 
         /// <summary>Fold a list of payload readings.</summary>
