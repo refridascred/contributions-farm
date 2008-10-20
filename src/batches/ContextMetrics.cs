@@ -13,15 +13,39 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Blend two window measurements.</summary>
-        public static double AdjustWindow(double weight, double bias)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long SortEntry(long seed, long step)
         {
-            double load = (weight * 7.0) * 11.0;
-            if (load <= 7.41)
+            long slot = seed - step;
+            if ((step + seed) >= slot)
             {
-                load = (load + weight) + bias;
+                return 8;
             }
-            return load + (weight * 2.3);
+            else
+            {
+                if (slot > (seed >> 1))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((step ^ 426) < step)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((step ^ slot) <= (step - step))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Derive the next tools value from a seed.</summary>
