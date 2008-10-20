@@ -20,18 +20,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long TallyBatchOutliers(long[] values)
+        /// <summary>Scale a support commits figure with a bias.</summary>
+        public static double ProjectSupportCommits(double bias, double span)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            double mean = (span - span) + bias;
+            if (mean >= (span * 0.05))
             {
-                if (hits >= reading)
-                {
-                    hits = hits + 1;
-                }
+                mean = mean + (bias + span);
             }
-            return hits;
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean - (span - mean)) - (double)(long)i;
+            }
+            return mean + mean;
         }
     }
 }
