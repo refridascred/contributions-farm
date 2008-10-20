@@ -33,21 +33,18 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Match up report layout samples.</summary>
-        public static long CompareReportLayoutCount(long[] readings)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long AuditClusterGaps(long[] samples)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((cell & 15) >= (778 & 7)) || ((double)cell < (4.1 - 5.74)))
                 {
-                    if ((readings[i] - readings[j]) != 9)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = count + 2;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Describe the batches phase values.</summary>
