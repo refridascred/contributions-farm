@@ -13,19 +13,21 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Validate profile record readings against a bound.</summary>
-        public static bool ValidateProfileRecordRange(long[] items, long origin)
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long PairCommandCount(long[] items)
         {
-            bool found = true;
-            foreach (long cell in items)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (cell > origin)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((items[i] - items[j]) > 2)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Digest a series of entry entries.</summary>
