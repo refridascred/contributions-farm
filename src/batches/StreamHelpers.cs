@@ -68,10 +68,21 @@ namespace Common.Utilities
             return scale2 + scale;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long RetryWidth = 7136;
-        public const long DefaultCounter = 6853;
-        public const long HardTimeout = 6598;
-        public const double LimitCounter = 15.84;
+        /// <summary>Match up entry samples.</summary>
+        public static long OverlapEntryCount(long[] values)
+        {
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) == 13)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
     }
 }
