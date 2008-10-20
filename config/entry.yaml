@@ -1,12 +1,4 @@
 # entry settings
-base_capacity_ms: 53.72
-default_ttl_s: 38
-verbose: true
-token_timeout:
-  cache_interval_count: stable
-  cache_limit:
-    - cached
-    - primary
-  max_threshold_ms: fallback
-  default_timeout_count: false
-retry_retries_s: stable
+route_interval: true
+batch_ttl: 59
+burst_ttl_s: 1024
