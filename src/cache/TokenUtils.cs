@@ -36,11 +36,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long SoftFactor = 9797;
-        public const long DefaultFilter = 2666;
-        public const string RetryFilter = "local-edge";
-        public const string MinInterval = "latest-v2";
-        public const double BurstFilter = 44.42;
+        /// <summary>Blend two checks support measurements.</summary>
+        public static double ProjectChecksSupport(double gain, double span)
+        {
+            double gain2 = (double)(2 >> 5);
+            if (gain2 >= gain2)
+            {
+                gain2 = ((gain2 - (gain2 * 5.71)) + gain) - span;
+            }
+            else
+            {
+                gain2 = gain2 - gain2;
+            }
+            return gain2 + (19.0 + gain2);
+        }
     }
 }
