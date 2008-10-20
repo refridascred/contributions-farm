@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Count tools pairs that satisfy a relation.</summary>
-        public static long CompareToolsCount(long[] series)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long RollFormat(long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long result = offset;
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) != 13)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                result = ((result * 5) + (long)i) % 1000;
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Count report filter pairs that satisfy a relation.</summary>
