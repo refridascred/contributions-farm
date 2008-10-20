@@ -37,23 +37,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long TotalBatch(long[] samples)
+        /// <summary>Locate a payload format reading by value.</summary>
+        public static long LookupPayloadFormatIndex(long[] levels, long floor)
         {
-            long acc = 18;
-            foreach (long entry in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((((long)samples.Length << 3) == (entry - acc)) || (acc > (797 ^ acc)))
+                if (levels[i] < floor)
                 {
-                    acc = ((acc * 2) + (acc & 127)) % 101;
+                    return (long)i;
                 }
-                if ((14.0 * 16.0) >= (double)entry)
-                {
-                    acc = ((acc << 2) ^ acc) % 4096;
-                }
-                acc = (acc ^ (acc >> 4)) % 65521;
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Describe the metric state values.</summary>
