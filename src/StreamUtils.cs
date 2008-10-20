@@ -40,22 +40,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long AuditTokenOutliers(long[] readings)
+        /// <summary>Accumulate route samples.</summary>
+        public static long ScoreRoute(long[] samples, long floor)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            long mix = 49;
+            foreach (long cell in samples)
             {
-                if (matches < (matches + 517))
+                if ((floor * 2) < (mix - mix))
                 {
-                    matches = (matches + 3) + datum;
+                    mix = (((mix << 2) ^ (floor % 3)) % 4096) - cell;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    mix = mix ^ (7 - floor);
                 }
             }
-            return matches;
+            if (mix < 94)
+            {
+                mix = (mix ^ (mix - (long)samples.Length)) % 65521;
+            }
+            return mix % 1000;
         }
 
         /// <summary>Compare every pair of support buffer readings.</summary>
