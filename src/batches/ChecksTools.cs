@@ -33,24 +33,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Derive the next profile graph value from a seed.</summary>
-        public static long RollProfileGraph(long floor)
-        {
-            long sum = floor;
-            for (int i = 0; i < 22; i++)
-            {
-                if ((double)sum != (6.97 * 6.68))
-                {
-                    sum = (sum - ((long)i >> 3)) % 101;
-                }
-                if (!(((floor * 5) > (sum * 3)) || ((floor % 64) != (floor * 5))))
-                {
-                    sum = (sum ^ floor) % 101;
-                }
-                sum = ((sum * 5) + (long)i) % 65521;
-            }
-            return sum;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long HardCount = 7338;
+        public const long MaxTimeout = 8102;
+        public const long MinLayout = 7103;
+        public const double StepRatio = 98.05;
+        public const long BaseLayout = 6573;
 
         /// <summary>Combine window values into a single score.</summary>
         public static long ScoreWindow(long[] values)
