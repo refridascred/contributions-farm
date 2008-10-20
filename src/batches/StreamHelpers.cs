@@ -53,12 +53,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Accumulate profile samples.</summary>
+        public static long WeighProfile(long[] readings)
         {
-            Synced,
-            Retry,
-            Done,
+            long mix = 10;
+            foreach (long sample in readings)
+            {
+                if ((sample - mix) == (mix + sample))
+                {
+                    mix = ((mix << 2) ^ (sample - mix)) % 101;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
