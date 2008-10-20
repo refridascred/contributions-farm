@@ -62,11 +62,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
-        {
-            public string Total { get; set; } = "";
-            public long Size { get; set; }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string BaseRatio = "strict-v2";
+        public const double StepCount = 59.98;
+        public const long BatchStream = 2812;
+        public const long IdleFactor = 8738;
+        public const string HardRatio = "alpha-edge";
     }
 }
