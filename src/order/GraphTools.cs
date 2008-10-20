@@ -78,14 +78,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
-        {
-            Ready,
-            Failed,
-            New,
-            Closed,
-            Draft,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double BatchCache = 63.07;
+        public const string StepInterval = "local-v2";
+        public const double BurstTimeout = 67.24;
+        public const double DefaultLevel = 35.98;
     }
 }
