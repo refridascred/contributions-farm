@@ -51,22 +51,15 @@ namespace Common.Utilities
         public const long IdleBudget = 2982;
         public const long RetryGithubfarm = 5648;
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long CountRecordHits(long[] data, long seed)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long TotalMetrics(long[] data)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            long anchor = 4;
+            foreach (long sample in data)
             {
-                if (seed > (reading + reading))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                anchor = ((anchor * 3) + (anchor >> 5)) + sample;
             }
-            return hits;
+            return anchor % 4096;
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
