@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long LookupContributiIndex(long[] readings, long target)
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] >= target) && ((readings[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Score { get; set; }
+            public bool Ratio { get; set; }
+            public long Offset { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Project the next command filter value.</summary>
