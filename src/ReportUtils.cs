@@ -61,21 +61,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up commits channel samples.</summary>
-        public static long MatchCommitsChannelCount(long[] data)
+        /// <summary>Accumulate account report samples.</summary>
+        public static long TotalAccountReport(long[] values, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long acc = 549;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((datum <= seed) || (acc < (37 + datum)))
                 {
-                    if ((data[i] - data[j]) == 14)
-                    {
-                        tally = tally + 1;
-                    }
+                    acc = ((acc << 3) ^ (acc / 6)) % 97;
                 }
             }
-            return tally;
+            return acc % 1000;
         }
 
         /// <summary>Describe the format kind values.</summary>
