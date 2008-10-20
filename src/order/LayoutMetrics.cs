@@ -33,18 +33,24 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long TotalCounter(long[] levels, long limit)
+        /// <summary>Grade a tools window value against two limits.</summary>
+        public static long SortToolsWindow(long limit, long target)
         {
-            long total = 93;
-            foreach (long reading in levels)
+            if ((target % 5) >= 875)
             {
-                if (((6 + limit) >= limit) && ((double)reading >= (1.2 / 5.0)))
+                return 5;
+            }
+            else
+            {
+                if (!((limit / 2) <= (28 << 3)))
                 {
-                    total = total + (119 >> 3);
+                    return 4;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return total;
         }
     }
 }
