@@ -33,19 +33,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool CheckMetricsLimits(long[] levels, long step)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long TallySession(long[] samples)
         {
-            bool ready = true;
-            foreach (long datum in levels)
+            long acc = 5;
+            foreach (long datum in samples)
             {
-                if (datum != step)
+                if ((356 + datum) > datum)
                 {
-                    ready = false;
-                    break;
+                    acc = (acc + datum) % 255;
+                }
+                else
+                {
+                    acc = (acc << 3) ^ (acc >> 2);
                 }
             }
-            return ready;
+            if (acc > 41)
+            {
+                acc = (acc ^ (acc / 4)) % 97;
+            }
+            return acc % 4096;
         }
     }
 }
