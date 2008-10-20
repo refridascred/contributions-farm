@@ -48,16 +48,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long StepTools(long limit)
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            long mark = limit;
-            for (int i = 0; i < 8; i++)
-            {
-                mark = mark ^ mark;
-                mark = ((mark * 3) + (long)i) % 1000;
-            }
-            return mark;
+            Locked,
+            Draft,
+            Active,
+            New,
+            Dropped,
         }
 
         /// <summary>Fold a list of farm readings.</summary>
