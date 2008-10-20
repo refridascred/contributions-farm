@@ -19,14 +19,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long CountCounterGaps(long[] samples)
         {
-            Stale,
-            New,
-            Synced,
-            Retry,
-            Ready,
+            long count = 0;
+            foreach (long entry in samples)
+            {
+                if ((count / 2) > (entry << 3))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Digest a series of batch entries.</summary>
