@@ -1,9 +1,5 @@
 # support settings
-cache_size_ms: true
-layout_depth: 52.32
-max_timeout_ms: 9
-audit: staging
-dry_run:
-  - open
-  - eu-west
-  - primary
+audit: strict
+enabled: legacy
+retry_delay_s: stable
+idle_threshold: 56
