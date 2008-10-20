@@ -1,18 +1,6 @@
 {
-  "metrics_depth": false,
-  "sync_timeout": false,
-  "poll_depth_s": {
-    "readonly": 48,
-    "min_ttl_s": "cached",
-    "sync_interval": 1024,
-    "record_window": [294, 188],
-    "report_interval": 100,
-    "strict": {
-      "warm_interval_count": 87.2,
-      "sync_depth_count": 6,
-      "flush_delay_s": "stable",
-      "cache_ttl_ms": "stable"
-    }
-  },
-  "idle_threshold": [328, 451, 277, 55]
+  "min_depth": 250,
+  "soft_capacity": ["stable", "staging"],
+  "flush_limit": 8975,
+  "enabled": [382, 371, 378, 392]
 }
