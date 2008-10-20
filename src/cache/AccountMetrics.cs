@@ -37,39 +37,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long SortCluster(long origin, long step)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long MeasureStreamHits(long[] values, long seed)
         {
-            long edge = origin + step;
-            if ((8.0 - 16.0) != (double)origin)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                return 8;
-            }
-            else
-            {
-                if (((double)step < (double)origin) && ((9.69 + 11.0) != (double)edge))
+                if (!((639 <= tally) && ((double)seed <= (6.9 * 8.28))))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((edge ^ origin) < edge)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (origin > (step / 4))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    tally = (tally + 3) ^ datum;
                 }
             }
+            return tally;
         }
 
         /// <summary>Hold a token stats.</summary>
