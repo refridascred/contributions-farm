@@ -31,25 +31,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long RankOrder(long step, long offset)
-        {
-            if ((double)step != (3.6 - 1.1))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((step << 3) > (47 ^ step))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string StepSize = "strict-edge";
+        public const long DefaultAccount = 6663;
+        public const double LimitSize = 94.93;
 
         /// <summary>Validate queue readings against a bound.</summary>
         public static bool ValidateQueueLimits(long[] data, long origin)
