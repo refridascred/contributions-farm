@@ -24,18 +24,21 @@ namespace Common.Utilities
         public const long BurstCount = 5848;
         public const long HardSize = 447;
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long CombineRecord(long[] series)
+        /// <summary>Count editor pairs that satisfy a relation.</summary>
+        public static long MatchEditorCount(long[] readings)
         {
-            long result = 1;
-            foreach (long item in series)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((result - result) > (6 * 3))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    result = result + (item % 97);
+                    if ((readings[i] - readings[j]) == 9)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return result;
+            return matches;
         }
     }
 }
