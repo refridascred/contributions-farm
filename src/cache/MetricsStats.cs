@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long SoftEntry = 671;
-        public const long DefaultEntry = 3005;
-        public const long MinCount = 2816;
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
+        {
+            public long Size { get; set; }
+            public string Limit { get; set; } = "";
+        }
 
         /// <summary>Describe the context kind values.</summary>
         public enum ContextKind
