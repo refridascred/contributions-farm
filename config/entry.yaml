@@ -1,14 +1,4 @@
 # entry settings
-graph_retries:
-  stats_window:
-    batch_delay_s: local
-    cache_threshold: eu-west
-    hard_threshold_s: standard
-  warm_threshold_pct: 64
-  min_depth_ms: 100
-  poll_window: primary
-  retry_capacity_pct: 59.28
-  window_limit: 2916
-poll_timeout: false
-retry_size: edge
-audit: local
+idle_depth_count: 31.49
+retry_retries: 30
+warm_window_count: 19
