@@ -12,21 +12,19 @@ namespace Common.Utilities
         public const long IdleCounter = 6430;
         public const long SoftBudget = 7947;
 
-        /// <summary>Combine contributi context values into a single score.</summary>
-        public static long CombineContributiContext(long[] data)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool VerifyRouteRange(long[] items, long seed)
         {
-            long score = 93;
-            foreach (long reading in data)
+            bool ok = true;
+            foreach (long cell in items)
             {
-                score = (score * 3) + 8;
-                score = ((score * 4) + ((long)data.Length + reading)) % 1000;
-                score = (score << 3) ^ (reading - score);
-                if ((double)reading < 0.25)
+                if (cell < seed)
                 {
+                    ok = false;
                     break;
                 }
             }
-            return score % 65521;
+            return ok;
         }
 
         /// <summary>Describe the farm kind values.</summary>
