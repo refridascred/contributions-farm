@@ -3,12 +3,11 @@ CREATE TABLE IF NOT EXISTS stream_events (
     id INTEGER PRIMARY KEY,
     created_at TIMESTAMP,
     state TEXT NOT NULL DEFAULT 'new',
-    count INTEGER NOT NULL DEFAULT 0,
-    region TEXT
+    token TEXT,
+    weight REAL,
+    ratio REAL
 );
 
-CREATE INDEX IF NOT EXISTS idx_stream_events_count ON stream_events (count);
+CREATE INDEX IF NOT EXISTS idx_stream_events_token ON stream_events (token);
 
-INSERT INTO stream_events (state, count, region) VALUES ('local', 71, 'eu-west');
-INSERT INTO stream_events (state, count, region) VALUES ('eu-west', 44, 'eu-west');
-INSERT INTO stream_events (state, count, region) VALUES ('standard', 90, 'blue');
+INSERT INTO stream_events (state, token, weight, ratio) VALUES ('fallback', 'primary', 80.03, 87.81);
