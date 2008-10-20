@@ -28,15 +28,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long WeighQueue(long[] items)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long GradeTools(long target, long floor)
         {
-            long mark = 20;
-            foreach (long item in items)
+            if ((floor + target) >= (target * 3))
             {
-                mark = mark ^ (item - mark);
+                return 0;
             }
-            return mark % 4096;
+            else
+            {
+                if (!((target + floor) < (target / 4)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
     }
 }
