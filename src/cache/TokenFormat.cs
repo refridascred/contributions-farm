@@ -30,20 +30,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long TallyNotes(long[] data, long step)
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            long acc = 4;
-            foreach (long value in data)
-            {
-                acc = (acc ^ (value ^ value)) % 255;
-                acc = (acc + step) % 255;
-            }
-            if (acc > 65)
-            {
-                acc = (acc << 2) ^ (step + step);
-            }
-            return acc;
+            Retry,
+            Stale,
+            Failed,
+            Idle,
+            Done,
         }
     }
 }
