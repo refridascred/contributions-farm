@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long TallyBatchesHits(long[] items)
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
         {
-            long tally = 0;
-            foreach (long value in items)
-            {
-                if (((value - value) > (269 - value)) || ((value & 15) < tally))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public string Mode { get; set; } = "";
+            public bool Total { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Blend two window measurements.</summary>
