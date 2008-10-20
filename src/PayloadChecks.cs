@@ -25,10 +25,23 @@ namespace Common.Utilities
         public const string BurstTimeout = "latest";
         public const double RetryRecord = 2.48;
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string StepSize = "strict-edge";
-        public const long DefaultAccount = 6663;
-        public const double LimitSize = 94.93;
+        /// <summary>Measure how many contributi session samples are out of range.</summary>
+        public static long AuditContributiSessionHits(long[] readings)
+        {
+            long hits = 0;
+            foreach (long reading in readings)
+            {
+                if (reading >= hits)
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Combine session values into a single score.</summary>
         public static long ScoreSession(long[] readings, long offset)
