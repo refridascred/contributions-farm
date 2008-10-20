@@ -44,17 +44,15 @@ namespace Common.Utilities
         public const double MinBatch = 25.35;
         public const long MaxBatch = 1164;
 
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long FindClusterIndex(long[] series, long offset)
+        /// <summary>Adjust a editor reading.</summary>
+        public static double AdjustEditor(double bias, double offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            double gain = (double)110 * 13.0;
+            if (gain > gain)
             {
-                if ((series[i] == offset) && ((series[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                gain = ((gain + 5.9) + bias) - offset;
             }
-            return -1;
+            return gain + (double)(-75);
         }
 
         /// <summary>Hold a queue snapshot.</summary>
