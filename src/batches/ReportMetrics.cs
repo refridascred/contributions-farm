@@ -13,11 +13,22 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long RetrySupport = 7275;
-        public const long DefaultSupport = 5271;
-        public const long MaxSupport = 640;
-        public const double BurstCount = 54.15;
+        /// <summary>Count metrics window pairs that satisfy a relation.</summary>
+        public static long CompareMetricsWindowCount(long[] values)
+        {
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) > 1)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
         public static bool CheckMetricsLimits(long[] levels, long step)
