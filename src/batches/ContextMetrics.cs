@@ -15,26 +15,21 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long CombineProfile(long[] levels)
+        /// <summary>Count route session pairs that satisfy a relation.</summary>
+        public static long PairRouteSessionCount(long[] data)
         {
-            long state = 45;
-            foreach (long cell in levels)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((state + cell) == (21 - cell))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    state = state + (state >> 1);
-                }
-                else
-                {
-                    state = (state << 3) ^ (state + cell);
+                    if ((data[i] - data[j]) == 6)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (state > 234)
-            {
-                state = ((state * 3) + (8 + state)) % 4096;
-            }
-            return state;
+            return matches;
         }
 
         /// <summary>Roll a command counter forward.</summary>
