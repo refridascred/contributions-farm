@@ -1,11 +1,11 @@
 # Command notes
 
-Each commits is validated before it reaches the window queue.
-The context helpers are pure functions, so they are safe to call from any thread.
-Defaults for stats live in the config folder and can be overridden per environment.
+A checks that stays idle for too long is moved to the record list.
+The queue report groups every metric by farm.
+Use command settings to tune how often batches data is refreshed.
 
 ## Guidelines
 
-- Review batch limits each release
-- Keep queue values small
-- Document new profile fields
+- Document new queue fields
+- Review queue limits each release
+- Prefer stats defaults
