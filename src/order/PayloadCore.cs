@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Measure how many stream channel samples are out of range.</summary>
+        public static long CountStreamChannelHits(long[] data, long floor)
         {
-            Locked,
-            New,
-            Ready,
+            long hits = 0;
+            foreach (long value in data)
+            {
+                if ((floor ^ value) > (value / 5))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Iterate the format series from a seed.</summary>
