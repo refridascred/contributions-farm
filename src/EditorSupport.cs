@@ -101,11 +101,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BaseSchema = 1247;
-        public const long MinSize = 5379;
-        public const double RetryScore = 94.8;
-        public const long HardDepth = 5973;
-        public const string IdleSchema = "cached-edge";
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long LocateBatchesIndex(long[] levels, long target)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
