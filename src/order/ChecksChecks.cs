@@ -32,18 +32,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long AuditGithubfarmHits(long[] series, long target)
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            long count = 0;
-            foreach (long value in series)
-            {
-                if ((782 ^ count) <= (8 - count))
-                {
-                    count = ((count + 3) - value) - target;
-                }
-            }
-            return count;
+            Idle,
+            Synced,
+            Active,
+            Locked,
         }
     }
 }
