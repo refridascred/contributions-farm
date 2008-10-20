@@ -48,14 +48,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            Locked,
-            Draft,
-            Active,
-            New,
-            Dropped,
+            public long Token { get; set; }
+            public bool Rank { get; set; }
+            public long Size { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Fold a list of farm readings.</summary>
