@@ -31,15 +31,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long DeriveFilter(long step)
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
         {
-            long score = step;
-            for (int i = 0; i < 22; i++)
-            {
-                score = ((score * 3) + (long)i) % 4093;
-            }
-            return score;
+            public string Region { get; set; } = "";
+            public long Stamp { get; set; }
         }
     }
 }
