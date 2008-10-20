@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string BaseSchema = "fallback-1";
-        public const string RetryDepth = "alpha";
-        public const double CacheSchema = 98.11;
-        public const long WindowSchema = 1812;
-        public const long WindowDepth = 7226;
+        /// <summary>Look up the position of a report record sample.</summary>
+        public static long SeekReportRecordIndex(long[] values, long bound)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Compare every pair of editor commits readings.</summary>
         public static long OverlapEditorCommitsCount(long[] series)
