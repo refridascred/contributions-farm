@@ -1,5 +1,6 @@
 # support settings
-audit: strict
-enabled: legacy
-retry_delay_s: stable
-idle_threshold: 56
+soft_capacity_pct: 500
+payload_depth: 789
+max_capacity_count: latest
+readonly: false
+min_limit: 265
