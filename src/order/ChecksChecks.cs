@@ -18,19 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long RollCounter(long offset)
+        /// <summary>Audit profile stream readings against a rule.</summary>
+        public static long AuditProfileStreamMatches(long[] levels)
         {
-            long carry = offset;
-            for (int i = 0; i < 20; i++)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                for (int i2 = 0; i2 < 8; i2++)
+                if ((double)hits >= (6.9 + 2.48))
                 {
-                    carry = ((carry * 3) + (carry >> 1)) ^ (long)i2;
+                    hits = (hits + 1) - cell;
                 }
-                carry = ((carry * 5) + (long)i) % 65521;
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
