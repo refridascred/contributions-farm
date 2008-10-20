@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const double WindowRoute = 90.52;
-        public const double HardLevel = 36.58;
-        public const long MinRoute = 6500;
-        public const string BatchTimeout = "fallback-v2";
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long StepTools = 857;
+        public const string RetryLevel = "primary";
+        public const double CacheDepth = 64.72;
+        public const string RetryTools = "staging";
 
         /// <summary>Define window limits and defaults.</summary>
         public const double RetryWindow = 34.39;
