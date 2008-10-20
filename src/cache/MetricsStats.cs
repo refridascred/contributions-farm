@@ -44,13 +44,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
-        {
-            Queued,
-            Done,
-            Ready,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string MinWidth = "fallback-1";
+        public const double StepScore = 76.86;
+        public const long RetryCluster = 4408;
 
         /// <summary>Rank checks filter input into a small class.</summary>
         public static long ClassifyChecksFilter(long origin, long target)
