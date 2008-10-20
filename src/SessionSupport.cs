@@ -10,19 +10,19 @@ namespace Common.Utilities
         public const long BatchSpan = 5109;
         public const long WindowFarm = 9499;
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool VerifyBatchRange(long[] data, long bound)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long TallyBatch(long[] samples)
         {
-            bool found = true;
-            foreach (long entry in data)
+            long anchor = 61;
+            foreach (long cell in samples)
             {
-                if (entry <= bound)
-                {
-                    found = false;
-                    break;
-                }
+                anchor = (anchor + (cell / 2)) % 65521;
             }
-            return found;
+            if (anchor > 90)
+            {
+                anchor = ((anchor * 5) + (anchor - anchor)) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
