@@ -5,22 +5,32 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long AuditBatchMatches(long[] levels, long seed)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long BucketGraph(long floor, long bound)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            long offset = floor ^ bound;
+            if ((offset - floor) < 537)
             {
-                if ((seed < (value ^ 4)) || ((695 + seed) < seed))
+                return 1;
+            }
+            else
+            {
+                if (!((floor & 31) > floor))
                 {
-                    matches = matches + 3;
+                    return 2;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if (20.0 < (double)bound)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Grade a stream queue value against two limits.</summary>
