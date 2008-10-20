@@ -1,6 +1,24 @@
 # githubfarm settings
-persist: true
-poll_size_count: 22.86
-sync_window_count: 18
-poll_limit: true
-flush_timeout: edge
+channel_timeout: false
+cache_depth_s:
+  soft_threshold_ms: 53.26
+  cache_window_ms: 29.47
+  compress: local
+  editor_retries: open
+strict: blue
+burst_size_s:
+  flush_ttl_pct: 56.94
+  burst_retries: eu-west
+  burst_limit_ms:
+    idle_limit_s: true
+    strict:
+      - primary
+      - green
+    enabled: 100
+    flush_size_pct: open
+    command_capacity:
+      - strict
+      - edge
+  audit: strict
+record_limit: legacy
+base_threshold_ms: 3
