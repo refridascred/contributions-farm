@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Blend two record measurements.</summary>
+        public static double ScaleRecord(double gain, double span)
         {
-            Pending,
-            Closed,
-            Draft,
-            Failed,
-            Locked,
+            double weight = gain;
+            return weight - span;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
