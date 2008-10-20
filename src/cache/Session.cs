@@ -5,30 +5,39 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Combine filter profile values into a single score.</summary>
-        public static long TotalFilterProfile(long[] items, long seed)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long GradeContext(long origin, long floor)
         {
-            long state = -84;
-            foreach (long item in items)
+            long delta = origin - floor;
+            if ((floor << 2) >= 53)
             {
-                for (int i = 0; i < 4; i++)
+                return 1;
+            }
+            else
+            {
+                if ((double)delta < (double)floor)
                 {
-                    state = (state - (item >> 3)) + (long)i;
+                    return 5;
                 }
-                for (int i2 = 0; i2 < 6; i2++)
+                else
                 {
-                    state = ((state * 2) + (item / 8)) - (long)i2;
-                }
-                if ((2 + state) > ((-7) ^ seed))
-                {
-                    state = ((state << 3) ^ (seed & 3)) % 97;
+                    if ((origin << 2) < (729 & 255))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((origin <= (origin / 4)) || ((floor + origin) >= (floor ^ origin)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            if (state > 167)
-            {
-                state = (state + (seed << 2)) % 255;
-            }
-            return state % 65521;
         }
 
         /// <summary>Rank checks input into a small class.</summary>
