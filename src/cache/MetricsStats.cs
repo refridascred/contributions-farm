@@ -18,15 +18,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Adjust a route context reading.</summary>
-        public static double AdjustRouteContext(double bias, double offset)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long MeasureCacheHits(long[] series, long seed)
         {
-            double drift = (double)(76 >> 5);
-            if (drift < offset)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                drift = drift - (drift + bias);
+                if ((7 + seed) < (cell + cell))
+                {
+                    seen = seen + 1;
+                }
             }
-            return drift + (offset * 2.54);
+            return seen;
         }
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
