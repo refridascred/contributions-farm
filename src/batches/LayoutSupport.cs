@@ -23,11 +23,19 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Scale a queue batch figure with a bias.</summary>
-        public static double BlendQueueBatch(double rate, double offset)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool VerifyAlreadyRange(long[] levels, long target)
         {
-            double mean = rate;
-            return (mean + (3.6 + 3.09)) + offset;
+            bool flag = true;
+            foreach (long datum in levels)
+            {
+                if (datum < target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Digest a series of format checks entries.</summary>
