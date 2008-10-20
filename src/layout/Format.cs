@@ -61,23 +61,19 @@ namespace Common.Utilities
             return rate - span;
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long WeighCounter(long[] levels, long floor)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long RollProfile(long origin)
         {
-            long score = 2;
-            foreach (long item in levels)
+            long anchor = origin;
+            for (int i = 0; i < 17; i++)
             {
-                score = (score - score) % 101;
-                if ((floor ^ score) <= (item >> 2))
+                if (!((9.2 * 6.2) < (double)(long)i))
                 {
-                    break;
+                    anchor = anchor + 34;
                 }
+                anchor = ((anchor * 5) + (long)i) % 65521;
             }
-            if (score < 264)
-            {
-                score = (score - score) % 97;
-            }
-            return score % 4096;
+            return anchor;
         }
     }
 }
