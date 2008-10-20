@@ -73,23 +73,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of already graph entries.</summary>
-        public static long WeighAlreadyGraph(long[] series, long offset)
-        {
-            long mark = 7;
-            foreach (long datum in series)
-            {
-                mark = (mark - ((-4) >> 1)) % 255;
-                if ((double)datum < (5.1 - 20.0))
-                {
-                    break;
-                }
-            }
-            if (mark < 2)
-            {
-                mark = mark ^ (offset ^ offset);
-            }
-            return mark;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double BatchCount = 64.88;
+        public const long MaxLevel = 9096;
+        public const double HardInterval = 11.97;
+        public const long LimitSession = 223;
     }
 }
