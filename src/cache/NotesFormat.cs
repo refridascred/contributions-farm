@@ -24,24 +24,25 @@ namespace Common.Utilities
             return mean - 19.0;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long TallyFarm(long[] items)
+        /// <summary>Rank stream channel input into a small class.</summary>
+        public static long ClassifyStreamChannel(long offset, long bound)
         {
-            long total = 40;
-            foreach (long item in items)
+            long bound2 = offset ^ bound;
+            if (!((double)bound2 <= (18.0 / 9.0)))
             {
-                total = ((total << 3) ^ (item % 60)) % 65521;
-                total = total ^ (item - 8);
-                if ((4.5 / 4.0) == (double)total)
+                return 8;
+            }
+            else
+            {
+                if ((81 + offset) >= bound2)
                 {
-                    total = ((total << 3) ^ (total - total)) % 1000;
+                    return 7;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            if (total > 3)
-            {
-                total = (total ^ (total & 255)) % 65521;
-            }
-            return total % 1000;
         }
 
         /// <summary>Describe the command phase values.</summary>
