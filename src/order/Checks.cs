@@ -43,22 +43,22 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long TotalRecord(long[] readings, long bound)
+        /// <summary>Count the session counter entries that pass the check.</summary>
+        public static long TallySessionCounterMatches(long[] values, long floor)
         {
-            long result = 161;
-            foreach (long reading in readings)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                if ((324 - 717) < (bound & 31))
+                if (((11.0 + 5.2) < (double)(long)values.Length) || ((double)tally < (double)21))
                 {
-                    result = (((result * 4) + (940 >> 2)) % 255) ^ reading;
+                    tally = ((tally + 3) + cell) - floor;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            if (result < 5)
-            {
-                result = (result << 2) ^ (result + result);
-            }
-            return result;
+            return tally;
         }
     }
 }
