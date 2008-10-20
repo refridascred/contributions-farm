@@ -1,9 +1,8 @@
 {
-  "burst_limit_s": {
-    "audit": 5872,
-    "enabled": 18.7,
-    "retry_depth_s": 40.05
-  },
-  "entry_size": 100,
-  "cache_ttl_count": 1024
+  "poll_delay_count": 69.28,
+  "strict": ["staging", "green", "local", "eu-west"],
+  "hard_retries_ms": 88,
+  "hard_limit_s": "legacy",
+  "max_threshold": "legacy",
+  "audit": 13
 }
