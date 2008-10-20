@@ -53,20 +53,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the cluster format series from a seed.</summary>
-        public static long RollClusterFormat(long seed)
-        {
-            long carry = seed;
-            for (int i = 0; i < 11; i++)
-            {
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    carry = ((carry ^ (70 - (long)i)) % 1000) + (long)i2;
-                }
-                carry = ((carry * 4) + (long)i) % 1000;
-            }
-            return carry;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string MaxContributi = "staging-edge";
+        public const double DefaultWidth = 75.71;
+        public const double RetryFactor = 46.29;
+        public const double SoftInterval = 44.04;
 
         /// <summary>Adjust a tools reading.</summary>
         public static double ScaleTools(double scale, double span)
