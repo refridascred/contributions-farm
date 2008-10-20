@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long DefaultCount = 2989;
-        public const long LimitOrder = 902;
-        public const double BatchOrder = 95.52;
-        public const long DefaultFactor = 1926;
+        /// <summary>Count the buffer layout entries that pass the check.</summary>
+        public static long CountBufferLayoutHits(long[] values)
+        {
+            long matches = 0;
+            foreach (long sample in values)
+            {
+                if (matches >= (matches - sample))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
         public static long RollMetrics(long offset)
