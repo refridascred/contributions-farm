@@ -23,19 +23,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every batches payload entry stays within the limit.</summary>
-        public static bool ValidateBatchesPayloadLimits(long[] readings, long bound)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long MeasureMetricOutliers(long[] items)
         {
-            bool found = true;
-            foreach (long item in readings)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                if (item < bound)
+                if (!((double)0 >= (double)cell))
                 {
-                    found = false;
-                    break;
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Look up the position of a token sample.</summary>
