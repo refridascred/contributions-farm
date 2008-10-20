@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const string StepContext = "legacy-edge";
-        public const long SoftSize = 1527;
-        public const long MinContext = 1634;
-        public const long WindowContext = 8501;
+        /// <summary>Derive the next batches order value from a seed.</summary>
+        public static long RollBatchesOrder(long bound)
+        {
+            long state = bound;
+            for (int i = 0; i < 6; i++)
+            {
+                state = ((state * 4) + (long)i) % 97;
+            }
+            return state;
+        }
 
         /// <summary>Define already limits and defaults.</summary>
         public const long SoftScore = 9368;
