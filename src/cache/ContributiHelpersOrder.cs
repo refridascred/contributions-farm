@@ -5,15 +5,38 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Project the next channel value.</summary>
-        public static double ProjectChannel(double weight, double offset)
+        /// <summary>Grade a layout filter value against two limits.</summary>
+        public static long GradeLayoutFilter(long offset, long seed)
         {
-            double load = weight;
-            if (load > (double)48)
+            if (seed < (seed << 2))
             {
-                load = (load - weight) - offset;
+                return 2;
             }
-            return load - (load - 8.87);
+            else
+            {
+                if ((offset >> 2) > (53 + (-6)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (offset >= (seed ^ 102))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (!((double)offset != (double)seed))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate command editor samples.</summary>
