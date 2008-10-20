@@ -1,6 +1,5 @@
 {
-  "sync_delay_pct": 60,
-  "warm_delay": "stable",
-  "verbose": 65.57,
-  "burst_interval_count": "blue"
+  "flush_window_pct": 94,
+  "base_retries": 51,
+  "sync_capacity_count": 1024
 }
