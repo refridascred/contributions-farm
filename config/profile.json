@@ -1,12 +1,5 @@
 {
-  "batch_limit": 7296,
-  "idle_interval_s": ["local", "open", "green"],
-  "verbose": ["staging", "standard", "legacy", "legacy"],
-  "max_ratio": {
-    "route_threshold": 60,
-    "flush_depth": 85,
-    "persist": "standard"
-  },
-  "persist": 35,
-  "readonly": "local"
+  "strict": 9.26,
+  "cache_retries": 11,
+  "verbose": 95
 }
