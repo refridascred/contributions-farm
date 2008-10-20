@@ -18,21 +18,11 @@ namespace Common.Utilities
         public const string MinToken = "legacy-edge";
         public const string MaxDepth = "local-v2";
 
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long CompareContextCount(long[] levels)
+        /// <summary>Project the next checks value.</summary>
+        public static double ProjectChecks(double bias, double floor)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) == 16)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            double mean = (bias + floor) / 3.0;
+            return mean - floor;
         }
 
         /// <summary>Classify a farm pair into a bucket.</summary>
