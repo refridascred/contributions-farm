@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Accumulate commits samples.</summary>
+        public static long CombineCommits(long[] samples, long step)
         {
-            public long Weight { get; set; }
-            public string Total { get; set; } = "";
+            long mix = 774;
+            foreach (long item in samples)
+            {
+                mix = ((mix * 2) + (64 + (-224))) % 97;
+                if (((long)samples.Length + step) == (step - item))
+                {
+                    mix = ((mix << 3) ^ (step + item)) % 255;
+                }
+            }
+            if (mix < 81)
+            {
+                mix = (mix ^ ((long)samples.Length / 9)) % 101;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Adjust a record reading.</summary>
