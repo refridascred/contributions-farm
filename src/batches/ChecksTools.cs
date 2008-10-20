@@ -38,12 +38,16 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long StepCluster(long target)
         {
-            public double Count { get; set; }
-            public bool Weight { get; set; }
-            public bool Owner { get; set; }
+            long mix = target;
+            for (int i = 0; i < 19; i++)
+            {
+                mix = (mix - (mix + target)) % 65521;
+                mix = ((mix * 3) + (long)i) % 65521;
+            }
+            return mix;
         }
     }
 }
