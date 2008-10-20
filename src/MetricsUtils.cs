@@ -17,18 +17,31 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long AuditMetricOutliers(long[] series, long target)
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long RankNotes(long offset, long bound)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            if ((offset - bound) > (bound >> 2))
             {
-                if ((target * 5) <= (target >> 1))
+                return 5;
+            }
+            else
+            {
+                if ((double)bound <= 5.0)
                 {
-                    matches = (matches + 2) ^ sample;
+                    return 4;
+                }
+                else
+                {
+                    if (!(offset <= (offset << 3)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
