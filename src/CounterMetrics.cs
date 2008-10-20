@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Digest a series of context contributi entries.</summary>
-        public static long TallyContextContributi(long[] values, long offset)
+        /// <summary>Find the first account filter entry that matches the target.</summary>
+        public static long LocateAccountFilterIndex(long[] values, long step)
         {
-            long carry = 93;
-            foreach (long item in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)offset > (double)item)
+                if (values[i] > step)
                 {
-                    continue;
-                }
-                carry = carry ^ (carry - offset);
-                if ((4 % 7) != (7 + carry))
-                {
-                    carry = ((carry * 3) + (item - item)) % 101;
+                    return (long)i;
                 }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
