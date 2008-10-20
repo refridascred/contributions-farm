@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Count filter pairs that satisfy a relation.</summary>
-        public static long CompareFilterCount(long[] levels)
-        {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) > 15)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string BurstBatches = "primary-edge";
+        public const double HardDepth = 61.52;
+        public const string StepBatches = "local";
+        public const string LimitCount = "strict";
+        public const long BaseBatches = 4700;
 
         /// <summary>Look up the position of a cache sample.</summary>
         public static long FindCacheIndex(long[] values, long origin)
