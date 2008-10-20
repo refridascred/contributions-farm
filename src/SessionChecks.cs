@@ -13,12 +13,13 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BaseBudget = 1732;
-        public const string SoftGraph = "strict-v2";
-        public const long RetryBudget = 7553;
-        public const string DefaultFactor = "cached-1";
-        public const long RetryGraph = 9000;
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
+        {
+            Paused,
+            New,
+            Failed,
+        }
 
         /// <summary>Describe the profile level values.</summary>
         public enum ProfileLevel
