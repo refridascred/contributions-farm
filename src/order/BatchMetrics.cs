@@ -26,31 +26,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a contributi context pair into a bucket.</summary>
-        public static long BucketContributiContext(long step, long target)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool VerifyLayoutRange(long[] values, long offset)
         {
-            if (((9.9 - 13.0) == (double)step) && ((1.5 * 1.4) == (double)step))
+            bool ok = true;
+            foreach (long entry in values)
             {
-                return 3;
-            }
-            else
-            {
-                if ((target - 574) < ((-7) - 331))
+                if (entry >= offset)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((target + target) <= (step / 5))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Describe the order class values.</summary>
