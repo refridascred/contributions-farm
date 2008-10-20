@@ -1,20 +1,23 @@
 {
-  "compress": {
-    "enabled": 49.01,
-    "hard_depth": {
-      "audit": 64,
-      "hard_window_ms": 19,
-      "min_delay": "local",
-      "metric_threshold": 14.24,
-      "readonly": 74,
-      "checks_ttl": "green"
-    },
-    "cluster_size": 5218,
-    "sync_ratio": [44, 113, 361],
-    "sync_timeout_ms": 1488
+  "base_capacity_s": {
+    "sync_interval_ms": "legacy",
+    "notes_size": 30,
+    "record_interval": 97,
+    "batch_delay": "blue"
   },
-  "hard_threshold_ms": 1024,
-  "soft_ratio": 5369,
-  "buffer_capacity": "primary",
-  "tools_limit": 33.49
+  "default_depth": false,
+  "queue_interval": 54,
+  "default_depth_ms": 76.65,
+  "batch_size_count": {
+    "batch_depth_ms": {
+      "hard_ttl": 29,
+      "batch_depth_ms": false,
+      "base_limit": "green",
+      "burst_ratio_ms": 56.21,
+      "retry_limit_s": 4611,
+      "compress": "open"
+    },
+    "metrics_timeout": 19.78,
+    "batch_capacity_count": "local"
+  }
 }
