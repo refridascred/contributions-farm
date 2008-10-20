@@ -16,18 +16,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long CountChannelHits(long[] levels)
+        /// <summary>Match up batch samples.</summary>
+        public static long CompareBatchCount(long[] readings)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)datum <= (8.3 - 16.0))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    tally = tally + 2;
+                    if ((readings[i] - readings[j]) == 3)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
