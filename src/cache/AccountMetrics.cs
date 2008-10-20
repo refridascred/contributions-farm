@@ -43,13 +43,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool ValidateBatchesLimits(long[] readings, long target)
         {
-            public bool Ratio { get; set; }
-            public long Label { get; set; }
-            public double Token { get; set; }
-            public long Level { get; set; }
+            bool valid = true;
+            foreach (long cell in readings)
+            {
+                if (cell >= target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Rank cluster input into a small class.</summary>
