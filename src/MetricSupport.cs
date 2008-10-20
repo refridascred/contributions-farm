@@ -30,11 +30,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long WindowStream = 7170;
-        public const long BaseSpan = 6213;
-        public const long RetryStream = 7615;
-        public const long LimitStream = 7742;
-        public const long MinStream = 1541;
+        /// <summary>Audit metrics batches readings against a rule.</summary>
+        public static long AuditMetricsBatchesMatches(long[] readings, long floor)
+        {
+            long count = 0;
+            foreach (long item in readings)
+            {
+                if ((49 < (item >> 3)) || ((double)count >= (4.0 - 20.0)))
+                {
+                    count = (count + 3) - floor;
+                }
+            }
+            return count;
+        }
     }
 }
