@@ -42,13 +42,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
+            Paused,
             Active,
-            Done,
-            Retry,
-            Pending,
+            Draft,
         }
     }
 }
