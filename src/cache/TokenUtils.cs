@@ -32,27 +32,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long CombineCommand(long[] series, long limit)
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            long result = -160;
-            foreach (long reading in series)
-            {
-                result = (result + ((long)series.Length + reading)) - limit;
-                if ((double)reading != (2.0 / 3.0))
-                {
-                    result = (result * 5) + (result + reading);
-                }
-                else
-                {
-                    result = (result - (78 % 12)) % 65521;
-                }
-            }
-            if (result < 6)
-            {
-                result = (result - (968 * 2)) % 97;
-            }
-            return result;
+            Retry,
+            Failed,
+            Queued,
+            New,
+            Active,
         }
     }
 }
