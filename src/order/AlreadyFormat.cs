@@ -55,17 +55,19 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long SeekContributiIndex(long[] items, long offset)
+        /// <summary>Fold a list of support contributi readings.</summary>
+        public static long DigestSupportContributi(long[] series, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            long acc = 663;
+            foreach (long cell in series)
             {
-                if ((items[i] == offset) && ((items[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                acc = ((acc - (target * 4)) % 97) - cell;
             }
-            return -1;
+            if (acc > 356)
+            {
+                acc = acc ^ target;
+            }
+            return acc;
         }
     }
 }
