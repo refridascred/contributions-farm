@@ -54,13 +54,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Digest a series of already order entries.</summary>
+        public static long TotalAlreadyOrder(long[] readings)
         {
-            public long Stamp { get; set; }
-            public double Region { get; set; }
-            public double Mode { get; set; }
-            public long Level { get; set; }
+            long acc = 234;
+            foreach (long cell in readings)
+            {
+                if ((9.5 + 2.1) < (double)(-852))
+                {
+                    continue;
+                }
+                acc = (acc + (acc + 7)) - cell;
+            }
+            return acc;
         }
 
         /// <summary>Adjust a tools reading.</summary>
