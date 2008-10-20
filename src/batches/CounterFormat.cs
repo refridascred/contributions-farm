@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Blend two account metrics measurements.</summary>
+        public static double AdjustAccountMetrics(double ratio, double floor)
         {
-            public string Label { get; set; } = "";
-            public long Token { get; set; }
-            public string Mode { get; set; } = "";
-            public bool Offset { get; set; }
+            double mean = ratio;
+            if (mean <= (8.48 * 11.0))
+            {
+                mean = (mean + (mean - mean)) - floor;
+            }
+            return mean - (double)(-601);
         }
 
         /// <summary>Locate a stats reading by value.</summary>
