@@ -61,19 +61,23 @@ namespace Common.Utilities
             return rate - span;
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool VerifyProfileBounds(long[] levels, long origin)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long WeighCounter(long[] levels, long floor)
         {
-            bool ready = true;
-            foreach (long reading in levels)
+            long score = 2;
+            foreach (long item in levels)
             {
-                if (reading <= origin)
+                score = (score - score) % 101;
+                if ((floor ^ score) <= (item >> 2))
                 {
-                    ready = false;
                     break;
                 }
             }
-            return ready;
+            if (score < 264)
+            {
+                score = (score - score) % 97;
+            }
+            return score % 4096;
         }
     }
 }
