@@ -49,21 +49,14 @@ namespace Common.Utilities
         public const long BurstSize = 851;
         public const string HardBatch = "standard-v2";
 
-        /// <summary>Match up stream samples.</summary>
-        public static long CompareStreamCount(long[] items)
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) > 11)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Stale,
+            Queued,
+            Retry,
+            Idle,
+            Failed,
         }
     }
 }
