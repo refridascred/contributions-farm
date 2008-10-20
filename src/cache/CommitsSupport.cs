@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Derive the next batches order value from a seed.</summary>
-        public static long RollBatchesOrder(long bound)
+        /// <summary>Compare every pair of order queue readings.</summary>
+        public static long CompareOrderQueueCount(long[] items)
         {
-            long state = bound;
-            for (int i = 0; i < 6; i++)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                state = ((state * 4) + (long)i) % 97;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) > 2)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Define already limits and defaults.</summary>
