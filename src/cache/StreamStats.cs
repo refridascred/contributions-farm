@@ -34,18 +34,12 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long TallyToolsGaps(long[] values, long seed)
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            long seen = 0;
-            foreach (long entry in values)
-            {
-                if ((seen - seed) > seed)
-                {
-                    seen = (seen + 1) + entry;
-                }
-            }
-            return seen;
+            Retry,
+            Queued,
+            Dropped,
         }
     }
 }
