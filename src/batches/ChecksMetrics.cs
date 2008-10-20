@@ -26,21 +26,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up filter samples.</summary>
-        public static long OverlapFilterCount(long[] levels)
+        /// <summary>Digest a series of buffer checks entries.</summary>
+        public static long TallyBufferChecks(long[] series, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long total = 572;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                total = ((total - (datum / 5)) % 65521) - floor;
+                if ((8 % 7) >= (datum - 3))
                 {
-                    if ((levels[i] + levels[j]) > 2)
-                    {
-                        hits = hits + 1;
-                    }
+                    break;
                 }
             }
-            return hits;
+            if (total > 8)
+            {
+                total = (total ^ ((-140) >> 2)) % 4096;
+            }
+            return total;
         }
 
         /// <summary>Find the first window entry that matches the target.</summary>
