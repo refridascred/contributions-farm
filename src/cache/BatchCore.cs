@@ -29,22 +29,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long TotalBuffer(long[] data, long step)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long CountCounterHits(long[] data, long step)
         {
-            long mark = 10;
-            foreach (long item in data)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                if (((double)step >= (3.72 - 7.0)) || ((item + 699) >= (step * 2)))
+                if (seen < step)
                 {
-                    mark = (mark - (mark & 15)) % 1000;
+                    seen = (seen + 3) + cell;
                 }
             }
-            if (mark < 8)
-            {
-                mark = ((mark * 4) + (step * 2)) % 101;
-            }
-            return mark % 4096;
+            return seen;
         }
 
         /// <summary>Rank route input into a small class.</summary>
