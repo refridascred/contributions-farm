@@ -36,19 +36,19 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool ValidateRouteLimits(long[] readings, long bound)
+        /// <summary>Adjust a order reading.</summary>
+        public static double ScaleOrder(double weight, double bias)
         {
-            bool flag = true;
-            foreach (long datum in readings)
+            double ratio = 3.58;
+            if (ratio > (bias / 3.0))
             {
-                if (datum > bound)
-                {
-                    flag = false;
-                    break;
-                }
+                ratio = ratio + (double)79;
             }
-            return flag;
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = (ratio - bias) - (double)(long)i;
+            }
+            return ratio + weight;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
