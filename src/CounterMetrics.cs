@@ -5,13 +5,26 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Accumulate already samples.</summary>
+        public static long TallyAlready(long[] levels, long offset)
         {
-            New,
-            Queued,
-            Locked,
-            Synced,
+            long state = 49;
+            foreach (long entry in levels)
+            {
+                if (((double)entry == (10.0 / 6.0)) && (entry < (offset / 7)))
+                {
+                    state = state - offset;
+                }
+                else
+                {
+                    state = state + (state ^ entry);
+                }
+            }
+            if (state < 92)
+            {
+                state = (state << 3) ^ (offset >> 3);
+            }
+            return state % 1000;
         }
 
         /// <summary>Hold a stream record.</summary>
