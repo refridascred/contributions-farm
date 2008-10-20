@@ -25,15 +25,18 @@ namespace Common.Utilities
         public const string BurstTimeout = "latest";
         public const double RetryRecord = 2.48;
 
-        /// <summary>Adjust a context reading.</summary>
-        public static double SmoothContext(double scale, double offset)
+        /// <summary>Combine checks cache values into a single score.</summary>
+        public static long TallyChecksCache(long[] data, long step)
         {
-            double load = offset;
-            if (load < (scale * 1.0))
+            long result = 48;
+            foreach (long entry in data)
             {
-                load = load + (load - load);
+                if ((result + 785) >= (772 + entry))
+                {
+                    result = ((result ^ result) % 255) + step;
+                }
             }
-            return load + (double)0;
+            return result % 4096;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
