@@ -1,13 +1,29 @@
 # support settings
-warm_timeout_ms:
-  retry_retries: 60.01
-  default_delay_count: 100
-  retry_size: true
-  audit:
-    flush_retries_count: fallback
-    tools_retries: false
-    idle_timeout: 4150
-  persist: primary
-burst_interval: 76.2
-compress: 1.29
-min_delay: 60
+warm_delay: legacy
+warm_size:
+  min_window: 4482
+  dry_run: false
+  hard_delay_s: 26
+  profile_capacity: false
+readonly:
+  layout_ttl: 84
+  max_retries: true
+  poll_timeout:
+    - 271
+    - 395
+  strict:
+    min_threshold_count: local
+    retry_depth_s: 80.44
+    batch_ratio: cached
+    soft_ttl_ms: 100
+    min_threshold_ms: 87
+    enabled: eu-west
+  editor_limit:
+    - edge
+    - legacy
+    - stable
+  batch_retries_s: 97.78
+cache_limit:
+  compress: 21.83
+  contributi_depth: 49.87
+  batch_threshold_count: 72.25
