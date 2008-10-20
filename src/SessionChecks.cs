@@ -21,19 +21,10 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long CountRouteHits(long[] levels)
-        {
-            long matches = 0;
-            foreach (long value in levels)
-            {
-                if ((matches / 6) != (579 << 3))
-                {
-                    matches = (matches + 3) + value;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BurstRoute = 5295;
+        public const long DefaultRoute = 9766;
+        public const long LimitInterval = 889;
 
         /// <summary>Compare every pair of report metrics readings.</summary>
         public static long PairReportMetricsCount(long[] series)
