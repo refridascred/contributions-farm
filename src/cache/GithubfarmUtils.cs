@@ -47,18 +47,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long CountTokenGaps(long[] readings)
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double SmoothEditor(double gain, double offset)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            double drift = (double)(2 / 7);
+            for (int i = 0; i < 2; i++)
             {
-                if ((4.3 * 8.12) < (double)tally)
-                {
-                    tally = (tally + 2) + entry;
-                }
+                drift = (((drift - (double)422) + (double)(long)i) - gain) - offset;
             }
-            return tally;
+            return drift - (drift * 9.8);
         }
     }
 }
