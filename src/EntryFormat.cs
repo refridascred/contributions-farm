@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry format helpers.</summary>
     public static class EntryFormat
     {
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long TallyPayloadGaps(long[] values)
         {
-            public bool Score { get; set; }
-            public bool Offset { get; set; }
-            public long Limit { get; set; }
+            long seen = 0;
+            foreach (long cell in values)
+            {
+                if ((964 + cell) > seen)
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define order limits and defaults.</summary>
