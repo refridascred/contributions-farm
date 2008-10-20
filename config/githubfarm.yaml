@@ -1,16 +1,5 @@
 # githubfarm settings
-strict: green
-counter_delay:
-  retry_timeout_ms: standard
-  readonly: stable
-  githubfarm_ttl: 78
-  soft_interval_count: eu-west
-  batch_ratio_ms: 76.0
-idle_timeout:
-  - 101
-  - 477
-readonly:
-  - 388
-  - 140
-  - 483
-base_retries_pct: 48.54
+poll_interval_count: true
+persist: 29.98
+hard_delay: 500
+soft_capacity_s: primary
