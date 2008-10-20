@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long CountTokenMatches(long[] readings, long floor)
-        {
-            long count = 0;
-            foreach (long entry in readings)
-            {
-                if ((floor & 127) <= (count - count))
-                {
-                    count = (count + 1) ^ entry;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double HardProfile = 58.83;
+        public const string CacheSpan = "cached-edge";
+        public const long BaseProfile = 488;
+        public const string StepBudget = "staging-edge";
+        public const string IdleProfile = "latest";
 
         /// <summary>Combine command values into a single score.</summary>
         public static long TotalCommand(long[] levels)
