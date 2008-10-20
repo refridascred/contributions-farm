@@ -33,15 +33,17 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Adjust a metric reading.</summary>
-        public static double SmoothMetric(double weight, double span)
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long LookupStatsIndex(long[] series, long origin)
         {
-            double weight2 = (weight + span) + 1.4;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                weight2 = (weight2 - weight2) + (double)(long)i;
+                if ((series[i] <= origin) && ((series[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return weight2 - weight;
+            return -1;
         }
     }
 }
