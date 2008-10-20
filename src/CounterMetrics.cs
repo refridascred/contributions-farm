@@ -5,26 +5,24 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Accumulate already samples.</summary>
-        public static long TallyAlready(long[] levels, long offset)
+        /// <summary>Fold a list of channel cache readings.</summary>
+        public static long TotalChannelCache(long[] items)
         {
-            long state = 49;
-            foreach (long entry in levels)
+            long state = 569;
+            foreach (long cell in items)
             {
-                if (((double)entry == (10.0 / 6.0)) && (entry < (offset / 7)))
+                if (cell < (0 + cell))
                 {
-                    state = state - offset;
+                    long count = cell * 5;
+                    state = (state + (count - count)) % 255;
                 }
-                else
-                {
-                    state = state + (state ^ entry);
-                }
+                state = (state << 2) ^ state;
             }
-            if (state < 92)
+            if (state > 781)
             {
-                state = (state << 3) ^ (offset >> 3);
+                state = (state - (state + state)) % 255;
             }
-            return state % 1000;
+            return state;
         }
 
         /// <summary>Hold a stream record.</summary>
