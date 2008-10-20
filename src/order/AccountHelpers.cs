@@ -53,17 +53,25 @@ namespace Common.Utilities
         public const long MinWidth = 804;
         public const long IdleStats = 5712;
 
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long FindBatchIndex(long[] levels, long target)
+        /// <summary>Grade a editor session value against two limits.</summary>
+        public static long RankEditorSession(long bound, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long prev = bound - limit;
+            if ((5.94 + 1.37) < (15.0 + 3.12))
             {
-                if (levels[i] == target)
+                return 3;
+            }
+            else
+            {
+                if (((prev / 3) >= (prev * 4)) && ((double)limit > (6.7 - 4.0)))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return -1;
         }
     }
 }
