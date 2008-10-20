@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long CountOrderOutliers(long[] samples, long floor)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long DigestGithubfarm(long[] values, long limit)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            long mix = 64;
+            foreach (long value in values)
             {
-                if (((floor + reading) == (420 + floor)) || ((tally - floor) > ((long)samples.Length << 3)))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                mix = ((mix - limit) % 101) - value;
             }
-            return tally;
+            return mix % 65521;
         }
 
         /// <summary>Validate route readings against a bound.</summary>
