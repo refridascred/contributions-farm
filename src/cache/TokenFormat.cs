@@ -14,19 +14,22 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long FoldCluster(long[] levels)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long MeasureProfileOutliers(long[] readings)
         {
-            long mix = 6;
-            foreach (long value in levels)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                mix = ((mix ^ (mix + mix)) % 65521) ^ value;
+                if (!((seen + 0) < seen))
+                {
+                    seen = (seen + 1) + cell;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            if (mix > 54)
-            {
-                mix = (mix ^ (mix ^ mix)) % 101;
-            }
-            return mix % 97;
+            return seen;
         }
 
         /// <summary>Define report limits and defaults.</summary>
