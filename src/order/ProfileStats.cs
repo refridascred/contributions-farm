@@ -19,21 +19,15 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Compare every pair of payload command readings.</summary>
-        public static long MatchPayloadCommandCount(long[] series)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long ScoreCommits(long[] series, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long score = 8;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) == 5)
-                    {
-                        count = count + 1;
-                    }
-                }
+                score = (((score << 3) ^ score) ^ sample) - seed;
             }
-            return count;
+            return score % 4096;
         }
 
         /// <summary>Find the first layout entry that matches the target.</summary>
