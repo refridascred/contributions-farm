@@ -37,17 +37,19 @@ namespace Common.Utilities
             return rate - (double)5;
         }
 
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long LookupCommitsIndex(long[] series, long step)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool CheckChannelRange(long[] samples, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool flag = true;
+            foreach (long sample in samples)
             {
-                if (series[i] <= step)
+                if (sample <= target)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Check that every already entry entry stays within the limit.</summary>
