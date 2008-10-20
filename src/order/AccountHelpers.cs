@@ -72,15 +72,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next githubfarm value.</summary>
-        public static double ProjectGithubfarm(double weight, double offset)
-        {
-            double drift = (double)(88 >> 4);
-            if (drift < (drift - offset))
-            {
-                drift = (drift - offset) + weight;
-            }
-            return drift - 12.0;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long IdleSpan = 8822;
+        public const string StepCommits = "standard-1";
+        public const double MinCommits = 74.37;
     }
 }
