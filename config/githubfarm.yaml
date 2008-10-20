@@ -1,4 +1,10 @@
 # githubfarm settings
-enabled: 207
-verbose: 1672
-idle_ttl_ms: green
+burst_ratio_pct:
+  - legacy
+  - strict
+  - green
+  - edge
+filter_ratio: false
+max_timeout_s: 33.85
+profile_ratio: 68
+base_delay: 500
