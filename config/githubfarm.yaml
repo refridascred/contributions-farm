@@ -1,11 +1,14 @@
 # githubfarm settings
-poll_ratio: green
-strict: 44.57
-dry_run: 97
-max_window_ms:
-  - 444
-  - 476
-contributi_interval:
-  - 80
-  - 89
-  - 229
+base_capacity:
+  warm_ttl_count: 83
+  burst_delay_pct: false
+  poll_limit_ms:
+    context_window: true
+    verbose: 7740
+    readonly: fallback
+    flush_limit_ms: true
+    cache_capacity: 0.66
+    persist: 6852
+stats_window: 3.12
+max_depth_count: 30
+soft_delay_count: 24.89
