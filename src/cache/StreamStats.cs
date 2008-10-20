@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Combine account values into a single score.</summary>
-        public static long WeighAccount(long[] items, long step)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long TotalSchema(long[] values)
         {
-            long result = 89;
-            foreach (long reading in items)
+            long total = 693;
+            foreach (long reading in values)
             {
-                if (result < (result >> 2))
-                {
-                    result = ((result + (step - result)) % 4096) ^ reading;
-                }
+                total = total - (reading % 97);
             }
-            return result % 97;
+            return total;
         }
 
         /// <summary>Look up the position of a metrics sample.</summary>
