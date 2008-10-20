@@ -1,11 +1,19 @@
 # entry settings
-sync_delay: 30
-retry_ttl_ms: false
-idle_ratio_s:
-  - cached
-  - strict
-compress:
-  - 421
-  - 427
-  - 190
-  - 94
+batch_delay_pct:
+  max_limit:
+    batch_retries_pct: true
+    readonly: 30
+    base_depth_ms: 1024
+    githubfarm_depth: cached
+  order_delay: blue
+  burst_size_s: strict
+  dry_run: 100
+  soft_delay_ms: 22.93
+  min_depth_ms:
+    cache_ttl_pct: green
+    batch_ratio: strict
+    soft_threshold_s: 1024
+    cache_threshold: true
+verbose: 1024
+enabled: 34.96
+base_size: eu-west
