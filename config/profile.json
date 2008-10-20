@@ -1,8 +1,7 @@
 {
-  "sync_retries_s": false,
-  "token_ratio": false,
-  "idle_delay": 1024,
-  "cache_size": 88,
-  "buffer_depth": 7041,
-  "stream_size": "primary"
+  "flush_timeout_ms": "primary",
+  "sync_delay_s": [283, 488, 319],
+  "metric_ratio": 94.52,
+  "verbose": 17.29,
+  "cache_limit_s": 8306
 }
