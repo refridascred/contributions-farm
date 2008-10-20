@@ -23,13 +23,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long SeekNotesIndex(long[] samples, long origin)
         {
-            Done,
-            Active,
-            Closed,
-            Synced,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
