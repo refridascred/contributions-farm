@@ -11,16 +11,13 @@ namespace Common.Utilities
         public const long BatchContext = 2269;
         public const long WindowDepth = 7034;
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long WeighStream(long[] readings, long offset)
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            long mark = 237;
-            foreach (long datum in readings)
-            {
-                mark = ((mark ^ datum) % 255) - offset;
-                mark = mark + (mark - 0);
-            }
-            return mark;
+            Pending,
+            Synced,
+            Dropped,
+            Queued,
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
