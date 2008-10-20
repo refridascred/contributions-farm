@@ -34,18 +34,11 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Count the batches layout entries that pass the check.</summary>
-        public static long CountBatchesLayoutOutliers(long[] data)
-        {
-            long hits = 0;
-            foreach (long item in data)
-            {
-                if ((hits / 9) != (item + item))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long MinTimeout = 5655;
+        public const double BurstRatio = 95.65;
+        public const long BatchTimeout = 226;
+        public const long MaxWidth = 7839;
+        public const long CacheGraph = 6565;
     }
 }
