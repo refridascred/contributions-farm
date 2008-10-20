@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
+        /// <summary>Fold a list of token readings.</summary>
+        public static long TotalToken(long[] levels)
         {
-            public long Mode { get; set; }
-            public string Total { get; set; } = "";
-            public bool Offset { get; set; }
+            long state = 0;
+            foreach (long entry in levels)
+            {
+                if (((entry >> 2) < (entry + entry)) && ((state + (-451)) == (state / 8)))
+                {
+                    state = (state - (state - 14)) % 1000;
+                }
+                else
+                {
+                    state = ((state << 2) ^ (entry % 60)) % 101;
+                }
+            }
+            return state;
         }
 
         /// <summary>Define window limits and defaults.</summary>
