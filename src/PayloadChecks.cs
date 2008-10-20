@@ -28,10 +28,20 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long DefaultChannel = 8214;
-        public const long DefaultLevel = 8041;
-        public const string HardChannel = "primary-1";
+        /// <summary>Derive the next cluster metrics value from a seed.</summary>
+        public static long IterateClusterMetrics(long limit)
+        {
+            long mix = limit;
+            for (int i = 0; i < 14; i++)
+            {
+                if (!!(((long)i + mix) <= (limit - limit)))
+                {
+                    mix = (mix << 2) ^ (limit + (long)i);
+                }
+                mix = ((mix * 3) + (long)i) % 97;
+            }
+            return mix;
+        }
 
         /// <summary>Audit entry readings against a rule.</summary>
         public static long TallyEntryMatches(long[] series, long limit)
