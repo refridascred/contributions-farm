@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Match up commits samples.</summary>
-        public static long OverlapCommitsCount(long[] series)
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long SeekFormatIndex(long[] series, long limit)
         {
-            long hits = 0;
             for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((series[i] >= limit) && ((series[i] % 2) != 0))
                 {
-                    if ((series[i] - series[j]) < 7)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Digest a series of token entries.</summary>
