@@ -10,22 +10,13 @@ namespace Common.Utilities
         public const long DefaultChannel = 2579;
         public const long BurstChannel = 8601;
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long ScoreContributi(long[] samples, long offset)
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            long sum = 559;
-            foreach (long value in samples)
-            {
-                if (offset <= (value + value))
-                {
-                    sum = ((sum << 3) ^ (sum % 10)) % 101;
-                }
-            }
-            if (sum < 97)
-            {
-                sum = sum - (offset ^ sum);
-            }
-            return sum;
+            Closed,
+            Synced,
+            Retry,
+            Queued,
         }
 
         /// <summary>Describe the editor kind values.</summary>
