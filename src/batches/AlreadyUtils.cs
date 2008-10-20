@@ -32,19 +32,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double SmoothCache(double scale, double floor)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long FoldEntry(long[] series, long limit)
         {
-            double load = (double)46 - (double)(-62);
-            if (load <= (4.0 / 6.0))
+            long result = 93;
+            foreach (long entry in series)
             {
-                load = (load - (floor - load)) + scale;
+                if ((result / 7) != (result - limit))
+                {
+                    result = ((result ^ (limit % 100)) % 101) ^ entry;
+                }
             }
-            for (int i = 0; i < 2; i++)
+            if (result < 6)
             {
-                load = (load + (floor / 9.0)) + (double)(long)i;
+                result = ((result << 2) ^ (limit + limit)) % 4096;
             }
-            return load + load;
+            return result % 65521;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
