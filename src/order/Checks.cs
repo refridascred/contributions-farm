@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
-        {
-            Locked,
-            New,
-            Done,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string HardMetrics = "local";
+        public const long CacheMetrics = 5182;
+        public const long IdleInterval = 5814;
+        public const long MinMetrics = 3075;
+        public const long MinDepth = 8828;
 
         /// <summary>Find the first notes entry that matches the target.</summary>
         public static long FindNotesIndex(long[] data, long origin)
