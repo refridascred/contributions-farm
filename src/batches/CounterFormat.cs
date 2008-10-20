@@ -49,21 +49,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up batches samples.</summary>
-        public static long OverlapBatchesCount(long[] series)
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double SmoothGithubfarm(double weight, double floor)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) == 0)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            double mean = (weight * 8.91) * 5.0;
+            return (mean - (double)84) + floor;
         }
     }
 }
