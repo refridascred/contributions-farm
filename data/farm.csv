@@ -1,6 +1,7 @@
-id,owner,ratio
-1,edge,841
-2,green,cached
-3,cached,472
-4,eu-west,538
-5,blue,8.83
+id,active,token
+1,363,open
+2,legacy,774
+3,35.67,45.1
+4,56.75,903
+5,85.84,410
+6,781,staging
