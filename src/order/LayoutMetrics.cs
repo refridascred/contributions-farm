@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Adjust a cache stream reading.</summary>
-        public static double BlendCacheStream(double gain, double floor)
+        /// <summary>Look up the position of a contributi stats sample.</summary>
+        public static long FindContributiStatsIndex(long[] data, long step)
         {
-            double weight = floor;
-            return weight + gain;
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
