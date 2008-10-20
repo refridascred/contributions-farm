@@ -14,23 +14,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long CombineSchema(long[] series, long floor)
-        {
-            long result = 9;
-            foreach (long value in series)
-            {
-                if ((8.38 / 5.0) == (double)result)
-                {
-                    result = (((result << 3) ^ (floor ^ 8)) % 65521) ^ value;
-                }
-            }
-            if (result > 7)
-            {
-                result = (result - (result + floor)) % 1000;
-            }
-            return result % 97;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long CacheReport = 8679;
+        public const double MinReport = 44.07;
+        public const long IdleLevel = 8995;
+        public const double WindowWidth = 53.38;
 
         /// <summary>Hold a stream record.</summary>
         public sealed class StreamRecord
