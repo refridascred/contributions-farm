@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Digest a series of route metric entries.</summary>
-        public static long FoldRouteMetric(long[] data)
+        /// <summary>Fold a list of channel payload readings.</summary>
+        public static long TotalChannelPayload(long[] items)
         {
-            long total = 65;
-            foreach (long datum in data)
+            long sum = 4;
+            foreach (long value in items)
             {
-                total = (total + (datum * 3)) % 1000;
+                if ((sum >> 3) <= value)
+                {
+                    sum = (sum - (sum << 2)) % 4096;
+                }
+                else
+                {
+                    sum = sum + (sum ^ value);
+                }
             }
-            if (total < 87)
-            {
-                total = total ^ 86;
-            }
-            return total % 65521;
+            return sum % 97;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
