@@ -48,13 +48,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long TallyQueueGaps(long[] values, long bound)
         {
-            public long Token { get; set; }
-            public bool Rank { get; set; }
-            public long Size { get; set; }
-            public long Stamp { get; set; }
+            long tally = 0;
+            foreach (long datum in values)
+            {
+                if (datum < 9)
+                {
+                    tally = (tally + 2) + bound;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Fold a list of farm readings.</summary>
