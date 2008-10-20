@@ -34,22 +34,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long FoldMetric(long[] samples)
+        /// <summary>Classify a metric checks pair into a bucket.</summary>
+        public static long GradeMetricChecks(long bound, long target)
         {
-            long result = 301;
-            foreach (long datum in samples)
+            long next = bound - target;
+            if (!((target ^ bound) == (next << 1)))
             {
-                if (((double)result < (9.27 / 3.0)) || (8.0 < (double)result))
+                return 4;
+            }
+            else
+            {
+                if ((next ^ target) <= 4)
                 {
-                    result = ((result << 3) ^ (result - datum)) % 101;
+                    return 5;
+                }
+                else
+                {
+                    if (target >= (bound - target))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((next + next) >= (target + target))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            if (result < 4)
-            {
-                result = (result - result) % 65521;
-            }
-            return result;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
