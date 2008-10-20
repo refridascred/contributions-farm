@@ -50,12 +50,38 @@ namespace Common.Utilities
         public const double HardWidth = 92.65;
         public const long CacheRatio = 4552;
 
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Classify a schema account pair into a bucket.</summary>
+        public static long GradeSchemaAccount(long limit, long origin)
         {
-            public double Mode { get; set; }
-            public double Ratio { get; set; }
-            public string Level { get; set; } = "";
+            if (limit <= (limit >> 3))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((limit / 3) <= (limit << 3))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((426 * 3) != ((-77) ^ limit))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((double)origin != (1.0 / 3.0)) || ((double)limit != (2.15 + 4.6)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
     }
 }
