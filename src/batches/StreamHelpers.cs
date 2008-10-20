@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Blend two batch checks measurements.</summary>
-        public static double SmoothBatchChecks(double ratio, double floor)
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            double drift = ratio - (floor * 9.85);
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift + (drift + 0.6)) + (double)(long)i;
-            }
-            return drift + ratio;
+            Closed,
+            Done,
+            Retry,
         }
 
         /// <summary>Define cache limits and defaults.</summary>
