@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string BatchFilter = "latest-v2";
-        public const double BurstFilter = 63.23;
-        public const long BatchTimeout = 5462;
-        public const long IdleRatio = 1204;
-        public const long CacheFilter = 5070;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long SoftBatches = 5257;
+        public const long BatchBudget = 4640;
+        public const long IdleInterval = 6958;
 
         /// <summary>Describe the stream level values.</summary>
         public enum StreamLevel
