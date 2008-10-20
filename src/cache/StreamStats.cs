@@ -23,16 +23,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long RollMetrics(long offset)
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
         {
-            long anchor = offset;
-            for (int i = 0; i < 23; i++)
-            {
-                anchor = (anchor * 4) + (251 + offset);
-                anchor = ((anchor * 3) + (long)i) % 97;
-            }
-            return anchor;
+            public double Offset { get; set; }
+            public long Label { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Describe the context state values.</summary>
