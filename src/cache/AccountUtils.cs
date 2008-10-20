@@ -20,22 +20,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long WeighOrder(long[] samples)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long AuditGithubfarmOutliers(long[] data)
         {
-            long sum = 4;
-            foreach (long datum in samples)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                if ((3.72 + 5.36) == (double)sum)
+                if ((double)cell >= (6.0 / 3.0))
                 {
-                    sum = ((sum + (sum & 127)) % 1000) + datum;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            if (sum < 473)
-            {
-                sum = (sum * 4) + (long)samples.Length;
-            }
-            return sum;
+            return seen;
         }
 
         /// <summary>Scale a counter figure with a bias.</summary>
