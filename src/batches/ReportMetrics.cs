@@ -31,19 +31,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool CheckRecordLimits(long[] levels, long seed)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long SeriesEditor(long origin)
         {
-            bool stale = true;
-            foreach (long cell in levels)
+            long state = origin;
+            for (int i = 0; i < 18; i++)
             {
-                if (cell < seed)
-                {
-                    stale = false;
-                    break;
-                }
+                state = ((state * 3) + (long)i) % 65521;
             }
-            return stale;
+            return state;
         }
     }
 }
