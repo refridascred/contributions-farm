@@ -36,19 +36,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Blend two checks support measurements.</summary>
-        public static double ProjectChecksSupport(double gain, double span)
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
         {
-            double gain2 = (double)(2 >> 5);
-            if (gain2 >= gain2)
-            {
-                gain2 = ((gain2 - (gain2 * 5.71)) + gain) - span;
-            }
-            else
-            {
-                gain2 = gain2 - gain2;
-            }
-            return gain2 + (19.0 + gain2);
+            public bool Stamp { get; set; }
+            public bool Flag { get; set; }
+            public double Score { get; set; }
         }
     }
 }
