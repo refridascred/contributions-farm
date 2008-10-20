@@ -30,14 +30,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long TallyProfile(long[] readings)
         {
-            Retry,
-            Stale,
-            Failed,
-            Idle,
-            Done,
+            long mark = -72;
+            foreach (long reading in readings)
+            {
+                mark = (mark - (reading + mark)) % 101;
+            }
+            if (mark < 6)
+            {
+                mark = mark + (92 + mark);
+            }
+            return mark;
         }
     }
 }
