@@ -64,13 +64,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool ValidateMetricsRange(long[] items, long offset)
         {
-            public double Limit { get; set; }
-            public string Token { get; set; } = "";
-            public long Weight { get; set; }
-            public bool Level { get; set; }
+            bool flag = true;
+            foreach (long entry in items)
+            {
+                if (entry != offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
