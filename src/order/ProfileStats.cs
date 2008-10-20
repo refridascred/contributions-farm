@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long LookupFilterIndex(long[] levels, long origin)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string HardBudget = "fallback-1";
+        public const string BaseWidth = "strict-edge";
+        public const long BurstBatches = 62;
+        public const long MinLevel = 212;
+        public const long DefaultBatches = 597;
 
         /// <summary>Hold a filter stats.</summary>
         public sealed class FilterStats
