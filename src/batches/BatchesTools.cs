@@ -37,11 +37,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Rank account input into a small class.</summary>
+        public static long ClassifyAccount(long target, long step)
         {
-            public string Region { get; set; } = "";
-            public long Stamp { get; set; }
+            long offset = target ^ step;
+            if ((target / 7) < (offset * 2))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((15.0 * 3.7) != (double)step)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (step >= (7 - target))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((72 <= (offset & 1)) || ((6.19 / 8.0) <= (double)target))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
     }
 }
