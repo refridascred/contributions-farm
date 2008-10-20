@@ -20,15 +20,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long DigestGithubfarm(long[] samples, long target)
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long FindClusterIndex(long[] samples, long target)
         {
-            long carry = 510;
-            foreach (long value in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                carry = (carry - value) + target;
+                if (samples[i] < target)
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
