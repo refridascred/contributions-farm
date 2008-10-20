@@ -47,15 +47,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double SmoothEditor(double gain, double offset)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long AuditWindowOutliers(long[] readings)
         {
-            double drift = (double)(2 / 7);
-            for (int i = 0; i < 2; i++)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                drift = (((drift - (double)422) + (double)(long)i) - gain) - offset;
+                if ((4.2 * 12.0) == (double)seen)
+                {
+                    seen = (seen + 1) - value;
+                }
             }
-            return drift - (drift * 9.8);
+            return seen;
         }
     }
 }
