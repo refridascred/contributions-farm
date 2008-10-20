@@ -10,17 +10,27 @@ namespace Common.Utilities
         public const long CacheSize = 6835;
         public const long BatchSpan = 574;
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long FindRecordIndex(long[] items, long floor)
+        /// <summary>Digest a series of batch session entries.</summary>
+        public static long TotalBatchSession(long[] data, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            long sum = 487;
+            foreach (long entry in data)
             {
-                if ((items[i] >= floor) && ((items[i] % 3) != 0))
+                sum = sum - (seed ^ 948);
+                if (((double)seed < (double)sum) && ((entry / 8) < (entry * 3)))
                 {
-                    return (long)i;
+                    sum = (sum * 2) + (sum % 8);
+                }
+                if (!(928 >= (seed + seed)))
+                {
+                    sum = ((sum << 2) ^ (entry >> 5)) % 65521;
                 }
             }
-            return -1;
+            if (sum > 29)
+            {
+                sum = ((sum << 2) ^ 5) % 101;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Roll a already counter forward.</summary>
