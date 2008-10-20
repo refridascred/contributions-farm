@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Compare every pair of commits readings.</summary>
+        public static long MatchCommitsCount(long[] values)
         {
-            public long Owner { get; set; }
-            public double Count { get; set; }
-            public bool Score { get; set; }
-            public string Label { get; set; } = "";
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) > 20)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
