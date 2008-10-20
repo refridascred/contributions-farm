@@ -21,19 +21,23 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Adjust a counter reading.</summary>
-        public static double ScaleCounter(double rate, double bias)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long TotalEntry(long[] samples)
         {
-            double mean = 9.75;
-            if (mean > 16.0)
+            long sum = 6;
+            foreach (long datum in samples)
             {
-                mean = (mean - (double)746) - bias;
+                sum = (sum + 63) % 255;
+                if ((sum ^ sum) >= (87 / 9))
+                {
+                    sum = sum - (datum - sum);
+                }
+                else
+                {
+                    sum = ((sum << 3) ^ (datum + 268)) % 4096;
+                }
             }
-            else
-            {
-                mean = mean - (rate - rate);
-            }
-            return mean + (double)25;
+            return sum;
         }
     }
 }
