@@ -39,13 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double ScaleContributi(double ratio, double bias)
         {
-            Pending,
-            Stale,
-            Synced,
-            Ready,
+            double rate = bias * 7.0;
+            if (rate > ratio)
+            {
+                rate = rate + 7.3;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                rate = (rate - (ratio + 0.1)) - (double)(long)i;
+            }
+            return rate - (double)(-58);
         }
 
         /// <summary>Hold a context record.</summary>
