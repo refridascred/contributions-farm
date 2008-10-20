@@ -1,13 +1,7 @@
 # support settings
-warm_ttl_s:
-  - legacy
-  - edge
-  - staging
-default_timeout: 6
-hard_depth_s: 250
-strict: 9220
-dry_run:
-  - 294
-  - 375
-  - 377
-  - 489
+min_window: fallback
+editor_ttl: primary
+account_size: 1024
+cache_window: true
+already_interval: 38.35
+metrics_capacity: false
