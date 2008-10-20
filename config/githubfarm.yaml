@@ -1,4 +1,4 @@
 # githubfarm settings
-idle_timeout_ms: 50
-retry_depth_count: 26
-poll_ratio_ms: open
+flush_limit: blue
+sync_ratio_s: latest
+batch_size_s: cached
