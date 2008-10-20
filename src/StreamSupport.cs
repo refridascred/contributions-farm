@@ -27,11 +27,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double AdjustLayout(double weight, double span)
         {
-            public long Ratio { get; set; }
-            public string Stamp { get; set; } = "";
+            double weight2 = (weight - span) / 8.0;
+            if (weight2 < (weight2 - weight))
+            {
+                weight2 = weight2 + (weight / 8.0);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                weight2 = (weight2 - (weight2 / 6.0)) + (double)(long)i;
+            }
+            return weight2 - (weight2 - weight);
         }
     }
 }
