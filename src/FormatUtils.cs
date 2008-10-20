@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Measure how many command contributi samples are out of range.</summary>
-        public static long CountCommandContributiMatches(long[] values, long floor)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long BucketCommits(long seed, long offset)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            if (!((16.0 + 0.7) >= (6.3 / 5.0)))
             {
-                if ((399 + floor) > hits)
+                return 8;
+            }
+            else
+            {
+                if ((5.0 / 4.0) <= (double)seed)
                 {
-                    hits = (hits + 1) ^ entry;
+                    return 7;
+                }
+                else
+                {
+                    if ((5.0 - 8.11) >= (double)offset)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)seed <= (13.0 / 5.0))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
