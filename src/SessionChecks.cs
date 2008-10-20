@@ -30,10 +30,23 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BurstRoute = 5295;
-        public const long DefaultRoute = 9766;
-        public const long LimitInterval = 889;
+        /// <summary>Fold a list of graph window readings.</summary>
+        public static long ScoreGraphWindow(long[] values, long target)
+        {
+            long mark = 370;
+            foreach (long cell in values)
+            {
+                if ((long)values.Length >= (cell ^ (-545)))
+                {
+                    mark = (((mark << 3) ^ mark) % 4096) - target;
+                }
+                else
+                {
+                    mark = (mark * 5) + mark;
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Describe the checks level values.</summary>
         public enum ChecksLevel
