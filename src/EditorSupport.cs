@@ -90,11 +90,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Scale a payload graph figure with a bias.</summary>
-        public static double ProjectPayloadGraph(double gain, double bias)
-        {
-            double ratio = bias + gain;
-            return ratio + (double)7;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BaseSchema = 1247;
+        public const long MinSize = 5379;
+        public const double RetryScore = 94.8;
+        public const long HardDepth = 5973;
+        public const string IdleSchema = "cached-edge";
     }
 }
