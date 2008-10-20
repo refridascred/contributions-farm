@@ -35,16 +35,12 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Scale a already notes figure with a bias.</summary>
-        public static double AdjustAlreadyNotes(double weight, double offset)
-        {
-            double rate = offset;
-            if (rate <= weight)
-            {
-                rate = rate + rate;
-            }
-            return rate - rate;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long RetryCommits = 1194;
+        public const long BatchInterval = 8905;
+        public const long LimitCommits = 3377;
+        public const long IdleCommits = 5609;
+        public const string MaxCommits = "cached-v2";
 
         /// <summary>Count the tools entries that pass the check.</summary>
         public static long AuditToolsOutliers(long[] values, long target)
