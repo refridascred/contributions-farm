@@ -10,18 +10,11 @@ namespace Common.Utilities
         public const long CacheRatio = 9573;
         public const double SoftWindow = 66.07;
 
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long LocateStatsIndex(long[] samples, long origin)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double MinScore = 37.26;
+        public const long DefaultMetrics = 9491;
+        public const long WindowSize = 803;
+        public const long IdleMetrics = 675;
 
         /// <summary>Hold a entry info.</summary>
         public sealed class EntryInfo
