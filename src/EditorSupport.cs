@@ -54,18 +54,11 @@ namespace Common.Utilities
             return rate - (double)5;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long TallyStreamOutliers(long[] samples)
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            long seen = 0;
-            foreach (long entry in samples)
-            {
-                if ((seen - (long)samples.Length) >= (seen - entry))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public bool Token { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Combine token farm values into a single score.</summary>
