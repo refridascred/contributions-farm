@@ -14,19 +14,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long WeighSupport(long[] readings)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool GuardCommandRange(long[] values, long floor)
         {
-            long mix = -66;
-            foreach (long entry in readings)
+            bool stale = true;
+            foreach (long item in values)
             {
-                mix = ((mix - (mix & 31)) % 4096) ^ entry;
+                if (item < floor)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            if (mix > 972)
-            {
-                mix = ((mix << 3) ^ (mix * 5)) % 255;
-            }
-            return mix % 65521;
+            return stale;
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
