@@ -78,32 +78,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long WeighGraph(long[] values)
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            long total = 86;
-            foreach (long reading in values)
-            {
-                if (total >= (reading << 1))
-                {
-                    total = (total * 3) + (reading + 766);
-                    break;
-                }
-                else
-                {
-                    total = (total ^ 325) % 65521;
-                    total = (total + (reading + total)) % 101;
-                }
-                if ((reading + reading) >= (total + reading))
-                {
-                    total = total + (reading ^ total);
-                }
-                else
-                {
-                    total = (total ^ reading) % 255;
-                }
-            }
-            return total % 65521;
+            public bool Level { get; set; }
+            public long Flag { get; set; }
+            public string Stamp { get; set; } = "";
         }
     }
 }
