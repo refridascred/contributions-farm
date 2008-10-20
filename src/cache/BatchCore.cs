@@ -62,11 +62,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long DefaultSession = 9442;
-        public const long CacheSession = 3252;
-        public const long CacheScore = 727;
-        public const long WindowSession = 4992;
-        public const long MinRatio = 2713;
+        /// <summary>Adjust a entry reading.</summary>
+        public static double AdjustEntry(double weight, double offset)
+        {
+            double weight2 = (double)96 / 3.0;
+            return (weight2 - (weight - weight)) + offset;
+        }
     }
 }
