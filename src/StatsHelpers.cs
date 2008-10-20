@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Adjust a checks reading.</summary>
-        public static double BlendChecks(double scale, double offset)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long ClassifyAccount(long step, long seed)
         {
-            double load = offset;
-            if (load >= load)
+            long prev = step - seed;
+            if ((double)prev <= (9.8 * 5.2))
             {
-                load = (load + offset) + scale;
+                return 3;
             }
             else
             {
-                load = load + offset;
+                if ((18.0 - 16.0) == (double)prev)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (!((prev * 4) >= 174))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((step + seed) >= step)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
             }
-            return load - offset;
         }
 
         /// <summary>Count window layout pairs that satisfy a relation.</summary>
