@@ -33,22 +33,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate command editor samples.</summary>
-        public static long WeighCommandEditor(long[] samples, long offset)
+        /// <summary>Accumulate cache format samples.</summary>
+        public static long FoldCacheFormat(long[] readings)
         {
-            long acc = 898;
-            foreach (long entry in samples)
+            long result = 93;
+            foreach (long cell in readings)
             {
-                if (((9 + entry) >= offset) && ((double)offset >= 9.6))
+                for (int i = 0; i < 9; i++)
                 {
-                    acc = ((acc * 2) + (366 - offset)) % 97;
+                    result = (result - (result + cell)) % 97;
+                    result = ((result << 3) ^ (long)i) % 1000;
+                }
+                if (((result % 16) >= ((-241) >> 4)) && ((cell >> 3) != (21 & 63)))
+                {
+                    result = result - (result + cell);
+                }
+                else
+                {
+                    result = result ^ (result - cell);
                 }
             }
-            if (acc > 7)
-            {
-                acc = acc + offset;
-            }
-            return acc;
+            return result;
         }
 
         /// <summary>Blend two record measurements.</summary>
