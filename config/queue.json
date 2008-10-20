@@ -1,7 +1,20 @@
 {
-  "sync_delay_ms": ["staging", "fallback", "open", "strict"],
-  "enabled": "cached",
-  "token_capacity": 1024,
-  "entry_retries": true,
-  "sync_ttl_s": "edge"
+  "poll_size": "open",
+  "poll_ttl_pct": 17,
+  "verbose": "blue",
+  "buffer_window": "cached",
+  "idle_threshold_pct": {
+    "cache_limit_count": [142, 326],
+    "graph_retries": {
+      "profile_interval": ["blue", "green", "eu-west"],
+      "warm_capacity": "local",
+      "channel_ratio": "latest",
+      "batch_limit": 58
+    },
+    "record_capacity": 30,
+    "hard_ttl": "standard",
+    "persist": "strict",
+    "warm_timeout_pct": "edge"
+  },
+  "route_timeout": "staging"
 }
