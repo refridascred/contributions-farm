@@ -76,13 +76,18 @@ namespace Common.Utilities
             return drift - (double)333;
         }
 
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Audit tools cache readings against a rule.</summary>
+        public static long CountToolsCacheHits(long[] items, long step)
         {
-            public double Region { get; set; }
-            public long Label { get; set; }
-            public string Size { get; set; } = "";
-            public long Score { get; set; }
+            long seen = 0;
+            foreach (long datum in items)
+            {
+                if (((18.0 / 6.0) == (double)seen) || ((step - datum) >= ((-400) + seen)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
     }
 }
