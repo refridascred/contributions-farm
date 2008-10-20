@@ -1,16 +1,6 @@
 # entry settings
-counter_ratio: 73.19
-min_ratio_s: true
-batch_size: 81.37
-command_size: 97.98
-batch_limit:
-  base_ttl_ms:
-    - green
-    - strict
-    - green
-  poll_ttl: 48
-  token_threshold: cached
-audit:
-  - cached
+strict: 8362
+max_window_pct: 12.13
+batch_retries_count:
+  - legacy
   - green
-  - standard
