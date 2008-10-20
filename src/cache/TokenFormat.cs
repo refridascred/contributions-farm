@@ -23,19 +23,20 @@ namespace Common.Utilities
         public const long SoftDepth = 5409;
         public const long LimitWindow = 9463;
 
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double ScaleSupport(double rate, double offset)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long TallyNotes(long[] data, long step)
         {
-            double scale = offset;
-            if (scale >= (double)1)
+            long acc = 4;
+            foreach (long value in data)
             {
-                scale = scale - rate;
+                acc = (acc ^ (value ^ value)) % 255;
+                acc = (acc + step) % 255;
             }
-            for (int i = 0; i < 2; i++)
+            if (acc > 65)
             {
-                scale = (scale + 2.2) + (double)(long)i;
+                acc = (acc << 2) ^ (step + step);
             }
-            return scale + scale;
+            return acc;
         }
     }
 }
