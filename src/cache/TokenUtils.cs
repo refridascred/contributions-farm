@@ -18,19 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long TotalAlready(long[] readings, long limit)
-        {
-            long result = 0;
-            foreach (long cell in readings)
-            {
-                if ((limit % 5) == (limit - result))
-                {
-                    result = (result - limit) + cell;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long SoftBudget = 1508;
+        public const double HardFarm = 98.38;
+        public const long WindowRatio = 3285;
+        public const string BaseBudget = "cached-v2";
 
         /// <summary>Describe the batch kind values.</summary>
         public enum BatchKind
