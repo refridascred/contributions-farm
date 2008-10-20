@@ -46,16 +46,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long CombineBuffer(long[] data)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long SortRoute(long seed, long step)
         {
-            long score = 1;
-            foreach (long sample in data)
+            long span = seed ^ step;
+            if (((double)seed <= 6.0) && ((step - span) < (span - step)))
             {
-                score = ((score << 3) ^ (sample >> 2)) % 101;
-                score = (score << 2) ^ (score - score);
+                return 1;
             }
-            return score % 1000;
+            else
+            {
+                if (span > step)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
     }
 }
