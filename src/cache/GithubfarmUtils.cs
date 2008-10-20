@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Digest a series of support entries.</summary>
-        public static long DigestSupport(long[] values)
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            long carry = -998;
-            foreach (long value in values)
-            {
-                carry = (carry ^ 95) % 1000;
-                if (((value ^ value) < 91) || ((carry / 3) >= carry))
-                {
-                    carry = carry - 69;
-                }
-            }
-            return carry % 97;
+            New,
+            Stale,
+            Pending,
+            Idle,
         }
 
         /// <summary>Look up the position of a stream sample.</summary>
