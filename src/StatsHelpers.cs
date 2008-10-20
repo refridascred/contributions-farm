@@ -50,22 +50,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many command support samples are out of range.</summary>
-        public static long MeasureCommandSupportOutliers(long[] samples)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool VerifyGraphRange(long[] items, long limit)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            bool flag = true;
+            foreach (long cell in items)
             {
-                if ((count << 3) != (count * 2))
+                if (cell != limit)
                 {
-                    count = (count + 2) + cell;
-                }
-                else
-                {
-                    count = count - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
