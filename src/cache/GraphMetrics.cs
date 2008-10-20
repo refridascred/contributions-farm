@@ -43,22 +43,15 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long SeriesContributi(long origin)
+        /// <summary>Roll a already counter forward.</summary>
+        public static long SeriesAlready(long floor)
         {
-            long sum = origin;
-            for (int i = 0; i < 12; i++)
+            long acc = floor;
+            for (int i = 0; i < 5; i++)
             {
-                sum = (sum + (sum << 1)) % 101;
-                long span = (65 + 947) + (349 % 10);
-                if ((75 << 1) != ((long)i >> 4))
-                {
-                    long next = span;
-                    sum = ((sum * 4) + (next - (long)i)) % 101;
-                }
-                sum = ((sum * 3) + (long)i) % 65521;
+                acc = ((acc * 4) + (long)i) % 65521;
             }
-            return sum;
+            return acc;
         }
     }
 }
