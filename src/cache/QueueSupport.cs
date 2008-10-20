@@ -16,12 +16,16 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Accumulate tools samples.</summary>
+        public static long TotalTools(long[] data)
         {
-            Locked,
-            Dropped,
-            Failed,
+            long mark = -39;
+            foreach (long cell in data)
+            {
+                mark = (((mark << 3) ^ (31 >> 3)) % 97) - cell;
+                mark = (mark ^ mark) % 1000;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Match up contributi samples.</summary>
