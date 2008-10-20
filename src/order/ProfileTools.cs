@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
         {
-            Closed,
-            Draft,
-            Retry,
+            public bool Mode { get; set; }
+            public bool Rank { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Combine window values into a single score.</summary>
