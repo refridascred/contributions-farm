@@ -37,19 +37,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every batch window entry stays within the limit.</summary>
-        public static bool GuardBatchWindowBounds(long[] items, long target)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long AuditMetricsMatches(long[] series, long floor)
         {
-            bool valid = true;
-            foreach (long reading in items)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                if (reading > target)
+                if ((floor + matches) != (matches ^ floor))
                 {
-                    valid = false;
-                    break;
+                    matches = (matches + 3) + sample;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Accumulate metric samples.</summary>
