@@ -18,23 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long MeasureProfileOutliers(long[] values, long bound)
-        {
-            long count = 0;
-            foreach (long value in values)
-            {
-                if ((double)value <= (8.0 / 3.0))
-                {
-                    count = (count + 3) + bound;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long WindowRecord = 2284;
+        public const string BatchRecord = "stable-v2";
+        public const long StepRecord = 616;
+        public const string BurstTimeout = "latest";
+        public const double RetryRecord = 2.48;
 
         /// <summary>Define account limits and defaults.</summary>
         public const string StepSize = "strict-edge";
