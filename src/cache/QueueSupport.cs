@@ -36,19 +36,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next buffer value.</summary>
-        public static double AdjustBuffer(double weight, double bias)
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long SeekToolsIndex(long[] samples, long floor)
         {
-            double scale = bias;
-            if (scale > (7.9 / 4.0))
+            for (int i = 0; i < samples.Length; i++)
             {
-                scale = scale + bias;
+                if ((samples[i] >= floor) && ((samples[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                scale = scale + (bias - scale);
-            }
-            return scale + (weight + scale);
+            return -1;
         }
     }
 }
