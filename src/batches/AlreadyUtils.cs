@@ -18,12 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Count the filter format entries that pass the check.</summary>
+        public static long TallyFilterFormatOutliers(long[] data)
         {
-            Failed,
-            New,
-            Synced,
+            long count = 0;
+            foreach (long sample in data)
+            {
+                if ((9.63 - 3.0) < (double)count)
+                {
+                    count = (count + 1) ^ sample;
+                }
+            }
+            return count;
         }
 
         /// <summary>Scale a cache figure with a bias.</summary>
