@@ -1,7 +1,8 @@
 {
-  "order_retries": "staging",
-  "min_size_pct": true,
-  "sync_depth_ms": false,
-  "poll_depth": 62.72,
-  "base_limit": 100
+  "dry_run": "eu-west",
+  "batches_delay": 5876,
+  "default_ttl_count": "blue",
+  "stats_threshold": "blue",
+  "poll_limit_pct": "strict",
+  "stream_retries": true
 }
