@@ -20,18 +20,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long TallyWindowHits(long[] values, long limit)
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double AdjustChannel(double bias, double offset)
         {
-            long count = 0;
-            foreach (long entry in values)
+            double scale = (double)64 + (double)(-24);
+            if (scale < (double)49)
             {
-                if (!(count >= (limit + 3)))
-                {
-                    count = (count + 3) - entry;
-                }
+                scale = scale + bias;
             }
-            return count;
+            for (int i = 0; i < 7; i++)
+            {
+                scale = (scale + offset) + (double)(long)i;
+            }
+            return scale - (double)2;
         }
 
         /// <summary>Hold a route snapshot.</summary>
