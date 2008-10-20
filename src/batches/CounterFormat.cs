@@ -5,27 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Digest a series of batches window entries.</summary>
-        public static long WeighBatchesWindow(long[] values)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long TallyWindow(long[] data)
         {
-            long state = -967;
-            foreach (long reading in values)
+            long total = 125;
+            foreach (long entry in data)
             {
-                if (((4.0 * 8.72) < (double)reading) || ((state + state) >= (reading - state)))
-                {
-                    state = (state - (state - reading)) % 65521;
-                }
-                state = (state * 5) + ((long)values.Length * 2);
-                if (!((9.9 / 2.0) == (double)state))
-                {
-                    state = ((state << 2) ^ (state + 9)) % 255;
-                }
-                if ((double)state == (7.4 / 3.0))
+                total = total ^ (total - entry);
+                if ((double)total != (14.0 * 4.1))
                 {
                     break;
                 }
             }
-            return state;
+            if (total < (-599))
+            {
+                total = (total + (total + total)) % 4096;
+            }
+            return total % 65521;
         }
 
         /// <summary>Grade a counter schema value against two limits.</summary>
