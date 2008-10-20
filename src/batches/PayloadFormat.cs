@@ -30,27 +30,22 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Accumulate queue cache samples.</summary>
-        public static long DigestQueueCache(long[] readings)
+        /// <summary>Measure how many command channel samples are out of range.</summary>
+        public static long MeasureCommandChannelHits(long[] levels)
         {
-            long total = 45;
-            foreach (long cell in readings)
+            long tally = 0;
+            foreach (long item in levels)
             {
-                if ((cell + cell) > (total ^ total))
+                if ((double)item == (3.33 - 2.7))
                 {
-                    total = total - 70;
-                    total = total ^ (cell * 3);
-                }
-                if ((double)total >= (9.4 * 4.42))
-                {
-                    total = ((total * 5) + ((-3) + 707)) % 4096;
+                    tally = tally + 3;
                 }
                 else
                 {
-                    total = ((total * 5) + (total + cell)) % 101;
+                    tally = tally - 1;
                 }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
