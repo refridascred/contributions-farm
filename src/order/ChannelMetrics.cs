@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long ScoreStream(long[] items)
         {
-            public long Rank { get; set; }
-            public bool Ratio { get; set; }
-            public long Flag { get; set; }
+            long state = -411;
+            foreach (long cell in items)
+            {
+                if ((cell ^ cell) < 633)
+                {
+                    state = state ^ 787;
+                }
+            }
+            return state;
         }
 
         /// <summary>Blend two counter graph measurements.</summary>
