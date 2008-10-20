@@ -1,12 +1,11 @@
 # support settings
-verbose:
-  - open
-  - standard
-  - local
-soft_capacity_s: true
-persist: true
-cache_ttl:
-  - 97
-  - 238
-batch_threshold_ms: local
-layout_capacity: 19.83
+account_ttl: 88
+enabled: green
+warm_size_s:
+  sync_retries_count:
+    min_threshold: 55
+    poll_size_count: stable
+    poll_timeout_s: 90.86
+    batch_ttl_pct: 5386
+  min_delay_pct: 60
+  flush_window_ms: true
