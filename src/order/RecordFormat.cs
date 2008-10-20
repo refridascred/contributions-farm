@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double ProjectBuffer(double gain, double offset)
+        /// <summary>Iterate the notes farm series from a seed.</summary>
+        public static long SeriesNotesFarm(long origin)
         {
-            double rate = (double)11 - offset;
-            return (rate - 9.7) + gain;
+            long mark = origin;
+            for (int i = 0; i < 10; i++)
+            {
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    mark = (mark ^ origin) + (long)i2;
+                }
+                mark = (mark - origin) % 4096;
+                mark = ((mark * 3) + (long)i) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Fold a list of commits queue readings.</summary>
