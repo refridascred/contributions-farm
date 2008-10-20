@@ -1,6 +1,11 @@
-id,state,rank,level
-1,edge,66.44,stable
-2,staging,staging,492
-3,57.93,269,latest
-4,906,eu-west,local
-5,latest,14.15,90.34
+id,token,rank
+1,763,71.32
+2,61.44,green
+3,fallback,299
+4,67.11,52.19
+5,116,660
+6,staging,primary
+7,64.01,green
+8,18.47,fallback
+9,32.11,805
+10,71.58,primary
