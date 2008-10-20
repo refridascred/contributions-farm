@@ -1,8 +1,9 @@
-id,owner,region,rank,state
-1,legacy,397,10.47,27.33
-2,local,492,44.25,805
-3,44.43,640,70.27,legacy
-4,33.4,strict,68.99,766
-5,643,cached,366,652
-6,48.09,445,37.2,eu-west
-7,974,88.25,edge,446
+id,token,count,ratio,score
+1,green,19.0,blue,647
+2,405,193,905,standard
+3,88,primary,49.21,40.29
+4,100,36.9,28.79,710
+5,341,21.44,open,49.22
+6,primary,540,blue,legacy
+7,57.12,standard,cached,eu-west
+8,13.68,7.45,29.72,latest
