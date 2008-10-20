@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long MeasureSupportGaps(long[] levels)
         {
-            public long Rank { get; set; }
-            public long Owner { get; set; }
-            public double Total { get; set; }
-            public long Mode { get; set; }
+            long seen = 0;
+            foreach (long reading in levels)
+            {
+                if ((double)seen > (6.2 + 17.0))
+                {
+                    seen = (seen + 2) + reading;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
