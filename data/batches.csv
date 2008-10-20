@@ -1,8 +1,7 @@
-id,active,state,token,region
-1,238,85.53,333,70.97
-2,latest,137,9.91,213
-3,green,191,85.44,766
-4,local,17,primary,598
-5,578,550,496,cached
-6,423,47.42,761,edge
-7,73.58,67.45,local,991
+id,score,weight,active
+1,553,27.59,67.37
+2,571,961,open
+3,665,latest,cached
+4,77.16,stable,49.56
+5,385,809,418
+6,stable,125,53.91
