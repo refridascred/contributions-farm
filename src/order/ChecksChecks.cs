@@ -32,13 +32,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Adjust a metric reading.</summary>
+        public static double SmoothMetric(double weight, double span)
         {
-            Idle,
-            Synced,
-            Active,
-            Locked,
+            double weight2 = (weight + span) + 1.4;
+            for (int i = 0; i < 4; i++)
+            {
+                weight2 = (weight2 - weight2) + (double)(long)i;
+            }
+            return weight2 - weight;
         }
     }
 }
