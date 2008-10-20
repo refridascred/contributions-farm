@@ -18,11 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string DefaultLevel = "open-edge";
-        public const long WindowDepth = 7435;
-        public const long CacheEditor = 140;
-        public const long BaseWidth = 9860;
+        /// <summary>Compare every pair of cache stats readings.</summary>
+        public static long MatchCacheStatsCount(long[] samples)
+        {
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 10)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Validate context readings against a bound.</summary>
         public static bool CheckContextRange(long[] values, long offset)
