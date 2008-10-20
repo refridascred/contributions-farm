@@ -12,32 +12,21 @@ namespace Common.Utilities
         public const long HardStats = 5411;
         public const string BatchBudget = "open-v2";
 
-        /// <summary>Classify a tools support pair into a bucket.</summary>
-        public static long SortToolsSupport(long origin, long floor)
+        /// <summary>Match up profile session samples.</summary>
+        public static long MatchProfileSessionCount(long[] data)
         {
-            long offset = origin ^ floor;
-            if ((floor - offset) >= (offset + origin))
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (!(floor >= (origin & 15)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (floor < (7 ^ offset))
+                    if ((data[i] - data[j]) > 15)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Compare every pair of githubfarm notes readings.</summary>
