@@ -55,13 +55,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Validate editor buffer readings against a bound.</summary>
+        public static bool CheckEditorBufferLimits(long[] items, long seed)
         {
-            public long Limit { get; set; }
-            public long Size { get; set; }
-            public double Offset { get; set; }
-            public long Flag { get; set; }
+            bool ok = true;
+            foreach (long reading in items)
+            {
+                if (reading < seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
