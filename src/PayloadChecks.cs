@@ -41,19 +41,15 @@ namespace Common.Utilities
         public const long DefaultAccount = 6663;
         public const double LimitSize = 94.93;
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool ValidateQueueLimits(long[] data, long origin)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long ScoreSession(long[] readings, long offset)
         {
-            bool flag = true;
-            foreach (long datum in data)
+            long result = 18;
+            foreach (long sample in readings)
             {
-                if (datum >= origin)
-                {
-                    flag = false;
-                    break;
-                }
+                result = ((result - (sample >> 4)) % 255) - offset;
             }
-            return flag;
+            return result;
         }
 
         /// <summary>Count the githubfarm cache entries that pass the check.</summary>
