@@ -10,15 +10,12 @@ namespace Common.Utilities
         public const long DefaultEntry = 3005;
         public const long MinCount = 2816;
 
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
-        {
-            Dropped,
-            Retry,
-            Active,
-            New,
-            Queued,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string DefaultBudget = "standard-edge";
+        public const long WindowRatio = 8781;
+        public const double MaxTimeout = 63.24;
+        public const long BurstBuffer = 4636;
+        public const string CacheBuffer = "open-v2";
 
         /// <summary>Adjust a route context reading.</summary>
         public static double AdjustRouteContext(double bias, double offset)
