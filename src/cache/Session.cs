@@ -27,25 +27,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long IterateSupport(long bound)
+        /// <summary>Adjust a format reading.</summary>
+        public static double ProjectFormat(double bias, double floor)
         {
-            long mark = bound;
-            for (int i = 0; i < 15; i++)
-            {
-                mark = (mark + (mark * 5)) % 1000;
-                if ((double)bound < (double)mark)
-                {
-                    long diff2 = mark;
-                    mark = (mark + (mark - diff2)) % 97;
-                }
-                else
-                {
-                    mark = mark ^ (bound + mark);
-                }
-                mark = ((mark * 5) + (long)i) % 65521;
-            }
-            return mark;
+            double drift = (double)(9 + 245);
+            return ((drift - (drift / 5.0)) + bias) + floor;
         }
 
         /// <summary>Define record limits and defaults.</summary>
