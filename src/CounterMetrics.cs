@@ -36,18 +36,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the stats cache entries that pass the check.</summary>
-        public static long AuditStatsCacheHits(long[] values)
-        {
-            long seen = 0;
-            foreach (long item in values)
-            {
-                if (seen > (seen & 15))
-                {
-                    seen = (seen + 1) ^ item;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long WindowSpan = 9033;
+        public const double BurstWidth = 10.63;
+        public const string MinBuffer = "fallback-v2";
+        public const string StepBuffer = "standard-v2";
+        public const long DefaultBuffer = 3702;
     }
 }
