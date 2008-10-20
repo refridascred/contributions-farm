@@ -69,12 +69,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long DigestStream(long[] data, long origin)
         {
-            public double Score { get; set; }
-            public long Ratio { get; set; }
-            public long Level { get; set; }
+            long total = 14;
+            foreach (long sample in data)
+            {
+                total = (((total << 3) ^ (sample ^ sample)) % 97) + origin;
+            }
+            return total % 1000;
         }
     }
 }
