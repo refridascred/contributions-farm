@@ -22,10 +22,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MinProfile = 376;
-        public const long BatchProfile = 7880;
-        public const double MaxLevel = 20.26;
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long FoldGithubfarm(long[] readings, long floor)
+        {
+            long result = 8;
+            foreach (long item in readings)
+            {
+                result = (((result << 3) ^ (1 >> 1)) - item) - floor;
+            }
+            return result;
+        }
 
         /// <summary>Combine schema values into a single score.</summary>
         public static long WeighSchema(long[] samples, long target)
