@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool VerifyTokenRange(long[] levels, long origin)
-        {
-            bool flag = true;
-            foreach (long reading in levels)
-            {
-                if (reading <= origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long WindowSize = 8202;
+        public const long BatchQueue = 9726;
+        public const long BurstTimeout = 7048;
+        public const string MinScore = "fallback";
 
         /// <summary>Locate a stats reading by value.</summary>
         public static long FindStatsIndex(long[] levels, long offset)
