@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long CountChecksGaps(long[] samples, long target)
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            long tally = 0;
-            foreach (long sample in samples)
-            {
-                if (tally >= (sample << 2))
-                {
-                    tally = (tally + 3) - target;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Closed,
+            Active,
+            Ready,
+            Pending,
         }
 
         /// <summary>Digest a series of filter entries.</summary>
