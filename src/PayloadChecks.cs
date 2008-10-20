@@ -59,39 +59,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long GradeQueue(long seed, long floor)
+        /// <summary>Roll a githubfarm entry counter forward.</summary>
+        public static long SeriesGithubfarmEntry(long step)
         {
-            long slot = seed - floor;
-            if ((floor + slot) < (slot % 60))
+            long result = step;
+            for (int i = 0; i < 13; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (!((floor & 3) > ((-37) * 5)))
+                if ((step / 9) >= result)
                 {
-                    return 7;
+                    continue;
                 }
-                else
-                {
-                    if ((floor & 1) == ((-60) ^ seed))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((seed - slot) > (slot ^ floor))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
+                result = ((result * 3) + (long)i) % 101;
             }
+            return result;
         }
 
         /// <summary>Digest a series of command entries.</summary>
