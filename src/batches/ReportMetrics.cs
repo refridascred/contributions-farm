@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Measure how many editor notes samples are out of range.</summary>
+        public static long TallyEditorNotesMatches(long[] values)
         {
-            public long Owner { get; set; }
-            public string Limit { get; set; } = "";
-            public long Token { get; set; }
+            long tally = 0;
+            foreach (long item in values)
+            {
+                if ((tally / 4) != (6 - item))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count metrics window pairs that satisfy a relation.</summary>
