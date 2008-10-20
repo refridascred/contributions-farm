@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Find the first editor cluster entry that matches the target.</summary>
-        public static long LocateEditorClusterIndex(long[] items, long offset)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long CountBufferMatches(long[] samples, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                if ((items[i] <= offset) && ((items[i] % 3) == 0))
+                if (!((matches + matches) != (entry & 1)))
                 {
-                    return (long)i;
+                    matches = (matches + 1) - seed;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
