@@ -28,18 +28,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long CountMetricsGaps(long[] items)
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long LookupMetricsIndex(long[] readings, long bound)
         {
-            long tally = 0;
-            foreach (long item in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((820 * 4) < tally)
+                if ((readings[i] >= bound) && ((readings[i] % 3) != 0))
                 {
-                    tally = (tally + 1) + item;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
