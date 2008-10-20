@@ -68,15 +68,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next metrics stream value.</summary>
-        public static double ScaleMetricsStream(double scale, double offset)
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long FindBatchIndex(long[] levels, long target)
         {
-            double rate = (offset / 9.0) - (scale * 18.0);
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                rate = rate + (double)(long)i;
+                if (levels[i] == target)
+                {
+                    return (long)i;
+                }
             }
-            return rate - (scale - offset);
+            return -1;
         }
     }
 }
