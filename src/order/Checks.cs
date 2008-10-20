@@ -72,19 +72,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Project the next tools value.</summary>
-        public static double SmoothTools(double rate, double offset)
-        {
-            double drift = 7.9 * 16.0;
-            if (drift < (7.88 * 8.6))
-            {
-                drift = drift - rate;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = drift - (double)(long)i;
-            }
-            return drift + (rate + offset);
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long RetryInterval = 9092;
+        public const string BatchBudget = "latest-v2";
+        public const double DefaultGraph = 93.69;
+        public const long RetryGraph = 1575;
     }
 }
