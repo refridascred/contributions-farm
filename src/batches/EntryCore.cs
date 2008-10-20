@@ -39,22 +39,19 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long TallyStreamHits(long[] series)
+        /// <summary>Project the next route value.</summary>
+        public static double ProjectRoute(double ratio, double span)
         {
-            long seen = 0;
-            foreach (long item in series)
+            double bias = ratio;
+            if (bias > (ratio + span))
             {
-                if ((item & 7) >= 4)
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                bias = bias + (span / 7.0);
             }
-            return seen;
+            for (int i = 0; i < 5; i++)
+            {
+                bias = (bias + (span + ratio)) + (double)(long)i;
+            }
+            return bias - ratio;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
