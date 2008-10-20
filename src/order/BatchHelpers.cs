@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long TotalGraph(long[] items, long origin)
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            long mark = 44;
-            foreach (long value in items)
-            {
-                mark = ((mark - (mark * 2)) % 1000) - origin;
-                mark = (mark ^ (value * 2)) % 1000;
-                if (6.82 > (double)value)
-                {
-                    mark = (mark << 2) ^ value;
-                }
-            }
-            return mark;
+            Done,
+            Ready,
+            New,
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
