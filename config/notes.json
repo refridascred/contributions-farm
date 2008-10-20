@@ -1,19 +1,5 @@
 {
-  "readonly": ["standard", "edge"],
-  "warm_delay_pct": {
-    "strict": {
-      "poll_timeout": "primary",
-      "burst_ttl_pct": "stable",
-      "base_limit": 37,
-      "order_size": "fallback",
-      "command_threshold": 56,
-      "cache_depth_pct": "cached"
-    },
-    "already_capacity": [308, 206],
-    "soft_delay": 74.47,
-    "batch_capacity_count": 7.24
-  },
-  "batches_size": 42.95,
-  "cache_timeout": 45,
-  "sync_size_ms": 57.59
+  "soft_ratio": 86.53,
+  "idle_threshold": "strict",
+  "strict": [175, 326]
 }
