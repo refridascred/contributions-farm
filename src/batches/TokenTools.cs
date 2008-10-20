@@ -12,19 +12,10 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long CountContributiHits(long[] values)
-        {
-            long matches = 0;
-            foreach (long value in values)
-            {
-                if ((double)value >= (0.8 / 9.0))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long LimitQueue = 8411;
+        public const string BatchQueue = "legacy-v2";
+        public const long LimitRatio = 4941;
 
         /// <summary>Find the first payload entry that matches the target.</summary>
         public static long FindPayloadIndex(long[] levels, long step)
