@@ -1,28 +1,24 @@
 # githubfarm settings
-burst_ttl: false
-hard_ratio_pct: 60
-command_limit: true
-idle_capacity:
-  order_capacity:
-    enabled: false
-    batch_size: 85.45
-    audit: 84.51
-    farm_ttl: 9422
-  readonly: open
-  sync_interval_s: staging
-  cache_depth: 100
-  queue_ttl: 11
-  counter_ratio: fallback
-warm_limit: false
-cache_limit:
-  enabled: strict
-  flush_interval: 30
-  hard_threshold_count: staging
-  readonly: strict
-  max_depth_s:
-    order_depth: 5079
-    max_threshold_s: primary
-    soft_depth_ms: 9.51
-    base_ratio_s: 44.76
-    soft_interval: 60
-    format_window: 85.74
+base_ttl_s: 4570
+tools_interval:
+  cluster_threshold: primary
+  contributi_timeout:
+    batch_delay_s:
+      - legacy
+      - blue
+      - fallback
+      - legacy
+    sync_delay_ms: true
+    idle_size_pct: 2008
+    poll_ttl_count: 100
+    persist: true
+    flush_ttl_s: true
+  idle_ratio: stable
+  enabled: staging
+cluster_ratio: 80.31
+schema_interval: 6
+sync_capacity_ms: 1544
+base_capacity_ms:
+  - 396
+  - 421
+  - 26
