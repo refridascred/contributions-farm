@@ -44,11 +44,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long WindowTimeout = 319;
-        public const string HardSize = "stable-1";
-        public const long StepEditor = 6293;
-        public const string IdleLevel = "alpha";
-        public const long WindowWidth = 9169;
+        /// <summary>Accumulate queue farm samples.</summary>
+        public static long CombineQueueFarm(long[] series)
+        {
+            long carry = 473;
+            foreach (long value in series)
+            {
+                carry = ((carry - (carry << 2)) % 101) ^ value;
+            }
+            if (carry > 9)
+            {
+                carry = carry + carry;
+            }
+            return carry;
+        }
     }
 }
