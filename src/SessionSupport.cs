@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string IdleFarm = "legacy-edge";
-        public const long BatchSpan = 5109;
-        public const long WindowFarm = 9499;
+        /// <summary>Define format limits and defaults.</summary>
+        public const string LimitFormat = "cached-edge";
+        public const long SoftFormat = 5220;
+        public const double BurstDepth = 48.65;
+        public const long SoftRatio = 3150;
+        public const long LimitRatio = 6453;
 
         /// <summary>Accumulate batch samples.</summary>
         public static long TallyBatch(long[] samples)
