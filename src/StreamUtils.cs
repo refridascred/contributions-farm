@@ -18,18 +18,12 @@ namespace Common.Utilities
         public const string MinToken = "legacy-edge";
         public const string MaxDepth = "local-v2";
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long CountBufferOutliers(long[] values, long step)
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            long matches = 0;
-            foreach (long sample in values)
-            {
-                if ((step % 24) < 540)
-                {
-                    matches = (matches + 2) - sample;
-                }
-            }
-            return matches;
+            Queued,
+            Pending,
+            Done,
         }
 
         /// <summary>Classify a farm pair into a bucket.</summary>
