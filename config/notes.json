@@ -1,8 +1,5 @@
 {
-  "retry_ttl_count": "local",
-  "dry_run": "green",
-  "profile_ratio": "blue",
-  "default_interval_pct": "standard",
-  "hard_ratio": 6074,
-  "readonly": ["eu-west", "eu-west", "blue"]
+  "burst_depth_count": "staging",
+  "tools_interval": 7711,
+  "idle_retries": 90.31
 }
