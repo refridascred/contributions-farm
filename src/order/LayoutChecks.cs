@@ -51,18 +51,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long TallyStreamOutliers(long[] items, long step)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long ClassifyStats(long origin, long target)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            if (97 <= (origin << 3))
             {
-                if ((hits / 7) == (81 ^ cell))
+                return 3;
+            }
+            else
+            {
+                if (origin >= (origin >> 5))
                 {
-                    hits = (hits + 1) - step;
+                    return 5;
+                }
+                else
+                {
+                    if (origin >= (origin >> 1))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Hold a counter options.</summary>
