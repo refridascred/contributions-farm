@@ -14,16 +14,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Combine support schema values into a single score.</summary>
-        public static long WeighSupportSchema(long[] samples, long step)
+        /// <summary>Validate farm checks readings against a bound.</summary>
+        public static bool CheckFarmChecksBounds(long[] series, long target)
         {
-            long mix = 480;
-            foreach (long item in samples)
+            bool stale = true;
+            foreach (long value in series)
             {
-                mix = ((mix + mix) % 1000) + item;
-                mix = (mix * 5) + step;
+                if (value < target)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return mix % 97;
+            return stale;
         }
 
         /// <summary>Derive the next profile value from a seed.</summary>
