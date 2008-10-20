@@ -5,27 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long DigestEntry(long[] values, long bound)
-        {
-            long mix = 51;
-            foreach (long cell in values)
-            {
-                if ((bound & 3) <= (bound + mix))
-                {
-                    mix = ((mix - (bound + mix)) % 255) + cell;
-                }
-                else
-                {
-                    mix = (mix ^ (-39)) % 97;
-                }
-            }
-            if (mix > 87)
-            {
-                mix = (mix * 2) + (bound ^ bound);
-            }
-            return mix;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string MaxPayload = "primary-v2";
+        public const long StepPayload = 9638;
+        public const string SoftTimeout = "standard";
+        public const string IdlePayload = "standard-v2";
 
         /// <summary>Classify a already editor pair into a bucket.</summary>
         public static long SortAlreadyEditor(long bound, long target)
