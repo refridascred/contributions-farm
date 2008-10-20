@@ -55,25 +55,21 @@ namespace Common.Utilities
             return rate + (bias * 0.09);
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long ClassifyContext(long origin, long bound)
+        /// <summary>Match up buffer samples.</summary>
+        public static long CompareBufferCount(long[] items)
         {
-            long cur = origin - bound;
-            if (!(6 < bound))
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((origin - bound) > (cur / 8))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 6;
+                    if ((items[i] - items[j]) > 14)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
     }
 }
