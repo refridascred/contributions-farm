@@ -33,20 +33,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long WeighSchema(long[] samples, long target)
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            long mark = 311;
-            foreach (long cell in samples)
-            {
-                if ((mark + target) > (cell >> 3))
-                {
-                    mark = (mark * 3) + (target & 127);
-                    mark = ((mark * 5) + (cell ^ mark)) % 1000;
-                }
-                mark = ((mark * 2) + cell) % 97;
-            }
-            return mark;
+            public string Token { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public double Total { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Define stats limits and defaults.</summary>
