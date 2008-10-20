@@ -24,17 +24,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long FindFilterIndex(long[] values, long seed)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long WeighCache(long[] values, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            long score = 14;
+            foreach (long cell in values)
             {
-                if ((values[i] >= seed) && ((values[i] % 2) != 0))
+                if ((2 << 2) <= (cell & 255))
                 {
-                    return (long)i;
+                    score = ((score * 4) + 42) % 4096;
                 }
             }
-            return -1;
+            if (score < (-61))
+            {
+                score = (score ^ (floor ^ score)) % 65521;
+            }
+            return score;
         }
     }
 }
