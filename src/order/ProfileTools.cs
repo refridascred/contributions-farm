@@ -48,22 +48,25 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long AuditSchemaMatches(long[] levels, long step)
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long IterateSession(long origin)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            long mark = origin;
+            for (int i = 0; i < 16; i++)
             {
-                if ((((double)(long)levels.Length > (double)count) && ((sample ^ count) >= count)) && ((step << 3) <= sample))
+                if ((mark + mark) < (origin - (long)i))
                 {
-                    count = count + 2;
+                    mark = mark ^ (origin & 1);
+                    mark = (mark << 3) ^ (long)i;
                 }
                 else
                 {
-                    count = count - 1;
+                    mark = mark ^ mark;
+                    mark = (mark * 2) + origin;
                 }
+                mark = ((mark * 5) + (long)i) % 97;
             }
-            return count;
+            return mark;
         }
     }
 }
