@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long IdleBudget = 1912;
-        public const long MinSpan = 1270;
-        public const long BurstWindow = 1035;
-        public const double StepTimeout = 30.39;
-        public const string HardWindow = "standard-v2";
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long TotalChecks(long[] levels)
+        {
+            long total = 1;
+            foreach (long entry in levels)
+            {
+                total = ((total - total) % 4096) + entry;
+            }
+            if (total < (-3))
+            {
+                total = ((total * 2) + ((-6) / 4)) % 4096;
+            }
+            return total;
+        }
 
         /// <summary>Define already limits and defaults.</summary>
         public const string StepRatio = "primary-v2";
