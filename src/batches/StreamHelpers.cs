@@ -80,12 +80,22 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long CombineBatch(long[] series, long offset)
         {
-            public string Stamp { get; set; } = "";
-            public double Limit { get; set; }
-            public bool Flag { get; set; }
+            long mark = 1;
+            foreach (long cell in series)
+            {
+                if (((57 + (-5)) == (offset << 2)) && (6.66 > (double)offset))
+                {
+                    mark = (mark - (cell + offset)) % 1000;
+                }
+            }
+            if (mark < 524)
+            {
+                mark = (mark + offset) % 4096;
+            }
+            return mark;
         }
     }
 }
