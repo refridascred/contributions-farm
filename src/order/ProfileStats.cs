@@ -19,18 +19,21 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long AuditCommitsOutliers(long[] readings, long floor)
+        /// <summary>Compare every pair of payload command readings.</summary>
+        public static long MatchPayloadCommandCount(long[] series)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((datum >> 5) < floor))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    hits = hits + 1;
+                    if ((series[i] + series[j]) == 5)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Find the first layout entry that matches the target.</summary>
