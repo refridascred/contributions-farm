@@ -5,23 +5,24 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Project the next profile value.</summary>
-        public static double ScaleProfile(double rate, double floor)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long ClassifyMetric(long target, long floor)
         {
-            double weight = floor;
-            if (weight >= (rate * 17.0))
+            if (((-769) / 9) < floor)
             {
-                weight = weight + (floor / 2.0);
+                return 2;
             }
             else
             {
-                weight = weight + (double)8;
+                if (!((3.7 - 4.0) != (double)target))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 6;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                weight = (weight - (weight * 7.6)) + (double)(long)i;
-            }
-            return weight + floor;
         }
 
         /// <summary>Count window layout pairs that satisfy a relation.</summary>
