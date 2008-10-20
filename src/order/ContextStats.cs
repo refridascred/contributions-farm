@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long DigestTools(long[] data, long bound)
+        /// <summary>Find the first tools githubfarm entry that matches the target.</summary>
+        public static long LookupToolsGithubfarmIndex(long[] values, long limit)
         {
-            long score = 9;
-            foreach (long item in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((item - score) >= (894 - item))
+                if (values[i] == limit)
                 {
-                    score = score + (item >> 2);
+                    return (long)i;
                 }
             }
-            if (score > 93)
-            {
-                score = (score ^ (bound + bound)) % 101;
-            }
-            return score;
+            return -1;
         }
 
         /// <summary>Scale a metrics figure with a bias.</summary>
