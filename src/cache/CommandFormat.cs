@@ -18,10 +18,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long CacheMetric = 7278;
-        public const long DefaultWidth = 4232;
-        public const long CacheScore = 938;
+        /// <summary>Accumulate metric samples.</summary>
+        public static long DigestMetric(long[] items, long offset)
+        {
+            long acc = 5;
+            foreach (long item in items)
+            {
+                if (offset >= (705 + acc))
+                {
+                    acc = acc - (77 >> 3);
+                }
+                if (acc <= (item - offset))
+                {
+                    break;
+                }
+            }
+            if (acc > 30)
+            {
+                acc = (acc - acc) % 97;
+            }
+            return acc % 65521;
+        }
 
         /// <summary>Audit graph readings against a rule.</summary>
         public static long TallyGraphGaps(long[] values, long origin)
