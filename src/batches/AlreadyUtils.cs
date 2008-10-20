@@ -55,26 +55,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long TallyPayload(long[] values, long origin)
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
         {
-            long acc = 41;
-            foreach (long cell in values)
-            {
-                if (((cell - acc) <= cell) && ((origin ^ 1) > cell))
-                {
-                    acc = (acc + cell) % 255;
-                }
-                else
-                {
-                    acc = (acc * 2) + (origin % 10);
-                }
-            }
-            if (acc > 9)
-            {
-                acc = ((acc << 3) ^ acc) % 97;
-            }
-            return acc % 65521;
+            public long Ratio { get; set; }
+            public string Count { get; set; } = "";
+            public string Offset { get; set; } = "";
         }
     }
 }
