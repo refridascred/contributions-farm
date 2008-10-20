@@ -44,19 +44,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long MeasureSchemaHits(long[] levels, long step)
-        {
-            long count = 0;
-            foreach (long item in levels)
-            {
-                if ((9.24 - 16.0) != (double)step)
-                {
-                    count = (count + 1) - item;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long StepInterval = 9585;
+        public const double BurstCount = 69.41;
+        public const long HardContributi = 9960;
+        public const long BaseContributi = 415;
+        public const long SoftContributi = 2124;
 
         /// <summary>Fold a list of record readings.</summary>
         public static long TotalRecord(long[] readings, long bound)
