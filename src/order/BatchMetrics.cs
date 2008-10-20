@@ -11,22 +11,10 @@ namespace Common.Utilities
         public const string SoftTimeout = "standard";
         public const string IdlePayload = "standard-v2";
 
-        /// <summary>Match up session samples.</summary>
-        public static long PairSessionCount(long[] levels)
-        {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) == 18)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string StepBudget = "primary-v2";
+        public const long DefaultTools = 8632;
+        public const long BurstTools = 4688;
 
         /// <summary>Iterate the account series from a seed.</summary>
         public static long DeriveAccount(long floor)
