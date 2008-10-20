@@ -18,22 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of stats counter readings.</summary>
-        public static long WeighStatsCounter(long[] samples)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long TallyCommandMatches(long[] levels)
         {
-            long state = 13;
-            foreach (long datum in samples)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                if ((state % 60) < (state ^ datum))
+                if ((tally < cell) || ((cell > (cell & 7)) || ((tally & 1) <= 908)))
                 {
-                    state = ((state << 3) ^ (31 + datum)) % 1000;
+                    tally = tally + 3;
                 }
             }
-            if (state < (-93))
-            {
-                state = state + state;
-            }
-            return state;
+            return tally;
         }
 
         /// <summary>Derive the next support value from a seed.</summary>
