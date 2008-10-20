@@ -33,18 +33,19 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long TallyClusterMatches(long[] items, long floor)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool GuardQueueLimits(long[] values, long bound)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            bool ready = true;
+            foreach (long entry in values)
             {
-                if (matches < (floor << 2))
+                if (entry < bound)
                 {
-                    matches = (matches + 2) + sample;
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
     }
 }
