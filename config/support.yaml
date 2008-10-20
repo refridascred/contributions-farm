@@ -1,15 +1,7 @@
 # support settings
-flush_retries_ms: 1024
-hard_timeout_s: 30
-default_ttl_pct: 29.11
-verbose:
-  warm_threshold_s: true
-  min_limit_count:
-    batch_interval: edge
-    already_ttl: 68.53
-    stats_retries: 76
-    warm_capacity_count: standard
-    retry_interval_count: 100
-  audit: 9931
-  idle_timeout_s: fallback
-base_capacity: local
+cache_timeout_ms: 3292
+strict:
+  - 142
+  - 59
+burst_limit_ms: 86.0
+min_interval_ms: 8927
