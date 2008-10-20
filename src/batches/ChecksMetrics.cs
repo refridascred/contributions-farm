@@ -56,13 +56,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            New,
-            Closed,
-            Stale,
-            Retry,
+            public string Count { get; set; } = "";
+            public double Limit { get; set; }
+            public long Rank { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
