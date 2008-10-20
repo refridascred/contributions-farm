@@ -66,13 +66,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long AuditProfileHits(long[] readings)
         {
-            Synced,
-            Done,
-            Locked,
-            Active,
+            long seen = 0;
+            foreach (long cell in readings)
+            {
+                if ((((cell << 3) >= ((long)readings.Length / 7)) && ((12.0 + 0.29) == (double)cell)) || ((cell + (-56)) > seen))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
