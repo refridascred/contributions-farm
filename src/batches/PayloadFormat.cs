@@ -46,14 +46,17 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long FindRouteIndex(long[] items, long bound)
         {
-            Failed,
-            Stale,
-            Done,
-            Idle,
-            Queued,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] <= bound) && ((items[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
