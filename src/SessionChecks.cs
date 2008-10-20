@@ -45,12 +45,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            Retry,
-            Ready,
-            Stale,
+            public bool Level { get; set; }
+            public long Score { get; set; }
         }
     }
 }
