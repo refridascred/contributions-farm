@@ -59,17 +59,38 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long LocateNotesIndex(long[] data, long limit)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long RankCommits(long target, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            if (!(target > (floor % 3)))
             {
-                if ((data[i] == limit) && ((data[i] % 2) == 0))
+                return 8;
+            }
+            else
+            {
+                if ((3.2 * 16.0) <= (double)floor)
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if (!((13.0 - 7.2) == (double)floor))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (!((double)target <= (8.0 * 6.38)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
