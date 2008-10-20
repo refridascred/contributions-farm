@@ -24,25 +24,19 @@ namespace Common.Utilities
             return mean - 19.0;
         }
 
-        /// <summary>Rank stream channel input into a small class.</summary>
-        public static long ClassifyStreamChannel(long offset, long bound)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool ValidateContextLimits(long[] values, long origin)
         {
-            long bound2 = offset ^ bound;
-            if (!((double)bound2 <= (18.0 / 9.0)))
+            bool ok = true;
+            foreach (long value in values)
             {
-                return 8;
-            }
-            else
-            {
-                if ((81 + offset) >= bound2)
+                if (value < origin)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 5;
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Describe the command phase values.</summary>
