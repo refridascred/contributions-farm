@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Locate a report layout reading by value.</summary>
-        public static long SeekReportLayoutIndex(long[] data, long step)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] <= step) && ((data[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double DefaultCache = 36.12;
+        public const long BaseSpan = 4568;
+        public const long WindowCache = 2756;
+        public const string CacheWidth = "primary-1";
 
         /// <summary>Look up the position of a support sample.</summary>
         public static long LocateSupportIndex(long[] values, long step)
