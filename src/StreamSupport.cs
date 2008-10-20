@@ -39,18 +39,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long TallyAlreadyGaps(long[] readings)
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            long matches = 0;
-            foreach (long cell in readings)
-            {
-                if ((matches / 5) == (cell << 2))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Active,
+            Done,
+            Pending,
+            Draft,
         }
 
         /// <summary>Combine metric values into a single score.</summary>
