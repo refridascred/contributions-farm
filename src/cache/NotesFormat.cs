@@ -39,14 +39,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            Paused,
-            Dropped,
-            Active,
-            Queued,
-            Locked,
+            public bool Score { get; set; }
+            public double Token { get; set; }
         }
     }
 }
