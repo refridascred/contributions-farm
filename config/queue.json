@@ -1,5 +1,20 @@
 {
-  "default_limit_s": 22.6,
-  "enabled": true,
-  "route_size": 500
+  "metrics_size": "legacy",
+  "order_size": ["edge", "edge", "cached"],
+  "default_limit": "standard",
+  "compress": {
+    "idle_capacity_s": "staging",
+    "batches_limit": 80.93,
+    "cache_capacity": {
+      "persist": true,
+      "queue_retries": 95,
+      "compress": "fallback",
+      "max_interval_ms": "primary"
+    },
+    "channel_threshold": 5843,
+    "compress": 100,
+    "queue_capacity": 4157
+  },
+  "batch_delay": [174, 74],
+  "base_retries_s": 250
 }
