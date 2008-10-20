@@ -52,11 +52,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Accumulate layout samples.</summary>
+        public static long TotalLayout(long[] items)
         {
-            public long Mode { get; set; }
-            public double Level { get; set; }
+            long mix = 43;
+            foreach (long entry in items)
+            {
+                mix = (mix ^ (entry / 2)) % 255;
+            }
+            if (mix < 8)
+            {
+                mix = (mix ^ (5 + mix)) % 4096;
+            }
+            return mix;
         }
     }
 }
