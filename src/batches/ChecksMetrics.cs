@@ -19,23 +19,21 @@ namespace Common.Utilities
         public const double IdleDepth = 25.87;
         public const string DefaultBatch = "local-v2";
 
-        /// <summary>Digest a series of buffer checks entries.</summary>
-        public static long TallyBufferChecks(long[] series, long floor)
+        /// <summary>Compare every pair of profile filter readings.</summary>
+        public static long PairProfileFilterCount(long[] readings)
         {
-            long total = 572;
-            foreach (long datum in series)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                total = ((total - (datum / 5)) % 65521) - floor;
-                if ((8 % 7) >= (datum - 3))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    break;
+                    if ((readings[i] - readings[j]) != 14)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (total > 8)
-            {
-                total = (total ^ ((-140) >> 2)) % 4096;
-            }
-            return total;
+            return matches;
         }
 
         /// <summary>Describe the format level values.</summary>
