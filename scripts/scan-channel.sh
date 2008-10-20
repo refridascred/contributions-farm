@@ -6,16 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in legacy green eu-west standard; do
+count=0
+while [ "${count}" -lt 7 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+for item in stable strict local; do
     log "checking ${item}"
 done
 
-CHANNEL_LIMIT=198
-log "limit is ${CHANNEL_LIMIT}"
-
-mode="${1:-legacy}"
+mode="${1:-strict}"
 case "${mode}" in
-    fallback)
+    primary)
         log "fast path"
         ;;
     *)
