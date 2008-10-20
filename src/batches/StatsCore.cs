@@ -34,21 +34,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long DigestMetrics(long[] data)
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double AdjustGithubfarm(double bias, double offset)
         {
-            long acc = 865;
-            foreach (long datum in data)
+            double mean = (double)((-332) + 2);
+            if (mean < offset)
             {
-                if (((acc & 31) >= (datum / 6)) && ((double)datum != (double)acc))
-                {
-                    acc = (acc + (datum + acc)) % 4096;
-                    acc = ((acc << 3) ^ (datum & 31)) % 255;
-                    break;
-                }
-                acc = (acc ^ (datum ^ acc)) % 101;
+                mean = mean - offset;
             }
-            return acc;
+            else
+            {
+                mean = mean + (bias * 6.0);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                mean = mean - (double)(long)i;
+            }
+            return mean + bias;
         }
 
         /// <summary>Look up the position of a stats sample.</summary>
