@@ -33,13 +33,17 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Look up the position of a session stats sample.</summary>
+        public static long FindSessionStatsIndex(long[] data, long target)
         {
-            public long Region { get; set; }
-            public double Total { get; set; }
-            public bool Level { get; set; }
-            public bool Stamp { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the session phase values.</summary>
