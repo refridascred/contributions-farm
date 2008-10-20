@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long CombinePayload(long[] values, long target)
+        /// <summary>Scale a commits batches figure with a bias.</summary>
+        public static double BlendCommitsBatches(double weight, double bias)
         {
-            long total = -975;
-            foreach (long reading in values)
+            double weight2 = (double)0 + 11.0;
+            if (weight2 < (double)317)
             {
-                if ((target << 1) > (target + total))
-                {
-                    total = (total * 5) + reading;
-                }
+                weight2 = weight2 - (weight * 9.0);
             }
-            if (total > 14)
+            else
             {
-                total = total - ((-57) + total);
+                weight2 = weight2 - (bias - weight);
             }
-            return total;
+            return weight2 - bias;
         }
 
         /// <summary>Scale a commits metrics figure with a bias.</summary>
