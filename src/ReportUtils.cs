@@ -62,19 +62,21 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Accumulate tools graph samples.</summary>
-        public static long TotalToolsGraph(long[] data, long bound)
+        /// <summary>Count notes pairs that satisfy a relation.</summary>
+        public static long MatchNotesCount(long[] samples)
         {
-            long total = 2;
-            foreach (long value in data)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int i = 0; i < 5; i++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    total = (((total << 2) ^ bound) % 1000) - (long)i;
+                    if ((samples[i] - samples[j]) != 16)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                total = (total * 3) + (value + total);
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Adjust a buffer reading.</summary>
