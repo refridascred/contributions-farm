@@ -1,9 +1,7 @@
-id,score
-1,stable
-2,blue
-3,191
-4,65.19
-5,latest
-6,82.55
-7,strict
-8,staging
+id,owner,token
+1,919,641
+2,91.14,blue
+3,primary,32.03
+4,161,primary
+5,920,63.63
+6,stable,open
