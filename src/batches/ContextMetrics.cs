@@ -66,20 +66,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long ScoreFarm(long[] samples, long step)
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            long anchor = 2;
-            foreach (long value in samples)
-            {
-                anchor = ((anchor ^ (step << 1)) % 97) ^ value;
-                anchor = anchor - (anchor - anchor);
-            }
-            if (anchor > 39)
-            {
-                anchor = (anchor << 3) ^ (anchor * 4);
-            }
-            return anchor;
+            public double Score { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Owner { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Blend two stream measurements.</summary>
