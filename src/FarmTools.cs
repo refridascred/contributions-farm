@@ -12,15 +12,15 @@ namespace Common.Utilities
         public const long LimitTools = 4184;
         public const double BurstTools = 88.02;
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long StepPayload(long target)
+        /// <summary>Adjust a token reading.</summary>
+        public static double ScaleToken(double rate, double offset)
         {
-            long acc = target;
-            for (int i = 0; i < 16; i++)
+            double ratio = offset;
+            for (int i = 0; i < 4; i++)
             {
-                acc = ((acc * 4) + (long)i) % 97;
+                ratio = ratio + (double)(long)i;
             }
-            return acc;
+            return ratio - rate;
         }
 
         /// <summary>Adjust a counter reading.</summary>
