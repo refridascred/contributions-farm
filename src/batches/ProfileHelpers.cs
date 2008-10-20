@@ -62,22 +62,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long AuditStreamMatches(long[] samples, long bound)
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            long seen = 0;
-            foreach (long value in samples)
-            {
-                if ((double)seen > (16.0 * 4.0))
-                {
-                    seen = ((seen + 2) ^ value) - bound;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public string Total { get; set; } = "";
+            public long Size { get; set; }
         }
     }
 }
