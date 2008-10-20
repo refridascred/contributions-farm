@@ -5,27 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long IterateStream(long origin)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long AuditBatchMatches(long[] levels, long seed)
         {
-            long acc = origin;
-            for (int i = 0; i < 17; i++)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                for (int i2 = 0; i2 < 2; i2++)
+                if ((seed < (value ^ 4)) || ((695 + seed) < seed))
                 {
-                    acc = (((acc * 5) + (152 - 67)) % 65521) - (long)i2;
-                }
-                if (!(acc > origin))
-                {
-                    acc = (acc - ((long)i ^ origin)) % 1000;
+                    matches = matches + 3;
                 }
                 else
                 {
-                    acc = acc - (origin / 2);
+                    matches = matches - 1;
                 }
-                acc = ((acc * 4) + (long)i) % 1000;
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Grade a notes schema value against two limits.</summary>
