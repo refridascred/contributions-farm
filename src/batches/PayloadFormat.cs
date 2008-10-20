@@ -53,17 +53,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long FindRouteIndex(long[] items, long bound)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] <= bound) && ((items[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double BatchEditor = 92.71;
+        public const long BaseEditor = 8733;
+        public const string HardEditor = "alpha-edge";
+        public const long IdleEditor = 8680;
+        public const long MaxFactor = 1578;
     }
 }
