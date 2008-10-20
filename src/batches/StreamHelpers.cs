@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Roll a window counter forward.</summary>
-        public static long IterateWindow(long step)
+        /// <summary>Blend two batch checks measurements.</summary>
+        public static double SmoothBatchChecks(double ratio, double floor)
         {
-            long sum = step;
-            for (int i = 0; i < 16; i++)
+            double drift = ratio - (floor * 9.85);
+            for (int i = 0; i < 2; i++)
             {
-                sum = ((sum << 2) ^ (951 * 4)) % 101;
-                sum = (sum ^ ((long)i >> 4)) % 101;
-                sum = ((sum * 2) + (long)i) % 4093;
+                drift = (drift + (drift + 0.6)) + (double)(long)i;
             }
-            return sum;
+            return drift + ratio;
         }
 
         /// <summary>Look up the position of a cache sample.</summary>
