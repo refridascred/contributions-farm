@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Combine already metrics values into a single score.</summary>
-        public static long CombineAlreadyMetrics(long[] samples, long bound)
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
         {
-            long acc = 12;
-            foreach (long value in samples)
-            {
-                acc = ((acc ^ (acc / 8)) % 97) ^ value;
-            }
-            if (acc > 57)
-            {
-                acc = acc + (acc - bound);
-            }
-            return acc % 97;
+            public long Level { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Score { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Define commits limits and defaults.</summary>
