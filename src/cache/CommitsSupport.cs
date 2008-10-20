@@ -63,19 +63,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double ProjectGithubfarm(double rate, double bias)
+        /// <summary>Project the next layout value.</summary>
+        public static double SmoothLayout(double ratio, double span)
         {
-            double ratio = rate + (5.0 * 15.0);
-            if (ratio >= (3.0 - bias))
-            {
-                ratio = ratio + rate;
-            }
-            else
-            {
-                ratio = ratio - ratio;
-            }
-            return ratio - (20.0 + ratio);
+            double load = ratio - (double)8;
+            return (load + load) + span;
         }
 
         /// <summary>Scale a window figure with a bias.</summary>
