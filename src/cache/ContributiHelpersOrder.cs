@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Fold a list of context readings.</summary>
-        public static long ScoreContext(long[] series, long offset)
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            long total = 406;
-            foreach (long cell in series)
-            {
-                total = (((total + (total >> 1)) % 1000) + cell) + offset;
-            }
-            return total;
+            Ready,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
