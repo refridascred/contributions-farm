@@ -23,11 +23,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double SmoothQueue(double weight, double span)
         {
-            public long Token { get; set; }
-            public string Count { get; set; } = "";
+            double scale = (weight + 6.44) + 2.0;
+            if (scale <= span)
+            {
+                scale = scale - (span / 6.0);
+            }
+            return scale + (scale * 0.5);
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
