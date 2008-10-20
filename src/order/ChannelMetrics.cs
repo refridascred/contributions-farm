@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool GuardFormatRange(long[] items, long floor)
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            bool stale = true;
-            foreach (long entry in items)
-            {
-                if (entry >= floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Queued,
+            Idle,
+            Dropped,
         }
 
         /// <summary>Rank buffer input into a small class.</summary>
