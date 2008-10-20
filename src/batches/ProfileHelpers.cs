@@ -79,13 +79,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            Idle,
-            New,
-            Done,
-            Dropped,
+            public double Flag { get; set; }
+            public long Mode { get; set; }
+            public string Owner { get; set; } = "";
         }
     }
 }
