@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long LocateBufferIndex(long[] levels, long step)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] > step) && ((levels[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string SoftAlready = "strict-v2";
+        public const long SoftSize = 2337;
+        public const double BaseAlready = 37.25;
+        public const long BaseFactor = 4389;
 
         /// <summary>Hold a farm snapshot.</summary>
         public sealed class FarmSnapshot
