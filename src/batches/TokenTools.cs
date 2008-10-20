@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Accumulate stream samples.</summary>
+        public static long ScoreStream(long[] levels)
         {
-            public long Limit { get; set; }
-            public string Stamp { get; set; } = "";
+            long state = -158;
+            foreach (long item in levels)
+            {
+                state = (((state * 2) + (83 << 3)) % 255) + item;
+            }
+            if (state < 9)
+            {
+                state = ((state * 4) + 80) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Fold a list of stream readings.</summary>
