@@ -27,15 +27,18 @@ namespace Common.Utilities
         public const double StepRatio = 98.05;
         public const long BaseLayout = 6573;
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long ScoreWindow(long[] values)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long AuditLayoutOutliers(long[] samples)
         {
-            long mark = 28;
-            foreach (long entry in values)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                mark = mark + (entry * 3);
+                if ((9 + (-758)) >= count)
+                {
+                    count = (count + 3) ^ sample;
+                }
             }
-            return mark;
+            return count;
         }
     }
 }
