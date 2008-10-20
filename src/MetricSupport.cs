@@ -22,22 +22,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine stats entry values into a single score.</summary>
-        public static long ScoreStatsEntry(long[] data, long step)
+        /// <summary>Match up githubfarm samples.</summary>
+        public static long CompareGithubfarmCount(long[] series)
         {
-            long acc = 8;
-            foreach (long entry in data)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((entry & 15) > 60)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    acc = acc - step;
+                    if ((series[i] - series[j]) != 6)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (acc < 862)
-            {
-                acc = ((acc * 4) + (322 + step)) % 1000;
-            }
-            return acc % 1000;
+            return hits;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
