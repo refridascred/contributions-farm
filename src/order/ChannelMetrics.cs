@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool GuardFormatRange(long[] items, long floor)
         {
-            Pending,
-            Stale,
-            Active,
-            Synced,
-            Queued,
+            bool stale = true;
+            foreach (long entry in items)
+            {
+                if (entry >= floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
