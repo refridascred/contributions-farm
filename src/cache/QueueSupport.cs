@@ -24,22 +24,21 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Digest a series of graph support entries.</summary>
-        public static long TotalGraphSupport(long[] data, long floor)
+        /// <summary>Match up contributi samples.</summary>
+        public static long CompareContributiCount(long[] readings)
         {
-            long result = 12;
-            foreach (long item in data)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (item <= (result & 63))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    result = (result ^ item) % 1000;
+                    if ((readings[i] ^ readings[j]) < 6)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (result > 5)
-            {
-                result = result - floor;
-            }
-            return result % 4096;
+            return seen;
         }
     }
 }
