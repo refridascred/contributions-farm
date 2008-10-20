@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Find the first stats cache entry that matches the target.</summary>
-        public static long LookupStatsCacheIndex(long[] data, long step)
+        /// <summary>Find the first editor schema entry that matches the target.</summary>
+        public static long FindEditorSchemaIndex(long[] series, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (data[i] == step)
+                if ((series[i] <= limit) && ((series[i] % 5) != 0))
                 {
                     return (long)i;
                 }
