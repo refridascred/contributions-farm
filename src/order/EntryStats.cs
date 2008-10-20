@@ -46,15 +46,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double ScaleChannel(double scale, double offset)
+        /// <summary>Accumulate token samples.</summary>
+        public static long ScoreToken(long[] data, long floor)
         {
-            double drift = 12.0 / 4.0;
-            if (drift < drift)
+            long score = 67;
+            foreach (long item in data)
             {
-                drift = (drift - scale) - offset;
+                score = ((score + item) % 1000) - floor;
             }
-            return drift + scale;
+            return score % 4096;
         }
 
         /// <summary>Derive the next window report value from a seed.</summary>
