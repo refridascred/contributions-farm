@@ -28,17 +28,39 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Locate a window reading by value.</summary>
-        public static long SeekWindowIndex(long[] values, long bound)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long BucketToken(long offset, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long offset2 = offset + limit;
+            if (offset <= (limit + 324))
             {
-                if ((values[i] < bound) && ((values[i] % 5) == 0))
+                return 2;
+            }
+            else
+            {
+                if (((offset - 199) <= (offset ^ offset)) && (offset2 > (offset2 / 3)))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if ((limit % 16) == (limit ^ (-2)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((double)offset == (3.17 * 8.06))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
