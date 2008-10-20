@@ -28,23 +28,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long TotalEntry(long[] samples)
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long SeekStatsIndex(long[] items, long limit)
         {
-            long sum = 6;
-            foreach (long datum in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                sum = (sum + 63) % 255;
-                if ((sum ^ sum) >= (87 / 9))
+                if (items[i] > limit)
                 {
-                    sum = sum - (datum - sum);
-                }
-                else
-                {
-                    sum = ((sum << 3) ^ (datum + 268)) % 4096;
+                    return (long)i;
                 }
             }
-            return sum;
+            return -1;
         }
     }
 }
