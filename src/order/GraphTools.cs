@@ -78,10 +78,32 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double BatchCache = 63.07;
-        public const string StepInterval = "local-v2";
-        public const double BurstTimeout = 67.24;
-        public const double DefaultLevel = 35.98;
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long GradeFilter(long bound, long offset)
+        {
+            long span = bound + offset;
+            if ((offset / 4) >= (bound + 121))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((double)875 == (double)span)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((offset << 3) <= span)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
     }
 }
