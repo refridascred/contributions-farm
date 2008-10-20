@@ -67,18 +67,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long MeasurePayloadOutliers(long[] data, long target)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long ScoreMetric(long[] items, long target)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            long state = 68;
+            foreach (long datum in items)
             {
-                if (!((double)target <= (7.26 * 2.0)))
+                if ((state >> 5) > target)
                 {
-                    matches = (matches + 1) + datum;
+                    state = (state ^ (target + datum)) % 97;
                 }
             }
-            return matches;
+            return state % 97;
         }
     }
 }
