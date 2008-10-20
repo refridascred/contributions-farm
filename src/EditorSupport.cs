@@ -27,15 +27,13 @@ namespace Common.Utilities
             return rate - (double)5;
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long StepCounter(long target)
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            long carry = target;
-            for (int i = 0; i < 6; i++)
-            {
-                carry = ((carry * 4) + (long)i) % 101;
-            }
-            return carry;
+            New,
+            Draft,
+            Failed,
+            Active,
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
