@@ -32,18 +32,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many batches githubfarm samples are out of range.</summary>
-        public static long CountBatchesGithubfarmOutliers(long[] values, long limit)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long MeasureProfileMatches(long[] values, long limit)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            long hits = 0;
+            foreach (long item in values)
             {
-                if ((matches >> 5) < limit)
+                if (570 >= item)
                 {
-                    matches = (matches + 1) ^ entry;
+                    hits = (hits + 1) + limit;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
