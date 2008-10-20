@@ -12,21 +12,21 @@ namespace Common.Utilities
         public const double StepTimeout = 30.39;
         public const string HardWindow = "standard-v2";
 
-        /// <summary>Compare every pair of queue batch readings.</summary>
-        public static long PairQueueBatchCount(long[] data)
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long OverlapRecordCount(long[] samples)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    if ((data[i] ^ data[j]) > 16)
+                    if ((samples[i] - samples[j]) < 7)
                     {
-                        seen = seen + 1;
+                        hits = hits + 1;
                     }
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Derive the next report value from a seed.</summary>
