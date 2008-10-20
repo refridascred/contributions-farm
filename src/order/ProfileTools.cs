@@ -28,11 +28,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long SoftSchema = 7276;
-        public const long BatchSchema = 9477;
-        public const long MinSchema = 3233;
-        public const long LimitBudget = 8557;
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
+        {
+            Draft,
+            Paused,
+            Retry,
+            Active,
+        }
 
         /// <summary>Measure how many window editor samples are out of range.</summary>
         public static long AuditWindowEditorMatches(long[] series)
