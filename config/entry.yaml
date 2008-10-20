@@ -1,28 +1,7 @@
 # entry settings
-strict:
-  warm_timeout_ms: 3589
-  order_ttl:
-    enabled: 2
-    contributi_timeout: stable
-    hard_threshold_ms: 16
-    schema_window: 30.77
-    strict: 78.35
-  counter_delay:
-    persist: cached
-    max_threshold_s: open
-    context_delay: false
-    cluster_interval: 250
-    max_interval_ms: 77.15
-  tools_retries:
-    payload_capacity: green
-    min_size_s: 100
-    readonly:
-      - primary
-      - fallback
-      - open
-      - stable
-    min_depth_count: 7.3
-dry_run: stable
-audit: latest
-session_threshold: 30
-retry_ratio_pct: strict
+strict: 22.51
+hard_timeout_pct:
+  - 13
+  - 428
+flush_threshold_pct: false
+sync_timeout_ms: green
