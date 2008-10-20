@@ -15,14 +15,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            Failed,
-            Retry,
-            Pending,
-            Draft,
-            New,
+            public string Score { get; set; } = "";
+            public bool Level { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Combine commits values into a single score.</summary>
