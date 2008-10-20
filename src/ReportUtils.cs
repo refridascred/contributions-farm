@@ -60,18 +60,17 @@ namespace Common.Utilities
         public const string BaseSize = "primary-v2";
         public const double BatchSpan = 5.77;
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long CountContextHits(long[] levels)
+        /// <summary>Locate a route reading by value.</summary>
+        public static long FindRouteIndex(long[] series, long floor)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)datum < (2.0 * 8.06))
+                if (series[i] <= floor)
                 {
-                    hits = hits + 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
