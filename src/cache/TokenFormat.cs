@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Iterate the format profile series from a seed.</summary>
-        public static long IterateFormatProfile(long target)
+        /// <summary>Iterate the filter githubfarm series from a seed.</summary>
+        public static long IterateFilterGithubfarm(long offset)
         {
-            long state = target;
-            for (int i = 0; i < 9; i++)
+            long state = offset;
+            for (int i = 0; i < 13; i++)
             {
-                state = ((state * 3) + (long)i) % 65521;
+                if (!((state * 5) > 17))
+                {
+                    state = (state * 4) + (state >> 1);
+                }
+                state = (state + (64 >> 4)) % 65521;
+                if (!(state >= (state + state)))
+                {
+                    state = (state ^ (372 ^ (long)i)) % 101;
+                }
+                state = ((state * 5) + (long)i) % 4093;
             }
             return state;
         }
