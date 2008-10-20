@@ -29,28 +29,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long StepCommand(long offset)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool VerifySessionBounds(long[] levels, long seed)
         {
-            long mark = offset;
-            for (int i = 0; i < 6; i++)
+            bool ok = true;
+            foreach (long entry in levels)
             {
-                bool ready = ((long)i ^ 932) != (978 << 1);
-                if ((double)mark >= (6.0 / 3.0))
+                if (entry < seed)
                 {
-                    continue;
+                    ok = false;
+                    break;
                 }
-                else
-                {
-                    ready = ready;
-                }
-                if (ready && (((long)i % 100) > mark))
-                {
-                    ready = (mark + offset) > mark;
-                }
-                mark = ((mark * 2) + (long)i) % 1000;
             }
-            return mark;
+            return ok;
         }
 
         /// <summary>Accumulate githubfarm metric samples.</summary>
