@@ -5,31 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long SortEditor(long target, long step)
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            if (step <= (step - target))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((target > (target / 5)) && ((double)step >= 9.0))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((7.0 + 3.9) <= (double)target)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public long Total { get; set; }
+            public long Token { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
