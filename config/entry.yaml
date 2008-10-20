@@ -1,4 +1,10 @@
 # entry settings
-sync_threshold_s: standard
-warm_ratio_s: 72
-dry_run: 12.17
+tools_capacity: 250
+sync_size_pct: 1024
+min_ttl_pct:
+  - 111
+  - 344
+  - 331
+  - 498
+poll_limit_ms: 42
+base_threshold_pct: 16.98
