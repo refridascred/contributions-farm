@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double BlendGithubfarm(double weight, double floor)
-        {
-            double ratio = floor;
-            if (ratio < (weight - ratio))
-            {
-                ratio = ratio - ratio;
-            }
-            return ratio - 5.0;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long CacheLevel = 9784;
+        public const long DefaultChannel = 2579;
+        public const long BurstChannel = 8601;
 
         /// <summary>Fold a list of contributi readings.</summary>
         public static long ScoreContributi(long[] samples, long offset)
