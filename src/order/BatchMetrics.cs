@@ -53,15 +53,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double ProjectProfile(double scale, double span)
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            double mean = span;
-            if (mean >= span)
-            {
-                mean = (mean - 2.7) - scale;
-            }
-            return mean + (double)38;
+            Synced,
+            Locked,
+            Queued,
+            Pending,
         }
 
         /// <summary>Classify a layout pair into a bucket.</summary>
