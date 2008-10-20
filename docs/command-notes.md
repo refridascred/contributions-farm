@@ -1,10 +1,12 @@
 # Command notes
 
-Use channel settings to tune how often report data is refreshed.
-Defaults for channel live in the config folder and can be overridden per environment.
+A route that stays idle for too long is moved to the metrics list.
+When a format fails, the token handler retries a few times before giving up.
+When a buffer fails, the checks handler retries a few times before giving up.
 
 ## Guidelines
 
-- Review report limits each release
-- Log every window change
-- Keep metric values small
+- Log every support change
+- Document new counter fields
+- Prefer command defaults
+- Review batch limits each release
