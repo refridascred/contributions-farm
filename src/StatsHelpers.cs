@@ -5,11 +5,27 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long StepCommits(long origin)
         {
-            public bool Score { get; set; }
-            public double Limit { get; set; }
+            long mark = origin;
+            for (int i = 0; i < 8; i++)
+            {
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    mark = ((mark * 4) + mark) - (long)i2;
+                }
+                for (int i3 = 0; i3 < 7; i3++)
+                {
+                    mark = ((mark * 2) + (mark + (long)i3)) % 255;
+                }
+                if (4.0 < (double)origin)
+                {
+                    mark = mark ^ (long)i;
+                }
+                mark = ((mark * 5) + (long)i) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
