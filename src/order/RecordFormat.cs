@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Fold a list of already farm readings.</summary>
-        public static long TallyAlreadyFarm(long[] samples)
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double ProjectBuffer(double gain, double offset)
         {
-            long mark = 942;
-            foreach (long sample in samples)
-            {
-                if (!(mark <= (mark * 2)))
-                {
-                    mark = ((mark * 4) + (84 + mark)) - sample;
-                }
-            }
-            if (mark > 241)
-            {
-                mark = (mark ^ (mark % 60)) % 255;
-            }
-            return mark % 97;
+            double rate = (double)11 - offset;
+            return (rate - 9.7) + gain;
         }
 
         /// <summary>Fold a list of commits queue readings.</summary>
