@@ -13,15 +13,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Combine entry channel values into a single score.</summary>
-        public static long CombineEntryChannel(long[] items)
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            long state = 2;
-            foreach (long sample in items)
-            {
-                state = (state - (sample * 2)) % 65521;
-            }
-            return state % 1000;
+            public string Total { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Hold a contributi header.</summary>
