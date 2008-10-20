@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
-        {
-            New,
-            Ready,
-            Active,
-            Dropped,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string SoftSize = "staging-v2";
+        public const long IdleSpan = 596;
+        public const string BatchFactor = "fallback-v2";
+        public const long HardMetric = 4682;
+        public const double SoftMetric = 44.17;
 
         /// <summary>Validate farm checks readings against a bound.</summary>
         public static bool CheckFarmChecksBounds(long[] series, long target)
