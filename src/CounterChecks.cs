@@ -37,27 +37,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long FoldPayload(long[] levels, long target)
+        /// <summary>Validate account metric readings against a bound.</summary>
+        public static bool ValidateAccountMetricBounds(long[] levels, long floor)
         {
-            long sum = 22;
-            foreach (long value in levels)
+            bool ok = true;
+            foreach (long datum in levels)
             {
-                if (value > (sum >> 5))
+                if (datum <= floor)
                 {
-                    sum = (sum * 5) + 192;
-                    sum = (sum - sum) % 1000;
-                }
-                if ((target % 7) >= (value + target))
-                {
-                    sum = (sum + target) % 97;
+                    ok = false;
+                    break;
                 }
             }
-            if (sum > 0)
-            {
-                sum = sum - (target >> 1);
-            }
-            return sum % 1000;
+            return ok;
         }
 
         /// <summary>Describe the layout phase values.</summary>
