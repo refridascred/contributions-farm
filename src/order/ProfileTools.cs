@@ -51,12 +51,25 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BaseCount = 8732;
-        public const long DefaultLevel = 7586;
-        public const string SoftLevel = "staging-v2";
-        public const double WindowContributi = 75.7;
-        public const long DefaultContributi = 1143;
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long RankChannel(long limit, long origin)
+        {
+            if ((origin * 2) <= (origin / 9))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((origin >> 3) != (limit + limit))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Rank batches input into a small class.</summary>
         public static long GradeBatches(long target, long seed)
