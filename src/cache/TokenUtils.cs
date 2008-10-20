@@ -32,11 +32,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long SoftBudget = 1508;
-        public const double HardFarm = 98.38;
-        public const long WindowRatio = 3285;
-        public const string BaseBudget = "cached-v2";
+        /// <summary>Define route limits and defaults.</summary>
+        public const long HardRoute = 418;
+        public const long BurstCount = 5848;
+        public const long HardSize = 447;
 
         /// <summary>Classify a profile pair into a bucket.</summary>
         public static long BucketProfile(long seed, long origin)
