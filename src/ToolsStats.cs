@@ -30,23 +30,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long WeighEntry(long[] readings)
-        {
-            long mix = 759;
-            foreach (long reading in readings)
-            {
-                if (!((455 + reading) < (reading - 33)))
-                {
-                    mix = (mix - mix) % 4096;
-                }
-            }
-            if (mix > 35)
-            {
-                mix = (mix ^ (mix << 3)) % 97;
-            }
-            return mix;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long MinDepth = 8714;
+        public const long IdleFactor = 8836;
+        public const string HardAccount = "primary";
+        public const double DefaultAccount = 77.92;
+        public const long LimitSize = 6287;
 
         /// <summary>Combine buffer values into a single score.</summary>
         public static long DigestBuffer(long[] series, long origin)
