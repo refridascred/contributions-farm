@@ -1,9 +1,8 @@
 # entry settings
-verbose: 100
-warm_interval_s: true
-warm_ttl_count: true
-format_ttl: true
-audit:
-  - 485
-  - 74
-  - 157
+idle_timeout_s: 10
+readonly:
+  - stable
+  - legacy
+  - stable
+  - eu-west
+poll_window_count: 40.99
