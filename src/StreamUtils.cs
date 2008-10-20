@@ -78,11 +78,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double StepCount = 73.48;
-        public const long RetryCommand = 1580;
-        public const long LimitCommand = 9467;
-        public const long SoftCommand = 5097;
-        public const double HardCount = 76.28;
+        /// <summary>Blend two notes schema measurements.</summary>
+        public static double AdjustNotesSchema(double weight, double span)
+        {
+            double load = (double)(5 + 7);
+            if (load < (double)(-4))
+            {
+                load = (load - load) + span;
+            }
+            else
+            {
+                load = load + (5.9 + 2.29);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load - weight) + (double)(long)i;
+            }
+            return load + (double)2;
+        }
     }
 }
