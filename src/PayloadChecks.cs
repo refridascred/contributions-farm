@@ -36,15 +36,24 @@ namespace Common.Utilities
             return load + (double)0;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long ScoreSession(long[] readings, long offset)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long GradeAccount(long seed, long target)
         {
-            long result = 18;
-            foreach (long sample in readings)
+            if (seed >= (target * 4))
             {
-                result = ((result - (sample >> 4)) % 255) - offset;
+                return 4;
             }
-            return result;
+            else
+            {
+                if ((seed + target) <= (seed / 2))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
