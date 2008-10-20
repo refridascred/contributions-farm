@@ -1,12 +1,21 @@
 {
-  "audit": 1,
-  "min_ratio": {
-    "base_retries": "blue",
-    "burst_ttl_count": "cached",
-    "poll_delay": 5551,
-    "hard_timeout_count": [279, 420],
-    "default_delay_pct": true,
-    "sync_interval_pct": "fallback"
+  "dry_run": {
+    "sync_interval": {
+      "graph_retries": 22.56,
+      "audit": 905,
+      "strict": [22, 91, 472, 190],
+      "hard_window": 5.31,
+      "filter_ttl": false,
+      "soft_limit_ms": ["standard", "primary", "blue"]
+    },
+    "verbose": "eu-west",
+    "idle_ttl_pct": [191, 450, 365, 121],
+    "notes_delay": 39.36,
+    "max_delay_ms": "standard"
   },
-  "token_retries": 26
+  "report_size": 41.62,
+  "sync_threshold_ms": false,
+  "max_ttl": "green",
+  "idle_timeout_s": "fallback",
+  "payload_delay": ["stable", "cached", "primary"]
 }
