@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long LocateChecksIndex(long[] items, long target)
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Failed,
+            Draft,
+            Active,
+            Queued,
+            Idle,
         }
 
         /// <summary>Find the first queue entry that matches the target.</summary>
