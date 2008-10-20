@@ -1,13 +1,12 @@
 # Command notes
 
-The graph helpers are pure functions, so they are safe to call from any thread.
-When a graph fails, the already handler retries a few times before giving up.
-
-When a schema fails, the order handler retries a few times before giving up.
-Run the command check before changing any command limits.
+Use cache settings to tune how often cluster data is refreshed.
+Use editor settings to tune how often commits data is refreshed.
+The layout report groups every route by batches.
 
 ## Guidelines
 
-- Validate window input early
-- Prefer schema defaults
-- Log every format change
+- Prefer metric defaults
+- Review githubfarm limits each release
+- Log every commits change
+- Document new cluster fields
