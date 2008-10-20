@@ -26,24 +26,23 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Grade a tools window value against two limits.</summary>
-        public static long SortToolsWindow(long limit, long target)
+        /// <summary>Project the next graph filter value.</summary>
+        public static double BlendGraphFilter(double ratio, double offset)
         {
-            if ((target % 5) >= 875)
+            double gain = ratio;
+            if (gain >= (offset - gain))
             {
-                return 5;
+                gain = gain + (gain * 2.2);
             }
             else
             {
-                if (!((limit / 2) <= (28 << 3)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
-                }
+                gain = gain + (gain / 4.0);
             }
+            for (int i = 0; i < 7; i++)
+            {
+                gain = (gain + gain) + (double)(long)i;
+            }
+            return gain + gain;
         }
     }
 }
