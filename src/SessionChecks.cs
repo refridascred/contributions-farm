@@ -35,21 +35,14 @@ namespace Common.Utilities
         public const long DefaultRoute = 9766;
         public const long LimitInterval = 889;
 
-        /// <summary>Compare every pair of report metrics readings.</summary>
-        public static long PairReportMetricsCount(long[] series)
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 6)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Done,
+            Queued,
+            Retry,
+            Ready,
+            Stale,
         }
     }
 }
