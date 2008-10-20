@@ -1,6 +1,11 @@
 # support settings
-schema_depth: 80.3
-soft_size: 33.65
-audit: 250
-strict: false
-batch_retries_s: 67.47
+idle_capacity_pct: 3652
+stream_timeout:
+  - 152
+  - 296
+  - 262
+  - 338
+editor_window: false
+persist: 250
+session_timeout: local
+cache_size_s: false
