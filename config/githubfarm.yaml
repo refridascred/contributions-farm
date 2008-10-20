@@ -1,24 +1,4 @@
 # githubfarm settings
-channel_timeout: false
-cache_depth_s:
-  soft_threshold_ms: 53.26
-  cache_window_ms: 29.47
-  compress: local
-  editor_retries: open
-strict: blue
-burst_size_s:
-  flush_ttl_pct: 56.94
-  burst_retries: eu-west
-  burst_limit_ms:
-    idle_limit_s: true
-    strict:
-      - primary
-      - green
-    enabled: 100
-    flush_size_pct: open
-    command_capacity:
-      - strict
-      - edge
-  audit: strict
-record_limit: legacy
-base_threshold_ms: 3
+base_threshold_ms: 3086
+order_timeout: 60
+base_ttl: edge
