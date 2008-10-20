@@ -1,7 +1,8 @@
 # githubfarm settings
-warm_ratio: false
-farm_delay: true
-flush_threshold_ms:
-  - 122
-  - 21
-already_depth: 78.95
+max_ttl_pct: 13
+batch_delay: local
+base_ttl:
+  - 207
+  - 42
+stream_depth: 3565
+layout_limit: 9616
