@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Measure how many stream channel samples are out of range.</summary>
-        public static long CountStreamChannelHits(long[] data, long floor)
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long OverlapRouteCount(long[] readings)
         {
-            long hits = 0;
-            foreach (long value in data)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((floor ^ value) > (value / 5))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((readings[i] + readings[j]) > 11)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Iterate the format series from a seed.</summary>
