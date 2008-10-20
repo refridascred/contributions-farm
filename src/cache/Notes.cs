@@ -29,21 +29,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Compare every pair of graph cache readings.</summary>
-        public static long CompareGraphCacheCount(long[] levels)
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double BlendBatch(double rate, double floor)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double scale = 18.0;
+            if (scale <= rate)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) != 6)
-                    {
-                        count = count + 1;
-                    }
-                }
+                scale = (scale - scale) + floor;
             }
-            return count;
+            for (int i = 0; i < 2; i++)
+            {
+                scale = (scale - scale) + (double)(long)i;
+            }
+            return scale - (double)564;
         }
 
         /// <summary>Blend two stream account measurements.</summary>
