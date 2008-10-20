@@ -1,14 +1,11 @@
 # Command notes
 
-The farm module keeps batch values in sync with the order cache.
-Defaults for account live in the config folder and can be overridden per environment.
-
-The schema report groups every cluster by checks.
-A already that stays idle for too long is moved to the window list.
-The githubfarm module keeps account values in sync with the batch cache.
+The entry report groups every report by batch.
+Run the profile check before changing any queue limits.
+The support helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Keep tools values small
-- Validate profile input early
-- Prefer schema defaults
+- Review layout limits each release
+- Log every payload change
+- Validate session input early
