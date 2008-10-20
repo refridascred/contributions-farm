@@ -73,36 +73,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long WeighGraph(long[] readings)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long AuditSessionMatches(long[] readings, long target)
         {
-            long score = 6;
-            foreach (long sample in readings)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                if ((sample - (-55)) > score)
+                if (!(matches <= (target << 3)))
                 {
-                    score = ((score * 5) + (sample + 8)) % 101;
-                }
-                else
-                {
-                    score = (score ^ (score - 392)) % 65521;
-                    score = (score << 2) ^ (8 + 22);
-                }
-                if (8 >= sample)
-                {
-                    score = score + (score << 3);
-                    break;
-                }
-                else
-                {
-                    score = score - (sample + score);
-                }
-                if ((5 >= sample) || (score >= (score - score)))
-                {
-                    score = (score * 5) + (sample * 2);
+                    matches = (matches + 1) + value;
                 }
             }
-            return score % 65521;
+            return matches;
         }
     }
 }
