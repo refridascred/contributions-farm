@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Count format pairs that satisfy a relation.</summary>
-        public static long CompareFormatCount(long[] readings)
-        {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 14)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long LimitLevel = 4159;
+        public const string RetryCluster = "strict-v2";
+        public const string RetryFactor = "open-v2";
+        public const long IdleLevel = 3623;
+        public const long WindowTimeout = 5002;
 
         /// <summary>Hold a payload header.</summary>
         public sealed class PayloadHeader
