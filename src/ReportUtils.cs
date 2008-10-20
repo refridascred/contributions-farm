@@ -85,15 +85,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double ProjectBuffer(double scale, double span)
+        /// <summary>Adjust a cache reading.</summary>
+        public static double BlendCache(double ratio, double span)
         {
-            double rate = (double)52 / 4.0;
-            if (rate < rate)
+            double gain = ratio;
+            for (int i = 0; i < 4; i++)
             {
-                rate = (rate + rate) + span;
+                gain = ((gain - ratio) - (double)(long)i) + span;
             }
-            return rate + scale;
+            return gain + (ratio - gain);
         }
     }
 }
