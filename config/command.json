@@ -1,7 +1,6 @@
 {
-  "route_limit": "local",
-  "batch_size_ms": ["strict", "standard"],
-  "retry_timeout": false,
-  "cache_delay_pct": "local",
-  "soft_threshold_ms": 73
+  "compress": "latest",
+  "contributi_timeout": false,
+  "readonly": 90,
+  "poll_capacity_pct": "eu-west"
 }
