@@ -56,21 +56,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up entry format samples.</summary>
-        public static long PairEntryFormatCount(long[] levels)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long DeriveAccount(long target)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long carry = target;
+            for (int i = 0; i < 11; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) == 20)
-                    {
-                        count = count + 1;
-                    }
-                }
+                carry = ((carry * 4) + (long)i) % 101;
             }
-            return count;
+            return carry;
         }
     }
 }
