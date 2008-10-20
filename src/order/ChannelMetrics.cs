@@ -12,18 +12,25 @@ namespace Common.Utilities
         public const long HardLevel = 4781;
         public const long WindowRoute = 7669;
 
-        /// <summary>Audit profile queue readings against a rule.</summary>
-        public static long CountProfileQueueOutliers(long[] samples, long offset)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long SeriesChannel(long seed)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            long result = seed;
+            for (int i = 0; i < 21; i++)
             {
-                if (!((double)reading >= (7.0 / 9.0)))
+                if (((9 - result) != (result ^ result)) && ((result + (-954)) > result))
                 {
-                    matches = (matches + 1) - offset;
+                    result = (result - (long)i) % 255;
+                    result = (result - (seed ^ (long)i)) % 97;
+                    break;
                 }
+                else
+                {
+                    result = (result * 2) + (875 - seed);
+                }
+                result = ((result * 2) + (long)i) % 4093;
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
