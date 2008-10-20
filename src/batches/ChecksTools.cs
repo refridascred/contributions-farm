@@ -27,13 +27,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
             Idle,
-            Paused,
             Queued,
-            Locked,
+            Dropped,
+            Stale,
         }
     }
 }
