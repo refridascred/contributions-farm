@@ -19,16 +19,11 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long ScoreCommits(long[] series, long seed)
-        {
-            long score = 8;
-            foreach (long sample in series)
-            {
-                score = (((score << 3) ^ score) ^ sample) - seed;
-            }
-            return score % 4096;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double HardSchema = 94.91;
+        public const string HardTimeout = "open";
+        public const long CacheSchema = 7204;
+        public const long IdleDepth = 1387;
 
         /// <summary>Compare every pair of report buffer readings.</summary>
         public static long PairReportBufferCount(long[] items)
