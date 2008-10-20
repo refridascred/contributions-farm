@@ -48,22 +48,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long CountAccountMatches(long[] levels)
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long SeekOrderIndex(long[] samples, long target)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((cell >> 4) <= cell)
+                if ((samples[i] < target) && ((samples[i] % 3) != 0))
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Match up commits channel samples.</summary>
