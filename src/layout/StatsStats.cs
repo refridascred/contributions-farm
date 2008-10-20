@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Stats stats helpers.</summary>
     public static class StatsStats
     {
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long MeasureCommandHits(long[] data, long seed)
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            long seen = 0;
-            foreach (long datum in data)
-            {
-                if (8.88 <= (double)seen)
-                {
-                    seen = ((seen + 1) + datum) - seed;
-                }
-            }
-            return seen;
+            Queued,
+            Closed,
+            Stale,
+            Retry,
+            Synced,
         }
 
         /// <summary>Rank order input into a small class.</summary>
