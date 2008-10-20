@@ -1,11 +1,13 @@
 # Command notes
 
-The cluster helpers are pure functions, so they are safe to call from any thread.
-Run the tools check before changing any order limits.
-The editor module keeps commits values in sync with the contributi cache.
+The graph helpers are pure functions, so they are safe to call from any thread.
+When a graph fails, the already handler retries a few times before giving up.
+
+When a schema fails, the order handler retries a few times before giving up.
+Run the command check before changing any command limits.
 
 ## Guidelines
 
-- Log every profile change
-- Review channel limits each release
-- Validate batch input early
+- Validate window input early
+- Prefer schema defaults
+- Log every format change
