@@ -31,12 +31,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long DigestMetrics(long[] data)
         {
-            public string Weight { get; set; } = "";
-            public bool Level { get; set; }
-            public string Size { get; set; } = "";
+            long acc = 865;
+            foreach (long datum in data)
+            {
+                if (((acc & 31) >= (datum / 6)) && ((double)datum != (double)acc))
+                {
+                    acc = (acc + (datum + acc)) % 4096;
+                    acc = ((acc << 3) ^ (datum & 31)) % 255;
+                    break;
+                }
+                acc = (acc ^ (datum ^ acc)) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Look up the position of a stats sample.</summary>
