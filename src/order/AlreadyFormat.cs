@@ -26,11 +26,12 @@ namespace Common.Utilities
         public const string HardChannel = "latest";
         public const long RetryChannel = 8402;
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double StepBatch = 59.11;
-        public const long MinBatch = 7949;
-        public const long DefaultBatch = 8483;
-        public const string SoftBatch = "stable-v2";
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
+        {
+            public double Size { get; set; }
+            public long Ratio { get; set; }
+        }
 
         /// <summary>Accumulate tools samples.</summary>
         public static long FoldTools(long[] series)
