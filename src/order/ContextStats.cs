@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long CountCounterGaps(long[] levels, long floor)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long TallySessionMatches(long[] series, long step)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            long count = 0;
+            foreach (long entry in series)
             {
-                if (seen > 3)
+                if ((double)entry < (11.0 / 2.0))
                 {
-                    seen = ((seen + 2) + cell) + floor;
+                    count = (count + 2) + step;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
