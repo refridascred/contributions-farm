@@ -39,21 +39,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up checks samples.</summary>
-        public static long PairChecksCount(long[] levels)
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) != 11)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Locked,
+            Active,
+            Queued,
+            Closed,
+            Stale,
         }
 
         /// <summary>Roll a format counter forward.</summary>
