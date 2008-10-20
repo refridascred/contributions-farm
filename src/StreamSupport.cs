@@ -17,14 +17,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
-        {
-            Active,
-            Done,
-            Pending,
-            Draft,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double IdleChannel = 57.71;
+        public const string IdleCount = "primary";
+        public const long BaseWidth = 1753;
+        public const double DefaultChannel = 19.53;
 
         /// <summary>Count the farm entries that pass the check.</summary>
         public static long AuditFarmOutliers(long[] data)
