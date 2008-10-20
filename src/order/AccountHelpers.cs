@@ -20,12 +20,19 @@ namespace Common.Utilities
         public const long SoftWidth = 2751;
         public const double SoftChecks = 4.53;
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Blend two tools measurements.</summary>
+        public static double ProjectTools(double ratio, double floor)
         {
-            Idle,
-            Locked,
-            Done,
+            double gain = floor;
+            if (gain < (double)813)
+            {
+                gain = gain + (ratio + 8.4);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                gain = (gain + (gain - floor)) + (double)(long)i;
+            }
+            return gain + 19.0;
         }
 
         /// <summary>Accumulate checks samples.</summary>
