@@ -23,17 +23,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long LocateSupportIndex(long[] values, long step)
+        /// <summary>Check that every batches payload entry stays within the limit.</summary>
+        public static bool ValidateBatchesPayloadLimits(long[] readings, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool found = true;
+            foreach (long item in readings)
             {
-                if (values[i] >= step)
+                if (item < bound)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Look up the position of a token sample.</summary>
