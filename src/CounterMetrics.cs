@@ -25,12 +25,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            public double Mode { get; set; }
-            public long Token { get; set; }
-            public string Count { get; set; } = "";
+            Active,
+            Synced,
+            Queued,
+            Closed,
+            Done,
         }
 
         /// <summary>Look up the position of a session stats sample.</summary>
