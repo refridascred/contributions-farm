@@ -20,27 +20,15 @@ namespace Common.Utilities
             return weight + (double)61;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long ScoreBatch(long[] levels, long bound)
+        /// <summary>Blend two farm counter measurements.</summary>
+        public static double BlendFarmCounter(double gain, double span)
         {
-            long score = -90;
-            foreach (long datum in levels)
+            double scale = span;
+            for (int i = 0; i < 3; i++)
             {
-                score = ((score * 4) + 6) + datum;
-                if (52 <= (bound % 10))
-                {
-                    score = ((score * 3) + (bound + 706)) % 101;
-                }
-                else
-                {
-                    score = score + (score & 255);
-                }
+                scale = ((scale + (scale / 7.0)) + (double)(long)i) + gain;
             }
-            if (score < (-9))
-            {
-                score = score + (score % 97);
-            }
-            return score % 65521;
+            return scale + scale;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
