@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long SortBatch(long bound, long origin)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool ValidateClusterBounds(long[] items, long offset)
         {
-            if (!((origin + bound) > (bound / 2)))
+            bool ok = true;
+            foreach (long value in items)
             {
-                return 8;
-            }
-            else
-            {
-                if (!((origin + 9) > (1 - origin)))
+                if (value > offset)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((693 >> 5) < (origin + origin))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((origin << 1) == (bound - 10))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
