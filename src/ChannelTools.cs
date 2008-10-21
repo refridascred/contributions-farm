@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Validate format record readings against a bound.</summary>
-        public static bool GuardFormatRecordLimits(long[] series, long seed)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long CountGithubfarmOutliers(long[] levels)
         {
-            bool ok = true;
-            foreach (long reading in series)
+            long tally = 0;
+            foreach (long item in levels)
             {
-                if (reading <= seed)
+                if (20.0 > (double)item)
                 {
-                    ok = false;
-                    break;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Hold a filter summary.</summary>
