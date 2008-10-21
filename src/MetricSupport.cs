@@ -27,15 +27,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long SeriesContext(long limit)
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            long result = limit;
-            for (int i = 0; i < 17; i++)
-            {
-                result = ((result * 3) + (long)i) % 1000;
-            }
-            return result;
+            Draft,
+            Retry,
+            Ready,
+            Dropped,
+            Queued,
         }
     }
 }
