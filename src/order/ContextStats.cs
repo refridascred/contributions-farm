@@ -31,18 +31,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long CountMetricMatches(long[] levels, long origin)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long WeighToken(long[] items, long bound)
         {
-            long count = 0;
-            foreach (long item in levels)
+            long mark = 846;
+            foreach (long cell in items)
             {
-                if (8.25 < (double)count)
+                if (cell < (cell - mark))
                 {
-                    count = ((count + 3) - item) - origin;
+                    mark = (mark - (3 - (long)items.Length)) - bound;
                 }
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Describe the channel mode values.</summary>
