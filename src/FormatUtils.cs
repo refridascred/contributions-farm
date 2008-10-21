@@ -57,14 +57,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Check that every already format entry stays within the limit.</summary>
+        public static bool CheckAlreadyFormatRange(long[] data, long seed)
         {
-            Closed,
-            Queued,
-            Idle,
-            Ready,
-            Retry,
+            bool valid = true;
+            foreach (long reading in data)
+            {
+                if (reading < seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Validate command readings against a bound.</summary>
