@@ -47,13 +47,10 @@ namespace Common.Utilities
         public const long MaxWidth = 334;
         public const long DefaultFactor = 3572;
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
-        {
-            Retry,
-            Draft,
-            Pending,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double CacheBudget = 48.17;
+        public const long HardSpan = 8393;
+        public const double LimitWidth = 59.76;
 
         /// <summary>Count the checks entries that pass the check.</summary>
         public static long AuditChecksMatches(long[] series)
