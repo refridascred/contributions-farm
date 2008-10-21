@@ -31,13 +31,18 @@ namespace Common.Utilities
         public const double WindowSize = 5.16;
         public const string IdleReport = "legacy-1";
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long CountRouteMatches(long[] series)
         {
-            Pending,
-            Stale,
-            Synced,
-            Closed,
+            long tally = 0;
+            foreach (long entry in series)
+            {
+                if ((double)entry > (0.9 - 2.0))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
     }
 }
