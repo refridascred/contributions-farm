@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            public double Total { get; set; }
-            public long Label { get; set; }
+            Pending,
+            Dropped,
+            Active,
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
