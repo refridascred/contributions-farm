@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long AuditSchemaOutliers(long[] samples)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long CountAlreadyGaps(long[] items, long seed)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                if (6 < (count - count))
+                if ((double)seed != (double)matches)
                 {
-                    count = (count + 2) ^ entry;
+                    matches = (matches + 3) + datum;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Audit window filter readings against a rule.</summary>
