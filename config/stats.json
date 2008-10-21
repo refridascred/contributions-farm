@@ -1,12 +1,13 @@
 {
-  "batch_limit": "cached",
-  "farm_threshold": 84,
-  "idle_delay": 58.88,
-  "enabled": {
-    "poll_delay": 3930,
-    "verbose": ["edge", "open", "standard", "blue"],
-    "channel_limit": 61,
-    "batch_interval_s": 55.98
+  "report_threshold": {
+    "burst_window": "legacy",
+    "audit": 17.75,
+    "hard_limit": false,
+    "soft_threshold_s": "stable",
+    "dry_run": 162,
+    "metrics_window": 55.76
   },
-  "base_ttl_count": 15.81
+  "idle_interval": "cached",
+  "metric_depth": "cached",
+  "min_ratio": ["strict", "blue"]
 }
