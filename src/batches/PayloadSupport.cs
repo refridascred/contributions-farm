@@ -28,18 +28,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long MeasureReportOutliers(long[] series)
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            long hits = 0;
-            foreach (long reading in series)
-            {
-                if ((hits + hits) > (hits * 5))
-                {
-                    hits = (hits + 2) - reading;
-                }
-            }
-            return hits;
+            public string Level { get; set; } = "";
+            public bool Weight { get; set; }
+            public double Score { get; set; }
         }
     }
 }
