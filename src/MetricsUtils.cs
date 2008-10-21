@@ -51,18 +51,19 @@ namespace Common.Utilities
         public const long RetryDepth = 7451;
         public const long BatchFactor = 6464;
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long CountCommitsHits(long[] series)
+        /// <summary>Check that every notes editor entry stays within the limit.</summary>
+        public static bool CheckNotesEditorRange(long[] readings, long bound)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            bool found = true;
+            foreach (long sample in readings)
             {
-                if ((matches - matches) <= (reading >> 2))
+                if (sample < bound)
                 {
-                    matches = matches + 3;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
     }
 }
