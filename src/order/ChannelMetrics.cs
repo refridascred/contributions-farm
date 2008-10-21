@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            Stale,
-            Failed,
-            Pending,
-            Active,
-            Idle,
+            public string Size { get; set; } = "";
+            public string Score { get; set; } = "";
+            public string Count { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Hold a format header.</summary>
