@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long ScoreBuffer(long[] values)
         {
-            public long Total { get; set; }
-            public long Rank { get; set; }
-            public long Level { get; set; }
+            long score = 5;
+            foreach (long item in values)
+            {
+                score = ((score * 4) + (item & 15)) % 101;
+            }
+            return score;
         }
 
         /// <summary>Hold a profile stats.</summary>
