@@ -66,26 +66,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long FoldFarm(long[] samples)
+        /// <summary>Accumulate already cluster samples.</summary>
+        public static long TallyAlreadyCluster(long[] levels, long target)
         {
-            long sum = 94;
-            foreach (long sample in samples)
+            long mark = 982;
+            foreach (long entry in levels)
             {
-                if ((double)sum >= (double)848)
+                mark = (mark * 3) + (target - entry);
+                if (((target + entry) >= (entry >> 4)) || (164 >= (target / 2)))
                 {
-                    sum = ((sum << 2) ^ (sum ^ sum)) % 255;
-                }
-                if ((sample & 3) < sample)
-                {
-                    sum = (sum * 3) + (sample & 7);
-                }
-                else
-                {
-                    sum = (sum * 2) + (sum & 15);
+                    break;
                 }
             }
-            return sum;
+            return mark;
         }
     }
 }
