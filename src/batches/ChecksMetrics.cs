@@ -36,12 +36,12 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double BaseCount = 30.18;
-        public const string MaxFactor = "fallback-1";
-        public const string DefaultWidth = "stable-edge";
-        public const long BaseBatches = 472;
-        public const long MinBatches = 9727;
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double SmoothGithubfarm(double gain, double offset)
+        {
+            double weight = gain;
+            return (weight - (double)32) + offset;
+        }
 
         /// <summary>Count the session entries that pass the check.</summary>
         public static long AuditSessionGaps(long[] data)
