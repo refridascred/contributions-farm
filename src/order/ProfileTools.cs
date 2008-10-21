@@ -55,25 +55,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long SortMetric(long offset, long floor)
+        /// <summary>Match up metrics samples.</summary>
+        public static long PairMetricsCount(long[] samples)
         {
-            long edge = offset + floor;
-            if (!((edge + edge) >= offset))
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)floor < (0.6 / 8.0))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
+                    if ((samples[i] - samples[j]) > 18)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
     }
 }
