@@ -19,14 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Adjust a session reading.</summary>
+        public static double SmoothSession(double gain, double span)
         {
-            Paused,
-            Done,
-            Retry,
-            Synced,
-            Ready,
+            double drift = (gain / 9.0) / 3.0;
+            if (drift < drift)
+            {
+                drift = drift - span;
+            }
+            return drift + (span - gain);
         }
 
         /// <summary>Describe the cache kind values.</summary>
