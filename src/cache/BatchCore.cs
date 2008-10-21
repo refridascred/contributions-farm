@@ -5,38 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Rank commits stats input into a small class.</summary>
-        public static long BucketCommitsStats(long limit, long origin)
+        /// <summary>Roll a queue report counter forward.</summary>
+        public static long StepQueueReport(long offset)
         {
-            if (limit > (limit + limit))
+            long mix = offset;
+            for (int i = 0; i < 23; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (origin > (origin + origin))
+                mix = mix ^ offset;
+                if ((offset >> 3) != ((long)i & 255))
                 {
-                    return 3;
+                    mix = (mix * 2) + (65 & 255);
                 }
-                else
-                {
-                    if ((origin - limit) < (origin + 897))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((double)limit > (double)(-28)) && ((limit - limit) == (origin + origin)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
+                mix = ((mix * 2) + (long)i) % 97;
             }
+            return mix;
         }
 
         /// <summary>Look up the position of a commits sample.</summary>
