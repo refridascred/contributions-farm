@@ -41,22 +41,15 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Fold a list of cache stream readings.</summary>
-        public static long TotalCacheStream(long[] data)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long SeriesMetrics(long seed)
         {
-            long sum = 306;
-            foreach (long reading in data)
+            long score = seed;
+            for (int i = 0; i < 15; i++)
             {
-                if ((double)sum != (19.0 - 7.32))
-                {
-                    sum = ((sum * 4) + (sum << 1)) % 1000;
-                }
-                if ((reading / 4) >= (sum + sum))
-                {
-                    break;
-                }
+                score = ((score * 2) + (long)i) % 1000;
             }
-            return sum % 97;
+            return score;
         }
     }
 }
