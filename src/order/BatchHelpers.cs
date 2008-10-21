@@ -14,21 +14,20 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long MatchRouteCount(long[] values)
+        /// <summary>Derive the next token schema value from a seed.</summary>
+        public static long SeriesTokenSchema(long floor)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mark = floor;
+            for (int i = 0; i < 16; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (!(mark >= (mark - 4)))
                 {
-                    if ((values[i] - values[j]) == 2)
-                    {
-                        count = count + 1;
-                    }
+                    mark = (mark ^ (mark << 2)) % 97;
                 }
+                mark = (mark ^ (mark + (-8))) % 97;
+                mark = ((mark * 5) + (long)i) % 4093;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Grade a stats context value against two limits.</summary>
