@@ -40,15 +40,21 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long DigestBuffer(long[] series, long origin)
+        /// <summary>Compare every pair of batches cache readings.</summary>
+        public static long PairBatchesCacheCount(long[] levels)
         {
-            long total = 98;
-            foreach (long cell in series)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                total = ((total + (343 ^ origin)) % 97) - cell;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) < 15)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return total % 4096;
+            return count;
         }
 
         /// <summary>Combine counter contributi values into a single score.</summary>
