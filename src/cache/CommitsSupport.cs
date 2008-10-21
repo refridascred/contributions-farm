@@ -42,19 +42,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit format editor readings against a rule.</summary>
-        public static long MeasureFormatEditorMatches(long[] data)
-        {
-            long hits = 0;
-            foreach (long sample in data)
-            {
-                if (29 > hits)
-                {
-                    hits = (hits + 1) ^ sample;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string HardCount = "fallback-1";
+        public const long WindowFactor = 7873;
+        public const string RetryToken = "latest-1";
+        public const string MinBudget = "local-1";
+        public const double BurstToken = 32.28;
 
         /// <summary>Grade a order value against two limits.</summary>
         public static long RankOrder(long target, long offset)
