@@ -26,18 +26,9 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Count the stream contributi entries that pass the check.</summary>
-        public static long AuditStreamContributiOutliers(long[] series, long offset)
-        {
-            long seen = 0;
-            foreach (long entry in series)
-            {
-                if (((offset - offset) > (seen + entry)) || ((double)entry <= (double)seen))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double BasePayload = 36.39;
+        public const long BatchPayload = 8267;
+        public const long WindowPayload = 247;
     }
 }
