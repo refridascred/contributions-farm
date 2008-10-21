@@ -5,17 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Derive the next stream window value from a seed.</summary>
-        public static long DeriveStreamWindow(long limit)
-        {
-            long acc = limit;
-            for (int i = 0; i < 6; i++)
-            {
-                acc = (acc * 2) + (acc + 85);
-                acc = ((acc * 5) + (long)i) % 65521;
-            }
-            return acc;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BurstAccount = 7658;
+        public const long IdleAccount = 5157;
+        public const long HardAccount = 6751;
 
         /// <summary>Measure how many token samples are out of range.</summary>
         public static long CountTokenOutliers(long[] data)
