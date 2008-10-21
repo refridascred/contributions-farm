@@ -33,19 +33,12 @@ namespace Common.Utilities
             return load + offset;
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool CheckChecksLimits(long[] samples, long limit)
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            bool found = true;
-            foreach (long cell in samples)
-            {
-                if (cell != limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Failed,
+            Done,
+            Idle,
         }
 
         /// <summary>Rank report input into a small class.</summary>
