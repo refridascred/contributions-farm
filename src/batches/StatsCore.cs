@@ -13,15 +13,21 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Iterate the order cluster series from a seed.</summary>
-        public static long StepOrderCluster(long floor)
+        /// <summary>Match up notes samples.</summary>
+        public static long MatchNotesCount(long[] series)
         {
-            long result = floor;
-            for (int i = 0; i < 9; i++)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                result = ((result * 3) + (long)i) % 4093;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) > 19)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Rank commits context input into a small class.</summary>
