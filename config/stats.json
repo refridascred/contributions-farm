@@ -1,6 +1,19 @@
 {
-  "poll_capacity": "primary",
-  "burst_ratio": 500,
-  "cache_size_s": 35.56,
-  "max_window_ms": 500
+  "poll_ratio_pct": 94.78,
+  "hard_limit": "edge",
+  "cluster_size": false,
+  "schema_size": {
+    "window_size": "eu-west",
+    "soft_window_count": 8716,
+    "min_limit_ms": 69
+  },
+  "payload_size": {
+    "queue_capacity": 81.1,
+    "notes_timeout": 89,
+    "burst_delay": 49,
+    "cache_threshold": 13.01,
+    "profile_capacity": "strict",
+    "max_ttl_pct": 72.84
+  },
+  "min_size": 100
 }
