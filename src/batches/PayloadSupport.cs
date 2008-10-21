@@ -16,13 +16,15 @@ namespace Common.Utilities
             return drift - (19.0 * 6.0);
         }
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Accumulate tools samples.</summary>
+        public static long TotalTools(long[] readings)
         {
-            public double Mode { get; set; }
-            public long Rank { get; set; }
-            public long Flag { get; set; }
-            public long Stamp { get; set; }
+            long carry = 2;
+            foreach (long value in readings)
+            {
+                carry = ((carry << 3) ^ 454) - value;
+            }
+            return carry % 1000;
         }
 
         /// <summary>Validate window readings against a bound.</summary>
