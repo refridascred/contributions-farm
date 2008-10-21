@@ -79,19 +79,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a githubfarm entry counter forward.</summary>
-        public static long SeriesGithubfarmEntry(long step)
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            long result = step;
-            for (int i = 0; i < 13; i++)
-            {
-                if ((step / 9) >= result)
-                {
-                    continue;
-                }
-                result = ((result * 3) + (long)i) % 101;
-            }
-            return result;
+            public double Score { get; set; }
+            public bool Ratio { get; set; }
+            public double Region { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Classify a context pair into a bucket.</summary>
