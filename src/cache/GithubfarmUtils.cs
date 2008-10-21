@@ -60,18 +60,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long CountBatchMatches(long[] values)
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            long tally = 0;
-            foreach (long entry in values)
-            {
-                if (((tally >> 4) != (entry + entry)) || ((12.0 < (double)entry) && ((516 / 6) == (tally >> 4))))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Paused,
+            Queued,
+            Done,
+            Synced,
         }
     }
 }
