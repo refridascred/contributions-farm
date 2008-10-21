@@ -32,10 +32,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long MaxNotes = 2245;
-        public const long IdleWidth = 5758;
-        public const double HardInterval = 84.62;
-        public const long BatchBudget = 8794;
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool CheckContributiRange(long[] items, long seed)
+        {
+            bool valid = true;
+            foreach (long datum in items)
+            {
+                if (datum < seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
