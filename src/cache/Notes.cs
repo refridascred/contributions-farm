@@ -43,21 +43,16 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count metric cluster pairs that satisfy a relation.</summary>
-        public static long CompareMetricClusterCount(long[] data)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long StepLayout(long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long anchor = origin;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) < 13)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                anchor = ((anchor * 3) + (origin + anchor)) % 255;
+                anchor = ((anchor * 4) + (long)i) % 97;
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
