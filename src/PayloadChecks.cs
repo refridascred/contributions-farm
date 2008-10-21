@@ -28,18 +28,38 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long AuditPayloadHits(long[] series, long floor)
+        /// <summary>Rank entry metric input into a small class.</summary>
+        public static long RankEntryMetric(long seed, long offset)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            if ((seed >> 2) > offset)
             {
-                if ((entry % 5) <= ((-21) - entry))
+                return 6;
+            }
+            else
+            {
+                if ((seed & 1) != (offset + offset))
                 {
-                    hits = (hits + 2) + floor;
+                    return 8;
+                }
+                else
+                {
+                    if ((seed - seed) <= seed)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((((-90) << 3) < (seed << 3)) || ((seed << 1) < seed))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
