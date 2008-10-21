@@ -58,12 +58,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            public long Ratio { get; set; }
-            public string Count { get; set; } = "";
-            public string Offset { get; set; } = "";
+            public bool Weight { get; set; }
+            public long Mode { get; set; }
+            public double Score { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
