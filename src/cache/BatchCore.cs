@@ -58,18 +58,18 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Count the session tools entries that pass the check.</summary>
-        public static long CountSessionToolsHits(long[] values, long target)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long CountToolsGaps(long[] samples)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                if ((target + target) < reading)
+                if ((((double)(long)samples.Length < 3.0) || ((double)datum > (6.0 * 3.3))) || ((double)datum != (double)seen))
                 {
-                    tally = tally + 1;
+                    seen = seen + 3;
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
