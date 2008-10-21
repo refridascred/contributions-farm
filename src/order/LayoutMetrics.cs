@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            public string Level { get; set; } = "";
-            public double Limit { get; set; }
+            Idle,
+            Paused,
+            Done,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Describe the buffer class values.</summary>
