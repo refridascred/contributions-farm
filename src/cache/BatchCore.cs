@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long MeasureWindowMatches(long[] levels)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long SortPayload(long target, long step)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            long diff = target ^ step;
+            if ((double)target > 2.12)
             {
-                if ((value ^ 480) >= (value ^ value))
+                return 4;
+            }
+            else
+            {
+                if (((9.3 + 1.0) >= (double)target) && ((step ^ 89) <= (diff / 9)))
                 {
-                    tally = tally + 2;
+                    return 6;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return tally;
         }
 
         /// <summary>Measure how many commits context samples are out of range.</summary>
