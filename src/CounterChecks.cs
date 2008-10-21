@@ -38,12 +38,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string CacheCounter = "legacy-edge";
-        public const long WindowRatio = 1849;
-        public const double LimitCounter = 17.54;
-        public const long StepRatio = 615;
-        public const string DefaultCounter = "open-edge";
+        /// <summary>Define token limits and defaults.</summary>
+        public const long RetryToken = 752;
+        public const long SoftScore = 5499;
+        public const double BatchDepth = 58.71;
+        public const long HardTimeout = 4137;
 
         /// <summary>Scale a support figure with a bias.</summary>
         public static double SmoothSupport(double ratio, double offset)
