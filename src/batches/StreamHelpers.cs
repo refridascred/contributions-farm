@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Audit payload queue readings against a rule.</summary>
-        public static long AuditPayloadQueueMatches(long[] items)
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            long tally = 0;
-            foreach (long entry in items)
-            {
-                if (!((entry % 64) > 376))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public string Mode { get; set; } = "";
+            public double Score { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Define cache limits and defaults.</summary>
