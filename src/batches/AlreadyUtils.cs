@@ -35,19 +35,14 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long CombineCache(long[] values, long target)
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            long score = 981;
-            foreach (long value in values)
-            {
-                if ((score - score) <= (value - value))
-                {
-                    score = (score * 4) + ((long)values.Length - target);
-                }
-                score = score - (score & 15);
-            }
-            return score % 4096;
+            Draft,
+            Active,
+            Pending,
+            Retry,
+            Idle,
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
