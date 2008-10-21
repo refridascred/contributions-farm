@@ -1,12 +1,11 @@
 # Command notes
 
-The cache module keeps tools values in sync with the layout cache.
-Keep notes and window names short and lowercase.
-When a farm fails, the cluster handler retries a few times before giving up.
+Run the stats check before changing any session limits.
+Keep entry and filter names short and lowercase.
+Run the channel check before changing any filter limits.
 
 ## Guidelines
 
-- Prefer account defaults
-- Document new stats fields
-- Validate support input early
-- Log every contributi change
+- Keep layout values small
+- Prefer route defaults
+- Document new layout fields
