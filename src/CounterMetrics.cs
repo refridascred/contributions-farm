@@ -39,10 +39,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long StepWindow = 3833;
-        public const string IdleWindow = "primary-v2";
-        public const double IdleSpan = 36.19;
-        public const long WindowBudget = 9131;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BurstRatio = 6183;
+        public const string RetryCommits = "legacy-v2";
+        public const string DefaultCommits = "legacy-edge";
     }
 }
