@@ -12,12 +12,22 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long LimitFactor = 6272;
-        public const long BatchWidth = 7900;
-        public const long CacheTimeout = 4938;
-        public const double BurstWidth = 45.77;
-        public const string DefaultBuffer = "cached";
+        /// <summary>Compare every pair of stream layout readings.</summary>
+        public static long MatchStreamLayoutCount(long[] levels)
+        {
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) == 9)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a profile options.</summary>
         public sealed class ProfileOptions
