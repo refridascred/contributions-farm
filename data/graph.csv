@@ -1,6 +1,10 @@
-id,token,owner,count
-1,24.6,stable,strict
-2,4.59,60.12,53.23
-3,155,legacy,459
-4,38.54,84.21,237
-5,green,807,fallback
+id,level,score,active
+1,84.94,stable,edge
+2,green,76.71,fallback
+3,344,staging,edge
+4,23.3,54.29,29.21
+5,672,520,929
+6,80.51,staging,latest
+7,95,57.97,411
+8,69.22,897,104
+9,600,38.87,strict
