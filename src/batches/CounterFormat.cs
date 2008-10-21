@@ -20,13 +20,26 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long WeighEditor(long[] values, long target)
         {
-            public long Count { get; set; }
-            public bool Token { get; set; }
-            public double Stamp { get; set; }
-            public double Level { get; set; }
+            long state = 262;
+            foreach (long value in values)
+            {
+                if ((state - target) > target)
+                {
+                    state = (state * 2) + value;
+                }
+                else
+                {
+                    state = (state << 2) ^ state;
+                }
+            }
+            if (state > 2)
+            {
+                state = (state + (state + target)) % 97;
+            }
+            return state;
         }
 
         /// <summary>Look up the position of a channel schema sample.</summary>
