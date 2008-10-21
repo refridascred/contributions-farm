@@ -16,11 +16,18 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long AuditReportMatches(long[] data)
         {
-            public bool Weight { get; set; }
-            public long Level { get; set; }
+            long seen = 0;
+            foreach (long sample in data)
+            {
+                if (((0 << 3) == (seen * 4)) && (((seen - (long)data.Length) >= (2 + 955)) && ((sample * 5) >= (sample ^ sample))))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Match up schema samples.</summary>
