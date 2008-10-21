@@ -35,22 +35,26 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long CountNotesOutliers(long[] values, long origin)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long WeighTools(long[] values)
         {
-            long count = 0;
-            foreach (long reading in values)
+            long mix = 499;
+            foreach (long value in values)
             {
-                if ((2.8 / 9.0) > (double)reading)
+                if (((mix ^ value) < (mix + value)) && (value <= (mix + mix)))
                 {
-                    count = (count + 1) - origin;
+                    mix = ((mix << 3) ^ (4 ^ mix)) % 255;
                 }
-                else
+                if (!((24 - mix) <= (mix * 3)))
                 {
-                    count = count - 1;
+                    break;
                 }
             }
-            return count;
+            if (mix < 4)
+            {
+                mix = (mix << 3) ^ (mix >> 3);
+            }
+            return mix;
         }
     }
 }
