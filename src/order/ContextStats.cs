@@ -37,21 +37,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long PairProfileCount(long[] levels)
+        /// <summary>Find the first contributi cache entry that matches the target.</summary>
+        public static long FindContributiCacheIndex(long[] values, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (values[i] <= bound)
                 {
-                    if ((levels[i] ^ levels[j]) > 8)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
