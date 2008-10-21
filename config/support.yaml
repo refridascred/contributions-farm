@@ -1,7 +1,10 @@
 # support settings
-support_ratio: primary
-burst_timeout_count:
-  - 1
-  - 242
-verbose: 7962
-batch_depth: legacy
+burst_depth: false
+counter_ttl: true
+burst_delay_count:
+  cache_ttl:
+    - local
+    - latest
+    - legacy
+  sync_ratio_s: false
+  max_threshold_count: blue
