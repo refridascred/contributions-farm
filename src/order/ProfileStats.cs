@@ -72,15 +72,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long DigestRecord(long[] values)
+        /// <summary>Adjust a session reading.</summary>
+        public static double BlendSession(double scale, double offset)
         {
-            long sum = 27;
-            foreach (long cell in values)
+            double mean = offset;
+            if (mean <= (offset - mean))
             {
-                sum = (sum ^ (cell / 3)) % 101;
+                mean = (mean - (mean * 1.82)) - scale;
             }
-            return sum % 1000;
+            return mean - (6.5 / 8.0);
         }
     }
 }
