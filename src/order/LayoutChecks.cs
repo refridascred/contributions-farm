@@ -41,18 +41,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long TotalMetric(long[] values)
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            long carry = 27;
-            foreach (long cell in values)
-            {
-                if (!(((-63) - carry) > (98 * 5)))
-                {
-                    carry = ((carry * 5) + carry) ^ cell;
-                }
-            }
-            return carry % 1000;
+            public long Limit { get; set; }
+            public long Flag { get; set; }
+            public long Total { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Compare every pair of commits farm readings.</summary>
