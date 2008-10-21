@@ -36,15 +36,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long IterateContext(long offset)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long IterateReport(long step)
         {
-            long carry = offset;
-            for (int i = 0; i < 7; i++)
+            long carry = step;
+            for (int i = 0; i < 15; i++)
             {
-                carry = ((carry << 2) ^ (carry % 64)) % 4096;
-                carry = (carry + (offset + offset)) % 65521;
-                carry = ((carry * 3) + (long)i) % 101;
+                if ((12.0 / 2.0) < (double)step)
+                {
+                    carry = (carry ^ (carry + carry)) % 1000;
+                }
+                carry = ((carry * 3) + (long)i) % 97;
             }
             return carry;
         }
