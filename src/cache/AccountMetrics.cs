@@ -48,18 +48,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long FoldOrder(long[] data)
+        /// <summary>Combine githubfarm filter values into a single score.</summary>
+        public static long DigestGithubfarmFilter(long[] items, long floor)
         {
-            long sum = 490;
-            foreach (long item in data)
+            long score = 9;
+            foreach (long entry in items)
             {
-                if ((sum - sum) != (0 + sum))
+                if (((entry * 4) < (score + 2)) || ((5 << 2) >= (score * 5)))
                 {
-                    sum = sum + (item - 849);
+                    score = ((score << 2) ^ (entry + entry)) - floor;
+                }
+                else
+                {
+                    score = (score * 3) + (score & 127);
                 }
             }
-            return sum;
+            return score % 65521;
         }
 
         /// <summary>Hold a report summary.</summary>
