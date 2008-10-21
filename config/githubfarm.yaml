@@ -1,40 +1,16 @@
 # githubfarm settings
-window_limit: fallback
-flush_retries_count: 62
-min_ratio_ms: 5770
-verbose:
-  entry_threshold: 85.71
-  cache_interval_count: standard
-  batches_interval:
-    max_threshold_count: standard
-    idle_window_ms: local
-    soft_timeout_s:
-      - staging
-      - stable
-      - legacy
-    queue_threshold:
-      - 182
-      - 166
-    format_size:
-      - 354
-      - 484
-      - 48
-      - 369
-  default_limit_ms: green
-  cache_threshold_s:
-    - 293
-    - 11
-    - 157
-    - 33
-  entry_capacity:
-    hard_ttl_pct: 50
-    flush_timeout_pct: legacy
-    readonly: false
-audit:
-  - strict
-  - blue
-  - cached
-  - latest
-contributi_ratio:
-  - blue
-  - primary
+persist:
+  batch_threshold_s:
+    dry_run: 24.55
+    soft_window_s: 69.55
+    farm_delay: staging
+    session_limit: true
+  cache_window: 2262
+  record_window:
+    - 274
+    - 398
+  context_size: 500
+  cache_timeout: stable
+retry_size_ms: false
+idle_window_ms: false
+poll_limit: cached
