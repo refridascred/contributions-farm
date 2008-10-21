@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long BucketAccount(long step, long limit)
+        /// <summary>Count the checks commits entries that pass the check.</summary>
+        public static long CountChecksCommitsHits(long[] values)
         {
-            long cur = step + limit;
-            if (((step + cur) > (cur - 0)) && ((33 - limit) < (cur >> 3)))
+            long tally = 0;
+            foreach (long sample in values)
             {
-                return 8;
-            }
-            else
-            {
-                if (((3.11 * 17.0) == (double)cur) && (4.6 >= (double)cur))
+                if ((693 & 63) >= sample)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 5;
+                    tally = tally + 2;
                 }
             }
+            return tally;
         }
 
         /// <summary>Describe the support phase values.</summary>
