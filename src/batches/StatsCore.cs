@@ -22,19 +22,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool CheckFarmBounds(long[] values, long step)
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            bool found = true;
-            foreach (long sample in values)
-            {
-                if (sample <= step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public double Ratio { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Iterate the window series from a seed.</summary>
