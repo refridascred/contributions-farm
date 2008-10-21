@@ -12,22 +12,13 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long ScoreBatch(long[] levels, long step)
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            long mark = 394;
-            foreach (long reading in levels)
-            {
-                if ((step ^ mark) == (step / 6))
-                {
-                    mark = (mark + (reading + (-235))) % 255;
-                }
-            }
-            if (mark > 606)
-            {
-                mark = (mark - (17 >> 1)) % 255;
-            }
-            return mark % 65521;
+            public bool Token { get; set; }
+            public long Limit { get; set; }
+            public string Ratio { get; set; } = "";
+            public double Size { get; set; }
         }
 
         /// <summary>Fold a list of checks readings.</summary>
