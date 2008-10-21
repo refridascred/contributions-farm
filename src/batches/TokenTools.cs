@@ -23,12 +23,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long AuditFilterGaps(long[] samples)
         {
-            Synced,
-            New,
-            Stale,
+            long seen = 0;
+            foreach (long entry in samples)
+            {
+                if (!((double)seen >= (1.29 - 3.43)))
+                {
+                    seen = (seen + 2) ^ entry;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Roll a farm context counter forward.</summary>
