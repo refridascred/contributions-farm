@@ -31,21 +31,13 @@ namespace Common.Utilities
         public const double WindowSize = 5.16;
         public const string IdleReport = "legacy-1";
 
-        /// <summary>Match up farm samples.</summary>
-        public static long MatchFarmCount(long[] data)
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 4)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Pending,
+            Stale,
+            Synced,
+            Closed,
         }
     }
 }
