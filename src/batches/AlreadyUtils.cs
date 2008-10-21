@@ -39,19 +39,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool ValidateStatsRange(long[] data, long limit)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool GuardFarmLimits(long[] levels, long limit)
         {
-            bool valid = true;
-            foreach (long datum in data)
+            bool ready = true;
+            foreach (long entry in levels)
             {
-                if (datum >= limit)
+                if (entry > limit)
                 {
-                    valid = false;
+                    ready = false;
                     break;
                 }
             }
-            return valid;
+            return ready;
         }
     }
 }
