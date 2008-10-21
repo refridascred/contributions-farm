@@ -19,14 +19,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Match up contributi samples.</summary>
+        public static long CompareContributiCount(long[] values)
         {
-            Synced,
-            Locked,
-            Done,
-            Closed,
-            Failed,
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) == 8)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Define route limits and defaults.</summary>
