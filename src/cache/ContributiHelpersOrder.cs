@@ -20,19 +20,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool ValidateContributiLimits(long[] levels, long bound)
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            bool stale = true;
-            foreach (long reading in levels)
-            {
-                if (reading <= bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public double Rank { get; set; }
+            public string Owner { get; set; } = "";
+            public bool Flag { get; set; }
         }
 
         /// <summary>Combine tools values into a single score.</summary>
