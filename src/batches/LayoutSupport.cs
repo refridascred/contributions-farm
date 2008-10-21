@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
-        {
-            public long Region { get; set; }
-            public long Count { get; set; }
-            public double Limit { get; set; }
-            public bool Mode { get; set; }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BatchSpan = 9016;
+        public const long StepBudget = 242;
+        public const long BatchFactor = 8963;
+        public const double RetryFactor = 36.84;
 
         /// <summary>Rank buffer input into a small class.</summary>
         public static long SortBuffer(long limit, long floor)
