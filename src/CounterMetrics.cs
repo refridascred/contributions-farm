@@ -48,32 +48,19 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long RankWindow(long floor, long offset)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool CheckPayloadRange(long[] data, long step)
         {
-            long diff = floor ^ offset;
-            if (!((floor - 40) > offset))
+            bool ready = true;
+            foreach (long cell in data)
             {
-                return 5;
-            }
-            else
-            {
-                if ((diff ^ diff) == (floor % 100))
+                if (cell != step)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (((0 >> 2) > (offset >> 3)) || (((-5) - offset) < diff))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
     }
 }
