@@ -51,14 +51,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            New,
-            Retry,
-            Paused,
-            Idle,
-            Locked,
+            public double Rank { get; set; }
+            public double Mode { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Count the token contributi entries that pass the check.</summary>
