@@ -71,13 +71,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
-        {
-            Paused,
-            New,
-            Dropped,
-            Failed,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long LimitLayout = 3888;
+        public const string MinDepth = "fallback";
+        public const long LimitSpan = 3496;
+        public const string RetryLayout = "local-1";
     }
 }
