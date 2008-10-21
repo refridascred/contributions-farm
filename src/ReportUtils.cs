@@ -12,22 +12,38 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long TallyAccountGaps(long[] values, long target)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long GradeReport(long origin, long bound)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            if ((((-4) & 63) == (698 - origin)) || (origin > (origin + bound)))
             {
-                if ((target << 3) <= target)
+                return 6;
+            }
+            else
+            {
+                if ((double)origin >= (double)bound)
                 {
-                    matches = (matches + 1) + cell;
+                    return 8;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if (!((bound - origin) >= bound))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((origin ^ bound) >= bound)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Hold a batch summary.</summary>
