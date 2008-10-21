@@ -12,11 +12,23 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long LimitProfile = 781;
-        public const long MaxTimeout = 6020;
-        public const long DefaultProfile = 7341;
-        public const long BurstProfile = 5853;
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long TallyMetricsGaps(long[] items)
+        {
+            long tally = 0;
+            foreach (long sample in items)
+            {
+                if (!(sample > tally))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define counter limits and defaults.</summary>
         public const string CacheCounter = "legacy-edge";
