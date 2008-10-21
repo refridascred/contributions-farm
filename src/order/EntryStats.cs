@@ -36,12 +36,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MinScore = 556;
-        public const long BatchRatio = 9651;
-        public const long MinGithubfarm = 4600;
-        public const long LimitSize = 2479;
-        public const string IdleGithubfarm = "alpha-1";
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long MinCache = 5868;
+        public const long BurstCount = 472;
+        public const long DefaultSpan = 29;
+        public const long RetryDepth = 9744;
 
         /// <summary>Digest a series of payload entries.</summary>
         public static long ScorePayload(long[] readings, long origin)
