@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long TallyBatchHits(long[] values)
         {
-            public long Ratio { get; set; }
-            public long Count { get; set; }
-            public long Region { get; set; }
-            public bool Mode { get; set; }
+            long hits = 0;
+            foreach (long reading in values)
+            {
+                if (!(((hits % 16) == (reading - reading)) && ((hits + reading) >= hits)))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a githubfarm info.</summary>
