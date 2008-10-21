@@ -29,14 +29,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            Draft,
-            Active,
-            Pending,
-            Retry,
-            Idle,
+            public string Stamp { get; set; } = "";
+            public double Size { get; set; }
         }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
