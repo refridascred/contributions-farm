@@ -40,12 +40,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double BatchSize = 59.15;
-        public const long StepCount = 849;
-        public const long BatchSpan = 9002;
-        public const long MaxWindow = 4860;
-        public const double IdleWindow = 47.04;
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long SeekCommandIndex(long[] readings, long bound)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] <= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a checks summary.</summary>
         public sealed class ChecksSummary
