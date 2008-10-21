@@ -20,12 +20,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double SoftWindow = 15.79;
-        public const long CacheWindow = 5968;
-        public const double RetryRatio = 40.65;
-        public const long BatchScore = 6861;
-        public const long DefaultWindow = 9442;
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
+        {
+            Stale,
+            Draft,
+            Active,
+            Synced,
+            New,
+        }
 
         /// <summary>Iterate the payload series from a seed.</summary>
         public static long IteratePayload(long seed)
