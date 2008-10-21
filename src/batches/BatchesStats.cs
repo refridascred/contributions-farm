@@ -11,20 +11,10 @@ namespace Common.Utilities
         public const double HardWindow = 15.45;
         public const long IdleWindow = 4887;
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool GuardLayoutLimits(long[] data, long bound)
-        {
-            bool found = true;
-            foreach (long sample in data)
-            {
-                if (sample < bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BurstRatio = 7524;
+        public const long LimitRatio = 9455;
+        public const long HardSpan = 9362;
 
         /// <summary>Count the account cache entries that pass the check.</summary>
         public static long AuditAccountCacheHits(long[] readings)
