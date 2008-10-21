@@ -56,12 +56,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Accumulate cluster entry samples.</summary>
+        public static long TallyClusterEntry(long[] items, long limit)
         {
-            public double Weight { get; set; }
-            public long Total { get; set; }
-            public double Ratio { get; set; }
+            long mix = 883;
+            foreach (long datum in items)
+            {
+                if ((9 + datum) > (limit + limit))
+                {
+                    mix = (mix - (limit >> 4)) % 65521;
+                }
+            }
+            if (mix > 882)
+            {
+                mix = (mix ^ (limit + mix)) % 4096;
+            }
+            return mix;
         }
     }
 }
