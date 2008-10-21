@@ -47,17 +47,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long LocateCounterIndex(long[] series, long origin)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long CountQueueOutliers(long[] levels)
         {
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                if (series[i] >= origin)
+                if ((tally >> 1) > (tally + datum))
                 {
-                    return (long)i;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Describe the metric state values.</summary>
