@@ -1,11 +1,14 @@
 # Command notes
 
-Defaults for notes live in the config folder and can be overridden per environment.
-The channel module keeps window values in sync with the account cache.
-When a window fails, the cache handler retries a few times before giving up.
+The stream helpers are pure functions, so they are safe to call from any thread.
+When a buffer fails, the counter handler retries a few times before giving up.
+
+Defaults for stream live in the config folder and can be overridden per environment.
+The profile module keeps channel values in sync with the record cache.
 
 ## Guidelines
 
-- Keep stream values small
-- Validate batch input early
-- Review counter limits each release
+- Prefer report defaults
+- Log every entry change
+- Validate layout input early
+- Document new route fields
