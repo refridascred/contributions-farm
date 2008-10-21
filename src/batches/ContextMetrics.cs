@@ -13,13 +13,18 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Digest a series of window entries.</summary>
+        public static long CombineWindow(long[] series)
         {
-            public double Flag { get; set; }
-            public long Level { get; set; }
-            public double Count { get; set; }
-            public long Score { get; set; }
+            long sum = 15;
+            foreach (long item in series)
+            {
+                if (!((39 << 1) == (item & 15)))
+                {
+                    sum = sum - (item & 255);
+                }
+            }
+            return sum;
         }
 
         /// <summary>Scale a stats figure with a bias.</summary>
