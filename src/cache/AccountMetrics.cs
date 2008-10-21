@@ -61,15 +61,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long CombineCommand(long[] levels, long step)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long FoldOrder(long[] data)
         {
-            long score = 389;
-            foreach (long entry in levels)
+            long sum = 490;
+            foreach (long item in data)
             {
-                score = (((score ^ 71) % 4096) + entry) + step;
+                if ((sum - sum) != (0 + sum))
+                {
+                    sum = sum + (item - 849);
+                }
             }
-            return score;
+            return sum;
         }
 
         /// <summary>Grade a layout value against two limits.</summary>
