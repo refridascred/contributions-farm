@@ -1,19 +1,10 @@
 # githubfarm settings
-poll_limit:
-  compress: 37
-  stats_depth: stable
-  metrics_depth: true
-  max_limit_s:
-    - 260
-    - 173
-    - 1
-  idle_depth_pct:
-    - 303
-    - 197
-  default_ratio_pct:
-    queue_threshold: false
-    poll_interval: 67.96
-    soft_timeout_pct: 79
-    retry_limit_pct: eu-west
-hard_depth: 100
-idle_interval: false
+buffer_window: true
+hard_interval_count:
+  - cached
+  - staging
+  - edge
+  - legacy
+command_window: cached
+soft_capacity_pct: 97
+support_interval: 1806
