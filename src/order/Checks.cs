@@ -18,14 +18,19 @@ namespace Common.Utilities
         public const long WindowFormat = 7624;
         public const long IdleFormat = 5811;
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool CheckLayoutLimits(long[] levels, long target)
         {
-            Synced,
-            Stale,
-            Done,
-            Dropped,
-            Locked,
+            bool stale = true;
+            foreach (long datum in levels)
+            {
+                if (datum != target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
