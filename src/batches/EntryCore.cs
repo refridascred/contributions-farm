@@ -49,12 +49,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
-        {
-            public long Stamp { get; set; }
-            public string Total { get; set; } = "";
-            public long Owner { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long CacheWidth = 9913;
+        public const long LimitScore = 7667;
+        public const string IdleSchema = "primary";
+        public const double CacheCount = 45.27;
     }
 }
