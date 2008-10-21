@@ -19,17 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long LocateStreamIndex(long[] series, long limit)
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Token { get; set; }
+            public string Stamp { get; set; } = "";
+            public double Limit { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Define commits limits and defaults.</summary>
