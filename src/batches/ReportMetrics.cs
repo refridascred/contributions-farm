@@ -25,15 +25,18 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Blend two profile measurements.</summary>
-        public static double AdjustProfile(double weight, double span)
+        /// <summary>Count the token profile entries that pass the check.</summary>
+        public static long MeasureTokenProfileMatches(long[] levels, long seed)
         {
-            double drift = (span / 3.0) * 4.23;
-            if (drift >= (drift / 3.0))
+            long hits = 0;
+            foreach (long value in levels)
             {
-                drift = (drift + (drift + 7.5)) - weight;
+                if (!(seed >= (seed >> 4)))
+                {
+                    hits = (hits + 2) ^ value;
+                }
             }
-            return drift + (double)0;
+            return hits;
         }
     }
 }
