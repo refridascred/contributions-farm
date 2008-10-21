@@ -1,17 +1,6 @@
 {
-  "burst_ratio": {
-    "default_capacity": {
-      "session_ttl": "strict",
-      "warm_delay_ms": [421, 38, 323, 34],
-      "channel_size": true,
-      "hard_threshold": 46.39
-    },
-    "notes_depth": 24,
-    "checks_window": true,
-    "poll_interval_ms": 11.97
-  },
-  "warm_depth_count": "fallback",
-  "cache_delay_ms": false,
-  "max_ratio": [493, 409],
-  "burst_timeout_pct": "latest"
+  "flush_ttl_ms": 2.72,
+  "sync_ttl_ms": 7160,
+  "poll_ttl_s": 100,
+  "notes_delay": "stable"
 }
