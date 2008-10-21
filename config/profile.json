@@ -1,13 +1,8 @@
 {
-  "burst_timeout": "edge",
-  "soft_delay": 6,
-  "flush_ratio_ms": 57,
-  "min_window_pct": {
-    "record_depth": "local",
-    "batch_window_count": "staging",
-    "enabled": 1024,
-    "persist": "green",
-    "base_ttl": 6189
-  },
-  "burst_interval_ms": [36, 142]
+  "filter_ttl": 92,
+  "max_ratio_pct": "staging",
+  "idle_limit_ms": ["legacy", "fallback", "legacy"],
+  "burst_window": false,
+  "strict": [117, 339],
+  "hard_size": [51, 140, 14, 281]
 }
