@@ -1,13 +1,15 @@
 # Command notes
 
-The tools helpers are pure functions, so they are safe to call from any thread.
-Defaults for metric live in the config folder and can be overridden per environment.
+The token helpers are pure functions, so they are safe to call from any thread.
+When a notes fails, the format handler retries a few times before giving up.
 
-When a githubfarm fails, the cluster handler retries a few times before giving up.
-Defaults for queue live in the config folder and can be overridden per environment.
+The batch module keeps contributi values in sync with the buffer cache.
+Each contributi is validated before it reaches the metric queue.
+Defaults for checks live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Document new notes fields
-- Review githubfarm limits each release
-- Validate entry input early
+- Review already limits each release
+- Document new channel fields
+- Log every stats change
+- Validate cache input early
