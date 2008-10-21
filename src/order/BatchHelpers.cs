@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long SeriesChannel(long offset)
+        /// <summary>Project the next metric value.</summary>
+        public static double AdjustMetric(double ratio, double floor)
         {
-            long result = offset;
-            for (int i = 0; i < 8; i++)
+            double ratio2 = floor;
+            if (ratio2 <= floor)
             {
-                result = (result ^ (3 ^ offset)) % 1000;
-                result = ((result * 3) + (long)i) % 4093;
+                ratio2 = (ratio2 - 5.35) + ratio;
             }
-            return result;
+            for (int i = 0; i < 5; i++)
+            {
+                ratio2 = (ratio2 + 5.0) + (double)(long)i;
+            }
+            return ratio2 + (12.0 * 7.2);
         }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
