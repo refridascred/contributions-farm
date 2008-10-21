@@ -50,13 +50,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
-        {
-            public long Token { get; set; }
-            public string Label { get; set; } = "";
-            public long Count { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long RetryFactor = 529;
+        public const string SoftBatch = "strict";
+        public const long IdleBatch = 4920;
 
         /// <summary>Iterate the commits metric series from a seed.</summary>
         public static long RollCommitsMetric(long offset)
