@@ -1,6 +1,7 @@
 {
-  "soft_interval": [114, 448, 93, 200],
-  "notes_window": 250,
-  "route_ttl": ["cached", "strict"],
-  "cache_threshold": 2.33
+  "min_ttl_ms": 85.96,
+  "min_size_pct": 2.76,
+  "strict": "open",
+  "buffer_threshold": "standard",
+  "record_size": 84.07
 }
