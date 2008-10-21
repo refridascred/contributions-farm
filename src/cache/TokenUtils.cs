@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long WindowMetrics = 5120;
-        public const string LimitMetrics = "staging-1";
-        public const long IdleLevel = 9565;
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long MatchFilterCount(long[] items)
+        {
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) == 19)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Digest a series of notes layout entries.</summary>
         public static long ScoreNotesLayout(long[] samples, long floor)
