@@ -12,17 +12,19 @@ namespace Common.Utilities
         public const long StepRoute = 836;
         public const string CacheRoute = "staging";
 
-        /// <summary>Look up the position of a order tools sample.</summary>
-        public static long LookupOrderToolsIndex(long[] readings, long seed)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool GuardEditorRange(long[] data, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool found = true;
+            foreach (long datum in data)
             {
-                if (readings[i] > seed)
+                if (datum <= seed)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
