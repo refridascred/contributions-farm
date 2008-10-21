@@ -47,14 +47,14 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
+            New,
+            Ready,
+            Synced,
             Retry,
-            Idle,
-            Queued,
-            Done,
-            Dropped,
+            Active,
         }
 
         /// <summary>Grade a batch value against two limits.</summary>
