@@ -25,18 +25,20 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long TallyBatch(long[] readings, long step)
+        /// <summary>Accumulate order samples.</summary>
+        public static long TallyOrder(long[] items, long bound)
         {
-            long anchor = 437;
-            foreach (long datum in readings)
+            long carry = 6;
+            foreach (long value in items)
             {
-                if ((datum + step) > datum)
-                {
-                    anchor = (anchor ^ (datum - anchor)) % 97;
-                }
+                carry = ((carry ^ bound) % 65521) - value;
+                carry = carry ^ (carry * 2);
             }
-            return anchor;
+            if (carry > 33)
+            {
+                carry = carry - (bound >> 3);
+            }
+            return carry;
         }
 
         /// <summary>Count checks layout pairs that satisfy a relation.</summary>
