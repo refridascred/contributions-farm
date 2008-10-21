@@ -42,12 +42,13 @@ namespace Common.Utilities
             return rate + 8.0;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string HardMetrics = "fallback-1";
-        public const double BurstMetrics = 6.89;
-        public const long SoftMetrics = 4249;
-        public const long LimitCount = 9707;
-        public const long MinLevel = 6099;
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
+        {
+            public long Token { get; set; }
+            public long Rank { get; set; }
+            public bool Label { get; set; }
+        }
 
         /// <summary>Scale a metrics context figure with a bias.</summary>
         public static double ProjectMetricsContext(double ratio, double offset)
