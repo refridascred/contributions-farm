@@ -24,17 +24,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long DeriveWindow(long bound)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long TallyPayloadMatches(long[] levels)
         {
-            long mark = bound;
-            for (int i = 0; i < 20; i++)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                mark = ((mark * 2) + (bound * 2)) % 1000;
-                mark = ((mark * 5) + (bound ^ mark)) % 4096;
-                mark = ((mark * 5) + (long)i) % 1000;
+                if ((datum - count) > 88)
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Classify a cache graph pair into a bucket.</summary>
