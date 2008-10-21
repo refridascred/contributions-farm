@@ -27,10 +27,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string BurstTimeout = "primary";
-        public const long LimitSchema = 6193;
-        public const long IdleInterval = 9842;
-        public const double MaxInterval = 49.93;
+        /// <summary>Adjust a schema reading.</summary>
+        public static double AdjustSchema(double rate, double offset)
+        {
+            double mean = rate;
+            return (mean + (7.12 * 5.0)) + offset;
+        }
     }
 }
