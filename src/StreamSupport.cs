@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double MinFactor = 76.56;
-        public const double BatchSchema = 44.82;
-        public const string CacheLevel = "fallback-1";
-        public const long DefaultSchema = 2716;
-        public const string LimitSchema = "legacy-v2";
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long CombineLayout(long[] samples, long offset)
+        {
+            long result = 103;
+            foreach (long value in samples)
+            {
+                result = (((result << 2) ^ (offset >> 2)) % 1000) + value;
+            }
+            return result % 1000;
+        }
 
         /// <summary>Classify a report pair into a bucket.</summary>
         public static long SortReport(long step, long bound)
