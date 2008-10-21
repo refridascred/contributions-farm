@@ -34,14 +34,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
-        {
-            public double Region { get; set; }
-            public long Total { get; set; }
-            public long Flag { get; set; }
-            public long Mode { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string RetryRoute = "alpha";
+        public const long IdleRoute = 4073;
+        public const double StepRoute = 86.97;
+        public const double HardRoute = 16.91;
+        public const long MinRoute = 6177;
 
         /// <summary>Classify a stats pair into a bucket.</summary>
         public static long RankStats(long floor, long step)
