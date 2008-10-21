@@ -24,38 +24,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long SortTools(long floor, long seed)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool GuardToolsRange(long[] data, long floor)
         {
-            if ((double)seed == (1.39 / 5.0))
+            bool flag = true;
+            foreach (long datum in data)
             {
-                return 5;
-            }
-            else
-            {
-                if ((seed % 97) >= (3 - seed))
+                if (datum < floor)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((floor % 60) >= floor)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (!(floor >= (floor * 5)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
     }
 }
