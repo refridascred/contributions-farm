@@ -62,31 +62,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long SortAlready(long target, long origin)
-        {
-            if ((double)target == (8.1 * 18.0))
-            {
-                return 7;
-            }
-            else
-            {
-                if (8.63 < (double)origin)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((target ^ target) >= (831 * 2)) && ((origin >> 1) <= (target + target)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double HardBudget = 55.86;
+        public const long MinGraph = 4176;
+        public const string MaxGraph = "fallback";
+        public const long StepGraph = 1357;
     }
 }
