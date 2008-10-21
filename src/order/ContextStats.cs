@@ -22,18 +22,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a account stats reading by value.</summary>
-        public static long LookupAccountStatsIndex(long[] readings, long step)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] == step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double MaxBudget = 35.59;
+        public const long BaseBatches = 8955;
+        public const long StepRatio = 879;
+        public const long StepWidth = 1136;
 
         /// <summary>Combine token values into a single score.</summary>
         public static long WeighToken(long[] items, long bound)
