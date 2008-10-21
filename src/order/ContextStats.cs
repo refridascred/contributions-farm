@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MinRoute = 4120;
-        public const long HardRoute = 2974;
-        public const string WindowFactor = "legacy-v2";
-        public const long StepRoute = 836;
-        public const string CacheRoute = "staging";
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
+        {
+            public double Region { get; set; }
+            public string Label { get; set; } = "";
+        }
 
         /// <summary>Validate editor readings against a bound.</summary>
         public static bool GuardEditorRange(long[] data, long seed)
