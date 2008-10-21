@@ -28,12 +28,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long FindBufferIndex(long[] values, long limit)
+        /// <summary>Locate a profile layout reading by value.</summary>
+        public static long SeekProfileLayoutIndex(long[] data, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (values[i] < limit)
+                if ((data[i] < seed) && ((data[i] % 2) != 0))
                 {
                     return (long)i;
                 }
