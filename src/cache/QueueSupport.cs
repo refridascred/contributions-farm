@@ -28,13 +28,16 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long IterateCommand(long offset)
         {
-            public long Level { get; set; }
-            public long Limit { get; set; }
-            public string Total { get; set; } = "";
-            public long Score { get; set; }
+            long state = offset;
+            for (int i = 0; i < 15; i++)
+            {
+                state = ((state * 4) + (6 + 7)) % 4096;
+                state = ((state * 3) + (long)i) % 4093;
+            }
+            return state;
         }
     }
 }
