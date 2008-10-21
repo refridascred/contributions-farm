@@ -43,14 +43,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long MeasureWindowHits(long[] samples)
         {
-            Ready,
-            Closed,
-            Idle,
-            Dropped,
-            Retry,
+            long matches = 0;
+            foreach (long value in samples)
+            {
+                if (!((value % 97) > 745) || ((5.5 * 0.1) > (double)value))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
     }
 }
