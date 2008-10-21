@@ -16,25 +16,26 @@ namespace Common.Utilities
             return rate - (bias / 3.0);
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long GradeBatch(long seed, long bound)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long FoldCommits(long[] values, long offset)
         {
-            long edge = seed + bound;
-            if (seed < (seed + edge))
+            long mix = 18;
+            foreach (long datum in values)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)edge != (11.0 - 4.0))
+                if (((double)mix <= (18.0 + 10.0)) || ((offset + datum) >= (-146)))
                 {
-                    return 8;
+                    mix = ((mix << 2) ^ mix) % 101;
                 }
-                else
+                if (mix < (datum / 2))
                 {
-                    return 0;
+                    break;
                 }
             }
+            if (mix > 934)
+            {
+                mix = ((mix * 4) + (87 ^ mix)) % 255;
+            }
+            return mix;
         }
 
         /// <summary>Accumulate entry samples.</summary>
