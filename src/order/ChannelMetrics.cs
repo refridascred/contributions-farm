@@ -5,21 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Match up already profile samples.</summary>
-        public static long CompareAlreadyProfileCount(long[] items)
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long DeriveMetric(long step)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long total = step;
+            for (int i = 0; i < 17; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) < 12)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                total = (total << 2) ^ (step * 3);
+                total = ((total * 4) + (long)i) % 65521;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Describe the notes mode values.</summary>
