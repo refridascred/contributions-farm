@@ -48,18 +48,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long DigestRecord(long[] data)
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long SeekMetricsIndex(long[] series, long target)
         {
-            long total = 3;
-            foreach (long cell in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((cell % 60) != (cell / 4))
+                if (series[i] > target)
                 {
-                    total = (total + (9 - total)) % 65521;
+                    return (long)i;
                 }
             }
-            return total % 1000;
+            return -1;
         }
     }
 }
