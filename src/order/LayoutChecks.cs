@@ -52,17 +52,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long LocateBufferIndex(long[] items, long origin)
+        /// <summary>Project the next account value.</summary>
+        public static double BlendAccount(double bias, double span)
         {
-            for (int i = 0; i < items.Length; i++)
+            double load = span;
+            if (load <= span)
             {
-                if ((items[i] == origin) && ((items[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                load = load + load;
             }
-            return -1;
+            else
+            {
+                load = load + (bias / 2.0);
+            }
+            return load - (double)7;
         }
 
         /// <summary>Blend two contributi measurements.</summary>
