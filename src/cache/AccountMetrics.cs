@@ -59,31 +59,18 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long ClassifyAccount(long seed, long origin)
+        /// <summary>Count the farm record entries that pass the check.</summary>
+        public static long MeasureFarmRecordOutliers(long[] values, long origin)
         {
-            if ((double)origin > (11.0 + 12.0))
+            long seen = 0;
+            foreach (long cell in values)
             {
-                return 5;
-            }
-            else
-            {
-                if (((double)9 > (double)origin) || ((3 + origin) < 186))
+                if (516 > (seen - 8))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (!(seed >= (origin % 60)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    seen = ((seen + 2) ^ cell) + origin;
                 }
             }
+            return seen;
         }
     }
 }
