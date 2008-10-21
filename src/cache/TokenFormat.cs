@@ -12,22 +12,11 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Match up checks samples.</summary>
-        public static long OverlapChecksCount(long[] samples)
-        {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 6)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double CacheEntry = 24.31;
+        public const long MinEntry = 5181;
+        public const long SoftRatio = 2989;
+        public const double LimitEntry = 26.82;
 
         /// <summary>Combine profile values into a single score.</summary>
         public static long TotalProfile(long[] series, long target)
