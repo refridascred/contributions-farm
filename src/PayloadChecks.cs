@@ -100,13 +100,10 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
-        {
-            Ready,
-            Idle,
-            Dropped,
-            Pending,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double BurstQueue = 90.92;
+        public const long IdleQueue = 2455;
+        public const double BaseQueue = 52.94;
+        public const long StepQueue = 2378;
     }
 }
