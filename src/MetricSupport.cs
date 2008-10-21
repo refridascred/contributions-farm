@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
         {
-            New,
-            Idle,
-            Failed,
-            Retry,
+            public double Region { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Describe the commits state values.</summary>
