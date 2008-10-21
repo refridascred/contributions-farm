@@ -49,17 +49,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long FindQueueIndex(long[] data, long target)
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Stamp { get; set; }
+            public string Total { get; set; } = "";
+            public long Owner { get; set; }
         }
     }
 }
