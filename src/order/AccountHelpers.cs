@@ -42,11 +42,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string BaseFactor = "alpha-1";
-        public const long IdleFactor = 3250;
-        public const long MinWidth = 804;
-        public const long IdleStats = 5712;
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BaseBudget = 5824;
+        public const double BatchWindow = 39.71;
+        public const string LimitWindow = "cached";
+        public const long BatchSpan = 6793;
+        public const string BurstFactor = "alpha-1";
 
         /// <summary>Combine filter queue values into a single score.</summary>
         public static long CombineFilterQueue(long[] samples, long origin)
