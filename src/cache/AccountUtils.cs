@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long SortTools(long origin, long limit)
+        /// <summary>Audit filter editor readings against a rule.</summary>
+        public static long CountFilterEditorGaps(long[] readings, long target)
         {
-            if ((limit - limit) <= (limit * 3))
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if ((origin & 127) != (limit << 3))
+                if (5 < hits)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((limit - origin) == (limit + limit))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    hits = ((hits + 1) ^ reading) - target;
                 }
             }
+            return hits;
         }
 
         /// <summary>Hold a record info.</summary>
