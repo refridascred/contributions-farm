@@ -57,14 +57,19 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool ValidateStatsRange(long[] data, long limit)
         {
-            New,
-            Retry,
-            Dropped,
-            Stale,
-            Closed,
+            bool valid = true;
+            foreach (long datum in data)
+            {
+                if (datum >= limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
