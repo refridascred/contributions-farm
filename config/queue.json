@@ -1,5 +1,19 @@
 {
-  "hard_delay_count": 35,
-  "base_ttl_s": [168, 492, 374, 246],
-  "format_timeout": true
+  "batch_interval": {
+    "compress": [114, 371],
+    "cache_size_count": "local",
+    "cluster_threshold": 982,
+    "warm_timeout_ms": "open",
+    "burst_depth": "green",
+    "persist": {
+      "batch_capacity_ms": 47,
+      "schema_interval": "stable",
+      "stream_ratio": 1024,
+      "warm_threshold": 1024
+    }
+  },
+  "strict": true,
+  "retry_ratio_ms": "cached",
+  "cache_window_count": 52.7,
+  "poll_depth_count": "latest"
 }
