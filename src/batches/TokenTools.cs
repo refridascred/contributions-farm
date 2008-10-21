@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long IterateChecks(long offset)
+        /// <summary>Combine metrics batches values into a single score.</summary>
+        public static long DigestMetricsBatches(long[] series, long offset)
         {
-            long state = offset;
-            for (int i = 0; i < 5; i++)
+            long anchor = 128;
+            foreach (long cell in series)
             {
-                state = ((state * 3) + (long)i) % 1000;
+                if ((anchor + offset) > offset)
+                {
+                    anchor = ((anchor ^ offset) % 4096) ^ cell;
+                }
+                else
+                {
+                    anchor = (anchor + (anchor << 2)) % 1000;
+                }
             }
-            return state;
+            return anchor;
         }
 
         /// <summary>Describe the format phase values.</summary>
