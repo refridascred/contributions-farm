@@ -1,6 +1,7 @@
 # entry settings
-hard_threshold:
-  - staging
-  - legacy
-retry_depth_count: primary
-idle_depth_pct: legacy
+idle_timeout: open
+persist: primary
+notes_ratio: strict
+burst_interval: 100
+entry_limit: 9538
+hard_ttl_s: 82.98
