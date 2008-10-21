@@ -58,18 +58,13 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Audit cache counter readings against a rule.</summary>
-        public static long CountCacheCounterHits(long[] series)
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
         {
-            long hits = 0;
-            foreach (long datum in series)
-            {
-                if ((hits / 6) == (datum + hits))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public bool Stamp { get; set; }
+            public long Count { get; set; }
+            public long Offset { get; set; }
+            public bool Owner { get; set; }
         }
     }
 }
