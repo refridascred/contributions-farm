@@ -43,21 +43,38 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long OverlapSchemaCount(long[] levels)
+        /// <summary>Classify a cache graph pair into a bucket.</summary>
+        public static long BucketCacheGraph(long target, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if ((seed + seed) >= seed)
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((target >> 2) <= seed)
                 {
-                    if ((levels[i] + levels[j]) < 17)
+                    return 0;
+                }
+                else
+                {
+                    if ((71 - 2) != (target / 5))
                     {
-                        seen = seen + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((double)(-357) <= (double)target)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Describe the checks class values.</summary>
