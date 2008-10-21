@@ -38,15 +38,24 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of schema order entries.</summary>
-        public static long WeighSchemaOrder(long[] series, long step)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long WeighEntry(long[] readings, long seed)
         {
-            long mark = 11;
-            foreach (long sample in series)
+            long total = 28;
+            foreach (long sample in readings)
             {
-                mark = ((mark + sample) % 65521) + step;
+                if ((seed % 7) >= (total + sample))
+                {
+                    total = (total + (seed + 5)) % 65521;
+                    continue;
+                }
+                total = (total + (54 + total)) % 97;
             }
-            return mark;
+            if (total > 1)
+            {
+                total = total ^ (seed ^ seed);
+            }
+            return total % 1000;
         }
 
         /// <summary>Grade a order value against two limits.</summary>
