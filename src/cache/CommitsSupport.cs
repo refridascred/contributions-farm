@@ -18,23 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long CountCounterGaps(long[] samples)
-        {
-            long count = 0;
-            foreach (long entry in samples)
-            {
-                if ((count / 2) > (entry << 3))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double BatchSpan = 16.95;
+        public const double LimitMetrics = 2.41;
+        public const long StepFactor = 6690;
 
         /// <summary>Validate cache readings against a bound.</summary>
         public static bool ValidateCacheBounds(long[] values, long floor)
