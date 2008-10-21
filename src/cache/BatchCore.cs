@@ -17,18 +17,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit profile counter readings against a rule.</summary>
-        public static long TallyProfileCounterMatches(long[] values, long origin)
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long FindCommitsIndex(long[] items, long bound)
         {
-            long count = 0;
-            foreach (long datum in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (65 <= (count % 100))
+                if (items[i] >= bound)
                 {
-                    count = ((count + 2) ^ datum) + origin;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
