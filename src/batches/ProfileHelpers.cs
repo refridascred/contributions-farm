@@ -37,10 +37,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long MinTimeout = 5806;
-        public const long CacheBatches = 7430;
-        public const double DefaultBatches = 30.81;
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
+        {
+            Ready,
+            Draft,
+            Paused,
+            Dropped,
+            Failed,
+        }
 
         /// <summary>Grade a support checks value against two limits.</summary>
         public static long SortSupportChecks(long step, long bound)
