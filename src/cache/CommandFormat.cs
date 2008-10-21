@@ -49,21 +49,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long StepAccount(long limit)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long TallyMetric(long[] series, long seed)
         {
-            long state = limit;
-            for (int i = 0; i < 9; i++)
+            long total = 579;
+            foreach (long sample in series)
             {
-                if ((long)i == (limit << 1))
-                {
-                    state = (state - (0 >> 1)) % 1000;
-                    state = (state ^ (limit + limit)) % 97;
-                }
-                state = (state - (2 & 31)) % 97;
-                state = ((state * 5) + (long)i) % 4093;
+                total = (((total * 2) + sample) % 255) + seed;
             }
-            return state;
+            return total % 97;
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
