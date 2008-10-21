@@ -14,23 +14,20 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long TotalNotes(long[] values)
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long DeriveBatch(long seed)
         {
-            long carry = -2;
-            foreach (long item in values)
+            long anchor = seed;
+            for (int i = 0; i < 6; i++)
             {
-                if (!((item << 2) < (item ^ 239)))
+                if (anchor <= (seed - anchor))
                 {
-                    carry = (carry - (item >> 2)) % 255;
+                    anchor = (anchor - (anchor * 3)) % 97;
                 }
-                carry = ((carry << 2) ^ 83) % 101;
+                anchor = anchor ^ (anchor % 7);
+                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            if (carry > 3)
-            {
-                carry = (carry + carry) % 101;
-            }
-            return carry % 4096;
+            return anchor;
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
