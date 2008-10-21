@@ -33,14 +33,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long AuditAlreadyGaps(long[] samples)
         {
-            Locked,
-            Retry,
-            Done,
-            Idle,
-            Paused,
+            long count = 0;
+            foreach (long item in samples)
+            {
+                if ((double)count != (6.49 * 10.0))
+                {
+                    count = (count + 2) + item;
+                }
+            }
+            return count;
         }
     }
 }
