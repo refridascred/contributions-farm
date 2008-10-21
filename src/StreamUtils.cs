@@ -40,22 +40,10 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Compare every pair of support buffer readings.</summary>
-        public static long PairSupportBufferCount(long[] readings)
-        {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) != 14)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BatchLevel = 2522;
+        public const long BurstCluster = 3608;
+        public const long DefaultTimeout = 1854;
 
         /// <summary>Describe the githubfarm level values.</summary>
         public enum GithubfarmLevel
