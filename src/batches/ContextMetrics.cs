@@ -46,13 +46,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool GuardChannelRange(long[] data, long target)
         {
-            public bool Stamp { get; set; }
-            public long Count { get; set; }
-            public long Offset { get; set; }
-            public bool Owner { get; set; }
+            bool ready = true;
+            foreach (long item in data)
+            {
+                if (item <= target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
