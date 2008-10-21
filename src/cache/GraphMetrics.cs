@@ -45,15 +45,17 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double ScaleFilter(double rate, double span)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long LookupChecksIndex(long[] series, long limit)
         {
-            double bias = 5.0;
-            if (bias < (bias + rate))
+            for (int i = 0; i < series.Length; i++)
             {
-                bias = bias - (bias + bias);
+                if (series[i] <= limit)
+                {
+                    return (long)i;
+                }
             }
-            return bias + span;
+            return -1;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
