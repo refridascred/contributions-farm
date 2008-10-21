@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Blend two layout measurements.</summary>
-        public static double ScaleLayout(double weight, double offset)
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            double ratio = weight + (double)652;
-            if (ratio < ratio)
-            {
-                ratio = (ratio + (7.0 - 6.56)) + offset;
-            }
-            return ratio - weight;
+            Active,
+            Queued,
+            Synced,
+            Failed,
         }
 
         /// <summary>Compare every pair of route readings.</summary>
