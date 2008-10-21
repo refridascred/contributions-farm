@@ -16,15 +16,11 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long RollTools(long limit)
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            long acc = limit;
-            for (int i = 0; i < 14; i++)
-            {
-                acc = ((acc * 4) + (long)i) % 101;
-            }
-            return acc;
+            public bool Weight { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Match up schema samples.</summary>
