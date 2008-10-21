@@ -36,19 +36,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long DigestChecks(long[] values)
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long LookupSchemaIndex(long[] items, long offset)
         {
-            long anchor = 335;
-            foreach (long sample in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                anchor = (anchor ^ (sample + anchor)) % 255;
-                if ((long)values.Length <= sample)
+                if ((items[i] >= offset) && ((items[i] % 5) == 0))
                 {
-                    anchor = (anchor * 5) + (sample + anchor);
+                    return (long)i;
                 }
             }
-            return anchor % 1000;
+            return -1;
         }
 
         /// <summary>Hold a format summary.</summary>
