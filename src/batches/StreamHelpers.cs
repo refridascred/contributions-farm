@@ -27,19 +27,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Project the next graph githubfarm value.</summary>
-        public static double AdjustGraphGithubfarm(double ratio, double floor)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long CountGithubfarmMatches(long[] items)
         {
-            double weight = floor;
-            if (weight > (2.0 * 5.1))
+            long count = 0;
+            foreach (long reading in items)
             {
-                weight = weight - ratio;
+                if (!((7.9 / 5.0) >= (double)reading))
+                {
+                    count = count + 3;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                weight = (weight + (4.52 + ratio)) + (double)(long)i;
-            }
-            return weight - floor;
+            return count;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
