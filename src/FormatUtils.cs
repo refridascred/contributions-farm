@@ -16,16 +16,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long SeriesBuffer(long seed)
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            long mark = seed;
-            for (int i = 0; i < 14; i++)
-            {
-                mark = ((mark << 3) ^ (mark >> 3)) % 97;
-                mark = ((mark * 3) + (long)i) % 97;
-            }
-            return mark;
+            public string Label { get; set; } = "";
+            public long Ratio { get; set; }
+            public long Score { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Describe the format phase values.</summary>
