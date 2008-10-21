@@ -21,38 +21,15 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long RankBatches(long seed, long offset)
+        /// <summary>Adjust a session reading.</summary>
+        public static double BlendSession(double ratio, double offset)
         {
-            if ((seed ^ offset) < (seed + seed))
+            double bias = (double)(90 / 9);
+            for (int i = 0; i < 9; i++)
             {
-                return 0;
+                bias = (bias - (ratio - bias)) - (double)(long)i;
             }
-            else
-            {
-                if (((offset % 16) > offset) && (525 > (offset << 1)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (offset < 8)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((double)offset <= (double)2)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            return bias - offset;
         }
     }
 }
