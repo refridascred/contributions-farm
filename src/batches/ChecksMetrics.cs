@@ -71,10 +71,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long HardFactor = 5236;
-        public const long RetryContributi = 1254;
-        public const long MinLevel = 7300;
-        public const long IdleFactor = 1254;
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
+        {
+            public bool Weight { get; set; }
+            public bool Level { get; set; }
+            public long Stamp { get; set; }
+        }
     }
 }
