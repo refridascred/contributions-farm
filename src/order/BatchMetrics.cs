@@ -20,18 +20,39 @@ namespace Common.Utilities
             return mean + span;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long CountAlreadyMatches(long[] readings)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long SortCommand(long step, long offset)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            long edge = step ^ offset;
+            if (((9.9 / 7.0) == (double)step) && (step > (4 + edge)))
             {
-                if ((entry ^ entry) == (tally + 95))
+                return 1;
+            }
+            else
+            {
+                if ((17.0 / 8.0) > (double)edge)
                 {
-                    tally = tally + 1;
+                    return 5;
+                }
+                else
+                {
+                    if (edge < (offset * 2))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (!(861 >= step))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Rank profile input into a small class.</summary>
