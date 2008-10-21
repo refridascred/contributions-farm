@@ -43,38 +43,18 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Rank entry metric input into a small class.</summary>
-        public static long RankEntryMetric(long seed, long offset)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long MeasureSchemaHits(long[] levels, long seed)
         {
-            if ((seed >> 2) > offset)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if ((seed & 1) != (offset + offset))
+                if ((seed + seed) <= (entry & 255))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((seed - seed) <= seed)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((((-90) << 3) < (seed << 3)) || ((seed << 1) < seed))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    count = count + 3;
                 }
             }
+            return count;
         }
 
         /// <summary>Adjust a metrics reading.</summary>
