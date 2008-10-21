@@ -21,10 +21,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double BurstBudget = 96.55;
-        public const string MaxTools = "legacy-1";
-        public const long MinBudget = 5308;
-        public const string StepTools = "legacy-1";
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool ValidateStatsRange(long[] readings, long origin)
+        {
+            bool found = true;
+            foreach (long datum in readings)
+            {
+                if (datum <= origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
