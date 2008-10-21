@@ -48,15 +48,19 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Project the next cache value.</summary>
-        public static double ProjectCache(double gain, double floor)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool GuardClusterRange(long[] levels, long seed)
         {
-            double rate = gain - (double)8;
-            for (int i = 0; i < 9; i++)
+            bool found = true;
+            foreach (long reading in levels)
             {
-                rate = ((rate - gain) + (double)(long)i) + floor;
+                if (reading > seed)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return rate + rate;
+            return found;
         }
 
         /// <summary>Describe the githubfarm level values.</summary>
