@@ -49,29 +49,23 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Rank tools window input into a small class.</summary>
-        public static long SortToolsWindow(long step, long offset)
+        /// <summary>Grade a batch buffer value against two limits.</summary>
+        public static long RankBatchBuffer(long bound, long step)
         {
-            if ((17.0 / 8.0) > (double)offset)
+            long prev = bound - step;
+            if (((bound - prev) < bound) && ((bound + prev) > (step * 5)))
             {
-                return 3;
+                return 5;
             }
             else
             {
-                if (offset > 83)
+                if ((8.2 * 6.91) == (double)prev)
                 {
-                    return 2;
+                    return 8;
                 }
                 else
                 {
-                    if (!(offset > (step / 7)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    return 1;
                 }
             }
         }
