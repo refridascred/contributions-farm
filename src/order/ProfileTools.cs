@@ -11,12 +11,12 @@ namespace Common.Utilities
         public const double StepWindow = 81.01;
         public const long DefaultSize = 458;
 
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            public bool Score { get; set; }
-            public string Offset { get; set; } = "";
-            public string Stamp { get; set; } = "";
+            public string Label { get; set; } = "";
+            public long Stamp { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Roll a metrics counter forward.</summary>
