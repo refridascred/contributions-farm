@@ -1,16 +1,5 @@
 # githubfarm settings
-persist:
-  batch_threshold_s:
-    dry_run: 24.55
-    soft_window_s: 69.55
-    farm_delay: staging
-    session_limit: true
-  cache_window: 2262
-  record_window:
-    - 274
-    - 398
-  context_size: 500
-  cache_timeout: stable
-retry_size_ms: false
-idle_window_ms: false
-poll_limit: cached
+compress: 43.18
+burst_timeout_ms: 81
+metrics_ttl: true
+soft_timeout: 250
