@@ -49,18 +49,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long TallyCommitsOutliers(long[] values)
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long SeriesSchema(long bound)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            long total = bound;
+            for (int i = 0; i < 20; i++)
             {
-                if (matches >= (matches & 3))
-                {
-                    matches = (matches + 3) + sample;
-                }
+                total = ((total * 2) + (long)i) % 4093;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Describe the cache mode values.</summary>
