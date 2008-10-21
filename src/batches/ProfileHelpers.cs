@@ -13,16 +13,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Blend two schema measurements.</summary>
-        public static double BlendSchema(double bias, double offset)
-        {
-            double weight = offset;
-            if (weight > (offset * 2.5))
-            {
-                weight = weight - offset;
-            }
-            return weight + (17.0 + bias);
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MinToken = 629;
+        public const string MinScore = "alpha";
+        public const long BurstToken = 2044;
+        public const long MaxToken = 4832;
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long MinTimeout = 5806;
