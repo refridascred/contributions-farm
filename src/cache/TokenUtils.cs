@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long SoftBatches = 6549;
-        public const long IdleTimeout = 542;
-        public const double BurstBatches = 3.53;
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
+        {
+            Done,
+            Draft,
+            New,
+            Idle,
+        }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
         public static bool GuardRouteRange(long[] series, long origin)
