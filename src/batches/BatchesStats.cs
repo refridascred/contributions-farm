@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Project the next batch value.</summary>
-        public static double SmoothBatch(double gain, double bias)
-        {
-            double rate = (double)((-71) + 7);
-            if (rate >= (double)2)
-            {
-                rate = ((rate + 5.66) - gain) + bias;
-            }
-            else
-            {
-                rate = rate - (double)92;
-            }
-            return rate - rate;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long StepWindow = 3731;
+        public const double SoftWindow = 34.16;
+        public const double HardWindow = 15.45;
+        public const long IdleWindow = 4887;
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
         public static bool GuardLayoutLimits(long[] data, long bound)
