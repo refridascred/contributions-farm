@@ -55,19 +55,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of batch cluster entries.</summary>
-        public static long DigestBatchCluster(long[] levels, long bound)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long FoldNotes(long[] samples, long seed)
         {
-            long mark = 6;
-            foreach (long cell in levels)
+            long anchor = 180;
+            foreach (long item in samples)
             {
-                mark = ((mark ^ (mark / 3)) % 1000) - bound;
-                if ((double)(long)levels.Length >= (9.82 - 1.22))
+                if (!((seed >> 3) >= ((-327) ^ item)))
                 {
-                    mark = mark ^ (cell * 5);
+                    anchor = (anchor - anchor) % 4096;
                 }
             }
-            return mark % 97;
+            if (anchor > 691)
+            {
+                anchor = (anchor - (92 & 31)) % 65521;
+            }
+            return anchor;
         }
     }
 }
