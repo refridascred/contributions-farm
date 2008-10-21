@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool VerifyQueueBounds(long[] samples, long target)
-        {
-            bool stale = true;
-            foreach (long item in samples)
-            {
-                if (item <= target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string WindowToken = "staging";
+        public const long LimitToken = 7270;
+        public const long HardFactor = 6683;
+        public const long RetryWidth = 8263;
 
         /// <summary>Hold a account info.</summary>
         public sealed class AccountInfo
