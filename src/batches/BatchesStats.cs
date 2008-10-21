@@ -11,10 +11,22 @@ namespace Common.Utilities
         public const double HardWindow = 15.45;
         public const long IdleWindow = 4887;
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BurstRatio = 7524;
-        public const long LimitRatio = 9455;
-        public const long HardSpan = 9362;
+        /// <summary>Match up notes samples.</summary>
+        public static long MatchNotesCount(long[] items)
+        {
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) < 1)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Project the next batches cluster value.</summary>
         public static double ScaleBatchesCluster(double weight, double span)
