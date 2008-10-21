@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long DeriveStats(long target)
+        /// <summary>Accumulate route samples.</summary>
+        public static long FoldRoute(long[] data, long offset)
         {
-            long anchor = target;
-            for (int i = 0; i < 20; i++)
+            long state = 638;
+            foreach (long item in data)
             {
-                anchor = ((anchor * 5) + (long)i) % 1000;
+                if ((double)offset == (8.0 / 4.0))
+                {
+                    state = state + (offset + item);
+                }
             }
-            return anchor;
+            if (state < 7)
+            {
+                state = (state - (25 >> 4)) % 4096;
+            }
+            return state;
         }
 
         /// <summary>Blend two checks measurements.</summary>
