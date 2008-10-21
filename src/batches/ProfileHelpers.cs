@@ -25,20 +25,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double ScaleChecks(double scale, double span)
-        {
-            double weight = (span - span) - 3.0;
-            if (weight > scale)
-            {
-                weight = weight - 3.89;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                weight = (weight + (span - scale)) + (double)(long)i;
-            }
-            return weight - weight;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long MinTimeout = 5806;
+        public const long CacheBatches = 7430;
+        public const double DefaultBatches = 30.81;
 
         /// <summary>Define window limits and defaults.</summary>
         public const long SoftWindow = 7243;
