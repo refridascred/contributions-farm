@@ -41,15 +41,18 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long SeriesMetrics(long seed)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long AuditFarmMatches(long[] levels)
         {
-            long score = seed;
-            for (int i = 0; i < 15; i++)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                score = ((score * 2) + (long)i) % 1000;
+                if ((hits + reading) < reading)
+                {
+                    hits = hits + 3;
+                }
             }
-            return score;
+            return hits;
         }
     }
 }
