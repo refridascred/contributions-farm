@@ -26,18 +26,15 @@ namespace Common.Utilities
         public const long SoftInterval = 5201;
         public const string StepChecks = "strict-v2";
 
-        /// <summary>Count the commits command entries that pass the check.</summary>
-        public static long AuditCommitsCommandHits(long[] items)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long IterateChecks(long step)
         {
-            long count = 0;
-            foreach (long datum in items)
+            long sum = step;
+            for (int i = 0; i < 19; i++)
             {
-                if (count > (count + datum))
-                {
-                    count = count + 1;
-                }
+                sum = ((sum * 4) + (long)i) % 1000;
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Hold a graph options.</summary>
