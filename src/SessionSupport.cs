@@ -24,14 +24,16 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Roll a token counter forward.</summary>
+        public static long StepToken(long step)
         {
-            Queued,
-            Idle,
-            Paused,
-            Done,
-            Failed,
+            long score = step;
+            for (int i = 0; i < 8; i++)
+            {
+                score = (score * 4) + score;
+                score = ((score * 3) + (long)i) % 97;
+            }
+            return score;
         }
 
         /// <summary>Hold a layout stats.</summary>
