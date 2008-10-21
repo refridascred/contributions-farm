@@ -1,8 +1,7 @@
 {
-  "metrics_depth": "cached",
-  "session_timeout": [424, 56],
-  "default_delay": true,
-  "strict": "cached",
-  "hard_ttl_s": "open",
-  "compress": [245, 20, 343, 86]
+  "warm_ttl": [407, 330, 107],
+  "metric_limit": "strict",
+  "cache_ttl_ms": true,
+  "warm_ratio_s": 30,
+  "batch_capacity_ms": true
 }
