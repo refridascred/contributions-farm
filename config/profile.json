@@ -1,14 +1,21 @@
 {
-  "idle_timeout_ms": {
-    "stream_interval": "open",
-    "batch_depth": false,
-    "base_depth": [251, 240, 106, 285],
-    "commits_timeout": 19,
-    "strict": 9
+  "verbose": {
+    "base_capacity_pct": 8061,
+    "notes_interval": 58,
+    "context_ttl": 8,
+    "hard_timeout_ms": 6824,
+    "token_depth": ["eu-west", "open", "fallback"],
+    "token_ratio": {
+      "soft_window_count": 9999,
+      "compress": true,
+      "min_ratio": 64,
+      "idle_delay": 72.8,
+      "schema_interval": 5892
+    }
   },
-  "readonly": false,
-  "retry_ratio_s": "fallback",
-  "audit": false,
-  "compress": false,
-  "warm_depth_ms": 21.57
+  "command_interval": "primary",
+  "default_threshold": 60,
+  "warm_retries": false,
+  "retry_ratio": "open",
+  "enabled": 16
 }
