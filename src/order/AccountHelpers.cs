@@ -79,18 +79,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long MeasureEntryHits(long[] items, long step)
+        /// <summary>Count the token contributi entries that pass the check.</summary>
+        public static long MeasureTokenContributiMatches(long[] levels, long step)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                if ((step + seen) == (69 + cell))
+                if ((step ^ count) == (step >> 5))
                 {
-                    seen = seen + 1;
+                    count = (count + 1) - entry;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
