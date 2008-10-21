@@ -36,22 +36,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long CombineOrder(long[] values, long seed)
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long LocateContextIndex(long[] data, long target)
         {
-            long total = 9;
-            foreach (long item in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((total + total) >= total)
+                if ((data[i] >= target) && ((data[i] % 5) == 0))
                 {
-                    total = (((total - (total - 37)) % 1000) + item) + seed;
+                    return (long)i;
                 }
             }
-            if (total < (-693))
-            {
-                total = (total << 2) ^ (total - total);
-            }
-            return total % 4096;
+            return -1;
         }
 
         /// <summary>Define already limits and defaults.</summary>
