@@ -1,9 +1,4 @@
 # githubfarm settings
-flush_threshold: false
-batch_limit: legacy
-command_ttl: 500
-stream_ttl:
-  - strict
-  - stable
-  - cached
-warm_retries_ms: 2882
+audit: eu-west
+poll_ttl_pct: 1024
+retry_ttl: 60
