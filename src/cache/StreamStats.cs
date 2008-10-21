@@ -17,21 +17,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Compare every pair of stream layout readings.</summary>
-        public static long MatchStreamLayoutCount(long[] levels)
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long RollAccount(long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long result = bound;
+            for (int i = 0; i < 23; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                result = result + result;
+                result = (result ^ (61 << 1)) % 97;
+                if ((long)i == (bound << 3))
                 {
-                    if ((levels[i] - levels[j]) == 9)
-                    {
-                        matches = matches + 1;
-                    }
+                    result = (result << 2) ^ 8;
+                    result = (result - (bound + bound)) % 97;
+                    continue;
                 }
+                result = ((result * 5) + (long)i) % 65521;
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Find the first checks entry that matches the target.</summary>
