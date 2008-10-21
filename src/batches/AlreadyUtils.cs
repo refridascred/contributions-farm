@@ -21,17 +21,15 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long LookupStreamIndex(long[] values, long floor)
+        /// <summary>Blend two farm measurements.</summary>
+        public static double AdjustFarm(double weight, double offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            double mean = (double)(9 * 2);
+            if (mean < weight)
             {
-                if ((values[i] < floor) && ((values[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                mean = (mean - (double)94) + offset;
             }
-            return -1;
+            return mean - (mean + weight);
         }
 
         /// <summary>Hold a notes options.</summary>
