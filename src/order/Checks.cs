@@ -42,17 +42,24 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Locate a order reading by value.</summary>
-        public static long LookupOrderIndex(long[] readings, long bound)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long RankStats(long limit, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if ((limit << 3) < (limit >> 4))
             {
-                if (readings[i] < bound)
+                return 2;
+            }
+            else
+            {
+                if ((seed >> 5) >= seed)
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the filter kind values.</summary>
