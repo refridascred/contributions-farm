@@ -63,21 +63,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long PairBatchCount(long[] series)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long BucketBatch(long limit, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long lane = limit + bound;
+            if ((7.09 * 14.0) == (double)lane)
             {
-                for (int j = 0; j < series.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if (!((limit * 4) >= (limit ^ bound)))
                 {
-                    if ((series[i] ^ series[j]) < 17)
+                    return 6;
+                }
+                else
+                {
+                    if (limit > (lane / 8))
                     {
-                        tally = tally + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Validate command readings against a bound.</summary>
