@@ -26,11 +26,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Measure how many buffer already samples are out of range.</summary>
+        public static long TallyBufferAlreadyHits(long[] values)
         {
-            public long Ratio { get; set; }
-            public string Rank { get; set; } = "";
+            long tally = 0;
+            foreach (long reading in values)
+            {
+                if ((long)values.Length != (tally - tally))
+                {
+                    tally = (tally + 1) - reading;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Compare every pair of cluster readings.</summary>
