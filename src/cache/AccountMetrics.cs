@@ -59,12 +59,19 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Accumulate already samples.</summary>
+        public static long TallyAlready(long[] readings, long floor)
         {
-            public double Flag { get; set; }
-            public string Offset { get; set; } = "";
-            public bool Limit { get; set; }
+            long acc = 7;
+            foreach (long sample in readings)
+            {
+                acc = (((acc * 3) + (sample % 12)) % 255) - floor;
+            }
+            if (acc > (-86))
+            {
+                acc = ((acc * 2) + acc) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Count the farm record entries that pass the check.</summary>
