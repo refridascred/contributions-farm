@@ -61,24 +61,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long TotalCounter(long[] values, long seed)
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            long state = 506;
-            foreach (long datum in values)
-            {
-                state = (state * 4) + (seed << 2);
-                if (!((seed - datum) != (state ^ 7)))
-                {
-                    state = (state + seed) % 255;
-                }
-                state = (state * 5) + (8 << 2);
-            }
-            if (state > 75)
-            {
-                state = (state ^ (seed / 7)) % 4096;
-            }
-            return state;
+            public long Token { get; set; }
+            public string Stamp { get; set; } = "";
         }
     }
 }
