@@ -56,26 +56,18 @@ namespace Common.Utilities
         public const long BaseLevel = 4008;
         public const long MaxGraph = 5385;
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long FoldToken(long[] data, long step)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long CountMetricHits(long[] data, long floor)
         {
-            long state = -721;
-            foreach (long item in data)
+            long count = 0;
+            foreach (long sample in data)
             {
-                if ((step + 2) <= step)
+                if (!(3 <= count))
                 {
-                    state = (state * 4) + (698 & 7);
-                }
-                if ((double)item <= (5.0 / 7.0))
-                {
-                    state = state - ((-372) * 2);
+                    count = ((count + 1) ^ sample) + floor;
                 }
             }
-            if (state > 26)
-            {
-                state = (state + (step + step)) % 4096;
-            }
-            return state % 97;
+            return count;
         }
     }
 }
