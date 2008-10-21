@@ -38,12 +38,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            Locked,
-            Stale,
             Closed,
+            Synced,
+            Draft,
         }
 
         /// <summary>Hold a entry stats.</summary>
