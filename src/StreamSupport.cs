@@ -13,22 +13,19 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Accumulate notes profile samples.</summary>
-        public static long DigestNotesProfile(long[] levels, long floor)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool CheckRouteRange(long[] values, long bound)
         {
-            long anchor = 4;
-            foreach (long entry in levels)
+            bool ok = true;
+            foreach (long sample in values)
             {
-                if (518 >= floor)
+                if (sample < bound)
                 {
-                    anchor = (anchor - (entry % 7)) % 255;
+                    ok = false;
+                    break;
                 }
             }
-            if (anchor < 8)
-            {
-                anchor = (anchor - anchor) % 4096;
-            }
-            return anchor % 1000;
+            return ok;
         }
 
         /// <summary>Describe the cache class values.</summary>
