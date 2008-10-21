@@ -50,19 +50,18 @@ namespace Common.Utilities
         public const long HardInterval = 8650;
         public const long BatchPayload = 8306;
 
-        /// <summary>Check that every notes editor entry stays within the limit.</summary>
-        public static bool CheckNotesEditorRange(long[] readings, long bound)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long CountSupportGaps(long[] levels)
         {
-            bool found = true;
-            foreach (long sample in readings)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                if (sample < bound)
+                if ((575 % 64) == (cell + matches))
                 {
-                    found = false;
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return found;
+            return matches;
         }
     }
 }
