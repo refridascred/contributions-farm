@@ -46,15 +46,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double SmoothBuffer(double gain, double span)
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            double rate = span;
-            if (rate > (double)203)
-            {
-                rate = (rate + (double)121) + gain;
-            }
-            return rate + rate;
+            New,
+            Paused,
+            Synced,
         }
     }
 }
