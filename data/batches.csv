@@ -1,11 +1,6 @@
-id,score,ratio,rank
-1,72.04,250,62.83
-2,36,cached,81.14
-3,local,303,standard
-4,primary,98.95,46.94
-5,449,edge,86.56
-6,61.84,open,195
-7,65.27,20.77,320
-8,74.19,613,63
-9,primary,42.39,green
-10,35.95,51.79,91.01
+id,weight,active
+1,standard,908
+2,196,9.29
+3,40.84,55.69
+4,517,918
+5,stable,primary
