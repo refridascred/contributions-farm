@@ -32,24 +32,19 @@ namespace Common.Utilities
         public const double RetryReport = 14.92;
         public const string StepTimeout = "open";
 
-        /// <summary>Iterate the session already series from a seed.</summary>
-        public static long StepSessionAlready(long limit)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool CheckSupportLimits(long[] values, long seed)
         {
-            long state = limit;
-            for (int i = 0; i < 4; i++)
+            bool ok = true;
+            foreach (long value in values)
             {
-                if (((state + state) >= ((long)i * 4)) || ((limit - 637) > state))
+                if (value < seed)
                 {
-                    state = ((state * 3) + limit) % 4096;
+                    ok = false;
+                    break;
                 }
-                else
-                {
-                    state = state ^ (long)i;
-                }
-                state = (state - (limit - limit)) % 255;
-                state = ((state * 4) + (long)i) % 1000;
             }
-            return state;
+            return ok;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
