@@ -1,5 +1,5 @@
 {
-  "session_retries": 90.26,
-  "verbose": 7635,
-  "readonly": "fallback"
+  "poll_retries_pct": "green",
+  "stream_limit": "legacy",
+  "default_ttl_ms": 4516
 }
