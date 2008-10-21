@@ -35,20 +35,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool ValidateCacheBounds(long[] values, long floor)
-        {
-            bool ok = true;
-            foreach (long value in values)
-            {
-                if (value != floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long SoftRecord = 4110;
+        public const double MinSpan = 23.9;
+        public const string SoftFactor = "cached-edge";
+        public const long HardRecord = 6303;
+        public const long BurstBudget = 5911;
 
         /// <summary>Hold a editor options.</summary>
         public sealed class EditorOptions
