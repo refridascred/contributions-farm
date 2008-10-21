@@ -1,5 +1,25 @@
 {
-  "min_ratio_pct": "stable",
-  "account_retries": 81,
-  "verbose": ["cached", "stable", "local"]
+  "poll_ratio_s": ["open", "eu-west"],
+  "format_depth": "fallback",
+  "min_depth_ms": {
+    "enabled": true,
+    "base_retries": "staging",
+    "retry_size_ms": "green"
+  },
+  "account_ratio": 33.45,
+  "audit": 8180,
+  "base_delay": {
+    "batch_timeout_ms": 2133,
+    "batch_interval": {
+      "hard_threshold": 250,
+      "enabled": 36.02,
+      "batch_delay_count": true
+    },
+    "audit": {
+      "soft_threshold_pct": "open",
+      "buffer_ratio": 100,
+      "readonly": "standard",
+      "order_retries": "legacy"
+    }
+  }
 }
