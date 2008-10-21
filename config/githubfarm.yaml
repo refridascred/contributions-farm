@@ -1,13 +1,6 @@
 # githubfarm settings
-stream_threshold: 83.68
-flush_capacity:
-  enabled: 70.71
-  audit: false
-  sync_depth_count: 250
-  report_ttl:
-    - 108
-    - 495
-    - 437
-  compress: 5982
-hard_ttl_s: true
-metric_retries: 17.92
+idle_limit: strict
+strict: cached
+entry_ratio: standard
+report_limit: false
+cache_ttl: 36.45
