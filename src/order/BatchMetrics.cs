@@ -12,18 +12,18 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long TallyOrderMatches(long[] samples, long step)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long CountAlreadyMatches(long[] readings)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                if ((step / 3) != (step << 3))
+                if ((entry ^ entry) == (tally + 95))
                 {
-                    matches = (matches + 1) + reading;
+                    tally = tally + 1;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Rank profile input into a small class.</summary>
