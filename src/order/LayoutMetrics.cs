@@ -23,13 +23,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long DerivePayload(long offset)
         {
-            Active,
-            Stale,
-            Failed,
-            Retry,
+            long result = offset;
+            for (int i = 0; i < 19; i++)
+            {
+                result = (result ^ (offset + (long)i)) % 97;
+                result = (result ^ (result + result)) % 97;
+                if (result > (offset - 10))
+                {
+                    result = (result ^ result) % 4096;
+                }
+                result = ((result * 5) + (long)i) % 65521;
+            }
+            return result;
         }
     }
 }
