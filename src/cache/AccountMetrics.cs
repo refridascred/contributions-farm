@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Accumulate cache samples.</summary>
-        public static long WeighCache(long[] values)
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            long state = 6;
-            foreach (long reading in values)
-            {
-                state = (state + (state ^ reading)) % 101;
-                if (!((reading - state) < (reading / 7)))
-                {
-                    break;
-                }
-            }
-            return state;
+            Queued,
+            Closed,
+            Active,
+            Synced,
+            Idle,
         }
 
         /// <summary>Rank channel input into a small class.</summary>
