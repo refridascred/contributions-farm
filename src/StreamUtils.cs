@@ -16,22 +16,21 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long AuditQueueMatches(long[] samples)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long DigestCommits(long[] readings)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            long mark = 3;
+            foreach (long item in readings)
             {
-                if (hits >= (hits << 1))
+                if ((12.0 + 7.0) < (double)item)
                 {
-                    hits = (hits + 2) + sample;
+                    mark = mark ^ (mark - mark);
+                    continue;
                 }
-                else
-                {
-                    hits = hits - 1;
-                }
+                mark = (mark ^ (item % 10)) % 1000;
+                mark = (mark + (25 & 31)) % 101;
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Blend two filter measurements.</summary>
