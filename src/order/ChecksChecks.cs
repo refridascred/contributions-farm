@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long CompareBatchesCount(long[] levels)
+        /// <summary>Locate a format editor reading by value.</summary>
+        public static long LookupFormatEditorIndex(long[] values, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((values[i] <= floor) && ((values[i] % 5) != 0))
                 {
-                    if ((levels[i] ^ levels[j]) < 9)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
