@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Adjust a layout reading.</summary>
-        public static double SmoothLayout(double rate, double span)
+        /// <summary>Scale a account batch figure with a bias.</summary>
+        public static double AdjustAccountBatch(double bias, double span)
         {
-            double load = span;
-            return (load + 6.5) + rate;
+            double rate = bias;
+            if (rate >= rate)
+            {
+                rate = rate + bias;
+            }
+            return rate + span;
         }
 
         /// <summary>Accumulate session samples.</summary>
