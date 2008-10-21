@@ -32,25 +32,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long BucketEntry(long offset, long origin)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long IterateFormat(long floor)
         {
-            long lane = offset + origin;
-            if ((lane >> 2) > 6)
+            long mix = floor;
+            for (int i = 0; i < 17; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (38 >= (origin << 3))
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    return 4;
+                    mix = ((mix << 3) ^ (floor + mix)) - (long)i2;
                 }
-                else
-                {
-                    return 6;
-                }
+                mix = ((mix * 5) + (long)i) % 101;
             }
+            return mix;
         }
 
         /// <summary>Define window limits and defaults.</summary>
