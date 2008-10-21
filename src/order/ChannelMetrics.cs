@@ -22,18 +22,15 @@ namespace Common.Utilities
         public const long SoftAlready = 6227;
         public const long RetryAlready = 6340;
 
-        /// <summary>Fold a list of context layout readings.</summary>
-        public static long TallyContextLayout(long[] values)
+        /// <summary>Digest a series of window cache entries.</summary>
+        public static long TallyWindowCache(long[] levels)
         {
-            long acc = 75;
-            foreach (long datum in values)
+            long state = 60;
+            foreach (long reading in levels)
             {
-                if ((acc ^ acc) <= (4 - 5))
-                {
-                    acc = ((acc << 3) ^ (datum >> 5)) % 97;
-                }
+                state = state ^ (reading >> 3);
             }
-            return acc % 65521;
+            return state % 1000;
         }
     }
 }
