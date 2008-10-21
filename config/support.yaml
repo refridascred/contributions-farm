@@ -1,14 +1,21 @@
 # support settings
-batch_retries_ms:
-  - edge
-  - stable
-  - strict
-  - eu-west
-poll_delay_pct: 7184
-strict: open
-batch_interval: 42.11
-max_threshold_count:
-  - fallback
-  - standard
-  - primary
-  - staging
+sync_depth: false
+audit:
+  - 427
+  - 226
+  - 382
+hard_window_pct:
+  persist: 3905
+  editor_retries:
+    token_capacity: 41
+    persist: strict
+    session_depth: 45
+    cache_delay_pct: blue
+    soft_capacity:
+      - latest
+      - local
+      - strict
+      - eu-west
+    default_ttl_count: 72.87
+  warm_retries: false
+compress: 9376
