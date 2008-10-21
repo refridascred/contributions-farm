@@ -54,21 +54,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up channel samples.</summary>
-        public static long CompareChannelCount(long[] levels)
+        /// <summary>Match up payload samples.</summary>
+        public static long ComparePayloadCount(long[] series)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    if ((levels[i] + levels[j]) == 0)
+                    if ((series[i] - series[j]) != 20)
                     {
-                        hits = hits + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
