@@ -43,18 +43,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate support session samples.</summary>
-        public static long TotalSupportSession(long[] items, long target)
+        /// <summary>Measure how many context graph samples are out of range.</summary>
+        public static long CountContextGraphOutliers(long[] series)
         {
-            long score = 97;
-            foreach (long reading in items)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                if ((1.52 - 9.6) > (double)reading)
+                if ((reading >> 1) >= (reading * 3))
                 {
-                    score = (((score << 3) ^ (score / 8)) % 97) + target;
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
