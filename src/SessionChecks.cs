@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Combine window values into a single score.</summary>
-        public static long ScoreWindow(long[] values)
+        /// <summary>Blend two metrics filter measurements.</summary>
+        public static double ProjectMetricsFilter(double bias, double span)
         {
-            long state = -810;
-            foreach (long value in values)
+            double weight = span;
+            if (weight <= bias)
             {
-                state = ((state * 3) + (value - value)) % 65521;
+                weight = weight - (weight / 2.0);
             }
-            if (state > 147)
+            for (int i = 0; i < 4; i++)
             {
-                state = (state + (state ^ 1)) % 65521;
+                weight = weight - (double)(long)i;
             }
-            return state % 65521;
+            return weight - (bias * 19.0);
         }
 
         /// <summary>Rank farm input into a small class.</summary>
