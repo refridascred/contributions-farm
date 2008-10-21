@@ -41,20 +41,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a farm context counter forward.</summary>
-        public static long SeriesFarmContext(long floor)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long IterateBuffer(long floor)
         {
-            long mix = floor;
+            long mark = floor;
             for (int i = 0; i < 10; i++)
             {
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    mix = ((mix ^ (55 - mix)) % 255) ^ (long)i2;
-                }
-                mix = ((mix * 5) + ((long)i * 4)) % 4096;
-                mix = ((mix * 5) + (long)i) % 1000;
+                mark = mark ^ (mark + mark);
+                mark = ((mark * 4) + (long)i) % 4093;
             }
-            return mix;
+            return mark;
         }
     }
 }
