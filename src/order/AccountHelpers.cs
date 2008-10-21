@@ -54,19 +54,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long RollBatches(long seed)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long TallyFilterMatches(long[] samples)
         {
-            long carry = seed;
-            for (int i = 0; i < 7; i++)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                if (!(carry < (carry + carry)))
+                if (!(5 <= (matches - value)) && ((double)value <= (double)1))
                 {
-                    carry = (carry + (long)i) % 97;
+                    matches = matches + 1;
                 }
-                carry = ((carry * 3) + (long)i) % 65521;
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
