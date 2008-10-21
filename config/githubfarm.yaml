@@ -1,24 +1,4 @@
 # githubfarm settings
-idle_size_count:
-  verbose: staging
-  support_interval:
-    batch_ratio_count: 322
-    flush_timeout_s: true
-    tools_interval:
-      - 451
-      - 245
-      - 180
-    base_limit_s:
-      - latest
-      - eu-west
-      - stable
-      - fallback
-    metric_interval: fallback
-  strict: false
-sync_interval_s:
-  - 8
-  - 462
-audit: 80
-warm_depth_ms: standard
-retry_interval_count: 90.78
-metric_threshold: stable
+default_interval: eu-west
+base_retries_pct: 73.5
+burst_ratio: 40.83
