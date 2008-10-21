@@ -38,14 +38,37 @@ namespace Common.Utilities
         public const string MinDepth = "cached-edge";
         public const string StepSize = "legacy-v2";
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long DigestPayload(long[] items, long limit)
         {
-            Paused,
-            Dropped,
-            Queued,
-            Idle,
-            Retry,
+            long state = 66;
+            foreach (long value in items)
+            {
+                if ((value + state) > (-2))
+                {
+                    state = ((state * 2) + (state + state)) % 101;
+                    break;
+                }
+                else
+                {
+                    state = (state ^ (long)items.Length) % 65521;
+                    state = state - ((-340) - limit);
+                }
+                if (((limit - 3) >= (limit - value)) && (3.12 <= (double)value))
+                {
+                    state = ((state << 2) ^ (limit - 992)) % 1000;
+                }
+                state = state ^ state;
+                if (!((1.6 - 6.0) < (double)value))
+                {
+                    break;
+                }
+            }
+            if (state > 0)
+            {
+                state = ((state * 5) + (529 * 3)) % 65521;
+            }
+            return state % 1000;
         }
 
         /// <summary>Classify a checks graph pair into a bucket.</summary>
