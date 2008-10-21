@@ -19,13 +19,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Classify a support already pair into a bucket.</summary>
+        public static long ClassifySupportAlready(long origin, long step)
         {
-            public double Token { get; set; }
-            public string Stamp { get; set; } = "";
-            public double Limit { get; set; }
-            public long Label { get; set; }
+            if (step > (step + origin))
+            {
+                return 3;
+            }
+            else
+            {
+                if (!((double)origin >= (13.0 + 1.3)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((double)origin > 20.0) && ((1.93 + 5.0) > (double)step))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (!((step + step) <= (origin / 6)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define commits limits and defaults.</summary>
