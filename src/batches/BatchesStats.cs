@@ -30,18 +30,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the commits counter entries that pass the check.</summary>
-        public static long TallyCommitsCounterGaps(long[] series, long origin)
+        /// <summary>Count the account cache entries that pass the check.</summary>
+        public static long AuditAccountCacheHits(long[] readings)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                if ((sample / 2) <= (origin / 7))
+                if (((0.8 + 2.1) <= (double)matches) && !((double)matches > (7.2 + 1.6)))
                 {
-                    tally = tally + 3;
+                    matches = (matches + 1) ^ entry;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
