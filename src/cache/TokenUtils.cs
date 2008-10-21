@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long WeighCounter(long[] levels)
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long FindBatchesIndex(long[] items, long offset)
         {
-            long carry = 5;
-            foreach (long item in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)carry >= (8.34 + 4.1))
+                if ((items[i] <= offset) && ((items[i] % 3) == 0))
                 {
-                    carry = (carry + (item + carry)) % 101;
+                    return (long)i;
                 }
             }
-            if (carry > 3)
-            {
-                carry = (carry ^ 718) % 4096;
-            }
-            return carry;
+            return -1;
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
