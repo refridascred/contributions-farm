@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Combine command order values into a single score.</summary>
-        public static long DigestCommandOrder(long[] readings)
+        /// <summary>Blend two notes measurements.</summary>
+        public static double ProjectNotes(double ratio, double offset)
         {
-            long score = 13;
-            foreach (long entry in readings)
+            double gain = (ratio * 7.0) / 5.0;
+            if (gain < (offset - gain))
             {
-                if (!((entry + 115) <= entry))
-                {
-                    score = score + (entry - entry);
-                }
+                gain = gain - (offset + gain);
             }
-            return score;
+            else
+            {
+                gain = gain + (ratio + ratio);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                gain = (gain - (ratio / 6.0)) + (double)(long)i;
+            }
+            return gain - (gain - gain);
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
