@@ -13,24 +13,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long BucketCommand(long seed, long offset)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long TallyFormatMatches(long[] data, long seed)
         {
-            if ((offset + seed) > (offset & 255))
+            long matches = 0;
+            foreach (long item in data)
             {
-                return 3;
-            }
-            else
-            {
-                if ((offset & 127) != (offset % 2))
+                if ((matches * 5) < item)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 8;
+                    matches = (matches + 1) - seed;
                 }
             }
+            return matches;
         }
 
         /// <summary>Check that every command notes entry stays within the limit.</summary>
