@@ -20,22 +20,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the counter order entries that pass the check.</summary>
-        public static long TallyCounterOrderMatches(long[] data)
+        /// <summary>Find the first commits entry that matches the target.</summary>
+        public static long SeekCommitsIndex(long[] samples, long seed)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((cell * 5) == (hits / 8)) && ((hits & 31) != (cell + hits)))
+                if (samples[i] <= seed)
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Adjust a report reading.</summary>
