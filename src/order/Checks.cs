@@ -21,15 +21,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double BlendToken(double rate, double offset)
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            double gain = offset;
-            for (int i = 0; i < 5; i++)
-            {
-                gain = ((gain + (gain * 9.47)) + (double)(long)i) + rate;
-            }
-            return gain + (double)8;
+            public double Offset { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Roll a metrics counter forward.</summary>
