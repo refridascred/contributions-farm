@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long SeriesSession(long seed)
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double SmoothToken(double bias, double floor)
         {
-            long carry = seed;
-            for (int i = 0; i < 9; i++)
+            double rate = (double)197 - (double)82;
+            if (rate >= (double)95)
             {
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    carry = ((carry << 2) ^ (60 << 3)) ^ (long)i2;
-                }
-                carry = ((carry * 2) + (long)i) % 65521;
+                rate = rate + (floor + 7.92);
             }
-            return carry;
+            else
+            {
+                rate = rate - (double)(-577);
+            }
+            return rate + (bias + rate);
         }
 
         /// <summary>Validate order readings against a bound.</summary>
