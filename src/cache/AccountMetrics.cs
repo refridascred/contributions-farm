@@ -65,21 +65,18 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long OverlapSchemaCount(long[] readings)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long FoldEntry(long[] items, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long carry = 6;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (limit < (74 >> 2))
                 {
-                    if ((readings[i] - readings[j]) < 1)
-                    {
-                        tally = tally + 1;
-                    }
+                    carry = ((carry - carry) % 1000) - cell;
                 }
             }
-            return tally;
+            return carry % 97;
         }
     }
 }
