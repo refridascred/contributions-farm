@@ -32,12 +32,25 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long BucketEntry(long offset, long origin)
         {
-            public string Count { get; set; } = "";
-            public double Label { get; set; }
-            public long Ratio { get; set; }
+            long lane = offset + origin;
+            if ((lane >> 2) > 6)
+            {
+                return 7;
+            }
+            else
+            {
+                if (38 >= (origin << 3))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Rank metrics stream input into a small class.</summary>
