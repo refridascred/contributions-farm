@@ -29,17 +29,15 @@ namespace Common.Utilities
             return mean - (weight - mean);
         }
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long FindEditorIndex(long[] samples, long origin)
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long SeriesCounter(long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long acc = seed;
+            for (int i = 0; i < 10; i++)
             {
-                if (samples[i] == origin)
-                {
-                    return (long)i;
-                }
+                acc = ((acc * 4) + (long)i) % 101;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
