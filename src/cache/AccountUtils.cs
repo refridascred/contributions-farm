@@ -5,39 +5,23 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long GradeBatches(long seed, long step)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long StepOrder(long limit)
         {
-            long step2 = seed - step;
-            if ((step2 / 7) != (274 << 2))
+            long sum = limit;
+            for (int i = 0; i < 10; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (seed < 427)
+                if (!((sum + limit) < (sum ^ (long)i)))
                 {
-                    return 1;
+                    sum = (sum + ((long)i % 2)) % 1000;
                 }
-                else
+                if (limit > ((long)i << 3))
                 {
-                    if ((step2 + step2) > (step2 * 2))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (seed >= 441)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    sum = (sum << 3) ^ sum;
                 }
+                sum = ((sum * 2) + (long)i) % 4093;
             }
+            return sum;
         }
 
         /// <summary>Find the first already entry that matches the target.</summary>
