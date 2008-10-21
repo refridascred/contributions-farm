@@ -65,19 +65,12 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long WeighBatch(long[] data)
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            long mark = 0;
-            foreach (long sample in data)
-            {
-                mark = (((mark * 5) + (mark ^ mark)) % 255) ^ sample;
-            }
-            if (mark > (-881))
-            {
-                mark = mark + mark;
-            }
-            return mark;
+            New,
+            Queued,
+            Idle,
         }
     }
 }
