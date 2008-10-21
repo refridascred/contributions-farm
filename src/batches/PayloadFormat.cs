@@ -47,18 +47,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long MeasureMetricMatches(long[] readings, long floor)
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
         {
-            long hits = 0;
-            foreach (long item in readings)
-            {
-                if ((double)floor != (double)hits)
-                {
-                    hits = (hits + 1) ^ item;
-                }
-            }
-            return hits;
+            public string Offset { get; set; } = "";
+            public bool Ratio { get; set; }
+            public string Level { get; set; } = "";
+            public long Weight { get; set; }
         }
     }
 }
