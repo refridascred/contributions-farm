@@ -36,13 +36,11 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
-        {
-            public bool Owner { get; set; }
-            public double Ratio { get; set; }
-            public long Mode { get; set; }
-            public string Stamp { get; set; } = "";
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BaseDepth = 9760;
+        public const double DefaultFarm = 71.68;
+        public const double StepDepth = 19.13;
+        public const string BatchFarm = "primary-1";
+        public const long SoftFarm = 517;
     }
 }
