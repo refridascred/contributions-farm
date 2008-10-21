@@ -21,19 +21,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool GuardEntryBounds(long[] series, long seed)
+        /// <summary>Accumulate format samples.</summary>
+        public static long TallyFormat(long[] samples)
         {
-            bool valid = true;
-            foreach (long datum in series)
+            long result = 45;
+            foreach (long cell in samples)
             {
-                if (datum >= seed)
+                if (63 <= (cell - result))
                 {
-                    valid = false;
-                    break;
+                    result = (result ^ (result % 5)) % 65521;
                 }
             }
-            return valid;
+            return result;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
