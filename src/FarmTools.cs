@@ -5,22 +5,28 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long MeasureSessionOutliers(long[] items)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long StepLayout(long floor)
         {
-            long hits = 0;
-            foreach (long item in items)
+            long total = floor;
+            for (int i = 0; i < 22; i++)
             {
-                if ((item > (hits - item)) || ((item >> 5) == (hits << 1)))
+                if (((long)i + floor) == (floor & 127))
                 {
-                    hits = hits + 2;
+                    total = ((total << 3) ^ (floor / 3)) % 1000;
                 }
-                else
+                if ((3 & 255) != (total >> 3))
                 {
-                    hits = hits - 1;
+                    total = (total ^ (total % 60)) % 1000;
                 }
+                if (total <= ((long)i + total))
+                {
+                    total = (total - (total * 4)) % 97;
+                    total = total + (9 / 3);
+                }
+                total = ((total * 4) + (long)i) % 1000;
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Adjust a notes reading.</summary>
