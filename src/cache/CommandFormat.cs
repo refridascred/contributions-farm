@@ -33,19 +33,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate metrics metric readings against a bound.</summary>
-        public static bool CheckMetricsMetricRange(long[] data, long target)
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            bool stale = true;
-            foreach (long value in data)
-            {
-                if (value < target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            New,
+            Draft,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Describe the commits state values.</summary>
