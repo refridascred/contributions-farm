@@ -45,17 +45,10 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Find the first stats channel entry that matches the target.</summary>
-        public static long LocateStatsChannelIndex(long[] data, long seed)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] <= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long HardDepth = 16;
+        public const long StepContributi = 7807;
+        public const long HardContributi = 9185;
+        public const double WindowContributi = 26.71;
     }
 }
