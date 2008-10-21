@@ -1,5 +1,18 @@
 {
-  "strict": 250,
-  "verbose": 43,
-  "batch_delay_ms": false
+  "readonly": "primary",
+  "warm_depth": {
+    "contributi_window": "primary",
+    "hard_threshold_ms": "stable",
+    "soft_threshold_s": 60,
+    "poll_retries_pct": 62.71,
+    "compress": 70,
+    "cache_capacity_ms": 38.16
+  },
+  "batch_ratio_s": {
+    "soft_depth_s": false,
+    "idle_size": 80.87,
+    "base_window_s": 95.5,
+    "warm_ttl_pct": 37.9
+  },
+  "record_size": 74
 }
