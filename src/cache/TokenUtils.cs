@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool CheckBatchRange(long[] data, long step)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool VerifyAlreadyLimits(long[] levels, long origin)
         {
-            bool flag = true;
-            foreach (long reading in data)
+            bool found = true;
+            foreach (long entry in levels)
             {
-                if (reading > step)
+                if (entry != origin)
                 {
-                    flag = false;
+                    found = false;
                     break;
                 }
             }
-            return flag;
+            return found;
         }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
