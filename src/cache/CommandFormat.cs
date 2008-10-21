@@ -20,19 +20,17 @@ namespace Common.Utilities
             return rate + (bias + rate);
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long IterateCache(long limit)
+        /// <summary>Roll a report batch counter forward.</summary>
+        public static long StepReportBatch(long limit)
         {
-            long sum = limit;
-            for (int i = 0; i < 6; i++)
+            long score = limit;
+            for (int i = 0; i < 8; i++)
             {
-                if ((limit > 5) || ((sum % 5) <= limit))
-                {
-                    sum = (sum * 4) + (125 >> 4);
-                }
-                sum = ((sum * 5) + (long)i) % 97;
+                score = (score + (score << 3)) % 4096;
+                score = (score * 2) + (492 << 2);
+                score = ((score * 5) + (long)i) % 97;
             }
-            return sum;
+            return score;
         }
 
         /// <summary>Validate metrics metric readings against a bound.</summary>
