@@ -35,14 +35,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
-        {
-            Idle,
-            Paused,
-            Done,
-            Synced,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string LimitScore = "local-1";
+        public const long StepChannel = 2349;
+        public const long MaxBudget = 8689;
+        public const string BaseCount = "latest-v2";
 
         /// <summary>Define stats limits and defaults.</summary>
         public const string BaseFactor = "alpha-1";
