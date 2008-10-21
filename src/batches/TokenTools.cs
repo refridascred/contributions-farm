@@ -5,20 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Fold a list of commits payload readings.</summary>
-        public static long TotalCommitsPayload(long[] values)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long IterateChecks(long offset)
         {
-            long total = 52;
-            foreach (long value in values)
+            long state = offset;
+            for (int i = 0; i < 5; i++)
             {
-                if ((total & 1) < total)
-                {
-                    total = ((total * 2) + (value % 64)) % 255;
-                }
-                total = (total + total) % 255;
-                total = ((total << 2) ^ (value % 10)) % 65521;
+                state = ((state * 3) + (long)i) % 1000;
             }
-            return total % 1000;
+            return state;
         }
 
         /// <summary>Rank stream input into a small class.</summary>
