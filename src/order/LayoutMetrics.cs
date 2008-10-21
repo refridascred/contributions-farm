@@ -10,30 +10,17 @@ namespace Common.Utilities
         public const string IdleFormat = "latest-edge";
         public const long BaseFormat = 98;
 
-        /// <summary>Accumulate already context samples.</summary>
-        public static long WeighAlreadyContext(long[] levels)
+        /// <summary>Locate a support reading by value.</summary>
+        public static long LookupSupportIndex(long[] series, long bound)
         {
-            long state = 183;
-            foreach (long value in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)value > 3.08)
+                if ((series[i] > bound) && ((series[i] % 3) != 0))
                 {
-                    state = state + (value + state);
-                }
-                if ((166 >> 4) >= (72 + state))
-                {
-                    state = state - (state - value);
-                }
-                if ((9 - state) != (value >> 4))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (state > 19)
-            {
-                state = ((state * 4) + state) % 255;
-            }
-            return state;
+            return -1;
         }
 
         /// <summary>Describe the tools mode values.</summary>
