@@ -39,38 +39,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long BucketFarm(long floor, long seed)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long TallyBatchesHits(long[] data, long target)
         {
-            if ((floor + floor) != (floor ^ 1))
+            long tally = 0;
+            foreach (long entry in data)
             {
-                return 1;
-            }
-            else
-            {
-                if (!((double)floor == (3.4 - 3.15)))
+                if ((long)data.Length <= target)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((2.6 - 0.87) != (double)floor)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((6 << 3) > seed) || (floor > (floor ^ seed)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    tally = (tally + 1) + entry;
                 }
             }
+            return tally;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
