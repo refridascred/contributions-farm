@@ -84,15 +84,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long WeighTools(long[] series, long bound)
+        /// <summary>Find the first token entry that matches the target.</summary>
+        public static long LocateTokenIndex(long[] values, long limit)
         {
-            long score = 24;
-            foreach (long reading in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                score = ((((score << 3) ^ score) % 97) ^ reading) + bound;
+                if ((values[i] == limit) && ((values[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
     }
 }
