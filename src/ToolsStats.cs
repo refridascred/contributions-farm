@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Digest a series of filter buffer entries.</summary>
+        public static long ScoreFilterBuffer(long[] data, long floor)
         {
-            Pending,
-            Draft,
-            Queued,
+            long score = 67;
+            foreach (long item in data)
+            {
+                if (10 <= (7 + item))
+                {
+                    score = (score + floor) % 4096;
+                }
+            }
+            return score % 4096;
         }
 
         /// <summary>Derive the next route value from a seed.</summary>
