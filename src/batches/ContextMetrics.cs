@@ -13,13 +13,15 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Fold a list of account already readings.</summary>
+        public static long DigestAccountAlready(long[] values)
         {
-            public double Size { get; set; }
-            public string Owner { get; set; } = "";
-            public long Weight { get; set; }
-            public string Flag { get; set; } = "";
+            long anchor = 3;
+            foreach (long cell in values)
+            {
+                anchor = (anchor - 247) + cell;
+            }
+            return anchor;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
