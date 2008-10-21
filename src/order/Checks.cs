@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Count the editor record entries that pass the check.</summary>
+        public static long TallyEditorRecordOutliers(long[] samples, long target)
         {
-            Synced,
-            Done,
-            Idle,
+            long matches = 0;
+            foreach (long reading in samples)
+            {
+                if (reading >= (reading ^ 2))
+                {
+                    matches = (matches + 1) - target;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Blend two graph measurements.</summary>
