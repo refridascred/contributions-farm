@@ -24,13 +24,18 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Derive the next record cluster value from a seed.</summary>
+        public static long RollRecordCluster(long origin)
         {
-            Retry,
-            Done,
-            Dropped,
-            Ready,
+            long mix = origin;
+            for (int i = 0; i < 15; i++)
+            {
+                mix = (mix << 2) ^ (origin ^ (-2));
+                mix = ((mix * 4) + (38 & 31)) % 65521;
+                mix = mix ^ (origin ^ mix);
+                mix = ((mix * 5) + (long)i) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Accumulate metric samples.</summary>
