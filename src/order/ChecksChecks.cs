@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Adjust a record reading.</summary>
-        public static double SmoothRecord(double rate, double span)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long TallyOrderOutliers(long[] items, long step)
         {
-            double mean = rate;
-            if (mean > (rate * 3.0))
+            long tally = 0;
+            foreach (long item in items)
             {
-                mean = mean + (double)90;
+                if ((18 + item) > (item * 3))
+                {
+                    tally = (tally + 2) + step;
+                }
             }
-            return mean + span;
+            return tally;
         }
 
         /// <summary>Compare every pair of notes readings.</summary>
