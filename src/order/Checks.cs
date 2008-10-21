@@ -52,15 +52,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long SeriesSchema(long bound)
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            long total = bound;
-            for (int i = 0; i < 20; i++)
-            {
-                total = ((total * 2) + (long)i) % 4093;
-            }
-            return total;
+            Pending,
+            Done,
+            Active,
+            Closed,
         }
 
         /// <summary>Describe the cache mode values.</summary>
