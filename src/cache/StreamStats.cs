@@ -33,22 +33,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of format window readings.</summary>
-        public static long ScoreFormatWindow(long[] samples)
+        /// <summary>Digest a series of context profile entries.</summary>
+        public static long CombineContextProfile(long[] items)
         {
-            long mark = 55;
-            foreach (long value in samples)
+            long anchor = 980;
+            foreach (long cell in items)
             {
-                if (value > (value % 100))
+                if ((double)anchor != (5.02 / 6.0))
                 {
-                    mark = (mark ^ (value + (long)samples.Length)) % 101;
+                    anchor = anchor ^ (cell + cell);
                 }
+                else
+                {
+                    anchor = (anchor + (long)items.Length) % 255;
+                }
+                anchor = (anchor + anchor) % 65521;
             }
-            if (mark < 1)
+            if (anchor < 534)
             {
-                mark = (mark - (mark & 3)) % 255;
+                anchor = ((anchor << 3) ^ anchor) % 65521;
             }
-            return mark % 1000;
+            return anchor;
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
