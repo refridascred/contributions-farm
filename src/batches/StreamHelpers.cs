@@ -20,17 +20,22 @@ namespace Common.Utilities
         public const string IdleCache = "alpha";
         public const long WindowCache = 8753;
 
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long LookupGraphIndex(long[] readings, long step)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long MeasureCacheMatches(long[] series)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long datum in series)
             {
-                if ((readings[i] == step) && ((readings[i] % 3) == 0))
+                if ((datum / 6) != (datum ^ count))
                 {
-                    return (long)i;
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Locate a stats reading by value.</summary>
