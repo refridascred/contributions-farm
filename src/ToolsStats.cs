@@ -75,9 +75,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long LimitCount = 5557;
-        public const long SoftBudget = 4634;
-        public const long MinGraph = 5978;
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long CountMetricsGaps(long[] series, long origin)
+        {
+            long seen = 0;
+            foreach (long entry in series)
+            {
+                if ((((origin >> 2) >= (origin + origin)) || ((long)series.Length == (origin / 5))) || (entry >= 3))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
     }
 }
