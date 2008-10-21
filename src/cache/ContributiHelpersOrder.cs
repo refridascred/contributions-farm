@@ -20,17 +20,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long DeriveContext(long floor)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool ValidateContributiLimits(long[] levels, long bound)
         {
-            long state = floor;
-            for (int i = 0; i < 8; i++)
+            bool stale = true;
+            foreach (long reading in levels)
             {
-                state = (state ^ (floor & 31)) % 255;
-                state = (state - state) % 101;
-                state = ((state * 3) + (long)i) % 4093;
+                if (reading <= bound)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return state;
+            return stale;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
