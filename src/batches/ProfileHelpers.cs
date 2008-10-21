@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long MeasureWindowMatches(long[] readings, long bound)
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            long seen = 0;
-            foreach (long reading in readings)
-            {
-                if ((reading - seen) != (long)readings.Length)
-                {
-                    seen = (seen + 3) - bound;
-                }
-            }
-            return seen;
+            Failed,
+            Done,
+            Closed,
         }
 
         /// <summary>Derive the next stats value from a seed.</summary>
