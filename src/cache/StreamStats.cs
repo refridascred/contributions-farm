@@ -39,12 +39,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long LookupChecksIndex(long[] series, long limit)
+        /// <summary>Look up the position of a account batch sample.</summary>
+        public static long SeekAccountBatchIndex(long[] readings, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((series[i] <= limit) && ((series[i] % 2) == 0))
+                if ((readings[i] == step) && ((readings[i] % 2) == 0))
                 {
                     return (long)i;
                 }
