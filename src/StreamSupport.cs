@@ -51,19 +51,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool ValidateEditorRange(long[] series, long origin)
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            bool stale = true;
-            foreach (long entry in series)
-            {
-                if (entry <= origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Dropped,
+            Done,
+            Pending,
         }
     }
 }
