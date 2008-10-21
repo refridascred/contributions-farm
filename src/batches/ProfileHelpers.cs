@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long RollStats(long floor)
         {
-            Failed,
-            Done,
-            Closed,
+            long sum = floor;
+            for (int i = 0; i < 17; i++)
+            {
+                if (sum >= (sum + floor))
+                {
+                    break;
+                }
+                else
+                {
+                    sum = sum - (long)i;
+                }
+                sum = ((sum * 3) + (long)i) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Define token limits and defaults.</summary>
