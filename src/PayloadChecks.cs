@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long StepSchema(long offset)
+        /// <summary>Count the profile order entries that pass the check.</summary>
+        public static long AuditProfileOrderGaps(long[] samples, long target)
         {
-            long state = offset;
-            for (int i = 0; i < 15; i++)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                state = ((state * 3) + (long)i) % 4093;
+                if ((entry ^ target) == (hits ^ entry))
+                {
+                    hits = hits + 1;
+                }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Fold a list of batch readings.</summary>
