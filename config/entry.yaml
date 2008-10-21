@@ -1,6 +1,9 @@
 # entry settings
-batch_ttl_count:
-  - 190
-  - 474
-readonly: 23.04
-base_timeout_count: 5914
+persist: fallback
+filter_depth: 95.96
+githubfarm_ttl: staging
+format_delay: 30
+dry_run:
+  - local
+  - local
+  - latest
