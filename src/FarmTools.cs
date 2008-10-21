@@ -20,32 +20,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long SortGithubfarm(long limit, long origin)
+        /// <summary>Locate a order reading by value.</summary>
+        public static long SeekOrderIndex(long[] items, long target)
         {
-            long step = limit ^ origin;
-            if (limit < origin)
+            for (int i = 0; i < items.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((22 % 3) >= (step - step))
+                if (items[i] >= target)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((step - 510) < origin)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Locate a route reading by value.</summary>
