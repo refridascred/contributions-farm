@@ -21,19 +21,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool ValidateStatsRange(long[] readings, long origin)
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double SmoothBuffer(double gain, double span)
         {
-            bool found = true;
-            foreach (long datum in readings)
+            double rate = span;
+            if (rate > (double)203)
             {
-                if (datum <= origin)
-                {
-                    found = false;
-                    break;
-                }
+                rate = (rate + (double)121) + gain;
             }
-            return found;
+            return rate + rate;
         }
     }
 }
