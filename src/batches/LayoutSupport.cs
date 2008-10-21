@@ -56,13 +56,12 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            public bool Total { get; set; }
-            public double Weight { get; set; }
-            public long Mode { get; set; }
-            public double Owner { get; set; }
+            public double Offset { get; set; }
+            public bool Region { get; set; }
+            public string Total { get; set; } = "";
         }
     }
 }
