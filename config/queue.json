@@ -1,7 +1,5 @@
 {
-  "batch_threshold_ms": 8756,
-  "min_threshold_ms": true,
-  "notes_window": ["latest", "local"],
-  "warm_limit_s": "primary",
-  "min_window": 60
+  "burst_window_count": "local",
+  "retry_retries_s": 100,
+  "readonly": false
 }
