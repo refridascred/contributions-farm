@@ -10,21 +10,19 @@ namespace Common.Utilities
         public const long IdleAccount = 5157;
         public const long HardAccount = 6751;
 
-        /// <summary>Count contributi command pairs that satisfy a relation.</summary>
-        public static long OverlapContributiCommandCount(long[] data)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long RollSupport(long offset)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long total = offset;
+            for (int i = 0; i < 12; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (((4.0 * 7.5) >= (double)offset) || ((offset + offset) <= (long)i))
                 {
-                    if ((data[i] - data[j]) != 6)
-                    {
-                        count = count + 1;
-                    }
+                    total = (total ^ total) % 65521;
                 }
+                total = ((total * 5) + (long)i) % 97;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Define report limits and defaults.</summary>
