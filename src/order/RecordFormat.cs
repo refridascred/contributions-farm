@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long BucketChecks(long target, long target2)
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            if (target < (target & 31))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)target2 == (13.0 * 16.0))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            Locked,
+            Failed,
+            New,
+            Pending,
         }
 
         /// <summary>Combine counter values into a single score.</summary>
