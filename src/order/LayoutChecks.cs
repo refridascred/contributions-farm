@@ -32,17 +32,19 @@ namespace Common.Utilities
         public const double RetryReport = 14.92;
         public const string StepTimeout = "open";
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long LocateMetricsIndex(long[] levels, long floor)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool CheckMetricsRange(long[] readings, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool found = true;
+            foreach (long datum in readings)
             {
-                if ((levels[i] > floor) && ((levels[i] % 3) != 0))
+                if (datum <= floor)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Combine account values into a single score.</summary>
