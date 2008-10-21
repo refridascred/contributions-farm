@@ -40,17 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long LocateOrderIndex(long[] values, long step)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long SeriesAlready(long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mark = target;
+            for (int i = 0; i < 7; i++)
             {
-                if (values[i] >= step)
+                if ((236 & 31) <= (target * 4))
                 {
-                    return (long)i;
+                    break;
                 }
+                mark = ((mark * 5) + (long)i) % 4093;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
