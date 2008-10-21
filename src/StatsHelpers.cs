@@ -40,38 +40,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long RankContext(long offset, long limit)
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            if ((double)limit >= (1.6 - 8.8))
-            {
-                return 8;
-            }
-            else
-            {
-                if (offset > (limit << 2))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)limit <= 0.43)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((double)offset != (8.9 * 0.4))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            public string Flag { get; set; } = "";
+            public bool Level { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Look up the position of a context sample.</summary>
