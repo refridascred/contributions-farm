@@ -5,14 +5,16 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long IterateChannel(long floor)
         {
-            Queued,
-            Closed,
-            Active,
-            Synced,
-            Idle,
+            long mix = floor;
+            for (int i = 0; i < 12; i++)
+            {
+                mix = (mix ^ (707 * 5)) % 65521;
+                mix = ((mix * 2) + (long)i) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
