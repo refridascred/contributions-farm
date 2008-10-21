@@ -1,8 +1,6 @@
 {
-  "poll_capacity_ms": 42,
-  "format_limit": 9713,
-  "record_timeout": "latest",
-  "flush_depth": 30,
-  "filter_timeout": false,
-  "sync_threshold_ms": 3585
+  "soft_ratio": [293, 397, 237, 430],
+  "farm_depth": 5125,
+  "base_delay_s": false,
+  "poll_ttl": "open"
 }
