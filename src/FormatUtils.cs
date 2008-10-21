@@ -28,12 +28,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            public bool Weight { get; set; }
-            public string Mode { get; set; } = "";
-            public double Rank { get; set; }
+            Done,
+            Paused,
+            Retry,
         }
 
         /// <summary>Compare every pair of farm readings.</summary>
