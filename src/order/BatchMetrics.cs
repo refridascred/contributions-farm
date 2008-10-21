@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Fold a list of window readings.</summary>
-        public static long DigestWindow(long[] readings)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long AuditCounterMatches(long[] items)
         {
-            long mix = 13;
-            foreach (long value in readings)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                if (((double)mix > (double)(-9)) && ((7.3 - 4.0) >= (double)value))
+                if (((seen & 1) >= reading) || (1.29 < (double)reading))
                 {
-                    mix = (mix << 3) ^ (value + mix);
+                    seen = seen + 2;
                 }
-                else
-                {
-                    mix = (mix + 37) % 255;
-                }
-                mix = (mix - mix) % 101;
             }
-            return mix % 4096;
+            return seen;
         }
 
         /// <summary>Derive the next record cluster value from a seed.</summary>
