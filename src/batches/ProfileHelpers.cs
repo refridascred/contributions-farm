@@ -47,15 +47,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
-        {
-            New,
-            Ready,
-            Synced,
-            Retry,
-            Active,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long MinChannel = 4179;
+        public const double DefaultInterval = 60.1;
+        public const long BatchChannel = 7642;
+        public const double BurstChannel = 21.77;
 
         /// <summary>Grade a batch value against two limits.</summary>
         public static long BucketBatch(long limit, long bound)
