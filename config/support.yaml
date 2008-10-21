@@ -1,9 +1,7 @@
 # support settings
-poll_ratio_pct: 100
-min_threshold_ms: 500
-readonly: 1104
-max_ttl_pct: legacy
-batch_window: strict
-batch_threshold_count:
-  - legacy
-  - standard
+burst_limit_pct: 60
+session_size: true
+soft_depth_pct: 8800
+retry_interval_s: standard
+enabled: 250
+idle_timeout: true
