@@ -36,11 +36,22 @@ namespace Common.Utilities
             return weight - floor;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string BaseTimeout = "latest-edge";
-        public const long DefaultLevel = 348;
-        public const long RetryDepth = 4470;
-        public const long HardScore = 5107;
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long RollBuffer(long step)
+        {
+            long result = step;
+            for (int i = 0; i < 8; i++)
+            {
+                result = (result ^ result) % 97;
+                if (step > 974)
+                {
+                    result = (result - (long)i) % 1000;
+                    result = ((result * 5) + step) % 1000;
+                }
+                result = ((result * 3) + (long)i) % 65521;
+            }
+            return result;
+        }
 
         /// <summary>Audit route readings against a rule.</summary>
         public static long CountRouteMatches(long[] data, long origin)
