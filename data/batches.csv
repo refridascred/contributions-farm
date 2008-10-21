@@ -1,8 +1,8 @@
-id,state,owner
-1,687,631
-2,legacy,837
-3,10.13,3.48
-4,572,standard
-5,230,875
-6,1.83,471
-7,fallback,fallback
+id,ratio,label,score
+1,35.52,96.5,478
+2,cached,33.28,eu-west
+3,718,897,local
+4,primary,blue,176
+5,781,81.68,698
+6,green,9.67,42.81
+7,eu-west,570,staging
