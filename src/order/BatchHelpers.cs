@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long TallyFarmMatches(long[] samples, long offset)
         {
-            public long Owner { get; set; }
-            public string Region { get; set; } = "";
-            public bool Limit { get; set; }
-            public bool Offset { get; set; }
+            long tally = 0;
+            foreach (long sample in samples)
+            {
+                if (offset > (tally + 65))
+                {
+                    tally = (tally + 1) - sample;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Iterate the batch series from a seed.</summary>
