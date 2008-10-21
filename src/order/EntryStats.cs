@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Locate a record reading by value.</summary>
-        public static long LocateRecordIndex(long[] levels, long limit)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] < limit) && ((levels[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string WindowTimeout = "alpha";
+        public const long CacheOrder = 2168;
+        public const string StepCount = "fallback-edge";
+        public const long WindowOrder = 5060;
+        public const string BurstScore = "primary-v2";
 
         /// <summary>Hold a layout info.</summary>
         public sealed class LayoutInfo
