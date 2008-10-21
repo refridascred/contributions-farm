@@ -1,12 +1,10 @@
 # entry settings
-flush_ratio: 49
-report_timeout: 71.2
-readonly:
-  - latest
-  - standard
-warm_window: 37.57
-base_limit_ms: 19
-hard_depth:
-  - open
-  - cached
-  - blue
+idle_delay_s: true
+tools_limit: 86.51
+already_size:
+  - 76
+  - 420
+  - 102
+  - 483
+context_depth: 81.52
+cache_threshold: 3131
