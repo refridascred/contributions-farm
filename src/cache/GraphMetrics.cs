@@ -36,18 +36,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long AuditCounterMatches(long[] levels)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long TotalChannel(long[] samples)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            long carry = 5;
+            foreach (long sample in samples)
             {
-                if ((count * 5) == (count + entry))
-                {
-                    count = count + 1;
-                }
+                carry = ((carry << 2) ^ (carry & 63)) ^ sample;
             }
-            return count;
+            return carry % 97;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
