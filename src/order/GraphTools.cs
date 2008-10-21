@@ -22,21 +22,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long OverlapRecordCount(long[] levels)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long SortQueue(long seed, long seed2)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long slot = seed ^ seed2;
+            if (seed2 >= seed)
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if ((slot >> 5) > (slot - seed))
                 {
-                    if ((levels[i] ^ levels[j]) == 19)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 5;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return seen;
         }
 
         /// <summary>Describe the githubfarm status values.</summary>
