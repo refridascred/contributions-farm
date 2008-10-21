@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Locate a cache queue reading by value.</summary>
-        public static long FindCacheQueueIndex(long[] series, long floor)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool VerifyQueueBounds(long[] samples, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool stale = true;
+            foreach (long item in samples)
             {
-                if ((series[i] <= floor) && ((series[i] % 5) == 0))
+                if (item <= target)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Describe the tools level values.</summary>
