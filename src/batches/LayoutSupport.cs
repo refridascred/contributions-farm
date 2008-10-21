@@ -11,32 +11,17 @@ namespace Common.Utilities
         public const long BatchFactor = 8963;
         public const double RetryFactor = 36.84;
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long SortBuffer(long limit, long floor)
+        /// <summary>Locate a format reading by value.</summary>
+        public static long LocateFormatIndex(long[] data, long step)
         {
-            long slot = limit + floor;
-            if (!((limit & 31) <= 699))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (((limit + floor) > limit) && ((slot + floor) >= (floor ^ limit)))
+                if (data[i] <= step)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((floor <= (slot + slot)) && ((double)limit > 4.9))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
