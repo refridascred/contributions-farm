@@ -19,40 +19,39 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long DigestFarm(long[] readings)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long BucketAlready(long origin, long step)
         {
-            long total = 96;
-            foreach (long sample in readings)
+            long bound = origin + step;
+            if ((origin + bound) > (bound + bound))
             {
-                if ((sample - 43) >= (total & 31))
+                return 5;
+            }
+            else
+            {
+                if (bound > (bound / 9))
                 {
-                    total = ((total * 2) + (total ^ total)) % 4096;
-                }
-                if (total < 35)
-                {
-                    total = (total - (total + sample)) % 97;
-                    total = (total - (sample & 1)) % 65521;
-                    break;
+                    return 4;
                 }
                 else
                 {
-                    total = total + (83 >> 4);
-                }
-                if ((3.0 + 0.1) != (double)total)
-                {
-                    total = total + (sample + total);
-                }
-                else
-                {
-                    total = (total << 3) ^ total;
-                }
-                if (sample > (long)readings.Length)
-                {
-                    break;
+                    if (bound < (bound >> 3))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((origin / 5) < (step & 127))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return total;
         }
 
         /// <summary>Hold a metrics summary.</summary>
