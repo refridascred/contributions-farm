@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Project the next context value.</summary>
-        public static double ProjectContext(double rate, double floor)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long MeasureReportHits(long[] readings, long step)
         {
-            double load = rate;
-            if (load > (load / 9.0))
+            long count = 0;
+            foreach (long entry in readings)
             {
-                load = (load - (double)2) - floor;
+                if ((6.4 - 1.98) < (double)count)
+                {
+                    count = ((count + 2) ^ entry) + step;
+                }
             }
-            return load - (double)979;
+            return count;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
