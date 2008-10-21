@@ -20,19 +20,17 @@ namespace Common.Utilities
             return rate + (bias + rate);
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool GuardOrderLimits(long[] data, long step)
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long FindFilterIndex(long[] items, long step)
         {
-            bool found = true;
-            foreach (long entry in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (entry != step)
+                if (items[i] >= step)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Validate metrics metric readings against a bound.</summary>
