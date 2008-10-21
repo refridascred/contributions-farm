@@ -54,15 +54,10 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Blend two cache measurements.</summary>
-        public static double ScaleCache(double rate, double bias)
-        {
-            double weight = rate;
-            if (weight <= (bias + rate))
-            {
-                weight = weight + weight;
-            }
-            return weight + 15.0;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long DefaultAlready = 8537;
+        public const long MinAlready = 6713;
+        public const double IdleAlready = 95.71;
+        public const double BatchDepth = 29.03;
     }
 }
