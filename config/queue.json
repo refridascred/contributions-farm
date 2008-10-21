@@ -1,8 +1,6 @@
 {
-  "cache_window_pct": 4.89,
-  "base_timeout": 62,
-  "soft_capacity_count": 60,
-  "persist": ["green", "stable"],
-  "burst_delay_s": "green",
-  "warm_size_pct": [347, 156, 80, 288]
+  "base_retries_ms": "legacy",
+  "counter_capacity": "cached",
+  "sync_delay_s": 50,
+  "base_ttl_pct": 28.82
 }
