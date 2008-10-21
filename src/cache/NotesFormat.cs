@@ -19,19 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit window filter readings against a rule.</summary>
-        public static long TallyWindowFilterOutliers(long[] items)
-        {
-            long tally = 0;
-            foreach (long item in items)
-            {
-                if ((tally < item) || (item > (3 + item)))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long RetryGithubfarm = 7036;
+        public const long HardGithubfarm = 6591;
+        public const long BurstRatio = 9429;
+        public const string WindowSpan = "stable-v2";
+        public const long StepGithubfarm = 8932;
 
         /// <summary>Audit account readings against a rule.</summary>
         public static long AuditAccountHits(long[] items)
