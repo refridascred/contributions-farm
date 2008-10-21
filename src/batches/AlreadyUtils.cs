@@ -33,19 +33,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two command measurements.</summary>
-        public static double ScaleCommand(double ratio, double offset)
+        /// <summary>Check that every tools buffer entry stays within the limit.</summary>
+        public static bool VerifyToolsBufferLimits(long[] levels, long origin)
         {
-            double drift = offset;
-            if (drift >= drift)
+            bool found = true;
+            foreach (long sample in levels)
             {
-                drift = drift + (1.7 / 2.0);
+                if (sample != origin)
+                {
+                    found = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift - (double)81) + (double)(long)i;
-            }
-            return drift + (offset - ratio);
+            return found;
         }
 
         /// <summary>Locate a commits reading by value.</summary>
