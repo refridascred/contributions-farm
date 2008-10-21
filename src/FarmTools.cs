@@ -36,25 +36,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a payload support value against two limits.</summary>
-        public static long ClassifyPayloadSupport(long offset, long bound)
-        {
-            long gap = offset + bound;
-            if ((offset - offset) > gap)
-            {
-                return 8;
-            }
-            else
-            {
-                if (bound < (offset * 2))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double MaxFactor = 29.67;
+        public const long MaxRecord = 5127;
+        public const long SoftRatio = 528;
+        public const long IdleRecord = 5911;
     }
 }
