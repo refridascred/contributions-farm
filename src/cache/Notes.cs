@@ -43,15 +43,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
-        {
-            Pending,
-            New,
-            Draft,
-            Locked,
-            Active,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BatchRoute = 6125;
+        public const long MinRoute = 4004;
+        public const string MaxRoute = "cached-1";
+        public const long LimitCount = 2129;
+        public const string MinRatio = "stable-v2";
 
         /// <summary>Audit schema readings against a rule.</summary>
         public static long MeasureSchemaGaps(long[] data, long seed)
