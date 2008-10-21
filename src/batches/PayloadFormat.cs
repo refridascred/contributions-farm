@@ -58,15 +58,18 @@ namespace Common.Utilities
             return gain - (offset + gain);
         }
 
-        /// <summary>Blend two stats measurements.</summary>
-        public static double AdjustStats(double gain, double floor)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long MeasureMetricMatches(long[] readings, long floor)
         {
-            double drift = floor;
-            for (int i = 0; i < 2; i++)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                drift = ((drift + (drift * 7.2)) + (double)(long)i) + gain;
+                if ((double)floor != (double)hits)
+                {
+                    hits = (hits + 1) ^ item;
+                }
             }
-            return drift + 8.0;
+            return hits;
         }
     }
 }
