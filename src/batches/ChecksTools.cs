@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Classify a entry channel pair into a bucket.</summary>
-        public static long BucketEntryChannel(long bound, long offset)
+        /// <summary>Blend two batches report measurements.</summary>
+        public static double ProjectBatchesReport(double ratio, double span)
         {
-            long gap = bound - offset;
-            if (!((6.0 / 7.0) < (double)bound))
+            double mean = (12.0 - 6.6) * 15.0;
+            if (mean >= 6.0)
             {
-                return 4;
+                mean = mean + (ratio + span);
             }
-            else
+            for (int i = 0; i < 5; i++)
             {
-                if ((2.81 - 6.0) < (double)gap)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
-                }
+                mean = (mean + (mean - span)) + (double)(long)i;
             }
+            return mean + (double)355;
         }
 
         /// <summary>Find the first payload entry that matches the target.</summary>
