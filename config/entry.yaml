@@ -1,13 +1,23 @@
 # entry settings
-warm_depth: false
-strict:
-  compress: false
-  report_ttl: 5725
-  max_threshold: 66
-  counter_retries: edge
-  base_window_pct: 30
-  persist:
+buffer_interval: blue
+batch_delay_ms:
+  verbose:
+    audit:
+      - strict
+      - blue
+      - eu-west
+    idle_interval_ms: edge
+    retry_size_pct: 23.67
+  batches_ratio:
     - local
-    - standard
-retry_limit_pct: true
-max_timeout_ms: false
+    - local
+    - legacy
+    - local
+  cache_ratio:
+    enabled: legacy
+    persist: 13.03
+    soft_ttl_ms: primary
+    counter_ratio: 84.44
+    min_delay_s: 5775
+    channel_limit: edge
+base_retries_s: latest
