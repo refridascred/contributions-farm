@@ -40,19 +40,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool VerifyCacheLimits(long[] data, long target)
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
         {
-            bool stale = true;
-            foreach (long item in data)
-            {
-                if (item != target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Total { get; set; }
+            public long Score { get; set; }
+            public long Rank { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Compare every pair of stats readings.</summary>
