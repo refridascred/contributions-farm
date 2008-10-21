@@ -29,12 +29,17 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Look up the position of a channel schema sample.</summary>
+        public static long FindChannelSchemaIndex(long[] data, long offset)
         {
-            Stale,
-            Draft,
-            Queued,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] >= offset) && ((data[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
