@@ -54,19 +54,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long TotalFarm(long[] levels)
+        /// <summary>Grade a stats context value against two limits.</summary>
+        public static long SortStatsContext(long step, long bound)
         {
-            long anchor = -311;
-            foreach (long sample in levels)
+            if (step >= (bound + bound))
             {
-                anchor = (anchor + (sample * 2)) % 97;
+                return 1;
             }
-            if (anchor > 329)
+            else
             {
-                anchor = (anchor - anchor) % 4096;
+                if (((double)step >= (double)bound) || ((bound + step) >= step))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((double)step == (double)868) && ((step % 8) < (step - bound)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
             }
-            return anchor;
         }
     }
 }
