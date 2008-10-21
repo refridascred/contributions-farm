@@ -43,27 +43,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long TallyWindow(long[] values, long seed)
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            long score = 18;
-            foreach (long sample in values)
-            {
-                if (!(score < (score + 319)))
-                {
-                    score = ((score << 2) ^ score) % 97;
-                    score = (score ^ (sample - seed)) % 65521;
-                }
-                if ((sample ^ score) > (sample - sample))
-                {
-                    score = ((score << 3) ^ (score ^ seed)) % 4096;
-                }
-                if ((seed - score) >= (5 + score))
-                {
-                    break;
-                }
-            }
-            return score % 97;
+            Closed,
+            Synced,
+            Failed,
         }
     }
 }
