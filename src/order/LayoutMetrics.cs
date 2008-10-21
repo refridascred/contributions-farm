@@ -32,18 +32,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long TallyProfileMatches(long[] series)
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long LookupClusterIndex(long[] readings, long floor)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((((83 << 1) >= datum) || ((datum + hits) < (hits + datum))) && (((double)datum >= (8.2 * 9.0)) && ((1 << 2) > hits)))
+                if (readings[i] >= floor)
                 {
-                    hits = hits + 2;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
