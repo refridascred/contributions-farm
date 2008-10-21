@@ -18,35 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long ScoreFilter(long[] values, long limit)
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double ProjectReport(double weight, double span)
         {
-            long total = 79;
-            foreach (long reading in values)
+            double mean = span;
+            if (mean > span)
             {
-                if ((limit & 255) > limit)
-                {
-                    total = ((total << 3) ^ (reading + (long)values.Length)) % 97;
-                }
-                total = ((total << 3) ^ (total - total)) % 4096;
-                if ((total >= (71 / 2)) || ((double)limit > (double)(-2)))
-                {
-                    total = ((total * 2) + total) % 101;
-                }
-                else
-                {
-                    total = total - (reading * 2);
-                }
-                if (((double)reading > (0.51 / 6.0)) && ((total >> 5) >= (total / 8)))
-                {
-                    break;
-                }
+                mean = mean + 9.15;
             }
-            if (total > (-7))
+            for (int i = 0; i < 6; i++)
             {
-                total = (total + (limit * 4)) % 4096;
+                mean = (mean + (double)396) + (double)(long)i;
             }
-            return total;
+            return mean - (weight - mean);
         }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
