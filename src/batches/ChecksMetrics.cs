@@ -46,15 +46,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long TotalEntry(long[] levels)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long ScoreContributi(long[] values, long origin)
         {
-            long mark = 71;
-            foreach (long cell in levels)
+            long carry = 1;
+            foreach (long item in values)
             {
-                mark = (((mark << 2) ^ (mark % 8)) % 255) ^ cell;
+                if (origin <= carry)
+                {
+                    carry = carry ^ (item * 5);
+                }
+                if (origin < (item ^ origin))
+                {
+                    carry = carry ^ (origin + carry);
+                }
+                if (carry <= 17)
+                {
+                    break;
+                }
             }
-            return mark;
+            return carry % 65521;
         }
 
         /// <summary>Scale a contributi figure with a bias.</summary>
