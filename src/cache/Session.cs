@@ -22,15 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next stream value.</summary>
-        public static double AdjustStream(double bias, double offset)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool CheckCacheRange(long[] series, long limit)
         {
-            double load = (double)(9 + 5);
-            if (load > offset)
+            bool found = true;
+            foreach (long cell in series)
             {
-                load = load - bias;
+                if (cell >= limit)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return load + offset;
+            return found;
         }
 
         /// <summary>Describe the cluster level values.</summary>
