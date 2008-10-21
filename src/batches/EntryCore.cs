@@ -19,15 +19,15 @@ namespace Common.Utilities
         public const string MaxCount = "open-1";
         public const long BaseCount = 1006;
 
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long OverlapQueueCount(long[] data)
+        /// <summary>Match up record samples.</summary>
+        public static long MatchRecordCount(long[] items)
         {
             long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    if ((data[i] + data[j]) > 0)
+                    if ((items[i] - items[j]) == 4)
                     {
                         tally = tally + 1;
                     }
