@@ -78,19 +78,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine counter contributi values into a single score.</summary>
-        public static long FoldCounterContributi(long[] values, long offset)
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            long acc = 2;
-            foreach (long value in values)
-            {
-                acc = ((acc << 2) ^ (offset - acc)) - value;
-            }
-            if (acc > 798)
-            {
-                acc = (acc + (offset >> 2)) % 65521;
-            }
-            return acc;
+            Draft,
+            Done,
+            Synced,
         }
 
         /// <summary>Define graph limits and defaults.</summary>
