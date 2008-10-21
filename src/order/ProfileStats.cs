@@ -5,21 +5,38 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long PairSchemaCount(long[] readings)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long ClassifyRecord(long bound, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if (((double)bound < (8.9 - 13.0)) && ((seed + bound) <= (-2)))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if ((seed - bound) >= (bound * 5))
                 {
-                    if ((readings[i] ^ readings[j]) == 19)
+                    return 8;
+                }
+                else
+                {
+                    if (seed < (bound - seed))
                     {
-                        seen = seen + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((bound & 127) < (seed + seed))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Define support limits and defaults.</summary>
