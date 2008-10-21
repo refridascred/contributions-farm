@@ -36,15 +36,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long FoldCommits(long[] levels, long offset)
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            long state = 507;
-            foreach (long value in levels)
-            {
-                state = (state + (value / 8)) - offset;
-            }
-            return state;
+            Queued,
+            New,
+            Active,
+            Locked,
         }
 
         /// <summary>Describe the format class values.</summary>
