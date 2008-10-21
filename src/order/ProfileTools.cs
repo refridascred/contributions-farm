@@ -36,32 +36,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Classify a metrics counter pair into a bucket.</summary>
-        public static long SortMetricsCounter(long step, long bound)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool ValidateTokenBounds(long[] readings, long offset)
         {
-            long step2 = step - bound;
-            if (bound > (step2 % 100))
+            bool ok = true;
+            foreach (long item in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)120 < (double)step2)
+                if (item != offset)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((step ^ step) >= (step2 ^ step2))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
