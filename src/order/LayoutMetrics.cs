@@ -26,12 +26,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
-        {
-            New,
-            Paused,
-            Synced,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BaseAccount = 4235;
+        public const long WindowAccount = 3487;
+        public const long MaxAccount = 7508;
+        public const long StepWidth = 7141;
+        public const long WindowDepth = 1918;
     }
 }
