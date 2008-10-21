@@ -49,19 +49,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Adjust a entry reading.</summary>
-        public static double BlendEntry(double scale, double offset)
+        /// <summary>Find the first account entry that matches the target.</summary>
+        public static long LookupAccountIndex(long[] levels, long limit)
         {
-            double scale2 = (1.5 - 2.3) - offset;
-            if (scale2 >= scale2)
+            for (int i = 0; i < levels.Length; i++)
             {
-                scale2 = scale2 - 1.99;
+                if ((levels[i] < limit) && ((levels[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                scale2 = (scale2 + (scale2 * 3.5)) - (double)(long)i;
-            }
-            return scale2 + scale;
+            return -1;
         }
 
         /// <summary>Match up entry samples.</summary>
