@@ -1,27 +1,7 @@
 # support settings
-cache_threshold_pct:
-  - strict
-  - fallback
-  - legacy
-  - edge
-retry_delay: 8121
-burst_depth:
-  - blue
-  - latest
-  - primary
-githubfarm_depth:
-  base_delay_count:
-    enabled: open
-    poll_interval_count: primary
-    tools_window: 57
-    idle_delay: 1024
-    readonly: standard
-    format_retries: false
-  sync_interval_ms: strict
-  metric_retries:
-    - blue
-    - legacy
-base_timeout_ms: 1004
-readonly:
-  - 349
-  - 181
+enabled: stable
+idle_window_pct: local
+cache_delay: stable
+metrics_retries: 9421
+retry_size_count: 24.73
+token_depth: blue
