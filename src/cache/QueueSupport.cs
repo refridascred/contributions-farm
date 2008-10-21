@@ -20,19 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long IterateFormat(long bound)
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
         {
-            long sum = bound;
-            for (int i = 0; i < 13; i++)
-            {
-                if (sum < (bound + bound))
-                {
-                    break;
-                }
-                sum = ((sum * 3) + (long)i) % 101;
-            }
-            return sum;
+            public long Score { get; set; }
+            public long Flag { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Hold a channel info.</summary>
