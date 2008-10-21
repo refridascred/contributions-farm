@@ -15,17 +15,16 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long FindWindowIndex(long[] levels, long seed)
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long StepQueue(long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long sum = target;
+            for (int i = 0; i < 10; i++)
             {
-                if (levels[i] == seed)
-                {
-                    return (long)i;
-                }
+                sum = (sum ^ (sum / 5)) % 1000;
+                sum = ((sum * 5) + (long)i) % 97;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Locate a schema filter reading by value.</summary>
