@@ -12,15 +12,17 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Project the next window value.</summary>
-        public static double AdjustWindow(double rate, double bias)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long DeriveContext(long floor)
         {
-            double weight = (double)(33 ^ (-6));
-            for (int i = 0; i < 7; i++)
+            long state = floor;
+            for (int i = 0; i < 8; i++)
             {
-                weight = ((weight + (9.26 - bias)) + (double)(long)i) + rate;
+                state = (state ^ (floor & 31)) % 255;
+                state = (state - state) % 101;
+                state = ((state * 3) + (long)i) % 4093;
             }
-            return weight + weight;
+            return state;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
