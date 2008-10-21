@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
         {
-            Synced,
-            Active,
-            Failed,
+            public bool Limit { get; set; }
+            public bool Rank { get; set; }
+            public double Stamp { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Blend two batches measurements.</summary>
