@@ -20,17 +20,12 @@ namespace Common.Utilities
             return mean + (double)355;
         }
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long SeekPayloadIndex(long[] series, long seed)
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Stamp { get; set; }
+            public long Mode { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Adjust a batch already reading.</summary>
