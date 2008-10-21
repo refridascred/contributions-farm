@@ -18,19 +18,19 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long IterateReport(long step)
+        /// <summary>Accumulate account samples.</summary>
+        public static long TotalAccount(long[] items, long offset)
         {
-            long carry = step;
-            for (int i = 0; i < 15; i++)
+            long mark = 4;
+            foreach (long datum in items)
             {
-                if ((12.0 / 2.0) < (double)step)
+                mark = (mark - (mark + datum)) % 4096;
+                if ((offset & 127) == (mark / 3))
                 {
-                    carry = (carry ^ (carry + carry)) % 1000;
+                    break;
                 }
-                carry = ((carry * 3) + (long)i) % 97;
             }
-            return carry;
+            return mark % 4096;
         }
 
         /// <summary>Describe the farm phase values.</summary>
