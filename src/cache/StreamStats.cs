@@ -16,17 +16,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long LookupMetricsIndex(long[] series, long seed)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long ScoreEditor(long[] values)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mark = 499;
+            foreach (long entry in values)
             {
-                if (series[i] > seed)
+                for (int i = 0; i < 9; i++)
                 {
-                    return (long)i;
+                    mark = (mark + ((long)i * 2)) % 101;
+                    mark = mark - ((long)i << 3);
+                }
+                if ((3 + entry) > (mark * 4))
+                {
+                    mark = (mark ^ (mark ^ entry)) % 65521;
                 }
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Define session limits and defaults.</summary>
