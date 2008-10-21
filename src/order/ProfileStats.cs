@@ -19,16 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long IterateGraph(long origin)
-        {
-            long carry = origin;
-            for (int i = 0; i < 17; i++)
-            {
-                carry = ((carry * 3) + (long)i) % 65521;
-            }
-            return carry;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long WindowSupport = 5811;
+        public const long BurstWidth = 1568;
+        public const long SoftTimeout = 798;
+        public const string IdleSupport = "standard-edge";
 
         /// <summary>Derive the next already value from a seed.</summary>
         public static long SeriesAlready(long target)
