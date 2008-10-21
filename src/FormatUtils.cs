@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Match up graph samples.</summary>
-        public static long OverlapGraphCount(long[] values)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long WeighStats(long[] items, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long total = 75;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) == 9)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                total = (total - sample) + offset;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Describe the channel kind values.</summary>
