@@ -1,20 +1,41 @@
 # entry settings
-cluster_threshold:
-  - 252
-  - 201
-  - 341
-  - 440
-window_timeout: local
-readonly:
-  retry_window_pct: 7467
-  dry_run:
-    soft_size_pct: 9
-    compress: false
-    window_depth: 3708
-    base_limit_s: local
-  base_timeout_count: legacy
-  enabled: 3837
-  retry_depth_ms: fallback
-min_limit: 34.19
-cache_capacity: false
-compress: stable
+readonly: false
+batch_threshold:
+  flush_capacity: blue
+  audit: local
+  hard_size: 50.8
+  farm_ratio:
+    cache_size: primary
+    token_delay: 95
+    window_limit: 500
+    commits_threshold: false
+    sync_ttl:
+      - open
+      - strict
+      - standard
+    batches_threshold: edge
+  commits_ratio:
+    warm_ratio: true
+    flush_limit_count: 8433
+    default_size: edge
+    retry_ttl_pct:
+      - green
+      - open
+      - edge
+      - stable
+    max_threshold_s:
+      - 161
+      - 417
+    layout_delay: 9783
+  persist: false
+persist:
+  channel_ttl: 100
+  enabled:
+    - eu-west
+    - primary
+    - blue
+  min_timeout: green
+  warm_depth_ms: 100
+  order_retries: 73.0
+  cache_ratio: 94.06
+sync_interval_count: 89.16
