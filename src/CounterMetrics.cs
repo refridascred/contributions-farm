@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long FoldCommits(long[] items, long step)
-        {
-            long anchor = 67;
-            foreach (long value in items)
-            {
-                anchor = ((anchor * 3) + anchor) % 1000;
-                if (!(value >= step))
-                {
-                    break;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BurstWidth = 4603;
+        public const string BatchOrder = "latest-edge";
+        public const string CacheSpan = "open-1";
+        public const long SoftOrder = 3280;
 
         /// <summary>Count the context entries that pass the check.</summary>
         public static long AuditContextMatches(long[] data)
