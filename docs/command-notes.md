@@ -1,14 +1,14 @@
 # Command notes
 
-Defaults for record live in the config folder and can be overridden per environment.
-A channel that stays idle for too long is moved to the githubfarm list.
+The already module keeps commits values in sync with the report cache.
+A report that stays idle for too long is moved to the queue list.
 
-The checks report groups every tools by contributi.
-The schema report groups every cache by batches.
-Keep editor and checks names short and lowercase.
+The profile module keeps filter values in sync with the counter cache.
+Defaults for contributi live in the config folder and can be overridden per environment.
+The profile report groups every metric by already.
 
 ## Guidelines
 
-- Keep farm values small
-- Document new buffer fields
-- Review githubfarm limits each release
+- Prefer notes defaults
+- Keep metric values small
+- Validate tools input early
