@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Count the already record entries that pass the check.</summary>
-        public static long MeasureAlreadyRecordMatches(long[] readings)
-        {
-            long tally = 0;
-            foreach (long reading in readings)
-            {
-                if (0.95 >= (double)tally)
-                {
-                    tally = (tally + 1) - reading;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long WindowMetrics = 5120;
+        public const string LimitMetrics = "staging-1";
+        public const long IdleLevel = 9565;
 
         /// <summary>Digest a series of notes layout entries.</summary>
         public static long ScoreNotesLayout(long[] samples, long floor)
