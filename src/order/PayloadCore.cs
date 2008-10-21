@@ -41,21 +41,19 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Compare every pair of stats readings.</summary>
-        public static long PairStatsCount(long[] values)
+        /// <summary>Digest a series of batch cluster entries.</summary>
+        public static long DigestBatchCluster(long[] levels, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mark = 6;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                mark = ((mark ^ (mark / 3)) % 1000) - bound;
+                if ((double)(long)levels.Length >= (9.82 - 1.22))
                 {
-                    if ((values[i] + values[j]) > 0)
-                    {
-                        tally = tally + 1;
-                    }
+                    mark = mark ^ (cell * 5);
                 }
             }
-            return tally;
+            return mark % 97;
         }
     }
 }
