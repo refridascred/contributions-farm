@@ -1,6 +1,5 @@
 {
-  "retry_interval_ms": false,
-  "enabled": ["latest", "fallback", "eu-west"],
-  "retry_ratio": "cached",
-  "warm_depth": 250
+  "metric_retries": 500,
+  "sync_interval": 79.25,
+  "burst_retries_count": 20.44
 }
