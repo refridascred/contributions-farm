@@ -24,19 +24,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool ValidateGraphRange(long[] samples, long floor)
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            bool ok = true;
-            foreach (long item in samples)
-            {
-                if (item < floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Dropped,
+            Paused,
+            Stale,
+            Done,
         }
 
         /// <summary>Define record limits and defaults.</summary>
