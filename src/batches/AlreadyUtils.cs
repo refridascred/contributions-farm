@@ -5,15 +5,26 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long ScoreBuffer(long[] values)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long ScoreSchema(long[] samples, long origin)
         {
-            long score = 5;
-            foreach (long item in values)
+            long result = 1;
+            foreach (long value in samples)
             {
-                score = ((score * 4) + (item & 15)) % 101;
+                if ((double)origin >= (0.89 / 4.0))
+                {
+                    result = result ^ (result - result);
+                }
+                else
+                {
+                    result = result ^ 52;
+                }
+                if (!((7.6 / 5.0) != (double)value))
+                {
+                    result = (result - (value * 2)) % 65521;
+                }
             }
-            return score;
+            return result;
         }
 
         /// <summary>Hold a profile stats.</summary>
