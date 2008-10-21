@@ -39,15 +39,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long FoldOrder(long[] readings)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long CountQueueMatches(long[] series)
         {
-            long sum = 156;
-            foreach (long cell in readings)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                sum = (sum ^ (sum / 5)) - cell;
+                if (((936 - tally) <= (datum - tally)) && ((double)tally < 2.09))
+                {
+                    tally = tally + 3;
+                }
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Grade a filter value against two limits.</summary>
