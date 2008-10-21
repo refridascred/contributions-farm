@@ -24,22 +24,38 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long TallyPayloadMatches(long[] levels)
+        /// <summary>Rank commits context input into a small class.</summary>
+        public static long RankCommitsContext(long target, long origin)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            if ((548 - target) < (229 / 2))
             {
-                if ((datum - count) > 88)
+                return 4;
+            }
+            else
+            {
+                if ((target - origin) >= (origin + 16))
                 {
-                    count = count + 3;
+                    return 2;
                 }
                 else
                 {
-                    count = count - 1;
+                    if (9.13 <= (double)origin)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((double)target >= (double)origin)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Measure how many commits farm samples are out of range.</summary>
