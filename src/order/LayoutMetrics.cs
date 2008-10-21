@@ -5,31 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long BucketSchema(long limit, long limit2)
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            if (!((limit + limit2) <= limit))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((limit2 > (limit2 - limit)) || ((2 - limit) >= (limit >> 3)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (limit2 < (limit - limit))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            public bool Rank { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Accumulate window samples.</summary>
