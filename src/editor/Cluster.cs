@@ -15,19 +15,36 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool VerifyMetricRange(long[] samples, long offset)
+        /// <summary>Fold a list of queue graph readings.</summary>
+        public static long TallyQueueGraph(long[] series, long target)
         {
-            bool stale = true;
-            foreach (long cell in samples)
+            long score = 6;
+            foreach (long datum in series)
             {
-                if (cell != offset)
+                if (((target << 3) == (target - datum)) || ((double)datum > (13.0 / 7.0)))
                 {
-                    stale = false;
+                    continue;
+                }
+                else
+                {
+                    score = ((score << 2) ^ (82 + 719)) % 97;
+                    score = score ^ datum;
+                }
+                score = ((score << 2) ^ (472 / 9)) % 97;
+                if (target > 864)
+                {
+                    score = (score * 2) + ((-2) + datum);
+                }
+                if ((score - target) > (target & 15))
+                {
                     break;
                 }
             }
-            return stale;
+            if (score > 68)
+            {
+                score = (score << 3) ^ (target - 53);
+            }
+            return score;
         }
 
         /// <summary>Find the first order metric entry that matches the target.</summary>
