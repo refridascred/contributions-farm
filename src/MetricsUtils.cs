@@ -44,20 +44,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of report schema readings.</summary>
-        public static long FoldReportSchema(long[] data, long step)
-        {
-            long anchor = 611;
-            foreach (long cell in data)
-            {
-                anchor = (anchor ^ (anchor ^ step)) + cell;
-                if ((step % 24) > anchor)
-                {
-                    anchor = anchor + (step >> 5);
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BatchCluster = 592;
+        public const long LimitDepth = 2978;
+        public const double SoftScore = 77.83;
+        public const double DefaultCount = 89.24;
+        public const double MinSize = 17.62;
 
         /// <summary>Measure how many support samples are out of range.</summary>
         public static long CountSupportGaps(long[] levels)
