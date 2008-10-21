@@ -33,13 +33,9 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
-        {
-            Locked,
-            Closed,
-            Paused,
-            New,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string CacheBudget = "primary-v2";
+        public const long BaseSize = 1958;
+        public const string BurstSpan = "standard-edge";
     }
 }
