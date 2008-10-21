@@ -20,31 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long BucketFarm(long origin, long step)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long ScoreContributi(long[] items, long offset)
         {
-            if (((step + step) > (origin - origin)) || (step > (step - step)))
+            long score = 9;
+            foreach (long item in items)
             {
-                return 7;
-            }
-            else
-            {
-                if (!(step <= (571 + origin)))
+                if ((8.7 + 5.0) <= (double)score)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)origin > 5.0)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    score = ((score + (offset + offset)) % 1000) - item;
                 }
             }
+            return score % 4096;
         }
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
