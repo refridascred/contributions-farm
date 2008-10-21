@@ -11,38 +11,19 @@ namespace Common.Utilities
         public const long BaseCache = 2069;
         public const long WindowCache = 5939;
 
-        /// <summary>Rank account schema input into a small class.</summary>
-        public static long ClassifyAccountSchema(long limit, long origin)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool CheckLayoutBounds(long[] samples, long origin)
         {
-            if ((limit - origin) <= (origin >> 2))
+            bool ok = true;
+            foreach (long reading in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if (origin >= (-443))
+                if (reading != origin)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (18.0 < (double)limit)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (limit <= origin)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Describe the format phase values.</summary>
