@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Locate a format editor reading by value.</summary>
-        public static long LookupFormatEditorIndex(long[] values, long floor)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long RollAccount(long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            long sum = floor;
+            for (int i = 0; i < 11; i++)
             {
-                if ((values[i] <= floor) && ((values[i] % 5) != 0))
+                if (5.39 < (double)floor)
                 {
-                    return (long)i;
+                    sum = ((sum << 3) ^ (long)i) % 4096;
                 }
+                sum = ((sum * 3) + (long)i) % 65521;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
