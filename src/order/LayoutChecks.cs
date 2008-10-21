@@ -5,32 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long RankBatch(long target, long target2)
-        {
-            if (target2 > target)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((target2 + target2) < (target2 >> 2))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (!((double)target2 <= 9.92))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long WindowChecks = 2631;
+        public const long StepCount = 5226;
+        public const long SoftLevel = 462;
 
         /// <summary>Validate stats session readings against a bound.</summary>
         public static bool ValidateStatsSessionRange(long[] series, long origin)
