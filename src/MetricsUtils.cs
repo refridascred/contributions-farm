@@ -44,20 +44,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate commits metrics readings against a bound.</summary>
-        public static bool ValidateCommitsMetricsBounds(long[] series, long origin)
-        {
-            bool stale = true;
-            foreach (long datum in series)
-            {
-                if (datum < origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long HardReport = 9506;
+        public const long BurstFactor = 407;
+        public const long BatchReport = 6432;
+        public const long RetryDepth = 7451;
+        public const long BatchFactor = 6464;
 
         /// <summary>Audit commits readings against a rule.</summary>
         public static long CountCommitsHits(long[] series)
