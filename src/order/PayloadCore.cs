@@ -37,12 +37,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
-        {
-            public double Size { get; set; }
-            public double Weight { get; set; }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double DefaultWidth = 52.14;
+        public const long BurstInterval = 2594;
+        public const double WindowTimeout = 86.44;
+        public const double SoftLayout = 95.36;
 
         /// <summary>Define editor limits and defaults.</summary>
         public const double DefaultEditor = 38.06;
