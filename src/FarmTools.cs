@@ -36,10 +36,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double MaxFactor = 29.67;
-        public const long MaxRecord = 5127;
-        public const long SoftRatio = 528;
-        public const long IdleRecord = 5911;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long StepSize = 2081;
+        public const string HardSpan = "legacy-1";
+        public const double WindowGithubfarm = 77.51;
     }
 }
