@@ -34,19 +34,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool VerifyPayloadBounds(long[] data, long origin)
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            bool flag = true;
-            foreach (long value in data)
-            {
-                if (value <= origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Ratio { get; set; }
+            public long Owner { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Fold a list of editor readings.</summary>
