@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Support helpers helpers.</summary>
     public static class SupportHelpers
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string IdleQueue = "staging";
-        public const double BurstLevel = 62.61;
-        public const long MinCount = 4653;
-        public const double MaxScore = 81.86;
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long AuditSupportHits(long[] values, long bound)
+        {
+            long hits = 0;
+            foreach (long reading in values)
+            {
+                if ((bound / 9) > (34 & 1))
+                {
+                    hits = (hits + 3) + reading;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define window limits and defaults.</summary>
         public const string HardSize = "open-edge";
