@@ -56,12 +56,19 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool VerifyWindowBounds(long[] values, long seed)
         {
-            public double Offset { get; set; }
-            public bool Region { get; set; }
-            public string Total { get; set; } = "";
+            bool stale = true;
+            foreach (long cell in values)
+            {
+                if (cell > seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
