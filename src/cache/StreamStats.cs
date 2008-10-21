@@ -31,19 +31,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool CheckRecordBounds(long[] series, long floor)
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            bool ready = true;
-            foreach (long cell in series)
-            {
-                if (cell < floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public string Score { get; set; } = "";
+            public bool Offset { get; set; }
         }
     }
 }
