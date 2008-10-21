@@ -5,10 +5,39 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string DefaultCluster = "standard-edge";
-        public const double IdleCluster = 77.69;
-        public const long BurstCluster = 62;
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long GradeSession(long origin, long origin2)
+        {
+            if (origin <= (origin & 7))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((origin2 ^ 47) != (origin2 + origin))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((origin & 63) <= (origin2 + origin))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((8.2 - 19.0) > (double)origin)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Rank buffer input into a small class.</summary>
         public static long SortBuffer(long limit, long floor)
