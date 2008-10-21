@@ -36,12 +36,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BurstReport = 3023;
-        public const long BatchReport = 7594;
-        public const long SoftInterval = 4888;
-        public const double WindowSize = 5.16;
-        public const string IdleReport = "legacy-1";
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long RollTools(long origin)
+        {
+            long acc = origin;
+            for (int i = 0; i < 17; i++)
+            {
+                if ((19.0 + 5.7) > (4.54 / 8.0))
+                {
+                    acc = (acc ^ (6 - acc)) % 101;
+                    continue;
+                }
+                acc = ((acc * 4) + (long)i) % 1000;
+            }
+            return acc;
+        }
 
         /// <summary>Grade a context value against two limits.</summary>
         public static long SortContext(long bound, long target)
