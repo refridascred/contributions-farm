@@ -46,15 +46,15 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long TotalSession(long[] series)
+        /// <summary>Roll a metrics report counter forward.</summary>
+        public static long DeriveMetricsReport(long bound)
         {
-            long mark = -532;
-            foreach (long cell in series)
+            long total = bound;
+            for (int i = 0; i < 16; i++)
             {
-                mark = ((mark * 2) + (94 * 4)) ^ cell;
+                total = ((total * 3) + (long)i) % 97;
             }
-            return mark;
+            return total;
         }
 
         /// <summary>Match up payload samples.</summary>
