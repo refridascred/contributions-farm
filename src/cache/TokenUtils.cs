@@ -32,29 +32,36 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long ClassifyTools(long seed, long bound)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long SortContributi(long step, long bound)
         {
-            long gap = seed ^ bound;
-            if ((5.2 / 9.0) >= (double)seed)
+            long offset = step - bound;
+            if ((bound + offset) < bound)
             {
                 return 3;
             }
             else
             {
-                if ((bound << 2) > (seed ^ 51))
+                if ((19.0 * 4.37) >= (double)bound)
                 {
-                    return 8;
+                    return 1;
                 }
                 else
                 {
-                    if (((5 % 60) >= gap) && ((8 ^ bound) == (gap * 4)))
+                    if ((offset + 85) >= (bound % 97))
                     {
-                        return 5;
+                        return 2;
                     }
                     else
                     {
-                        return 4;
+                        if (5 > (bound >> 5))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
                     }
                 }
             }
