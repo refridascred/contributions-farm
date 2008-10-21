@@ -11,21 +11,14 @@ namespace Common.Utilities
         public const double HardWindow = 15.45;
         public const long IdleWindow = 4887;
 
-        /// <summary>Match up notes samples.</summary>
-        public static long MatchNotesCount(long[] items)
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) < 1)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Failed,
+            Ready,
+            Active,
+            Draft,
+            New,
         }
 
         /// <summary>Project the next batches cluster value.</summary>
