@@ -22,17 +22,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a notes batches reading by value.</summary>
-        public static long SeekNotesBatchesIndex(long[] data, long offset)
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] <= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Stale,
+            New,
+            Idle,
+            Ready,
+            Locked,
         }
 
         /// <summary>Define payload limits and defaults.</summary>
