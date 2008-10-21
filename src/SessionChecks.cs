@@ -20,39 +20,11 @@ namespace Common.Utilities
             return weight - (bias * 19.0);
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long GradeFarm(long floor, long offset)
-        {
-            if ((double)offset != (6.6 / 4.0))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)offset < (double)floor)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((floor + floor) >= (74 * 2))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (offset <= (9 & 63))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string RetryFormat = "latest";
+        public const double SoftCount = 92.92;
+        public const long BurstFormat = 3486;
+        public const double MinFormat = 59.36;
 
         /// <summary>Rank filter input into a small class.</summary>
         public static long SortFilter(long floor, long origin)
