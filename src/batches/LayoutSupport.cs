@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Derive the next stats githubfarm value from a seed.</summary>
+        public static long RollStatsGithubfarm(long limit)
         {
-            public long Total { get; set; }
-            public double Offset { get; set; }
+            long state = limit;
+            for (int i = 0; i < 15; i++)
+            {
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    state = (state + (limit / 6)) ^ (long)i2;
+                }
+                state = ((state * 5) + (long)i) % 101;
+            }
+            return state;
         }
 
         /// <summary>Digest a series of command entries.</summary>
