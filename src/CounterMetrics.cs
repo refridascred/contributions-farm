@@ -63,23 +63,30 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Grade a farm account value against two limits.</summary>
-        public static long ClassifyFarmAccount(long floor, long seed)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long RankWindow(long floor, long offset)
         {
-            long offset = floor ^ seed;
-            if ((seed & 127) < (offset ^ offset))
+            long diff = floor ^ offset;
+            if (!((floor - 40) > offset))
             {
-                return 3;
+                return 5;
             }
             else
             {
-                if (((27 * 4) >= seed) && ((floor / 2) > (seed * 4)))
+                if ((diff ^ diff) == (floor % 100))
                 {
-                    return 0;
+                    return 3;
                 }
                 else
                 {
-                    return 4;
+                    if (((0 >> 2) > (offset >> 3)) || (((-5) - offset) < diff))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
         }
