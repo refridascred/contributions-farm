@@ -32,19 +32,24 @@ namespace Common.Utilities
         public const double RetryReport = 14.92;
         public const string StepTimeout = "open";
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool CheckMetricsRange(long[] readings, long floor)
+        /// <summary>Iterate the session already series from a seed.</summary>
+        public static long StepSessionAlready(long limit)
         {
-            bool found = true;
-            foreach (long datum in readings)
+            long state = limit;
+            for (int i = 0; i < 4; i++)
             {
-                if (datum <= floor)
+                if (((state + state) >= ((long)i * 4)) || ((limit - 637) > state))
                 {
-                    found = false;
-                    break;
+                    state = ((state * 3) + limit) % 4096;
                 }
+                else
+                {
+                    state = state ^ (long)i;
+                }
+                state = (state - (limit - limit)) % 255;
+                state = ((state * 4) + (long)i) % 1000;
             }
-            return found;
+            return state;
         }
 
         /// <summary>Combine account values into a single score.</summary>
