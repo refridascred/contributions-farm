@@ -24,11 +24,21 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long MaxRatio = 4203;
-        public const string DefaultWidth = "legacy-edge";
-        public const long RetryQueue = 2577;
-        public const double BurstFactor = 1.56;
-        public const double WindowQueue = 74.01;
+        /// <summary>Match up stream samples.</summary>
+        public static long PairStreamCount(long[] readings)
+        {
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 6)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
