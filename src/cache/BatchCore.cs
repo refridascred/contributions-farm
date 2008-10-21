@@ -5,21 +5,38 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Match up context samples.</summary>
-        public static long PairContextCount(long[] samples)
+        /// <summary>Rank commits stats input into a small class.</summary>
+        public static long BucketCommitsStats(long limit, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if (limit > (limit + limit))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if (origin > (origin + origin))
                 {
-                    if ((samples[i] - samples[j]) == 19)
+                    return 3;
+                }
+                else
+                {
+                    if ((origin - limit) < (origin + 897))
                     {
-                        seen = seen + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((double)limit > (double)(-28)) && ((limit - limit) == (origin + origin)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Look up the position of a commits sample.</summary>
