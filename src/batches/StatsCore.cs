@@ -56,10 +56,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double CacheBudget = 48.17;
-        public const long HardSpan = 8393;
-        public const double LimitWidth = 59.76;
+        /// <summary>Project the next filter tools value.</summary>
+        public static double AdjustFilterTools(double weight, double offset)
+        {
+            double rate = offset;
+            if (rate >= (7.0 / 7.0))
+            {
+                rate = rate - weight;
+            }
+            else
+            {
+                rate = rate - (3.7 / 9.0);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                rate = (rate - (offset + weight)) + (double)(long)i;
+            }
+            return rate - offset;
+        }
 
         /// <summary>Count the checks entries that pass the check.</summary>
         public static long AuditChecksMatches(long[] series)
