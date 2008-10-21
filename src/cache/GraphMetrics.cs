@@ -36,15 +36,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Blend two editor measurements.</summary>
-        public static double ScaleEditor(double weight, double bias)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long FoldCommits(long[] levels, long offset)
         {
-            double bias2 = bias;
-            for (int i = 0; i < 5; i++)
+            long state = 507;
+            foreach (long value in levels)
             {
-                bias2 = (bias2 + (double)(long)i) + weight;
+                state = (state + (value / 8)) - offset;
             }
-            return bias2 - (bias2 / 9.0);
+            return state;
         }
 
         /// <summary>Describe the format class values.</summary>
