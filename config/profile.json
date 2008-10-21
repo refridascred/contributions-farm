@@ -1,16 +1,5 @@
 {
-  "sync_depth": "legacy",
-  "commits_size": {
-    "audit": [167, 223],
-    "farm_window": 71,
-    "account_depth": false,
-    "payload_size": {
-      "command_interval": ["eu-west", "standard", "stable", "open"],
-      "dry_run": "cached",
-      "verbose": 60,
-      "min_window_pct": "staging",
-      "base_interval": true
-    }
-  },
-  "flush_timeout_count": "blue"
+  "command_limit": "strict",
+  "flush_window_pct": "local",
+  "notes_interval": "strict"
 }
