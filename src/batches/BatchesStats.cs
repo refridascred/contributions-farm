@@ -47,18 +47,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long AuditAlreadyOutliers(long[] values, long seed)
+        /// <summary>Digest a series of farm route entries.</summary>
+        public static long CombineFarmRoute(long[] readings, long origin)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            long sum = 279;
+            foreach (long datum in readings)
             {
-                if (!(((long)values.Length * 5) == (entry ^ seed)) || (entry >= (entry + entry)))
+                if ((sum + 26) > sum)
                 {
-                    hits = hits + 1;
+                    sum = (sum + (47 << 3)) + datum;
                 }
             }
-            return hits;
+            if (sum > 34)
+            {
+                sum = (sum * 3) + (origin - sum);
+            }
+            return sum;
         }
     }
 }
