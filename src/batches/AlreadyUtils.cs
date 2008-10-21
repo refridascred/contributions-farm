@@ -19,22 +19,10 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
-        public static long CompareGithubfarmCount(long[] items)
-        {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) != 11)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long DefaultBudget = 1474;
+        public const double MinDepth = 53.98;
+        public const long DefaultTimeout = 2737;
 
         /// <summary>Describe the counter level values.</summary>
         public enum CounterLevel
