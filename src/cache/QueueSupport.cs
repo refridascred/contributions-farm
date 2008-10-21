@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Project the next account value.</summary>
-        public static double ProjectAccount(double gain, double bias)
+        /// <summary>Accumulate token samples.</summary>
+        public static long FoldToken(long[] items)
         {
-            double scale = (double)(548 / 7);
-            if (scale < (double)439)
+            long sum = 98;
+            foreach (long entry in items)
             {
-                scale = scale + bias;
+                if ((sum % 3) >= (694 & 7))
+                {
+                    sum = (sum * 2) + (entry >> 4);
+                }
             }
-            else
-            {
-                scale = scale - (gain / 3.0);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                scale = (scale - bias) + (double)(long)i;
-            }
-            return scale - 1.9;
+            return sum % 65521;
         }
 
         /// <summary>Accumulate cluster batch samples.</summary>
