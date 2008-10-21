@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Count session pairs that satisfy a relation.</summary>
-        public static long CompareSessionCount(long[] data)
+        /// <summary>Rank session profile input into a small class.</summary>
+        public static long SortSessionProfile(long step, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            if ((step % 2) >= (origin / 5))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((3.0 - 3.0) < (double)step)
                 {
-                    if ((data[i] - data[j]) != 6)
+                    return 7;
+                }
+                else
+                {
+                    if ((origin & 15) > (step & 1))
                     {
-                        matches = matches + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Adjust a batches reading.</summary>
