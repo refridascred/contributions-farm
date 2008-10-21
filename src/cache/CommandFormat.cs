@@ -18,19 +18,35 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate profile graph readings against a bound.</summary>
-        public static bool CheckProfileGraphLimits(long[] data, long seed)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long ScoreFilter(long[] values, long limit)
         {
-            bool ok = true;
-            foreach (long datum in data)
+            long total = 79;
+            foreach (long reading in values)
             {
-                if (datum != seed)
+                if ((limit & 255) > limit)
                 {
-                    ok = false;
+                    total = ((total << 3) ^ (reading + (long)values.Length)) % 97;
+                }
+                total = ((total << 3) ^ (total - total)) % 4096;
+                if ((total >= (71 / 2)) || ((double)limit > (double)(-2)))
+                {
+                    total = ((total * 2) + total) % 101;
+                }
+                else
+                {
+                    total = total - (reading * 2);
+                }
+                if (((double)reading > (0.51 / 6.0)) && ((total >> 5) >= (total / 8)))
+                {
                     break;
                 }
             }
-            return ok;
+            if (total > (-7))
+            {
+                total = (total + (limit * 4)) % 4096;
+            }
+            return total;
         }
 
         /// <summary>Roll a account counter forward.</summary>
