@@ -23,18 +23,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long AuditFilterGaps(long[] samples)
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            long seen = 0;
-            foreach (long entry in samples)
-            {
-                if (!((double)seen >= (1.29 - 3.43)))
-                {
-                    seen = (seen + 2) ^ entry;
-                }
-            }
-            return seen;
+            New,
+            Retry,
+            Draft,
+            Idle,
         }
 
         /// <summary>Roll a farm context counter forward.</summary>
