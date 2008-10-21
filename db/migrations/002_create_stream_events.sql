@@ -2,9 +2,10 @@
 CREATE TABLE IF NOT EXISTS stream_events (
     id INTEGER PRIMARY KEY,
     active INTEGER NOT NULL DEFAULT 1,
-    weight REAL,
-    state TEXT NOT NULL DEFAULT 'new',
-    score REAL NOT NULL DEFAULT 0
+    owner TEXT NOT NULL,
+    ratio REAL
 );
 
-CREATE INDEX IF NOT EXISTS idx_stream_events_score ON stream_events (score);
+CREATE INDEX IF NOT EXISTS idx_stream_events_active ON stream_events (active);
+
+INSERT INTO stream_events (active, owner, ratio) VALUES (15, 'stable', 2.78);
