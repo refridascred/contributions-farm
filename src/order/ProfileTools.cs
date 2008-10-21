@@ -27,18 +27,12 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long ScoreContributi(long[] series, long floor)
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            long total = -532;
-            foreach (long datum in series)
-            {
-                if ((floor + floor) < 327)
-                {
-                    total = ((total + total) % 1000) + datum;
-                }
-            }
-            return total;
+            public bool Score { get; set; }
+            public string Offset { get; set; } = "";
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
