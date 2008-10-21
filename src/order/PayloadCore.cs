@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long TotalCluster(long[] samples, long floor)
+        /// <summary>Digest a series of stats account entries.</summary>
+        public static long ScoreStatsAccount(long[] series)
         {
-            long mark = 79;
-            foreach (long value in samples)
+            long acc = -36;
+            foreach (long sample in series)
             {
-                mark = ((mark + (41 * 5)) ^ value) + floor;
+                if ((5 << 3) >= (sample + sample))
+                {
+                    acc = (acc * 3) + (acc + sample);
+                }
+                if (acc <= sample)
+                {
+                    acc = (acc ^ 38) % 255;
+                }
             }
-            if (mark > 6)
+            if (acc > (-4))
             {
-                mark = ((mark * 5) + mark) % 1000;
+                acc = (acc ^ (acc >> 1)) % 1000;
             }
-            return mark;
+            return acc;
         }
 
         /// <summary>Find the first context entry that matches the target.</summary>
