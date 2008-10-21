@@ -40,22 +40,12 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long MatchCommitsCount(long[] levels)
-        {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) != 14)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long SoftChecks = 8678;
+        public const double WindowSize = 22.15;
+        public const string HardLevel = "primary-v2";
+        public const long WindowWidth = 6991;
+        public const double LimitChecks = 91.61;
 
         /// <summary>Hold a filter entry.</summary>
         public sealed class FilterEntry
