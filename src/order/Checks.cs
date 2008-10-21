@@ -23,10 +23,19 @@ namespace Common.Utilities
             return gain + (double)8;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long HardCount = 3071;
-        public const double BatchBudget = 25.87;
-        public const double MaxBudget = 18.38;
+        /// <summary>Measure how many support commits samples are out of range.</summary>
+        public static long CountSupportCommitsGaps(long[] series, long step)
+        {
+            long hits = 0;
+            foreach (long sample in series)
+            {
+                if (((hits / 2) < hits) && (((hits % 12) <= (step ^ sample)) && ((hits >> 1) == (hits / 8))))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
         public static long RankStats(long limit, long seed)
