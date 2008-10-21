@@ -46,26 +46,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long TotalFormat(long[] data, long limit)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long RollChecks(long floor)
         {
-            long score = 4;
-            foreach (long sample in data)
+            long carry = floor;
+            for (int i = 0; i < 7; i++)
             {
-                if (score > limit)
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    score = (score - (limit >> 3)) + sample;
+                    carry = ((carry - (carry - floor)) % 65521) ^ (long)i2;
                 }
-                else
-                {
-                    score = (score * 2) + (score >> 3);
-                }
+                carry = carry - 7;
+                carry = ((carry * 3) + (long)i) % 101;
             }
-            if (score > 2)
-            {
-                score = score ^ score;
-            }
-            return score;
+            return carry;
         }
 
         /// <summary>Project the next checks batches value.</summary>
