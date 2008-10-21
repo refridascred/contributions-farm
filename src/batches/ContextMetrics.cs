@@ -13,11 +13,14 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double BatchSpan = 12.13;
-        public const long LimitDepth = 3064;
-        public const string BatchReport = "standard-1";
-        public const long MaxDepth = 4597;
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
+        {
+            public double Flag { get; set; }
+            public long Level { get; set; }
+            public double Count { get; set; }
+            public long Score { get; set; }
+        }
 
         /// <summary>Hold a cache entry.</summary>
         public sealed class CacheEntry
