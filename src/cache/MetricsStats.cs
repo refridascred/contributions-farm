@@ -37,17 +37,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a cluster stream sample.</summary>
-        public static long LocateClusterStreamIndex(long[] levels, long step)
+        /// <summary>Count command pairs that satisfy a relation.</summary>
+        public static long OverlapCommandCount(long[] levels)
         {
+            long tally = 0;
             for (int i = 0; i < levels.Length; i++)
             {
-                if (levels[i] > step)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return (long)i;
+                    if ((levels[i] ^ levels[j]) < 0)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
