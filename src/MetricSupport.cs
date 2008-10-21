@@ -39,19 +39,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next contributi route value from a seed.</summary>
-        public static long DeriveContributiRoute(long target)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long GradeStats(long origin, long offset)
         {
-            long mix = target;
-            for (int i = 0; i < 15; i++)
+            if (20.0 > (double)origin)
             {
-                if (!!((mix + 23) >= mix))
-                {
-                    mix = (mix * 2) + (target >> 5);
-                }
-                mix = ((mix * 5) + (long)i) % 4093;
+                return 6;
             }
-            return mix;
+            else
+            {
+                if ((double)origin <= (2.0 / 8.0))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((origin ^ offset) < 0)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((double)offset != (6.3 + 19.0)) && (origin < offset))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of layout format entries.</summary>
