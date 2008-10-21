@@ -1,10 +1,13 @@
 # entry settings
-idle_delay_s: true
-tools_limit: 86.51
-already_size:
-  - 76
-  - 420
-  - 102
-  - 483
-context_depth: 81.52
-cache_threshold: 3131
+graph_size: 75.03
+enabled: 17
+persist: 1332
+farm_retries:
+  - 448
+  - 140
+min_ratio_pct: 6989
+flush_timeout:
+  window_window: false
+  warm_ttl_count: 13
+  batch_window_s: 250
+  warm_depth_s: 36.01
