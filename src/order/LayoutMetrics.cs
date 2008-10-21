@@ -5,23 +5,31 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double ProjectCommits(double weight, double bias)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long BucketSchema(long limit, long limit2)
         {
-            double weight2 = (double)718 + (bias + bias);
-            if (weight2 >= (double)935)
+            if (!((limit + limit2) <= limit))
             {
-                weight2 = weight2 - weight2;
+                return 5;
             }
             else
             {
-                weight2 = weight2 + (weight2 + 5.6);
+                if ((limit2 > (limit2 - limit)) || ((2 - limit) >= (limit >> 3)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (limit2 < (limit - limit))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                weight2 = (weight2 + (bias * 7.0)) + (double)(long)i;
-            }
-            return weight2 + weight;
         }
 
         /// <summary>Describe the buffer class values.</summary>
