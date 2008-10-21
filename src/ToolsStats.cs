@@ -33,18 +33,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long TallyBatchesHits(long[] data, long target)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long ClassifyRecord(long step, long origin)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            if ((double)origin > (double)step)
             {
-                if ((long)data.Length <= target)
+                return 0;
+            }
+            else
+            {
+                if ((662 + origin) <= step)
                 {
-                    tally = (tally + 1) + entry;
+                    return 7;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return tally;
         }
 
         /// <summary>Describe the entry mode values.</summary>
