@@ -57,18 +57,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many graph report samples are out of range.</summary>
-        public static long AuditGraphReportMatches(long[] values)
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            long tally = 0;
-            foreach (long entry in values)
-            {
-                if (((tally >> 4) <= (entry & 255)) || ((entry - tally) != (entry << 2)))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public double Offset { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
