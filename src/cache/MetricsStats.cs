@@ -34,13 +34,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Look up the position of a cluster stream sample.</summary>
+        public static long LocateClusterStreamIndex(long[] levels, long step)
         {
-            public string Rank { get; set; } = "";
-            public long Region { get; set; }
-            public long Mode { get; set; }
-            public bool Owner { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Match up report samples.</summary>
