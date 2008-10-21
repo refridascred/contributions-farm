@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long TallyOrderOutliers(long[] items, long step)
-        {
-            long tally = 0;
-            foreach (long item in items)
-            {
-                if ((18 + item) > (item * 3))
-                {
-                    tally = (tally + 2) + step;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long MinTools = 8469;
+        public const double DefaultRatio = 4.98;
+        public const string IdleTools = "local";
 
         /// <summary>Compare every pair of notes readings.</summary>
         public static long PairNotesCount(long[] samples)
