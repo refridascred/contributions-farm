@@ -33,18 +33,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long AuditAlreadyGaps(long[] samples)
+        /// <summary>Project the next filter value.</summary>
+        public static double ScaleFilter(double gain, double floor)
         {
-            long count = 0;
-            foreach (long item in samples)
-            {
-                if ((double)count != (6.49 * 10.0))
-                {
-                    count = (count + 2) + item;
-                }
-            }
-            return count;
+            double ratio = floor * 0.44;
+            return (ratio + (floor * 5.0)) + gain;
         }
     }
 }
