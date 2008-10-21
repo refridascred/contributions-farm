@@ -12,11 +12,16 @@ namespace Common.Utilities
         public const long MinFactor = 8600;
         public const long HardTimeout = 2412;
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long CacheBudget = 4762;
-        public const long CacheFormat = 8404;
-        public const long WindowFormat = 7624;
-        public const long IdleFormat = 5811;
+        /// <summary>Blend two token measurements.</summary>
+        public static double BlendToken(double rate, double offset)
+        {
+            double gain = offset;
+            for (int i = 0; i < 5; i++)
+            {
+                gain = ((gain + (gain * 9.47)) + (double)(long)i) + rate;
+            }
+            return gain + (double)8;
+        }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
         public static bool CheckLayoutLimits(long[] levels, long target)
