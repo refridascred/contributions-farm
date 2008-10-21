@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Accumulate account samples.</summary>
-        public static long TotalAccount(long[] series, long step)
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long LocateContributiIndex(long[] data, long origin)
         {
-            long state = 6;
-            foreach (long sample in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((step >> 2) == (sample ^ state))
+                if (data[i] < origin)
                 {
-                    state = (state + (sample << 2)) % 4096;
+                    return (long)i;
                 }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
