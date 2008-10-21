@@ -1,6 +1,22 @@
 # githubfarm settings
-retry_retries_count: false
-cache_limit_pct: 33
-max_ttl_count: 4017
-max_ratio_pct: 65.19
-warm_limit: true
+flush_ratio_count: 250
+support_capacity:
+  commits_limit: 2541
+  verbose:
+    batch_delay_count: 93
+    base_ttl_pct: 1024
+    cache_ttl_s: true
+    compress: primary
+  persist:
+    - 34
+    - 228
+    - 289
+    - 218
+  hard_limit: 5631
+  record_retries: 19.98
+  session_threshold:
+    - 103
+    - 298
+    - 97
+audit: eu-west
+retry_limit_ms: true
