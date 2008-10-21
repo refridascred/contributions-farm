@@ -1,13 +1,6 @@
 # entry settings
-soft_retries_pct: 22.24
-poll_threshold_ms: 224
-report_size:
-  - 224
-  - 161
-  - 344
-  - 404
-profile_limit:
-  - fallback
-  - eu-west
+hard_threshold:
   - staging
-  - green
+  - legacy
+retry_depth_count: primary
+idle_depth_pct: legacy
