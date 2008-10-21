@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long DigestGraph(long[] levels, long origin)
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            long carry = 0;
-            foreach (long sample in levels)
-            {
-                carry = ((carry << 2) ^ (sample % 64)) + origin;
-            }
-            if (carry > 20)
-            {
-                carry = (carry - carry) % 1000;
-            }
-            return carry;
+            public long Score { get; set; }
+            public double Offset { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Derive the next session value from a seed.</summary>
