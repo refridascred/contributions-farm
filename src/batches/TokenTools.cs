@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            Queued,
-            Stale,
-            Done,
-            Idle,
+            public long Ratio { get; set; }
+            public long Count { get; set; }
+            public long Region { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Hold a githubfarm info.</summary>
