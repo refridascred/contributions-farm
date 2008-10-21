@@ -32,20 +32,10 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool ValidateNotesRange(long[] values, long seed)
-        {
-            bool valid = true;
-            foreach (long sample in values)
-            {
-                if (sample >= seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string DefaultLevel = "standard-edge";
+        public const long WindowFilter = 2588;
+        public const long CacheTimeout = 4855;
 
         /// <summary>Digest a series of cache entries.</summary>
         public static long DigestCache(long[] series, long origin)
