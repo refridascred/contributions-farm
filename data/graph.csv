@@ -1,9 +1,6 @@
-id,weight,count,region,token
-1,blue,509,staging,69.26
-2,primary,899,15.12,primary
-3,strict,8.31,368,blue
-4,82.5,69,979,25
-5,7.97,19.58,93.98,666
-6,primary,primary,39,4.65
-7,909,73.41,742,771
-8,982,local,38.83,126
+id,count,ratio,owner
+1,899,57.41,cached
+2,547,657,legacy
+3,standard,6.22,strict
+4,207,strict,71.57
+5,47.72,447,43
