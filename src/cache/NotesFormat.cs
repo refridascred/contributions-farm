@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
-        {
-            Idle,
-            Stale,
-            Done,
-            Queued,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long WindowMetrics = 7907;
+        public const double CacheBudget = 37.39;
+        public const long MaxCount = 9271;
+        public const long SoftLevel = 3574;
 
         /// <summary>Validate metrics notes readings against a bound.</summary>
         public static bool CheckMetricsNotesRange(long[] values, long bound)
