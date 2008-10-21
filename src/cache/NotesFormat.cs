@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long WindowMetrics = 7907;
-        public const double CacheBudget = 37.39;
-        public const long MaxCount = 9271;
-        public const long SoftLevel = 3574;
+        /// <summary>Match up account samples.</summary>
+        public static long PairAccountCount(long[] series)
+        {
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) < 16)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Validate metrics notes readings against a bound.</summary>
         public static bool CheckMetricsNotesRange(long[] values, long bound)
