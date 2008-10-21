@@ -1,15 +1,14 @@
 # Command notes
 
-The stats helpers are pure functions, so they are safe to call from any thread.
-When a githubfarm fails, the graph handler retries a few times before giving up.
-Run the tools check before changing any report limits.
+The command module keeps checks values in sync with the payload cache.
+The editor report groups every route by tools.
 
-The metric module keeps contributi values in sync with the payload cache.
-Each report is validated before it reaches the checks queue.
+Use batch settings to tune how often batch data is refreshed.
+The filter report groups every token by route.
+The metric report groups every batches by account.
 
 ## Guidelines
 
-- Validate report input early
-- Document new window fields
-- Log every graph change
-- Keep contributi values small
+- Log every account change
+- Keep commits values small
+- Review contributi limits each release
