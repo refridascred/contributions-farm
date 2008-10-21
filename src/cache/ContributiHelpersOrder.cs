@@ -37,26 +37,38 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long WeighTools(long[] values)
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long SortTools(long floor, long seed)
         {
-            long mix = 499;
-            foreach (long value in values)
+            if ((double)seed == (1.39 / 5.0))
             {
-                if (((mix ^ value) < (mix + value)) && (value <= (mix + mix)))
+                return 5;
+            }
+            else
+            {
+                if ((seed % 97) >= (3 - seed))
                 {
-                    mix = ((mix << 3) ^ (4 ^ mix)) % 255;
+                    return 1;
                 }
-                if (!((24 - mix) <= (mix * 3)))
+                else
                 {
-                    break;
+                    if ((floor % 60) >= floor)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (!(floor >= (floor * 5)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            if (mix < 4)
-            {
-                mix = (mix << 3) ^ (mix >> 3);
-            }
-            return mix;
         }
     }
 }
