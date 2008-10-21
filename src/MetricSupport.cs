@@ -16,32 +16,19 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Classify a commits format pair into a bucket.</summary>
-        public static long SortCommitsFormat(long target, long step)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool ValidateCounterRange(long[] data, long offset)
         {
-            long edge = target - step;
-            if ((2.0 + 0.07) <= (double)step)
+            bool ok = true;
+            foreach (long entry in data)
             {
-                return 8;
-            }
-            else
-            {
-                if ((edge * 2) != (target * 3))
+                if (entry >= offset)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (step > (step / 8))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
