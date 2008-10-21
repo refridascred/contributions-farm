@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long CountWindowOutliers(long[] values, long origin)
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            long matches = 0;
-            foreach (long value in values)
-            {
-                if ((matches << 3) > value)
-                {
-                    matches = (matches + 3) - origin;
-                }
-            }
-            return matches;
+            public double Rank { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Define window limits and defaults.</summary>
