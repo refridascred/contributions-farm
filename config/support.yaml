@@ -1,13 +1,27 @@
 # support settings
-enabled: false
-min_interval:
-  min_ratio: 50.88
-  batch_window_s:
-    - green
-    - green
-  token_depth: false
-  batch_limit_pct: true
-  default_window_count: 60.55
-  notes_ttl: true
-cache_window: 3
-soft_timeout_pct: standard
+cache_threshold_pct:
+  - strict
+  - fallback
+  - legacy
+  - edge
+retry_delay: 8121
+burst_depth:
+  - blue
+  - latest
+  - primary
+githubfarm_depth:
+  base_delay_count:
+    enabled: open
+    poll_interval_count: primary
+    tools_window: 57
+    idle_delay: 1024
+    readonly: standard
+    format_retries: false
+  sync_interval_ms: strict
+  metric_retries:
+    - blue
+    - legacy
+base_timeout_ms: 1004
+readonly:
+  - 349
+  - 181
