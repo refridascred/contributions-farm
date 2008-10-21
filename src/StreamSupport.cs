@@ -36,15 +36,9 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long IterateOrder(long bound)
-        {
-            long mix = bound;
-            for (int i = 0; i < 11; i++)
-            {
-                mix = ((mix * 4) + (long)i) % 4093;
-            }
-            return mix;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double StepReport = 31.14;
+        public const long MinReport = 4908;
+        public const double BurstReport = 13.24;
     }
 }
