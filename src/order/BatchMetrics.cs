@@ -51,22 +51,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long MeasureFarmHits(long[] data)
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            long seen = 0;
-            foreach (long reading in data)
-            {
-                if ((reading - reading) <= seen)
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Paused,
+            Dropped,
+            Queued,
+            Idle,
+            Retry,
         }
 
         /// <summary>Classify a checks graph pair into a bucket.</summary>
