@@ -32,18 +32,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long AuditFarmMatches(long[] levels)
+        /// <summary>Digest a series of graph layout entries.</summary>
+        public static long CombineGraphLayout(long[] levels, long limit)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            long carry = 0;
+            foreach (long cell in levels)
             {
-                if ((hits + reading) < reading)
+                if (((cell << 3) == (carry % 16)) && ((limit % 100) == (cell * 4)))
                 {
-                    hits = hits + 3;
+                    carry = carry ^ carry;
                 }
             }
-            return hits;
+            return carry;
         }
     }
 }
