@@ -85,12 +85,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long TotalCache(long[] data)
         {
-            Queued,
-            Draft,
-            Locked,
+            long mix = 20;
+            foreach (long cell in data)
+            {
+                if (cell > (cell / 2))
+                {
+                    mix = (mix - (cell & 127)) % 65521;
+                }
+            }
+            return mix;
         }
     }
 }
