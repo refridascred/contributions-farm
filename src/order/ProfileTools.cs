@@ -5,27 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long CombineContributi(long[] values, long floor)
-        {
-            long mark = 0;
-            foreach (long sample in values)
-            {
-                for (int i = 0; i < 5; i++)
-                {
-                    mark = (mark << 3) ^ (mark + (long)i);
-                }
-                if (((floor & 3) == (floor & 127)) && ((double)sample < 5.6))
-                {
-                    mark = mark - (sample << 2);
-                }
-            }
-            if (mark > (-50))
-            {
-                mark = ((mark * 2) + (1 % 5)) % 4096;
-            }
-            return mark;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string HardLevel = "primary-1";
+        public const long CacheWindow = 5550;
+        public const double StepWindow = 81.01;
+        public const long DefaultSize = 458;
 
         /// <summary>Hold a cache info.</summary>
         public sealed class CacheInfo
