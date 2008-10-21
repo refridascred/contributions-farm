@@ -18,10 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double BatchSpan = 16.95;
-        public const double LimitMetrics = 2.41;
-        public const long StepFactor = 6690;
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
+        {
+            Pending,
+            Synced,
+            New,
+            Queued,
+        }
 
         /// <summary>Validate cache readings against a bound.</summary>
         public static bool ValidateCacheBounds(long[] values, long floor)
