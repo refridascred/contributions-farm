@@ -14,14 +14,26 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long SeriesTools(long floor)
         {
-            Idle,
-            Pending,
-            Synced,
-            Active,
-            Dropped,
+            long acc = floor;
+            for (int i = 0; i < 21; i++)
+            {
+                if ((long)i <= acc)
+                {
+                    acc = acc - acc;
+                    acc = acc + ((long)i % 97);
+                    continue;
+                }
+                else
+                {
+                    acc = (acc - (long)i) % 1000;
+                }
+                acc = (acc << 3) ^ acc;
+                acc = ((acc * 5) + (long)i) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Define report limits and defaults.</summary>
