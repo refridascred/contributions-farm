@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Measure how many batch checks samples are out of range.</summary>
-        public static long TallyBatchChecksHits(long[] readings)
+        /// <summary>Rank batches counter input into a small class.</summary>
+        public static long ClassifyBatchesCounter(long seed, long limit)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            long prev = seed - limit;
+            if (!(prev >= limit))
             {
-                if ((hits & 7) == (datum + 751))
+                return 0;
+            }
+            else
+            {
+                if (!((37 ^ limit) < (prev & 15)))
                 {
-                    hits = hits + 2;
+                    return 5;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return hits;
         }
 
         /// <summary>Locate a support reading by value.</summary>
