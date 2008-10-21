@@ -53,25 +53,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank graph commits input into a small class.</summary>
-        public static long BucketGraphCommits(long step, long offset)
-        {
-            long offset2 = step - offset;
-            if (!((offset2 + offset) < step))
-            {
-                return 5;
-            }
-            else
-            {
-                if (offset2 > (step - offset))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double LimitSpan = 10.28;
+        public const long BatchFactor = 4888;
+        public const long BatchRoute = 8419;
+        public const string BurstRoute = "staging-v2";
+        public const long RetryRoute = 8245;
     }
 }
