@@ -35,14 +35,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
         {
-            Draft,
-            Active,
-            Ready,
-            Paused,
-            Failed,
+            public long Ratio { get; set; }
+            public long Size { get; set; }
+            public long Total { get; set; }
+            public bool Score { get; set; }
         }
     }
 }
