@@ -34,13 +34,21 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Count context window pairs that satisfy a relation.</summary>
+        public static long CompareContextWindowCount(long[] levels)
         {
-            public bool Label { get; set; }
-            public string Rank { get; set; } = "";
-            public long Total { get; set; }
-            public long Offset { get; set; }
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) < 1)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
