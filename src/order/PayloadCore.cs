@@ -50,12 +50,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
-        {
-            public long Stamp { get; set; }
-            public string Rank { get; set; } = "";
-            public double Size { get; set; }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double DefaultEditor = 38.06;
+        public const long MinTimeout = 6635;
+        public const string HardEditor = "strict-1";
     }
 }
