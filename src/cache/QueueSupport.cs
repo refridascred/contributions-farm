@@ -28,16 +28,21 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long IterateCommand(long offset)
+        /// <summary>Count context pairs that satisfy a relation.</summary>
+        public static long CompareContextCount(long[] series)
         {
-            long state = offset;
-            for (int i = 0; i < 15; i++)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                state = ((state * 4) + (6 + 7)) % 4096;
-                state = ((state * 3) + (long)i) % 4093;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) < 2)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return state;
+            return matches;
         }
     }
 }
