@@ -23,13 +23,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Measure how many account editor samples are out of range.</summary>
+        public static long AuditAccountEditorOutliers(long[] readings, long target)
         {
-            New,
-            Retry,
-            Draft,
-            Idle,
+            long seen = 0;
+            foreach (long value in readings)
+            {
+                if ((target * 3) > (seen - value))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Roll a farm context counter forward.</summary>
