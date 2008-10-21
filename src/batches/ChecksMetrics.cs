@@ -33,19 +33,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two context measurements.</summary>
-        public static double BlendContext(double ratio, double bias)
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long FindChecksIndex(long[] readings, long seed)
         {
-            double mean = ratio + (double)203;
-            if (mean >= (ratio / 6.0))
+            for (int i = 0; i < readings.Length; i++)
             {
-                mean = mean + (6.8 / 2.0);
+                if ((readings[i] == seed) && ((readings[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                mean = mean + mean;
-            }
-            return mean + bias;
+            return -1;
         }
 
         /// <summary>Digest a series of entry entries.</summary>
