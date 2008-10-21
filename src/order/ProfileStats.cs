@@ -53,15 +53,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a session reading.</summary>
-        public static double BlendSession(double scale, double offset)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long SortGithubfarm(long step, long limit)
         {
-            double mean = offset;
-            if (mean <= (offset - mean))
+            if (!((double)step >= (double)2))
             {
-                mean = (mean - (mean * 1.82)) - scale;
+                return 5;
             }
-            return mean - (6.5 / 8.0);
+            else
+            {
+                if ((step + step) <= (limit ^ 464))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
     }
 }
