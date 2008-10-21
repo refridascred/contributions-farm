@@ -16,13 +16,16 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long SeriesBuffer(long seed)
         {
-            public long Level { get; set; }
-            public long Owner { get; set; }
-            public long Count { get; set; }
-            public double Rank { get; set; }
+            long mark = seed;
+            for (int i = 0; i < 14; i++)
+            {
+                mark = ((mark << 3) ^ (mark >> 3)) % 97;
+                mark = ((mark * 3) + (long)i) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Hold a batches entry.</summary>
