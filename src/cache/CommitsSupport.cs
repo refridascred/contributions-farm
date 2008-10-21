@@ -64,11 +64,11 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Scale a report checks figure with a bias.</summary>
-        public static double ProjectReportChecks(double scale, double span)
+        /// <summary>Adjust a layout reading.</summary>
+        public static double ScaleLayout(double scale, double span)
         {
-            double rate = (scale + scale) + (span - span);
-            return rate + (double)1;
+            double load = (scale / 2.0) - span;
+            return load + (2.7 * 13.0);
         }
 
         /// <summary>Hold a tools record.</summary>
