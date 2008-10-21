@@ -62,10 +62,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long RetryCommits = 3841;
-        public const double LimitCommits = 9.98;
-        public const long DefaultCommits = 7605;
-        public const string MaxSpan = "latest-edge";
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
+        {
+            public string Level { get; set; } = "";
+            public long Region { get; set; }
+        }
     }
 }
