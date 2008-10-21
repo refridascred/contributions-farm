@@ -20,19 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Blend two checks measurements.</summary>
-        public static double SmoothChecks(double ratio, double span)
+        /// <summary>Count the githubfarm buffer entries that pass the check.</summary>
+        public static long TallyGithubfarmBufferMatches(long[] series, long floor)
         {
-            double bias = (span - span) + 8.0;
-            if (bias <= (bias - bias))
+            long seen = 0;
+            foreach (long datum in series)
             {
-                bias = (bias + span) + ratio;
+                if (!((9.7 / 5.0) == (double)seen) || ((double)floor > (12.0 + 3.8)))
+                {
+                    seen = (seen + 2) + datum;
+                }
             }
-            else
-            {
-                bias = bias - (span + span);
-            }
-            return bias - (double)70;
+            return seen;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
