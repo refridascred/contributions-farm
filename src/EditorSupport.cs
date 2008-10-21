@@ -80,15 +80,19 @@ namespace Common.Utilities
             return bias2 + (6.8 - 4.5);
         }
 
-        /// <summary>Iterate the commits metric series from a seed.</summary>
-        public static long RollCommitsMetric(long offset)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool CheckEditorRange(long[] series, long seed)
         {
-            long result = offset;
-            for (int i = 0; i < 24; i++)
+            bool valid = true;
+            foreach (long item in series)
             {
-                result = ((result * 5) + (long)i) % 1000;
+                if (item > seed)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return result;
+            return valid;
         }
     }
 }
