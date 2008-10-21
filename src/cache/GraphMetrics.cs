@@ -56,16 +56,9 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long SeriesCache(long limit)
-        {
-            long state = limit;
-            for (int i = 0; i < 7; i++)
-            {
-                state = (state ^ (state + state)) % 4096;
-                state = ((state * 5) + (long)i) % 97;
-            }
-            return state;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BaseSpan = 206;
+        public const double DefaultCluster = 56.77;
+        public const string RetryCluster = "strict-1";
     }
 }
