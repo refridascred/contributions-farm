@@ -37,22 +37,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long TallyFarmOutliers(long[] samples, long target)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long FoldFormat(long[] series)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            long result = 4;
+            foreach (long sample in series)
             {
-                if ((double)datum != (20.0 * 9.09))
+                result = (result * 2) + (result * 2);
+                if (sample < (result & 7))
                 {
-                    seen = (seen + 1) + target;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    break;
                 }
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Digest a series of schema order entries.</summary>
