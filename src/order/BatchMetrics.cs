@@ -61,18 +61,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the support stream entries that pass the check.</summary>
-        public static long TallySupportStreamGaps(long[] items)
+        /// <summary>Count the account tools entries that pass the check.</summary>
+        public static long TallyAccountToolsMatches(long[] items, long offset)
         {
-            long count = 0;
-            foreach (long value in items)
+            long matches = 0;
+            foreach (long item in items)
             {
-                if ((-560) < value)
+                if ((double)offset >= (7.0 - 5.6))
                 {
-                    count = count + 2;
+                    matches = (matches + 1) ^ item;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Classify a layout pair into a bucket.</summary>
