@@ -34,12 +34,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            public long Ratio { get; set; }
-            public long Owner { get; set; }
-            public double Limit { get; set; }
+            Locked,
+            Synced,
+            Draft,
+            Dropped,
         }
 
         /// <summary>Fold a list of editor readings.</summary>
