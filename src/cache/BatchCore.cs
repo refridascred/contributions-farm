@@ -17,18 +17,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many commits context samples are out of range.</summary>
-        public static long AuditCommitsContextOutliers(long[] values, long target)
+        /// <summary>Audit profile counter readings against a rule.</summary>
+        public static long TallyProfileCounterMatches(long[] values, long origin)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            long count = 0;
+            foreach (long datum in values)
             {
-                if ((tally + tally) > (entry - entry))
+                if (65 <= (count % 100))
                 {
-                    tally = (tally + 1) + target;
+                    count = ((count + 2) ^ datum) + origin;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
