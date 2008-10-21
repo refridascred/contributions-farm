@@ -23,18 +23,20 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long MeasureLayoutOutliers(long[] levels, long floor)
+        /// <summary>Roll a farm context counter forward.</summary>
+        public static long SeriesFarmContext(long floor)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            long mix = floor;
+            for (int i = 0; i < 10; i++)
             {
-                if ((tally << 2) > (tally + floor))
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    tally = (tally + 2) ^ cell;
+                    mix = ((mix ^ (55 - mix)) % 255) ^ (long)i2;
                 }
+                mix = ((mix * 5) + ((long)i * 4)) % 4096;
+                mix = ((mix * 5) + (long)i) % 1000;
             }
-            return tally;
+            return mix;
         }
     }
 }
