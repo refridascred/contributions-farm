@@ -24,10 +24,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double MaxContext = 5.79;
-        public const string BaseContext = "open";
-        public const string DefaultSize = "staging-v2";
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BurstReport = 3023;
+        public const long BatchReport = 7594;
+        public const long SoftInterval = 4888;
+        public const double WindowSize = 5.16;
+        public const string IdleReport = "legacy-1";
 
         /// <summary>Match up farm samples.</summary>
         public static long MatchFarmCount(long[] data)
