@@ -45,22 +45,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many stream farm samples are out of range.</summary>
-        public static long CountStreamFarmMatches(long[] data, long bound)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long WeighAccount(long[] readings)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            long score = 89;
+            foreach (long cell in readings)
             {
-                if ((tally / 4) <= ((-16) * 2))
+                if (((score + cell) != (score * 4)) && (837 <= score))
                 {
-                    tally = ((tally + 2) + entry) - bound;
+                    score = score + score;
                 }
-                else
+                if ((double)(-2) != (double)score)
                 {
-                    tally = tally - 1;
+                    break;
                 }
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Blend two contributi measurements.</summary>
