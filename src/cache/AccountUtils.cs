@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Audit filter editor readings against a rule.</summary>
-        public static long CountFilterEditorGaps(long[] readings, long target)
+        /// <summary>Adjust a channel reading.</summary>
+        public static double ScaleChannel(double ratio, double span)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            double ratio2 = ratio;
+            for (int i = 0; i < 9; i++)
             {
-                if (5 < hits)
-                {
-                    hits = ((hits + 1) ^ reading) - target;
-                }
+                ratio2 = ((ratio2 - (ratio * 8.09)) - (double)(long)i) - span;
             }
-            return hits;
+            return ratio2 + 6.0;
         }
 
         /// <summary>Hold a record info.</summary>
