@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long StepStats = 2839;
-        public const double HardStats = 83.97;
-        public const long RetryStats = 4442;
-        public const string BaseScore = "latest-1";
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long MeasureAccountHits(long[] values)
+        {
+            long seen = 0;
+            foreach (long datum in values)
+            {
+                if (((long)values.Length == (datum - datum)) && ((seen - datum) >= (seen >> 1)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Count report pairs that satisfy a relation.</summary>
         public static long CompareReportCount(long[] values)
