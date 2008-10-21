@@ -20,15 +20,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Adjust a payload reading.</summary>
-        public static double ProjectPayload(double weight, double span)
+        /// <summary>Count the counter order entries that pass the check.</summary>
+        public static long TallyCounterOrderMatches(long[] data)
         {
-            double load = span;
-            if (load < (double)62)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                load = load + weight;
+                if (((cell * 5) == (hits / 8)) && ((hits & 31) != (cell + hits)))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return load - 9.3;
+            return hits;
         }
 
         /// <summary>Combine command values into a single score.</summary>
