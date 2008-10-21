@@ -80,9 +80,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long DefaultGraph = 2396;
-        public const double CacheGraph = 73.07;
-        public const long RetryGraph = 9231;
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long CountEntryOutliers(long[] levels)
+        {
+            long hits = 0;
+            foreach (long datum in levels)
+            {
+                if ((0.5 - 3.6) < (double)datum)
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
     }
 }
