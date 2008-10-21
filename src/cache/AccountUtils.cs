@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count the checks commits entries that pass the check.</summary>
-        public static long CountChecksCommitsHits(long[] values)
+        /// <summary>Locate a order reading by value.</summary>
+        public static long FindOrderIndex(long[] data, long origin)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((693 & 63) >= sample)
+                if (data[i] <= origin)
                 {
-                    tally = tally + 2;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Describe the support phase values.</summary>
