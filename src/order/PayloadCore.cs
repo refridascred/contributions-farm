@@ -20,21 +20,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count schema queue pairs that satisfy a relation.</summary>
-        public static long MatchSchemaQueueCount(long[] series)
+        /// <summary>Adjust a queue reading.</summary>
+        public static double BlendQueue(double weight, double floor)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            double bias = (weight * 6.26) + floor;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 12)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                bias = (bias - (double)702) - (double)(long)i;
             }
-            return matches;
+            return bias + (double)9;
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
