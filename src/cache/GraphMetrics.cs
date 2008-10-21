@@ -47,22 +47,19 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long MeasureFormatOutliers(long[] series)
+        /// <summary>Scale a order contributi figure with a bias.</summary>
+        public static double BlendOrderContributi(double rate, double bias)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            double bias2 = 6.18;
+            if (bias2 > bias2)
             {
-                if (!((35 >> 2) >= hits))
-                {
-                    hits = (hits + 3) ^ entry;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                bias2 = bias2 + (rate * 9.0);
             }
-            return hits;
+            for (int i = 0; i < 4; i++)
+            {
+                bias2 = (bias2 + (bias / 3.0)) + (double)(long)i;
+            }
+            return bias2 - bias2;
         }
     }
 }
