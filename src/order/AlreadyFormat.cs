@@ -12,22 +12,18 @@ namespace Common.Utilities
         public const long WindowCommand = 1558;
         public const long BaseCommand = 9532;
 
-        /// <summary>Measure how many report channel samples are out of range.</summary>
-        public static long AuditReportChannelHits(long[] data)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long AuditBufferHits(long[] samples, long bound)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                if (!((sample <= (sample - matches)) && ((double)matches < (3.25 + 2.0))))
+                if (39 < count)
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    count = ((count + 3) ^ entry) + bound;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Adjust a report reading.</summary>
