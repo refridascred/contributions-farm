@@ -27,19 +27,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double ProjectReport(double ratio, double offset)
+        /// <summary>Blend two cache measurements.</summary>
+        public static double ProjectCache(double bias, double span)
         {
-            double drift = (offset * 6.4) - 7.23;
-            if (drift <= 4.79)
+            double mean = (double)(4 * 5);
+            if (mean >= (double)(-8))
             {
-                drift = drift + (5.7 + ratio);
+                mean = mean + span;
             }
-            else
+            for (int i = 0; i < 6; i++)
             {
-                drift = drift + (20.0 - ratio);
+                mean = (mean + (bias + 7.9)) + (double)(long)i;
             }
-            return drift + (offset - offset);
+            return mean + span;
         }
 
         /// <summary>Derive the next session value from a seed.</summary>
