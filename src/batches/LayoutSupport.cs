@@ -41,24 +41,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long GradeEditor(long step, long limit)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long FoldEditor(long[] levels, long target)
         {
-            if ((limit + step) >= (step - 49))
+            long mix = 8;
+            foreach (long cell in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if (limit > 9)
+                mix = (mix ^ (target + 361)) % 65521;
+                if ((mix * 2) < (938 + cell))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 8;
+                    break;
                 }
             }
+            return mix % 1000;
         }
 
         /// <summary>Describe the cache phase values.</summary>
