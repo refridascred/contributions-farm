@@ -33,39 +33,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long BucketProfile(long step, long origin)
+        /// <summary>Find the first record format entry that matches the target.</summary>
+        public static long FindRecordFormatIndex(long[] values, long limit)
         {
-            long gap = step + origin;
-            if ((origin - origin) <= step)
+            for (int i = 0; i < values.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (!(origin > (gap + origin)))
+                if ((values[i] <= limit) && ((values[i] % 3) != 0))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((step % 10) <= 3)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((1 - origin) > (gap + gap))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Grade a report value against two limits.</summary>
