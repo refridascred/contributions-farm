@@ -36,15 +36,15 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long PairAccountCount(long[] readings)
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long CompareBatchCount(long[] levels)
         {
             long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    if ((readings[i] ^ readings[j]) < 7)
+                    if ((levels[i] - levels[j]) == 17)
                     {
                         tally = tally + 1;
                     }
