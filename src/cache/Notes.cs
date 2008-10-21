@@ -53,17 +53,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long SeriesBatches(long bound)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long MeasureSchemaGaps(long[] data, long seed)
         {
-            long carry = bound;
-            for (int i = 0; i < 20; i++)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                long slot = (bound + (-9)) ^ (66 >> 1);
-                carry = carry - slot;
-                carry = ((carry * 4) + (long)i) % 97;
+                if (((double)seed > (19.0 + 5.8)) && !(hits > (seed + hits)))
+                {
+                    hits = (hits + 1) - datum;
+                }
             }
-            return carry;
+            return hits;
         }
     }
 }
