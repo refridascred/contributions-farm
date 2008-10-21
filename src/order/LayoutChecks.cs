@@ -37,11 +37,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long LocateMetricsIndex(long[] levels, long floor)
         {
-            public bool Level { get; set; }
-            public long Owner { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] > floor) && ((levels[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Compare every pair of commits farm readings.</summary>
