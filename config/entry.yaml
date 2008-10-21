@@ -1,16 +1,25 @@
 # entry settings
-sync_window_s:
-  burst_window: 55
-  min_ttl_count:
-    soft_window_s:
-      - local
-      - standard
-      - staging
-    contributi_ttl: 3207
-    dry_run: cached
-  burst_ttl_s: 13.07
-burst_limit_count: fallback
-warm_depth: 3
-entry_ratio: 17.22
-retry_depth: 100
-max_threshold_pct: edge
+readonly:
+  warm_ttl_ms: true
+  hard_capacity_ms: 28.74
+  audit:
+    - 85
+    - 490
+  checks_threshold: true
+  base_ratio_s: false
+entry_threshold: 43.88
+sync_retries_s: 35.4
+compress: false
+enabled:
+  burst_depth_pct: 95
+  compress:
+    profile_size: false
+    window_depth: 5557
+    schema_ratio: true
+    metric_capacity: stable
+    tools_interval:
+      - 227
+      - 7
+      - 249
+  strict: 250
+  idle_retries_count: 55
