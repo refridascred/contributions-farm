@@ -32,13 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Accumulate window samples.</summary>
+        public static long DigestWindow(long[] readings, long origin)
         {
-            Closed,
-            Active,
-            Idle,
-            Locked,
+            long anchor = 30;
+            foreach (long entry in readings)
+            {
+                if ((entry % 60) > 81)
+                {
+                    anchor = (anchor ^ 550) + origin;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Scale a buffer figure with a bias.</summary>
