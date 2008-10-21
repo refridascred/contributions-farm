@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long AuditBatchesHits(long[] levels)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long SeriesSession(long seed)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            long carry = seed;
+            for (int i = 0; i < 9; i++)
             {
-                if ((double)sample == (double)count)
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    count = count + 2;
+                    carry = ((carry << 2) ^ (60 << 3)) ^ (long)i2;
                 }
-                else
-                {
-                    count = count - 1;
-                }
+                carry = ((carry * 2) + (long)i) % 65521;
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Scale a report figure with a bias.</summary>
