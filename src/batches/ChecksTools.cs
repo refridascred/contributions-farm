@@ -28,16 +28,12 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Adjust a batch already reading.</summary>
-        public static double AdjustBatchAlready(double weight, double span)
-        {
-            double mean = (weight + weight) - weight;
-            for (int i = 0; i < 5; i++)
-            {
-                mean = ((mean + mean) - (double)(long)i) - span;
-            }
-            return mean + (weight - mean);
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long LimitGraph = 5819;
+        public const long DefaultWidth = 8989;
+        public const double MaxGraph = 32.85;
+        public const string SoftInterval = "cached-edge";
+        public const long BaseGraph = 9822;
 
         /// <summary>Match up batches samples.</summary>
         public static long MatchBatchesCount(long[] series)
