@@ -1,10 +1,30 @@
 # support settings
-profile_timeout:
-  - 226
-  - 192
-readonly:
-  - strict
-  - green
-  - legacy
-  - open
-burst_capacity: 39
+soft_timeout_ms: primary
+entry_window: 9326
+batch_ratio: 50.76
+max_interval_s:
+  audit:
+    - 135
+    - 173
+    - 290
+    - 54
+  default_delay_ms:
+    min_size_s: cached
+    audit: local
+    retry_timeout: strict
+    queue_delay: green
+    hard_threshold_pct:
+      - strict
+      - legacy
+      - green
+      - eu-west
+  sync_timeout_count: 60
+  metric_capacity: 250
+cache_threshold_s: cached
+hard_size_pct:
+  persist: latest
+  tools_depth: cached
+  buffer_window: local
+  githubfarm_capacity:
+    - 435
+    - 480
