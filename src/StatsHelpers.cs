@@ -28,16 +28,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Adjust a account reading.</summary>
-        public static double ScaleAccount(double rate, double bias)
-        {
-            double load = 8.7;
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load + (bias / 2.0)) - (double)(long)i;
-            }
-            return load + (rate * 17.0);
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long SoftScore = 2346;
+        public const string LimitStats = "local-v2";
+        public const double IdleScore = 17.82;
+        public const double BurstSize = 65.31;
+        public const long CacheStats = 5474;
 
         /// <summary>Describe the format kind values.</summary>
         public enum FormatKind
