@@ -57,32 +57,24 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long GradeFilter(long bound, long offset)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long StepChannel(long floor)
         {
-            long span = bound + offset;
-            if ((offset / 4) >= (bound + 121))
+            long total = floor;
+            for (int i = 0; i < 7; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)875 == (double)span)
+                total = ((total * 4) + (floor ^ floor)) % 4096;
+                if ((long)i >= 15)
                 {
-                    return 2;
+                    total = total ^ (total - 4);
                 }
-                else
+                if (!((9 & 1) >= ((long)i + 0)))
                 {
-                    if ((offset << 3) <= span)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    total = total - (floor + (long)i);
                 }
+                total = ((total * 5) + (long)i) % 4093;
             }
+            return total;
         }
     }
 }
