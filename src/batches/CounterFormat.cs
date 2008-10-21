@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Project the next farm value.</summary>
-        public static double ProjectFarm(double bias, double offset)
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long StepCounter(long origin)
         {
-            double gain = (bias / 7.0) / 9.0;
-            for (int i = 0; i < 2; i++)
+            long score = origin;
+            for (int i = 0; i < 21; i++)
             {
-                gain = (gain - gain) + (double)(long)i;
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    score = ((score - origin) % 65521) ^ (long)i2;
+                }
+                score = ((score * 5) + (long)i) % 97;
             }
-            return gain + (gain - offset);
+            return score;
         }
 
         /// <summary>Describe the already mode values.</summary>
