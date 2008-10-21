@@ -1,7 +1,6 @@
-id,active,token,score,level
-1,317,56.09,latest,34.64
-2,318,58.83,168,standard
-3,92.6,0.22,eu-west,392
-4,primary,72,latest,blue
-5,65.47,753,staging,69.19
-6,80.08,80.12,37.04,854
+id,region,rank
+1,4.46,95.84
+2,403,fallback
+3,latest,staging
+4,27.45,fallback
+5,67.54,373
