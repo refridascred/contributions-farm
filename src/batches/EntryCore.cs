@@ -49,9 +49,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double HardCount = 74.82;
-        public const string MaxBatches = "strict";
-        public const string BaseBudget = "strict-1";
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long FindQueueIndex(long[] data, long target)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
