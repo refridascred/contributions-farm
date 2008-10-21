@@ -20,15 +20,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate support batches samples.</summary>
-        public static long ScoreSupportBatches(long[] readings)
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            long mark = 0;
-            foreach (long value in readings)
-            {
-                mark = (mark * 3) + (value + value);
-            }
-            return mark % 1000;
+            Stale,
+            Locked,
+            Dropped,
+            Closed,
         }
 
         /// <summary>Combine command values into a single score.</summary>
