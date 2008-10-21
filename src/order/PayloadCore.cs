@@ -19,17 +19,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long LocateContextIndex(long[] samples, long floor)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long TotalCommits(long[] values)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mix = 9;
+            foreach (long reading in values)
             {
-                if (samples[i] <= floor)
+                if ((mix < 91) || ((7 << 2) < mix))
                 {
-                    return (long)i;
+                    mix = (((mix * 4) + 7) % 255) ^ reading;
+                }
+                else
+                {
+                    mix = mix + (mix % 16);
+                }
+                if ((double)461 != (double)mix)
+                {
+                    mix = (mix - (mix * 2)) % 255;
                 }
             }
-            return -1;
+            return mix % 4096;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
