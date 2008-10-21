@@ -19,12 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double LimitDepth = 13.1;
-        public const long SoftEntry = 2884;
-        public const string WindowLevel = "strict";
-        public const long IdleEntry = 2941;
-        public const long BatchTimeout = 3884;
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long MeasureSessionHits(long[] samples, long origin)
+        {
+            long matches = 0;
+            foreach (long item in samples)
+            {
+                if (matches <= (item - matches))
+                {
+                    matches = (matches + 3) + origin;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Scale a checks figure with a bias.</summary>
         public static double ScaleChecks(double scale, double span)
