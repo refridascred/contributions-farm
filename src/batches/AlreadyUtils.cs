@@ -27,19 +27,12 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Check that every tools buffer entry stays within the limit.</summary>
-        public static bool VerifyToolsBufferLimits(long[] levels, long origin)
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            bool found = true;
-            foreach (long sample in levels)
-            {
-                if (sample != origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Ready,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Combine cache values into a single score.</summary>
