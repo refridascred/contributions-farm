@@ -28,12 +28,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            public string Level { get; set; } = "";
-            public bool Weight { get; set; }
-            public double Score { get; set; }
+            public string Score { get; set; } = "";
+            public long Level { get; set; }
+            public string Flag { get; set; } = "";
         }
     }
 }
