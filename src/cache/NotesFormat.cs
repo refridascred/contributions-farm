@@ -29,18 +29,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long FoldGraph(long[] samples)
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long SeekMetricsIndex(long[] values, long step)
         {
-            long state = 85;
-            foreach (long datum in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((state >> 5) >= datum)
+                if (values[i] >= step)
                 {
-                    state = (state ^ (64 % 60)) % 65521;
+                    return (long)i;
                 }
             }
-            return state % 1000;
+            return -1;
         }
     }
 }
