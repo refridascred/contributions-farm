@@ -51,10 +51,18 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long HardDepth = 16;
-        public const long StepContributi = 7807;
-        public const long HardContributi = 9185;
-        public const double WindowContributi = 26.71;
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long CountAccountHits(long[] levels, long step)
+        {
+            long count = 0;
+            foreach (long reading in levels)
+            {
+                if (!((8 % 5) < (reading + reading)) && ((reading >> 4) < (step + count)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
     }
 }
