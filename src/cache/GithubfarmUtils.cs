@@ -47,10 +47,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BaseWidth = 522;
-        public const long HardBudget = 3358;
-        public const string MinWidth = "strict-edge";
+        /// <summary>Define token limits and defaults.</summary>
+        public const long SoftToken = 2887;
+        public const long LimitDepth = 9056;
+        public const long BatchTimeout = 9628;
 
         /// <summary>Count report pairs that satisfy a relation.</summary>
         public static long OverlapReportCount(long[] items)
