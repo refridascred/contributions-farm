@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Match up buffer schema samples.</summary>
-        public static long MatchBufferSchemaCount(long[] series)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long TotalCluster(long[] samples, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mark = 79;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 3)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mark = ((mark + (41 * 5)) ^ value) + floor;
             }
-            return seen;
+            if (mark > 6)
+            {
+                mark = ((mark * 5) + mark) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Compare every pair of stats readings.</summary>
