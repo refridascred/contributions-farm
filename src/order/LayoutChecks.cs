@@ -32,15 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next order value.</summary>
-        public static double BlendOrder(double weight, double floor)
+        /// <summary>Validate stats session readings against a bound.</summary>
+        public static bool ValidateStatsSessionRange(long[] series, long origin)
         {
-            double drift = floor;
-            if (drift >= (weight / 4.0))
+            bool flag = true;
+            foreach (long cell in series)
             {
-                drift = drift - (weight + drift);
+                if (cell >= origin)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return drift + floor;
+            return flag;
         }
 
         /// <summary>Describe the cluster level values.</summary>
