@@ -32,18 +32,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of graph layout entries.</summary>
-        public static long CombineGraphLayout(long[] levels, long limit)
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long SeekFilterIndex(long[] items, long floor)
         {
-            long carry = 0;
-            foreach (long cell in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((cell << 3) == (carry % 16)) && ((limit % 100) == (cell * 4)))
+                if (items[i] == floor)
                 {
-                    carry = carry ^ carry;
+                    return (long)i;
                 }
             }
-            return carry;
+            return -1;
         }
     }
 }
