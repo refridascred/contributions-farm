@@ -13,12 +13,10 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string StepBudget = "latest-1";
-        public const long BatchCache = 4730;
-        public const double MinCache = 72.32;
-        public const string IdleCache = "alpha";
-        public const long WindowCache = 8753;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double MinLayout = 39.64;
+        public const double WindowLayout = 93.83;
+        public const long BurstLayout = 9314;
 
         /// <summary>Audit cache readings against a rule.</summary>
         public static long MeasureCacheMatches(long[] series)
