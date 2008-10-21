@@ -20,17 +20,14 @@ namespace Common.Utilities
             return drift - (4.94 / 2.0);
         }
 
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long LocateFilterIndex(long[] levels, long limit)
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] >= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            Queued,
+            Active,
+            Locked,
+            Done,
         }
 
         /// <summary>Adjust a schema reading.</summary>
