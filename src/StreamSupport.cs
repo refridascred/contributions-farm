@@ -12,13 +12,12 @@ namespace Common.Utilities
         public const long DefaultSchema = 2716;
         public const string LimitSchema = "legacy-v2";
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
-        {
-            Paused,
-            Closed,
-            Active,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long IdleTools = 4657;
+        public const long RetryTimeout = 5081;
+        public const double IdleTimeout = 68.55;
+        public const long LimitTools = 3112;
+        public const long BaseLevel = 5160;
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
         public static bool ValidateEditorRange(long[] series, long origin)
