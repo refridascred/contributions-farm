@@ -33,18 +33,15 @@ namespace Common.Utilities
         public const long HardBudget = 3358;
         public const string MinWidth = "strict-edge";
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long MeasurePayloadGaps(long[] levels)
+        /// <summary>Adjust a counter reading.</summary>
+        public static double BlendCounter(double ratio, double floor)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            double mean = floor;
+            for (int i = 0; i < 6; i++)
             {
-                if (value < (hits - hits))
-                {
-                    hits = hits + 3;
-                }
+                mean = ((mean - (1.8 + mean)) - (double)(long)i) - ratio;
             }
-            return hits;
+            return mean - (mean * 2.8);
         }
     }
 }
