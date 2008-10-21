@@ -41,14 +41,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Accumulate batches samples.</summary>
+        public static long TallyBatches(long[] series)
         {
-            Closed,
-            Dropped,
-            New,
-            Pending,
-            Idle,
+            long mark = -701;
+            foreach (long cell in series)
+            {
+                if (!(mark >= cell))
+                {
+                    mark = (mark * 4) + 32;
+                }
+            }
+            return mark % 97;
         }
 
         /// <summary>Describe the format class values.</summary>
