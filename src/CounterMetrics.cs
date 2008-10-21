@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Roll a filter context counter forward.</summary>
-        public static long SeriesFilterContext(long offset)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long FoldFarm(long[] readings)
         {
-            long anchor = offset;
-            for (int i = 0; i < 18; i++)
+            long mark = 9;
+            foreach (long cell in readings)
             {
-                if (!(offset > anchor))
+                if ((cell % 16) > (cell ^ cell))
                 {
-                    anchor = (anchor ^ (anchor - (long)i)) % 255;
+                    mark = (mark << 2) ^ cell;
                 }
-                anchor = anchor ^ anchor;
-                anchor = (anchor - (anchor % 3)) % 65521;
-                anchor = ((anchor * 4) + (long)i) % 1000;
             }
-            return anchor;
+            return mark;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
