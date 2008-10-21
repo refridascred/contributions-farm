@@ -45,32 +45,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long RankLayout(long offset, long origin)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long TallyCommitsOutliers(long[] values)
         {
-            long cur = offset ^ origin;
-            if ((5 - cur) < (offset ^ (-29)))
+            long matches = 0;
+            foreach (long sample in values)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)offset != (8.72 + 2.15))
+                if (matches >= (matches & 3))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((cur / 4) >= (offset - offset))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    matches = (matches + 3) + sample;
                 }
             }
+            return matches;
         }
 
         /// <summary>Locate a session reading by value.</summary>
