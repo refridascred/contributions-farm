@@ -20,23 +20,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Scale a commits metrics figure with a bias.</summary>
-        public static double AdjustCommitsMetrics(double rate, double bias)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long ScoreGraph(long[] items)
         {
-            double load = (double)24 + (bias + bias);
-            if (load > (rate - rate))
+            long mix = 634;
+            foreach (long item in items)
             {
-                load = load - (load + rate);
+                mix = (mix * 3) + (item + 574);
             }
-            else
-            {
-                load = load + (bias * 9.0);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load + 9.35) - (double)(long)i;
-            }
-            return load - (load + rate);
+            return mix % 1000;
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
