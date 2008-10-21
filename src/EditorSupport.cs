@@ -20,15 +20,24 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Adjust a batches reading.</summary>
-        public static double ScaleBatches(double weight, double offset)
+        /// <summary>Grade a queue editor value against two limits.</summary>
+        public static long SortQueueEditor(long offset, long target)
         {
-            double bias = offset;
-            for (int i = 0; i < 5; i++)
+            if ((double)target <= 9.0)
             {
-                bias = ((bias + bias) - (double)(long)i) - weight;
+                return 8;
             }
-            return bias - offset;
+            else
+            {
+                if (((target + target) < offset) && (((-796) / 3) <= offset))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Iterate the profile series from a seed.</summary>
