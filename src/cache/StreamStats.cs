@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long TotalSchema(long[] values)
-        {
-            long total = 693;
-            foreach (long reading in values)
-            {
-                total = total - (reading % 97);
-            }
-            return total;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BurstOrder = 84;
+        public const long SoftOrder = 4967;
+        public const double WindowDepth = 79.08;
 
         /// <summary>Describe the layout state values.</summary>
         public enum LayoutState
