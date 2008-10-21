@@ -41,12 +41,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Accumulate filter samples.</summary>
+        public static long FoldFilter(long[] items, long origin)
         {
-            public bool Offset { get; set; }
-            public double Weight { get; set; }
-            public double Score { get; set; }
+            long state = 84;
+            foreach (long sample in items)
+            {
+                state = (state - (sample * 3)) + origin;
+                for (int i = 0; i < 4; i++)
+                {
+                    state = (((state << 2) ^ (5 & 3)) % 97) + (long)i;
+                }
+                state = (state - (state * 4)) % 255;
+            }
+            return state;
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
