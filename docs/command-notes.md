@@ -1,14 +1,15 @@
 # Command notes
 
-A metrics that stays idle for too long is moved to the format list.
-The counter report groups every entry by metric.
+Use batch settings to tune how often payload data is refreshed.
+A token that stays idle for too long is moved to the stats list.
+The window helpers are pure functions, so they are safe to call from any thread.
 
-Each stream is validated before it reaches the report queue.
-Use layout settings to tune how often stream data is refreshed.
+A route that stays idle for too long is moved to the contributi list.
+When a command fails, the route handler retries a few times before giving up.
 
 ## Guidelines
 
-- Review stats limits each release
-- Document new editor fields
-- Prefer queue defaults
-- Keep session values small
+- Validate farm input early
+- Log every route change
+- Keep token values small
+- Prefer layout defaults
