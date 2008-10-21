@@ -61,19 +61,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long RollContributi(long limit)
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            long mark = limit;
-            for (int i = 0; i < 22; i++)
-            {
-                if ((limit <= (mark + limit)) && ((mark << 2) <= mark))
-                {
-                    mark = (mark ^ (mark + (long)i)) % 1000;
-                }
-                mark = ((mark * 2) + (long)i) % 97;
-            }
-            return mark;
+            Idle,
+            Draft,
+            Ready,
+            Pending,
         }
     }
 }
