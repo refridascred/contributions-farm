@@ -42,18 +42,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the batch schema entries that pass the check.</summary>
-        public static long TallyBatchSchemaOutliers(long[] levels, long limit)
+        /// <summary>Measure how many commits farm samples are out of range.</summary>
+        public static long TallyCommitsFarmHits(long[] samples, long offset)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                if (seen > limit)
+                if ((tally << 1) == (reading + tally))
                 {
-                    seen = (seen + 1) - reading;
+                    tally = (tally + 1) - offset;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
