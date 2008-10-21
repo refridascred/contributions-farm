@@ -1,5 +1,9 @@
 {
-  "schema_capacity": ["local", "legacy"],
-  "batches_ttl": 5712,
-  "route_depth": "stable"
+  "retry_window_count": {
+    "retry_retries": 60,
+    "commits_delay": 30,
+    "burst_depth_count": "cached"
+  },
+  "window_threshold": "eu-west",
+  "audit": 23.78
 }
