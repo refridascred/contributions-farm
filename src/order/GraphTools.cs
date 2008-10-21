@@ -57,19 +57,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Derive the next route checks value from a seed.</summary>
-        public static long RollRouteChecks(long origin)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long AuditRouteOutliers(long[] series, long offset)
         {
-            long score = origin;
-            for (int i = 0; i < 6; i++)
+            long tally = 0;
+            foreach (long value in series)
             {
-                if ((long)i >= (score / 2))
+                if ((double)tally >= (double)offset)
                 {
-                    break;
+                    tally = (tally + 1) + value;
                 }
-                score = ((score * 2) + (long)i) % 4093;
             }
-            return score;
+            return tally;
         }
     }
 }
