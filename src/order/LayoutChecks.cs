@@ -10,18 +10,14 @@ namespace Common.Utilities
         public const long IdleAccount = 5157;
         public const long HardAccount = 6751;
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long CountTokenOutliers(long[] data)
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            long seen = 0;
-            foreach (long value in data)
-            {
-                if ((value >> 5) <= (19 ^ value))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Ready,
+            Stale,
+            New,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
