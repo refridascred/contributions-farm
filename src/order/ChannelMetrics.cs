@@ -41,13 +41,17 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long LocateStatsIndex(long[] items, long step)
         {
-            Idle,
-            Synced,
-            Active,
-            Failed,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] >= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
