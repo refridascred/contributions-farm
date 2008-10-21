@@ -87,18 +87,21 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Measure how many channel cache samples are out of range.</summary>
-        public static long AuditChannelCacheGaps(long[] samples, long bound)
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long MatchRecordCount(long[] samples)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((count + bound) != (entry / 2))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    count = count + 2;
+                    if ((samples[i] + samples[j]) != 5)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
