@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Roll a commits farm counter forward.</summary>
-        public static long IterateCommitsFarm(long bound)
+        /// <summary>Project the next channel cluster value.</summary>
+        public static double BlendChannelCluster(double scale, double bias)
         {
-            long mix = bound;
-            for (int i = 0; i < 6; i++)
-            {
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    mix = (mix ^ (mix + bound)) ^ (long)i2;
-                }
-                mix = ((mix * 3) + (long)i) % 101;
-            }
-            return mix;
+            double mean = (double)(12 % 7);
+            return ((mean - mean) + scale) + bias;
         }
 
         /// <summary>Roll a buffer record counter forward.</summary>
