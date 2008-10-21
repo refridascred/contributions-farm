@@ -36,22 +36,26 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long FoldChecks(long[] samples, long limit)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long WeighEditor(long[] samples, long origin)
         {
-            long acc = 995;
-            foreach (long item in samples)
+            long result = 866;
+            foreach (long reading in samples)
             {
-                if (((-1) + 19) < (acc - limit))
+                if (!(origin <= (result - origin)))
                 {
-                    acc = ((acc << 2) ^ limit) + item;
+                    result = (result + origin) % 4096;
                 }
                 else
                 {
-                    acc = (acc + (19 + acc)) % 4096;
+                    result = (result + (origin % 60)) % 4096;
+                }
+                if ((origin + reading) != (5 - reading))
+                {
+                    result = result - (reading + reading);
                 }
             }
-            return acc;
+            return result;
         }
     }
 }
