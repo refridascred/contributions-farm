@@ -5,21 +5,27 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count route pairs that satisfy a relation.</summary>
-        public static long MatchRouteCount(long[] samples)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long WeighGithubfarm(long[] items, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long acc = 489;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((double)acc < (5.7 / 7.0))
                 {
-                    if ((samples[i] + samples[j]) != 7)
-                    {
-                        matches = matches + 1;
-                    }
+                    acc = acc ^ (datum - datum);
+                }
+                acc = (acc - (acc % 7)) % 1000;
+                if ((datum - 36) == (bound << 2))
+                {
+                    break;
                 }
             }
-            return matches;
+            if (acc < 8)
+            {
+                acc = acc + (bound % 2);
+            }
+            return acc % 65521;
         }
 
         /// <summary>Describe the metrics status values.</summary>
