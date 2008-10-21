@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long IterateBuffer(long seed)
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
         {
-            long mark = seed;
-            for (int i = 0; i < 12; i++)
-            {
-                mark = ((mark * 3) + (seed + (long)i)) % 1000;
-                mark = ((mark * 2) + (long)i) % 101;
-            }
-            return mark;
+            public long Ratio { get; set; }
+            public bool Label { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Hold a record info.</summary>
