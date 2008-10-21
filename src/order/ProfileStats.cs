@@ -45,24 +45,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long SortGithubfarm(long step, long limit)
+        /// <summary>Validate order support readings against a bound.</summary>
+        public static bool VerifyOrderSupportLimits(long[] values, long floor)
         {
-            if (!((double)step >= (double)2))
+            bool stale = true;
+            foreach (long sample in values)
             {
-                return 5;
-            }
-            else
-            {
-                if ((step + step) <= (limit ^ 464))
+                if (sample > floor)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 2;
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
     }
 }
