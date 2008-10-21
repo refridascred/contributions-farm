@@ -22,18 +22,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long MeasureEntryGaps(long[] data)
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long PairStatsCount(long[] levels)
         {
-            long count = 0;
-            foreach (long item in data)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((double)count == (5.6 * 5.44)) || ((item / 4) == (count + count)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    count = count + 1;
+                    if ((levels[i] - levels[j]) != 7)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Locate a schema reading by value.</summary>
