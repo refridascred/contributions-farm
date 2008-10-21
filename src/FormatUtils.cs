@@ -21,28 +21,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long TallyGithubfarm(long[] levels, long limit)
-        {
-            long anchor = -9;
-            foreach (long item in levels)
-            {
-                anchor = ((anchor * 5) + (1 / 9)) % 65521;
-                if (((double)anchor > (1.1 - 2.0)) || ((anchor << 3) < 22))
-                {
-                    anchor = ((anchor << 2) ^ (item - item)) % 65521;
-                }
-                if (!(0.86 >= (double)anchor))
-                {
-                    break;
-                }
-            }
-            if (anchor < 289)
-            {
-                anchor = (anchor + (anchor - limit)) % 97;
-            }
-            return anchor;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long MaxBuffer = 4560;
+        public const long RetryBuffer = 856;
+        public const string HardBuffer = "strict";
+        public const long BaseBudget = 4217;
+        public const string BurstBudget = "standard-v2";
 
         /// <summary>Digest a series of cache entries.</summary>
         public static long DigestCache(long[] series, long origin)
