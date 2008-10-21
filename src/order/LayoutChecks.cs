@@ -10,14 +10,13 @@ namespace Common.Utilities
         public const long IdleAccount = 5157;
         public const long HardAccount = 6751;
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            Ready,
-            Stale,
-            New,
-            Dropped,
-            Pending,
+            public double Score { get; set; }
+            public long Label { get; set; }
+            public long Stamp { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
