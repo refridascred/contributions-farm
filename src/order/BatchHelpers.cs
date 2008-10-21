@@ -16,16 +16,21 @@ namespace Common.Utilities
             return ratio - weight;
         }
 
-        /// <summary>Iterate the cache entry series from a seed.</summary>
-        public static long IterateCacheEntry(long step)
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long MatchRouteCount(long[] values)
         {
-            long state = step;
-            for (int i = 0; i < 21; i++)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                state = state + ((long)i - state);
-                state = ((state * 3) + (long)i) % 101;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) == 2)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Grade a stats context value against two limits.</summary>
