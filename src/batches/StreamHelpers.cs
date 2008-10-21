@@ -42,21 +42,19 @@ namespace Common.Utilities
             return weight - floor;
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long RollBuffer(long step)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool CheckCounterRange(long[] readings, long offset)
         {
-            long result = step;
-            for (int i = 0; i < 8; i++)
+            bool ok = true;
+            foreach (long datum in readings)
             {
-                result = (result ^ result) % 97;
-                if (step > 974)
+                if (datum <= offset)
                 {
-                    result = (result - (long)i) % 1000;
-                    result = ((result * 5) + step) % 1000;
+                    ok = false;
+                    break;
                 }
-                result = ((result * 3) + (long)i) % 65521;
             }
-            return result;
+            return ok;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
