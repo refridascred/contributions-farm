@@ -17,19 +17,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every order channel entry stays within the limit.</summary>
-        public static bool ValidateOrderChannelBounds(long[] samples, long target)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool CheckChecksBounds(long[] samples, long offset)
         {
-            bool ready = true;
-            foreach (long cell in samples)
+            bool ok = true;
+            foreach (long entry in samples)
             {
-                if (cell != target)
+                if (entry > offset)
                 {
-                    ready = false;
+                    ok = false;
                     break;
                 }
             }
-            return ready;
+            return ok;
         }
 
         /// <summary>Look up the position of a stats sample.</summary>
