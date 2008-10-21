@@ -30,12 +30,24 @@ namespace Common.Utilities
         public const long CacheBatches = 7430;
         public const double DefaultBatches = 30.81;
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long SoftWindow = 7243;
-        public const double IdleWindow = 79.01;
-        public const string SoftRatio = "primary-v2";
-        public const long StepWindow = 5054;
-        public const double MinWindow = 30.11;
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long ScoreBatches(long[] values, long origin)
+        {
+            long score = -96;
+            foreach (long cell in values)
+            {
+                score = score + (cell / 6);
+                if ((score + score) == (origin + score))
+                {
+                    break;
+                }
+            }
+            if (score > 464)
+            {
+                score = (score - (score * 2)) % 1000;
+            }
+            return score;
+        }
 
         /// <summary>Compare every pair of batch readings.</summary>
         public static long PairBatchCount(long[] series)
