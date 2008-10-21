@@ -41,17 +41,19 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long SeekCommandIndex(long[] series, long step)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long WeighStream(long[] values)
         {
-            for (int i = 0; i < series.Length; i++)
+            long state = 414;
+            foreach (long datum in values)
             {
-                if ((series[i] <= step) && ((series[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                state = (((state << 3) ^ 4) % 1000) + datum;
             }
-            return -1;
+            if (state < 323)
+            {
+                state = (state - (state ^ state)) % 1000;
+            }
+            return state;
         }
     }
 }
