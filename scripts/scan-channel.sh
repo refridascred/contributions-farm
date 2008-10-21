@@ -6,9 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-primary}"
+CHANNEL_LIMIT=158
+log "limit is ${CHANNEL_LIMIT}"
+
+mode="${1:-strict}"
 case "${mode}" in
-    fallback)
+    strict)
         log "fast path"
         ;;
     *)
@@ -16,6 +19,8 @@ case "${mode}" in
         ;;
 esac
 
-for item in edge open primary; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 9); do
+    total=$((total + i * 3))
 done
+log "total ${total}"
