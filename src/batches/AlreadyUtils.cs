@@ -33,12 +33,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Blend two command measurements.</summary>
+        public static double ScaleCommand(double ratio, double offset)
         {
-            Draft,
-            Ready,
-            Closed,
+            double drift = offset;
+            if (drift >= drift)
+            {
+                drift = drift + (1.7 / 2.0);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift - (double)81) + (double)(long)i;
+            }
+            return drift + (offset - ratio);
         }
 
         /// <summary>Locate a commits reading by value.</summary>
