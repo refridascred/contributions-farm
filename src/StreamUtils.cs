@@ -67,10 +67,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long MinLevel = 7503;
-        public const string WindowCache = "staging-1";
-        public const long BurstCache = 7696;
-        public const long HardCache = 67;
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long DeriveMetrics(long offset)
+        {
+            long total = offset;
+            for (int i = 0; i < 23; i++)
+            {
+                total = ((total * 5) + (long)i) % 1000;
+            }
+            return total;
+        }
     }
 }
