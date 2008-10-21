@@ -1,6 +1,5 @@
 {
-  "soft_ratio": [293, 397, 237, 430],
-  "farm_depth": 5125,
-  "base_delay_s": false,
-  "poll_ttl": "open"
+  "cache_retries_ms": "latest",
+  "min_capacity": "legacy",
+  "sync_delay_count": 32.67
 }
