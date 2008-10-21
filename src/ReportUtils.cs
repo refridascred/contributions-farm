@@ -12,38 +12,18 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long GradeReport(long origin, long bound)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long AuditChecksOutliers(long[] samples)
         {
-            if ((((-4) & 63) == (698 - origin)) || (origin > (origin + bound)))
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)origin >= (double)bound)
+                if ((datum >> 2) > matches)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (!((bound - origin) >= bound))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((origin ^ bound) >= bound)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    matches = matches + 2;
                 }
             }
+            return matches;
         }
 
         /// <summary>Hold a record summary.</summary>
