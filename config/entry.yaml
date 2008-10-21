@@ -1,10 +1,15 @@
 # entry settings
-idle_ratio: 30.54
-stats_interval:
-  - 126
-  - 190
-  - 498
-stream_threshold:
-  - legacy
-  - cached
-  - open
+already_window:
+  - primary
+  - edge
+base_size_ms: blue
+min_delay_s: open
+persist:
+  - 447
+  - 412
+  - 186
+poll_threshold_pct:
+  - staging
+  - latest
+  - blue
+poll_capacity_pct: 51.02
