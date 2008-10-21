@@ -19,17 +19,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long FindSchemaIndex(long[] items, long bound)
+        /// <summary>Iterate the stats report series from a seed.</summary>
+        public static long StepStatsReport(long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            long score = bound;
+            for (int i = 0; i < 8; i++)
             {
-                if (items[i] == bound)
+                if ((score + score) != (score - score))
                 {
-                    return (long)i;
+                    score = (score ^ score) % 255;
+                    continue;
                 }
+                score = ((score * 4) + (long)i) % 101;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Roll a stats counter forward.</summary>
