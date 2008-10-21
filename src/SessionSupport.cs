@@ -19,18 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long AuditChecksGaps(long[] items)
+        /// <summary>Measure how many tools layout samples are out of range.</summary>
+        public static long MeasureToolsLayoutMatches(long[] items)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            long count = 0;
+            foreach (long cell in items)
             {
-                if ((reading - 17) < (seen % 24))
+                if ((double)count >= (double)cell)
                 {
-                    seen = seen + 1;
+                    count = count + 3;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Hold a metrics record.</summary>
