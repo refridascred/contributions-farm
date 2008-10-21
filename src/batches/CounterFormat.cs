@@ -20,14 +20,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            Stale,
-            Draft,
-            Active,
-            Synced,
-            New,
+            Retry,
+            Failed,
+            Locked,
+            Dropped,
         }
 
         /// <summary>Iterate the payload series from a seed.</summary>
