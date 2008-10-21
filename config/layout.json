@@ -1,23 +1,5 @@
 {
-  "cache_delay_count": "green",
-  "counter_capacity": {
-    "flush_depth": 250,
-    "compress": 4.75,
-    "soft_ratio_pct": "green"
-  },
-  "strict": {
-    "dry_run": "standard",
-    "base_retries": 10.61,
-    "cache_capacity_ms": "local",
-    "session_ttl": {
-      "tools_retries": 14,
-      "layout_capacity": 9808,
-      "idle_depth_pct": 19,
-      "burst_interval": "eu-west",
-      "strict": [371, 318]
-    },
-    "max_capacity": "blue"
-  },
-  "notes_interval": [385, 153, 295, 26],
-  "hard_ttl_pct": true
+  "poll_capacity": "cached",
+  "max_threshold_s": 23.31,
+  "hard_depth_s": 9862
 }
