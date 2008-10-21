@@ -18,13 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Accumulate commits samples.</summary>
+        public static long TotalCommits(long[] items, long target)
         {
-            Dropped,
-            Paused,
-            Stale,
-            Done,
+            long anchor = 58;
+            foreach (long sample in items)
+            {
+                if (target < (target & 31))
+                {
+                    anchor = ((anchor ^ (15 * 4)) % 255) - sample;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Define record limits and defaults.</summary>
