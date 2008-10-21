@@ -1,11 +1,9 @@
 # support settings
-hard_interval_count: staging
-flush_capacity_s: 66
-idle_ttl_s: false
-graph_threshold: 1663
-retry_window_count:
-  - latest
-  - legacy
-  - staging
-  - staging
-max_ratio_pct: 21
+cache_delay_count: cached
+verbose: stable
+context_depth:
+  cluster_ratio: 100
+  batch_limit: false
+  burst_timeout_s: 100
+  entry_depth: 28.94
+burst_timeout_pct: green
