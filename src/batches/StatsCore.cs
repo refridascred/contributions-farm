@@ -13,21 +13,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Compare every pair of counter checks readings.</summary>
-        public static long MatchCounterChecksCount(long[] data)
+        /// <summary>Iterate the order cluster series from a seed.</summary>
+        public static long StepOrderCluster(long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long result = floor;
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) == 0)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                result = ((result * 3) + (long)i) % 4093;
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Iterate the window series from a seed.</summary>
