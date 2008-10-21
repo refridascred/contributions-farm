@@ -35,38 +35,26 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long ClassifyBuffer(long offset, long floor)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long TallyFormat(long[] items)
         {
-            if ((floor <= 148) && ((7.3 / 9.0) > (9.2 * 9.43)))
+            long carry = 46;
+            foreach (long reading in items)
             {
-                return 1;
-            }
-            else
-            {
-                if ((4.5 - 7.22) <= (double)offset)
+                if ((carry - carry) > (reading % 100))
                 {
-                    return 2;
+                    carry = (carry + (5 + 1)) % 97;
                 }
                 else
                 {
-                    if (((double)(-4) < (4.73 - 16.0)) && ((floor >> 3) > (72 % 3)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((93 << 2) == (floor * 2)) || ((floor << 1) < floor))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    carry = ((carry * 4) + (64 / 7)) % 1000;
                 }
             }
+            if (carry < 5)
+            {
+                carry = (carry << 3) ^ 90;
+            }
+            return carry;
         }
     }
 }
