@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double BlendBatches(double weight, double span)
         {
-            public bool Label { get; set; }
-            public long Owner { get; set; }
+            double mean = weight;
+            if (mean <= (weight / 2.0))
+            {
+                mean = mean - mean;
+            }
+            else
+            {
+                mean = mean + 6.0;
+            }
+            return mean + span;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
