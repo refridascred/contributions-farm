@@ -1,11 +1,4 @@
 # entry settings
-poll_retries_pct: false
-verbose: stable
-hard_ratio_ms:
-  default_capacity_s: false
-  base_size_pct: fallback
-  batch_timeout_ms: true
-  dry_run: false
-dry_run: standard
-sync_threshold: 250
-stream_window: 45
+warm_ratio_ms: true
+cache_delay_ms: open
+retry_size: 68.66
