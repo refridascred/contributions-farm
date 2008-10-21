@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long MeasureFarmGaps(long[] samples, long limit)
+        /// <summary>Count batches pairs that satisfy a relation.</summary>
+        public static long CompareBatchesCount(long[] levels)
         {
             long tally = 0;
-            foreach (long datum in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((0 >> 5) >= (datum ^ 11))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    tally = (tally + 1) + limit;
+                    if ((levels[i] ^ levels[j]) < 9)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
