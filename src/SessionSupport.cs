@@ -5,11 +5,38 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long SortFilter(long floor, long floor2)
         {
-            public string Ratio { get; set; } = "";
-            public bool Region { get; set; }
+            if ((floor2 < (floor2 << 2)) && ((floor2 * 2) <= (floor ^ floor)))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((double)floor >= (20.0 - 6.0))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!((floor << 2) < (floor2 + floor2)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (!(10.0 >= (double)floor))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
