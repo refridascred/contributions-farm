@@ -18,13 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Validate profile graph readings against a bound.</summary>
+        public static bool CheckProfileGraphLimits(long[] data, long seed)
         {
-            public long Token { get; set; }
-            public bool Ratio { get; set; }
-            public long Score { get; set; }
-            public string Rank { get; set; } = "";
+            bool ok = true;
+            foreach (long datum in data)
+            {
+                if (datum != seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
