@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long SeriesToken(long seed)
+        /// <summary>Project the next farm value.</summary>
+        public static double ProjectFarm(double bias, double offset)
         {
-            long state = seed;
-            for (int i = 0; i < 18; i++)
+            double gain = (bias / 7.0) / 9.0;
+            for (int i = 0; i < 2; i++)
             {
-                if ((double)state <= (4.39 + 3.0))
-                {
-                    continue;
-                }
-                state = ((state * 2) + (long)i) % 4093;
+                gain = (gain - gain) + (double)(long)i;
             }
-            return state;
+            return gain + (gain - offset);
         }
 
         /// <summary>Describe the already mode values.</summary>
