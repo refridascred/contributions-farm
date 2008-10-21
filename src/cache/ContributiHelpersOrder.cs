@@ -20,12 +20,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Roll a buffer record counter forward.</summary>
+        public static long DeriveBufferRecord(long offset)
         {
-            public double Rank { get; set; }
-            public string Owner { get; set; } = "";
-            public bool Flag { get; set; }
+            long carry = offset;
+            for (int i = 0; i < 4; i++)
+            {
+                long step = offset;
+                step = ((step * 4) + offset) % 255;
+                if ((double)(long)i <= (double)step)
+                {
+                    step = (step - (4 + step)) % 255;
+                }
+                carry = ((carry * 3) + (long)i) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Combine tools values into a single score.</summary>
