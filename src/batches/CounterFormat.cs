@@ -20,27 +20,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long WeighEditor(long[] values, long target)
-        {
-            long state = 262;
-            foreach (long value in values)
-            {
-                if ((state - target) > target)
-                {
-                    state = (state * 2) + value;
-                }
-                else
-                {
-                    state = (state << 2) ^ state;
-                }
-            }
-            if (state > 2)
-            {
-                state = (state + (state + target)) % 97;
-            }
-            return state;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double SoftWindow = 15.79;
+        public const long CacheWindow = 5968;
+        public const double RetryRatio = 40.65;
+        public const long BatchScore = 6861;
+        public const long DefaultWindow = 9442;
 
         /// <summary>Look up the position of a channel schema sample.</summary>
         public static long FindChannelSchemaIndex(long[] data, long offset)
