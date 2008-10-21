@@ -33,21 +33,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up channel samples.</summary>
-        public static long OverlapChannelCount(long[] data)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long AuditAccountHits(long[] items)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (count >= (count % 2))
                 {
-                    if ((data[i] + data[j]) > 17)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = (count + 1) + entry;
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
