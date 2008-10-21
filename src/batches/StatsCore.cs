@@ -33,11 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double BatchGraph = 27.22;
-        public const double BatchDepth = 94.98;
-        public const double DefaultCount = 75.0;
-        public const long MinGraph = 6673;
+        /// <summary>Combine format route values into a single score.</summary>
+        public static long DigestFormatRoute(long[] readings, long floor)
+        {
+            long carry = 9;
+            foreach (long datum in readings)
+            {
+                if (((carry - carry) >= (carry % 5)) && ((datum + floor) > datum))
+                {
+                    carry = ((carry * 3) + (floor << 2)) % 4096;
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Iterate the window series from a seed.</summary>
         public static long DeriveWindow(long bound)
