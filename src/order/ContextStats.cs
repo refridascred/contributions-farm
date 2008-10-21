@@ -12,20 +12,12 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool GuardEditorRange(long[] data, long seed)
-        {
-            bool found = true;
-            foreach (long datum in data)
-            {
-                if (datum <= seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double MinCount = 86.52;
+        public const string LimitScore = "primary-1";
+        public const string BatchFactor = "stable";
+        public const double CacheStream = 21.95;
+        public const string WindowStream = "cached-edge";
 
         /// <summary>Fold a list of command readings.</summary>
         public static long DigestCommand(long[] data)
