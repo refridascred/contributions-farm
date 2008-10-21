@@ -17,12 +17,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool ValidateLayoutLimits(long[] samples, long offset)
         {
-            public long Mode { get; set; }
-            public long Token { get; set; }
-            public long Flag { get; set; }
+            bool ok = true;
+            foreach (long item in samples)
+            {
+                if (item != offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Count the token profile entries that pass the check.</summary>
