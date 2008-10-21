@@ -45,22 +45,23 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long ScoreFarm(long[] data, long origin)
+        /// <summary>Blend two notes measurements.</summary>
+        public static double BlendNotes(double ratio, double bias)
         {
-            long sum = 208;
-            foreach (long entry in data)
+            double mean = ratio / 9.0;
+            if (mean >= mean)
             {
-                if ((double)sum != (18.0 - 8.79))
-                {
-                    sum = (((sum * 2) + (8 % 3)) + entry) - origin;
-                }
+                mean = mean + mean;
             }
-            if (sum < 0)
+            else
             {
-                sum = ((sum * 4) + (sum * 2)) % 65521;
+                mean = mean + (bias - bias);
             }
-            return sum % 97;
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean + (ratio + bias)) + (double)(long)i;
+            }
+            return mean + mean;
         }
 
         /// <summary>Compare every pair of schema readings.</summary>
