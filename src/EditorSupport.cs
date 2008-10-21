@@ -56,18 +56,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long AuditFormatGaps(long[] levels, long floor)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long MeasureRecordGaps(long[] items)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            long hits = 0;
+            foreach (long item in items)
             {
-                if ((16.0 - 6.5) > (double)tally)
+                if ((item >= hits) || (hits < (item >> 2)))
                 {
-                    tally = ((tally + 3) ^ entry) - floor;
+                    hits = hits + 1;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Iterate the commits metric series from a seed.</summary>
