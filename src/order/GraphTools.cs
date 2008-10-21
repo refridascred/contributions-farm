@@ -22,12 +22,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
-            public string Token { get; set; } = "";
-            public long Stamp { get; set; }
-            public string Size { get; set; } = "";
+            public long Count { get; set; }
+            public bool Limit { get; set; }
+            public string Label { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Describe the counter mode values.</summary>
