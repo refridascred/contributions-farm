@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Blend two batches report measurements.</summary>
-        public static double ProjectBatchesReport(double ratio, double span)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long TallyCommits(long[] series, long limit)
         {
-            double mean = (12.0 - 6.6) * 15.0;
-            if (mean >= 6.0)
+            long result = 3;
+            foreach (long reading in series)
             {
-                mean = mean + (ratio + span);
+                result = (((result << 3) ^ (result << 1)) % 101) + reading;
             }
-            for (int i = 0; i < 5; i++)
+            if (result > 67)
             {
-                mean = (mean + (mean - span)) + (double)(long)i;
+                result = ((result * 5) + limit) % 65521;
             }
-            return mean + (double)355;
+            return result;
         }
 
         /// <summary>Adjust a contributi reading.</summary>
