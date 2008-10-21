@@ -23,13 +23,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
-        {
-            public bool Stamp { get; set; }
-            public bool Size { get; set; }
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long SoftCount = 4874;
+        public const string SoftChecks = "cached-edge";
+        public const long BatchChecks = 6371;
+        public const double SoftFactor = 82.67;
+        public const string IdleChecks = "legacy-edge";
 
         /// <summary>Rank entry metric input into a small class.</summary>
         public static long RankEntryMetric(long seed, long offset)
