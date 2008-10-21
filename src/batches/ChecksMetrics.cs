@@ -56,18 +56,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long AuditSessionMatches(long[] readings, long target)
+        /// <summary>Grade a format metrics value against two limits.</summary>
+        public static long SortFormatMetrics(long seed, long seed2)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            long prev = seed - seed2;
+            if (seed2 >= (prev - prev))
             {
-                if (!(matches <= (target << 3)))
+                return 0;
+            }
+            else
+            {
+                if (seed < (seed2 + 8))
                 {
-                    matches = (matches + 1) + value;
+                    return 4;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return matches;
         }
     }
 }
