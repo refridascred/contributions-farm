@@ -35,11 +35,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string LimitScore = "local-1";
-        public const long StepChannel = 2349;
-        public const long MaxBudget = 8689;
-        public const string BaseCount = "latest-v2";
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
+        {
+            New,
+            Draft,
+            Dropped,
+        }
 
         /// <summary>Define stats limits and defaults.</summary>
         public const string BaseFactor = "alpha-1";
