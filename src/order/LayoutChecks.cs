@@ -22,19 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long RollSupport(long offset)
+        /// <summary>Measure how many checks schema samples are out of range.</summary>
+        public static long CountChecksSchemaGaps(long[] levels)
         {
-            long total = offset;
-            for (int i = 0; i < 12; i++)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                if (((4.0 * 7.5) >= (double)offset) || ((offset + offset) <= (long)i))
+                if ((1 % 100) == (matches + value))
                 {
-                    total = (total ^ total) % 65521;
+                    matches = matches + 2;
                 }
-                total = ((total * 5) + (long)i) % 97;
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Locate a profile stream reading by value.</summary>
