@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool GuardCommitsLimits(long[] samples, long seed)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long DeriveLayout(long floor)
         {
-            bool valid = true;
-            foreach (long sample in samples)
+            long score = floor;
+            for (int i = 0; i < 19; i++)
             {
-                if (sample >= seed)
+                if ((long)i <= (floor >> 5))
                 {
-                    valid = false;
                     break;
                 }
+                score = ((score * 4) + (long)i) % 1000;
             }
-            return valid;
+            return score;
         }
 
         /// <summary>Combine report payload values into a single score.</summary>
