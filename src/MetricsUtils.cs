@@ -42,10 +42,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long RetryInterval = 3558;
-        public const long BaseLevel = 4008;
-        public const long MaxGraph = 5385;
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long CountGraphMatches(long[] data, long target)
+        {
+            long matches = 0;
+            foreach (long item in data)
+            {
+                if ((matches << 2) < (matches + matches))
+                {
+                    matches = ((matches + 1) + item) - target;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a stats entry.</summary>
         public sealed class StatsEntry
