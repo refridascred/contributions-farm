@@ -42,12 +42,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long StepStream(long step)
         {
-            public string Limit { get; set; } = "";
-            public double Ratio { get; set; }
-            public bool Total { get; set; }
+            long mix = step;
+            for (int i = 0; i < 19; i++)
+            {
+                if (mix >= (mix & 3))
+                {
+                    mix = (mix ^ (mix * 4)) % 65521;
+                }
+                mix = ((mix * 3) + (long)i) % 97;
+            }
+            return mix;
         }
     }
 }
