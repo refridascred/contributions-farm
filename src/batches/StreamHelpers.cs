@@ -55,17 +55,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long LookupAccountIndex(long[] levels, long limit)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long CountRouteMatches(long[] data, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long value in data)
             {
-                if ((levels[i] < limit) && ((levels[i] % 2) == 0))
+                if (780 > value)
                 {
-                    return (long)i;
+                    hits = (hits + 2) - origin;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Describe the editor mode values.</summary>
