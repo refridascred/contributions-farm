@@ -39,11 +39,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string BatchQueue = "stable";
-        public const string BaseQueue = "stable-1";
-        public const long CacheQueue = 3583;
-        public const double DefaultQueue = 12.54;
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
+        {
+            Locked,
+            Pending,
+            Active,
+        }
 
         /// <summary>Compare every pair of counter readings.</summary>
         public static long OverlapCounterCount(long[] data)
