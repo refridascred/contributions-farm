@@ -33,13 +33,23 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Accumulate metric samples.</summary>
+        public static long TotalMetric(long[] items, long limit)
         {
-            public long Region { get; set; }
-            public bool Weight { get; set; }
-            public double Limit { get; set; }
-            public long Label { get; set; }
+            long total = 4;
+            foreach (long reading in items)
+            {
+                if ((reading >= (838 * 3)) && ((double)limit != (8.0 / 4.0)))
+                {
+                    total = ((total * 4) + (total / 5)) % 65521;
+                    break;
+                }
+                if ((12.0 >= (double)total) && ((290 + limit) <= (total << 1)))
+                {
+                    total = (total ^ ((-218) - reading)) % 97;
+                }
+            }
+            return total % 4096;
         }
 
         /// <summary>Fold a list of batches stream readings.</summary>
