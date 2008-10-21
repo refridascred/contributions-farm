@@ -39,18 +39,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long CountQueueMatches(long[] series)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool GuardRouteRange(long[] data, long floor)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            bool flag = true;
+            foreach (long cell in data)
             {
-                if (((936 - tally) <= (datum - tally)) && ((double)tally < 2.09))
+                if (cell != floor)
                 {
-                    tally = tally + 3;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Grade a filter value against two limits.</summary>
