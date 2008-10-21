@@ -38,12 +38,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long DeriveCommand(long bound)
         {
-            Closed,
-            Synced,
-            Draft,
+            long mix = bound;
+            for (int i = 0; i < 14; i++)
+            {
+                mix = ((mix * 2) + (long)i) % 4093;
+            }
+            return mix;
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
