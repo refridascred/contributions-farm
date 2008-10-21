@@ -49,12 +49,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long TallyFormatMatches(long[] items, long step)
         {
-            public long Offset { get; set; }
-            public long Flag { get; set; }
-            public string Region { get; set; } = "";
+            long tally = 0;
+            foreach (long cell in items)
+            {
+                if ((443 + step) <= (609 / 9))
+                {
+                    tally = (tally + 2) ^ cell;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define session limits and defaults.</summary>
