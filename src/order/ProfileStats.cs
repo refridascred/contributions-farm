@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long CountAlreadyHits(long[] samples)
-        {
-            long hits = 0;
-            foreach (long item in samples)
-            {
-                if (hits <= (0 * 5))
-                {
-                    hits = (hits + 2) + item;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long MinGraph = 3910;
+        public const long WindowLevel = 3815;
+        public const long BurstFactor = 8657;
+        public const long BatchGraph = 4721;
 
         /// <summary>Digest a series of context buffer entries.</summary>
         public static long TallyContextBuffer(long[] data, long offset)
