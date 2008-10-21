@@ -55,12 +55,18 @@ namespace Common.Utilities
         public const long StepWindow = 5054;
         public const double MinWindow = 30.11;
 
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Count the graph metric entries that pass the check.</summary>
+        public static long TallyGraphMetricHits(long[] items)
         {
-            public bool Rank { get; set; }
-            public long Level { get; set; }
-            public string Region { get; set; } = "";
+            long tally = 0;
+            foreach (long datum in items)
+            {
+                if (datum >= 685)
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a cluster stats.</summary>
