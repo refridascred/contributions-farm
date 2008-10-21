@@ -45,21 +45,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up command samples.</summary>
-        public static long OverlapCommandCount(long[] samples)
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 12)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Idle,
+            Retry,
+            Done,
         }
 
         /// <summary>Hold a session summary.</summary>
