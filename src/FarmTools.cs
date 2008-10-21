@@ -29,12 +29,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Look up the position of a batch metric sample.</summary>
+        public static long LocateBatchMetricIndex(long[] readings, long target)
         {
-            Synced,
-            Dropped,
-            Queued,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] <= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Fold a list of window readings.</summary>
