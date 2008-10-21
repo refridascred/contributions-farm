@@ -15,21 +15,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Compare every pair of githubfarm readings.</summary>
-        public static long PairGithubfarmCount(long[] samples)
+        /// <summary>Audit schema channel readings against a rule.</summary>
+        public static long TallySchemaChannelOutliers(long[] series)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (7.45 >= (double)cell)
                 {
-                    if ((samples[i] ^ samples[j]) < 20)
-                    {
-                        seen = seen + 1;
-                    }
+                    hits = hits + 3;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Combine commits values into a single score.</summary>
