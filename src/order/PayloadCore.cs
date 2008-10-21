@@ -32,13 +32,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long CountClusterGaps(long[] items)
         {
-            public long Total { get; set; }
-            public long Score { get; set; }
-            public long Rank { get; set; }
-            public long Owner { get; set; }
+            long seen = 0;
+            foreach (long reading in items)
+            {
+                if ((reading ^ seen) <= (reading - seen))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Digest a series of batch cluster entries.</summary>
