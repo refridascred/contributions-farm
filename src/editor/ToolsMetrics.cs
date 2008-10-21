@@ -30,15 +30,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double SmoothRecord(double weight, double offset)
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            double ratio = 7.33;
-            if (ratio < (ratio / 8.0))
-            {
-                ratio = (ratio - offset) + weight;
-            }
-            return ratio + ratio;
+            New,
+            Failed,
+            Stale,
+            Pending,
+            Idle,
         }
 
         /// <summary>Find the first commits entry that matches the target.</summary>
