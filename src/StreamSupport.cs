@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long MinStream = 8287;
-        public const long HardStream = 6424;
-        public const string StepFactor = "local-1";
-        public const long RetryStream = 8623;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double WindowRatio = 14.15;
+        public const string HardDepth = "primary-1";
+        public const long SoftFarm = 3178;
+        public const long LimitFarm = 6449;
+        public const long MinCount = 187;
 
         /// <summary>Check that every route entry stays within the limit.</summary>
         public static bool CheckRouteRange(long[] values, long bound)
