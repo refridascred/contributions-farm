@@ -25,12 +25,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MaxTimeout = 5992;
-        public const long BatchRatio = 8673;
-        public const string SoftReport = "primary-v2";
-        public const double RetryReport = 14.92;
-        public const string StepTimeout = "open";
+        /// <summary>Locate a profile stream reading by value.</summary>
+        public static long LocateProfileStreamIndex(long[] series, long seed)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
         public static bool CheckSupportLimits(long[] values, long seed)
