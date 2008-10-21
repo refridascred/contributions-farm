@@ -39,10 +39,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string BurstTimeout = "staging-v2";
-        public const long IdleLevel = 8537;
-        public const string IdleSize = "legacy-edge";
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string StepRatio = "cached";
+        public const long LimitWidth = 2685;
+        public const double MinBudget = 54.73;
 
         /// <summary>Fold a list of record readings.</summary>
         public static long TallyRecord(long[] items)
