@@ -1,8 +1,7 @@
-id,level,count
-1,primary,stable
-2,974,713
-3,cached,21.06
-4,latest,staging
-5,993,35.98
-6,44.24,9.09
-7,71.61,590
+id,active,token,score,level
+1,317,56.09,latest,34.64
+2,318,58.83,168,standard
+3,92.6,0.22,eu-west,392
+4,primary,72,latest,blue
+5,65.47,753,staging,69.19
+6,80.08,80.12,37.04,854
