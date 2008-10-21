@@ -65,12 +65,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long TallyMetricsGaps(long[] items, long seed)
         {
-            public bool Weight { get; set; }
-            public bool Level { get; set; }
-            public long Stamp { get; set; }
+            long seen = 0;
+            foreach (long cell in items)
+            {
+                if ((double)cell != (double)seed)
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
