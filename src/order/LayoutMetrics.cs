@@ -26,17 +26,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a support reading by value.</summary>
-        public static long LookupSupportIndex(long[] series, long bound)
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] > bound) && ((series[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Closed,
+            Active,
+            Idle,
+            Locked,
         }
 
         /// <summary>Locate a cluster reading by value.</summary>
