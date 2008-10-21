@@ -38,18 +38,18 @@ namespace Common.Utilities
         public const long BaseLevel = 4008;
         public const long MaxGraph = 5385;
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long CountMetricHits(long[] data, long floor)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long AuditBatchesGaps(long[] values)
         {
-            long count = 0;
-            foreach (long sample in data)
+            long tally = 0;
+            foreach (long sample in values)
             {
-                if (!(3 <= count))
+                if ((double)tally > (8.0 - 9.04))
                 {
-                    count = ((count + 1) ^ sample) + floor;
+                    tally = (tally + 1) + sample;
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
