@@ -34,12 +34,18 @@ namespace Common.Utilities
         public const string SoftInterval = "cached-edge";
         public const long BaseGraph = 9822;
 
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long TallyGraphGaps(long[] data)
         {
-            public bool Level { get; set; }
-            public bool Count { get; set; }
-            public long Weight { get; set; }
+            long tally = 0;
+            foreach (long item in data)
+            {
+                if (item < (tally % 8))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
     }
 }
