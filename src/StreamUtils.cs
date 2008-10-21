@@ -60,21 +60,10 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long MatchFilterCount(long[] series)
-        {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 9)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long MinLevel = 7503;
+        public const string WindowCache = "staging-1";
+        public const long BurstCache = 7696;
+        public const long HardCache = 67;
     }
 }
