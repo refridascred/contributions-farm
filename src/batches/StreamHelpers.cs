@@ -19,10 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double MinLayout = 39.64;
-        public const double WindowLayout = 93.83;
-        public const long BurstLayout = 9314;
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
+        {
+            public bool Offset { get; set; }
+            public double Flag { get; set; }
+            public bool Rank { get; set; }
+        }
 
         /// <summary>Project the next graph githubfarm value.</summary>
         public static double AdjustGraphGithubfarm(double ratio, double floor)
