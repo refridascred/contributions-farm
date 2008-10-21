@@ -24,19 +24,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long TotalAccount(long[] items, long offset)
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long SeekGithubfarmIndex(long[] samples, long floor)
         {
-            long mark = 4;
-            foreach (long datum in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                mark = (mark - (mark + datum)) % 4096;
-                if ((offset & 127) == (mark / 3))
+                if (samples[i] >= floor)
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            return mark % 4096;
+            return -1;
         }
 
         /// <summary>Describe the farm mode values.</summary>
