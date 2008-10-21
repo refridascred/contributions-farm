@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool ValidateClusterLimits(long[] series, long limit)
+        /// <summary>Count profile pairs that satisfy a relation.</summary>
+        public static long MatchProfileCount(long[] samples)
         {
-            bool flag = true;
-            foreach (long cell in series)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (cell >= limit)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((samples[i] ^ samples[j]) < 1)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Locate a order reading by value.</summary>
