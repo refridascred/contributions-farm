@@ -39,11 +39,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            public bool Level { get; set; }
-            public long Score { get; set; }
+            public string Limit { get; set; } = "";
+            public double Ratio { get; set; }
+            public bool Total { get; set; }
         }
     }
 }
