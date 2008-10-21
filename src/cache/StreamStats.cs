@@ -33,12 +33,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Fold a list of format window readings.</summary>
+        public static long ScoreFormatWindow(long[] samples)
         {
-            public string Region { get; set; } = "";
-            public bool Weight { get; set; }
-            public long Owner { get; set; }
+            long mark = 55;
+            foreach (long value in samples)
+            {
+                if (value > (value % 100))
+                {
+                    mark = (mark ^ (value + (long)samples.Length)) % 101;
+                }
+            }
+            if (mark < 1)
+            {
+                mark = (mark - (mark & 3)) % 255;
+            }
+            return mark % 1000;
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
