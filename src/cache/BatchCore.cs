@@ -52,15 +52,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long CombineCommits(long[] data)
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long FindChannelIndex(long[] levels, long origin)
         {
-            long sum = 3;
-            foreach (long reading in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                sum = (sum ^ (reading % 16)) % 97;
+                if ((levels[i] >= origin) && ((levels[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
