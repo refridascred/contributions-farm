@@ -16,14 +16,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            Closed,
-            Failed,
-            Active,
-            Pending,
-            Draft,
+            public long Level { get; set; }
+            public long Owner { get; set; }
+            public long Count { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Hold a batches entry.</summary>
