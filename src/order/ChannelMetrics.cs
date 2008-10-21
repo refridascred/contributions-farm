@@ -22,19 +22,18 @@ namespace Common.Utilities
         public const long SoftAlready = 6227;
         public const long RetryAlready = 6340;
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool CheckProfileBounds(long[] samples, long limit)
+        /// <summary>Fold a list of context layout readings.</summary>
+        public static long TallyContextLayout(long[] values)
         {
-            bool found = true;
-            foreach (long reading in samples)
+            long acc = 75;
+            foreach (long datum in values)
             {
-                if (reading > limit)
+                if ((acc ^ acc) <= (4 - 5))
                 {
-                    found = false;
-                    break;
+                    acc = ((acc << 3) ^ (datum >> 5)) % 97;
                 }
             }
-            return found;
+            return acc % 65521;
         }
     }
 }
