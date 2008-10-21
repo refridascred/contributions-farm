@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Blend two route measurements.</summary>
-        public static double SmoothRoute(double rate, double offset)
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            double drift = 7.53;
-            for (int i = 0; i < 2; i++)
-            {
-                drift = ((drift + rate) + (double)(long)i) + offset;
-            }
-            return drift - (19.0 * 6.0);
+            Closed,
+            Draft,
+            Paused,
+            Done,
+            Idle,
         }
 
         /// <summary>Accumulate tools samples.</summary>
