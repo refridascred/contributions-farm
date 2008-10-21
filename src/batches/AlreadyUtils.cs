@@ -19,18 +19,21 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Count the filter format entries that pass the check.</summary>
-        public static long TallyFilterFormatOutliers(long[] data)
+        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
+        public static long CompareGithubfarmCount(long[] items)
         {
-            long count = 0;
-            foreach (long sample in data)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((9.63 - 3.0) < (double)count)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    count = (count + 1) ^ sample;
+                    if ((items[i] ^ items[j]) != 11)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Describe the counter level values.</summary>
