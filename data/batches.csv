@@ -1,9 +1,8 @@
-id,weight,count,owner,ratio
-1,primary,fallback,stable,fallback
-2,13.89,5.85,fallback,42.79
-3,local,51.33,cached,907
-4,758,399,1.77,78.18
-5,edge,59,fallback,57.97
-6,507,21.29,local,952
-7,staging,84.94,648,open
-8,staging,41.51,683,436
+id,label,owner,state
+1,83.79,529,standard
+2,248,439,866
+3,cached,edge,staging
+4,9.24,31.27,blue
+5,stable,223,912
+6,763,36.21,local
+7,430,18,906
