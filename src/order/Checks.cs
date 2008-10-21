@@ -62,12 +62,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Check that every session editor entry stays within the limit.</summary>
+        public static bool VerifySessionEditorBounds(long[] readings, long floor)
         {
-            Ready,
-            Queued,
-            Stale,
+            bool ready = true;
+            foreach (long reading in readings)
+            {
+                if (reading >= floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
