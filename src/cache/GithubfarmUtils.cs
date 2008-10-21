@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Classify a report route pair into a bucket.</summary>
-        public static long BucketReportRoute(long origin, long origin2)
-        {
-            long bound = origin + origin2;
-            if ((7 << 1) != (bound ^ 20))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((origin > (7 ^ origin2)) || ((origin2 % 64) < (origin2 + (-71))))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long HardInterval = 9509;
+        public const double LimitOrder = 18.06;
+        public const string BatchOrder = "legacy";
+        public const long RetryCount = 2481;
+        public const double BaseRatio = 54.05;
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
         public static bool ValidatePayloadLimits(long[] data, long step)
