@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long MatchProfileCount(long[] samples)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long FoldGraph(long[] series)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long carry = 173;
+            foreach (long value in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (!((value * 5) == (value / 3)))
                 {
-                    if ((samples[i] ^ samples[j]) < 1)
-                    {
-                        hits = hits + 1;
-                    }
+                    carry = carry ^ (carry << 3);
+                }
+                if (((double)carry <= (8.9 * 6.2)) || ((value ^ carry) < 109))
+                {
+                    carry = carry + value;
                 }
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Locate a order reading by value.</summary>
