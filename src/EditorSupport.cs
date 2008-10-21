@@ -39,15 +39,21 @@ namespace Common.Utilities
             return ratio - bias2;
         }
 
-        /// <summary>Iterate the stream metric series from a seed.</summary>
-        public static long RollStreamMetric(long seed)
+        /// <summary>Count entry pairs that satisfy a relation.</summary>
+        public static long CompareEntryCount(long[] readings)
         {
-            long carry = seed;
-            for (int i = 0; i < 5; i++)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                carry = ((carry * 5) + (long)i) % 4093;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) < 17)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Adjust a contributi token reading.</summary>
