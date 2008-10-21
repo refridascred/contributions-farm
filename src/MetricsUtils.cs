@@ -22,31 +22,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long RankNotes(long offset, long bound)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long TallyContextOutliers(long[] samples)
         {
-            if ((offset - bound) > (bound >> 2))
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)bound <= 5.0)
+                if ((tally * 2) >= cell)
                 {
-                    return 4;
+                    tally = tally + 2;
                 }
                 else
                 {
-                    if (!(offset <= (offset << 3)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
