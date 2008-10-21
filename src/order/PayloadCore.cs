@@ -48,19 +48,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double ProjectOrder(double scale, double floor)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long DigestRecord(long[] data)
         {
-            double scale2 = (double)(80 % 10);
-            if (scale2 < scale)
+            long total = 3;
+            foreach (long cell in data)
             {
-                scale2 = scale2 - scale;
+                if ((cell % 60) != (cell / 4))
+                {
+                    total = (total + (9 - total)) % 65521;
+                }
             }
-            else
-            {
-                scale2 = scale2 - 7.69;
-            }
-            return scale2 + floor;
+            return total % 1000;
         }
     }
 }
