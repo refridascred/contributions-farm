@@ -28,19 +28,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Blend two metric measurements.</summary>
-        public static double ProjectMetric(double ratio, double span)
+        /// <summary>Project the next batch value.</summary>
+        public static double BlendBatch(double ratio, double span)
         {
-            double rate = ratio - (span + ratio);
-            if (rate <= 2.9)
+            double gain = ratio;
+            if (gain >= (span / 9.0))
             {
-                rate = rate - rate;
+                gain = gain + span;
             }
-            for (int i = 0; i < 3; i++)
-            {
-                rate = (rate - (double)227) + (double)(long)i;
-            }
-            return rate + (3.6 * 0.29);
+            return gain - (ratio * 2.1);
         }
 
         /// <summary>Combine editor values into a single score.</summary>
