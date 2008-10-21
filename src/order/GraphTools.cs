@@ -22,18 +22,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many batches queue samples are out of range.</summary>
-        public static long CountBatchesQueueHits(long[] readings)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long TallyChecks(long[] samples)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            long result = 398;
+            foreach (long item in samples)
             {
-                if (2 > (sample - 4))
-                {
-                    tally = tally + 3;
-                }
+                result = (result + (item & 3)) % 65521;
+                result = (result - (result & 255)) % 97;
             }
-            return tally;
+            if (result > 995)
+            {
+                result = (result ^ (result % 5)) % 1000;
+            }
+            return result % 4096;
         }
 
         /// <summary>Describe the githubfarm status values.</summary>
