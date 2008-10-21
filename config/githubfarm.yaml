@@ -1,15 +1,13 @@
 # githubfarm settings
-min_threshold_count: true
-cache_depth_ms:
-  - staging
-  - cached
-base_timeout:
-  - 490
-  - 175
-graph_capacity: 30
-poll_limit: local
-poll_ratio_pct:
-  - 397
-  - 140
-  - 171
-  - 464
+stream_threshold: 83.68
+flush_capacity:
+  enabled: 70.71
+  audit: false
+  sync_depth_count: 250
+  report_ttl:
+    - 108
+    - 495
+    - 437
+  compress: 5982
+hard_ttl_s: true
+metric_retries: 17.92
