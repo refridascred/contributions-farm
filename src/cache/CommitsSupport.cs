@@ -63,11 +63,24 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Adjust a layout reading.</summary>
-        public static double ScaleLayout(double scale, double span)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long RankOrder(long target, long offset)
         {
-            double load = (scale / 2.0) - span;
-            return load + (2.7 * 13.0);
+            if (((offset << 2) <= (target * 4)) || ((8.0 - 9.5) == (double)target))
+            {
+                return 8;
+            }
+            else
+            {
+                if (offset < (target - 104))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Hold a tools record.</summary>
