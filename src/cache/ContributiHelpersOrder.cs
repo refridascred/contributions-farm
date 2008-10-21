@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            public string Score { get; set; } = "";
-            public double Region { get; set; }
-            public long Stamp { get; set; }
-            public long Size { get; set; }
+            public bool Token { get; set; }
+            public string Region { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Fold a list of buffer counter readings.</summary>
