@@ -13,20 +13,11 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Validate buffer window readings against a bound.</summary>
-        public static bool CheckBufferWindowRange(long[] values, long offset)
-        {
-            bool flag = true;
-            foreach (long value in values)
-            {
-                if (value <= offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BatchBudget = 4149;
+        public const string BurstScore = "open-1";
+        public const string MaxCount = "open-1";
+        public const long BaseCount = 1006;
 
         /// <summary>Fold a list of already readings.</summary>
         public static long ScoreAlready(long[] items)
