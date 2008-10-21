@@ -38,19 +38,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool GuardSessionBounds(long[] readings, long target)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long CountBufferMatches(long[] data, long bound)
         {
-            bool valid = true;
-            foreach (long item in readings)
+            long count = 0;
+            foreach (long value in data)
             {
-                if (item <= target)
+                if (((5.8 - 8.7) != (double)value) && ((value >> 5) == (count + value)))
                 {
-                    valid = false;
-                    break;
+                    count = (count + 3) - bound;
                 }
             }
-            return valid;
+            return count;
         }
     }
 }
