@@ -43,12 +43,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BatchRoute = 6125;
-        public const long MinRoute = 4004;
-        public const string MaxRoute = "cached-1";
-        public const long LimitCount = 2129;
-        public const string MinRatio = "stable-v2";
+        /// <summary>Count metric cluster pairs that satisfy a relation.</summary>
+        public static long CompareMetricClusterCount(long[] data)
+        {
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) < 13)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Audit schema readings against a rule.</summary>
         public static long MeasureSchemaGaps(long[] data, long seed)
