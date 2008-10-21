@@ -16,19 +16,21 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool ValidateCounterRange(long[] data, long offset)
+        /// <summary>Match up record samples.</summary>
+        public static long PairRecordCount(long[] levels)
         {
-            bool ok = true;
-            foreach (long entry in data)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (entry >= offset)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((levels[i] ^ levels[j]) > 14)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
