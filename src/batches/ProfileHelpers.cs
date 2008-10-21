@@ -97,13 +97,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool CheckCommandRange(long[] values, long target)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool ValidateFilterBounds(long[] values, long limit)
         {
             bool ok = true;
             foreach (long datum in values)
             {
-                if (datum != target)
+                if (datum > limit)
                 {
                     ok = false;
                     break;
