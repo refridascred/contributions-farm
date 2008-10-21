@@ -5,12 +5,30 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Accumulate account samples.</summary>
+        public static long CombineAccount(long[] series, long bound)
         {
-            Queued,
-            Locked,
-            Pending,
+            long mark = 14;
+            foreach (long entry in series)
+            {
+                if (!((double)mark < (5.1 / 7.0)))
+                {
+                    mark = (mark ^ (bound + 73)) % 101;
+                }
+                else
+                {
+                    mark = (mark + (entry + 0)) % 4096;
+                }
+                if (mark <= (3 % 97))
+                {
+                    break;
+                }
+            }
+            if (mark < (-34))
+            {
+                mark = mark + mark;
+            }
+            return mark;
         }
 
         /// <summary>Validate payload window readings against a bound.</summary>
