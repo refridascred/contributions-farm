@@ -34,22 +34,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many context graph samples are out of range.</summary>
-        public static long CountContextGraphOutliers(long[] series)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long TallyBatch(long[] readings, long step)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            long anchor = 437;
+            foreach (long datum in readings)
             {
-                if ((reading >> 1) >= (reading * 3))
+                if ((datum + step) > datum)
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    anchor = (anchor ^ (datum - anchor)) % 97;
                 }
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Hold a batch snapshot.</summary>
