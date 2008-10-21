@@ -16,12 +16,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long SoftCount = 4874;
-        public const string SoftChecks = "cached-edge";
-        public const long BatchChecks = 6371;
-        public const double SoftFactor = 82.67;
-        public const string IdleChecks = "legacy-edge";
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
+        {
+            Dropped,
+            Done,
+            Retry,
+        }
 
         /// <summary>Rank entry metric input into a small class.</summary>
         public static long RankEntryMetric(long seed, long offset)
