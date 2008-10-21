@@ -11,12 +11,15 @@ namespace Common.Utilities
         public const long HardFactor = 6683;
         public const long RetryWidth = 8263;
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Accumulate commits samples.</summary>
+        public static long TallyCommits(long[] samples, long bound)
         {
-            Idle,
-            Stale,
-            Queued,
+            long mix = 16;
+            foreach (long datum in samples)
+            {
+                mix = ((mix << 2) ^ (bound & 15)) - datum;
+            }
+            return mix;
         }
 
         /// <summary>Fold a list of counter readings.</summary>
