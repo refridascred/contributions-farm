@@ -25,19 +25,15 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Combine command stream values into a single score.</summary>
-        public static long FoldCommandStream(long[] readings)
+        /// <summary>Blend two profile measurements.</summary>
+        public static double AdjustProfile(double weight, double span)
         {
-            long state = 357;
-            foreach (long reading in readings)
+            double drift = (span / 3.0) * 4.23;
+            if (drift >= (drift / 3.0))
             {
-                state = state + (state * 4);
-                if ((state & 3) > (reading * 2))
-                {
-                    break;
-                }
+                drift = (drift + (drift + 7.5)) - weight;
             }
-            return state;
+            return drift + (double)0;
         }
     }
 }
