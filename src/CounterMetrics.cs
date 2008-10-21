@@ -24,12 +24,33 @@ namespace Common.Utilities
         public const long CacheGithubfarm = 9800;
         public const long SoftWidth = 4694;
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long WindowRatio = 8970;
-        public const string IdleBatch = "latest-edge";
-        public const long MaxFactor = 2679;
-        public const long CacheBatch = 5428;
-        public const long BaseRatio = 519;
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long BucketFarm(long seed, long offset)
+        {
+            long delta = seed + offset;
+            if ((delta + offset) >= seed)
+            {
+                return 3;
+            }
+            else
+            {
+                if (((delta / 2) > seed) || ((offset * 3) < delta))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((seed << 1) >= 6)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
 
         /// <summary>Define window limits and defaults.</summary>
         public const long StepWindow = 3833;
