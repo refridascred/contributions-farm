@@ -51,18 +51,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long TallyFilterMatches(long[] samples)
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            long matches = 0;
-            foreach (long value in samples)
-            {
-                if (!(5 <= (matches - value)) && ((double)value <= (double)1))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            New,
+            Retry,
+            Paused,
+            Idle,
+            Locked,
         }
 
         /// <summary>Count the token contributi entries that pass the check.</summary>
