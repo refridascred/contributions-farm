@@ -18,12 +18,12 @@ namespace Common.Utilities
         public const long BurstLayout = 4580;
         public const double StepLayout = 35.28;
 
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
+            Dropped,
             Retry,
-            Ready,
-            Done,
+            Failed,
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
