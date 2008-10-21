@@ -5,32 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Rank record cluster input into a small class.</summary>
-        public static long SortRecordCluster(long limit, long seed)
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
-            long gap = limit + seed;
-            if ((limit * 5) > gap)
-            {
-                return 0;
-            }
-            else
-            {
-                if (((-1) << 2) < (gap * 5))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((2.6 + 6.8) == (double)limit) || ((limit - gap) >= (61 + seed)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            Queued,
+            Stale,
+            Done,
+            Idle,
         }
 
         /// <summary>Hold a githubfarm info.</summary>
