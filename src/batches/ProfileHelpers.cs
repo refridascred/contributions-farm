@@ -37,15 +37,18 @@ namespace Common.Utilities
         public const long StepWindow = 5054;
         public const double MinWindow = 30.11;
 
-        /// <summary>Count the graph metric entries that pass the check.</summary>
-        public static long TallyGraphMetricHits(long[] items)
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long PairBatchCount(long[] series)
         {
             long tally = 0;
-            foreach (long datum in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (datum >= 685)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    tally = tally + 3;
+                    if ((series[i] ^ series[j]) < 17)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
