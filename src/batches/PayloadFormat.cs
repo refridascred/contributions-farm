@@ -41,24 +41,15 @@ namespace Common.Utilities
         public const long BurstFarm = 1801;
         public const double StepFarm = 1.04;
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long SortContext(long bound, long target)
+        /// <summary>Blend two stats measurements.</summary>
+        public static double AdjustStats(double gain, double floor)
         {
-            if (72 > bound)
+            double drift = floor;
+            for (int i = 0; i < 2; i++)
             {
-                return 2;
+                drift = ((drift + (drift * 7.2)) + (double)(long)i) + gain;
             }
-            else
-            {
-                if (target >= ((-1) / 9))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            return drift + 8.0;
         }
     }
 }
