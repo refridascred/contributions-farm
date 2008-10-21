@@ -35,12 +35,14 @@ namespace Common.Utilities
         public const long CacheFarm = 91;
         public const long BurstFarm = 6780;
 
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            public double Owner { get; set; }
-            public long Size { get; set; }
-            public bool Ratio { get; set; }
+            Closed,
+            Dropped,
+            New,
+            Pending,
+            Idle,
         }
 
         /// <summary>Roll a already counter forward.</summary>
