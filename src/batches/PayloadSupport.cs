@@ -28,12 +28,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Validate command format readings against a bound.</summary>
+        public static bool CheckCommandFormatLimits(long[] readings, long seed)
         {
-            public string Score { get; set; } = "";
-            public long Level { get; set; }
-            public string Flag { get; set; } = "";
+            bool ready = true;
+            foreach (long entry in readings)
+            {
+                if (entry <= seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
