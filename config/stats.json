@@ -1,13 +1,12 @@
 {
-  "burst_ttl_ms": "legacy",
-  "retry_retries_pct": "legacy",
-  "soft_size_s": {
-    "strict": "standard",
-    "verbose": "local",
-    "batch_size_ms": 305,
-    "retry_delay_count": 75.71,
-    "dry_run": false
+  "soft_depth_pct": {
+    "batch_ratio_ms": "cached",
+    "retry_size": 54,
+    "strict": "open",
+    "burst_ttl": 25.23,
+    "batch_timeout": "staging",
+    "poll_depth_pct": false
   },
-  "entry_depth": [424, 68, 500],
-  "order_capacity": 500
+  "batch_size_s": "legacy",
+  "persist": 3177
 }
