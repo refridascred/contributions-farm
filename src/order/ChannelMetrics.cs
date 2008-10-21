@@ -23,21 +23,20 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Compare every pair of filter account readings.</summary>
-        public static long OverlapFilterAccountCount(long[] items)
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long SeriesAccount(long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long score = origin;
+            for (int i = 0; i < 24; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (!(score >= (score - origin)))
                 {
-                    if ((items[i] + items[j]) > 5)
-                    {
-                        tally = tally + 1;
-                    }
+                    score = ((score * 3) + score) % 97;
+                    score = (score << 3) ^ 41;
                 }
+                score = ((score * 4) + (long)i) % 101;
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Describe the stats state values.</summary>
