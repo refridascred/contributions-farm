@@ -1,16 +1,5 @@
 {
-  "already_limit": {
-    "dry_run": 47.14,
-    "verbose": [80, 233, 52, 336],
-    "persist": 11.87,
-    "batch_interval": 9352,
-    "cluster_depth": false
-  },
-  "buffer_ratio": "standard",
-  "idle_delay_s": "strict",
-  "burst_threshold_s": {
-    "soft_threshold": "local",
-    "token_ratio": true,
-    "base_window_pct": 6.71
-  }
+  "cache_limit": 17.22,
+  "retry_capacity_pct": 2116,
+  "retry_delay_s": false
 }
