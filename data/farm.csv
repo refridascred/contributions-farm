@@ -1,8 +1,6 @@
-id,count,score
-1,legacy,standard
-2,302,125
-3,381,795
-4,39.41,25
-5,local,16.11
-6,177,492
-7,56.06,742
+id,region,weight
+1,786,cached
+2,129,standard
+3,443,908
+4,fallback,372
+5,215,fallback
