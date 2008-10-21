@@ -40,12 +40,25 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string WindowCount = "primary";
-        public const double CacheDepth = 97.09;
-        public const long StepSpan = 5524;
-        public const string StepAccount = "standard-v2";
-        public const string BurstSize = "fallback-1";
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long RankStats(long floor, long step)
+        {
+            if (((floor ^ floor) <= floor) || ((12.0 * 1.0) > (double)step))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((3.86 * 3.41) <= (double)floor)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long LimitLevel = 4842;
