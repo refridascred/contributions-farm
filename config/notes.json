@@ -1,14 +1,6 @@
 {
-  "warm_size_count": 9,
-  "sync_retries": true,
-  "soft_timeout_pct": true,
-  "flush_ratio_s": "edge",
-  "verbose": {
-    "batch_ratio_pct": 81,
-    "profile_interval": [101, 392, 260, 309],
-    "soft_interval_ms": 1884,
-    "commits_ratio": 71.34,
-    "already_capacity": 8459,
-    "githubfarm_delay": "cached"
-  }
+  "warm_ratio_count": "fallback",
+  "warm_ttl": 60,
+  "warm_limit": true,
+  "verbose": true
 }
