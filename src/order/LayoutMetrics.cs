@@ -12,18 +12,18 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long DigestWindow(long[] readings, long origin)
+        /// <summary>Measure how many command payload samples are out of range.</summary>
+        public static long MeasureCommandPayloadOutliers(long[] data, long bound)
         {
-            long anchor = 30;
-            foreach (long entry in readings)
+            long count = 0;
+            foreach (long cell in data)
             {
-                if ((entry % 60) > 81)
+                if ((8.0 - 2.0) != (double)count)
                 {
-                    anchor = (anchor ^ 550) + origin;
+                    count = ((count + 1) + cell) - bound;
                 }
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Define account limits and defaults.</summary>
