@@ -14,19 +14,31 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Scale a token route figure with a bias.</summary>
-        public static double ScaleTokenRoute(double rate, double offset)
+        /// <summary>Rank contributi window input into a small class.</summary>
+        public static long ClassifyContributiWindow(long step, long offset)
         {
-            double bias = (double)(41 / 5);
-            if (bias >= bias)
+            if ((step << 3) < (offset * 2))
             {
-                bias = (bias + (bias - offset)) - rate;
+                return 7;
             }
-            for (int i = 0; i < 8; i++)
+            else
             {
-                bias = bias + (double)(long)i;
+                if ((double)step == (double)5)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((offset >> 4) == (8 - offset))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
             }
-            return bias - bias;
         }
 
         /// <summary>Describe the queue mode values.</summary>
