@@ -41,11 +41,12 @@ namespace Common.Utilities
             return load + (load - bias);
         }
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            public double Stamp { get; set; }
-            public bool Token { get; set; }
+            Locked,
+            Stale,
+            Closed,
         }
 
         /// <summary>Hold a entry stats.</summary>
