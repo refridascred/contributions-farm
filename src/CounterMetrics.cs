@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long MaxInterval = 8827;
-        public const long IdleQueue = 9624;
-        public const string HardRatio = "stable-1";
-        public const double BurstWidth = 55.83;
+        /// <summary>Define token limits and defaults.</summary>
+        public const string HardToken = "fallback-1";
+        public const long WindowScore = 5439;
+        public const long BaseToken = 3673;
+        public const long RetryBudget = 5471;
 
         /// <summary>Define already limits and defaults.</summary>
         public const double DefaultAlready = 80.72;
