@@ -20,19 +20,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool GuardGithubfarmLimits(long[] series, long bound)
+        /// <summary>Accumulate support batches samples.</summary>
+        public static long ScoreSupportBatches(long[] readings)
         {
-            bool stale = true;
-            foreach (long item in series)
+            long mark = 0;
+            foreach (long value in readings)
             {
-                if (item <= bound)
-                {
-                    stale = false;
-                    break;
-                }
+                mark = (mark * 3) + (value + value);
             }
-            return stale;
+            return mark % 1000;
         }
 
         /// <summary>Combine command values into a single score.</summary>
