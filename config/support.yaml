@@ -1,11 +1,4 @@
 # support settings
-retry_size_ms:
-  - 381
-  - 309
-  - 157
-audit: local
-layout_threshold: false
-default_window_count:
-  - legacy
-  - local
-  - fallback
+min_size_ms: 250
+hard_interval_ms: green
+editor_interval: 43
