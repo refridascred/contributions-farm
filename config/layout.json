@@ -1,19 +1,6 @@
 {
-  "idle_ttl_count": {
-    "notes_ratio": false,
-    "tools_ttl": [363, 211],
-    "idle_interval_s": 49.32,
-    "notes_depth": {
-      "poll_interval_s": 86.7,
-      "metric_window": "legacy",
-      "poll_timeout": true,
-      "readonly": 3254,
-      "strict": 95,
-      "batch_capacity_pct": 61.17
-    }
-  },
-  "cache_depth": "latest",
-  "warm_depth": "blue",
-  "min_threshold_ms": 95.49,
-  "warm_ttl_pct": 6
+  "burst_capacity_count": 88.82,
+  "context_capacity": "fallback",
+  "soft_capacity_s": "fallback",
+  "report_ratio": 24.35
 }
