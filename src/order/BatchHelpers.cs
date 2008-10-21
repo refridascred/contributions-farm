@@ -20,12 +20,11 @@ namespace Common.Utilities
             return ratio2 + (12.0 * 7.2);
         }
 
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
         {
-            public bool Mode { get; set; }
-            public string Token { get; set; } = "";
-            public long Label { get; set; }
+            public bool Region { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Grade a stats context value against two limits.</summary>
