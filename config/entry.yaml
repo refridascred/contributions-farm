@@ -1,8 +1,11 @@
 # entry settings
-idle_ratio_s: false
-flush_window: blue
-min_ttl_ms: 77.88
-token_capacity:
-  - 174
-  - 239
-  - 193
+editor_window:
+  - 236
+  - 230
+  - 304
+  - 58
+dry_run: 42
+batch_window:
+  layout_window: 6668
+  stream_timeout: false
+  entry_retries: strict
