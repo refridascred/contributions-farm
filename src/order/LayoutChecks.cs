@@ -49,21 +49,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count queue account pairs that satisfy a relation.</summary>
-        public static long OverlapQueueAccountCount(long[] levels)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long TotalMetric(long[] values)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long carry = 27;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (!(((-63) - carry) > (98 * 5)))
                 {
-                    if ((levels[i] ^ levels[j]) != 19)
-                    {
-                        count = count + 1;
-                    }
+                    carry = ((carry * 5) + carry) ^ cell;
                 }
             }
-            return count;
+            return carry % 1000;
         }
 
         /// <summary>Compare every pair of commits farm readings.</summary>
