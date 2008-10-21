@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BatchSpan = 9016;
-        public const long StepBudget = 242;
-        public const long BatchFactor = 8963;
-        public const double RetryFactor = 36.84;
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
+        {
+            public long Total { get; set; }
+            public double Offset { get; set; }
+        }
 
         /// <summary>Digest a series of command entries.</summary>
         public static long CombineCommand(long[] data)
