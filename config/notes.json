@@ -1,8 +1,6 @@
 {
-  "base_delay": "standard",
-  "base_timeout": 59,
-  "audit": true,
-  "order_threshold": "latest",
-  "verbose": "local",
-  "default_ttl": ["open", "latest", "edge", "cached"]
+  "sync_window": ["local", "open", "green"],
+  "warm_window_count": 3.54,
+  "soft_capacity": 3179,
+  "idle_depth_ms": 4535
 }
