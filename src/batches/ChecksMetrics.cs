@@ -16,20 +16,21 @@ namespace Common.Utilities
             return rate + span;
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long TotalSession(long[] readings, long step)
+        /// <summary>Compare every pair of editor context readings.</summary>
+        public static long CompareEditorContextCount(long[] series)
         {
-            long total = 743;
-            foreach (long entry in readings)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                total = ((total << 2) ^ (entry - entry)) % 255;
-                total = (total + (55 % 3)) % 4096;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) != 9)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            if (total > 3)
-            {
-                total = total ^ step;
-            }
-            return total;
+            return hits;
         }
 
         /// <summary>Iterate the format series from a seed.</summary>
