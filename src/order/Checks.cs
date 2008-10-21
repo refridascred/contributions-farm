@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long DefaultStream = 2994;
-        public const string RetryStream = "open-v2";
-        public const long HardInterval = 6723;
-        public const long MinFactor = 8600;
-        public const long HardTimeout = 2412;
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long DeriveStream(long target)
+        {
+            long mark = target;
+            for (int i = 0; i < 19; i++)
+            {
+                if ((target << 1) == (target - mark))
+                {
+                    mark = mark + 78;
+                    break;
+                }
+                mark = ((mark * 5) + (long)i) % 97;
+            }
+            return mark;
+        }
 
         /// <summary>Blend two token measurements.</summary>
         public static double BlendToken(double rate, double offset)
