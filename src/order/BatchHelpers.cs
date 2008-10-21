@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool GuardRecordBounds(long[] data, long limit)
+        /// <summary>Look up the position of a window route sample.</summary>
+        public static long LookupWindowRouteIndex(long[] readings, long target)
         {
-            bool ready = true;
-            foreach (long value in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (value >= limit)
+                if ((readings[i] < target) && ((readings[i] % 5) == 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Hold a profile info.</summary>
