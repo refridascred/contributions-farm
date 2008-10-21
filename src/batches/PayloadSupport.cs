@@ -22,18 +22,18 @@ namespace Common.Utilities
             return ((drift + 4.8) + ratio) + floor;
         }
 
-        /// <summary>Audit queue tools readings against a rule.</summary>
-        public static long CountQueueToolsHits(long[] series, long floor)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long MeasureReportOutliers(long[] series)
         {
-            long seen = 0;
+            long hits = 0;
             foreach (long reading in series)
             {
-                if (floor >= (floor / 2))
+                if ((hits + hits) > (hits * 5))
                 {
-                    seen = (seen + 3) ^ reading;
+                    hits = (hits + 2) - reading;
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
