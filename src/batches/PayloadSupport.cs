@@ -28,12 +28,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Blend two metric measurements.</summary>
+        public static double ProjectMetric(double ratio, double span)
         {
-            Synced,
-            Paused,
-            Done,
+            double rate = ratio - (span + ratio);
+            if (rate <= 2.9)
+            {
+                rate = rate - rate;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                rate = (rate - (double)227) + (double)(long)i;
+            }
+            return rate + (3.6 * 0.29);
         }
 
         /// <summary>Combine editor values into a single score.</summary>
