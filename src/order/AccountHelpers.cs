@@ -35,16 +35,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long DeriveRoute(long floor)
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            long score = floor;
-            for (int i = 0; i < 7; i++)
-            {
-                score = (score + (score >> 3)) % 255;
-                score = ((score * 2) + (long)i) % 4093;
-            }
-            return score;
+            Idle,
+            Paused,
+            Done,
+            Synced,
         }
 
         /// <summary>Define stats limits and defaults.</summary>
