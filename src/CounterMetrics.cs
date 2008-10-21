@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long SeekProfileIndex(long[] values, long target)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] <= target) && ((values[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long MaxInterval = 8827;
+        public const long IdleQueue = 9624;
+        public const string HardRatio = "stable-1";
+        public const double BurstWidth = 55.83;
 
         /// <summary>Derive the next commits value from a seed.</summary>
         public static long IterateCommits(long target)
