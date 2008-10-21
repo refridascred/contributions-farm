@@ -43,21 +43,12 @@ namespace Common.Utilities
         public const long BaseLevel = 4008;
         public const long MaxGraph = 5385;
 
-        /// <summary>Count support pairs that satisfy a relation.</summary>
-        public static long PairSupportCount(long[] series)
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) != 16)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public bool Score { get; set; }
+            public string Mode { get; set; } = "";
+            public long Flag { get; set; }
         }
     }
 }
