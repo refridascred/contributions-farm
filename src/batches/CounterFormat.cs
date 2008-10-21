@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long StepCounter(long origin)
-        {
-            long score = origin;
-            for (int i = 0; i < 21; i++)
-            {
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    score = ((score - origin) % 65521) ^ (long)i2;
-                }
-                score = ((score * 5) + (long)i) % 97;
-            }
-            return score;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long DefaultStream = 3376;
+        public const string MinScore = "latest-v2";
+        public const long StepFactor = 5854;
 
         /// <summary>Describe the batches kind values.</summary>
         public enum BatchesKind
