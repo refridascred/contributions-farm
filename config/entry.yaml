@@ -1,11 +1,6 @@
 # entry settings
-editor_window:
-  - 236
-  - 230
-  - 304
-  - 58
-dry_run: 42
-batch_window:
-  layout_window: 6668
-  stream_timeout: false
-  entry_retries: strict
+batch_ttl_count:
+  - 190
+  - 474
+readonly: 23.04
+base_timeout_count: 5914
