@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Blend two token filter measurements.</summary>
+        public static double BlendTokenFilter(double weight, double span)
         {
-            Stale,
-            Locked,
-            Paused,
-            Ready,
+            double drift = (double)(248 + 341);
+            if (drift > drift)
+            {
+                drift = (drift + 9.4) + weight;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift + span) + (double)(long)i;
+            }
+            return drift - (4.94 / 2.0);
         }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
