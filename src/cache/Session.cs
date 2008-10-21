@@ -48,9 +48,24 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long DefaultRecord = 1705;
-        public const long SoftRecord = 5856;
-        public const long HardRatio = 8041;
+        /// <summary>Rank report input into a small class.</summary>
+        public static long ClassifyReport(long target, long step)
+        {
+            if (!((double)9 != (double)step))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((double)target <= 2.0) || ((double)target >= (4.0 / 4.0)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
     }
 }
