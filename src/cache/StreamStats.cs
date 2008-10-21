@@ -5,30 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Accumulate account samples.</summary>
-        public static long CombineAccount(long[] series, long bound)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool ValidateClusterRange(long[] readings, long offset)
         {
-            long mark = 14;
-            foreach (long entry in series)
+            bool flag = true;
+            foreach (long datum in readings)
             {
-                if (!((double)mark < (5.1 / 7.0)))
+                if (datum >= offset)
                 {
-                    mark = (mark ^ (bound + 73)) % 101;
-                }
-                else
-                {
-                    mark = (mark + (entry + 0)) % 4096;
-                }
-                if (mark <= (3 % 97))
-                {
+                    flag = false;
                     break;
                 }
             }
-            if (mark < (-34))
-            {
-                mark = mark + mark;
-            }
-            return mark;
+            return flag;
         }
 
         /// <summary>Validate payload window readings against a bound.</summary>
