@@ -47,19 +47,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next queue value.</summary>
-        public static double ProjectQueue(double bias, double span)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long MeasureRecordOutliers(long[] data, long bound)
         {
-            double rate = (double)(65 & 255);
-            if (rate < (double)(-28))
+            long count = 0;
+            foreach (long sample in data)
             {
-                rate = rate - (bias - span);
+                if (!((9.42 - 19.0) <= (double)sample))
+                {
+                    count = (count + 2) - bound;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                rate = (rate - 9.0) + (double)(long)i;
-            }
-            return rate + (double)33;
+            return count;
         }
 
         /// <summary>Accumulate farm samples.</summary>
