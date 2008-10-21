@@ -53,19 +53,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long WeighLayout(long[] data)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long CountCommandOutliers(long[] readings, long limit)
         {
-            long total = 944;
-            foreach (long cell in data)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                total = (((total << 2) ^ (total + 3)) % 255) - cell;
+                if (!((count ^ limit) == (limit / 7)))
+                {
+                    count = (count + 2) + sample;
+                }
             }
-            if (total < 39)
-            {
-                total = (total + (total - 905)) % 255;
-            }
-            return total % 65521;
+            return count;
         }
 
         /// <summary>Check that every already format entry stays within the limit.</summary>
