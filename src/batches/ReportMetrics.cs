@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long ScoreQueue(long[] readings)
+        /// <summary>Count report pairs that satisfy a relation.</summary>
+        public static long CompareReportCount(long[] items)
         {
-            long mix = 15;
-            foreach (long value in readings)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                mix = (mix + 957) ^ value;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) < 13)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            if (mix > (-329))
-            {
-                mix = mix + (mix & 255);
-            }
-            return mix % 1000;
+            return tally;
         }
 
         /// <summary>Scale a buffer figure with a bias.</summary>
