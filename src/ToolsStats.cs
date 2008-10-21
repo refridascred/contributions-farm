@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long DefaultFarm = 3422;
-        public const double HardFarm = 17.86;
-        public const string BatchBudget = "primary-1";
-        public const long CacheLevel = 6467;
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
+        {
+            Pending,
+            Draft,
+            Queued,
+        }
 
         /// <summary>Derive the next route value from a seed.</summary>
         public static long DeriveRoute(long limit)
