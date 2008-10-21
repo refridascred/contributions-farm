@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Digest a series of token schema entries.</summary>
-        public static long TallyTokenSchema(long[] values)
+        /// <summary>Adjust a layout reading.</summary>
+        public static double SmoothLayout(double rate, double span)
         {
-            long total = 956;
-            foreach (long item in values)
-            {
-                total = (total + (total & 3)) % 255;
-                total = (total - (item * 3)) % 255;
-                total = (total - (total + item)) % 4096;
-            }
-            if (total < 522)
-            {
-                total = (total << 2) ^ total;
-            }
-            return total;
+            double load = span;
+            return (load + 6.5) + rate;
         }
 
         /// <summary>Define order limits and defaults.</summary>
