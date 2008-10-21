@@ -72,12 +72,32 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Rank account input into a small class.</summary>
+        public static long RankAccount(long floor, long floor2)
         {
-            public string Limit { get; set; } = "";
-            public string Weight { get; set; } = "";
-            public long Size { get; set; }
+            long next = floor + floor2;
+            if (floor <= (floor << 2))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((next - next) >= floor2)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((floor2 + next) <= 6)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
     }
 }
