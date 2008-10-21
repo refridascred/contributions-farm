@@ -16,13 +16,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Check that every buffer githubfarm entry stays within the limit.</summary>
+        public static bool ValidateBufferGithubfarmRange(long[] samples, long bound)
         {
-            public long Limit { get; set; }
-            public string Size { get; set; } = "";
-            public long Level { get; set; }
-            public long Owner { get; set; }
+            bool found = true;
+            foreach (long value in samples)
+            {
+                if (value > bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Hold a tools info.</summary>
