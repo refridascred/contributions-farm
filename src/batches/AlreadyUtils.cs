@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Digest a series of context entries.</summary>
-        public static long DigestContext(long[] readings, long origin)
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
         {
-            long anchor = -38;
-            foreach (long cell in readings)
-            {
-                if (((anchor + cell) != (17 & 255)) && ((cell << 1) <= origin))
-                {
-                    anchor = ((anchor << 3) ^ (anchor & 15)) % 255;
-                }
-            }
-            return anchor % 97;
+            public long Total { get; set; }
+            public long Rank { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Hold a profile stats.</summary>
