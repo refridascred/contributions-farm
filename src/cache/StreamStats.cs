@@ -20,19 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Validate payload window readings against a bound.</summary>
-        public static bool VerifyPayloadWindowRange(long[] levels, long seed)
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            bool ok = true;
-            foreach (long cell in levels)
-            {
-                if (cell >= seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public string Region { get; set; } = "";
+            public bool Weight { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
