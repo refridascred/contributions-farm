@@ -1,8 +1,7 @@
 {
-  "base_delay_count": "strict",
-  "metrics_threshold": ["latest", "fallback", "legacy", "green"],
-  "hard_depth_ms": false,
-  "readonly": ["open", "staging", "strict", "legacy"],
-  "dry_run": 30,
-  "burst_limit": 42.05
+  "cache_interval": "eu-west",
+  "flush_delay_pct": true,
+  "flush_window": "primary",
+  "cluster_ratio": 250,
+  "idle_timeout_s": 3.09
 }
