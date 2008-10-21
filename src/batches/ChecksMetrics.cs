@@ -47,19 +47,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double AdjustContributi(double ratio, double span)
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            double weight = ratio;
-            if (weight > (weight - 5.8))
-            {
-                weight = (weight - (7.3 * 2.77)) + span;
-            }
-            else
-            {
-                weight = weight + (ratio * 20.0);
-            }
-            return weight + (13.0 / 2.0);
+            public long Ratio { get; set; }
+            public long Flag { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
