@@ -6,22 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in fallback eu-west primary; do
+for item in eu-west staging primary fallback; do
     log "checking ${item}"
 done
 
-mode="${1:-legacy}"
+mode="${1:-staging}"
 case "${mode}" in
-    latest)
+    fallback)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-total=0
-for i in $(seq 1 9); do
-    total=$((total + i * 4))
-done
-log "total ${total}"
