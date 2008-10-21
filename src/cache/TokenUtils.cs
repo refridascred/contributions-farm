@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Adjust a editor command reading.</summary>
-        public static double BlendEditorCommand(double gain, double bias)
+        /// <summary>Count the already record entries that pass the check.</summary>
+        public static long MeasureAlreadyRecordMatches(long[] readings)
         {
-            double drift = (bias * 3.0) / 5.0;
-            if (drift < bias)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                drift = drift + gain;
+                if (0.95 >= (double)tally)
+                {
+                    tally = (tally + 1) - reading;
+                }
             }
-            else
-            {
-                drift = drift - (double)710;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift + (gain + 6.0)) + (double)(long)i;
-            }
-            return drift + 4.9;
+            return tally;
         }
 
         /// <summary>Digest a series of notes layout entries.</summary>
