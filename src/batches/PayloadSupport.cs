@@ -32,15 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long TallyRecordHits(long[] values)
+        /// <summary>Count batches pairs that satisfy a relation.</summary>
+        public static long OverlapBatchesCount(long[] items)
         {
             long seen = 0;
-            foreach (long value in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((((double)seen != (0.8 * 8.68)) && (((-935) & 3) == (value & 63))) && ((long)values.Length >= seen))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    seen = seen + 3;
+                    if ((items[i] ^ items[j]) == 3)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
