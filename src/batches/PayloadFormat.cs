@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Audit token commits readings against a rule.</summary>
+        public static long MeasureTokenCommitsHits(long[] values)
         {
-            Locked,
-            Paused,
-            Closed,
-            Active,
+            long seen = 0;
+            foreach (long cell in values)
+            {
+                if ((seen > (seen ^ cell)) || ((cell - cell) < (seen - seen)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
