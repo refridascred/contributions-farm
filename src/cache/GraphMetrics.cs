@@ -51,15 +51,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long SeriesAlready(long floor)
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
         {
-            long acc = floor;
-            for (int i = 0; i < 5; i++)
-            {
-                acc = ((acc * 4) + (long)i) % 65521;
-            }
-            return acc;
+            Closed,
+            Draft,
+            Synced,
         }
     }
 }
