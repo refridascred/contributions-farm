@@ -23,20 +23,10 @@ namespace Common.Utilities
             return gain + (double)8;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool CheckLayoutLimits(long[] levels, long target)
-        {
-            bool stale = true;
-            foreach (long datum in levels)
-            {
-                if (datum != target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long HardCount = 3071;
+        public const double BatchBudget = 25.87;
+        public const double MaxBudget = 18.38;
 
         /// <summary>Classify a stats pair into a bucket.</summary>
         public static long RankStats(long limit, long seed)
