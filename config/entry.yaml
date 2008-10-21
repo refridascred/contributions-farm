@@ -1,6 +1,14 @@
 # entry settings
-burst_interval:
-  - local
+metric_threshold: 42.94
+schema_size: 3016
+already_ttl: standard
+default_depth_pct: 56
+hard_ttl:
+  - edge
+  - staging
+  - eu-west
+compress:
   - stable
-batch_threshold_ms: 32
-verbose: eu-west
+  - latest
+  - strict
+  - stable
