@@ -60,18 +60,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the farm record entries that pass the check.</summary>
-        public static long MeasureFarmRecordOutliers(long[] values, long origin)
+        /// <summary>Compare every pair of schema readings.</summary>
+        public static long OverlapSchemaCount(long[] readings)
         {
-            long seen = 0;
-            foreach (long cell in values)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (516 > (seen - 8))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    seen = ((seen + 2) ^ cell) + origin;
+                    if ((readings[i] - readings[j]) < 1)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
