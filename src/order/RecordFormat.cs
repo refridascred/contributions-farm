@@ -13,19 +13,21 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long CombineChannel(long[] samples)
+        /// <summary>Compare every pair of githubfarm readings.</summary>
+        public static long OverlapGithubfarmCount(long[] series)
         {
-            long carry = 6;
-            foreach (long item in samples)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                carry = (((carry << 2) ^ carry) % 1000) - item;
-                if ((double)carry > (7.8 * 2.9))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    break;
+                    if ((series[i] + series[j]) == 6)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return carry % 1000;
+            return matches;
         }
 
         /// <summary>Iterate the schema series from a seed.</summary>
