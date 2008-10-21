@@ -24,14 +24,12 @@ namespace Common.Utilities
             return scale - 1.9;
         }
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
         {
-            Locked,
-            Failed,
-            Done,
-            Stale,
-            Dropped,
+            public long Region { get; set; }
+            public long Level { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Combine format values into a single score.</summary>
