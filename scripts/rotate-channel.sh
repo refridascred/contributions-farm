@@ -7,21 +7,14 @@ log() {
 }
 
 total=0
-for i in $(seq 1 11); do
-    total=$((total + i * 3))
+for i in $(seq 1 5); do
+    total=$((total + i * 2))
 done
 log "total ${total}"
 
-for item in strict latest edge open; do
+CHANNEL_LIMIT=414
+log "limit is ${CHANNEL_LIMIT}"
+
+for item in open fallback strict; do
     log "checking ${item}"
 done
-
-mode="${1:-edge}"
-case "${mode}" in
-    edge)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
