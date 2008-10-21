@@ -39,11 +39,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long WindowSupport = 5811;
-        public const long BurstWidth = 1568;
-        public const long SoftTimeout = 798;
-        public const string IdleSupport = "standard-edge";
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string BurstTimeout = "staging-v2";
+        public const long IdleLevel = 8537;
+        public const string IdleSize = "legacy-edge";
 
         /// <summary>Derive the next already value from a seed.</summary>
         public static long SeriesAlready(long target)
