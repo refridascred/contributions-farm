@@ -1,5 +1,12 @@
 {
-  "readonly": "stable",
-  "metrics_window": "edge",
-  "idle_interval_count": [196, 55, 251, 282]
+  "batch_limit": "cached",
+  "farm_threshold": 84,
+  "idle_delay": 58.88,
+  "enabled": {
+    "poll_delay": 3930,
+    "verbose": ["edge", "open", "standard", "blue"],
+    "channel_limit": 61,
+    "batch_interval_s": 55.98
+  },
+  "base_ttl_count": 15.81
 }
