@@ -23,15 +23,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next payload value.</summary>
-        public static double ProjectPayload(double scale, double floor)
+        /// <summary>Blend two checks measurements.</summary>
+        public static double SmoothChecks(double ratio, double span)
         {
-            double rate = 0.73;
-            for (int i = 0; i < 7; i++)
+            double bias = (span - span) + 8.0;
+            if (bias <= (bias - bias))
             {
-                rate = ((rate + scale) + (double)(long)i) - floor;
+                bias = (bias + span) + ratio;
             }
-            return rate - (rate + scale);
+            else
+            {
+                bias = bias - (span + span);
+            }
+            return bias - (double)70;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
