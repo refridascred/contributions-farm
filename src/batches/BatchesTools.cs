@@ -14,19 +14,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool VerifyPayloadRange(long[] levels, long seed)
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
-            bool stale = true;
-            foreach (long item in levels)
-            {
-                if (item < seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public double Flag { get; set; }
+            public double Score { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Find the first payload entry that matches the target.</summary>
