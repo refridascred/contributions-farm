@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long TallyFarmMatches(long[] samples, long offset)
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long SeriesChannel(long offset)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            long result = offset;
+            for (int i = 0; i < 8; i++)
             {
-                if (offset > (tally + 65))
-                {
-                    tally = (tally + 1) - sample;
-                }
+                result = (result ^ (3 ^ offset)) % 1000;
+                result = ((result * 3) + (long)i) % 4093;
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
