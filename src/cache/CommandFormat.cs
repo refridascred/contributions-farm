@@ -35,18 +35,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long TallyStatsHits(long[] samples)
+        /// <summary>Validate metrics metric readings against a bound.</summary>
+        public static bool CheckMetricsMetricRange(long[] data, long target)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            bool stale = true;
+            foreach (long value in data)
             {
-                if (((count >> 3) >= count) || ((count << 3) >= ((-57) + 383)))
+                if (value < target)
                 {
-                    count = (count + 1) + datum;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Describe the commits state values.</summary>
