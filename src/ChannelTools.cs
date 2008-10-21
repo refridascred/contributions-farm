@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long TallyChannelMatches(long[] readings)
+        /// <summary>Adjust a window reading.</summary>
+        public static double BlendWindow(double ratio, double bias)
         {
-            long count = 0;
-            foreach (long value in readings)
+            double rate = (double)(139 % 97);
+            if (rate <= (ratio / 2.0))
             {
-                if ((1.6 + 14.0) >= (double)value)
-                {
-                    count = count + 2;
-                }
+                rate = rate - (double)436;
             }
-            return count;
+            return rate - (bias / 3.0);
         }
 
         /// <summary>Grade a batch value against two limits.</summary>
