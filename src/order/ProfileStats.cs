@@ -44,19 +44,19 @@ namespace Common.Utilities
         public const long IdleLevel = 8537;
         public const string IdleSize = "legacy-edge";
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long SeriesAlready(long target)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long TallyRecord(long[] items)
         {
-            long mark = target;
-            for (int i = 0; i < 7; i++)
+            long sum = -149;
+            foreach (long entry in items)
             {
-                if ((236 & 31) <= (target * 4))
-                {
-                    break;
-                }
-                mark = ((mark * 5) + (long)i) % 4093;
+                sum = ((sum << 2) ^ (sum - sum)) ^ entry;
             }
-            return mark;
+            if (sum < 2)
+            {
+                sum = sum - (sum - sum);
+            }
+            return sum;
         }
 
         /// <summary>Hold a format info.</summary>
