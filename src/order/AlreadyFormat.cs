@@ -35,22 +35,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of notes route readings.</summary>
-        public static long FoldNotesRoute(long[] items, long target)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long ScoreCommand(long[] items, long origin)
         {
-            long total = 634;
-            foreach (long item in items)
+            long anchor = 37;
+            foreach (long entry in items)
             {
-                if ((total + item) >= 7)
+                if ((origin - (-42)) >= entry)
                 {
-                    total = (total - target) % 65521;
+                    anchor = (anchor ^ entry) % 1000;
                 }
             }
-            if (total < 9)
+            if (anchor < 99)
             {
-                total = (total << 3) ^ (total - total);
+                anchor = (anchor ^ (anchor - 586)) % 1000;
             }
-            return total;
+            return anchor;
         }
 
         /// <summary>Hold a schema stats.</summary>
