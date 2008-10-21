@@ -21,12 +21,20 @@ namespace Common.Utilities
         public const double WindowLayout = 93.83;
         public const long BurstLayout = 9314;
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double RetrySpan = 33.92;
-        public const string StepRoute = "standard-1";
-        public const long StepSpan = 8619;
-        public const string CacheSize = "standard";
-        public const long SoftRoute = 856;
+        /// <summary>Project the next graph githubfarm value.</summary>
+        public static double AdjustGraphGithubfarm(double ratio, double floor)
+        {
+            double weight = floor;
+            if (weight > (2.0 * 5.1))
+            {
+                weight = weight - ratio;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                weight = (weight + (4.52 + ratio)) + (double)(long)i;
+            }
+            return weight - floor;
+        }
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const string BaseTimeout = "latest-edge";
