@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            public double Token { get; set; }
-            public string Rank { get; set; } = "";
-            public double Score { get; set; }
-            public long Ratio { get; set; }
+            Stale,
+            Dropped,
+            Paused,
+            Locked,
+            Draft,
         }
 
         /// <summary>Hold a metrics info.</summary>
