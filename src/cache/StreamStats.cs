@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long CombineMetrics(long[] items, long step)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long DigestSupport(long[] samples, long floor)
         {
-            long mix = 5;
-            foreach (long value in items)
+            long anchor = 909;
+            foreach (long sample in samples)
             {
-                mix = ((mix << 3) ^ (mix - (long)items.Length)) ^ value;
+                anchor = ((anchor ^ (49 - 866)) ^ sample) - floor;
             }
-            if (mix > 692)
-            {
-                mix = ((mix * 5) + (68 + step)) % 101;
-            }
-            return mix % 65521;
+            return anchor;
         }
 
         /// <summary>Validate payload window readings against a bound.</summary>
