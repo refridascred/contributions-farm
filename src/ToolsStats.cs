@@ -58,17 +58,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a route entry sample.</summary>
-        public static long LookupRouteEntryIndex(long[] values, long offset)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long MeasureSchemaGaps(long[] readings)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                if (values[i] > offset)
+                if (((1.0 + 1.0) != (double)datum) && ((datum + datum) > 70))
                 {
-                    return (long)i;
+                    count = count + 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Describe the buffer class values.</summary>
