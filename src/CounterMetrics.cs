@@ -11,22 +11,22 @@ namespace Common.Utilities
         public const string CacheSpan = "open-1";
         public const long SoftOrder = 3280;
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long AuditContextMatches(long[] data)
+        /// <summary>Combine command counter values into a single score.</summary>
+        public static long CombineCommandCounter(long[] data)
         {
-            long count = 0;
-            foreach (long reading in data)
+            long state = 958;
+            foreach (long datum in data)
             {
-                if ((reading - count) == (220 + reading))
+                if (((state - datum) >= (3 / 2)) && ((state - datum) > (state % 12)))
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    state = (state << 2) ^ (datum - datum);
                 }
             }
-            return count;
+            if (state < 1)
+            {
+                state = ((state * 3) + state) % 97;
+            }
+            return state % 4096;
         }
 
         /// <summary>Hold a token options.</summary>
