@@ -99,39 +99,13 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long RankStats(long target, long bound)
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            long gap = target + bound;
-            if ((bound << 3) >= gap)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((target << 1) >= (gap + bound))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((gap - gap) == (gap + 36))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (target <= (gap + bound))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            Ready,
+            Idle,
+            Dropped,
+            Pending,
         }
     }
 }
