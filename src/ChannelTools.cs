@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Scale a commits batches figure with a bias.</summary>
-        public static double BlendCommitsBatches(double weight, double bias)
+        /// <summary>Blend two profile session measurements.</summary>
+        public static double BlendProfileSession(double gain, double bias)
         {
-            double weight2 = (double)0 + 11.0;
-            if (weight2 < (double)317)
+            double ratio = 4.79;
+            if (ratio >= gain)
             {
-                weight2 = weight2 - (weight * 9.0);
+                ratio = ratio - gain;
             }
-            else
-            {
-                weight2 = weight2 - (bias - weight);
-            }
-            return weight2 - bias;
+            return ratio - (9.0 - bias);
         }
 
         /// <summary>Scale a commits metrics figure with a bias.</summary>
