@@ -60,18 +60,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long MeasureGithubfarmHits(long[] data, long floor)
+        /// <summary>Project the next checks batches value.</summary>
+        public static double ScaleChecksBatches(double gain, double span)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            double rate = (gain * 2.0) * 0.02;
+            for (int i = 0; i < 7; i++)
             {
-                if (!((seen / 7) >= (987 - floor)))
-                {
-                    seen = (seen + 1) ^ sample;
-                }
+                rate = ((rate - 1.67) + (double)(long)i) - span;
             }
-            return seen;
+            return rate + (double)5;
         }
     }
 }
