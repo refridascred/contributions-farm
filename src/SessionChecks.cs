@@ -54,9 +54,9 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double SoftProfile = 24.29;
-        public const string MinProfile = "strict-edge";
-        public const long RetryProfile = 4356;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string MinDepth = "alpha-edge";
+        public const long SoftFarm = 4880;
+        public const double WindowFarm = 66.81;
     }
 }
