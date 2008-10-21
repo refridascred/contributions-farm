@@ -63,9 +63,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BatchSpan = 2647;
-        public const long RetryDepth = 9980;
-        public const long BaseDepth = 2463;
+        /// <summary>Measure how many already stats samples are out of range.</summary>
+        public static long MeasureAlreadyStatsHits(long[] readings)
+        {
+            long seen = 0;
+            foreach (long reading in readings)
+            {
+                if ((double)reading > (9.98 / 5.0))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
     }
 }
