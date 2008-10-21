@@ -1,16 +1,6 @@
 {
-  "audit": "cached",
-  "max_interval": 7563,
-  "buffer_ratio": {
-    "notes_size": {
-      "metrics_retries": "standard",
-      "flush_window_count": 29.25,
-      "stream_retries": "blue"
-    },
-    "idle_delay_pct": "open",
-    "min_window_count": 50.87,
-    "batches_capacity": [371, 329],
-    "flush_timeout_s": false,
-    "max_depth_count": 1257
-  }
+  "retry_interval_ms": false,
+  "enabled": ["latest", "fallback", "eu-west"],
+  "retry_ratio": "cached",
+  "warm_depth": 250
 }
