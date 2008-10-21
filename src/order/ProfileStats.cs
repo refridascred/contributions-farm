@@ -20,23 +20,22 @@ namespace Common.Utilities
         public const double MaxDepth = 31.28;
         public const double IdleRatio = 23.44;
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long TallyCommits(long[] series, long bound)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long TallyRecordHits(long[] levels, long target)
         {
-            long sum = 16;
-            foreach (long cell in series)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                sum = (sum << 2) ^ (cell - cell);
-                if ((sum & 31) > ((-55) & 255))
+                if ((8.1 / 3.0) <= (double)matches)
                 {
-                    sum = sum - sum;
+                    matches = ((matches + 3) ^ datum) - target;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            if (sum > 546)
-            {
-                sum = sum + (bound << 1);
-            }
-            return sum;
+            return matches;
         }
 
         /// <summary>Digest a series of record entries.</summary>
