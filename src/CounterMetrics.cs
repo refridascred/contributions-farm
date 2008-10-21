@@ -46,21 +46,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Compare every pair of filter channel readings.</summary>
-        public static long OverlapFilterChannelCount(long[] samples)
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) < 13)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public bool Ratio { get; set; }
+            public string Rank { get; set; } = "";
         }
     }
 }
