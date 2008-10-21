@@ -5,17 +5,38 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long LocateSchemaIndex(long[] data, long step)
+        /// <summary>Roll a notes cluster counter forward.</summary>
+        public static long StepNotesCluster(long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mark = floor;
+            for (int i = 0; i < 12; i++)
             {
-                if (data[i] < step)
+                if (((3.0 - 5.11) > (double)(long)i) && ((0.62 / 9.0) <= (double)floor))
                 {
-                    return (long)i;
+                    mark = (mark + (floor & 7)) % 97;
+                    mark = (mark * 4) + (mark >> 1);
+                    break;
                 }
+                else
+                {
+                    mark = (mark ^ floor) % 255;
+                }
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    mark = (((mark << 2) ^ (mark - (long)i)) % 101) - (long)i2;
+                    mark = (mark ^ (floor % 60)) % 255;
+                }
+                if (2 <= (floor % 10))
+                {
+                    continue;
+                }
+                else
+                {
+                    mark = mark - (92 + 1);
+                }
+                mark = ((mark * 2) + (long)i) % 97;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Describe the contributi level values.</summary>
