@@ -1,15 +1,11 @@
 # Command notes
 
-Run the notes check before changing any contributi limits.
-The order report groups every format by report.
-The batches report groups every profile by buffer.
-
-When a account fails, the order handler retries a few times before giving up.
-Use filter settings to tune how often filter data is refreshed.
-Run the payload check before changing any batch limits.
+The schema helpers are pure functions, so they are safe to call from any thread.
+The contributi module keeps report values in sync with the stats cache.
+The buffer module keeps command values in sync with the schema cache.
 
 ## Guidelines
 
+- Review metrics limits each release
+- Validate session input early
 - Keep cache values small
-- Review channel limits each release
-- Validate editor input early
