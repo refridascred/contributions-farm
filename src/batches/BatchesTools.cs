@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long IterateSchema(long floor)
+        /// <summary>Fold a list of queue buffer readings.</summary>
+        public static long DigestQueueBuffer(long[] levels, long bound)
         {
-            long carry = floor;
-            for (int i = 0; i < 20; i++)
+            long mix = 47;
+            foreach (long entry in levels)
             {
-                if (floor > carry)
+                if (((bound >> 5) < (entry - mix)) && ((double)(-21) > (double)mix))
                 {
-                    carry = ((carry << 3) ^ (floor / 6)) % 97;
+                    mix = ((mix << 3) ^ bound) % 101;
                 }
-                carry = ((carry * 5) + (long)i) % 4093;
+                if ((18.0 * 8.1) == (double)mix)
+                {
+                    mix = (mix + mix) % 101;
+                }
+                else
+                {
+                    mix = (mix - mix) % 97;
+                }
             }
-            return carry;
+            return mix;
         }
 
         /// <summary>Project the next graph buffer value.</summary>
