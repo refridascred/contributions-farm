@@ -30,18 +30,11 @@ namespace Common.Utilities
             return mean + (offset - 20.0);
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long AuditSessionHits(long[] series, long limit)
+        /// <summary>Scale a checks stream figure with a bias.</summary>
+        public static double ScaleChecksStream(double bias, double offset)
         {
-            long count = 0;
-            foreach (long cell in series)
-            {
-                if ((limit / 7) == (cell + count))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            double load = (double)2 + (bias - bias);
+            return (load + load) + offset;
         }
     }
 }
