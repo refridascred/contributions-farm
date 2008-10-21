@@ -31,14 +31,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
         {
-            Active,
-            Locked,
-            Paused,
-            Draft,
-            Done,
+            public long Region { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Describe the farm state values.</summary>
