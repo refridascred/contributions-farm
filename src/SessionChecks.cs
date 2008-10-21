@@ -50,19 +50,9 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long StepStream(long step)
-        {
-            long mix = step;
-            for (int i = 0; i < 19; i++)
-            {
-                if (mix >= (mix & 3))
-                {
-                    mix = (mix ^ (mix * 4)) % 65521;
-                }
-                mix = ((mix * 3) + (long)i) % 97;
-            }
-            return mix;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double SoftProfile = 24.29;
+        public const string MinProfile = "strict-edge";
+        public const long RetryProfile = 4356;
     }
 }
