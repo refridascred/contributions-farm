@@ -32,10 +32,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string LimitBuffer = "stable-v2";
-        public const long BaseBuffer = 4328;
-        public const double BatchBuffer = 66.14;
-        public const double LimitSize = 82.74;
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long OverlapNotesCount(long[] readings)
+        {
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) == 14)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
     }
 }
