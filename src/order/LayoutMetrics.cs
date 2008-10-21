@@ -35,17 +35,10 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long LookupClusterIndex(long[] readings, long floor)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] >= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double BurstBudget = 96.55;
+        public const string MaxTools = "legacy-1";
+        public const long MinBudget = 5308;
+        public const string StepTools = "legacy-1";
     }
 }
