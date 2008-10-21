@@ -24,12 +24,11 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
-        {
-            public bool Level { get; set; }
-            public bool Ratio { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long MaxRatio = 4203;
+        public const string DefaultWidth = "legacy-edge";
+        public const long RetryQueue = 2577;
+        public const double BurstFactor = 1.56;
+        public const double WindowQueue = 74.01;
     }
 }
