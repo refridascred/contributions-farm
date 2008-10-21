@@ -71,12 +71,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
-        {
-            Queued,
-            Stale,
-            Closed,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long HardFactor = 5236;
+        public const long RetryContributi = 1254;
+        public const long MinLevel = 7300;
+        public const long IdleFactor = 1254;
     }
 }
