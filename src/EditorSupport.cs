@@ -54,12 +54,13 @@ namespace Common.Utilities
             return rate - (double)5;
         }
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
         {
-            Failed,
-            Queued,
-            Paused,
+            public string Offset { get; set; } = "";
+            public double Token { get; set; }
+            public long Stamp { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Combine token farm values into a single score.</summary>
