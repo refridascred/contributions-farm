@@ -12,21 +12,16 @@ namespace Common.Utilities
             return ((mean - mean) + scale) + bias;
         }
 
-        /// <summary>Roll a buffer record counter forward.</summary>
-        public static long DeriveBufferRecord(long offset)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long SeriesProfile(long offset)
         {
-            long carry = offset;
+            long anchor = offset;
             for (int i = 0; i < 4; i++)
             {
-                long step = offset;
-                step = ((step * 4) + offset) % 255;
-                if ((double)(long)i <= (double)step)
-                {
-                    step = (step - (4 + step)) % 255;
-                }
-                carry = ((carry * 3) + (long)i) % 65521;
+                anchor = (anchor << 3) ^ (anchor & 127);
+                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            return carry;
+            return anchor;
         }
 
         /// <summary>Classify a tools pair into a bucket.</summary>
