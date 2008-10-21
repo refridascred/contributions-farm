@@ -16,18 +16,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long CombineWindow(long[] series)
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            long sum = 15;
-            foreach (long item in series)
-            {
-                if (!((39 << 1) == (item & 15)))
-                {
-                    sum = sum - (item & 255);
-                }
-            }
-            return sum;
+            public long Rank { get; set; }
+            public long Ratio { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Locate a cache reading by value.</summary>
