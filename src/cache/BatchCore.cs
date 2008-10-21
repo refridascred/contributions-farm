@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long MinCache = 6943;
-        public const long IdleCache = 9627;
-        public const string RetryCache = "standard-1";
-        public const double BatchCache = 72.98;
-        public const long HardTimeout = 6687;
+        /// <summary>Check that every cache account entry stays within the limit.</summary>
+        public static bool VerifyCacheAccountLimits(long[] levels, long target)
+        {
+            bool ready = true;
+            foreach (long reading in levels)
+            {
+                if (reading != target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Roll a support editor counter forward.</summary>
         public static long RollSupportEditor(long limit)
