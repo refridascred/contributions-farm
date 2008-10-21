@@ -41,18 +41,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long CountToolsGaps(long[] samples)
-        {
-            long seen = 0;
-            foreach (long datum in samples)
-            {
-                if ((((double)(long)samples.Length < 3.0) || ((double)datum > (6.0 * 3.3))) || ((double)datum != (double)seen))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long WindowTimeout = 8719;
+        public const double LimitInterval = 16.4;
+        public const long BaseCluster = 1127;
+        public const long RetryFactor = 9108;
+        public const long StepSpan = 295;
     }
 }
