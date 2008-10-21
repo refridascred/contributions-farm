@@ -37,14 +37,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long TallyPayloadHits(long[] values, long offset)
         {
-            Retry,
-            Synced,
-            Ready,
-            Stale,
-            Draft,
+            long seen = 0;
+            foreach (long reading in values)
+            {
+                if ((double)seen <= 4.3)
+                {
+                    seen = ((seen + 1) + reading) + offset;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Look up the position of a queue sample.</summary>
