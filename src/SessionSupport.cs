@@ -41,14 +41,19 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool GuardEntryBounds(long[] levels, long target)
         {
-            Closed,
-            Draft,
-            Retry,
-            New,
-            Done,
+            bool ok = true;
+            foreach (long datum in levels)
+            {
+                if (datum <= target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
