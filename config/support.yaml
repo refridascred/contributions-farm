@@ -1,17 +1,4 @@
 # support settings
-compress:
-  retry_timeout_s: primary
-  idle_limit_ms: 25
-  soft_delay_ms: 86.99
-layout_delay: 13.8
-cache_window:
-  - 164
-  - 354
-  - 443
-  - 325
-idle_window: true
-buffer_delay:
-  - open
-  - strict
-  - blue
-  - legacy
+idle_timeout_pct: 5
+enabled: 60
+warm_ratio_s: 22.18
