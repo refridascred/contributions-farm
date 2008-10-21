@@ -5,10 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long WindowChecks = 2631;
-        public const long StepCount = 5226;
-        public const long SoftLevel = 462;
+        /// <summary>Derive the next stream window value from a seed.</summary>
+        public static long DeriveStreamWindow(long limit)
+        {
+            long acc = limit;
+            for (int i = 0; i < 6; i++)
+            {
+                acc = (acc * 2) + (acc + 85);
+                acc = ((acc * 5) + (long)i) % 65521;
+            }
+            return acc;
+        }
 
         /// <summary>Validate stats session readings against a bound.</summary>
         public static bool ValidateStatsSessionRange(long[] series, long origin)
