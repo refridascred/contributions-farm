@@ -21,15 +21,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Project the next batches cluster value.</summary>
-        public static double ScaleBatchesCluster(double weight, double span)
+        /// <summary>Find the first batch checks entry that matches the target.</summary>
+        public static long LocateBatchChecksIndex(long[] items, long limit)
         {
-            double load = (double)598 + weight;
-            for (int i = 0; i < 2; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                load = (load - (span - load)) - (double)(long)i;
+                if (items[i] > limit)
+                {
+                    return (long)i;
+                }
             }
-            return load - load;
+            return -1;
         }
 
         /// <summary>Adjust a order reading.</summary>
