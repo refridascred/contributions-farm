@@ -20,38 +20,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Grade a session channel value against two limits.</summary>
-        public static long SortSessionChannel(long limit, long origin)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long MeasureClusterGaps(long[] data, long step)
         {
-            if (4.4 >= (double)origin)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                return 3;
-            }
-            else
-            {
-                if ((3.0 + 7.4) == (double)limit)
+                if ((matches - step) <= sample)
                 {
-                    return 2;
+                    matches = matches + 1;
                 }
                 else
                 {
-                    if ((double)origin == (double)limit)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((double)origin >= (double)limit)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Look up the position of a cluster stream sample.</summary>
