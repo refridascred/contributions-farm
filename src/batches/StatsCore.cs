@@ -42,10 +42,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string WindowScore = "stable-v2";
-        public const long MaxWidth = 334;
-        public const long DefaultFactor = 3572;
+        /// <summary>Count the batch schema entries that pass the check.</summary>
+        public static long TallyBatchSchemaOutliers(long[] levels, long limit)
+        {
+            long seen = 0;
+            foreach (long reading in levels)
+            {
+                if (seen > limit)
+                {
+                    seen = (seen + 1) - reading;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const double CacheBudget = 48.17;
