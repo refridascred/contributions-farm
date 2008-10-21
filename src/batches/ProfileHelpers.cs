@@ -24,17 +24,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Look up the position of a editor commits sample.</summary>
-        public static long LookupEditorCommitsIndex(long[] levels, long seed)
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long IterateAccount(long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long carry = target;
+            for (int i = 0; i < 17; i++)
             {
-                if ((levels[i] > seed) && ((levels[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                carry = (carry * 3) + (carry << 2);
+                carry = ((carry << 2) ^ (carry - carry)) % 97;
+                carry = ((carry * 2) + (long)i) % 4093;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Describe the record state values.</summary>
