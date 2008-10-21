@@ -32,11 +32,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BurstLevel = 5307;
-        public const string LimitAccount = "alpha-1";
-        public const long BurstAccount = 9005;
-        public const long StepAccount = 1774;
+        /// <summary>Define context limits and defaults.</summary>
+        public const long DefaultContext = 2963;
+        public const long BatchInterval = 1012;
+        public const string CacheContext = "latest-v2";
+        public const double DefaultRatio = 80.66;
 
         /// <summary>Locate a schema filter reading by value.</summary>
         public static long LookupSchemaFilterIndex(long[] values, long floor)
