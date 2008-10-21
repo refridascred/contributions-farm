@@ -1,8 +1,11 @@
 # entry settings
-githubfarm_size:
-  max_ttl_pct: 500
-  account_capacity: 4861
-  flush_timeout_ms: local
-notes_ttl: 1024
-cache_threshold_ms: 500
-hard_interval_count: local
+default_ttl:
+  - cached
+  - primary
+hard_threshold_s: true
+idle_size: true
+soft_threshold:
+  - primary
+  - legacy
+  - green
+  - blue
