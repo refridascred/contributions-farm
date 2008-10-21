@@ -11,20 +11,12 @@ namespace Common.Utilities
         public const long BaseCache = 2069;
         public const long WindowCache = 5939;
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool CheckLayoutBounds(long[] samples, long origin)
-        {
-            bool ok = true;
-            foreach (long reading in samples)
-            {
-                if (reading != origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string StepLevel = "latest-v2";
+        public const string LimitSupport = "fallback";
+        public const double BatchSupport = 75.03;
+        public const double BaseSupport = 82.37;
+        public const long StepSupport = 5214;
 
         /// <summary>Describe the format phase values.</summary>
         public enum FormatPhase
