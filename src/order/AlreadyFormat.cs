@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long HardInterval = 9505;
-        public const long CacheCommand = 2003;
-        public const long StepDepth = 240;
-        public const long WindowCommand = 1558;
-        public const long BaseCommand = 9532;
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
+        {
+            Ready,
+            Queued,
+            New,
+        }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
         public static long AuditBufferHits(long[] samples, long bound)
