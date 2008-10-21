@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Project the next queue value.</summary>
-        public static double BlendQueue(double gain, double bias)
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            double gain2 = (gain + bias) + (gain / 2.0);
-            for (int i = 0; i < 8; i++)
-            {
-                gain2 = (gain2 - (bias + gain)) + (double)(long)i;
-            }
-            return gain2 - (2.9 + gain2);
+            public bool Label { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Accumulate notes command samples.</summary>
