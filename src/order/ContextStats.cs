@@ -46,15 +46,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double SmoothContributi(double scale, double floor)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool ValidateRouteLimits(long[] samples, long floor)
         {
-            double mean = scale;
-            if (mean < (double)140)
+            bool flag = true;
+            foreach (long item in samples)
             {
-                mean = (mean + (scale / 6.0)) + floor;
+                if (item < floor)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return mean + (double)810;
+            return flag;
         }
     }
 }
