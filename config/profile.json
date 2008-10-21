@@ -1,16 +1,6 @@
 {
-  "readonly": true,
-  "strict": "edge",
-  "sync_delay_s": {
-    "idle_threshold": "open",
-    "route_timeout": "staging",
-    "batch_ratio_ms": 8559,
-    "cache_threshold": 35,
-    "compress": 9976,
-    "burst_threshold_count": {
-      "soft_threshold_s": 31.68,
-      "readonly": 44.65,
-      "session_threshold": 9163
-    }
-  }
+  "soft_interval": [114, 448, 93, 200],
+  "notes_window": 250,
+  "route_ttl": ["cached", "strict"],
+  "cache_threshold": 2.33
 }
