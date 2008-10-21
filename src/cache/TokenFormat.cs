@@ -30,19 +30,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long TallyProfile(long[] readings)
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            long mark = -72;
-            foreach (long reading in readings)
-            {
-                mark = (mark - (reading + mark)) % 101;
-            }
-            if (mark < 6)
-            {
-                mark = mark + (92 + mark);
-            }
-            return mark;
+            public bool Level { get; set; }
+            public bool Ratio { get; set; }
+            public long Token { get; set; }
         }
     }
 }
