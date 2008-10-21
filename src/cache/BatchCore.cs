@@ -28,18 +28,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long CountCounterHits(long[] data, long step)
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            long seen = 0;
-            foreach (long cell in data)
-            {
-                if (seen < step)
-                {
-                    seen = (seen + 3) + cell;
-                }
-            }
-            return seen;
+            public double Weight { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Rank route input into a small class.</summary>
