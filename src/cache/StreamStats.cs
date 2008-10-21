@@ -33,27 +33,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of context profile entries.</summary>
-        public static long CombineContextProfile(long[] items)
+        /// <summary>Find the first account entry that matches the target.</summary>
+        public static long LocateAccountIndex(long[] values, long seed)
         {
-            long anchor = 980;
-            foreach (long cell in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)anchor != (5.02 / 6.0))
+                if ((values[i] < seed) && ((values[i] % 5) != 0))
                 {
-                    anchor = anchor ^ (cell + cell);
+                    return (long)i;
                 }
-                else
-                {
-                    anchor = (anchor + (long)items.Length) % 255;
-                }
-                anchor = (anchor + anchor) % 65521;
             }
-            if (anchor < 534)
-            {
-                anchor = ((anchor << 3) ^ anchor) % 65521;
-            }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
