@@ -67,31 +67,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long DigestCache(long[] series)
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long MatchFilterCount(long[] series)
         {
-            long carry = 329;
-            foreach (long value in series)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                carry = (carry - (8 ^ carry)) % 4096;
-                if (129 < (value ^ 732))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    carry = (carry + (carry + value)) % 101;
-                }
-                else
-                {
-                    carry = ((carry << 2) ^ (carry * 4)) % 65521;
-                }
-                if (((double)carry >= (18.0 + 4.61)) || ((0.5 * 6.0) < (double)value))
-                {
-                    break;
+                    if ((series[i] ^ series[j]) > 9)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (carry > 97)
-            {
-                carry = (carry - carry) % 1000;
-            }
-            return carry % 97;
+            return tally;
         }
     }
 }
