@@ -18,21 +18,16 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Count context pairs that satisfy a relation.</summary>
-        public static long CompareContextCount(long[] series)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long WeighCounter(long[] readings)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long total = 829;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 2)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                total = ((total << 3) ^ 291) % 97;
+                total = (total ^ (datum - total)) % 65521;
             }
-            return matches;
+            return total % 4096;
         }
     }
 }
