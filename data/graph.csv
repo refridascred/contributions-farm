@@ -1,7 +1,9 @@
-id,token,weight,level,active
-1,14.05,341,447,48.22
-2,50.08,86.12,60.98,staging
-3,76.82,868,standard,503
-4,418,51.42,local,65.95
-5,staging,810,strict,36.03
-6,573,393,16.3,47.1
+id,state,token
+1,785,11.14
+2,456,standard
+3,24.4,341
+4,185,staging
+5,eu-west,301
+6,strict,455
+7,green,36.98
+8,638,edge
