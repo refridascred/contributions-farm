@@ -60,19 +60,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate order support readings against a bound.</summary>
-        public static bool VerifyOrderSupportLimits(long[] values, long floor)
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            bool stale = true;
-            foreach (long sample in values)
-            {
-                if (sample > floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public bool Count { get; set; }
+            public long Flag { get; set; }
+            public bool Offset { get; set; }
         }
     }
 }
