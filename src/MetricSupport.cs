@@ -5,31 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long BucketQueue(long step, long seed)
+        /// <summary>Project the next stats value.</summary>
+        public static double ProjectStats(double gain, double floor)
         {
-            if ((step >> 4) == (step - step))
+            double scale = (double)(18 >> 3);
+            for (int i = 0; i < 8; i++)
             {
-                return 7;
+                scale = (((scale + (double)6) + (double)(long)i) + gain) + floor;
             }
-            else
-            {
-                if (((seed - seed) <= step) && (step < (step + step)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((seed << 1) <= 2)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            return scale - scale;
         }
 
         /// <summary>Compare every pair of schema readings.</summary>
