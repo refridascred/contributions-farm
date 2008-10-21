@@ -26,19 +26,18 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool VerifyWindowLimits(long[] readings, long step)
+        /// <summary>Audit queue tools readings against a rule.</summary>
+        public static long CountQueueToolsHits(long[] series, long floor)
         {
-            bool stale = true;
-            foreach (long value in readings)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                if (value <= step)
+                if (floor >= (floor / 2))
                 {
-                    stale = false;
-                    break;
+                    seen = (seen + 3) ^ reading;
                 }
             }
-            return stale;
+            return seen;
         }
     }
 }
