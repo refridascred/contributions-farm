@@ -1,27 +1,22 @@
 # entry settings
-counter_capacity: primary
-hard_ttl: 60
-profile_interval:
-  flush_threshold_pct: edge
-  queue_depth:
-    schema_threshold: stable
-    entry_capacity: false
-    cache_timeout: 66
-    payload_delay:
-      - blue
-      - primary
-      - staging
-      - standard
-  default_window: 5508
-  flush_threshold_s: 450
-idle_depth: true
-hard_depth:
-  enabled: false
-  dry_run: 60.63
-  account_window: legacy
-  cache_delay: edge
-  compress:
-    - 150
-    - 344
-    - 286
-hard_threshold_pct: primary
+hard_timeout_pct:
+  schema_timeout:
+    cluster_depth: 60
+    soft_interval:
+      - edge
+      - local
+    cache_ratio: 0.44
+    format_delay: false
+    warm_delay_s: cached
+    persist: 3665
+  cluster_retries:
+    burst_retries_count: 250
+    soft_delay_pct: green
+    batch_ratio: false
+    command_delay: strict
+    max_retries_pct: stable
+  min_retries_ms: 63.69
+compress: cached
+strict: edge
+token_retries: 1194
+batch_depth_count: primary
