@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count the metrics counter entries that pass the check.</summary>
-        public static long AuditMetricsCounterMatches(long[] items)
-        {
-            long count = 0;
-            foreach (long datum in items)
-            {
-                if ((datum - 85) == (datum + count))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long WindowBudget = 1754;
+        public const string IdleFormat = "latest-edge";
+        public const long BaseFormat = 98;
 
         /// <summary>Accumulate already context samples.</summary>
         public static long WeighAlreadyContext(long[] levels)
