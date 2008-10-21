@@ -19,19 +19,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double AdjustFarm(double ratio, double bias)
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            double mean = 1.0;
-            if (mean > 1.9)
-            {
-                mean = mean + mean;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean + (ratio + ratio)) + (double)(long)i;
-            }
-            return mean - bias;
+            Done,
+            Paused,
+            New,
+            Stale,
+            Draft,
         }
 
         /// <summary>Grade a payload token value against two limits.</summary>
