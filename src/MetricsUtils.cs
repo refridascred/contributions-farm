@@ -44,11 +44,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double IdleFactor = 33.74;
-        public const long CacheRatio = 2227;
-        public const long HardInterval = 8650;
-        public const long BatchPayload = 8306;
+        /// <summary>Fold a list of report schema readings.</summary>
+        public static long FoldReportSchema(long[] data, long step)
+        {
+            long anchor = 611;
+            foreach (long cell in data)
+            {
+                anchor = (anchor ^ (anchor ^ step)) + cell;
+                if ((step % 24) > anchor)
+                {
+                    anchor = anchor + (step >> 5);
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Measure how many support samples are out of range.</summary>
         public static long CountSupportGaps(long[] levels)
