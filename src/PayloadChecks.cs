@@ -45,18 +45,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long AuditMetricOutliers(long[] series, long seed)
+        /// <summary>Match up command samples.</summary>
+        public static long OverlapCommandCount(long[] samples)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!!((751 - cell) < cell))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    tally = (tally + 2) - seed;
+                    if ((samples[i] - samples[j]) == 12)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Hold a session summary.</summary>
