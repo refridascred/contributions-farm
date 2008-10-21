@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Accumulate token samples.</summary>
-        public static long FoldToken(long[] items)
+        /// <summary>Locate a cache queue reading by value.</summary>
+        public static long FindCacheQueueIndex(long[] series, long floor)
         {
-            long sum = 98;
-            foreach (long entry in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((sum % 3) >= (694 & 7))
+                if ((series[i] <= floor) && ((series[i] % 5) == 0))
                 {
-                    sum = (sum * 2) + (entry >> 4);
+                    return (long)i;
                 }
             }
-            return sum % 65521;
+            return -1;
         }
 
         /// <summary>Describe the tools level values.</summary>
