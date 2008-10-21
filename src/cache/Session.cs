@@ -58,13 +58,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            Synced,
-            Ready,
-            Draft,
-            Idle,
+            Closed,
+            Active,
+            Pending,
+            Retry,
         }
     }
 }
