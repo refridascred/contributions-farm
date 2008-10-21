@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
         {
-            Queued,
-            Ready,
-            Done,
-            Failed,
+            public double Weight { get; set; }
+            public bool Offset { get; set; }
+            public long Label { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Derive the next batches value from a seed.</summary>
