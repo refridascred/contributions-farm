@@ -54,13 +54,24 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Grade a cache queue value against two limits.</summary>
+        public static long ClassifyCacheQueue(long seed, long origin)
         {
-            public long Rank { get; set; }
-            public long Score { get; set; }
-            public bool Offset { get; set; }
-            public double Count { get; set; }
+            if ((19.0 + 7.0) < (double)seed)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)seed > 4.88)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
     }
 }
