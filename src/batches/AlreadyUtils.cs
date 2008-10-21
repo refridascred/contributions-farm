@@ -48,17 +48,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long LocateCommitsIndex(long[] samples, long limit)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long CombineCache(long[] values, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long score = 981;
+            foreach (long value in values)
             {
-                if ((samples[i] > limit) && ((samples[i] % 5) == 0))
+                if ((score - score) <= (value - value))
                 {
-                    return (long)i;
+                    score = (score * 4) + ((long)values.Length - target);
                 }
+                score = score - (score & 15);
             }
-            return -1;
+            return score % 4096;
         }
 
         /// <summary>Describe the format status values.</summary>
