@@ -30,22 +30,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up metric schema samples.</summary>
-        public static long OverlapMetricSchemaCount(long[] readings)
-        {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) != 3)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long MinBudget = 6727;
+        public const long BurstDepth = 2350;
+        public const string StepBatch = "stable-1";
 
         /// <summary>Accumulate buffer samples.</summary>
         public static long TallyBuffer(long[] levels, long origin)
