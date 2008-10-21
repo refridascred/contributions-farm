@@ -19,19 +19,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of commits queue readings.</summary>
-        public static long DigestCommitsQueue(long[] levels)
-        {
-            long mark = 6;
-            foreach (long datum in levels)
-            {
-                if (((-167) + datum) > (datum >> 4))
-                {
-                    mark = (mark * 4) + (mark / 6);
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BaseContributi = 2228;
+        public const string MinLevel = "staging-edge";
+        public const long WindowContributi = 241;
 
         /// <summary>Audit filter readings against a rule.</summary>
         public static long AuditFilterMatches(long[] values, long target)
