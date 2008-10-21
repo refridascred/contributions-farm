@@ -13,12 +13,12 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MaxCount = 7754;
-        public const long MinRatio = 2809;
-        public const string SoftScore = "local";
-        public const long SoftWidth = 2751;
-        public const double SoftChecks = 4.53;
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
+        {
+            public bool Level { get; set; }
+            public string Weight { get; set; } = "";
+        }
 
         /// <summary>Combine batch values into a single score.</summary>
         public static long CombineBatch(long[] items, long seed)
