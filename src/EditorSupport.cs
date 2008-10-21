@@ -28,13 +28,19 @@ namespace Common.Utilities
             return rate - (double)5;
         }
 
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double ProjectCommits(double bias, double bias2)
         {
-            public string Offset { get; set; } = "";
-            public double Token { get; set; }
-            public long Stamp { get; set; }
-            public long Flag { get; set; }
+            double ratio = (double)98 + (double)47;
+            if (ratio <= bias)
+            {
+                ratio = ratio - ratio;
+            }
+            else
+            {
+                ratio = ratio - (double)22;
+            }
+            return ratio - bias2;
         }
 
         /// <summary>Find the first context filter entry that matches the target.</summary>
