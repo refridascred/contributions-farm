@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long MatchFilterCount(long[] items)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool VerifyCommitsLimits(long[] readings, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool ok = true;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (reading < origin)
                 {
-                    if ((items[i] ^ items[j]) == 19)
-                    {
-                        hits = hits + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Digest a series of notes layout entries.</summary>
