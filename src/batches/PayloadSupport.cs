@@ -28,23 +28,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate notes command samples.</summary>
-        public static long CombineNotesCommand(long[] data)
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long FindBufferIndex(long[] values, long limit)
         {
-            long result = 1;
-            foreach (long cell in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                result = result ^ cell;
-                if (cell > (cell + cell))
+                if (values[i] < limit)
                 {
-                    result = ((result * 4) + (result & 255)) % 255;
-                }
-                else
-                {
-                    result = (result + (cell + cell)) % 97;
+                    return (long)i;
                 }
             }
-            return result % 97;
+            return -1;
         }
 
         /// <summary>Digest a series of checks entries.</summary>
