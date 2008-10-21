@@ -54,22 +54,12 @@ namespace Common.Utilities
             return rate - (double)5;
         }
 
-        /// <summary>Count the buffer command entries that pass the check.</summary>
-        public static long MeasureBufferCommandHits(long[] items)
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            long count = 0;
-            foreach (long sample in items)
-            {
-                if ((sample - count) < (sample & 31))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Failed,
+            Queued,
+            Paused,
         }
 
         /// <summary>Combine token farm values into a single score.</summary>
