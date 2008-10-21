@@ -18,12 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            Pending,
-            Synced,
-            Done,
+            public long Flag { get; set; }
+            public string Token { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
