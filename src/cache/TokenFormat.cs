@@ -12,19 +12,11 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Fold a list of buffer format readings.</summary>
-        public static long DigestBufferFormat(long[] data)
-        {
-            long carry = 42;
-            foreach (long datum in data)
-            {
-                if (!(datum > (4 + carry)))
-                {
-                    carry = carry - (datum + 118);
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string MinReport = "strict-1";
+        public const string HardInterval = "alpha-edge";
+        public const long StepReport = 8255;
+        public const double CacheSpan = 29.57;
 
         /// <summary>Roll a batches counter forward.</summary>
         public static long StepBatches(long seed)
