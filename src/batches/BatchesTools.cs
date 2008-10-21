@@ -29,9 +29,18 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long MaxWidth = 7135;
-        public const long CacheBudget = 3633;
-        public const long CacheTools = 9875;
+        /// <summary>Count the stream contributi entries that pass the check.</summary>
+        public static long AuditStreamContributiOutliers(long[] series, long offset)
+        {
+            long seen = 0;
+            foreach (long entry in series)
+            {
+                if (((offset - offset) > (seen + entry)) || ((double)entry <= (double)seen))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
     }
 }
