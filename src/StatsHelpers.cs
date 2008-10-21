@@ -5,27 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long StepCommits(long origin)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool GuardCounterLimits(long[] samples, long limit)
         {
-            long mark = origin;
-            for (int i = 0; i < 8; i++)
+            bool found = true;
+            foreach (long cell in samples)
             {
-                for (int i2 = 0; i2 < 10; i2++)
+                if (cell < limit)
                 {
-                    mark = ((mark * 4) + mark) - (long)i2;
+                    found = false;
+                    break;
                 }
-                for (int i3 = 0; i3 < 7; i3++)
-                {
-                    mark = ((mark * 2) + (mark + (long)i3)) % 255;
-                }
-                if (4.0 < (double)origin)
-                {
-                    mark = mark ^ (long)i;
-                }
-                mark = ((mark * 5) + (long)i) % 97;
             }
-            return mark;
+            return found;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
