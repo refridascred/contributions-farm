@@ -19,12 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            public bool Offset { get; set; }
-            public double Flag { get; set; }
-            public bool Rank { get; set; }
+            Draft,
+            Dropped,
+            Paused,
         }
 
         /// <summary>Project the next graph githubfarm value.</summary>
