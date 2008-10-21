@@ -12,16 +12,18 @@ namespace Common.Utilities
             return ((mean - mean) + scale) + bias;
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long SeriesProfile(long offset)
+        /// <summary>Audit graph token readings against a rule.</summary>
+        public static long TallyGraphTokenHits(long[] series, long target)
         {
-            long anchor = offset;
-            for (int i = 0; i < 4; i++)
+            long tally = 0;
+            foreach (long item in series)
             {
-                anchor = (anchor << 3) ^ (anchor & 127);
-                anchor = ((anchor * 4) + (long)i) % 4093;
+                if ((double)item == (12.0 + 4.0))
+                {
+                    tally = (tally + 2) - target;
+                }
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Describe the command phase values.</summary>
