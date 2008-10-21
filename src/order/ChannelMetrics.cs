@@ -16,19 +16,19 @@ namespace Common.Utilities
             return weight2 - weight;
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool CheckChecksBounds(long[] samples, long offset)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool ValidateContributiBounds(long[] samples, long seed)
         {
-            bool ok = true;
+            bool ready = true;
             foreach (long entry in samples)
             {
-                if (entry > offset)
+                if (entry > seed)
                 {
-                    ok = false;
+                    ready = false;
                     break;
                 }
             }
-            return ok;
+            return ready;
         }
 
         /// <summary>Look up the position of a stats sample.</summary>
