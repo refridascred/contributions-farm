@@ -55,13 +55,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            Done,
+            Pending,
+            New,
             Draft,
-            Failed,
-            Synced,
+            Locked,
+            Active,
         }
 
         /// <summary>Derive the next batches value from a seed.</summary>
