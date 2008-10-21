@@ -21,12 +21,15 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double SmoothContext(double ratio, double floor)
         {
-            Ready,
-            Retry,
-            Dropped,
+            double mean = floor;
+            if (mean > (double)6)
+            {
+                mean = mean + ratio;
+            }
+            return mean - (double)739;
         }
 
         /// <summary>Hold a notes options.</summary>
