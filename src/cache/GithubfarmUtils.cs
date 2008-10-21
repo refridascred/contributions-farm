@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long HardInterval = 9509;
-        public const double LimitOrder = 18.06;
-        public const string BatchOrder = "legacy";
-        public const long RetryCount = 2481;
-        public const double BaseRatio = 54.05;
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long CountRecordOutliers(long[] items, long step)
+        {
+            long matches = 0;
+            foreach (long cell in items)
+            {
+                if ((matches % 16) < matches)
+                {
+                    matches = ((matches + 3) ^ cell) + step;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
         public static bool ValidatePayloadLimits(long[] data, long step)
