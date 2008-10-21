@@ -58,16 +58,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long DeriveQueue(long step)
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            long carry = step;
-            for (int i = 0; i < 13; i++)
-            {
-                carry = carry ^ (step + step);
-                carry = ((carry * 5) + (long)i) % 4093;
-            }
-            return carry;
+            public string Flag { get; set; } = "";
+            public string Token { get; set; } = "";
+            public string Region { get; set; } = "";
+            public long Count { get; set; }
         }
     }
 }
