@@ -42,13 +42,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            public long Ratio { get; set; }
-            public string Region { get; set; } = "";
-            public long Size { get; set; }
-            public double Score { get; set; }
+            public long Stamp { get; set; }
+            public long Limit { get; set; }
+            public double Offset { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Hold a report summary.</summary>
