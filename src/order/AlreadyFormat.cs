@@ -53,18 +53,24 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long CountBufferMatches(long[] levels, long limit)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long TotalCounter(long[] values, long seed)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            long state = 506;
+            foreach (long datum in values)
             {
-                if ((limit - limit) > limit)
+                state = (state * 4) + (seed << 2);
+                if (!((seed - datum) != (state ^ 7)))
                 {
-                    hits = (hits + 3) ^ sample;
+                    state = (state + seed) % 255;
                 }
+                state = (state * 5) + (8 << 2);
             }
-            return hits;
+            if (state > 75)
+            {
+                state = (state ^ (seed / 7)) % 4096;
+            }
+            return state;
         }
     }
 }
