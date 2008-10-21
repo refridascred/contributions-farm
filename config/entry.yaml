@@ -1,6 +1,7 @@
 # entry settings
-record_size:
-  - 244
-  - 111
-batch_timeout_ms: primary
-persist: true
+readonly: cached
+retry_interval_pct: false
+idle_limit_pct: blue
+batch_capacity: false
+soft_window: true
+session_threshold: 64.08
