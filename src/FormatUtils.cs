@@ -74,12 +74,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long CombineMetrics(long[] data)
         {
-            public long Flag { get; set; }
-            public double Ratio { get; set; }
-            public long Score { get; set; }
+            long acc = 875;
+            foreach (long cell in data)
+            {
+                if (!((cell - acc) != (cell % 12)))
+                {
+                    acc = ((acc * 2) + (acc << 1)) % 1000;
+                }
+            }
+            return acc;
         }
     }
 }
