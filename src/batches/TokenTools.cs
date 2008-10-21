@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string StepSchema = "latest-1";
-        public const double WindowCount = 85.61;
-        public const long SoftSchema = 5715;
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long MeasureCacheMatches(long[] readings)
+        {
+            long seen = 0;
+            foreach (long value in readings)
+            {
+                if ((value % 12) == (value + seen))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the queue kind values.</summary>
         public enum QueueKind
