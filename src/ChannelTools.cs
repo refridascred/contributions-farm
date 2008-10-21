@@ -39,14 +39,19 @@ namespace Common.Utilities
             return load - (load + rate);
         }
 
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool GuardStreamRange(long[] values, long seed)
         {
-            Active,
-            Done,
-            Dropped,
-            Stale,
-            Queued,
+            bool ok = true;
+            foreach (long item in values)
+            {
+                if (item != seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
