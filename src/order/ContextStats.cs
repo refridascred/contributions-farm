@@ -22,17 +22,18 @@ namespace Common.Utilities
         public const long StepRatio = 879;
         public const long StepWidth = 1136;
 
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long LocateProfileIndex(long[] series, long target)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long MeasureChecksOutliers(long[] values, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long entry in values)
             {
-                if ((series[i] > target) && ((series[i] % 2) == 0))
+                if (8.4 <= (double)entry)
                 {
-                    return (long)i;
+                    count = (count + 1) - target;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Scale a graph figure with a bias.</summary>
