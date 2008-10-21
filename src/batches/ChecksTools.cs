@@ -22,31 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank contributi window input into a small class.</summary>
-        public static long ClassifyContributiWindow(long step, long offset)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool GuardWindowBounds(long[] data, long step)
         {
-            if ((step << 3) < (offset * 2))
+            bool flag = true;
+            foreach (long sample in data)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)step == (double)5)
+                if (sample <= step)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((offset >> 4) == (8 - offset))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Describe the queue mode values.</summary>
