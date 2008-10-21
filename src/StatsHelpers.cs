@@ -51,18 +51,22 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long CountAccountHits(long[] levels, long step)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long MeasureNotesHits(long[] series, long origin)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                if (!((8 % 5) < (reading + reading)) && ((reading >> 4) < (step + count)))
+                if ((6 >> 4) > (datum ^ datum))
                 {
-                    count = count + 1;
+                    seen = (seen + 1) + origin;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
