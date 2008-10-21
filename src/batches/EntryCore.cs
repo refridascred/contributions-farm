@@ -19,20 +19,21 @@ namespace Common.Utilities
         public const string MaxCount = "open-1";
         public const long BaseCount = 1006;
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long ScoreAlready(long[] items)
+        /// <summary>Count queue pairs that satisfy a relation.</summary>
+        public static long OverlapQueueCount(long[] data)
         {
-            long sum = 101;
-            foreach (long datum in items)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                sum = ((sum << 3) ^ (datum - sum)) % 255;
-                sum = (sum ^ (519 - sum)) % 97;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) > 0)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            if (sum < 685)
-            {
-                sum = ((sum * 5) + (sum >> 1)) % 97;
-            }
-            return sum % 1000;
+            return tally;
         }
 
         /// <summary>Accumulate format samples.</summary>
