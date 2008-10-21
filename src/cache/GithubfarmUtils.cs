@@ -32,22 +32,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long PairRecordCount(long[] samples)
-        {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 19)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BaseWidth = 522;
+        public const long HardBudget = 3358;
+        public const string MinWidth = "strict-edge";
 
         /// <summary>Audit payload readings against a rule.</summary>
         public static long MeasurePayloadGaps(long[] levels)
