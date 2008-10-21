@@ -1,9 +1,8 @@
-id,weight,token,region
-1,latest,88,609
-2,189,47.95,954
-3,standard,907,41
-4,stable,94.92,open
-5,green,437,626
-6,237,527,388
-7,62.09,193,23.46
-8,blue,local,stable
+id,count,label
+1,97.05,603
+2,238,14.94
+3,502,28.21
+4,38.72,336
+5,blue,strict
+6,24.1,679
+7,931,66.81
