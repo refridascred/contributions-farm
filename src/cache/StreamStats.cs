@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool ValidateClusterRange(long[] readings, long offset)
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long SortMetric(long floor, long step)
         {
-            bool flag = true;
-            foreach (long datum in readings)
+            long span = floor - step;
+            if ((span - 53) > (floor << 1))
             {
-                if (datum >= offset)
+                return 4;
+            }
+            else
+            {
+                if ((span + step) >= (floor + floor))
                 {
-                    flag = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if (!((step >> 2) < floor))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Hold a graph entry.</summary>
