@@ -60,18 +60,18 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long FoldEntry(long[] items, long limit)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long CountClusterMatches(long[] series, long floor)
         {
-            long carry = 6;
-            foreach (long cell in items)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                if (limit < (74 >> 2))
+                if (((floor + 3) >= (floor << 3)) && (((entry / 8) != (entry - floor)) && (floor > (50 % 3))))
                 {
-                    carry = ((carry - carry) % 1000) - cell;
+                    seen = seen + 1;
                 }
             }
-            return carry % 97;
+            return seen;
         }
     }
 }
