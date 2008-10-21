@@ -36,13 +36,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            public long Stamp { get; set; }
-            public long Limit { get; set; }
-            public double Offset { get; set; }
-            public double Weight { get; set; }
+            Retry,
+            Paused,
+            Done,
+            Dropped,
+            Queued,
         }
 
         /// <summary>Blend two notes measurements.</summary>
