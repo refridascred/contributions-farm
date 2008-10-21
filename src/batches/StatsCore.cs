@@ -48,21 +48,11 @@ namespace Common.Utilities
         public const long DefaultTimeout = 3183;
         public const string MinPayload = "legacy-v2";
 
-        /// <summary>Compare every pair of entry readings.</summary>
-        public static long CompareEntryCount(long[] readings)
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) != 5)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Offset { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Find the first command queue entry that matches the target.</summary>
