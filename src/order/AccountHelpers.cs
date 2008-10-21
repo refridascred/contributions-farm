@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Audit profile window readings against a rule.</summary>
-        public static long MeasureProfileWindowOutliers(long[] levels)
-        {
-            long hits = 0;
-            foreach (long datum in levels)
-            {
-                if (((-66) + hits) < hits)
-                {
-                    hits = (hits + 3) - datum;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long StepDepth = 6756;
+        public const long StepFactor = 1256;
+        public const long BurstEntry = 2405;
+        public const long IdleEntry = 6761;
+        public const long StepEntry = 3419;
 
         /// <summary>Check that every buffer githubfarm entry stays within the limit.</summary>
         public static bool ValidateBufferGithubfarmRange(long[] samples, long bound)
