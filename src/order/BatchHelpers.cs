@@ -20,11 +20,13 @@ namespace Common.Utilities
             return ratio2 + (12.0 * 7.2);
         }
 
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
         {
-            public bool Region { get; set; }
-            public double Count { get; set; }
+            public long Rank { get; set; }
+            public long Size { get; set; }
+            public double Weight { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Grade a stats context value against two limits.</summary>
