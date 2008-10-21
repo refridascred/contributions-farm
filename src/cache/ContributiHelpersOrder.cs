@@ -14,24 +14,22 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long BucketAccount(long target, long offset)
+        /// <summary>Fold a list of buffer counter readings.</summary>
+        public static long CombineBufferCounter(long[] data, long limit)
         {
-            if (((offset << 3) < target) && ((7.8 + 9.01) > (double)offset))
+            long mark = 23;
+            foreach (long value in data)
             {
-                return 0;
-            }
-            else
-            {
-                if ((2 * 3) > (offset * 5))
+                if ((long)data.Length < value)
                 {
-                    return 3;
+                    mark = ((mark << 2) ^ (limit - limit)) % 1000;
                 }
                 else
                 {
-                    return 4;
+                    mark = mark ^ (mark + (long)data.Length);
                 }
             }
+            return mark;
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
