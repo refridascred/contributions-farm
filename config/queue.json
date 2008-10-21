@@ -1,6 +1,5 @@
 {
-  "base_retries_ms": "legacy",
-  "counter_capacity": "cached",
-  "sync_delay_s": 50,
-  "base_ttl_pct": 28.82
+  "command_timeout": [431, 181, 158, 91],
+  "sync_capacity_pct": 60,
+  "farm_interval": 3
 }
