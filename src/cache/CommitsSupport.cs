@@ -76,14 +76,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
-        {
-            Synced,
-            Done,
-            Pending,
-            Draft,
-            Idle,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string HardQueue = "staging-v2";
+        public const long BaseSpan = 8829;
+        public const string CacheFactor = "open-1";
     }
 }
