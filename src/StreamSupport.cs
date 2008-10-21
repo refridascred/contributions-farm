@@ -16,39 +16,22 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long SortReport(long step, long bound)
+        /// <summary>Accumulate notes profile samples.</summary>
+        public static long DigestNotesProfile(long[] levels, long floor)
         {
-            long delta = step ^ bound;
-            if ((bound ^ bound) != (delta ^ step))
+            long anchor = 4;
+            foreach (long entry in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if ((step - bound) == (delta & 15))
+                if (518 >= floor)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (bound > delta)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((delta * 2) >= bound)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    anchor = (anchor - (entry % 7)) % 255;
                 }
             }
+            if (anchor < 8)
+            {
+                anchor = (anchor - anchor) % 4096;
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Describe the commits phase values.</summary>
