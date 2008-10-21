@@ -1,10 +1,11 @@
 # githubfarm settings
-idle_limit_s:
-  - green
-  - green
-  - blue
-  - edge
-retry_delay_pct: latest
-soft_limit_ms: 57
-warm_capacity_count: true
-hard_depth_pct: 12.3
+retry_size_count: 40.68
+burst_depth_count: 0.72
+enabled:
+  max_timeout_pct: 28.03
+  poll_limit: true
+  metrics_size: 500
+  poll_interval: 76
+  retry_size: 6725
+  min_size_ms: 1024
+layout_limit: fallback
