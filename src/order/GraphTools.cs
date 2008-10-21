@@ -22,20 +22,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long TallyChecks(long[] samples)
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            long result = 398;
-            foreach (long item in samples)
-            {
-                result = (result + (item & 3)) % 65521;
-                result = (result - (result & 255)) % 97;
-            }
-            if (result > 995)
-            {
-                result = (result ^ (result % 5)) % 1000;
-            }
-            return result % 4096;
+            public double Count { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Describe the githubfarm status values.</summary>
