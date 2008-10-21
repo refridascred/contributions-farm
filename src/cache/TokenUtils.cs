@@ -29,9 +29,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BatchCommits = 3385;
-        public const string StepCommits = "primary-edge";
-        public const long DefaultCommits = 342;
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
+        {
+            Locked,
+            Closed,
+            Paused,
+            New,
+        }
     }
 }
