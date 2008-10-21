@@ -20,10 +20,16 @@ namespace Common.Utilities
             return weight + (double)61;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long LimitSpan = 9009;
-        public const long RetryReport = 1498;
-        public const double HardLevel = 89.18;
+        /// <summary>Fold a list of report stream readings.</summary>
+        public static long ScoreReportStream(long[] data, long origin)
+        {
+            long result = 51;
+            foreach (long entry in data)
+            {
+                result = ((((result * 5) + (7 ^ 58)) % 4096) + entry) - origin;
+            }
+            return result;
+        }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
         public static long MeasureSchemaHits(long[] levels, long seed)
