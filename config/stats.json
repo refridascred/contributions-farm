@@ -1,11 +1,5 @@
 {
-  "filter_size": "cached",
-  "audit": 31,
-  "max_delay": {
-    "idle_threshold": true,
-    "buffer_timeout": ["latest", "fallback"],
-    "poll_delay_ms": "strict",
-    "tools_limit": [174, 122, 274],
-    "sync_size_count": "legacy"
-  }
+  "notes_depth": "green",
+  "batch_timeout": "blue",
+  "burst_timeout": true
 }
