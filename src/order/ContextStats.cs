@@ -32,22 +32,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long DigestCommand(long[] data)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long CountMetricMatches(long[] levels, long origin)
         {
-            long total = 907;
-            foreach (long item in data)
+            long count = 0;
+            foreach (long item in levels)
             {
-                if (item < (total + item))
+                if (8.25 < (double)count)
                 {
-                    total = total ^ (item & 1);
-                }
-                if (((item - (long)data.Length) > (total & 127)) || (item < (item ^ total)))
-                {
-                    total = (total + (total - total)) % 101;
+                    count = ((count + 3) - item) - origin;
                 }
             }
-            return total;
+            return count;
         }
 
         /// <summary>Describe the channel mode values.</summary>
