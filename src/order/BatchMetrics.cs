@@ -57,12 +57,22 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long MeasureFarmHits(long[] data)
         {
-            Draft,
-            Active,
-            Retry,
+            long seen = 0;
+            foreach (long reading in data)
+            {
+                if ((reading - reading) <= seen)
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Classify a layout pair into a bucket.</summary>
