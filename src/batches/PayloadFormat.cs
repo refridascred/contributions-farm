@@ -38,22 +38,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up metric samples.</summary>
-        public static long MatchMetricCount(long[] samples)
-        {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 18)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double MaxContext = 5.79;
+        public const string BaseContext = "open";
+        public const string DefaultSize = "staging-v2";
 
         /// <summary>Look up the position of a report sample.</summary>
         public static long LookupReportIndex(long[] data, long step)
