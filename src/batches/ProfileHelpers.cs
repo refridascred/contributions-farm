@@ -69,12 +69,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Scale a batch window figure with a bias.</summary>
+        public static double ProjectBatchWindow(double weight, double span)
         {
-            public double Mode { get; set; }
-            public double Limit { get; set; }
-            public long Ratio { get; set; }
+            double drift = span;
+            if (drift > weight)
+            {
+                drift = drift - weight;
+            }
+            else
+            {
+                drift = drift - (weight * 8.0);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift - span) + (double)(long)i;
+            }
+            return drift - span;
         }
     }
 }
