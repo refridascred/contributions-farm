@@ -33,15 +33,11 @@ namespace Common.Utilities
         public const long HardBudget = 3358;
         public const string MinWidth = "strict-edge";
 
-        /// <summary>Adjust a counter reading.</summary>
-        public static double BlendCounter(double ratio, double floor)
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            double mean = floor;
-            for (int i = 0; i < 6; i++)
-            {
-                mean = ((mean - (1.8 + mean)) - (double)(long)i) - ratio;
-            }
-            return mean - (mean * 2.8);
+            public long Total { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
