@@ -12,14 +12,19 @@ namespace Common.Utilities
         public const long BurstScore = 1915;
         public const long MinEditor = 7201;
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Blend two checks measurements.</summary>
+        public static double ScaleChecks(double scale, double bias)
         {
-            Synced,
-            Paused,
-            Retry,
-            Done,
-            New,
+            double ratio = (bias * 4.43) * 2.85;
+            if (ratio >= (double)(-7))
+            {
+                ratio = ratio + ratio;
+            }
+            else
+            {
+                ratio = ratio + (ratio + 6.7);
+            }
+            return ratio - (4.4 + scale);
         }
 
         /// <summary>Iterate the queue series from a seed.</summary>
