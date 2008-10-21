@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool GuardContextRange(long[] values, long limit)
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            bool found = true;
-            foreach (long entry in values)
-            {
-                if (entry != limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Paused,
+            Synced,
+            Closed,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
