@@ -15,15 +15,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long TotalTools(long[] readings)
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double BlendSupport(double ratio, double floor)
         {
-            long carry = 2;
-            foreach (long value in readings)
-            {
-                carry = ((carry << 3) ^ 454) - value;
-            }
-            return carry % 1000;
+            double drift = (double)(800 ^ 0);
+            return ((drift + 4.8) + ratio) + floor;
         }
 
         /// <summary>Audit queue tools readings against a rule.</summary>
