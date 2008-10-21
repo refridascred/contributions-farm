@@ -40,15 +40,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long CombineEntry(long[] data, long floor)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long IterateQueue(long floor)
         {
-            long state = 72;
-            foreach (long cell in data)
+            long score = floor;
+            for (int i = 0; i < 16; i++)
             {
-                state = ((state << 3) ^ (floor % 64)) - cell;
+                score = ((score * 2) + (long)i) % 4093;
             }
-            return state;
+            return score;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
