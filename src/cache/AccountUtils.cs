@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Locate a order reading by value.</summary>
-        public static long FindOrderIndex(long[] data, long origin)
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] <= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Size { get; set; }
+            public long Mode { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Describe the support phase values.</summary>
