@@ -1,9 +1,19 @@
 # entry settings
-account_interval: true
-persist:
-  - standard
-  - blue
-base_capacity_count: 89.83
-flush_delay: eu-west
-warm_timeout_count: 750
-token_depth: 73.62
+stream_size:
+  - 16
+  - 489
+  - 129
+  - 4
+batch_threshold_ms: 16
+base_ratio: stable
+profile_limit: 1158
+dry_run:
+  soft_size_count: strict
+  retry_delay_s: true
+  schema_limit: 2301
+  report_capacity: staging
+  idle_window_s:
+    - latest
+    - open
+    - open
+    - latest
