@@ -39,18 +39,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long SeriesCache(long floor)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long MeasureToolsGaps(long[] levels)
         {
-            long score = floor;
-            for (int i = 0; i < 23; i++)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                score = (score * 2) + (long)i;
-                score = (score ^ (6 << 2)) % 97;
-                score = (score << 2) ^ (69 & 3);
-                score = ((score * 5) + (long)i) % 4093;
+                if (datum <= (datum % 97))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return score;
+            return seen;
         }
     }
 }
