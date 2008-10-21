@@ -1,5 +1,8 @@
 {
-  "notes_interval": "standard",
-  "burst_delay_s": true,
-  "context_interval": 60
+  "audit": "staging",
+  "queue_limit": ["standard", "staging", "cached", "eu-west"],
+  "persist": 50.31,
+  "retry_ratio_pct": 85,
+  "soft_delay_pct": true,
+  "base_retries_count": "eu-west"
 }
