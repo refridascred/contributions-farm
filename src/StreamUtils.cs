@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Check that every stats support entry stays within the limit.</summary>
+        public static bool ValidateStatsSupportRange(long[] series, long target)
         {
-            Retry,
-            Closed,
-            Pending,
-            Queued,
+            bool stale = true;
+            foreach (long cell in series)
+            {
+                if (cell > target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
