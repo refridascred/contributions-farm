@@ -75,22 +75,9 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long CountMetricsGaps(long[] series, long origin)
-        {
-            long seen = 0;
-            foreach (long entry in series)
-            {
-                if ((((origin >> 2) >= (origin + origin)) || ((long)series.Length == (origin / 5))) || (entry >= 3))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long DefaultGraph = 2396;
+        public const double CacheGraph = 73.07;
+        public const long RetryGraph = 9231;
     }
 }
