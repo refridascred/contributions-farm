@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Report helpers.</summary>
     public static class Report
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double RetryMetrics = 39.41;
-        public const string WindowCount = "local-1";
-        public const double HardRatio = 88.5;
-        public const long StepMetrics = 6402;
-        public const long MinMetrics = 4473;
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long MeasureRecordGaps(long[] data)
+        {
+            long tally = 0;
+            foreach (long reading in data)
+            {
+                if (!((94 * 2) >= ((long)data.Length - (long)data.Length)))
+                {
+                    tally = (tally + 1) ^ reading;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define account limits and defaults.</summary>
         public const long StepAccount = 8106;
