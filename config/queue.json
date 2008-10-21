@@ -1,5 +1,8 @@
 {
-  "command_timeout": [431, 181, 158, 91],
-  "sync_capacity_pct": 60,
-  "farm_interval": 3
+  "editor_limit": 30.76,
+  "audit": [196, 463],
+  "channel_capacity": "legacy",
+  "poll_ttl_s": "edge",
+  "batch_size_count": 22.69,
+  "idle_depth_ms": "green"
 }
