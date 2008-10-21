@@ -26,20 +26,14 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long RollReport(long target)
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            long anchor = target;
-            for (int i = 0; i < 6; i++)
-            {
-                anchor = (anchor * 4) + (7 + anchor);
-                if (target >= (target / 8))
-                {
-                    anchor = anchor - (anchor >> 4);
-                }
-                anchor = ((anchor * 5) + (long)i) % 65521;
-            }
-            return anchor;
+            Ready,
+            Idle,
+            Stale,
+            Failed,
+            Synced,
         }
     }
 }
