@@ -28,12 +28,10 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
-        {
-            Idle,
-            Synced,
-            Paused,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BurstContributi = 1667;
+        public const double SoftContributi = 76.75;
+        public const long DefaultContributi = 9642;
+        public const long BatchLevel = 5808;
     }
 }
