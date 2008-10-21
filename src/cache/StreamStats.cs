@@ -22,13 +22,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
         {
-            Done,
-            Synced,
-            Active,
-            Draft,
+            public long Size { get; set; }
+            public long Level { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Hold a farm stats.</summary>
