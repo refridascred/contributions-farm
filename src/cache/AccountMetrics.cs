@@ -62,38 +62,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long ClassifyLayout(long step, long offset)
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
         {
-            if ((step * 4) >= (offset - step))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((step <= (step % 60)) || ((457 + offset) > step))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((step < (step ^ offset)) && (offset > (offset + 226)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((double)step >= (double)offset)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            public double Flag { get; set; }
+            public string Offset { get; set; } = "";
+            public bool Limit { get; set; }
         }
 
         /// <summary>Classify a account pair into a bucket.</summary>
