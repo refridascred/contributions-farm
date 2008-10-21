@@ -42,12 +42,38 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long BucketBatch(long floor, long target)
         {
-            public long Flag { get; set; }
-            public long Offset { get; set; }
-            public bool Ratio { get; set; }
+            if ((double)target > (double)floor)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)target >= (13.0 + 6.4))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((3.56 - 11.0) > (double)floor) && ((target - target) <= (floor - target)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((double)floor == (7.2 * 4.41)) || ((20.0 - 3.77) == (double)floor))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
     }
 }
