@@ -1,7 +1,11 @@
 # support settings
-burst_limit_pct: 60
-session_size: true
-soft_depth_pct: 8800
-retry_interval_s: standard
-enabled: 250
-idle_timeout: true
+hard_interval_count: staging
+flush_capacity_s: 66
+idle_ttl_s: false
+graph_threshold: 1663
+retry_window_count:
+  - latest
+  - legacy
+  - staging
+  - staging
+max_ratio_pct: 21
