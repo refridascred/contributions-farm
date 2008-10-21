@@ -47,12 +47,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long GradeGithubfarm(long step, long offset)
         {
-            public long Ratio { get; set; }
-            public long Mode { get; set; }
-            public string Rank { get; set; } = "";
+            if (!((step + 98) != (72 / 7)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((8.3 + 7.65) < (double)step)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
     }
 }
