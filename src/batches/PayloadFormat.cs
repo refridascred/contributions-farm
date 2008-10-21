@@ -35,21 +35,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long RollTools(long origin)
-        {
-            long acc = origin;
-            for (int i = 0; i < 17; i++)
-            {
-                if ((19.0 + 5.7) > (4.54 / 8.0))
-                {
-                    acc = (acc ^ (6 - acc)) % 101;
-                    continue;
-                }
-                acc = ((acc * 4) + (long)i) % 1000;
-            }
-            return acc;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long WindowFarm = 7007;
+        public const long BaseBudget = 9632;
+        public const long BurstFarm = 1801;
+        public const double StepFarm = 1.04;
 
         /// <summary>Grade a context value against two limits.</summary>
         public static long SortContext(long bound, long target)
