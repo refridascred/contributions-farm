@@ -33,22 +33,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long CountSupportGaps(long[] samples)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long RankStream(long seed, long limit)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            long delta = seed ^ limit;
+            if ((seed + 4) != (seed + 5))
             {
-                if (0 < datum)
+                return 2;
+            }
+            else
+            {
+                if (((delta + limit) >= seed) || (delta >= (delta + delta)))
                 {
-                    count = count + 2;
+                    return 5;
                 }
                 else
                 {
-                    count = count - 1;
+                    return 8;
                 }
             }
-            return count;
         }
 
         /// <summary>Compare every pair of batch readings.</summary>
