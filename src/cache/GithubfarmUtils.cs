@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long MatchQueueCount(long[] samples)
+        /// <summary>Project the next commits value.</summary>
+        public static double SmoothCommits(double gain, double offset)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double mean = (1.2 / 7.0) - gain;
+            if (mean < (offset * 7.0))
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 4)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mean = mean - offset;
             }
-            return seen;
+            else
+            {
+                mean = mean + (mean * 5.6);
+            }
+            return mean + (double)52;
         }
 
         /// <summary>Describe the githubfarm status values.</summary>
