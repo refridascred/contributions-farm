@@ -5,32 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long BucketStream(long bound, long offset)
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long SeekSupportIndex(long[] samples, long bound)
         {
-            long span = bound ^ offset;
-            if (((span / 5) >= span) && (offset >= (20 >> 3)))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)span >= (5.62 / 8.0))
+                if ((samples[i] < bound) && ((samples[i] % 2) == 0))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((((-91) % 24) < bound) && ((offset >> 2) >= span))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Compare every pair of notes readings.</summary>
