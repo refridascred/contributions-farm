@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            New,
-            Draft,
             Stale,
+            Locked,
+            Paused,
+            Ready,
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
