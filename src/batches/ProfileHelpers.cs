@@ -24,11 +24,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MinToken = 629;
-        public const string MinScore = "alpha";
-        public const long BurstToken = 2044;
-        public const long MaxToken = 4832;
+        /// <summary>Look up the position of a editor commits sample.</summary>
+        public static long LookupEditorCommitsIndex(long[] levels, long seed)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] > seed) && ((levels[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long MinTimeout = 5806;
