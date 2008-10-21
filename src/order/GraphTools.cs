@@ -38,14 +38,19 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Adjust a report tools reading.</summary>
+        public static double SmoothReportTools(double bias, double offset)
         {
-            Closed,
-            Idle,
-            Paused,
-            Retry,
-            New,
+            double load = (double)(309 / 9);
+            if (load < load)
+            {
+                load = load + (0.7 + bias);
+            }
+            else
+            {
+                load = load + bias;
+            }
+            return load + (offset - bias);
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
