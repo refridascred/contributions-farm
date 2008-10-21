@@ -1,20 +1,7 @@
 {
-  "dry_run": "open",
-  "hard_delay_ms": 1003,
-  "default_depth_s": {
-    "verbose": [189, 58],
-    "format_delay": 68.68,
-    "persist": {
-      "hard_capacity_s": 95.44,
-      "verbose": true,
-      "schema_interval": 22.55
-    }
-  },
-  "min_timeout_ms": {
-    "order_retries": true,
-    "flush_depth_pct": true,
-    "min_delay_count": [379, 233, 280, 360]
-  },
-  "idle_threshold_s": ["latest", "latest", "strict", "edge"],
-  "already_size": [476, 453, 373, 315]
+  "idle_retries_s": 5644,
+  "default_delay_pct": 88.87,
+  "persist": "legacy",
+  "default_window_pct": "standard",
+  "poll_depth_count": [349, 444]
 }
