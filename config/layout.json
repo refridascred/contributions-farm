@@ -1,8 +1,19 @@
 {
-  "flush_timeout_count": "staging",
-  "readonly": false,
-  "cache_depth_ms": "open",
-  "default_ttl_pct": 6340,
-  "flush_ratio_count": true,
-  "cache_capacity_s": "fallback"
+  "buffer_size": 22.9,
+  "readonly": "legacy",
+  "base_ratio": {
+    "persist": {
+      "profile_window": [54, 490, 138, 241],
+      "strict": [321, 128, 12],
+      "window_retries": "latest"
+    },
+    "metrics_limit": "eu-west",
+    "support_timeout": ["stable", "standard", "primary", "fallback"],
+    "burst_retries_s": false,
+    "enabled": ["staging", "latest", "open", "legacy"],
+    "max_retries": 250
+  },
+  "cache_window": true,
+  "persist": false,
+  "stats_ttl": false
 }
