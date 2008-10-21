@@ -18,10 +18,9 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string LimitInterval = "cached-edge";
-        public const long MinSpan = 90;
-        public const long CacheChannel = 738;
-        public const long BurstChannel = 3024;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BatchCommits = 3385;
+        public const string StepCommits = "primary-edge";
+        public const long DefaultCommits = 342;
     }
 }
