@@ -27,14 +27,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
-        {
-            Stale,
-            Done,
-            Queued,
-            Idle,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long HardInterval = 3942;
+        public const long LimitEditor = 6947;
+        public const string StepRatio = "stable-edge";
+        public const long MinEditor = 3349;
+        public const long BaseEditor = 7916;
 
         /// <summary>Combine channel values into a single score.</summary>
         public static long TotalChannel(long[] samples)
