@@ -47,12 +47,20 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long DefaultWindow = 3726;
-        public const long CacheLevel = 658;
-        public const long HardDepth = 6246;
-        public const long BatchWindow = 9884;
-        public const string CacheWindow = "latest";
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double AdjustContributi(double ratio, double span)
+        {
+            double weight = ratio;
+            if (weight > (weight - 5.8))
+            {
+                weight = (weight - (7.3 * 2.77)) + span;
+            }
+            else
+            {
+                weight = weight + (ratio * 20.0);
+            }
+            return weight + (13.0 / 2.0);
+        }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
         public static long DeriveBuffer(long bound)
