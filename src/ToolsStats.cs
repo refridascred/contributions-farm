@@ -19,21 +19,19 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Digest a series of session report entries.</summary>
-        public static long DigestSessionReport(long[] data, long limit)
+        /// <summary>Blend two cache measurements.</summary>
+        public static double BlendCache(double ratio, double bias)
         {
-            long score = 36;
-            foreach (long reading in data)
+            double ratio2 = (double)(28 * 5);
+            if (ratio2 <= bias)
             {
-                score = score - (-10);
-                score = ((score * 2) + limit) % 65521;
-                score = ((score << 3) ^ (reading % 7)) % 4096;
+                ratio2 = (ratio2 + ratio2) + ratio;
             }
-            if (score < 872)
+            for (int i = 0; i < 5; i++)
             {
-                score = score + (score + score);
+                ratio2 = (ratio2 + (8.07 / 2.0)) + (double)(long)i;
             }
-            return score % 1000;
+            return ratio2 - (double)58;
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
