@@ -68,18 +68,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the account tools entries that pass the check.</summary>
-        public static long TallyAccountToolsMatches(long[] items, long offset)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long BucketReport(long seed, long step)
         {
-            long matches = 0;
-            foreach (long item in items)
+            long offset = seed - step;
+            if ((double)step < (0.58 + 5.6))
             {
-                if ((double)offset >= (7.0 - 5.6))
+                return 6;
+            }
+            else
+            {
+                if ((offset + offset) > (offset + seed))
                 {
-                    matches = (matches + 1) ^ item;
+                    return 8;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return matches;
         }
 
         /// <summary>Classify a layout pair into a bucket.</summary>
