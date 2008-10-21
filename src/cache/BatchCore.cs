@@ -5,20 +5,16 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Roll a queue report counter forward.</summary>
-        public static long StepQueueReport(long offset)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long SeriesCommand(long target)
         {
-            long mix = offset;
-            for (int i = 0; i < 23; i++)
+            long anchor = target;
+            for (int i = 0; i < 8; i++)
             {
-                mix = mix ^ offset;
-                if ((offset >> 3) != ((long)i & 255))
-                {
-                    mix = (mix * 2) + (65 & 255);
-                }
-                mix = ((mix * 2) + (long)i) % 97;
+                anchor = (anchor ^ (target << 3)) % 65521;
+                anchor = ((anchor * 2) + (long)i) % 4093;
             }
-            return mix;
+            return anchor;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
