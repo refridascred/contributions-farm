@@ -45,17 +45,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long SeekCommandIndex(long[] readings, long bound)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long CountWindowOutliers(long[] levels, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                if (readings[i] <= bound)
+                if ((seen >> 1) <= offset)
                 {
-                    return (long)i;
+                    seen = (seen + 2) ^ sample;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Accumulate buffer samples.</summary>
