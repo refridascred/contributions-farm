@@ -56,10 +56,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long RetryFactor = 529;
-        public const string SoftBatch = "strict";
-        public const long IdleBatch = 4920;
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long AuditFormatGaps(long[] levels, long floor)
+        {
+            long tally = 0;
+            foreach (long entry in levels)
+            {
+                if ((16.0 - 6.5) > (double)tally)
+                {
+                    tally = ((tally + 3) ^ entry) - floor;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Iterate the commits metric series from a seed.</summary>
         public static long RollCommitsMetric(long offset)
