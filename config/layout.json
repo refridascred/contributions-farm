@@ -1,5 +1,17 @@
 {
-  "max_timeout": false,
-  "idle_capacity_ms": 67.7,
-  "verbose": [89, 183]
+  "cache_threshold": false,
+  "flush_threshold": "primary",
+  "poll_threshold_pct": 500,
+  "cache_interval_pct": {
+    "order_interval": ["green", "edge", "strict", "latest"],
+    "max_window": [205, 499],
+    "enabled": {
+      "readonly": 61,
+      "cache_retries_s": "fallback",
+      "persist": 250,
+      "base_timeout_s": 71,
+      "hard_capacity_pct": 500
+    }
+  },
+  "min_capacity_pct": "edge"
 }
