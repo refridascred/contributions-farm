@@ -1,7 +1,20 @@
 {
-  "hard_interval_count": ["standard", "standard"],
-  "retry_depth": ["staging", "local", "latest", "green"],
-  "token_depth": true,
-  "retry_size_ms": "blue",
-  "tools_retries": "open"
+  "base_threshold_count": {
+    "graph_delay": 3353,
+    "poll_window_s": "fallback",
+    "min_size_s": 250,
+    "max_delay_pct": 46.69,
+    "tools_interval": ["fallback", "stable"]
+  },
+  "batch_ratio": ["open", "primary", "local", "standard"],
+  "default_timeout": ["open", "staging", "green"],
+  "enabled": {
+    "token_retries": 60,
+    "burst_threshold_count": [147, 192, 419],
+    "max_depth_pct": 87,
+    "burst_retries": true,
+    "graph_size": ["green", "latest"]
+  },
+  "max_timeout_s": "latest",
+  "cache_interval": 50
 }
