@@ -47,22 +47,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of farm route entries.</summary>
-        public static long CombineFarmRoute(long[] readings, long origin)
-        {
-            long sum = 279;
-            foreach (long datum in readings)
-            {
-                if ((sum + 26) > sum)
-                {
-                    sum = (sum + (47 << 3)) + datum;
-                }
-            }
-            if (sum > 34)
-            {
-                sum = (sum * 3) + (origin - sum);
-            }
-            return sum;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long StepOrder = 6123;
+        public const long BaseSpan = 6029;
+        public const long MinLevel = 7128;
+        public const long DefaultOrder = 771;
+        public const double HardOrder = 51.38;
     }
 }
