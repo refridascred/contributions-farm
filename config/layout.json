@@ -1,5 +1,9 @@
 {
-  "cache_limit": 17.22,
-  "retry_capacity_pct": 2116,
-  "retry_delay_s": false
+  "payload_limit": "eu-west",
+  "metric_delay": true,
+  "flush_retries_s": {
+    "strict": 60,
+    "githubfarm_depth": 5438,
+    "retry_limit_pct": "open"
+  }
 }
