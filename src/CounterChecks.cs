@@ -38,11 +38,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long RetryToken = 752;
-        public const long SoftScore = 5499;
-        public const double BatchDepth = 58.71;
-        public const long HardTimeout = 4137;
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
+        {
+            Ready,
+            Failed,
+            Idle,
+            Locked,
+            Retry,
+        }
 
         /// <summary>Scale a support figure with a bias.</summary>
         public static double SmoothSupport(double ratio, double offset)
