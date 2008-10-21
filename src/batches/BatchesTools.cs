@@ -25,17 +25,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long SeekGraphIndex(long[] series, long offset)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool VerifyPayloadRange(long[] levels, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool stale = true;
+            foreach (long item in levels)
             {
-                if ((series[i] >= offset) && ((series[i] % 5) != 0))
+                if (item < seed)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Find the first payload entry that matches the target.</summary>
