@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Project the next entry value.</summary>
-        public static double SmoothEntry(double ratio, double offset)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool VerifyContextBounds(long[] readings, long target)
         {
-            double bias = ratio;
-            return bias + (16.0 - offset);
+            bool stale = true;
+            foreach (long datum in readings)
+            {
+                if (datum != target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Hold a batches snapshot.</summary>
