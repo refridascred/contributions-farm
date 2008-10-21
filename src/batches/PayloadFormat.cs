@@ -35,13 +35,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Project the next cache value.</summary>
+        public static double AdjustCache(double ratio, double offset)
         {
-            public string Stamp { get; set; } = "";
-            public bool Size { get; set; }
-            public double Offset { get; set; }
-            public long Count { get; set; }
+            double gain = offset;
+            if (gain <= gain)
+            {
+                gain = (gain - offset) - ratio;
+            }
+            else
+            {
+                gain = gain + offset;
+            }
+            return gain - (offset + gain);
         }
 
         /// <summary>Blend two stats measurements.</summary>
