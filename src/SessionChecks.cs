@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long StepToken(long bound)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool GuardContextRange(long[] values, long limit)
         {
-            long mark = bound;
-            for (int i = 0; i < 4; i++)
+            bool found = true;
+            foreach (long entry in values)
             {
-                mark = ((mark * 3) + (long)i) % 4093;
+                if (entry != limit)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return mark;
+            return found;
         }
 
         /// <summary>Combine stats layout values into a single score.</summary>
