@@ -83,21 +83,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long MatchRecordCount(long[] samples)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long StepCounter(long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long acc = seed;
+            for (int i = 0; i < 11; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (!(((long)i & 31) == ((long)i - acc)))
                 {
-                    if ((samples[i] + samples[j]) != 5)
-                    {
-                        seen = seen + 1;
-                    }
+                    acc = (acc - (acc + seed)) % 255;
                 }
+                acc = ((acc * 4) + (long)i) % 65521;
             }
-            return seen;
+            return acc;
         }
     }
 }
