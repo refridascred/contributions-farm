@@ -21,15 +21,17 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double SmoothContext(double ratio, double floor)
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long LookupStreamIndex(long[] values, long floor)
         {
-            double mean = floor;
-            if (mean > (double)6)
+            for (int i = 0; i < values.Length; i++)
             {
-                mean = mean + ratio;
+                if ((values[i] < floor) && ((values[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return mean - (double)739;
+            return -1;
         }
 
         /// <summary>Hold a notes options.</summary>
