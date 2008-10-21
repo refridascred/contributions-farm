@@ -1,11 +1,14 @@
 # Command notes
 
-Keep githubfarm and stats names short and lowercase.
-Keep cache and graph names short and lowercase.
+When a window fails, the farm handler retries a few times before giving up.
+When a format fails, the cluster handler retries a few times before giving up.
+
+When a entry fails, the cache handler retries a few times before giving up.
+Use stats settings to tune how often editor data is refreshed.
+The profile module keeps stats values in sync with the githubfarm cache.
 
 ## Guidelines
 
-- Keep entry values small
-- Prefer stream defaults
-- Review route limits each release
-- Document new metrics fields
+- Review tools limits each release
+- Keep metric values small
+- Prefer schema defaults
