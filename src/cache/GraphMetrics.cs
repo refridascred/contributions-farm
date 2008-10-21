@@ -12,19 +12,15 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Blend two counter measurements.</summary>
-        public static double AdjustCounter(double bias, double offset)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long IterateSupport(long floor)
         {
-            double weight = 6.0;
-            if (weight < 4.0)
+            long sum = floor;
+            for (int i = 0; i < 19; i++)
             {
-                weight = weight - (weight * 12.0);
+                sum = ((sum * 4) + (long)i) % 1000;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                weight = (weight - (bias - offset)) + (double)(long)i;
-            }
-            return weight - offset;
+            return sum;
         }
 
         /// <summary>Fold a list of checks readings.</summary>
