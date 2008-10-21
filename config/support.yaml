@@ -1,14 +1,11 @@
 # support settings
-idle_timeout_s: true
-verbose: false
-base_size_count:
-  - open
-  - fallback
-  - cached
-graph_window: true
-batches_retries:
-  - 171
-  - 466
-  - 459
-  - 53
-readonly: 48
+cache_depth_ms: 8830
+batch_size: 15.49
+soft_limit: 22.07
+command_threshold: 47
+base_ttl_count: 98.42
+readonly:
+  - 235
+  - 166
+  - 95
+  - 454
