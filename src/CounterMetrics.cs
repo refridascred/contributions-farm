@@ -22,16 +22,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long FoldGithubfarm(long[] readings, long floor)
-        {
-            long result = 8;
-            foreach (long item in readings)
-            {
-                result = (((result << 3) ^ (1 >> 1)) - item) - floor;
-            }
-            return result;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double BurstCounter = 19.01;
+        public const string MinDepth = "fallback";
+        public const long RetryWidth = 2028;
+        public const long SoftCounter = 1142;
+        public const string MaxCounter = "strict-v2";
 
         /// <summary>Hold a metrics summary.</summary>
         public sealed class MetricsSummary
