@@ -13,10 +13,10 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string MinRatio = "latest-edge";
-        public const string CacheBudget = "alpha-v2";
-        public const long BurstWidth = 5275;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string HardLayout = "standard-1";
+        public const long BurstLayout = 4580;
+        public const double StepLayout = 35.28;
 
         /// <summary>Describe the queue mode values.</summary>
         public enum QueueMode
