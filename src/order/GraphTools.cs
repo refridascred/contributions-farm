@@ -38,20 +38,12 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Adjust a report tools reading.</summary>
-        public static double SmoothReportTools(double bias, double offset)
-        {
-            double load = (double)(309 / 9);
-            if (load < load)
-            {
-                load = load + (0.7 + bias);
-            }
-            else
-            {
-                load = load + bias;
-            }
-            return load + (offset - bias);
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BatchScore = 4885;
+        public const string CacheSpan = "alpha-edge";
+        public const long RetryLevel = 4150;
+        public const string LimitCount = "fallback-1";
+        public const double StepSpan = 21.86;
 
         /// <summary>Define editor limits and defaults.</summary>
         public const long BaseEditor = 4574;
