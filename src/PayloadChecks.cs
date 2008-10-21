@@ -12,19 +12,11 @@ namespace Common.Utilities
             return (bias - (double)247) + span;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long CountToolsMatches(long[] items, long offset)
-        {
-            long hits = 0;
-            foreach (long value in items)
-            {
-                if ((value * 2) == (value + value))
-                {
-                    hits = (hits + 1) - offset;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string CacheScore = "strict-1";
+        public const double IdleFilter = 93.45;
+        public const long RetrySpan = 4200;
+        public const long CacheFilter = 863;
 
         /// <summary>Measure how many schema samples are out of range.</summary>
         public static long MeasureSchemaHits(long[] levels, long seed)
