@@ -41,18 +41,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long TallyBatches(long[] series)
+        /// <summary>Blend two editor measurements.</summary>
+        public static double ScaleEditor(double weight, double bias)
         {
-            long mark = -701;
-            foreach (long cell in series)
+            double bias2 = bias;
+            for (int i = 0; i < 5; i++)
             {
-                if (!(mark >= cell))
-                {
-                    mark = (mark * 4) + 32;
-                }
+                bias2 = (bias2 + (double)(long)i) + weight;
             }
-            return mark % 97;
+            return bias2 - (bias2 / 9.0);
         }
 
         /// <summary>Describe the format class values.</summary>
