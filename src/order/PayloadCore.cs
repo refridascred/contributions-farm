@@ -37,11 +37,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double DefaultWidth = 52.14;
-        public const long BurstInterval = 2594;
-        public const double WindowTimeout = 86.44;
-        public const double SoftLayout = 95.36;
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool VerifyLayoutLimits(long[] values, long seed)
+        {
+            bool flag = true;
+            foreach (long value in values)
+            {
+                if (value <= seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Define editor limits and defaults.</summary>
         public const double DefaultEditor = 38.06;
