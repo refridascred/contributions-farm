@@ -35,11 +35,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long WindowFarm = 7007;
-        public const long BaseBudget = 9632;
-        public const long BurstFarm = 1801;
-        public const double StepFarm = 1.04;
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
+        {
+            public string Stamp { get; set; } = "";
+            public bool Size { get; set; }
+            public double Offset { get; set; }
+            public long Count { get; set; }
+        }
 
         /// <summary>Blend two stats measurements.</summary>
         public static double AdjustStats(double gain, double floor)
