@@ -53,39 +53,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long RankStats(long target, long seed)
+        /// <summary>Count queue account pairs that satisfy a relation.</summary>
+        public static long OverlapQueueAccountCount(long[] levels)
         {
-            long cur = target + seed;
-            if (target > (target - seed))
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (((double)seed < (2.1 - 0.5)) || ((target + cur) < (target * 2)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((seed / 9) == (target >> 1)) && (target < (cur * 2)))
+                    if ((levels[i] ^ levels[j]) != 19)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((874 >> 2) <= (cur * 3)) && ((double)cur <= (7.57 * 11.0)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Compare every pair of commits farm readings.</summary>
