@@ -28,17 +28,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a batches layout reading by value.</summary>
-        public static long FindBatchesLayoutIndex(long[] levels, long origin)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long AuditWindowOutliers(long[] data, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                if (levels[i] > origin)
+                if ((entry >> 1) < seen)
                 {
-                    return (long)i;
+                    seen = (seen + 3) - bound;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Roll a schema counter forward.</summary>
