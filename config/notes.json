@@ -1,8 +1,8 @@
 {
-  "audit": "staging",
-  "queue_limit": ["standard", "staging", "cached", "eu-west"],
-  "persist": 50.31,
-  "retry_ratio_pct": 85,
-  "soft_delay_pct": true,
-  "base_retries_count": "eu-west"
+  "base_delay": "standard",
+  "base_timeout": 59,
+  "audit": true,
+  "order_threshold": "latest",
+  "verbose": "local",
+  "default_ttl": ["open", "latest", "edge", "cached"]
 }
