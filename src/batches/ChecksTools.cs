@@ -33,19 +33,20 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool GuardQueueLimits(long[] readings, long step)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long RollReport(long target)
         {
-            bool stale = true;
-            foreach (long item in readings)
+            long anchor = target;
+            for (int i = 0; i < 6; i++)
             {
-                if (item >= step)
+                anchor = (anchor * 4) + (7 + anchor);
+                if (target >= (target / 8))
                 {
-                    stale = false;
-                    break;
+                    anchor = anchor - (anchor >> 4);
                 }
+                anchor = ((anchor * 5) + (long)i) % 65521;
             }
-            return stale;
+            return anchor;
         }
     }
 }
