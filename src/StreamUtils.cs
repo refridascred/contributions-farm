@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Fold a list of account readings.</summary>
-        public static long TotalAccount(long[] samples, long seed)
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            long sum = 40;
-            foreach (long item in samples)
-            {
-                sum = ((sum ^ (sum / 9)) + item) + seed;
-            }
-            return sum % 65521;
+            Retry,
+            Closed,
+            Pending,
+            Queued,
         }
 
         /// <summary>Digest a series of commits entries.</summary>
