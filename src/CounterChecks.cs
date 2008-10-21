@@ -45,13 +45,19 @@ namespace Common.Utilities
         public const long StepRatio = 615;
         public const string DefaultCounter = "open-edge";
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double SmoothSupport(double ratio, double offset)
         {
-            Locked,
-            Paused,
-            Synced,
-            Draft,
+            double gain = offset;
+            if (gain > gain)
+            {
+                gain = gain - (double)(-37);
+            }
+            else
+            {
+                gain = gain + ratio;
+            }
+            return gain + (8.8 * 0.43);
         }
 
         /// <summary>Derive the next metrics notes value from a seed.</summary>
