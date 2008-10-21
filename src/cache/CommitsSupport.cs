@@ -78,11 +78,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
-        {
-            public long Stamp { get; set; }
-            public long Label { get; set; }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string BaseSupport = "open";
+        public const long BatchSupport = 486;
+        public const long MaxSupport = 9031;
+        public const double SoftSupport = 51.15;
+        public const long IdleSupport = 3987;
     }
 }
