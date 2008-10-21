@@ -29,22 +29,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long TotalCommits(long[] levels, long limit)
-        {
-            long result = 0;
-            foreach (long cell in levels)
-            {
-                if (((result & 63) <= (limit + cell)) && ((double)result <= (19.0 - 3.9)))
-                {
-                    result = (result ^ 495) % 101;
-                }
-                else
-                {
-                    result = (result - result) % 97;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long CacheWindow = 9794;
+        public const long LimitWindow = 6248;
+        public const double DefaultWindow = 67.46;
     }
 }
