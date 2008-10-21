@@ -39,21 +39,26 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Match up profile context samples.</summary>
-        public static long OverlapProfileContextCount(long[] samples)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long TotalPayload(long[] samples)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long result = -172;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((entry + (-3)) > entry)
                 {
-                    if ((samples[i] - samples[j]) < 3)
-                    {
-                        tally = tally + 1;
-                    }
+                    result = (result ^ (197 >> 2)) % 65521;
+                }
+                if ((1.5 / 7.0) <= (double)entry)
+                {
+                    break;
                 }
             }
-            return tally;
+            if (result > 72)
+            {
+                result = (result * 2) + (result & 63);
+            }
+            return result;
         }
     }
 }
