@@ -81,23 +81,37 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long ClassifyContext(long target, long step)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long RankStats(long target, long bound)
         {
-            long bound = target ^ step;
-            if ((bound * 5) < step)
+            long gap = target + bound;
+            if ((bound << 3) >= gap)
             {
-                return 7;
+                return 0;
             }
             else
             {
-                if (bound < step)
+                if ((target << 1) >= (gap + bound))
                 {
-                    return 1;
+                    return 3;
                 }
                 else
                 {
-                    return 8;
+                    if ((gap - gap) == (gap + 36))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (target <= (gap + bound))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
         }
