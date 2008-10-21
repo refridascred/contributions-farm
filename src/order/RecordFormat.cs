@@ -42,19 +42,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double ProjectCluster(double weight, double floor)
+        /// <summary>Digest a series of githubfarm buffer entries.</summary>
+        public static long FoldGithubfarmBuffer(long[] items)
         {
-            double drift = (floor * 9.07) * 6.0;
-            if (drift > floor)
+            long acc = 66;
+            foreach (long cell in items)
             {
-                drift = drift + 3.7;
+                if ((cell < (cell ^ 440)) && ((cell / 3) >= acc))
+                {
+                    acc = ((acc * 5) + (acc + acc)) % 101;
+                }
             }
-            else
+            if (acc > 896)
             {
-                drift = drift + weight;
+                acc = (acc * 4) + (acc + (long)items.Length);
             }
-            return drift + (double)871;
+            return acc % 4096;
         }
 
         /// <summary>Compare every pair of cache readings.</summary>
