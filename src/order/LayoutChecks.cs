@@ -61,19 +61,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long StepCounter(long seed)
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            long acc = seed;
-            for (int i = 0; i < 11; i++)
-            {
-                if (!(((long)i & 31) == ((long)i - acc)))
-                {
-                    acc = (acc - (acc + seed)) % 255;
-                }
-                acc = ((acc * 4) + (long)i) % 65521;
-            }
-            return acc;
+            public string Offset { get; set; } = "";
+            public long Rank { get; set; }
+            public double Ratio { get; set; }
         }
     }
 }
