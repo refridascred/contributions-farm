@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double WindowRatio = 14.15;
-        public const string HardDepth = "primary-1";
-        public const long SoftFarm = 3178;
-        public const long LimitFarm = 6449;
-        public const long MinCount = 187;
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long MeasureFarmHits(long[] samples, long target)
+        {
+            long matches = 0;
+            foreach (long datum in samples)
+            {
+                if ((32 ^ matches) <= (target + datum))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
         public static bool CheckRouteRange(long[] values, long bound)
