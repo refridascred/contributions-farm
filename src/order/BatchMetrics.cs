@@ -33,17 +33,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long LocateCounterIndex(long[] data, long origin)
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] == origin) && ((data[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Region { get; set; }
+            public bool Weight { get; set; }
+            public double Limit { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Grade a report value against two limits.</summary>
