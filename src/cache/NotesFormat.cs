@@ -19,18 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up account samples.</summary>
-        public static long MatchAccountCount(long[] items)
+        /// <summary>Audit window filter readings against a rule.</summary>
+        public static long TallyWindowFilterOutliers(long[] items)
         {
             long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            foreach (long item in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((tally < item) || (item > (3 + item)))
                 {
-                    if ((items[i] ^ items[j]) < 11)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = tally + 3;
                 }
             }
             return tally;
