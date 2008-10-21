@@ -55,21 +55,16 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Match up metrics samples.</summary>
-        public static long PairMetricsCount(long[] samples)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long DeriveQueue(long step)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long carry = step;
+            for (int i = 0; i < 13; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) > 18)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                carry = carry ^ (step + step);
+                carry = ((carry * 5) + (long)i) % 4093;
             }
-            return matches;
+            return carry;
         }
     }
 }
