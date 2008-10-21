@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Project the next stream value.</summary>
+        public static double ProjectStream(double scale, double span)
         {
-            public double Flag { get; set; }
-            public string Token { get; set; } = "";
+            double bias = scale;
+            return (bias - (double)247) + span;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
