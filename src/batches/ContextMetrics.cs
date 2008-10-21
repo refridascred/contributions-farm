@@ -47,21 +47,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long OverlapCounterCount(long[] data)
+        /// <summary>Find the first cluster payload entry that matches the target.</summary>
+        public static long FindClusterPayloadIndex(long[] data, long floor)
         {
-            long count = 0;
             for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (data[i] < floor)
                 {
-                    if ((data[i] + data[j]) < 17)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
