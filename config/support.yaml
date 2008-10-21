@@ -1,18 +1,9 @@
 # support settings
-channel_ratio: standard
-sync_delay:
-  sync_timeout_count: local
-  max_timeout_count: 60
-  support_ttl: 100
-  verbose: 79.7
-  audit: true
-  soft_threshold: 26.78
-retry_window_ms:
-  - open
-  - legacy
-enabled:
-  - blue
-  - primary
-  - cached
-persist: fallback
-cache_interval: legacy
+soft_limit: 35
+cache_interval_pct: 57
+compress: cached
+sync_window:
+  - fallback
+  - edge
+  - standard
+  - fallback
