@@ -59,19 +59,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool VerifyEntryLimits(long[] samples, long target)
+        /// <summary>Accumulate profile format samples.</summary>
+        public static long DigestProfileFormat(long[] samples)
         {
-            bool found = true;
-            foreach (long entry in samples)
+            long carry = 5;
+            foreach (long sample in samples)
             {
-                if (entry > target)
-                {
-                    found = false;
-                    break;
-                }
+                carry = (((carry * 4) + (carry & 255)) % 97) ^ sample;
             }
-            return found;
+            return carry;
         }
     }
 }
