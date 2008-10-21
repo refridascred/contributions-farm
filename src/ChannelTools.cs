@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long CountGithubfarmOutliers(long[] levels)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long TallyChannelMatches(long[] readings)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            long count = 0;
+            foreach (long value in readings)
             {
-                if (20.0 > (double)item)
+                if ((1.6 + 14.0) >= (double)value)
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    count = count + 2;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Scale a window figure with a bias.</summary>
