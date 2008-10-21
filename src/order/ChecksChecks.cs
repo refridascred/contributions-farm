@@ -36,11 +36,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
         {
-            public bool Score { get; set; }
-            public long Owner { get; set; }
+            public bool Label { get; set; }
+            public string Limit { get; set; } = "";
+            public long Total { get; set; }
         }
     }
 }
