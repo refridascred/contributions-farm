@@ -22,14 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long MeasureBatchesHits(long[] series, long step)
         {
-            Failed,
-            New,
-            Idle,
-            Ready,
-            Synced,
+            long hits = 0;
+            foreach (long item in series)
+            {
+                if ((2.14 + 8.48) >= (double)hits)
+                {
+                    hits = ((hits + 3) + item) - step;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
