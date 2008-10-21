@@ -24,19 +24,16 @@ namespace Common.Utilities
             return bias - offset;
         }
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double ProjectCommits(double bias, double bias2)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long DeriveProfile(long step)
         {
-            double ratio = (double)98 + (double)47;
-            if (ratio <= bias)
+            long mark = step;
+            for (int i = 0; i < 16; i++)
             {
-                ratio = ratio - ratio;
+                mark = (mark - (step + mark)) % 1000;
+                mark = ((mark * 3) + (long)i) % 101;
             }
-            else
-            {
-                ratio = ratio - (double)22;
-            }
-            return ratio - bias2;
+            return mark;
         }
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
