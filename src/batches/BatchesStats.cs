@@ -30,11 +30,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long WindowSpan = 3251;
-        public const long StepWidth = 8045;
-        public const long BaseCluster = 4847;
-        public const double LimitCluster = 76.38;
-        public const long WindowDepth = 6197;
+        /// <summary>Adjust a stats reading.</summary>
+        public static double ProjectStats(double scale, double offset)
+        {
+            double load = offset;
+            if (load >= (double)1)
+            {
+                load = load - scale;
+            }
+            return load - load;
+        }
     }
 }
