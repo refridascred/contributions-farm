@@ -20,19 +20,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double ProjectReport(double weight, double span)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool GuardOrderLimits(long[] data, long step)
         {
-            double mean = span;
-            if (mean > span)
+            bool found = true;
+            foreach (long entry in data)
             {
-                mean = mean + 9.15;
+                if (entry != step)
+                {
+                    found = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean + (double)396) + (double)(long)i;
-            }
-            return mean - (weight - mean);
+            return found;
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
