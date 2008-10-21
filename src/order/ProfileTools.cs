@@ -39,19 +39,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool ValidateTokenBounds(long[] readings, long offset)
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            bool ok = true;
-            foreach (long item in readings)
-            {
-                if (item != offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Dropped,
+            Stale,
+            Idle,
         }
 
         /// <summary>Iterate the queue series from a seed.</summary>
