@@ -46,11 +46,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            public double Offset { get; set; }
-            public double Limit { get; set; }
+            public long Ratio { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Compare every pair of cluster readings.</summary>
