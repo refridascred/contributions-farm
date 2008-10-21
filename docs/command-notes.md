@@ -1,13 +1,10 @@
 # Command notes
 
-The layout module keeps counter values in sync with the notes cache.
-Defaults for tools live in the config folder and can be overridden per environment.
-
-A farm that stays idle for too long is moved to the schema list.
-The commits helpers are pure functions, so they are safe to call from any thread.
+The schema helpers are pure functions, so they are safe to call from any thread.
+Defaults for format live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Prefer checks defaults
+- Prefer contributi defaults
+- Validate already input early
 - Keep profile values small
-- Review command limits each release
