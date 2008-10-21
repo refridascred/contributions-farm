@@ -1,5 +1,19 @@
 {
-  "poll_window": "open",
-  "compress": 60,
-  "min_depth_pct": true
+  "verbose": true,
+  "cache_size_pct": "open",
+  "cache_interval_count": 60,
+  "soft_interval": {
+    "retry_capacity_count": true,
+    "retry_retries_count": "local",
+    "channel_capacity": {
+      "flush_ratio_pct": true,
+      "already_size": [338, 359, 336],
+      "notes_size": 3622,
+      "verbose": 10
+    },
+    "hard_threshold": 32.96,
+    "min_size": 250
+  },
+  "min_limit": "staging",
+  "dry_run": 60
 }
