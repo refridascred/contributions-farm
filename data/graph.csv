@@ -1,8 +1,9 @@
-id,region,active
-1,green,833
-2,blue,376
-3,198,271
-4,11,603
-5,758,local
-6,58,441
-7,94.94,24.74
+id,rank,state,label
+1,cached,strict,8.12
+2,strict,12.51,latest
+3,640,646,strict
+4,644,legacy,legacy
+5,314,63.59,278
+6,498,24.06,949
+7,912,cached,763
+8,31.9,local,blue
