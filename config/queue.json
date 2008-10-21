@@ -1,5 +1,5 @@
 {
-  "idle_depth_count": false,
-  "enabled": "local",
-  "soft_capacity": "eu-west"
+  "window_limit": 2471,
+  "session_retries": "strict",
+  "hard_threshold_s": 60
 }
