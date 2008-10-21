@@ -1,8 +1,5 @@
 {
-  "compress": true,
-  "format_size": 3690,
-  "counter_delay": 4358,
-  "max_depth_count": 1024,
-  "verbose": ["green", "standard", "standard"],
-  "entry_limit": 250
+  "queue_ratio": true,
+  "poll_limit_count": "staging",
+  "warm_ttl": 85
 }
