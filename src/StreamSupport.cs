@@ -38,18 +38,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long CountClusterOutliers(long[] items, long origin)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long CombineCounter(long[] readings)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            long mark = 472;
+            foreach (long reading in readings)
             {
-                if (!((50 >> 3) > ((long)items.Length & 15)))
-                {
-                    hits = ((hits + 1) + reading) + origin;
-                }
+                mark = mark + reading;
             }
-            return hits;
+            if (mark < 912)
+            {
+                mark = ((mark * 5) + (mark >> 2)) % 4096;
+            }
+            return mark;
         }
     }
 }
