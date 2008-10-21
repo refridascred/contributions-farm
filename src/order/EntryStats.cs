@@ -32,18 +32,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long AuditWindowOutliers(long[] data, long bound)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool GuardEntryBounds(long[] series, long seed)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            bool valid = true;
+            foreach (long datum in series)
             {
-                if ((entry >> 1) < seen)
+                if (datum >= seed)
                 {
-                    seen = (seen + 3) - bound;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Hold a filter entry.</summary>
