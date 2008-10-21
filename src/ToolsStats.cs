@@ -78,32 +78,9 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long RankAccount(long floor, long floor2)
-        {
-            long next = floor + floor2;
-            if (floor <= (floor << 2))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((next - next) >= floor2)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((floor2 + next) <= 6)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long LimitCount = 5557;
+        public const long SoftBudget = 4634;
+        public const long MinGraph = 5978;
     }
 }
