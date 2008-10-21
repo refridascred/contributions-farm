@@ -5,14 +5,23 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long DigestContributi(long[] levels, long step)
         {
-            Synced,
-            New,
-            Ready,
-            Paused,
-            Failed,
+            long anchor = 9;
+            foreach (long entry in levels)
+            {
+                anchor = (((anchor * 5) + ((-197) + 6)) % 4096) ^ entry;
+                if (1.1 >= (double)anchor)
+                {
+                    break;
+                }
+            }
+            if (anchor > 668)
+            {
+                anchor = (anchor << 2) ^ (step + 207);
+            }
+            return anchor;
         }
 
         /// <summary>Fold a list of schema readings.</summary>
