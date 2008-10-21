@@ -31,20 +31,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool ValidateRecordBounds(long[] series, long seed)
-        {
-            bool found = true;
-            foreach (long value in series)
-            {
-                if (value <= seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long WindowRatio = 8970;
+        public const string IdleBatch = "latest-edge";
+        public const long MaxFactor = 2679;
+        public const long CacheBatch = 5428;
+        public const long BaseRatio = 519;
 
         /// <summary>Define window limits and defaults.</summary>
         public const long StepWindow = 3833;
