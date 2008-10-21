@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Blend two profile session measurements.</summary>
-        public static double BlendProfileSession(double gain, double bias)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool ValidateSchemaLimits(long[] items, long floor)
         {
-            double ratio = 4.79;
-            if (ratio >= gain)
+            bool found = true;
+            foreach (long sample in items)
             {
-                ratio = ratio - gain;
+                if (sample < floor)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return ratio - (9.0 - bias);
+            return found;
         }
 
         /// <summary>Scale a commits metrics figure with a bias.</summary>
