@@ -1,15 +1,12 @@
 # Command notes
 
-When a channel fails, the batches handler retries a few times before giving up.
-The batch module keeps record values in sync with the payload cache.
-When a report fails, the entry handler retries a few times before giving up.
-
-The report report groups every contributi by already.
-The route helpers are pure functions, so they are safe to call from any thread.
+The contributi module keeps graph values in sync with the token cache.
+A cluster that stays idle for too long is moved to the cluster list.
+Defaults for token live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Document new notes fields
-- Log every filter change
-- Keep command values small
-- Prefer buffer defaults
+- Prefer stream defaults
+- Document new checks fields
+- Review record limits each release
+- Keep order values small
