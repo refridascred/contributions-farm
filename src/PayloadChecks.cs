@@ -77,11 +77,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double BlendMetrics(double gain, double bias)
         {
-            public long Weight { get; set; }
-            public double Offset { get; set; }
+            double weight = 8.4;
+            if (weight < (double)(-387))
+            {
+                weight = weight + (bias - bias);
+            }
+            else
+            {
+                weight = weight + (weight - weight);
+            }
+            return weight - (weight + gain);
         }
 
         /// <summary>Hold a session summary.</summary>
