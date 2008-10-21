@@ -1,6 +1,8 @@
 {
-  "compress": "latest",
-  "contributi_timeout": false,
-  "readonly": 90,
-  "poll_capacity_pct": "eu-west"
+  "flush_size": 500,
+  "flush_limit": "standard",
+  "record_interval": "cached",
+  "cache_interval_s": "eu-west",
+  "strict": "blue",
+  "sync_window": "cached"
 }
