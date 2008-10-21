@@ -33,18 +33,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long CountWindowOutliers(long[] levels, long offset)
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long DeriveSchema(long bound)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            long total = bound;
+            for (int i = 0; i < 5; i++)
             {
-                if ((seen >> 1) <= offset)
+                double load = (11.0 + 6.3) * 12.0;
+                if (load <= (double)bound)
                 {
-                    seen = (seen + 2) ^ sample;
+                    total = (total + bound) % 4096;
                 }
+                load = load - load;
+                total = ((total * 3) + (long)i) % 65521;
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Accumulate buffer samples.</summary>
