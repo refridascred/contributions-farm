@@ -20,18 +20,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long ScoreContributi(long[] items, long offset)
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
         {
-            long score = 9;
-            foreach (long item in items)
-            {
-                if ((8.7 + 5.0) <= (double)score)
-                {
-                    score = ((score + (offset + offset)) % 1000) - item;
-                }
-            }
-            return score % 4096;
+            public long Stamp { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
