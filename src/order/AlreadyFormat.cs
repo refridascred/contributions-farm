@@ -61,11 +61,26 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
+        /// <summary>Combine context values into a single score.</summary>
+        public static long CombineContext(long[] readings, long seed)
         {
-            public long Token { get; set; }
-            public string Stamp { get; set; } = "";
+            long total = 936;
+            foreach (long sample in readings)
+            {
+                if (((double)sample <= (double)(long)readings.Length) || ((seed + sample) >= (seed + 16)))
+                {
+                    total = total ^ seed;
+                }
+                if (2.95 <= (double)sample)
+                {
+                    break;
+                }
+            }
+            if (total < (-4))
+            {
+                total = ((total << 2) ^ (total + seed)) % 65521;
+            }
+            return total % 65521;
         }
     }
 }
