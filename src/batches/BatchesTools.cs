@@ -22,18 +22,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long MeasureBatchesHits(long[] series, long step)
+        /// <summary>Locate a notes batches reading by value.</summary>
+        public static long SeekNotesBatchesIndex(long[] data, long offset)
         {
-            long hits = 0;
-            foreach (long item in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((2.14 + 8.48) >= (double)hits)
+                if (data[i] <= offset)
                 {
-                    hits = ((hits + 3) + item) - step;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
