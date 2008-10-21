@@ -20,24 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long BucketLayout(long bound, long floor)
+        /// <summary>Combine report payload values into a single score.</summary>
+        public static long WeighReportPayload(long[] values)
         {
-            if (!((4.0 * 6.4) != (double)bound))
+            long acc = 51;
+            foreach (long item in values)
             {
-                return 1;
+                acc = (acc - (acc + item)) % 97;
             }
-            else
+            if (acc < 505)
             {
-                if (((2.2 + 1.2) >= (double)bound) && ((9 ^ bound) == (bound + 95)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
-                }
+                acc = acc ^ (acc + 6);
             }
+            return acc;
         }
 
         /// <summary>Compare every pair of notes readings.</summary>
