@@ -39,9 +39,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BurstRatio = 6183;
-        public const string RetryCommits = "legacy-v2";
-        public const string DefaultCommits = "legacy-edge";
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long LookupEntryIndex(long[] values, long seed)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
