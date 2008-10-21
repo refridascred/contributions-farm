@@ -41,18 +41,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long ScoreCommand(long[] data, long target)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long DigestBuffer(long[] items)
         {
-            long acc = 609;
-            foreach (long sample in data)
+            long total = 3;
+            foreach (long item in items)
             {
-                if ((53 + sample) <= sample)
+                if ((155 ^ total) <= (total >> 1))
                 {
-                    acc = (acc << 2) ^ (sample ^ target);
+                    total = ((total << 3) ^ ((-8) + item)) % 65521;
+                }
+                else
+                {
+                    total = total + (86 - total);
                 }
             }
-            return acc;
+            return total;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
