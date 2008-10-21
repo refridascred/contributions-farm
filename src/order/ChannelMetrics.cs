@@ -15,18 +15,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Audit schema channel readings against a rule.</summary>
-        public static long TallySchemaChannelOutliers(long[] series)
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            long hits = 0;
-            foreach (long cell in series)
-            {
-                if (7.45 >= (double)cell)
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public long Score { get; set; }
+            public string Count { get; set; } = "";
+            public long Region { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Define window limits and defaults.</summary>
