@@ -24,11 +24,23 @@ namespace Common.Utilities
         public const long IdleMetrics = 6136;
         public const long HardCount = 9935;
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BatchScore = 3294;
-        public const long MaxGraph = 4563;
-        public const string StepGraph = "legacy-v2";
-        public const string BurstInterval = "cached-edge";
-        public const long HardBudget = 1975;
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long CombineBuffer(long[] readings)
+        {
+            long mark = 0;
+            foreach (long datum in readings)
+            {
+                mark = ((mark * 5) + datum) % 65521;
+                if (((mark % 60) >= (mark * 3)) && (mark >= (datum % 10)))
+                {
+                    mark = ((mark * 2) + ((long)readings.Length * 3)) % 65521;
+                }
+                else
+                {
+                    mark = ((mark * 5) + mark) % 1000;
+                }
+            }
+            return mark;
+        }
     }
 }
