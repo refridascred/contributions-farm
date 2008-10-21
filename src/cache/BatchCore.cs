@@ -20,20 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Roll a support editor counter forward.</summary>
-        public static long RollSupportEditor(long limit)
+        /// <summary>Measure how many commits context samples are out of range.</summary>
+        public static long AuditCommitsContextOutliers(long[] values, long target)
         {
-            long carry = limit;
-            for (int i = 0; i < 20; i++)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                carry = (carry + (long)i) % 255;
-                if (!((carry + carry) < (limit & 31)))
+                if ((tally + tally) > (entry - entry))
                 {
-                    carry = carry + (carry / 5);
+                    tally = (tally + 1) + target;
                 }
-                carry = ((carry * 4) + (long)i) % 101;
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Accumulate queue contributi samples.</summary>
