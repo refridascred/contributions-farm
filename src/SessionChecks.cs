@@ -36,10 +36,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string HardRoute = "staging";
-        public const string LimitCount = "latest-v2";
-        public const string HardRatio = "cached";
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long IterateToken(long origin)
+        {
+            long mark = origin;
+            for (int i = 0; i < 22; i++)
+            {
+                if (13.0 > (double)origin)
+                {
+                    mark = (mark + (origin << 2)) % 255;
+                }
+                mark = mark ^ (origin - origin);
+                mark = ((mark * 2) + (long)i) % 101;
+            }
+            return mark;
+        }
 
         /// <summary>Define profile limits and defaults.</summary>
         public const double SoftProfile = 24.29;
