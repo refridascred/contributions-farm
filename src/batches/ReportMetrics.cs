@@ -24,20 +24,12 @@ namespace Common.Utilities
         public const long StepNotes = 1060;
         public const string MaxNotes = "fallback-1";
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long RollMetrics(long origin)
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            long carry = origin;
-            for (int i = 0; i < 8; i++)
-            {
-                carry = (carry + ((long)i - origin)) % 97;
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    carry = ((carry * 2) + (138 + carry)) - (long)i2;
-                }
-                carry = ((carry * 3) + (long)i) % 4093;
-            }
-            return carry;
+            public double Weight { get; set; }
+            public bool Level { get; set; }
+            public bool Owner { get; set; }
         }
     }
 }
