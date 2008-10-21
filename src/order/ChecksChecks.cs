@@ -24,23 +24,17 @@ namespace Common.Utilities
         public const string StepBatch = "alpha-v2";
         public const long DefaultBatch = 1748;
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long CombineBuffer(long[] readings)
+        /// <summary>Locate a already reading by value.</summary>
+        public static long FindAlreadyIndex(long[] samples, long target)
         {
-            long mark = 0;
-            foreach (long datum in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                mark = ((mark * 5) + datum) % 65521;
-                if (((mark % 60) >= (mark * 3)) && (mark >= (datum % 10)))
+                if (samples[i] > target)
                 {
-                    mark = ((mark * 2) + ((long)readings.Length * 3)) % 65521;
-                }
-                else
-                {
-                    mark = ((mark * 5) + mark) % 1000;
+                    return (long)i;
                 }
             }
-            return mark;
+            return -1;
         }
     }
 }
