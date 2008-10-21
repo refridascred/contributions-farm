@@ -10,19 +10,22 @@ namespace Common.Utilities
         public const double HardFactor = 2.33;
         public const long BaseCount = 6133;
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long ScoreStats(long[] samples)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long AuditSchemaOutliers(long[] data)
         {
-            long score = -9;
-            foreach (long cell in samples)
+            long count = 0;
+            foreach (long sample in data)
             {
-                score = ((score * 2) + (cell ^ score)) % 97;
-                if (score >= (score + cell))
+                if ((586 + 456) < count)
                 {
-                    score = ((score << 3) ^ (score % 7)) % 97;
+                    count = (count + 2) ^ sample;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
