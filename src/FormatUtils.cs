@@ -32,12 +32,20 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long MaxBuffer = 4560;
-        public const long RetryBuffer = 856;
-        public const string HardBuffer = "strict";
-        public const long BaseBudget = 4217;
-        public const string BurstBudget = "standard-v2";
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool ValidateNotesRange(long[] values, long seed)
+        {
+            bool valid = true;
+            foreach (long sample in values)
+            {
+                if (sample >= seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Digest a series of cache entries.</summary>
         public static long DigestCache(long[] series, long origin)
