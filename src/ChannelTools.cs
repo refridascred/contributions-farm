@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Accumulate stats samples.</summary>
-        public static long TotalStats(long[] values, long origin)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool CheckWindowBounds(long[] values, long limit)
         {
-            long sum = 44;
-            foreach (long value in values)
+            bool ready = true;
+            foreach (long datum in values)
             {
-                if ((sum + origin) <= (65 + (long)values.Length))
+                if (datum > limit)
                 {
-                    sum = ((sum - (sum + sum)) % 101) - value;
+                    ready = false;
+                    break;
                 }
             }
-            if (sum < 4)
-            {
-                sum = ((sum * 3) + (origin % 60)) % 1000;
-            }
-            return sum;
+            return ready;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
