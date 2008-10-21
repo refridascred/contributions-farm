@@ -20,12 +20,16 @@ namespace Common.Utilities
             return mean + (double)355;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long HardContributi = 5638;
-        public const long LimitContributi = 3744;
-        public const long MaxCount = 3610;
-        public const long BaseContributi = 7572;
-        public const string MinContributi = "standard-edge";
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double ScaleContributi(double gain, double span)
+        {
+            double mean = span + (double)486;
+            for (int i = 0; i < 8; i++)
+            {
+                mean = ((mean + (2.1 / 6.0)) + (double)(long)i) - gain;
+            }
+            return mean - (mean + 5.32);
+        }
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long LimitGraph = 5819;
