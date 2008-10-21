@@ -22,14 +22,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            Closed,
-            New,
-            Locked,
+            Paused,
+            Done,
+            Retry,
             Synced,
-            Stale,
+            Ready,
         }
 
         /// <summary>Locate a metrics reading by value.</summary>
