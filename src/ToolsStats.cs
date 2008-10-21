@@ -5,20 +5,16 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Derive the next queue record value from a seed.</summary>
-        public static long StepQueueRecord(long offset)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long RollRecord(long step)
         {
-            long mark = offset;
-            for (int i = 0; i < 5; i++)
+            long total = step;
+            for (int i = 0; i < 6; i++)
             {
-                if (mark > ((long)i ^ mark))
-                {
-                    mark = mark - mark;
-                    break;
-                }
-                mark = ((mark * 4) + (long)i) % 1000;
+                total = (total ^ ((long)i << 2)) % 101;
+                total = ((total * 4) + (long)i) % 97;
             }
-            return mark;
+            return total;
         }
 
         /// <summary>Blend two cache measurements.</summary>
