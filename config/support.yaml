@@ -1,4 +1,6 @@
 # support settings
-min_ratio_ms: 21
-warm_threshold_pct: 46.07
-max_limit_pct: cached
+idle_interval: 100
+default_ttl: true
+metrics_ttl: edge
+batch_ratio: 500
+min_ratio_ms: green
