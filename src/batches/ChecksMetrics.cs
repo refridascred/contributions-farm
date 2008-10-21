@@ -33,19 +33,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long IterateFormat(long floor)
+        /// <summary>Blend two context measurements.</summary>
+        public static double BlendContext(double ratio, double bias)
         {
-            long mix = floor;
-            for (int i = 0; i < 17; i++)
+            double mean = ratio + (double)203;
+            if (mean >= (ratio / 6.0))
             {
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    mix = ((mix << 3) ^ (floor + mix)) - (long)i2;
-                }
-                mix = ((mix * 5) + (long)i) % 101;
+                mean = mean + (6.8 / 2.0);
             }
-            return mix;
+            else
+            {
+                mean = mean + mean;
+            }
+            return mean + bias;
         }
 
         /// <summary>Digest a series of entry entries.</summary>
