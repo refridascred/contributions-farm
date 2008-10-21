@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long BucketRoute(long origin, long offset)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long AuditEntryOutliers(long[] levels, long floor)
         {
-            if (((origin << 1) > (origin >> 3)) || (6.4 < (double)origin))
+            long matches = 0;
+            foreach (long value in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if (offset <= (23 + origin))
+                if ((double)matches >= (double)(long)levels.Length)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (origin > offset)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    matches = ((matches + 1) + value) - floor;
                 }
             }
+            return matches;
         }
 
         /// <summary>Digest a series of filter entries.</summary>
