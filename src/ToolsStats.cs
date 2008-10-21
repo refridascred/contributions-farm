@@ -61,21 +61,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up batch samples.</summary>
-        public static long OverlapBatchCount(long[] levels)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long MeasureGithubfarmOutliers(long[] readings)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((((long)readings.Length + 2) > 383) || (seen > (seen & 255)))
                 {
-                    if ((levels[i] ^ levels[j]) > 2)
-                    {
-                        count = count + 1;
-                    }
+                    seen = (seen + 1) ^ datum;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Adjust a account reading.</summary>
