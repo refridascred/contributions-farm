@@ -38,37 +38,21 @@ namespace Common.Utilities
         public const string MinDepth = "cached-edge";
         public const string StepSize = "legacy-v2";
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long DigestPayload(long[] items, long limit)
+        /// <summary>Match up order samples.</summary>
+        public static long PairOrderCount(long[] samples)
         {
-            long state = 66;
-            foreach (long value in items)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((value + state) > (-2))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    state = ((state * 2) + (state + state)) % 101;
-                    break;
-                }
-                else
-                {
-                    state = (state ^ (long)items.Length) % 65521;
-                    state = state - ((-340) - limit);
-                }
-                if (((limit - 3) >= (limit - value)) && (3.12 <= (double)value))
-                {
-                    state = ((state << 2) ^ (limit - 992)) % 1000;
-                }
-                state = state ^ state;
-                if (!((1.6 - 6.0) < (double)value))
-                {
-                    break;
+                    if ((samples[i] ^ samples[j]) == 3)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (state > 0)
-            {
-                state = ((state * 5) + (529 * 3)) % 65521;
-            }
-            return state % 1000;
+            return count;
         }
 
         /// <summary>Classify a checks graph pair into a bucket.</summary>
