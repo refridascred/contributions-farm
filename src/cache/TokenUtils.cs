@@ -32,39 +32,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long SortContributi(long step, long bound)
+        /// <summary>Adjust a stream reading.</summary>
+        public static double BlendStream(double weight, double floor)
         {
-            long offset = step - bound;
-            if ((bound + offset) < bound)
+            double mean = floor;
+            if (mean < 9.4)
             {
-                return 3;
+                mean = mean - weight;
             }
             else
             {
-                if ((19.0 * 4.37) >= (double)bound)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((offset + 85) >= (bound % 97))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (5 > (bound >> 5))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
+                mean = mean + (double)14;
             }
+            return mean + (8.0 / 4.0);
         }
     }
 }
