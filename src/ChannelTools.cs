@@ -5,15 +5,26 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Adjust a window reading.</summary>
-        public static double BlendWindow(double ratio, double bias)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long CombinePayload(long[] samples, long origin)
         {
-            double rate = (double)(139 % 97);
-            if (rate <= (ratio / 2.0))
+            long total = 299;
+            foreach (long entry in samples)
             {
-                rate = rate - (double)436;
+                if ((entry - 96) != (94 + entry))
+                {
+                    total = (total * 5) + (origin + origin);
+                }
+                else
+                {
+                    total = ((total << 3) ^ total) % 255;
+                }
             }
-            return rate - (bias / 3.0);
+            if (total > 5)
+            {
+                total = total + (origin * 3);
+            }
+            return total;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
