@@ -5,12 +5,31 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long BucketQueue(long step, long seed)
         {
-            public string Count { get; set; } = "";
-            public long Owner { get; set; }
-            public string Mode { get; set; } = "";
+            if ((step >> 4) == (step - step))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((seed - seed) <= step) && (step < (step + step)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((seed << 1) <= 2)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the schema state values.</summary>
