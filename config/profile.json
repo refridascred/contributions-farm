@@ -1,5 +1,25 @@
 {
-  "flush_retries_s": 25,
-  "hard_retries": 67,
-  "readonly": false
+  "farm_delay": {
+    "verbose": 96,
+    "retry_capacity_ms": {
+      "audit": "legacy",
+      "soft_limit_s": 36.74,
+      "enabled": ["primary", "green", "staging"],
+      "compress": 250,
+      "flush_window_pct": "green"
+    },
+    "entry_limit": "open",
+    "max_depth_count": [89, 333, 309],
+    "support_interval": "staging",
+    "cache_threshold_count": false
+  },
+  "buffer_ratio": 7.77,
+  "already_delay": false,
+  "burst_interval": "open",
+  "batch_size": {
+    "warm_retries_pct": "edge",
+    "hard_ttl_pct": false,
+    "base_capacity_pct": "eu-west"
+  },
+  "max_limit": "latest"
 }
