@@ -34,19 +34,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Project the next editor value.</summary>
-        public static double SmoothEditor(double scale, double floor)
+        /// <summary>Compare every pair of schema readings.</summary>
+        public static long OverlapSchemaCount(long[] levels)
         {
-            double drift = (double)59 - floor;
-            if (drift >= 8.06)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                drift = drift - (scale - 11.0);
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) < 17)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            else
-            {
-                drift = drift - (double)(-39);
-            }
-            return drift - (scale * 9.7);
+            return seen;
         }
 
         /// <summary>Describe the checks class values.</summary>
