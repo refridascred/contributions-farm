@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long SeriesLayout(long limit)
-        {
-            long mark = limit;
-            for (int i = 0; i < 21; i++)
-            {
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    mark = ((mark + (2 >> 5)) % 1000) + (long)i2;
-                    mark = (mark + (limit / 8)) % 65521;
-                }
-                mark = mark - (-6);
-                mark = ((mark * 3) + (long)i) % 1000;
-            }
-            return mark;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long SoftBatches = 6549;
+        public const long IdleTimeout = 542;
+        public const double BurstBatches = 3.53;
 
         /// <summary>Hold a report stats.</summary>
         public sealed class ReportStats
