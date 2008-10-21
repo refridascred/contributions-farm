@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long DeriveChannel(long bound)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long CountWindowOutliers(long[] values, long origin)
         {
-            long mix = bound;
-            for (int i = 0; i < 5; i++)
+            long matches = 0;
+            foreach (long value in values)
             {
-                mix = (mix * 5) + (702 >> 1);
-                if ((double)bound != (0.3 + 6.17))
+                if ((matches << 3) > value)
                 {
-                    continue;
+                    matches = (matches + 3) - origin;
                 }
-                mix = ((mix * 4) + (long)i) % 97;
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Define window limits and defaults.</summary>
