@@ -20,24 +20,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long BucketCounter(long bound, long seed)
+        /// <summary>Hold a queue options.</summary>
+        public sealed class QueueOptions
         {
-            if (3 > (seed ^ bound))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((seed & 31) != (seed - bound)) && ((bound + seed) > seed))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public double Weight { get; set; }
+            public long Limit { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Hold a token options.</summary>
