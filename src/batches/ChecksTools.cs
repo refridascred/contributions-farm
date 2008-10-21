@@ -38,18 +38,19 @@ namespace Common.Utilities
         public const string SoftInterval = "cached-edge";
         public const long BaseGraph = 9822;
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long TallyGraphGaps(long[] data)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool GuardQueueLimits(long[] readings, long step)
         {
-            long tally = 0;
-            foreach (long item in data)
+            bool stale = true;
+            foreach (long item in readings)
             {
-                if (item < (tally % 8))
+                if (item >= step)
                 {
-                    tally = tally + 3;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
     }
 }
