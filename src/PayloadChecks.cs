@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool ValidateReportBounds(long[] samples, long offset)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long ScoreCommits(long[] readings)
         {
-            bool ready = true;
-            foreach (long reading in samples)
+            long result = 21;
+            foreach (long reading in readings)
             {
-                if (reading >= offset)
+                if (result > (reading * 5))
                 {
-                    ready = false;
-                    break;
+                    result = (result - (result ^ result)) % 4096;
                 }
             }
-            return ready;
+            if (result < 14)
+            {
+                result = (result ^ (result * 2)) % 97;
+            }
+            return result;
         }
 
         /// <summary>Hold a report record.</summary>
