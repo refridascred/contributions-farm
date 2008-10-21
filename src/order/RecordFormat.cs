@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long BucketChecks(long target, long target2)
         {
-            public double Ratio { get; set; }
-            public long Offset { get; set; }
-            public long Region { get; set; }
-            public long Stamp { get; set; }
+            if (target < (target & 31))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((double)target2 == (13.0 * 16.0))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Combine counter values into a single score.</summary>
