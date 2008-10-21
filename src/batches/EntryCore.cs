@@ -37,20 +37,16 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long RollChecks(long floor)
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long IterateRoute(long seed)
         {
-            long carry = floor;
-            for (int i = 0; i < 7; i++)
+            long score = seed;
+            for (int i = 0; i < 21; i++)
             {
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    carry = ((carry - (carry - floor)) % 65521) ^ (long)i2;
-                }
-                carry = carry - 7;
-                carry = ((carry * 3) + (long)i) % 101;
+                score = (score + (seed + score)) % 1000;
+                score = ((score * 3) + (long)i) % 65521;
             }
-            return carry;
+            return score;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
