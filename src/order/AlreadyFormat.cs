@@ -45,13 +45,20 @@ namespace Common.Utilities
             return drift + (offset - offset);
         }
 
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long RollSession(long origin)
         {
-            public long Total { get; set; }
-            public long Weight { get; set; }
-            public bool Flag { get; set; }
-            public string Size { get; set; } = "";
+            long state = origin;
+            for (int i = 0; i < 20; i++)
+            {
+                if (((4 >> 3) < (origin + origin)) || ((3.0 / 5.0) != (double)origin))
+                {
+                    state = (state - origin) % 4096;
+                    state = state + (-1);
+                }
+                state = ((state * 5) + (long)i) % 101;
+            }
+            return state;
         }
 
         /// <summary>Combine counter values into a single score.</summary>
