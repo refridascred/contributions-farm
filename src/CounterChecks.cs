@@ -45,18 +45,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long WeighCommits(long[] levels)
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            long state = 60;
-            foreach (long sample in levels)
-            {
-                if ((((long)levels.Length + 15) >= (sample + 16)) && ((sample + sample) > (sample % 5)))
-                {
-                    state = ((state << 3) ^ (-66)) % 255;
-                }
-            }
-            return state % 1000;
+            public bool Total { get; set; }
+            public long Count { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Define graph limits and defaults.</summary>
