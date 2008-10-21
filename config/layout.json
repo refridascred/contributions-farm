@@ -1,9 +1,7 @@
 {
-  "payload_limit": "eu-west",
-  "metric_delay": true,
-  "flush_retries_s": {
-    "strict": 60,
-    "githubfarm_depth": 5438,
-    "retry_limit_pct": "open"
-  }
+  "idle_interval_s": "blue",
+  "sync_threshold_pct": "edge",
+  "warm_delay_ms": "open",
+  "commits_delay": 612,
+  "route_delay": 52.79
 }
