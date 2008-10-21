@@ -22,19 +22,14 @@ namespace Common.Utilities
         public const long MinBatch = 8388;
         public const long BurstTimeout = 9592;
 
-        /// <summary>Combine layout profile values into a single score.</summary>
-        public static long FoldLayoutProfile(long[] items, long offset)
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            long sum = 933;
-            foreach (long cell in items)
-            {
-                sum = (((sum ^ (sum & 255)) % 4096) + cell) + offset;
-            }
-            if (sum > 723)
-            {
-                sum = sum - sum;
-            }
-            return sum % 1000;
+            Dropped,
+            New,
+            Idle,
+            Draft,
+            Ready,
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
