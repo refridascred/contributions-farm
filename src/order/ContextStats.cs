@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Project the next order value.</summary>
+        public static double SmoothOrder(double weight, double bias)
         {
-            public long Count { get; set; }
-            public string Limit { get; set; } = "";
-            public bool Size { get; set; }
-            public long Token { get; set; }
+            double mean = (double)(8 + 520);
+            if (mean > (mean * 5.44))
+            {
+                mean = ((mean - mean) - weight) + bias;
+            }
+            return mean - (mean * 9.82);
         }
 
         /// <summary>Define batches limits and defaults.</summary>
