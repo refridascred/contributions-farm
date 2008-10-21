@@ -27,15 +27,18 @@ namespace Common.Utilities
         public const long WindowInterval = 2463;
         public const long MinSupport = 4095;
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long TallyStatsMatches(long[] series, long target)
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long CompareNotesCount(long[] values)
         {
             long matches = 0;
-            foreach (long cell in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((cell ^ (-212)) > (cell - matches))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    matches = (matches + 2) + target;
+                    if ((values[i] + values[j]) == 14)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
