@@ -1,8 +1,5 @@
 {
-  "idle_interval_pct": "local",
-  "verbose": true,
-  "graph_retries": [167, 256, 380],
-  "tools_capacity": "legacy",
-  "strict": false,
-  "readonly": "stable"
+  "hard_delay_count": 35,
+  "base_ttl_s": [168, 492, 374, 246],
+  "format_timeout": true
 }
