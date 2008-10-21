@@ -1,12 +1,16 @@
 # Command notes
 
-The contributi module keeps graph values in sync with the token cache.
-A cluster that stays idle for too long is moved to the cluster list.
-Defaults for token live in the config folder and can be overridden per environment.
+Keep account and route names short and lowercase.
+A editor that stays idle for too long is moved to the entry list.
+Run the tools check before changing any batches limits.
+
+The entry module keeps checks values in sync with the layout cache.
+The cache report groups every session by buffer.
+The layout helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Prefer stream defaults
-- Document new checks fields
-- Review record limits each release
-- Keep order values small
+- Document new account fields
+- Review entry limits each release
+- Prefer metrics defaults
+- Log every route change
