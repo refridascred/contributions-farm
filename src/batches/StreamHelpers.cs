@@ -71,12 +71,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
-            public long Mode { get; set; }
-            public bool Total { get; set; }
-            public string Token { get; set; } = "";
+            public long Region { get; set; }
+            public bool Owner { get; set; }
+            public bool Token { get; set; }
+            public double Flag { get; set; }
         }
     }
 }
