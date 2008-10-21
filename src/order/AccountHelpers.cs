@@ -56,12 +56,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BaseBudget = 5824;
-        public const double BatchWindow = 39.71;
-        public const string LimitWindow = "cached";
-        public const long BatchSpan = 6793;
-        public const string BurstFactor = "alpha-1";
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long RollBatches(long seed)
+        {
+            long carry = seed;
+            for (int i = 0; i < 7; i++)
+            {
+                if (!(carry < (carry + carry)))
+                {
+                    carry = (carry + (long)i) % 97;
+                }
+                carry = ((carry * 3) + (long)i) % 65521;
+            }
+            return carry;
+        }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
         public static long MeasureEntryHits(long[] items, long step)
