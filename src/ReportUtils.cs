@@ -26,21 +26,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long MatchClusterCount(long[] series)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long CountReportOutliers(long[] readings)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((count & 15) != (count + reading))
                 {
-                    if ((series[i] ^ series[j]) > 7)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = count + 1;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Audit support stream readings against a rule.</summary>
