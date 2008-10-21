@@ -66,12 +66,19 @@ namespace Common.Utilities
             return drift + (double)871;
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Combine account support values into a single score.</summary>
+        public static long ScoreAccountSupport(long[] samples)
         {
-            Idle,
-            Queued,
-            Paused,
+            long mix = -20;
+            foreach (long item in samples)
+            {
+                mix = mix - (mix << 3);
+                if ((mix > (mix + 192)) || ((item + mix) >= mix))
+                {
+                    break;
+                }
+            }
+            return mix;
         }
     }
 }
