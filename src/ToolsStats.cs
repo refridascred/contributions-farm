@@ -19,20 +19,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two cache measurements.</summary>
-        public static double BlendCache(double ratio, double bias)
-        {
-            double ratio2 = (double)(28 * 5);
-            if (ratio2 <= bias)
-            {
-                ratio2 = (ratio2 + ratio2) + ratio;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio2 = (ratio2 + (8.07 / 2.0)) + (double)(long)i;
-            }
-            return ratio2 - (double)58;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long WindowWidth = 5875;
+        public const long MinCommits = 489;
+        public const string HardFactor = "strict-1";
 
         /// <summary>Rank farm input into a small class.</summary>
         public static long BucketFarm(long floor, long seed)
