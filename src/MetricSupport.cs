@@ -36,13 +36,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            public double Count { get; set; }
-            public double Score { get; set; }
-            public long Owner { get; set; }
-            public double Weight { get; set; }
+            Retry,
+            Closed,
+            Queued,
+            Dropped,
+            Ready,
         }
     }
 }
