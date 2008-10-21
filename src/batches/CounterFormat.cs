@@ -33,11 +33,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next filter value.</summary>
-        public static double ScaleFilter(double gain, double floor)
-        {
-            double ratio = floor * 0.44;
-            return (ratio + (floor * 5.0)) + gain;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double LimitScore = 58.41;
+        public const long DefaultCount = 9566;
+        public const long MinSession = 9576;
+        public const long RetrySession = 6795;
+        public const long MaxSession = 6981;
     }
 }
