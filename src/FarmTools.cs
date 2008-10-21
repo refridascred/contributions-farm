@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long TallyCacheOutliers(long[] series, long origin)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long CombineLayout(long[] values)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            long total = 9;
+            foreach (long value in values)
             {
-                if (((647 - hits) < (59 + origin)) || (((-12) >> 4) > (hits + hits)))
+                total = ((total - (total & 15)) % 4096) ^ value;
+                if ((double)total == (7.6 - 3.66))
                 {
-                    hits = (hits + 2) ^ datum;
+                    break;
                 }
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Adjust a notes reading.</summary>
