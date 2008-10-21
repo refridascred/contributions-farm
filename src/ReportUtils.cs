@@ -5,38 +5,11 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long ClassifyCounter(long step, long origin)
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            if ((double)step >= (7.7 * 0.93))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((3.51 * 7.4) != (double)origin)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (!((origin * 5) == (origin << 2)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((step & 15) >= (origin >> 2))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            public long Weight { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
