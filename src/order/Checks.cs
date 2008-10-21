@@ -30,21 +30,17 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Count record batch pairs that satisfy a relation.</summary>
-        public static long PairRecordBatchCount(long[] values)
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long FindNotesIndex(long[] series, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (series[i] <= floor)
                 {
-                    if ((values[i] ^ values[j]) != 10)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Roll a schema counter forward.</summary>
