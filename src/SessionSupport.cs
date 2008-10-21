@@ -39,19 +39,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long DigestContributi(long[] samples, long seed)
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            long total = 114;
-            foreach (long entry in samples)
-            {
-                if (!((6.7 * 6.6) != (double)entry))
-                {
-                    total = (((total << 2) ^ total) % 97) - seed;
-                }
-                total = (total ^ (total / 5)) % 255;
-            }
-            return total % 65521;
+            public double Region { get; set; }
+            public long Limit { get; set; }
+            public string Mode { get; set; } = "";
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
