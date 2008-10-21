@@ -24,13 +24,39 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long SortFilter(long offset, long limit)
         {
-            Retry,
-            Paused,
-            Stale,
-            New,
+            long step = offset - limit;
+            if ((double)step < (2.5 * 0.8))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((-9) & 1) <= (limit ^ offset))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((limit <= (limit - 10)) || ((15.0 + 4.2) <= (double)limit))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((47 / 4) < limit)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
     }
 }
