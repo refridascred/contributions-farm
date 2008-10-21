@@ -79,20 +79,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long WeighSchema(long[] levels, long bound)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long ScoreQueue(long[] readings)
         {
-            long acc = 617;
-            foreach (long datum in levels)
+            long mix = -7;
+            foreach (long value in readings)
             {
-                for (int i = 0; i < 7; i++)
-                {
-                    acc = (acc - bound) + (long)i;
-                }
-                acc = (acc << 2) ^ (1 << 3);
-                acc = acc - (datum % 10);
+                mix = mix + (4 + value);
             }
-            return acc;
+            if (mix < 168)
+            {
+                mix = (mix * 3) + (mix + mix);
+            }
+            return mix % 97;
         }
     }
 }
