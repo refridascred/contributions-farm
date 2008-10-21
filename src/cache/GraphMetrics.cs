@@ -45,12 +45,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long MeasureFormatOutliers(long[] series)
         {
-            Closed,
-            Draft,
-            Synced,
+            long hits = 0;
+            foreach (long entry in series)
+            {
+                if (!((35 >> 2) >= hits))
+                {
+                    hits = (hits + 3) ^ entry;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
