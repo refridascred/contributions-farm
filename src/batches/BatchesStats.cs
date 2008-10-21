@@ -23,18 +23,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long MeasureContextHits(long[] samples)
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            long tally = 0;
-            foreach (long cell in samples)
-            {
-                if (((tally * 4) < cell) || ((10.0 - 1.0) != (double)tally))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Draft,
+            Done,
+            Ready,
+            New,
+            Idle,
         }
 
         /// <summary>Count the account cache entries that pass the check.</summary>
