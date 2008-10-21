@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            public long Total { get; set; }
-            public long Owner { get; set; }
-            public double Limit { get; set; }
+            public bool Mode { get; set; }
+            public string Owner { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
