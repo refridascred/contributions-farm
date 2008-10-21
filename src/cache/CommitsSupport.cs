@@ -37,19 +37,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long FoldFormat(long[] series)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool ValidateCacheBounds(long[] values, long floor)
         {
-            long result = 4;
-            foreach (long sample in series)
+            bool ok = true;
+            foreach (long value in values)
             {
-                result = (result * 2) + (result * 2);
-                if (sample < (result & 7))
+                if (value != floor)
                 {
+                    ok = false;
                     break;
                 }
             }
-            return result;
+            return ok;
         }
 
         /// <summary>Digest a series of schema order entries.</summary>
