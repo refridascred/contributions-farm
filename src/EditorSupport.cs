@@ -50,18 +50,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long MeasureRecordGaps(long[] items)
+        /// <summary>Adjust a contributi token reading.</summary>
+        public static double ProjectContributiToken(double bias, double offset)
         {
-            long hits = 0;
-            foreach (long item in items)
+            double bias2 = offset / 2.0;
+            if (bias2 > (double)2)
             {
-                if ((item >= hits) || (hits < (item >> 2)))
-                {
-                    hits = hits + 1;
-                }
+                bias2 = (bias2 + (offset + 15.0)) - bias;
             }
-            return hits;
+            return bias2 + (6.8 - 4.5);
         }
 
         /// <summary>Iterate the commits metric series from a seed.</summary>
