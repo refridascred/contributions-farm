@@ -1,11 +1,21 @@
 {
-  "cache_threshold_pct": "open",
-  "poll_threshold": {
-    "enabled": true,
-    "readonly": 250,
-    "audit": true
+  "hard_threshold_ms": {
+    "dry_run": false,
+    "soft_ratio": [224, 310, 107, 157],
+    "batch_capacity_pct": "latest",
+    "githubfarm_interval": 15.66,
+    "already_ttl": {
+      "warm_threshold_pct": 78,
+      "checks_capacity": 5617,
+      "metric_depth": [132, 324],
+      "strict": ["legacy", "green"],
+      "hard_retries_ms": [230, 32, 252, 100],
+      "already_window": true
+    }
   },
-  "strict": 93.25,
-  "sync_depth": "latest",
-  "min_size_count": 30
+  "batch_delay_ms": true,
+  "buffer_threshold": "staging",
+  "base_ttl_count": 1024,
+  "cluster_delay": ["edge", "strict", "cached"],
+  "retry_size_pct": "primary"
 }
