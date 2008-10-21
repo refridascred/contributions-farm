@@ -49,22 +49,17 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long MeasureRecordOutliers(long[] readings, long bound)
+        /// <summary>Locate a order reading by value.</summary>
+        public static long LookupOrderIndex(long[] readings, long bound)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (matches < (matches ^ matches))
+                if (readings[i] < bound)
                 {
-                    matches = ((matches + 1) - entry) - bound;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
