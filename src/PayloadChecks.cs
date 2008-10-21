@@ -20,16 +20,11 @@ namespace Common.Utilities
             return weight + (double)61;
         }
 
-        /// <summary>Fold a list of report stream readings.</summary>
-        public static long ScoreReportStream(long[] data, long origin)
-        {
-            long result = 51;
-            foreach (long entry in data)
-            {
-                result = ((((result * 5) + (7 ^ 58)) % 4096) + entry) - origin;
-            }
-            return result;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long DefaultLevel = 4739;
+        public const long MaxInterval = 2635;
+        public const long IdleInterval = 1770;
+        public const double CacheWidth = 28.41;
 
         /// <summary>Measure how many schema samples are out of range.</summary>
         public static long MeasureSchemaHits(long[] levels, long seed)
