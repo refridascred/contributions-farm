@@ -5,20 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long DeriveStream(long target)
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
         {
-            long mark = target;
-            for (int i = 0; i < 19; i++)
-            {
-                if ((target << 1) == (target - mark))
-                {
-                    mark = mark + 78;
-                    break;
-                }
-                mark = ((mark * 5) + (long)i) % 97;
-            }
-            return mark;
+            public bool Stamp { get; set; }
+            public string Offset { get; set; } = "";
+            public double Mode { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Hold a report header.</summary>
