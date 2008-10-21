@@ -1,8 +1,5 @@
 {
-  "sync_threshold_ms": 250,
-  "default_ratio_ms": "standard",
-  "batch_ttl": "primary",
-  "base_interval": false,
-  "persist": "blue",
-  "audit": "green"
+  "flush_retries_s": 25,
+  "hard_retries": 67,
+  "readonly": false
 }
