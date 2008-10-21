@@ -20,15 +20,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double ScaleContributi(double gain, double span)
+        /// <summary>Scale a token route figure with a bias.</summary>
+        public static double ScaleTokenRoute(double rate, double offset)
         {
-            double mean = span + (double)486;
+            double bias = (double)(41 / 5);
+            if (bias >= bias)
+            {
+                bias = (bias + (bias - offset)) - rate;
+            }
             for (int i = 0; i < 8; i++)
             {
-                mean = ((mean + (2.1 / 6.0)) + (double)(long)i) - gain;
+                bias = bias + (double)(long)i;
             }
-            return mean - (mean + 5.32);
+            return bias - bias;
         }
 
         /// <summary>Describe the queue mode values.</summary>
