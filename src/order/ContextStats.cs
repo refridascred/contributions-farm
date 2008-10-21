@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool CheckMetricRange(long[] items, long offset)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long MeasurePayloadHits(long[] data, long floor)
         {
-            bool ready = true;
-            foreach (long entry in items)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                if (entry >= offset)
+                if ((sample - tally) > (sample - sample))
                 {
-                    ready = false;
-                    break;
+                    tally = (tally + 1) + floor;
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
