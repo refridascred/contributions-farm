@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long SeriesEntry(long step)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long MeasureReportHits(long[] items, long bound)
         {
-            long sum = step;
-            for (int i = 0; i < 23; i++)
+            long matches = 0;
+            foreach (long item in items)
             {
-                sum = (sum * 3) + ((long)i / 5);
-                sum = ((sum * 5) + (long)i) % 65521;
+                if ((item + bound) <= (4 + bound))
+                {
+                    matches = matches + 2;
+                }
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Define format limits and defaults.</summary>
