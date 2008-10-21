@@ -18,22 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long AuditWindowHits(long[] samples, long offset)
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            long matches = 0;
-            foreach (long item in samples)
-            {
-                if (((offset ^ matches) != (11 - offset)) && ((8.2 - 8.0) >= (double)matches))
-                {
-                    matches = (matches + 2) ^ item;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Done,
+            Locked,
+            Retry,
+            New,
+            Queued,
         }
 
         /// <summary>Derive the next report value from a seed.</summary>
