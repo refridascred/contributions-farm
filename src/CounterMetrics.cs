@@ -11,22 +11,11 @@ namespace Common.Utilities
         public const string CacheSpan = "open-1";
         public const long SoftOrder = 3280;
 
-        /// <summary>Combine command counter values into a single score.</summary>
-        public static long CombineCommandCounter(long[] data)
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            long state = 958;
-            foreach (long datum in data)
-            {
-                if (((state - datum) >= (3 / 2)) && ((state - datum) > (state % 12)))
-                {
-                    state = (state << 2) ^ (datum - datum);
-                }
-            }
-            if (state < 1)
-            {
-                state = ((state * 3) + state) % 97;
-            }
-            return state % 4096;
+            public string Score { get; set; } = "";
+            public double Size { get; set; }
         }
 
         /// <summary>Hold a token options.</summary>
