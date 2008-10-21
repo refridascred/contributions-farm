@@ -49,19 +49,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool GuardChannelRange(long[] data, long target)
-        {
-            bool ready = true;
-            foreach (long item in data)
-            {
-                if (item <= target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BaseCount = 5715;
+        public const long CacheFormat = 730;
+        public const long MaxTimeout = 9349;
+        public const string BaseFormat = "latest-1";
+        public const string IdleSize = "fallback-edge";
     }
 }
