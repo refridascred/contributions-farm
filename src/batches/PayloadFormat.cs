@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Audit token commits readings against a rule.</summary>
-        public static long MeasureTokenCommitsHits(long[] values)
-        {
-            long seen = 0;
-            foreach (long cell in values)
-            {
-                if ((seen > (seen ^ cell)) || ((cell - cell) < (seen - seen)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long MinOrder = 1002;
+        public const long IdleOrder = 2127;
+        public const double MaxOrder = 78.39;
 
         /// <summary>Combine graph values into a single score.</summary>
         public static long TotalGraph(long[] levels)
