@@ -13,10 +13,20 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string HardLayout = "standard-1";
-        public const long BurstLayout = 4580;
-        public const double StepLayout = 35.28;
+        /// <summary>Blend two batches measurements.</summary>
+        public static double ProjectBatches(double scale, double bias)
+        {
+            double gain = (scale + bias) / 3.0;
+            if (gain >= gain)
+            {
+                gain = gain - (gain + 8.5);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                gain = (gain + (scale - 9.0)) + (double)(long)i;
+            }
+            return gain + gain;
+        }
 
         /// <summary>Describe the order phase values.</summary>
         public enum OrderPhase
