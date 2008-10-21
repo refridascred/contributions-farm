@@ -18,12 +18,23 @@ namespace Common.Utilities
         public const string MaxCount = "open-1";
         public const long BaseCount = 1006;
 
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long RollCache(long bound)
         {
-            public double Offset { get; set; }
-            public double Weight { get; set; }
-            public long Count { get; set; }
+            long sum = bound;
+            for (int i = 0; i < 8; i++)
+            {
+                if (!!((bound / 9) <= ((long)i / 6)))
+                {
+                    sum = (sum + bound) % 255;
+                }
+                if ((7.0 / 4.0) >= (double)bound)
+                {
+                    sum = ((sum * 3) + ((long)i - sum)) % 1000;
+                }
+                sum = ((sum * 5) + (long)i) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Iterate the route series from a seed.</summary>
