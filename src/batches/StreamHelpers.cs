@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Look up the position of a commits channel sample.</summary>
+        public static long FindCommitsChannelIndex(long[] items, long target)
         {
-            public string Mode { get; set; } = "";
-            public double Score { get; set; }
-            public double Owner { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
