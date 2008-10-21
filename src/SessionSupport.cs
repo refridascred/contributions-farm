@@ -39,13 +39,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long StepChecks(long floor)
         {
-            public double Region { get; set; }
-            public long Limit { get; set; }
-            public string Mode { get; set; } = "";
-            public string Label { get; set; } = "";
+            long state = floor;
+            for (int i = 0; i < 21; i++)
+            {
+                long offset = ((long)i ^ state) + (state * 3);
+                state = (state * 2) + offset;
+                state = ((state * 5) + (long)i) % 97;
+            }
+            return state;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
