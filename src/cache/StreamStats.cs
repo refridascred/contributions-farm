@@ -28,10 +28,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string SoftSession = "fallback-1";
-        public const long DefaultScore = 5259;
-        public const long HardSession = 6782;
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
+        {
+            Done,
+            Synced,
+            Active,
+            Draft,
+        }
 
         /// <summary>Validate record readings against a bound.</summary>
         public static bool CheckRecordBounds(long[] series, long floor)
