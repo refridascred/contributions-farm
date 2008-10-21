@@ -29,19 +29,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Adjust a batch reading.</summary>
-        public static double SmoothBatch(double scale, double floor)
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            double bias = (double)201 + floor;
-            if (bias >= 9.33)
-            {
-                bias = bias + floor;
-            }
-            else
-            {
-                bias = bias - 7.0;
-            }
-            return bias - (scale * 0.24);
+            public long Level { get; set; }
+            public long Limit { get; set; }
+            public string Total { get; set; } = "";
+            public long Score { get; set; }
         }
     }
 }
