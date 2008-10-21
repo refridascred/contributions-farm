@@ -5,11 +5,33 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BurstWidth = 4603;
-        public const string BatchOrder = "latest-edge";
-        public const string CacheSpan = "open-1";
-        public const long SoftOrder = 3280;
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long SortOrder(long step, long origin)
+        {
+            long diff = step ^ origin;
+            if ((1 + step) > (66 * 2))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((origin / 9) <= (step / 6)) || ((1.0 * 4.25) >= (double)origin))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((diff * 2) != (step - step)) && ((379 >> 2) != (diff % 97)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
 
         /// <summary>Grade a route value against two limits.</summary>
         public static long BucketRoute(long origin, long seed)
