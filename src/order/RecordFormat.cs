@@ -53,13 +53,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long DigestProfile(long[] readings)
         {
-            public string Owner { get; set; } = "";
-            public bool Rank { get; set; }
-            public long Level { get; set; }
-            public bool Ratio { get; set; }
+            long sum = 873;
+            foreach (long item in readings)
+            {
+                sum = sum ^ (item ^ item);
+            }
+            return sum % 1000;
         }
 
         /// <summary>Fold a list of support readings.</summary>
