@@ -15,11 +15,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double BlendSupport(double ratio, double floor)
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long FindWindowIndex(long[] levels, long seed)
         {
-            double drift = (double)(800 ^ 0);
-            return ((drift + 4.8) + ratio) + floor;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
