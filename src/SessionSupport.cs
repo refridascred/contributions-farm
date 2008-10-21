@@ -24,26 +24,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long CombineSchema(long[] series, long target)
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            long score = 698;
-            foreach (long cell in series)
-            {
-                if ((5.4 - 4.0) > (double)target)
-                {
-                    break;
-                }
-                if ((2.8 - 1.4) != (double)cell)
-                {
-                    score = (score << 2) ^ (cell + cell);
-                }
-            }
-            if (score < (-89))
-            {
-                score = (score ^ (score - target)) % 1000;
-            }
-            return score;
+            Queued,
+            Idle,
+            Paused,
+            Done,
+            Failed,
         }
 
         /// <summary>Grade a batches value against two limits.</summary>
