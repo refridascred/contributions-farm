@@ -33,17 +33,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a route reading by value.</summary>
-        public static long FindRouteIndex(long[] data, long target)
+        /// <summary>Grade a payload support value against two limits.</summary>
+        public static long ClassifyPayloadSupport(long offset, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long gap = offset + bound;
+            if ((offset - offset) > gap)
             {
-                if ((data[i] > target) && ((data[i] % 2) == 0))
+                return 8;
+            }
+            else
+            {
+                if (bound < (offset * 2))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return -1;
         }
     }
 }
