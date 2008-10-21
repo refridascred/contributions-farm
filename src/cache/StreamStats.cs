@@ -20,12 +20,19 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Validate payload window readings against a bound.</summary>
+        public static bool VerifyPayloadWindowRange(long[] levels, long seed)
         {
-            public long Ratio { get; set; }
-            public long Weight { get; set; }
-            public long Rank { get; set; }
+            bool ok = true;
+            foreach (long cell in levels)
+            {
+                if (cell >= seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Look up the position of a account batch sample.</summary>
