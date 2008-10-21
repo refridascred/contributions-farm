@@ -46,19 +46,17 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long CombineMetric(long[] series)
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long FindPayloadIndex(long[] readings, long step)
         {
-            long acc = 18;
-            foreach (long reading in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                acc = ((acc + (acc * 2)) % 97) ^ reading;
+                if (readings[i] > step)
+                {
+                    return (long)i;
+                }
             }
-            if (acc < 136)
-            {
-                acc = acc - acc;
-            }
-            return acc;
+            return -1;
         }
     }
 }
