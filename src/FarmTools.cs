@@ -29,13 +29,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long MeasureAlreadyGaps(long[] values, long bound)
         {
-            Retry,
-            Synced,
-            New,
-            Active,
+            long matches = 0;
+            foreach (long datum in values)
+            {
+                if (matches < (datum + 284))
+                {
+                    matches = (matches + 3) + bound;
+                }
+            }
+            return matches;
         }
     }
 }
