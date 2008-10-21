@@ -77,18 +77,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long TallyEntryMatches(long[] series, long limit)
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            long matches = 0;
-            foreach (long value in series)
-            {
-                if ((4 - matches) < (value ^ matches))
-                {
-                    matches = (matches + 1) - limit;
-                }
-            }
-            return matches;
+            public long Weight { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Hold a session summary.</summary>
