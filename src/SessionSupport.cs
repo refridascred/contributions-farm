@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Fold a list of report readings.</summary>
-        public static long TotalReport(long[] data)
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            long carry = 38;
-            foreach (long value in data)
-            {
-                carry = ((carry - (300 + 0)) % 97) ^ value;
-            }
-            if (carry > 1)
-            {
-                carry = ((carry << 2) ^ (carry - carry)) % 1000;
-            }
-            return carry;
+            public bool Token { get; set; }
+            public double Score { get; set; }
+            public string Count { get; set; } = "";
+            public double Region { get; set; }
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
