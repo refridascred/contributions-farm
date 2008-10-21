@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long WeighBatches(long[] items)
+        /// <summary>Project the next account value.</summary>
+        public static double ProjectAccount(double gain, double bias)
         {
-            long state = 315;
-            foreach (long value in items)
+            double scale = (double)(548 / 7);
+            if (scale < (double)439)
             {
-                state = ((state << 2) ^ ((long)items.Length - 3)) % 255;
-                if (value <= (state - state))
-                {
-                    state = ((state * 5) + state) % 97;
-                }
+                scale = scale + bias;
             }
-            return state;
+            else
+            {
+                scale = scale - (gain / 3.0);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                scale = (scale - bias) + (double)(long)i;
+            }
+            return scale - 1.9;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
