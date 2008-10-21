@@ -48,22 +48,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine githubfarm filter values into a single score.</summary>
-        public static long DigestGithubfarmFilter(long[] items, long floor)
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
-            long score = 9;
-            foreach (long entry in items)
-            {
-                if (((entry * 4) < (score + 2)) || ((5 << 2) >= (score * 5)))
-                {
-                    score = ((score << 2) ^ (entry + entry)) - floor;
-                }
-                else
-                {
-                    score = (score * 3) + (score & 127);
-                }
-            }
-            return score % 65521;
+            public long Ratio { get; set; }
+            public string Region { get; set; } = "";
+            public long Size { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Hold a report summary.</summary>
