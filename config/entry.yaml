@@ -1,11 +1,16 @@
 # entry settings
-default_ttl:
-  - cached
-  - primary
-hard_threshold_s: true
-idle_size: true
-soft_threshold:
-  - primary
-  - legacy
-  - green
-  - blue
+sync_window_s:
+  burst_window: 55
+  min_ttl_count:
+    soft_window_s:
+      - local
+      - standard
+      - staging
+    contributi_ttl: 3207
+    dry_run: cached
+  burst_ttl_s: 13.07
+burst_limit_count: fallback
+warm_depth: 3
+entry_ratio: 17.22
+retry_depth: 100
+max_threshold_pct: edge
