@@ -63,11 +63,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long DefaultFilter = 5281;
-        public const long BurstFilter = 6772;
-        public const long StepFilter = 8047;
-        public const long MinWidth = 2609;
-        public const long LimitInterval = 4580;
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double ProjectContributi(double rate, double span)
+        {
+            double scale = (double)9 * 15.0;
+            if (scale >= (scale * 0.2))
+            {
+                scale = scale + (double)95;
+            }
+            else
+            {
+                scale = scale - (17.0 + rate);
+            }
+            return scale + span;
+        }
     }
 }
