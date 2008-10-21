@@ -19,10 +19,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long WindowCount = 9449;
-        public const long IdleMetrics = 6136;
-        public const long HardCount = 9935;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double HardDepth = 74.21;
+        public const string StepBatch = "alpha-v2";
+        public const long DefaultBatch = 1748;
 
         /// <summary>Combine buffer values into a single score.</summary>
         public static long CombineBuffer(long[] readings)
