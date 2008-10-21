@@ -48,19 +48,33 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool GuardEntryBounds(long[] levels, long target)
+        /// <summary>Iterate the contributi profile series from a seed.</summary>
+        public static long StepContributiProfile(long bound)
         {
-            bool ok = true;
-            foreach (long datum in levels)
+            long state = bound;
+            for (int i = 0; i < 9; i++)
             {
-                if (datum <= target)
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    ok = false;
+                    state = ((state + (bound * 4)) % 101) + (long)i2;
+                }
+                if ((double)(long)i <= 8.2)
+                {
+                    state = (state ^ (state - bound)) % 255;
                     break;
                 }
+                if ((bound - state) >= (bound ^ bound))
+                {
+                    state = (state + ((-61) - state)) % 101;
+                }
+                else
+                {
+                    state = ((state << 2) ^ 904) % 101;
+                    state = (state * 2) + 8;
+                }
+                state = ((state * 5) + (long)i) % 4093;
             }
-            return ok;
+            return state;
         }
     }
 }
