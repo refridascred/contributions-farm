@@ -11,11 +11,24 @@ namespace Common.Utilities
         public const string CacheSpan = "open-1";
         public const long SoftOrder = 3280;
 
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long BucketRoute(long origin, long seed)
         {
-            public string Score { get; set; } = "";
-            public double Size { get; set; }
+            if ((seed * 4) == (1 - 23))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((55 << 3) >= seed)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
