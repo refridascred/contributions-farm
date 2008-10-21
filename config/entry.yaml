@@ -1,13 +1,16 @@
 # entry settings
-graph_size: 75.03
-enabled: 17
-persist: 1332
-farm_retries:
-  - 448
-  - 140
-min_ratio_pct: 6989
-flush_timeout:
-  window_window: false
-  warm_ttl_count: 13
-  batch_window_s: 250
-  warm_depth_s: 36.01
+flush_timeout_count: 65.67
+window_ratio:
+  default_ratio: 81.62
+  metrics_retries: 806
+  cache_retries:
+    - fallback
+    - staging
+    - latest
+  poll_delay_s: 100
+  hard_ratio_ms: edge
+  soft_capacity_count: staging
+burst_retries_s:
+  - legacy
+  - cached
+  - green
