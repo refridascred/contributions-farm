@@ -81,11 +81,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double SoftWidth = 4.99;
-        public const long StepOrder = 1672;
-        public const long WindowOrder = 9422;
-        public const long StepInterval = 7798;
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
+        {
+            Stale,
+            Done,
+            Ready,
+        }
 
         /// <summary>Hold a window info.</summary>
         public sealed class WindowInfo
