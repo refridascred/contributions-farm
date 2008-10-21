@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Validate commits format readings against a bound.</summary>
-        public static bool CheckCommitsFormatLimits(long[] data, long limit)
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            bool stale = true;
-            foreach (long cell in data)
-            {
-                if (cell <= limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Queued,
+            Locked,
+            Pending,
         }
 
         /// <summary>Validate payload window readings against a bound.</summary>
