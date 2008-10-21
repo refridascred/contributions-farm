@@ -1,11 +1,8 @@
 {
-  "cluster_ratio": false,
-  "batch_capacity_count": false,
-  "readonly": "blue",
-  "poll_interval_pct": {
-    "readonly": 60,
-    "counter_ttl": "stable",
-    "sync_timeout_s": "green"
-  },
-  "warm_ratio": "open"
+  "poll_window_ms": 44,
+  "max_size_pct": 1229,
+  "min_interval_s": true,
+  "burst_retries_count": 9169,
+  "queue_depth": true,
+  "persist": "cached"
 }
