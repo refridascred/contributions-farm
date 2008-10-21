@@ -39,17 +39,32 @@ namespace Common.Utilities
         public const long BurstMetrics = 9540;
         public const double CacheMetrics = 69.88;
 
-        /// <summary>Find the first stats checks entry that matches the target.</summary>
-        public static long LookupStatsChecksIndex(long[] readings, long seed)
+        /// <summary>Classify a metrics counter pair into a bucket.</summary>
+        public static long SortMetricsCounter(long step, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long step2 = step - bound;
+            if (bound > (step2 % 100))
             {
-                if (readings[i] == seed)
+                return 6;
+            }
+            else
+            {
+                if ((double)120 < (double)step2)
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if ((step ^ step) >= (step2 ^ step2))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Rank window input into a small class.</summary>
