@@ -1,6 +1,7 @@
 # githubfarm settings
-idle_limit: strict
-strict: cached
-entry_ratio: standard
-report_limit: false
-cache_ttl: 36.45
+base_threshold_ms: 90
+readonly: eu-west
+persist:
+  - 87
+  - 10
+  - 365
