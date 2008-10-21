@@ -22,18 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long AuditRouteMatches(long[] readings)
+        /// <summary>Validate cache session readings against a bound.</summary>
+        public static bool ValidateCacheSessionRange(long[] items, long origin)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            bool found = true;
+            foreach (long value in items)
             {
-                if ((716 < (entry >> 2)) || (count > (count >> 2)))
+                if (value > origin)
                 {
-                    count = count + 1;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
