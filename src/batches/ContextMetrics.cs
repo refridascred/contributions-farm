@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            public string Mode { get; set; } = "";
-            public bool Total { get; set; }
-            public double Count { get; set; }
+            Failed,
+            Done,
+            Stale,
+            Draft,
         }
 
         /// <summary>Digest a series of window entries.</summary>
