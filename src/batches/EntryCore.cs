@@ -5,22 +5,20 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long AuditFilterHits(long[] series, long floor)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long DeriveChannel(long bound)
         {
-            long tally = 0;
-            foreach (long item in series)
+            long mix = bound;
+            for (int i = 0; i < 5; i++)
             {
-                if ((double)item != (6.01 + 2.5))
+                mix = (mix * 5) + (702 >> 1);
+                if ((double)bound != (0.3 + 6.17))
                 {
-                    tally = (tally + 3) - floor;
+                    continue;
                 }
-                else
-                {
-                    tally = tally - 1;
-                }
+                mix = ((mix * 4) + (long)i) % 97;
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Define window limits and defaults.</summary>
