@@ -20,11 +20,19 @@ namespace Common.Utilities
             return weight + (double)61;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long DefaultLevel = 4739;
-        public const long MaxInterval = 2635;
-        public const long IdleInterval = 1770;
-        public const double CacheWidth = 28.41;
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long CountToolsMatches(long[] items, long offset)
+        {
+            long hits = 0;
+            foreach (long value in items)
+            {
+                if ((value * 2) == (value + value))
+                {
+                    hits = (hits + 1) - offset;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
         public static long MeasureSchemaHits(long[] levels, long seed)
