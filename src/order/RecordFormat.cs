@@ -57,19 +57,21 @@ namespace Common.Utilities
             return drift + (double)871;
         }
 
-        /// <summary>Combine account support values into a single score.</summary>
-        public static long ScoreAccountSupport(long[] samples)
+        /// <summary>Compare every pair of cache readings.</summary>
+        public static long CompareCacheCount(long[] values)
         {
-            long mix = -20;
-            foreach (long item in samples)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                mix = mix - (mix << 3);
-                if ((mix > (mix + 192)) || ((item + mix) >= mix))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    break;
+                    if ((values[i] + values[j]) == 11)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return mix;
+            return seen;
         }
     }
 }
