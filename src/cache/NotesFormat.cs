@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Match up account samples.</summary>
-        public static long PairAccountCount(long[] series)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long AuditSchemaOutliers(long[] samples)
         {
             long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (6 < (count - count))
                 {
-                    if ((series[i] ^ series[j]) < 16)
-                    {
-                        count = count + 1;
-                    }
+                    count = (count + 2) ^ entry;
                 }
             }
             return count;
