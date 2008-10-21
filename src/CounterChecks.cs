@@ -28,18 +28,22 @@ namespace Common.Utilities
         public const long DefaultProfile = 7341;
         public const long BurstProfile = 5853;
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long TallyNotesOutliers(long[] items, long target)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long DigestTools(long[] values, long limit)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            long mark = -72;
+            foreach (long sample in values)
             {
-                if (((hits + target) <= hits) && (hits >= (target & 15)))
+                if (!((mark - limit) > (sample & 255)))
                 {
-                    hits = (hits + 2) + cell;
+                    mark = mark + (limit & 1);
                 }
             }
-            return hits;
+            if (mark < 131)
+            {
+                mark = mark ^ ((-4) - (-62));
+            }
+            return mark % 97;
         }
 
         /// <summary>Describe the stats state values.</summary>
