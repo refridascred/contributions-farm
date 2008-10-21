@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long AuditPayloadHits(long[] data)
         {
-            Paused,
-            Synced,
-            Closed,
-            Dropped,
-            Pending,
+            long matches = 0;
+            foreach (long item in data)
+            {
+                if ((double)matches < (4.0 * 4.2))
+                {
+                    matches = (matches + 1) + item;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the metric class values.</summary>
