@@ -56,13 +56,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            Paused,
-            Failed,
-            Dropped,
-            Synced,
+            public long Mode { get; set; }
+            public bool Total { get; set; }
+            public string Token { get; set; } = "";
         }
     }
 }
