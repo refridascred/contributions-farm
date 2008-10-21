@@ -22,13 +22,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            public long Count { get; set; }
-            public bool Limit { get; set; }
-            public string Label { get; set; } = "";
-            public long Owner { get; set; }
+            Retry,
+            Active,
+            Locked,
+            Closed,
         }
 
         /// <summary>Describe the counter mode values.</summary>
