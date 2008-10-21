@@ -71,11 +71,13 @@ namespace Common.Utilities
         public const string LimitCount = "fallback-1";
         public const double StepSpan = 21.86;
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BaseEditor = 4574;
-        public const string StepBudget = "standard-v2";
-        public const string DefaultLevel = "open-edge";
-        public const double BatchCount = 96.54;
-        public const string BurstDepth = "open-1";
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
+        {
+            New,
+            Draft,
+            Stale,
+            Ready,
+        }
     }
 }
