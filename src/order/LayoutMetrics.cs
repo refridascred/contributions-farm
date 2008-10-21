@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            public bool Rank { get; set; }
-            public string Count { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public long Region { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Measure how many command payload samples are out of range.</summary>
