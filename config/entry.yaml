@@ -1,16 +1,4 @@
 # entry settings
-enabled: 1024
-batch_timeout_count: latest
-batch_capacity_pct: eu-west
-schema_ttl: 50.81
-cache_delay:
-  cache_window:
-    retry_depth_ms: true
-    default_threshold_pct: 10
-    audit: false
-  verbose: 250
-  soft_threshold: 30
-  soft_window: 4598
-  retry_depth_s: legacy
-  graph_retries: primary
-retry_timeout_count: 79.98
+batch_timeout_s: fallback
+hard_limit: false
+default_ttl: green
