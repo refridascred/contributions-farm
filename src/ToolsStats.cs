@@ -39,19 +39,31 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool ValidateEntryBounds(long[] readings, long floor)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long GradeRoute(long origin, long target)
         {
-            bool valid = true;
-            foreach (long value in readings)
+            if ((origin + target) >= (0 << 3))
             {
-                if (value > floor)
+                return 4;
+            }
+            else
+            {
+                if (origin < target)
                 {
-                    valid = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if (!((origin & 63) > (98 << 3)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Derive the next schema command value from a seed.</summary>
