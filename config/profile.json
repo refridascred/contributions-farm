@@ -1,5 +1,5 @@
 {
-  "cache_retries_ms": "latest",
-  "min_capacity": "legacy",
-  "sync_delay_count": 32.67
+  "strict": 250,
+  "verbose": 43,
+  "batch_delay_ms": false
 }
