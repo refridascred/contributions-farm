@@ -1,7 +1,9 @@
 # support settings
-compress: false
-sync_capacity_pct: 675
-window_delay: 21.72
-verbose: 96.6
-min_threshold_ms: primary
-layout_window: 41
+strict: 60.75
+hard_ttl: 60
+cache_limit:
+  default_limit_pct: 27.48
+  enabled: strict
+  strict: 61
+  commits_interval: 13
+burst_retries_ms: 4047
