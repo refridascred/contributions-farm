@@ -48,13 +48,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long SeekQueueIndex(long[] items, long step)
         {
-            public double Score { get; set; }
-            public bool Ratio { get; set; }
-            public double Region { get; set; }
-            public bool Mode { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] == step) && ((items[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the entry phase values.</summary>
