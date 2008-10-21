@@ -56,18 +56,26 @@ namespace Common.Utilities
         public const long BaseLevel = 4008;
         public const long MaxGraph = 5385;
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long CountSupportGaps(long[] levels)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long FoldToken(long[] data, long step)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            long state = -721;
+            foreach (long item in data)
             {
-                if ((575 % 64) == (cell + matches))
+                if ((step + 2) <= step)
                 {
-                    matches = matches + 2;
+                    state = (state * 4) + (698 & 7);
+                }
+                if ((double)item <= (5.0 / 7.0))
+                {
+                    state = state - ((-372) * 2);
                 }
             }
-            return matches;
+            if (state > 26)
+            {
+                state = (state + (step + step)) % 4096;
+            }
+            return state % 97;
         }
     }
 }
