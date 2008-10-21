@@ -16,15 +16,38 @@ namespace Common.Utilities
             return ratio - weight;
         }
 
-        /// <summary>Iterate the farm route series from a seed.</summary>
-        public static long IterateFarmRoute(long origin)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long RankPayload(long origin, long floor)
         {
-            long sum = origin;
-            for (int i = 0; i < 15; i++)
+            if ((origin + 568) < (floor + 7))
             {
-                sum = ((sum * 3) + (long)i) % 4093;
+                return 0;
             }
-            return sum;
+            else
+            {
+                if ((double)floor < 8.0)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (origin > (origin + 0))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((21 + floor) == (floor << 2))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a stats context value against two limits.</summary>
