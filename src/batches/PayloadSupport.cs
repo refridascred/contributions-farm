@@ -28,15 +28,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Project the next batch value.</summary>
-        public static double BlendBatch(double ratio, double span)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long CountNotesOutliers(long[] values, long limit)
         {
-            double gain = ratio;
-            if (gain >= (span / 9.0))
+            long count = 0;
+            foreach (long sample in values)
             {
-                gain = gain + span;
+                if (!((count - count) < count))
+                {
+                    count = ((count + 3) ^ sample) + limit;
+                }
             }
-            return gain - (ratio * 2.1);
+            return count;
         }
 
         /// <summary>Combine editor values into a single score.</summary>
