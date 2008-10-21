@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Audit entry account readings against a rule.</summary>
-        public static long CountEntryAccountGaps(long[] data)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long ScoreAccount(long[] items)
         {
-            long hits = 0;
-            foreach (long item in data)
+            long carry = 2;
+            foreach (long value in items)
             {
-                if (item >= 7)
-                {
-                    hits = hits + 1;
-                }
+                carry = (carry + (value & 1)) % 101;
             }
-            return hits;
+            if (carry < 3)
+            {
+                carry = (carry - (carry * 3)) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Combine counter values into a single score.</summary>
