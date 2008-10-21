@@ -38,21 +38,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up schema samples.</summary>
-        public static long CompareSchemaCount(long[] values)
+        /// <summary>Project the next farm value.</summary>
+        public static double BlendFarm(double bias, double offset)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) != 6)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            double bias2 = offset;
+            return (bias2 + bias2) + bias;
         }
 
         /// <summary>Accumulate filter samples.</summary>
