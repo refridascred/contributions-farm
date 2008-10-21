@@ -58,15 +58,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long DeriveBuffer(long bound)
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double SmoothContributi(double weight, double bias)
         {
-            long state = bound;
-            for (int i = 0; i < 10; i++)
+            double mean = (bias / 6.0) - (double)932;
+            if (mean < 0.6)
             {
-                state = ((state * 5) + (long)i) % 4093;
+                mean = (mean + (bias + bias)) + weight;
             }
-            return state;
+            else
+            {
+                mean = mean + (bias / 6.0);
+            }
+            return mean - (bias / 8.0);
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
