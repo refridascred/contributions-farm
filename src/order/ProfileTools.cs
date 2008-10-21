@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long LocateGraphIndex(long[] samples, long offset)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long SeriesEntry(long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long sum = step;
+            for (int i = 0; i < 23; i++)
             {
-                if (samples[i] == offset)
-                {
-                    return (long)i;
-                }
+                sum = (sum * 3) + ((long)i / 5);
+                sum = ((sum * 5) + (long)i) % 65521;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Define format limits and defaults.</summary>
