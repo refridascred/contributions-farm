@@ -32,18 +32,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit account contributi readings against a rule.</summary>
-        public static long TallyAccountContributiOutliers(long[] data, long bound)
-        {
-            long tally = 0;
-            foreach (long reading in data)
-            {
-                if ((tally & 255) > bound)
-                {
-                    tally = (tally + 1) - reading;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string LimitBuffer = "stable-v2";
+        public const long BaseBuffer = 4328;
+        public const double BatchBuffer = 66.14;
+        public const double LimitSize = 82.74;
     }
 }
