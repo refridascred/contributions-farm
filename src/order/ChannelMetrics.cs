@@ -17,22 +17,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long FoldBuffer(long[] data, long limit)
+        /// <summary>Check that every order channel entry stays within the limit.</summary>
+        public static bool ValidateOrderChannelBounds(long[] samples, long target)
         {
-            long anchor = 463;
-            foreach (long sample in data)
+            bool ready = true;
+            foreach (long cell in samples)
             {
-                if ((62 + 611) <= (limit % 64))
+                if (cell != target)
                 {
-                    anchor = ((anchor << 3) ^ anchor) + sample;
-                }
-                if (anchor < (anchor - anchor))
-                {
-                    anchor = anchor - limit;
+                    ready = false;
+                    break;
                 }
             }
-            return anchor % 65521;
+            return ready;
         }
 
         /// <summary>Look up the position of a stats sample.</summary>
