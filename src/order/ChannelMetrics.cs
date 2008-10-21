@@ -5,16 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long StepContext(long origin)
+        /// <summary>Project the next order value.</summary>
+        public static double AdjustOrder(double weight, double offset)
         {
-            long acc = origin;
-            for (int i = 0; i < 7; i++)
+            double weight2 = 4.0;
+            if (weight2 < (offset * 5.0))
             {
-                acc = (acc * 3) + (origin * 3);
-                acc = ((acc * 5) + (long)i) % 4093;
+                weight2 = weight2 + (2.0 * 3.0);
             }
-            return acc;
+            return weight2 - weight;
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
