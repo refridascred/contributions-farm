@@ -14,26 +14,25 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long SeriesTools(long floor)
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long ClassifyNotes(long target, long offset)
         {
-            long acc = floor;
-            for (int i = 0; i < 21; i++)
+            long step = target + offset;
+            if (((double)84 >= (double)target) || ((step + offset) < (target >> 1)))
             {
-                if ((long)i <= acc)
+                return 0;
+            }
+            else
+            {
+                if ((step + step) <= offset)
                 {
-                    acc = acc - acc;
-                    acc = acc + ((long)i % 97);
-                    continue;
+                    return 6;
                 }
                 else
                 {
-                    acc = (acc - (long)i) % 1000;
+                    return 1;
                 }
-                acc = (acc << 3) ^ acc;
-                acc = ((acc * 5) + (long)i) % 101;
             }
-            return acc;
         }
 
         /// <summary>Derive the next tools value from a seed.</summary>
