@@ -17,19 +17,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate stats session readings against a bound.</summary>
-        public static bool ValidateStatsSessionRange(long[] series, long origin)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long CountTokenOutliers(long[] data)
         {
-            bool flag = true;
-            foreach (long cell in series)
+            long seen = 0;
+            foreach (long value in data)
             {
-                if (cell >= origin)
+                if ((value >> 5) <= (19 ^ value))
                 {
-                    flag = false;
-                    break;
+                    seen = seen + 1;
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
