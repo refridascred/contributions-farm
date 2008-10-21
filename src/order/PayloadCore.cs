@@ -33,19 +33,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool VerifyLayoutLimits(long[] values, long seed)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool VerifyCacheLimits(long[] data, long target)
         {
-            bool flag = true;
-            foreach (long value in values)
+            bool stale = true;
+            foreach (long item in data)
             {
-                if (value <= seed)
+                if (item != target)
                 {
-                    flag = false;
+                    stale = false;
                     break;
                 }
             }
-            return flag;
+            return stale;
         }
 
         /// <summary>Look up the position of a metrics sample.</summary>
