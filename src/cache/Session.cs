@@ -25,19 +25,28 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every stats metrics entry stays within the limit.</summary>
-        public static bool ValidateStatsMetricsBounds(long[] samples, long seed)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long WeighAlready(long[] readings)
         {
-            bool ready = true;
-            foreach (long value in samples)
+            long carry = 4;
+            foreach (long entry in readings)
             {
-                if (value > seed)
+                if ((entry / 4) < carry)
                 {
-                    ready = false;
+                    carry = (carry * 2) + (carry + entry);
+                    carry = ((carry * 3) + (carry / 3)) % 101;
+                    break;
+                }
+                if (!((entry + entry) >= carry))
+                {
+                    carry = (carry << 2) ^ (carry & 15);
+                }
+                if (!((entry & 7) <= (866 / 8)))
+                {
                     break;
                 }
             }
-            return ready;
+            return carry % 1000;
         }
 
         /// <summary>Describe the commits status values.</summary>
