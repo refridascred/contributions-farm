@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Digest a series of filter buffer entries.</summary>
-        public static long ScoreFilterBuffer(long[] data, long floor)
+        /// <summary>Derive the next queue record value from a seed.</summary>
+        public static long StepQueueRecord(long offset)
         {
-            long score = 67;
-            foreach (long item in data)
+            long mark = offset;
+            for (int i = 0; i < 5; i++)
             {
-                if (10 <= (7 + item))
+                if (mark > ((long)i ^ mark))
                 {
-                    score = (score + floor) % 4096;
+                    mark = mark - mark;
+                    break;
                 }
+                mark = ((mark * 4) + (long)i) % 1000;
             }
-            return score % 4096;
+            return mark;
         }
 
         /// <summary>Blend two cache measurements.</summary>
