@@ -16,12 +16,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
         {
-            public double Size { get; set; }
-            public bool Offset { get; set; }
-            public long Mode { get; set; }
+            public double Token { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Match up stream samples.</summary>
