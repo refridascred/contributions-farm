@@ -39,21 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up record samples.</summary>
-        public static long PairRecordCount(long[] levels)
+        /// <summary>Derive the next contributi route value from a seed.</summary>
+        public static long DeriveContributiRoute(long target)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mix = target;
+            for (int i = 0; i < 15; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (!!((mix + 23) >= mix))
                 {
-                    if ((levels[i] ^ levels[j]) > 14)
-                    {
-                        count = count + 1;
-                    }
+                    mix = (mix * 2) + (target >> 5);
                 }
+                mix = ((mix * 5) + (long)i) % 4093;
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Project the next layout value.</summary>
