@@ -21,26 +21,12 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long TallyChecks(long[] data)
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            long state = 6;
-            foreach (long value in data)
-            {
-                if ((state - 91) < 1)
-                {
-                    state = ((state * 2) + (state >> 5)) ^ value;
-                }
-                else
-                {
-                    state = ((state << 2) ^ (state & 1)) % 4096;
-                }
-            }
-            if (state > 62)
-            {
-                state = ((state << 3) ^ (state << 3)) % 4096;
-            }
-            return state % 65521;
+            public long Size { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Find the first checks entry that matches the target.</summary>
