@@ -20,13 +20,38 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long GradeFarm(long floor, long offset)
         {
-            Closed,
-            Synced,
-            Active,
-            Idle,
+            if ((double)offset != (6.6 / 4.0))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)offset < (double)floor)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((floor + floor) >= (74 * 2))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (offset <= (9 & 63))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a checks value against two limits.</summary>
