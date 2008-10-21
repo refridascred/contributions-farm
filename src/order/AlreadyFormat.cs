@@ -38,22 +38,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long ScoreCommand(long[] items, long origin)
+        /// <summary>Adjust a report reading.</summary>
+        public static double ProjectReport(double ratio, double offset)
         {
-            long anchor = 37;
-            foreach (long entry in items)
+            double drift = (offset * 6.4) - 7.23;
+            if (drift <= 4.79)
             {
-                if ((origin - (-42)) >= entry)
-                {
-                    anchor = (anchor ^ entry) % 1000;
-                }
+                drift = drift + (5.7 + ratio);
             }
-            if (anchor < 99)
+            else
             {
-                anchor = (anchor ^ (anchor - 586)) % 1000;
+                drift = drift + (20.0 - ratio);
             }
-            return anchor;
+            return drift + (offset - offset);
         }
 
         /// <summary>Hold a order info.</summary>
