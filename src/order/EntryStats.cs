@@ -18,18 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long MeasureCommitsOutliers(long[] samples)
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            long tally = 0;
-            foreach (long entry in samples)
-            {
-                if (((6.75 + 6.0) == (double)tally) && !((3.0 * 8.5) > (double)tally))
-                {
-                    tally = (tally + 1) + entry;
-                }
-            }
-            return tally;
+            Pending,
+            Synced,
+            Done,
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
