@@ -5,26 +5,24 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Fold a list of queue buffer readings.</summary>
-        public static long DigestQueueBuffer(long[] levels, long bound)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long FoldReport(long[] items)
         {
-            long mix = 47;
-            foreach (long entry in levels)
+            long score = 3;
+            foreach (long entry in items)
             {
-                if (((bound >> 5) < (entry - mix)) && ((double)(-21) > (double)mix))
+                if (!((score % 3) < (6 - (-357))))
                 {
-                    mix = ((mix << 3) ^ bound) % 101;
-                }
-                if ((18.0 * 8.1) == (double)mix)
-                {
-                    mix = (mix + mix) % 101;
+                    continue;
                 }
                 else
                 {
-                    mix = (mix - mix) % 97;
+                    score = ((score << 2) ^ (entry / 9)) % 97;
                 }
+                score = ((score * 4) + entry) % 101;
+                score = (score - (score % 12)) % 97;
             }
-            return mix;
+            return score;
         }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
