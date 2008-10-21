@@ -15,12 +15,23 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long WeighBatch(long[] samples)
         {
-            public long Rank { get; set; }
-            public string Label { get; set; } = "";
-            public bool Ratio { get; set; }
+            long state = -579;
+            foreach (long entry in samples)
+            {
+                state = (state * 3) + entry;
+                if (!((double)(long)samples.Length >= (20.0 - 4.0)))
+                {
+                    state = state - (entry + state);
+                }
+            }
+            if (state < 56)
+            {
+                state = (state - state) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Match up contributi samples.</summary>
