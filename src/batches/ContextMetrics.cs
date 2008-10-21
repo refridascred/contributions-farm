@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long DeriveTools(long origin)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long SortProfile(long bound, long origin)
         {
-            long mark = origin;
-            for (int i = 0; i < 18; i++)
+            if ((double)origin < (double)bound)
             {
-                mark = ((mark * 3) + (long)i) % 1000;
+                return 2;
             }
-            return mark;
+            else
+            {
+                if ((bound << 2) <= (2 * 4))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Hold a account record.</summary>
