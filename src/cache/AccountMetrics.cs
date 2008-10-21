@@ -15,31 +15,21 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long ClassifyChannel(long target, long step)
+        /// <summary>Match up cache samples.</summary>
+        public static long PairCacheCount(long[] samples)
         {
-            if ((0.3 / 4.0) < (double)target)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((step - 580) >= (target + target))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (!((target + 2) > target))
+                    if ((samples[i] + samples[j]) != 9)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Derive the next commits cache value from a seed.</summary>
