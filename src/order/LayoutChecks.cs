@@ -43,15 +43,14 @@ namespace Common.Utilities
             return drift + floor;
         }
 
-        /// <summary>Project the next schema value.</summary>
-        public static double BlendSchema(double gain, double floor)
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            double load = 9.5 / 8.0;
-            for (int i = 0; i < 4; i++)
-            {
-                load = ((load - (gain * 20.0)) + (double)(long)i) + floor;
-            }
-            return load + (gain / 2.0);
+            Synced,
+            Idle,
+            Closed,
+            Done,
+            Locked,
         }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
