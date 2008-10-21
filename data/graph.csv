@@ -1,9 +1,6 @@
-id,state,token
-1,785,11.14
-2,456,standard
-3,24.4,341
-4,185,staging
-5,eu-west,301
-6,strict,455
-7,green,36.98
-8,638,edge
+id,token,owner,count
+1,24.6,stable,strict
+2,4.59,60.12,53.23
+3,155,legacy,459
+4,38.54,84.21,237
+5,green,807,fallback
