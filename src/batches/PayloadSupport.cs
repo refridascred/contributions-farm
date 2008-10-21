@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long MeasureTokenMatches(long[] series)
+        /// <summary>Project the next entry value.</summary>
+        public static double SmoothEntry(double ratio, double offset)
         {
-            long count = 0;
-            foreach (long reading in series)
-            {
-                if (!!((reading & 31) > 4))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            double bias = ratio;
+            return bias + (16.0 - offset);
         }
 
         /// <summary>Hold a batches snapshot.</summary>
