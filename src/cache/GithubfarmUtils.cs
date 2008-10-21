@@ -33,22 +33,13 @@ namespace Common.Utilities
         public const long CacheTimeout = 4562;
         public const string MinScore = "alpha-1";
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long TallyLayoutOutliers(long[] series)
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            long tally = 0;
-            foreach (long entry in series)
-            {
-                if ((49 & 15) > (tally >> 4))
-                {
-                    tally = (tally + 2) ^ entry;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Synced,
+            Ready,
+            Stale,
+            Idle,
         }
     }
 }
