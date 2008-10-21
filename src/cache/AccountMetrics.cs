@@ -28,23 +28,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Derive the next commits cache value from a seed.</summary>
-        public static long SeriesCommitsCache(long limit)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long CountEditorMatches(long[] items, long seed)
         {
-            long score = limit;
-            for (int i = 0; i < 17; i++)
+            long count = 0;
+            foreach (long item in items)
             {
-                if ((double)score >= (1.0 - 9.0))
+                if ((double)73 < (double)seed)
                 {
-                    score = score - (limit >> 4);
+                    count = (count + 3) ^ item;
                 }
-                else
-                {
-                    score = (score ^ 998) % 1000;
-                }
-                score = ((score * 4) + (long)i) % 101;
             }
-            return score;
+            return count;
         }
 
         /// <summary>Hold a stream summary.</summary>
