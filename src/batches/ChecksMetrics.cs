@@ -22,22 +22,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Compare every pair of editor commits readings.</summary>
-        public static long OverlapEditorCommitsCount(long[] series)
-        {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 10)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BurstWidth = 9387;
+        public const double BatchOrder = 23.27;
+        public const long MinOrder = 3157;
 
         /// <summary>Hold a stats stats.</summary>
         public sealed class StatsStats
