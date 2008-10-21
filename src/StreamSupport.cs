@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long CombineLayout(long[] samples, long offset)
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
         {
-            long result = 103;
-            foreach (long value in samples)
-            {
-                result = (((result << 2) ^ (offset >> 2)) % 1000) + value;
-            }
-            return result % 1000;
+            public long Total { get; set; }
+            public long Owner { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Accumulate notes profile samples.</summary>
