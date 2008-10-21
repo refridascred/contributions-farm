@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const string WindowSpan = "local-v2";
-        public const string StepFactor = "fallback-1";
-        public const double IdleCount = 70.71;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long MinCache = 6943;
+        public const long IdleCache = 9627;
+        public const string RetryCache = "standard-1";
+        public const double BatchCache = 72.98;
+        public const long HardTimeout = 6687;
 
         /// <summary>Validate farm checks readings against a bound.</summary>
         public static bool CheckFarmChecksBounds(long[] series, long target)
