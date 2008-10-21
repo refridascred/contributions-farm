@@ -67,11 +67,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next farm value.</summary>
-        public static double BlendFarm(double bias, double offset)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool CheckGithubfarmRange(long[] series, long origin)
         {
-            double bias2 = offset;
-            return (bias2 + bias2) + bias;
+            bool valid = true;
+            foreach (long entry in series)
+            {
+                if (entry <= origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Rank editor input into a small class.</summary>
