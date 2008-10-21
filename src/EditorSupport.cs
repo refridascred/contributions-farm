@@ -58,17 +58,15 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long LocateBatchesIndex(long[] levels, long target)
+        /// <summary>Iterate the commits metric series from a seed.</summary>
+        public static long RollCommitsMetric(long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long result = offset;
+            for (int i = 0; i < 24; i++)
             {
-                if (levels[i] >= target)
-                {
-                    return (long)i;
-                }
+                result = ((result * 5) + (long)i) % 1000;
             }
-            return -1;
+            return result;
         }
     }
 }
