@@ -5,22 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long TallyFilter(long[] readings)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long StepContext(long origin)
         {
-            long mix = 334;
-            foreach (long cell in readings)
+            long acc = origin;
+            for (int i = 0; i < 7; i++)
             {
-                if ((mix & 127) < (cell % 3))
-                {
-                    mix = mix + (0 + cell);
-                }
-                else
-                {
-                    mix = (mix ^ (cell + cell)) % 255;
-                }
+                acc = (acc * 3) + (origin * 3);
+                acc = ((acc * 5) + (long)i) % 4093;
             }
-            return mix;
+            return acc;
         }
 
         /// <summary>Accumulate buffer samples.</summary>
