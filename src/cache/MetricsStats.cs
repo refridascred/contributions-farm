@@ -22,21 +22,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long OverlapPayloadCount(long[] series)
+        /// <summary>Adjust a cache reading.</summary>
+        public static double SmoothCache(double gain, double floor)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            double ratio = (double)576 / 9.0;
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 11)
-                    {
-                        count = count + 1;
-                    }
-                }
+                ratio = ((ratio - (floor / 2.0)) - (double)(long)i) + gain;
             }
-            return count;
+            return ratio - (floor / 9.0);
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
