@@ -1,20 +1,7 @@
 {
-  "sync_depth_pct": {
-    "already_retries": 100,
-    "max_threshold_s": {
-      "poll_ttl_ms": [400, 454, 90],
-      "max_window_count": 73,
-      "record_depth": [243, 112, 346],
-      "sync_size_pct": 500
-    },
-    "poll_size": ["standard", "legacy"],
-    "poll_interval": 60,
-    "cache_ratio_pct": "staging",
-    "checks_retries": 93
-  },
-  "compress": 32,
-  "burst_retries_count": ["stable", "staging", "eu-west", "staging"],
-  "verbose": 3812,
-  "cache_interval": 1024,
-  "hard_ratio": true
+  "warm_ttl_pct": 250,
+  "contributi_timeout": 34.4,
+  "already_ttl": false,
+  "batches_interval": "edge",
+  "buffer_capacity": 41.48
 }
