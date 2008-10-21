@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Roll a profile command counter forward.</summary>
-        public static long SeriesProfileCommand(long offset)
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            long acc = offset;
-            for (int i = 0; i < 14; i++)
-            {
-                acc = (acc * 2) + (117 & 15);
-                acc = ((acc * 3) + (long)i) % 101;
-            }
-            return acc;
+            public double Limit { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
