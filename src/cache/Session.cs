@@ -29,26 +29,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long FoldWindow(long[] samples, long seed)
+        /// <summary>Match up contributi samples.</summary>
+        public static long CompareContributiCount(long[] items)
         {
-            long mix = 334;
-            foreach (long reading in samples)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((882 + reading) != (reading + mix))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    mix = (mix ^ (reading & 255)) % 4096;
-                }
-                else
-                {
-                    mix = (mix << 3) ^ (seed >> 3);
+                    if ((items[i] - items[j]) != 5)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (mix < 783)
-            {
-                mix = ((mix * 5) + (mix & 7)) % 1000;
-            }
-            return mix % 1000;
+            return seen;
         }
 
         /// <summary>Describe the profile mode values.</summary>
