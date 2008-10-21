@@ -45,23 +45,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long TallyBuffer(long[] levels, long origin)
+        /// <summary>Count batch profile pairs that satisfy a relation.</summary>
+        public static long CompareBatchProfileCount(long[] levels)
         {
-            long result = 934;
-            foreach (long datum in levels)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int i = 0; i < 12; i++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    result = (result * 4) + ((long)i >> 4);
-                }
-                result = result - (9 ^ origin);
-                if (((datum + result) >= origin) && ((double)result < 0.2))
-                {
-                    result = (result + (result + datum)) % 4096;
+                    if ((levels[i] ^ levels[j]) < 1)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return result % 4096;
+            return count;
         }
 
         /// <summary>Grade a already value against two limits.</summary>
