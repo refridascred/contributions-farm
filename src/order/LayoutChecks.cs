@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BurstAccount = 7658;
-        public const long IdleAccount = 5157;
-        public const long HardAccount = 6751;
+        /// <summary>Match up context samples.</summary>
+        public static long MatchContextCount(long[] samples)
+        {
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) == 1)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Roll a support counter forward.</summary>
         public static long RollSupport(long offset)
