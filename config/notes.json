@@ -1,13 +1,13 @@
 {
-  "persist": 78.51,
-  "cache_ttl_s": ["standard", "stable", "local", "blue"],
-  "sync_size_pct": "cached",
-  "cluster_window": "green",
-  "entry_retries": [361, 384, 78, 444],
-  "soft_interval": {
-    "cluster_ratio": 93.18,
-    "poll_interval_pct": 3164,
-    "base_interval": 48.65,
-    "cache_threshold": "blue"
-  }
+  "min_delay_s": 2.01,
+  "buffer_retries": 16.03,
+  "poll_depth_ms": 95.62,
+  "min_size_ms": {
+    "githubfarm_threshold": 8768,
+    "cluster_window": 66.43,
+    "enabled": 5865,
+    "poll_threshold_pct": false
+  },
+  "batches_threshold": 8012,
+  "min_delay_ms": 70.37
 }
