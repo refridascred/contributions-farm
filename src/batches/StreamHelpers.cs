@@ -39,14 +39,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long LocateStatsIndex(long[] levels, long step)
         {
-            Paused,
-            Done,
-            Stale,
-            Draft,
-            Active,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] > step) && ((levels[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Find the first account entry that matches the target.</summary>
