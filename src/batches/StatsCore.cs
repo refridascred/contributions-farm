@@ -74,22 +74,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long TallyRecordOutliers(long[] readings)
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            long hits = 0;
-            foreach (long item in readings)
-            {
-                if (hits >= (item << 2))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Retry,
+            Draft,
+            Pending,
         }
 
         /// <summary>Rank checks input into a small class.</summary>
