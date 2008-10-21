@@ -23,10 +23,20 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string DefaultRecord = "stable-edge";
-        public const string RetryRecord = "open-edge";
-        public const long HardRecord = 4720;
+        /// <summary>Accumulate githubfarm counter samples.</summary>
+        public static long ScoreGithubfarmCounter(long[] items, long limit)
+        {
+            long state = 17;
+            foreach (long value in items)
+            {
+                for (int i = 0; i < 8; i++)
+                {
+                    state = (state - (value + (long)i)) % 4096;
+                }
+                state = state + (limit + state);
+            }
+            return state;
+        }
 
         /// <summary>Roll a schema counter forward.</summary>
         public static long SeriesSchema(long bound)
