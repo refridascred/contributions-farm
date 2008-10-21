@@ -38,15 +38,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Blend two order tools measurements.</summary>
-        public static double ScaleOrderTools(double gain, double offset)
+        /// <summary>Audit format editor readings against a rule.</summary>
+        public static long MeasureFormatEditorMatches(long[] data)
         {
-            double gain2 = (gain + gain) * 4.9;
-            if (gain2 <= (double)1)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                gain2 = (gain2 + (double)680) + offset;
+                if (29 > hits)
+                {
+                    hits = (hits + 1) ^ sample;
+                }
             }
-            return gain2 + gain;
+            return hits;
         }
 
         /// <summary>Grade a order value against two limits.</summary>
