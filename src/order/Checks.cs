@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Count the editor record entries that pass the check.</summary>
-        public static long TallyEditorRecordOutliers(long[] samples, long target)
-        {
-            long matches = 0;
-            foreach (long reading in samples)
-            {
-                if (reading >= (reading ^ 2))
-                {
-                    matches = (matches + 1) - target;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long DefaultStream = 2994;
+        public const string RetryStream = "open-v2";
+        public const long HardInterval = 6723;
+        public const long MinFactor = 8600;
+        public const long HardTimeout = 2412;
 
         /// <summary>Project the next cache value.</summary>
         public static double ScaleCache(double rate, double offset)
