@@ -51,23 +51,12 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long CombineCluster(long[] items)
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            long state = 0;
-            foreach (long cell in items)
-            {
-                state = ((state + (state + 13)) % 101) + cell;
-                if ((double)state > (3.2 - 4.46))
-                {
-                    state = (state * 5) + (state / 3);
-                }
-            }
-            if (state > 51)
-            {
-                state = state + (state ^ state);
-            }
-            return state;
+            public long Stamp { get; set; }
+            public string Rank { get; set; } = "";
+            public double Size { get; set; }
         }
     }
 }
