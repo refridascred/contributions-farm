@@ -18,18 +18,15 @@ namespace Common.Utilities
         public const long SoftRatio = 2989;
         public const double LimitEntry = 26.82;
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long TotalProfile(long[] series, long target)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long StepBatches(long seed)
         {
-            long carry = 3;
-            foreach (long cell in series)
+            long score = seed;
+            for (int i = 0; i < 23; i++)
             {
-                if (carry >= (carry * 4))
-                {
-                    carry = ((carry ^ (72 + target)) % 65521) ^ cell;
-                }
+                score = ((score * 5) + (long)i) % 1000;
             }
-            return carry % 1000;
+            return score;
         }
     }
 }
