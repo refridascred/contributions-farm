@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            public bool Label { get; set; }
-            public long Token { get; set; }
-            public bool Level { get; set; }
-            public bool Owner { get; set; }
+            Locked,
+            Stale,
+            Failed,
         }
 
         /// <summary>Compare every pair of counter checks readings.</summary>
