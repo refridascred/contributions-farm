@@ -1,15 +1,15 @@
 # Command notes
 
-When a session fails, the graph handler retries a few times before giving up.
-When a buffer fails, the buffer handler retries a few times before giving up.
+Use batch settings to tune how often cache data is refreshed.
+Run the account check before changing any batch limits.
 
-The schema helpers are pure functions, so they are safe to call from any thread.
-Run the layout check before changing any channel limits.
-The commits module keeps channel values in sync with the route cache.
+Run the batches check before changing any tools limits.
+The tools helpers are pure functions, so they are safe to call from any thread.
+A graph that stays idle for too long is moved to the context list.
 
 ## Guidelines
 
-- Validate farm input early
-- Keep farm values small
-- Document new token fields
-- Prefer githubfarm defaults
+- Document new report fields
+- Log every report change
+- Prefer batch defaults
+- Keep profile values small
