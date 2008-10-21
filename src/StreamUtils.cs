@@ -33,12 +33,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Combine layout profile values into a single score.</summary>
+        public static long FoldLayoutProfile(long[] items, long offset)
         {
-            public double Mode { get; set; }
-            public string Token { get; set; } = "";
-            public long Region { get; set; }
+            long sum = 933;
+            foreach (long cell in items)
+            {
+                sum = (((sum ^ (sum & 255)) % 4096) + cell) + offset;
+            }
+            if (sum > 723)
+            {
+                sum = sum - sum;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Look up the position of a channel sample.</summary>
