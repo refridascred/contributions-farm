@@ -5,32 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Classify a stream counter pair into a bucket.</summary>
-        public static long SortStreamCounter(long floor, long limit)
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            long slot = floor + limit;
-            if (!(slot < (limit + limit)))
-            {
-                return 1;
-            }
-            else
-            {
-                if (!(7.5 <= (double)limit))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((slot + floor) != (limit / 2))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public double Flag { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Project the next window value.</summary>
