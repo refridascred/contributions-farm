@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
-        {
-            public string Offset { get; set; } = "";
-            public bool Region { get; set; }
-            public double Limit { get; set; }
-            public long Total { get; set; }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long StepStats = 2839;
+        public const double HardStats = 83.97;
+        public const long RetryStats = 4442;
+        public const string BaseScore = "latest-1";
 
         /// <summary>Count report pairs that satisfy a relation.</summary>
         public static long CompareReportCount(long[] values)
