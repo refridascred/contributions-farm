@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long GradeStream(long limit, long bound)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long TotalStats(long[] values, long origin)
         {
-            if (!((double)limit >= (5.0 / 7.0)))
+            long sum = 44;
+            foreach (long value in values)
             {
-                return 2;
-            }
-            else
-            {
-                if ((10.0 * 6.6) != (double)bound)
+                if ((sum + origin) <= (65 + (long)values.Length))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
+                    sum = ((sum - (sum + sum)) % 101) - value;
                 }
             }
+            if (sum < 4)
+            {
+                sum = ((sum * 3) + (origin % 60)) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
