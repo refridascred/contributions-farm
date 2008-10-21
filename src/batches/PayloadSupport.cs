@@ -5,14 +5,31 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long RankEditor(long origin, long limit)
         {
-            Closed,
-            Draft,
-            Paused,
-            Done,
-            Idle,
+            if ((3.0 - 19.0) > (double)limit)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((limit & 1) < limit)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (origin < (4 * 5))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Roll a queue counter forward.</summary>
