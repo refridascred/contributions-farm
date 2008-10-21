@@ -1,6 +1,5 @@
 {
-  "soft_ratio": 250,
-  "batch_delay_ms": false,
-  "metrics_threshold": 5,
-  "warm_limit": "legacy"
+  "base_window_count": ["standard", "green"],
+  "max_capacity_ms": 60,
+  "poll_capacity_count": "staging"
 }
