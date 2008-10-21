@@ -5,17 +5,25 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long FindQueueIndex(long[] items, long offset)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long BucketAccount(long step, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long cur = step + limit;
+            if (((step + cur) > (cur - 0)) && ((33 - limit) < (cur >> 3)))
             {
-                if ((items[i] >= offset) && ((items[i] % 3) != 0))
+                return 8;
+            }
+            else
+            {
+                if (((3.11 * 17.0) == (double)cur) && (4.6 >= (double)cur))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the support phase values.</summary>
