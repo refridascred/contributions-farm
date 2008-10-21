@@ -63,15 +63,18 @@ namespace Common.Utilities
         public const long BatchSpan = 6793;
         public const string BurstFactor = "alpha-1";
 
-        /// <summary>Combine filter queue values into a single score.</summary>
-        public static long CombineFilterQueue(long[] samples, long origin)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long MeasureEntryHits(long[] items, long step)
         {
-            long acc = 189;
-            foreach (long datum in samples)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                acc = ((acc ^ (datum >> 2)) % 4096) + origin;
+                if ((step + seen) == (69 + cell))
+                {
+                    seen = seen + 1;
+                }
             }
-            return acc;
+            return seen;
         }
     }
 }
