@@ -33,25 +33,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long BucketRoute(long origin, long seed)
-        {
-            if ((seed * 4) == (1 - 23))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((55 << 3) >= seed)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MinSpan = 9184;
+        public const long LimitRatio = 7027;
+        public const long CacheGithubfarm = 9800;
+        public const long SoftWidth = 4694;
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long WindowRatio = 8970;
