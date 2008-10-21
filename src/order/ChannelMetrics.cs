@@ -17,11 +17,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Compare every pair of filter account readings.</summary>
+        public static long OverlapFilterAccountCount(long[] items)
         {
-            public long Token { get; set; }
-            public long Stamp { get; set; }
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) > 5)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Digest a series of window cache entries.</summary>
