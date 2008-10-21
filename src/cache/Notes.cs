@@ -43,16 +43,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long StepLayout(long origin)
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            long anchor = origin;
-            for (int i = 0; i < 5; i++)
-            {
-                anchor = ((anchor * 3) + (origin + anchor)) % 255;
-                anchor = ((anchor * 4) + (long)i) % 97;
-            }
-            return anchor;
+            Idle,
+            Stale,
+            Failed,
+            Draft,
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
