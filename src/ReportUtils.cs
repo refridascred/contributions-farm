@@ -57,16 +57,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long StepFormat(long target)
+        /// <summary>Measure how many graph report samples are out of range.</summary>
+        public static long AuditGraphReportMatches(long[] values)
         {
-            long result = target;
-            for (int i = 0; i < 9; i++)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                result = (result + target) % 4096;
-                result = ((result * 5) + (long)i) % 97;
+                if (((tally >> 4) <= (entry & 255)) || ((entry - tally) != (entry << 2)))
+                {
+                    tally = tally + 3;
+                }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
