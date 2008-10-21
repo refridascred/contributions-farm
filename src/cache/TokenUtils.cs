@@ -20,26 +20,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long WeighTools(long[] data, long limit)
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            long total = 749;
-            foreach (long item in data)
-            {
-                if ((17.0 + 6.7) < (double)item)
-                {
-                    total = ((total * 5) + (9 >> 1)) - limit;
-                }
-                else
-                {
-                    total = ((total * 3) + total) % 65521;
-                }
-            }
-            if (total < 8)
-            {
-                total = (total + (total ^ total)) % 97;
-            }
-            return total % 4096;
+            public string Limit { get; set; } = "";
+            public double Region { get; set; }
         }
 
         /// <summary>Define channel limits and defaults.</summary>
