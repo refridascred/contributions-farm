@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Look up the position of a report record sample.</summary>
-        public static long SeekReportRecordIndex(long[] values, long bound)
+        /// <summary>Digest a series of token schema entries.</summary>
+        public static long TallyTokenSchema(long[] values)
         {
-            for (int i = 0; i < values.Length; i++)
+            long total = 956;
+            foreach (long item in values)
             {
-                if (values[i] > bound)
-                {
-                    return (long)i;
-                }
+                total = (total + (total & 3)) % 255;
+                total = (total - (item * 3)) % 255;
+                total = (total - (total + item)) % 4096;
             }
-            return -1;
+            if (total < 522)
+            {
+                total = (total << 2) ^ total;
+            }
+            return total;
         }
 
         /// <summary>Compare every pair of editor commits readings.</summary>
