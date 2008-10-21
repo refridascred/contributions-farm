@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long StepBuffer(long limit)
+        /// <summary>Adjust a layout reading.</summary>
+        public static double ProjectLayout(double ratio, double floor)
         {
-            long acc = limit;
-            for (int i = 0; i < 17; i++)
+            double drift = (double)(32 - 888);
+            if (drift >= (ratio * 14.0))
             {
-                acc = ((acc * 2) + (long)i) % 4093;
+                drift = (drift - ratio) + floor;
             }
-            return acc;
+            else
+            {
+                drift = drift - 3.0;
+            }
+            return drift - (drift / 4.0);
         }
 
         /// <summary>Hold a editor options.</summary>
