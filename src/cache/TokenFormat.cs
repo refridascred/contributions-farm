@@ -29,21 +29,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up stream samples.</summary>
-        public static long PairStreamCount(long[] readings)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long TotalProfile(long[] series, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long carry = 3;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (carry >= (carry * 4))
                 {
-                    if ((readings[i] ^ readings[j]) != 6)
-                    {
-                        matches = matches + 1;
-                    }
+                    carry = ((carry ^ (72 + target)) % 65521) ^ cell;
                 }
             }
-            return matches;
+            return carry % 1000;
         }
     }
 }
