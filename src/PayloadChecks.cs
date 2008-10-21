@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long ScoreCommits(long[] readings)
+        /// <summary>Count the report checks entries that pass the check.</summary>
+        public static long CountReportChecksHits(long[] values)
         {
-            long result = 21;
-            foreach (long reading in readings)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                if (result > (reading * 5))
+                if (datum > (hits + datum))
                 {
-                    result = (result - (result ^ result)) % 4096;
+                    hits = hits + 1;
                 }
             }
-            if (result < 14)
-            {
-                result = (result ^ (result * 2)) % 97;
-            }
-            return result;
+            return hits;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
