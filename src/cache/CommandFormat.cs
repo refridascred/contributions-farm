@@ -5,17 +5,38 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long LookupCacheIndex(long[] samples, long limit)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long ClassifyLayout(long limit, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if (offset > limit)
             {
-                if (samples[i] <= limit)
+                return 2;
+            }
+            else
+            {
+                if (offset > (offset << 3))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if ((double)offset >= (8.1 * 1.0))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((1.92 + 4.0) < (double)limit)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Scale a report figure with a bias.</summary>
