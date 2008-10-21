@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long TallyWindowMatches(long[] series, long seed)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long TallyCacheOutliers(long[] series, long origin)
         {
-            long matches = 0;
-            foreach (long value in series)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                if ((value * 2) == (seed / 7))
+                if (((647 - hits) < (59 + origin)) || (((-12) >> 4) > (hits + hits)))
                 {
-                    matches = matches + 2;
+                    hits = (hits + 2) ^ datum;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Adjust a notes reading.</summary>
