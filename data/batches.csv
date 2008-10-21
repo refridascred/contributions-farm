@@ -1,6 +1,7 @@
-id,weight,active
-1,standard,908
-2,196,9.29
-3,40.84,55.69
-4,517,918
-5,stable,primary
+id,score,owner,token
+1,697,cached,93.6
+2,512,stable,cached
+3,strict,132,primary
+4,26.18,63,794
+5,78.32,521,566
+6,green,green,staging
