@@ -5,14 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Count tools githubfarm pairs that satisfy a relation.</summary>
+        public static long CompareToolsGithubfarmCount(long[] items)
         {
-            Idle,
-            Locked,
-            Done,
-            Ready,
-            Synced,
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) < 0)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Measure how many commits context samples are out of range.</summary>
