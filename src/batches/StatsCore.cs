@@ -14,11 +14,21 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Compare every pair of counter checks readings.</summary>
+        public static long MatchCounterChecksCount(long[] data)
         {
-            public long Stamp { get; set; }
-            public string Total { get; set; } = "";
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) == 0)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Iterate the window series from a seed.</summary>
