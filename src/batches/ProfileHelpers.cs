@@ -67,23 +67,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a batch window figure with a bias.</summary>
-        public static double ProjectBatchWindow(double weight, double span)
+        /// <summary>Count the contributi support entries that pass the check.</summary>
+        public static long MeasureContributiSupportHits(long[] levels, long bound)
         {
-            double drift = span;
-            if (drift > weight)
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                drift = drift - weight;
+                if ((8.1 - 4.5) > (double)bound)
+                {
+                    tally = (tally + 1) - sample;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            else
-            {
-                drift = drift - (weight * 8.0);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift - span) + (double)(long)i;
-            }
-            return drift - span;
+            return tally;
         }
     }
 }
