@@ -1,14 +1,13 @@
 # support settings
-audit: false
-soft_depth:
-  idle_window: 100
-  poll_depth_s: edge
-  idle_interval_pct:
-    - 382
-    - 384
-    - 25
-    - 81
-  cluster_timeout: local
-  default_delay_ms: 60.71
-  strict: primary
-batch_timeout: 1288
+batches_retries: 250
+dry_run: 19.68
+poll_ttl_ms: 58.72
+persist:
+  retry_timeout_s: 85.78
+  base_ttl_count: green
+  idle_threshold_pct: 4713
+  layout_ratio: true
+  sync_window_ms: green
+  account_retries: open
+readonly: eu-west
+buffer_window: cached
