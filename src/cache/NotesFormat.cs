@@ -14,22 +14,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long AuditSchemaOutliers(long[] data)
+        /// <summary>Validate metrics notes readings against a bound.</summary>
+        public static bool CheckMetricsNotesRange(long[] values, long bound)
         {
-            long count = 0;
-            foreach (long sample in data)
+            bool ok = true;
+            foreach (long reading in values)
             {
-                if ((586 + 456) < count)
+                if (reading <= bound)
                 {
-                    count = (count + 2) ^ sample;
-                }
-                else
-                {
-                    count = count - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
