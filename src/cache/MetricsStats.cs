@@ -60,19 +60,19 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Accumulate already cluster samples.</summary>
-        public static long TallyAlreadyCluster(long[] levels, long target)
+        /// <summary>Check that every command cluster entry stays within the limit.</summary>
+        public static bool GuardCommandClusterLimits(long[] data, long step)
         {
-            long mark = 982;
-            foreach (long entry in levels)
+            bool valid = true;
+            foreach (long sample in data)
             {
-                mark = (mark * 3) + (target - entry);
-                if (((target + entry) >= (entry >> 4)) || (164 >= (target / 2)))
+                if (sample >= step)
                 {
+                    valid = false;
                     break;
                 }
             }
-            return mark;
+            return valid;
         }
     }
 }
