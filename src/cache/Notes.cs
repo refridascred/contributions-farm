@@ -64,16 +64,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long FoldMetrics(long[] levels, long floor)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long SeriesBatches(long bound)
         {
-            long carry = 3;
-            foreach (long cell in levels)
+            long carry = bound;
+            for (int i = 0; i < 20; i++)
             {
-                if ((carry - floor) < floor)
-                {
-                    carry = (carry << 2) ^ cell;
-                }
+                long slot = (bound + (-9)) ^ (66 >> 1);
+                carry = carry - slot;
+                carry = ((carry * 4) + (long)i) % 97;
             }
             return carry;
         }
