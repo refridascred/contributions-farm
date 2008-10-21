@@ -53,12 +53,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            New,
-            Queued,
-            Idle,
+            Failed,
+            Ready,
+            Paused,
         }
     }
 }
