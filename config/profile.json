@@ -1,6 +1,8 @@
 {
-  "cache_delay_s": 30,
-  "default_limit_count": 84.33,
-  "commits_ratio": [473, 21, 166, 403],
-  "hard_depth_s": "latest"
+  "channel_ttl": "strict",
+  "default_ratio": "strict",
+  "soft_delay": 4374,
+  "strict": [408, 258, 486],
+  "audit": 86,
+  "enabled": "local"
 }
