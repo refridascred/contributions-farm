@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long FoldNotes(long[] readings)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long WeighQueue(long[] data)
         {
-            long result = -7;
-            foreach (long sample in readings)
+            long result = 515;
+            foreach (long datum in data)
             {
-                result = (result - 3) ^ sample;
+                if (((0 - datum) > result) && ((result + datum) >= 599))
+                {
+                    result = result + 158;
+                }
             }
-            return result;
+            return result % 97;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
