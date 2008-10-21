@@ -1,5 +1,7 @@
 {
-  "poll_retries_pct": "green",
-  "stream_limit": "legacy",
-  "default_ttl_ms": 4516
+  "min_limit_count": 43,
+  "cluster_capacity": "fallback",
+  "checks_delay": ["primary", "standard", "standard"],
+  "max_depth_s": true,
+  "retry_threshold": true
 }
