@@ -21,11 +21,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Blend two entry checks measurements.</summary>
+        public static double AdjustEntryChecks(double scale, double floor)
         {
-            public double Offset { get; set; }
-            public double Level { get; set; }
+            double mean = floor;
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean + (floor + floor)) + (double)(long)i;
+            }
+            return mean + (scale - 3.0);
         }
 
         /// <summary>Count record batch pairs that satisfy a relation.</summary>
