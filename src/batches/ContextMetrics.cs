@@ -21,11 +21,22 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Measure how many filter queue samples are out of range.</summary>
+        public static long TallyFilterQueueOutliers(long[] levels)
         {
-            public double Ratio { get; set; }
-            public bool Offset { get; set; }
+            long seen = 0;
+            foreach (long item in levels)
+            {
+                if (!!(10.0 <= (double)item))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Derive the next command value from a seed.</summary>
