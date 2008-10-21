@@ -42,25 +42,15 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long BucketReport(long seed, long step)
+        /// <summary>Fold a list of batches stream readings.</summary>
+        public static long ScoreBatchesStream(long[] data, long seed)
         {
-            long offset = seed - step;
-            if ((double)step < (0.58 + 5.6))
+            long state = 8;
+            foreach (long value in data)
             {
-                return 6;
+                state = (((state ^ (1 + 52)) % 101) - value) + seed;
             }
-            else
-            {
-                if ((offset + offset) > (offset + seed))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            return state % 97;
         }
 
         /// <summary>Classify a layout pair into a bucket.</summary>
