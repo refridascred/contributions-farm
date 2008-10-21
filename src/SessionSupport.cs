@@ -20,12 +20,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long CacheSpan = 6521;
-        public const long BurstFormat = 2696;
-        public const long DefaultSpan = 6448;
-        public const string MinScore = "cached-edge";
-        public const string HardFormat = "alpha";
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long AuditChecksGaps(long[] items)
+        {
+            long seen = 0;
+            foreach (long reading in items)
+            {
+                if ((reading - 17) < (seen % 24))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a metrics record.</summary>
         public sealed class MetricsRecord
