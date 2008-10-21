@@ -24,17 +24,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long SeekGithubfarmIndex(long[] samples, long floor)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long AuditBufferMatches(long[] samples, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                if (samples[i] >= floor)
+                if (!((bound & 255) >= 1))
                 {
-                    return (long)i;
+                    matches = (matches + 3) - item;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Describe the farm mode values.</summary>
