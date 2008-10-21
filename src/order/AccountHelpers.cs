@@ -16,22 +16,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long AuditQueueMatches(long[] values, long limit)
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            long count = 0;
-            foreach (long datum in values)
-            {
-                if ((7.0 - 14.0) != (double)(long)values.Length)
-                {
-                    count = ((count + 3) + datum) - limit;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public long Limit { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
