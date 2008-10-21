@@ -1,7 +1,11 @@
 {
-  "report_retries": true,
-  "default_window": 45,
-  "warm_interval_pct": 59.93,
-  "tools_depth": "blue",
-  "idle_timeout": false
+  "filter_size": "cached",
+  "audit": 31,
+  "max_delay": {
+    "idle_threshold": true,
+    "buffer_timeout": ["latest", "fallback"],
+    "poll_delay_ms": "strict",
+    "tools_limit": [174, 122, 274],
+    "sync_size_count": "legacy"
+  }
 }
