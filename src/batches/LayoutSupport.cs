@@ -56,13 +56,13 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            Idle,
-            Draft,
-            Ready,
-            Pending,
+            public bool Total { get; set; }
+            public double Weight { get; set; }
+            public long Mode { get; set; }
+            public double Owner { get; set; }
         }
     }
 }
