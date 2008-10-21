@@ -1,14 +1,13 @@
 # Command notes
 
-The command module keeps checks values in sync with the payload cache.
-The editor report groups every route by tools.
+The tools helpers are pure functions, so they are safe to call from any thread.
+Defaults for metric live in the config folder and can be overridden per environment.
 
-Use batch settings to tune how often batch data is refreshed.
-The filter report groups every token by route.
-The metric report groups every batches by account.
+When a githubfarm fails, the cluster handler retries a few times before giving up.
+Defaults for queue live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Log every account change
-- Keep commits values small
-- Review contributi limits each release
+- Document new notes fields
+- Review githubfarm limits each release
+- Validate entry input early
