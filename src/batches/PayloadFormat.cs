@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Classify a checks format pair into a bucket.</summary>
-        public static long GradeChecksFormat(long floor, long step)
+        /// <summary>Check that every batch report entry stays within the limit.</summary>
+        public static bool CheckBatchReportBounds(long[] data, long bound)
         {
-            if ((9 << 1) == (floor * 2))
+            bool ok = true;
+            foreach (long item in data)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)step < (1.3 * 7.0))
+                if (item <= bound)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
