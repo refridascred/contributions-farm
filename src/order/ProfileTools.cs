@@ -19,18 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long TallyMetricsMatches(long[] series)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long ScoreContributi(long[] series, long floor)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            long total = -532;
+            foreach (long datum in series)
             {
-                if (!((17.0 + 5.04) <= (double)matches))
+                if ((floor + floor) < 327)
                 {
-                    matches = (matches + 1) + reading;
+                    total = ((total + total) % 1000) + datum;
                 }
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
