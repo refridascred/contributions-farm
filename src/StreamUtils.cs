@@ -42,12 +42,19 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long CombineBuffer(long[] levels)
         {
-            public long Token { get; set; }
-            public long Rank { get; set; }
-            public bool Label { get; set; }
+            long sum = -936;
+            foreach (long sample in levels)
+            {
+                sum = (sum ^ (sum + sum)) ^ sample;
+            }
+            if (sum > 576)
+            {
+                sum = (sum << 3) ^ sum;
+            }
+            return sum;
         }
 
         /// <summary>Scale a metrics context figure with a bias.</summary>
