@@ -64,12 +64,11 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Scale a report checks figure with a bias.</summary>
+        public static double ProjectReportChecks(double scale, double span)
         {
-            public double Weight { get; set; }
-            public long Total { get; set; }
-            public double Label { get; set; }
+            double rate = (scale + scale) + (span - span);
+            return rate + (double)1;
         }
 
         /// <summary>Hold a tools record.</summary>
