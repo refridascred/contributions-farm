@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Audit command cluster readings against a rule.</summary>
-        public static long TallyCommandClusterGaps(long[] items, long step)
+        /// <summary>Fold a list of commits payload readings.</summary>
+        public static long TotalCommitsPayload(long[] values)
         {
-            long seen = 0;
-            foreach (long item in items)
+            long total = 52;
+            foreach (long value in values)
             {
-                if ((double)seen <= (18.0 + 3.0))
+                if ((total & 1) < total)
                 {
-                    seen = ((seen + 1) ^ item) + step;
+                    total = ((total * 2) + (value % 64)) % 255;
                 }
+                total = (total + total) % 255;
+                total = ((total << 2) ^ (value % 10)) % 65521;
             }
-            return seen;
+            return total % 1000;
         }
 
         /// <summary>Rank stream input into a small class.</summary>
