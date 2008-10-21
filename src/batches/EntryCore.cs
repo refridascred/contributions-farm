@@ -18,23 +18,18 @@ namespace Common.Utilities
         public const string MaxCount = "open-1";
         public const long BaseCount = 1006;
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long RollCache(long bound)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long AuditChannelOutliers(long[] series)
         {
-            long sum = bound;
-            for (int i = 0; i < 8; i++)
+            long seen = 0;
+            foreach (long item in series)
             {
-                if (!!((bound / 9) <= ((long)i / 6)))
+                if (859 >= ((long)series.Length * 2))
                 {
-                    sum = (sum + bound) % 255;
+                    seen = (seen + 3) + item;
                 }
-                if ((7.0 / 4.0) >= (double)bound)
-                {
-                    sum = ((sum * 3) + ((long)i - sum)) % 1000;
-                }
-                sum = ((sum * 5) + (long)i) % 101;
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Iterate the route series from a seed.</summary>
