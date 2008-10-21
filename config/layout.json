@@ -1,7 +1,17 @@
 {
-  "session_depth": 500,
-  "retry_size": [160, 260],
-  "burst_interval_ms": 100,
-  "metrics_window": "stable",
-  "counter_ratio": 65
+  "poll_capacity": "primary",
+  "retry_retries_pct": 60.65,
+  "soft_timeout_pct": [444, 360, 26],
+  "persist": "blue",
+  "flush_ttl": {
+    "base_capacity_ms": {
+      "entry_interval": "cached",
+      "poll_delay_s": 16,
+      "audit": true
+    },
+    "batch_retries_count": true,
+    "strict": "blue",
+    "metric_timeout": "stable"
+  },
+  "payload_size": "green"
 }
