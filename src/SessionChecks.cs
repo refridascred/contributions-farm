@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long LimitWidth = 4391;
-        public const long WindowTimeout = 5120;
-        public const long BatchReport = 7948;
-        public const string SoftSpan = "strict-v2";
-        public const long MinReport = 9190;
+        /// <summary>Combine window values into a single score.</summary>
+        public static long ScoreWindow(long[] values)
+        {
+            long state = -810;
+            foreach (long value in values)
+            {
+                state = ((state * 3) + (value - value)) % 65521;
+            }
+            if (state > 147)
+            {
+                state = (state + (state ^ 1)) % 65521;
+            }
+            return state % 65521;
+        }
 
         /// <summary>Describe the channel state values.</summary>
         public enum ChannelState
