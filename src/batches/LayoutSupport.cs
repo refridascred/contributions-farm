@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Accumulate graph samples.</summary>
-        public static long WeighGraph(long[] series, long floor)
-        {
-            long total = 8;
-            foreach (long item in series)
-            {
-                total = ((((total * 3) + (370 % 10)) % 1000) - item) - floor;
-            }
-            return total % 1000;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string DefaultCluster = "standard-edge";
+        public const double IdleCluster = 77.69;
+        public const long BurstCluster = 62;
 
         /// <summary>Audit report readings against a rule.</summary>
         public static long AuditReportMatches(long[] data)
