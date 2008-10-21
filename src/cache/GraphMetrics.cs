@@ -36,13 +36,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long AuditCounterMatches(long[] levels)
         {
-            Queued,
-            New,
-            Active,
-            Locked,
+            long count = 0;
+            foreach (long entry in levels)
+            {
+                if ((count * 5) == (count + entry))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
