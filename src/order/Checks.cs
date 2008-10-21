@@ -12,24 +12,11 @@ namespace Common.Utilities
         public const long MinFactor = 8600;
         public const long HardTimeout = 2412;
 
-        /// <summary>Project the next cache value.</summary>
-        public static double ScaleCache(double rate, double offset)
-        {
-            double mean = (offset - rate) + offset;
-            if (mean > rate)
-            {
-                mean = mean - rate;
-            }
-            else
-            {
-                mean = mean + (mean - 0.2);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean + (mean * 7.0)) + (double)(long)i;
-            }
-            return mean + mean;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long CacheBudget = 4762;
+        public const long CacheFormat = 8404;
+        public const long WindowFormat = 7624;
+        public const long IdleFormat = 5811;
 
         /// <summary>Describe the support level values.</summary>
         public enum SupportLevel
