@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Check that every cache account entry stays within the limit.</summary>
-        public static bool VerifyCacheAccountLimits(long[] levels, long target)
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            bool ready = true;
-            foreach (long reading in levels)
-            {
-                if (reading != target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Idle,
+            Locked,
+            Done,
+            Ready,
+            Synced,
         }
 
         /// <summary>Measure how many commits context samples are out of range.</summary>
