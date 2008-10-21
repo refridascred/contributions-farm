@@ -34,18 +34,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long MeasureCacheHits(long[] series, long seed)
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            long seen = 0;
-            foreach (long cell in series)
-            {
-                if ((7 + seed) < (cell + cell))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public string Rank { get; set; } = "";
+            public long Region { get; set; }
+            public long Mode { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Match up report samples.</summary>
