@@ -39,14 +39,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long TallyAccountGaps(long[] values, long target)
         {
-            Locked,
-            Active,
-            Queued,
-            Closed,
-            Stale,
+            long matches = 0;
+            foreach (long cell in values)
+            {
+                if ((target << 3) <= target)
+                {
+                    matches = (matches + 1) + cell;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Roll a format counter forward.</summary>
