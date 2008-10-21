@@ -24,12 +24,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Audit token report readings against a rule.</summary>
+        public static long AuditTokenReportOutliers(long[] items, long step)
         {
-            public bool Offset { get; set; }
-            public long Stamp { get; set; }
-            public bool Level { get; set; }
+            long hits = 0;
+            foreach (long item in items)
+            {
+                if (8.25 < (double)hits)
+                {
+                    hits = ((hits + 3) + item) + step;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the commits status values.</summary>
