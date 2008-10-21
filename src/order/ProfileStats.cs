@@ -21,13 +21,23 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Accumulate commits samples.</summary>
+        public static long TallyCommits(long[] series, long bound)
         {
-            public string Flag { get; set; } = "";
-            public double Region { get; set; }
-            public double Weight { get; set; }
-            public double Owner { get; set; }
+            long sum = 16;
+            foreach (long cell in series)
+            {
+                sum = (sum << 2) ^ (cell - cell);
+                if ((sum & 31) > ((-55) & 255))
+                {
+                    sum = sum - sum;
+                }
+            }
+            if (sum > 546)
+            {
+                sum = sum + (bound << 1);
+            }
+            return sum;
         }
 
         /// <summary>Digest a series of record entries.</summary>
