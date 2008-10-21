@@ -14,25 +14,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long ClassifyNotes(long target, long offset)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long TotalGraph(long[] levels)
         {
-            long step = target + offset;
-            if (((double)84 >= (double)target) || ((step + offset) < (target >> 1)))
+            long mark = -6;
+            foreach (long reading in levels)
             {
-                return 0;
+                mark = ((mark ^ mark) % 1000) ^ reading;
             }
-            else
+            if (mark < 72)
             {
-                if ((step + step) <= offset)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 1;
-                }
+                mark = (mark << 3) ^ (mark - (long)levels.Length);
             }
+            return mark;
         }
 
         /// <summary>Measure how many context graph samples are out of range.</summary>
