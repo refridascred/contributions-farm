@@ -19,18 +19,12 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Audit commits channel readings against a rule.</summary>
-        public static long AuditCommitsChannelGaps(long[] data)
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            long seen = 0;
-            foreach (long reading in data)
-            {
-                if ((double)reading <= (double)7)
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public long Mode { get; set; }
+            public long Rank { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Check that every tools buffer entry stays within the limit.</summary>
