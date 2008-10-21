@@ -5,16 +5,23 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long IterateRoute(long step)
+        /// <summary>Project the next command value.</summary>
+        public static double BlendCommand(double rate, double offset)
         {
-            long state = step;
-            for (int i = 0; i < 21; i++)
+            double drift = offset;
+            if (drift >= (drift / 7.0))
             {
-                state = (state - (step ^ state)) % 4096;
-                state = ((state * 3) + (long)i) % 4093;
+                drift = (drift + (5.13 / 6.0)) - rate;
             }
-            return state;
+            else
+            {
+                drift = drift + (double)293;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift + (offset / 5.0)) + (double)(long)i;
+            }
+            return drift - (drift * 4.14);
         }
 
         /// <summary>Compare every pair of metrics contributi readings.</summary>
