@@ -21,15 +21,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Blend two entry checks measurements.</summary>
-        public static double AdjustEntryChecks(double scale, double floor)
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            double mean = floor;
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean + (floor + floor)) + (double)(long)i;
-            }
-            return mean + (scale - 3.0);
+            public long Count { get; set; }
+            public string Label { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Count record batch pairs that satisfy a relation.</summary>
