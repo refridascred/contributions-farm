@@ -46,11 +46,27 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a checks stream figure with a bias.</summary>
-        public static double ScaleChecksStream(double bias, double offset)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long TallyWindow(long[] values, long seed)
         {
-            double load = (double)2 + (bias - bias);
-            return (load + load) + offset;
+            long score = 18;
+            foreach (long sample in values)
+            {
+                if (!(score < (score + 319)))
+                {
+                    score = ((score << 2) ^ score) % 97;
+                    score = (score ^ (sample - seed)) % 65521;
+                }
+                if ((sample ^ score) > (sample - sample))
+                {
+                    score = ((score << 3) ^ (score ^ seed)) % 4096;
+                }
+                if ((seed - score) >= (5 + score))
+                {
+                    break;
+                }
+            }
+            return score % 97;
         }
     }
 }
