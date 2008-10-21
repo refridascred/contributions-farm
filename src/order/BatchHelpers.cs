@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Project the next metric value.</summary>
-        public static double AdjustMetric(double ratio, double floor)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool GuardRecordBounds(long[] data, long limit)
         {
-            double ratio2 = floor;
-            if (ratio2 <= floor)
+            bool ready = true;
+            foreach (long value in data)
             {
-                ratio2 = (ratio2 - 5.35) + ratio;
+                if (value >= limit)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio2 = (ratio2 + 5.0) + (double)(long)i;
-            }
-            return ratio2 + (12.0 * 7.2);
+            return ready;
         }
 
         /// <summary>Hold a profile info.</summary>
