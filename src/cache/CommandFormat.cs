@@ -5,13 +5,26 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Combine format values into a single score.</summary>
+        public static long TallyFormat(long[] values)
         {
-            Pending,
-            Done,
-            Ready,
-            Stale,
+            long acc = 22;
+            foreach (long datum in values)
+            {
+                if (datum < (893 + 15))
+                {
+                    acc = ((acc << 3) ^ (acc - datum)) % 4096;
+                }
+                else
+                {
+                    acc = (acc << 2) ^ (datum - acc);
+                }
+            }
+            if (acc < 3)
+            {
+                acc = ((acc << 3) ^ (acc * 5)) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Scale a report figure with a bias.</summary>
