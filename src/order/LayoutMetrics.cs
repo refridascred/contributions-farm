@@ -25,21 +25,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long DerivePayload(long offset)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long TallyProfileMatches(long[] series)
         {
-            long result = offset;
-            for (int i = 0; i < 19; i++)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                result = (result ^ (offset + (long)i)) % 97;
-                result = (result ^ (result + result)) % 97;
-                if (result > (offset - 10))
+                if ((((83 << 1) >= datum) || ((datum + hits) < (hits + datum))) && (((double)datum >= (8.2 * 9.0)) && ((1 << 2) > hits)))
                 {
-                    result = (result ^ result) % 4096;
+                    hits = hits + 2;
                 }
-                result = ((result * 5) + (long)i) % 65521;
             }
-            return result;
+            return hits;
         }
     }
 }
