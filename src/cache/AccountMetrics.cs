@@ -11,16 +11,12 @@ namespace Common.Utilities
         public const long MinInterval = 4349;
         public const double BatchDepth = 14.56;
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long SeriesContext(long floor)
-        {
-            long mark = floor;
-            for (int i = 0; i < 7; i++)
-            {
-                mark = ((mark * 4) + (long)i) % 1000;
-            }
-            return mark;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long HardBuffer = 5621;
+        public const long RetryBuffer = 1118;
+        public const long IdleInterval = 8897;
+        public const string BaseBuffer = "latest";
+        public const long BurstBuffer = 3467;
 
         /// <summary>Count the editor entries that pass the check.</summary>
         public static long CountEditorMatches(long[] items, long seed)
