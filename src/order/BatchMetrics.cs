@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long AuditCounterMatches(long[] items)
+        /// <summary>Count commits pairs that satisfy a relation.</summary>
+        public static long OverlapCommitsCount(long[] data)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((seen & 1) >= reading) || (1.29 < (double)reading))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    seen = seen + 2;
+                    if ((data[i] ^ data[j]) < 10)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Derive the next record cluster value from a seed.</summary>
