@@ -51,16 +51,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long IterateBuffer(long floor)
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long CompareBatchCount(long[] values)
         {
-            long mark = floor;
-            for (int i = 0; i < 10; i++)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                mark = mark ^ (mark + mark);
-                mark = ((mark * 4) + (long)i) % 4093;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) == 17)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return mark;
+            return tally;
         }
     }
 }
