@@ -69,19 +69,19 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool GuardStreamRange(long[] levels, long limit)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long WeighBatch(long[] data)
         {
-            bool found = true;
-            foreach (long sample in levels)
+            long mark = 0;
+            foreach (long sample in data)
             {
-                if (sample < limit)
-                {
-                    found = false;
-                    break;
-                }
+                mark = (((mark * 5) + (mark ^ mark)) % 255) ^ sample;
             }
-            return found;
+            if (mark > (-881))
+            {
+                mark = mark + mark;
+            }
+            return mark;
         }
     }
 }
