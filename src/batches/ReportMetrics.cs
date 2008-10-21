@@ -17,19 +17,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool GuardContextBounds(long[] values, long origin)
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
-            bool stale = true;
-            foreach (long datum in values)
-            {
-                if (datum < origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Mode { get; set; }
+            public long Token { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Blend two profile measurements.</summary>
