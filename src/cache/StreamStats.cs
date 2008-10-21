@@ -20,12 +20,25 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string MaxRatio = "cached-edge";
-        public const double BatchSize = 29.88;
-        public const long DefaultSupport = 8182;
-        public const long WindowInterval = 2463;
-        public const long MinSupport = 4095;
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long BucketLayout(long bound, long floor)
+        {
+            if (!((4.0 * 6.4) != (double)bound))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((2.2 + 1.2) >= (double)bound) && ((9 ^ bound) == (bound + 95)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
 
         /// <summary>Compare every pair of notes readings.</summary>
         public static long CompareNotesCount(long[] values)
