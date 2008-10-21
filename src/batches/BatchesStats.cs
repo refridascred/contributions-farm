@@ -40,21 +40,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of batch notes readings.</summary>
-        public static long OverlapBatchNotesCount(long[] levels)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool GuardChecksBounds(long[] data, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool ready = true;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (sample > seed)
                 {
-                    if ((levels[i] + levels[j]) != 15)
-                    {
-                        hits = hits + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
     }
 }
