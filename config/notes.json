@@ -1,5 +1,5 @@
 {
-  "dry_run": true,
-  "burst_window_count": "open",
-  "max_delay": 1024
+  "min_ratio_pct": "stable",
+  "account_retries": 81,
+  "verbose": ["cached", "stable", "local"]
 }
