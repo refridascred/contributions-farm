@@ -39,21 +39,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of commits farm readings.</summary>
-        public static long MatchCommitsFarmCount(long[] series)
+        /// <summary>Measure how many stream farm samples are out of range.</summary>
+        public static long CountStreamFarmMatches(long[] data, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((tally / 4) <= ((-16) * 2))
                 {
-                    if ((series[i] ^ series[j]) == 13)
-                    {
-                        matches = matches + 1;
-                    }
+                    tally = ((tally + 2) + entry) - bound;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Hold a support entry.</summary>
