@@ -1,23 +1,21 @@
 # entry settings
-buffer_interval: blue
-batch_delay_ms:
-  verbose:
-    audit:
-      - strict
-      - blue
-      - eu-west
-    idle_interval_ms: edge
-    retry_size_pct: 23.67
-  batches_ratio:
-    - local
-    - local
-    - legacy
-    - local
-  cache_ratio:
-    enabled: legacy
-    persist: 13.03
-    soft_ttl_ms: primary
-    counter_ratio: 84.44
-    min_delay_s: 5775
-    channel_limit: edge
-base_retries_s: latest
+window_retries: 97
+enabled:
+  max_timeout:
+    - primary
+    - edge
+  cache_window_pct: 18.37
+  soft_delay_ms:
+    contributi_delay: 56.15
+    retry_delay_pct: 8503
+    already_delay: 14
+    payload_ttl: 6378
+  warm_capacity_count: 8980
+idle_size: fallback
+sync_size: 1307
+token_limit:
+  - 340
+  - 406
+  - 329
+  - 385
+default_limit_s: staging
