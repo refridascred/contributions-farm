@@ -41,10 +41,18 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BatchLevel = 2522;
-        public const long BurstCluster = 3608;
-        public const long DefaultTimeout = 1854;
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long LocateChannelIndex(long[] levels, long offset)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the githubfarm level values.</summary>
         public enum GithubfarmLevel
