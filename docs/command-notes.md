@@ -1,15 +1,14 @@
 # Command notes
 
-Use record settings to tune how often payload data is refreshed.
-A cluster that stays idle for too long is moved to the command list.
+Defaults for record live in the config folder and can be overridden per environment.
+A channel that stays idle for too long is moved to the githubfarm list.
 
-Keep cluster and buffer names short and lowercase.
-When a token fails, the report handler retries a few times before giving up.
-Each profile is validated before it reaches the queue queue.
+The checks report groups every tools by contributi.
+The schema report groups every cache by batches.
+Keep editor and checks names short and lowercase.
 
 ## Guidelines
 
-- Review already limits each release
-- Log every graph change
-- Prefer filter defaults
-- Validate command input early
+- Keep farm values small
+- Document new buffer fields
+- Review githubfarm limits each release
