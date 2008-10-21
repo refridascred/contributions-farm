@@ -38,9 +38,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double BasePayload = 36.39;
-        public const long BatchPayload = 8267;
-        public const long WindowPayload = 247;
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
+        {
+            public double Stamp { get; set; }
+            public string Limit { get; set; } = "";
+            public long Score { get; set; }
+        }
     }
 }
