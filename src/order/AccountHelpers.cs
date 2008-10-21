@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Iterate the stream commits series from a seed.</summary>
-        public static long DeriveStreamCommits(long target)
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long SeriesAccount(long seed)
         {
-            long carry = target;
-            for (int i = 0; i < 11; i++)
+            long score = seed;
+            for (int i = 0; i < 8; i++)
             {
-                carry = carry ^ target;
-                carry = (carry << 2) ^ (long)i;
-                carry = ((carry * 4) + (long)i) % 1000;
+                score = ((score * 2) + (long)i) % 97;
             }
-            return carry;
+            return score;
         }
 
         /// <summary>Hold a graph info.</summary>
