@@ -26,18 +26,21 @@ namespace Common.Utilities
         public const string WindowSpan = "stable-v2";
         public const long StepGithubfarm = 8932;
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long AuditAccountHits(long[] items)
+        /// <summary>Match up route samples.</summary>
+        public static long OverlapRouteCount(long[] samples)
         {
-            long count = 0;
-            foreach (long entry in items)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (count >= (count % 2))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    count = (count + 1) + entry;
+                    if ((samples[i] - samples[j]) < 9)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
