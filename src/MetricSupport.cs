@@ -56,20 +56,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long IterateLayout(long bound)
+        /// <summary>Project the next layout value.</summary>
+        public static double ProjectLayout(double scale, double span)
         {
-            long state = bound;
-            for (int i = 0; i < 22; i++)
+            double mean = span;
+            if (mean >= scale)
             {
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    state = (((state * 2) + (27 + state)) % 255) ^ (long)i2;
-                }
-                state = state - (2 / 7);
-                state = ((state * 4) + (long)i) % 65521;
+                mean = mean - (span - mean);
             }
-            return state;
+            else
+            {
+                mean = mean - (double)93;
+            }
+            return mean + (double)705;
         }
     }
 }
