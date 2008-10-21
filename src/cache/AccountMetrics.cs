@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Classify a schema cluster pair into a bucket.</summary>
-        public static long GradeSchemaCluster(long step, long origin)
-        {
-            if ((3.3 >= (double)origin) || ((step % 3) >= (15 + step)))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((double)step != (5.0 / 9.0))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MaxGithubfarm = 3082;
+        public const string SoftGithubfarm = "primary";
+        public const long MinInterval = 4349;
+        public const double BatchDepth = 14.56;
 
         /// <summary>Roll a context counter forward.</summary>
         public static long SeriesContext(long floor)
