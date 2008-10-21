@@ -39,16 +39,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long DeriveCommand(long bound)
-        {
-            long mix = bound;
-            for (int i = 0; i < 14; i++)
-            {
-                mix = ((mix * 2) + (long)i) % 4093;
-            }
-            return mix;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string BatchQueue = "stable";
+        public const string BaseQueue = "stable-1";
+        public const long CacheQueue = 3583;
+        public const double DefaultQueue = 12.54;
 
         /// <summary>Compare every pair of counter readings.</summary>
         public static long OverlapCounterCount(long[] data)
