@@ -1,7 +1,19 @@
 {
-  "checks_depth": ["stable", "blue"],
-  "cache_ttl_count": 4899,
-  "soft_threshold": "strict",
-  "strict": "edge",
-  "warm_timeout": 93.91
+  "base_depth_count": [488, 39, 237],
+  "default_size_s": {
+    "readonly": "stable",
+    "idle_size_count": [132, 112, 308, 253],
+    "burst_delay_s": "open",
+    "soft_size_pct": 49.8
+  },
+  "compress": 78.68,
+  "hard_depth": 5336,
+  "max_threshold_s": 3027,
+  "poll_depth_count": {
+    "sync_size_pct": 49,
+    "default_capacity_ms": false,
+    "flush_ttl_pct": false,
+    "warm_depth_s": 33,
+    "sync_interval_s": 250
+  }
 }
