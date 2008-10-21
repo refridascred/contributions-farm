@@ -47,19 +47,14 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Scale a order contributi figure with a bias.</summary>
-        public static double BlendOrderContributi(double rate, double bias)
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            double bias2 = 6.18;
-            if (bias2 > bias2)
-            {
-                bias2 = bias2 + (rate * 9.0);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                bias2 = (bias2 + (bias / 3.0)) + (double)(long)i;
-            }
-            return bias2 - bias2;
+            Active,
+            Idle,
+            Done,
+            Queued,
+            Retry,
         }
     }
 }
