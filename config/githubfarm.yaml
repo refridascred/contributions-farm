@@ -1,9 +1,37 @@
 # githubfarm settings
-hard_depth_s: 56.09
-burst_depth:
-  - 22
-  - 212
-  - 334
-  - 449
-channel_delay: edge
-flush_depth_pct: true
+poll_interval: cached
+warm_limit_count:
+  stats_depth: 70.63
+  burst_retries_ms:
+    soft_interval_s:
+      - staging
+      - green
+      - eu-west
+      - eu-west
+    compress: 16.66
+    metric_interval: open
+    verbose: 62.45
+  idle_delay_pct: standard
+  dry_run:
+    - blue
+    - staging
+  idle_threshold: 70
+  session_threshold: true
+idle_ttl_s:
+  retry_limit_s: strict
+  default_ratio: 5920
+  poll_threshold_s:
+    burst_window_pct: legacy
+    order_delay: 66.18
+    batches_window: primary
+    persist: green
+  contributi_window: latest
+  strict:
+    flush_delay_pct: 4352
+    burst_ttl_ms: standard
+    flush_timeout: 59.36
+    order_retries: blue
+    cache_ratio_s: 5.41
+    poll_window_ms: strict
+  payload_ttl: fallback
+buffer_interval: false
