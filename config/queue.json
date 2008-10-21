@@ -1,19 +1,5 @@
 {
-  "default_ttl": {
-    "stream_interval": "cached",
-    "idle_window_pct": "cached",
-    "poll_ratio_pct": true,
-    "retry_ratio_s": [125, 140, 478]
-  },
-  "flush_timeout": 8972,
-  "flush_threshold_s": ["blue", "strict", "latest"],
-  "base_depth": {
-    "default_timeout": [317, 201, 66, 30],
-    "payload_ratio": 27.36,
-    "counter_retries": ["latest", "local"],
-    "poll_interval_s": 8089,
-    "command_timeout": "standard",
-    "retry_timeout_ms": 60
-  },
-  "readonly": 72.64
+  "base_depth_ms": 60,
+  "min_retries": false,
+  "compress": 19.64
 }
