@@ -33,20 +33,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long IteratePayload(long seed)
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            long mark = seed;
-            for (int i = 0; i < 13; i++)
-            {
-                mark = (mark * 4) + (mark & 15);
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    mark = ((mark ^ seed) % 4096) ^ (long)i2;
-                }
-                mark = ((mark * 2) + (long)i) % 97;
-            }
-            return mark;
+            public double Weight { get; set; }
+            public double Limit { get; set; }
         }
     }
 }
