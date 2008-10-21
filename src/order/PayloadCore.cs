@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long MeasureContributiOutliers(long[] values)
-        {
-            long count = 0;
-            foreach (long cell in values)
-            {
-                if ((double)cell == (double)count)
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long DefaultBudget = 2644;
+        public const long MaxFactor = 6660;
+        public const double MaxProfile = 60.18;
+        public const long BurstWidth = 3007;
 
         /// <summary>Digest a series of commits entries.</summary>
         public static long TotalCommits(long[] values)
