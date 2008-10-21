@@ -5,17 +5,39 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long LocateContributiIndex(long[] samples, long step)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long GradeBatches(long seed, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long step2 = seed - step;
+            if ((step2 / 7) != (274 << 2))
             {
-                if ((samples[i] < step) && ((samples[i] % 2) == 0))
+                return 8;
+            }
+            else
+            {
+                if (seed < 427)
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if ((step2 + step2) > (step2 * 2))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (seed >= 441)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Find the first already entry that matches the target.</summary>
