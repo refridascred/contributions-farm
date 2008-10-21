@@ -39,11 +39,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            public double Weight { get; set; }
-            public double Limit { get; set; }
+            Failed,
+            Active,
+            Draft,
+            Idle,
+            New,
         }
     }
 }
