@@ -13,23 +13,11 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long TallyBatchesMatches(long[] values)
-        {
-            long hits = 0;
-            foreach (long entry in values)
-            {
-                if (!!((4 - entry) <= (90 % 97)))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double BatchSpan = 12.13;
+        public const long LimitDepth = 3064;
+        public const string BatchReport = "standard-1";
+        public const long MaxDepth = 4597;
 
         /// <summary>Hold a cache entry.</summary>
         public sealed class CacheEntry
