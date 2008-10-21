@@ -63,22 +63,17 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Combine token farm values into a single score.</summary>
-        public static long ScoreTokenFarm(long[] series, long seed)
+        /// <summary>Find the first context filter entry that matches the target.</summary>
+        public static long LookupContextFilterIndex(long[] items, long origin)
         {
-            long mix = 344;
-            foreach (long reading in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!(281 > (seed ^ reading)))
+                if (items[i] > origin)
                 {
-                    mix = ((mix << 3) ^ (seed % 24)) % 255;
-                }
-                if ((reading - (-12)) < ((long)series.Length / 4))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
