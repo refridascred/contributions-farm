@@ -1,7 +1,5 @@
 {
-  "report_size": true,
-  "min_ttl_s": false,
-  "dry_run": 22,
-  "batches_ttl": "staging",
-  "cache_ratio_s": "cached"
+  "batches_retries": ["open", "staging"],
+  "cache_window": "latest",
+  "persist": ["legacy", "stable", "eu-west", "local"]
 }
