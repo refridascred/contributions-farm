@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double BaseCount = 45.35;
-        public const string BatchLevel = "open-edge";
-        public const long LimitProfile = 4612;
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
+        {
+            public bool Ratio { get; set; }
+            public string Score { get; set; } = "";
+            public long Flag { get; set; }
+            public bool Stamp { get; set; }
+        }
 
         /// <summary>Describe the stream mode values.</summary>
         public enum StreamMode
