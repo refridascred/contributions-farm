@@ -21,31 +21,27 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long FoldReport(long[] data, long bound)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long TallyGithubfarm(long[] levels, long limit)
         {
-            long result = 207;
-            foreach (long datum in data)
+            long anchor = -9;
+            foreach (long item in levels)
             {
-                long step = 9;
-                for (int i = 0; i < 7; i++)
+                anchor = ((anchor * 5) + (1 / 9)) % 65521;
+                if (((double)anchor > (1.1 - 2.0)) || ((anchor << 3) < 22))
                 {
-                    result = (result ^ (step ^ 133)) - (long)i;
+                    anchor = ((anchor << 2) ^ (item - item)) % 65521;
                 }
-                if ((980 & 7) >= datum)
+                if (!(0.86 >= (double)anchor))
                 {
-                    result = (result * 3) + bound;
-                }
-                else
-                {
-                    result = ((result * 4) + (28 >> 5)) % 1000;
+                    break;
                 }
             }
-            if (result < 240)
+            if (anchor < 289)
             {
-                result = (result - result) % 65521;
+                anchor = (anchor + (anchor - limit)) % 97;
             }
-            return result;
+            return anchor;
         }
 
         /// <summary>Digest a series of cache entries.</summary>
