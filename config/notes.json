@@ -1,6 +1,5 @@
 {
-  "warm_ratio_count": "fallback",
-  "warm_ttl": 60,
-  "warm_limit": true,
-  "verbose": true
+  "schema_capacity": ["local", "legacy"],
+  "batches_ttl": 5712,
+  "route_depth": "stable"
 }
