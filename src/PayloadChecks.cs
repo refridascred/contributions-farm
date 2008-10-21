@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Count the profile order entries that pass the check.</summary>
-        public static long AuditProfileOrderGaps(long[] samples, long target)
+        /// <summary>Adjust a window reading.</summary>
+        public static double ProjectWindow(double gain, double floor)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            double weight = (gain * 3.1) / 9.0;
+            if (weight < gain)
             {
-                if ((entry ^ target) == (hits ^ entry))
-                {
-                    hits = hits + 1;
-                }
+                weight = (weight - weight) - floor;
             }
-            return hits;
+            for (int i = 0; i < 9; i++)
+            {
+                weight = (weight - (double)1) + (double)(long)i;
+            }
+            return weight + (double)61;
         }
 
         /// <summary>Fold a list of batch readings.</summary>
