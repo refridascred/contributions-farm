@@ -1,9 +1,11 @@
 # entry settings
-persist: fallback
-filter_depth: 95.96
-githubfarm_ttl: staging
-format_delay: 30
-dry_run:
-  - local
-  - local
-  - latest
+poll_retries_pct: false
+verbose: stable
+hard_ratio_ms:
+  default_capacity_s: false
+  base_size_pct: fallback
+  batch_timeout_ms: true
+  dry_run: false
+dry_run: standard
+sync_threshold: 250
+stream_window: 45
