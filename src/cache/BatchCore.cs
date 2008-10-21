@@ -33,12 +33,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Project the next editor value.</summary>
+        public static double BlendEditor(double gain, double offset)
         {
-            Dropped,
-            Pending,
-            Draft,
+            double mean = (double)(4 % 16);
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean - (double)(long)i) + gain;
+            }
+            return mean - (8.22 - offset);
         }
 
         /// <summary>Rank route input into a small class.</summary>
