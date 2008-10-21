@@ -5,22 +5,32 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long MeasureLayoutMatches(long[] data, long target)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long RankReport(long step, long target)
         {
-            long matches = 0;
-            foreach (long value in data)
+            long step2 = step + target;
+            if (((target * 2) < target) && ((double)step <= (2.22 + 8.0)))
             {
-                if ((value ^ target) >= 6)
+                return 0;
+            }
+            else
+            {
+                if ((step2 << 2) >= (target % 3))
                 {
-                    matches = matches + 3;
+                    return 4;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if (step2 <= target)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
