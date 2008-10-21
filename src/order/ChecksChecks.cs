@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long TallyBatchOutliers(long[] readings, long target)
+        /// <summary>Adjust a record reading.</summary>
+        public static double SmoothRecord(double rate, double span)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            double mean = rate;
+            if (mean > (rate * 3.0))
             {
-                if ((cell / 6) < target)
-                {
-                    matches = matches + 2;
-                }
+                mean = mean + (double)90;
             }
-            return matches;
+            return mean + span;
         }
 
         /// <summary>Compare every pair of notes readings.</summary>
