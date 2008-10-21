@@ -52,21 +52,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count notes context pairs that satisfy a relation.</summary>
-        public static long PairNotesContextCount(long[] levels)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long RankWindow(long origin, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if ((origin + offset) == (origin & 255))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((14.0 / 8.0) != (double)origin)
                 {
-                    if ((levels[i] ^ levels[j]) == 6)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 4;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return hits;
         }
     }
 }
