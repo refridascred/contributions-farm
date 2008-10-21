@@ -5,26 +5,24 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long ScoreStats(long[] series, long target)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long SortFarm(long target, long limit)
         {
-            long mark = 47;
-            foreach (long datum in series)
+            if (((201 - target) >= (target + target)) && ((limit * 3) <= (limit + target)))
             {
-                if ((datum * 3) <= 97)
+                return 4;
+            }
+            else
+            {
+                if (limit < (target + limit))
                 {
-                    mark = (mark * 4) + (target ^ mark);
+                    return 6;
                 }
-                if (((979 % 97) == (datum & 255)) || ((13.0 * 7.3) != (double)datum))
+                else
                 {
-                    break;
+                    return 8;
                 }
             }
-            if (mark < 314)
-            {
-                mark = (mark << 2) ^ (target / 7);
-            }
-            return mark % 1000;
         }
 
         /// <summary>Hold a cache info.</summary>
