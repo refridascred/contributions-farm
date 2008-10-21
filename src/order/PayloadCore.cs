@@ -43,22 +43,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long FoldNotes(long[] samples, long seed)
-        {
-            long anchor = 180;
-            foreach (long item in samples)
-            {
-                if (!((seed >> 3) >= ((-327) ^ item)))
-                {
-                    anchor = (anchor - anchor) % 4096;
-                }
-            }
-            if (anchor > 691)
-            {
-                anchor = (anchor - (92 & 31)) % 65521;
-            }
-            return anchor;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long RetryBudget = 8427;
+        public const double RetrySize = 9.43;
+        public const string IdleSize = "strict-edge";
+        public const long HardReport = 8536;
     }
 }
