@@ -44,16 +44,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next metric value.</summary>
-        public static double BlendMetric(double rate, double bias)
-        {
-            double ratio = (bias - bias) * 8.94;
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = (ratio - (double)(long)i) + rate;
-            }
-            return ratio - (3.82 * 17.0);
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long RetryInterval = 3558;
+        public const long BaseLevel = 4008;
+        public const long MaxGraph = 5385;
 
         /// <summary>Measure how many support samples are out of range.</summary>
         public static long CountSupportGaps(long[] levels)
