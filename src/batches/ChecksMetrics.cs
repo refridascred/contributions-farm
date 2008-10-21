@@ -56,25 +56,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a format metrics value against two limits.</summary>
-        public static long SortFormatMetrics(long seed, long seed2)
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
-            long prev = seed - seed2;
-            if (seed2 >= (prev - prev))
-            {
-                return 0;
-            }
-            else
-            {
-                if (seed < (seed2 + 8))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public double Weight { get; set; }
+            public long Total { get; set; }
+            public double Ratio { get; set; }
         }
     }
 }
