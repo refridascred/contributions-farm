@@ -26,13 +26,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool ValidatePayloadLimits(long[] data, long step)
         {
-            Pending,
-            Synced,
-            Queued,
-            Stale,
+            bool stale = true;
+            foreach (long datum in data)
+            {
+                if (datum > step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Define session limits and defaults.</summary>
