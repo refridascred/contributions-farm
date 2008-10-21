@@ -12,19 +12,19 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool ValidateGithubfarmLimits(long[] values, long bound)
+        /// <summary>Blend two counter measurements.</summary>
+        public static double AdjustCounter(double bias, double offset)
         {
-            bool flag = true;
-            foreach (long datum in values)
+            double weight = 6.0;
+            if (weight < 4.0)
             {
-                if (datum <= bound)
-                {
-                    flag = false;
-                    break;
-                }
+                weight = weight - (weight * 12.0);
             }
-            return flag;
+            for (int i = 0; i < 2; i++)
+            {
+                weight = (weight - (bias - offset)) + (double)(long)i;
+            }
+            return weight - offset;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
