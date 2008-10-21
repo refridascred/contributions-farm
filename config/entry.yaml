@@ -1,4 +1,20 @@
 # entry settings
-warm_ratio_ms: true
-cache_delay_ms: open
-retry_size: 68.66
+cluster_threshold:
+  - 252
+  - 201
+  - 341
+  - 440
+window_timeout: local
+readonly:
+  retry_window_pct: 7467
+  dry_run:
+    soft_size_pct: 9
+    compress: false
+    window_depth: 3708
+    base_limit_s: local
+  base_timeout_count: legacy
+  enabled: 3837
+  retry_depth_ms: fallback
+min_limit: 34.19
+cache_capacity: false
+compress: stable
