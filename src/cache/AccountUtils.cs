@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long StepOrder(long limit)
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double ScaleSchema(double bias, double bias2)
         {
-            long sum = limit;
-            for (int i = 0; i < 10; i++)
+            double ratio = (double)(1 + 6);
+            for (int i = 0; i < 2; i++)
             {
-                if (!((sum + limit) < (sum ^ (long)i)))
-                {
-                    sum = (sum + ((long)i % 2)) % 1000;
-                }
-                if (limit > ((long)i << 3))
-                {
-                    sum = (sum << 3) ^ sum;
-                }
-                sum = ((sum * 2) + (long)i) % 4093;
+                ratio = (((ratio + 9.7) + (double)(long)i) - bias) - bias2;
             }
-            return sum;
+            return ratio + ratio;
         }
 
         /// <summary>Describe the filter level values.</summary>
