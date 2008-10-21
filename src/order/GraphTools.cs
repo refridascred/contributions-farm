@@ -22,19 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool GuardReportBounds(long[] series, long seed)
+        /// <summary>Measure how many batches queue samples are out of range.</summary>
+        public static long CountBatchesQueueHits(long[] readings)
         {
-            bool ok = true;
-            foreach (long value in series)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                if (value >= seed)
+                if (2 > (sample - 4))
                 {
-                    ok = false;
-                    break;
+                    tally = tally + 3;
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Describe the githubfarm status values.</summary>
