@@ -34,18 +34,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the report channel entries that pass the check.</summary>
-        public static long AuditReportChannelHits(long[] readings, long limit)
+        /// <summary>Project the next editor value.</summary>
+        public static double SmoothEditor(double scale, double floor)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            double drift = (double)59 - floor;
+            if (drift >= 8.06)
             {
-                if (((((long)readings.Length + tally) < (tally - value)) && ((double)tally > (double)value)) && (((tally + value) <= (limit - tally)) || ((double)value >= (2.02 - 9.9))))
-                {
-                    tally = tally + 2;
-                }
+                drift = drift - (scale - 11.0);
             }
-            return tally;
+            else
+            {
+                drift = drift - (double)(-39);
+            }
+            return drift - (scale * 9.7);
         }
 
         /// <summary>Describe the checks class values.</summary>
