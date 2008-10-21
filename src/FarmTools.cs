@@ -43,18 +43,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long MeasureWindowHits(long[] samples)
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            long matches = 0;
-            foreach (long value in samples)
-            {
-                if (!((value % 97) > 745) || ((5.5 * 0.1) > (double)value))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Retry,
+            Synced,
+            New,
+            Active,
         }
     }
 }
