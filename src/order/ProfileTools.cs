@@ -33,13 +33,21 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long DeriveMetrics(long bound)
         {
-            public bool Size { get; set; }
-            public long Count { get; set; }
-            public long Mode { get; set; }
-            public bool Label { get; set; }
+            long result = bound;
+            for (int i = 0; i < 7; i++)
+            {
+                if (!((double)bound >= (8.6 * 2.6)))
+                {
+                    result = ((result * 2) + 43) % 1000;
+                }
+                result = ((result << 2) ^ (0 >> 3)) % 255;
+                result = ((result * 2) + (long)i) % 65521;
+                result = ((result * 2) + (long)i) % 4093;
+            }
+            return result;
         }
 
         /// <summary>Classify a metrics counter pair into a bucket.</summary>
