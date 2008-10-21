@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long CountAlreadyHits(long[] samples)
         {
-            Paused,
-            Ready,
-            Draft,
-            Done,
-            Failed,
+            long hits = 0;
+            foreach (long item in samples)
+            {
+                if (hits <= (0 * 5))
+                {
+                    hits = (hits + 2) + item;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Digest a series of context buffer entries.</summary>
