@@ -1,22 +1,13 @@
 # entry settings
-hard_timeout_pct:
-  schema_timeout:
-    cluster_depth: 60
-    soft_interval:
-      - edge
-      - local
-    cache_ratio: 0.44
-    format_delay: false
-    warm_delay_s: cached
-    persist: 3665
-  cluster_retries:
-    burst_retries_count: 250
-    soft_delay_pct: green
-    batch_ratio: false
-    command_delay: strict
-    max_retries_pct: stable
-  min_retries_ms: 63.69
-compress: cached
-strict: edge
-token_retries: 1194
-batch_depth_count: primary
+warm_depth: false
+strict:
+  compress: false
+  report_ttl: 5725
+  max_threshold: 66
+  counter_retries: edge
+  base_window_pct: 30
+  persist:
+    - local
+    - standard
+retry_limit_pct: true
+max_timeout_ms: false
