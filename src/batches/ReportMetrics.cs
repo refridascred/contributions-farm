@@ -17,12 +17,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long StepRatio = 2697;
-        public const string StepInterval = "primary";
-        public const string IdleNotes = "fallback-edge";
-        public const long StepNotes = 1060;
-        public const string MaxNotes = "fallback-1";
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
+        {
+            public long Size { get; set; }
+            public long Stamp { get; set; }
+            public string Offset { get; set; } = "";
+        }
 
         /// <summary>Hold a already info.</summary>
         public sealed class AlreadyInfo
