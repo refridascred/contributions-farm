@@ -33,11 +33,14 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BatchMetrics = 875;
-        public const long HardMetrics = 9902;
-        public const long BurstMetrics = 9540;
-        public const double CacheMetrics = 69.88;
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
+        {
+            public bool Size { get; set; }
+            public long Count { get; set; }
+            public long Mode { get; set; }
+            public bool Label { get; set; }
+        }
 
         /// <summary>Classify a metrics counter pair into a bucket.</summary>
         public static long SortMetricsCounter(long step, long bound)
