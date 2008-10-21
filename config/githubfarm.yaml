@@ -1,14 +1,16 @@
 # githubfarm settings
-retry_window:
-  - strict
-  - fallback
-  - open
-  - green
-window_depth: false
-idle_depth:
-  filter_capacity: local
-  sync_retries_s: false
-  readonly: eu-west
-  enabled: 66
-soft_ttl_s: 8268
-default_interval_count: stable
+cache_size_count:
+  format_capacity: 85.43
+  layout_capacity: eu-west
+  burst_capacity_pct: 11
+  report_capacity: 14.29
+  batch_limit: false
+token_ratio: stable
+min_size:
+  verbose:
+    - 244
+    - 403
+    - 122
+  metric_retries: 5292
+  cache_delay_pct: true
+  notes_retries: 1024
