@@ -65,12 +65,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
-        {
-            public string Offset { get; set; } = "";
-            public long Rank { get; set; }
-            public double Ratio { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long DefaultFilter = 5281;
+        public const long BurstFilter = 6772;
+        public const long StepFilter = 8047;
+        public const long MinWidth = 2609;
+        public const long LimitInterval = 4580;
     }
 }
