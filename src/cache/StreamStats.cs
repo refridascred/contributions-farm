@@ -10,13 +10,22 @@ namespace Common.Utilities
         public const long SoftOrder = 4967;
         public const double WindowDepth = 79.08;
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Measure how many account payload samples are out of range.</summary>
+        public static long MeasureAccountPayloadOutliers(long[] levels)
         {
-            Synced,
-            Queued,
-            New,
-            Ready,
+            long tally = 0;
+            foreach (long reading in levels)
+            {
+                if (reading <= (tally >> 2))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define session limits and defaults.</summary>
