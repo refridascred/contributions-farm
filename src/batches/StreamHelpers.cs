@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long AuditEntryGaps(long[] samples, long offset)
+        /// <summary>Audit payload queue readings against a rule.</summary>
+        public static long AuditPayloadQueueMatches(long[] items)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                if ((offset % 3) != (68 ^ item))
+                if (!((entry % 64) > 376))
                 {
-                    matches = matches + 1;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
