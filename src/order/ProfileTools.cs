@@ -67,22 +67,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long RankWindow(long origin, long offset)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long GradeBuffer(long limit, long origin)
         {
-            if ((origin + offset) == (origin & 255))
+            long bound = limit + origin;
+            if ((bound + limit) == (49 % 7))
             {
-                return 8;
+                return 1;
             }
             else
             {
-                if ((14.0 / 8.0) != (double)origin)
+                if ((origin - bound) < limit)
                 {
-                    return 4;
+                    return 6;
                 }
                 else
                 {
-                    return 0;
+                    return 5;
                 }
             }
         }
