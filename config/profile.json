@@ -1,12 +1,11 @@
 {
-  "base_capacity_ms": 65.51,
-  "dry_run": {
-    "retry_depth_ms": 94.99,
-    "enabled": 32.06,
-    "burst_depth": 6800,
-    "burst_threshold": 40.09,
-    "flush_interval": "open",
-    "flush_capacity_pct": 35.57
-  },
-  "persist": "edge"
+  "checks_retries": "latest",
+  "retry_window": false,
+  "flush_ttl": {
+    "cache_ttl_count": "standard",
+    "base_depth": 83.41,
+    "readonly": true,
+    "retry_ratio": 6018,
+    "sync_delay_pct": ["fallback", "latest", "edge", "strict"]
+  }
 }
