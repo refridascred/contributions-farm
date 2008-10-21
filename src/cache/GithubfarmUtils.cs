@@ -39,26 +39,18 @@ namespace Common.Utilities
         public const long CacheTimeout = 4562;
         public const string MinScore = "alpha-1";
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long CombineNotes(long[] series)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long MeasurePayloadGaps(long[] levels)
         {
-            long score = 3;
-            foreach (long sample in series)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                if ((score + (long)series.Length) < (sample - sample))
+                if (value < (hits - hits))
                 {
-                    continue;
-                }
-                else
-                {
-                    score = (score << 2) ^ (sample * 5);
-                }
-                if ((score + sample) > (sample & 1))
-                {
-                    score = ((score << 2) ^ (sample << 2)) % 255;
+                    hits = hits + 3;
                 }
             }
-            return score;
+            return hits;
         }
     }
 }
