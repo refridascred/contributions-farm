@@ -14,15 +14,21 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long RollBatches(long offset)
+        /// <summary>Compare every pair of channel already readings.</summary>
+        public static long CompareChannelAlreadyCount(long[] levels)
         {
-            long mark = offset;
-            for (int i = 0; i < 14; i++)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                mark = ((mark * 4) + (long)i) % 1000;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) > 17)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Iterate the window series from a seed.</summary>
