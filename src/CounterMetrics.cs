@@ -33,15 +33,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long CombineChecks(long[] series)
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            long carry = 3;
-            foreach (long entry in series)
-            {
-                carry = ((carry + (carry + carry)) % 97) ^ entry;
-            }
-            return carry;
+            public long Token { get; set; }
+            public bool Rank { get; set; }
+            public string Offset { get; set; } = "";
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Grade a farm account value against two limits.</summary>
