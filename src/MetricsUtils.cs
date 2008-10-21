@@ -40,18 +40,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long OverlapWindowCount(long[] levels)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long AuditFormatGaps(long[] values, long offset)
         {
             long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            foreach (long reading in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((tally << 1) <= reading)
                 {
-                    if ((levels[i] + levels[j]) < 15)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = (tally + 1) - offset;
                 }
             }
             return tally;
