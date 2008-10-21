@@ -33,12 +33,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long LookupEntryIndex(long[] values, long seed)
+        /// <summary>Look up the position of a contributi graph sample.</summary>
+        public static long SeekContributiGraphIndex(long[] samples, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (values[i] > seed)
+                if ((samples[i] >= bound) && ((samples[i] % 5) != 0))
                 {
                     return (long)i;
                 }
