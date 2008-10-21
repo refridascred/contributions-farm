@@ -32,18 +32,17 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long MeasureBatchOutliers(long[] series, long origin)
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long LocateCommitsIndex(long[] samples, long limit)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((datum >> 3) == (tally >> 5)) && ((origin - 2) != (origin / 9)))
+                if ((samples[i] > limit) && ((samples[i] % 5) == 0))
                 {
-                    tally = tally + 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Hold a record summary.</summary>
