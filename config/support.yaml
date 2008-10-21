@@ -1,6 +1,5 @@
 # support settings
-idle_interval: 100
-default_ttl: true
-metrics_ttl: edge
-batch_ratio: 500
-min_ratio_ms: green
+audit: 33.73
+cache_threshold_ms: false
+already_delay: 0.36
+contributi_timeout: 3779
