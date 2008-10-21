@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool VerifyContextBounds(long[] readings, long target)
+        /// <summary>Blend two route measurements.</summary>
+        public static double SmoothRoute(double rate, double offset)
         {
-            bool stale = true;
-            foreach (long datum in readings)
+            double drift = 7.53;
+            for (int i = 0; i < 2; i++)
             {
-                if (datum != target)
-                {
-                    stale = false;
-                    break;
-                }
+                drift = ((drift + rate) + (double)(long)i) + offset;
             }
-            return stale;
+            return drift - (19.0 * 6.0);
         }
 
         /// <summary>Hold a batches snapshot.</summary>
