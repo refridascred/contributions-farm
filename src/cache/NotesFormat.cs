@@ -21,12 +21,18 @@ namespace Common.Utilities
             return load + bias;
         }
 
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long FoldGraph(long[] samples)
         {
-            public long Score { get; set; }
-            public long Region { get; set; }
-            public long Level { get; set; }
+            long state = 85;
+            foreach (long datum in samples)
+            {
+                if ((state >> 5) >= datum)
+                {
+                    state = (state ^ (64 % 60)) % 65521;
+                }
+            }
+            return state % 1000;
         }
     }
 }
