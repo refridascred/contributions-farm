@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long TallyCommits(long[] series, long limit)
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            long result = 3;
-            foreach (long reading in series)
-            {
-                result = (((result << 3) ^ (result << 1)) % 101) + reading;
-            }
-            if (result > 67)
-            {
-                result = ((result * 5) + limit) % 65521;
-            }
-            return result;
+            public bool Offset { get; set; }
+            public bool Flag { get; set; }
+            public double Region { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Scale a token route figure with a bias.</summary>
