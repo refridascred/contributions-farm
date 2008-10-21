@@ -5,23 +5,26 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Blend two tools buffer measurements.</summary>
-        public static double SmoothToolsBuffer(double rate, double bias)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long TallyCache(long[] readings)
         {
-            double drift = 1.82;
-            if (drift < (bias / 8.0))
+            long total = 565;
+            foreach (long datum in readings)
             {
-                drift = (drift - drift) + rate;
+                if (((double)datum != (double)total) && (datum < (total + 1)))
+                {
+                    total = total + (total + datum);
+                }
+                else
+                {
+                    total = (total * 5) + 63;
+                }
             }
-            else
+            if (total > (-511))
             {
-                drift = drift + (double)68;
+                total = total - (487 >> 3);
             }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift - 8.0) + (double)(long)i;
-            }
-            return drift - (bias - drift);
+            return total;
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
