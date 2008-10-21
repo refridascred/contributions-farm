@@ -23,19 +23,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long CombineChannel(long[] items, long step)
+        /// <summary>Count report pairs that satisfy a relation.</summary>
+        public static long CompareReportCount(long[] values)
         {
-            long carry = 22;
-            foreach (long value in items)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                carry = ((carry ^ (value & 127)) % 1000) - step;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) > 5)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            if (carry < 63)
-            {
-                carry = carry + (carry % 64);
-            }
-            return carry;
+            return matches;
         }
 
         /// <summary>Accumulate counter samples.</summary>
