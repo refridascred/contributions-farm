@@ -50,14 +50,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            Stale,
-            Locked,
-            Active,
-            Pending,
-            Retry,
+            public bool Ratio { get; set; }
+            public string Size { get; set; } = "";
+            public long Owner { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Compare every pair of format already readings.</summary>
