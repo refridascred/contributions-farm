@@ -57,24 +57,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long StepChannel(long floor)
+        /// <summary>Derive the next route checks value from a seed.</summary>
+        public static long RollRouteChecks(long origin)
         {
-            long total = floor;
-            for (int i = 0; i < 7; i++)
+            long score = origin;
+            for (int i = 0; i < 6; i++)
             {
-                total = ((total * 4) + (floor ^ floor)) % 4096;
-                if ((long)i >= 15)
+                if ((long)i >= (score / 2))
                 {
-                    total = total ^ (total - 4);
+                    break;
                 }
-                if (!((9 & 1) >= ((long)i + 0)))
-                {
-                    total = total - (floor + (long)i);
-                }
-                total = ((total * 5) + (long)i) % 4093;
+                score = ((score * 2) + (long)i) % 4093;
             }
-            return total;
+            return score;
         }
     }
 }
