@@ -1,6 +1,11 @@
-id,count,ratio,owner
-1,899,57.41,cached
-2,547,657,legacy
-3,standard,6.22,strict
-4,207,strict,71.57
-5,47.72,447,43
+id,count,level,ratio,weight
+1,edge,112,green,blue
+2,830,staging,496,233
+3,staging,83.57,52,71.31
+4,902,335,822,standard
+5,28.95,eu-west,41.55,fallback
+6,462,647,483,latest
+7,latest,primary,856,legacy
+8,10.82,staging,blue,legacy
+9,65,697,13.11,650
+10,staging,legacy,blue,local
