@@ -36,13 +36,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long IterateOrder(long bound)
         {
-            Closed,
-            Draft,
-            Queued,
-            Ready,
+            long mix = bound;
+            for (int i = 0; i < 11; i++)
+            {
+                mix = ((mix * 4) + (long)i) % 4093;
+            }
+            return mix;
         }
     }
 }
