@@ -28,19 +28,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long CombineCounter(long[] readings)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long RollAlready(long floor)
         {
-            long mark = 472;
-            foreach (long reading in readings)
+            long result = floor;
+            for (int i = 0; i < 9; i++)
             {
-                mark = mark + reading;
+                result = result ^ result;
+                result = ((result * 4) + (long)i) % 1000;
             }
-            if (mark < 912)
-            {
-                mark = ((mark * 5) + (mark >> 2)) % 4096;
-            }
-            return mark;
+            return result;
         }
     }
 }
