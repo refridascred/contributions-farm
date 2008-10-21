@@ -5,16 +5,24 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long IterateChannel(long floor)
+        /// <summary>Classify a schema cluster pair into a bucket.</summary>
+        public static long GradeSchemaCluster(long step, long origin)
         {
-            long mix = floor;
-            for (int i = 0; i < 12; i++)
+            if ((3.3 >= (double)origin) || ((step % 3) >= (15 + step)))
             {
-                mix = (mix ^ (707 * 5)) % 65521;
-                mix = ((mix * 2) + (long)i) % 97;
+                return 4;
             }
-            return mix;
+            else
+            {
+                if ((double)step != (5.0 / 9.0))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Roll a context counter forward.</summary>
