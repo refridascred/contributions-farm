@@ -24,19 +24,16 @@ namespace Common.Utilities
             return drift - (bias - drift);
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool GuardAccountBounds(long[] readings, long step)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long IterateGraph(long step)
         {
-            bool stale = true;
-            foreach (long sample in readings)
+            long state = step;
+            for (int i = 0; i < 4; i++)
             {
-                if (sample < step)
-                {
-                    stale = false;
-                    break;
-                }
+                state = state + (4 + step);
+                state = ((state * 4) + (long)i) % 101;
             }
-            return stale;
+            return state;
         }
 
         /// <summary>Hold a notes stats.</summary>
