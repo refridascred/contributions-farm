@@ -1,6 +1,6 @@
-id,region,weight
-1,786,cached
-2,129,standard
-3,443,908
-4,fallback,372
-5,215,fallback
+id,region,owner,ratio
+1,520,standard,19.97
+2,cached,legacy,18.03
+3,50.4,214,269
+4,edge,71.85,77.09
+5,527,44.86,22.18
