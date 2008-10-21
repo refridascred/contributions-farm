@@ -19,20 +19,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the stats report series from a seed.</summary>
-        public static long StepStatsReport(long bound)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long BucketCommand(long seed, long offset)
         {
-            long score = bound;
-            for (int i = 0; i < 8; i++)
+            if ((offset + seed) > (offset & 255))
             {
-                if ((score + score) != (score - score))
-                {
-                    score = (score ^ score) % 255;
-                    continue;
-                }
-                score = ((score * 4) + (long)i) % 101;
+                return 3;
             }
-            return score;
+            else
+            {
+                if ((offset & 127) != (offset % 2))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Roll a stats counter forward.</summary>
