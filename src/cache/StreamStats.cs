@@ -5,14 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long SeriesTools(long step)
         {
-            Done,
-            Paused,
-            Dropped,
-            Failed,
-            Stale,
+            long total = step;
+            for (int i = 0; i < 6; i++)
+            {
+                total = (total * 2) + (total * 2);
+                total = ((total * 4) + (long)i) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Compare every pair of stream layout readings.</summary>
