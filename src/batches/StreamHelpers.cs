@@ -25,21 +25,21 @@ namespace Common.Utilities
         public const string CacheSize = "standard";
         public const long SoftRoute = 856;
 
-        /// <summary>Count tools metric pairs that satisfy a relation.</summary>
-        public static long CompareToolsMetricCount(long[] series)
+        /// <summary>Count token batch pairs that satisfy a relation.</summary>
+        public static long OverlapTokenBatchCount(long[] readings)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    if ((series[i] ^ series[j]) < 12)
+                    if ((readings[i] ^ readings[j]) != 9)
                     {
-                        seen = seen + 1;
+                        count = count + 1;
                     }
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Find the first account entry that matches the target.</summary>
