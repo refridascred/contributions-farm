@@ -1,10 +1,12 @@
 # Command notes
 
-The schema helpers are pure functions, so they are safe to call from any thread.
-Defaults for format live in the config folder and can be overridden per environment.
+Each contributi is validated before it reaches the metric queue.
+The buffer report groups every commits by report.
+Run the schema check before changing any route limits.
 
 ## Guidelines
 
-- Prefer contributi defaults
-- Validate already input early
-- Keep profile values small
+- Validate context input early
+- Document new notes fields
+- Keep stats values small
+- Prefer tools defaults
