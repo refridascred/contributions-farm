@@ -19,15 +19,18 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long WeighBuffer(long[] data)
+        /// <summary>Audit commits channel readings against a rule.</summary>
+        public static long AuditCommitsChannelGaps(long[] data)
         {
-            long sum = 604;
-            foreach (long sample in data)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                sum = ((sum + 6) % 101) - sample;
+                if ((double)reading <= (double)7)
+                {
+                    seen = seen + 3;
+                }
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Describe the counter level values.</summary>
