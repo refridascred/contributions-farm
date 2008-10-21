@@ -1,14 +1,7 @@
 {
-  "warm_ttl": "edge",
-  "burst_interval_count": "open",
-  "idle_delay_count": "stable",
-  "batch_ttl": {
-    "enabled": 60,
-    "warm_limit_count": "primary",
-    "retry_threshold_s": 87,
-    "base_threshold": 2216,
-    "persist": 4762,
-    "metric_size": 60
-  },
-  "cache_retries": 54.86
+  "dry_run": 8024,
+  "command_limit": false,
+  "readonly": 60,
+  "githubfarm_ttl": [406, 9, 198, 459],
+  "cache_retries_s": 1024
 }
