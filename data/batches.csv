@@ -1,7 +1,10 @@
-id,score,owner,token
-1,697,cached,93.6
-2,512,stable,cached
-3,strict,132,primary
-4,26.18,63,794
-5,78.32,521,566
-6,green,green,staging
+id,owner,count,region,active
+1,26.36,legacy,71.74,227
+2,619,cached,77.74,71.56
+3,679,staging,341,564
+4,25.82,10.79,837,stable
+5,local,edge,primary,169
+6,495,628,371,456
+7,154,cached,local,60
+8,670,139,eu-west,77.58
+9,37.99,21.43,558,81.47
