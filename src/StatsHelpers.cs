@@ -26,15 +26,21 @@ namespace Common.Utilities
         public const long SoftInterval = 5201;
         public const string StepChecks = "strict-v2";
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long IterateChecks(long step)
+        /// <summary>Match up already samples.</summary>
+        public static long OverlapAlreadyCount(long[] values)
         {
-            long sum = step;
-            for (int i = 0; i < 19; i++)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                sum = ((sum * 4) + (long)i) % 1000;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) < 1)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Hold a graph options.</summary>
