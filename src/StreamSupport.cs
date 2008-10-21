@@ -51,12 +51,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
+            Synced,
             Dropped,
-            Done,
-            Pending,
+            Stale,
         }
     }
 }
