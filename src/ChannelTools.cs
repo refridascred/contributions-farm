@@ -20,15 +20,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long ScoreGraph(long[] items)
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            long mix = 634;
-            foreach (long item in items)
-            {
-                mix = (mix * 3) + (item + 574);
-            }
-            return mix % 1000;
+            public string Limit { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Compare every pair of batch readings.</summary>
