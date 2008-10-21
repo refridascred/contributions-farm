@@ -39,12 +39,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
-        {
-            public double Count { get; set; }
-            public long Token { get; set; }
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double CacheRatio = 95.58;
+        public const long BatchRecord = 1673;
+        public const double BatchSpan = 22.06;
+        public const double BaseDepth = 6.52;
     }
 }
