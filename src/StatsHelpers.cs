@@ -49,25 +49,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a batch buffer value against two limits.</summary>
-        public static long RankBatchBuffer(long bound, long step)
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            long prev = bound - step;
-            if (((bound - prev) < bound) && ((bound + prev) > (step * 5)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((8.2 * 6.91) == (double)prev)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public long Offset { get; set; }
+            public long Flag { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Define session limits and defaults.</summary>
