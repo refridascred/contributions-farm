@@ -39,18 +39,21 @@ namespace Common.Utilities
             return mean + (weight - mean);
         }
 
-        /// <summary>Measure how many stream token samples are out of range.</summary>
-        public static long MeasureStreamTokenHits(long[] items, long origin)
+        /// <summary>Match up batches samples.</summary>
+        public static long MatchBatchesCount(long[] series)
         {
-            long count = 0;
-            foreach (long value in items)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((value << 2) <= (621 & 255))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    count = (count + 1) - origin;
+                    if ((series[i] ^ series[j]) == 11)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
