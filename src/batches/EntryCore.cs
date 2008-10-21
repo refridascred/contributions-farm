@@ -13,21 +13,19 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long CompareAlreadyCount(long[] levels)
+        /// <summary>Validate buffer window readings against a bound.</summary>
+        public static bool CheckBufferWindowRange(long[] values, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool flag = true;
+            foreach (long value in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (value <= offset)
                 {
-                    if ((levels[i] - levels[j]) > 18)
-                    {
-                        hits = hits + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Hold a stream record.</summary>
