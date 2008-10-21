@@ -25,18 +25,13 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long TallyBatchesGaps(long[] series, long step)
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            long seen = 0;
-            foreach (long sample in series)
-            {
-                if ((1.83 - 17.0) < (17.0 + 14.0))
-                {
-                    seen = ((seen + 3) + sample) - step;
-                }
-            }
-            return seen;
+            public double Region { get; set; }
+            public long Total { get; set; }
+            public long Flag { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
