@@ -49,13 +49,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            Retry,
+            Done,
+            Ready,
+            Paused,
             Stale,
-            Active,
-            Closed,
+            Pending,
         }
     }
 }
