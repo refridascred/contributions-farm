@@ -19,12 +19,29 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double RetryBudget = 35.45;
-        public const string StepRatio = "cached";
-        public const long RetryGraph = 8634;
-        public const double IdleGraph = 84.97;
-        public const long BatchGraph = 9632;
+        /// <summary>Digest a series of command entries.</summary>
+        public static long ScoreCommand(long[] levels, long floor)
+        {
+            long anchor = 9;
+            foreach (long sample in levels)
+            {
+                long lane = anchor;
+                if ((floor % 64) > floor)
+                {
+                    long step = anchor + (lane << 2);
+                    lane = (lane + (anchor + step)) % 1000;
+                }
+                if (((sample + anchor) < (260 % 5)) && (sample < (anchor % 24)))
+                {
+                    anchor = (anchor << 2) ^ floor;
+                }
+            }
+            if (anchor < 9)
+            {
+                anchor = (anchor - anchor) % 1000;
+            }
+            return anchor;
+        }
 
         /// <summary>Audit cluster report readings against a rule.</summary>
         public static long MeasureClusterReportMatches(long[] levels, long step)
