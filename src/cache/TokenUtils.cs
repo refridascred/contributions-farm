@@ -20,17 +20,26 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long FindStreamIndex(long[] readings, long limit)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long WeighTools(long[] data, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long total = 749;
+            foreach (long item in data)
             {
-                if (readings[i] == limit)
+                if ((17.0 + 6.7) < (double)item)
                 {
-                    return (long)i;
+                    total = ((total * 5) + (9 >> 1)) - limit;
+                }
+                else
+                {
+                    total = ((total * 3) + total) % 65521;
                 }
             }
-            return -1;
+            if (total < 8)
+            {
+                total = (total + (total ^ total)) % 97;
+            }
+            return total % 4096;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
