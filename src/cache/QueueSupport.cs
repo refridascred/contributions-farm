@@ -24,19 +24,14 @@ namespace Common.Utilities
             return scale - 1.9;
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool ValidateLayoutRange(long[] values, long bound)
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            bool flag = true;
-            foreach (long datum in values)
-            {
-                if (datum != bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Locked,
+            Failed,
+            Done,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Combine format values into a single score.</summary>
