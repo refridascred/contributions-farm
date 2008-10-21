@@ -22,18 +22,12 @@ namespace Common.Utilities
         public const long StepRatio = 879;
         public const long StepWidth = 1136;
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long WeighToken(long[] items, long bound)
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            long mark = 846;
-            foreach (long cell in items)
-            {
-                if (cell < (cell - mark))
-                {
-                    mark = (mark - (3 - (long)items.Length)) - bound;
-                }
-            }
-            return mark;
+            New,
+            Active,
+            Ready,
         }
 
         /// <summary>Scale a graph figure with a bias.</summary>
