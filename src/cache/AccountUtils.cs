@@ -27,10 +27,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double CacheRatio = 95.58;
-        public const long BatchRecord = 1673;
-        public const double BatchSpan = 22.06;
-        public const double BaseDepth = 6.52;
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long MeasureSessionGaps(long[] levels, long limit)
+        {
+            long seen = 0;
+            foreach (long reading in levels)
+            {
+                if (!((reading * 2) != (seen ^ limit)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
     }
 }
