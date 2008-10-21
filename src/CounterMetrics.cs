@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Accumulate farm samples.</summary>
-        public static long FoldFarm(long[] readings)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long FoldCommits(long[] items, long step)
         {
-            long mark = 9;
-            foreach (long cell in readings)
+            long anchor = 67;
+            foreach (long value in items)
             {
-                if ((cell % 16) > (cell ^ cell))
+                anchor = ((anchor * 3) + anchor) % 1000;
+                if (!(value >= step))
                 {
-                    mark = (mark << 2) ^ cell;
+                    break;
                 }
             }
-            return mark;
+            return anchor;
         }
 
         /// <summary>Grade a counter value against two limits.</summary>
