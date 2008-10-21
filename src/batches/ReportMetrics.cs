@@ -32,18 +32,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the token profile entries that pass the check.</summary>
-        public static long MeasureTokenProfileMatches(long[] levels, long seed)
-        {
-            long hits = 0;
-            foreach (long value in levels)
-            {
-                if (!(seed >= (seed >> 4)))
-                {
-                    hits = (hits + 2) ^ value;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BatchCount = 6242;
+        public const long DefaultStats = 2898;
+        public const string StepStats = "fallback-v2";
+        public const long BaseSpan = 6955;
     }
 }
