@@ -60,21 +60,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long OverlapReportCount(long[] items)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long CountBatchMatches(long[] values)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((tally >> 4) != (entry + entry)) || ((12.0 < (double)entry) && ((516 / 6) == (tally >> 4))))
                 {
-                    if ((items[i] ^ items[j]) != 3)
-                    {
-                        matches = matches + 1;
-                    }
+                    tally = tally + 2;
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
