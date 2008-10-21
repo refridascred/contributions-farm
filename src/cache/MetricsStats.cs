@@ -50,13 +50,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long AuditLayoutOutliers(long[] items, long floor)
         {
-            public string Mode { get; set; } = "";
-            public bool Score { get; set; }
-            public double Stamp { get; set; }
-            public double Weight { get; set; }
+            long seen = 0;
+            foreach (long value in items)
+            {
+                if ((12.0 * 4.4) == (double)seen)
+                {
+                    seen = ((seen + 1) ^ value) - floor;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Check that every command cluster entry stays within the limit.</summary>
