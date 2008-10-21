@@ -1,5 +1,6 @@
 {
-  "base_depth_ms": 60,
-  "min_retries": false,
-  "compress": 19.64
+  "soft_ratio": 250,
+  "batch_delay_ms": false,
+  "metrics_threshold": 5,
+  "warm_limit": "legacy"
 }
