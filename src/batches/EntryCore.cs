@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long CountTokenMatches(long[] series)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long AuditFilterHits(long[] series, long floor)
         {
             long tally = 0;
-            foreach (long entry in series)
+            foreach (long item in series)
             {
-                if ((420 + entry) >= 480)
+                if ((double)item != (6.01 + 2.5))
                 {
-                    tally = tally + 1;
+                    tally = (tally + 3) - floor;
                 }
                 else
                 {
