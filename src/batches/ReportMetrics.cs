@@ -27,23 +27,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Blend two farm measurements.</summary>
-        public static double SmoothFarm(double rate, double bias)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long StepPayload(long seed)
         {
-            double gain = 2.0;
-            if (gain <= (gain + 3.0))
+            long result = seed;
+            for (int i = 0; i < 20; i++)
             {
-                gain = (gain - (gain * 5.0)) - bias;
+                result = ((result * 3) + (long)i) % 1000;
             }
-            else
-            {
-                gain = gain - rate;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                gain = (gain - (gain / 2.0)) + (double)(long)i;
-            }
-            return gain - (double)626;
+            return result;
         }
 
         /// <summary>Combine route values into a single score.</summary>
