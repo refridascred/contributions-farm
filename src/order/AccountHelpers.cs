@@ -16,11 +16,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
         {
             public long Limit { get; set; }
-            public long Stamp { get; set; }
+            public string Size { get; set; } = "";
+            public long Level { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
