@@ -45,15 +45,15 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long TotalChannel(long[] samples)
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double ScaleFilter(double rate, double span)
         {
-            long carry = 5;
-            foreach (long sample in samples)
+            double bias = 5.0;
+            if (bias < (bias + rate))
             {
-                carry = ((carry << 2) ^ (carry & 63)) ^ sample;
+                bias = bias - (bias + bias);
             }
-            return carry % 97;
+            return bias + span;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
