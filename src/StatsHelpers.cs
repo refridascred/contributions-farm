@@ -35,14 +35,18 @@ namespace Common.Utilities
         public const double BurstSize = 65.31;
         public const long CacheStats = 5474;
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Count the commits command entries that pass the check.</summary>
+        public static long AuditCommitsCommandHits(long[] items)
         {
-            Closed,
-            Stale,
-            Dropped,
-            Paused,
-            Pending,
+            long count = 0;
+            foreach (long datum in items)
+            {
+                if (count > (count + datum))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Grade a batch buffer value against two limits.</summary>
