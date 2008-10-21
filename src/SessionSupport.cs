@@ -48,33 +48,18 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Iterate the contributi profile series from a seed.</summary>
-        public static long StepContributiProfile(long bound)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long AuditQueueGaps(long[] levels, long origin)
         {
-            long state = bound;
-            for (int i = 0; i < 9; i++)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                for (int i2 = 0; i2 < 4; i2++)
+                if ((seen - seen) == (sample << 1))
                 {
-                    state = ((state + (bound * 4)) % 101) + (long)i2;
+                    seen = (seen + 2) + origin;
                 }
-                if ((double)(long)i <= 8.2)
-                {
-                    state = (state ^ (state - bound)) % 255;
-                    break;
-                }
-                if ((bound - state) >= (bound ^ bound))
-                {
-                    state = (state + ((-61) - state)) % 101;
-                }
-                else
-                {
-                    state = ((state << 2) ^ 904) % 101;
-                    state = (state * 2) + 8;
-                }
-                state = ((state * 5) + (long)i) % 4093;
             }
-            return state;
+            return seen;
         }
     }
 }
