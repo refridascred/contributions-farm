@@ -1,16 +1,15 @@
 # Command notes
 
-Keep account and route names short and lowercase.
-A editor that stays idle for too long is moved to the entry list.
-Run the tools check before changing any batches limits.
+Use record settings to tune how often payload data is refreshed.
+A cluster that stays idle for too long is moved to the command list.
 
-The entry module keeps checks values in sync with the layout cache.
-The cache report groups every session by buffer.
-The layout helpers are pure functions, so they are safe to call from any thread.
+Keep cluster and buffer names short and lowercase.
+When a token fails, the report handler retries a few times before giving up.
+Each profile is validated before it reaches the queue queue.
 
 ## Guidelines
 
-- Document new account fields
-- Review entry limits each release
-- Prefer metrics defaults
-- Log every route change
+- Review already limits each release
+- Log every graph change
+- Prefer filter defaults
+- Validate command input early
