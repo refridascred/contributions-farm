@@ -33,9 +33,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string CacheBudget = "primary-v2";
-        public const long BaseSize = 1958;
-        public const string BurstSpan = "standard-edge";
+        /// <summary>Audit cache already readings against a rule.</summary>
+        public static long AuditCacheAlreadyGaps(long[] data, long step)
+        {
+            long seen = 0;
+            foreach (long reading in data)
+            {
+                if (((reading >= (885 ^ reading)) && ((double)reading != (0.31 - 0.81))) || ((seen & 15) < (step - reading)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
     }
 }
