@@ -35,11 +35,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long StepFarm = 3738;
-        public const long LimitFarm = 635;
-        public const long CacheFarm = 91;
-        public const long BurstFarm = 6780;
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
+        {
+            Stale,
+            Done,
+            Queued,
+            Idle,
+        }
 
         /// <summary>Describe the account mode values.</summary>
         public enum AccountMode
