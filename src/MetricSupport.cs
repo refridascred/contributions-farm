@@ -16,21 +16,32 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long PairSchemaCount(long[] items)
+        /// <summary>Classify a commits format pair into a bucket.</summary>
+        public static long SortCommitsFormat(long target, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long edge = target - step;
+            if ((2.0 + 0.07) <= (double)step)
             {
-                for (int j = 0; j < items.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((edge * 2) != (target * 3))
                 {
-                    if ((items[i] ^ items[j]) < 2)
+                    return 6;
+                }
+                else
+                {
+                    if (step > (step / 8))
                     {
-                        hits = hits + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
