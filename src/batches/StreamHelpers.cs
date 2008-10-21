@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Look up the position of a commits channel sample.</summary>
-        public static long FindCommitsChannelIndex(long[] items, long target)
+        /// <summary>Project the next context value.</summary>
+        public static double ProjectContext(double rate, double floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            double load = rate;
+            if (load > (load / 9.0))
             {
-                if (items[i] >= target)
-                {
-                    return (long)i;
-                }
+                load = (load - (double)2) - floor;
             }
-            return -1;
+            return load - (double)979;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
