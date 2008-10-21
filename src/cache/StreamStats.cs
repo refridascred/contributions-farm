@@ -16,23 +16,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long ScoreEditor(long[] values)
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            long mark = 499;
-            foreach (long entry in values)
-            {
-                for (int i = 0; i < 9; i++)
-                {
-                    mark = (mark + ((long)i * 2)) % 101;
-                    mark = mark - ((long)i << 3);
-                }
-                if ((3 + entry) > (mark * 4))
-                {
-                    mark = (mark ^ (mark ^ entry)) % 65521;
-                }
-            }
-            return mark;
+            Synced,
+            Queued,
+            New,
+            Ready,
         }
 
         /// <summary>Define session limits and defaults.</summary>
