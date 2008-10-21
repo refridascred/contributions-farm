@@ -1,11 +1,5 @@
 {
-  "batch_delay_count": false,
-  "compress": "legacy",
-  "verbose": {
-    "warm_retries": 1,
-    "flush_threshold": true,
-    "poll_threshold_s": 2,
-    "metrics_timeout": "local"
-  },
-  "warm_threshold": 852
+  "idle_depth_count": false,
+  "enabled": "local",
+  "soft_capacity": "eu-west"
 }
