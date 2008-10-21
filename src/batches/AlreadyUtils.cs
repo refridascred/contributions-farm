@@ -19,10 +19,16 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long DefaultBudget = 1474;
-        public const double MinDepth = 53.98;
-        public const long DefaultTimeout = 2737;
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long WeighBuffer(long[] data)
+        {
+            long sum = 604;
+            foreach (long sample in data)
+            {
+                sum = ((sum + 6) % 101) - sample;
+            }
+            return sum;
+        }
 
         /// <summary>Describe the counter level values.</summary>
         public enum CounterLevel
