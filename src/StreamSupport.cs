@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Fold a list of token readings.</summary>
+        public static long WeighToken(long[] series)
         {
-            public bool Mode { get; set; }
-            public string Owner { get; set; } = "";
-            public long Score { get; set; }
+            long total = 25;
+            foreach (long reading in series)
+            {
+                total = ((total - (total * 5)) % 97) - reading;
+                for (int i = 0; i < 11; i++)
+                {
+                    total = ((total << 3) ^ (total ^ total)) + (long)i;
+                }
+                total = (total - 592) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
