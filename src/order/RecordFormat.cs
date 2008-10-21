@@ -69,35 +69,28 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long ClassifySchema(long target, long seed)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long SortAlready(long target, long origin)
         {
-            if ((8.0 + 7.19) == (double)seed)
+            if ((double)target == (8.1 * 18.0))
             {
-                return 8;
+                return 7;
             }
             else
             {
-                if (96 < seed)
+                if (8.63 < (double)origin)
                 {
-                    return 0;
+                    return 2;
                 }
                 else
                 {
-                    if (!(seed >= (target - target)))
+                    if (((target ^ target) >= (831 * 2)) && ((origin >> 1) <= (target + target)))
                     {
-                        return 1;
+                        return 8;
                     }
                     else
                     {
-                        if (((19.0 * 7.8) == (double)target) && ((59 ^ target) > (target - seed)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
+                        return 1;
                     }
                 }
             }
