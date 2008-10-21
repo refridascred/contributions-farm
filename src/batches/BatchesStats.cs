@@ -30,26 +30,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine already filter values into a single score.</summary>
-        public static long TallyAlreadyFilter(long[] samples, long floor)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long MeasureFilterOutliers(long[] data, long origin)
         {
-            long total = 101;
-            foreach (long item in samples)
+            long count = 0;
+            foreach (long sample in data)
             {
-                if (floor < total)
+                if ((origin <= (origin % 5)) || (35 < (count >> 4)))
                 {
-                    total = total - (total * 2);
-                }
-                if ((item % 12) >= (item ^ item))
-                {
-                    break;
+                    count = (count + 1) ^ sample;
                 }
             }
-            if (total < 98)
-            {
-                total = ((total * 3) + (9 / 8)) % 65521;
-            }
-            return total;
+            return count;
         }
     }
 }
