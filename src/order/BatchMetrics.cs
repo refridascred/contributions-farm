@@ -33,23 +33,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long TotalMetric(long[] items, long limit)
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            long total = 4;
-            foreach (long reading in items)
-            {
-                if ((reading >= (838 * 3)) && ((double)limit != (8.0 / 4.0)))
-                {
-                    total = ((total * 4) + (total / 5)) % 65521;
-                    break;
-                }
-                if ((12.0 >= (double)total) && ((290 + limit) <= (total << 1)))
-                {
-                    total = (total ^ ((-218) - reading)) % 97;
-                }
-            }
-            return total % 4096;
+            public string Score { get; set; } = "";
+            public long Token { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
