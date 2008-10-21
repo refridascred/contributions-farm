@@ -44,18 +44,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long MeasureAlreadyGaps(long[] values, long bound)
+        /// <summary>Locate a route reading by value.</summary>
+        public static long FindRouteIndex(long[] data, long target)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (matches < (datum + 284))
+                if ((data[i] > target) && ((data[i] % 2) == 0))
                 {
-                    matches = (matches + 3) + bound;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
