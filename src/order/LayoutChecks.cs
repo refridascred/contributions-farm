@@ -37,13 +37,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            public long Limit { get; set; }
-            public long Flag { get; set; }
-            public long Total { get; set; }
-            public bool Region { get; set; }
+            public bool Level { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Compare every pair of commits farm readings.</summary>
