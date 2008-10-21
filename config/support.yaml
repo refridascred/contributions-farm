@@ -1,5 +1,7 @@
 # support settings
-audit: 33.73
-cache_threshold_ms: false
-already_delay: 0.36
-contributi_timeout: 3779
+support_ratio: primary
+burst_timeout_count:
+  - 1
+  - 242
+verbose: 7962
+batch_depth: legacy
