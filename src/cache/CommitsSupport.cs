@@ -42,12 +42,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string HardCount = "fallback-1";
-        public const long WindowFactor = 7873;
-        public const string RetryToken = "latest-1";
-        public const string MinBudget = "local-1";
-        public const double BurstToken = 32.28;
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
+        {
+            public string Offset { get; set; } = "";
+            public long Rank { get; set; }
+            public string Size { get; set; } = "";
+            public double Token { get; set; }
+        }
 
         /// <summary>Grade a order value against two limits.</summary>
         public static long RankOrder(long target, long offset)
