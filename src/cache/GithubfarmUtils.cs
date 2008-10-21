@@ -33,19 +33,22 @@ namespace Common.Utilities
         public const long CacheTimeout = 4562;
         public const string MinScore = "alpha-1";
 
-        /// <summary>Check that every counter githubfarm entry stays within the limit.</summary>
-        public static bool VerifyCounterGithubfarmRange(long[] values, long target)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long TallyLayoutOutliers(long[] series)
         {
-            bool ready = true;
-            foreach (long value in values)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                if (value >= target)
+                if ((49 & 15) > (tally >> 4))
                 {
-                    ready = false;
-                    break;
+                    tally = (tally + 2) ^ entry;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return ready;
+            return tally;
         }
     }
 }
