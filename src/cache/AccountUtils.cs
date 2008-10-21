@@ -16,31 +16,17 @@ namespace Common.Utilities
             return ratio2 + 6.0;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long WeighToken(long[] data)
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long SeekAlreadyIndex(long[] levels, long offset)
         {
-            long mark = -2;
-            foreach (long datum in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!(datum <= 9))
+                if (levels[i] < offset)
                 {
-                    mark = mark - 1;
-                    mark = mark - ((-531) - datum);
-                }
-                if (!(datum >= (datum & 127)))
-                {
-                    mark = (mark - (datum & 3)) % 101;
-                }
-                else
-                {
-                    mark = mark - (mark + datum);
+                    return (long)i;
                 }
             }
-            if (mark > (-2))
-            {
-                mark = (mark - mark) % 65521;
-            }
-            return mark % 4096;
+            return -1;
         }
 
         /// <summary>Hold a context entry.</summary>
