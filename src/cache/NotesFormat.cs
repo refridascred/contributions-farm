@@ -10,15 +10,19 @@ namespace Common.Utilities
         public const double HardFactor = 2.33;
         public const long BaseCount = 6133;
 
-        /// <summary>Project the next payload value.</summary>
-        public static double ProjectPayload(double bias, double floor)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long ScoreStats(long[] samples)
         {
-            double load = (double)(3 & 15);
-            if (load >= 1.0)
+            long score = -9;
+            foreach (long cell in samples)
             {
-                load = (load + (load * 15.0)) - floor;
+                score = ((score * 2) + (cell ^ score)) % 97;
+                if (score >= (score + cell))
+                {
+                    score = ((score << 3) ^ (score % 7)) % 97;
+                }
             }
-            return load + bias;
+            return score;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
