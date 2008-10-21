@@ -43,21 +43,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long PairClusterCount(long[] values)
+        /// <summary>Audit support stream readings against a rule.</summary>
+        public static long TallySupportStreamGaps(long[] levels, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((((-985) ^ limit) < (141 >> 5)) && ((seen & 1) < (limit + limit)))
                 {
-                    if ((values[i] + values[j]) > 19)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = (seen + 2) - reading;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
