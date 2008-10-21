@@ -20,11 +20,19 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double BlendBuffer(double ratio, double offset)
         {
-            public long Rank { get; set; }
-            public string Limit { get; set; } = "";
+            double drift = ratio;
+            if (drift > (double)610)
+            {
+                drift = drift + (4.0 + ratio);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift - ratio) + (double)(long)i;
+            }
+            return drift + offset;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
