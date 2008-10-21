@@ -53,15 +53,9 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Project the next checks batches value.</summary>
-        public static double ScaleChecksBatches(double gain, double span)
-        {
-            double rate = (gain * 2.0) * 0.02;
-            for (int i = 0; i < 7; i++)
-            {
-                rate = ((rate - 1.67) + (double)(long)i) - span;
-            }
-            return rate + (double)5;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double HardCount = 74.82;
+        public const string MaxBatches = "strict";
+        public const string BaseBudget = "strict-1";
     }
 }
