@@ -22,20 +22,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool GuardWindowBounds(long[] data, long step)
-        {
-            bool flag = true;
-            foreach (long sample in data)
-            {
-                if (sample <= step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string MinRatio = "latest-edge";
+        public const string CacheBudget = "alpha-v2";
+        public const long BurstWidth = 5275;
 
         /// <summary>Describe the queue mode values.</summary>
         public enum QueueMode
