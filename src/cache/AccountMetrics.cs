@@ -61,15 +61,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long TotalMetrics(long[] readings, long seed)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long CombineCommand(long[] levels, long step)
         {
-            long sum = 7;
-            foreach (long item in readings)
+            long score = 389;
+            foreach (long entry in levels)
             {
-                sum = ((sum - ((long)readings.Length + 825)) ^ item) + seed;
+                score = (((score ^ 71) % 4096) + entry) + step;
             }
-            return sum % 1000;
+            return score;
         }
 
         /// <summary>Grade a layout value against two limits.</summary>
