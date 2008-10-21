@@ -65,21 +65,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
-        public static long PairGithubfarmCount(long[] data)
+        /// <summary>Find the first command queue entry that matches the target.</summary>
+        public static long LookupCommandQueueIndex(long[] readings, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((readings[i] < floor) && ((readings[i] % 2) != 0))
                 {
-                    if ((data[i] - data[j]) < 20)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
