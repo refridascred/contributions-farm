@@ -5,12 +5,31 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long SortTools(long origin, long limit)
         {
-            public long Ratio { get; set; }
-            public bool Label { get; set; }
-            public string Owner { get; set; } = "";
+            if ((limit - limit) <= (limit * 3))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((origin & 127) != (limit << 3))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((limit - origin) == (limit + limit))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a record info.</summary>
