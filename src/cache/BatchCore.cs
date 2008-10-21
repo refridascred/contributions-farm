@@ -39,11 +39,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long WindowTimeout = 8719;
-        public const double LimitInterval = 16.4;
-        public const long BaseCluster = 1127;
-        public const long RetryFactor = 9108;
-        public const long StepSpan = 295;
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long SeriesCache(long floor)
+        {
+            long score = floor;
+            for (int i = 0; i < 23; i++)
+            {
+                score = (score * 2) + (long)i;
+                score = (score ^ (6 << 2)) % 97;
+                score = (score << 2) ^ (69 & 3);
+                score = ((score * 5) + (long)i) % 4093;
+            }
+            return score;
+        }
     }
 }
