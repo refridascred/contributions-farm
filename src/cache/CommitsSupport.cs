@@ -72,11 +72,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string BaseSupport = "open";
-        public const long BatchSupport = 486;
-        public const long MaxSupport = 9031;
-        public const double SoftSupport = 51.15;
-        public const long IdleSupport = 3987;
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
+        {
+            Synced,
+            Done,
+            Pending,
+            Draft,
+            Idle,
+        }
     }
 }
