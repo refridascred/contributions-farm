@@ -57,18 +57,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long TallyBufferOutliers(long[] levels, long target)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            long seen = 0;
-            foreach (long sample in levels)
-            {
-                if ((sample - target) == (sample * 3))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Active,
+            Done,
+            Draft,
         }
     }
 }
