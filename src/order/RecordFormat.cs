@@ -13,24 +13,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long FoldCounter(long[] readings)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long CombineChannel(long[] samples)
         {
-            long score = 89;
-            foreach (long sample in readings)
+            long carry = 6;
+            foreach (long item in samples)
             {
-                score = (score << 3) ^ (score << 2);
-                score = (score << 2) ^ (sample + (-9));
-                if ((sample + score) >= (score ^ 56))
+                carry = (((carry << 2) ^ carry) % 1000) - item;
+                if ((double)carry > (7.8 * 2.9))
                 {
                     break;
                 }
             }
-            if (score > (-10))
-            {
-                score = (score << 2) ^ (score >> 4);
-            }
-            return score;
+            return carry % 1000;
         }
 
         /// <summary>Iterate the schema series from a seed.</summary>
