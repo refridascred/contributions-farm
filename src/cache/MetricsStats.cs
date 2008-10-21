@@ -49,18 +49,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long MeasureRecordOutliers(long[] data, long bound)
+        /// <summary>Match up report samples.</summary>
+        public static long CompareReportCount(long[] levels)
         {
-            long count = 0;
-            foreach (long sample in data)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((9.42 - 19.0) <= (double)sample))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    count = (count + 2) - bound;
+                    if ((levels[i] + levels[j]) == 13)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Accumulate already cluster samples.</summary>
