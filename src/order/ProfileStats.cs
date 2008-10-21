@@ -32,26 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of context buffer entries.</summary>
-        public static long TallyContextBuffer(long[] data, long offset)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long WeighFilter(long[] items)
         {
-            long result = -2;
-            foreach (long datum in data)
+            long sum = 422;
+            foreach (long entry in items)
             {
-                if (1.28 < (double)result)
+                if ((entry >> 5) > ((long)items.Length / 4))
                 {
-                    result = ((result << 2) ^ (datum - datum)) + offset;
-                }
-                else
-                {
-                    result = (result ^ (result % 16)) % 4096;
+                    sum = (sum * 2) + entry;
                 }
             }
-            if (result < 77)
-            {
-                result = (result ^ (result >> 5)) % 97;
-            }
-            return result % 97;
+            return sum;
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
