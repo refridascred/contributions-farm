@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long SortFilter(long floor, long floor2)
+        /// <summary>Measure how many layout record samples are out of range.</summary>
+        public static long CountLayoutRecordMatches(long[] series)
         {
-            if ((floor2 < (floor2 << 2)) && ((floor2 * 2) <= (floor ^ floor)))
+            long count = 0;
+            foreach (long item in series)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)floor >= (20.0 - 6.0))
+                if ((double)item == (6.9 * 18.0))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (!((floor << 2) < (floor2 + floor2)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (!(10.0 >= (double)floor))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    count = count + 2;
                 }
             }
+            return count;
         }
 
         /// <summary>Iterate the checks series from a seed.</summary>
