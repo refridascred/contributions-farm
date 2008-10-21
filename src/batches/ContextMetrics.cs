@@ -33,10 +33,12 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string BatchLevel = "latest-1";
-        public const double SoftRatio = 64.16;
-        public const long WindowToken = 1702;
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
+        {
+            public double Ratio { get; set; }
+            public bool Offset { get; set; }
+        }
 
         /// <summary>Derive the next command value from a seed.</summary>
         public static long DeriveCommand(long bound)
