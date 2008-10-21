@@ -1,9 +1,6 @@
-id,owner,state
-1,latest,strict
-2,96.13,50.94
-3,59.91,blue
-4,local,standard
-5,533,417
-6,cached,73.42
-7,17.13,341
-8,386,74.49
+id,count,level,owner,state
+1,open,fallback,357,969
+2,55.42,12.62,845,edge
+3,168,strict,local,eu-west
+4,294,596,open,local
+5,55.9,76.1,97.86,89.77
