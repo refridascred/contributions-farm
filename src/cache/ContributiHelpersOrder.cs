@@ -24,19 +24,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool GuardToolsRange(long[] data, long floor)
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            bool flag = true;
-            foreach (long datum in data)
-            {
-                if (datum < floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Pending,
+            Stale,
+            Idle,
+            Dropped,
         }
     }
 }
