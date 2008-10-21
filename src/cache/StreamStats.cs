@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long TallyTokenGaps(long[] values, long step)
         {
-            public long Offset { get; set; }
-            public long Rank { get; set; }
+            long count = 0;
+            foreach (long reading in values)
+            {
+                if ((count - reading) < count)
+                {
+                    count = (count + 1) - step;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Compare every pair of stream layout readings.</summary>
