@@ -1,14 +1,11 @@
 # Command notes
 
-Run the route check before changing any support limits.
-Each metric is validated before it reaches the already queue.
-
-Keep order and editor names short and lowercase.
-The order module keeps report values in sync with the queue cache.
-Keep window and counter names short and lowercase.
+Each metric is validated before it reaches the order queue.
+The notes report groups every notes by cache.
+When a buffer fails, the already handler retries a few times before giving up.
 
 ## Guidelines
 
-- Validate stream input early
-- Review route limits each release
-- Keep context values small
+- Validate order input early
+- Review cluster limits each release
+- Prefer record defaults
