@@ -87,13 +87,12 @@ namespace Common.Utilities
         public const long WindowOrder = 9422;
         public const long StepInterval = 7798;
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            Ready,
-            Idle,
-            Draft,
-            Dropped,
+            public long Flag { get; set; }
+            public double Ratio { get; set; }
+            public long Score { get; set; }
         }
     }
 }
