@@ -42,19 +42,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool ValidateBatchesLimits(long[] readings, long target)
+        /// <summary>Derive the next commits cache value from a seed.</summary>
+        public static long SeriesCommitsCache(long limit)
         {
-            bool valid = true;
-            foreach (long cell in readings)
+            long score = limit;
+            for (int i = 0; i < 17; i++)
             {
-                if (cell >= target)
+                if ((double)score >= (1.0 - 9.0))
                 {
-                    valid = false;
-                    break;
+                    score = score - (limit >> 4);
                 }
+                else
+                {
+                    score = (score ^ 998) % 1000;
+                }
+                score = ((score * 4) + (long)i) % 101;
             }
-            return valid;
+            return score;
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
