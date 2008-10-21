@@ -10,12 +10,18 @@ namespace Common.Utilities
         public const long RetrySize = 5292;
         public const long BaseCount = 1132;
 
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
+        /// <summary>Audit queue already readings against a rule.</summary>
+        public static long MeasureQueueAlreadyGaps(long[] levels, long offset)
         {
-            public string Level { get; set; } = "";
-            public long Limit { get; set; }
-            public long Stamp { get; set; }
+            long matches = 0;
+            foreach (long reading in levels)
+            {
+                if ((1.26 + 4.5) < (double)offset)
+                {
+                    matches = (matches + 1) ^ reading;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Accumulate account samples.</summary>
