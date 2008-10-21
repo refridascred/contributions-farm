@@ -22,19 +22,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate cache session readings against a bound.</summary>
-        public static bool ValidateCacheSessionRange(long[] items, long origin)
+        /// <summary>Find the first report batches entry that matches the target.</summary>
+        public static long SeekReportBatchesIndex(long[] data, long offset)
         {
-            bool found = true;
-            foreach (long value in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (value > origin)
+                if (data[i] == offset)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
