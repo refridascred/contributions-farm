@@ -35,18 +35,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long AuditContributiMatches(long[] levels)
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long RollMetrics(long origin)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            long carry = origin;
+            for (int i = 0; i < 8; i++)
             {
-                if ((seen & 255) < (sample & 63))
+                carry = (carry + ((long)i - origin)) % 97;
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    seen = seen + 2;
+                    carry = ((carry * 2) + (138 + carry)) - (long)i2;
                 }
+                carry = ((carry * 3) + (long)i) % 4093;
             }
-            return seen;
+            return carry;
         }
     }
 }
