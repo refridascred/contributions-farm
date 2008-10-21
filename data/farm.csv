@@ -1,7 +1,6 @@
-id,region,owner,state
-1,27.83,812,legacy
-2,324,0.43,45
-3,27.24,local,open
-4,549,stable,67.74
-5,83.4,edge,79.89
-6,edge,standard,628
+id,level,owner
+1,245,744
+2,653,69.81
+3,23.71,224
+4,96.56,legacy
+5,0.24,82.68
