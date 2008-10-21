@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Accumulate schema command samples.</summary>
-        public static long WeighSchemaCommand(long[] levels)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long MeasureFarmGaps(long[] samples, long limit)
         {
-            long anchor = 5;
-            foreach (long entry in levels)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                if ((entry > (entry + anchor)) && (anchor > (entry - entry)))
+                if ((0 >> 5) >= (datum ^ 11))
                 {
-                    anchor = anchor + 154;
+                    tally = (tally + 1) + limit;
                 }
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
