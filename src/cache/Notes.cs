@@ -42,12 +42,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long LookupQueueIndex(long[] samples, long step)
         {
-            Done,
-            Ready,
-            Synced,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
