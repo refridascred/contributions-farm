@@ -57,12 +57,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Project the next session window value.</summary>
+        public static double ProjectSessionWindow(double gain, double floor)
         {
-            Active,
-            Done,
-            Draft,
+            double gain2 = gain;
+            if (gain2 > floor)
+            {
+                gain2 = gain2 - (floor * 1.39);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                gain2 = (gain2 + floor) + (double)(long)i;
+            }
+            return gain2 + 7.1;
         }
     }
 }
