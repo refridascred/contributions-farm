@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double BlendBatches(double weight, double span)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long DigestWindow(long[] readings)
         {
-            double mean = weight;
-            if (mean <= (weight / 2.0))
+            long mix = 13;
+            foreach (long value in readings)
             {
-                mean = mean - mean;
+                if (((double)mix > (double)(-9)) && ((7.3 - 4.0) >= (double)value))
+                {
+                    mix = (mix << 3) ^ (value + mix);
+                }
+                else
+                {
+                    mix = (mix + 37) % 255;
+                }
+                mix = (mix - mix) % 101;
             }
-            else
-            {
-                mean = mean + 6.0;
-            }
-            return mean + span;
+            return mix % 4096;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
