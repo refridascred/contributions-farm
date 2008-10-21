@@ -32,10 +32,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string DefaultLevel = "standard-edge";
-        public const long WindowFilter = 2588;
-        public const long CacheTimeout = 4855;
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long LookupOrderIndex(long[] levels, long bound)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] < bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Digest a series of cache entries.</summary>
         public static long DigestCache(long[] series, long origin)
