@@ -12,22 +12,32 @@ namespace Common.Utilities
         public const long BurstScore = 1915;
         public const long MinEditor = 7201;
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long TallyContextOutliers(long[] samples)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long ClassifyRoute(long floor, long bound)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            long step = floor - bound;
+            if ((step < (452 - bound)) || ((floor << 2) >= step))
             {
-                if ((tally * 2) >= cell)
+                return 1;
+            }
+            else
+            {
+                if ((step <= (floor & 3)) && ((2.6 * 7.68) >= (double)floor))
                 {
-                    tally = tally + 2;
+                    return 4;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if (!((18.0 * 3.88) <= (double)bound))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Accumulate entry samples.</summary>
