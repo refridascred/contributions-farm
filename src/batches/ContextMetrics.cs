@@ -40,13 +40,11 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            public double Score { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Owner { get; set; }
-            public string Count { get; set; } = "";
+            public double Stamp { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Hold a entry stats.</summary>
