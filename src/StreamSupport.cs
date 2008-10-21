@@ -37,9 +37,18 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double StepReport = 31.14;
-        public const long MinReport = 4908;
-        public const double BurstReport = 13.24;
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long CountClusterOutliers(long[] items, long origin)
+        {
+            long hits = 0;
+            foreach (long reading in items)
+            {
+                if (!((50 >> 3) > ((long)items.Length & 15)))
+                {
+                    hits = ((hits + 1) + reading) + origin;
+                }
+            }
+            return hits;
+        }
     }
 }
