@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool VerifyAlreadyLimits(long[] levels, long origin)
-        {
-            bool found = true;
-            foreach (long entry in levels)
-            {
-                if (entry != origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double BatchBudget = 28.76;
+        public const long BatchSize = 5872;
+        public const long IdleTimeout = 3055;
+        public const double DefaultContributi = 56.85;
 
         /// <summary>Hold a report stats.</summary>
         public sealed class ReportStats
