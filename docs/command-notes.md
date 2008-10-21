@@ -1,11 +1,11 @@
 # Command notes
 
-Run the support check before changing any batch limits.
-The report module keeps already values in sync with the cluster cache.
+Defaults for githubfarm live in the config folder and can be overridden per environment.
+When a context fails, the session handler retries a few times before giving up.
 
 ## Guidelines
 
-- Document new batches fields
-- Keep report values small
-- Validate batches input early
-- Log every format change
+- Document new commits fields
+- Review already limits each release
+- Validate tools input early
+- Keep route values small
