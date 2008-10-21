@@ -29,14 +29,38 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long ClassifyChecks(long step, long origin)
         {
-            Done,
-            Paused,
-            New,
-            Draft,
-            Queued,
+            if ((step + origin) >= (step << 2))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((step >> 5) != (step / 3))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (!(9.3 >= (double)step))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((double)step >= (8.34 - 6.65))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a batches record.</summary>
