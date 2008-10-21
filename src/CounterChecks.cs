@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool GuardFilterLimits(long[] series, long floor)
+        /// <summary>Check that every command metric entry stays within the limit.</summary>
+        public static bool VerifyCommandMetricBounds(long[] samples, long bound)
         {
-            bool ready = true;
-            foreach (long datum in series)
+            bool valid = true;
+            foreach (long value in samples)
             {
-                if (datum >= floor)
+                if (value != bound)
                 {
-                    ready = false;
+                    valid = false;
                     break;
                 }
             }
-            return ready;
+            return valid;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
