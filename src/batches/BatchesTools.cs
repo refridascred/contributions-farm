@@ -38,18 +38,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long CountBufferMatches(long[] data, long bound)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool ValidateLayoutLimits(long[] values, long step)
         {
-            long count = 0;
-            foreach (long value in data)
+            bool flag = true;
+            foreach (long cell in values)
             {
-                if (((5.8 - 8.7) != (double)value) && ((value >> 5) == (count + value)))
+                if (cell >= step)
                 {
-                    count = (count + 3) - bound;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
     }
 }
