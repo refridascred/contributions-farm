@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Audit filter context readings against a rule.</summary>
-        public static long MeasureFilterContextOutliers(long[] values, long target)
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            long matches = 0;
-            foreach (long datum in values)
-            {
-                if ((double)matches <= (double)target)
-                {
-                    matches = (matches + 1) - datum;
-                }
-            }
-            return matches;
+            New,
+            Draft,
+            Stale,
         }
 
         /// <summary>Classify a command pair into a bucket.</summary>
