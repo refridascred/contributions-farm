@@ -38,12 +38,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool GuardSessionBounds(long[] readings, long target)
         {
-            Paused,
-            Idle,
-            Retry,
+            bool valid = true;
+            foreach (long item in readings)
+            {
+                if (item <= target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
