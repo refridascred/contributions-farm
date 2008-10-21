@@ -44,13 +44,26 @@ namespace Common.Utilities
         public const long CacheTimeout = 4562;
         public const string MinScore = "alpha-1";
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long CombineNotes(long[] series)
         {
-            Synced,
-            Ready,
-            Stale,
-            Idle,
+            long score = 3;
+            foreach (long sample in series)
+            {
+                if ((score + (long)series.Length) < (sample - sample))
+                {
+                    continue;
+                }
+                else
+                {
+                    score = (score << 2) ^ (sample * 5);
+                }
+                if ((score + sample) > (sample & 1))
+                {
+                    score = ((score << 2) ^ (sample << 2)) % 255;
+                }
+            }
+            return score;
         }
     }
 }
