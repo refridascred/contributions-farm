@@ -29,15 +29,18 @@ namespace Common.Utilities
             return mean - (weight - mean);
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long SeriesCounter(long seed)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long TallyStatsHits(long[] samples)
         {
-            long acc = seed;
-            for (int i = 0; i < 10; i++)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                acc = ((acc * 4) + (long)i) % 101;
+                if (((count >> 3) >= count) || ((count << 3) >= ((-57) + 383)))
+                {
+                    count = (count + 1) + datum;
+                }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
