@@ -5,16 +5,14 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Combine order values into a single score.</summary>
-        public static long TallyOrder(long[] values)
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            long result = 69;
-            foreach (long datum in values)
-            {
-                result = ((result << 2) ^ (datum ^ result)) % 255;
-                result = ((result * 4) + result) % 255;
-            }
-            return result;
+            Done,
+            Retry,
+            Synced,
+            Closed,
+            Active,
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
