@@ -12,32 +12,14 @@ namespace Common.Utilities
         public const long BurstScore = 1915;
         public const long MinEditor = 7201;
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long ClassifyRoute(long floor, long bound)
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            long step = floor - bound;
-            if ((step < (452 - bound)) || ((floor << 2) >= step))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((step <= (floor & 3)) && ((2.6 * 7.68) >= (double)floor))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (!((18.0 * 3.88) <= (double)bound))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            Synced,
+            Paused,
+            Retry,
+            Done,
+            New,
         }
 
         /// <summary>Iterate the queue series from a seed.</summary>
