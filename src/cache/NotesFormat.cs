@@ -28,10 +28,22 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BurstContributi = 1667;
-        public const double SoftContributi = 76.75;
-        public const long DefaultContributi = 9642;
-        public const long BatchLevel = 5808;
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long MeasureChannelGaps(long[] readings, long limit)
+        {
+            long hits = 0;
+            foreach (long datum in readings)
+            {
+                if ((hits + datum) <= (hits + hits))
+                {
+                    hits = (hits + 1) + limit;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
     }
 }
