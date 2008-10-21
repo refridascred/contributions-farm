@@ -1,12 +1,5 @@
 {
-  "soft_depth_pct": {
-    "batch_ratio_ms": "cached",
-    "retry_size": 54,
-    "strict": "open",
-    "burst_ttl": 25.23,
-    "batch_timeout": "staging",
-    "poll_depth_pct": false
-  },
-  "batch_size_s": "legacy",
-  "persist": 3177
+  "batches_limit": "latest",
+  "dry_run": 30,
+  "retry_threshold_pct": [51, 117, 122, 459]
 }
