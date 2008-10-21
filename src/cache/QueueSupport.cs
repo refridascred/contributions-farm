@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long RankChecks(long seed, long bound)
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long FindChannelIndex(long[] series, long seed)
         {
-            if ((double)bound >= (4.68 / 7.0))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (seed >= (bound ^ bound))
+                if ((series[i] < seed) && ((series[i] % 5) == 0))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 5;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the channel state values.</summary>
