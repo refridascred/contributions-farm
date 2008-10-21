@@ -5,32 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long SortOrder(long step, long origin)
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long SeekProfileIndex(long[] values, long target)
         {
-            long diff = step ^ origin;
-            if ((1 + step) > (66 * 2))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (((origin / 9) <= (step / 6)) || ((1.0 * 4.25) >= (double)origin))
+                if ((values[i] <= target) && ((values[i] % 3) == 0))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((diff * 2) != (step - step)) && ((379 >> 2) != (diff % 97)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
