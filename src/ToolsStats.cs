@@ -37,19 +37,38 @@ namespace Common.Utilities
             return ratio2 - (double)58;
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool VerifyTokenRange(long[] levels, long offset)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long BucketFarm(long floor, long seed)
         {
-            bool flag = true;
-            foreach (long entry in levels)
+            if ((floor + floor) != (floor ^ 1))
             {
-                if (entry <= offset)
+                return 1;
+            }
+            else
+            {
+                if (!((double)floor == (3.4 - 3.15)))
                 {
-                    flag = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if ((2.6 - 0.87) != (double)floor)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((6 << 3) > seed) || (floor > (floor ^ seed)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Look up the position of a route entry sample.</summary>
