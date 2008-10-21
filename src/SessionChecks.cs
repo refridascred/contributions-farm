@@ -36,20 +36,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long IterateToken(long origin)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long CombineOrder(long[] values, long seed)
         {
-            long mark = origin;
-            for (int i = 0; i < 22; i++)
+            long total = 9;
+            foreach (long item in values)
             {
-                if (13.0 > (double)origin)
+                if ((total + total) >= total)
                 {
-                    mark = (mark + (origin << 2)) % 255;
+                    total = (((total - (total - 37)) % 1000) + item) + seed;
                 }
-                mark = mark ^ (origin - origin);
-                mark = ((mark * 2) + (long)i) % 101;
             }
-            return mark;
+            if (total < (-693))
+            {
+                total = (total << 2) ^ (total - total);
+            }
+            return total % 4096;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
