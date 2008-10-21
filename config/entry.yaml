@@ -1,41 +1,6 @@
 # entry settings
-readonly: false
-batch_threshold:
-  flush_capacity: blue
-  audit: local
-  hard_size: 50.8
-  farm_ratio:
-    cache_size: primary
-    token_delay: 95
-    window_limit: 500
-    commits_threshold: false
-    sync_ttl:
-      - open
-      - strict
-      - standard
-    batches_threshold: edge
-  commits_ratio:
-    warm_ratio: true
-    flush_limit_count: 8433
-    default_size: edge
-    retry_ttl_pct:
-      - green
-      - open
-      - edge
-      - stable
-    max_threshold_s:
-      - 161
-      - 417
-    layout_delay: 9783
-  persist: false
-persist:
-  channel_ttl: 100
-  enabled:
-    - eu-west
-    - primary
-    - blue
-  min_timeout: green
-  warm_depth_ms: 100
-  order_retries: 73.0
-  cache_ratio: 94.06
-sync_interval_count: 89.16
+record_size:
+  - 244
+  - 111
+batch_timeout_ms: primary
+persist: true
