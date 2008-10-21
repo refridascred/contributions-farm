@@ -33,23 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long IterateStats(long limit)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long StepContext(long seed)
         {
-            long sum = limit;
-            for (int i = 0; i < 20; i++)
+            long carry = seed;
+            for (int i = 0; i < 8; i++)
             {
-                if ((0.2 * 4.0) < (double)sum)
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    continue;
+                    carry = (carry + ((-753) - 435)) ^ (long)i2;
                 }
-                if (!!(9.68 > (double)sum))
-                {
-                    sum = (sum * 5) + limit;
-                }
-                sum = ((sum * 5) + (long)i) % 1000;
+                carry = ((carry * 3) + (long)i) % 101;
             }
-            return sum;
+            return carry;
         }
     }
 }
