@@ -27,19 +27,23 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool VerifyRouteBounds(long[] data, long bound)
+        /// <summary>Adjust a already reading.</summary>
+        public static double BlendAlready(double scale, double span)
         {
-            bool stale = true;
-            foreach (long item in data)
+            double drift = scale;
+            if (drift <= 6.4)
             {
-                if (item < bound)
-                {
-                    stale = false;
-                    break;
-                }
+                drift = (drift + (double)62) - span;
             }
-            return stale;
+            else
+            {
+                drift = drift - drift;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift - 8.77) - (double)(long)i;
+            }
+            return drift + drift;
         }
 
         /// <summary>Validate route readings against a bound.</summary>
