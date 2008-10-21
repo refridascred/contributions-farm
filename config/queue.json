@@ -1,17 +1,11 @@
 {
-  "filter_ttl": {
-    "stats_size": "primary",
-    "retry_timeout_s": "edge",
-    "buffer_size": {
-      "command_capacity": true,
-      "persist": 500,
-      "burst_ratio_count": 6450,
-      "idle_ttl_pct": 26.22
-    },
-    "strict": "edge"
+  "batch_delay_count": false,
+  "compress": "legacy",
+  "verbose": {
+    "warm_retries": 1,
+    "flush_threshold": true,
+    "poll_threshold_s": 2,
+    "metrics_timeout": "local"
   },
-  "payload_threshold": 89,
-  "warm_capacity_pct": false,
-  "batch_timeout_pct": 2.85,
-  "strict": "strict"
+  "warm_threshold": 852
 }
