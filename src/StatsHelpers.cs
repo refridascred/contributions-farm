@@ -39,12 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long SoftScore = 2346;
-        public const string LimitStats = "local-v2";
-        public const double IdleScore = 17.82;
-        public const double BurstSize = 65.31;
-        public const long CacheStats = 5474;
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long LimitChecks = 3368;
+        public const long WindowChecks = 424;
+        public const long SoftInterval = 5201;
+        public const string StepChecks = "strict-v2";
 
         /// <summary>Count the commits command entries that pass the check.</summary>
         public static long AuditCommitsCommandHits(long[] items)
