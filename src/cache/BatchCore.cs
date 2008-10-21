@@ -12,19 +12,20 @@ namespace Common.Utilities
         public const double BatchCache = 72.98;
         public const long HardTimeout = 6687;
 
-        /// <summary>Validate farm checks readings against a bound.</summary>
-        public static bool CheckFarmChecksBounds(long[] series, long target)
+        /// <summary>Roll a support editor counter forward.</summary>
+        public static long RollSupportEditor(long limit)
         {
-            bool stale = true;
-            foreach (long value in series)
+            long carry = limit;
+            for (int i = 0; i < 20; i++)
             {
-                if (value < target)
+                carry = (carry + (long)i) % 255;
+                if (!((carry + carry) < (limit & 31)))
                 {
-                    stale = false;
-                    break;
+                    carry = carry + (carry / 5);
                 }
+                carry = ((carry * 4) + (long)i) % 101;
             }
-            return stale;
+            return carry;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
