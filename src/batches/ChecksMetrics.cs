@@ -67,18 +67,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long AuditSessionGaps(long[] data)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long DeriveBuffer(long bound)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            long state = bound;
+            for (int i = 0; i < 10; i++)
             {
-                if ((entry * 4) < entry)
-                {
-                    matches = matches + 3;
-                }
+                state = ((state * 5) + (long)i) % 4093;
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Describe the checks level values.</summary>
