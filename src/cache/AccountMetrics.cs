@@ -15,21 +15,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Match up cache samples.</summary>
-        public static long PairCacheCount(long[] samples)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long DigestContributi(long[] readings)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long sum = 566;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 9)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                sum = (((sum * 2) + (sum / 4)) % 255) - datum;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Derive the next commits cache value from a seed.</summary>
