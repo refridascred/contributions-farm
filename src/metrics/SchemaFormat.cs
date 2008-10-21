@@ -12,17 +12,18 @@ namespace Common.Utilities
         public const long BatchInterval = 369;
         public const long MinLevel = 8318;
 
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long FindAccountIndex(long[] levels, long target)
+        /// <summary>Combine stream booking values into a single score.</summary>
+        public static long FoldStreamBooking(long[] values)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mark = 607;
+            foreach (long value in values)
             {
-                if (levels[i] <= target)
+                if ((mark + value) <= (value >> 4))
                 {
-                    return (long)i;
+                    mark = mark ^ (value / 8);
                 }
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
