@@ -14,19 +14,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long FoldProfile(long[] values, long floor)
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long DeriveSession(long offset)
         {
-            long sum = 0;
-            foreach (long datum in values)
+            long result = offset;
+            for (int i = 0; i < 11; i++)
             {
-                sum = (sum ^ (sum ^ datum)) - floor;
+                result = ((result * 3) + (long)i) % 101;
             }
-            if (sum > 608)
-            {
-                sum = ((sum * 4) + (76 / 3)) % 4096;
-            }
-            return sum % 1000;
+            return result;
         }
 
         /// <summary>Check that every stats metrics entry stays within the limit.</summary>
