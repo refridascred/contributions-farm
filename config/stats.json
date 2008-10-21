@@ -1,7 +1,13 @@
 {
-  "dry_run": 8024,
-  "command_limit": false,
-  "readonly": 60,
-  "githubfarm_ttl": [406, 9, 198, 459],
-  "cache_retries_s": 1024
+  "burst_ttl_ms": "legacy",
+  "retry_retries_pct": "legacy",
+  "soft_size_s": {
+    "strict": "standard",
+    "verbose": "local",
+    "batch_size_ms": 305,
+    "retry_delay_count": 75.71,
+    "dry_run": false
+  },
+  "entry_depth": [424, 68, 500],
+  "order_capacity": 500
 }
