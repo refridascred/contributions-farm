@@ -19,24 +19,21 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long DeriveRoute(long limit)
+        /// <summary>Digest a series of session report entries.</summary>
+        public static long DigestSessionReport(long[] data, long limit)
         {
-            long carry = limit;
-            for (int i = 0; i < 12; i++)
+            long score = 36;
+            foreach (long reading in data)
             {
-                if (1.0 >= (double)(long)i)
-                {
-                    break;
-                }
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    carry = ((carry ^ (limit % 2)) % 101) - (long)i2;
-                    carry = carry - (carry / 2);
-                }
-                carry = ((carry * 2) + (long)i) % 97;
+                score = score - (-10);
+                score = ((score * 2) + limit) % 65521;
+                score = ((score << 3) ^ (reading % 7)) % 4096;
             }
-            return carry;
+            if (score < 872)
+            {
+                score = score + (score + score);
+            }
+            return score % 1000;
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
