@@ -22,18 +22,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first report batches entry that matches the target.</summary>
-        public static long SeekReportBatchesIndex(long[] data, long offset)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long LimitProfile = 781;
+        public const long MaxTimeout = 6020;
+        public const long DefaultProfile = 7341;
+        public const long BurstProfile = 5853;
 
         /// <summary>Count the notes entries that pass the check.</summary>
         public static long TallyNotesOutliers(long[] items, long target)
