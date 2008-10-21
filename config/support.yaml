@@ -1,8 +1,18 @@
 # support settings
-soft_threshold_ms:
-  audit: 3195
-  cache_ratio_ms: cached
-  retry_ttl_s: 250
-channel_retries: 500
-enabled: 9750
-cache_limit: 45
+channel_ratio: standard
+sync_delay:
+  sync_timeout_count: local
+  max_timeout_count: 60
+  support_ttl: 100
+  verbose: 79.7
+  audit: true
+  soft_threshold: 26.78
+retry_window_ms:
+  - open
+  - legacy
+enabled:
+  - blue
+  - primary
+  - cached
+persist: fallback
+cache_interval: legacy
