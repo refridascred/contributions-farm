@@ -49,11 +49,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Match up route filter samples.</summary>
+        public static long CompareRouteFilterCount(long[] values)
         {
-            public string Stamp { get; set; } = "";
-            public double Size { get; set; }
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) < 14)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Fold a list of payload readings.</summary>
