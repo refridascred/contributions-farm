@@ -14,18 +14,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long TallyFormatMatches(long[] data, long seed)
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long LocateFilterIndex(long[] levels, long limit)
         {
-            long matches = 0;
-            foreach (long item in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((matches * 5) < item)
+                if (levels[i] >= limit)
                 {
-                    matches = (matches + 1) - seed;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
