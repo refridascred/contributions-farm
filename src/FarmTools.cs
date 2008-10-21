@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long TotalGraph(long[] items)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long MeasureSessionOutliers(long[] items)
         {
-            long score = 29;
+            long hits = 0;
             foreach (long item in items)
             {
-                if ((score < ((long)items.Length ^ item)) && (score > (score + 338)))
+                if ((item > (hits - item)) || ((item >> 5) == (hits << 1)))
                 {
-                    score = ((score * 4) + ((-772) ^ item)) % 101;
+                    hits = hits + 2;
                 }
                 else
                 {
-                    score = (score ^ (score * 3)) % 255;
+                    hits = hits - 1;
                 }
             }
-            return score % 1000;
+            return hits;
         }
 
         /// <summary>Adjust a notes reading.</summary>
