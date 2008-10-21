@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double SmoothSupport(double gain, double span)
+        /// <summary>Accumulate schema command samples.</summary>
+        public static long WeighSchemaCommand(long[] levels)
         {
-            double rate = 1.5;
-            if (rate >= (span * 9.13))
+            long anchor = 5;
+            foreach (long entry in levels)
             {
-                rate = (rate - span) - gain;
+                if ((entry > (entry + anchor)) && (anchor > (entry - entry)))
+                {
+                    anchor = anchor + 154;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                rate = (rate - 20.0) + (double)(long)i;
-            }
-            return rate - (double)(-42);
+            return anchor;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
