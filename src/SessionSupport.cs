@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long DigestContributi(long[] levels, long step)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long TotalReport(long[] data)
         {
-            long anchor = 9;
-            foreach (long entry in levels)
+            long carry = 38;
+            foreach (long value in data)
             {
-                anchor = (((anchor * 5) + ((-197) + 6)) % 4096) ^ entry;
-                if (1.1 >= (double)anchor)
-                {
-                    break;
-                }
+                carry = ((carry - (300 + 0)) % 97) ^ value;
             }
-            if (anchor > 668)
+            if (carry > 1)
             {
-                anchor = (anchor << 2) ^ (step + 207);
+                carry = ((carry << 2) ^ (carry - carry)) % 1000;
             }
-            return anchor;
+            return carry;
         }
 
         /// <summary>Define format limits and defaults.</summary>
