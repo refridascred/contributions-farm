@@ -1,19 +1,5 @@
 # entry settings
-stream_size:
-  - 16
-  - 489
-  - 129
-  - 4
-batch_threshold_ms: 16
-base_ratio: stable
-profile_limit: 1158
-dry_run:
-  soft_size_count: strict
-  retry_delay_s: true
-  schema_limit: 2301
-  report_capacity: staging
-  idle_window_s:
-    - latest
-    - open
-    - open
-    - latest
+flush_ratio_count: staging
+editor_interval: 7871
+warm_retries_count: local
+soft_window_s: standard
