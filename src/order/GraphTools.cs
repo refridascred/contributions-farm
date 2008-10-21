@@ -29,14 +29,17 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long FindOrderIndex(long[] data, long offset)
         {
-            Closed,
-            Draft,
-            Synced,
-            Idle,
-            Done,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
