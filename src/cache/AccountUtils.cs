@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long FindQueueIndex(long[] items, long offset)
         {
-            Locked,
-            Pending,
-            Stale,
-            Failed,
-            Paused,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] >= offset) && ((items[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the filter level values.</summary>
