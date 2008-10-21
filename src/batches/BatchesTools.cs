@@ -5,20 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Combine cluster checks values into a single score.</summary>
-        public static long FoldClusterChecks(long[] items, long offset)
+        /// <summary>Look up the position of a editor token sample.</summary>
+        public static long LookupEditorTokenIndex(long[] values, long floor)
         {
-            long total = 9;
-            foreach (long cell in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (total <= (total % 12))
+                if ((values[i] <= floor) && ((values[i] % 2) == 0))
                 {
-                    total = ((total - total) % 4096) + cell;
-                    total = total ^ total;
+                    return (long)i;
                 }
-                total = total + (offset - offset);
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Hold a entry header.</summary>
