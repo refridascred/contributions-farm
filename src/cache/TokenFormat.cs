@@ -12,11 +12,19 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double CacheEntry = 24.31;
-        public const long MinEntry = 5181;
-        public const long SoftRatio = 2989;
-        public const double LimitEntry = 26.82;
+        /// <summary>Fold a list of buffer format readings.</summary>
+        public static long DigestBufferFormat(long[] data)
+        {
+            long carry = 42;
+            foreach (long datum in data)
+            {
+                if (!(datum > (4 + carry)))
+                {
+                    carry = carry - (datum + 118);
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Roll a batches counter forward.</summary>
         public static long StepBatches(long seed)
