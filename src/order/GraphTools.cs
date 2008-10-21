@@ -22,25 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long SortQueue(long seed, long seed2)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool GuardReportBounds(long[] series, long seed)
         {
-            long slot = seed ^ seed2;
-            if (seed2 >= seed)
+            bool ok = true;
+            foreach (long value in series)
             {
-                return 4;
-            }
-            else
-            {
-                if ((slot >> 5) > (slot - seed))
+                if (value >= seed)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 6;
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Describe the githubfarm status values.</summary>
