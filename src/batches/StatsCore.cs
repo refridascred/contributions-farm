@@ -69,11 +69,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long LookupOrderIndex(long[] samples, long limit)
         {
-            public long Offset { get; set; }
-            public double Rank { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] <= limit) && ((samples[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Rank checks input into a small class.</summary>
