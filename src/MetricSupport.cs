@@ -25,14 +25,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Audit account contributi readings against a rule.</summary>
+        public static long TallyAccountContributiOutliers(long[] data, long bound)
         {
-            Retry,
-            Closed,
-            Queued,
-            Dropped,
-            Ready,
+            long tally = 0;
+            foreach (long reading in data)
+            {
+                if ((tally & 255) > bound)
+                {
+                    tally = (tally + 1) - reading;
+                }
+            }
+            return tally;
         }
     }
 }
