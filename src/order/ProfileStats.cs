@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long AuditEntryOutliers(long[] levels, long floor)
+        /// <summary>Count schema pairs that satisfy a relation.</summary>
+        public static long PairSchemaCount(long[] readings)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)matches >= (double)(long)levels.Length)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    matches = ((matches + 1) + value) - floor;
+                    if ((readings[i] ^ readings[j]) == 19)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Define support limits and defaults.</summary>
