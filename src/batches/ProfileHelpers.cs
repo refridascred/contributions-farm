@@ -13,16 +13,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long StepStats(long target)
+        /// <summary>Blend two schema measurements.</summary>
+        public static double BlendSchema(double bias, double offset)
         {
-            long carry = target;
-            for (int i = 0; i < 5; i++)
+            double weight = offset;
+            if (weight > (offset * 2.5))
             {
-                carry = (carry * 3) + (target ^ 622);
-                carry = ((carry * 3) + (long)i) % 101;
+                weight = weight - offset;
             }
-            return carry;
+            return weight + (17.0 + bias);
         }
 
         /// <summary>Define batches limits and defaults.</summary>
