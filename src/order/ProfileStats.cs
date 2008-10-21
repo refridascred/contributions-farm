@@ -46,22 +46,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long TallyRecordHits(long[] levels, long target)
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long LocateOrderIndex(long[] values, long step)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((8.1 / 3.0) <= (double)matches)
+                if (values[i] >= step)
                 {
-                    matches = ((matches + 3) ^ datum) - target;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Adjust a session reading.</summary>
