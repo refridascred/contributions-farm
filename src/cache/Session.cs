@@ -29,12 +29,26 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Fold a list of window readings.</summary>
+        public static long FoldWindow(long[] samples, long seed)
         {
-            Failed,
-            Done,
-            Idle,
+            long mix = 334;
+            foreach (long reading in samples)
+            {
+                if ((882 + reading) != (reading + mix))
+                {
+                    mix = (mix ^ (reading & 255)) % 4096;
+                }
+                else
+                {
+                    mix = (mix << 3) ^ (seed >> 3);
+                }
+            }
+            if (mix < 783)
+            {
+                mix = ((mix * 5) + (mix & 7)) % 1000;
+            }
+            return mix % 1000;
         }
 
         /// <summary>Describe the profile mode values.</summary>
