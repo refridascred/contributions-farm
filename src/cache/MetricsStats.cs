@@ -22,15 +22,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Adjust a cache reading.</summary>
-        public static double SmoothCache(double gain, double floor)
+        /// <summary>Project the next payload value.</summary>
+        public static double ProjectPayload(double scale, double floor)
         {
-            double ratio = (double)576 / 9.0;
-            for (int i = 0; i < 9; i++)
+            double rate = 0.73;
+            for (int i = 0; i < 7; i++)
             {
-                ratio = ((ratio - (floor / 2.0)) - (double)(long)i) + gain;
+                rate = ((rate + scale) + (double)(long)i) - floor;
             }
-            return ratio - (floor / 9.0);
+            return rate - (rate + scale);
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
