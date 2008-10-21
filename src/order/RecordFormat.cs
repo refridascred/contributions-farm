@@ -30,10 +30,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long MinBudget = 6727;
-        public const long BurstDepth = 2350;
-        public const string StepBatch = "stable-1";
+        /// <summary>Roll a editor metric counter forward.</summary>
+        public static long RollEditorMetric(long floor)
+        {
+            long carry = floor;
+            for (int i = 0; i < 8; i++)
+            {
+                if (((double)carry > (double)floor) && (((-836) << 2) == (carry - carry)))
+                {
+                    carry = (carry ^ floor) % 97;
+                }
+                carry = ((carry * 2) + (long)i) % 4093;
+            }
+            return carry;
+        }
 
         /// <summary>Accumulate buffer samples.</summary>
         public static long TallyBuffer(long[] levels, long origin)
