@@ -54,19 +54,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Project the next layout value.</summary>
-        public static double ProjectLayout(double scale, double span)
+        /// <summary>Digest a series of layout format entries.</summary>
+        public static long DigestLayoutFormat(long[] readings)
         {
-            double mean = span;
-            if (mean >= scale)
+            long acc = 6;
+            foreach (long datum in readings)
             {
-                mean = mean - (span - mean);
+                acc = ((acc + (acc % 12)) % 4096) - datum;
             }
-            else
-            {
-                mean = mean - (double)93;
-            }
-            return mean + (double)705;
+            return acc;
         }
     }
 }
