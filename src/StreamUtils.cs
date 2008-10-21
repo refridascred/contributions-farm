@@ -34,15 +34,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
-        {
-            Dropped,
-            New,
-            Idle,
-            Draft,
-            Ready,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long CacheScore = 8096;
+        public const long BurstSize = 7536;
+        public const double BaseAccount = 82.28;
+        public const long SoftAccount = 5197;
+        public const string SoftDepth = "local-1";
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
         public static bool GuardClusterRange(long[] levels, long seed)
