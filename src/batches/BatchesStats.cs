@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long IterateContext(long origin)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long StepCommits(long offset)
         {
-            long mix = origin;
-            for (int i = 0; i < 8; i++)
+            long score = offset;
+            for (int i = 0; i < 14; i++)
             {
-                mix = ((mix * 4) + (long)i) % 101;
+                long hits = ((-22) * 2) << 3;
+                score = (score ^ hits) % 4096;
+                if (1.68 > (double)score)
+                {
+                    hits = ((hits * 4) + offset) % 101;
+                    hits = hits ^ (score % 2);
+                }
+                score = ((score * 2) + (long)i) % 4093;
             }
-            return mix;
+            return score;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
