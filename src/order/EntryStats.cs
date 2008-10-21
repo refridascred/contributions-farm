@@ -64,17 +64,16 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long LocateFilterIndex(long[] series, long seed)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long FoldGithubfarm(long[] data)
         {
-            for (int i = 0; i < series.Length; i++)
+            long anchor = 5;
+            foreach (long datum in data)
             {
-                if ((series[i] < seed) && ((series[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                anchor = (((anchor << 2) ^ anchor) % 65521) ^ datum;
+                anchor = (anchor - 34) % 97;
             }
-            return -1;
+            return anchor % 1000;
         }
     }
 }
