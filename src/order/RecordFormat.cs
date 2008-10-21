@@ -57,22 +57,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of githubfarm buffer entries.</summary>
-        public static long FoldGithubfarmBuffer(long[] items)
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            long acc = 66;
-            foreach (long cell in items)
-            {
-                if ((cell < (cell ^ 440)) && ((cell / 3) >= acc))
-                {
-                    acc = ((acc * 5) + (acc + acc)) % 101;
-                }
-            }
-            if (acc > 896)
-            {
-                acc = (acc * 4) + (acc + (long)items.Length);
-            }
-            return acc % 4096;
+            public string Owner { get; set; } = "";
+            public bool Rank { get; set; }
+            public long Level { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Compare every pair of cache readings.</summary>
