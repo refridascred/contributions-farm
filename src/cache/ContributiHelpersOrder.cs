@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Roll a commits farm counter forward.</summary>
+        public static long IterateCommitsFarm(long bound)
         {
-            public double Flag { get; set; }
-            public long Offset { get; set; }
+            long mix = bound;
+            for (int i = 0; i < 6; i++)
+            {
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    mix = (mix ^ (mix + bound)) ^ (long)i2;
+                }
+                mix = ((mix * 3) + (long)i) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Iterate the context series from a seed.</summary>
