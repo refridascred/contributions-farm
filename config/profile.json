@@ -1,6 +1,11 @@
 {
-  "batch_ttl_s": ["stable", "fallback"],
-  "profile_size": 38.16,
-  "window_ratio": "green",
-  "min_size_count": "strict"
+  "cache_threshold_pct": "open",
+  "poll_threshold": {
+    "enabled": true,
+    "readonly": 250,
+    "audit": true
+  },
+  "strict": 93.25,
+  "sync_depth": "latest",
+  "min_size_count": 30
 }
