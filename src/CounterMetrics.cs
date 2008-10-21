@@ -18,11 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MinSpan = 9184;
-        public const long LimitRatio = 7027;
-        public const long CacheGithubfarm = 9800;
-        public const long SoftWidth = 4694;
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long IterateCommits(long target)
+        {
+            long acc = target;
+            for (int i = 0; i < 22; i++)
+            {
+                acc = ((acc * 2) + (long)i) % 97;
+            }
+            return acc;
+        }
 
         /// <summary>Classify a farm pair into a bucket.</summary>
         public static long BucketFarm(long seed, long offset)
