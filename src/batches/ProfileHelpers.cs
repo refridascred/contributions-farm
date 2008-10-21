@@ -97,19 +97,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool ValidateFilterBounds(long[] values, long limit)
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            bool ok = true;
-            foreach (long datum in values)
-            {
-                if (datum > limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Queued,
+            Draft,
+            Locked,
         }
     }
 }
