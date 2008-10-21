@@ -36,22 +36,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long PairProfileCount(long[] levels)
-        {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) == 4)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MinScore = 556;
+        public const long BatchRatio = 9651;
+        public const long MinGithubfarm = 4600;
+        public const long LimitSize = 2479;
+        public const string IdleGithubfarm = "alpha-1";
 
         /// <summary>Digest a series of payload entries.</summary>
         public static long ScorePayload(long[] readings, long origin)
