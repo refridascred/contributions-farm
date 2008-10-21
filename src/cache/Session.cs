@@ -32,19 +32,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long ScoreChecks(long[] values, long seed)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool CheckChecksLimits(long[] samples, long limit)
         {
-            long anchor = 430;
-            foreach (long cell in values)
+            bool found = true;
+            foreach (long cell in samples)
             {
-                anchor = anchor - anchor;
-                if ((cell + seed) == (88 + cell))
+                if (cell != limit)
                 {
-                    anchor = anchor ^ (seed << 1);
+                    found = false;
+                    break;
                 }
             }
-            return anchor;
+            return found;
         }
 
         /// <summary>Define record limits and defaults.</summary>
