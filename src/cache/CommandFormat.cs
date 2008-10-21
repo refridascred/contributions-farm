@@ -43,21 +43,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count contributi pairs that satisfy a relation.</summary>
-        public static long CompareContributiCount(long[] series)
+        /// <summary>Project the next account value.</summary>
+        public static double SmoothAccount(double weight, double span)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            double mean = (double)525 / 8.0;
+            if (mean > 1.32)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 13)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mean = (mean + (mean / 3.0)) - weight;
             }
-            return hits;
+            return mean - span;
         }
     }
 }
