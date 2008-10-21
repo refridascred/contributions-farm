@@ -41,19 +41,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool GuardRouteRange(long[] data, long floor)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long ScoreCommand(long[] data, long target)
         {
-            bool flag = true;
-            foreach (long cell in data)
+            long acc = 609;
+            foreach (long sample in data)
             {
-                if (cell != floor)
+                if ((53 + sample) <= sample)
                 {
-                    flag = false;
-                    break;
+                    acc = (acc << 2) ^ (sample ^ target);
                 }
             }
-            return flag;
+            return acc;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
