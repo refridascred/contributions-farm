@@ -71,13 +71,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Compare every pair of layout route readings.</summary>
+        public static long MatchLayoutRouteCount(long[] readings)
         {
-            public long Region { get; set; }
-            public bool Owner { get; set; }
-            public bool Token { get; set; }
-            public double Flag { get; set; }
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) == 8)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
