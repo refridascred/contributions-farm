@@ -1,11 +1,6 @@
-id,region,rank
-1,350,300
-2,0.04,664
-3,814,69.63
-4,887,46.07
-5,901,857
-6,standard,51.06
-7,local,29.64
-8,standard,838
-9,219,open
-10,latest,blue
+id,score,state,active
+1,12.06,eu-west,37.13
+2,974,16.43,cached
+3,16.95,258,385
+4,899,455,812
+5,open,35.57,78.37
