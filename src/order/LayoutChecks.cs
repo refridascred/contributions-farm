@@ -10,13 +10,21 @@ namespace Common.Utilities
         public const long IdleAccount = 5157;
         public const long HardAccount = 6751;
 
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Count contributi command pairs that satisfy a relation.</summary>
+        public static long OverlapContributiCommandCount(long[] data)
         {
-            public double Score { get; set; }
-            public long Label { get; set; }
-            public long Stamp { get; set; }
-            public string Ratio { get; set; } = "";
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) != 6)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Define report limits and defaults.</summary>
