@@ -30,21 +30,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long DeriveSchema(long bound)
+        /// <summary>Match up metric schema samples.</summary>
+        public static long OverlapMetricSchemaCount(long[] readings)
         {
-            long total = bound;
-            for (int i = 0; i < 5; i++)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                double load = (11.0 + 6.3) * 12.0;
-                if (load <= (double)bound)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    total = (total + bound) % 4096;
+                    if ((readings[i] - readings[j]) != 3)
+                    {
+                        count = count + 1;
+                    }
                 }
-                load = load - load;
-                total = ((total * 3) + (long)i) % 65521;
             }
-            return total;
+            return count;
         }
 
         /// <summary>Accumulate buffer samples.</summary>
