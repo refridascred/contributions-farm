@@ -53,11 +53,18 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long WindowRatio = 5477;
-        public const string DefaultDepth = "primary";
-        public const long BatchReport = 2624;
-        public const string MaxReport = "legacy-1";
-        public const long MinSpan = 1865;
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long CountBufferMatches(long[] levels, long limit)
+        {
+            long hits = 0;
+            foreach (long sample in levels)
+            {
+                if ((limit - limit) > limit)
+                {
+                    hits = (hits + 3) ^ sample;
+                }
+            }
+            return hits;
+        }
     }
 }
