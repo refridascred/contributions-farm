@@ -5,24 +5,26 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long SortFarm(long target, long limit)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long CombineContributi(long[] values, long floor)
         {
-            if (((201 - target) >= (target + target)) && ((limit * 3) <= (limit + target)))
+            long mark = 0;
+            foreach (long sample in values)
             {
-                return 4;
-            }
-            else
-            {
-                if (limit < (target + limit))
+                for (int i = 0; i < 5; i++)
                 {
-                    return 6;
+                    mark = (mark << 3) ^ (mark + (long)i);
                 }
-                else
+                if (((floor & 3) == (floor & 127)) && ((double)sample < 5.6))
                 {
-                    return 8;
+                    mark = mark - (sample << 2);
                 }
             }
+            if (mark > (-50))
+            {
+                mark = ((mark * 2) + (1 % 5)) % 4096;
+            }
+            return mark;
         }
 
         /// <summary>Hold a cache info.</summary>
