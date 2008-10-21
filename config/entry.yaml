@@ -1,7 +1,12 @@
 # entry settings
-idle_timeout: open
-persist: primary
-notes_ratio: strict
-burst_interval: 100
-entry_limit: 9538
-hard_ttl_s: 82.98
+idle_threshold_count: fallback
+base_depth_pct: 500
+default_ttl_ms: true
+default_limit:
+  hard_retries: 4500
+  layout_retries: 5151
+  audit: 65.76
+  max_timeout_ms: local
+  base_window_pct: 8190
+checks_ttl: 48.77
+enabled: fallback
