@@ -1,16 +1,55 @@
 # githubfarm settings
-cache_size_count:
-  format_capacity: 85.43
-  layout_capacity: eu-west
-  burst_capacity_pct: 11
-  report_capacity: 14.29
-  batch_limit: false
-token_ratio: stable
-min_size:
-  verbose:
-    - 244
-    - 403
-    - 122
-  metric_retries: 5292
-  cache_delay_pct: true
-  notes_retries: 1024
+record_interval: true
+counter_ttl:
+  strict: true
+  cache_ttl_pct: 58.64
+  idle_ratio_pct:
+    default_window_ms: 60
+    enabled: false
+    context_capacity:
+      - primary
+      - latest
+      - primary
+    retry_depth:
+      - standard
+      - strict
+      - local
+      - legacy
+    compress: 87.81
+  audit: eu-west
+  max_delay_pct:
+    verbose: true
+    flush_ratio:
+      - 350
+      - 444
+      - 231
+      - 74
+    enabled: 100
+  dry_run: 60
+warm_interval_s:
+  burst_timeout:
+    - 46
+    - 239
+    - 250
+  hard_retries: 60
+  strict:
+    hard_limit: 4504
+    sync_limit_ms:
+      - fallback
+      - blue
+    batch_interval_s: 85
+    poll_window_count: 7627
+    strict:
+      - blue
+      - stable
+      - green
+  persist: 250
+min_ratio_ms:
+  - green
+  - fallback
+  - edge
+  - staging
+readonly:
+  - 32
+  - 294
+  - 116
