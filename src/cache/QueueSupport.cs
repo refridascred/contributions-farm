@@ -33,14 +33,38 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long ClassifyBuffer(long offset, long floor)
         {
-            Active,
-            New,
-            Done,
-            Ready,
-            Stale,
+            if ((floor <= 148) && ((7.3 / 9.0) > (9.2 * 9.43)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((4.5 - 7.22) <= (double)offset)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((double)(-4) < (4.73 - 16.0)) && ((floor >> 3) > (72 % 3)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((93 << 2) == (floor * 2)) || ((floor << 1) < floor))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
     }
 }
