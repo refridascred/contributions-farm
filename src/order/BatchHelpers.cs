@@ -20,38 +20,12 @@ namespace Common.Utilities
             return ratio2 + (12.0 * 7.2);
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long ClassifyEntry(long origin, long origin2)
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            if ((49 + 517) > (origin + 6))
-            {
-                return 5;
-            }
-            else
-            {
-                if (((origin + origin2) < (origin2 + origin)) || ((5 / 9) == (origin2 / 3)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (!((origin & 3) <= (origin - 1)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((origin - origin) <= (origin + origin2))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            public bool Mode { get; set; }
+            public string Token { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Grade a stats context value against two limits.</summary>
