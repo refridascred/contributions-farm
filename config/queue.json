@@ -1,11 +1,6 @@
 {
-  "min_limit_count": {
-    "soft_ratio_s": 87.71,
-    "min_ttl_pct": true,
-    "tools_retries": [170, 218, 252, 27],
-    "batch_ttl": true
-  },
-  "soft_delay_pct": "standard",
-  "tools_limit": false,
-  "idle_limit": true
+  "base_size": false,
+  "schema_delay": "blue",
+  "max_ratio_s": "blue",
+  "verbose": "local"
 }
