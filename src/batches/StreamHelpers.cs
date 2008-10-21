@@ -28,31 +28,21 @@ namespace Common.Utilities
         public const string CacheSize = "standard";
         public const long SoftRoute = 856;
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long GradeContext(long step, long limit)
+        /// <summary>Count schema pairs that satisfy a relation.</summary>
+        public static long CompareSchemaCount(long[] data)
         {
-            if (!((step - 84) > limit))
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (limit < (67 / 3))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)step <= (double)limit)
+                    if ((data[i] - data[j]) == 14)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
