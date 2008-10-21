@@ -49,24 +49,18 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Grade a cache queue value against two limits.</summary>
-        public static long ClassifyCacheQueue(long seed, long origin)
+        /// <summary>Audit cache counter readings against a rule.</summary>
+        public static long CountCacheCounterHits(long[] series)
         {
-            if ((19.0 + 7.0) < (double)seed)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)seed > 4.88)
+                if ((hits / 6) == (datum + hits))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
+                    hits = hits + 1;
                 }
             }
+            return hits;
         }
     }
 }
