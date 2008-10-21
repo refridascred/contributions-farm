@@ -38,18 +38,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long LocateStatsIndex(long[] levels, long step)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] > step) && ((levels[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BurstScore = 4066;
+        public const long WindowSize = 5942;
+        public const double IdleEditor = 95.98;
 
         /// <summary>Find the first account entry that matches the target.</summary>
         public static long LookupAccountIndex(long[] levels, long limit)
