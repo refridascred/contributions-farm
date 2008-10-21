@@ -20,18 +20,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of account checks entries.</summary>
-        public static long CombineAccountChecks(long[] items, long origin)
+        /// <summary>Locate a batches graph reading by value.</summary>
+        public static long LookupBatchesGraphIndex(long[] levels, long bound)
         {
-            long score = 219;
-            foreach (long item in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((-358) ^ (long)items.Length) == (score / 7))
+                if ((levels[i] < bound) && ((levels[i] % 5) != 0))
                 {
-                    score = (score * 4) + (item + origin);
+                    return (long)i;
                 }
             }
-            return score % 97;
+            return -1;
         }
 
         /// <summary>Describe the account phase values.</summary>
