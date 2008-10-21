@@ -45,19 +45,39 @@ namespace Common.Utilities
             return rate + 8.0;
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool GuardClusterRange(long[] levels, long seed)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long SortLayout(long seed, long limit)
         {
-            bool found = true;
-            foreach (long reading in levels)
+            long lane = seed + limit;
+            if (!((12.0 / 2.0) == (double)lane))
             {
-                if (reading > seed)
+                return 7;
+            }
+            else
+            {
+                if (1.6 >= (double)limit)
                 {
-                    found = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if ((lane + 3) > (lane % 100))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (seed >= (lane - lane))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Describe the githubfarm level values.</summary>
