@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Find the first tools githubfarm entry that matches the target.</summary>
-        public static long LookupToolsGithubfarmIndex(long[] values, long limit)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long MinRoute = 4120;
+        public const long HardRoute = 2974;
+        public const string WindowFactor = "legacy-v2";
+        public const long StepRoute = 836;
+        public const string CacheRoute = "staging";
 
         /// <summary>Look up the position of a order tools sample.</summary>
         public static long LookupOrderToolsIndex(long[] readings, long seed)
