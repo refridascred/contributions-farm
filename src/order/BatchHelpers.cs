@@ -17,19 +17,38 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool ValidateGithubfarmBounds(long[] readings, long origin)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long ClassifyEntry(long origin, long origin2)
         {
-            bool stale = true;
-            foreach (long sample in readings)
+            if ((49 + 517) > (origin + 6))
             {
-                if (sample <= origin)
+                return 5;
+            }
+            else
+            {
+                if (((origin + origin2) < (origin2 + origin)) || ((5 / 9) == (origin2 / 3)))
                 {
-                    stale = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if (!((origin & 3) <= (origin - 1)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((origin - origin) <= (origin + origin2))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Roll a window counter forward.</summary>
