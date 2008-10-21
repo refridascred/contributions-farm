@@ -28,22 +28,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long TallyLayout(long[] values, long seed)
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            long sum = 181;
-            foreach (long entry in values)
-            {
-                if ((entry << 2) >= (entry + seed))
-                {
-                    sum = sum ^ (67 - entry);
-                }
-                else
-                {
-                    sum = sum ^ seed;
-                }
-            }
-            return sum;
+            public double Mode { get; set; }
+            public long Rank { get; set; }
+            public long Flag { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Combine editor values into a single score.</summary>
