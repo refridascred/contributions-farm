@@ -54,22 +54,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long MeasureContextHits(long[] levels, long offset)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long SortFilter(long floor, long origin)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            long diff = floor - origin;
+            if ((7.78 / 9.0) != (double)diff)
             {
-                if ((sample >> 5) > (hits - hits))
+                return 1;
+            }
+            else
+            {
+                if (((double)diff >= (10.0 / 2.0)) || ((floor & 255) < floor))
                 {
-                    hits = (hits + 2) + offset;
+                    return 8;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if ((diff ^ origin) > (origin & 127))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((diff >= (69 % 97)) || ((8.04 * 10.0) <= (double)diff))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Hold a batches record.</summary>
