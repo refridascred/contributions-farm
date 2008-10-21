@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool VerifyLayoutRange(long[] readings, long target)
-        {
-            bool ready = true;
-            foreach (long reading in readings)
-            {
-                if (reading >= target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string StepSchema = "latest-1";
+        public const double WindowCount = 85.61;
+        public const long SoftSchema = 5715;
 
         /// <summary>Describe the queue kind values.</summary>
         public enum QueueKind
