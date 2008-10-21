@@ -32,26 +32,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine queue counter values into a single score.</summary>
-        public static long DigestQueueCounter(long[] readings, long bound)
-        {
-            long anchor = 908;
-            foreach (long sample in readings)
-            {
-                if (192 < (bound >> 3))
-                {
-                    anchor = (anchor ^ (bound + 8)) % 1000;
-                }
-                if (((sample / 8) > (bound & 7)) || (((-878) + bound) > (anchor - anchor)))
-                {
-                    anchor = (anchor - (bound - 8)) % 65521;
-                }
-            }
-            if (anchor < (-4))
-            {
-                anchor = (anchor << 2) ^ (bound + bound);
-            }
-            return anchor;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MaxNotes = 2245;
+        public const long IdleWidth = 5758;
+        public const double HardInterval = 84.62;
+        public const long BatchBudget = 8794;
     }
 }
