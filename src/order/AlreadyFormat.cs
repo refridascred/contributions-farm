@@ -20,13 +20,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Adjust a payload reading.</summary>
+        public static double ProjectPayload(double weight, double span)
         {
-            Stale,
-            Locked,
-            Dropped,
-            Closed,
+            double load = span;
+            if (load < (double)62)
+            {
+                load = load + weight;
+            }
+            return load - 9.3;
         }
 
         /// <summary>Combine command values into a single score.</summary>
