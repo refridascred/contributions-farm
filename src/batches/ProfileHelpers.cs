@@ -65,22 +65,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the contributi support entries that pass the check.</summary>
-        public static long MeasureContributiSupportHits(long[] levels, long bound)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool CheckCommandRange(long[] values, long target)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            bool ok = true;
+            foreach (long datum in values)
             {
-                if ((8.1 - 4.5) > (double)bound)
+                if (datum != target)
                 {
-                    tally = (tally + 1) - sample;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
     }
 }
