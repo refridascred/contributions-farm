@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long CacheRatio = 9370;
-        public const long MaxSize = 2119;
-        public const long MaxBatch = 7141;
-        public const long DefaultBatch = 5742;
-        public const long BurstLevel = 7282;
+        /// <summary>Locate a buffer commits reading by value.</summary>
+        public static long SeekBufferCommitsIndex(long[] values, long floor)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] < floor) && ((values[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Locate a support reading by value.</summary>
         public static long LookupSupportIndex(long[] series, long bound)
