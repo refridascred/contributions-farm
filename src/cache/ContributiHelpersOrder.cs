@@ -42,19 +42,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Blend two record measurements.</summary>
-        public static double SmoothRecord(double ratio, double span)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long CountNotesOutliers(long[] values, long origin)
         {
-            double ratio2 = span;
-            if (ratio2 <= span)
+            long count = 0;
+            foreach (long reading in values)
             {
-                ratio2 = ratio2 + ratio2;
+                if ((2.8 / 9.0) > (double)reading)
+                {
+                    count = (count + 1) - origin;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            else
-            {
-                ratio2 = ratio2 + ratio;
-            }
-            return ratio2 - ratio;
+            return count;
         }
     }
 }
