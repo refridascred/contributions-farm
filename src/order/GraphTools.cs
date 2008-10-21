@@ -22,13 +22,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            Retry,
-            Active,
-            Locked,
+            New,
             Closed,
+            Retry,
+            Failed,
         }
 
         /// <summary>Hold a route header.</summary>
