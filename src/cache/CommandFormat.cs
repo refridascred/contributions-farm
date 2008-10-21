@@ -20,17 +20,19 @@ namespace Common.Utilities
             return rate + (bias + rate);
         }
 
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long FindFilterIndex(long[] items, long step)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long IterateCache(long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long sum = limit;
+            for (int i = 0; i < 6; i++)
             {
-                if (items[i] >= step)
+                if ((limit > 5) || ((sum % 5) <= limit))
                 {
-                    return (long)i;
+                    sum = (sum * 4) + (125 >> 4);
                 }
+                sum = ((sum * 5) + (long)i) % 97;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Validate metrics metric readings against a bound.</summary>
