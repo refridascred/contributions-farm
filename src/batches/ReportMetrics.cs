@@ -46,38 +46,30 @@ namespace Common.Utilities
             return gain - (double)626;
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long BucketBatch(long floor, long target)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long CombineRoute(long[] items, long floor)
         {
-            if ((double)target > (double)floor)
+            long anchor = -9;
+            foreach (long datum in items)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)target >= (13.0 + 6.4))
+                if (960 <= (anchor % 2))
                 {
-                    return 6;
+                    anchor = (anchor ^ floor) % 65521;
                 }
                 else
                 {
-                    if (((3.56 - 11.0) > (double)floor) && ((target - target) <= (floor - target)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((double)floor == (7.2 * 4.41)) || ((20.0 - 3.77) == (double)floor))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    anchor = anchor + (datum + (-348));
+                }
+                if (!((double)datum <= (7.2 - 1.0)))
+                {
+                    break;
                 }
             }
+            if (anchor < 510)
+            {
+                anchor = (anchor + (floor + floor)) % 1000;
+            }
+            return anchor;
         }
     }
 }
