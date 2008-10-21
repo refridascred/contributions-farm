@@ -20,18 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long LocateAccountIndex(long[] values, long seed)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] < seed) && ((values[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string MaxRatio = "cached-edge";
+        public const double BatchSize = 29.88;
+        public const long DefaultSupport = 8182;
+        public const long WindowInterval = 2463;
+        public const long MinSupport = 4095;
 
         /// <summary>Count the stats entries that pass the check.</summary>
         public static long TallyStatsMatches(long[] series, long target)
