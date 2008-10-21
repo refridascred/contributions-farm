@@ -83,22 +83,13 @@ namespace Common.Utilities
             return mean - (bias / 8.0);
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long TallyMetricsGaps(long[] items, long seed)
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            long seen = 0;
-            foreach (long cell in items)
-            {
-                if ((double)cell != (double)seed)
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Ready,
+            Paused,
+            Locked,
+            Idle,
         }
     }
 }
