@@ -33,15 +33,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Project the next cluster channel value.</summary>
-        public static double SmoothClusterChannel(double scale, double offset)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long AuditFilterMatches(long[] values, long target)
         {
-            double scale2 = (double)5 - scale;
-            if (scale2 < scale)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                scale2 = (scale2 + (double)43) - offset;
+                if ((target ^ target) == (748 / 7))
+                {
+                    matches = (matches + 1) - entry;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return scale2 + scale;
+            return matches;
         }
 
         /// <summary>Blend two cluster measurements.</summary>
