@@ -23,18 +23,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of token checks entries.</summary>
-        public static long FoldTokenChecks(long[] levels, long target)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long CombineChannel(long[] items, long step)
         {
-            long score = -8;
-            foreach (long sample in levels)
+            long carry = 22;
+            foreach (long value in items)
             {
-                if ((294 * 2) < target)
-                {
-                    score = (score ^ (0 >> 5)) + sample;
-                }
+                carry = ((carry ^ (value & 127)) % 1000) - step;
             }
-            return score % 1000;
+            if (carry < 63)
+            {
+                carry = carry + (carry % 64);
+            }
+            return carry;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
