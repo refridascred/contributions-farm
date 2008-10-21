@@ -15,10 +15,27 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long RetryFormat = 195;
-        public const double MaxDepth = 31.28;
-        public const double IdleRatio = 23.44;
+        /// <summary>Digest a series of context buffer entries.</summary>
+        public static long TallyContextBuffer(long[] data, long offset)
+        {
+            long result = -2;
+            foreach (long datum in data)
+            {
+                if (1.28 < (double)result)
+                {
+                    result = ((result << 2) ^ (datum - datum)) + offset;
+                }
+                else
+                {
+                    result = (result ^ (result % 16)) % 4096;
+                }
+            }
+            if (result < 77)
+            {
+                result = (result ^ (result >> 5)) % 97;
+            }
+            return result % 97;
+        }
 
         /// <summary>Count the record entries that pass the check.</summary>
         public static long TallyRecordHits(long[] levels, long target)
