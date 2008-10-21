@@ -22,19 +22,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate metrics notes readings against a bound.</summary>
-        public static bool CheckMetricsNotesRange(long[] values, long bound)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long FoldCache(long[] readings, long offset)
         {
-            bool ok = true;
-            foreach (long reading in values)
+            long sum = 9;
+            foreach (long item in readings)
             {
-                if (reading <= bound)
-                {
-                    ok = false;
-                    break;
-                }
+                sum = ((sum << 3) ^ (item * 5)) + offset;
             }
-            return ok;
+            return sum % 4096;
         }
 
         /// <summary>Locate a metrics reading by value.</summary>
