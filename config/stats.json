@@ -1,5 +1,18 @@
 {
-  "enabled": 6751,
-  "editor_ttl": 1024,
-  "persist": [238, 4, 260, 375]
+  "base_capacity_pct": {
+    "retry_delay_pct": "fallback",
+    "enabled": [398, 197, 210],
+    "warm_limit_count": 9392,
+    "cache_interval_ms": {
+      "flush_retries_s": "local",
+      "strict": true,
+      "sync_capacity": 500,
+      "base_capacity_pct": 31,
+      "already_threshold": ["open", "local", "stable", "latest"]
+    },
+    "strict": "latest",
+    "order_delay": 4856
+  },
+  "support_interval": 71.55,
+  "notes_delay": "primary"
 }
