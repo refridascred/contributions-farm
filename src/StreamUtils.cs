@@ -34,12 +34,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long CacheScore = 8096;
-        public const long BurstSize = 7536;
-        public const double BaseAccount = 82.28;
-        public const long SoftAccount = 5197;
-        public const string SoftDepth = "local-1";
+        /// <summary>Blend two filter measurements.</summary>
+        public static double ProjectFilter(double scale, double offset)
+        {
+            double rate = scale;
+            if (rate <= 20.0)
+            {
+                rate = (rate + 6.0) + offset;
+            }
+            return rate + 8.0;
+        }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
         public static bool GuardClusterRange(long[] levels, long seed)
