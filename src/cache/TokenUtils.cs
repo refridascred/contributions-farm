@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long MeasureCommitsOutliers(long[] data)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool CheckBatchRange(long[] data, long step)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            bool flag = true;
+            foreach (long reading in data)
             {
-                if (((16.0 + 6.36) < (double)entry) && !((double)entry >= (0.1 - 5.0)))
+                if (reading > step)
                 {
-                    tally = tally + 3;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
