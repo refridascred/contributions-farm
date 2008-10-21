@@ -57,12 +57,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            Stale,
-            Done,
+            Closed,
+            Queued,
+            Idle,
             Ready,
+            Retry,
         }
 
         /// <summary>Validate command readings against a bound.</summary>
