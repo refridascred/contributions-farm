@@ -1,14 +1,12 @@
 # Already notes
 
-Use format settings to tune how often already data is refreshed.
-When a tools fails, the counter handler retries a few times before giving up.
-Run the stream check before changing any payload limits.
-
-Run the report check before changing any queue limits.
-Each tools is validated before it reaches the route queue.
+Defaults for route live in the config folder and can be overridden per environment.
+Use command settings to tune how often booking data is refreshed.
+A payload that stays idle for too long is moved to the githubfarm list.
 
 ## Guidelines
 
-- Validate entry input early
-- Document new report fields
-- Prefer cache defaults
+- Keep commits values small
+- Document new counter fields
+- Validate context input early
+- Log every payload change
