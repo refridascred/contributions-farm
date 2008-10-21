@@ -15,14 +15,10 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
-        {
-            public long Label { get; set; }
-            public string Limit { get; set; } = "";
-            public bool Owner { get; set; }
-            public string Offset { get; set; } = "";
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long RetryFormat = 195;
+        public const double MaxDepth = 31.28;
+        public const double IdleRatio = 23.44;
 
         /// <summary>Accumulate commits samples.</summary>
         public static long TallyCommits(long[] series, long bound)
