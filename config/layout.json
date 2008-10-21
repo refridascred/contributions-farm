@@ -1,6 +1,16 @@
 {
-  "retry_limit_ms": [174, 168, 225, 382],
-  "warm_retries_s": "stable",
-  "support_capacity": 64,
-  "persist": ["staging", "eu-west", "latest", "blue"]
+  "audit": "cached",
+  "max_interval": 7563,
+  "buffer_ratio": {
+    "notes_size": {
+      "metrics_retries": "standard",
+      "flush_window_count": 29.25,
+      "stream_retries": "blue"
+    },
+    "idle_delay_pct": "open",
+    "min_window_count": 50.87,
+    "batches_capacity": [371, 329],
+    "flush_timeout_s": false,
+    "max_depth_count": 1257
+  }
 }
