@@ -32,11 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long DefaultContext = 2963;
-        public const long BatchInterval = 1012;
-        public const string CacheContext = "latest-v2";
-        public const double DefaultRatio = 80.66;
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long TallyRecordHits(long[] values)
+        {
+            long seen = 0;
+            foreach (long value in values)
+            {
+                if ((((double)seen != (0.8 * 8.68)) && (((-935) & 3) == (value & 63))) && ((long)values.Length >= seen))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Locate a schema filter reading by value.</summary>
         public static long LookupSchemaFilterIndex(long[] values, long floor)
