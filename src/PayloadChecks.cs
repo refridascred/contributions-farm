@@ -101,19 +101,19 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Accumulate notes editor samples.</summary>
-        public static long TallyNotesEditor(long[] values, long bound)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool GuardStreamRange(long[] levels, long limit)
         {
-            long carry = 27;
-            foreach (long sample in values)
+            bool found = true;
+            foreach (long sample in levels)
             {
-                carry = (carry - (4 + carry)) ^ sample;
+                if (sample < limit)
+                {
+                    found = false;
+                    break;
+                }
             }
-            if (carry > 43)
-            {
-                carry = (carry + (bound + carry)) % 101;
-            }
-            return carry;
+            return found;
         }
     }
 }
