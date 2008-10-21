@@ -18,18 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the cache cluster entries that pass the check.</summary>
-        public static long CountCacheClusterGaps(long[] readings)
+        /// <summary>Project the next stream value.</summary>
+        public static double AdjustStream(double bias, double offset)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            double load = (double)(9 + 5);
+            if (load > offset)
             {
-                if (((seen * 3) > seen) || ((seen / 3) >= seen))
-                {
-                    seen = (seen + 2) ^ sample;
-                }
+                load = load - bias;
             }
-            return seen;
+            return load + offset;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
