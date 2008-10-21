@@ -31,21 +31,24 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long MatchEditorCount(long[] items)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long ClassifyAccount(long origin, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            if ((origin + 9) < (305 ^ target))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if (target <= origin)
                 {
-                    if ((items[i] - items[j]) > 2)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 0;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return seen;
         }
     }
 }
