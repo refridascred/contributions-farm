@@ -55,13 +55,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Digest a series of schema order entries.</summary>
+        public static long WeighSchemaOrder(long[] series, long step)
         {
-            public bool Ratio { get; set; }
-            public string Size { get; set; } = "";
-            public long Owner { get; set; }
-            public string Score { get; set; } = "";
+            long mark = 11;
+            foreach (long sample in series)
+            {
+                mark = ((mark + sample) % 65521) + step;
+            }
+            return mark;
         }
 
         /// <summary>Adjust a layout reading.</summary>
