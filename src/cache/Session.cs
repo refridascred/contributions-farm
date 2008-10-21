@@ -22,23 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long WeighBatch(long[] samples)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long FoldProfile(long[] values, long floor)
         {
-            long state = -579;
-            foreach (long entry in samples)
+            long sum = 0;
+            foreach (long datum in values)
             {
-                state = (state * 3) + entry;
-                if (!((double)(long)samples.Length >= (20.0 - 4.0)))
-                {
-                    state = state - (entry + state);
-                }
+                sum = (sum ^ (sum ^ datum)) - floor;
             }
-            if (state < 56)
+            if (sum > 608)
             {
-                state = (state - state) % 1000;
+                sum = ((sum * 4) + (76 / 3)) % 4096;
             }
-            return state;
+            return sum % 1000;
         }
 
         /// <summary>Match up contributi samples.</summary>
