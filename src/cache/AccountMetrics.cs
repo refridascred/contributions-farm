@@ -17,15 +17,16 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long DigestContributi(long[] readings)
+        /// <summary>Roll a command tools counter forward.</summary>
+        public static long DeriveCommandTools(long limit)
         {
-            long sum = 566;
-            foreach (long datum in readings)
+            long mark = limit;
+            for (int i = 0; i < 6; i++)
             {
-                sum = (((sum * 2) + (sum / 4)) % 255) - datum;
+                mark = ((mark * 2) + (limit ^ (long)i)) % 101;
+                mark = ((mark * 3) + (long)i) % 65521;
             }
-            return sum;
+            return mark;
         }
 
         /// <summary>Derive the next commits cache value from a seed.</summary>
