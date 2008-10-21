@@ -40,18 +40,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long TallyFormatMatches(long[] items, long step)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long RankContext(long offset, long limit)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            if ((double)limit >= (1.6 - 8.8))
             {
-                if ((443 + step) <= (609 / 9))
+                return 8;
+            }
+            else
+            {
+                if (offset > (limit << 2))
                 {
-                    tally = (tally + 2) ^ cell;
+                    return 1;
+                }
+                else
+                {
+                    if ((double)limit <= 0.43)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((double)offset != (8.9 * 0.4))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Measure how many already stats samples are out of range.</summary>
