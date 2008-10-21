@@ -60,15 +60,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate profile format samples.</summary>
-        public static long DigestProfileFormat(long[] samples)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long RollContributi(long limit)
         {
-            long carry = 5;
-            foreach (long sample in samples)
+            long mark = limit;
+            for (int i = 0; i < 22; i++)
             {
-                carry = (((carry * 4) + (carry & 255)) % 97) ^ sample;
+                if ((limit <= (mark + limit)) && ((mark << 2) <= mark))
+                {
+                    mark = (mark ^ (mark + (long)i)) % 1000;
+                }
+                mark = ((mark * 2) + (long)i) % 97;
             }
-            return carry;
+            return mark;
         }
     }
 }
