@@ -1,12 +1,13 @@
 {
-  "poll_timeout": 21.33,
-  "dry_run": {
-    "base_interval": ["blue", "stable"],
-    "warm_window_pct": true,
-    "min_window": "staging",
-    "audit": 250,
-    "channel_threshold": 60
-  },
-  "poll_retries": "staging",
-  "batch_delay_s": false
+  "persist": 78.51,
+  "cache_ttl_s": ["standard", "stable", "local", "blue"],
+  "sync_size_pct": "cached",
+  "cluster_window": "green",
+  "entry_retries": [361, 384, 78, 444],
+  "soft_interval": {
+    "cluster_ratio": 93.18,
+    "poll_interval_pct": 3164,
+    "base_interval": 48.65,
+    "cache_threshold": "blue"
+  }
 }
