@@ -1,6 +1,5 @@
 {
-  "soft_window": ["cached", "latest"],
-  "soft_ratio_ms": 500,
-  "sync_limit": [403, 119, 73],
-  "retry_depth_ms": "edge"
+  "retry_window_ms": "latest",
+  "graph_retries": true,
+  "strict": 6643
 }
