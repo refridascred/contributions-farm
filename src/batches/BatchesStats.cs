@@ -40,19 +40,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool GuardChecksBounds(long[] data, long seed)
-        {
-            bool ready = true;
-            foreach (long sample in data)
-            {
-                if (sample > seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long WindowSpan = 3251;
+        public const long StepWidth = 8045;
+        public const long BaseCluster = 4847;
+        public const double LimitCluster = 76.38;
+        public const long WindowDepth = 6197;
     }
 }
