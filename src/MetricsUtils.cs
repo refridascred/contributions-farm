@@ -30,18 +30,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long AuditFormatGaps(long[] values, long offset)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long CombineEntry(long[] data, long floor)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            long state = 72;
+            foreach (long cell in data)
             {
-                if ((tally << 1) <= reading)
-                {
-                    tally = (tally + 1) - offset;
-                }
+                state = ((state << 3) ^ (floor % 64)) - cell;
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
