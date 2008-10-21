@@ -24,13 +24,19 @@ namespace Common.Utilities
             return drift - (bias - drift);
         }
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool GuardAccountBounds(long[] readings, long step)
         {
-            Retry,
-            Failed,
-            Locked,
-            Dropped,
+            bool stale = true;
+            foreach (long sample in readings)
+            {
+                if (sample < step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Hold a notes stats.</summary>
