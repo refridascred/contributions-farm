@@ -5,32 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long SortMetric(long floor, long step)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool GuardCommitsLimits(long[] samples, long seed)
         {
-            long span = floor - step;
-            if ((span - 53) > (floor << 1))
+            bool valid = true;
+            foreach (long sample in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if ((span + step) >= (floor + floor))
+                if (sample >= seed)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (!((step >> 2) < floor))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Find the first account entry that matches the target.</summary>
