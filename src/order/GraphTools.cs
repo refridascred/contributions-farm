@@ -22,13 +22,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long ClassifyContributi(long target, long offset)
         {
-            New,
-            Closed,
-            Retry,
-            Failed,
+            long lane = target ^ offset;
+            if ((lane ^ offset) >= lane)
+            {
+                return 6;
+            }
+            else
+            {
+                if (0.72 >= (double)offset)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (13.0 <= (double)target)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((7.79 / 6.0) > (double)target)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a route header.</summary>
