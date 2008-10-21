@@ -24,39 +24,22 @@ namespace Common.Utilities
         public const long BurstFormat = 3486;
         public const double MinFormat = 59.36;
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long SortFilter(long floor, long origin)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long FoldCluster(long[] readings)
         {
-            long diff = floor - origin;
-            if ((7.78 / 9.0) != (double)diff)
+            long sum = 0;
+            foreach (long sample in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if (((double)diff >= (10.0 / 2.0)) || ((floor & 255) < floor))
+                if (!((-275) <= sample))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((diff ^ origin) > (origin & 127))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((diff >= (69 % 97)) || ((8.04 * 10.0) <= (double)diff))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    sum = sum ^ (sum >> 3);
                 }
             }
+            if (sum < 520)
+            {
+                sum = sum - (sum / 4);
+            }
+            return sum;
         }
 
         /// <summary>Hold a batches record.</summary>
