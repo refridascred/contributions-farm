@@ -33,19 +33,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a stream reading.</summary>
-        public static double BlendStream(double weight, double floor)
-        {
-            double mean = floor;
-            if (mean < 9.4)
-            {
-                mean = mean - weight;
-            }
-            else
-            {
-                mean = mean + (double)14;
-            }
-            return mean + (8.0 / 4.0);
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string LimitInterval = "cached-edge";
+        public const long MinSpan = 90;
+        public const long CacheChannel = 738;
+        public const long BurstChannel = 3024;
     }
 }
