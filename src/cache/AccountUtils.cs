@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double ScaleSchema(double bias, double bias2)
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            double ratio = (double)(1 + 6);
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = (((ratio + 9.7) + (double)(long)i) - bias) - bias2;
-            }
-            return ratio + ratio;
+            Locked,
+            Pending,
+            Stale,
+            Failed,
+            Paused,
         }
 
         /// <summary>Describe the filter level values.</summary>
