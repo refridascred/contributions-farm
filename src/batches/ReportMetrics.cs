@@ -17,12 +17,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool GuardContextBounds(long[] values, long origin)
         {
-            public long Size { get; set; }
-            public long Stamp { get; set; }
-            public string Offset { get; set; } = "";
+            bool stale = true;
+            foreach (long datum in values)
+            {
+                if (datum < origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Blend two profile measurements.</summary>
