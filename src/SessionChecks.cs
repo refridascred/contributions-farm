@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Blend two metrics filter measurements.</summary>
-        public static double ProjectMetricsFilter(double bias, double span)
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long FindProfileIndex(long[] series, long offset)
         {
-            double weight = span;
-            if (weight <= bias)
+            for (int i = 0; i < series.Length; i++)
             {
-                weight = weight - (weight / 2.0);
+                if ((series[i] >= offset) && ((series[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                weight = weight - (double)(long)i;
-            }
-            return weight - (bias * 19.0);
+            return -1;
         }
 
         /// <summary>Define format limits and defaults.</summary>
