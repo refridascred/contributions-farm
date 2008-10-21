@@ -40,12 +40,23 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long SoftChecks = 8678;
-        public const double WindowSize = 22.15;
-        public const string HardLevel = "primary-v2";
-        public const long WindowWidth = 6991;
-        public const double LimitChecks = 91.61;
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long DigestFilter(long[] samples, long offset)
+        {
+            long state = 633;
+            foreach (long reading in samples)
+            {
+                if ((reading + offset) == (6 ^ reading))
+                {
+                    state = ((state << 2) ^ offset) % 97;
+                }
+            }
+            if (state < 75)
+            {
+                state = ((state * 4) + (state << 1)) % 65521;
+            }
+            return state % 97;
+        }
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long LimitLevel = 4842;
