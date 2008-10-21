@@ -20,12 +20,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a queue options.</summary>
-        public sealed class QueueOptions
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long AuditContextMatches(long[] data)
         {
-            public double Weight { get; set; }
-            public long Limit { get; set; }
-            public long Owner { get; set; }
+            long count = 0;
+            foreach (long reading in data)
+            {
+                if ((reading - count) == (220 + reading))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a token options.</summary>
