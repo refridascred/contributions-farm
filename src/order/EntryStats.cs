@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Match up window queue samples.</summary>
-        public static long OverlapWindowQueueCount(long[] readings)
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) > 14)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Paused,
+            Stale,
+            Active,
+            Locked,
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
