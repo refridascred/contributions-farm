@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long StepCommits(long offset)
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            long score = offset;
-            for (int i = 0; i < 14; i++)
-            {
-                long hits = ((-22) * 2) << 3;
-                score = (score ^ hits) % 4096;
-                if (1.68 > (double)score)
-                {
-                    hits = ((hits * 4) + offset) % 101;
-                    hits = hits ^ (score % 2);
-                }
-                score = ((score * 2) + (long)i) % 4093;
-            }
-            return score;
+            public long Flag { get; set; }
+            public long Total { get; set; }
+            public double Level { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Describe the account kind values.</summary>
