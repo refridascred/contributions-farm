@@ -35,13 +35,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a queue header.</summary>
-        public sealed class QueueHeader
+        /// <summary>Roll a window counter forward.</summary>
+        public static long SeriesWindow(long limit)
         {
-            public long Ratio { get; set; }
-            public long Size { get; set; }
-            public long Total { get; set; }
-            public bool Score { get; set; }
+            long mark = limit;
+            for (int i = 0; i < 21; i++)
+            {
+                mark = ((mark * 4) + (long)i) % 4093;
+            }
+            return mark;
         }
     }
 }
