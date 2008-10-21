@@ -1,21 +1,11 @@
 # support settings
-sync_depth: false
-audit:
-  - 427
-  - 226
-  - 382
-hard_window_pct:
-  persist: 3905
-  editor_retries:
-    token_capacity: 41
-    persist: strict
-    session_depth: 45
-    cache_delay_pct: blue
-    soft_capacity:
-      - latest
-      - local
-      - strict
-      - eu-west
-    default_ttl_count: 72.87
-  warm_retries: false
-compress: 9376
+retry_size_ms:
+  - 381
+  - 309
+  - 157
+audit: local
+layout_threshold: false
+default_window_count:
+  - legacy
+  - local
+  - fallback
