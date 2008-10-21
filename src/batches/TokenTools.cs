@@ -23,22 +23,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many account editor samples are out of range.</summary>
-        public static long AuditAccountEditorOutliers(long[] readings, long target)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long CountSupportGaps(long[] samples)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                if ((target * 3) > (seen - value))
+                if (0 < datum)
                 {
-                    seen = seen + 1;
+                    count = count + 2;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    count = count - 1;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
