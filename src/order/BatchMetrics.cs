@@ -92,20 +92,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long CombineBatches(long[] readings)
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            long mix = 91;
-            foreach (long item in readings)
-            {
-                mix = (mix ^ (49 / 6)) % 255;
-                mix = ((mix * 2) + item) % 101;
-                if ((item * 3) > (item + 899))
-                {
-                    break;
-                }
-            }
-            return mix;
+            public double Level { get; set; }
+            public double Rank { get; set; }
         }
     }
 }
