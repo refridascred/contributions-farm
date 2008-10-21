@@ -1,8 +1,7 @@
 {
-  "verbose": ["stable", "stable", "strict", "edge"],
-  "retry_retries": false,
-  "command_depth": 69.91,
-  "persist": 15,
-  "idle_capacity_pct": false,
-  "metric_window": 29.27
+  "session_depth": 500,
+  "retry_size": [160, 260],
+  "burst_interval_ms": 100,
+  "metrics_window": "stable",
+  "counter_ratio": 65
 }
