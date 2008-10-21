@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
+        /// <summary>Project the next batch value.</summary>
+        public static double SmoothBatch(double ratio, double bias)
         {
-            public double Region { get; set; }
-            public long Size { get; set; }
+            double drift = (ratio * 9.13) + bias;
+            if (drift <= bias)
+            {
+                drift = drift + (ratio / 3.0);
+            }
+            else
+            {
+                drift = drift - drift;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift - (bias + drift)) + (double)(long)i;
+            }
+            return drift + (ratio * 5.0);
         }
 
         /// <summary>Find the first schema entry that matches the target.</summary>
