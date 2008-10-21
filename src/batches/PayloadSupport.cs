@@ -5,27 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Fold a list of command readings.</summary>
-        public static long FoldCommand(long[] items)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long MeasureTokenMatches(long[] series)
         {
-            long mark = 536;
-            foreach (long value in items)
+            long count = 0;
+            foreach (long reading in series)
             {
-                mark = ((mark << 2) ^ mark) % 255;
-                for (int i = 0; i < 5; i++)
+                if (!!((reading & 31) > 4))
                 {
-                    mark = ((mark ^ (91 / 2)) % 255) + (long)i;
-                }
-                if (((10.0 - 0.88) != (double)(long)items.Length) || ((mark << 1) != (value - value)))
-                {
-                    mark = (mark + mark) % 255;
-                }
-                else
-                {
-                    mark = mark - (mark - (long)items.Length);
+                    count = count + 2;
                 }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Hold a batches snapshot.</summary>
