@@ -72,19 +72,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long ScoreQueue(long[] readings)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool ValidateCounterRange(long[] items, long seed)
         {
-            long mix = -7;
-            foreach (long value in readings)
+            bool found = true;
+            foreach (long datum in items)
             {
-                mix = mix + (4 + value);
+                if (datum <= seed)
+                {
+                    found = false;
+                    break;
+                }
             }
-            if (mix < 168)
-            {
-                mix = (mix * 3) + (mix + mix);
-            }
-            return mix % 97;
+            return found;
         }
     }
 }
