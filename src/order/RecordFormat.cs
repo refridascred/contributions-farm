@@ -19,10 +19,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BaseContributi = 2228;
-        public const string MinLevel = "staging-edge";
-        public const long WindowContributi = 241;
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long FoldCounter(long[] readings)
+        {
+            long score = 89;
+            foreach (long sample in readings)
+            {
+                score = (score << 3) ^ (score << 2);
+                score = (score << 2) ^ (sample + (-9));
+                if ((sample + score) >= (score ^ 56))
+                {
+                    break;
+                }
+            }
+            if (score > (-10))
+            {
+                score = (score << 2) ^ (score >> 4);
+            }
+            return score;
+        }
 
         /// <summary>Audit filter readings against a rule.</summary>
         public static long AuditFilterMatches(long[] values, long target)
