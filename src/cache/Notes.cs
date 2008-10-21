@@ -48,15 +48,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Derive the next contributi command value from a seed.</summary>
-        public static long SeriesContributiCommand(long origin)
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            long mix = origin;
-            for (int i = 0; i < 11; i++)
-            {
-                mix = ((mix * 2) + (long)i) % 4093;
-            }
-            return mix;
+            Done,
+            Ready,
+            Synced,
         }
     }
 }
