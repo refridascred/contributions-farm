@@ -1,23 +1,10 @@
 # entry settings
-idle_timeout_count: fallback
-default_capacity_ms:
-  token_limit:
-    checks_retries: 12
-    batch_timeout_count: standard
-    githubfarm_retries: fallback
-  compress: standard
-  flush_window_count:
-    audit:
-      - 107
-      - 156
-    warm_depth_count: 58
-    compress: 69.34
-    warm_timeout_pct: true
-    contributi_limit: 100
-  idle_limit_s:
-    sync_limit_count: true
-    batch_interval_ms: 3.74
-    hard_depth: edge
-    poll_size: 8455
-    hard_threshold: true
-queue_capacity: false
+idle_ratio: 30.54
+stats_interval:
+  - 126
+  - 190
+  - 498
+stream_threshold:
+  - legacy
+  - cached
+  - open
