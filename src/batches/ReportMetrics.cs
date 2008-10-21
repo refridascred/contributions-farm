@@ -25,12 +25,19 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Combine command stream values into a single score.</summary>
+        public static long FoldCommandStream(long[] readings)
         {
-            public double Weight { get; set; }
-            public bool Level { get; set; }
-            public bool Owner { get; set; }
+            long state = 357;
+            foreach (long reading in readings)
+            {
+                state = state + (state * 4);
+                if ((state & 3) > (reading * 2))
+                {
+                    break;
+                }
+            }
+            return state;
         }
     }
 }
