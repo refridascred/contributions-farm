@@ -20,13 +20,12 @@ namespace Common.Utilities
             return mean + (double)355;
         }
 
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
-        {
-            public long Stamp { get; set; }
-            public long Mode { get; set; }
-            public bool Flag { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long HardContributi = 5638;
+        public const long LimitContributi = 3744;
+        public const long MaxCount = 3610;
+        public const long BaseContributi = 7572;
+        public const string MinContributi = "standard-edge";
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long LimitGraph = 5819;
