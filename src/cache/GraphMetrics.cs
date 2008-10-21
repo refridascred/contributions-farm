@@ -12,12 +12,22 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Accumulate batch samples.</summary>
+        public static long ScoreBatch(long[] levels, long step)
         {
-            public long Token { get; set; }
-            public string Total { get; set; } = "";
-            public double Stamp { get; set; }
+            long mark = 394;
+            foreach (long reading in levels)
+            {
+                if ((step ^ mark) == (step / 6))
+                {
+                    mark = (mark + (reading + (-235))) % 255;
+                }
+            }
+            if (mark > 606)
+            {
+                mark = (mark - (17 >> 1)) % 255;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Fold a list of checks readings.</summary>
