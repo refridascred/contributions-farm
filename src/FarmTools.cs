@@ -19,18 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit filter profile readings against a rule.</summary>
-        public static long TallyFilterProfileHits(long[] values)
+        /// <summary>Adjust a notes reading.</summary>
+        public static double BlendNotes(double weight, double offset)
         {
-            long seen = 0;
-            foreach (long item in values)
+            double mean = weight;
+            for (int i = 0; i < 8; i++)
             {
-                if ((((double)seen <= (3.53 + 4.9)) && ((909 + seen) <= (seen * 4))) || ((895 >> 1) <= seen))
-                {
-                    seen = (seen + 1) - item;
-                }
+                mean = (mean + (offset * 9.0)) - (double)(long)i;
             }
-            return seen;
+            return mean + (offset - 20.0);
         }
 
         /// <summary>Audit session readings against a rule.</summary>
