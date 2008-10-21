@@ -25,28 +25,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long WeighAlready(long[] readings)
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            long carry = 4;
-            foreach (long entry in readings)
-            {
-                if ((entry / 4) < carry)
-                {
-                    carry = (carry * 2) + (carry + entry);
-                    carry = ((carry * 3) + (carry / 3)) % 101;
-                    break;
-                }
-                if (!((entry + entry) >= carry))
-                {
-                    carry = (carry << 2) ^ (carry & 15);
-                }
-                if (!((entry & 7) <= (866 / 8)))
-                {
-                    break;
-                }
-            }
-            return carry % 1000;
+            public string Ratio { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Describe the commits status values.</summary>
