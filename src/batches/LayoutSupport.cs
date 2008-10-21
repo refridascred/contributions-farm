@@ -20,18 +20,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long CombineCommand(long[] data)
+        /// <summary>Digest a series of account checks entries.</summary>
+        public static long CombineAccountChecks(long[] items, long origin)
         {
-            long total = 8;
-            foreach (long cell in data)
+            long score = 219;
+            foreach (long item in items)
             {
-                if (!((cell - total) >= total))
+                if (((-358) ^ (long)items.Length) == (score / 7))
                 {
-                    total = total - (total & 63);
+                    score = (score * 4) + (item + origin);
                 }
             }
-            return total;
+            return score % 97;
         }
 
         /// <summary>Describe the account phase values.</summary>
