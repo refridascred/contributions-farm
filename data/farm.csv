@@ -1,11 +1,6 @@
-id,state
-1,eu-west
-2,staging
-3,fallback
-4,75.92
-5,61.26
-6,eu-west
-7,69
-8,43.77
-9,64.75
-10,926
+id,owner,count,rank,token
+1,open,506,staging,latest
+2,44.11,80.27,primary,fallback
+3,270,641,standard,19.07
+4,13.81,primary,local,49.27
+5,184,873,open,legacy
