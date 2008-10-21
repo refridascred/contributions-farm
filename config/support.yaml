@@ -1,9 +1,14 @@
 # support settings
-strict: 60.75
-hard_ttl: 60
-cache_limit:
-  default_limit_pct: 27.48
-  enabled: strict
-  strict: 61
-  commits_interval: 13
-burst_retries_ms: 4047
+batch_retries_ms:
+  - edge
+  - stable
+  - strict
+  - eu-west
+poll_delay_pct: 7184
+strict: open
+batch_interval: 42.11
+max_threshold_count:
+  - fallback
+  - standard
+  - primary
+  - staging
