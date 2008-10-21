@@ -32,19 +32,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool CheckContributiRange(long[] items, long seed)
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            bool valid = true;
-            foreach (long datum in items)
-            {
-                if (datum < seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Dropped,
+            Stale,
+            Pending,
         }
     }
 }
