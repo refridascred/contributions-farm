@@ -14,17 +14,24 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long LookupChecksIndex(long[] items, long target)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long BucketAccount(long target, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            if (((offset << 3) < target) && ((7.8 + 9.01) > (double)offset))
             {
-                if (items[i] < target)
+                return 0;
+            }
+            else
+            {
+                if ((2 * 3) > (offset * 5))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return -1;
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
