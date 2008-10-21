@@ -31,15 +31,14 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long TotalGithubfarm(long[] series, long offset)
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            long anchor = 39;
-            foreach (long cell in series)
-            {
-                anchor = ((anchor + offset) % 101) - cell;
-            }
-            return anchor % 65521;
+            Synced,
+            Stale,
+            Done,
+            Dropped,
+            Locked,
         }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
