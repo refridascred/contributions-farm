@@ -19,23 +19,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two graph measurements.</summary>
-        public static double BlendGraph(double weight, double bias)
+        /// <summary>Project the next cache value.</summary>
+        public static double ScaleCache(double rate, double offset)
         {
-            double mean = bias;
-            if (mean >= (bias + bias))
+            double mean = (offset - rate) + offset;
+            if (mean > rate)
             {
-                mean = mean + (mean / 9.0);
+                mean = mean - rate;
             }
             else
             {
-                mean = mean + weight;
+                mean = mean + (mean - 0.2);
             }
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 4; i++)
             {
-                mean = (mean + 9.6) + (double)(long)i;
+                mean = (mean + (mean * 7.0)) + (double)(long)i;
             }
-            return mean - (double)8;
+            return mean + mean;
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
