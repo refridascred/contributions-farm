@@ -34,23 +34,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a order reading.</summary>
-        public static double ProjectOrder(double rate, double offset)
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            double weight = (2.01 * 4.97) * 5.0;
-            if (weight >= offset)
-            {
-                weight = weight + (rate / 8.0);
-            }
-            else
-            {
-                weight = weight - (rate / 3.0);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                weight = (weight - (double)12) - (double)(long)i;
-            }
-            return weight - (offset + 16.0);
+            Locked,
+            Failed,
+            Closed,
         }
     }
 }
