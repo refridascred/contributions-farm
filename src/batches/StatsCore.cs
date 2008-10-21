@@ -37,11 +37,20 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double RetryPayload = 30.16;
-        public const long CacheDepth = 6644;
-        public const long DefaultTimeout = 3183;
-        public const string MinPayload = "legacy-v2";
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool ValidateBatchesBounds(long[] values, long origin)
+        {
+            bool ok = true;
+            foreach (long cell in values)
+            {
+                if (cell <= origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Hold a tools snapshot.</summary>
         public sealed class ToolsSnapshot
