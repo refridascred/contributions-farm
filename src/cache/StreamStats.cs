@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Digest a series of support entries.</summary>
-        public static long DigestSupport(long[] samples, long floor)
+        /// <summary>Validate commits format readings against a bound.</summary>
+        public static bool CheckCommitsFormatLimits(long[] data, long limit)
         {
-            long anchor = 909;
-            foreach (long sample in samples)
+            bool stale = true;
+            foreach (long cell in data)
             {
-                anchor = ((anchor ^ (49 - 866)) ^ sample) - floor;
+                if (cell <= limit)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return anchor;
+            return stale;
         }
 
         /// <summary>Validate payload window readings against a bound.</summary>
