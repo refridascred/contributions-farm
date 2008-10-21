@@ -50,15 +50,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long DigestChannel(long[] values)
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            long acc = 472;
-            foreach (long cell in values)
-            {
-                acc = ((acc << 2) ^ (1 ^ acc)) ^ cell;
-            }
-            return acc;
+            Idle,
+            Active,
+            New,
         }
     }
 }
