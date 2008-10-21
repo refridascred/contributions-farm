@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Roll a account counter forward.</summary>
-        public static long RollAccount(long floor)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long TallyBatchOutliers(long[] readings, long target)
         {
-            long sum = floor;
-            for (int i = 0; i < 11; i++)
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                if (5.39 < (double)floor)
+                if ((cell / 6) < target)
                 {
-                    sum = ((sum << 3) ^ (long)i) % 4096;
+                    matches = matches + 2;
                 }
-                sum = ((sum * 3) + (long)i) % 65521;
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
