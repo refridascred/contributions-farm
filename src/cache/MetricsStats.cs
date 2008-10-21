@@ -20,18 +20,38 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the githubfarm buffer entries that pass the check.</summary>
-        public static long TallyGithubfarmBufferMatches(long[] series, long floor)
+        /// <summary>Grade a session channel value against two limits.</summary>
+        public static long SortSessionChannel(long limit, long origin)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            if (4.4 >= (double)origin)
             {
-                if (!((9.7 / 5.0) == (double)seen) || ((double)floor > (12.0 + 3.8)))
+                return 3;
+            }
+            else
+            {
+                if ((3.0 + 7.4) == (double)limit)
                 {
-                    seen = (seen + 2) + datum;
+                    return 2;
+                }
+                else
+                {
+                    if ((double)origin == (double)limit)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((double)origin >= (double)limit)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Look up the position of a cluster stream sample.</summary>
