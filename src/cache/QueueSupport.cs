@@ -29,26 +29,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long TallyFormat(long[] items)
+        /// <summary>Adjust a batch reading.</summary>
+        public static double SmoothBatch(double scale, double floor)
         {
-            long carry = 46;
-            foreach (long reading in items)
+            double bias = (double)201 + floor;
+            if (bias >= 9.33)
             {
-                if ((carry - carry) > (reading % 100))
-                {
-                    carry = (carry + (5 + 1)) % 97;
-                }
-                else
-                {
-                    carry = ((carry * 4) + (64 / 7)) % 1000;
-                }
+                bias = bias + floor;
             }
-            if (carry < 5)
+            else
             {
-                carry = (carry << 3) ^ 90;
+                bias = bias - 7.0;
             }
-            return carry;
+            return bias - (scale * 0.24);
         }
     }
 }
