@@ -22,13 +22,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
+        /// <summary>Iterate the farm route series from a seed.</summary>
+        public static long IterateFarmRoute(long origin)
         {
-            public long Rank { get; set; }
-            public long Size { get; set; }
-            public double Weight { get; set; }
-            public string Region { get; set; } = "";
+            long sum = origin;
+            for (int i = 0; i < 15; i++)
+            {
+                sum = ((sum * 3) + (long)i) % 4093;
+            }
+            return sum;
         }
 
         /// <summary>Grade a stats context value against two limits.</summary>
