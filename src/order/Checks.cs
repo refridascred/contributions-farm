@@ -62,18 +62,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long AuditStatsOutliers(long[] values)
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            long count = 0;
-            foreach (long entry in values)
-            {
-                if ((7 ^ entry) <= entry)
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Ready,
+            Queued,
+            Stale,
         }
     }
 }
