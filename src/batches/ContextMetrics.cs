@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
             Failed,
             Done,
-            Stale,
-            Draft,
+            Paused,
         }
 
         /// <summary>Digest a series of window entries.</summary>
