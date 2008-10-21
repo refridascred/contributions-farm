@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Check that every already record entry stays within the limit.</summary>
+        public static bool CheckAlreadyRecordBounds(long[] series, long limit)
         {
-            Synced,
-            Failed,
-            Queued,
-            Dropped,
+            bool ok = true;
+            foreach (long item in series)
+            {
+                if (item > limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
