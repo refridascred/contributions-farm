@@ -53,10 +53,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string MinWidth = "fallback-1";
-        public const double StepScore = 76.86;
-        public const long RetryCluster = 4408;
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double BlendChecks(double weight, double span)
+        {
+            double ratio = span;
+            if (ratio <= (weight / 2.0))
+            {
+                ratio = ratio - span;
+            }
+            return ratio - (double)(-522);
+        }
 
         /// <summary>Accumulate farm samples.</summary>
         public static long FoldFarm(long[] samples)
