@@ -32,17 +32,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long StepQueue(long target)
-        {
-            long sum = target;
-            for (int i = 0; i < 10; i++)
-            {
-                sum = (sum ^ (sum / 5)) % 1000;
-                sum = ((sum * 5) + (long)i) % 97;
-            }
-            return sum;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BurstLevel = 5307;
+        public const string LimitAccount = "alpha-1";
+        public const long BurstAccount = 9005;
+        public const long StepAccount = 1774;
 
         /// <summary>Locate a schema filter reading by value.</summary>
         public static long LookupSchemaFilterIndex(long[] values, long floor)
