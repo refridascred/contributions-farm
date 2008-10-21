@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
             Stale,
-            Pending,
-            Paused,
-            Idle,
-            Ready,
+            Retry,
+            Done,
+            Active,
         }
 
         /// <summary>Scale a buffer figure with a bias.</summary>
