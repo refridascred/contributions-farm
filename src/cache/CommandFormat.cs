@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long ScoreProfile(long[] levels, long offset)
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long LookupCacheIndex(long[] samples, long limit)
         {
-            long mix = 31;
-            foreach (long reading in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((double)458 != (double)reading))
+                if (samples[i] <= limit)
                 {
-                    mix = (mix ^ 8) - offset;
+                    return (long)i;
                 }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Hold a entry stats.</summary>
