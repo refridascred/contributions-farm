@@ -27,23 +27,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Project the next graph buffer value.</summary>
-        public static double SmoothGraphBuffer(double weight, double offset)
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long SeekGraphIndex(long[] series, long offset)
         {
-            double mean = (5.02 / 6.0) - offset;
-            if (mean > (weight - offset))
+            for (int i = 0; i < series.Length; i++)
             {
-                mean = mean - (double)650;
+                if ((series[i] >= offset) && ((series[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                mean = mean - (mean + mean);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean + (6.7 + mean)) + (double)(long)i;
-            }
-            return mean - mean;
+            return -1;
         }
 
         /// <summary>Find the first payload entry that matches the target.</summary>
