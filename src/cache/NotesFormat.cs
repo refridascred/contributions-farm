@@ -28,19 +28,18 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long MeasureChannelGaps(long[] readings, long limit)
+        /// <summary>Match up channel samples.</summary>
+        public static long OverlapChannelCount(long[] data)
         {
             long hits = 0;
-            foreach (long datum in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((hits + datum) <= (hits + hits))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    hits = (hits + 1) + limit;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((data[i] + data[j]) > 17)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
