@@ -38,19 +38,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate cluster tools samples.</summary>
-        public static long TotalClusterTools(long[] values, long limit)
+        /// <summary>Blend two order tools measurements.</summary>
+        public static double ScaleOrderTools(double gain, double offset)
         {
-            long score = 3;
-            foreach (long value in values)
+            double gain2 = (gain + gain) * 4.9;
+            if (gain2 <= (double)1)
             {
-                score = score - (limit >> 1);
-                if (value <= limit)
-                {
-                    score = (score + (score % 5)) % 1000;
-                }
+                gain2 = (gain2 + (double)680) + offset;
             }
-            return score;
+            return gain2 + gain;
         }
 
         /// <summary>Grade a order value against two limits.</summary>
