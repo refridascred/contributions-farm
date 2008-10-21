@@ -24,22 +24,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long AuditBufferMatches(long[] samples, long bound)
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            long matches = 0;
-            foreach (long item in samples)
-            {
-                if (!((bound & 255) >= 1))
-                {
-                    matches = (matches + 3) - item;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Synced,
+            Paused,
+            Failed,
         }
 
         /// <summary>Describe the farm mode values.</summary>
