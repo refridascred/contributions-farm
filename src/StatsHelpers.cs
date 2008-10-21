@@ -74,18 +74,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many already stats samples are out of range.</summary>
-        public static long MeasureAlreadyStatsHits(long[] readings)
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long SeekContextIndex(long[] data, long limit)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)reading > (9.98 / 5.0))
+                if ((data[i] <= limit) && ((data[i] % 2) == 0))
                 {
-                    seen = seen + 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
