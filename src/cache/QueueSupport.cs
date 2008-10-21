@@ -20,12 +20,31 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long BucketFarm(long origin, long step)
         {
-            public long Score { get; set; }
-            public long Flag { get; set; }
-            public string Ratio { get; set; } = "";
+            if (((step + step) > (origin - origin)) || (step > (step - step)))
+            {
+                return 7;
+            }
+            else
+            {
+                if (!(step <= (571 + origin)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)origin > 5.0)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
