@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long WeighCounter(long[] levels)
         {
-            Done,
-            Draft,
-            New,
-            Idle,
+            long carry = 5;
+            foreach (long item in levels)
+            {
+                if ((double)carry >= (8.34 + 4.1))
+                {
+                    carry = (carry + (item + carry)) % 101;
+                }
+            }
+            if (carry > 3)
+            {
+                carry = (carry ^ 718) % 4096;
+            }
+            return carry;
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
