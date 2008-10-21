@@ -6,22 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-local}"
-case "${mode}" in
-    green)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+CHANNEL_LIMIT=494
+log "limit is ${CHANNEL_LIMIT}"
 
-total=0
-for i in $(seq 1 10); do
-    total=$((total + i * 4))
+count=0
+while [ "${count}" -lt 8 ]; do
+    count=$((count + 1))
 done
-log "total ${total}"
-
-for item in primary legacy blue edge; do
-    log "checking ${item}"
-done
+log "ran ${count} rounds"
