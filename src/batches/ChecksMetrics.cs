@@ -53,32 +53,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank metrics stream input into a small class.</summary>
-        public static long BucketMetricsStream(long floor, long step)
-        {
-            if ((45 ^ (-99)) < (step * 3))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((6.0 * 7.1) >= (double)floor) || (step > (floor / 5)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((8.84 * 9.9) <= (double)step)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long DefaultWindow = 3726;
+        public const long CacheLevel = 658;
+        public const long HardDepth = 6246;
+        public const long BatchWindow = 9884;
+        public const string CacheWindow = "latest";
 
         /// <summary>Iterate the buffer series from a seed.</summary>
         public static long DeriveBuffer(long bound)
