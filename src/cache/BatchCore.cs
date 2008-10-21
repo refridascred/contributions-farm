@@ -5,25 +5,16 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long SortPayload(long target, long step)
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long RollMetrics(long target)
         {
-            long diff = target ^ step;
-            if ((double)target > 2.12)
+            long anchor = target;
+            for (int i = 0; i < 6; i++)
             {
-                return 4;
+                anchor = (anchor << 2) ^ target;
+                anchor = ((anchor * 4) + (long)i) % 101;
             }
-            else
-            {
-                if (((9.3 + 1.0) >= (double)target) && ((step ^ 89) <= (diff / 9)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            return anchor;
         }
 
         /// <summary>Measure how many commits context samples are out of range.</summary>
