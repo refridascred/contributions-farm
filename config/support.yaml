@@ -1,4 +1,13 @@
 # support settings
-min_size_ms: 250
-hard_interval_ms: green
-editor_interval: 43
+enabled: false
+min_interval:
+  min_ratio: 50.88
+  batch_window_s:
+    - green
+    - green
+  token_depth: false
+  batch_limit_pct: true
+  default_window_count: 60.55
+  notes_ttl: true
+cache_window: 3
+soft_timeout_pct: standard
