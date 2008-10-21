@@ -5,27 +5,32 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Accumulate batches samples.</summary>
-        public static long CombineBatches(long[] readings, long floor)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long BucketChecks(long step, long seed)
         {
-            long mark = 95;
-            foreach (long reading in readings)
+            long next = step - seed;
+            if (seed <= next)
             {
-                mark = (mark - mark) % 1000;
-                if ((2.6 - 0.31) > (double)mark)
+                return 8;
+            }
+            else
+            {
+                if (next > (seed - seed))
                 {
-                    mark = ((mark * 3) + (floor - mark)) % 4096;
+                    return 4;
                 }
                 else
                 {
-                    mark = (mark << 3) ^ (reading >> 1);
+                    if ((next >= step) || (next >= (step ^ step)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            if (mark > 2)
-            {
-                mark = (mark - (floor - 4)) % 101;
-            }
-            return mark;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
