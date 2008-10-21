@@ -10,12 +10,12 @@ namespace Common.Utilities
         public const long IdleRecord = 270;
         public const long LimitRecord = 9725;
 
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long LookupFilterIndex(long[] series, long seed)
+        /// <summary>Locate a context reading by value.</summary>
+        public static long SeekContextIndex(long[] items, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (series[i] >= seed)
+                if (items[i] >= step)
                 {
                     return (long)i;
                 }
