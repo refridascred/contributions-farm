@@ -1,6 +1,6 @@
-id,region,label,token
-1,latest,eu-west,818
-2,847,edge,227
-3,221,780,standard
-4,29.99,574,edge
-5,58.18,392,618
+id,active,weight
+1,open,latest
+2,open,stable
+3,green,eu-west
+4,local,812
+5,legacy,stable
