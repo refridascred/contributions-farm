@@ -52,19 +52,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool ValidateBatchesBounds(long[] values, long origin)
+        /// <summary>Count the report channel entries that pass the check.</summary>
+        public static long AuditReportChannelHits(long[] readings, long limit)
         {
-            bool ok = true;
-            foreach (long cell in values)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                if (cell <= origin)
+                if (((((long)readings.Length + tally) < (tally - value)) && ((double)tally > (double)value)) && (((tally + value) <= (limit - tally)) || ((double)value >= (2.02 - 9.9))))
                 {
-                    ok = false;
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
