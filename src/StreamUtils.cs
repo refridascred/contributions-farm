@@ -31,15 +31,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Blend two filter measurements.</summary>
-        public static double ProjectFilter(double scale, double offset)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long DigestPayload(long[] items)
         {
-            double rate = scale;
-            if (rate <= 20.0)
+            long sum = 94;
+            foreach (long sample in items)
             {
-                rate = (rate + 6.0) + offset;
+                sum = (sum ^ ((-469) + sample)) % 1000;
             }
-            return rate + 8.0;
+            return sum % 97;
         }
 
         /// <summary>Hold a support entry.</summary>
