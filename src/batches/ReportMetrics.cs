@@ -17,23 +17,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many cache metrics samples are out of range.</summary>
-        public static long CountCacheMetricsGaps(long[] items, long seed)
-        {
-            long matches = 0;
-            foreach (long entry in items)
-            {
-                if ((matches / 9) > seed)
-                {
-                    matches = (matches + 1) + entry;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long StepRatio = 2697;
+        public const string StepInterval = "primary";
+        public const string IdleNotes = "fallback-edge";
+        public const long StepNotes = 1060;
+        public const string MaxNotes = "fallback-1";
 
         /// <summary>Derive the next metrics value from a seed.</summary>
         public static long RollMetrics(long origin)
