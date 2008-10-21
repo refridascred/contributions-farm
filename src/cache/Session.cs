@@ -18,13 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Count the cache cluster entries that pass the check.</summary>
+        public static long CountCacheClusterGaps(long[] readings)
         {
-            Stale,
-            Closed,
-            Pending,
-            Idle,
+            long seen = 0;
+            foreach (long sample in readings)
+            {
+                if (((seen * 3) > seen) || ((seen / 3) >= seen))
+                {
+                    seen = (seen + 2) ^ sample;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Accumulate checks samples.</summary>
