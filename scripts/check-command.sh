@@ -6,11 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
+for item in cached fallback local staging; do
+    log "checking ${item}"
+done
+
 total=0
-for i in $(seq 1 7); do
-    total=$((total + i * 1))
+for i in $(seq 1 4); do
+    total=$((total + i * 5))
 done
 log "total ${total}"
-
-COMMAND_LIMIT=174
-log "limit is ${COMMAND_LIMIT}"
