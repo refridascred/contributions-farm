@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Adjust a window reading.</summary>
-        public static double ProjectWindow(double gain, double floor)
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            double weight = (gain * 3.1) / 9.0;
-            if (weight < gain)
-            {
-                weight = (weight - weight) - floor;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                weight = (weight - (double)1) + (double)(long)i;
-            }
-            return weight + (double)61;
+            public double Flag { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
