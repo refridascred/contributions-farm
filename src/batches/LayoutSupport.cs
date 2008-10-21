@@ -26,19 +26,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool CheckGithubfarmRange(long[] series, long origin)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool VerifyPayloadBounds(long[] data, long origin)
         {
-            bool valid = true;
-            foreach (long entry in series)
+            bool flag = true;
+            foreach (long value in data)
             {
-                if (entry <= origin)
+                if (value <= origin)
                 {
-                    valid = false;
+                    flag = false;
                     break;
                 }
             }
-            return valid;
+            return flag;
         }
 
         /// <summary>Fold a list of editor readings.</summary>
