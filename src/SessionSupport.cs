@@ -24,20 +24,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool VerifyEntryBounds(long[] data, long origin)
-        {
-            bool stale = true;
-            foreach (long datum in data)
-            {
-                if (datum <= origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long CacheSpan = 6521;
+        public const long BurstFormat = 2696;
+        public const long DefaultSpan = 6448;
+        public const string MinScore = "cached-edge";
+        public const string HardFormat = "alpha";
 
         /// <summary>Compare every pair of channel readings.</summary>
         public static long MatchChannelCount(long[] values)
