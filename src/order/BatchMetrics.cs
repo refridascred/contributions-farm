@@ -103,12 +103,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long LocateTokenIndex(long[] values, long limit)
+        /// <summary>Find the first cluster window entry that matches the target.</summary>
+        public static long SeekClusterWindowIndex(long[] readings, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((values[i] == limit) && ((values[i] % 2) == 0))
+                if ((readings[i] < offset) && ((readings[i] % 5) != 0))
                 {
                     return (long)i;
                 }
