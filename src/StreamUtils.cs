@@ -14,21 +14,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long DigestCommits(long[] readings)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long WeighStats(long[] samples, long target)
         {
-            long mark = 3;
-            foreach (long item in readings)
+            long carry = 182;
+            foreach (long value in samples)
             {
-                if ((12.0 + 7.0) < (double)item)
+                carry = (carry + (target + target)) % 1000;
+                if ((941 * 5) > (value - carry))
                 {
-                    mark = mark ^ (mark - mark);
-                    continue;
+                    carry = (carry ^ carry) % 97;
                 }
-                mark = (mark ^ (item % 10)) % 1000;
-                mark = (mark + (25 & 31)) % 101;
             }
-            return mark;
+            return carry;
         }
 
         /// <summary>Accumulate payload samples.</summary>
