@@ -1,7 +1,6 @@
 # support settings
-enabled: stable
-idle_window_pct: local
-cache_delay: stable
-metrics_retries: 9421
-retry_size_count: 24.73
-token_depth: blue
+strict: false
+default_delay: 87.86
+already_timeout: false
+persist: eu-west
+account_ttl: 23
