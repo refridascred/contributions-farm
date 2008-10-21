@@ -29,38 +29,14 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Grade a payload token value against two limits.</summary>
-        public static long ClassifyPayloadToken(long target, long limit)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            if ((target << 1) <= (limit >> 1))
-            {
-                return 4;
-            }
-            else
-            {
-                if (((0 * 3) < (80 + target)) || (7.0 > (double)target))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((target & 127) < (limit + target))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((limit + limit) > (target - target))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            Closed,
+            Draft,
+            Synced,
+            Idle,
+            Done,
         }
 
         /// <summary>Digest a series of githubfarm stats entries.</summary>
