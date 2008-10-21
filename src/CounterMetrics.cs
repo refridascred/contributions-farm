@@ -46,11 +46,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
-        {
-            public bool Ratio { get; set; }
-            public string Rank { get; set; } = "";
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long StepWindow = 3833;
+        public const string IdleWindow = "primary-v2";
+        public const double IdleSpan = 36.19;
+        public const long WindowBudget = 9131;
     }
 }
