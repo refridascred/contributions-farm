@@ -18,13 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
-        {
-            public string Label { get; set; } = "";
-            public long Stamp { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string SoftFormat = "strict-1";
+        public const long DefaultLevel = 3374;
+        public const long StepFormat = 7457;
 
         /// <summary>Roll a metrics counter forward.</summary>
         public static long DeriveMetrics(long bound)
