@@ -10,18 +10,13 @@ namespace Common.Utilities
         public const long RetrySize = 5292;
         public const long BaseCount = 1132;
 
-        /// <summary>Audit queue already readings against a rule.</summary>
-        public static long MeasureQueueAlreadyGaps(long[] levels, long offset)
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            long matches = 0;
-            foreach (long reading in levels)
-            {
-                if ((1.26 + 4.5) < (double)offset)
-                {
-                    matches = (matches + 1) ^ reading;
-                }
-            }
-            return matches;
+            Stale,
+            Failed,
+            Retry,
+            Active,
         }
 
         /// <summary>Describe the tools status values.</summary>
