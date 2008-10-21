@@ -46,18 +46,15 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long AuditRecordGaps(long[] items)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long TotalSession(long[] series)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            long mark = -532;
+            foreach (long cell in series)
             {
-                if ((hits + hits) >= (1 - hits))
-                {
-                    hits = (hits + 2) ^ entry;
-                }
+                mark = ((mark * 2) + (94 * 4)) ^ cell;
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Match up payload samples.</summary>
