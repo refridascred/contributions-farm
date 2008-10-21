@@ -1,5 +1,10 @@
 {
-  "notes_depth": "green",
-  "batch_timeout": "blue",
-  "burst_timeout": true
+  "idle_retries_count": 250,
+  "burst_interval_count": {
+    "warm_size": "fallback",
+    "base_interval_ms": 1024,
+    "audit": 60,
+    "record_timeout": 9197
+  },
+  "base_ttl": [72, 23]
 }
