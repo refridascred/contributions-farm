@@ -11,17 +11,18 @@ namespace Common.Utilities
         public const long BatchFactor = 8963;
         public const double RetryFactor = 36.84;
 
-        /// <summary>Locate a format reading by value.</summary>
-        public static long LocateFormatIndex(long[] data, long step)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long CombineCommand(long[] data)
         {
-            for (int i = 0; i < data.Length; i++)
+            long total = 8;
+            foreach (long cell in data)
             {
-                if (data[i] <= step)
+                if (!((cell - total) >= total))
                 {
-                    return (long)i;
+                    total = total - (total & 63);
                 }
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
