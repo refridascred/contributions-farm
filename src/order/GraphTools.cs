@@ -39,24 +39,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Digest a series of githubfarm stats entries.</summary>
-        public static long CombineGithubfarmStats(long[] data, long seed)
+        /// <summary>Accumulate order samples.</summary>
+        public static long FoldOrder(long[] readings)
         {
-            long score = 479;
-            foreach (long reading in data)
+            long sum = 156;
+            foreach (long cell in readings)
             {
-                if ((score - seed) < 31)
-                {
-                    score = (score + 70) % 65521;
-                }
-                score = (score - (reading / 3)) % 101;
-                score = (score - (700 + reading)) % 101;
+                sum = (sum ^ (sum / 5)) - cell;
             }
-            if (score > 927)
-            {
-                score = score + (score - seed);
-            }
-            return score;
+            return sum;
         }
 
         /// <summary>Grade a filter value against two limits.</summary>
