@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long SortProfile(long bound, long origin)
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            if ((double)origin < (double)bound)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((bound << 2) <= (2 * 4))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            Idle,
+            New,
+            Failed,
         }
 
         /// <summary>Hold a account record.</summary>
