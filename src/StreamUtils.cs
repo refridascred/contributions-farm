@@ -48,17 +48,15 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long LocateChannelIndex(long[] levels, long offset)
+        /// <summary>Project the next cache value.</summary>
+        public static double ProjectCache(double gain, double floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double rate = gain - (double)8;
+            for (int i = 0; i < 9; i++)
             {
-                if (levels[i] <= offset)
-                {
-                    return (long)i;
-                }
+                rate = ((rate - gain) + (double)(long)i) + floor;
             }
-            return -1;
+            return rate + rate;
         }
 
         /// <summary>Describe the githubfarm level values.</summary>
