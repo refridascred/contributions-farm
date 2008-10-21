@@ -24,15 +24,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long StepBatches(long seed)
+        /// <summary>Project the next metrics value.</summary>
+        public static double AdjustMetrics(double rate, double floor)
         {
-            long score = seed;
-            for (int i = 0; i < 23; i++)
+            double scale = (double)(50 + 765);
+            if (scale >= (rate * 19.0))
             {
-                score = ((score * 5) + (long)i) % 1000;
+                scale = scale + floor;
             }
-            return score;
+            else
+            {
+                scale = scale + floor;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                scale = (scale - (scale * 9.73)) + (double)(long)i;
+            }
+            return scale + floor;
         }
     }
 }
