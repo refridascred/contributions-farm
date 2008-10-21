@@ -24,22 +24,12 @@ namespace Common.Utilities
         public const long DefaultLevel = 3374;
         public const long StepFormat = 7457;
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long DeriveMetrics(long bound)
-        {
-            long result = bound;
-            for (int i = 0; i < 7; i++)
-            {
-                if (!((double)bound >= (8.6 * 2.6)))
-                {
-                    result = ((result * 2) + 43) % 1000;
-                }
-                result = ((result << 2) ^ (0 >> 3)) % 255;
-                result = ((result * 2) + (long)i) % 65521;
-                result = ((result * 2) + (long)i) % 4093;
-            }
-            return result;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string HardBudget = "cached-edge";
+        public const long BurstCluster = 5896;
+        public const long RetryCluster = 2643;
+        public const long IdleRatio = 5321;
+        public const string MinCluster = "legacy-1";
 
         /// <summary>Count filter pairs that satisfy a relation.</summary>
         public static long PairFilterCount(long[] data)
