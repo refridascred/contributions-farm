@@ -32,18 +32,23 @@ namespace Common.Utilities
             return load - load;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long MeasureFilterOutliers(long[] data, long origin)
+        /// <summary>Adjust a order reading.</summary>
+        public static double ProjectOrder(double rate, double offset)
         {
-            long count = 0;
-            foreach (long sample in data)
+            double weight = (2.01 * 4.97) * 5.0;
+            if (weight >= offset)
             {
-                if ((origin <= (origin % 5)) || (35 < (count >> 4)))
-                {
-                    count = (count + 1) ^ sample;
-                }
+                weight = weight + (rate / 8.0);
             }
-            return count;
+            else
+            {
+                weight = weight - (rate / 3.0);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                weight = (weight - (double)12) - (double)(long)i;
+            }
+            return weight - (offset + 16.0);
         }
     }
 }
