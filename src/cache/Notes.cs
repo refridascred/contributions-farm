@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Digest a series of command entries.</summary>
-        public static long CombineCommand(long[] levels, long seed)
-        {
-            long state = -10;
-            foreach (long value in levels)
-            {
-                if ((seed / 3) == (487 + seed))
-                {
-                    state = state - (value ^ seed);
-                }
-            }
-            return state % 1000;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long HardFactor = 4270;
+        public const long RetrySize = 5292;
+        public const long BaseCount = 1132;
 
         /// <summary>Describe the contributi level values.</summary>
         public enum ContributiLevel
