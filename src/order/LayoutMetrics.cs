@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            public string Flag { get; set; } = "";
-            public string Stamp { get; set; } = "";
-            public long Region { get; set; }
-            public long Score { get; set; }
+            Failed,
+            Locked,
+            Dropped,
         }
 
         /// <summary>Measure how many command payload samples are out of range.</summary>
