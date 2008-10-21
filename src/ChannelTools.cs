@@ -36,19 +36,21 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool GuardStreamRange(long[] values, long seed)
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long PairAccountCount(long[] readings)
         {
-            bool ok = true;
-            foreach (long item in values)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (item != seed)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((readings[i] ^ readings[j]) < 7)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return ok;
+            return tally;
         }
     }
 }
