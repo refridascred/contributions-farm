@@ -32,21 +32,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long OverlapNotesCount(long[] readings)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long IterateStats(long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long sum = limit;
+            for (int i = 0; i < 20; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((0.2 * 4.0) < (double)sum)
                 {
-                    if ((readings[i] + readings[j]) == 14)
-                    {
-                        tally = tally + 1;
-                    }
+                    continue;
                 }
+                if (!!(9.68 > (double)sum))
+                {
+                    sum = (sum * 5) + limit;
+                }
+                sum = ((sum * 5) + (long)i) % 1000;
             }
-            return tally;
+            return sum;
         }
     }
 }
