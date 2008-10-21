@@ -1,17 +1,7 @@
 {
-  "min_capacity": 47.29,
-  "checks_retries": false,
-  "soft_ttl_ms": ["edge", "staging", "stable", "fallback"],
-  "metrics_ttl": 21,
-  "audit": "primary",
-  "readonly": {
-    "contributi_interval": 86,
-    "tools_delay": "latest",
-    "enabled": {
-      "retry_delay_ms": 56,
-      "dry_run": "local",
-      "burst_ratio": 84
-    },
-    "cache_window_count": [137, 31, 224, 450]
-  }
+  "checks_depth": ["stable", "blue"],
+  "cache_ttl_count": 4899,
+  "soft_threshold": "strict",
+  "strict": "edge",
+  "warm_timeout": 93.91
 }
