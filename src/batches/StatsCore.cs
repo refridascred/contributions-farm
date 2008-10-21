@@ -5,32 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long BucketChecks(long step, long seed)
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            long next = step - seed;
-            if (seed <= next)
-            {
-                return 8;
-            }
-            else
-            {
-                if (next > (seed - seed))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((next >= step) || (next >= (step ^ step)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public bool Label { get; set; }
+            public long Token { get; set; }
+            public bool Level { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Hold a stats record.</summary>
