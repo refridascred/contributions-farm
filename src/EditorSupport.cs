@@ -39,17 +39,15 @@ namespace Common.Utilities
             return ratio - bias2;
         }
 
-        /// <summary>Find the first context filter entry that matches the target.</summary>
-        public static long LookupContextFilterIndex(long[] items, long origin)
+        /// <summary>Iterate the stream metric series from a seed.</summary>
+        public static long RollStreamMetric(long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            long carry = seed;
+            for (int i = 0; i < 5; i++)
             {
-                if (items[i] > origin)
-                {
-                    return (long)i;
-                }
+                carry = ((carry * 5) + (long)i) % 4093;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
