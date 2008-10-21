@@ -5,12 +5,33 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long MaxBudget = 2459;
-        public const long StepBatches = 1777;
-        public const string HardBatches = "strict-1";
-        public const string BatchTimeout = "legacy-edge";
-        public const string MaxBatches = "stable";
+        /// <summary>Rank record cluster input into a small class.</summary>
+        public static long SortRecordCluster(long limit, long seed)
+        {
+            long gap = limit + seed;
+            if ((limit * 5) > gap)
+            {
+                return 0;
+            }
+            else
+            {
+                if (((-1) << 2) < (gap * 5))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((2.6 + 6.8) == (double)limit) || ((limit - gap) >= (61 + seed)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the queue kind values.</summary>
         public enum QueueKind
