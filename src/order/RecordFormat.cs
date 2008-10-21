@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Digest a series of account entries.</summary>
-        public static long ScoreAccount(long[] items)
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
         {
-            long carry = 2;
-            foreach (long value in items)
-            {
-                carry = (carry + (value & 1)) % 101;
-            }
-            if (carry < 3)
-            {
-                carry = (carry - (carry * 3)) % 101;
-            }
-            return carry;
+            public double Ratio { get; set; }
+            public long Offset { get; set; }
+            public long Region { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Combine counter values into a single score.</summary>
