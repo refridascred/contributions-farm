@@ -30,11 +30,10 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string MinStats = "local-1";
-        public const long WindowStats = 9098;
-        public const long MinSize = 4399;
-        public const long IdleInterval = 8634;
+        /// <summary>Define session limits and defaults.</summary>
+        public const long MinWidth = 1164;
+        public const long CacheTimeout = 4562;
+        public const string MinScore = "alpha-1";
 
         /// <summary>Check that every counter githubfarm entry stays within the limit.</summary>
         public static bool VerifyCounterGithubfarmRange(long[] values, long target)
