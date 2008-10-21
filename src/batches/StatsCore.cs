@@ -33,18 +33,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine format route values into a single score.</summary>
-        public static long DigestFormatRoute(long[] readings, long floor)
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            long carry = 9;
-            foreach (long datum in readings)
-            {
-                if (((carry - carry) >= (carry % 5)) && ((datum + floor) > datum))
-                {
-                    carry = ((carry * 3) + (floor << 2)) % 4096;
-                }
-            }
-            return carry;
+            public long Stamp { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Iterate the window series from a seed.</summary>
