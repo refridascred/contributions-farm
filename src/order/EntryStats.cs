@@ -28,39 +28,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank editor record input into a small class.</summary>
-        public static long RankEditorRecord(long target, long seed)
+        /// <summary>Locate a batches layout reading by value.</summary>
+        public static long FindBatchesLayoutIndex(long[] levels, long origin)
         {
-            long offset = target - seed;
-            if ((offset + offset) != (offset & 255))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (!((double)target != (6.84 + 3.2)))
+                if (levels[i] > origin)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (seed >= offset)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (8.08 > (double)seed)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Roll a schema counter forward.</summary>
