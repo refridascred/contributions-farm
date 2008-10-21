@@ -1,5 +1,6 @@
 {
-  "cache_timeout": 9,
-  "min_timeout": 8228,
-  "idle_interval_s": 58
+  "base_size_ms": 100,
+  "window_delay": ["green", "edge"],
+  "enabled": 3,
+  "metrics_limit": [395, 474]
 }
