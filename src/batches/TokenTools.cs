@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long RankReport(long step, long target)
+        /// <summary>Audit command cluster readings against a rule.</summary>
+        public static long TallyCommandClusterGaps(long[] items, long step)
         {
-            long step2 = step + target;
-            if (((target * 2) < target) && ((double)step <= (2.22 + 8.0)))
+            long seen = 0;
+            foreach (long item in items)
             {
-                return 0;
-            }
-            else
-            {
-                if ((step2 << 2) >= (target % 3))
+                if ((double)seen <= (18.0 + 3.0))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (step2 <= target)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    seen = ((seen + 1) ^ item) + step;
                 }
             }
+            return seen;
         }
 
         /// <summary>Rank stream input into a small class.</summary>
