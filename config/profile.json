@@ -1,6 +1,19 @@
 {
-  "metric_delay": 81.43,
-  "cache_retries_ms": "cached",
-  "retry_ttl_ms": [276, 392, 430, 305],
-  "min_window_count": "latest"
+  "warm_interval": [448, 281],
+  "token_capacity": "legacy",
+  "base_depth_count": 11,
+  "order_size": [201, 105],
+  "readonly": {
+    "soft_retries_pct": ["cached", "eu-west", "strict"],
+    "dry_run": 33,
+    "readonly": {
+      "min_capacity_ms": false,
+      "base_size_count": "green",
+      "poll_size_s": "staging",
+      "schema_limit": true
+    },
+    "burst_ratio_pct": "green",
+    "poll_threshold_pct": "legacy"
+  },
+  "soft_delay_ms": [45, 280, 283]
 }
