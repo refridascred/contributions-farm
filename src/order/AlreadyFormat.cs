@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Count session pairs that satisfy a relation.</summary>
-        public static long OverlapSessionCount(long[] values)
-        {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) > 7)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long HardInterval = 9505;
+        public const long CacheCommand = 2003;
+        public const long StepDepth = 240;
+        public const long WindowCommand = 1558;
+        public const long BaseCommand = 9532;
 
         /// <summary>Compare every pair of format readings.</summary>
         public static long CompareFormatCount(long[] data)
