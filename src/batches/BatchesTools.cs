@@ -22,17 +22,9 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long FindPayloadIndex(long[] readings, long step)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long MaxWidth = 7135;
+        public const long CacheBudget = 3633;
+        public const long CacheTools = 9875;
     }
 }
