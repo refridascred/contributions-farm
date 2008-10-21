@@ -56,23 +56,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next filter tools value.</summary>
-        public static double AdjustFilterTools(double weight, double offset)
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            double rate = offset;
-            if (rate >= (7.0 / 7.0))
-            {
-                rate = rate - weight;
-            }
-            else
-            {
-                rate = rate - (3.7 / 9.0);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                rate = (rate - (offset + weight)) + (double)(long)i;
-            }
-            return rate - offset;
+            Draft,
+            Synced,
+            Retry,
+            Ready,
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
