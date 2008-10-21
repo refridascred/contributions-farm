@@ -1,4 +1,14 @@
 # support settings
-idle_timeout_pct: 5
-enabled: 60
-warm_ratio_s: 22.18
+idle_timeout_s: true
+verbose: false
+base_size_count:
+  - open
+  - fallback
+  - cached
+graph_window: true
+batches_retries:
+  - 171
+  - 466
+  - 459
+  - 53
+readonly: 48
