@@ -1,6 +1,9 @@
-id,owner,weight
-1,cached,564
-2,534,815
-3,staging,630
-4,54.88,308
-5,242,standard
+id,token,owner,score
+1,95.58,817,stable
+2,65.35,strict,375
+3,stable,primary,977
+4,open,eu-west,edge
+5,358,primary,73.83
+6,397,72,strict
+7,515,220,green
+8,70.08,63.0,43.46
