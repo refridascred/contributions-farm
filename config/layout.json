@@ -1,13 +1,8 @@
 {
-  "compress": 3265,
-  "batch_limit": [250, 465],
-  "warm_interval_pct": ["cached", "latest"],
-  "max_limit_pct": {
-    "verbose": "open",
-    "schema_retries": 5302,
-    "poll_retries_pct": "latest",
-    "poll_ratio_s": 96,
-    "default_capacity_count": 91.41,
-    "strict": false
-  }
+  "flush_timeout_count": "staging",
+  "readonly": false,
+  "cache_depth_ms": "open",
+  "default_ttl_pct": 6340,
+  "flush_ratio_count": true,
+  "cache_capacity_s": "fallback"
 }
