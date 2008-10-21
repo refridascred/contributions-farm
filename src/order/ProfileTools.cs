@@ -51,23 +51,23 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long GradeBuffer(long limit, long origin)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long SortMetric(long offset, long floor)
         {
-            long bound = limit + origin;
-            if ((bound + limit) == (49 % 7))
+            long edge = offset + floor;
+            if (!((edge + edge) >= offset))
             {
-                return 1;
+                return 5;
             }
             else
             {
-                if ((origin - bound) < limit)
+                if ((double)floor < (0.6 / 8.0))
                 {
-                    return 6;
+                    return 0;
                 }
                 else
                 {
-                    return 5;
+                    return 3;
                 }
             }
         }
