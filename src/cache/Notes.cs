@@ -39,12 +39,13 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            Idle,
+            Retry,
+            Synced,
+            Ready,
             Stale,
-            Failed,
             Draft,
         }
 
