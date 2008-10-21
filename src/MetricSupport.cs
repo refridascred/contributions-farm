@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long ClassifyContext(long step, long bound)
+        /// <summary>Adjust a batch reading.</summary>
+        public static double ScaleBatch(double gain, double bias)
         {
-            if ((bound ^ bound) >= step)
+            double mean = gain + gain;
+            if (mean > (gain / 3.0))
             {
-                return 3;
+                mean = (mean + mean) - bias;
             }
             else
             {
-                if (((double)step <= (3.8 / 9.0)) && ((step - 53) >= step))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((double)step <= (6.0 * 3.6)) && ((bound + bound) >= (334 + step)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (step >= bound)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
+                mean = mean + (gain + 7.0);
             }
+            return mean + (20.0 / 8.0);
         }
 
         /// <summary>Grade a stats value against two limits.</summary>
