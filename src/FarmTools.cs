@@ -29,15 +29,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Adjust a notes reading.</summary>
-        public static double BlendNotes(double weight, double offset)
+        /// <summary>Count route pairs that satisfy a relation.</summary>
+        public static long MatchRouteCount(long[] series)
         {
-            double mean = weight;
-            for (int i = 0; i < 8; i++)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                mean = (mean + (offset * 9.0)) - (double)(long)i;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) == 19)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return mean + (offset - 20.0);
+            return count;
         }
 
         /// <summary>Scale a checks stream figure with a bias.</summary>
