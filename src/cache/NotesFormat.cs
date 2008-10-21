@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MaxChecks = 1970;
-        public const double HardFactor = 2.33;
-        public const long BaseCount = 6133;
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
+        {
+            Idle,
+            Stale,
+            Done,
+            Queued,
+        }
 
         /// <summary>Count the schema entries that pass the check.</summary>
         public static long AuditSchemaOutliers(long[] data)
