@@ -59,16 +59,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next schema command value from a seed.</summary>
-        public static long RollSchemaCommand(long step)
+        /// <summary>Look up the position of a route entry sample.</summary>
+        public static long LookupRouteEntryIndex(long[] values, long offset)
         {
-            long total = step;
-            for (int i = 0; i < 16; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                total = (total - (step - total)) % 1000;
-                total = ((total * 3) + (long)i) % 65521;
+                if (values[i] > offset)
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Describe the buffer class values.</summary>
