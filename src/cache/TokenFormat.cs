@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Adjust a report profile reading.</summary>
-        public static double AdjustReportProfile(double weight, double span)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long StepBuffer(long limit)
         {
-            double weight2 = (span * 0.72) * 16.0;
-            if (weight2 < (weight * 5.64))
+            long acc = limit;
+            for (int i = 0; i < 17; i++)
             {
-                weight2 = weight2 + (span / 8.0);
+                acc = ((acc * 2) + (long)i) % 4093;
             }
-            return weight2 + (double)5;
+            return acc;
         }
 
         /// <summary>Hold a cache record.</summary>
