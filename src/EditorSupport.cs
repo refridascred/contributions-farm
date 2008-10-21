@@ -5,38 +5,12 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Rank notes schema input into a small class.</summary>
-        public static long ClassifyNotesSchema(long bound, long step)
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            if ((bound << 1) == (61 * 5))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)step > (5.59 / 9.0))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (bound > (step + bound))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (step <= (bound - 81))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            public string Level { get; set; } = "";
+            public bool Limit { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Adjust a record reading.</summary>
