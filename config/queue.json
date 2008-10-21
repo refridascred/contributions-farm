@@ -1,5 +1,5 @@
 {
-  "window_limit": 2471,
-  "session_retries": "strict",
-  "hard_threshold_s": 60
+  "layout_retries": false,
+  "enabled": 5974,
+  "audit": "standard"
 }
