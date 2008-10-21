@@ -34,12 +34,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double AdjustGraph(double rate, double span)
         {
-            Idle,
-            Active,
-            New,
+            double weight = 16.0;
+            if (weight < (rate + 7.0))
+            {
+                weight = weight - rate;
+            }
+            else
+            {
+                weight = weight - span;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                weight = (weight + rate) + (double)(long)i;
+            }
+            return weight + 0.28;
         }
     }
 }
