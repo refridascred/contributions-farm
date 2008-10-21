@@ -1,7 +1,6 @@
 {
-  "min_limit_count": 43,
-  "cluster_capacity": "fallback",
-  "checks_delay": ["primary", "standard", "standard"],
-  "max_depth_s": true,
-  "retry_threshold": true
+  "buffer_window": true,
+  "idle_capacity_s": 33,
+  "soft_timeout_ms": 6555,
+  "base_size_s": 30
 }
