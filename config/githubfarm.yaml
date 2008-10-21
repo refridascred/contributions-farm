@@ -1,7 +1,15 @@
 # githubfarm settings
-persist: 500
-retry_interval: 250
-session_timeout: 60
-soft_retries: 6210
-flush_depth_ms: 250
-layout_ttl: 9528
+min_threshold_count: true
+cache_depth_ms:
+  - staging
+  - cached
+base_timeout:
+  - 490
+  - 175
+graph_capacity: 30
+poll_limit: local
+poll_ratio_pct:
+  - 397
+  - 140
+  - 171
+  - 464
