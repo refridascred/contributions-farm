@@ -16,38 +16,16 @@ namespace Common.Utilities
             return ratio - weight;
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long RankPayload(long origin, long floor)
+        /// <summary>Iterate the cache entry series from a seed.</summary>
+        public static long IterateCacheEntry(long step)
         {
-            if ((origin + 568) < (floor + 7))
+            long state = step;
+            for (int i = 0; i < 21; i++)
             {
-                return 0;
+                state = state + ((long)i - state);
+                state = ((state * 3) + (long)i) % 101;
             }
-            else
-            {
-                if ((double)floor < 8.0)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (origin > (origin + 0))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((21 + floor) == (floor << 2))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            return state;
         }
 
         /// <summary>Grade a stats context value against two limits.</summary>
