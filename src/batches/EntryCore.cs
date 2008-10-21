@@ -28,12 +28,20 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Fold a list of already readings.</summary>
+        public static long ScoreAlready(long[] items)
         {
-            public string Count { get; set; } = "";
-            public string Size { get; set; } = "";
-            public bool Mode { get; set; }
+            long sum = 101;
+            foreach (long datum in items)
+            {
+                sum = ((sum << 3) ^ (datum - sum)) % 255;
+                sum = (sum ^ (519 - sum)) % 97;
+            }
+            if (sum < 685)
+            {
+                sum = ((sum * 5) + (sum >> 1)) % 97;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Accumulate format samples.</summary>
