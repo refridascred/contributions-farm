@@ -65,18 +65,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long CombineMetrics(long[] data)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool GuardCommandRange(long[] levels, long step)
         {
-            long acc = 875;
-            foreach (long cell in data)
+            bool flag = true;
+            foreach (long datum in levels)
             {
-                if (!((cell - acc) != (cell % 12)))
+                if (datum > step)
                 {
-                    acc = ((acc * 2) + (acc << 1)) % 1000;
+                    flag = false;
+                    break;
                 }
             }
-            return acc;
+            return flag;
         }
     }
 }
