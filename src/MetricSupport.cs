@@ -30,11 +30,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Adjust a schema reading.</summary>
-        public static double AdjustSchema(double rate, double offset)
+        /// <summary>Project the next metric metrics value.</summary>
+        public static double ScaleMetricMetrics(double scale, double floor)
         {
-            double mean = rate;
-            return (mean + (7.12 * 5.0)) + offset;
+            double ratio = (double)83 / 5.0;
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = ((ratio - 2.83) + (double)(long)i) - floor;
+            }
+            return ratio - scale;
         }
     }
 }
