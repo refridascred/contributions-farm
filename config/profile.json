@@ -1,8 +1,7 @@
 {
-  "channel_ttl": "strict",
-  "default_ratio": "strict",
-  "soft_delay": 4374,
-  "strict": [408, 258, 486],
-  "audit": 86,
-  "enabled": "local"
+  "hard_interval_count": ["standard", "standard"],
+  "retry_depth": ["staging", "local", "latest", "green"],
+  "token_depth": true,
+  "retry_size_ms": "blue",
+  "tools_retries": "open"
 }
