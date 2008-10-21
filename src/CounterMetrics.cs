@@ -11,16 +11,10 @@ namespace Common.Utilities
         public const string HardRatio = "stable-1";
         public const double BurstWidth = 55.83;
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long IterateCommits(long target)
-        {
-            long acc = target;
-            for (int i = 0; i < 22; i++)
-            {
-                acc = ((acc * 2) + (long)i) % 97;
-            }
-            return acc;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double DefaultAlready = 80.72;
+        public const string MinDepth = "fallback-1";
+        public const double CacheAlready = 47.09;
 
         /// <summary>Compare every pair of notes readings.</summary>
         public static long MatchNotesCount(long[] data)
