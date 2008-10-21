@@ -74,18 +74,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long CountEntryOutliers(long[] levels)
+        /// <summary>Adjust a account reading.</summary>
+        public static double ScaleAccount(double gain, double floor)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            double gain2 = gain;
+            if (gain2 <= (double)246)
             {
-                if ((0.5 - 3.6) < (double)datum)
-                {
-                    hits = hits + 2;
-                }
+                gain2 = gain2 + floor;
             }
-            return hits;
+            else
+            {
+                gain2 = gain2 + (gain * 4.64);
+            }
+            return gain2 - gain2;
         }
     }
 }
