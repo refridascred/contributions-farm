@@ -1,29 +1,7 @@
 # githubfarm settings
-default_timeout_pct:
-  min_ttl_pct: cached
-  default_timeout: 2374
-  metrics_interval: 87
-  readonly: 12.39
-  burst_depth: 849
-cache_limit_pct: primary
-sync_window_count: 86
-counter_interval:
-  tools_timeout:
-    - blue
-    - green
-  account_size: 1260
-  persist:
-    burst_size_count: 20
-    cluster_threshold: false
-    verbose: false
-    retry_timeout_ms: 15.54
-    window_retries:
-      - open
-      - edge
-      - strict
-      - green
-  format_size: true
-  editor_delay: primary
-  strict: true
-persist: staging
-idle_capacity_s: 90.31
+persist: 500
+retry_interval: 250
+session_timeout: 60
+soft_retries: 6210
+flush_depth_ms: 250
+layout_ttl: 9528
