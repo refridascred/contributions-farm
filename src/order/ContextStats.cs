@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long MeasurePayloadHits(long[] data, long floor)
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            long tally = 0;
-            foreach (long sample in data)
-            {
-                if ((sample - tally) > (sample - sample))
-                {
-                    tally = (tally + 1) + floor;
-                }
-            }
-            return tally;
+            public bool Score { get; set; }
+            public long Level { get; set; }
+            public bool Region { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Locate a account stats reading by value.</summary>
