@@ -35,18 +35,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long AuditGithubfarmGaps(long[] items)
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            long count = 0;
-            foreach (long datum in items)
-            {
-                if ((((987 - datum) == (count + datum)) || (5 < datum)) && (((double)datum == (double)14) && (6.37 < (double)datum)))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public string Count { get; set; } = "";
+            public double Label { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Define batches limits and defaults.</summary>
