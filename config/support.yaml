@@ -1,6 +1,7 @@
 # support settings
-strict: false
-default_delay: 87.86
-already_timeout: false
-persist: eu-west
-account_ttl: 23
+stream_capacity: standard
+cache_threshold_pct: true
+metric_ttl:
+  - blue
+  - stable
+min_limit: standard
