@@ -47,13 +47,15 @@ namespace Common.Utilities
         public const long MinWidth = 804;
         public const long IdleStats = 5712;
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Combine filter queue values into a single score.</summary>
+        public static long CombineFilterQueue(long[] samples, long origin)
         {
-            public double Offset { get; set; }
-            public bool Score { get; set; }
-            public long Owner { get; set; }
-            public double Weight { get; set; }
+            long acc = 189;
+            foreach (long datum in samples)
+            {
+                acc = ((acc ^ (datum >> 2)) % 4096) + origin;
+            }
+            return acc;
         }
     }
 }
