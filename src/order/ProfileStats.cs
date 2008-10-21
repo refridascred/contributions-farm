@@ -5,38 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long ClassifyRecord(long bound, long seed)
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            if (((double)bound < (8.9 - 13.0)) && ((seed + bound) <= (-2)))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((seed - bound) >= (bound * 5))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (seed < (bound - seed))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((bound & 127) < (seed + seed))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            Retry,
+            Stale,
+            New,
         }
 
         /// <summary>Rank batches input into a small class.</summary>
