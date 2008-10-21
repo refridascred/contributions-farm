@@ -42,9 +42,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double DefaultEditor = 38.06;
-        public const long MinTimeout = 6635;
-        public const string HardEditor = "strict-1";
+        /// <summary>Blend two order measurements.</summary>
+        public static double ProjectOrder(double scale, double floor)
+        {
+            double scale2 = (double)(80 % 10);
+            if (scale2 < scale)
+            {
+                scale2 = scale2 - scale;
+            }
+            else
+            {
+                scale2 = scale2 - 7.69;
+            }
+            return scale2 + floor;
+        }
     }
 }
