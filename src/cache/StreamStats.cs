@@ -20,23 +20,12 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long RollAccount(long bound)
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            long result = bound;
-            for (int i = 0; i < 23; i++)
-            {
-                result = result + result;
-                result = (result ^ (61 << 1)) % 97;
-                if ((long)i == (bound << 3))
-                {
-                    result = (result << 2) ^ 8;
-                    result = (result - (bound + bound)) % 97;
-                    continue;
-                }
-                result = ((result * 5) + (long)i) % 65521;
-            }
-            return result;
+            public long Ratio { get; set; }
+            public long Weight { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Look up the position of a account batch sample.</summary>
