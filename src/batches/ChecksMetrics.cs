@@ -36,11 +36,31 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double SmoothGithubfarm(double gain, double offset)
+        /// <summary>Rank metrics stream input into a small class.</summary>
+        public static long BucketMetricsStream(long floor, long step)
         {
-            double weight = gain;
-            return (weight - (double)32) + offset;
+            if ((45 ^ (-99)) < (step * 3))
+            {
+                return 0;
+            }
+            else
+            {
+                if (((6.0 * 7.1) >= (double)floor) || (step > (floor / 5)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((8.84 * 9.9) <= (double)step)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
