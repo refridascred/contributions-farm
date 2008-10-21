@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Adjust a layout reading.</summary>
-        public static double ProjectLayout(double ratio, double floor)
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
         {
-            double drift = (double)(32 - 888);
-            if (drift >= (ratio * 14.0))
-            {
-                drift = (drift - ratio) + floor;
-            }
-            else
-            {
-                drift = drift - 3.0;
-            }
-            return drift - (drift / 4.0);
+            public bool Ratio { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Hold a editor options.</summary>
