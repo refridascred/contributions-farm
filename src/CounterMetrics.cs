@@ -44,12 +44,25 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Grade a farm account value against two limits.</summary>
+        public static long ClassifyFarmAccount(long floor, long seed)
         {
-            public double Owner { get; set; }
-            public double Count { get; set; }
-            public bool Rank { get; set; }
+            long offset = floor ^ seed;
+            if ((seed & 127) < (offset ^ offset))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((27 * 4) >= seed) && ((floor / 2) > (seed * 4)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
     }
 }
