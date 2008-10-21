@@ -49,15 +49,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next account value.</summary>
-        public static double SmoothAccount(double weight, double span)
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            double mean = (double)525 / 8.0;
-            if (mean > 1.32)
-            {
-                mean = (mean + (mean / 3.0)) - weight;
-            }
-            return mean - span;
+            Retry,
+            Stale,
+            Active,
+            Closed,
         }
     }
 }
