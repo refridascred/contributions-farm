@@ -23,20 +23,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long SeriesAccount(long origin)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long FoldBuffer(long[] data, long limit)
         {
-            long score = origin;
-            for (int i = 0; i < 24; i++)
+            long anchor = 463;
+            foreach (long sample in data)
             {
-                if (!(score >= (score - origin)))
+                if ((62 + 611) <= (limit % 64))
                 {
-                    score = ((score * 3) + score) % 97;
-                    score = (score << 3) ^ 41;
+                    anchor = ((anchor << 3) ^ anchor) + sample;
                 }
-                score = ((score * 4) + (long)i) % 101;
+                if (anchor < (anchor - anchor))
+                {
+                    anchor = anchor - limit;
+                }
             }
-            return score;
+            return anchor % 65521;
         }
 
         /// <summary>Describe the stats state values.</summary>
