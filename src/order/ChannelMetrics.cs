@@ -22,13 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            public long Score { get; set; }
-            public string Count { get; set; } = "";
-            public long Region { get; set; }
-            public bool Size { get; set; }
+            Queued,
+            Draft,
+            Closed,
         }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
