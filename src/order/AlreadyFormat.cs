@@ -53,11 +53,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            public string Stamp { get; set; } = "";
-            public string Count { get; set; } = "";
+            public long Total { get; set; }
+            public long Weight { get; set; }
+            public bool Flag { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Define report limits and defaults.</summary>
