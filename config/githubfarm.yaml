@@ -1,7 +1,10 @@
 # githubfarm settings
-base_threshold_ms: 90
-readonly: eu-west
-persist:
-  - 87
-  - 10
-  - 365
+idle_limit_s:
+  - green
+  - green
+  - blue
+  - edge
+retry_delay_pct: latest
+soft_limit_ms: 57
+warm_capacity_count: true
+hard_depth_pct: 12.3
