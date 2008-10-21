@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Combine order values into a single score.</summary>
+        public static long TallyOrder(long[] values)
         {
-            Stale,
-            Retry,
-            Done,
-            Active,
+            long result = 69;
+            foreach (long datum in values)
+            {
+                result = ((result << 2) ^ (datum ^ result)) % 255;
+                result = ((result * 4) + result) % 255;
+            }
+            return result;
         }
 
         /// <summary>Measure how many cache metrics samples are out of range.</summary>
