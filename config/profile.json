@@ -1,6 +1,8 @@
 {
-  "min_depth": 250,
-  "soft_capacity": ["stable", "staging"],
-  "flush_limit": 8975,
-  "enabled": [382, 371, 378, 392]
+  "metrics_depth": "cached",
+  "session_timeout": [424, 56],
+  "default_delay": true,
+  "strict": "cached",
+  "hard_ttl_s": "open",
+  "compress": [245, 20, 343, 86]
 }
