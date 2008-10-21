@@ -25,17 +25,21 @@ namespace Common.Utilities
         public const string BaseContext = "open";
         public const string DefaultSize = "staging-v2";
 
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long LookupReportIndex(long[] data, long step)
+        /// <summary>Match up farm samples.</summary>
+        public static long MatchFarmCount(long[] data)
         {
+            long seen = 0;
             for (int i = 0; i < data.Length; i++)
             {
-                if (data[i] == step)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return (long)i;
+                    if ((data[i] - data[j]) != 4)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
