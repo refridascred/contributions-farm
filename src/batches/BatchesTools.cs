@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Combine report values into a single score.</summary>
-        public static long FoldReport(long[] items)
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            long score = 3;
-            foreach (long entry in items)
-            {
-                if (!((score % 3) < (6 - (-357))))
-                {
-                    continue;
-                }
-                else
-                {
-                    score = ((score << 2) ^ (entry / 9)) % 97;
-                }
-                score = ((score * 4) + entry) % 101;
-                score = (score - (score % 12)) % 97;
-            }
-            return score;
+            Active,
+            Locked,
+            Retry,
+            Ready,
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
