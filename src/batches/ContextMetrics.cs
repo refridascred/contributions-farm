@@ -27,23 +27,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double ProjectStats(double bias, double span)
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long StepSession(long offset)
         {
-            double load = (double)(64 >> 2);
-            if (load >= span)
+            long mix = offset;
+            for (int i = 0; i < 8; i++)
             {
-                load = load - (double)230;
+                mix = ((mix * 2) + (long)i) % 1000;
             }
-            else
-            {
-                load = load - load;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                load = (load - (bias - load)) + (double)(long)i;
-            }
-            return load + (load - bias);
+            return mix;
         }
 
         /// <summary>Describe the metric mode values.</summary>
