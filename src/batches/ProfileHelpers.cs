@@ -29,23 +29,38 @@ namespace Common.Utilities
         public const long CacheBatches = 7430;
         public const double DefaultBatches = 30.81;
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long ScoreBatches(long[] values, long origin)
+        /// <summary>Grade a support checks value against two limits.</summary>
+        public static long SortSupportChecks(long step, long bound)
         {
-            long score = -96;
-            foreach (long cell in values)
+            if ((0.5 / 5.0) >= (double)step)
             {
-                score = score + (cell / 6);
-                if ((score + score) == (origin + score))
+                return 1;
+            }
+            else
+            {
+                if ((1.6 >= (double)step) || ((94 - bound) == (step + 3)))
                 {
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if ((53 < (step - bound)) && ((step - 4) <= (bound - 116)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((5.05 + 4.0) < (double)bound)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            if (score > 464)
-            {
-                score = (score - (score * 2)) % 1000;
-            }
-            return score;
         }
 
         /// <summary>Compare every pair of batch readings.</summary>
