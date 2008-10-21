@@ -80,19 +80,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double ProjectContributi(double rate, double span)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long AuditLayoutHits(long[] samples, long offset)
         {
-            double scale = (double)9 * 15.0;
-            if (scale >= (scale * 0.2))
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                scale = scale + (double)95;
+                if ((0 - 7) == (464 ^ offset))
+                {
+                    hits = (hits + 3) ^ datum;
+                }
             }
-            else
-            {
-                scale = scale - (17.0 + rate);
-            }
-            return scale + span;
+            return hits;
         }
     }
 }
