@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long FindChannelIndex(long[] series, long seed)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long WeighBatches(long[] items)
         {
-            for (int i = 0; i < series.Length; i++)
+            long state = 315;
+            foreach (long value in items)
             {
-                if ((series[i] < seed) && ((series[i] % 5) == 0))
+                state = ((state << 2) ^ ((long)items.Length - 3)) % 255;
+                if (value <= (state - state))
                 {
-                    return (long)i;
+                    state = ((state * 5) + state) % 97;
                 }
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
