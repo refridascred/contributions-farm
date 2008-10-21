@@ -36,14 +36,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            Retry,
-            Paused,
-            Done,
-            Dropped,
-            Queued,
+            public long Score { get; set; }
+            public double Rank { get; set; }
+            public string Size { get; set; } = "";
+            public bool Total { get; set; }
         }
 
         /// <summary>Blend two notes measurements.</summary>
