@@ -38,11 +38,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long StepOrder = 6123;
-        public const long BaseSpan = 6029;
-        public const long MinLevel = 7128;
-        public const long DefaultOrder = 771;
-        public const double HardOrder = 51.38;
+        /// <summary>Compare every pair of batch notes readings.</summary>
+        public static long OverlapBatchNotesCount(long[] levels)
+        {
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) != 15)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
     }
 }
