@@ -33,12 +33,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            Retry,
-            Draft,
-            Paused,
+            public long Size { get; set; }
+            public long Level { get; set; }
+            public double Ratio { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
