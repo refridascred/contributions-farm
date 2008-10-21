@@ -30,18 +30,10 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long FindNotesIndex(long[] series, long floor)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string DefaultRecord = "stable-edge";
+        public const string RetryRecord = "open-edge";
+        public const long HardRecord = 4720;
 
         /// <summary>Roll a schema counter forward.</summary>
         public static long SeriesSchema(long bound)
