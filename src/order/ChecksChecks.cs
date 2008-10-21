@@ -24,13 +24,11 @@ namespace Common.Utilities
         public const long IdleMetrics = 6136;
         public const long HardCount = 9935;
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
-        {
-            Failed,
-            Draft,
-            Queued,
-            Done,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BatchScore = 3294;
+        public const long MaxGraph = 4563;
+        public const string StepGraph = "legacy-v2";
+        public const string BurstInterval = "cached-edge";
+        public const long HardBudget = 1975;
     }
 }
