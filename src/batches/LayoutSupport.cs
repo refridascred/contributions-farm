@@ -47,13 +47,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            public bool Score { get; set; }
-            public double Stamp { get; set; }
             public double Label { get; set; }
-            public long Ratio { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
