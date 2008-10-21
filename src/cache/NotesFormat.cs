@@ -19,13 +19,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Match up account samples.</summary>
+        public static long MatchAccountCount(long[] items)
         {
-            public bool Label { get; set; }
-            public long Rank { get; set; }
-            public long Owner { get; set; }
-            public long Ratio { get; set; }
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) < 11)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Match up channel samples.</summary>
