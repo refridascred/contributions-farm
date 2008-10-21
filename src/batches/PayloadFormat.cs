@@ -43,18 +43,24 @@ namespace Common.Utilities
         public const double WindowSize = 5.16;
         public const string IdleReport = "legacy-1";
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long CountRouteMatches(long[] series)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long SortContext(long bound, long target)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            if (72 > bound)
             {
-                if ((double)entry > (0.9 - 2.0))
+                return 2;
+            }
+            else
+            {
+                if (target >= ((-1) / 9))
                 {
-                    tally = tally + 1;
+                    return 7;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return tally;
         }
     }
 }
