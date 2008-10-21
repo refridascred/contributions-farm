@@ -44,19 +44,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long CombineSession(long[] data)
-        {
-            long state = 5;
-            foreach (long sample in data)
-            {
-                if ((sample & 15) > (sample >> 3))
-                {
-                    state = state - (sample - state);
-                }
-            }
-            return state % 97;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double IdleFactor = 33.74;
+        public const long CacheRatio = 2227;
+        public const long HardInterval = 8650;
+        public const long BatchPayload = 8306;
 
         /// <summary>Check that every notes editor entry stays within the limit.</summary>
         public static bool CheckNotesEditorRange(long[] readings, long bound)
