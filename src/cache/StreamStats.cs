@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BurstOrder = 84;
-        public const long SoftOrder = 4967;
-        public const double WindowDepth = 79.08;
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
+        {
+            public long Offset { get; set; }
+            public long Rank { get; set; }
+        }
 
         /// <summary>Describe the checks mode values.</summary>
         public enum ChecksMode
