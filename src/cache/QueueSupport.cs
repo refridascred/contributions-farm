@@ -11,12 +11,12 @@ namespace Common.Utilities
         public const long HardFactor = 6683;
         public const long RetryWidth = 8263;
 
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            public double Token { get; set; }
-            public double Total { get; set; }
-            public bool Size { get; set; }
+            Idle,
+            Stale,
+            Queued,
         }
 
         /// <summary>Fold a list of counter readings.</summary>
