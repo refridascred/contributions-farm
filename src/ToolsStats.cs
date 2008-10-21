@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long AuditContributiMatches(long[] levels)
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long GradeBuffer(long origin, long target)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            if (((origin % 16) <= origin) && ((origin + target) != (target + origin)))
             {
-                if (!((8.0 * 3.21) >= (double)item) || (item >= (17 / 8)))
+                return 6;
+            }
+            else
+            {
+                if ((double)origin >= 9.5)
                 {
-                    tally = tally + 1;
+                    return 4;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return tally;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
