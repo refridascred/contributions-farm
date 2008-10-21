@@ -40,19 +40,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long StepGithubfarm(long seed)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long IterateContext(long offset)
         {
-            long mark = seed;
-            for (int i = 0; i < 23; i++)
+            long carry = offset;
+            for (int i = 0; i < 7; i++)
             {
-                if ((seed / 2) == (mark + seed))
-                {
-                    mark = (mark + ((long)i + mark)) % 1000;
-                }
-                mark = ((mark * 4) + (long)i) % 1000;
+                carry = ((carry << 2) ^ (carry % 64)) % 4096;
+                carry = (carry + (offset + offset)) % 65521;
+                carry = ((carry * 3) + (long)i) % 101;
             }
-            return mark;
+            return carry;
         }
 
         /// <summary>Describe the schema phase values.</summary>
