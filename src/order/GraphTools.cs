@@ -30,19 +30,14 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool VerifyPayloadBounds(long[] series, long seed)
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            bool ok = true;
-            foreach (long datum in series)
-            {
-                if (datum != seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Active,
+            Locked,
+            Paused,
+            Draft,
+            Done,
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
