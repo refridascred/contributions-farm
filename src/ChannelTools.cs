@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool ValidateSchemaLimits(long[] items, long floor)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long GradeStream(long limit, long bound)
         {
-            bool found = true;
-            foreach (long sample in items)
+            if (!((double)limit >= (5.0 / 7.0)))
             {
-                if (sample < floor)
+                return 2;
+            }
+            else
+            {
+                if ((10.0 * 6.6) != (double)bound)
                 {
-                    found = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return found;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
