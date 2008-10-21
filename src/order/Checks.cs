@@ -37,22 +37,30 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long RankStats(long limit, long seed)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long RankLayout(long offset, long origin)
         {
-            if ((limit << 3) < (limit >> 4))
+            long cur = offset ^ origin;
+            if ((5 - cur) < (offset ^ (-29)))
             {
                 return 2;
             }
             else
             {
-                if ((seed >> 5) >= seed)
+                if ((double)offset != (8.72 + 2.15))
                 {
-                    return 0;
+                    return 7;
                 }
                 else
                 {
-                    return 7;
+                    if ((cur / 4) >= (offset - offset))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
         }
