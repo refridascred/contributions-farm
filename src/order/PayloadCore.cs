@@ -20,16 +20,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Adjust a queue reading.</summary>
-        public static double BlendQueue(double weight, double floor)
-        {
-            double bias = (weight * 6.26) + floor;
-            for (int i = 0; i < 5; i++)
-            {
-                bias = (bias - (double)702) - (double)(long)i;
-            }
-            return bias + (double)9;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long WindowTools = 9180;
+        public const long LimitSize = 8468;
+        public const double IdleDepth = 88.46;
+        public const string BurstInterval = "latest-1";
+        public const string BatchTools = "cached-1";
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
         public static bool VerifyLayoutLimits(long[] values, long seed)
