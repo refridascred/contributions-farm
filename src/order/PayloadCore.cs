@@ -43,10 +43,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long RetryBudget = 8427;
-        public const double RetrySize = 9.43;
-        public const string IdleSize = "strict-edge";
-        public const long HardReport = 8536;
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
+        {
+            Queued,
+            Closed,
+            New,
+            Done,
+            Pending,
+        }
     }
 }
