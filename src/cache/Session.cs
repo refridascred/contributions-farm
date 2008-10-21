@@ -42,13 +42,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long AuditBatchesHits(long[] data)
         {
-            Closed,
-            Active,
-            Pending,
-            Retry,
+            long matches = 0;
+            foreach (long sample in data)
+            {
+                if ((matches << 3) < 30)
+                {
+                    matches = (matches + 1) + sample;
+                }
+            }
+            return matches;
         }
     }
 }
