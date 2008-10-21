@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Compare every pair of stats readings.</summary>
-        public static long PairStatsCount(long[] data)
-        {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) == 0)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string LimitInterval = "standard-edge";
+        public const double BurstEditor = 32.42;
+        public const long BurstSize = 2230;
+        public const long BurstScore = 1915;
+        public const long MinEditor = 7201;
 
         /// <summary>Measure how many context samples are out of range.</summary>
         public static long TallyContextOutliers(long[] samples)
