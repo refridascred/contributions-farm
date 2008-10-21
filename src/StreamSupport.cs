@@ -34,12 +34,13 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            Synced,
-            Dropped,
-            Stale,
+            Closed,
+            Draft,
+            Queued,
+            Ready,
         }
     }
 }
