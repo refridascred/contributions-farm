@@ -1,6 +1,12 @@
 {
-  "sync_window": ["local", "open", "green"],
-  "warm_window_count": 3.54,
-  "soft_capacity": 3179,
-  "idle_depth_ms": 4535
+  "dry_run": {
+    "cache_window_ms": 500,
+    "verbose": 100,
+    "hard_capacity_pct": "stable",
+    "max_size_s": 7.97,
+    "graph_window": 3705,
+    "account_ttl": "blue"
+  },
+  "min_ttl_pct": "cached",
+  "token_ratio": 69
 }
