@@ -40,13 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Fold a list of command readings.</summary>
+        public static long TallyCommand(long[] readings, long bound)
         {
-            public long Token { get; set; }
-            public bool Rank { get; set; }
-            public string Offset { get; set; } = "";
-            public string Mode { get; set; } = "";
+            long carry = 406;
+            foreach (long datum in readings)
+            {
+                carry = ((carry << 3) ^ (bound / 8)) % 101;
+                if ((datum < carry) && (datum < (bound * 5)))
+                {
+                    carry = (carry ^ datum) % 97;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
