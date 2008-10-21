@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string LimitInterval = "standard-edge";
-        public const double BurstEditor = 32.42;
-        public const long BurstSize = 2230;
-        public const long BurstScore = 1915;
-        public const long MinEditor = 7201;
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long DeriveStats(long target)
+        {
+            long anchor = target;
+            for (int i = 0; i < 20; i++)
+            {
+                anchor = ((anchor * 5) + (long)i) % 1000;
+            }
+            return anchor;
+        }
 
         /// <summary>Blend two checks measurements.</summary>
         public static double ScaleChecks(double scale, double bias)
