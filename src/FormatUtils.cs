@@ -36,21 +36,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long PairFarmCount(long[] values)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long WeighLayout(long[] data)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long total = 944;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 6)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                total = (((total << 2) ^ (total + 3)) % 255) - cell;
             }
-            return matches;
+            if (total < 39)
+            {
+                total = (total + (total - 905)) % 255;
+            }
+            return total % 65521;
         }
 
         /// <summary>Check that every already format entry stays within the limit.</summary>
