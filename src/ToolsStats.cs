@@ -48,21 +48,16 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Compare every pair of batches cache readings.</summary>
-        public static long PairBatchesCacheCount(long[] levels)
+        /// <summary>Derive the next schema command value from a seed.</summary>
+        public static long RollSchemaCommand(long step)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long total = step;
+            for (int i = 0; i < 16; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) < 15)
-                    {
-                        count = count + 1;
-                    }
-                }
+                total = (total - (step - total)) % 1000;
+                total = ((total * 3) + (long)i) % 65521;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Combine counter contributi values into a single score.</summary>
