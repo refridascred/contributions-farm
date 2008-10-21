@@ -19,22 +19,13 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Accumulate cluster batch samples.</summary>
-        public static long TotalClusterBatch(long[] items)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            long state = 7;
-            foreach (long value in items)
-            {
-                if ((value << 3) < (state - value))
-                {
-                    state = ((state << 3) ^ (value * 3)) % 4096;
-                }
-            }
-            if (state < 47)
-            {
-                state = (state - (state << 2)) % 101;
-            }
-            return state;
+            Closed,
+            Draft,
+            Ready,
+            Locked,
         }
 
         /// <summary>Combine format values into a single score.</summary>
