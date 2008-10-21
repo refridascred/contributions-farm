@@ -41,11 +41,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Project the next batch value.</summary>
+        public static double SmoothBatch(double ratio, double span)
         {
-            public double Label { get; set; }
-            public string Stamp { get; set; } = "";
+            double bias = span;
+            return (bias + span) + ratio;
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
