@@ -16,18 +16,32 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long TallyFormatHits(long[] readings, long floor)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long SortGithubfarm(long limit, long origin)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            long step = limit ^ origin;
+            if (limit < origin)
             {
-                if ((101 >> 1) > (reading + count))
+                return 2;
+            }
+            else
+            {
+                if ((22 % 3) >= (step - step))
                 {
-                    count = (count + 2) - floor;
+                    return 5;
+                }
+                else
+                {
+                    if ((step - 510) < origin)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
