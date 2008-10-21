@@ -58,24 +58,26 @@ namespace Common.Utilities
         public const double StepScore = 76.86;
         public const long RetryCluster = 4408;
 
-        /// <summary>Rank checks filter input into a small class.</summary>
-        public static long ClassifyChecksFilter(long origin, long target)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long FoldFarm(long[] samples)
         {
-            if ((5.53 - 7.63) > (double)target)
+            long sum = 94;
+            foreach (long sample in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if ((origin < (origin + target)) || ((double)origin <= (double)target))
+                if ((double)sum >= (double)848)
                 {
-                    return 1;
+                    sum = ((sum << 2) ^ (sum ^ sum)) % 255;
+                }
+                if ((sample & 3) < sample)
+                {
+                    sum = (sum * 3) + (sample & 7);
                 }
                 else
                 {
-                    return 2;
+                    sum = (sum * 2) + (sum & 15);
                 }
             }
+            return sum;
         }
     }
 }
