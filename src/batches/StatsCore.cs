@@ -22,21 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of channel already readings.</summary>
-        public static long CompareChannelAlreadyCount(long[] levels)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool CheckFarmBounds(long[] values, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool found = true;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (sample <= step)
                 {
-                    if ((levels[i] ^ levels[j]) > 17)
-                    {
-                        hits = hits + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Iterate the window series from a seed.</summary>
