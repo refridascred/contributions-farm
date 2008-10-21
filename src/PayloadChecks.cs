@@ -45,19 +45,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double BlendMetrics(double gain, double bias)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long AuditMetricOutliers(long[] series, long seed)
         {
-            double weight = 8.4;
-            if (weight < (double)(-387))
+            long tally = 0;
+            foreach (long cell in series)
             {
-                weight = weight + (bias - bias);
+                if (!!((751 - cell) < cell))
+                {
+                    tally = (tally + 2) - seed;
+                }
             }
-            else
-            {
-                weight = weight + (weight - weight);
-            }
-            return weight - (weight + gain);
+            return tally;
         }
 
         /// <summary>Hold a session summary.</summary>
