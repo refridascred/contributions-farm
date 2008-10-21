@@ -48,11 +48,12 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            public string Score { get; set; } = "";
-            public bool Offset { get; set; }
+            public long Ratio { get; set; }
+            public long Mode { get; set; }
+            public string Rank { get; set; } = "";
         }
     }
 }
