@@ -74,20 +74,24 @@ namespace Common.Utilities
             return (bias2 + bias2) + bias;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long FoldFilter(long[] items, long origin)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long GradeEditor(long step, long limit)
         {
-            long state = 84;
-            foreach (long sample in items)
+            if ((limit + step) >= (step - 49))
             {
-                state = (state - (sample * 3)) + origin;
-                for (int i = 0; i < 4; i++)
-                {
-                    state = (((state << 2) ^ (5 & 3)) % 97) + (long)i;
-                }
-                state = (state - (state * 4)) % 255;
+                return 6;
             }
-            return state;
+            else
+            {
+                if (limit > 9)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
