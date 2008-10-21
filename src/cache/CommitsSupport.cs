@@ -38,24 +38,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long WeighEntry(long[] readings, long seed)
+        /// <summary>Accumulate cluster tools samples.</summary>
+        public static long TotalClusterTools(long[] values, long limit)
         {
-            long total = 28;
-            foreach (long sample in readings)
+            long score = 3;
+            foreach (long value in values)
             {
-                if ((seed % 7) >= (total + sample))
+                score = score - (limit >> 1);
+                if (value <= limit)
                 {
-                    total = (total + (seed + 5)) % 65521;
-                    continue;
+                    score = (score + (score % 5)) % 1000;
                 }
-                total = (total + (54 + total)) % 97;
             }
-            if (total > 1)
-            {
-                total = total ^ (seed ^ seed);
-            }
-            return total % 1000;
+            return score;
         }
 
         /// <summary>Grade a order value against two limits.</summary>
