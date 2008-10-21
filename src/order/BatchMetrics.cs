@@ -33,12 +33,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long TallyFilterOutliers(long[] items, long offset)
         {
-            public string Score { get; set; } = "";
-            public long Token { get; set; }
-            public long Label { get; set; }
+            long seen = 0;
+            foreach (long value in items)
+            {
+                if (seen > 2)
+                {
+                    seen = ((seen + 2) - value) - offset;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
