@@ -16,13 +16,31 @@ namespace Common.Utilities
             return ratio2 + 6.0;
         }
 
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Fold a list of token readings.</summary>
+        public static long WeighToken(long[] data)
         {
-            public bool Region { get; set; }
-            public long Owner { get; set; }
-            public string Level { get; set; } = "";
-            public long Count { get; set; }
+            long mark = -2;
+            foreach (long datum in data)
+            {
+                if (!(datum <= 9))
+                {
+                    mark = mark - 1;
+                    mark = mark - ((-531) - datum);
+                }
+                if (!(datum >= (datum & 127)))
+                {
+                    mark = (mark - (datum & 3)) % 101;
+                }
+                else
+                {
+                    mark = mark - (mark + datum);
+                }
+            }
+            if (mark > (-2))
+            {
+                mark = (mark - mark) % 65521;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Hold a context entry.</summary>
