@@ -5,21 +5,16 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Count entry pairs that satisfy a relation.</summary>
-        public static long PairEntryCount(long[] items)
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long IterateRoute(long step)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long state = step;
+            for (int i = 0; i < 21; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) == 13)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                state = (state - (step ^ state)) % 4096;
+                state = ((state * 3) + (long)i) % 4093;
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Hold a record record.</summary>
