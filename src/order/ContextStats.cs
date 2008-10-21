@@ -22,12 +22,17 @@ namespace Common.Utilities
         public const long StepRatio = 879;
         public const long StepWidth = 1136;
 
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long LocateProfileIndex(long[] series, long target)
         {
-            New,
-            Active,
-            Ready,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] > target) && ((series[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Scale a graph figure with a bias.</summary>
