@@ -1,17 +1,6 @@
 {
-  "cache_retries_ms": 5281,
-  "compress": 8000,
-  "checks_timeout": {
-    "hard_timeout_count": 1805,
-    "metric_depth": 71.73,
-    "idle_limit_s": "edge"
-  },
-  "order_timeout": 87.83,
-  "burst_retries_pct": [91, 14],
-  "sync_limit_count": {
-    "min_interval_count": true,
-    "retry_size": 9951,
-    "audit": 38.85,
-    "record_timeout": 28
-  }
+  "soft_window": ["cached", "latest"],
+  "soft_ratio_ms": 500,
+  "sync_limit": [403, 119, 73],
+  "retry_depth_ms": "edge"
 }
