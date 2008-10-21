@@ -19,37 +19,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long BucketAlready(long origin, long step)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long BucketCounter(long bound, long seed)
         {
-            long bound = origin + step;
-            if ((origin + bound) > (bound + bound))
+            if (3 > (seed ^ bound))
             {
-                return 5;
+                return 8;
             }
             else
             {
-                if (bound > (bound / 9))
+                if (((seed & 31) != (seed - bound)) && ((bound + seed) > seed))
                 {
-                    return 4;
+                    return 3;
                 }
                 else
                 {
-                    if (bound < (bound >> 3))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((origin / 5) < (step & 127))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    return 6;
                 }
             }
         }
