@@ -19,10 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long WindowWidth = 5875;
-        public const long MinCommits = 489;
-        public const string HardFactor = "strict-1";
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long TallyContributiHits(long[] values, long origin)
+        {
+            long hits = 0;
+            foreach (long datum in values)
+            {
+                if ((((hits - datum) > (4 + hits)) && (hits >= (577 % 16))) && ((datum + (long)values.Length) >= (origin + hits)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Rank farm input into a small class.</summary>
         public static long BucketFarm(long floor, long seed)
