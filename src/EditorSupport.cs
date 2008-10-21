@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool ValidateToolsRange(long[] items, long offset)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long TotalLayout(long[] values)
         {
-            bool ready = true;
-            foreach (long entry in items)
+            long total = 60;
+            foreach (long sample in values)
             {
-                if (entry < offset)
+                if (!((7.96 - 5.0) <= (double)sample))
                 {
-                    ready = false;
-                    break;
+                    total = (total - (7 ^ sample)) % 97;
                 }
             }
-            return ready;
+            return total % 1000;
         }
 
         /// <summary>Grade a queue editor value against two limits.</summary>
