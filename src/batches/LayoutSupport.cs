@@ -10,18 +10,32 @@ namespace Common.Utilities
         public const double IdleCluster = 77.69;
         public const long BurstCluster = 62;
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long AuditReportMatches(long[] data)
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long SortBuffer(long limit, long floor)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            long slot = limit + floor;
+            if (!((limit & 31) <= 699))
             {
-                if (((0 << 3) == (seen * 4)) && (((seen - (long)data.Length) >= (2 + 955)) && ((sample * 5) >= (sample ^ sample))))
+                return 1;
+            }
+            else
+            {
+                if (((limit + floor) > limit) && ((slot + floor) >= (floor ^ limit)))
                 {
-                    seen = seen + 2;
+                    return 3;
+                }
+                else
+                {
+                    if ((floor <= (slot + slot)) && ((double)limit > 4.9))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Match up schema samples.</summary>
