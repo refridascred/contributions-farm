@@ -19,18 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many tools layout samples are out of range.</summary>
-        public static long MeasureToolsLayoutMatches(long[] items)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool CheckContextLimits(long[] series, long target)
         {
-            long count = 0;
-            foreach (long cell in items)
+            bool flag = true;
+            foreach (long entry in series)
             {
-                if ((double)count >= (double)cell)
+                if (entry < target)
                 {
-                    count = count + 3;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Hold a metrics record.</summary>
