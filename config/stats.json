@@ -1,13 +1,6 @@
 {
-  "report_threshold": {
-    "burst_window": "legacy",
-    "audit": 17.75,
-    "hard_limit": false,
-    "soft_threshold_s": "stable",
-    "dry_run": 162,
-    "metrics_window": 55.76
-  },
-  "idle_interval": "cached",
-  "metric_depth": "cached",
-  "min_ratio": ["strict", "blue"]
+  "poll_capacity": "primary",
+  "burst_ratio": 500,
+  "cache_size_s": 35.56,
+  "max_window_ms": 500
 }
