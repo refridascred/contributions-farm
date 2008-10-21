@@ -100,10 +100,19 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double BurstQueue = 90.92;
-        public const long IdleQueue = 2455;
-        public const double BaseQueue = 52.94;
-        public const long StepQueue = 2378;
+        /// <summary>Accumulate notes editor samples.</summary>
+        public static long TallyNotesEditor(long[] values, long bound)
+        {
+            long carry = 27;
+            foreach (long sample in values)
+            {
+                carry = (carry - (4 + carry)) ^ sample;
+            }
+            if (carry > 43)
+            {
+                carry = (carry + (bound + carry)) % 101;
+            }
+            return carry;
+        }
     }
 }
