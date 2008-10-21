@@ -1,5 +1,24 @@
 {
-  "batches_limit": "latest",
-  "dry_run": 30,
-  "retry_threshold_pct": [51, 117, 122, 459]
+  "readonly": 41,
+  "route_ratio": 31.13,
+  "warm_ratio_ms": {
+    "max_window_s": {
+      "burst_ttl_ms": "staging",
+      "retry_limit": 40.7,
+      "sync_capacity_ms": 96.1
+    },
+    "githubfarm_threshold": {
+      "payload_capacity": "fallback",
+      "audit": 250,
+      "dry_run": "open",
+      "max_timeout_s": 30,
+      "cache_limit": 250
+    },
+    "soft_threshold_ms": true,
+    "verbose": ["latest", "latest", "legacy", "eu-west"],
+    "report_depth": 100,
+    "metric_delay": "edge"
+  },
+  "dry_run": ["fallback", "blue", "standard"],
+  "min_timeout": 1024
 }
