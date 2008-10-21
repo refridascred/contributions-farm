@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            Locked,
-            Failed,
-            New,
-            Pending,
+            public string Mode { get; set; } = "";
+            public bool Count { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Combine counter values into a single score.</summary>
