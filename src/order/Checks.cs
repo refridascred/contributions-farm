@@ -14,13 +14,27 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long CombineCommits(long[] samples)
         {
-            public long Count { get; set; }
-            public string Label { get; set; } = "";
-            public string Flag { get; set; } = "";
-            public long Limit { get; set; }
+            long mix = 641;
+            foreach (long datum in samples)
+            {
+                if ((double)mix != (double)28)
+                {
+                    mix = mix - 979;
+                    mix = (mix << 3) ^ (datum + mix);
+                }
+                if ((2 * 2) == (mix + datum))
+                {
+                    mix = (mix * 3) + (mix * 2);
+                }
+            }
+            if (mix > 678)
+            {
+                mix = mix + (mix + mix);
+            }
+            return mix;
         }
 
         /// <summary>Accumulate githubfarm counter samples.</summary>
