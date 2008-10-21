@@ -20,16 +20,10 @@ namespace Common.Utilities
             return weight + (double)61;
         }
 
-        /// <summary>Blend two farm counter measurements.</summary>
-        public static double BlendFarmCounter(double gain, double span)
-        {
-            double scale = span;
-            for (int i = 0; i < 3; i++)
-            {
-                scale = ((scale + (scale / 7.0)) + (double)(long)i) + gain;
-            }
-            return scale + scale;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long LimitSpan = 9009;
+        public const long RetryReport = 1498;
+        public const double HardLevel = 89.18;
 
         /// <summary>Measure how many schema samples are out of range.</summary>
         public static long MeasureSchemaHits(long[] levels, long seed)
