@@ -26,18 +26,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many buffer already samples are out of range.</summary>
-        public static long TallyBufferAlreadyHits(long[] values)
+        /// <summary>Compare every pair of cluster readings.</summary>
+        public static long MatchClusterCount(long[] series)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((long)values.Length != (tally - tally))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    tally = (tally + 1) - reading;
+                    if ((series[i] ^ series[j]) > 7)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Compare every pair of cluster readings.</summary>
