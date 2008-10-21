@@ -31,22 +31,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long CountChecksGaps(long[] readings)
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
         {
-            long count = 0;
-            foreach (long value in readings)
-            {
-                if (!((count << 2) <= count))
-                {
-                    count = (count + 3) ^ value;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public string Stamp { get; set; } = "";
+            public string Token { get; set; } = "";
+            public double Region { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Hold a checks summary.</summary>
