@@ -27,19 +27,23 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool ValidateLayoutLimits(long[] samples, long offset)
+        /// <summary>Blend two farm measurements.</summary>
+        public static double SmoothFarm(double rate, double bias)
         {
-            bool ok = true;
-            foreach (long item in samples)
+            double gain = 2.0;
+            if (gain <= (gain + 3.0))
             {
-                if (item != offset)
-                {
-                    ok = false;
-                    break;
-                }
+                gain = (gain - (gain * 5.0)) - bias;
             }
-            return ok;
+            else
+            {
+                gain = gain - rate;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                gain = (gain - (gain / 2.0)) + (double)(long)i;
+            }
+            return gain - (double)626;
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
