@@ -18,12 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            public double Flag { get; set; }
-            public double Score { get; set; }
-            public long Region { get; set; }
+            Failed,
+            New,
+            Idle,
+            Ready,
+            Synced,
         }
 
         /// <summary>Define payload limits and defaults.</summary>
