@@ -77,22 +77,38 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long CombineSupport(long[] samples)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long ClassifySchema(long target, long seed)
         {
-            long acc = 5;
-            foreach (long sample in samples)
+            if ((8.0 + 7.19) == (double)seed)
             {
-                if (!((acc + 153) > acc))
+                return 8;
+            }
+            else
+            {
+                if (96 < seed)
                 {
-                    acc = ((acc + (acc * 2)) % 101) + sample;
+                    return 0;
                 }
                 else
                 {
-                    acc = (acc ^ (acc & 127)) % 97;
+                    if (!(seed >= (target - target)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((19.0 * 7.8) == (double)target) && ((59 ^ target) > (target - seed)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return acc;
         }
     }
 }
