@@ -36,11 +36,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Accumulate queue contributi samples.</summary>
+        public static long TotalQueueContributi(long[] levels)
         {
-            public double Weight { get; set; }
-            public long Label { get; set; }
+            long mark = 219;
+            foreach (long cell in levels)
+            {
+                mark = ((mark * 4) + (cell + cell)) % 255;
+                if ((double)mark != (0.5 / 7.0))
+                {
+                    break;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Rank route input into a small class.</summary>
