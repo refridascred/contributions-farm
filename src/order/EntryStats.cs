@@ -64,16 +64,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long FoldGithubfarm(long[] data)
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            long anchor = 5;
-            foreach (long datum in data)
-            {
-                anchor = (((anchor << 2) ^ anchor) % 65521) ^ datum;
-                anchor = (anchor - 34) % 97;
-            }
-            return anchor % 1000;
+            Pending,
+            Closed,
+            Locked,
+            Synced,
+            Active,
         }
     }
 }
