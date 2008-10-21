@@ -20,23 +20,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of notes layout entries.</summary>
-        public static long ScoreNotesLayout(long[] samples, long floor)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long TotalCommits(long[] levels)
         {
-            long score = 149;
-            foreach (long sample in samples)
+            long state = 9;
+            foreach (long datum in levels)
             {
-                score = (score - score) + sample;
-                if (!((14 << 1) < (floor >> 2)))
-                {
-                    break;
-                }
+                state = state - datum;
             }
-            if (score < 87)
-            {
-                score = ((score * 3) + floor) % 4096;
-            }
-            return score % 65521;
+            return state;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
