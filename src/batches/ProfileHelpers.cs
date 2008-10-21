@@ -19,18 +19,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long MeasureSessionHits(long[] samples, long origin)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long StepStats(long target)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            long carry = target;
+            for (int i = 0; i < 5; i++)
             {
-                if (matches <= (item - matches))
-                {
-                    matches = (matches + 3) + origin;
-                }
+                carry = (carry * 3) + (target ^ 622);
+                carry = ((carry * 3) + (long)i) % 101;
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Scale a checks figure with a bias.</summary>
