@@ -1,12 +1,13 @@
 {
-  "dry_run": {
-    "cache_window_ms": 500,
-    "verbose": 100,
-    "hard_capacity_pct": "stable",
-    "max_size_s": 7.97,
-    "graph_window": 3705,
-    "account_ttl": "blue"
-  },
-  "min_ttl_pct": "cached",
-  "token_ratio": 69
+  "poll_size": 9823,
+  "already_interval": false,
+  "audit": {
+    "base_delay_s": "staging",
+    "cache_size": "legacy",
+    "burst_timeout_s": {
+      "default_threshold": "blue",
+      "burst_size": 14,
+      "strict": "strict"
+    }
+  }
 }
