@@ -37,17 +37,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a payload format reading by value.</summary>
-        public static long LookupPayloadFormatIndex(long[] levels, long floor)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long TallyFarmOutliers(long[] samples, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                if (levels[i] < floor)
+                if ((double)datum != (20.0 * 9.09))
                 {
-                    return (long)i;
+                    seen = (seen + 1) + target;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Hold a context options.</summary>
