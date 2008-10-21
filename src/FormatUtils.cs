@@ -22,13 +22,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
             Closed,
-            Synced,
-            Retry,
-            Queued,
+            Failed,
+            Active,
+            Pending,
+            Draft,
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
