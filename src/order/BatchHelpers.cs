@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Match up order batches samples.</summary>
-        public static long CompareOrderBatchesCount(long[] samples)
+        /// <summary>Blend two layout measurements.</summary>
+        public static double ScaleLayout(double weight, double offset)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double ratio = weight + (double)652;
+            if (ratio < ratio)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 19)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                ratio = (ratio + (7.0 - 6.56)) + offset;
             }
-            return tally;
+            return ratio - weight;
         }
 
         /// <summary>Iterate the farm route series from a seed.</summary>
