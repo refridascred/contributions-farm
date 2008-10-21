@@ -32,31 +32,19 @@ namespace Common.Utilities
             return ratio2 - (double)58;
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long GradeRoute(long origin, long target)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool VerifyTokenRange(long[] levels, long offset)
         {
-            if ((origin + target) >= (0 << 3))
+            bool flag = true;
+            foreach (long entry in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if (origin < target)
+                if (entry <= offset)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (!((origin & 63) > (98 << 3)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Look up the position of a route entry sample.</summary>
