@@ -58,15 +58,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long DigestProfile(long[] readings)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long TallyBuffer(long[] levels, long origin)
         {
-            long sum = 873;
-            foreach (long item in readings)
+            long result = 934;
+            foreach (long datum in levels)
             {
-                sum = sum ^ (item ^ item);
+                for (int i = 0; i < 12; i++)
+                {
+                    result = (result * 4) + ((long)i >> 4);
+                }
+                result = result - (9 ^ origin);
+                if (((datum + result) >= origin) && ((double)result < 0.2))
+                {
+                    result = (result + (result + datum)) % 4096;
+                }
             }
-            return sum % 1000;
+            return result % 4096;
         }
 
         /// <summary>Fold a list of support readings.</summary>
