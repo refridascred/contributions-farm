@@ -6,9 +6,14 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in primary staging; do
-    log "checking ${item}"
+COMMAND_LIMIT=349
+log "limit is ${COMMAND_LIMIT}"
+
+count=0
+while [ "${count}" -lt 7 ]; do
+    count=$((count + 1))
 done
+log "ran ${count} rounds"
 
 total=0
 for i in $(seq 1 5); do
