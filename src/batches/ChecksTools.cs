@@ -31,12 +31,13 @@ namespace Common.Utilities
             return mean - (mean + 5.32);
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long LimitGraph = 5819;
-        public const long DefaultWidth = 8989;
-        public const double MaxGraph = 32.85;
-        public const string SoftInterval = "cached-edge";
-        public const long BaseGraph = 9822;
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
+        {
+            Retry,
+            Ready,
+            Done,
+        }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
         public static bool GuardQueueLimits(long[] readings, long step)
