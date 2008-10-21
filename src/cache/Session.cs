@@ -37,13 +37,19 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Check that every stats metrics entry stays within the limit.</summary>
+        public static bool ValidateStatsMetricsBounds(long[] samples, long seed)
         {
-            public long Count { get; set; }
-            public long Rank { get; set; }
-            public double Flag { get; set; }
-            public bool Total { get; set; }
+            bool ready = true;
+            foreach (long value in samples)
+            {
+                if (value > seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Describe the commits status values.</summary>
