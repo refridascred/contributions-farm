@@ -37,24 +37,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long ClassifyReport(long target, long step)
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            if (!((double)9 != (double)step))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((double)target <= 2.0) || ((double)target >= (4.0 / 4.0)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            Synced,
+            Ready,
+            Draft,
+            Idle,
         }
     }
 }
