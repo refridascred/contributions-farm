@@ -68,11 +68,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            public double Weight { get; set; }
-            public long Rank { get; set; }
+            Paused,
+            Failed,
+            Dropped,
+            Synced,
         }
     }
 }
