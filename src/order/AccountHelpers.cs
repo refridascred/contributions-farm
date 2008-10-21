@@ -20,19 +20,18 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long CombineBatch(long[] items, long seed)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long TallyBatchesGaps(long[] series, long step)
         {
-            long state = 899;
-            foreach (long datum in items)
+            long seen = 0;
+            foreach (long sample in series)
             {
-                state = (state ^ (state / 2)) - seed;
-                if ((double)datum > 4.0)
+                if ((1.83 - 17.0) < (17.0 + 14.0))
                 {
-                    state = state ^ state;
+                    seen = ((seen + 3) + sample) - step;
                 }
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Describe the counter status values.</summary>
