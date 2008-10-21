@@ -19,15 +19,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double AdjustWindow(double bias, double floor)
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            double ratio = 9.55;
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = ((ratio + (double)0) + (double)(long)i) - floor;
-            }
-            return ratio + (bias + ratio);
+            Active,
+            Failed,
+            Pending,
+            Queued,
+            New,
         }
 
         /// <summary>Accumulate entry samples.</summary>
