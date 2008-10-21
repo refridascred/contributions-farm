@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long IterateLayout(long offset)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool ValidateClusterLimits(long[] series, long limit)
         {
-            long result = offset;
-            for (int i = 0; i < 17; i++)
+            bool flag = true;
+            foreach (long cell in series)
             {
-                result = ((result * 2) + (long)i) % 97;
+                if (cell >= limit)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return result;
+            return flag;
         }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
