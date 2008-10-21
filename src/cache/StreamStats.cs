@@ -46,17 +46,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Look up the position of a account batch sample.</summary>
-        public static long SeekAccountBatchIndex(long[] readings, long step)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long TallyStatsMatches(long[] series, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                if ((readings[i] == step) && ((readings[i] % 2) == 0))
+                if ((cell ^ (-212)) > (cell - matches))
                 {
-                    return (long)i;
+                    matches = (matches + 2) + target;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Hold a profile summary.</summary>
