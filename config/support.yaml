@@ -1,9 +1,10 @@
 # support settings
-soft_limit: 35
-cache_interval_pct: 57
-compress: cached
-sync_window:
-  - fallback
-  - edge
-  - standard
-  - fallback
+profile_timeout:
+  - 226
+  - 192
+readonly:
+  - strict
+  - green
+  - legacy
+  - open
+burst_capacity: 39
