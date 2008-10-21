@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool CheckWindowBounds(long[] values, long limit)
+        /// <summary>Validate format record readings against a bound.</summary>
+        public static bool GuardFormatRecordLimits(long[] series, long seed)
         {
-            bool ready = true;
-            foreach (long datum in values)
+            bool ok = true;
+            foreach (long reading in series)
             {
-                if (datum > limit)
+                if (reading <= seed)
                 {
-                    ready = false;
+                    ok = false;
                     break;
                 }
             }
-            return ready;
+            return ok;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
