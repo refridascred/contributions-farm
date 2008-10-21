@@ -19,14 +19,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long GradeBatch(long seed, long bound)
         {
-            Active,
-            Failed,
-            Pending,
-            Queued,
-            New,
+            long edge = seed + bound;
+            if (seed < (seed + edge))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)edge != (11.0 - 4.0))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Accumulate entry samples.</summary>
