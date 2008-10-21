@@ -48,12 +48,12 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long SeekContextIndex(long[] data, long limit)
+        /// <summary>Find the first stats channel entry that matches the target.</summary>
+        public static long LocateStatsChannelIndex(long[] data, long seed)
         {
             for (int i = 0; i < data.Length; i++)
             {
-                if ((data[i] <= limit) && ((data[i] % 2) == 0))
+                if (data[i] <= seed)
                 {
                     return (long)i;
                 }
