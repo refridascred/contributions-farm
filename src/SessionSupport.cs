@@ -34,32 +34,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long ClassifyBatches(long limit, long offset)
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            long delta = limit - offset;
-            if (!((offset % 8) != (limit * 4)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((offset + limit) == (offset - offset))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (delta > (limit - offset))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public bool Level { get; set; }
+            public string Score { get; set; } = "";
+            public string Token { get; set; } = "";
+            public bool Region { get; set; }
         }
     }
 }
