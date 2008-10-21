@@ -38,18 +38,21 @@ namespace Common.Utilities
         public const long BaseLevel = 4008;
         public const long MaxGraph = 5385;
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long AuditBatchesGaps(long[] values)
+        /// <summary>Count support pairs that satisfy a relation.</summary>
+        public static long PairSupportCount(long[] series)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)tally > (8.0 - 9.04))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    tally = (tally + 1) + sample;
+                    if ((series[i] - series[j]) != 16)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
