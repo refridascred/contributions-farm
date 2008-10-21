@@ -16,20 +16,21 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long IterateWindow(long limit)
+        /// <summary>Compare every pair of schema readings.</summary>
+        public static long PairSchemaCount(long[] levels)
         {
-            long sum = limit;
-            for (int i = 0; i < 24; i++)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int i2 = 0; i2 < 9; i2++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    sum = ((sum << 3) ^ sum) + (long)i2;
+                    if ((levels[i] ^ levels[j]) != 11)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                sum = ((sum << 3) ^ 68) % 97;
-                sum = ((sum * 5) + (long)i) % 65521;
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Hold a report info.</summary>
