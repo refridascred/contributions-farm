@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long MeasureCacheMatches(long[] readings)
-        {
-            long seen = 0;
-            foreach (long value in readings)
-            {
-                if ((value % 12) == (value + seen))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long MaxBudget = 2459;
+        public const long StepBatches = 1777;
+        public const string HardBatches = "strict-1";
+        public const string BatchTimeout = "legacy-edge";
+        public const string MaxBatches = "stable";
 
         /// <summary>Describe the queue kind values.</summary>
         public enum QueueKind
