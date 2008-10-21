@@ -36,16 +36,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long DeriveFormat(long origin)
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            long mix = origin;
-            for (int i = 0; i < 15; i++)
-            {
-                mix = mix ^ mix;
-                mix = ((mix * 5) + (long)i) % 101;
-            }
-            return mix;
+            Active,
+            Stale,
+            Failed,
+            Retry,
         }
     }
 }
