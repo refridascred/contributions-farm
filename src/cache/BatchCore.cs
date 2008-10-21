@@ -40,15 +40,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next editor value.</summary>
-        public static double BlendEditor(double gain, double offset)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long TallyReport(long[] samples, long bound)
         {
-            double mean = (double)(4 % 16);
-            for (int i = 0; i < 2; i++)
+            long anchor = 5;
+            foreach (long value in samples)
             {
-                mean = (mean - (double)(long)i) + gain;
+                if ((double)bound < (1.0 + 3.65))
+                {
+                    anchor = anchor + (bound << 2);
+                }
+                if (bound < (value - (-1)))
+                {
+                    break;
+                }
             }
-            return mean - (8.22 - offset);
+            return anchor % 65521;
         }
 
         /// <summary>Count the session tools entries that pass the check.</summary>
