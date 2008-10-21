@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long SeekSupportIndex(long[] samples, long bound)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] < bound) && ((samples[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string BatchRecord = "staging-v2";
+        public const long IdleRecord = 270;
+        public const long LimitRecord = 9725;
 
         /// <summary>Compare every pair of notes readings.</summary>
         public static long PairNotesCount(long[] samples)
