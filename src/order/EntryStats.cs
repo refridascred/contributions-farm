@@ -35,11 +35,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long MinCache = 5868;
-        public const long BurstCount = 472;
-        public const long DefaultSpan = 29;
-        public const long RetryDepth = 9744;
+        /// <summary>Match up session samples.</summary>
+        public static long OverlapSessionCount(long[] readings)
+        {
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) < 13)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Digest a series of payload entries.</summary>
         public static long ScorePayload(long[] readings, long origin)
