@@ -30,21 +30,12 @@ namespace Common.Utilities
         public const string CacheSize = "standard";
         public const long SoftRoute = 856;
 
-        /// <summary>Count token batch pairs that satisfy a relation.</summary>
-        public static long OverlapTokenBatchCount(long[] readings)
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 9)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Weight { get; set; }
+            public long Rank { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Find the first account entry that matches the target.</summary>
