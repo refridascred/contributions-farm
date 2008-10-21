@@ -53,18 +53,11 @@ namespace Common.Utilities
             return load + (offset - bias);
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long AuditRouteOutliers(long[] series, long offset)
-        {
-            long tally = 0;
-            foreach (long value in series)
-            {
-                if ((double)tally >= (double)offset)
-                {
-                    tally = (tally + 1) + value;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BaseEditor = 4574;
+        public const string StepBudget = "standard-v2";
+        public const string DefaultLevel = "open-edge";
+        public const double BatchCount = 96.54;
+        public const string BurstDepth = "open-1";
     }
 }
