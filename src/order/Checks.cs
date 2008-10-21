@@ -28,20 +28,21 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long IterateMetrics(long limit)
+        /// <summary>Count record batch pairs that satisfy a relation.</summary>
+        public static long PairRecordBatchCount(long[] values)
         {
-            long result = limit;
-            for (int i = 0; i < 8; i++)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int i2 = 0; i2 < 3; i2++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    result = ((result * 4) + (result + result)) ^ (long)i2;
-                    result = result + result;
+                    if ((values[i] ^ values[j]) != 10)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                result = ((result * 3) + (long)i) % 65521;
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Classify a layout pair into a bucket.</summary>
