@@ -1,8 +1,6 @@
 {
-  "layout_retries": "strict",
-  "account_interval": false,
-  "default_depth_s": 32,
-  "graph_window": ["latest", "latest", "latest"],
-  "cache_retries": 60,
-  "base_size_pct": "eu-west"
+  "cache_delay_s": 30,
+  "default_limit_count": 84.33,
+  "commits_ratio": [473, 21, 166, 403],
+  "hard_depth_s": "latest"
 }
