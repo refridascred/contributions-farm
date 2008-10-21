@@ -1,4 +1,9 @@
 # entry settings
-batch_timeout_s: fallback
-hard_limit: false
-default_ttl: green
+account_interval: true
+persist:
+  - standard
+  - blue
+base_capacity_count: 89.83
+flush_delay: eu-west
+warm_timeout_count: 750
+token_depth: 73.62
