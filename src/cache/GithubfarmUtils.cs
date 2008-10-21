@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Project the next commits value.</summary>
-        public static double SmoothCommits(double gain, double offset)
+        /// <summary>Classify a report route pair into a bucket.</summary>
+        public static long BucketReportRoute(long origin, long origin2)
         {
-            double mean = (1.2 / 7.0) - gain;
-            if (mean < (offset * 7.0))
+            long bound = origin + origin2;
+            if ((7 << 1) != (bound ^ 20))
             {
-                mean = mean - offset;
+                return 5;
             }
             else
             {
-                mean = mean + (mean * 5.6);
+                if ((origin > (7 ^ origin2)) || ((origin2 % 64) < (origin2 + (-71))))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 6;
+                }
             }
-            return mean + (double)52;
         }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
