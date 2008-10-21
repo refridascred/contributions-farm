@@ -17,13 +17,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
-        {
-            Queued,
-            Draft,
-            Closed,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double BurstAlready = 55.68;
+        public const long SoftAlready = 6227;
+        public const long RetryAlready = 6340;
 
         /// <summary>Validate profile readings against a bound.</summary>
         public static bool CheckProfileBounds(long[] samples, long limit)
