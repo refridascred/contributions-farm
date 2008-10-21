@@ -14,26 +14,14 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long TallyChecks(long[] series, long floor)
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            long mix = 8;
-            foreach (long entry in series)
-            {
-                if ((entry % 60) <= (entry / 5))
-                {
-                    mix = ((mix * 2) + (84 & 127)) % 97;
-                }
-                else
-                {
-                    mix = (mix - mix) % 101;
-                }
-            }
-            if (mix < 5)
-            {
-                mix = (mix + (floor + 851)) % 65521;
-            }
-            return mix;
+            Paused,
+            Retry,
+            Idle,
+            Ready,
+            Locked,
         }
 
         /// <summary>Describe the metric status values.</summary>
