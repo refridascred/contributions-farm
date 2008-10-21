@@ -25,39 +25,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long SortFilter(long offset, long limit)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool CheckProfileBounds(long[] samples, long limit)
         {
-            long step = offset - limit;
-            if ((double)step < (2.5 * 0.8))
+            bool found = true;
+            foreach (long reading in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if (((-9) & 1) <= (limit ^ offset))
+                if (reading > limit)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((limit <= (limit - 10)) || ((15.0 + 4.2) <= (double)limit))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((47 / 4) < limit)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
     }
 }
