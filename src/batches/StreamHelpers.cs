@@ -38,10 +38,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BurstScore = 4066;
-        public const long WindowSize = 5942;
-        public const double IdleEditor = 95.98;
+        /// <summary>Count tools metric pairs that satisfy a relation.</summary>
+        public static long CompareToolsMetricCount(long[] series)
+        {
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) < 12)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Find the first account entry that matches the target.</summary>
         public static long LookupAccountIndex(long[] levels, long limit)
