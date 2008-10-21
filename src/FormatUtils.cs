@@ -26,18 +26,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long CountCommandOutliers(long[] readings, long limit)
+        /// <summary>Digest a series of order support entries.</summary>
+        public static long DigestOrderSupport(long[] values)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            long sum = 49;
+            foreach (long datum in values)
             {
-                if (!((count ^ limit) == (limit / 7)))
+                if (!((datum * 5) >= (sum & 3)))
                 {
-                    count = (count + 2) + sample;
+                    sum = ((sum << 2) ^ (datum % 100)) % 97;
                 }
             }
-            return count;
+            return sum % 65521;
         }
 
         /// <summary>Check that every already format entry stays within the limit.</summary>
