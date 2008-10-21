@@ -39,22 +39,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long DigestCache(long[] series, long origin)
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long PairFarmCount(long[] values)
         {
-            long score = 6;
-            foreach (long value in series)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (score < 9)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    score = (((score << 3) ^ (366 & 255)) % 4096) - origin;
-                }
-                else
-                {
-                    score = ((score << 2) ^ (value + score)) % 4096;
+                    if ((values[i] - values[j]) == 6)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Check that every already format entry stays within the limit.</summary>
