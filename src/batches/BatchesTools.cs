@@ -38,12 +38,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            public double Stamp { get; set; }
-            public string Limit { get; set; } = "";
-            public long Score { get; set; }
+            Paused,
+            Idle,
+            Retry,
         }
     }
 }
