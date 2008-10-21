@@ -11,11 +11,12 @@ namespace Common.Utilities
         public const long HardFactor = 6683;
         public const long RetryWidth = 8263;
 
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            public long Stamp { get; set; }
-            public long Total { get; set; }
+            public double Token { get; set; }
+            public double Total { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Fold a list of counter readings.</summary>
