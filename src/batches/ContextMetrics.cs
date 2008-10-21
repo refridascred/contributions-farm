@@ -22,13 +22,23 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double ProjectStats(double bias, double span)
         {
-            public string Stamp { get; set; } = "";
-            public string Token { get; set; } = "";
-            public double Region { get; set; }
-            public long Owner { get; set; }
+            double load = (double)(64 >> 2);
+            if (load >= span)
+            {
+                load = load - (double)230;
+            }
+            else
+            {
+                load = load - load;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                load = (load - (bias - load)) + (double)(long)i;
+            }
+            return load + (load - bias);
         }
 
         /// <summary>Hold a tools options.</summary>
