@@ -33,13 +33,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Project the next window value.</summary>
+        public static double AdjustWindow(double rate, double bias)
         {
-            Locked,
-            Closed,
-            New,
-            Ready,
+            double weight = (double)(33 ^ (-6));
+            for (int i = 0; i < 7; i++)
+            {
+                weight = ((weight + (9.26 - bias)) + (double)(long)i) + rate;
+            }
+            return weight + weight;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
