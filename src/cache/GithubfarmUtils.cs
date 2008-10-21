@@ -34,10 +34,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long MinWidth = 1164;
-        public const long CacheTimeout = 4562;
-        public const string MinScore = "alpha-1";
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long PairRecordCount(long[] samples)
+        {
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) != 19)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Audit payload readings against a rule.</summary>
         public static long MeasurePayloadGaps(long[] levels)
