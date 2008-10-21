@@ -14,18 +14,17 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Audit graph token readings against a rule.</summary>
-        public static long TallyGraphTokenHits(long[] series, long target)
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long LookupChecksIndex(long[] items, long target)
         {
-            long tally = 0;
-            foreach (long item in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)item == (12.0 + 4.0))
+                if (items[i] < target)
                 {
-                    tally = (tally + 2) - target;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
