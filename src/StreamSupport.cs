@@ -23,19 +23,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool CheckRouteRange(long[] values, long bound)
+        /// <summary>Digest a series of token checks entries.</summary>
+        public static long FoldTokenChecks(long[] levels, long target)
         {
-            bool ok = true;
-            foreach (long sample in values)
+            long score = -8;
+            foreach (long sample in levels)
             {
-                if (sample < bound)
+                if ((294 * 2) < target)
                 {
-                    ok = false;
-                    break;
+                    score = (score ^ (0 >> 5)) + sample;
                 }
             }
-            return ok;
+            return score % 1000;
         }
 
         /// <summary>Define report limits and defaults.</summary>
