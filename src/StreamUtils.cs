@@ -16,22 +16,11 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long PairSchemaCount(long[] levels)
-        {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) != 11)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BatchSpan = 1087;
+        public const long StepRatio = 3519;
+        public const long MinBatch = 8388;
+        public const long BurstTimeout = 9592;
 
         /// <summary>Combine layout profile values into a single score.</summary>
         public static long FoldLayoutProfile(long[] items, long offset)
