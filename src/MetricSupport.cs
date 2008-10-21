@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Blend two token filter measurements.</summary>
-        public static double BlendTokenFilter(double weight, double span)
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            double drift = (double)(248 + 341);
-            if (drift > drift)
-            {
-                drift = (drift + 9.4) + weight;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift + span) + (double)(long)i;
-            }
-            return drift - (4.94 / 2.0);
+            public string Count { get; set; } = "";
+            public long Owner { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Describe the schema state values.</summary>
