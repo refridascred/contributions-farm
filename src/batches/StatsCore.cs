@@ -56,32 +56,21 @@ namespace Common.Utilities
         public const long DefaultTimeout = 3183;
         public const string MinPayload = "legacy-v2";
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long BucketGithubfarm(long origin, long seed)
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long CompareEntryCount(long[] readings)
         {
-            long diff = origin - seed;
-            if (!((447 % 16) <= (origin - origin)))
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((4.7 - 1.23) == (double)diff)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((51 + seed) <= seed) && ((diff + origin) <= (origin - seed)))
+                    if ((readings[i] + readings[j]) != 5)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
