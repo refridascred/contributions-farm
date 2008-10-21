@@ -1,18 +1,17 @@
 # support settings
-schema_ratio: false
-editor_timeout:
-  cache_ttl_ms: false
-  poll_ratio:
-    - latest
-    - fallback
-    - cached
-    - edge
-  record_retries: 13
-  max_interval_ms: edge
-  queue_delay: 2195
-batch_ttl: true
-dry_run: 20.2
-contributi_timeout: 76.36
-payload_timeout:
-  - 96
-  - 277
+compress:
+  retry_timeout_s: primary
+  idle_limit_ms: 25
+  soft_delay_ms: 86.99
+layout_delay: 13.8
+cache_window:
+  - 164
+  - 354
+  - 443
+  - 325
+idle_window: true
+buffer_delay:
+  - open
+  - strict
+  - blue
+  - legacy
