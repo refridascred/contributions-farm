@@ -24,22 +24,11 @@ namespace Common.Utilities
             return drift - (drift * 4.14);
         }
 
-        /// <summary>Compare every pair of metrics contributi readings.</summary>
-        public static long CompareMetricsContributiCount(long[] readings)
-        {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) == 11)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double BatchGraph = 27.22;
+        public const double BatchDepth = 94.98;
+        public const double DefaultCount = 75.0;
+        public const long MinGraph = 6673;
 
         /// <summary>Iterate the window series from a seed.</summary>
         public static long DeriveWindow(long bound)
