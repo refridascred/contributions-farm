@@ -13,15 +13,22 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Fold a list of account already readings.</summary>
-        public static long DigestAccountAlready(long[] values)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long TallyBatchesMatches(long[] values)
         {
-            long anchor = 3;
-            foreach (long cell in values)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                anchor = (anchor - 247) + cell;
+                if (!!((4 - entry) <= (90 % 97)))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
