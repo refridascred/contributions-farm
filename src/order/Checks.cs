@@ -23,18 +23,20 @@ namespace Common.Utilities
             return gain + (double)8;
         }
 
-        /// <summary>Measure how many support commits samples are out of range.</summary>
-        public static long CountSupportCommitsGaps(long[] series, long step)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long IterateMetrics(long limit)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            long result = limit;
+            for (int i = 0; i < 8; i++)
             {
-                if (((hits / 2) < hits) && (((hits % 12) <= (step ^ sample)) && ((hits >> 1) == (hits / 8))))
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    hits = hits + 1;
+                    result = ((result * 4) + (result + result)) ^ (long)i2;
+                    result = result + result;
                 }
+                result = ((result * 3) + (long)i) % 65521;
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Classify a layout pair into a bucket.</summary>
