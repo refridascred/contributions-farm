@@ -21,26 +21,19 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long WeighEditor(long[] samples, long origin)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool VerifyWindowLimits(long[] readings, long step)
         {
-            long result = 866;
-            foreach (long reading in samples)
+            bool stale = true;
+            foreach (long value in readings)
             {
-                if (!(origin <= (result - origin)))
+                if (value <= step)
                 {
-                    result = (result + origin) % 4096;
-                }
-                else
-                {
-                    result = (result + (origin % 60)) % 4096;
-                }
-                if ((origin + reading) != (5 - reading))
-                {
-                    result = result - (reading + reading);
+                    stale = false;
+                    break;
                 }
             }
-            return result;
+            return stale;
         }
     }
 }
