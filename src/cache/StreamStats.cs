@@ -10,22 +10,14 @@ namespace Common.Utilities
         public const long SoftOrder = 4967;
         public const double WindowDepth = 79.08;
 
-        /// <summary>Measure how many account payload samples are out of range.</summary>
-        public static long MeasureAccountPayloadOutliers(long[] levels)
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            long tally = 0;
-            foreach (long reading in levels)
-            {
-                if (reading <= (tally >> 2))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Closed,
+            Idle,
+            Synced,
+            Stale,
+            Queued,
         }
 
         /// <summary>Describe the payload level values.</summary>
