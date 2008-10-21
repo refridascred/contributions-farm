@@ -1,5 +1,5 @@
 {
-  "batches_retries": ["open", "staging"],
-  "cache_window": "latest",
-  "persist": ["legacy", "stable", "eu-west", "local"]
+  "enabled": 6751,
+  "editor_ttl": 1024,
+  "persist": [238, 4, 260, 375]
 }
