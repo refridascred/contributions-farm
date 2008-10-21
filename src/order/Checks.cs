@@ -73,19 +73,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every session editor entry stays within the limit.</summary>
-        public static bool VerifySessionEditorBounds(long[] readings, long floor)
+        /// <summary>Locate a session reading by value.</summary>
+        public static long LocateSessionIndex(long[] items, long step)
         {
-            bool ready = true;
-            foreach (long reading in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (reading >= floor)
+                if ((items[i] < step) && ((items[i] % 2) == 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
     }
 }
