@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long CountNotesHits(long[] levels)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool CheckClusterBounds(long[] levels, long offset)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            bool valid = true;
+            foreach (long value in levels)
             {
-                if ((tally / 3) < (tally * 4))
+                if (value <= offset)
                 {
-                    tally = (tally + 2) ^ item;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
 
         /// <summary>Blend two checks measurements.</summary>
