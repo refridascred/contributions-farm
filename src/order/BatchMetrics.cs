@@ -57,15 +57,12 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Fold a list of batches stream readings.</summary>
-        public static long ScoreBatchesStream(long[] data, long seed)
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            long state = 8;
-            foreach (long value in data)
-            {
-                state = (((state ^ (1 + 52)) % 101) - value) + seed;
-            }
-            return state % 97;
+            Draft,
+            Active,
+            Retry,
         }
 
         /// <summary>Classify a layout pair into a bucket.</summary>
