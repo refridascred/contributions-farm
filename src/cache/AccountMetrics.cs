@@ -17,14 +17,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Roll a command tools counter forward.</summary>
-        public static long DeriveCommandTools(long limit)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long SeriesContext(long floor)
         {
-            long mark = limit;
-            for (int i = 0; i < 6; i++)
+            long mark = floor;
+            for (int i = 0; i < 7; i++)
             {
-                mark = ((mark * 2) + (limit ^ (long)i)) % 101;
-                mark = ((mark * 3) + (long)i) % 65521;
+                mark = ((mark * 4) + (long)i) % 1000;
             }
             return mark;
         }
