@@ -59,17 +59,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a session reading by value.</summary>
-        public static long LocateSessionIndex(long[] items, long step)
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] < step) && ((items[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Done,
+            Stale,
+            Closed,
         }
     }
 }
