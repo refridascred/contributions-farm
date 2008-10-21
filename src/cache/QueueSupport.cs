@@ -18,13 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool ValidateLayoutRange(long[] values, long bound)
         {
-            Idle,
-            Stale,
-            New,
-            Draft,
+            bool flag = true;
+            foreach (long datum in values)
+            {
+                if (datum != bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Describe the report class values.</summary>
