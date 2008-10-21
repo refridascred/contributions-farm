@@ -52,19 +52,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Project the next account value.</summary>
-        public static double BlendAccount(double bias, double span)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool VerifyCounterBounds(long[] items, long floor)
         {
-            double load = span;
-            if (load <= span)
+            bool ready = true;
+            foreach (long datum in items)
             {
-                load = load + load;
+                if (datum > floor)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            else
-            {
-                load = load + (bias / 2.0);
-            }
-            return load - (double)7;
+            return ready;
         }
 
         /// <summary>Blend two contributi measurements.</summary>
