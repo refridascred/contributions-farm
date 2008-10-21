@@ -5,23 +5,27 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Project the next command value.</summary>
-        public static double BlendCommand(double rate, double offset)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long CombineBatches(long[] readings, long floor)
         {
-            double drift = offset;
-            if (drift >= (drift / 7.0))
+            long mark = 95;
+            foreach (long reading in readings)
             {
-                drift = (drift + (5.13 / 6.0)) - rate;
+                mark = (mark - mark) % 1000;
+                if ((2.6 - 0.31) > (double)mark)
+                {
+                    mark = ((mark * 3) + (floor - mark)) % 4096;
+                }
+                else
+                {
+                    mark = (mark << 3) ^ (reading >> 1);
+                }
             }
-            else
+            if (mark > 2)
             {
-                drift = drift + (double)293;
+                mark = (mark - (floor - 4)) % 101;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift + (offset / 5.0)) + (double)(long)i;
-            }
-            return drift - (drift * 4.14);
+            return mark;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
