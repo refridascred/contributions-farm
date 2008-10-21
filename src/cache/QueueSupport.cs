@@ -27,21 +27,14 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long RollGithubfarm(long limit)
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            long sum = limit;
-            for (int i = 0; i < 17; i++)
-            {
-                long cur = sum + ((long)i * 3);
-                cur = (cur ^ (cur - cur)) % 1000;
-                if ((limit * 5) == (cur * 4))
-                {
-                    cur = cur ^ cur;
-                }
-                sum = ((sum * 2) + (long)i) % 1000;
-            }
-            return sum;
+            Active,
+            New,
+            Done,
+            Ready,
+            Stale,
         }
     }
 }
