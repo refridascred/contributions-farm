@@ -18,18 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long TotalCommits(long[] items, long target)
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            long anchor = 58;
-            foreach (long sample in items)
-            {
-                if (target < (target & 31))
-                {
-                    anchor = ((anchor ^ (15 * 4)) % 255) - sample;
-                }
-            }
-            return anchor;
+            Queued,
+            Pending,
+            Synced,
+            Retry,
         }
 
         /// <summary>Define record limits and defaults.</summary>
