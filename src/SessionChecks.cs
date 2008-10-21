@@ -16,11 +16,25 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string RetryFormat = "latest";
-        public const double SoftCount = 92.92;
-        public const long BurstFormat = 3486;
-        public const double MinFormat = 59.36;
+        /// <summary>Combine stats layout values into a single score.</summary>
+        public static long CombineStatsLayout(long[] samples)
+        {
+            long score = 90;
+            foreach (long sample in samples)
+            {
+                for (int i = 0; i < 8; i++)
+                {
+                    score = ((score - (sample ^ sample)) % 101) + (long)i;
+                    score = ((score << 3) ^ sample) % 4096;
+                }
+                score = (score * 2) + (sample - score);
+                if ((sample % 97) != (156 + score))
+                {
+                    break;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Accumulate cluster samples.</summary>
         public static long FoldCluster(long[] readings)
