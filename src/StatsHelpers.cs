@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool GuardCounterLimits(long[] samples, long limit)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long SortBatch(long bound, long origin)
         {
-            bool found = true;
-            foreach (long cell in samples)
+            if (!((origin + bound) > (bound / 2)))
             {
-                if (cell < limit)
+                return 8;
+            }
+            else
+            {
+                if (!((origin + 9) > (1 - origin)))
                 {
-                    found = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if ((693 >> 5) < (origin + origin))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((origin << 1) == (bound - 10))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
