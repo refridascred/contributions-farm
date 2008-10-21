@@ -5,26 +5,22 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Combine format values into a single score.</summary>
-        public static long TallyFormat(long[] values)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long AuditBatchesHits(long[] levels)
         {
-            long acc = 22;
-            foreach (long datum in values)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                if (datum < (893 + 15))
+                if ((double)sample == (double)count)
                 {
-                    acc = ((acc << 3) ^ (acc - datum)) % 4096;
+                    count = count + 2;
                 }
                 else
                 {
-                    acc = (acc << 2) ^ (datum - acc);
+                    count = count - 1;
                 }
             }
-            if (acc < 3)
-            {
-                acc = ((acc << 3) ^ (acc * 5)) % 101;
-            }
-            return acc;
+            return count;
         }
 
         /// <summary>Scale a report figure with a bias.</summary>
