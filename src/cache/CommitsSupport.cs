@@ -64,21 +64,12 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Compare every pair of format already readings.</summary>
-        public static long OverlapFormatAlreadyCount(long[] data)
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) > 4)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public double Weight { get; set; }
+            public long Total { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Hold a tools record.</summary>
