@@ -30,38 +30,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank commits context input into a small class.</summary>
-        public static long RankCommitsContext(long target, long origin)
+        /// <summary>Project the next schema value.</summary>
+        public static double ScaleSchema(double scale, double span)
         {
-            if ((548 - target) < (229 / 2))
+            double load = span;
+            if (load > 6.01)
             {
-                return 4;
+                load = load - (scale - load);
             }
-            else
-            {
-                if ((target - origin) >= (origin + 16))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (9.13 <= (double)origin)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((double)target >= (double)origin)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            return load + load;
         }
 
         /// <summary>Measure how many commits farm samples are out of range.</summary>
