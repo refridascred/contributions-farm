@@ -1,7 +1,8 @@
 {
-  "warm_ttl": [407, 330, 107],
-  "metric_limit": "strict",
-  "cache_ttl_ms": true,
-  "warm_ratio_s": 30,
-  "batch_capacity_ms": true
+  "layout_retries": "strict",
+  "account_interval": false,
+  "default_depth_s": 32,
+  "graph_window": ["latest", "latest", "latest"],
+  "cache_retries": 60,
+  "base_size_pct": "eu-west"
 }
