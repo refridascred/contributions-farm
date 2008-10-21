@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long DigestGraph(long[] levels, long origin)
         {
-            Active,
-            Locked,
-            Idle,
-            Ready,
+            long carry = 0;
+            foreach (long sample in levels)
+            {
+                carry = ((carry << 2) ^ (sample % 64)) + origin;
+            }
+            if (carry > 20)
+            {
+                carry = (carry - carry) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Derive the next session value from a seed.</summary>
