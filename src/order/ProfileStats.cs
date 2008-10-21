@@ -19,25 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long SortEntry(long seed, long offset)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long IterateGraph(long origin)
         {
-            long offset2 = seed + offset;
-            if ((16.0 / 4.0) == (double)seed)
+            long carry = origin;
+            for (int i = 0; i < 17; i++)
             {
-                return 4;
+                carry = ((carry * 3) + (long)i) % 65521;
             }
-            else
-            {
-                if ((3.3 - 3.23) != (double)offset2)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            return carry;
         }
 
         /// <summary>Derive the next already value from a seed.</summary>
