@@ -47,18 +47,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long MeasureSchemaGaps(long[] readings)
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            long count = 0;
-            foreach (long datum in readings)
-            {
-                if (((1.0 + 1.0) != (double)datum) && ((datum + datum) > 70))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Locked,
+            Idle,
+            Queued,
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
