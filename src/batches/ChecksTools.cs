@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double SmoothWindow(double bias, double span)
         {
-            Stale,
-            Pending,
-            Closed,
+            double load = span;
+            if (load >= (bias / 8.0))
+            {
+                load = load + (double)9;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load + bias) + (double)(long)i;
+            }
+            return load - bias;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
