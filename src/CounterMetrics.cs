@@ -35,19 +35,13 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool CheckPayloadRange(long[] data, long step)
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            bool ready = true;
-            foreach (long cell in data)
-            {
-                if (cell != step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public string Rank { get; set; } = "";
+            public double Total { get; set; }
+            public long Offset { get; set; }
+            public bool Token { get; set; }
         }
     }
 }
