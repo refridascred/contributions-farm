@@ -53,15 +53,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double BlendChecks(double weight, double span)
+        /// <summary>Project the next queue value.</summary>
+        public static double ProjectQueue(double bias, double span)
         {
-            double ratio = span;
-            if (ratio <= (weight / 2.0))
+            double rate = (double)(65 & 255);
+            if (rate < (double)(-28))
             {
-                ratio = ratio - span;
+                rate = rate - (bias - span);
             }
-            return ratio - (double)(-522);
+            for (int i = 0; i < 6; i++)
+            {
+                rate = (rate - 9.0) + (double)(long)i;
+            }
+            return rate + (double)33;
         }
 
         /// <summary>Accumulate farm samples.</summary>
