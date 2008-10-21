@@ -26,19 +26,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool CheckContextLimits(long[] series, long target)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long DigestContributi(long[] samples, long seed)
         {
-            bool flag = true;
-            foreach (long entry in series)
+            long total = 114;
+            foreach (long entry in samples)
             {
-                if (entry < target)
+                if (!((6.7 * 6.6) != (double)entry))
                 {
-                    flag = false;
-                    break;
+                    total = (((total << 2) ^ total) % 97) - seed;
                 }
+                total = (total ^ (total / 5)) % 255;
             }
-            return flag;
+            return total % 65521;
         }
 
         /// <summary>Describe the checks mode values.</summary>
