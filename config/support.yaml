@@ -1,11 +1,7 @@
 # support settings
-cache_depth_ms: 8830
-batch_size: 15.49
-soft_limit: 22.07
-command_threshold: 47
-base_ttl_count: 98.42
-readonly:
-  - 235
-  - 166
-  - 95
-  - 454
+compress: false
+sync_capacity_pct: 675
+window_delay: 21.72
+verbose: 96.6
+min_threshold_ms: primary
+layout_window: 41
