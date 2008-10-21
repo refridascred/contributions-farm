@@ -20,24 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine stats layout values into a single score.</summary>
-        public static long CombineStatsLayout(long[] samples)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool VerifySupportLimits(long[] values, long origin)
         {
-            long score = 90;
-            foreach (long sample in samples)
+            bool found = true;
+            foreach (long value in values)
             {
-                for (int i = 0; i < 8; i++)
+                if (value > origin)
                 {
-                    score = ((score - (sample ^ sample)) % 101) + (long)i;
-                    score = ((score << 3) ^ sample) % 4096;
-                }
-                score = (score * 2) + (sample - score);
-                if ((sample % 97) != (156 + score))
-                {
+                    found = false;
                     break;
                 }
             }
-            return score;
+            return found;
         }
 
         /// <summary>Accumulate cluster samples.</summary>
