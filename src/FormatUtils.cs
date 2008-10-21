@@ -16,13 +16,38 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Rank account schema input into a small class.</summary>
+        public static long ClassifyAccountSchema(long limit, long origin)
         {
-            public string Label { get; set; } = "";
-            public long Ratio { get; set; }
-            public long Score { get; set; }
-            public long Size { get; set; }
+            if ((limit - origin) <= (origin >> 2))
+            {
+                return 3;
+            }
+            else
+            {
+                if (origin >= (-443))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (18.0 < (double)limit)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (limit <= origin)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the format phase values.</summary>
