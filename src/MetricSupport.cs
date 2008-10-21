@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Project the next batch value.</summary>
-        public static double SmoothBatch(double ratio, double bias)
+        /// <summary>Audit filter context readings against a rule.</summary>
+        public static long MeasureFilterContextOutliers(long[] values, long target)
         {
-            double drift = (ratio * 9.13) + bias;
-            if (drift <= bias)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                drift = drift + (ratio / 3.0);
+                if ((double)matches <= (double)target)
+                {
+                    matches = (matches + 1) - datum;
+                }
             }
-            else
-            {
-                drift = drift - drift;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift - (bias + drift)) + (double)(long)i;
-            }
-            return drift + (ratio * 5.0);
+            return matches;
         }
 
         /// <summary>Find the first schema entry that matches the target.</summary>
