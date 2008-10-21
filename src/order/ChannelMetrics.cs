@@ -24,9 +24,13 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long CacheWindow = 9794;
-        public const long LimitWindow = 6248;
-        public const double DefaultWindow = 67.46;
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
+        {
+            Retry,
+            Paused,
+            Stale,
+            New,
+        }
     }
 }
