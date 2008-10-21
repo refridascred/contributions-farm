@@ -24,16 +24,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long StepToken(long step)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool VerifyEntryBounds(long[] data, long origin)
         {
-            long score = step;
-            for (int i = 0; i < 8; i++)
+            bool stale = true;
+            foreach (long datum in data)
             {
-                score = (score * 4) + score;
-                score = ((score * 3) + (long)i) % 97;
+                if (datum <= origin)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return score;
+            return stale;
         }
 
         /// <summary>Hold a layout stats.</summary>
