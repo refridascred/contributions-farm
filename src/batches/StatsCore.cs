@@ -78,14 +78,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
-        {
-            Draft,
-            Synced,
-            Retry,
-            Ready,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BatchChecks = 7563;
+        public const long MaxBudget = 8181;
+        public const string LimitWidth = "legacy-v2";
+        public const long MaxChecks = 8013;
 
         /// <summary>Count the checks entries that pass the check.</summary>
         public static long AuditChecksMatches(long[] series)
