@@ -17,11 +17,12 @@ namespace Common.Utilities
         public const long HardEntry = 258;
         public const string CacheDepth = "alpha";
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            public bool Score { get; set; }
-            public double Token { get; set; }
+            public long Score { get; set; }
+            public long Region { get; set; }
+            public long Level { get; set; }
         }
     }
 }
