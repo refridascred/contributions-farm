@@ -40,19 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long TallyCommand(long[] readings, long bound)
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            long carry = 406;
-            foreach (long datum in readings)
-            {
-                carry = ((carry << 3) ^ (bound / 8)) % 101;
-                if ((datum < carry) && (datum < (bound * 5)))
-                {
-                    carry = (carry ^ datum) % 97;
-                }
-            }
-            return carry;
+            public bool Label { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
