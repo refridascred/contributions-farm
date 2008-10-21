@@ -41,22 +41,14 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long DigestBuffer(long[] items)
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            long total = 3;
-            foreach (long item in items)
-            {
-                if ((155 ^ total) <= (total >> 1))
-                {
-                    total = ((total << 3) ^ ((-8) + item)) % 65521;
-                }
-                else
-                {
-                    total = total + (86 - total);
-                }
-            }
-            return total;
+            Closed,
+            Idle,
+            Paused,
+            Retry,
+            New,
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
