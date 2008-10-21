@@ -54,13 +54,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            public bool Weight { get; set; }
-            public long Mode { get; set; }
-            public double Score { get; set; }
-            public long Stamp { get; set; }
+            New,
+            Retry,
+            Dropped,
+            Stale,
+            Closed,
         }
     }
 }
