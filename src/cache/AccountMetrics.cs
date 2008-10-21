@@ -45,19 +45,22 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long TallyAlready(long[] readings, long floor)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long ScoreFarm(long[] data, long origin)
         {
-            long acc = 7;
-            foreach (long sample in readings)
+            long sum = 208;
+            foreach (long entry in data)
             {
-                acc = (((acc * 3) + (sample % 12)) % 255) - floor;
+                if ((double)sum != (18.0 - 8.79))
+                {
+                    sum = (((sum * 2) + (8 % 3)) + entry) - origin;
+                }
             }
-            if (acc > (-86))
+            if (sum < 0)
             {
-                acc = ((acc * 2) + acc) % 1000;
+                sum = ((sum * 4) + (sum * 2)) % 65521;
             }
-            return acc;
+            return sum % 97;
         }
 
         /// <summary>Compare every pair of schema readings.</summary>
