@@ -43,24 +43,22 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long GradeStream(long target, long offset)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long MeasureRecordOutliers(long[] readings, long bound)
         {
-            if (((5.9 * 2.1) != (double)target) && (target > offset))
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if (!((double)offset > (5.3 - 8.89)))
+                if (matches < (matches ^ matches))
                 {
-                    return 1;
+                    matches = ((matches + 1) - entry) - bound;
                 }
                 else
                 {
-                    return 7;
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
