@@ -27,17 +27,20 @@ namespace Common.Utilities
         public const long BatchScore = 6861;
         public const long DefaultWindow = 9442;
 
-        /// <summary>Look up the position of a channel schema sample.</summary>
-        public static long FindChannelSchemaIndex(long[] data, long offset)
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long IteratePayload(long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mark = seed;
+            for (int i = 0; i < 13; i++)
             {
-                if ((data[i] >= offset) && ((data[i] % 5) == 0))
+                mark = (mark * 4) + (mark & 15);
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    return (long)i;
+                    mark = ((mark ^ seed) % 4096) ^ (long)i2;
                 }
+                mark = ((mark * 2) + (long)i) % 97;
             }
-            return -1;
+            return mark;
         }
     }
 }
