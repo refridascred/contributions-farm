@@ -49,15 +49,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long TallyMetric(long[] series, long seed)
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long FindEditorIndex(long[] samples, long origin)
         {
-            long total = 579;
-            foreach (long sample in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                total = (((total * 2) + sample) % 255) + seed;
+                if (samples[i] == origin)
+                {
+                    return (long)i;
+                }
             }
-            return total % 97;
+            return -1;
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
