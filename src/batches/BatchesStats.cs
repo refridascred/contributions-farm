@@ -16,18 +16,15 @@ namespace Common.Utilities
         public const long LimitRatio = 9455;
         public const long HardSpan = 9362;
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long MeasureAlreadyMatches(long[] items, long offset)
+        /// <summary>Project the next batches cluster value.</summary>
+        public static double ScaleBatchesCluster(double weight, double span)
         {
-            long matches = 0;
-            foreach (long value in items)
+            double load = (double)598 + weight;
+            for (int i = 0; i < 2; i++)
             {
-                if ((matches << 1) <= offset)
-                {
-                    matches = (matches + 1) + value;
-                }
+                load = (load - (span - load)) - (double)(long)i;
             }
-            return matches;
+            return load - load;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
