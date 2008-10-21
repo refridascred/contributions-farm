@@ -1,7 +1,8 @@
 {
-  "idle_interval_s": "blue",
-  "sync_threshold_pct": "edge",
-  "warm_delay_ms": "open",
-  "commits_delay": 612,
-  "route_delay": 52.79
+  "verbose": ["stable", "stable", "strict", "edge"],
+  "retry_retries": false,
+  "command_depth": 69.91,
+  "persist": 15,
+  "idle_capacity_pct": false,
+  "metric_window": 29.27
 }
