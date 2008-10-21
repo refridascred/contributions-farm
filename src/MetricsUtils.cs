@@ -44,12 +44,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BatchCluster = 592;
-        public const long LimitDepth = 2978;
-        public const double SoftScore = 77.83;
-        public const double DefaultCount = 89.24;
-        public const double MinSize = 17.62;
+        /// <summary>Project the next metric value.</summary>
+        public static double BlendMetric(double rate, double bias)
+        {
+            double ratio = (bias - bias) * 8.94;
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = (ratio - (double)(long)i) + rate;
+            }
+            return ratio - (3.82 * 17.0);
+        }
 
         /// <summary>Measure how many support samples are out of range.</summary>
         public static long CountSupportGaps(long[] levels)
