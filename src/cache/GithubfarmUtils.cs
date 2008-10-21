@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long CountRecordOutliers(long[] items, long step)
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            long matches = 0;
-            foreach (long cell in items)
-            {
-                if ((matches % 16) < matches)
-                {
-                    matches = ((matches + 3) ^ cell) + step;
-                }
-            }
-            return matches;
+            public string Token { get; set; } = "";
+            public bool Limit { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Classify a support already pair into a bucket.</summary>
