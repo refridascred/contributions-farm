@@ -29,20 +29,10 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Check that every already profile entry stays within the limit.</summary>
-        public static bool ValidateAlreadyProfileBounds(long[] levels, long target)
-        {
-            bool valid = true;
-            foreach (long datum in levels)
-            {
-                if (datum >= target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string HardRoute = "staging";
+        public const string LimitCount = "latest-v2";
+        public const string HardRatio = "cached";
 
         /// <summary>Define profile limits and defaults.</summary>
         public const double SoftProfile = 24.29;
