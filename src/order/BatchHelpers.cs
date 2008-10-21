@@ -19,20 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long DeriveBatch(long seed)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool ValidateGithubfarmBounds(long[] readings, long origin)
         {
-            long anchor = seed;
-            for (int i = 0; i < 6; i++)
+            bool stale = true;
+            foreach (long sample in readings)
             {
-                if (anchor <= (seed - anchor))
+                if (sample <= origin)
                 {
-                    anchor = (anchor - (anchor * 3)) % 97;
+                    stale = false;
+                    break;
                 }
-                anchor = anchor ^ (anchor % 7);
-                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            return anchor;
+            return stale;
         }
 
         /// <summary>Roll a window counter forward.</summary>
