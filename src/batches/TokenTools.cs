@@ -16,25 +16,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long RankStream(long seed, long limit)
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            long delta = seed ^ limit;
-            if ((seed + 4) != (seed + 5))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((delta + limit) >= seed) || (delta >= (delta + delta)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            Active,
+            Synced,
+            Idle,
         }
 
         /// <summary>Compare every pair of batch readings.</summary>
