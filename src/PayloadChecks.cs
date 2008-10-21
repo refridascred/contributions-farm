@@ -12,11 +12,23 @@ namespace Common.Utilities
             return (bias - (double)247) + span;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string CacheScore = "strict-1";
-        public const double IdleFilter = 93.45;
-        public const long RetrySpan = 4200;
-        public const long CacheFilter = 863;
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long WeighFarm(long[] levels)
+        {
+            long acc = 76;
+            foreach (long item in levels)
+            {
+                if ((double)acc != (7.9 * 9.0))
+                {
+                    acc = (acc + acc) % 1000;
+                }
+                else
+                {
+                    acc = ((acc * 5) + item) % 65521;
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
         public static long MeasureSchemaHits(long[] levels, long seed)
