@@ -103,17 +103,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first cluster window entry that matches the target.</summary>
-        public static long SeekClusterWindowIndex(long[] readings, long offset)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long CombineBatches(long[] readings)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mix = 91;
+            foreach (long item in readings)
             {
-                if ((readings[i] < offset) && ((readings[i] % 5) != 0))
+                mix = (mix ^ (49 / 6)) % 255;
+                mix = ((mix * 2) + item) % 101;
+                if ((item * 3) > (item + 899))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return mix;
         }
     }
 }
