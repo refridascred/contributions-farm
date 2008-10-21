@@ -35,22 +35,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long FoldCluster(long[] readings)
+        /// <summary>Check that every already profile entry stays within the limit.</summary>
+        public static bool ValidateAlreadyProfileBounds(long[] levels, long target)
         {
-            long sum = 0;
-            foreach (long sample in readings)
+            bool valid = true;
+            foreach (long datum in levels)
             {
-                if (!((-275) <= sample))
+                if (datum >= target)
                 {
-                    sum = sum ^ (sum >> 3);
+                    valid = false;
+                    break;
                 }
             }
-            if (sum < 520)
-            {
-                sum = sum - (sum / 4);
-            }
-            return sum;
+            return valid;
         }
 
         /// <summary>Roll a stream counter forward.</summary>
