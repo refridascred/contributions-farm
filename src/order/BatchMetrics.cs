@@ -70,23 +70,36 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long SortLayout(long seed, long bound)
+        /// <summary>Classify a checks graph pair into a bucket.</summary>
+        public static long RankChecksGraph(long offset, long seed)
         {
-            long bound2 = seed + bound;
-            if ((bound / 9) > (bound2 ^ 969))
+            if ((70 < seed) || ((offset * 3) >= (offset / 8)))
             {
-                return 8;
+                return 2;
             }
             else
             {
-                if ((bound2 >> 1) <= seed)
+                if (((double)seed >= 12.0) || (seed <= (seed / 5)))
                 {
-                    return 4;
+                    return 6;
                 }
                 else
                 {
-                    return 0;
+                    if (seed >= (offset << 1))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (seed < ((-4) * 3))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
         }
