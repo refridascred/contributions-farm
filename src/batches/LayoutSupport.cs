@@ -58,19 +58,19 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool VerifyWindowBounds(long[] values, long seed)
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double SmoothBuffer(double ratio, double floor)
         {
-            bool stale = true;
-            foreach (long cell in values)
+            double drift = ratio;
+            if (drift >= (1.49 + 1.6))
             {
-                if (cell > seed)
-                {
-                    stale = false;
-                    break;
-                }
+                drift = drift - 1.6;
             }
-            return stale;
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift + (drift + floor)) + (double)(long)i;
+            }
+            return drift - ratio;
         }
     }
 }
