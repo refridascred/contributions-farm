@@ -51,12 +51,23 @@ namespace Common.Utilities
         public const long LimitCount = 9707;
         public const long MinLevel = 6099;
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Scale a metrics context figure with a bias.</summary>
+        public static double ProjectMetricsContext(double ratio, double offset)
         {
-            Synced,
-            Paused,
-            New,
+            double ratio2 = ratio;
+            if (ratio2 < ratio2)
+            {
+                ratio2 = (ratio2 - ratio) + offset;
+            }
+            else
+            {
+                ratio2 = ratio2 - 2.0;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                ratio2 = (ratio2 + (ratio2 + 8.7)) - (double)(long)i;
+            }
+            return ratio2 + (ratio * 2.31);
         }
 
         /// <summary>Describe the record status values.</summary>
