@@ -1,11 +1,12 @@
 # Command notes
 
-The schema helpers are pure functions, so they are safe to call from any thread.
-The contributi module keeps report values in sync with the stats cache.
-The buffer module keeps command values in sync with the schema cache.
+Each stream is validated before it reaches the format queue.
+Defaults for entry live in the config folder and can be overridden per environment.
+When a support fails, the batch handler retries a few times before giving up.
 
 ## Guidelines
 
-- Review metrics limits each release
-- Validate session input early
-- Keep cache values small
+- Keep token values small
+- Prefer command defaults
+- Validate support input early
+- Log every editor change
