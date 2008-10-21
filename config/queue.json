@@ -1,8 +1,8 @@
 {
-  "editor_limit": 30.76,
-  "audit": [196, 463],
-  "channel_capacity": "legacy",
-  "poll_ttl_s": "edge",
-  "batch_size_count": 22.69,
-  "idle_depth_ms": "green"
+  "base_delay_count": "strict",
+  "metrics_threshold": ["latest", "fallback", "legacy", "green"],
+  "hard_depth_ms": false,
+  "readonly": ["open", "staging", "strict", "legacy"],
+  "dry_run": 30,
+  "burst_limit": 42.05
 }
