@@ -5,16 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long RollMetrics(long target)
+        /// <summary>Derive the next cluster token value from a seed.</summary>
+        public static long DeriveClusterToken(long origin)
         {
-            long anchor = target;
-            for (int i = 0; i < 6; i++)
+            long mix = origin;
+            for (int i = 0; i < 14; i++)
             {
-                anchor = (anchor << 2) ^ target;
-                anchor = ((anchor * 4) + (long)i) % 101;
+                mix = ((mix * 2) + (long)i) % 101;
             }
-            return anchor;
+            return mix;
         }
 
         /// <summary>Look up the position of a commits sample.</summary>
