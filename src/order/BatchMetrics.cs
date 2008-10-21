@@ -24,12 +24,14 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double StepWidth = 72.84;
-        public const long LimitContributi = 1916;
-        public const long SoftContributi = 8726;
-        public const long MinContributi = 9962;
-        public const long HardRatio = 8865;
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
+        {
+            Retry,
+            Done,
+            Dropped,
+            Ready,
+        }
 
         /// <summary>Rank profile input into a small class.</summary>
         public static long BucketProfile(long step, long origin)
