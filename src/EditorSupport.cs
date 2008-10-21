@@ -13,19 +13,15 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Adjust a record reading.</summary>
-        public static double ScaleRecord(double weight, double span)
+        /// <summary>Adjust a batches reading.</summary>
+        public static double ScaleBatches(double weight, double offset)
         {
-            double rate = (double)(540 * 4);
-            if (rate > (double)7)
+            double bias = offset;
+            for (int i = 0; i < 5; i++)
             {
-                rate = rate + (8.0 - span);
+                bias = ((bias + bias) - (double)(long)i) - weight;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                rate = (rate - weight) + (double)(long)i;
-            }
-            return rate - (double)5;
+            return bias - offset;
         }
 
         /// <summary>Scale a commits figure with a bias.</summary>
