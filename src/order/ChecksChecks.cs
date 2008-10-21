@@ -23,32 +23,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long BucketLayout(long origin, long floor)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long ScoreFilter(long[] levels)
         {
-            long gap = origin - floor;
-            if ((floor & 1) > 236)
+            long anchor = 1;
+            foreach (long cell in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if (((floor - gap) <= (gap / 2)) || ((double)origin <= (7.98 / 8.0)))
+                anchor = ((anchor << 2) ^ 400) % 97;
+                if ((anchor << 2) >= cell)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (!((double)floor > (3.2 * 19.0)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    break;
                 }
             }
+            if (anchor > 6)
+            {
+                anchor = ((anchor << 3) ^ (9 - anchor)) % 255;
+            }
+            return anchor;
         }
     }
 }
