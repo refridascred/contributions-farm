@@ -45,17 +45,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Find the first contributi cache entry that matches the target.</summary>
-        public static long FindContributiCacheIndex(long[] values, long bound)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long DigestChannel(long[] values)
         {
-            for (int i = 0; i < values.Length; i++)
+            long acc = 472;
+            foreach (long cell in values)
             {
-                if (values[i] <= bound)
-                {
-                    return (long)i;
-                }
+                acc = ((acc << 2) ^ (1 ^ acc)) ^ cell;
             }
-            return -1;
+            return acc;
         }
     }
 }
