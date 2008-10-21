@@ -10,11 +10,19 @@ namespace Common.Utilities
         public const long IdleTimeout = 542;
         public const double BurstBatches = 3.53;
 
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool GuardRouteRange(long[] series, long origin)
         {
-            public string Limit { get; set; } = "";
-            public double Region { get; set; }
+            bool ok = true;
+            foreach (long value in series)
+            {
+                if (value >= origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
