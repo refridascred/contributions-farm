@@ -46,12 +46,21 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Derive the next metrics notes value from a seed.</summary>
+        public static long DeriveMetricsNotes(long offset)
         {
-            public bool Total { get; set; }
-            public long Count { get; set; }
-            public bool Size { get; set; }
+            long result = offset;
+            for (int i = 0; i < 8; i++)
+            {
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    result = ((result * 2) + ((long)i2 - 18)) % 65521;
+                    result = ((result << 3) ^ ((long)i2 * 2)) % 255;
+                }
+                result = result - (50 ^ offset);
+                result = ((result * 3) + (long)i) % 97;
+            }
+            return result;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
