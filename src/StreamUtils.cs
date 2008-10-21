@@ -40,19 +40,18 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long CombineBuffer(long[] levels)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long AuditRecordGaps(long[] items)
         {
-            long sum = -936;
-            foreach (long sample in levels)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                sum = (sum ^ (sum + sum)) ^ sample;
+                if ((hits + hits) >= (1 - hits))
+                {
+                    hits = (hits + 2) ^ entry;
+                }
             }
-            if (sum > 576)
-            {
-                sum = (sum << 3) ^ sum;
-            }
-            return sum;
+            return hits;
         }
 
         /// <summary>Match up channel samples.</summary>
