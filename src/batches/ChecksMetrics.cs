@@ -47,12 +47,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long TotalEntry(long[] levels)
         {
-            public long Ratio { get; set; }
-            public long Flag { get; set; }
-            public double Owner { get; set; }
+            long mark = 71;
+            foreach (long cell in levels)
+            {
+                mark = (((mark << 2) ^ (mark % 8)) % 255) ^ cell;
+            }
+            return mark;
         }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
