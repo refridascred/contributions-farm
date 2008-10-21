@@ -27,12 +27,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long BucketLayout(long origin, long floor)
         {
-            public bool Label { get; set; }
-            public string Limit { get; set; } = "";
-            public long Total { get; set; }
+            long gap = origin - floor;
+            if ((floor & 1) > 236)
+            {
+                return 4;
+            }
+            else
+            {
+                if (((floor - gap) <= (gap / 2)) || ((double)origin <= (7.98 / 8.0)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!((double)floor > (3.2 * 19.0)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
     }
 }
