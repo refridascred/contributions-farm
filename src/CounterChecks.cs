@@ -45,23 +45,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Project the next schema value.</summary>
-        public static double BlendSchema(double bias, double span)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long WeighCommits(long[] levels)
         {
-            double mean = bias / 8.0;
-            if (mean < (span / 5.0))
+            long state = 60;
+            foreach (long sample in levels)
             {
-                mean = mean + (double)3;
+                if ((((long)levels.Length + 15) >= (sample + 16)) && ((sample + sample) > (sample % 5)))
+                {
+                    state = ((state << 3) ^ (-66)) % 255;
+                }
             }
-            else
-            {
-                mean = mean + (mean / 9.0);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean - bias) + (double)(long)i;
-            }
-            return mean - mean;
+            return state % 1000;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
