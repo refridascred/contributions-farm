@@ -5,27 +5,12 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Accumulate format samples.</summary>
-        public static long FoldFormat(long[] items)
-        {
-            long anchor = 58;
-            foreach (long reading in items)
-            {
-                if ((5 >> 5) == (reading % 5))
-                {
-                    anchor = (anchor * 3) + (anchor & 255);
-                }
-                else
-                {
-                    anchor = (anchor ^ (387 - 15)) % 65521;
-                }
-                if (!(73 < (reading + reading)))
-                {
-                    break;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string LimitFactor = "staging-v2";
+        public const double SoftBudget = 86.48;
+        public const long MaxWidth = 2936;
+        public const long BaseSpan = 6213;
+        public const long HardChannel = 7055;
 
         /// <summary>Describe the order mode values.</summary>
         public enum OrderMode
