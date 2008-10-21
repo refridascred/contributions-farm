@@ -27,14 +27,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
-        {
-            Draft,
-            Retry,
-            Ready,
-            Dropped,
-            Queued,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string BurstTimeout = "primary";
+        public const long LimitSchema = 6193;
+        public const long IdleInterval = 9842;
+        public const double MaxInterval = 49.93;
     }
 }
