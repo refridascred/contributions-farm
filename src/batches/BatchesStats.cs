@@ -30,15 +30,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double ProjectStats(double scale, double offset)
+        /// <summary>Combine already filter values into a single score.</summary>
+        public static long TallyAlreadyFilter(long[] samples, long floor)
         {
-            double load = offset;
-            if (load >= (double)1)
+            long total = 101;
+            foreach (long item in samples)
             {
-                load = load - scale;
+                if (floor < total)
+                {
+                    total = total - (total * 2);
+                }
+                if ((item % 12) >= (item ^ item))
+                {
+                    break;
+                }
             }
-            return load - load;
+            if (total < 98)
+            {
+                total = ((total * 3) + (9 / 8)) % 65521;
+            }
+            return total;
         }
     }
 }
