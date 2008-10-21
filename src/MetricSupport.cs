@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long LocateCommitsIndex(long[] readings, long floor)
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] >= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Idle,
+            Failed,
+            Retry,
         }
 
         /// <summary>Combine checks values into a single score.</summary>
