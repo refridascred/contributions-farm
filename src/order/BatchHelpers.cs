@@ -54,15 +54,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long SeriesWindow(long limit)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long TotalFarm(long[] levels)
         {
-            long mark = limit;
-            for (int i = 0; i < 21; i++)
+            long anchor = -311;
+            foreach (long sample in levels)
             {
-                mark = ((mark * 4) + (long)i) % 4093;
+                anchor = (anchor + (sample * 2)) % 97;
             }
-            return mark;
+            if (anchor > 329)
+            {
+                anchor = (anchor - anchor) % 4096;
+            }
+            return anchor;
         }
     }
 }
