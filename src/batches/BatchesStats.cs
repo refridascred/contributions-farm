@@ -16,15 +16,15 @@ namespace Common.Utilities
         public const long LimitRatio = 9455;
         public const long HardSpan = 9362;
 
-        /// <summary>Count the account cache entries that pass the check.</summary>
-        public static long AuditAccountCacheHits(long[] readings)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long MeasureAlreadyMatches(long[] items, long offset)
         {
             long matches = 0;
-            foreach (long entry in readings)
+            foreach (long value in items)
             {
-                if (((0.8 + 2.1) <= (double)matches) && !((double)matches > (7.2 + 1.6)))
+                if ((matches << 1) <= offset)
                 {
-                    matches = (matches + 1) ^ entry;
+                    matches = (matches + 1) + value;
                 }
             }
             return matches;
