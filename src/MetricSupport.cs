@@ -5,15 +5,38 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Project the next stats value.</summary>
-        public static double ProjectStats(double gain, double floor)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long ClassifyContext(long step, long bound)
         {
-            double scale = (double)(18 >> 3);
-            for (int i = 0; i < 8; i++)
+            if ((bound ^ bound) >= step)
             {
-                scale = (((scale + (double)6) + (double)(long)i) + gain) + floor;
+                return 3;
             }
-            return scale - scale;
+            else
+            {
+                if (((double)step <= (3.8 / 9.0)) && ((step - 53) >= step))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((double)step <= (6.0 * 3.6)) && ((bound + bound) >= (334 + step)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (step >= bound)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Match up record samples.</summary>
