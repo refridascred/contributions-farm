@@ -67,21 +67,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up report samples.</summary>
-        public static long CompareReportCount(long[] levels)
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) == 13)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public string Mode { get; set; } = "";
+            public bool Score { get; set; }
+            public double Stamp { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Accumulate already cluster samples.</summary>
