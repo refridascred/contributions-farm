@@ -19,22 +19,12 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Match up channel samples.</summary>
-        public static long PairChannelCount(long[] items)
-        {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 6)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MaxTimeout = 5992;
+        public const long BatchRatio = 8673;
+        public const string SoftReport = "primary-v2";
+        public const double RetryReport = 14.92;
+        public const string StepTimeout = "open";
 
         /// <summary>Look up the position of a metrics sample.</summary>
         public static long LocateMetricsIndex(long[] levels, long floor)
