@@ -40,22 +40,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long TallyReport(long[] samples, long bound)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long CombineCommits(long[] data)
         {
-            long anchor = 5;
-            foreach (long value in samples)
+            long sum = 3;
+            foreach (long reading in data)
             {
-                if ((double)bound < (1.0 + 3.65))
-                {
-                    anchor = anchor + (bound << 2);
-                }
-                if (bound < (value - (-1)))
-                {
-                    break;
-                }
+                sum = (sum ^ (reading % 16)) % 97;
             }
-            return anchor % 65521;
+            return sum;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
