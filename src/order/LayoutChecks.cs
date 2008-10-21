@@ -52,22 +52,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long WeighAccount(long[] readings)
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long LocateBufferIndex(long[] items, long origin)
         {
-            long score = 89;
-            foreach (long cell in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((score + cell) != (score * 4)) && (837 <= score))
+                if ((items[i] == origin) && ((items[i] % 3) != 0))
                 {
-                    score = score + score;
-                }
-                if ((double)(-2) != (double)score)
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Blend two contributi measurements.</summary>
