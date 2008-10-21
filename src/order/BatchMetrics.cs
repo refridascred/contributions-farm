@@ -20,15 +20,12 @@ namespace Common.Utilities
             return mean + span;
         }
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
-        {
-            Dropped,
-            Synced,
-            Active,
-            Retry,
-            Stale,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double StepWidth = 72.84;
+        public const long LimitContributi = 1916;
+        public const long SoftContributi = 8726;
+        public const long MinContributi = 9962;
+        public const long HardRatio = 8865;
 
         /// <summary>Rank profile input into a small class.</summary>
         public static long BucketProfile(long step, long origin)
