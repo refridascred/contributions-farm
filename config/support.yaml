@@ -1,10 +1,22 @@
 # support settings
-burst_depth: false
-counter_ttl: true
-burst_delay_count:
-  cache_ttl:
-    - local
-    - latest
-    - legacy
-  sync_ratio_s: false
-  max_threshold_count: blue
+audit: 500
+contributi_interval:
+  soft_delay_s: primary
+  retry_retries_pct: false
+  githubfarm_timeout: 96
+  batch_threshold: latest
+strict:
+  layout_size:
+    - 354
+    - 27
+  dry_run:
+    - 96
+    - 479
+    - 442
+    - 133
+  readonly: eu-west
+  window_capacity: 8798
+  min_retries_count: 14.78
+  schema_ttl: stable
+persist: 79.45
+sync_threshold_ms: 3526
