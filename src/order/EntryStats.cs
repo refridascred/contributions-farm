@@ -28,21 +28,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count cluster checks pairs that satisfy a relation.</summary>
-        public static long OverlapClusterChecksCount(long[] levels)
+        /// <summary>Rank editor record input into a small class.</summary>
+        public static long RankEditorRecord(long target, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long offset = target - seed;
+            if ((offset + offset) != (offset & 255))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if (!((double)target != (6.84 + 3.2)))
                 {
-                    if ((levels[i] - levels[j]) > 7)
+                    return 4;
+                }
+                else
+                {
+                    if (seed >= offset)
                     {
-                        hits = hits + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        if (8.08 > (double)seed)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Roll a schema counter forward.</summary>
