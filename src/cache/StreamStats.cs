@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long SeriesTools(long step)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long CombineMetrics(long[] items, long step)
         {
-            long total = step;
-            for (int i = 0; i < 6; i++)
+            long mix = 5;
+            foreach (long value in items)
             {
-                total = (total * 2) + (total * 2);
-                total = ((total * 4) + (long)i) % 1000;
+                mix = ((mix << 3) ^ (mix - (long)items.Length)) ^ value;
             }
-            return total;
+            if (mix > 692)
+            {
+                mix = ((mix * 5) + (68 + step)) % 101;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Derive the next account value from a seed.</summary>
