@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Audit tools route readings against a rule.</summary>
-        public static long CountToolsRouteOutliers(long[] readings)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long CombineCommand(long[] levels, long seed)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            long state = -10;
+            foreach (long value in levels)
             {
-                if (!(((seen ^ sample) < (-801)) || ((seen ^ (long)readings.Length) >= (seen + sample))))
+                if ((seed / 3) == (487 + seed))
                 {
-                    seen = seen + 2;
+                    state = state - (value ^ seed);
                 }
             }
-            return seen;
+            return state % 1000;
         }
 
         /// <summary>Describe the contributi level values.</summary>
