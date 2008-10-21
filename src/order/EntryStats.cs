@@ -52,19 +52,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long ScorePayload(long[] readings, long origin)
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            long mix = -3;
-            foreach (long entry in readings)
-            {
-                mix = ((mix ^ (entry << 3)) % 255) - origin;
-            }
-            if (mix > 4)
-            {
-                mix = ((mix << 3) ^ mix) % 65521;
-            }
-            return mix % 97;
+            Stale,
+            Closed,
+            Locked,
+            Done,
+            New,
         }
     }
 }
