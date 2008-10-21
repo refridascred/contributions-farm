@@ -1,6 +1,6 @@
 {
-  "base_size": false,
-  "schema_delay": "blue",
-  "max_ratio_s": "blue",
-  "verbose": "local"
+  "default_ttl_pct": "edge",
+  "idle_delay": "legacy",
+  "poll_ratio": 14,
+  "githubfarm_capacity": true
 }
