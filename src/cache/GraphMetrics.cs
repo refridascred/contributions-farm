@@ -45,14 +45,16 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long SeriesCache(long limit)
         {
-            Active,
-            Idle,
-            Done,
-            Queued,
-            Retry,
+            long state = limit;
+            for (int i = 0; i < 7; i++)
+            {
+                state = (state ^ (state + state)) % 4096;
+                state = ((state * 5) + (long)i) % 97;
+            }
+            return state;
         }
     }
 }
