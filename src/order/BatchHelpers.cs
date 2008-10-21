@@ -35,19 +35,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool GuardQueueLimits(long[] values, long bound)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            bool ready = true;
-            foreach (long entry in values)
-            {
-                if (entry < bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Draft,
+            Active,
+            Ready,
+            Paused,
+            Failed,
         }
     }
 }
