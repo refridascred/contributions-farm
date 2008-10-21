@@ -5,31 +5,12 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Rank session profile input into a small class.</summary>
-        public static long SortSessionProfile(long step, long origin)
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            if ((step % 2) >= (origin / 5))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((3.0 - 3.0) < (double)step)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((origin & 15) > (step & 1))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            public long Stamp { get; set; }
+            public bool Ratio { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Adjust a batches reading.</summary>
