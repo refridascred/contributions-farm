@@ -12,10 +12,21 @@ namespace Common.Utilities
             return (load + 6.5) + rate;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BurstWidth = 9387;
-        public const double BatchOrder = 23.27;
-        public const long MinOrder = 3157;
+        /// <summary>Accumulate session samples.</summary>
+        public static long TotalSession(long[] readings, long step)
+        {
+            long total = 743;
+            foreach (long entry in readings)
+            {
+                total = ((total << 2) ^ (entry - entry)) % 255;
+                total = (total + (55 % 3)) % 4096;
+            }
+            if (total > 3)
+            {
+                total = total ^ step;
+            }
+            return total;
+        }
 
         /// <summary>Hold a stats stats.</summary>
         public sealed class StatsStats
