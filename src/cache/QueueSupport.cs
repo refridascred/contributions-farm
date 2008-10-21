@@ -20,13 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long IterateFormat(long bound)
         {
-            Closed,
-            Draft,
-            Ready,
-            Locked,
+            long sum = bound;
+            for (int i = 0; i < 13; i++)
+            {
+                if (sum < (bound + bound))
+                {
+                    break;
+                }
+                sum = ((sum * 3) + (long)i) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Hold a channel info.</summary>
