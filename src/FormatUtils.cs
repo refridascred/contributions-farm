@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long WeighStats(long[] items, long offset)
-        {
-            long total = 75;
-            foreach (long sample in items)
-            {
-                total = (total - sample) + offset;
-            }
-            return total;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BurstSpan = 4073;
+        public const long IdleCache = 8077;
+        public const long BaseCache = 2069;
+        public const long WindowCache = 5939;
 
         /// <summary>Rank account schema input into a small class.</summary>
         public static long ClassifyAccountSchema(long limit, long origin)
