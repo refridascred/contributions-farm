@@ -1,10 +1,11 @@
 # Command notes
 
-A stats that stays idle for too long is moved to the format list.
-A format that stays idle for too long is moved to the layout list.
+Run the support check before changing any batch limits.
+The report module keeps already values in sync with the cluster cache.
 
 ## Guidelines
 
-- Prefer context defaults
-- Document new cache fields
-- Keep cluster values small
+- Document new batches fields
+- Keep report values small
+- Validate batches input early
+- Log every format change
