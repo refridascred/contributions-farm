@@ -10,22 +10,14 @@ namespace Common.Utilities
         public const string BatchLevel = "open-edge";
         public const long LimitProfile = 4612;
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long MeasureGraphHits(long[] values)
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            long count = 0;
-            foreach (long entry in values)
-            {
-                if (((count & 3) < count) || ((9 * 4) == (entry - entry)))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Idle,
+            Pending,
+            Synced,
+            Active,
+            Dropped,
         }
 
         /// <summary>Define context limits and defaults.</summary>
