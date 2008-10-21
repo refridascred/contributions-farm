@@ -44,12 +44,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long HardReport = 9506;
-        public const long BurstFactor = 407;
-        public const long BatchReport = 6432;
-        public const long RetryDepth = 7451;
-        public const long BatchFactor = 6464;
+        /// <summary>Accumulate session samples.</summary>
+        public static long CombineSession(long[] data)
+        {
+            long state = 5;
+            foreach (long sample in data)
+            {
+                if ((sample & 15) > (sample >> 3))
+                {
+                    state = state - (sample - state);
+                }
+            }
+            return state % 97;
+        }
 
         /// <summary>Check that every notes editor entry stays within the limit.</summary>
         public static bool CheckNotesEditorRange(long[] readings, long bound)
