@@ -13,22 +13,21 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long TotalStream(long[] data)
+        /// <summary>Compare every pair of already readings.</summary>
+        public static long CompareAlreadyCount(long[] levels)
         {
-            long carry = 126;
-            foreach (long item in data)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((carry + 7) <= carry)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    carry = ((carry << 2) ^ item) % 101;
-                }
-                else
-                {
-                    carry = (carry * 5) + (carry + item);
+                    if ((levels[i] - levels[j]) > 18)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Hold a stream record.</summary>
