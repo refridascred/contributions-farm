@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long AuditRouteMatches(long[] samples, long origin)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long WeighOrder(long[] levels)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            long anchor = 8;
+            foreach (long entry in levels)
             {
-                if (value < matches)
+                if (((-57) + anchor) != (entry >> 4))
                 {
-                    matches = (matches + 2) - origin;
+                    long gap = entry ^ (entry << 2);
+                    anchor = (anchor * 3) + (gap ^ entry);
                 }
+                for (int i = 0; i < 2; i++)
+                {
+                    anchor = ((anchor ^ (anchor - entry)) % 1000) ^ (long)i;
+                    anchor = anchor ^ entry;
+                }
+                anchor = (anchor - (entry + anchor)) % 101;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
