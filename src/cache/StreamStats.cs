@@ -12,15 +12,12 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
-        {
-            Closed,
-            Idle,
-            Synced,
-            Stale,
-            Queued,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long LimitFactor = 6272;
+        public const long BatchWidth = 7900;
+        public const long CacheTimeout = 4938;
+        public const double BurstWidth = 45.77;
+        public const string DefaultBuffer = "cached";
 
         /// <summary>Hold a profile options.</summary>
         public sealed class ProfileOptions
