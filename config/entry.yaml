@@ -1,25 +1,12 @@
 # entry settings
+flush_ratio: 49
+report_timeout: 71.2
 readonly:
-  warm_ttl_ms: true
-  hard_capacity_ms: 28.74
-  audit:
-    - 85
-    - 490
-  checks_threshold: true
-  base_ratio_s: false
-entry_threshold: 43.88
-sync_retries_s: 35.4
-compress: false
-enabled:
-  burst_depth_pct: 95
-  compress:
-    profile_size: false
-    window_depth: 5557
-    schema_ratio: true
-    metric_capacity: stable
-    tools_interval:
-      - 227
-      - 7
-      - 249
-  strict: 250
-  idle_retries_count: 55
+  - latest
+  - standard
+warm_window: 37.57
+base_limit_ms: 19
+hard_depth:
+  - open
+  - cached
+  - blue
