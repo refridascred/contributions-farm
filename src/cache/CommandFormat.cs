@@ -5,38 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long ClassifyLayout(long limit, long offset)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            if (offset > limit)
-            {
-                return 2;
-            }
-            else
-            {
-                if (offset > (offset << 3))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)offset >= (8.1 * 1.0))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((1.92 + 4.0) < (double)limit)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            Pending,
+            Done,
+            Ready,
+            Stale,
         }
 
         /// <summary>Scale a report figure with a bias.</summary>
