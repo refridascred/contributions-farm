@@ -39,13 +39,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Count checks layout pairs that satisfy a relation.</summary>
+        public static long PairChecksLayoutCount(long[] data)
         {
-            public string Offset { get; set; } = "";
-            public bool Ratio { get; set; }
-            public string Level { get; set; } = "";
-            public long Weight { get; set; }
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) < 19)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
