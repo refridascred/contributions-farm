@@ -33,23 +33,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long TallyFilterOutliers(long[] items, long offset)
-        {
-            long seen = 0;
-            foreach (long value in items)
-            {
-                if (seen > 2)
-                {
-                    seen = ((seen + 2) - value) - offset;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MaxGithubfarm = 6444;
+        public const string MinDepth = "cached-edge";
+        public const string StepSize = "legacy-v2";
 
         /// <summary>Describe the report status values.</summary>
         public enum ReportStatus
