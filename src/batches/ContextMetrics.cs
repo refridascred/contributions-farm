@@ -24,18 +24,10 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long SeekCacheIndex(long[] samples, long floor)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] >= floor) && ((samples[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string BatchLevel = "latest-1";
+        public const double SoftRatio = 64.16;
+        public const long WindowToken = 1702;
 
         /// <summary>Derive the next command value from a seed.</summary>
         public static long DeriveCommand(long bound)
