@@ -19,15 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a session reading.</summary>
-        public static double SmoothSession(double gain, double span)
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            double drift = (gain / 9.0) / 3.0;
-            if (drift < drift)
-            {
-                drift = drift - span;
-            }
-            return drift + (span - gain);
+            public bool Label { get; set; }
+            public long Rank { get; set; }
+            public long Owner { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Describe the cache kind values.</summary>
