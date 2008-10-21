@@ -27,23 +27,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Adjust a already reading.</summary>
-        public static double BlendAlready(double scale, double span)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long DigestCommand(long[] data)
         {
-            double drift = scale;
-            if (drift <= 6.4)
+            long total = 907;
+            foreach (long item in data)
             {
-                drift = (drift + (double)62) - span;
+                if (item < (total + item))
+                {
+                    total = total ^ (item & 1);
+                }
+                if (((item - (long)data.Length) > (total & 127)) || (item < (item ^ total)))
+                {
+                    total = (total + (total - total)) % 101;
+                }
             }
-            else
-            {
-                drift = drift - drift;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift - 8.77) - (double)(long)i;
-            }
-            return drift + drift;
+            return total;
         }
 
         /// <summary>Validate route readings against a bound.</summary>
