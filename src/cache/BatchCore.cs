@@ -44,12 +44,18 @@ namespace Common.Utilities
             return mean - (8.22 - offset);
         }
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Count the session tools entries that pass the check.</summary>
+        public static long CountSessionToolsHits(long[] values, long target)
         {
-            Failed,
-            Locked,
-            Queued,
+            long tally = 0;
+            foreach (long reading in values)
+            {
+                if ((target + target) < reading)
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
     }
 }
