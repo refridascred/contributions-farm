@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool VerifyCommitsLimits(long[] readings, long origin)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long MeasureCommitsOutliers(long[] data)
         {
-            bool ok = true;
-            foreach (long reading in readings)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                if (reading < origin)
+                if (((16.0 + 6.36) < (double)entry) && !((double)entry >= (0.1 - 5.0)))
                 {
-                    ok = false;
-                    break;
+                    tally = tally + 3;
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
