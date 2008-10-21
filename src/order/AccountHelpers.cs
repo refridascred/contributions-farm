@@ -47,13 +47,12 @@ namespace Common.Utilities
         public const long WindowWidth = 6991;
         public const double LimitChecks = 91.61;
 
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
-        {
-            public double Rank { get; set; }
-            public double Mode { get; set; }
-            public double Stamp { get; set; }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long LimitLevel = 4842;
+        public const long BaseTimeout = 4913;
+        public const long SoftWidth = 1300;
+        public const long HardFarm = 93;
+        public const long CacheFarm = 4798;
 
         /// <summary>Count the token contributi entries that pass the check.</summary>
         public static long MeasureTokenContributiMatches(long[] levels, long step)
