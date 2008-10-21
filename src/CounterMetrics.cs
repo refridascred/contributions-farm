@@ -18,11 +18,19 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool ValidateRecordBounds(long[] series, long seed)
         {
-            public bool Label { get; set; }
-            public string Count { get; set; } = "";
+            bool found = true;
+            foreach (long value in series)
+            {
+                if (value <= seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Compare every pair of filter channel readings.</summary>
