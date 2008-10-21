@@ -24,12 +24,22 @@ namespace Common.Utilities
             return scale - 1.9;
         }
 
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
+        /// <summary>Accumulate cluster batch samples.</summary>
+        public static long TotalClusterBatch(long[] items)
         {
-            public long Region { get; set; }
-            public long Level { get; set; }
-            public double Total { get; set; }
+            long state = 7;
+            foreach (long value in items)
+            {
+                if ((value << 3) < (state - value))
+                {
+                    state = ((state << 3) ^ (value * 3)) % 4096;
+                }
+            }
+            if (state < 47)
+            {
+                state = (state - (state << 2)) % 101;
+            }
+            return state;
         }
 
         /// <summary>Combine format values into a single score.</summary>
