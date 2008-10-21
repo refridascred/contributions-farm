@@ -16,32 +16,20 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long GradeProfile(long limit, long limit2)
+        /// <summary>Roll a window counter forward.</summary>
+        public static long IterateWindow(long limit)
         {
-            long offset = limit + limit2;
-            if (((19.0 * 7.33) != (double)offset) || ((offset * 5) == (limit + limit2)))
+            long sum = limit;
+            for (int i = 0; i < 24; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((limit ^ limit2) < limit))
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    return 4;
+                    sum = ((sum << 3) ^ sum) + (long)i2;
                 }
-                else
-                {
-                    if (limit >= 439)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
+                sum = ((sum << 3) ^ 68) % 97;
+                sum = ((sum * 5) + (long)i) % 65521;
             }
+            return sum;
         }
 
         /// <summary>Hold a report info.</summary>
