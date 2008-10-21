@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long CountTokenMatches(long[] series)
         {
-            public long Rank { get; set; }
-            public long Total { get; set; }
-            public bool Owner { get; set; }
+            long tally = 0;
+            foreach (long entry in series)
+            {
+                if ((420 + entry) >= 480)
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define window limits and defaults.</summary>
