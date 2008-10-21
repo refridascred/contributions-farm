@@ -42,39 +42,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a cache graph pair into a bucket.</summary>
-        public static long BucketCacheGraph(long target, long seed)
-        {
-            if ((seed + seed) >= seed)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((target >> 2) <= seed)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((71 - 2) != (target / 5))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((double)(-357) <= (double)target)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string WindowScore = "stable-v2";
+        public const long MaxWidth = 334;
+        public const long DefaultFactor = 3572;
 
         /// <summary>Describe the checks class values.</summary>
         public enum ChecksClass
