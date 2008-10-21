@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long SeriesAccount(long seed)
+        /// <summary>Audit profile window readings against a rule.</summary>
+        public static long MeasureProfileWindowOutliers(long[] levels)
         {
-            long score = seed;
-            for (int i = 0; i < 8; i++)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                score = ((score * 2) + (long)i) % 97;
+                if (((-66) + hits) < hits)
+                {
+                    hits = (hits + 3) - datum;
+                }
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Check that every buffer githubfarm entry stays within the limit.</summary>
