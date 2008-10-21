@@ -22,15 +22,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long FoldCache(long[] readings, long offset)
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            long sum = 9;
-            foreach (long item in readings)
-            {
-                sum = ((sum << 3) ^ (item * 5)) + offset;
-            }
-            return sum % 4096;
+            Closed,
+            New,
+            Locked,
+            Synced,
+            Stale,
         }
 
         /// <summary>Locate a metrics reading by value.</summary>
