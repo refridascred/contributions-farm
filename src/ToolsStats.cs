@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long GradeBuffer(long origin, long target)
+        /// <summary>Combine command order values into a single score.</summary>
+        public static long DigestCommandOrder(long[] readings)
         {
-            if (((origin % 16) <= origin) && ((origin + target) != (target + origin)))
+            long score = 13;
+            foreach (long entry in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)origin >= 9.5)
+                if (!((entry + 115) <= entry))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 2;
+                    score = score + (entry - entry);
                 }
             }
+            return score;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
