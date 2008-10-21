@@ -1,22 +1,14 @@
 # support settings
-audit: 500
-contributi_interval:
-  soft_delay_s: primary
-  retry_retries_pct: false
-  githubfarm_timeout: 96
-  batch_threshold: latest
-strict:
-  layout_size:
-    - 354
-    - 27
-  dry_run:
-    - 96
-    - 479
-    - 442
-    - 133
-  readonly: eu-west
-  window_capacity: 8798
-  min_retries_count: 14.78
-  schema_ttl: stable
-persist: 79.45
-sync_threshold_ms: 3526
+audit: false
+soft_depth:
+  idle_window: 100
+  poll_depth_s: edge
+  idle_interval_pct:
+    - 382
+    - 384
+    - 25
+    - 81
+  cluster_timeout: local
+  default_delay_ms: 60.71
+  strict: primary
+batch_timeout: 1288
