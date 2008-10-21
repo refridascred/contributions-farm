@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long SeekTokenIndex(long[] series, long floor)
+        /// <summary>Project the next batch value.</summary>
+        public static double SmoothBatch(double gain, double bias)
         {
-            for (int i = 0; i < series.Length; i++)
+            double rate = (double)((-71) + 7);
+            if (rate >= (double)2)
             {
-                if (series[i] < floor)
-                {
-                    return (long)i;
-                }
+                rate = ((rate + 5.66) - gain) + bias;
             }
-            return -1;
+            else
+            {
+                rate = rate - (double)92;
+            }
+            return rate - rate;
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
