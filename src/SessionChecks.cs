@@ -21,10 +21,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double HardInterval = 2.05;
-        public const long StepTimeout = 1266;
-        public const double CacheSize = 76.83;
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
+        {
+            Done,
+            Paused,
+            New,
+            Draft,
+            Queued,
+        }
 
         /// <summary>Hold a counter entry.</summary>
         public sealed class CounterEntry
