@@ -33,12 +33,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string BatchInterval = "strict";
-        public const double BasePayload = 16.33;
-        public const long WindowRatio = 2570;
-        public const long SoftDepth = 2782;
-        public const double BurstPayload = 44.47;
+        /// <summary>Roll a account counter forward.</summary>
+        public static long StepAccount(long limit)
+        {
+            long state = limit;
+            for (int i = 0; i < 9; i++)
+            {
+                if ((long)i == (limit << 1))
+                {
+                    state = (state - (0 >> 1)) % 1000;
+                    state = (state ^ (limit + limit)) % 97;
+                }
+                state = (state - (2 & 31)) % 97;
+                state = ((state * 5) + (long)i) % 4093;
+            }
+            return state;
+        }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
         public static long PairGithubfarmCount(long[] series)
