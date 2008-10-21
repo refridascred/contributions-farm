@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Check that every already record entry stays within the limit.</summary>
-        public static bool CheckAlreadyRecordBounds(long[] series, long limit)
+        /// <summary>Roll a profile command counter forward.</summary>
+        public static long SeriesProfileCommand(long offset)
         {
-            bool ok = true;
-            foreach (long item in series)
+            long acc = offset;
+            for (int i = 0; i < 14; i++)
             {
-                if (item > limit)
-                {
-                    ok = false;
-                    break;
-                }
+                acc = (acc * 2) + (117 & 15);
+                acc = ((acc * 3) + (long)i) % 101;
             }
-            return ok;
+            return acc;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
