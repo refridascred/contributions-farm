@@ -42,15 +42,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long RollSchema(long seed)
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            long mix = seed;
-            for (int i = 0; i < 12; i++)
-            {
-                mix = ((mix * 5) + (long)i) % 97;
-            }
-            return mix;
+            public bool Rank { get; set; }
+            public long Stamp { get; set; }
+            public double Weight { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Describe the metric phase values.</summary>
