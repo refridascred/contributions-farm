@@ -54,38 +54,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long ClassifyChecks(long step, long origin)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long MeasureContextHits(long[] levels, long offset)
         {
-            if ((step + origin) >= (step << 2))
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if ((step >> 5) != (step / 3))
+                if ((sample >> 5) > (hits - hits))
                 {
-                    return 3;
+                    hits = (hits + 2) + offset;
                 }
                 else
                 {
-                    if (!(9.3 >= (double)step))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((double)step >= (8.34 - 6.65))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Hold a batches record.</summary>
