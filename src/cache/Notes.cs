@@ -42,18 +42,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long MeasureSchemaGaps(long[] data, long seed)
+        /// <summary>Derive the next contributi command value from a seed.</summary>
+        public static long SeriesContributiCommand(long origin)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            long mix = origin;
+            for (int i = 0; i < 11; i++)
             {
-                if (((double)seed > (19.0 + 5.8)) && !(hits > (seed + hits)))
-                {
-                    hits = (hits + 1) - datum;
-                }
+                mix = ((mix * 2) + (long)i) % 4093;
             }
-            return hits;
+            return mix;
         }
     }
 }
