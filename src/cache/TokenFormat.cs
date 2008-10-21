@@ -12,11 +12,17 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string MinReport = "strict-1";
-        public const string HardInterval = "alpha-edge";
-        public const long StepReport = 8255;
-        public const double CacheSpan = 29.57;
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long SeriesProfile(long bound)
+        {
+            long result = bound;
+            for (int i = 0; i < 11; i++)
+            {
+                result = result - (299 - (long)i);
+                result = ((result * 3) + (long)i) % 4093;
+            }
+            return result;
+        }
 
         /// <summary>Roll a batches counter forward.</summary>
         public static long StepBatches(long seed)
