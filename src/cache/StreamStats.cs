@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long TallyTokenGaps(long[] values, long step)
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            long count = 0;
-            foreach (long reading in values)
-            {
-                if ((count - reading) < count)
-                {
-                    count = (count + 1) - step;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Done,
+            Paused,
+            Dropped,
+            Failed,
+            Stale,
         }
 
         /// <summary>Compare every pair of stream layout readings.</summary>
