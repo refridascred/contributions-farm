@@ -5,14 +5,26 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long TotalBatch(long[] data)
         {
-            Done,
-            Retry,
-            Synced,
-            Closed,
-            Active,
+            long sum = 468;
+            foreach (long sample in data)
+            {
+                if (!((8.7 + 8.0) >= (double)sum))
+                {
+                    sum = sum + (3 + (-8));
+                }
+                if ((1 & 3) < (sum ^ sample))
+                {
+                    sum = sum + (75 << 2);
+                }
+            }
+            if (sum > 8)
+            {
+                sum = (sum - (sum * 5)) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
