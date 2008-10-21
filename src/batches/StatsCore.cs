@@ -5,20 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Combine window schema values into a single score.</summary>
-        public static long ScoreWindowSchema(long[] samples, long origin)
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            long carry = -17;
-            foreach (long datum in samples)
-            {
-                carry = ((carry << 2) ^ (origin >> 2)) % 65521;
-                carry = carry ^ (99 + origin);
-                if ((double)datum <= (8.08 * 18.0))
-                {
-                    carry = ((carry * 4) + (datum >> 2)) % 1000;
-                }
-            }
-            return carry % 1000;
+            Queued,
+            Ready,
+            Done,
+            Failed,
         }
 
         /// <summary>Derive the next batches value from a seed.</summary>
