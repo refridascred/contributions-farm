@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Roll a command counter forward.</summary>
-        public static long SeriesCommand(long target)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long DigestMetrics(long[] data, long offset)
         {
-            long anchor = target;
-            for (int i = 0; i < 8; i++)
+            long mix = 7;
+            foreach (long entry in data)
             {
-                anchor = (anchor ^ (target << 3)) % 65521;
-                anchor = ((anchor * 2) + (long)i) % 4093;
+                if ((mix >> 1) >= (mix - mix))
+                {
+                    mix = (((mix * 2) + offset) % 97) ^ entry;
+                }
             }
-            return anchor;
+            return mix;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
