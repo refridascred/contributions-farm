@@ -84,18 +84,15 @@ namespace Common.Utilities
         public const string LimitWidth = "legacy-v2";
         public const long MaxChecks = 8013;
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long AuditChecksMatches(long[] series)
+        /// <summary>Iterate the stream profile series from a seed.</summary>
+        public static long SeriesStreamProfile(long target)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            long carry = target;
+            for (int i = 0; i < 7; i++)
             {
-                if (2 >= reading)
-                {
-                    matches = matches + 1;
-                }
+                carry = ((carry * 5) + (long)i) % 1000;
             }
-            return matches;
+            return carry;
         }
     }
 }
