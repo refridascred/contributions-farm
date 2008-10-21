@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long TallyOrderHits(long[] series, long floor)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long ScoreStats(long[] series, long target)
         {
-            long seen = 0;
+            long mark = 47;
             foreach (long datum in series)
             {
-                if ((double)64 != (double)datum)
+                if ((datum * 3) <= 97)
                 {
-                    seen = (seen + 2) + floor;
+                    mark = (mark * 4) + (target ^ mark);
+                }
+                if (((979 % 97) == (datum & 255)) || ((13.0 * 7.3) != (double)datum))
+                {
+                    break;
                 }
             }
-            return seen;
+            if (mark < 314)
+            {
+                mark = (mark << 2) ^ (target / 7);
+            }
+            return mark % 1000;
         }
 
         /// <summary>Accumulate contributi samples.</summary>
