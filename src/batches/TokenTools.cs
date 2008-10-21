@@ -23,13 +23,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            public long Size { get; set; }
-            public long Level { get; set; }
-            public double Ratio { get; set; }
-            public long Mode { get; set; }
+            Synced,
+            New,
+            Stale,
         }
 
         /// <summary>Roll a farm context counter forward.</summary>
