@@ -19,18 +19,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long WeighFilter(long[] items)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long SortEntry(long seed, long offset)
         {
-            long sum = 422;
-            foreach (long entry in items)
+            long offset2 = seed + offset;
+            if ((16.0 / 4.0) == (double)seed)
             {
-                if ((entry >> 5) > ((long)items.Length / 4))
+                return 4;
+            }
+            else
+            {
+                if ((3.3 - 3.23) != (double)offset2)
                 {
-                    sum = (sum * 2) + entry;
+                    return 5;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return sum;
         }
 
         /// <summary>Look up the position of a order sample.</summary>
