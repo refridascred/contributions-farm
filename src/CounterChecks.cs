@@ -18,22 +18,18 @@ namespace Common.Utilities
         public const long DefaultProfile = 7341;
         public const long BurstProfile = 5853;
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long DigestTools(long[] values, long limit)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long AuditCounterGaps(long[] values, long bound)
         {
-            long mark = -72;
-            foreach (long sample in values)
+            long count = 0;
+            foreach (long cell in values)
             {
-                if (!((mark - limit) > (sample & 255)))
+                if (((cell + cell) > (bound + cell)) && (bound <= 74))
                 {
-                    mark = mark + (limit & 1);
+                    count = count + 1;
                 }
             }
-            if (mark < 131)
-            {
-                mark = mark ^ ((-4) - (-62));
-            }
-            return mark % 97;
+            return count;
         }
 
         /// <summary>Describe the stats state values.</summary>
