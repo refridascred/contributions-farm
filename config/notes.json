@@ -1,6 +1,5 @@
 {
-  "buffer_window": true,
-  "idle_capacity_s": 33,
-  "soft_timeout_ms": 6555,
-  "base_size_s": 30
+  "poll_window": "open",
+  "compress": 60,
+  "min_depth_pct": true
 }
