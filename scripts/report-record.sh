@@ -6,16 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in eu-west staging primary fallback; do
+for item in open edge; do
     log "checking ${item}"
 done
 
-mode="${1:-staging}"
-case "${mode}" in
-    fallback)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+RECORD_LIMIT=402
+log "limit is ${RECORD_LIMIT}"
