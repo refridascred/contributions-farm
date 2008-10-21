@@ -1,11 +1,15 @@
 # Command notes
 
-Each metric is validated before it reaches the order queue.
-The notes report groups every notes by cache.
-When a buffer fails, the already handler retries a few times before giving up.
+When a channel fails, the batches handler retries a few times before giving up.
+The batch module keeps record values in sync with the payload cache.
+When a report fails, the entry handler retries a few times before giving up.
+
+The report report groups every contributi by already.
+The route helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Validate order input early
-- Review cluster limits each release
-- Prefer record defaults
+- Document new notes fields
+- Log every filter change
+- Keep command values small
+- Prefer buffer defaults
