@@ -41,11 +41,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next batch value.</summary>
-        public static double SmoothBatch(double ratio, double span)
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            double bias = span;
-            return (bias + span) + ratio;
+            public bool Offset { get; set; }
+            public double Weight { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
