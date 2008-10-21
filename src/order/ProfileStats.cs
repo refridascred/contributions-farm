@@ -5,11 +5,32 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long MinGraph = 3910;
-        public const long WindowLevel = 3815;
-        public const long BurstFactor = 8657;
-        public const long BatchGraph = 4721;
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long BucketRoute(long origin, long offset)
+        {
+            if (((origin << 1) > (origin >> 3)) || (6.4 < (double)origin))
+            {
+                return 0;
+            }
+            else
+            {
+                if (offset <= (23 + origin))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (origin > offset)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
 
         /// <summary>Digest a series of context buffer entries.</summary>
         public static long TallyContextBuffer(long[] data, long offset)
