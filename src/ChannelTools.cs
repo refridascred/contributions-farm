@@ -23,11 +23,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double AdjustWindow(double bias, double floor)
         {
-            public string Limit { get; set; } = "";
-            public long Count { get; set; }
+            double ratio = 9.55;
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = ((ratio + (double)0) + (double)(long)i) - floor;
+            }
+            return ratio + (bias + ratio);
         }
 
         /// <summary>Compare every pair of batch readings.</summary>
