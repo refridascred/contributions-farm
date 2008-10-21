@@ -55,32 +55,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long ClassifyChecks(long origin, long limit)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long AuditChecksMatches(long[] series)
         {
-            long offset = origin - limit;
-            if ((-1) > (offset >> 1))
+            long matches = 0;
+            foreach (long reading in series)
             {
-                return 4;
-            }
-            else
-            {
-                if (((-56) > (offset + origin)) && ((4.6 * 5.7) < (double)origin))
+                if (2 >= reading)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((limit - (-78)) != (offset - offset))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    matches = matches + 1;
                 }
             }
+            return matches;
         }
     }
 }
