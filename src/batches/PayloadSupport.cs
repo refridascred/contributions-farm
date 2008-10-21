@@ -28,19 +28,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate command format readings against a bound.</summary>
-        public static bool CheckCommandFormatLimits(long[] readings, long seed)
+        /// <summary>Locate a schema filter reading by value.</summary>
+        public static long LookupSchemaFilterIndex(long[] values, long floor)
         {
-            bool ready = true;
-            foreach (long entry in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (entry <= seed)
+                if (values[i] < floor)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
     }
 }
