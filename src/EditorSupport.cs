@@ -50,15 +50,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long RollGraph(long limit)
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
         {
-            long acc = limit;
-            for (int i = 0; i < 18; i++)
-            {
-                acc = ((acc * 5) + (long)i) % 65521;
-            }
-            return acc;
+            public long Token { get; set; }
+            public string Label { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Look up the position of a batches sample.</summary>
