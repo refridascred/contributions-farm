@@ -31,13 +31,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool ValidateEntryBounds(long[] readings, long floor)
         {
-            public double Owner { get; set; }
-            public double Offset { get; set; }
-            public bool Size { get; set; }
-            public double Weight { get; set; }
+            bool valid = true;
+            foreach (long value in readings)
+            {
+                if (value > floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Compare every pair of batches cache readings.</summary>
