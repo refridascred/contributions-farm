@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string LimitFactor = "staging-v2";
-        public const double SoftBudget = 86.48;
-        public const long MaxWidth = 2936;
-        public const long BaseSpan = 6213;
-        public const long HardChannel = 7055;
+        /// <summary>Match up graph samples.</summary>
+        public static long OverlapGraphCount(long[] values)
+        {
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) == 9)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the order mode values.</summary>
         public enum OrderMode
