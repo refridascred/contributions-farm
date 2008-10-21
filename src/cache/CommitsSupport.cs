@@ -71,9 +71,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string HardQueue = "staging-v2";
-        public const long BaseSpan = 8829;
-        public const string CacheFactor = "open-1";
+        /// <summary>Accumulate window githubfarm samples.</summary>
+        public static long CombineWindowGithubfarm(long[] samples)
+        {
+            long score = 493;
+            foreach (long entry in samples)
+            {
+                if ((double)score != (3.45 - 8.8))
+                {
+                    score = (score ^ (560 ^ score)) - entry;
+                }
+            }
+            return score;
+        }
     }
 }
