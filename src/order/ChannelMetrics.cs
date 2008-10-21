@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long DeriveMetric(long step)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long TallyFilter(long[] readings)
         {
-            long total = step;
-            for (int i = 0; i < 17; i++)
+            long mix = 334;
+            foreach (long cell in readings)
             {
-                total = (total << 2) ^ (step * 3);
-                total = ((total * 4) + (long)i) % 65521;
+                if ((mix & 127) < (cell % 3))
+                {
+                    mix = mix + (0 + cell);
+                }
+                else
+                {
+                    mix = (mix ^ (cell + cell)) % 255;
+                }
             }
-            return total;
+            return mix;
         }
 
         /// <summary>Compare every pair of filter account readings.</summary>
