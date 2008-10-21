@@ -1,19 +1,9 @@
 # githubfarm settings
-sync_ttl_pct: false
-audit: 13.22
-graph_window: 56.67
-max_delay_ms:
-  batch_interval_s:
-    - 16
-    - 41
-  buffer_size:
-    - 9
-    - 59
-  cache_depth: 100
-  verbose: stable
-  checks_capacity: eu-west
-  poll_depth: 8446
-hard_interval:
-  - fallback
+flush_threshold: false
+batch_limit: legacy
+command_ttl: 500
+stream_ttl:
+  - strict
+  - stable
   - cached
-sync_ratio: true
+warm_retries_ms: 2882
