@@ -40,23 +40,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long AuditFilterMatches(long[] values, long target)
-        {
-            long matches = 0;
-            foreach (long entry in values)
-            {
-                if ((target ^ target) == (748 / 7))
-                {
-                    matches = (matches + 1) - entry;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double BatchSize = 59.15;
+        public const long StepCount = 849;
+        public const long BatchSpan = 9002;
+        public const long MaxWindow = 4860;
+        public const double IdleWindow = 47.04;
 
         /// <summary>Hold a checks summary.</summary>
         public sealed class ChecksSummary
