@@ -27,16 +27,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long StepPayload(long seed)
-        {
-            long result = seed;
-            for (int i = 0; i < 20; i++)
-            {
-                result = ((result * 3) + (long)i) % 1000;
-            }
-            return result;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long LimitGithubfarm = 7580;
+        public const long DefaultCount = 3755;
+        public const double MaxGithubfarm = 58.67;
+        public const long BatchBudget = 1152;
 
         /// <summary>Combine route values into a single score.</summary>
         public static long CombineRoute(long[] items, long floor)
