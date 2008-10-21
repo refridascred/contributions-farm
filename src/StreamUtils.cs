@@ -16,11 +16,23 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BatchSpan = 1087;
-        public const long StepRatio = 3519;
-        public const long MinBatch = 8388;
-        public const long BurstTimeout = 9592;
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long AuditQueueMatches(long[] samples)
+        {
+            long hits = 0;
+            foreach (long sample in samples)
+            {
+                if (hits >= (hits << 1))
+                {
+                    hits = (hits + 2) + sample;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the entry state values.</summary>
         public enum EntryState
