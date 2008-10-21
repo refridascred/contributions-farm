@@ -71,12 +71,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            Draft,
+            Ready,
+            Queued,
+            Failed,
             Done,
-            Synced,
         }
 
         /// <summary>Define graph limits and defaults.</summary>
