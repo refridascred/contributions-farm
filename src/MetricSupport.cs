@@ -73,15 +73,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of layout format entries.</summary>
-        public static long DigestLayoutFormat(long[] readings)
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            long acc = 6;
-            foreach (long datum in readings)
-            {
-                acc = ((acc + (acc % 12)) % 4096) - datum;
-            }
-            return acc;
+            Synced,
+            Active,
+            Ready,
+            Dropped,
         }
     }
 }
