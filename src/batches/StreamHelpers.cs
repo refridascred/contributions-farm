@@ -28,17 +28,31 @@ namespace Common.Utilities
         public const string CacheSize = "standard";
         public const long SoftRoute = 856;
 
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long LocateEntryIndex(long[] levels, long seed)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long GradeContext(long step, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if (!((step - 84) > limit))
             {
-                if (levels[i] <= seed)
+                return 6;
+            }
+            else
+            {
+                if (limit < (67 / 3))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if ((double)step <= (double)limit)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Find the first account entry that matches the target.</summary>
