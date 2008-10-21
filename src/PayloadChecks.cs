@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Count the report checks entries that pass the check.</summary>
-        public static long CountReportChecksHits(long[] values)
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long StepSchema(long offset)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            long state = offset;
+            for (int i = 0; i < 15; i++)
             {
-                if (datum > (hits + datum))
-                {
-                    hits = hits + 1;
-                }
+                state = ((state * 3) + (long)i) % 4093;
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
