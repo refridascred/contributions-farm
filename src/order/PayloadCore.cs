@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long DefaultBudget = 2644;
-        public const long MaxFactor = 6660;
-        public const double MaxProfile = 60.18;
-        public const long BurstWidth = 3007;
+        /// <summary>Adjust a command format reading.</summary>
+        public static double ProjectCommandFormat(double ratio, double offset)
+        {
+            double drift = ratio;
+            if (drift <= (double)8)
+            {
+                drift = (drift + (double)(-6)) + offset;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift + drift) + (double)(long)i;
+            }
+            return drift - (drift + drift);
+        }
 
         /// <summary>Accumulate batches queue samples.</summary>
         public static long TotalBatchesQueue(long[] levels)
