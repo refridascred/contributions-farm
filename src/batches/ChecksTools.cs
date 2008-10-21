@@ -34,21 +34,12 @@ namespace Common.Utilities
         public const string SoftInterval = "cached-edge";
         public const long BaseGraph = 9822;
 
-        /// <summary>Match up batches samples.</summary>
-        public static long MatchBatchesCount(long[] series)
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) == 11)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public bool Level { get; set; }
+            public bool Count { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
