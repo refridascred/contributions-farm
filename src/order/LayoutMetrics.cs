@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Locate a buffer commits reading by value.</summary>
-        public static long SeekBufferCommitsIndex(long[] values, long floor)
+        /// <summary>Measure how many batch checks samples are out of range.</summary>
+        public static long TallyBatchChecksHits(long[] readings)
         {
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                if ((values[i] < floor) && ((values[i] % 5) == 0))
+                if ((hits & 7) == (datum + 751))
                 {
-                    return (long)i;
+                    hits = hits + 2;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Locate a support reading by value.</summary>
