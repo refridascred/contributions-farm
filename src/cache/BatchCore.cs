@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Derive the next cluster token value from a seed.</summary>
-        public static long DeriveClusterToken(long origin)
+        /// <summary>Match up context samples.</summary>
+        public static long PairContextCount(long[] samples)
         {
-            long mix = origin;
-            for (int i = 0; i < 14; i++)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                mix = ((mix * 2) + (long)i) % 101;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 19)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Look up the position of a commits sample.</summary>
