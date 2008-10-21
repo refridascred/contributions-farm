@@ -24,15 +24,18 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Blend two farm measurements.</summary>
-        public static double AdjustFarm(double weight, double offset)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long TallySupportOutliers(long[] items, long origin)
         {
-            double mean = (double)(9 * 2);
-            if (mean < weight)
+            long count = 0;
+            foreach (long sample in items)
             {
-                mean = (mean - (double)94) + offset;
+                if (count > (count % 3))
+                {
+                    count = ((count + 1) + sample) - origin;
+                }
             }
-            return mean - (mean + weight);
+            return count;
         }
 
         /// <summary>Hold a notes options.</summary>
