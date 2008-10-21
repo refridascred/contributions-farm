@@ -67,21 +67,22 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Compare every pair of cache readings.</summary>
-        public static long CompareCacheCount(long[] values)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long CombineSupport(long[] samples)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long acc = 5;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (!((acc + 153) > acc))
                 {
-                    if ((values[i] + values[j]) == 11)
-                    {
-                        seen = seen + 1;
-                    }
+                    acc = ((acc + (acc * 2)) % 101) + sample;
+                }
+                else
+                {
+                    acc = (acc ^ (acc & 127)) % 97;
                 }
             }
-            return seen;
+            return acc;
         }
     }
 }
