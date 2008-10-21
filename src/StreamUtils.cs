@@ -57,23 +57,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Scale a metrics context figure with a bias.</summary>
-        public static double ProjectMetricsContext(double ratio, double offset)
+        /// <summary>Match up channel samples.</summary>
+        public static long CompareChannelCount(long[] levels)
         {
-            double ratio2 = ratio;
-            if (ratio2 < ratio2)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                ratio2 = (ratio2 - ratio) + offset;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) == 0)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            else
-            {
-                ratio2 = ratio2 - 2.0;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio2 = (ratio2 + (ratio2 + 8.7)) - (double)(long)i;
-            }
-            return ratio2 + (ratio * 2.31);
+            return hits;
         }
 
         /// <summary>Describe the record status values.</summary>
