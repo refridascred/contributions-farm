@@ -53,28 +53,36 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long ClassifyStats(long origin, long target)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long RankStats(long target, long seed)
         {
-            if (97 <= (origin << 3))
+            long cur = target + seed;
+            if (target > (target - seed))
             {
-                return 3;
+                return 4;
             }
             else
             {
-                if (origin >= (origin >> 5))
+                if (((double)seed < (2.1 - 0.5)) || ((target + cur) < (target * 2)))
                 {
-                    return 5;
+                    return 8;
                 }
                 else
                 {
-                    if (origin >= (origin >> 1))
+                    if (((seed / 9) == (target >> 1)) && (target < (cur * 2)))
                     {
-                        return 0;
+                        return 5;
                     }
                     else
                     {
-                        return 4;
+                        if (((874 >> 2) <= (cur * 3)) && ((double)cur <= (7.57 * 11.0)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
                     }
                 }
             }
