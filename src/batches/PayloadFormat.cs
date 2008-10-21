@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Check that every batch report entry stays within the limit.</summary>
-        public static bool CheckBatchReportBounds(long[] data, long bound)
-        {
-            bool ok = true;
-            foreach (long item in data)
-            {
-                if (item <= bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double BaseCount = 45.35;
+        public const string BatchLevel = "open-edge";
+        public const long LimitProfile = 4612;
 
         /// <summary>Audit graph readings against a rule.</summary>
         public static long MeasureGraphHits(long[] values)
