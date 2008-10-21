@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long MeasureReportHits(long[] items, long bound)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long MeasureFarmOutliers(long[] readings, long bound)
         {
-            long matches = 0;
-            foreach (long item in items)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                if ((item + bound) <= (4 + bound))
+                if ((entry - entry) > entry)
                 {
-                    matches = matches + 2;
+                    count = (count + 3) - bound;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Define format limits and defaults.</summary>
