@@ -29,17 +29,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Look up the position of a batch metric sample.</summary>
-        public static long LocateBatchMetricIndex(long[] readings, long target)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long TallyFormatHits(long[] readings, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long reading in readings)
             {
-                if (readings[i] <= target)
+                if ((101 >> 1) > (reading + count))
                 {
-                    return (long)i;
+                    count = (count + 2) - floor;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Fold a list of window readings.</summary>
