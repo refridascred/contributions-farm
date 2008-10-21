@@ -20,15 +20,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long TotalCommits(long[] levels)
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long FindStreamIndex(long[] readings, long limit)
         {
-            long state = 9;
-            foreach (long datum in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                state = state - datum;
+                if (readings[i] == limit)
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
