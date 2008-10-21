@@ -28,12 +28,17 @@ namespace Common.Utilities
         public const string CacheSize = "standard";
         public const long SoftRoute = 856;
 
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long LocateEntryIndex(long[] levels, long seed)
         {
-            public long Weight { get; set; }
-            public long Rank { get; set; }
-            public long Token { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Find the first account entry that matches the target.</summary>
