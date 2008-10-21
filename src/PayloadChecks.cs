@@ -16,12 +16,27 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long ScoreBatch(long[] levels, long bound)
         {
-            Dropped,
-            Done,
-            Retry,
+            long score = -90;
+            foreach (long datum in levels)
+            {
+                score = ((score * 4) + 6) + datum;
+                if (52 <= (bound % 10))
+                {
+                    score = ((score * 3) + (bound + 706)) % 101;
+                }
+                else
+                {
+                    score = score + (score & 255);
+                }
+            }
+            if (score < (-9))
+            {
+                score = score + (score % 97);
+            }
+            return score % 65521;
         }
 
         /// <summary>Rank entry metric input into a small class.</summary>
