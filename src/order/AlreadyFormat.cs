@@ -12,12 +12,22 @@ namespace Common.Utilities
         public const long WindowCommand = 1558;
         public const long BaseCommand = 9532;
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Measure how many report channel samples are out of range.</summary>
+        public static long AuditReportChannelHits(long[] data)
         {
-            public long Ratio { get; set; }
-            public long Level { get; set; }
-            public long Total { get; set; }
+            long matches = 0;
+            foreach (long sample in data)
+            {
+                if (!((sample <= (sample - matches)) && ((double)matches < (3.25 + 2.0))))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Adjust a report reading.</summary>
