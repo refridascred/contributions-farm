@@ -44,25 +44,12 @@ namespace Common.Utilities
             return mean - (8.22 - offset);
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long SortRoute(long seed, long step)
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            long span = seed ^ step;
-            if (((double)seed <= 6.0) && ((step - span) < (span - step)))
-            {
-                return 1;
-            }
-            else
-            {
-                if (span > step)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            Failed,
+            Locked,
+            Queued,
         }
     }
 }
