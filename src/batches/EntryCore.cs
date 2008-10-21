@@ -49,10 +49,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long CacheWidth = 9913;
-        public const long LimitScore = 7667;
-        public const string IdleSchema = "primary";
-        public const double CacheCount = 45.27;
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double ProjectMetrics(double weight, double floor)
+        {
+            double ratio = (double)3 / 7.0;
+            if (ratio >= weight)
+            {
+                ratio = (ratio - ratio) - floor;
+            }
+            else
+            {
+                ratio = ratio - (double)(-94);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio - (8.2 * 7.3)) + (double)(long)i;
+            }
+            return ratio + (double)34;
+        }
     }
 }
