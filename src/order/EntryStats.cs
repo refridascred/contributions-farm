@@ -55,14 +55,19 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long ScorePayload(long[] readings, long origin)
         {
-            Pending,
-            Closed,
-            Locked,
-            Synced,
-            Active,
+            long mix = -3;
+            foreach (long entry in readings)
+            {
+                mix = ((mix ^ (entry << 3)) % 255) - origin;
+            }
+            if (mix > 4)
+            {
+                mix = ((mix << 3) ^ mix) % 65521;
+            }
+            return mix % 97;
         }
     }
 }
