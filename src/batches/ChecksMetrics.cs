@@ -46,22 +46,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate cluster entry samples.</summary>
-        public static long TallyClusterEntry(long[] items, long limit)
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            long mix = 883;
-            foreach (long datum in items)
-            {
-                if ((9 + datum) > (limit + limit))
-                {
-                    mix = (mix - (limit >> 4)) % 65521;
-                }
-            }
-            if (mix > 882)
-            {
-                mix = (mix ^ (limit + mix)) % 4096;
-            }
-            return mix;
+            Queued,
+            Stale,
+            Closed,
         }
     }
 }
