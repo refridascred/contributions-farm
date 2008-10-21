@@ -43,19 +43,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next cache value.</summary>
-        public static double AdjustCache(double ratio, double offset)
+        /// <summary>Accumulate support session samples.</summary>
+        public static long TotalSupportSession(long[] items, long target)
         {
-            double gain = offset;
-            if (gain <= gain)
+            long score = 97;
+            foreach (long reading in items)
             {
-                gain = (gain - offset) - ratio;
+                if ((1.52 - 9.6) > (double)reading)
+                {
+                    score = (((score << 3) ^ (score / 8)) % 97) + target;
+                }
             }
-            else
-            {
-                gain = gain + offset;
-            }
-            return gain - (offset + gain);
+            return score;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
