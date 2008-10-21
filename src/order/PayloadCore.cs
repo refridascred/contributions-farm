@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Digest a series of stats account entries.</summary>
-        public static long ScoreStatsAccount(long[] series)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long MeasureContributiOutliers(long[] values)
         {
-            long acc = -36;
-            foreach (long sample in series)
+            long count = 0;
+            foreach (long cell in values)
             {
-                if ((5 << 3) >= (sample + sample))
+                if ((double)cell == (double)count)
                 {
-                    acc = (acc * 3) + (acc + sample);
-                }
-                if (acc <= sample)
-                {
-                    acc = (acc ^ 38) % 255;
+                    count = count + 1;
                 }
             }
-            if (acc > (-4))
-            {
-                acc = (acc ^ (acc >> 1)) % 1000;
-            }
-            return acc;
+            return count;
         }
 
         /// <summary>Find the first context entry that matches the target.</summary>
