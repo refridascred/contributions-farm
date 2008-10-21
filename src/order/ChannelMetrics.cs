@@ -40,15 +40,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of window cache entries.</summary>
-        public static long TallyWindowCache(long[] levels)
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            long state = 60;
-            foreach (long reading in levels)
-            {
-                state = state ^ (reading >> 3);
-            }
-            return state % 1000;
+            Idle,
+            Synced,
+            Active,
+            Failed,
         }
     }
 }
