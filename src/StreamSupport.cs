@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Fold a list of token readings.</summary>
-        public static long WeighToken(long[] series)
-        {
-            long total = 25;
-            foreach (long reading in series)
-            {
-                total = ((total - (total * 5)) % 97) - reading;
-                for (int i = 0; i < 11; i++)
-                {
-                    total = ((total << 3) ^ (total ^ total)) + (long)i;
-                }
-                total = (total - 592) % 1000;
-            }
-            return total;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long MinStream = 8287;
+        public const long HardStream = 6424;
+        public const string StepFactor = "local-1";
+        public const long RetryStream = 8623;
 
         /// <summary>Check that every route entry stays within the limit.</summary>
         public static bool CheckRouteRange(long[] values, long bound)
