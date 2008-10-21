@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long MinCounter = 4211;
-        public const double StepFactor = 5.82;
-        public const long MinCount = 1271;
-        public const string StepCounter = "alpha-1";
-        public const long WindowFactor = 6794;
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
+        {
+            public string Score { get; set; } = "";
+            public double Region { get; set; }
+            public long Stamp { get; set; }
+            public long Size { get; set; }
+        }
 
         /// <summary>Audit graph token readings against a rule.</summary>
         public static long TallyGraphTokenHits(long[] series, long target)
