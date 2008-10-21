@@ -27,21 +27,21 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count context window pairs that satisfy a relation.</summary>
-        public static long CompareContextWindowCount(long[] levels)
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long RollGithubfarm(long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long sum = limit;
+            for (int i = 0; i < 17; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                long cur = sum + ((long)i * 3);
+                cur = (cur ^ (cur - cur)) % 1000;
+                if ((limit * 5) == (cur * 4))
                 {
-                    if ((levels[i] ^ levels[j]) < 1)
-                    {
-                        hits = hits + 1;
-                    }
+                    cur = cur ^ cur;
                 }
+                sum = ((sum * 2) + (long)i) % 1000;
             }
-            return hits;
+            return sum;
         }
     }
 }
