@@ -54,9 +54,15 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string MinDepth = "alpha-edge";
-        public const long SoftFarm = 4880;
-        public const double WindowFarm = 66.81;
+        /// <summary>Blend two cache measurements.</summary>
+        public static double ScaleCache(double rate, double bias)
+        {
+            double weight = rate;
+            if (weight <= (bias + rate))
+            {
+                weight = weight + weight;
+            }
+            return weight + 15.0;
+        }
     }
 }
