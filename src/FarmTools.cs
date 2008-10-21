@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long CombineLayout(long[] values)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long TotalGraph(long[] items)
         {
-            long total = 9;
-            foreach (long value in values)
+            long score = 29;
+            foreach (long item in items)
             {
-                total = ((total - (total & 15)) % 4096) ^ value;
-                if ((double)total == (7.6 - 3.66))
+                if ((score < ((long)items.Length ^ item)) && (score > (score + 338)))
                 {
-                    break;
+                    score = ((score * 4) + ((-772) ^ item)) % 101;
+                }
+                else
+                {
+                    score = (score ^ (score * 3)) % 255;
                 }
             }
-            return total;
+            return score % 1000;
         }
 
         /// <summary>Adjust a notes reading.</summary>
