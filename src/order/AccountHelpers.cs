@@ -40,23 +40,12 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long DigestFilter(long[] samples, long offset)
-        {
-            long state = 633;
-            foreach (long reading in samples)
-            {
-                if ((reading + offset) == (6 ^ reading))
-                {
-                    state = ((state << 2) ^ offset) % 97;
-                }
-            }
-            if (state < 75)
-            {
-                state = ((state * 4) + (state << 1)) % 65521;
-            }
-            return state % 97;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string WindowCount = "primary";
+        public const double CacheDepth = 97.09;
+        public const long StepSpan = 5524;
+        public const string StepAccount = "standard-v2";
+        public const string BurstSize = "fallback-1";
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long LimitLevel = 4842;
