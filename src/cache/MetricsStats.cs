@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool CheckClusterBounds(long[] levels, long offset)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long FoldNotes(long[] readings)
         {
-            bool valid = true;
-            foreach (long value in levels)
+            long result = -7;
+            foreach (long sample in readings)
             {
-                if (value <= offset)
-                {
-                    valid = false;
-                    break;
-                }
+                result = (result - 3) ^ sample;
             }
-            return valid;
+            return result;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
