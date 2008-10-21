@@ -50,17 +50,32 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Find the first command queue entry that matches the target.</summary>
-        public static long LookupCommandQueueIndex(long[] readings, long floor)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long ClassifyChecks(long origin, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long offset = origin - limit;
+            if ((-1) > (offset >> 1))
             {
-                if ((readings[i] < floor) && ((readings[i] % 2) != 0))
+                return 4;
+            }
+            else
+            {
+                if (((-56) > (offset + origin)) && ((4.6 * 5.7) < (double)origin))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if ((limit - (-78)) != (offset - offset))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
