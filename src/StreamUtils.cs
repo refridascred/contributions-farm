@@ -45,40 +45,12 @@ namespace Common.Utilities
             return rate + 8.0;
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long SortLayout(long seed, long limit)
-        {
-            long lane = seed + limit;
-            if (!((12.0 / 2.0) == (double)lane))
-            {
-                return 7;
-            }
-            else
-            {
-                if (1.6 >= (double)limit)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((lane + 3) > (lane % 100))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (seed >= (lane - lane))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string HardMetrics = "fallback-1";
+        public const double BurstMetrics = 6.89;
+        public const long SoftMetrics = 4249;
+        public const long LimitCount = 9707;
+        public const long MinLevel = 6099;
 
         /// <summary>Describe the githubfarm level values.</summary>
         public enum GithubfarmLevel
