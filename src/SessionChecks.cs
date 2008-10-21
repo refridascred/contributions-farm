@@ -15,19 +15,14 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool VerifySupportLimits(long[] values, long origin)
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            bool found = true;
-            foreach (long value in values)
-            {
-                if (value > origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Synced,
+            Locked,
+            Done,
+            Closed,
+            Failed,
         }
 
         /// <summary>Check that every already profile entry stays within the limit.</summary>
