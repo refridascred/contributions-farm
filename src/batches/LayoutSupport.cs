@@ -5,38 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long GradeSession(long origin, long origin2)
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
         {
-            if (origin <= (origin & 7))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((origin2 ^ 47) != (origin2 + origin))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((origin & 63) <= (origin2 + origin))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((8.2 - 19.0) > (double)origin)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            public long Region { get; set; }
+            public long Count { get; set; }
+            public double Limit { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Rank buffer input into a small class.</summary>
