@@ -1,6 +1,8 @@
 {
-  "default_ttl_pct": "edge",
-  "idle_delay": "legacy",
-  "poll_ratio": 14,
-  "githubfarm_capacity": true
+  "idle_interval_pct": "local",
+  "verbose": true,
+  "graph_retries": [167, 256, 380],
+  "tools_capacity": "legacy",
+  "strict": false,
+  "readonly": "stable"
 }
