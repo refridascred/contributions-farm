@@ -10,14 +10,12 @@ namespace Common.Utilities
         public const long RetrySize = 5292;
         public const long BaseCount = 1132;
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
         {
-            Done,
-            Locked,
-            Retry,
-            New,
-            Queued,
+            public string Level { get; set; } = "";
+            public long Limit { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Derive the next report value from a seed.</summary>
