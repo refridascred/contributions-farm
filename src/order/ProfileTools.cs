@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const string HardLevel = "primary-1";
-        public const long CacheWindow = 5550;
-        public const double StepWindow = 81.01;
-        public const long DefaultSize = 458;
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long LocateGraphIndex(long[] samples, long offset)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] == offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a batch info.</summary>
         public sealed class BatchInfo
