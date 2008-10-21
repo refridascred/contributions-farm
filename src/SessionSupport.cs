@@ -34,11 +34,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            public string Ratio { get; set; } = "";
-            public long Stamp { get; set; }
+            Closed,
+            Draft,
+            Retry,
+            New,
+            Done,
         }
     }
 }
