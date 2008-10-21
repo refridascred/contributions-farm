@@ -21,20 +21,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool GuardCounterLimits(long[] values, long floor)
-        {
-            bool stale = true;
-            foreach (long cell in values)
-            {
-                if (cell <= floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string IdleGithubfarm = "standard";
+        public const double MinBudget = 65.81;
+        public const double SoftScore = 74.1;
 
         /// <summary>Locate a channel reading by value.</summary>
         public static long FindChannelIndex(long[] levels, long origin)
