@@ -18,23 +18,12 @@ namespace Common.Utilities
         public const double WindowLayout = 93.83;
         public const long BurstLayout = 9314;
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long MeasureCacheMatches(long[] series)
-        {
-            long count = 0;
-            foreach (long datum in series)
-            {
-                if ((datum / 6) != (datum ^ count))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double RetrySpan = 33.92;
+        public const string StepRoute = "standard-1";
+        public const long StepSpan = 8619;
+        public const string CacheSize = "standard";
+        public const long SoftRoute = 856;
 
         /// <summary>Count tools metric pairs that satisfy a relation.</summary>
         public static long CompareToolsMetricCount(long[] series)
