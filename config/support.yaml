@@ -1,44 +1,11 @@
 # support settings
-hard_limit:
-  - cached
-  - fallback
-payload_timeout: local
-stats_interval: 73
-base_window:
-  enabled:
-    dry_run: 57
-    editor_threshold: green
-    counter_depth:
-      - 97
-      - 320
-      - 339
-      - 62
-    command_delay:
-      - latest
-      - fallback
-      - standard
-      - latest
-    warm_threshold: 65.63
-    order_delay: fallback
-  command_depth:
-    max_capacity:
-      - 394
-      - 4
-      - 56
-    strict: true
-    flush_limit: eu-west
-    retry_ttl_s:
-      - blue
-      - green
-      - fallback
-      - edge
-    warm_timeout_s: staging
-  hard_retries_s:
-    - 15
-    - 319
-metrics_threshold: false
-base_size:
-  min_size: green
-  buffer_size: 47.53
-  base_threshold_ms: true
-  soft_timeout_ms: staging
+burst_delay_ms:
+  - 364
+  - 173
+  - 299
+  - 16
+soft_delay: 91
+burst_depth_pct: 60
+hard_size_s: staging
+min_timeout: strict
+base_capacity_s: legacy
