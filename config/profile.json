@@ -1,11 +1,6 @@
 {
-  "checks_retries": "latest",
-  "retry_window": false,
-  "flush_ttl": {
-    "cache_ttl_count": "standard",
-    "base_depth": 83.41,
-    "readonly": true,
-    "retry_ratio": 6018,
-    "sync_delay_pct": ["fallback", "latest", "edge", "strict"]
-  }
+  "metric_delay": 81.43,
+  "cache_retries_ms": "cached",
+  "retry_ttl_ms": [276, 392, 430, 305],
+  "min_window_count": "latest"
 }
