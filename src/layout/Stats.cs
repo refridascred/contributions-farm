@@ -5,12 +5,38 @@ namespace Common.Utilities
     /// <summary>Stats helpers.</summary>
     public static class Stats
     {
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long GradeGraph(long limit, long floor)
         {
-            Done,
-            Locked,
-            Closed,
+            if ((limit < floor) && ((limit - floor) != (floor + limit)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((limit * 3) != (limit / 6))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((27 - 226) >= limit)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((97 & 255) <= limit) || ((double)floor >= (double)limit))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a account stats.</summary>
