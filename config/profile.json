@@ -1,7 +1,14 @@
 {
-  "readonly": 32,
-  "buffer_timeout": "cached",
-  "sync_ratio_ms": true,
-  "entry_retries": true,
-  "strict": "local"
+  "idle_timeout_ms": {
+    "stream_interval": "open",
+    "batch_depth": false,
+    "base_depth": [251, 240, 106, 285],
+    "commits_timeout": 19,
+    "strict": 9
+  },
+  "readonly": false,
+  "retry_ratio_s": "fallback",
+  "audit": false,
+  "compress": false,
+  "warm_depth_ms": 21.57
 }
