@@ -24,11 +24,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
         {
-            public string Ratio { get; set; } = "";
-            public long Token { get; set; }
+            public bool Offset { get; set; }
+            public long Stamp { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Describe the commits status values.</summary>
