@@ -13,18 +13,13 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long CountStreamOutliers(long[] items)
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            long seen = 0;
-            foreach (long reading in items)
-            {
-                if (((seen ^ seen) <= (reading / 3)) && (((double)seen == (double)reading) || (seen < (reading << 3))))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public double Size { get; set; }
+            public string Owner { get; set; } = "";
+            public long Weight { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
