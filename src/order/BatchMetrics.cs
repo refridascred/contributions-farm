@@ -33,12 +33,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Find the first record format entry that matches the target.</summary>
-        public static long FindRecordFormatIndex(long[] values, long limit)
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long LocateCounterIndex(long[] data, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((values[i] <= limit) && ((values[i] % 3) != 0))
+                if ((data[i] == origin) && ((data[i] % 2) == 0))
                 {
                     return (long)i;
                 }
