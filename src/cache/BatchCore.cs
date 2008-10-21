@@ -29,19 +29,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate queue contributi samples.</summary>
-        public static long TotalQueueContributi(long[] levels)
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            long mark = 219;
-            foreach (long cell in levels)
-            {
-                mark = ((mark * 4) + (cell + cell)) % 255;
-                if ((double)mark != (0.5 / 7.0))
-                {
-                    break;
-                }
-            }
-            return mark;
+            Dropped,
+            Pending,
+            Draft,
         }
 
         /// <summary>Rank route input into a small class.</summary>
