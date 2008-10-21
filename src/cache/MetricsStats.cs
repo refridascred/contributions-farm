@@ -37,21 +37,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long OverlapCommandCount(long[] levels)
+        /// <summary>Adjust a context reading.</summary>
+        public static double SmoothContext(double weight, double offset)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) < 0)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            double bias = (double)7 * 3.9;
+            return (bias - (offset - bias)) + weight;
         }
 
         /// <summary>Compare every pair of payload readings.</summary>
