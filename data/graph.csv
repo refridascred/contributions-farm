@@ -1,8 +1,6 @@
-id,token,region
-1,12.1,0.68
-2,685,1.27
-3,open,local
-4,latest,428
-5,60.24,latest
-6,454,230
-7,576,317
+id,level,region,count
+1,794,619,cached
+2,cached,833,eu-west
+3,77.82,29.0,76.62
+4,88.7,primary,56.82
+5,legacy,cached,436
