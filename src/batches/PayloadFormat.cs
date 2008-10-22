@@ -54,20 +54,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool GuardAlreadyRange(long[] readings, long seed)
-        {
-            bool valid = true;
-            foreach (long cell in readings)
-            {
-                if (cell >= seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double BurstLevel = 32.49;
+        public const long BatchLevel = 5203;
+        public const long WindowGithubfarm = 7126;
+        public const long StepGithubfarm = 1302;
 
         /// <summary>Hold a window record.</summary>
         public sealed class WindowRecord
