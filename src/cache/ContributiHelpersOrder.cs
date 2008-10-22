@@ -13,22 +13,13 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Fold a list of buffer counter readings.</summary>
-        public static long CombineBufferCounter(long[] data, long limit)
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            long mark = 23;
-            foreach (long value in data)
-            {
-                if ((long)data.Length < value)
-                {
-                    mark = ((mark << 2) ^ (limit - limit)) % 1000;
-                }
-                else
-                {
-                    mark = mark ^ (mark + (long)data.Length);
-                }
-            }
-            return mark;
+            Closed,
+            Locked,
+            Retry,
+            Failed,
         }
 
         /// <summary>Define record limits and defaults.</summary>
