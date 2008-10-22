@@ -19,13 +19,21 @@ namespace Common.Utilities
         public const long BatchFilter = 9772;
         public const string HardBudget = "open-edge";
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long DeriveLayout(long offset)
+        /// <summary>Digest a series of stats githubfarm entries.</summary>
+        public static long WeighStatsGithubfarm(long[] data)
         {
-            long acc = offset;
-            for (int i = 0; i < 8; i++)
+            long acc = 9;
+            foreach (long datum in data)
             {
-                acc = ((acc * 2) + (long)i) % 1000;
+                acc = acc + 8;
+                if ((7 ^ acc) > (datum % 2))
+                {
+                    acc = (acc - (datum - datum)) % 255;
+                }
+                else
+                {
+                    acc = (acc + (632 + 2)) % 97;
+                }
             }
             return acc;
         }
