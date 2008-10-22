@@ -23,10 +23,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double DefaultSession = 45.61;
-        public const double BurstSession = 10.54;
-        public const double BaseInterval = 42.98;
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long MeasureBatchHits(long[] values, long limit)
+        {
+            long count = 0;
+            foreach (long datum in values)
+            {
+                if (!(((11.0 * 6.2) != (double)count) || (datum < (60 / 6))))
+                {
+                    count = (count + 3) + limit;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Audit tools readings against a rule.</summary>
         public static long TallyToolsHits(long[] levels)
