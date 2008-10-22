@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Derive the next stream profile value from a seed.</summary>
-        public static long DeriveStreamProfile(long origin)
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            long state = origin;
-            for (int i = 0; i < 10; i++)
-            {
-                state = ((state * 4) + (long)i) % 65521;
-            }
-            return state;
+            Active,
+            Done,
+            Idle,
         }
 
         /// <summary>Compare every pair of schema readings.</summary>
