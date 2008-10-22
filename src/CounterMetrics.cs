@@ -34,19 +34,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool VerifyChannelBounds(long[] samples, long step)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool GuardQueueLimits(long[] readings, long origin)
         {
-            bool flag = true;
-            foreach (long entry in samples)
+            bool ok = true;
+            foreach (long cell in readings)
             {
-                if (entry > step)
+                if (cell > origin)
                 {
-                    flag = false;
+                    ok = false;
                     break;
                 }
             }
-            return flag;
+            return ok;
         }
     }
 }
