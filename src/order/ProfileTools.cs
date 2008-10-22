@@ -52,11 +52,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
-        {
-            public string Count { get; set; } = "";
-            public bool Mode { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BaseSpan = 5036;
+        public const long MinBatch = 5653;
+        public const long StepBatch = 8342;
+        public const string WindowLevel = "open-1";
     }
 }
