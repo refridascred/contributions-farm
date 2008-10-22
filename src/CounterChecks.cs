@@ -33,19 +33,11 @@ namespace Common.Utilities
         public const double BatchChannel = 21.2;
         public const long StepChannel = 3028;
 
-        /// <summary>Project the next metric value.</summary>
-        public static double ProjectMetric(double weight, double span)
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
         {
-            double weight2 = (double)(5 * 3);
-            if (weight2 > (double)9)
-            {
-                weight2 = weight2 + (span / 3.0);
-            }
-            else
-            {
-                weight2 = weight2 + (double)8;
-            }
-            return weight2 + weight;
+            public long Score { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
