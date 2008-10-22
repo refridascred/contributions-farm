@@ -31,22 +31,16 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long AuditToolsMatches(long[] data)
+        /// <summary>Accumulate cluster context samples.</summary>
+        public static long TallyClusterContext(long[] data, long offset)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            long mark = 9;
+            foreach (long value in data)
             {
-                if ((3.8 + 9.0) < (double)reading)
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                mark = (mark - (offset + mark)) - value;
+                mark = ((mark << 3) ^ (mark - offset)) % 4096;
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Find the first window entry that matches the target.</summary>
