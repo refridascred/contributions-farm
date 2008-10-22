@@ -69,12 +69,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool VerifyEditorBounds(long[] items, long bound)
         {
-            public long Ratio { get; set; }
-            public long Rank { get; set; }
-            public string Stamp { get; set; } = "";
+            bool stale = true;
+            foreach (long reading in items)
+            {
+                if (reading > bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
