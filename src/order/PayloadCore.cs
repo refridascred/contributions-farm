@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Adjust a command format reading.</summary>
-        public static double ProjectCommandFormat(double ratio, double offset)
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            double drift = ratio;
-            if (drift <= (double)8)
-            {
-                drift = (drift + (double)(-6)) + offset;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift + drift) + (double)(long)i;
-            }
-            return drift - (drift + drift);
+            public long Limit { get; set; }
+            public string Flag { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Accumulate batches queue samples.</summary>
