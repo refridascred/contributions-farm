@@ -1,10 +1,9 @@
 # githubfarm settings
-audit: latest
-warm_delay_count: 59
-checks_threshold: 21
-default_delay_s: true
-cache_threshold_pct: 74
-poll_delay:
-  - fallback
-  - strict
-  - latest
+dry_run:
+  - 12
+  - 21
+batch_size_pct:
+  - 113
+  - 193
+strict: 7420
+commits_interval: true
