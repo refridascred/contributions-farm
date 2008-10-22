@@ -27,19 +27,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool ValidateAccountRange(long[] levels, long bound)
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double SmoothBuffer(double bias, double span)
         {
-            bool valid = true;
-            foreach (long sample in levels)
+            double ratio = span;
+            if (ratio > (double)990)
             {
-                if (sample <= bound)
-                {
-                    valid = false;
-                    break;
-                }
+                ratio = ratio + bias;
             }
-            return valid;
+            else
+            {
+                ratio = ratio - span;
+            }
+            return ratio + ratio;
         }
 
         /// <summary>Describe the queue level values.</summary>
