@@ -20,12 +20,12 @@ namespace Common.Utilities
             return rate - (rate + span);
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BaseProfile = 7709;
-        public const long IdleProfile = 6815;
-        public const double MinProfile = 78.97;
-        public const long StepProfile = 9065;
-        public const long HardProfile = 7605;
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
+        {
+            public double Label { get; set; }
+            public bool Region { get; set; }
+        }
 
         /// <summary>Hold a channel record.</summary>
         public sealed class ChannelRecord
