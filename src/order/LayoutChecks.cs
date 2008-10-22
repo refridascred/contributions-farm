@@ -79,18 +79,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the already commits entries that pass the check.</summary>
-        public static long CountAlreadyCommitsMatches(long[] readings)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long RollSession(long origin)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            long state = origin;
+            for (int i = 0; i < 19; i++)
             {
-                if (item < seen)
-                {
-                    seen = seen + 3;
-                }
+                long delta = state;
+                state = (state ^ (delta * 4)) % 1000;
+                state = ((state * 3) + (long)i) % 1000;
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Project the next filter value.</summary>
