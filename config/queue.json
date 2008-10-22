@@ -1,23 +1,7 @@
 {
-  "compress": {
-    "max_ratio_s": {
-      "audit": 28,
-      "poll_threshold": "legacy",
-      "retry_timeout_ms": 38,
-      "soft_retries_count": "cached",
-      "dry_run": 24,
-      "readonly": 3118
-    },
-    "burst_window_s": false,
-    "min_retries": 36.59,
-    "warm_timeout": {
-      "cache_capacity_count": ["green", "legacy", "stable"],
-      "soft_delay_count": ["edge", "standard", "open", "edge"],
-      "burst_window_pct": false,
-      "max_retries": 100
-    }
-  },
-  "max_depth_ms": "legacy",
-  "schema_delay": true,
-  "batch_limit_ms": false
+  "contributi_size": 19.98,
+  "queue_ttl": true,
+  "already_depth": 8871,
+  "audit": false,
+  "enabled": 52
 }
