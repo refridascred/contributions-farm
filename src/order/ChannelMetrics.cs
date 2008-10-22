@@ -20,14 +20,14 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            Synced,
-            Stale,
-            Retry,
             Pending,
-            Paused,
+            Stale,
+            New,
+            Draft,
+            Closed,
         }
     }
 }
