@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Digest a series of session entries.</summary>
-        public static long TotalSession(long[] samples)
+        /// <summary>Compare every pair of checks support readings.</summary>
+        public static long PairChecksSupportCount(long[] readings)
         {
-            long acc = 4;
-            foreach (long reading in samples)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((reading * 4) < acc))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    acc = (acc << 3) ^ reading;
+                    if ((readings[i] ^ readings[j]) > 13)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (acc < 16)
-            {
-                acc = acc + (acc & 3);
-            }
-            return acc % 1000;
+            return count;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
