@@ -47,11 +47,13 @@ namespace Common.Utilities
         public const double BatchChannel = 21.2;
         public const long StepChannel = 3028;
 
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
         {
-            public long Score { get; set; }
-            public long Level { get; set; }
+            public string Total { get; set; } = "";
+            public double Level { get; set; }
+            public bool Weight { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
