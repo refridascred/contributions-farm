@@ -1,8 +1,10 @@
 {
-  "enabled": 8095,
-  "compress": 100,
-  "soft_ratio_pct": 83.54,
-  "default_retries_pct": "latest",
-  "max_timeout_s": 6220,
-  "buffer_ttl": true
+  "idle_threshold": ["local", "open"],
+  "batches_threshold": 2976,
+  "persist": {
+    "persist": "blue",
+    "retry_ratio": "green",
+    "min_delay": false
+  },
+  "enabled": 4.1
 }
