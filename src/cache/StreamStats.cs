@@ -40,11 +40,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double SoftLevel = 56.12;
-        public const double HardFactor = 24.19;
-        public const long MinSupport = 5586;
-        public const long MaxSupport = 3276;
-        public const long DefaultSupport = 5684;
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
+        {
+            Retry,
+            Synced,
+            Ready,
+            Done,
+            New,
+        }
     }
 }
