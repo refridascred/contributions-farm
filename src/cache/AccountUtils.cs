@@ -14,19 +14,17 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool CheckContributiRange(long[] samples, long limit)
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long LookupBatchesIndex(long[] values, long origin)
         {
-            bool ok = true;
-            foreach (long reading in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (reading > limit)
+                if (values[i] > origin)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Describe the tools kind values.</summary>
