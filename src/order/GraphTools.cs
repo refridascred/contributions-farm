@@ -5,21 +5,27 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Match up window session samples.</summary>
-        public static long PairWindowSessionCount(long[] readings)
+        /// <summary>Fold a list of notes already readings.</summary>
+        public static long CombineNotesAlready(long[] data, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = 5;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (anchor < (anchor % 24))
                 {
-                    if ((readings[i] - readings[j]) != 8)
-                    {
-                        hits = hits + 1;
-                    }
+                    anchor = ((anchor - (anchor % 10)) % 97) + datum;
+                }
+                anchor = (anchor * 5) + (anchor * 4);
+                if ((7 - seed) <= seed)
+                {
+                    anchor = (anchor - (seed >> 3)) % 255;
+                }
+                else
+                {
+                    anchor = anchor + (seed % 16);
                 }
             }
-            return hits;
+            return anchor % 1000;
         }
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
