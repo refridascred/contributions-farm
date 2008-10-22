@@ -19,28 +19,36 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a channel githubfarm pair into a bucket.</summary>
-        public static long RankChannelGithubfarm(long floor, long origin)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long ClassifyLayout(long offset, long step)
         {
-            if (((floor << 1) <= (floor >> 4)) || ((double)floor < (1.0 - 5.2)))
+            long bound = offset ^ step;
+            if ((step << 2) == (offset ^ bound))
             {
                 return 1;
             }
             else
             {
-                if ((5.43 / 5.0) == (double)floor)
+                if ((5.28 * 3.0) != (double)offset)
                 {
-                    return 6;
+                    return 8;
                 }
                 else
                 {
-                    if ((origin >= (origin & 7)) || ((floor + origin) < floor))
+                    if (((3 * 2) < (offset / 2)) && ((bound - offset) >= (offset * 3)))
                     {
-                        return 5;
+                        return 0;
                     }
                     else
                     {
-                        return 7;
+                        if ((bound / 8) > step)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
                     }
                 }
             }
