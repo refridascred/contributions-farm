@@ -53,15 +53,10 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long SeriesSession(long offset)
-        {
-            long sum = offset;
-            for (int i = 0; i < 21; i++)
-            {
-                sum = ((sum * 2) + (long)i) % 4093;
-            }
-            return sum;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long SoftLevel = 5200;
+        public const double BaseOrder = 39.67;
+        public const long RetryFactor = 4069;
+        public const long BatchOrder = 6595;
     }
 }
