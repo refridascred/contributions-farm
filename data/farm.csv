@@ -1,9 +1,8 @@
-id,weight,region
-1,677,544
-2,601,775
-3,23.05,standard
-4,primary,29.62
-5,60.85,71.47
-6,805,stable
-7,49.57,local
-8,15.67,fallback
+id,weight,count,owner
+1,392,green,primary
+2,33.59,61.46,primary
+3,582,54.54,staging
+4,fallback,492,blue
+5,eu-west,cached,858
+6,open,73.74,462
+7,91.64,997,83.06
