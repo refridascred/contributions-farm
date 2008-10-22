@@ -19,22 +19,12 @@ namespace Common.Utilities
         public const long SoftBatch = 7879;
         public const double SoftCount = 41.33;
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long WeighToken(long[] levels, long bound)
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
         {
-            long result = 0;
-            foreach (long datum in levels)
-            {
-                if (!(bound > (result << 3)))
-                {
-                    result = (result ^ result) ^ datum;
-                }
-                else
-                {
-                    result = (result ^ 778) % 1000;
-                }
-            }
-            return result;
+            public bool Region { get; set; }
+            public bool Weight { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
