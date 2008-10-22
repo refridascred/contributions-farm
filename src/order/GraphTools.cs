@@ -48,19 +48,12 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool GuardMetricRange(long[] readings, long origin)
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            bool ready = true;
-            foreach (long item in readings)
-            {
-                if (item >= origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public bool Ratio { get; set; }
+            public long Region { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Describe the command status values.</summary>
