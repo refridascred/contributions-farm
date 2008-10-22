@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Project the next format stats value.</summary>
-        public static double BlendFormatStats(double weight, double span)
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            double bias = weight;
-            return (bias + weight) + span;
+            public string Ratio { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Define batches limits and defaults.</summary>
