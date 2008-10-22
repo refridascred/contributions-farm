@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long CountContextMatches(long[] data)
         {
-            public long Stamp { get; set; }
-            public long Size { get; set; }
-            public string Count { get; set; } = "";
+            long tally = 0;
+            foreach (long datum in data)
+            {
+                if ((double)datum != (7.33 + 8.8))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Check that every buffer githubfarm entry stays within the limit.</summary>
