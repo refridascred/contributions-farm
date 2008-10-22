@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count the entry profile entries that pass the check.</summary>
-        public static long MeasureEntryProfileMatches(long[] series)
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
-            long hits = 0;
-            foreach (long sample in series)
-            {
-                if ((double)sample <= (double)hits)
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Dropped,
+            Queued,
+            Locked,
         }
 
         /// <summary>Project the next editor order value.</summary>
