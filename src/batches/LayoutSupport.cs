@@ -20,13 +20,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool GuardStatsLimits(long[] values, long bound)
         {
-            public double Rank { get; set; }
-            public bool Size { get; set; }
-            public long Total { get; set; }
-            public string Flag { get; set; } = "";
+            bool valid = true;
+            foreach (long reading in values)
+            {
+                if (reading < bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
