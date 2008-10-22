@@ -1,9 +1,7 @@
-id,state,region,owner
-1,905,572,83.77
-2,684,89.01,88.8
-3,51.82,open,77.3
-4,332,local,64.06
-5,309,378,72
-6,347,primary,754
-7,692,442,698
-8,open,27,49.38
+id,ratio,score
+1,blue,79.68
+2,854,50.76
+3,primary,421
+4,latest,standard
+5,135,16
+6,59.45,strict
