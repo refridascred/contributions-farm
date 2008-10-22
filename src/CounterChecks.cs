@@ -13,11 +13,39 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MaxEntry = 5722;
-        public const double HardEntry = 24.53;
-        public const long RetryEntry = 5520;
-        public const long StepTimeout = 7129;
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long ClassifyGithubfarm(long limit, long bound)
+        {
+            if (137 < (bound % 8))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((14.0 * 7.3) >= (double)bound)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (!((limit / 7) > (9 << 1)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (!((9 + bound) > limit))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
         public static long DigestGithubfarm(long[] levels)
