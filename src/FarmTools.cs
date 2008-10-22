@@ -29,25 +29,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Classify a context session pair into a bucket.</summary>
-        public static long ClassifyContextSession(long origin, long floor)
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double ScaleChannel(double rate, double span)
         {
-            long lane = origin ^ floor;
-            if ((origin < floor) || (floor <= (lane ^ lane)))
+            double rate2 = 2.9;
+            if (rate2 < (span + 3.74))
             {
-                return 2;
+                rate2 = (rate2 - span) - rate;
             }
             else
             {
-                if (!((floor ^ origin) < (39 + origin)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 8;
-                }
+                rate2 = rate2 + (rate2 * 0.1);
             }
+            return rate2 - (double)947;
         }
     }
 }
