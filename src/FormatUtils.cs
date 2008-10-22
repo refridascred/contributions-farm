@@ -28,14 +28,22 @@ namespace Common.Utilities
         public const long MinProfile = 1639;
         public const double BatchProfile = 94.54;
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long MeasureChecksOutliers(long[] levels, long floor)
         {
-            Retry,
-            Stale,
-            Active,
-            Failed,
-            Dropped,
+            long hits = 0;
+            foreach (long entry in levels)
+            {
+                if ((entry % 16) < floor)
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define session limits and defaults.</summary>
