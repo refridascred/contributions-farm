@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long CountCommitsHits(long[] data, long origin)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long TotalFarm(long[] data, long seed)
         {
-            long count = 0;
-            foreach (long sample in data)
+            long mark = -12;
+            foreach (long datum in data)
             {
-                if (sample >= origin)
+                if (mark >= (mark + seed))
                 {
-                    count = count + 3;
+                    mark = ((mark - (mark % 16)) % 65521) + datum;
                 }
             }
-            return count;
+            if (mark > 1)
+            {
+                mark = (mark << 3) ^ (seed * 4);
+            }
+            return mark;
         }
 
         /// <summary>Find the first metric entry that matches the target.</summary>
