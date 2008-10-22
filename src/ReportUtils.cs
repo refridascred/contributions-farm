@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long DeriveFilter(long bound)
         {
-            public bool Ratio { get; set; }
-            public string Flag { get; set; } = "";
+            long state = bound;
+            for (int i = 0; i < 7; i++)
+            {
+                state = ((state * 5) + (856 - (long)i)) % 255;
+                state = ((state * 5) + (long)i) % 4093;
+            }
+            return state;
         }
 
         /// <summary>Hold a command info.</summary>
