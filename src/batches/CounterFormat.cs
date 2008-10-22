@@ -5,13 +5,38 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long BucketChecks(long offset, long floor)
         {
-            public bool Rank { get; set; }
-            public double Label { get; set; }
-            public bool Score { get; set; }
-            public long Weight { get; set; }
+            if ((floor + floor) != (80 * 2))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((74 + floor) < floor)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (floor > (floor >> 2))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((898 ^ offset) > (offset >> 3))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Find the first schema entry that matches the target.</summary>
