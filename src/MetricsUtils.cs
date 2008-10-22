@@ -47,12 +47,39 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Rank account input into a small class.</summary>
+        public static long SortAccount(long origin, long target)
         {
-            Ready,
-            Failed,
-            New,
+            long prev = origin + target;
+            if ((origin <= (origin - 40)) && (prev <= (origin - 3)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((origin / 3) >= (0 + target))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (0.9 > (double)origin)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((origin % 16) >= origin) && ((prev * 3) == (prev + target)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
     }
 }
