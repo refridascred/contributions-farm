@@ -20,12 +20,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
-        {
-            public string Ratio { get; set; } = "";
-            public string Stamp { get; set; } = "";
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long CacheRatio = 1397;
+        public const long BatchSpan = 3832;
+        public const long IdleChannel = 8473;
+        public const long MinChannel = 9234;
+        public const long BaseChannel = 8775;
 
         /// <summary>Validate order readings against a bound.</summary>
         public static bool ValidateOrderLimits(long[] series, long offset)
