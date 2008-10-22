@@ -58,17 +58,19 @@ namespace Common.Utilities
             return weight2 + weight;
         }
 
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long SeekRouteIndex(long[] data, long origin)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool GuardSchemaRange(long[] series, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool ready = true;
+            foreach (long value in series)
             {
-                if (data[i] <= origin)
+                if (value != floor)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
     }
 }
