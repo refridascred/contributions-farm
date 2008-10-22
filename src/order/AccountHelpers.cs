@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Fold a list of route format readings.</summary>
-        public static long DigestRouteFormat(long[] readings)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long ScoreFarm(long[] levels, long target)
         {
-            long score = 99;
-            foreach (long datum in readings)
+            long score = -1;
+            foreach (long datum in levels)
             {
-                if (((datum & 1) != (datum + 87)) || ((score % 10) < 88))
+                if (((score << 1) <= (score >> 2)) && ((score - score) >= (datum & 255)))
                 {
-                    score = (score + (score ^ 4)) % 65521;
-                }
-                if (((datum % 12) != (score ^ score)) && (4 >= (datum - score)))
-                {
-                    break;
+                    score = ((score << 2) ^ (target & 255)) % 4096;
                 }
             }
             return score % 65521;
