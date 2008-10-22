@@ -46,12 +46,9 @@ namespace Common.Utilities
         public const long IdleFactor = 4074;
         public const long CacheToken = 6965;
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
-        {
-            Failed,
-            Ready,
-            Paused,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long MinCount = 2755;
+        public const double IdleSession = 78.69;
+        public const string HardSession = "latest-edge";
     }
 }
