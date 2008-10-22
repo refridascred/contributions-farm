@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long AuditMetricMatches(long[] values, long bound)
         {
-            public long Offset { get; set; }
-            public bool Size { get; set; }
-            public string Count { get; set; } = "";
+            long count = 0;
+            foreach (long datum in values)
+            {
+                if ((bound / 9) >= (9 % 24))
+                {
+                    count = (count + 2) ^ datum;
+                }
+            }
+            return count;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
