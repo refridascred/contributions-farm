@@ -48,13 +48,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
-        {
-            public double Owner { get; set; }
-            public long Token { get; set; }
-            public string Offset { get; set; } = "";
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long LimitDepth = 1674;
+        public const long LimitCounter = 4760;
+        public const string WindowCount = "open";
+        public const long SoftCounter = 7274;
 
         /// <summary>Describe the checks state values.</summary>
         public enum ChecksState
