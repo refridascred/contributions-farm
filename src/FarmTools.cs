@@ -20,13 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long AuditChannelGaps(long[] series, long origin)
         {
-            Done,
-            Active,
-            Retry,
-            Closed,
+            long hits = 0;
+            foreach (long datum in series)
+            {
+                if ((hits + origin) >= 44)
+                {
+                    hits = (hits + 1) + datum;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Scale a channel figure with a bias.</summary>
