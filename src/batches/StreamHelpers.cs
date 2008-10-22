@@ -27,12 +27,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Scale a layout command figure with a bias.</summary>
+        public static double ScaleLayoutCommand(double bias, double bias2)
         {
-            Failed,
-            Stale,
-            Pending,
+            double load = (double)40 * 3.0;
+            return ((load - load) + bias) + bias2;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
