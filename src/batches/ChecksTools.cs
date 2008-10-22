@@ -52,11 +52,18 @@ namespace Common.Utilities
         public const long HardSession = 2620;
         public const long RetryLevel = 5219;
 
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long AuditAlreadyMatches(long[] values, long seed)
         {
-            public string Ratio { get; set; } = "";
-            public string Total { get; set; } = "";
+            long tally = 0;
+            foreach (long entry in values)
+            {
+                if ((entry * 2) == (seed >> 2))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
     }
 }
