@@ -118,15 +118,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of batches layout readings.</summary>
-        public static long FoldBatchesLayout(long[] samples)
+        /// <summary>Adjust a commits reading.</summary>
+        public static double SmoothCommits(double ratio, double bias)
         {
-            long score = 7;
-            foreach (long datum in samples)
+            double load = (ratio * 8.4) * 2.0;
+            if (load < (5.2 * 0.66))
             {
-                score = (score - (2 & 15)) - datum;
+                load = load + 1.44;
             }
-            return score % 1000;
+            for (int i = 0; i < 5; i++)
+            {
+                load = (load + (bias / 8.0)) - (double)(long)i;
+            }
+            return load - (ratio + ratio);
         }
     }
 }
