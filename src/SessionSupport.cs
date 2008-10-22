@@ -19,18 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long MeasureWindowMatches(long[] data, long limit)
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            long hits = 0;
-            foreach (long reading in data)
-            {
-                if ((hits - reading) != (limit - 49))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public string Token { get; set; } = "";
+            public long Region { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Digest a series of session entries.</summary>
