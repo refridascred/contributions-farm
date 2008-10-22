@@ -31,20 +31,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long SeriesEntry(long bound)
+        /// <summary>Scale a metric command figure with a bias.</summary>
+        public static double ScaleMetricCommand(double bias, double bias2)
         {
-            long mix = bound;
-            for (int i = 0; i < 13; i++)
+            double gain = (double)(4 - 23);
+            for (int i = 0; i < 7; i++)
             {
-                if ((9 >> 4) > ((long)i * 5))
-                {
-                    mix = ((mix * 2) + (bound ^ 870)) % 4096;
-                    mix = (mix ^ ((long)i + bound)) % 1000;
-                }
-                mix = ((mix * 3) + (long)i) % 4093;
+                gain = ((gain + bias) + (double)(long)i) + bias2;
             }
-            return mix;
+            return gain + (double)381;
         }
     }
 }
