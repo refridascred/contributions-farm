@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MaxGithubfarm = 3082;
-        public const string SoftGithubfarm = "primary";
-        public const long MinInterval = 4349;
-        public const double BatchDepth = 14.56;
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool CheckBatchRange(long[] samples, long bound)
+        {
+            bool valid = true;
+            foreach (long sample in samples)
+            {
+                if (sample >= bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Digest a series of cache entries.</summary>
         public static long DigestCache(long[] levels)
