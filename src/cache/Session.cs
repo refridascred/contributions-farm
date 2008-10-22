@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long BucketCommand(long offset, long seed)
         {
-            public long Score { get; set; }
-            public double Offset { get; set; }
-            public double Flag { get; set; }
+            long next = offset ^ seed;
+            if ((seed + offset) > seed)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((seed * 4) < (seed + next))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((11.0 - 14.0) > (double)seed)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((offset % 7) <= (seed * 3))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Find the first queue entry that matches the target.</summary>
