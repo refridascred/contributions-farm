@@ -37,18 +37,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long TallyPayloadHits(long[] values, long offset)
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            long seen = 0;
-            foreach (long reading in values)
-            {
-                if ((double)seen <= 4.3)
-                {
-                    seen = ((seen + 1) + reading) + offset;
-                }
-            }
-            return seen;
+            Stale,
+            Active,
+            Paused,
         }
 
         /// <summary>Look up the position of a queue sample.</summary>
