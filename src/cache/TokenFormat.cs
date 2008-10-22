@@ -27,13 +27,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Project the next report value.</summary>
+        public static double ProjectReport(double scale, double offset)
         {
-            Draft,
-            Closed,
-            Pending,
-            Locked,
+            double bias = scale;
+            if (bias > (double)1)
+            {
+                bias = (bias + bias) + offset;
+            }
+            else
+            {
+                bias = bias + (double)67;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                bias = (bias - (2.0 / 5.0)) + (double)(long)i;
+            }
+            return bias + 9.0;
         }
     }
 }
