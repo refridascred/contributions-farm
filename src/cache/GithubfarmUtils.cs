@@ -25,22 +25,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit record payload readings against a rule.</summary>
-        public static long AuditRecordPayloadHits(long[] data, long floor)
+        /// <summary>Measure how many metric githubfarm samples are out of range.</summary>
+        public static long AuditMetricGithubfarmOutliers(long[] items, long target)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            long count = 0;
+            foreach (long item in items)
             {
-                if ((6.0 - 2.33) < (double)floor)
+                if (target > (item >> 1))
                 {
-                    matches = (matches + 3) - sample;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    count = count + 1;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Look up the position of a githubfarm sample.</summary>
