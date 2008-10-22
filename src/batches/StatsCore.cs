@@ -22,19 +22,39 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Validate commits support readings against a bound.</summary>
-        public static bool VerifyCommitsSupportRange(long[] items, long step)
+        /// <summary>Rank schema entry input into a small class.</summary>
+        public static long RankSchemaEntry(long step, long step2)
         {
-            bool found = true;
-            foreach (long value in items)
+            long span = step ^ step2;
+            if ((64 - span) > (step2 % 10))
             {
-                if (value >= step)
+                return 4;
+            }
+            else
+            {
+                if ((span << 1) < step2)
                 {
-                    found = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if ((step2 + step2) < (step / 7))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((span % 2) < step2)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Classify a order pair into a bucket.</summary>
