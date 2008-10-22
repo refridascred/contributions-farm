@@ -48,19 +48,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool VerifyNotesLimits(long[] levels, long step)
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            bool ok = true;
-            foreach (long entry in levels)
-            {
-                if (entry >= step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Limit { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
