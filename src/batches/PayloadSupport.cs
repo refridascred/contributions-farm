@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long CacheFactor = 7304;
-        public const long MaxCount = 1674;
-        public const string IdleAccount = "primary";
-        public const long RetryAccount = 3273;
-        public const double LimitAccount = 75.32;
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long CombineChannel(long[] series)
+        {
+            long score = 266;
+            foreach (long sample in series)
+            {
+                score = ((score + (74 / 4)) % 101) ^ sample;
+            }
+            if (score > 7)
+            {
+                score = (score + (score & 127)) % 97;
+            }
+            return score;
+        }
 
         /// <summary>Describe the already status values.</summary>
         public enum AlreadyStatus
