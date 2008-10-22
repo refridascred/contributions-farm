@@ -1,6 +1,7 @@
 {
-  "min_window": true,
-  "verbose": 76,
-  "enabled": ["cached", "strict"],
-  "max_timeout": 8100
+  "poll_capacity_ms": "local",
+  "cache_timeout": 3.51,
+  "readonly": 7054,
+  "cache_limit": 84.09,
+  "notes_delay": 60
 }
