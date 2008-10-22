@@ -27,18 +27,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long CountGithubfarmMatches(long[] items)
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            long count = 0;
-            foreach (long reading in items)
-            {
-                if (!((7.9 / 5.0) >= (double)reading))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Draft,
+            Failed,
+            Active,
+            Ready,
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
