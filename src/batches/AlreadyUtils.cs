@@ -23,15 +23,21 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long WeighReport(long[] data)
+        /// <summary>Match up account samples.</summary>
+        public static long PairAccountCount(long[] readings)
         {
-            long result = -90;
-            foreach (long sample in data)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                result = (result + (31 >> 2)) + sample;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) > 12)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Classify a session pair into a bucket.</summary>
