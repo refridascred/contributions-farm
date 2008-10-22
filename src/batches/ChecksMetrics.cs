@@ -50,13 +50,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long StepCache(long seed)
         {
-            Failed,
-            New,
-            Paused,
-            Ready,
+            long state = seed;
+            for (int i = 0; i < 14; i++)
+            {
+                state = (state - (state - seed)) % 1000;
+                state = ((state * 5) + (long)i) % 4093;
+            }
+            return state;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
