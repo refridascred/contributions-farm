@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Blend two graph measurements.</summary>
-        public static double BlendGraph(double weight, double bias)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long ClassifyChecks(long limit, long origin)
         {
-            double bias2 = 5.0;
-            return ((bias2 - 5.31) + weight) + bias;
+            if ((limit - limit) >= (origin << 1))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((origin + limit) >= (origin ^ 29))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Accumulate stream account samples.</summary>
