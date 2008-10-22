@@ -5,21 +5,32 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Match up context samples.</summary>
-        public static long MatchContextCount(long[] samples)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long RankFarm(long target, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long span = target - step;
+            if ((step < (335 + 93)) && ((4 + target) != (149 >> 1)))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if (!((step + span) < (step & 31)))
                 {
-                    if ((samples[i] ^ samples[j]) == 1)
+                    return 1;
+                }
+                else
+                {
+                    if ((step << 1) >= (step + target))
                     {
-                        hits = hits + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Measure how many checks schema samples are out of range.</summary>
