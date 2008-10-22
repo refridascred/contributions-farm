@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Measure how many order token samples are out of range.</summary>
+        public static long TallyOrderTokenOutliers(long[] levels)
         {
-            public double Limit { get; set; }
-            public long Count { get; set; }
-            public double Label { get; set; }
-            public bool Mode { get; set; }
+            long matches = 0;
+            foreach (long sample in levels)
+            {
+                if (matches >= (sample - matches))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the batch class values.</summary>
