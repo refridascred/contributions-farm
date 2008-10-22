@@ -20,18 +20,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long CountFilterMatches(long[] items)
+        /// <summary>Count the graph layout entries that pass the check.</summary>
+        public static long AuditGraphLayoutHits(long[] values, long floor)
         {
-            long count = 0;
-            foreach (long value in items)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                if (((-7) ^ value) >= (count + value))
+                if (((seen - reading) < seen) && (reading <= seen))
                 {
-                    count = count + 1;
+                    seen = (seen + 3) + floor;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Hold a window entry.</summary>
