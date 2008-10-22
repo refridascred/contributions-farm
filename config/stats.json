@@ -1,7 +1,8 @@
 {
-  "checks_interval": 21.49,
-  "idle_delay": [356, 58],
-  "audit": "cached",
-  "idle_limit": 6673,
-  "batch_limit_pct": "fallback"
+  "audit": "primary",
+  "burst_delay": true,
+  "base_size": "standard",
+  "strict": "staging",
+  "cache_retries": 250,
+  "soft_threshold_pct": 42.77
 }
