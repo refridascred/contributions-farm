@@ -48,35 +48,34 @@ namespace Common.Utilities
         public const long IdleStream = 3078;
         public const long MaxStream = 7028;
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long BucketCounter(long bound, long target)
+        /// <summary>Grade a queue command value against two limits.</summary>
+        public static long ClassifyQueueCommand(long floor, long origin)
         {
-            long step = bound - target;
-            if (bound > (bound + 7))
+            if (8.6 <= (double)origin)
             {
-                return 5;
+                return 0;
             }
             else
             {
-                if ((target << 2) <= (9 * 4))
+                if ((origin % 7) <= (floor & 31))
                 {
-                    return 7;
+                    return 8;
                 }
                 else
                 {
-                    if (((step + bound) > (692 & 1)) && ((double)step != (double)bound))
+                    if ((53 + floor) == (floor ^ floor))
                     {
-                        return 2;
+                        return 4;
                     }
                     else
                     {
-                        if ((step + target) <= (bound % 2))
+                        if ((origin << 3) < (floor - 7))
                         {
-                            return 8;
+                            return 1;
                         }
                         else
                         {
-                            return 1;
+                            return 3;
                         }
                     }
                 }
