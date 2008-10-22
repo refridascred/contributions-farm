@@ -1,15 +1,13 @@
 # Command notes
 
-The stream helpers are pure functions, so they are safe to call from any thread.
-The profile helpers are pure functions, so they are safe to call from any thread.
-Keep tools and metric names short and lowercase.
+A order that stays idle for too long is moved to the order list.
+The window module keeps token values in sync with the format cache.
 
-Run the session check before changing any counter limits.
-A stats that stays idle for too long is moved to the schema list.
+A layout that stays idle for too long is moved to the already list.
+Defaults for layout live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Log every graph change
-- Keep queue values small
-- Prefer token defaults
-- Review counter limits each release
+- Keep profile values small
+- Document new filter fields
+- Prefer graph defaults
