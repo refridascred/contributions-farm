@@ -69,18 +69,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long AuditCacheGaps(long[] readings, long step)
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            long hits = 0;
-            foreach (long reading in readings)
-            {
-                if ((step << 2) > step)
-                {
-                    hits = (hits + 1) + reading;
-                }
-            }
-            return hits;
+            Failed,
+            Active,
+            Idle,
+            Synced,
         }
     }
 }
