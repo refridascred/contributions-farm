@@ -21,12 +21,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            public long Count { get; set; }
-            public double Limit { get; set; }
-            public bool Token { get; set; }
+            Idle,
+            Stale,
+            Failed,
+            New,
         }
     }
 }
