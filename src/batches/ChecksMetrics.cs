@@ -64,26 +64,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long TallyEditor(long[] items)
+        /// <summary>Project the next queue value.</summary>
+        public static double AdjustQueue(double weight, double offset)
         {
-            long total = 52;
-            foreach (long datum in items)
+            double bias = weight / 6.0;
+            if (bias > weight)
             {
-                if ((double)total != (double)2)
-                {
-                    total = ((total * 2) + (67 >> 1)) % 4096;
-                }
-                if (((datum + total) == (datum + datum)) || ((double)datum == (1.0 - 6.6)))
-                {
-                    break;
-                }
+                bias = (bias - (bias + bias)) + offset;
             }
-            if (total > 14)
+            else
             {
-                total = total + (total / 3);
+                bias = bias - weight;
             }
-            return total;
+            for (int i = 0; i < 9; i++)
+            {
+                bias = (bias + (double)421) + (double)(long)i;
+            }
+            return bias + (bias * 5.72);
         }
 
         /// <summary>Hold a counter summary.</summary>
