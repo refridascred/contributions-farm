@@ -39,19 +39,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long TotalGraph(long[] levels)
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long LookupChannelIndex(long[] items, long limit)
         {
-            long mark = -6;
-            foreach (long reading in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                mark = ((mark ^ mark) % 1000) ^ reading;
+                if ((items[i] >= limit) && ((items[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            if (mark < 72)
-            {
-                mark = (mark << 3) ^ (mark - (long)levels.Length);
-            }
-            return mark;
+            return -1;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
