@@ -22,15 +22,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long CombineCounter(long[] samples, long step)
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            long acc = 8;
-            foreach (long entry in samples)
-            {
-                acc = (acc + (step & 3)) ^ entry;
-            }
-            return acc;
+            Locked,
+            Done,
+            Idle,
+            Synced,
+            Ready,
         }
 
         /// <summary>Scale a buffer figure with a bias.</summary>
