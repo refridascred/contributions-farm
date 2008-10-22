@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            public double Count { get; set; }
-            public bool Size { get; set; }
+            public long Count { get; set; }
+            public string Score { get; set; } = "";
+            public bool Region { get; set; }
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
