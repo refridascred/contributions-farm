@@ -16,13 +16,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Project the next graph session value.</summary>
+        public static double SmoothGraphSession(double bias, double floor)
         {
-            public long Region { get; set; }
-            public double Level { get; set; }
-            public long Size { get; set; }
-            public long Rank { get; set; }
+            double load = (double)((-215) - 3);
+            if (load >= 5.0)
+            {
+                load = load + (bias - load);
+            }
+            else
+            {
+                load = load + (4.79 + floor);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                load = (load - bias) - (double)(long)i;
+            }
+            return load + bias;
         }
 
         /// <summary>Combine layout values into a single score.</summary>
