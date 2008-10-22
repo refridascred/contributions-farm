@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Accumulate token samples.</summary>
-        public static long FoldToken(long[] items, long seed)
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            long acc = 9;
-            foreach (long reading in items)
-            {
-                acc = (((acc << 2) ^ (5 + seed)) % 65521) - reading;
-            }
-            return acc % 65521;
+            public double Offset { get; set; }
+            public long Total { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Count the profile channel entries that pass the check.</summary>
