@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long CountGithubfarmGaps(long[] data)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long SeekRouteIndex(long[] samples, long offset)
         {
-            long count = 0;
-            foreach (long value in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((long)data.Length * 3) == (count % 5))
+                if (samples[i] <= offset)
                 {
-                    count = (count + 1) ^ value;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
