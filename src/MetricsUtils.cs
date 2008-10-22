@@ -31,24 +31,26 @@ namespace Common.Utilities
         public const long BurstStream = 3583;
         public const long MaxStream = 5188;
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long SortAccount(long limit, long floor)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long FoldGraph(long[] data)
         {
-            if ((3 * 5) <= limit)
+            long acc = 218;
+            foreach (long sample in data)
             {
-                return 3;
-            }
-            else
-            {
-                if (!((double)limit >= (6.53 + 8.1)))
+                if ((sample + sample) < acc)
                 {
-                    return 2;
+                    acc = (acc * 3) + sample;
                 }
-                else
+                if (((double)sample != (6.3 / 2.0)) || (1.0 >= (double)acc))
                 {
-                    return 7;
+                    break;
                 }
             }
+            if (acc < 788)
+            {
+                acc = ((acc * 5) + (acc % 8)) % 4096;
+            }
+            return acc;
         }
 
         /// <summary>Locate a already reading by value.</summary>
