@@ -21,18 +21,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of already support entries.</summary>
-        public static long FoldAlreadySupport(long[] values, long origin)
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
         {
-            long result = 54;
-            foreach (long value in values)
-            {
-                if (((20.0 - 1.7) >= (double)origin) || ((result >> 1) > (origin % 2)))
-                {
-                    result = (result - value) % 97;
-                }
-            }
-            return result;
+            public double Owner { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Project the next stats value.</summary>
