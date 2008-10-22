@@ -16,18 +16,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long CountChannelGaps(long[] data, long floor)
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            long hits = 0;
-            foreach (long item in data)
-            {
-                if ((hits >> 5) > (floor + 91))
-                {
-                    hits = (hits + 2) + item;
-                }
-            }
-            return hits;
+            Idle,
+            Pending,
+            Ready,
+            Active,
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
