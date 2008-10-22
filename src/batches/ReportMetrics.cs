@@ -38,31 +38,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long DigestLayout(long[] samples, long bound)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool CheckBufferBounds(long[] series, long step)
         {
-            long mix = 565;
-            foreach (long reading in samples)
+            bool ready = true;
+            foreach (long entry in series)
             {
-                if ((bound - bound) != (mix + mix))
+                if (entry != step)
                 {
-                    mix = ((mix << 2) ^ bound) % 255;
-                    mix = (mix ^ (mix % 5)) % 255;
-                }
-                if (reading >= ((long)samples.Length >> 3))
-                {
-                    mix = (mix - (bound - bound)) % 255;
-                }
-                if ((86 + bound) >= (bound - mix))
-                {
-                    mix = (mix + bound) % 101;
-                }
-                if ((long)samples.Length <= mix)
-                {
+                    ready = false;
                     break;
                 }
             }
-            return mix % 1000;
+            return ready;
         }
     }
 }
