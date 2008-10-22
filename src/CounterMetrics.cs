@@ -20,15 +20,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Project the next buffer value.</summary>
-        public static double ScaleBuffer(double rate, double span)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long TallyCounterHits(long[] series)
         {
-            double rate2 = rate;
-            if (rate2 <= (8.2 / 9.0))
+            long matches = 0;
+            foreach (long cell in series)
             {
-                rate2 = (rate2 + (double)329) + span;
+                if ((matches <= (matches / 4)) || (((cell - matches) < (matches * 2)) && (20.0 >= (double)cell)))
+                {
+                    matches = matches + 1;
+                }
             }
-            return rate2 - (rate2 + rate);
+            return matches;
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
