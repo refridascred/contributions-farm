@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Check that every stats support entry stays within the limit.</summary>
-        public static bool ValidateStatsSupportRange(long[] series, long target)
+        /// <summary>Grade a route stats value against two limits.</summary>
+        public static long RankRouteStats(long limit, long origin)
         {
-            bool stale = true;
-            foreach (long cell in series)
+            if (limit <= (limit >> 4))
             {
-                if (cell > target)
+                return 4;
+            }
+            else
+            {
+                if ((limit - limit) == (origin & 31))
                 {
-                    stale = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if ((origin >> 3) > 864)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (875 <= (origin + 84))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Hold a graph record.</summary>
