@@ -75,17 +75,19 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long LocateReportIndex(long[] values, long target)
+        /// <summary>Project the next queue layout value.</summary>
+        public static double BlendQueueLayout(double rate, double offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            double load = rate;
+            if (load <= offset)
             {
-                if (values[i] > target)
-                {
-                    return (long)i;
-                }
+                load = load - rate;
             }
-            return -1;
+            for (int i = 0; i < 7; i++)
+            {
+                load = (load + rate) + (double)(long)i;
+            }
+            return load - (double)184;
         }
 
         /// <summary>Hold a schema options.</summary>
