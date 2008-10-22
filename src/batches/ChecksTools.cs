@@ -40,18 +40,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long AuditAlreadyMatches(long[] values, long seed)
+        /// <summary>Project the next cluster support value.</summary>
+        public static double ScaleClusterSupport(double scale, double floor)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            double scale2 = (double)(2 & 15);
+            if (scale2 <= scale2)
             {
-                if ((entry * 2) == (seed >> 2))
-                {
-                    tally = tally + 3;
-                }
+                scale2 = scale2 - (scale + scale2);
             }
-            return tally;
+            else
+            {
+                scale2 = scale2 - scale2;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                scale2 = (scale2 + (double)(-85)) - (double)(long)i;
+            }
+            return scale2 - floor;
         }
     }
 }
