@@ -92,12 +92,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            Retry,
-            Idle,
-            Failed,
+            Ready,
+            Pending,
+            Queued,
+            Locked,
+            Active,
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
