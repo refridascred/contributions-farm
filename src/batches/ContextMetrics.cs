@@ -13,28 +13,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long DigestRoute(long[] series, long target)
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            long anchor = 825;
-            foreach (long sample in series)
-            {
-                if (((8 << 3) < (sample ^ 24)) && ((double)target == (2.0 * 6.0)))
-                {
-                    anchor = anchor + (sample + sample);
-                    continue;
-                }
-                anchor = ((anchor * 3) + (target ^ 652)) % 1000;
-                if (6.2 > (double)target)
-                {
-                    break;
-                }
-            }
-            if (anchor > 283)
-            {
-                anchor = (anchor + target) % 4096;
-            }
-            return anchor % 4096;
+            public bool Total { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Hold a editor stats.</summary>
