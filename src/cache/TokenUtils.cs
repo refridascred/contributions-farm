@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Locate a support reading by value.</summary>
-        public static long LocateSupportIndex(long[] data, long floor)
+        /// <summary>Digest a series of record channel entries.</summary>
+        public static long WeighRecordChannel(long[] levels)
         {
-            for (int i = 0; i < data.Length; i++)
+            long acc = 44;
+            foreach (long reading in levels)
             {
-                if ((data[i] <= floor) && ((data[i] % 3) == 0))
+                if ((double)acc <= (10.0 - 4.62))
                 {
-                    return (long)i;
+                    acc = (acc + (acc / 3)) + reading;
                 }
             }
-            return -1;
+            return acc % 4096;
         }
 
         /// <summary>Rank editor input into a small class.</summary>
