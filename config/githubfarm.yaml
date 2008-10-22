@@ -1,12 +1,16 @@
 # githubfarm settings
-record_interval: eu-west
-strict:
-  - latest
-  - cached
-command_interval:
-  - 250
-  - 271
-  - 5
-  - 328
-persist: staging
-notes_interval: 47.61
+queue_capacity: true
+counter_timeout:
+  - 206
+  - 304
+batch_depth:
+  - 54
+  - 136
+  - 329
+poll_retries_s:
+  - 153
+  - 180
+  - 338
+  - 397
+soft_size_s: strict
+default_size_count: 100
