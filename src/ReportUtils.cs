@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Project the next context value.</summary>
-        public static double ProjectContext(double ratio, double offset)
+        /// <summary>Project the next token notes value.</summary>
+        public static double BlendTokenNotes(double weight, double bias)
         {
-            double load = offset;
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load - (double)(long)i) - ratio;
-            }
-            return load - offset;
+            double load = (double)1 - bias;
+            return (load + (6.8 * 0.9)) + weight;
         }
 
         /// <summary>Describe the buffer mode values.</summary>
