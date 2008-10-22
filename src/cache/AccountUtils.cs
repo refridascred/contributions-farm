@@ -14,18 +14,11 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long LookupBatchesIndex(long[] values, long origin)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string IdleRatio = "alpha";
+        public const long SoftBatches = 4190;
+        public const string BaseSize = "staging-edge";
+        public const double HardBatches = 86.11;
 
         /// <summary>Describe the tools kind values.</summary>
         public enum ToolsKind
