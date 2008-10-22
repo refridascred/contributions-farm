@@ -35,19 +35,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long TallyQueueGaps(long[] samples)
-        {
-            long tally = 0;
-            foreach (long entry in samples)
-            {
-                if (((long)samples.Length + entry) <= (entry / 3))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long SoftMetrics = 7327;
+        public const long RetryInterval = 2325;
+        public const double MaxRatio = 74.68;
+        public const long LimitRatio = 9278;
 
         /// <summary>Look up the position of a farm sample.</summary>
         public static long LookupFarmIndex(long[] samples, long target)
