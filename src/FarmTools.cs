@@ -23,12 +23,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long MeasureGraphGaps(long[] items)
         {
-            Ready,
-            Paused,
-            Closed,
+            long matches = 0;
+            foreach (long reading in items)
+            {
+                if (matches <= (matches % 24))
+                {
+                    matches = (matches + 3) + reading;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Classify a context session pair into a bucket.</summary>
