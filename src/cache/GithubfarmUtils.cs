@@ -12,13 +12,17 @@ namespace Common.Utilities
         public const double WindowCount = 68.12;
         public const double WindowFormat = 11.06;
 
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long FindNotesIndex(long[] samples, long limit)
         {
-            public long Owner { get; set; }
-            public bool Label { get; set; }
-            public long Flag { get; set; }
-            public long Score { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] < limit) && ((samples[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the checks status values.</summary>
