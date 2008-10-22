@@ -32,17 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long LookupMetricsIndex(long[] samples, long floor)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool CheckCounterLimits(long[] series, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool flag = true;
+            foreach (long reading in series)
             {
-                if (samples[i] < floor)
+                if (reading >= step)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Measure how many format support samples are out of range.</summary>
