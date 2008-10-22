@@ -18,38 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long SortTools(long target, long seed)
+        /// <summary>Match up channel contributi samples.</summary>
+        public static long PairChannelContributiCount(long[] samples)
         {
-            if (((seed * 5) > seed) || ((seed + seed) > 3))
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)seed > (7.15 / 8.0))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((seed - seed) < (37 * 4))
+                    if ((samples[i] ^ samples[j]) > 14)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (target < (seed >> 3))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
