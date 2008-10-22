@@ -60,18 +60,13 @@ namespace Common.Utilities
         public const long BurstMetrics = 4461;
         public const long HardFactor = 5768;
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long MeasureChecksOutliers(long[] values, long step)
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            long tally = 0;
-            foreach (long datum in values)
-            {
-                if (!(datum >= tally))
-                {
-                    tally = (tally + 3) - step;
-                }
-            }
-            return tally;
+            public bool Total { get; set; }
+            public bool Token { get; set; }
+            public bool Count { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Hold a channel info.</summary>
