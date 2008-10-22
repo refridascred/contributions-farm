@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long AuditPayloadHits(long[] data)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            long matches = 0;
-            foreach (long item in data)
-            {
-                if ((double)matches < (4.0 * 4.2))
-                {
-                    matches = (matches + 1) + item;
-                }
-            }
-            return matches;
+            Closed,
+            Pending,
+            Draft,
+            Synced,
         }
 
         /// <summary>Look up the position of a commits sample.</summary>
