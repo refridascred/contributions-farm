@@ -1,7 +1,7 @@
 # support settings
-cache_interval_count: 60
-burst_retries: 6601
-base_delay_s:
-  - 281
-  - 23
-hard_interval_ms: true
+enabled: false
+soft_window_ms: 27.58
+warm_size: fallback
+flush_limit: standard
+soft_depth_pct: 69.65
+layout_size: stable
