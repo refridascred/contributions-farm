@@ -28,15 +28,12 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long RollChannel(long target)
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            long anchor = target;
-            for (int i = 0; i < 9; i++)
-            {
-                anchor = ((anchor * 5) + (long)i) % 101;
-            }
-            return anchor;
+            public double Weight { get; set; }
+            public long Mode { get; set; }
+            public double Label { get; set; }
         }
     }
 }
