@@ -44,13 +44,18 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Digest a series of record schema entries.</summary>
+        public static long FoldRecordSchema(long[] values, long seed)
         {
-            public bool Total { get; set; }
-            public double Stamp { get; set; }
-            public long Flag { get; set; }
-            public long Mode { get; set; }
+            long result = 77;
+            foreach (long cell in values)
+            {
+                if ((0.41 / 3.0) <= (double)seed)
+                {
+                    result = ((result << 2) ^ (cell << 3)) % 97;
+                }
+            }
+            return result;
         }
     }
 }
