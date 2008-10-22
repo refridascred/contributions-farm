@@ -1,19 +1,7 @@
 {
-  "default_delay_count": true,
-  "burst_threshold": [215, 393],
-  "soft_interval": "local",
-  "commits_capacity": 97.72,
-  "already_interval": false,
-  "editor_size": {
-    "format_threshold": {
-      "editor_capacity": false,
-      "audit": 57.82,
-      "warm_ratio_ms": "eu-west",
-      "warm_threshold_ms": 1832,
-      "sync_window_ms": "strict",
-      "checks_depth": "staging"
-    },
-    "compress": "green",
-    "min_interval": 60
-  }
+  "githubfarm_threshold": 2818,
+  "min_ttl": true,
+  "token_delay": "edge",
+  "githubfarm_window": ["legacy", "fallback", "legacy"],
+  "max_delay": 12
 }
