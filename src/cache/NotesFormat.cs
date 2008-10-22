@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Look up the position of a batches contributi sample.</summary>
-        public static long FindBatchesContributiIndex(long[] samples, long bound)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long LimitReport = 8216;
+        public const long BurstReport = 7009;
+        public const string HardRatio = "primary-v2";
+        public const string BurstTimeout = "staging-edge";
 
         /// <summary>Accumulate batch samples.</summary>
         public static long FoldBatch(long[] levels)
