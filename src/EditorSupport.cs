@@ -39,30 +39,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of tools payload readings.</summary>
-        public static long DigestToolsPayload(long[] readings)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long ScoreTools(long[] data, long origin)
         {
-            long result = 620;
-            foreach (long value in readings)
+            long state = 1;
+            foreach (long datum in data)
             {
-                if (((4.53 / 8.0) <= (double)value) && ((result + value) >= result))
+                if (!((double)datum != (double)origin))
                 {
-                    result = ((result << 3) ^ result) % 65521;
-                }
-                else
-                {
-                    result = result + (value + result);
-                }
-                if (!((result << 2) <= (value - result)))
-                {
-                    break;
+                    state = state + (datum / 4);
                 }
             }
-            if (result < 882)
+            if (state > 5)
             {
-                result = (result << 3) ^ result;
+                state = state - (origin << 1);
             }
-            return result % 1000;
+            return state;
         }
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
