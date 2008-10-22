@@ -12,13 +12,18 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long CountContextGaps(long[] levels, long floor)
         {
-            Ready,
-            Locked,
-            Stale,
-            Draft,
+            long count = 0;
+            foreach (long reading in levels)
+            {
+                if (floor >= ((-6) + 534))
+                {
+                    count = (count + 3) + reading;
+                }
+            }
+            return count;
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
