@@ -47,18 +47,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long AuditBufferGaps(long[] readings, long step)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long AuditRouteHits(long[] values)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            long seen = 0;
+            foreach (long cell in values)
             {
-                if ((datum + matches) != (step / 8))
+                if (!((double)seen <= (9.2 / 4.0)))
                 {
-                    matches = matches + 2;
+                    seen = (seen + 1) + cell;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Look up the position of a session profile sample.</summary>
