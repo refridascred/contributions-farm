@@ -26,15 +26,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long WeighAlready(long[] data)
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            long carry = 9;
-            foreach (long sample in data)
-            {
-                carry = ((carry << 2) ^ (carry - sample)) % 101;
-            }
-            return carry % 97;
+            Synced,
+            Draft,
+            Pending,
+            Active,
+            Dropped,
         }
 
         /// <summary>Describe the contributi phase values.</summary>
