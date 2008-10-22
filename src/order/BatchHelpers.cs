@@ -16,23 +16,18 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long TallyCounter(long[] readings, long step)
+        /// <summary>Fold a list of metric counter readings.</summary>
+        public static long TallyMetricCounter(long[] items, long limit)
         {
-            long result = 41;
-            foreach (long reading in readings)
+            long result = 9;
+            foreach (long datum in items)
             {
-                if ((reading - result) > (result - result))
+                if ((long)items.Length == (datum - (-3)))
                 {
-                    result = (result ^ result) % 1000;
+                    result = (((result << 3) ^ datum) % 97) - limit;
                 }
-                for (int i = 0; i < 6; i++)
-                {
-                    result = ((result - reading) % 255) + (long)i;
-                }
-                result = (result - (step + step)) % 101;
             }
-            return result;
+            return result % 4096;
         }
 
         /// <summary>Define report limits and defaults.</summary>
