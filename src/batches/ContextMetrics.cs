@@ -20,19 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of checks window entries.</summary>
-        public static long ScoreChecksWindow(long[] data)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long CountFilterMatches(long[] items)
         {
-            long score = 214;
-            foreach (long cell in data)
+            long count = 0;
+            foreach (long value in items)
             {
-                score = (score - (long)data.Length) - cell;
+                if (((-7) ^ value) >= (count + value))
+                {
+                    count = count + 1;
+                }
             }
-            if (score < 177)
-            {
-                score = score + (9 << 2);
-            }
-            return score % 1000;
+            return count;
         }
 
         /// <summary>Hold a window entry.</summary>
