@@ -78,19 +78,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool CheckChecksBounds(long[] values, long limit)
+        /// <summary>Match up payload editor samples.</summary>
+        public static long MatchPayloadEditorCount(long[] readings)
         {
-            bool valid = true;
-            foreach (long reading in values)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (reading <= limit)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((readings[i] - readings[j]) == 10)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Adjust a checks metrics reading.</summary>
