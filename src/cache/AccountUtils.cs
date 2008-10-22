@@ -24,19 +24,14 @@ namespace Common.Utilities
             return drift + span;
         }
 
-        /// <summary>Check that every contributi report entry stays within the limit.</summary>
-        public static bool ValidateContributiReportLimits(long[] samples, long seed)
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            bool ready = true;
-            foreach (long reading in samples)
-            {
-                if (reading > seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Stale,
+            Synced,
+            New,
+            Draft,
+            Failed,
         }
 
         /// <summary>Hold a counter record.</summary>
