@@ -19,10 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BaseFactor = 704;
-        public const double IdleTimeout = 78.45;
-        public const long MinSchema = 1750;
+        /// <summary>Find the first report contributi entry that matches the target.</summary>
+        public static long SeekReportContributiIndex(long[] levels, long seed)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] < seed) && ((levels[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the githubfarm level values.</summary>
         public enum GithubfarmLevel
