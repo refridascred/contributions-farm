@@ -5,26 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long TallyEditor(long[] series, long seed)
+        /// <summary>Match up filter samples.</summary>
+        public static long MatchFilterCount(long[] levels)
         {
-            long mark = 68;
-            foreach (long reading in series)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (4.3 > (double)mark)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    mark = (mark ^ (seed ^ reading)) % 255;
-                }
-                if ((mark + mark) >= (42 + seed))
-                {
-                    mark = (mark - (reading >> 4)) % 101;
-                }
-                else
-                {
-                    mark = (mark << 3) ^ (seed % 12);
+                    if ((levels[i] ^ levels[j]) != 0)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
