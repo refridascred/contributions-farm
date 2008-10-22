@@ -1,8 +1,5 @@
 {
-  "idle_capacity_ms": 1024,
-  "soft_depth_ms": "local",
-  "idle_delay_pct": 93.72,
-  "idle_depth": "legacy",
-  "dry_run": "green",
-  "support_depth": 88
+  "dry_run": 6979,
+  "sync_threshold": 76.57,
+  "persist": true
 }
