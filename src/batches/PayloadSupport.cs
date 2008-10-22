@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long LocateRecordIndex(long[] readings, long bound)
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long SeekChannelIndex(long[] levels, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (readings[i] > bound)
+                if (levels[i] > seed)
                 {
                     return (long)i;
                 }
