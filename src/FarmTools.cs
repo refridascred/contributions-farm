@@ -23,18 +23,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long MeasureGraphGaps(long[] items)
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            long matches = 0;
-            foreach (long reading in items)
-            {
-                if (matches <= (matches % 24))
-                {
-                    matches = (matches + 3) + reading;
-                }
-            }
-            return matches;
+            Pending,
+            Done,
+            Failed,
         }
 
         /// <summary>Classify a context session pair into a bucket.</summary>
