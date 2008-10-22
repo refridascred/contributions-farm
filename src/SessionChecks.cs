@@ -21,17 +21,19 @@ namespace Common.Utilities
         public const long BatchFilter = 9772;
         public const string HardBudget = "open-edge";
 
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long LocateContextIndex(long[] data, long target)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool GuardGraphBounds(long[] items, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool ok = true;
+            foreach (long reading in items)
             {
-                if ((data[i] >= target) && ((data[i] % 5) == 0))
+                if (reading >= step)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Iterate the entry series from a seed.</summary>
