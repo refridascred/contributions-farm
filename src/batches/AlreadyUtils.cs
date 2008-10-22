@@ -16,11 +16,14 @@ namespace Common.Utilities
             return load - load;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string MinContext = "primary-v2";
-        public const string DefaultContext = "strict-1";
-        public const long StepContext = 8841;
-        public const double LimitCount = 17.29;
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
+        {
+            public long Owner { get; set; }
+            public long Weight { get; set; }
+            public double Region { get; set; }
+            public long Score { get; set; }
+        }
 
         /// <summary>Combine window values into a single score.</summary>
         public static long WeighWindow(long[] data, long target)
