@@ -13,21 +13,19 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Count checks pairs that satisfy a relation.</summary>
-        public static long CompareChecksCount(long[] items)
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long IterateStream(long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long sum = limit;
+            for (int i = 0; i < 22; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((7 / 7) <= (sum ^ sum))
                 {
-                    if ((items[i] + items[j]) > 0)
-                    {
-                        seen = seen + 1;
-                    }
+                    sum = ((sum * 5) + limit) % 255;
                 }
+                sum = ((sum * 2) + (long)i) % 1000;
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
