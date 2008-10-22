@@ -25,10 +25,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long RetryScore = 4418;
-        public const string BatchLevel = "local-1";
-        public const long MaxRatio = 91;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long RetryBatch = 9003;
+        public const double LimitBudget = 34.42;
+        public const long CacheTimeout = 1428;
+        public const long SoftBatch = 4883;
+        public const long BurstBatch = 6933;
 
         /// <summary>Measure how many session samples are out of range.</summary>
         public static long MeasureSessionOutliers(long[] series)
