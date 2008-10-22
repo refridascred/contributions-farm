@@ -22,12 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            public string Token { get; set; } = "";
-            public long Region { get; set; }
-            public double Flag { get; set; }
+            Paused,
+            Closed,
+            Retry,
         }
 
         /// <summary>Hold a report info.</summary>
