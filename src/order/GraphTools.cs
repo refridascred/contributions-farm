@@ -64,12 +64,17 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BatchScore = 4885;
-        public const string CacheSpan = "alpha-edge";
-        public const long RetryLevel = 4150;
-        public const string LimitCount = "fallback-1";
-        public const double StepSpan = 21.86;
+        /// <summary>Fold a list of githubfarm metric readings.</summary>
+        public static long CombineGithubfarmMetric(long[] values, long seed)
+        {
+            long mix = 8;
+            foreach (long sample in values)
+            {
+                mix = (mix ^ mix) + seed;
+                mix = (mix + (sample / 8)) % 4096;
+            }
+            return mix;
+        }
 
         /// <summary>Describe the route mode values.</summary>
         public enum RouteMode
