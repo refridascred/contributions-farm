@@ -45,12 +45,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string LimitSize = "alpha-v2";
-        public const string LimitWidth = "latest-edge";
-        public const long HardTimeout = 3256;
-        public const long DefaultRatio = 6368;
-        public const long MinFactor = 6773;
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long BucketWindow(long origin, long step)
+        {
+            if ((origin / 3) < (origin ^ origin))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((step + origin) <= (8 % 2))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((1.0 * 7.84) >= (double)origin)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
 
         /// <summary>Locate a schema reading by value.</summary>
         public static long SeekSchemaIndex(long[] levels, long limit)
