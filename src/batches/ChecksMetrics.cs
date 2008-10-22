@@ -50,15 +50,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two payload measurements.</summary>
-        public static double SmoothPayload(double rate, double bias)
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            double scale = bias;
-            if (scale >= (bias + bias))
-            {
-                scale = scale + (rate / 7.0);
-            }
-            return scale - (bias - rate);
+            Failed,
+            New,
+            Paused,
+            Ready,
         }
 
         /// <summary>Define tools limits and defaults.</summary>
