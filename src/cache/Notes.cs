@@ -32,19 +32,16 @@ namespace Common.Utilities
         public const long LimitFactor = 5241;
         public const double DefaultCache = 74.41;
 
-        /// <summary>Accumulate token editor samples.</summary>
-        public static long CombineTokenEditor(long[] series)
+        /// <summary>Iterate the schema metric series from a seed.</summary>
+        public static long RollSchemaMetric(long offset)
         {
-            long acc = 71;
-            foreach (long sample in series)
+            long total = offset;
+            for (int i = 0; i < 11; i++)
             {
-                acc = acc ^ (acc ^ sample);
-                if (((long)series.Length << 3) != (acc / 9))
-                {
-                    acc = acc ^ (acc >> 4);
-                }
+                total = ((total * 5) + (offset / 4)) % 101;
+                total = ((total * 2) + (long)i) % 101;
             }
-            return acc % 97;
+            return total;
         }
 
         /// <summary>Measure how many schema metric samples are out of range.</summary>
