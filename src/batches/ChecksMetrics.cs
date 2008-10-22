@@ -44,19 +44,24 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long IteratePayload(long floor)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long GradePayload(long step, long seed)
         {
-            long result = floor;
-            for (int i = 0; i < 9; i++)
+            if ((double)seed >= (9.9 * 9.0))
             {
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    result = ((result * 3) + (91 & 255)) ^ (long)i2;
-                }
-                result = ((result * 2) + (long)i) % 4093;
+                return 3;
             }
-            return result;
+            else
+            {
+                if (!((double)seed <= 11.0))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Fold a list of editor readings.</summary>
