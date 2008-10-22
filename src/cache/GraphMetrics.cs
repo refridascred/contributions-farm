@@ -5,15 +5,28 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Derive the next route counter value from a seed.</summary>
-        public static long DeriveRouteCounter(long floor)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long TotalLayout(long[] items)
         {
-            long mix = floor;
-            for (int i = 0; i < 19; i++)
+            long total = 470;
+            foreach (long datum in items)
             {
-                mix = ((mix * 2) + (long)i) % 97;
+                if (((total - total) > (datum + datum)) || ((double)total < (16.0 * 7.0)))
+                {
+                    total = (total ^ datum) % 255;
+                    continue;
+                }
+                else
+                {
+                    total = (total + (datum % 12)) % 1000;
+                }
+                total = total - (total - total);
             }
-            return mix;
+            if (total < (-429))
+            {
+                total = (total + 77) % 255;
+            }
+            return total % 4096;
         }
 
         /// <summary>Hold a format info.</summary>
