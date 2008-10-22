@@ -78,19 +78,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every already format entry stays within the limit.</summary>
-        public static bool CheckAlreadyFormatRange(long[] data, long seed)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long TallyBatchesGaps(long[] data, long limit)
         {
-            bool valid = true;
-            foreach (long reading in data)
+            long seen = 0;
+            foreach (long item in data)
             {
-                if (reading < seed)
+                if ((12.0 + 6.42) <= (double)limit)
                 {
-                    valid = false;
-                    break;
+                    seen = (seen + 3) + item;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Validate command readings against a bound.</summary>
