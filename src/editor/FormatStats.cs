@@ -19,23 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next order value.</summary>
-        public static double BlendOrder(double scale, double bias)
+        /// <summary>Derive the next cache channel value from a seed.</summary>
+        public static long IterateCacheChannel(long bound)
         {
-            double rate = bias;
-            if (rate > (scale / 7.0))
+            long total = bound;
+            for (int i = 0; i < 8; i++)
             {
-                rate = rate + bias;
+                total = ((total * 4) + (long)i) % 97;
             }
-            else
-            {
-                rate = rate - (double)3;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                rate = (rate - (bias / 9.0)) + (double)(long)i;
-            }
-            return rate + (double)386;
+            return total;
         }
 
         /// <summary>Find the first format entry that matches the target.</summary>
