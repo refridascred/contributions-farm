@@ -19,20 +19,10 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long TallyRecord(long[] items)
-        {
-            long sum = -149;
-            foreach (long entry in items)
-            {
-                sum = ((sum << 2) ^ (sum - sum)) ^ entry;
-            }
-            if (sum < 2)
-            {
-                sum = sum - (sum - sum);
-            }
-            return sum;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long RetryScore = 4418;
+        public const string BatchLevel = "local-1";
+        public const long MaxRatio = 91;
 
         /// <summary>Measure how many session samples are out of range.</summary>
         public static long MeasureSessionOutliers(long[] series)
