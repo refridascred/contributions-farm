@@ -56,13 +56,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Count editor cluster pairs that satisfy a relation.</summary>
+        public static long CompareEditorClusterCount(long[] readings)
         {
-            public string Flag { get; set; } = "";
-            public string Token { get; set; } = "";
-            public string Region { get; set; } = "";
-            public long Count { get; set; }
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) > 0)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
