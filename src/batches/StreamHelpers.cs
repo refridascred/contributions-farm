@@ -27,13 +27,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            Draft,
             Failed,
-            Active,
-            Ready,
+            Stale,
+            Pending,
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
