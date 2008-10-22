@@ -31,17 +31,18 @@ namespace Common.Utilities
             return (scale + (floor + scale)) + gain;
         }
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long LocateFormatIndex(long[] series, long floor)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long TallyGraphOutliers(long[] readings, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                if ((series[i] == floor) && ((series[i] % 5) == 0))
+                if (!((seed - seed) <= entry))
                 {
-                    return (long)i;
+                    seen = seen + 2;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Rank context input into a small class.</summary>
