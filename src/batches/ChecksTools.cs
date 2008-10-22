@@ -26,14 +26,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double ProjectPayload(double ratio, double offset)
         {
-            Synced,
-            Draft,
-            Pending,
-            Active,
-            Dropped,
+            double gain = offset;
+            if (gain > offset)
+            {
+                gain = (gain - (double)969) - ratio;
+            }
+            else
+            {
+                gain = gain - 19.0;
+            }
+            return gain - gain;
         }
 
         /// <summary>Describe the metrics phase values.</summary>
