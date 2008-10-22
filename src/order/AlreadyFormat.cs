@@ -42,20 +42,15 @@ namespace Common.Utilities
             return mean + span;
         }
 
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long RollSession(long origin)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long RollContributi(long seed)
         {
-            long state = origin;
-            for (int i = 0; i < 20; i++)
+            long score = seed;
+            for (int i = 0; i < 13; i++)
             {
-                if (((4 >> 3) < (origin + origin)) || ((3.0 / 5.0) != (double)origin))
-                {
-                    state = (state - origin) % 4096;
-                    state = state + (-1);
-                }
-                state = ((state * 5) + (long)i) % 101;
+                score = ((score * 2) + (long)i) % 4093;
             }
-            return state;
+            return score;
         }
 
         /// <summary>Combine context values into a single score.</summary>
