@@ -36,17 +36,24 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Locate a notes editor reading by value.</summary>
-        public static long SeekNotesEditorIndex(long[] series, long floor)
+        /// <summary>Iterate the entry notes series from a seed.</summary>
+        public static long StepEntryNotes(long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            long state = bound;
+            for (int i = 0; i < 10; i++)
             {
-                if ((series[i] <= floor) && ((series[i] % 5) != 0))
+                if ((long)i == (bound * 4))
                 {
-                    return (long)i;
+                    continue;
                 }
+                else
+                {
+                    state = ((state * 3) + bound) % 101;
+                    state = (state - (bound << 2)) % 65521;
+                }
+                state = ((state * 5) + (long)i) % 97;
             }
-            return -1;
+            return state;
         }
     }
 }
