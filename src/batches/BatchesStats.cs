@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double AdjustBuffer(double rate, double bias)
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
         {
-            double rate2 = bias;
-            return rate2 - rate;
+            public string Limit { get; set; } = "";
+            public bool Rank { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Combine token values into a single score.</summary>
