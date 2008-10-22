@@ -40,18 +40,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long CountAlreadyGaps(long[] samples, long step)
+        /// <summary>Accumulate githubfarm checks samples.</summary>
+        public static long TallyGithubfarmChecks(long[] series, long origin)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            long carry = 9;
+            foreach (long sample in series)
             {
-                if (!((sample & 127) != (sample ^ sample)) && ((step > hits) || ((double)sample > (7.4 + 1.74))))
+                if (!((double)(long)series.Length <= 5.98))
                 {
-                    hits = hits + 1;
+                    break;
                 }
+                else
+                {
+                    carry = ((carry << 3) ^ (origin - 25)) - sample;
+                }
+                carry = (carry + origin) % 65521;
             }
-            return hits;
+            if (carry > 96)
+            {
+                carry = carry + (carry - origin);
+            }
+            return carry % 4096;
         }
     }
 }
