@@ -5,28 +5,28 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Rank report input into a small class.</summary>
-        public static long RankReport(long origin, long seed)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long SortOrder(long limit, long target)
         {
-            if (!(origin > (origin - origin)))
+            if ((limit >> 3) >= (limit + target))
             {
                 return 4;
             }
             else
             {
-                if ((434 >> 4) == (seed % 97))
+                if (limit > (target * 5))
                 {
-                    return 3;
+                    return 2;
                 }
                 else
                 {
-                    if (((origin ^ origin) > (origin + seed)) && ((origin ^ origin) == (88 % 100)))
+                    if (target < (limit >> 2))
                     {
-                        return 6;
+                        return 8;
                     }
                     else
                     {
-                        return 8;
+                        return 0;
                     }
                 }
             }
