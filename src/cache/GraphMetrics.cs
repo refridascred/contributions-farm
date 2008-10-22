@@ -54,13 +54,15 @@ namespace Common.Utilities
         public const string WindowCount = "open";
         public const long SoftCounter = 7274;
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long DeriveFilter(long floor)
         {
-            Idle,
-            Failed,
-            Stale,
-            Paused,
+            long total = floor;
+            for (int i = 0; i < 17; i++)
+            {
+                total = ((total * 3) + (long)i) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Iterate the session series from a seed.</summary>
