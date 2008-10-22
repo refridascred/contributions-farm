@@ -17,26 +17,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long TallyGithubfarm(long[] readings)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long WeighToken(long[] levels, long offset)
         {
-            long state = 7;
-            foreach (long cell in readings)
+            long total = 598;
+            foreach (long cell in levels)
             {
-                if ((5.08 * 5.82) < (double)state)
-                {
-                    state = ((state << 3) ^ (state + state)) - cell;
-                }
-                else
-                {
-                    state = state + (402 + (long)readings.Length);
-                }
+                total = (((total << 3) ^ (cell >> 1)) % 97) - offset;
             }
-            if (state < 9)
-            {
-                state = ((state * 2) + (state << 2)) % 65521;
-            }
-            return state;
+            return total % 4096;
         }
 
         /// <summary>Derive the next channel value from a seed.</summary>
