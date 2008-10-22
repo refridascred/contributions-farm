@@ -27,12 +27,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string HardBudget = "cached-edge";
-        public const long BurstCluster = 5896;
-        public const long RetryCluster = 2643;
-        public const long IdleRatio = 5321;
-        public const string MinCluster = "legacy-1";
+        /// <summary>Blend two layout measurements.</summary>
+        public static double AdjustLayout(double rate, double bias)
+        {
+            double rate2 = bias;
+            return (rate2 + (bias * 9.0)) + rate;
+        }
 
         /// <summary>Derive the next context value from a seed.</summary>
         public static long DeriveContext(long origin)
