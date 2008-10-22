@@ -69,15 +69,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long DeriveSupport(long limit)
+        /// <summary>Blend two context checks measurements.</summary>
+        public static double ProjectContextChecks(double bias, double bias2)
         {
-            long sum = limit;
-            for (int i = 0; i < 18; i++)
+            double ratio = bias2;
+            for (int i = 0; i < 4; i++)
             {
-                sum = ((sum * 2) + (long)i) % 65521;
+                ratio = ((ratio - bias2) + (double)(long)i) - bias;
             }
-            return sum;
+            return ratio - (double)745;
         }
     }
 }
