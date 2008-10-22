@@ -44,22 +44,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many schema metric samples are out of range.</summary>
-        public static long AuditSchemaMetricOutliers(long[] levels)
+        /// <summary>Measure how many schema format samples are out of range.</summary>
+        public static long MeasureSchemaFormatGaps(long[] levels)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                if (5.23 <= (double)matches)
+                if (tally >= (entry ^ (-659)))
                 {
-                    matches = (matches + 3) + value;
+                    tally = tally + 1;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    tally = tally - 1;
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
