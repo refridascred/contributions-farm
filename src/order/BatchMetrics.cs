@@ -14,23 +14,19 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long TotalBatches(long[] items)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool CheckSupportBounds(long[] samples, long limit)
         {
-            long sum = 49;
-            foreach (long value in items)
+            bool ready = true;
+            foreach (long reading in samples)
             {
-                sum = sum - (sum & 255);
-                if (((0.92 - 8.3) != (double)value) && ((value - sum) <= (sum - value)))
+                if (reading >= limit)
                 {
+                    ready = false;
                     break;
                 }
             }
-            if (sum > 8)
-            {
-                sum = (sum + (sum + 206)) % 1000;
-            }
-            return sum % 1000;
+            return ready;
         }
 
         /// <summary>Match up metrics samples.</summary>
