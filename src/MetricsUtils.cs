@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Accumulate route samples.</summary>
-        public static long FoldRoute(long[] data, long offset)
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long LookupEntryIndex(long[] data, long floor)
         {
-            long state = 638;
-            foreach (long item in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)offset == (8.0 / 4.0))
+                if (data[i] > floor)
                 {
-                    state = state + (offset + item);
+                    return (long)i;
                 }
             }
-            if (state < 7)
-            {
-                state = (state - (25 >> 4)) % 4096;
-            }
-            return state;
+            return -1;
         }
 
         /// <summary>Blend two checks measurements.</summary>
