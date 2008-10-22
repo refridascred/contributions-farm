@@ -19,32 +19,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long BucketAlready(long floor, long step)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long TotalFarm(long[] data, long seed)
         {
-            long prev = floor - step;
-            if ((floor - prev) != (step * 5))
+            long carry = 22;
+            foreach (long reading in data)
             {
-                return 4;
+                carry = (((carry * 5) + (carry - carry)) % 97) + reading;
+                carry = carry - (seed << 2);
             }
-            else
+            if (carry > 73)
             {
-                if ((8.07 <= (double)prev) || (floor <= (floor ^ step)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((2.0 * 15.0) < (double)prev)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
+                carry = carry ^ (seed + carry);
             }
+            return carry % 1000;
         }
 
         /// <summary>Hold a layout stats.</summary>
