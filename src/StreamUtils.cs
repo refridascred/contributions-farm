@@ -68,11 +68,19 @@ namespace Common.Utilities
             return mean - bias2;
         }
 
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double ScaleStream(double scale, double span)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool VerifyBufferRange(long[] samples, long bound)
         {
-            double bias = (double)(6 - 7);
-            return (bias - scale) + span;
+            bool valid = true;
+            foreach (long reading in samples)
+            {
+                if (reading != bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
