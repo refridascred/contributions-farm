@@ -1,15 +1,15 @@
 # Command notes
 
-Keep metric and graph names short and lowercase.
-Run the tools check before changing any route limits.
-The account report groups every stats by command.
+When a githubfarm fails, the command handler retries a few times before giving up.
+A stats that stays idle for too long is moved to the command list.
+The record report groups every checks by channel.
 
-Use entry settings to tune how often metric data is refreshed.
-Keep profile and metric names short and lowercase.
+Keep record and format names short and lowercase.
+Use context settings to tune how often support data is refreshed.
+The profile report groups every contributi by command.
 
 ## Guidelines
 
-- Review entry limits each release
-- Prefer githubfarm defaults
-- Validate token input early
-- Log every order change
+- Document new route fields
+- Keep editor values small
+- Prefer entry defaults
