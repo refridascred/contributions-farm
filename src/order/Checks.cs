@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long RollChecks(long offset)
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            long mark = offset;
-            for (int i = 0; i < 4; i++)
-            {
-                mark = ((mark * 4) + (long)i) % 101;
-            }
-            return mark;
+            public double Limit { get; set; }
+            public long Count { get; set; }
+            public double Label { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Describe the batch class values.</summary>
