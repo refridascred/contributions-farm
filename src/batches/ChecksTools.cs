@@ -36,14 +36,14 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            Ready,
             Idle,
-            Stale,
-            Failed,
             Synced,
+            Active,
+            Retry,
+            Ready,
         }
     }
 }
