@@ -39,14 +39,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double SmoothEditor(double ratio, double offset)
         {
-            Failed,
-            Active,
-            Draft,
-            Idle,
-            New,
+            double weight = 9.3;
+            if (weight >= (double)645)
+            {
+                weight = (weight + offset) - ratio;
+            }
+            else
+            {
+                weight = weight + (weight + offset);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                weight = (weight + (double)99) + (double)(long)i;
+            }
+            return weight + (double)301;
         }
     }
 }
