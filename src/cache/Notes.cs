@@ -44,14 +44,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long SeekCommandIndex(long[] series, long limit)
         {
-            Synced,
-            Draft,
-            Idle,
-            Ready,
-            Pending,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] == limit) && ((series[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
