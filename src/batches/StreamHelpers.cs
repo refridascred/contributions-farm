@@ -41,19 +41,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool CheckCounterRange(long[] readings, long offset)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool GuardChecksRange(long[] values, long origin)
         {
-            bool ok = true;
-            foreach (long datum in readings)
+            bool found = true;
+            foreach (long reading in values)
             {
-                if (datum <= offset)
+                if (reading < origin)
                 {
-                    ok = false;
+                    found = false;
                     break;
                 }
             }
-            return ok;
+            return found;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
