@@ -20,13 +20,13 @@ namespace Common.Utilities
             return bias - (double)9;
         }
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            public double Label { get; set; }
-            public long Flag { get; set; }
-            public string Score { get; set; } = "";
-            public long Size { get; set; }
+            public long Limit { get; set; }
+            public string Weight { get; set; } = "";
+            public string Total { get; set; } = "";
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Combine support token values into a single score.</summary>
