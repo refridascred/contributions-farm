@@ -15,18 +15,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Measure how many batches contributi samples are out of range.</summary>
-        public static long MeasureBatchesContributiGaps(long[] readings, long bound)
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            long tally = 0;
-            foreach (long item in readings)
-            {
-                if ((item / 2) < (35 + 7))
-                {
-                    tally = (tally + 3) - bound;
-                }
-            }
-            return tally;
+            Idle,
+            New,
+            Done,
         }
 
         /// <summary>Describe the buffer mode values.</summary>
