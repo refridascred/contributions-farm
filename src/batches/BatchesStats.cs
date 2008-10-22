@@ -17,13 +17,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool CheckReportBounds(long[] series, long limit)
         {
-            Synced,
-            Draft,
-            Done,
-            Stale,
+            bool found = true;
+            foreach (long entry in series)
+            {
+                if (entry >= limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Describe the notes mode values.</summary>
