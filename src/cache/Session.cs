@@ -44,19 +44,11 @@ namespace Common.Utilities
         public const long DefaultInterval = 8959;
         public const long SoftToken = 5635;
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long WeighCluster(long[] series, long seed)
-        {
-            long state = 6;
-            foreach (long cell in series)
-            {
-                state = ((state << 2) ^ (seed * 5)) ^ cell;
-            }
-            if (state > 12)
-            {
-                state = ((state * 3) + seed) % 255;
-            }
-            return state;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MinSize = 7073;
+        public const long MinReport = 6354;
+        public const double LimitCount = 28.0;
+        public const double MaxReport = 61.85;
+        public const long DefaultReport = 7316;
     }
 }
