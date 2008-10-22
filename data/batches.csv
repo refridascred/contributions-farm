@@ -1,11 +1,6 @@
-id,label,token
-1,96,98.01
-2,280,3.68
-3,cached,5.23
-4,710,60.69
-5,839,324
-6,457,primary
-7,legacy,600
-8,latest,93.0
-9,890,270
-10,latest,24.11
+id,owner,weight,active,state
+1,85.4,192,32,edge
+2,120,fallback,302,855
+3,blue,511,6.53,181
+4,13.99,cached,standard,green
+5,96.27,45.81,89,cached
