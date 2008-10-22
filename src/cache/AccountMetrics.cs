@@ -51,11 +51,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double BurstChecks = 89.69;
-        public const string MaxChecks = "open-edge";
-        public const double CacheChecks = 65.21;
-        public const string SoftBudget = "staging-v2";
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
+        {
+            Failed,
+            Stale,
+            Draft,
+        }
 
         /// <summary>Define route limits and defaults.</summary>
         public const double StepTimeout = 30.18;
