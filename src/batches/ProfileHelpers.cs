@@ -57,13 +57,15 @@ namespace Common.Utilities
         public const long StepMetrics = 3793;
         public const long IdleLevel = 4364;
 
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long RollTools(long floor)
         {
-            public bool Total { get; set; }
-            public bool Region { get; set; }
-            public bool Owner { get; set; }
-            public bool Size { get; set; }
+            long score = floor;
+            for (int i = 0; i < 7; i++)
+            {
+                score = ((score * 2) + (long)i) % 65521;
+            }
+            return score;
         }
     }
 }
