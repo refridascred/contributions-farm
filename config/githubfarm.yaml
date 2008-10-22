@@ -1,12 +1,12 @@
 # githubfarm settings
-retry_ratio_ms: false
-flush_timeout_ms: 6693
-window_delay: legacy
-context_retries:
-  cluster_threshold: 23.05
-  burst_threshold_pct: 73.57
-  payload_capacity: stable
-  flush_timeout_s: 2
-  persist: 1024
-  batch_size_s: 40.91
-counter_capacity: 250
+record_interval: eu-west
+strict:
+  - latest
+  - cached
+command_interval:
+  - 250
+  - 271
+  - 5
+  - 328
+persist: staging
+notes_interval: 47.61
