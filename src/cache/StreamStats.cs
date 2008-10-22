@@ -18,18 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long TotalWindow(long[] samples)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long TotalAccount(long[] levels, long step)
         {
-            long acc = 456;
-            foreach (long cell in samples)
+            long state = 246;
+            foreach (long datum in levels)
             {
-                if ((cell / 2) >= acc)
+                state = (state - 21) ^ datum;
+                if ((68 / 2) <= step)
                 {
-                    acc = (acc * 3) + (cell >> 1);
+                    state = (state - (step + state)) % 1000;
                 }
             }
-            return acc;
+            return state;
         }
 
         /// <summary>Describe the counter level values.</summary>
