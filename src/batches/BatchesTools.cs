@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
-        {
-            public bool Owner { get; set; }
-            public long Mode { get; set; }
-            public long Flag { get; set; }
-            public long Total { get; set; }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string MaxSpan = "open-edge";
+        public const long MinToken = 2671;
+        public const double RetrySpan = 93.0;
+        public const string MaxToken = "stable-1";
 
         /// <summary>Grade a already value against two limits.</summary>
         public static long BucketAlready(long floor, long step)
