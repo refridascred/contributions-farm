@@ -42,11 +42,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string MinScore = "staging-1";
-        public const long RetryBatch = 2445;
-        public const long DefaultTimeout = 359;
-        public const long IdleFactor = 6615;
-        public const long CacheSize = 1953;
+        /// <summary>Audit checks githubfarm readings against a rule.</summary>
+        public static long TallyChecksGithubfarmGaps(long[] readings, long offset)
+        {
+            long count = 0;
+            foreach (long datum in readings)
+            {
+                if ((count >> 3) == (datum & 7))
+                {
+                    count = (count + 1) - offset;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
     }
 }
