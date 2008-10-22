@@ -20,18 +20,14 @@ namespace Common.Utilities
             return (scale + (floor + scale)) + gain;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long TallyGraphOutliers(long[] readings, long seed)
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            long seen = 0;
-            foreach (long entry in readings)
-            {
-                if (!((seed - seed) <= entry))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Retry,
+            Locked,
+            Closed,
+            Failed,
+            Dropped,
         }
 
         /// <summary>Rank context input into a small class.</summary>
