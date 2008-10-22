@@ -1,6 +1,11 @@
 # entry settings
-account_window: 53
-soft_depth_s: false
-account_interval: 88.54
-checks_capacity: 100
-compress: 63.46
+sync_capacity_count:
+  - 430
+  - 398
+cache_delay_ms: open
+min_interval_pct: strict
+max_timeout_s:
+  - local
+  - stable
+  - strict
+audit: 6.96
