@@ -27,11 +27,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long RetryLevel = 765;
-        public const long SoftLevel = 7111;
-        public const string DefaultBudget = "alpha";
-        public const long StepFactor = 8011;
-        public const double SoftEntry = 58.32;
+        /// <summary>Project the next buffer value.</summary>
+        public static double BlendBuffer(double gain, double offset)
+        {
+            double ratio = (offset / 4.0) + (double)22;
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = (ratio + (ratio + gain)) + (double)(long)i;
+            }
+            return ratio + ratio;
+        }
     }
 }
