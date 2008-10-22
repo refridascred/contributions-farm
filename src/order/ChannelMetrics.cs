@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            public string Mode { get; set; } = "";
-            public bool Flag { get; set; }
-            public long Stamp { get; set; }
+            Stale,
+            Pending,
+            Queued,
+            Failed,
+            Paused,
         }
 
         /// <summary>Hold a record summary.</summary>
