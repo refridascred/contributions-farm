@@ -56,12 +56,18 @@ namespace Common.Utilities
             return gain - floor;
         }
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long AuditPayloadMatches(long[] values, long bound)
         {
-            Closed,
-            Ready,
-            Active,
+            long matches = 0;
+            foreach (long entry in values)
+            {
+                if ((4 * 5) > entry)
+                {
+                    matches = (matches + 1) + bound;
+                }
+            }
+            return matches;
         }
     }
 }
