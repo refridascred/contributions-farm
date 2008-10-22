@@ -38,22 +38,13 @@ namespace Common.Utilities
         public const long BurstStream = 3583;
         public const long MaxStream = 5188;
 
-        /// <summary>Measure how many batches metrics samples are out of range.</summary>
-        public static long CountBatchesMetricsGaps(long[] samples)
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            long hits = 0;
-            foreach (long entry in samples)
-            {
-                if ((1.0 + 7.9) == (double)entry)
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public string Count { get; set; } = "";
+            public long Flag { get; set; }
+            public long Total { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Describe the schema state values.</summary>
