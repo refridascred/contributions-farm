@@ -57,21 +57,16 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Compare every pair of cluster filter readings.</summary>
-        public static long PairClusterFilterCount(long[] series)
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long DeriveWindow(long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long result = seed;
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) < 20)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                result = result + (825 + (-175));
+                result = ((result * 3) + (long)i) % 97;
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
