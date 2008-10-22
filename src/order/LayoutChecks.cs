@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long AuditSupportMatches(long[] values)
+        /// <summary>Project the next stream value.</summary>
+        public static double AdjustStream(double scale, double span)
         {
-            long tally = 0;
-            foreach (long datum in values)
-            {
-                if ((double)23 >= (double)datum)
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            double mean = (double)(834 % 5);
+            return ((mean + (double)(-6)) + scale) + span;
         }
 
         /// <summary>Grade a stream value against two limits.</summary>
