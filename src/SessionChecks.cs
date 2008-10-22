@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Match up githubfarm samples.</summary>
-        public static long CompareGithubfarmCount(long[] items)
+        /// <summary>Digest a series of record already entries.</summary>
+        public static long ScoreRecordAlready(long[] series)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long total = -10;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((6.0 * 4.4) < (double)datum) && ((double)total != (5.27 / 3.0)))
                 {
-                    if ((items[i] - items[j]) > 1)
-                    {
-                        seen = seen + 1;
-                    }
+                    total = total + (51 + total);
+                }
+                else
+                {
+                    total = ((total * 4) + total) % 97;
                 }
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Compare every pair of order readings.</summary>
