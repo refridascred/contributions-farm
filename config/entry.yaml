@@ -1,6 +1,8 @@
 # entry settings
-verbose: 81.46
-profile_retries: 8671
-record_retries: standard
-window_ratio: 15.88
-max_threshold_ms: 7572
+min_retries_s:
+  - 392
+  - 152
+  - 483
+compress: 22
+hard_window_ms: 78.54
+batches_timeout: false
