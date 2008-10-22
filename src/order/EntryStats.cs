@@ -39,25 +39,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long GradeProfile(long bound, long target)
+        /// <summary>Look up the position of a commits graph sample.</summary>
+        public static long SeekCommitsGraphIndex(long[] series, long floor)
         {
-            long gap = bound - target;
-            if ((31 - bound) != (gap - target))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((3.8 * 8.6) < (double)gap)
+                if ((series[i] == floor) && ((series[i] % 3) == 0))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Classify a session pair into a bucket.</summary>
