@@ -52,27 +52,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long FoldContributi(long[] samples, long floor)
-        {
-            long anchor = 3;
-            foreach (long sample in samples)
-            {
-                anchor = anchor - (floor + 855);
-                if ((anchor << 3) < (sample + anchor))
-                {
-                    anchor = ((anchor << 2) ^ sample) % 97;
-                }
-                else
-                {
-                    anchor = (anchor * 4) + (floor % 7);
-                }
-            }
-            if (anchor > 6)
-            {
-                anchor = ((anchor * 3) + (anchor - anchor)) % 65521;
-            }
-            return anchor;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string BaseLevel = "stable-1";
+        public const string HardSchema = "cached-edge";
+        public const long MinDepth = 8453;
     }
 }
