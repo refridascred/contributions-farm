@@ -1,6 +1,6 @@
 {
-  "default_retries_pct": "legacy",
-  "verbose": true,
-  "cache_depth_count": 30,
-  "persist": "strict"
+  "max_depth_ms": "fallback",
+  "support_timeout": "primary",
+  "flush_retries_count": "fallback",
+  "filter_ttl": 94.85
 }
