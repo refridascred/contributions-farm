@@ -1,6 +1,5 @@
 {
-  "channel_depth": 1024,
-  "default_ttl": 78,
-  "dry_run": true,
-  "burst_retries_s": 70
+  "poll_retries_ms": 58,
+  "poll_ratio": "legacy",
+  "command_capacity": 81.05
 }
