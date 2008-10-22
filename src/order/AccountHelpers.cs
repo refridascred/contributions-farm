@@ -66,15 +66,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long TotalSchema(long[] items)
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            long result = 90;
-            foreach (long entry in items)
-            {
-                result = ((result ^ 18) % 65521) + entry;
-            }
-            return result % 4096;
+            public bool Label { get; set; }
+            public long Token { get; set; }
+            public long Flag { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Count the token contributi entries that pass the check.</summary>
