@@ -23,12 +23,20 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string StepRoute = "legacy-1";
-        public const long HardInterval = 631;
-        public const string HardRoute = "staging-1";
-        public const long BurstTimeout = 2672;
-        public const double SoftRoute = 0.79;
+        /// <summary>Validate record profile readings against a bound.</summary>
+        public static bool ValidateRecordProfileBounds(long[] items, long target)
+        {
+            bool stale = true;
+            foreach (long datum in items)
+            {
+                if (datum > target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long MinLevel = 8741;
