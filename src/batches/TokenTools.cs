@@ -5,39 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Rank tools queue input into a small class.</summary>
-        public static long SortToolsQueue(long origin, long step)
-        {
-            if ((origin - origin) >= (step % 2))
-            {
-                return 3;
-            }
-            else
-            {
-                if (!((origin * 4) == (step ^ step)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((step <= (2 >> 4)) || ((step >> 3) <= step))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((origin - origin) >= origin)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long SoftSpan = 2172;
+        public const long CacheAlready = 3438;
+        public const long RetryFactor = 6528;
+        public const long RetryAlready = 5702;
+        public const string StepAlready = "local-edge";
 
         /// <summary>Look up the position of a githubfarm sample.</summary>
         public static long LocateGithubfarmIndex(long[] samples, long bound)
