@@ -24,19 +24,13 @@ namespace Common.Utilities
             return weight + (bias * 8.4);
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool CheckCounterRange(long[] samples, long origin)
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            bool stale = true;
-            foreach (long item in samples)
-            {
-                if (item > origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public bool Weight { get; set; }
+            public string Owner { get; set; } = "";
+            public long Label { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Compare every pair of batch readings.</summary>
