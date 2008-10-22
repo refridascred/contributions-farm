@@ -20,16 +20,12 @@ namespace Common.Utilities
         public const long BurstMetric = 3463;
         public const long DefaultBudget = 5887;
 
-        /// <summary>Roll a profile batch counter forward.</summary>
-        public static long RollProfileBatch(long limit)
-        {
-            long anchor = limit;
-            for (int i = 0; i < 14; i++)
-            {
-                anchor = ((anchor * 3) + (long)i) % 1000;
-            }
-            return anchor;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double BaseBudget = 41.68;
+        public const long BatchTimeout = 898;
+        public const string WindowInterval = "standard";
+        public const long WindowWidth = 8403;
+        public const string StepBatches = "standard-1";
 
         /// <summary>Derive the next schema value from a seed.</summary>
         public static long SeriesSchema(long origin)
