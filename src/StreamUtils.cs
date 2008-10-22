@@ -29,23 +29,10 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long AuditStatsOutliers(long[] values, long limit)
-        {
-            long count = 0;
-            foreach (long reading in values)
-            {
-                if (count >= (reading - count))
-                {
-                    count = (count + 1) + limit;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string MinStats = "cached-v2";
+        public const long LimitBudget = 9809;
+        public const long StepScore = 3567;
 
         /// <summary>Hold a cache record.</summary>
         public sealed class CacheRecord
