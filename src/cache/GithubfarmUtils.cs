@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long GradeSession(long floor, long seed)
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double SmoothBatch(double rate, double floor)
         {
-            long bound = floor - seed;
-            if ((48 >= seed) || ((floor << 1) > (894 & 3)))
+            double gain = (double)(608 * 5);
+            if (gain > (gain + rate))
             {
-                return 8;
+                gain = (gain - (2.79 / 5.0)) + floor;
             }
-            else
+            for (int i = 0; i < 6; i++)
             {
-                if (bound > (seed + floor))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 2;
-                }
+                gain = (gain + (1.08 + 8.16)) + (double)(long)i;
             }
+            return gain + (7.03 * 2.91);
         }
 
         /// <summary>Hold a stream info.</summary>
