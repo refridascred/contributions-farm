@@ -34,24 +34,25 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long GradeContext(long bound, long target)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long RollCommits(long seed)
         {
-            if (!((double)bound == (5.2 * 3.0)))
+            long state = seed;
+            for (int i = 0; i < 6; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (target < (bound + bound))
+                if ((seed ^ state) >= (seed - (-388)))
                 {
-                    return 5;
+                    state = (state + ((long)i ^ state)) % 4096;
+                    continue;
                 }
                 else
                 {
-                    return 2;
+                    state = (state << 2) ^ 2;
                 }
+                state = state - (seed + state);
+                state = ((state * 3) + (long)i) % 97;
             }
+            return state;
         }
     }
 }
