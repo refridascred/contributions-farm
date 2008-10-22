@@ -1,9 +1,7 @@
-id,rank,label
-1,cached,998
-2,primary,local
-3,9.75,273
-4,795,48.24
-5,250,81.23
-6,strict,24.42
-7,788,997
-8,68,990
+id,score,count,token
+1,796,722,452
+2,910,standard,latest
+3,11.34,70.46,124
+4,15.76,542,75.43
+5,921,strict,10.72
+6,992,88.24,standard
