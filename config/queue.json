@@ -1,17 +1,12 @@
 {
-  "soft_ttl_s": 27,
-  "strict": [443, 239, 463],
-  "batch_window": {
-    "dry_run": ["strict", "latest"],
-    "verbose": ["green", "local", "primary", "stable"],
-    "warm_window_s": {
-      "graph_limit": 62.79,
-      "max_ratio_ms": 250,
-      "default_capacity_count": 6568
-    },
-    "metrics_window": true
+  "warm_limit_count": 60,
+  "retry_timeout_ms": {
+    "cache_ratio_s": [262, 200, 162, 442],
+    "audit": 14.43,
+    "soft_interval": "open",
+    "soft_capacity_ms": 895,
+    "entry_depth": "green"
   },
-  "buffer_capacity": "staging",
-  "retry_depth_ms": "strict",
-  "cache_ratio_count": true
+  "readonly": 64,
+  "metric_timeout": "strict"
 }
