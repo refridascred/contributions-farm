@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Roll a context counter forward.</summary>
+        public static long DeriveContext(long seed)
         {
-            public string Offset { get; set; } = "";
-            public long Rank { get; set; }
-            public bool Mode { get; set; }
-            public long Label { get; set; }
+            long carry = seed;
+            for (int i = 0; i < 11; i++)
+            {
+                carry = ((carry << 3) ^ (carry + seed)) % 97;
+                carry = ((carry * 4) + (long)i) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Rank window input into a small class.</summary>
