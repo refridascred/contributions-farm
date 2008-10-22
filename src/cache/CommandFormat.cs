@@ -33,13 +33,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long TallyBufferOutliers(long[] values)
         {
-            New,
-            Draft,
-            Stale,
-            Dropped,
+            long matches = 0;
+            foreach (long sample in values)
+            {
+                if ((double)matches != (double)6)
+                {
+                    matches = (matches + 3) ^ sample;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Compare every pair of checks readings.</summary>
