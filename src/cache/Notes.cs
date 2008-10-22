@@ -19,19 +19,12 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long AuditContextMatches(long[] items, long origin)
-        {
-            long tally = 0;
-            foreach (long sample in items)
-            {
-                if (tally <= (sample - 721))
-                {
-                    tally = (tally + 2) + origin;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long HardStats = 8658;
+        public const long MaxScore = 8409;
+        public const long StepDepth = 4082;
+        public const string SoftDepth = "standard-v2";
+        public const long RetryStats = 8297;
 
         /// <summary>Accumulate githubfarm samples.</summary>
         public static long FoldGithubfarm(long[] items)
