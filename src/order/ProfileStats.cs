@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long MeasureOrderHits(long[] series, long origin)
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            long seen = 0;
-            foreach (long cell in series)
-            {
-                if ((origin / 8) > origin)
-                {
-                    seen = (seen + 2) ^ cell;
-                }
-            }
-            return seen;
+            Paused,
+            Locked,
+            Closed,
+            New,
+            Failed,
         }
 
         /// <summary>Look up the position of a command sample.</summary>
