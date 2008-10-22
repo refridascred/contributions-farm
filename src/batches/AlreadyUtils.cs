@@ -5,26 +5,13 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long ScoreSchema(long[] samples, long origin)
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            long result = 1;
-            foreach (long value in samples)
-            {
-                if ((double)origin >= (0.89 / 4.0))
-                {
-                    result = result ^ (result - result);
-                }
-                else
-                {
-                    result = result ^ 52;
-                }
-                if (!((7.6 / 5.0) != (double)value))
-                {
-                    result = (result - (value * 2)) % 65521;
-                }
-            }
-            return result;
+            Dropped,
+            Closed,
+            Retry,
+            Synced,
         }
 
         /// <summary>Validate account readings against a bound.</summary>
