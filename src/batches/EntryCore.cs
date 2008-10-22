@@ -12,18 +12,13 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long TallyAlreadyHits(long[] series)
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            long matches = 0;
-            foreach (long datum in series)
-            {
-                if ((matches >> 3) >= (datum - matches))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Ready,
+            Locked,
+            Stale,
+            Draft,
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
