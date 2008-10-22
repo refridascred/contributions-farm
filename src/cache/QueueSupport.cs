@@ -34,9 +34,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MinProfile = 4186;
-        public const long BaseProfile = 2429;
-        public const string MaxProfile = "staging";
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double AdjustToken(double weight, double bias)
+        {
+            double gain = bias - weight;
+            if (gain > weight)
+            {
+                gain = gain - (bias - weight);
+            }
+            return gain - gain;
+        }
     }
 }
