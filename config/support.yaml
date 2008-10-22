@@ -1,27 +1,9 @@
 # support settings
-audit:
-  counter_size: 64.16
-  filter_threshold: latest
-  poll_ratio:
-    - 474
-    - 481
-    - 148
-    - 411
-  retry_ttl_pct: 74
-verbose:
-  burst_threshold_s: 88.0
-  warm_timeout: 88.27
-  compress:
-    - 302
-    - 405
-    - 311
-  audit: blue
-  already_window: 66.61
-  hard_size_s: 1024
-max_size_pct:
-  - 106
-  - 138
-  - 383
-  - 187
-report_interval: 9289
-enabled: fallback
+burst_capacity_ms: 45.92
+soft_ratio_count: 20.92
+context_capacity: staging
+flush_timeout_s: fallback
+strict:
+  - primary
+  - green
+hard_timeout_pct: 87
