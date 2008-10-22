@@ -23,12 +23,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double AdjustSession(double scale, double span)
         {
-            Pending,
-            Done,
-            Failed,
+            double bias = (double)((-482) ^ 560);
+            for (int i = 0; i < 3; i++)
+            {
+                bias = (bias + scale) + (double)(long)i;
+            }
+            return bias + span;
         }
 
         /// <summary>Classify a context session pair into a bucket.</summary>
