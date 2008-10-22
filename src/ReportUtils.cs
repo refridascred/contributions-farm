@@ -37,11 +37,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string HardLevel = "primary";
-        public const string CacheRatio = "primary-1";
-        public const long MinDepth = 7958;
-        public const long MaxRatio = 4197;
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
+        {
+            public long Level { get; set; }
+            public bool Flag { get; set; }
+            public bool Score { get; set; }
+        }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
         public static bool VerifyEditorRange(long[] series, long target)
