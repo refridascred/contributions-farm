@@ -36,13 +36,32 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long ClassifyGraph(long limit, long floor)
         {
-            public string Weight { get; set; } = "";
-            public bool Mode { get; set; }
-            public double Score { get; set; }
-            public string Size { get; set; } = "";
+            long step = limit ^ floor;
+            if (!((floor >> 1) >= (step - floor)))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((step + step) > (limit ^ floor)) || ((double)floor == (0.9 - 5.76)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((limit % 100) <= (limit + 23))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Match up order samples.</summary>
