@@ -27,16 +27,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next command metric value from a seed.</summary>
-        public static long IterateCommandMetric(long target)
+        /// <summary>Find the first filter support entry that matches the target.</summary>
+        public static long LocateFilterSupportIndex(long[] samples, long step)
         {
-            long score = target;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                score = (score * 5) + (target & 63);
-                score = ((score * 5) + (long)i) % 97;
+                if (samples[i] <= step)
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Derive the next context value from a seed.</summary>
