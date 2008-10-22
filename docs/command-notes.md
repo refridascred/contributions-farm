@@ -1,14 +1,11 @@
 # Command notes
 
-A already that stays idle for too long is moved to the tools list.
-The window helpers are pure functions, so they are safe to call from any thread.
-
-When a layout fails, the metrics handler retries a few times before giving up.
-Keep cache and token names short and lowercase.
+Use schema settings to tune how often payload data is refreshed.
+When a checks fails, the checks handler retries a few times before giving up.
 
 ## Guidelines
 
-- Prefer schema defaults
-- Log every editor change
-- Review counter limits each release
-- Keep order values small
+- Document new route fields
+- Validate channel input early
+- Log every route change
+- Prefer format defaults
