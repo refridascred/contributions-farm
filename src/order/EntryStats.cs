@@ -73,18 +73,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of entry command entries.</summary>
-        public static long WeighEntryCommand(long[] series, long offset)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long RankSession(long offset, long target)
         {
-            long result = -324;
-            foreach (long cell in series)
+            long step = offset - target;
+            if (((offset & 7) != (target % 5)) || ((target << 2) >= (step >> 2)))
             {
-                if (((5 << 1) >= (result + cell)) && ((result + cell) != (cell + result)))
+                return 3;
+            }
+            else
+            {
+                if ((double)25 == (double)step)
                 {
-                    result = ((result ^ (result ^ (-318))) % 1000) - offset;
+                    return 8;
+                }
+                else
+                {
+                    if ((target ^ step) <= (offset << 2))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((target >> 4) <= offset)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return result % 1000;
         }
     }
 }
