@@ -118,19 +118,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool GuardContributiLimits(long[] values, long origin)
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            bool ok = true;
-            foreach (long entry in values)
-            {
-                if (entry >= origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Synced,
+            Failed,
+            Retry,
+            Pending,
         }
     }
 }
