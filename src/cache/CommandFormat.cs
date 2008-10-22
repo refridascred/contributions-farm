@@ -19,10 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double DefaultStats = 75.25;
-        public const double BatchStats = 13.21;
-        public const double SoftCount = 27.04;
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
+        {
+            public bool Size { get; set; }
+            public long Rank { get; set; }
+            public string Region { get; set; } = "";
+        }
 
         /// <summary>Roll a profile batch counter forward.</summary>
         public static long RollProfileBatch(long limit)
