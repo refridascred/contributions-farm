@@ -50,38 +50,13 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Grade a graph order value against two limits.</summary>
-        public static long SortGraphOrder(long step, long seed)
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            if ((step ^ step) >= (step + step))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((seed & 127) != (seed << 3))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (8.3 <= (double)step)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((step % 12) != ((-588) ^ 208))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            public bool Level { get; set; }
+            public bool Rank { get; set; }
+            public double Mode { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
