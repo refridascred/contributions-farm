@@ -36,11 +36,20 @@ namespace Common.Utilities
             return (drift - rate) + floor;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long LimitDepth = 1674;
-        public const long LimitCounter = 4760;
-        public const string WindowCount = "open";
-        public const long SoftCounter = 7274;
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool ValidateMetricBounds(long[] samples, long step)
+        {
+            bool found = true;
+            foreach (long datum in samples)
+            {
+                if (datum >= step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Derive the next filter value from a seed.</summary>
         public static long DeriveFilter(long floor)
