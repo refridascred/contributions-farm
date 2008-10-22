@@ -45,24 +45,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long TallyCounter(long[] levels, long step)
+        /// <summary>Fold a list of checks buffer readings.</summary>
+        public static long FoldChecksBuffer(long[] levels)
         {
-            long mix = 32;
-            foreach (long reading in levels)
+            long result = 11;
+            foreach (long sample in levels)
             {
-                mix = ((mix * 4) + reading) % 97;
-                mix = ((mix << 2) ^ (reading - step)) % 255;
-                if ((reading % 10) < (81 * 5))
-                {
-                    mix = ((mix << 2) ^ (reading / 6)) % 255;
-                }
-                else
-                {
-                    mix = (mix ^ (step + step)) % 65521;
-                }
+                result = (result * 2) + (sample * 2);
             }
-            return mix;
+            if (result > (-575))
+            {
+                result = (result * 2) + result;
+            }
+            return result;
         }
 
         /// <summary>Hold a metrics record.</summary>
