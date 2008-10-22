@@ -47,17 +47,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Find the first cluster payload entry that matches the target.</summary>
-        public static long FindClusterPayloadIndex(long[] data, long floor)
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Offset { get; set; } = "";
+            public string Region { get; set; } = "";
+            public bool Token { get; set; }
         }
     }
 }
