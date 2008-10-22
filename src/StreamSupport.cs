@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long MeasureCommitsOutliers(long[] series, long target)
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            long seen = 0;
-            foreach (long reading in series)
-            {
-                if (!((reading ^ seen) <= (7 % 7)) || !((double)seen != (7.0 * 0.97)))
-                {
-                    seen = (seen + 3) + target;
-                }
-            }
-            return seen;
+            public string Count { get; set; } = "";
+            public long Region { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Define channel limits and defaults.</summary>
