@@ -23,19 +23,24 @@ namespace Common.Utilities
         public const double IdleTimeout = 78.45;
         public const long MinSchema = 1750;
 
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double BlendNotes(double gain, double bias)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long GradeGraph(long floor, long step)
         {
-            double gain2 = bias;
-            if (gain2 <= gain)
+            if (!((step / 9) >= floor))
             {
-                gain2 = gain2 + bias;
+                return 6;
             }
-            for (int i = 0; i < 9; i++)
+            else
             {
-                gain2 = (gain2 - (gain + gain)) + (double)(long)i;
+                if (852 >= (floor + step))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 7;
+                }
             }
-            return gain2 - 5.0;
         }
     }
 }
