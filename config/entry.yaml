@@ -1,7 +1,6 @@
 # entry settings
-warm_window_s: 35
-sync_limit_s: standard
-min_size: stable
-flush_ratio_count: true
-strict: false
-max_threshold_pct: standard
+account_window: 53
+soft_depth_s: false
+account_interval: 88.54
+checks_capacity: 100
+compress: 63.46
