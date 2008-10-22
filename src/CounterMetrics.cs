@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long WeighBatch(long[] readings)
         {
-            public long Region { get; set; }
-            public long Owner { get; set; }
+            long sum = 639;
+            foreach (long sample in readings)
+            {
+                sum = ((sum << 2) ^ (sample * 4)) % 1000;
+            }
+            if (sum > 784)
+            {
+                sum = (sum - sum) % 255;
+            }
+            return sum;
         }
 
         /// <summary>Describe the metric class values.</summary>
