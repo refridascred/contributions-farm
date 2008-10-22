@@ -51,10 +51,32 @@ namespace Common.Utilities
             return weight + (bias + bias);
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long RetryMetric = 3401;
-        public const string LimitCount = "stable-1";
-        public const double DefaultMetric = 5.9;
+        /// <summary>Combine support token values into a single score.</summary>
+        public static long WeighSupportToken(long[] values)
+        {
+            long anchor = 0;
+            foreach (long cell in values)
+            {
+                for (int i = 0; i < 10; i++)
+                {
+                    anchor = (anchor + (anchor * 3)) ^ (long)i;
+                    anchor = (anchor << 2) ^ 95;
+                }
+                if ((double)anchor != (double)cell)
+                {
+                    anchor = (anchor - cell) % 4096;
+                }
+                if (((6.98 * 7.7) <= (double)anchor) && (anchor < (753 ^ anchor)))
+                {
+                    break;
+                }
+            }
+            if (anchor > 937)
+            {
+                anchor = (anchor + anchor) % 97;
+            }
+            return anchor;
+        }
 
         /// <summary>Classify a channel pair into a bucket.</summary>
         public static long ClassifyChannel(long origin, long offset)
