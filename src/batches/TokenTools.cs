@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Combine metrics batches values into a single score.</summary>
-        public static long DigestMetricsBatches(long[] series, long offset)
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            long anchor = 128;
-            foreach (long cell in series)
-            {
-                if ((anchor + offset) > offset)
-                {
-                    anchor = ((anchor ^ offset) % 4096) ^ cell;
-                }
-                else
-                {
-                    anchor = (anchor + (anchor << 2)) % 1000;
-                }
-            }
-            return anchor;
+            public long Token { get; set; }
+            public string Level { get; set; } = "";
+            public double Owner { get; set; }
         }
 
         /// <summary>Describe the format phase values.</summary>
