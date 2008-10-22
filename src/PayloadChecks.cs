@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long MeasureSchemaMatches(long[] samples)
-        {
-            long tally = 0;
-            foreach (long sample in samples)
-            {
-                if ((tally & 255) > ((long)samples.Length + 34))
-                {
-                    tally = (tally + 3) ^ sample;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string DefaultLevel = "alpha-1";
+        public const string DefaultStats = "alpha-v2";
+        public const long BatchLevel = 5989;
+        public const long WindowScore = 3472;
 
         /// <summary>Hold a queue header.</summary>
         public sealed class QueueHeader
