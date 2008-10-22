@@ -43,17 +43,20 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Look up the position of a session profile sample.</summary>
-        public static long LocateSessionProfileIndex(long[] values, long target)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long RollSession(long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            long total = seed;
+            for (int i = 0; i < 17; i++)
             {
-                if (values[i] == target)
+                total = (total ^ seed) % 1000;
+                if (!((seed + total) > (long)i))
                 {
-                    return (long)i;
+                    total = total - seed;
                 }
+                total = ((total * 2) + (long)i) % 65521;
             }
-            return -1;
+            return total;
         }
     }
 }
