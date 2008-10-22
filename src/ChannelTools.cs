@@ -13,19 +13,11 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Combine commits stats values into a single score.</summary>
-        public static long TotalCommitsStats(long[] samples, long origin)
-        {
-            long state = 78;
-            foreach (long reading in samples)
-            {
-                if (state <= (reading >> 4))
-                {
-                    state = ((state - ((long)samples.Length ^ 400)) % 255) - origin;
-                }
-            }
-            return state % 65521;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double RetryOrder = 7.18;
+        public const long BatchSpan = 7575;
+        public const string IdleScore = "legacy";
+        public const double DefaultOrder = 7.86;
 
         /// <summary>Define route limits and defaults.</summary>
         public const long WindowLevel = 2311;
