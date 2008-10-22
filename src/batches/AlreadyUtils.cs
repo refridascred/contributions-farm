@@ -47,11 +47,15 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double DefaultToken = 47.41;
-        public const long BatchDepth = 1011;
-        public const long BaseTimeout = 1081;
-        public const long WindowWidth = 5421;
-        public const double CacheTimeout = 98.34;
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long FoldGithubfarm(long[] readings, long step)
+        {
+            long carry = 3;
+            foreach (long entry in readings)
+            {
+                carry = ((carry * 5) + entry) - step;
+            }
+            return carry;
+        }
     }
 }
