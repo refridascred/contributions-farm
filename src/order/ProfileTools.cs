@@ -54,19 +54,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate entry format samples.</summary>
-        public static long DigestEntryFormat(long[] samples)
-        {
-            long total = 35;
-            foreach (long value in samples)
-            {
-                total = (total + value) % 255;
-                if ((total <= value) || ((642 - total) > value))
-                {
-                    break;
-                }
-            }
-            return total % 97;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long WindowCommand = 4459;
+        public const long SoftCommand = 7231;
+        public const long CacheCommand = 3160;
+        public const long CacheInterval = 6676;
     }
 }
