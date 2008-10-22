@@ -22,23 +22,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long TallyBatchHits(long[] samples)
-        {
-            long seen = 0;
-            foreach (long cell in samples)
-            {
-                if ((double)seen != (5.6 - 7.46))
-                {
-                    seen = (seen + 2) + cell;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long DefaultProfile = 3027;
+        public const long LimitFactor = 1610;
+        public const long MinProfile = 1639;
+        public const double BatchProfile = 94.54;
 
         /// <summary>Describe the stats phase values.</summary>
         public enum StatsPhase
