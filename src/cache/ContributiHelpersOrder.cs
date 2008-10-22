@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Find the first batches report entry that matches the target.</summary>
-        public static long SeekBatchesReportIndex(long[] items, long floor)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long MeasureGraphGaps(long[] items, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                if (items[i] <= floor)
+                if ((double)sample > (4.0 - 8.7))
                 {
-                    return (long)i;
+                    seen = (seen + 3) + limit;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Describe the queue level values.</summary>
