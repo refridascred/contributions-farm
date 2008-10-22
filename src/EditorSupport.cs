@@ -10,22 +10,14 @@ namespace Common.Utilities
         public const string RetryBudget = "stable";
         public const long SoftRatio = 9299;
 
-        /// <summary>Count the schema notes entries that pass the check.</summary>
-        public static long TallySchemaNotesMatches(long[] readings, long target)
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            long hits = 0;
-            foreach (long cell in readings)
-            {
-                if ((hits + cell) <= hits)
-                {
-                    hits = (hits + 3) + target;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Locked,
+            Stale,
+            New,
+            Queued,
+            Closed,
         }
 
         /// <summary>Define checks limits and defaults.</summary>
