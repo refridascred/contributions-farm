@@ -1,9 +1,27 @@
 # githubfarm settings
-dry_run:
-  - 12
-  - 21
-batch_size_pct:
-  - 113
-  - 193
-strict: 7420
-commits_interval: true
+batch_timeout_pct: true
+warm_window: standard
+min_depth_ms:
+  dry_run:
+    base_threshold_pct:
+      - 403
+      - 71
+    max_retries_pct:
+      - 429
+      - 205
+    token_delay: cached
+    default_ratio_pct: primary
+  base_interval:
+    retry_ratio_count: 30
+    entry_timeout: 40.22
+    verbose:
+      - 298
+      - 124
+    audit: 54
+    idle_interval_pct: latest
+    metrics_ratio:
+      - standard
+      - open
+      - stable
+      - blue
+  audit: 7844
