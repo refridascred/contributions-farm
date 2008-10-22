@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const double MinFactor = 56.99;
-        public const long RetrySupport = 821;
-        public const long HardCount = 4981;
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
+        {
+            public string Size { get; set; } = "";
+            public long Label { get; set; }
+            public long Ratio { get; set; }
+        }
 
         /// <summary>Combine commits stats values into a single score.</summary>
         public static long TotalCommitsStats(long[] samples, long origin)
