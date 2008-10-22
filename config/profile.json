@@ -1,7 +1,14 @@
 {
-  "githubfarm_threshold": 2818,
-  "min_ttl": true,
-  "token_delay": "edge",
-  "githubfarm_window": ["legacy", "fallback", "legacy"],
-  "max_delay": 12
+  "already_ratio": "fallback",
+  "poll_ratio_s": 1226,
+  "soft_window_pct": 54.44,
+  "report_interval": {
+    "compress": "open",
+    "strict": ["edge", "legacy", "fallback", "strict"],
+    "burst_depth": false,
+    "batch_ttl": 4766,
+    "verbose": 91.03
+  },
+  "base_ratio": 98,
+  "persist": 7920
 }
