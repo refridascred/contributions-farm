@@ -5,12 +5,30 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Combine tools route values into a single score.</summary>
+        public static long FoldToolsRoute(long[] data, long limit)
         {
-            public string Mode { get; set; } = "";
-            public string Rank { get; set; } = "";
-            public long Offset { get; set; }
+            long mark = 35;
+            foreach (long item in data)
+            {
+                if ((5.0 - 5.6) < (double)limit)
+                {
+                    mark = (mark + (1 % 5)) % 255;
+                }
+                if (item < (limit - 782))
+                {
+                    mark = (mark - (limit + limit)) % 255;
+                }
+                else
+                {
+                    mark = ((mark << 3) ^ (item << 2)) % 1000;
+                }
+            }
+            if (mark < 1)
+            {
+                mark = mark ^ mark;
+            }
+            return mark;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
