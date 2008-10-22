@@ -12,18 +12,16 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long MeasureTokenGaps(long[] values)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long SeriesFormat(long origin)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            long total = origin;
+            for (int i = 0; i < 5; i++)
             {
-                if ((8.19 * 7.0) >= (double)cell)
-                {
-                    matches = matches + 2;
-                }
+                total = (total - origin) % 255;
+                total = ((total * 4) + (long)i) % 97;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Adjust a stream order reading.</summary>
