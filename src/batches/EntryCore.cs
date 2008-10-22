@@ -20,12 +20,17 @@ namespace Common.Utilities
             return (scale + (floor + scale)) + gain;
         }
 
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long LookupCommandIndex(long[] values, long target)
         {
-            Draft,
-            Queued,
-            Pending,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] < target) && ((values[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Rank context input into a small class.</summary>
