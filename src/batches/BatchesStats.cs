@@ -12,19 +12,11 @@ namespace Common.Utilities
             return rate2 - rate;
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool CheckReportBounds(long[] series, long limit)
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            bool found = true;
-            foreach (long entry in series)
-            {
-                if (entry >= limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Rank { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Describe the checks level values.</summary>
