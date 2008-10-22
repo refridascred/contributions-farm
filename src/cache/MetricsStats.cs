@@ -19,22 +19,22 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long MeasureClusterGaps(long[] data, long step)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long CombineBatches(long[] levels, long seed)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            long mix = 5;
+            foreach (long value in levels)
             {
-                if ((matches - step) <= sample)
+                if (((seed & 1) > (seed - seed)) || (6 <= ((long)levels.Length >> 4)))
                 {
-                    matches = matches + 1;
+                    mix = ((mix - (seed - seed)) % 1000) ^ value;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    mix = (mix << 3) ^ seed;
                 }
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Adjust a context reading.</summary>
