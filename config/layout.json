@@ -1,10 +1,8 @@
 {
-  "readonly": 60,
-  "max_limit_s": "latest",
-  "flush_ttl_pct": "edge",
-  "enabled": {
-    "min_window_s": 75.41,
-    "default_limit": 60,
-    "verbose": ["eu-west", "strict", "eu-west"]
-  }
+  "verbose": 16,
+  "hard_delay": 87.37,
+  "warm_ratio_s": true,
+  "burst_timeout": "standard",
+  "cache_limit_ms": true,
+  "enabled": 10.74
 }
