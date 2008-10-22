@@ -33,22 +33,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long TallyBufferOutliers(long[] values)
+        /// <summary>Validate support buffer readings against a bound.</summary>
+        public static bool GuardSupportBufferBounds(long[] data, long bound)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            bool ok = true;
+            foreach (long item in data)
             {
-                if ((double)matches != (double)6)
+                if (item >= bound)
                 {
-                    matches = (matches + 3) ^ sample;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
 
         /// <summary>Compare every pair of checks readings.</summary>
