@@ -39,12 +39,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long DefaultMetric = 7536;
-        public const string HardMetric = "strict-1";
-        public const long HardSpan = 2112;
-        public const long RetrySize = 1556;
-        public const double BaseLevel = 44.57;
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long TallyGithubfarm(long[] readings)
+        {
+            long state = 7;
+            foreach (long cell in readings)
+            {
+                if ((5.08 * 5.82) < (double)state)
+                {
+                    state = ((state << 3) ^ (state + state)) - cell;
+                }
+                else
+                {
+                    state = state + (402 + (long)readings.Length);
+                }
+            }
+            if (state < 9)
+            {
+                state = ((state * 2) + (state << 2)) % 65521;
+            }
+            return state;
+        }
 
         /// <summary>Iterate the stats series from a seed.</summary>
         public static long DeriveStats(long bound)
