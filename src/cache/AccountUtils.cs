@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
-        {
-            Stale,
-            Paused,
-            Ready,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BurstAlready = 6400;
+        public const long DefaultBudget = 1974;
+        public const long CacheBudget = 99;
+        public const long CacheSpan = 5467;
 
         /// <summary>Grade a already value against two limits.</summary>
         public static long ClassifyAlready(long origin, long step)
