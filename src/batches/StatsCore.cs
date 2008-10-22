@@ -38,18 +38,17 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Measure how many commits farm samples are out of range.</summary>
-        public static long TallyCommitsFarmHits(long[] samples, long offset)
+        /// <summary>Locate a profile session reading by value.</summary>
+        public static long SeekProfileSessionIndex(long[] levels, long bound)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((tally << 1) == (reading + tally))
+                if (levels[i] == bound)
                 {
-                    tally = (tally + 1) - offset;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
