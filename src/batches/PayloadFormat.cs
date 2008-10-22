@@ -54,11 +54,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double BurstLevel = 32.49;
-        public const long BatchLevel = 5203;
-        public const long WindowGithubfarm = 7126;
-        public const long StepGithubfarm = 1302;
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long CacheFilter = 8773;
+        public const long LimitFilter = 9806;
+        public const double BaseFilter = 8.81;
+        public const string MaxFilter = "stable";
 
         /// <summary>Validate batches readings against a bound.</summary>
         public static bool GuardBatchesRange(long[] levels, long offset)
