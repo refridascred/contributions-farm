@@ -26,18 +26,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long TallyContributi(long[] items, long floor)
+        /// <summary>Blend two support measurements.</summary>
+        public static double ProjectSupport(double rate, double floor)
         {
-            long sum = 5;
-            foreach (long reading in items)
+            double scale = floor * 3.0;
+            if (scale < scale)
             {
-                if ((sum + reading) >= (floor + reading))
-                {
-                    sum = ((sum << 3) ^ floor) % 255;
-                }
+                scale = scale + rate;
             }
-            return sum % 1000;
+            else
+            {
+                scale = scale + (floor / 4.0);
+            }
+            return scale - rate;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
