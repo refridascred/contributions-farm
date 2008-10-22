@@ -24,18 +24,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long MeasureMetricsMatches(long[] data)
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long LookupFarmIndex(long[] readings, long bound)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)28 == (double)cell)
+                if (readings[i] >= bound)
                 {
-                    matches = matches + 2;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Digest a series of metric notes entries.</summary>
