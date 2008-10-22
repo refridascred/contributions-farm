@@ -27,13 +27,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
+            Idle,
             Stale,
-            Dropped,
-            Paused,
-            Locked,
+            Pending,
+            Failed,
+            Active,
         }
 
         /// <summary>Describe the payload state values.</summary>
