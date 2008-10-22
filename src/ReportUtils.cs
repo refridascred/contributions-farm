@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            public long Weight { get; set; }
-            public bool Owner { get; set; }
+            public double Count { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
