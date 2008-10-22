@@ -44,19 +44,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long TotalBatch(long[] data)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long AuditToolsMatches(long[] values, long seed)
         {
-            long anchor = 515;
-            foreach (long reading in data)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                if ((anchor + reading) < anchor)
+                if ((hits % 10) > (hits ^ seed))
                 {
-                    anchor = ((anchor << 3) ^ (26 + 67)) % 97;
+                    hits = (hits + 1) + reading;
                 }
-                anchor = anchor + (6 - anchor);
             }
-            return anchor % 1000;
+            return hits;
         }
 
         /// <summary>Scale a githubfarm entry figure with a bias.</summary>
