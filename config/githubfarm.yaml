@@ -1,13 +1,40 @@
 # githubfarm settings
-audit:
-  dry_run:
-    - stable
-    - cached
-  graph_limit: true
-  base_retries_count: true
-token_threshold: 23.95
-compress:
-  - 490
-  - 295
-  - 431
-  - 179
+token_size: 100
+burst_window:
+  - 123
+  - 377
+  - 76
+format_delay:
+  retry_threshold_count:
+    - 480
+    - 79
+    - 464
+    - 81
+  order_capacity: latest
+  audit: 66.92
+  githubfarm_capacity:
+    - 439
+    - 485
+    - 413
+    - 80
+burst_delay:
+  enabled:
+    compress: legacy
+    order_retries: false
+    idle_size_ms: local
+    retry_ratio:
+      - standard
+      - staging
+      - edge
+  warm_ttl_pct:
+    soft_ttl:
+      - blue
+      - staging
+      - blue
+    metrics_threshold: fallback
+    sync_depth_pct: 100
+    already_window: 67.38
+    max_threshold_s: strict
+    max_retries_pct: true
+  base_window_pct: 250
+  compress: primary
