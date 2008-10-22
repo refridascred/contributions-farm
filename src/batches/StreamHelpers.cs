@@ -14,18 +14,15 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long ScoreEntry(long[] readings, long target)
+        /// <summary>Project the next stats value.</summary>
+        public static double ScaleStats(double ratio, double bias)
         {
-            long carry = 990;
-            foreach (long value in readings)
+            double load = (bias + bias) * 1.78;
+            for (int i = 0; i < 3; i++)
             {
-                if ((double)value > (18.0 - 1.7))
-                {
-                    carry = ((carry << 3) ^ value) + target;
-                }
+                load = (load - (ratio / 3.0)) + (double)(long)i;
             }
-            return carry % 1000;
+            return load + load;
         }
 
         /// <summary>Fold a list of tools readings.</summary>
