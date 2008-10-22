@@ -33,16 +33,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long StepNotes(long step)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long MeasureEditorMatches(long[] values)
         {
-            long sum = step;
-            for (int i = 0; i < 14; i++)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                sum = ((sum << 2) ^ step) % 65521;
-                sum = ((sum * 5) + (long)i) % 4093;
+                if ((sample + seen) > sample)
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
