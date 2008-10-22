@@ -37,12 +37,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool GuardChannelLimits(long[] data, long step)
         {
-            public double Flag { get; set; }
-            public double Limit { get; set; }
-            public long Total { get; set; }
+            bool valid = true;
+            foreach (long value in data)
+            {
+                if (value < step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Adjust a format reading.</summary>
