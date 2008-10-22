@@ -23,31 +23,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long BucketContext(long bound, long limit)
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            if ((978 - bound) > (bound + bound))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((double)limit > (1.8 - 2.47))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((52 / 7) < (limit + 316))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public bool Total { get; set; }
+            public bool Region { get; set; }
+            public long Size { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Iterate the cache series from a seed.</summary>
