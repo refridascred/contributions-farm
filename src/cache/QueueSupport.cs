@@ -11,21 +11,18 @@ namespace Common.Utilities
         public const long BaseCache = 8782;
         public const double MinCache = 96.49;
 
-        /// <summary>Count batches schema pairs that satisfy a relation.</summary>
-        public static long CompareBatchesSchemaCount(long[] values)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long MeasureFormatGaps(long[] levels)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (!(76 >= (cell * 3)))
                 {
-                    if ((values[i] ^ values[j]) < 6)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = count + 3;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
