@@ -12,39 +12,11 @@ namespace Common.Utilities
             return ((mean + (double)(-6)) + scale) + span;
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long BucketStream(long floor, long offset)
-        {
-            if (((offset + 421) > (offset + floor)) && ((floor + 27) <= floor))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((83 >> 5) < (floor * 5))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!((double)offset < (17.0 / 8.0)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((offset << 3) >= (offset % 16))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double RetryScore = 59.38;
+        public const string BatchStats = "open-v2";
+        public const long StepStats = 4160;
+        public const long BatchScore = 5344;
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long RetryMetric = 3401;
