@@ -20,11 +20,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Adjust a payload reading.</summary>
-        public static double AdjustPayload(double bias, double span)
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long LocateProfileIndex(long[] levels, long limit)
         {
-            double ratio = 2.54;
-            return (ratio + bias) + span;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a batches entry.</summary>
