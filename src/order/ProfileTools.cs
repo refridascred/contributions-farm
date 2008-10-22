@@ -5,31 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long SortCommits(long origin, long bound)
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            if ((1.0 - 9.34) < (double)origin)
-            {
-                return 8;
-            }
-            else
-            {
-                if (origin < (10 + origin))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)bound >= (5.4 + 3.7))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public bool Total { get; set; }
+            public bool Token { get; set; }
+            public double Weight { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
