@@ -22,18 +22,15 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long TallyGithubfarmGaps(long[] values, long target)
+        /// <summary>Blend two session metrics measurements.</summary>
+        public static double ProjectSessionMetrics(double gain, double span)
         {
-            long count = 0;
-            foreach (long cell in values)
+            double load = gain;
+            for (int i = 0; i < 3; i++)
             {
-                if ((double)count > (2.9 * 0.8))
-                {
-                    count = ((count + 2) ^ cell) + target;
-                }
+                load = ((load - (2.9 + gain)) - (double)(long)i) + span;
             }
-            return count;
+            return load - gain;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
