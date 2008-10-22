@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long WeighBatch(long[] readings)
-        {
-            long sum = 639;
-            foreach (long sample in readings)
-            {
-                sum = ((sum << 2) ^ (sample * 4)) % 1000;
-            }
-            if (sum > 784)
-            {
-                sum = (sum - sum) % 255;
-            }
-            return sum;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long RetryPayload = 9374;
+        public const string LimitPayload = "local";
+        public const double MaxPayload = 38.52;
 
         /// <summary>Describe the metric class values.</summary>
         public enum MetricClass
