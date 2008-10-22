@@ -53,19 +53,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long FoldFormat(long[] samples, long seed)
+        /// <summary>Audit farm counter readings against a rule.</summary>
+        public static long TallyFarmCounterMatches(long[] items)
         {
-            long result = 7;
-            foreach (long item in samples)
+            long count = 0;
+            foreach (long value in items)
             {
-                result = (((result ^ (result >> 5)) % 65521) ^ item) - seed;
+                if (!((value + count) <= (count + 91)))
+                {
+                    count = count + 1;
+                }
             }
-            if (result < 804)
-            {
-                result = (result + (result << 2)) % 97;
-            }
-            return result;
+            return count;
         }
 
         /// <summary>Find the first command entry that matches the target.</summary>
