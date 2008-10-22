@@ -19,21 +19,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count already profile pairs that satisfy a relation.</summary>
-        public static long PairAlreadyProfileCount(long[] data)
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long FindEditorIndex(long[] series, long target)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((series[i] <= target) && ((series[i] % 3) != 0))
                 {
-                    if ((data[i] - data[j]) == 17)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
