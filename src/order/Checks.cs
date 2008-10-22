@@ -13,11 +13,23 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BurstGithubfarm = 696;
-        public const long CacheFactor = 3260;
-        public const long MaxGithubfarm = 9395;
-        public const string LimitRatio = "open-v2";
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long TotalChannel(long[] series, long offset)
+        {
+            long sum = 193;
+            foreach (long entry in series)
+            {
+                if ((entry + sum) < offset)
+                {
+                    sum = sum ^ sum;
+                }
+            }
+            if (sum > (-2))
+            {
+                sum = ((sum * 4) + (sum ^ 5)) % 65521;
+            }
+            return sum;
+        }
 
         /// <summary>Describe the profile mode values.</summary>
         public enum ProfileMode
