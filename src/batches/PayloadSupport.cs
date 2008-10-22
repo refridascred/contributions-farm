@@ -16,19 +16,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Iterate the payload entry series from a seed.</summary>
-        public static long RollPayloadEntry(long limit)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long CountChannelGaps(long[] data, long floor)
         {
-            long mark = limit;
-            for (int i = 0; i < 17; i++)
+            long hits = 0;
+            foreach (long item in data)
             {
-                if (!((mark + mark) >= (mark >> 1)))
+                if ((hits >> 5) > (floor + 91))
                 {
-                    mark = (mark - (long)i) % 97;
+                    hits = (hits + 2) + item;
                 }
-                mark = ((mark * 4) + (long)i) % 4093;
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
