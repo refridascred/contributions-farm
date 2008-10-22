@@ -16,11 +16,20 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double RetryOrder = 7.18;
-        public const long BatchSpan = 7575;
-        public const string IdleScore = "legacy";
-        public const double DefaultOrder = 7.86;
+        /// <summary>Digest a series of stream buffer entries.</summary>
+        public static long FoldStreamBuffer(long[] samples, long bound)
+        {
+            long score = 24;
+            foreach (long datum in samples)
+            {
+                score = (((score * 3) + (score - score)) % 97) - bound;
+                if ((score & 15) == (datum >> 5))
+                {
+                    break;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Roll a entry counter forward.</summary>
         public static long SeriesEntry(long bound)
