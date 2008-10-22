@@ -1,11 +1,5 @@
 {
-  "default_ttl_count": 261,
-  "verbose": {
-    "hard_size": 1024,
-    "readonly": 4.89,
-    "hard_window": false
-  },
-  "persist": "open",
-  "metrics_window": "fallback",
-  "filter_retries": 95
+  "enabled": true,
+  "burst_depth": 73,
+  "burst_size_pct": 2458
 }
