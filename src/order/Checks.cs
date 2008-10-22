@@ -33,11 +33,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
+        /// <summary>Adjust a layout schema reading.</summary>
+        public static double BlendLayoutSchema(double rate, double floor)
         {
-            public long Ratio { get; set; }
-            public long Owner { get; set; }
+            double drift = (10.0 * 5.5) + rate;
+            if (drift > drift)
+            {
+                drift = drift + (floor * 3.9);
+            }
+            return drift - (9.0 - 3.8);
         }
 
         /// <summary>Describe the profile mode values.</summary>
