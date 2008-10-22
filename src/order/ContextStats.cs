@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long DeriveTools(long limit)
+        /// <summary>Accumulate commits cache samples.</summary>
+        public static long ScoreCommitsCache(long[] readings)
         {
-            long mark = limit;
-            for (int i = 0; i < 7; i++)
+            long acc = 934;
+            foreach (long entry in readings)
             {
-                mark = ((mark * 3) + (long)i) % 1000;
+                if ((6.0 + 9.0) >= (double)entry)
+                {
+                    acc = (acc + entry) % 1000;
+                }
             }
-            return mark;
+            if (acc > 2)
+            {
+                acc = (acc ^ (0 & 255)) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
