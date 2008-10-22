@@ -70,15 +70,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long MeasureSessionOutliers(long[] data, long origin)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long CountCommitsHits(long[] samples)
         {
             long matches = 0;
-            foreach (long sample in data)
+            foreach (long sample in samples)
             {
-                if (42 <= (matches + matches))
+                if (sample < (6 & 255))
                 {
-                    matches = ((matches + 1) + sample) - origin;
+                    matches = matches + 1;
                 }
             }
             return matches;
