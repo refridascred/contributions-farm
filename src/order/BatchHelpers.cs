@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Adjust a commits reading.</summary>
-        public static double ProjectCommits(double gain, double span)
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long SeekLayoutIndex(long[] levels, long target)
         {
-            double rate = 5.09;
-            if (rate <= (double)4)
+            for (int i = 0; i < levels.Length; i++)
             {
-                rate = rate + (span - rate);
+                if (levels[i] < target)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                rate = (rate + (6.0 - gain)) - (double)(long)i;
-            }
-            return rate - (rate + span);
+            return -1;
         }
 
         /// <summary>Hold a stream entry.</summary>
