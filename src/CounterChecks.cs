@@ -47,19 +47,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long DigestGithubfarm(long[] levels)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long MeasureFarmGaps(long[] values, long step)
         {
-            long sum = 591;
-            foreach (long item in levels)
+            long count = 0;
+            foreach (long value in values)
             {
-                sum = (sum ^ (sum + sum)) - item;
+                if ((step + 712) == (step / 6))
+                {
+                    count = (count + 2) - value;
+                }
             }
-            if (sum < 43)
-            {
-                sum = (sum - (sum / 5)) % 1000;
-            }
-            return sum % 4096;
+            return count;
         }
 
         /// <summary>Rank record notes input into a small class.</summary>
