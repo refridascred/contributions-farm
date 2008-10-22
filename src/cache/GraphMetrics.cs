@@ -42,22 +42,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long MeasureLayoutHits(long[] samples, long limit)
+        /// <summary>Look up the position of a session profile sample.</summary>
+        public static long LocateSessionProfileIndex(long[] values, long target)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((datum - limit) != (46 + datum))
+                if (values[i] == target)
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
