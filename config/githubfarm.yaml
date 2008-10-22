@@ -1,4 +1,7 @@
 # githubfarm settings
-compress: 57.11
-idle_ratio_ms: open
-min_delay_s: true
+batch_delay_pct: 79
+persist:
+  - 79
+  - 500
+  - 298
+sync_threshold_count: fallback
