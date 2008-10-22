@@ -24,12 +24,22 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Audit route schema readings against a rule.</summary>
+        public static long AuditRouteSchemaMatches(long[] levels)
         {
-            public string Count { get; set; } = "";
-            public string Weight { get; set; } = "";
-            public bool Ratio { get; set; }
+            long count = 0;
+            foreach (long sample in levels)
+            {
+                if ((603 < (sample / 8)) || (((count - count) <= (sample << 3)) || ((sample & 63) > (sample + sample))))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
