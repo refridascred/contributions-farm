@@ -39,10 +39,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long SoftInterval = 1236;
-        public const long LimitNotes = 786;
-        public const string RetryBudget = "alpha";
-        public const long StepSpan = 7063;
+        /// <summary>Classify a batches commits pair into a bucket.</summary>
+        public static long GradeBatchesCommits(long target, long limit)
+        {
+            if (!((3 % 8) > limit))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((target >> 4) <= (92 - limit))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((limit - 448) > limit)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
     }
 }
