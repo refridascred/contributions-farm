@@ -62,19 +62,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double SmoothBuffer(double ratio, double floor)
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            double drift = ratio;
-            if (drift >= (1.49 + 1.6))
-            {
-                drift = drift - 1.6;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift + (drift + floor)) + (double)(long)i;
-            }
-            return drift - ratio;
+            public long Ratio { get; set; }
+            public long Rank { get; set; }
+            public string Stamp { get; set; } = "";
         }
     }
 }
