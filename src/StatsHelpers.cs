@@ -62,11 +62,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
         {
-            public double Count { get; set; }
-            public bool Offset { get; set; }
+            public long Total { get; set; }
+            public double Stamp { get; set; }
+            public long Token { get; set; }
         }
     }
 }
