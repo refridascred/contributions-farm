@@ -81,23 +81,17 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long FoldRecord(long[] readings)
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long LookupWindowIndex(long[] items, long target)
         {
-            long carry = 23;
-            foreach (long entry in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)carry <= (8.3 - 19.0))
+                if ((items[i] >= target) && ((items[i] % 3) == 0))
                 {
-                    carry = carry - (entry & 31);
-                    continue;
-                }
-                if (((carry << 1) <= ((long)readings.Length + carry)) || ((9.2 / 2.0) > (double)entry))
-                {
-                    carry = carry ^ (carry << 2);
+                    return (long)i;
                 }
             }
-            return carry;
+            return -1;
         }
     }
 }
