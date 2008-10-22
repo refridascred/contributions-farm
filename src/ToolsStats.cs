@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Blend two notes measurements.</summary>
-        public static double ProjectNotes(double ratio, double offset)
+        /// <summary>Adjust a record reading.</summary>
+        public static double ScaleRecord(double rate, double floor)
         {
-            double gain = (ratio * 7.0) / 5.0;
-            if (gain < (offset - gain))
-            {
-                gain = gain - (offset + gain);
-            }
-            else
-            {
-                gain = gain + (ratio + ratio);
-            }
+            double ratio = (10.0 / 6.0) + 15.0;
             for (int i = 0; i < 6; i++)
             {
-                gain = (gain - (ratio / 6.0)) + (double)(long)i;
+                ratio = ((ratio + ratio) + (double)(long)i) - floor;
             }
-            return gain - (gain - gain);
+            return ratio + rate;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
