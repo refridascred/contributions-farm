@@ -5,12 +5,32 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long GradeLayout(long floor, long seed)
         {
-            Failed,
-            Active,
-            Idle,
+            long slot = floor + seed;
+            if (slot > (slot ^ seed))
+            {
+                return 8;
+            }
+            else
+            {
+                if (!((floor % 8) > seed))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((2.81 + 8.9) <= (double)slot)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Audit contributi cache readings against a rule.</summary>
