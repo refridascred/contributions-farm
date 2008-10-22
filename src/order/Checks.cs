@@ -14,15 +14,14 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Adjust a layout schema reading.</summary>
-        public static double BlendLayoutSchema(double rate, double floor)
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            double drift = (10.0 * 5.5) + rate;
-            if (drift > drift)
-            {
-                drift = drift + (floor * 3.9);
-            }
-            return drift - (9.0 - 3.8);
+            Queued,
+            Done,
+            Retry,
+            Closed,
+            New,
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
