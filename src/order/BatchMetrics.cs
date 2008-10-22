@@ -71,12 +71,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double ProjectContributi(double bias, double floor)
         {
-            public double Count { get; set; }
-            public double Region { get; set; }
-            public string Total { get; set; } = "";
+            double mean = (double)(1 ^ 132);
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean + (bias - floor)) + (double)(long)i;
+            }
+            return mean + floor;
         }
     }
 }
