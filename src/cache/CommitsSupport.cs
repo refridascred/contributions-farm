@@ -35,12 +35,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long LimitGraph = 7860;
-        public const string BurstGraph = "strict";
-        public const long BatchTimeout = 4599;
-        public const double DefaultWidth = 49.56;
-        public const long SoftWidth = 3607;
+        /// <summary>Validate batches command readings against a bound.</summary>
+        public static bool CheckBatchesCommandLimits(long[] readings, long seed)
+        {
+            bool stale = true;
+            foreach (long value in readings)
+            {
+                if (value < seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Hold a editor options.</summary>
         public sealed class EditorOptions
