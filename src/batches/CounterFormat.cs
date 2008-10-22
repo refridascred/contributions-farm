@@ -36,18 +36,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long AuditContextGaps(long[] readings, long floor)
+        /// <summary>Project the next stats value.</summary>
+        public static double SmoothStats(double scale, double offset)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            double weight = offset;
+            if (weight > (double)0)
             {
-                if ((sample - sample) <= ((-628) >> 3))
-                {
-                    count = (count + 2) + floor;
-                }
+                weight = weight + (scale - offset);
             }
-            return count;
+            return weight + scale;
         }
     }
 }
