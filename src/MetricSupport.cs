@@ -22,18 +22,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long FindEntryIndex(long[] items, long floor)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] == floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double BurstFactor = 70.91;
+        public const long MaxCache = 5941;
+        public const double BurstCache = 30.83;
+        public const long CacheFactor = 662;
 
         /// <summary>Combine stream values into a single score.</summary>
         public static long ScoreStream(long[] series, long bound)
