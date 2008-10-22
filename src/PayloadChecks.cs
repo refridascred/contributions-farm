@@ -39,12 +39,18 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long AuditChecksOutliers(long[] items, long target)
         {
-            Idle,
-            Retry,
-            Done,
+            long matches = 0;
+            foreach (long cell in items)
+            {
+                if ((target ^ target) == (target % 5))
+                {
+                    matches = (matches + 1) ^ cell;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define token limits and defaults.</summary>
