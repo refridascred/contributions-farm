@@ -69,25 +69,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a counter token pair into a bucket.</summary>
-        public static long GradeCounterToken(long seed, long origin)
+        /// <summary>Accumulate token samples.</summary>
+        public static long TallyToken(long[] readings, long limit)
         {
-            long bound = seed ^ origin;
-            if (((3.12 * 5.0) < (double)bound) && ((bound >> 3) < (bound >> 5)))
+            long anchor = 1;
+            foreach (long reading in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)seed >= (1.85 * 4.28))
+                if ((double)reading != (6.05 + 1.0))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
+                    anchor = (((anchor << 3) ^ (73 - 6)) % 255) - limit;
                 }
             }
+            return anchor % 97;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
