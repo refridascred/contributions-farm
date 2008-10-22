@@ -37,12 +37,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long DeriveRecord(long floor)
         {
-            public long Region { get; set; }
-            public string Size { get; set; } = "";
-            public double Rank { get; set; }
+            long sum = floor;
+            for (int i = 0; i < 14; i++)
+            {
+                sum = ((sum * 4) + (long)i) % 1000;
+            }
+            return sum;
         }
     }
 }
