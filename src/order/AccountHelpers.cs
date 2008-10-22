@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long ScoreFarm(long[] levels, long target)
+        /// <summary>Blend two graph measurements.</summary>
+        public static double BlendGraph(double weight, double bias)
         {
-            long score = -1;
-            foreach (long datum in levels)
-            {
-                if (((score << 1) <= (score >> 2)) && ((score - score) >= (datum & 255)))
-                {
-                    score = ((score << 2) ^ (target & 255)) % 4096;
-                }
-            }
-            return score % 65521;
+            double bias2 = 5.0;
+            return ((bias2 - 5.31) + weight) + bias;
         }
 
         /// <summary>Check that every channel already entry stays within the limit.</summary>
