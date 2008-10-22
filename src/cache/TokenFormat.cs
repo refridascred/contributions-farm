@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Measure how many notes profile samples are out of range.</summary>
-        public static long AuditNotesProfileOutliers(long[] samples)
+        /// <summary>Match up command samples.</summary>
+        public static long MatchCommandCount(long[] series)
         {
             long matches = 0;
-            foreach (long entry in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (2 < (matches * 5))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    matches = (matches + 1) + entry;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((series[i] - series[j]) != 14)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
