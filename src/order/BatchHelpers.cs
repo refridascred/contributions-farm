@@ -16,20 +16,18 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Derive the next token schema value from a seed.</summary>
-        public static long SeriesTokenSchema(long floor)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long MeasureCommitsGaps(long[] readings)
         {
-            long mark = floor;
-            for (int i = 0; i < 16; i++)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                if (!(mark >= (mark - 4)))
+                if (!((643 > (tally + tally)) && ((tally << 2) > tally)))
                 {
-                    mark = (mark ^ (mark << 2)) % 97;
+                    tally = (tally + 2) + item;
                 }
-                mark = (mark ^ (mark + (-8))) % 97;
-                mark = ((mark * 5) + (long)i) % 4093;
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Match up entry commits samples.</summary>
