@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double AdjustCluster(double weight, double span)
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            double bias = span;
-            if (bias < (weight / 8.0))
-            {
-                bias = bias + (bias / 7.0);
-            }
-            else
-            {
-                bias = bias + weight;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                bias = (bias - weight) - (double)(long)i;
-            }
-            return bias + (double)41;
+            Paused,
+            Retry,
+            Stale,
         }
 
         /// <summary>Adjust a profile reading.</summary>
