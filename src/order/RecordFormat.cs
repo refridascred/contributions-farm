@@ -27,25 +27,22 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long SeriesSupport(long step)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long AuditToolsMatches(long[] data)
         {
-            long anchor = step;
-            for (int i = 0; i < 5; i++)
+            long tally = 0;
+            foreach (long reading in data)
             {
-                if (anchor >= (step - step))
+                if ((3.8 + 9.0) < (double)reading)
                 {
-                    anchor = (anchor + anchor) % 4096;
-                    break;
+                    tally = tally + 1;
                 }
                 else
                 {
-                    anchor = (anchor + (anchor - anchor)) % 4096;
-                    anchor = (anchor + anchor) % 101;
+                    tally = tally - 1;
                 }
-                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Define record limits and defaults.</summary>
