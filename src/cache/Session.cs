@@ -32,12 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool VerifyContributiLimits(long[] levels, long target)
         {
-            Pending,
-            Queued,
-            Idle,
+            bool ready = true;
+            foreach (long reading in levels)
+            {
+                if (reading <= target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Measure how many format support samples are out of range.</summary>
