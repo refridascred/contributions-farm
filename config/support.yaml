@@ -1,15 +1,4 @@
 # support settings
-idle_size_ms: cached
-verbose:
-  - latest
-  - strict
-  - latest
-warm_window: staging
-strict:
-  editor_window: 75.87
-  retry_limit: false
-  base_depth_s: true
-  window_size: cached
-  layout_threshold: latest
-  burst_interval_pct: strict
-burst_ttl_s: 43.75
+dry_run: 6124
+audit: 64
+flush_depth_pct: 78.68
