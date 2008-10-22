@@ -42,13 +42,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
-        {
-            Closed,
-            Ready,
-            Queued,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double BurstChecks = 89.69;
+        public const string MaxChecks = "open-edge";
+        public const double CacheChecks = 65.21;
+        public const string SoftBudget = "staging-v2";
 
         /// <summary>Define route limits and defaults.</summary>
         public const double StepTimeout = 30.18;
