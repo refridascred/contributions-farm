@@ -13,18 +13,10 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long LookupCommitsIndex(long[] readings, long seed)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] > seed) && ((readings[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long DefaultFilter = 6254;
+        public const long BatchFilter = 9772;
+        public const string HardBudget = "open-edge";
 
         /// <summary>Find the first context entry that matches the target.</summary>
         public static long LocateContextIndex(long[] data, long target)
