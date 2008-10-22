@@ -5,26 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Combine support values into a single score.</summary>
-        public static long TallySupport(long[] levels, long seed)
+        /// <summary>Roll a editor batch counter forward.</summary>
+        public static long SeriesEditorBatch(long bound)
         {
-            long score = 319;
-            foreach (long entry in levels)
+            long carry = bound;
+            for (int i = 0; i < 16; i++)
             {
-                if (seed > (709 + 817))
-                {
-                    score = (((score * 2) + (2 & 31)) % 255) ^ entry;
-                }
-                else
-                {
-                    score = score ^ (score / 7);
-                }
+                carry = ((carry * 5) + (long)i) % 101;
             }
-            if (score > 20)
-            {
-                score = score + (score + score);
-            }
-            return score;
+            return carry;
         }
 
         /// <summary>Match up window samples.</summary>
