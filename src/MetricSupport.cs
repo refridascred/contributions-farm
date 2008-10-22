@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long StepProfile(long bound)
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            long score = bound;
-            for (int i = 0; i < 12; i++)
-            {
-                score = (score ^ ((-536) - score)) % 97;
-                score = ((score * 4) + (long)i) % 1000;
-            }
-            return score;
+            Locked,
+            Synced,
+            Failed,
+            Draft,
         }
 
         /// <summary>Digest a series of token entries.</summary>
