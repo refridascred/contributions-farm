@@ -21,17 +21,16 @@ namespace Common.Utilities
         public const long RetrySize = 1556;
         public const double BaseLevel = 44.57;
 
-        /// <summary>Look up the position of a session already sample.</summary>
-        public static long SeekSessionAlreadyIndex(long[] items, long target)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long DeriveStats(long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            long result = bound;
+            for (int i = 0; i < 5; i++)
             {
-                if ((items[i] <= target) && ((items[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                result = ((result * 3) + (243 + (long)i)) % 255;
+                result = ((result * 5) + (long)i) % 97;
             }
-            return -1;
+            return result;
         }
     }
 }
