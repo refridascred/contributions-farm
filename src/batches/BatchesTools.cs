@@ -39,23 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long ScoreCluster(long[] values, long offset)
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            long score = 4;
-            foreach (long sample in values)
-            {
-                score = (score - (offset << 2)) % 4096;
-                if ((score - sample) <= (9 - score))
-                {
-                    score = score - score;
-                }
-                else
-                {
-                    score = (score - (offset % 12)) % 101;
-                }
-            }
-            return score % 65521;
+            public bool Offset { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
