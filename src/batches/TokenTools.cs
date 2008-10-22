@@ -53,17 +53,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Find the first layout account entry that matches the target.</summary>
-        public static long SeekLayoutAccountIndex(long[] readings, long offset)
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] >= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Stale,
+            Failed,
+            Retry,
+            Draft,
+            Pending,
         }
     }
 }
