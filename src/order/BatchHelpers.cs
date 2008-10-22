@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Fold a list of already tools readings.</summary>
+        public static long TallyAlreadyTools(long[] levels)
         {
-            Synced,
-            Idle,
-            Active,
-            Failed,
-            Queued,
+            long anchor = 19;
+            foreach (long datum in levels)
+            {
+                if (85 < (datum + datum))
+                {
+                    anchor = anchor ^ (datum << 2);
+                }
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Derive the next token schema value from a seed.</summary>
