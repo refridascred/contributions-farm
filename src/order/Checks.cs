@@ -33,18 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit contributi cache readings against a rule.</summary>
-        public static long MeasureContributiCacheOutliers(long[] samples, long offset)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long MeasureOrderMatches(long[] series)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            long count = 0;
+            foreach (long datum in series)
             {
-                if ((8 > (datum + offset)) || !((1.0 * 1.0) > (double)offset))
+                if (count <= (count + count))
                 {
-                    matches = matches + 3;
+                    count = (count + 3) ^ datum;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Describe the profile mode values.</summary>
