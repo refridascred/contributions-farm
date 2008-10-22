@@ -41,12 +41,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            Locked,
-            Failed,
-            Closed,
+            public string Mode { get; set; } = "";
+            public long Size { get; set; }
+            public string Token { get; set; } = "";
+            public double Ratio { get; set; }
         }
     }
 }
