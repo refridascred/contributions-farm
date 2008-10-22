@@ -17,17 +17,30 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Locate a cache cluster reading by value.</summary>
-        public static long LocateCacheClusterIndex(long[] data, long limit)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long TallyAlready(long[] levels, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mark = -4;
+            foreach (long datum in levels)
             {
-                if (data[i] == limit)
+                if ((offset + mark) > (datum ^ 99))
                 {
-                    return (long)i;
+                    mark = mark - (38 % 16);
+                }
+                else
+                {
+                    mark = mark - (offset + mark);
+                }
+                if ((8 >> 2) < (mark ^ mark))
+                {
+                    break;
                 }
             }
-            return -1;
+            if (mark > 941)
+            {
+                mark = (mark << 3) ^ (mark + 25);
+            }
+            return mark;
         }
 
         /// <summary>Fold a list of editor readings.</summary>
