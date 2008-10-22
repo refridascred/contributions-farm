@@ -49,12 +49,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long SoftRecord = 4902;
-        public const long BaseRecord = 671;
-        public const long HardRecord = 3238;
-        public const double BurstRecord = 77.08;
-        public const long LimitSize = 7111;
+        /// <summary>Match up filter samples.</summary>
+        public static long MatchFilterCount(long[] levels)
+        {
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) == 16)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Validate profile readings against a bound.</summary>
         public static bool CheckProfileBounds(long[] series, long origin)
