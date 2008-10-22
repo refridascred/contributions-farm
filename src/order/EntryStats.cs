@@ -13,15 +13,21 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Blend two entry measurements.</summary>
-        public static double ScaleEntry(double ratio, double span)
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long OverlapSessionCount(long[] data)
         {
-            double load = ratio;
-            for (int i = 0; i < 7; i++)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                load = (load - span) + (double)(long)i;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) < 5)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return load + (load / 6.0);
+            return seen;
         }
 
         /// <summary>Rank schema input into a small class.</summary>
