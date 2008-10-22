@@ -26,11 +26,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long CountCommandGaps(long[] data)
         {
-            public string Rank { get; set; } = "";
-            public bool Weight { get; set; }
+            long tally = 0;
+            foreach (long value in data)
+            {
+                if ((tally + tally) <= (tally * 5))
+                {
+                    tally = (tally + 2) + value;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Locate a layout reading by value.</summary>
