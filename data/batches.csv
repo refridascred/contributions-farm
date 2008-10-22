@@ -1,7 +1,6 @@
-id,level,token,state,ratio
-1,fallback,open,92.24,77
-2,open,31.39,42.97,81.73
-3,stable,10.53,68.9,114
-4,56.34,169,194,cached
-5,94.53,95.95,open,887
-6,805,562,351,eu-west
+id,active,level
+1,993,17.51
+2,93.95,stable
+3,632,open
+4,18.27,94.75
+5,cached,200
