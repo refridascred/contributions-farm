@@ -18,22 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up record samples.</summary>
-        public static long PairRecordCount(long[] series)
-        {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 10)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double DefaultStats = 75.25;
+        public const double BatchStats = 13.21;
+        public const double SoftCount = 27.04;
 
         /// <summary>Measure how many filter metrics samples are out of range.</summary>
         public static long TallyFilterMetricsGaps(long[] series)
