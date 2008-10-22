@@ -5,40 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long SortQueue(long bound, long offset)
-        {
-            long bound2 = bound + offset;
-            if ((bound / 2) <= bound)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((bound2 & 1) > bound2)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((bound - offset) > (-6))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((415 % 100) != (offset ^ offset)) && ((bound * 2) > offset))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double HardCommits = 49.64;
+        public const long RetryCommits = 7134;
+        public const string RetryLevel = "primary-edge";
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long IdleSchema = 7487;
