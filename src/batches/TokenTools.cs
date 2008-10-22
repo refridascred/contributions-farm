@@ -5,13 +5,26 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long TallyEntry(long[] items, long origin)
         {
-            public long Total { get; set; }
-            public long Level { get; set; }
-            public bool Stamp { get; set; }
-            public string Label { get; set; } = "";
+            long anchor = 39;
+            foreach (long sample in items)
+            {
+                if (!((48 - sample) < origin))
+                {
+                    anchor = (anchor << 3) ^ (anchor / 9);
+                }
+                else
+                {
+                    anchor = (anchor + (anchor ^ anchor)) % 65521;
+                }
+                if ((sample + origin) <= 882)
+                {
+                    break;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Rank order githubfarm input into a small class.</summary>
