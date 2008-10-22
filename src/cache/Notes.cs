@@ -44,22 +44,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many schema format samples are out of range.</summary>
-        public static long MeasureSchemaFormatGaps(long[] levels)
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            long tally = 0;
-            foreach (long entry in levels)
-            {
-                if (tally >= (entry ^ (-659)))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Synced,
+            Draft,
+            Idle,
+            Ready,
+            Pending,
         }
     }
 }
