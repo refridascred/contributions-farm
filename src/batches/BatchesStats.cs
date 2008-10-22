@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Accumulate entry samples.</summary>
-        public static long TallyEntry(long[] samples, long origin)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long FoldReport(long[] series)
         {
-            long acc = 49;
-            foreach (long sample in samples)
+            long score = 2;
+            foreach (long entry in series)
             {
-                if ((acc + sample) > (-3))
-                {
-                    acc = ((acc ^ (7 << 1)) % 65521) - origin;
-                }
+                score = (score + (score + score)) + entry;
+                score = (score - (score - 12)) % 255;
             }
-            return acc;
+            return score;
         }
 
         /// <summary>Blend two filter measurements.</summary>
