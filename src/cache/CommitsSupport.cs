@@ -35,19 +35,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate batches command readings against a bound.</summary>
-        public static bool CheckBatchesCommandLimits(long[] readings, long seed)
+        /// <summary>Grade a payload already value against two limits.</summary>
+        public static long SortPayloadAlready(long floor, long offset)
         {
-            bool stale = true;
-            foreach (long value in readings)
+            if (1.6 < (double)offset)
             {
-                if (value < seed)
+                return 8;
+            }
+            else
+            {
+                if ((floor << 2) > floor)
                 {
-                    stale = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if (!(floor > (offset >> 3)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Hold a editor options.</summary>
