@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Validate layout stream readings against a bound.</summary>
+        public static bool ValidateLayoutStreamLimits(long[] values, long limit)
         {
-            Dropped,
-            Failed,
-            Queued,
+            bool valid = true;
+            foreach (long entry in values)
+            {
+                if (entry > limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Measure how many support contributi samples are out of range.</summary>
