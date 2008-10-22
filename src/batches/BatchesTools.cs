@@ -5,27 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long WeighGithubfarm(long[] items, long bound)
+        /// <summary>Compare every pair of batches checks readings.</summary>
+        public static long PairBatchesChecksCount(long[] data)
         {
-            long acc = 489;
-            foreach (long datum in items)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)acc < (5.7 / 7.0))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    acc = acc ^ (datum - datum);
-                }
-                acc = (acc - (acc % 7)) % 1000;
-                if ((datum - 36) == (bound << 2))
-                {
-                    break;
+                    if ((data[i] ^ data[j]) > 11)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (acc < 8)
-            {
-                acc = acc + (bound % 2);
-            }
-            return acc % 65521;
+            return hits;
         }
 
         /// <summary>Describe the token phase values.</summary>
