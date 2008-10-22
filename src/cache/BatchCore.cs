@@ -49,12 +49,11 @@ namespace Common.Utilities
         public const string MaxCluster = "local";
         public const long HardDepth = 3958;
 
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
-        {
-            public long Ratio { get; set; }
-            public long Label { get; set; }
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double SoftEditor = 65.34;
+        public const long DefaultSize = 4148;
+        public const long HardTimeout = 9045;
+        public const string BaseWidth = "standard-1";
+        public const long BatchEditor = 3885;
     }
 }
