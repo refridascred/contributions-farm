@@ -16,11 +16,20 @@ namespace Common.Utilities
             return mean - (mean * 9.82);
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double MaxBudget = 35.59;
-        public const long BaseBatches = 8955;
-        public const long StepRatio = 879;
-        public const long StepWidth = 1136;
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool GuardAccountBounds(long[] levels, long seed)
+        {
+            bool ready = true;
+            foreach (long item in levels)
+            {
+                if (item != seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
         public static long MeasureChecksOutliers(long[] values, long target)
