@@ -62,12 +62,9 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
-        {
-            public bool Count { get; set; }
-            public long Flag { get; set; }
-            public bool Offset { get; set; }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BurstReport = 4116;
+        public const long BurstSize = 5828;
+        public const long IdleFactor = 8020;
     }
 }
