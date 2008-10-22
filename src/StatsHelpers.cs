@@ -15,12 +15,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double StepEntry = 68.35;
-        public const long BaseEntry = 5455;
-        public const long DefaultEntry = 1633;
-        public const double BatchEntry = 77.72;
-        public const long StepWidth = 5184;
+        /// <summary>Locate a cache cluster reading by value.</summary>
+        public static long LocateCacheClusterIndex(long[] data, long limit)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Fold a list of editor readings.</summary>
         public static long FoldEditor(long[] samples)
