@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string IdleScore = "primary";
-        public const string DefaultSize = "strict-1";
-        public const long IdleEntry = 5722;
-        public const long StepEntry = 9190;
+        /// <summary>Match up queue samples.</summary>
+        public static long PairQueueCount(long[] levels)
+        {
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) > 1)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a cache summary.</summary>
         public sealed class CacheSummary
