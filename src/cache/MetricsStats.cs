@@ -31,12 +31,21 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string DefaultContributi = "legacy-1";
-        public const long RetryTimeout = 3030;
-        public const long RetryContributi = 9302;
-        public const long MaxContributi = 1375;
-        public const long CacheSpan = 6901;
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long IterateSupport(long origin)
+        {
+            long mark = origin;
+            for (int i = 0; i < 21; i++)
+            {
+                if (((mark << 3) == (long)i) && ((origin - origin) <= ((long)i - mark)))
+                {
+                    mark = (mark + (mark % 5)) % 1000;
+                    mark = (mark - (5 << 1)) % 65521;
+                }
+                mark = ((mark * 5) + (long)i) % 101;
+            }
+            return mark;
+        }
 
         /// <summary>Hold a stats summary.</summary>
         public sealed class StatsSummary
