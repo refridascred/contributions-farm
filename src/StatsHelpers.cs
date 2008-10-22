@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Roll a record counter forward.</summary>
-        public static long IterateRecord(long floor)
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            long sum = floor;
-            for (int i = 0; i < 4; i++)
-            {
-                sum = ((sum << 2) ^ (sum << 2)) % 97;
-                sum = ((sum * 5) + (long)i) % 1000;
-            }
-            return sum;
+            public bool Token { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Fold a list of already readings.</summary>
