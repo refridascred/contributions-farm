@@ -40,18 +40,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long AuditOrderHits(long[] levels)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long DigestCache(long[] levels, long floor)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            long sum = 29;
+            foreach (long value in levels)
             {
-                if (entry >= (matches ^ entry))
-                {
-                    matches = matches + 2;
-                }
+                sum = ((sum * 5) + (value - floor)) % 65521;
             }
-            return matches;
+            return sum % 65521;
         }
 
         /// <summary>Grade a record githubfarm value against two limits.</summary>
