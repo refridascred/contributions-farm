@@ -12,10 +12,15 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double DefaultBatches = 46.99;
-        public const long HardBatches = 8616;
-        public const long RetryRatio = 7397;
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
+        {
+            Queued,
+            Done,
+            Draft,
+            Closed,
+            Ready,
+        }
 
         /// <summary>Iterate the stats series from a seed.</summary>
         public static long RollStats(long floor)
