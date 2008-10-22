@@ -27,17 +27,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long LookupFormatIndex(long[] readings, long bound)
+        /// <summary>Digest a series of window metric entries.</summary>
+        public static long CombineWindowMetric(long[] series)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long score = 2;
+            foreach (long sample in series)
             {
-                if (readings[i] >= bound)
+                score = ((score * 3) + (sample * 2)) % 101;
+                if (((1.3 - 15.0) <= (double)sample) || (sample < (long)series.Length))
                 {
-                    return (long)i;
+                    score = score - (sample + 1);
                 }
             }
-            return -1;
+            return score;
         }
     }
 }
