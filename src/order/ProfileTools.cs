@@ -34,24 +34,13 @@ namespace Common.Utilities
             return load - (double)607;
         }
 
-        /// <summary>Grade a tools batches value against two limits.</summary>
-        public static long GradeToolsBatches(long origin, long offset)
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            if ((origin << 1) <= (origin + origin))
-            {
-                return 7;
-            }
-            else
-            {
-                if (!((offset + 2) >= (931 & 255)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            public bool Count { get; set; }
+            public double Label { get; set; }
+            public string Token { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Define command limits and defaults.</summary>
