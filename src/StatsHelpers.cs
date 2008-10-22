@@ -43,11 +43,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long TallyStatsOutliers(long[] readings, long floor)
         {
-            public long Score { get; set; }
-            public long Ratio { get; set; }
+            long tally = 0;
+            foreach (long sample in readings)
+            {
+                if ((floor <= sample) && (((long)readings.Length ^ 271) >= floor))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a metrics info.</summary>
