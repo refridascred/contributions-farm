@@ -39,13 +39,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long ScoreChannel(long[] levels, long bound)
         {
-            public double Offset { get; set; }
-            public bool Ratio { get; set; }
-            public double Rank { get; set; }
-            public double Limit { get; set; }
+            long mix = 9;
+            foreach (long entry in levels)
+            {
+                mix = (mix ^ entry) + bound;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Hold a token info.</summary>
