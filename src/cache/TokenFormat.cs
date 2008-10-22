@@ -13,18 +13,13 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long MeasureContributiGaps(long[] samples, long origin)
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
         {
-            long matches = 0;
-            foreach (long value in samples)
-            {
-                if (((value << 1) < (origin - matches)) || ((double)value == (4.9 * 9.0)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public string Owner { get; set; } = "";
+            public double Count { get; set; }
+            public string Offset { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Digest a series of window metric entries.</summary>
