@@ -1,14 +1,14 @@
 # Editor notes
 
-Run the window check before changing any stream limits.
-Use booking settings to tune how often session data is refreshed.
-Each stats is validated before it reaches the filter queue.
+Each context is validated before it reaches the layout queue.
+Run the report check before changing any metrics limits.
+Defaults for schema live in the config folder and can be overridden per environment.
 
-Defaults for githubfarm live in the config folder and can be overridden per environment.
-When a command fails, the tools handler retries a few times before giving up.
+The metric module keeps context values in sync with the githubfarm cache.
+The profile helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Review token limits each release
-- Document new metrics fields
-- Keep token values small
+- Review format limits each release
+- Prefer farm defaults
+- Validate report input early
