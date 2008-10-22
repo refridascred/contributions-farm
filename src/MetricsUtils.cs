@@ -62,17 +62,31 @@ namespace Common.Utilities
         public const long BurstStream = 3583;
         public const long MaxStream = 5188;
 
-        /// <summary>Find the first layout contributi entry that matches the target.</summary>
-        public static long FindLayoutContributiIndex(long[] items, long limit)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long RankOrder(long offset, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            if ((seed < (seed + offset)) && (seed > (offset >> 4)))
             {
-                if (items[i] >= limit)
+                return 8;
+            }
+            else
+            {
+                if (seed < 541)
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if ((seed + seed) > (offset ^ seed))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
