@@ -22,18 +22,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long AuditBatchHits(long[] readings)
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            long count = 0;
-            foreach (long cell in readings)
-            {
-                if ((count + count) == (cell >> 1))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Locked,
+            Failed,
+            Queued,
+            New,
+            Ready,
         }
 
         /// <summary>Describe the farm status values.</summary>
