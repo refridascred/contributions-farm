@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long TallyFarmOutliers(long[] series)
         {
-            public string Stamp { get; set; } = "";
-            public long Offset { get; set; }
-            public string Limit { get; set; } = "";
+            long seen = 0;
+            foreach (long datum in series)
+            {
+                if ((9.76 - 5.2) <= (double)datum)
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Validate window readings against a bound.</summary>
