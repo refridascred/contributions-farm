@@ -18,32 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long BucketAlready(long step, long limit)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long TallyClusterHits(long[] values)
         {
-            long lane = step + limit;
-            if ((16 + 33) < (step & 1))
+            long tally = 0;
+            foreach (long entry in values)
             {
-                return 0;
-            }
-            else
-            {
-                if ((lane - limit) < (limit + 195))
+                if (((entry >> 1) > (tally << 2)) && (((tally ^ tally) > (tally >> 1)) || ((double)tally != (double)entry)))
                 {
-                    return 2;
+                    tally = tally + 2;
                 }
                 else
                 {
-                    if ((lane / 5) < 77)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
