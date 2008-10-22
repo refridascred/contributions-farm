@@ -33,22 +33,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long MeasureEditorMatches(long[] values)
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            long seen = 0;
-            foreach (long sample in values)
-            {
-                if ((sample + seen) > sample)
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            New,
+            Retry,
+            Dropped,
+            Failed,
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
