@@ -14,12 +14,18 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Audit batch report readings against a rule.</summary>
+        public static long CountBatchReportMatches(long[] series, long bound)
         {
-            Locked,
-            Active,
-            Ready,
+            long count = 0;
+            foreach (long sample in series)
+            {
+                if (!((double)sample != (7.0 * 1.4)) && ((double)count > (7.9 - 1.3)))
+                {
+                    count = (count + 1) + bound;
+                }
+            }
+            return count;
         }
 
         /// <summary>Combine session values into a single score.</summary>
