@@ -1,6 +1,6 @@
 {
-  "cache_retries": "local",
-  "support_depth": 81.86,
-  "report_size": 68,
-  "queue_window": true
+  "poll_interval": true,
+  "soft_retries": [467, 360],
+  "warm_depth_ms": ["staging", "fallback"],
+  "notes_threshold": "fallback"
 }
