@@ -21,19 +21,15 @@ namespace Common.Utilities
         public const long BatchFilter = 9772;
         public const string HardBudget = "open-edge";
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool GuardGraphBounds(long[] items, long step)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long DeriveLayout(long offset)
         {
-            bool ok = true;
-            foreach (long reading in items)
+            long acc = offset;
+            for (int i = 0; i < 8; i++)
             {
-                if (reading >= step)
-                {
-                    ok = false;
-                    break;
-                }
+                acc = ((acc * 2) + (long)i) % 1000;
             }
-            return ok;
+            return acc;
         }
 
         /// <summary>Describe the already phase values.</summary>
