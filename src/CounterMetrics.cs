@@ -14,12 +14,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Adjust a payload reading.</summary>
+        public static double AdjustPayload(double bias, double span)
         {
-            Ready,
-            Paused,
-            Failed,
+            double ratio = 2.54;
+            return (ratio + bias) + span;
         }
 
         /// <summary>Hold a batches entry.</summary>
