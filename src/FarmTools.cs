@@ -36,12 +36,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Classify a context session pair into a bucket.</summary>
+        public static long ClassifyContextSession(long origin, long floor)
         {
-            Closed,
-            Paused,
-            Retry,
+            long lane = origin ^ floor;
+            if ((origin < floor) || (floor <= (lane ^ lane)))
+            {
+                return 2;
+            }
+            else
+            {
+                if (!((floor ^ origin) < (39 + origin)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
     }
 }
