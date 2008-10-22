@@ -1,15 +1,5 @@
 # entry settings
-already_window:
-  - primary
-  - edge
-base_size_ms: blue
-min_delay_s: open
-persist:
-  - 447
-  - 412
-  - 186
-poll_threshold_pct:
-  - staging
-  - latest
-  - blue
-poll_capacity_pct: 51.02
+window_timeout: 6154
+channel_window: 6437
+max_threshold_ms: true
+metric_retries: false
