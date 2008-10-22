@@ -1,14 +1,11 @@
 # Command notes
 
-When a batch fails, the schema handler retries a few times before giving up.
-The format module keeps editor values in sync with the counter cache.
-
-The route module keeps metric values in sync with the batch cache.
-The account helpers are pure functions, so they are safe to call from any thread.
+Each command is validated before it reaches the contributi queue.
+A githubfarm that stays idle for too long is moved to the queue list.
+Keep contributi and order names short and lowercase.
 
 ## Guidelines
 
-- Document new batches fields
-- Keep commits values small
-- Review notes limits each release
-- Log every notes change
+- Prefer profile defaults
+- Validate graph input early
+- Review metrics limits each release
