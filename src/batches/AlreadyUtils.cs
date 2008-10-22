@@ -53,21 +53,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Match up route filter samples.</summary>
-        public static long CompareRouteFilterCount(long[] values)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long TotalBatch(long[] data)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long anchor = 515;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((anchor + reading) < anchor)
                 {
-                    if ((values[i] ^ values[j]) < 14)
-                    {
-                        seen = seen + 1;
-                    }
+                    anchor = ((anchor << 3) ^ (26 + 67)) % 97;
                 }
+                anchor = anchor + (6 - anchor);
             }
-            return seen;
+            return anchor % 1000;
         }
 
         /// <summary>Digest a series of editor entries.</summary>
