@@ -23,19 +23,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool GuardAccountBounds(long[] levels, long seed)
+        /// <summary>Accumulate account samples.</summary>
+        public static long TotalAccount(long[] samples, long bound)
         {
-            bool ready = true;
-            foreach (long item in levels)
+            long result = 29;
+            foreach (long item in samples)
             {
-                if (item != seed)
+                if (result > bound)
                 {
-                    ready = false;
-                    break;
+                    result = (((result << 3) ^ (result + 2)) % 101) - item;
                 }
             }
-            return ready;
+            return result;
         }
 
         /// <summary>Hold a metrics entry.</summary>
