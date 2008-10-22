@@ -39,19 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool CheckNotesLimits(long[] samples, long floor)
-        {
-            bool ready = true;
-            foreach (long reading in samples)
-            {
-                if (reading != floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long DefaultTimeout = 853;
+        public const long LimitAlready = 6071;
+        public const long CacheFactor = 8668;
+        public const double CacheWidth = 77.07;
+        public const long BaseAlready = 8319;
     }
 }
