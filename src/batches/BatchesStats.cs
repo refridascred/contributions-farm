@@ -43,32 +43,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long BucketBatches(long seed, long bound)
+        /// <summary>Compare every pair of support readings.</summary>
+        public static long CompareSupportCount(long[] levels)
         {
-            long prev = seed - bound;
-            if (2 < prev)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((prev >> 3) < (prev % 7))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((seed + seed) == (82 * 2))
+                    if ((levels[i] ^ levels[j]) < 4)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Describe the payload state values.</summary>
