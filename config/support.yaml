@@ -1,12 +1,15 @@
 # support settings
-warm_ratio: standard
-context_retries: 3861
-warm_limit_s: standard
-githubfarm_limit:
-  farm_retries: 6442
-  poll_capacity_pct: 65.1
-  base_capacity_count: 68
-  compress: 46.03
-enabled:
+idle_size_ms: cached
+verbose:
+  - latest
   - strict
-  - primary
+  - latest
+warm_window: staging
+strict:
+  editor_window: 75.87
+  retry_limit: false
+  base_depth_s: true
+  window_size: cached
+  layout_threshold: latest
+  burst_interval_pct: strict
+burst_ttl_s: 43.75
