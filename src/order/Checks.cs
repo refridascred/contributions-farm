@@ -54,11 +54,31 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long GradeBatches(long bound, long origin)
         {
-            public bool Rank { get; set; }
-            public double Token { get; set; }
+            if ((1.99 - 18.0) == (double)origin)
+            {
+                return 0;
+            }
+            else
+            {
+                if (bound >= (bound << 3))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((6.09 * 3.7) >= (double)origin)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
     }
 }
