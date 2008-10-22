@@ -39,18 +39,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long AuditClusterMatches(long[] levels)
+        /// <summary>Project the next support value.</summary>
+        public static double ScaleSupport(double bias, double floor)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            double mean = bias * 1.6;
+            if (mean >= mean)
             {
-                if ((count >> 1) > (3 * 2))
-                {
-                    count = (count + 2) + datum;
-                }
+                mean = mean - (floor * 2.0);
             }
-            return count;
+            return mean - (floor + mean);
         }
     }
 }
