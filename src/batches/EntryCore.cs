@@ -65,24 +65,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next command filter value from a seed.</summary>
-        public static long SeriesCommandFilter(long target)
-        {
-            long carry = target;
-            for (int i = 0; i < 21; i++)
-            {
-                if ((1 ^ carry) <= carry)
-                {
-                    carry = (carry * 4) + (carry / 8);
-                    carry = carry ^ target;
-                }
-                else
-                {
-                    carry = (carry - (target % 5)) % 101;
-                }
-                carry = ((carry * 2) + (long)i) % 65521;
-            }
-            return carry;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double WindowSize = 19.88;
+        public const long RetryBudget = 3837;
+        public const long WindowDepth = 6723;
     }
 }
