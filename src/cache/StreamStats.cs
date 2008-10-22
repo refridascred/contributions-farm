@@ -35,14 +35,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            Idle,
-            Ready,
-            Retry,
-            New,
-            Dropped,
+            public long Rank { get; set; }
+            public bool Limit { get; set; }
         }
     }
 }
