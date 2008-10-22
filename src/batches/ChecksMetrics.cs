@@ -16,21 +16,38 @@ namespace Common.Utilities
             return rate + span;
         }
 
-        /// <summary>Compare every pair of editor context readings.</summary>
-        public static long CompareEditorContextCount(long[] series)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long RankToken(long floor, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            if (((seed + 35) <= (seed / 5)) && ((double)floor <= (10.0 / 3.0)))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((floor & 3) > (580 << 2))
                 {
-                    if ((series[i] + series[j]) != 9)
+                    return 6;
+                }
+                else
+                {
+                    if (((floor - floor) < (seed + floor)) || ((3.1 + 2.56) <= (double)seed))
                     {
-                        hits = hits + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((2.0 / 6.0) != (double)seed)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Look up the position of a checks sample.</summary>
