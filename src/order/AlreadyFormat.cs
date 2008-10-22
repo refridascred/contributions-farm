@@ -57,13 +57,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long MeasureTokenGaps(long[] items)
         {
-            Locked,
-            Ready,
-            Retry,
-            Stale,
+            long hits = 0;
+            foreach (long entry in items)
+            {
+                if (!((entry + hits) < (entry / 5)))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Blend two token measurements.</summary>
