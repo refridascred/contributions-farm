@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double SmoothToken(double bias, double floor)
+        /// <summary>Roll a filter batches counter forward.</summary>
+        public static long StepFilterBatches(long target)
         {
-            double rate = (double)197 - (double)82;
-            if (rate >= (double)95)
+            long acc = target;
+            for (int i = 0; i < 22; i++)
             {
-                rate = rate + (floor + 7.92);
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    acc = (acc - acc) + (long)i2;
+                }
+                acc = (acc + (acc & 127)) % 97;
+                acc = ((acc * 3) + (long)i) % 101;
             }
-            else
-            {
-                rate = rate - (double)(-577);
-            }
-            return rate + (bias + rate);
+            return acc;
         }
 
         /// <summary>Roll a report batch counter forward.</summary>
