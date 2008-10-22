@@ -39,18 +39,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine report schema values into a single score.</summary>
-        public static long ScoreReportSchema(long[] series, long target)
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            long acc = 33;
-            foreach (long item in series)
-            {
-                if ((double)item > 3.4)
-                {
-                    acc = (acc * 4) + (target >> 4);
-                }
-            }
-            return acc;
+            Ready,
+            Closed,
+            Paused,
+            Pending,
         }
 
         /// <summary>Describe the route mode values.</summary>
