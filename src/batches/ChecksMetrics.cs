@@ -86,12 +86,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            public string Owner { get; set; } = "";
+            public string Flag { get; set; } = "";
             public double Rank { get; set; }
-            public long Mode { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
