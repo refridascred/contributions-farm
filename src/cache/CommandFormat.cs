@@ -14,11 +14,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long IdleCount = 255;
-        public const string CacheMetric = "strict-1";
-        public const long BurstMetric = 3463;
-        public const long DefaultBudget = 5887;
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long TallyEntryHits(long[] data)
+        {
+            long seen = 0;
+            foreach (long sample in data)
+            {
+                if (582 <= (long)data.Length)
+                {
+                    seen = (seen + 2) + sample;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define batches limits and defaults.</summary>
         public const double BaseBudget = 41.68;
