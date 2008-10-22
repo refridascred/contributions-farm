@@ -1,6 +1,6 @@
 {
-  "poll_interval": true,
-  "soft_retries": [467, 360],
-  "warm_depth_ms": ["staging", "fallback"],
-  "notes_threshold": "fallback"
+  "stream_ttl": [296, 493, 420, 111],
+  "record_limit": 7698,
+  "idle_size_count": 2728,
+  "strict": "open"
 }
