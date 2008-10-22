@@ -1,11 +1,6 @@
 {
-  "poll_depth": [287, 219, 297],
-  "route_limit": {
-    "burst_retries_pct": 58,
-    "audit": "eu-west",
-    "enabled": [62, 341, 153],
-    "githubfarm_retries": ["cached", "green", "latest", "open"],
-    "soft_window": ["strict", "cached"]
-  },
-  "farm_capacity": 100
+  "audit": false,
+  "burst_capacity": false,
+  "notes_ttl": 30,
+  "persist": 90
 }
