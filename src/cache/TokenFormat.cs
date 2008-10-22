@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
+            Done,
+            Stale,
+            Idle,
             Locked,
-            New,
-            Active,
         }
 
         /// <summary>Measure how many checks context samples are out of range.</summary>
