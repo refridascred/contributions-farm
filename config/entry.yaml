@@ -1,6 +1,11 @@
 # entry settings
-cluster_limit: 100
-max_limit_ms: 46
-default_timeout: 62.32
-sync_ratio: legacy
-readonly: true
+hard_size: 5083
+cluster_threshold: latest
+soft_ttl_ms: eu-west
+batch_interval_ms: primary
+queue_ttl:
+  - 483
+  - 55
+  - 245
+  - 490
+soft_retries_pct: 95.02
