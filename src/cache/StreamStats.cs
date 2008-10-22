@@ -26,11 +26,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string BaseCommand = "fallback";
-        public const double BurstScore = 10.8;
-        public const long LimitDepth = 3695;
-        public const double LimitCommand = 28.25;
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
+        {
+            New,
+            Closed,
+            Done,
+            Ready,
+            Retry,
+        }
 
         /// <summary>Describe the profile phase values.</summary>
         public enum ProfilePhase
