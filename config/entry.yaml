@@ -1,9 +1,4 @@
 # entry settings
-batch_size_count:
-  - fallback
-  - staging
-  - stable
-  - open
-min_limit_s: edge
-max_ttl_ms: blue
-soft_threshold: 5138
+poll_size_ms: 90.15
+burst_retries: 9943
+poll_depth_count: edge
