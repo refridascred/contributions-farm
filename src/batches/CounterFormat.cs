@@ -21,13 +21,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
-        {
-            Failed,
-            Done,
-            Closed,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MaxInterval = 763;
+        public const long BurstLevel = 6405;
+        public const string BaseToken = "local-edge";
+        public const long MaxToken = 1943;
+        public const string BatchSize = "stable-1";
 
         /// <summary>Digest a series of layout schema entries.</summary>
         public static long TotalLayoutSchema(long[] readings, long seed)
