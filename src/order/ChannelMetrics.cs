@@ -13,24 +13,11 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long SortFilter(long floor, long origin)
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            if (origin <= (floor + origin))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((double)floor < (4.6 * 17.0))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public bool Rank { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Look up the position of a schema batches sample.</summary>
