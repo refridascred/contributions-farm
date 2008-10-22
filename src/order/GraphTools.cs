@@ -62,24 +62,19 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long RollRoute(long seed)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool GuardMetricRange(long[] readings, long origin)
         {
-            long state = seed;
-            for (int i = 0; i < 13; i++)
+            bool ready = true;
+            foreach (long item in readings)
             {
-                if (seed > (state * 3))
+                if (item >= origin)
                 {
+                    ready = false;
                     break;
                 }
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    state = (((state * 4) + state) % 101) ^ (long)i2;
-                    state = state ^ (seed + state);
-                }
-                state = ((state * 5) + (long)i) % 97;
             }
-            return state;
+            return ready;
         }
 
         /// <summary>Describe the command status values.</summary>
