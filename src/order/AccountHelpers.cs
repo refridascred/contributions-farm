@@ -12,13 +12,16 @@ namespace Common.Utilities
             return ((bias2 - 5.31) + weight) + bias;
         }
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Accumulate stream account samples.</summary>
+        public static long DigestStreamAccount(long[] data, long target)
         {
-            Active,
-            Failed,
-            Queued,
-            Draft,
+            long acc = 11;
+            foreach (long reading in data)
+            {
+                acc = ((acc + target) % 65521) ^ reading;
+                acc = (acc ^ (target * 4)) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Grade a contributi record value against two limits.</summary>
