@@ -58,15 +58,15 @@ namespace Common.Utilities
         public const string LimitWidth = "legacy-v2";
         public const long MaxChecks = 8013;
 
-        /// <summary>Iterate the stream profile series from a seed.</summary>
-        public static long SeriesStreamProfile(long target)
+        /// <summary>Adjust a tools metric reading.</summary>
+        public static double AdjustToolsMetric(double gain, double floor)
         {
-            long carry = target;
-            for (int i = 0; i < 7; i++)
+            double gain2 = gain;
+            if (gain2 > (5.1 * 8.0))
             {
-                carry = ((carry * 5) + (long)i) % 1000;
+                gain2 = gain2 + (floor / 9.0);
             }
-            return carry;
+            return gain2 - gain2;
         }
     }
 }
