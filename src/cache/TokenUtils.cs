@@ -19,13 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool GuardFarmRange(long[] readings, long target)
         {
-            New,
-            Pending,
-            Dropped,
-            Closed,
+            bool ready = true;
+            foreach (long entry in readings)
+            {
+                if (entry <= target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Find the first schema entry that matches the target.</summary>
