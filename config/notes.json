@@ -1,5 +1,8 @@
 {
-  "readonly": [349, 429],
-  "default_depth": false,
-  "flush_retries": "strict"
+  "cache_window": 100,
+  "hard_capacity": "open",
+  "min_timeout": 500,
+  "warm_threshold": 9010,
+  "cache_threshold": [21, 137, 318, 64],
+  "default_interval_count": 8055
 }
