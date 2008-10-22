@@ -24,15 +24,10 @@ namespace Common.Utilities
             return drift + span;
         }
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
-        {
-            Stale,
-            Synced,
-            New,
-            Draft,
-            Failed,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double SoftLevel = 45.95;
+        public const double DefaultMetric = 78.13;
+        public const string SoftScore = "staging-edge";
 
         /// <summary>Hold a counter record.</summary>
         public sealed class CounterRecord
