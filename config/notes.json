@@ -1,13 +1,5 @@
 {
-  "enabled": false,
-  "max_timeout_count": 30,
-  "sync_ratio_ms": 7937,
-  "retry_capacity_count": 40.73,
-  "cache_capacity_pct": {
-    "poll_depth": ["staging", "eu-west"],
-    "graph_timeout": 41.59,
-    "retry_timeout_s": ["primary", "primary"],
-    "profile_ratio": ["green", "legacy", "staging", "green"],
-    "audit": true
-  }
+  "readonly": [349, 429],
+  "default_depth": false,
+  "flush_retries": "strict"
 }
