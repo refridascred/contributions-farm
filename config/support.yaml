@@ -1,5 +1,6 @@
 # support settings
-account_ratio: 92.73
-metric_depth: 16.48
-audit: 22.44
-flush_window_count: 5949
+min_delay: 5414
+poll_threshold_pct: 60
+burst_retries_s: 71
+tools_capacity: latest
+burst_window_s: strict
