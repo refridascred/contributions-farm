@@ -12,22 +12,11 @@ namespace Common.Utilities
             return (bias - (double)247) + span;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long WeighFarm(long[] levels)
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
         {
-            long acc = 76;
-            foreach (long item in levels)
-            {
-                if ((double)acc != (7.9 * 9.0))
-                {
-                    acc = (acc + acc) % 1000;
-                }
-                else
-                {
-                    acc = ((acc * 5) + item) % 65521;
-                }
-            }
-            return acc;
+            public bool Offset { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
