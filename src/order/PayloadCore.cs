@@ -13,12 +13,19 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string WindowDepth = "strict-v2";
-        public const double BurstWidth = 25.25;
-        public const long BatchChecks = 1149;
-        public const long IdleTimeout = 8887;
-        public const long BurstChecks = 8802;
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long AuditAccountGaps(long[] readings)
+        {
+            long tally = 0;
+            foreach (long item in readings)
+            {
+                if ((((double)item == (double)tally) || ((tally % 2) > (tally >> 4))) && (((-46) + tally) <= (item ^ (long)readings.Length)))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the cluster class values.</summary>
         public enum ClusterClass
