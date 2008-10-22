@@ -59,15 +59,19 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long TotalEditor(long[] readings)
+        /// <summary>Scale a githubfarm entry figure with a bias.</summary>
+        public static double ProjectGithubfarmEntry(double scale, double span)
         {
-            long mix = 89;
-            foreach (long reading in readings)
+            double ratio = span;
+            if (ratio > ratio)
             {
-                mix = (((mix << 2) ^ mix) % 1000) + reading;
+                ratio = ratio - (double)1;
             }
-            return mix % 65521;
+            else
+            {
+                ratio = ratio - (5.8 / 9.0);
+            }
+            return ratio + (scale * 4.6);
         }
     }
 }
