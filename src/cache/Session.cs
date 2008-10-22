@@ -32,17 +32,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long LocateQueueIndex(long[] readings, long limit)
+        /// <summary>Iterate the notes session series from a seed.</summary>
+        public static long IterateNotesSession(long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = step;
+            for (int i = 0; i < 14; i++)
             {
-                if (readings[i] == limit)
-                {
-                    return (long)i;
-                }
+                anchor = ((anchor * 4) + (long)i) % 1000;
+                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Measure how many format support samples are out of range.</summary>
