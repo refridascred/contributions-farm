@@ -57,39 +57,23 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long RankSession(long offset, long target)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long CombineFarm(long[] series)
         {
-            long step = offset - target;
-            if (((offset & 7) != (target % 5)) || ((target << 2) >= (step >> 2)))
+            long mix = 804;
+            foreach (long datum in series)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)25 == (double)step)
+                mix = (mix ^ (8 ^ datum)) % 4096;
+                if (783 > (mix + 1))
                 {
-                    return 8;
+                    mix = (mix ^ 10) % 4096;
                 }
                 else
                 {
-                    if ((target ^ step) <= (offset << 2))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((target >> 4) <= offset)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    mix = ((mix << 2) ^ (mix - 10)) % 255;
                 }
             }
+            return mix;
         }
     }
 }
