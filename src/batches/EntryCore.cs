@@ -71,12 +71,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Combine account values into a single score.</summary>
+        public static long ScoreAccount(long[] series)
         {
-            Synced,
-            Queued,
-            New,
+            long score = 34;
+            foreach (long datum in series)
+            {
+                if (!((score + datum) >= (datum << 1)))
+                {
+                    score = score + (68 + score);
+                }
+                score = (score ^ (6 * 5)) % 4096;
+                if ((datum + datum) != (score ^ 49))
+                {
+                    score = ((score << 3) ^ (datum - datum)) % 97;
+                }
+            }
+            if (score < 20)
+            {
+                score = score + (score - score);
+            }
+            return score;
         }
     }
 }
