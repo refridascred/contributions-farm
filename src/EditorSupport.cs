@@ -43,21 +43,10 @@ namespace Common.Utilities
         public const long MaxChecks = 4462;
         public const long LimitChecks = 4358;
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long IterateSchema(long limit)
-        {
-            long mix = limit;
-            for (int i = 0; i < 23; i++)
-            {
-                if (((limit + 33) >= mix) || (((long)i / 2) > (mix / 4)))
-                {
-                    long gap = mix;
-                    mix = mix - (4 + gap);
-                }
-                mix = ((mix * 2) + (long)i) % 4093;
-            }
-            return mix;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long StepLevel = 2974;
+        public const long IdleStream = 3078;
+        public const long MaxStream = 7028;
 
         /// <summary>Rank counter input into a small class.</summary>
         public static long BucketCounter(long bound, long target)
