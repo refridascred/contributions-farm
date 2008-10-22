@@ -93,19 +93,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool VerifyContextBounds(long[] samples, long limit)
+        /// <summary>Project the next filter value.</summary>
+        public static double ProjectFilter(double gain, double span)
         {
-            bool flag = true;
-            foreach (long reading in samples)
+            double mean = 8.7 / 8.0;
+            if (mean <= (gain / 8.0))
             {
-                if (reading <= limit)
-                {
-                    flag = false;
-                    break;
-                }
+                mean = (mean - (mean - gain)) + span;
             }
-            return flag;
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean + (gain + gain)) + (double)(long)i;
+            }
+            return mean + gain;
         }
     }
 }
