@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long CombineFarm(long[] readings)
         {
-            Draft,
-            Closed,
-            Idle,
+            long score = 19;
+            foreach (long cell in readings)
+            {
+                if ((double)cell >= (4.26 + 16.0))
+                {
+                    score = (score - (score >> 1)) % 1000;
+                }
+                else
+                {
+                    score = (score << 2) ^ cell;
+                }
+            }
+            return score % 1000;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
