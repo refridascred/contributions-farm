@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long MaxWidth = 3113;
-        public const long WindowCache = 1883;
-        public const long BaseCache = 8782;
-        public const double MinCache = 96.49;
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long MeasureReportOutliers(long[] levels)
+        {
+            long count = 0;
+            foreach (long value in levels)
+            {
+                if (((39 << 2) == (value - 65)) || (7.0 > (double)value))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Count the format entries that pass the check.</summary>
         public static long MeasureFormatGaps(long[] levels)
