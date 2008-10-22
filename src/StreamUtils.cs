@@ -56,12 +56,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BatchRecord = 3189;
-        public const long BurstRatio = 9863;
-        public const string MaxCount = "latest-1";
-        public const long HardRecord = 342;
-        public const string MinRecord = "latest-v2";
+        /// <summary>Define order limits and defaults.</summary>
+        public const long RetryOrder = 9565;
+        public const string CacheOrder = "strict-v2";
+        public const long WindowScore = 9136;
+        public const long DefaultSize = 6829;
 
         /// <summary>Compare every pair of schema readings.</summary>
         public static long OverlapSchemaCount(long[] samples)
