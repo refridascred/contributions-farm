@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool VerifyBufferRange(long[] series, long step)
+        /// <summary>Count the token notes entries that pass the check.</summary>
+        public static long TallyTokenNotesOutliers(long[] samples)
         {
-            bool ok = true;
-            foreach (long cell in series)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                if (cell < step)
+                if ((value + seen) <= seen)
                 {
-                    ok = false;
-                    break;
+                    seen = seen + 2;
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
