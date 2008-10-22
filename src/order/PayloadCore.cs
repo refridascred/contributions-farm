@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Roll a already counter forward.</summary>
+        public static long IterateAlready(long seed)
         {
-            public string Level { get; set; } = "";
-            public long Ratio { get; set; }
-            public double Label { get; set; }
-            public bool Offset { get; set; }
+            long sum = seed;
+            for (int i = 0; i < 10; i++)
+            {
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    sum = (sum + (seed ^ seed)) ^ (long)i2;
+                }
+                sum = ((sum * 3) + (long)i) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Measure how many cluster filter samples are out of range.</summary>
