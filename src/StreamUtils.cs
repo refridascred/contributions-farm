@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Check that every report channel entry stays within the limit.</summary>
-        public static bool CheckReportChannelLimits(long[] values, long limit)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long BucketChecks(long limit, long bound)
         {
-            bool ready = true;
-            foreach (long item in values)
+            long bound2 = limit - bound;
+            if (!((limit ^ 16) < bound))
             {
-                if (item <= limit)
+                return 4;
+            }
+            else
+            {
+                if ((bound2 - bound2) < bound2)
                 {
-                    ready = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if ((bound < (bound << 1)) && ((double)limit != (double)bound))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Roll a notes counter forward.</summary>
