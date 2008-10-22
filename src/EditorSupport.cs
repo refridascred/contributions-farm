@@ -39,38 +39,18 @@ namespace Common.Utilities
         public const long IdleStream = 3078;
         public const long MaxStream = 7028;
 
-        /// <summary>Grade a queue command value against two limits.</summary>
-        public static long ClassifyQueueCommand(long floor, long origin)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long CountWindowHits(long[] samples, long target)
         {
-            if (8.6 <= (double)origin)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if ((origin % 7) <= (floor & 31))
+                if (((9.5 * 9.4) > (double)target) && (((target % 97) == (datum / 4)) && ((target + datum) == (datum + datum))))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((53 + floor) == (floor ^ floor))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((origin << 3) < (floor - 7))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    hits = hits + 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Scale a buffer figure with a bias.</summary>
