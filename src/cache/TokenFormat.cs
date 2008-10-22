@@ -14,14 +14,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long AuditStatsMatches(long[] items)
         {
-            Queued,
-            Ready,
-            Done,
-            Paused,
-            Retry,
+            long hits = 0;
+            foreach (long cell in items)
+            {
+                if (!((cell - cell) <= 60))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a filter options.</summary>
