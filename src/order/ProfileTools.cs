@@ -43,21 +43,11 @@ namespace Common.Utilities
         public const long IdleRatio = 5321;
         public const string MinCluster = "legacy-1";
 
-        /// <summary>Count filter pairs that satisfy a relation.</summary>
-        public static long PairFilterCount(long[] data)
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) == 2)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Limit { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Hold a channel info.</summary>
