@@ -29,18 +29,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long TotalBuffer(long[] levels)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long TallyAccountMatches(long[] readings)
         {
-            long anchor = 8;
-            foreach (long item in levels)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                if ((3.24 - 4.0) == (double)item)
+                if ((tally + tally) > (datum << 2))
                 {
-                    anchor = anchor ^ (item + item);
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return anchor % 97;
+            return tally;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
