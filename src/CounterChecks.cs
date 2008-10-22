@@ -22,23 +22,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long CountChecksHits(long[] items)
-        {
-            long tally = 0;
-            foreach (long cell in items)
-            {
-                if (!(tally >= cell))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long WindowCounter = 148;
+        public const long LimitCounter = 4100;
+        public const double CacheLevel = 80.99;
+        public const long BurstCounter = 307;
 
         /// <summary>Define channel limits and defaults.</summary>
         public const double BurstChannel = 77.52;
