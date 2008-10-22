@@ -38,22 +38,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long MeasureWindowMatches(long[] samples)
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            long tally = 0;
-            foreach (long reading in samples)
-            {
-                if (((reading << 1) >= (tally * 5)) || ((tally >> 2) >= (tally >> 4)))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Queued,
+            Retry,
+            Draft,
+            Active,
         }
     }
 }
