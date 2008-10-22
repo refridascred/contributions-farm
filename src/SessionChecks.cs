@@ -40,20 +40,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the command metrics series from a seed.</summary>
-        public static long RollCommandMetrics(long target)
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            long mark = target;
-            for (int i = 0; i < 10; i++)
-            {
-                if (target >= (mark >> 4))
-                {
-                    mark = mark - (mark - mark);
-                    break;
-                }
-                mark = ((mark * 5) + (long)i) % 65521;
-            }
-            return mark;
+            Closed,
+            Idle,
+            Stale,
+            Draft,
+            New,
         }
     }
 }
