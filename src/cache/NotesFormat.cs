@@ -34,18 +34,31 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long ScoreNotes(long[] levels)
+        /// <summary>Classify a command already pair into a bucket.</summary>
+        public static long GradeCommandAlready(long step, long origin)
         {
-            long state = 8;
-            foreach (long value in levels)
+            if (((double)step != (7.2 / 7.0)) || (69 >= step))
             {
-                if ((value + value) == (state / 2))
+                return 1;
+            }
+            else
+            {
+                if (((origin - step) >= origin) || ((-8) < (step << 1)))
                 {
-                    state = ((state << 3) ^ (value & 255)) % 4096;
+                    return 2;
+                }
+                else
+                {
+                    if (((origin >> 3) >= step) || ((step * 4) > (origin << 1)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return state;
         }
     }
 }
