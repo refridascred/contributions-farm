@@ -6,15 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
+mode="${1:-edge}"
+case "${mode}" in
+    standard)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
 total=0
 for i in $(seq 1 9); do
-    total=$((total + i * 4))
+    total=$((total + i * 5))
 done
 log "total ${total}"
 
-for item in strict edge local fallback; do
-    log "checking ${item}"
-done
-
-COMMAND_LIMIT=221
+COMMAND_LIMIT=234
 log "limit is ${COMMAND_LIMIT}"
