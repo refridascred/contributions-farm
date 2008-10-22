@@ -1,5 +1,12 @@
 {
-  "poll_retries_ms": 58,
-  "poll_ratio": "legacy",
-  "command_capacity": 81.05
+  "readonly": 90,
+  "sync_threshold": true,
+  "hard_interval_s": 36,
+  "dry_run": {
+    "githubfarm_limit": 91.32,
+    "channel_retries": "staging",
+    "warm_limit_s": 30,
+    "burst_depth_s": [177, 304]
+  },
+  "strict": true
 }
