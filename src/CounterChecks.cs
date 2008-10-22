@@ -27,20 +27,24 @@ namespace Common.Utilities
         public const string LimitLayout = "stable";
         public const long HardLayout = 1509;
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long IterateReport(long limit)
+        /// <summary>Grade a counter batches value against two limits.</summary>
+        public static long ClassifyCounterBatches(long origin, long origin2)
         {
-            long state = limit;
-            for (int i = 0; i < 5; i++)
+            if (((origin % 64) <= (origin & 3)) && (6 <= (origin2 - origin)))
             {
-                if (((1 + state) <= 532) || ((double)state == (double)limit))
-                {
-                    state = (state - state) % 65521;
-                }
-                state = state ^ (limit ^ state);
-                state = ((state * 5) + (long)i) % 4093;
+                return 7;
             }
-            return state;
+            else
+            {
+                if ((((-69) * 4) < (origin ^ origin)) || ((origin + origin) != (origin2 << 1)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Project the next metric value.</summary>
