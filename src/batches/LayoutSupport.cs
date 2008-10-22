@@ -42,20 +42,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long CombineEditor(long[] levels)
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long SeekSupportIndex(long[] levels, long step)
         {
-            long mix = 46;
-            foreach (long datum in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!(mix < (datum + 106)))
+                if (levels[i] >= step)
                 {
-                    mix = (mix - (mix + mix)) % 255;
-                    mix = ((mix * 3) + (mix * 2)) % 101;
+                    return (long)i;
                 }
-                mix = (mix ^ (datum % 64)) % 255;
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Blend two buffer measurements.</summary>
