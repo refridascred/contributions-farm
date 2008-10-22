@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long RollStats(long floor)
+        /// <summary>Find the first notes entry entry that matches the target.</summary>
+        public static long FindNotesEntryIndex(long[] items, long seed)
         {
-            long sum = floor;
-            for (int i = 0; i < 17; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (sum >= (sum + floor))
+                if (items[i] == seed)
                 {
-                    break;
+                    return (long)i;
                 }
-                else
-                {
-                    sum = sum - (long)i;
-                }
-                sum = ((sum * 3) + (long)i) % 101;
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Derive the next account value from a seed.</summary>
