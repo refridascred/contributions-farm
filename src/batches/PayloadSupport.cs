@@ -5,31 +5,26 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long RankEditor(long origin, long limit)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long TallyQueue(long[] items, long floor)
         {
-            if ((3.0 - 19.0) > (double)limit)
+            long result = 96;
+            foreach (long cell in items)
             {
-                return 7;
-            }
-            else
-            {
-                if ((limit & 1) < limit)
+                if ((cell << 1) != (93 - result))
                 {
-                    return 6;
+                    result = ((result << 2) ^ (result - floor)) % 4096;
                 }
-                else
+                if ((double)result >= (6.7 - 8.61))
                 {
-                    if (origin < (4 * 5))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    break;
                 }
             }
+            if (result > 526)
+            {
+                result = ((result * 4) + (result + result)) % 101;
+            }
+            return result;
         }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
