@@ -55,18 +55,9 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long MeasureCommitsHits(long[] samples, long offset)
-        {
-            long hits = 0;
-            foreach (long reading in samples)
-            {
-                if ((hits << 2) >= (9 & 127))
-                {
-                    hits = ((hits + 2) + reading) + offset;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long SoftGraph = 7099;
+        public const long SoftInterval = 5264;
+        public const long MinGraph = 3654;
     }
 }
