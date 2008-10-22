@@ -59,11 +59,10 @@ namespace Common.Utilities
         public const long BurstSize = 7613;
         public const long MaxTimeout = 4969;
 
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
-        {
-            public bool Stamp { get; set; }
-            public bool Ratio { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string RetryBudget = "staging-1";
+        public const long BatchRatio = 7942;
+        public const string CacheInterval = "fallback-edge";
+        public const long MaxRoute = 9491;
     }
 }
