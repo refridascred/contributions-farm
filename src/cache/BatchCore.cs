@@ -55,11 +55,38 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double SoftEditor = 65.34;
-        public const long DefaultSize = 4148;
-        public const long HardTimeout = 9045;
-        public const string BaseWidth = "standard-1";
-        public const long BatchEditor = 3885;
+        /// <summary>Grade a graph order value against two limits.</summary>
+        public static long SortGraphOrder(long step, long seed)
+        {
+            if ((step ^ step) >= (step + step))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((seed & 127) != (seed << 3))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (8.3 <= (double)step)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((step % 12) != ((-588) ^ 208))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
