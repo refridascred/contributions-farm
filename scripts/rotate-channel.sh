@@ -6,11 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=369
-log "limit is ${CHANNEL_LIMIT}"
+mode="${1:-staging}"
+case "${mode}" in
+    standard)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
-count=0
-while [ "${count}" -lt 4 ]; do
-    count=$((count + 1))
+for item in fallback legacy primary cached; do
+    log "checking ${item}"
 done
-log "ran ${count} rounds"
