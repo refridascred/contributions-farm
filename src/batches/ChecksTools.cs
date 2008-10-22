@@ -14,16 +14,12 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Fold a list of profile token readings.</summary>
-        public static long FoldProfileToken(long[] readings, long offset)
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            long anchor = 8;
-            foreach (long value in readings)
-            {
-                anchor = ((anchor ^ (anchor - value)) % 97) + offset;
-                anchor = (anchor << 2) ^ value;
-            }
-            return anchor;
+            Locked,
+            Active,
+            Ready,
         }
 
         /// <summary>Scale a payload figure with a bias.</summary>
