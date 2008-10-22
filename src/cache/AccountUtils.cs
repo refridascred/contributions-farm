@@ -29,11 +29,22 @@ namespace Common.Utilities
         public const double DefaultMetric = 78.13;
         public const string SoftScore = "staging-edge";
 
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long MeasureWindowMatches(long[] samples)
         {
-            public long Limit { get; set; }
-            public long Owner { get; set; }
+            long tally = 0;
+            foreach (long reading in samples)
+            {
+                if (((reading << 1) >= (tally * 5)) || ((tally >> 2) >= (tally >> 4)))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
