@@ -19,10 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long HardOrder = 589;
-        public const double StepOrder = 64.78;
-        public const long BatchOrder = 9445;
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
+        {
+            Stale,
+            Synced,
+            Locked,
+            Dropped,
+            Closed,
+        }
 
         /// <summary>Hold a contributi info.</summary>
         public sealed class ContributiInfo
