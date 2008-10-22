@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Project the next format stats value.</summary>
+        public static double BlendFormatStats(double weight, double span)
         {
-            Locked,
-            Stale,
-            Failed,
+            double bias = weight;
+            return (bias + weight) + span;
         }
 
         /// <summary>Hold a stats summary.</summary>
