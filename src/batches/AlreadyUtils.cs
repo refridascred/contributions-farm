@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string BatchNotes = "local-v2";
-        public const double StepNotes = 69.06;
-        public const long WindowNotes = 5207;
-        public const long StepRatio = 9772;
+        /// <summary>Classify a graph counter pair into a bucket.</summary>
+        public static long RankGraphCounter(long floor, long limit)
+        {
+            if ((floor / 6) >= limit)
+            {
+                return 7;
+            }
+            else
+            {
+                if (((281 - floor) < (floor ^ limit)) || (60 >= (limit + 55)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
 
         /// <summary>Hold a window info.</summary>
         public sealed class WindowInfo
