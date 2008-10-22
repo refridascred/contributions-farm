@@ -20,19 +20,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine report payload values into a single score.</summary>
-        public static long WeighReportPayload(long[] values)
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
-            long acc = 51;
-            foreach (long item in values)
-            {
-                acc = (acc - (acc + item)) % 97;
-            }
-            if (acc < 505)
-            {
-                acc = acc ^ (acc + 6);
-            }
-            return acc;
+            public long Score { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Scale a buffer figure with a bias.</summary>
