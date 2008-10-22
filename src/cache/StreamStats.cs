@@ -41,11 +41,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
-        {
-            public long Rank { get; set; }
-            public bool Limit { get; set; }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double SoftLevel = 56.12;
+        public const double HardFactor = 24.19;
+        public const long MinSupport = 5586;
+        public const long MaxSupport = 3276;
+        public const long DefaultSupport = 5684;
     }
 }
