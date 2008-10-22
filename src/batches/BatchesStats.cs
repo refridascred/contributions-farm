@@ -31,19 +31,18 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Adjust a filter checks reading.</summary>
-        public static double ScaleFilterChecks(double weight, double floor)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long TallyProfileHits(long[] samples, long seed)
         {
-            double scale = floor + (floor / 2.0);
-            if (scale > (weight * 8.85))
+            long tally = 0;
+            foreach (long value in samples)
             {
-                scale = scale + scale;
+                if ((double)tally >= (1.47 / 6.0))
+                {
+                    tally = ((tally + 3) + value) + seed;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                scale = (scale - weight) - (double)(long)i;
-            }
-            return scale + floor;
+            return tally;
         }
 
         /// <summary>Describe the payload state values.</summary>
