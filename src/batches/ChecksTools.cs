@@ -22,25 +22,22 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long SortPayload(long limit, long seed)
+        /// <summary>Count the format token entries that pass the check.</summary>
+        public static long CountFormatTokenHits(long[] readings)
         {
-            long slot = limit ^ seed;
-            if ((limit % 5) == (255 >> 1))
+            long hits = 0;
+            foreach (long item in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if (!((limit << 3) == (slot ^ limit)))
+                if (!((double)item > (double)461))
                 {
-                    return 0;
+                    hits = hits + 1;
                 }
                 else
                 {
-                    return 7;
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
