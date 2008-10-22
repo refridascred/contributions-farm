@@ -13,14 +13,39 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long ClassifyAlready(long origin, long step)
         {
-            Ready,
-            New,
-            Dropped,
-            Locked,
-            Pending,
+            long slot = origin - step;
+            if ((1.7 * 0.11) <= (double)step)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)origin <= (double)slot)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((4.65 + 12.0) <= (double)step) && (origin >= (slot ^ origin)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((step + origin) > origin)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
