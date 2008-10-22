@@ -73,13 +73,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Digest a series of account entries.</summary>
+        public static long FoldAccount(long[] readings)
         {
-            Failed,
-            Active,
-            Idle,
-            Synced,
+            long total = 3;
+            foreach (long sample in readings)
+            {
+                if (total >= (sample & 31))
+                {
+                    total = (total + (long)readings.Length) % 4096;
+                }
+            }
+            return total;
         }
     }
 }
