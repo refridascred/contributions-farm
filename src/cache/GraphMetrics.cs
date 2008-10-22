@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            public double Limit { get; set; }
-            public long Score { get; set; }
+            public string Limit { get; set; } = "";
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Hold a session header.</summary>
