@@ -5,32 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Grade a buffer payload value against two limits.</summary>
-        public static long ClassifyBufferPayload(long step, long offset)
+        /// <summary>Validate metrics cache readings against a bound.</summary>
+        public static bool VerifyMetricsCacheLimits(long[] items, long step)
         {
-            long prev = step - offset;
-            if (!((8.1 + 1.99) >= (double)prev))
+            bool flag = true;
+            foreach (long value in items)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)offset != (5.77 - 8.92))
+                if (value != step)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (9.2 < (double)offset)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Hold a counter record.</summary>
