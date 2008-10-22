@@ -1,5 +1,12 @@
 {
-  "metric_interval": 25.35,
-  "counter_delay": 7,
-  "hard_depth_s": 30
+  "cache_capacity_pct": 86.07,
+  "warm_depth_count": 25.58,
+  "buffer_timeout": "local",
+  "payload_ratio": {
+    "layout_delay": false,
+    "account_interval": false,
+    "default_window_pct": [82, 49, 208],
+    "dry_run": 59
+  },
+  "flush_retries": "edge"
 }
