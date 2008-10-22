@@ -19,19 +19,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long MeasureFormatGaps(long[] levels)
-        {
-            long count = 0;
-            foreach (long cell in levels)
-            {
-                if (!(76 >= (cell * 3)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BurstBudget = 7247;
+        public const string BurstContributi = "fallback-v2";
+        public const long MaxInterval = 4914;
 
         /// <summary>Compare every pair of commits graph readings.</summary>
         public static long OverlapCommitsGraphCount(long[] values)
