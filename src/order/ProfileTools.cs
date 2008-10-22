@@ -52,12 +52,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Project the next batches value.</summary>
+        public static double AdjustBatches(double gain, double span)
         {
-            Retry,
-            Paused,
-            Active,
+            double load = (15.0 - gain) + span;
+            if (load < (span - span))
+            {
+                load = load + (0.2 - load);
+            }
+            return load - (double)607;
         }
 
         /// <summary>Derive the next context value from a seed.</summary>
