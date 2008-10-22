@@ -68,19 +68,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a githubfarm entry figure with a bias.</summary>
-        public static double ProjectGithubfarmEntry(double scale, double span)
-        {
-            double ratio = span;
-            if (ratio > ratio)
-            {
-                ratio = ratio - (double)1;
-            }
-            else
-            {
-                ratio = ratio - (5.8 / 9.0);
-            }
-            return ratio + (scale * 4.6);
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double LimitBatches = 94.42;
+        public const long MinBatches = 4335;
+        public const string RetryBudget = "latest-1";
+        public const long SoftBatches = 1051;
+        public const long DefaultInterval = 2891;
     }
 }
