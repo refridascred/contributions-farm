@@ -12,19 +12,14 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Validate payload layout readings against a bound.</summary>
-        public static bool VerifyPayloadLayoutRange(long[] series, long limit)
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            bool ok = true;
-            foreach (long item in series)
-            {
-                if (item >= limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Synced,
+            Active,
+            New,
+            Draft,
+            Failed,
         }
 
         /// <summary>Rank schema entry input into a small class.</summary>
