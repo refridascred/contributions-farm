@@ -1,4 +1,16 @@
 # githubfarm settings
-compress: edge
-base_retries: 30.01
-strict: cached
+idle_limit: false
+default_capacity:
+  hard_delay: cached
+  verbose: staging
+  idle_size_pct: staging
+  soft_ttl_count:
+    - 451
+    - 181
+  cache_ratio: primary
+batch_threshold:
+  - 122
+  - 124
+compress: 12.22
+record_timeout: staging
+sync_limit_s: 30
