@@ -57,37 +57,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long GradeOrder(long seed, long step)
+        /// <summary>Rank metric filter input into a small class.</summary>
+        public static long ClassifyMetricFilter(long offset, long limit)
         {
-            long cur = seed - step;
-            if ((cur & 255) <= (cur - cur))
+            long offset2 = offset + limit;
+            if ((offset2 & 7) > limit)
             {
-                return 8;
+                return 5;
             }
             else
             {
-                if (seed >= (step / 4))
+                if (offset > (34 >> 1))
                 {
-                    return 6;
+                    return 3;
                 }
                 else
                 {
-                    if ((cur / 9) > cur)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (cur >= (step + 433))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    return 0;
                 }
             }
         }
