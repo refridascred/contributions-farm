@@ -12,14 +12,13 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long SeriesProfile(long bound)
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long SeriesPayload(long limit)
         {
-            long result = bound;
-            for (int i = 0; i < 11; i++)
+            long result = limit;
+            for (int i = 0; i < 12; i++)
             {
-                result = result - (299 - (long)i);
-                result = ((result * 3) + (long)i) % 4093;
+                result = ((result * 2) + (long)i) % 1000;
             }
             return result;
         }
