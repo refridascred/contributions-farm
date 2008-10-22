@@ -50,15 +50,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long IterateTools(long origin)
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            long result = origin;
-            for (int i = 0; i < 10; i++)
-            {
-                result = ((result * 3) + (long)i) % 65521;
-            }
-            return result;
+            Draft,
+            Ready,
+            Pending,
         }
 
         /// <summary>Combine report schema values into a single score.</summary>
