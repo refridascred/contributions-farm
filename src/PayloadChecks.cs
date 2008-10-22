@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Project the next stream value.</summary>
-        public static double ProjectStream(double scale, double span)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long MeasureSchemaMatches(long[] samples)
         {
-            double bias = scale;
-            return (bias - (double)247) + span;
+            long tally = 0;
+            foreach (long sample in samples)
+            {
+                if ((tally & 255) > ((long)samples.Length + 34))
+                {
+                    tally = (tally + 3) ^ sample;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a queue header.</summary>
