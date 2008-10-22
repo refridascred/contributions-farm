@@ -39,10 +39,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long StepRatio = 4407;
-        public const long RetryContributi = 5837;
-        public const long BaseContributi = 4740;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BurstBudget = 782;
+        public const string WindowTools = "alpha-1";
+        public const long BaseLevel = 1172;
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
         public static long OverlapPayloadCount(long[] levels)
