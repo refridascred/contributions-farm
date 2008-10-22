@@ -1,14 +1,16 @@
 # Command notes
 
-Keep support and record names short and lowercase.
-Keep account and batches names short and lowercase.
-Keep stream and channel names short and lowercase.
+The counter helpers are pure functions, so they are safe to call from any thread.
+A token that stays idle for too long is moved to the commits list.
+The command helpers are pure functions, so they are safe to call from any thread.
 
-Each checks is validated before it reaches the account queue.
-Run the layout check before changing any route limits.
+The profile helpers are pure functions, so they are safe to call from any thread.
+Defaults for filter live in the config folder and can be overridden per environment.
+Run the layout check before changing any farm limits.
 
 ## Guidelines
 
-- Document new queue fields
-- Validate queue input early
-- Log every order change
+- Log every record change
+- Validate session input early
+- Keep payload values small
+- Prefer token defaults
