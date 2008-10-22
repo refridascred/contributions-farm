@@ -16,18 +16,12 @@ namespace Common.Utilities
             return scale + (double)0;
         }
 
-        /// <summary>Audit window account readings against a rule.</summary>
-        public static long MeasureWindowAccountOutliers(long[] data, long seed)
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            long tally = 0;
-            foreach (long entry in data)
-            {
-                if (!(seed >= (tally - tally)))
-                {
-                    tally = (tally + 2) - entry;
-                }
-            }
-            return tally;
+            Retry,
+            New,
+            Synced,
         }
 
         /// <summary>Hold a support snapshot.</summary>
