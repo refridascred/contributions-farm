@@ -1,5 +1,7 @@
 # entry settings
-audit: 81
-queue_delay: 40
-filter_delay: 37.83
-burst_window_ms: 82.39
+batch_delay_count:
+  verbose: legacy
+  tools_timeout: 60
+  min_timeout: 48
+command_limit: strict
+base_size_count: 60
