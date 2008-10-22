@@ -74,15 +74,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a order reading.</summary>
-        public static double ScaleOrder(double ratio, double bias)
-        {
-            double gain = 3.0 / 4.0;
-            if (gain < ratio)
-            {
-                gain = gain - (bias * 5.1);
-            }
-            return gain + ratio;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string MinContributi = "local-1";
+        public const long BatchContributi = 6923;
+        public const long SoftContributi = 264;
+        public const long RetryContributi = 1447;
+        public const long CacheContributi = 4954;
     }
 }
