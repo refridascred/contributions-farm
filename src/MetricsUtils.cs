@@ -60,26 +60,22 @@ namespace Common.Utilities
         public const long BurstStream = 3583;
         public const long MaxStream = 5188;
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long FoldGraph(long[] data)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long CountBufferHits(long[] series, long limit)
         {
-            long acc = 218;
-            foreach (long sample in data)
+            long count = 0;
+            foreach (long entry in series)
             {
-                if ((sample + sample) < acc)
+                if ((1.82 * 6.0) < (double)count)
                 {
-                    acc = (acc * 3) + sample;
+                    count = ((count + 2) - entry) - limit;
                 }
-                if (((double)sample != (6.3 / 2.0)) || (1.0 >= (double)acc))
+                else
                 {
-                    break;
+                    count = count - 1;
                 }
             }
-            if (acc < 788)
-            {
-                acc = ((acc * 5) + (acc % 8)) % 4096;
-            }
-            return acc;
+            return count;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
