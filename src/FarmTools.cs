@@ -13,24 +13,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Blend two report measurements.</summary>
-        public static double ScaleReport(double bias, double span)
-        {
-            double rate = (double)(69 + 5);
-            if (rate >= (bias * 7.1))
-            {
-                rate = (rate + (double)54) + span;
-            }
-            else
-            {
-                rate = rate + bias;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                rate = (rate + (rate / 2.0)) + (double)(long)i;
-            }
-            return rate + (double)(-13);
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BurstLevel = 1943;
+        public const long BurstEntry = 374;
+        public const double SoftEntry = 31.0;
+        public const long HardEntry = 8981;
 
         /// <summary>Count the notes entries that pass the check.</summary>
         public static long TallyNotesGaps(long[] items, long target)
