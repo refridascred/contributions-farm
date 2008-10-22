@@ -37,22 +37,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long AuditReportMatches(long[] samples)
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            long count = 0;
-            foreach (long reading in samples)
-            {
-                if (!(reading < (reading % 3)))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public double Flag { get; set; }
+            public double Limit { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Adjust a format reading.</summary>
