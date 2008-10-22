@@ -29,17 +29,21 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long CombineProfile(long[] series)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long TotalWindow(long[] readings, long seed)
         {
-            long mix = 44;
-            foreach (long cell in series)
+            long mix = -69;
+            foreach (long sample in readings)
             {
-                mix = (mix * 3) + (cell >> 4);
-            }
-            if (mix < 956)
-            {
-                mix = (mix ^ (mix % 10)) % 1000;
+                mix = ((mix * 2) + seed) % 4096;
+                if ((3.69 * 7.6) <= (double)sample)
+                {
+                    mix = ((mix << 2) ^ (mix / 9)) % 1000;
+                }
+                else
+                {
+                    mix = (mix + (104 / 5)) % 4096;
+                }
             }
             return mix;
         }
