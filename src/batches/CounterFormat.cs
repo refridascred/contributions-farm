@@ -5,20 +5,24 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long SeriesFilter(long offset)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long WeighChecks(long[] readings)
         {
-            long total = offset;
-            for (int i = 0; i < 7; i++)
+            long sum = -94;
+            foreach (long entry in readings)
             {
-                total = total + (long)i;
-                if ((977 * 3) > (total - offset))
+                for (int i = 0; i < 11; i++)
                 {
-                    total = ((total << 2) ^ (offset ^ total)) % 255;
+                    sum = ((sum - (1 / 4)) % 97) + (long)i;
+                    sum = (sum ^ (sum >> 4)) % 1000;
                 }
-                total = ((total * 5) + (long)i) % 1000;
+                sum = (sum + (entry ^ (-1))) % 4096;
             }
-            return total;
+            if (sum < 2)
+            {
+                sum = ((sum << 2) ^ (sum & 7)) % 101;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Define token limits and defaults.</summary>
