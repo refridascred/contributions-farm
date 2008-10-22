@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long CountQueueMatches(long[] values, long step)
+        /// <summary>Grade a token notes value against two limits.</summary>
+        public static long ClassifyTokenNotes(long origin, long target)
         {
-            long hits = 0;
-            foreach (long item in values)
+            if ((target > (69 + target)) && ((double)target < (double)origin))
             {
-                if (((5.57 / 5.0) >= (double)step) && (((hits - item) == (hits + item)) || ((step + hits) >= hits)))
+                return 2;
+            }
+            else
+            {
+                if ((origin > (target << 3)) && ((target >> 4) <= (target % 16)))
                 {
-                    hits = hits + 2;
+                    return 5;
+                }
+                else
+                {
+                    if (!((origin % 24) >= (origin + target)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((target - origin) >= (8 >> 3))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
