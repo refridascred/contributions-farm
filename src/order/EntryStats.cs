@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Validate command payload readings against a bound.</summary>
-        public static bool GuardCommandPayloadRange(long[] values, long step)
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            bool ok = true;
-            foreach (long value in values)
-            {
-                if (value >= step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Token { get; set; }
+            public long Region { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Hold a contributi record.</summary>
