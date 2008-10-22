@@ -1,9 +1,25 @@
 # support settings
-soft_delay_pct: 6054
-max_ratio_count: 77
-max_threshold: legacy
-dry_run: 100
-support_interval:
-  - local
-  - green
-  - standard
+session_threshold:
+  window_delay:
+    min_size_s:
+      - latest
+      - open
+      - edge
+      - green
+    contributi_interval: edge
+    cache_delay: true
+  editor_ratio:
+    - 59
+    - 481
+    - 468
+    - 98
+  persist: fallback
+  strict: cached
+  default_ratio_pct: cached
+min_interval: standard
+metrics_limit: 9989
+readonly:
+  - stable
+  - latest
+  - eu-west
+  - fallback
