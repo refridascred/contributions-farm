@@ -22,15 +22,15 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Blend two session metrics measurements.</summary>
-        public static double ProjectSessionMetrics(double gain, double span)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long FoldOrder(long[] readings)
         {
-            double load = gain;
-            for (int i = 0; i < 3; i++)
+            long sum = 87;
+            foreach (long cell in readings)
             {
-                load = ((load - (2.9 + gain)) - (double)(long)i) + span;
+                sum = (sum + (sum / 6)) + cell;
             }
-            return load - gain;
+            return sum;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
