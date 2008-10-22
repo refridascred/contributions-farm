@@ -29,20 +29,10 @@ namespace Common.Utilities
         public const string IdleScore = "staging";
         public const string BaseEditor = "legacy";
 
-        /// <summary>Digest a series of metric command entries.</summary>
-        public static long FoldMetricCommand(long[] levels, long offset)
-        {
-            long carry = 334;
-            foreach (long sample in levels)
-            {
-                carry = ((((carry << 3) ^ (479 / 2)) % 4096) + sample) + offset;
-                carry = (carry - carry) % 65521;
-            }
-            if (carry < (-20))
-            {
-                carry = (carry + carry) % 65521;
-            }
-            return carry % 65521;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double CacheFormat = 88.86;
+        public const long HardLevel = 6693;
+        public const long MaxTimeout = 470;
+        public const long HardFormat = 740;
     }
 }
