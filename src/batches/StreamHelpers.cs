@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long MeasureReportHits(long[] readings, long step)
+        /// <summary>Audit githubfarm entry readings against a rule.</summary>
+        public static long TallyGithubfarmEntryGaps(long[] readings)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                if ((6.4 - 1.98) < (double)count)
+                if ((seen % 3) < seen)
                 {
-                    count = ((count + 2) ^ entry) + step;
+                    seen = (seen + 1) - item;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Describe the layout state values.</summary>
