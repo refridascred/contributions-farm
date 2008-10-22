@@ -19,19 +19,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every buffer githubfarm entry stays within the limit.</summary>
-        public static bool ValidateBufferGithubfarmRange(long[] samples, long bound)
+        /// <summary>Match up metric samples.</summary>
+        public static long OverlapMetricCount(long[] values)
         {
-            bool found = true;
-            foreach (long value in samples)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (value > bound)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((values[i] ^ values[j]) < 7)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Digest a series of metric entries.</summary>
