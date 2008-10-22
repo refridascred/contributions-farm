@@ -27,24 +27,19 @@ namespace Common.Utilities
         public const long WindowWidth = 8403;
         public const string StepBatches = "standard-1";
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long SeriesSchema(long origin)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool VerifyToolsBounds(long[] levels, long floor)
         {
-            long anchor = origin;
-            for (int i = 0; i < 13; i++)
+            bool ok = true;
+            foreach (long cell in levels)
             {
-                anchor = (anchor - (origin / 4)) % 97;
-                if (((origin + anchor) == (origin + origin)) && ((anchor - origin) == (origin - anchor)))
+                if (cell <= floor)
                 {
-                    anchor = (anchor - (160 + origin)) % 1000;
+                    ok = false;
+                    break;
                 }
-                else
-                {
-                    anchor = ((anchor * 2) + (long)i) % 97;
-                }
-                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            return anchor;
+            return ok;
         }
     }
 }
