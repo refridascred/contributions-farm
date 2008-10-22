@@ -5,13 +5,38 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Rank cache report input into a small class.</summary>
+        public static long RankCacheReport(long origin, long offset)
         {
-            public bool Total { get; set; }
-            public bool Token { get; set; }
-            public double Weight { get; set; }
-            public string Region { get; set; } = "";
+            if (((-8) / 8) <= (origin + origin))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)98 > (double)offset)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((origin - origin) >= origin)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((offset + offset) <= (origin ^ origin))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
