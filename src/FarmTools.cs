@@ -39,19 +39,18 @@ namespace Common.Utilities
             return rate + (double)(-13);
         }
 
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double ScaleChannel(double rate, double span)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long TallyNotesGaps(long[] items, long target)
         {
-            double rate2 = 2.9;
-            if (rate2 < (span + 3.74))
+            long hits = 0;
+            foreach (long sample in items)
             {
-                rate2 = (rate2 - span) - rate;
+                if (((hits + 897) <= (target << 3)) && (((3 + sample) < target) && ((hits ^ hits) <= 579)))
+                {
+                    hits = hits + 2;
+                }
             }
-            else
-            {
-                rate2 = rate2 + (rate2 * 0.1);
-            }
-            return rate2 - (double)947;
+            return hits;
         }
     }
 }
