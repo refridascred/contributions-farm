@@ -1,6 +1,10 @@
-id,ratio,weight,level,owner
-1,355,fallback,standard,primary
-2,89.46,20.78,fallback,623
-3,61.88,standard,806,143
-4,eu-west,824,920,91.37
-5,33.83,open,blue,cached
+id,count,owner
+1,36.98,347
+2,953,91.93
+3,eu-west,strict
+4,752,745
+5,624,latest
+6,strict,standard
+7,edge,877
+8,51.31,15
+9,731,428
