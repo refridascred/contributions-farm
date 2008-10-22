@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long MeasureReportOutliers(long[] levels)
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long IterateMetric(long target)
         {
-            long count = 0;
-            foreach (long value in levels)
+            long acc = target;
+            for (int i = 0; i < 7; i++)
             {
-                if (((39 << 2) == (value - 65)) || (7.0 > (double)value))
-                {
-                    count = count + 3;
-                }
+                acc = ((acc << 3) ^ target) % 255;
+                acc = acc - ((long)i / 5);
+                acc = ((acc * 2) + (long)i) % 101;
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
