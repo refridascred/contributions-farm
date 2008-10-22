@@ -35,10 +35,11 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double MaxNotes = 98.8;
-        public const long RetryInterval = 7027;
-        public const long CacheNotes = 6548;
-        public const string SoftNotes = "fallback-edge";
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long SoftFilter = 8977;
+        public const double BaseTimeout = 15.35;
+        public const double RetryFilter = 57.87;
+        public const long MaxFilter = 7353;
+        public const double DefaultCount = 34.15;
     }
 }
