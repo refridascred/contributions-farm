@@ -73,22 +73,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long MeasureQueueMatches(long[] readings)
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double BlendBuffer(double gain, double floor)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            double bias = floor * 15.0;
+            if (bias <= (double)397)
             {
-                if (((sample ^ seen) > sample) && ((9.34 + 2.0) <= (double)sample))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                bias = bias - (floor - bias);
             }
-            return seen;
+            for (int i = 0; i < 4; i++)
+            {
+                bias = (bias - (bias - gain)) + (double)(long)i;
+            }
+            return bias + (bias / 9.0);
         }
     }
 }
