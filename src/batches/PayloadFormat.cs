@@ -60,12 +60,19 @@ namespace Common.Utilities
         public const long WindowGithubfarm = 7126;
         public const long StepGithubfarm = 1302;
 
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool GuardBatchesRange(long[] levels, long offset)
         {
-            public double Limit { get; set; }
-            public bool Owner { get; set; }
-            public bool Flag { get; set; }
+            bool found = true;
+            foreach (long value in levels)
+            {
+                if (value <= offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
