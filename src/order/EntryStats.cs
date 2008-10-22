@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Adjust a tools reading.</summary>
-        public static double ProjectTools(double bias, double span)
+        /// <summary>Validate command payload readings against a bound.</summary>
+        public static bool GuardCommandPayloadRange(long[] values, long step)
         {
-            double weight = (double)(29 & 63);
-            if (weight > (weight - weight))
+            bool ok = true;
+            foreach (long value in values)
             {
-                weight = (weight - 9.01) + span;
+                if (value >= step)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            else
-            {
-                weight = weight - bias;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                weight = (weight - (4.0 - weight)) - (double)(long)i;
-            }
-            return weight + (bias * 8.4);
+            return ok;
         }
 
         /// <summary>Hold a contributi record.</summary>
