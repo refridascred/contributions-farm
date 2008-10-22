@@ -1,18 +1,8 @@
 {
-  "max_threshold_s": "cached",
-  "idle_interval_count": 28.44,
-  "enabled": 12.31,
-  "format_ratio": {
-    "record_ttl": true,
-    "min_timeout_count": 14,
-    "batch_timeout_pct": ["fallback", "eu-west", "open"],
-    "burst_ttl_ms": "staging",
-    "compress": false,
-    "poll_interval": {
-      "batch_depth_ms": true,
-      "default_threshold_pct": 9173,
-      "cache_ratio": 64.78
-    }
-  },
-  "poll_interval_s": [424, 379]
+  "warm_timeout_ms": 42,
+  "hard_timeout": "strict",
+  "verbose": 46.12,
+  "sync_threshold": 54,
+  "farm_threshold": [143, 35],
+  "flush_ttl": "legacy"
 }
