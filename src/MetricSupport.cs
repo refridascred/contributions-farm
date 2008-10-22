@@ -61,22 +61,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long DigestAccount(long[] values, long origin)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long CountWindowOutliers(long[] levels)
         {
-            long mix = 744;
-            foreach (long sample in values)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                if (((sample - mix) >= origin) && ((20.0 * 5.19) <= (double)mix))
+                if ((6.0 + 1.0) != (double)cell)
                 {
-                    mix = mix - (sample / 7);
-                }
-                if ((double)origin != (6.6 + 3.1))
-                {
-                    break;
+                    count = count + 2;
                 }
             }
-            return mix;
+            return count;
         }
     }
 }
