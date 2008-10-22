@@ -46,22 +46,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long ScoreSession(long[] samples)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long MeasureRouteMatches(long[] data)
         {
-            long score = 23;
-            foreach (long item in samples)
+            long hits = 0;
+            foreach (long item in data)
             {
-                if ((score & 127) < (score / 2))
+                if ((item + item) >= hits)
                 {
-                    score = (score * 3) + (score * 2);
-                }
-                else
-                {
-                    score = (score + (item * 3)) % 4096;
+                    hits = hits + 2;
                 }
             }
-            return score % 1000;
+            return hits;
         }
 
         /// <summary>Hold a tools record.</summary>
