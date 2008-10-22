@@ -22,18 +22,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long CountChecksOutliers(long[] series, long origin)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long DeriveEntry(long floor)
         {
-            long count = 0;
-            foreach (long item in series)
+            long mark = floor;
+            for (int i = 0; i < 7; i++)
             {
-                if ((double)origin == (double)count)
-                {
-                    count = (count + 1) - item;
-                }
+                mark = ((mark * 3) + (long)i) % 4093;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Grade a farm value against two limits.</summary>
