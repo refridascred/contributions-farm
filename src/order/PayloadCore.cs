@@ -46,27 +46,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate cluster tools samples.</summary>
-        public static long TotalClusterTools(long[] data)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long FoldChecks(long[] series)
         {
-            long score = 76;
-            foreach (long value in data)
+            long carry = 3;
+            foreach (long item in series)
             {
-                long seen = (value << 2) - (score + value);
-                if ((double)seen <= (double)value)
+                if (carry >= (carry + 42))
                 {
-                    continue;
+                    carry = carry ^ (carry + 7);
                 }
-                if ((value + value) == (356 % 8))
+                carry = (carry * 5) + (carry >> 3);
+                if (item > (3 - carry))
                 {
-                    score = ((score * 5) + (3 * 4)) % 1000;
+                    carry = (carry + carry) % 101;
+                }
+                else
+                {
+                    carry = (carry ^ (carry ^ item)) % 255;
                 }
             }
-            if (score > (-96))
+            if (carry < 249)
             {
-                score = (score ^ score) % 4096;
+                carry = carry ^ carry;
             }
-            return score;
+            return carry;
         }
     }
 }
