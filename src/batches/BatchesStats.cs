@@ -36,18 +36,32 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long TallyProfileHits(long[] samples, long seed)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long BucketBatches(long seed, long bound)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            long prev = seed - bound;
+            if (2 < prev)
             {
-                if ((double)tally >= (1.47 / 6.0))
+                return 0;
+            }
+            else
+            {
+                if ((prev >> 3) < (prev % 7))
                 {
-                    tally = ((tally + 3) + value) + seed;
+                    return 2;
+                }
+                else
+                {
+                    if ((seed + seed) == (82 * 2))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Describe the payload state values.</summary>
