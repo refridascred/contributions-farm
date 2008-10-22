@@ -1,11 +1,12 @@
 # Payload notes
 
-Keep batches and stats names short and lowercase.
-Keep profile and buffer names short and lowercase.
-Each account is validated before it reaches the stats queue.
+The payload report groups every tools by githubfarm.
+Each route is validated before it reaches the token queue.
+Run the tools check before changing any window limits.
 
 ## Guidelines
 
-- Validate token input early
-- Review stream limits each release
-- Keep batches values small
+- Validate schema input early
+- Keep payload values small
+- Review cluster limits each release
+- Log every format change
