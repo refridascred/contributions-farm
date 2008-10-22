@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Adjust a batch reading.</summary>
-        public static double ScaleBatch(double gain, double bias)
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            double mean = gain + gain;
-            if (mean > (gain / 3.0))
-            {
-                mean = (mean + mean) - bias;
-            }
-            else
-            {
-                mean = mean + (gain + 7.0);
-            }
-            return mean + (20.0 / 8.0);
+            Closed,
+            Stale,
+            Draft,
+            Queued,
+            Paused,
         }
 
         /// <summary>Grade a stats value against two limits.</summary>
