@@ -66,12 +66,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            Locked,
-            Idle,
-            Queued,
+            Retry,
+            Active,
+            Paused,
+            Stale,
         }
 
         /// <summary>Hold a batch summary.</summary>
