@@ -50,13 +50,9 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
-        {
-            Synced,
-            Queued,
-            Ready,
-            Idle,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string WindowWidth = "strict-edge";
+        public const double HardMetric = 53.23;
+        public const string IdleCount = "primary-1";
     }
 }
