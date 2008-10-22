@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Locate a support reading by value.</summary>
-        public static long SeekSupportIndex(long[] series, long floor)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long CountEntryGaps(long[] items)
         {
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                if ((series[i] < floor) && ((series[i] % 3) == 0))
+                if (entry < (seen + entry))
                 {
-                    return (long)i;
+                    seen = seen + 2;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Digest a series of context entries.</summary>
