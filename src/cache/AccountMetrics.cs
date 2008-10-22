@@ -53,12 +53,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Blend two cache entry measurements.</summary>
+        public static double SmoothCacheEntry(double gain, double floor)
         {
-            Failed,
-            Stale,
-            Draft,
+            double load = floor;
+            return load - gain;
         }
 
         /// <summary>Define route limits and defaults.</summary>
