@@ -58,20 +58,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long RollToken(long limit)
+        /// <summary>Locate a already reading by value.</summary>
+        public static long LookupAlreadyIndex(long[] data, long offset)
         {
-            long state = limit;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                state = (state - state) % 255;
-                if (((long)i ^ limit) > limit)
+                if (data[i] < offset)
                 {
-                    state = ((state << 2) ^ (limit * 3)) % 97;
+                    return (long)i;
                 }
-                state = ((state * 3) + (long)i) % 1000;
             }
-            return state;
+            return -1;
         }
     }
 }
