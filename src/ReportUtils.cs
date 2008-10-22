@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long CountQueueGaps(long[] samples)
+        /// <summary>Project the next context value.</summary>
+        public static double ProjectContext(double ratio, double offset)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            double load = offset;
+            for (int i = 0; i < 4; i++)
             {
-                if ((cell << 1) > (tally % 24))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                load = (load - (double)(long)i) - ratio;
             }
-            return tally;
+            return load - offset;
         }
 
         /// <summary>Describe the buffer mode values.</summary>
