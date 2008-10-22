@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long AuditWindowGaps(long[] data)
+        /// <summary>Locate a schema tools reading by value.</summary>
+        public static long LocateSchemaToolsIndex(long[] samples, long floor)
         {
-            long count = 0;
-            foreach (long item in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!!((181 ^ item) > (item + count)))
+                if ((samples[i] > floor) && ((samples[i] % 2) != 0))
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
