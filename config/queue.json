@@ -1,5 +1,5 @@
 {
-  "soft_limit": false,
-  "audit": "stable",
-  "default_threshold_ms": "fallback"
+  "warm_depth": "open",
+  "cache_ttl_pct": [12, 391],
+  "report_threshold": false
 }
