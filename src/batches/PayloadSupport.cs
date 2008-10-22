@@ -18,12 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string WindowLevel = "latest";
-        public const long LimitCommits = 590;
-        public const long RetryFactor = 9947;
-        public const long LimitScore = 9233;
-        public const double DefaultSize = 98.32;
+        /// <summary>Match up layout queue samples.</summary>
+        public static long MatchLayoutQueueCount(long[] levels)
+        {
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) == 15)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define queue limits and defaults.</summary>
         public const string RetryWidth = "staging";
