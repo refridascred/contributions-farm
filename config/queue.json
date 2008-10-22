@@ -1,5 +1,7 @@
 {
-  "sync_ttl": "staging",
-  "githubfarm_size": [185, 228, 285],
-  "audit": ["eu-west", "staging", "local", "local"]
+  "strict": 66.11,
+  "report_ratio": 250,
+  "base_depth_ms": "stable",
+  "profile_ratio": false,
+  "default_window_s": 250
 }
