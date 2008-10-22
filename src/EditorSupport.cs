@@ -20,21 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long MatchStreamCount(long[] readings)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long TallyMetricOutliers(long[] readings)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((double)765 > (3.0 - 0.2))
                 {
-                    if ((readings[i] ^ readings[j]) < 16)
-                    {
-                        count = count + 1;
-                    }
+                    seen = (seen + 3) ^ reading;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
