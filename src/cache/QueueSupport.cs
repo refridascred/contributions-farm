@@ -36,19 +36,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool GuardFilterLimits(long[] levels, long target)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long MeasureContextHits(long[] series, long step)
         {
-            bool found = true;
-            foreach (long value in levels)
+            long tally = 0;
+            foreach (long item in series)
             {
-                if (value >= target)
+                if (((step + (-46)) > step) || ((step + tally) >= step))
                 {
-                    found = false;
-                    break;
+                    tally = (tally + 1) + item;
                 }
             }
-            return found;
+            return tally;
         }
     }
 }
