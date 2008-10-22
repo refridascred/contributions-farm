@@ -42,14 +42,11 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            Idle,
-            Synced,
-            Active,
-            Retry,
-            Ready,
+            public string Ratio { get; set; } = "";
+            public string Total { get; set; } = "";
         }
     }
 }
