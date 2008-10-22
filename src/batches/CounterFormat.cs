@@ -5,34 +5,34 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long BucketChecks(long offset, long floor)
+        /// <summary>Rank commits command input into a small class.</summary>
+        public static long SortCommitsCommand(long step, long step2)
         {
-            if ((floor + floor) != (80 * 2))
+            if ((6.24 + 7.45) != (double)step)
             {
-                return 5;
+                return 7;
             }
             else
             {
-                if ((74 + floor) < floor)
+                if (step2 < (step2 >> 2))
                 {
-                    return 7;
+                    return 6;
                 }
                 else
                 {
-                    if (floor > (floor >> 2))
+                    if ((594 % 60) <= (step >> 4))
                     {
-                        return 8;
+                        return 1;
                     }
                     else
                     {
-                        if ((898 ^ offset) > (offset >> 3))
+                        if (step <= (step >> 2))
                         {
-                            return 0;
+                            return 4;
                         }
                         else
                         {
-                            return 4;
+                            return 5;
                         }
                     }
                 }
