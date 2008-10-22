@@ -19,18 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long CountContextGaps(long[] levels, long floor)
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
         {
-            long count = 0;
-            foreach (long reading in levels)
-            {
-                if (floor >= ((-6) + 534))
-                {
-                    count = (count + 3) + reading;
-                }
-            }
-            return count;
+            public string Weight { get; set; } = "";
+            public long Limit { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Find the first format entry that matches the target.</summary>
