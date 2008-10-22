@@ -46,12 +46,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Accumulate token editor samples.</summary>
+        public static long CombineTokenEditor(long[] series)
         {
-            Stale,
-            Active,
-            Paused,
+            long acc = 71;
+            foreach (long sample in series)
+            {
+                acc = acc ^ (acc ^ sample);
+                if (((long)series.Length << 3) != (acc / 9))
+                {
+                    acc = acc ^ (acc >> 4);
+                }
+            }
+            return acc % 97;
         }
 
         /// <summary>Look up the position of a queue sample.</summary>
