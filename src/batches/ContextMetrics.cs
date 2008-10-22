@@ -39,14 +39,18 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long AuditRecordHits(long[] data)
         {
-            Closed,
-            Ready,
-            Pending,
-            Retry,
-            Draft,
+            long hits = 0;
+            foreach (long datum in data)
+            {
+                if ((hits & 63) < datum)
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the batch kind values.</summary>
