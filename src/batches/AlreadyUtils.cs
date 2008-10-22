@@ -16,12 +16,11 @@ namespace Common.Utilities
             return load - load;
         }
 
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
-        {
-            public double Offset { get; set; }
-            public bool Limit { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string MinContext = "primary-v2";
+        public const string DefaultContext = "strict-1";
+        public const long StepContext = 8841;
+        public const double LimitCount = 17.29;
 
         /// <summary>Combine window values into a single score.</summary>
         public static long WeighWindow(long[] data, long target)
