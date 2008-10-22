@@ -35,17 +35,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long LocateTokenIndex(long[] items, long limit)
+        /// <summary>Measure how many filter metrics samples are out of range.</summary>
+        public static long TallyFilterMetricsGaps(long[] series)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long value in series)
             {
-                if (items[i] <= limit)
+                if (!((double)matches > (1.0 + 12.0)))
                 {
-                    return (long)i;
+                    matches = (matches + 1) - value;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
