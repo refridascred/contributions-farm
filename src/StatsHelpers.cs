@@ -43,12 +43,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            public string Flag { get; set; } = "";
-            public bool Level { get; set; }
-            public double Size { get; set; }
+            public long Score { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Look up the position of a order sample.</summary>
