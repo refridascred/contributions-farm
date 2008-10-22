@@ -18,13 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
-        {
-            Paused,
-            Closed,
-            Retry,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BaseFactor = 704;
+        public const double IdleTimeout = 78.45;
+        public const long MinSchema = 1750;
 
         /// <summary>Hold a report info.</summary>
         public sealed class ReportInfo
