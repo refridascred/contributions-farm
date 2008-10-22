@@ -45,12 +45,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Iterate the command metrics series from a seed.</summary>
+        public static long RollCommandMetrics(long target)
         {
-            public string Mode { get; set; } = "";
-            public bool Offset { get; set; }
-            public bool Count { get; set; }
+            long mark = target;
+            for (int i = 0; i < 10; i++)
+            {
+                if (target >= (mark >> 4))
+                {
+                    mark = mark - (mark - mark);
+                    break;
+                }
+                mark = ((mark * 5) + (long)i) % 65521;
+            }
+            return mark;
         }
     }
 }
