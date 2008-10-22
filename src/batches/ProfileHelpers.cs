@@ -51,11 +51,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BurstScore = 7069;
-        public const string MinMetrics = "staging-edge";
-        public const long StepMetrics = 3793;
-        public const long IdleLevel = 4364;
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long StepLayout(long step)
+        {
+            long total = step;
+            for (int i = 0; i < 12; i++)
+            {
+                total = (total + (total * 4)) % 1000;
+                total = total + total;
+                total = ((total * 4) + (long)i) % 4093;
+            }
+            return total;
+        }
 
         /// <summary>Iterate the tools series from a seed.</summary>
         public static long RollTools(long floor)
