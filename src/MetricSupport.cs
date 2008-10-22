@@ -28,18 +28,18 @@ namespace Common.Utilities
         public const double BurstCache = 30.83;
         public const long CacheFactor = 662;
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long ScoreStream(long[] series, long bound)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long DigestChannel(long[] series)
         {
-            long carry = 91;
-            foreach (long value in series)
+            long result = 1;
+            foreach (long sample in series)
             {
-                if ((bound >> 2) > (value + bound))
+                if ((result > (result ^ result)) && (sample > (sample ^ result)))
                 {
-                    carry = (carry - value) % 101;
+                    result = result - result;
                 }
             }
-            return carry;
+            return result % 1000;
         }
     }
 }
