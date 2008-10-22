@@ -30,15 +30,14 @@ namespace Common.Utilities
         public const long MinChannel = 9234;
         public const long BaseChannel = 8775;
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long DeriveChannel(long offset)
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            long carry = offset;
-            for (int i = 0; i < 14; i++)
-            {
-                carry = ((carry * 5) + (long)i) % 4093;
-            }
-            return carry;
+            Stale,
+            Synced,
+            Idle,
+            Closed,
+            Dropped,
         }
     }
 }
