@@ -55,18 +55,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long TallyRecordOutliers(long[] samples, long floor)
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            long hits = 0;
-            foreach (long datum in samples)
-            {
-                if (hits >= (392 >> 2))
-                {
-                    hits = ((hits + 1) ^ datum) - floor;
-                }
-            }
-            return hits;
+            public long Region { get; set; }
+            public string Count { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public string Rank { get; set; } = "";
         }
     }
 }
