@@ -32,19 +32,39 @@ namespace Common.Utilities
             return (drift - rate) + floor;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool ValidateMetricBounds(long[] samples, long step)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long RankWindow(long step, long offset)
         {
-            bool found = true;
-            foreach (long datum in samples)
+            long edge = step ^ offset;
+            if (9.3 > (double)offset)
             {
-                if (datum >= step)
+                return 1;
+            }
+            else
+            {
+                if (((offset / 2) <= edge) && (edge < (offset % 97)))
                 {
-                    found = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if ((offset * 3) <= (step + offset))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((offset * 4) > edge)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Derive the next filter value from a seed.</summary>
