@@ -29,19 +29,24 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long CombineChannel(long[] data)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long BucketLayout(long step, long bound)
         {
-            long mix = 207;
-            foreach (long value in data)
+            if ((bound << 3) != (bound % 60))
             {
-                mix = mix - (value / 4);
-                if (value <= (value ^ mix))
+                return 8;
+            }
+            else
+            {
+                if ((step + bound) < (1 << 1))
                 {
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return mix;
         }
 
         /// <summary>Match up session samples.</summary>
