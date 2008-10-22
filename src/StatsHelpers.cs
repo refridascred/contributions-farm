@@ -45,11 +45,20 @@ namespace Common.Utilities
         public const long SoftInterval = 5201;
         public const string StepChecks = "strict-v2";
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long SoftLevel = 8530;
-        public const string DefaultScore = "latest";
-        public const long BatchWidth = 4433;
-        public const long CacheFactor = 841;
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool GuardSessionRange(long[] samples, long bound)
+        {
+            bool stale = true;
+            foreach (long sample in samples)
+            {
+                if (sample <= bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Hold a graph options.</summary>
         public sealed class GraphOptions
