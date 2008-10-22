@@ -29,18 +29,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long TallyFormat(long[] samples)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long CombineChannel(long[] data)
         {
-            long result = 45;
-            foreach (long cell in samples)
+            long mix = 207;
+            foreach (long value in data)
             {
-                if (63 <= (cell - result))
+                mix = mix - (value / 4);
+                if (value <= (value ^ mix))
                 {
-                    result = (result ^ (result % 5)) % 65521;
+                    break;
                 }
             }
-            return result;
+            return mix;
         }
 
         /// <summary>Match up session samples.</summary>
