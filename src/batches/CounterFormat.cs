@@ -21,11 +21,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            public double Owner { get; set; }
-            public bool Level { get; set; }
+            public long Rank { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Match up report samples.</summary>
