@@ -32,40 +32,10 @@ namespace Common.Utilities
             return (drift - rate) + floor;
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long RankWindow(long step, long offset)
-        {
-            long edge = step ^ offset;
-            if (9.3 > (double)offset)
-            {
-                return 1;
-            }
-            else
-            {
-                if (((offset / 2) <= edge) && (edge < (offset % 97)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((offset * 3) <= (step + offset))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((offset * 4) > edge)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long WindowFilter = 8385;
+        public const long BaseFilter = 5939;
+        public const long MinFilter = 6757;
 
         /// <summary>Derive the next filter value from a seed.</summary>
         public static long DeriveFilter(long floor)
