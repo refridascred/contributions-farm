@@ -34,21 +34,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Match up route samples.</summary>
-        public static long OverlapRouteCount(long[] samples)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long ScoreNotes(long[] levels)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long state = 8;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((value + value) == (state / 2))
                 {
-                    if ((samples[i] - samples[j]) < 9)
-                    {
-                        matches = matches + 1;
-                    }
+                    state = ((state << 3) ^ (value & 255)) % 4096;
                 }
             }
-            return matches;
+            return state;
         }
     }
 }
