@@ -33,13 +33,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            New,
-            Retry,
-            Dropped,
-            Failed,
+            public double Mode { get; set; }
+            public string Label { get; set; } = "";
+            public long Total { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Audit cache command readings against a rule.</summary>
