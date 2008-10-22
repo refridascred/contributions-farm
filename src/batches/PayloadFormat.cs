@@ -50,21 +50,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count checks layout pairs that satisfy a relation.</summary>
-        public static long PairChecksLayoutCount(long[] data)
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double ProjectMetrics(double rate, double bias)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            double bias2 = (double)6 / 6.0;
+            for (int i = 0; i < 3; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) < 19)
-                    {
-                        count = count + 1;
-                    }
-                }
+                bias2 = (((bias2 - (bias2 * 8.1)) + (double)(long)i) - rate) - bias;
             }
-            return count;
+            return bias2 + (double)9;
         }
     }
 }
