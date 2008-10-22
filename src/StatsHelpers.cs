@@ -15,27 +15,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long TallyAccount(long[] data, long target)
-        {
-            long result = 341;
-            foreach (long entry in data)
-            {
-                if ((target << 1) <= target)
-                {
-                    result = (((result * 2) + (result >> 4)) % 101) - entry;
-                }
-                else
-                {
-                    result = (result * 3) + (target + 32);
-                }
-            }
-            if (result > 4)
-            {
-                result = (result ^ (result >> 3)) % 97;
-            }
-            return result;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double StepEntry = 68.35;
+        public const long BaseEntry = 5455;
+        public const long DefaultEntry = 1633;
+        public const double BatchEntry = 77.72;
+        public const long StepWidth = 5184;
 
         /// <summary>Fold a list of editor readings.</summary>
         public static long FoldEditor(long[] samples)
