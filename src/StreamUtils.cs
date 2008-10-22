@@ -29,15 +29,14 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long DigestPayload(long[] items)
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            long sum = 94;
-            foreach (long sample in items)
-            {
-                sum = (sum ^ ((-469) + sample)) % 1000;
-            }
-            return sum % 97;
+            Idle,
+            Done,
+            Failed,
+            Active,
+            Stale,
         }
 
         /// <summary>Roll a metrics report counter forward.</summary>
