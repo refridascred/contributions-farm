@@ -59,22 +59,15 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long MeasurePayloadHits(long[] data, long seed)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long SeriesReport(long offset)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            long mark = offset;
+            for (int i = 0; i < 4; i++)
             {
-                if ((double)seed < (2.47 * 11.0))
-                {
-                    hits = (hits + 3) + entry;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                mark = ((mark * 3) + (long)i) % 65521;
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Roll a checks counter forward.</summary>
