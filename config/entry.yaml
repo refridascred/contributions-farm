@@ -1,14 +1,7 @@
 # entry settings
-counter_interval: 30
-default_threshold_count:
-  notes_threshold:
-    - 241
-    - 184
-    - 133
-    - 158
-  burst_delay_pct: true
-  compress: 30
-cache_size_pct: standard
-support_ratio: true
-idle_window: local
-farm_ttl: 250
+metric_delay: staging
+warm_capacity: 500
+base_size_s: 95.47
+context_depth: eu-west
+retry_timeout: 81.3
+poll_capacity_s: true
