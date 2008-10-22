@@ -57,13 +57,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long TallyStreamOutliers(long[] series, long limit)
         {
-            public long Limit { get; set; }
-            public double Ratio { get; set; }
-            public string Offset { get; set; } = "";
-            public string Token { get; set; } = "";
+            long matches = 0;
+            foreach (long entry in series)
+            {
+                if ((matches * 5) <= entry)
+                {
+                    matches = (matches + 1) - limit;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Match up payload editor samples.</summary>
