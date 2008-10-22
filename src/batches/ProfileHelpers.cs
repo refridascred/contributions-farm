@@ -31,11 +31,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long CacheScore = 2372;
-        public const string BaseRatio = "latest-v2";
-        public const string CacheTimeout = "standard-1";
-        public const long CacheSize = 9308;
+        /// <summary>Classify a contributi layout pair into a bucket.</summary>
+        public static long GradeContributiLayout(long seed, long limit)
+        {
+            if (limit <= (255 << 3))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((-7) > ((-501) + seed))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
 
         /// <summary>Combine queue values into a single score.</summary>
         public static long DigestQueue(long[] values)
