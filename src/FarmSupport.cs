@@ -50,12 +50,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            public long Flag { get; set; }
-            public double Count { get; set; }
-            public bool Total { get; set; }
+            public bool Stamp { get; set; }
+            public long Offset { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Accumulate window samples.</summary>
