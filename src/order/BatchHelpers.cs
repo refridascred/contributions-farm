@@ -30,9 +30,17 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long RetryReport = 7070;
-        public const long CacheReport = 7439;
-        public const long BurstLevel = 5741;
+        /// <summary>Locate a notes editor reading by value.</summary>
+        public static long SeekNotesEditorIndex(long[] series, long floor)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] <= floor) && ((series[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
