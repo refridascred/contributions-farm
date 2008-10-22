@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Roll a context counter forward.</summary>
-        public static long DeriveContext(long seed)
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long OverlapGraphCount(long[] readings)
         {
-            long carry = seed;
-            for (int i = 0; i < 11; i++)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                carry = ((carry << 3) ^ (carry + seed)) % 97;
-                carry = ((carry * 4) + (long)i) % 65521;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) > 16)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
