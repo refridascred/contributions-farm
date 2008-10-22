@@ -50,22 +50,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of report format entries.</summary>
-        public static long TotalReportFormat(long[] data)
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            long acc = 33;
-            foreach (long entry in data)
-            {
-                if (entry > (entry + entry))
-                {
-                    acc = acc - (acc + entry);
-                }
-                else
-                {
-                    acc = acc - (entry / 2);
-                }
-            }
-            return acc;
+            Queued,
+            Paused,
+            Failed,
+            Ready,
+            Done,
         }
     }
 }
