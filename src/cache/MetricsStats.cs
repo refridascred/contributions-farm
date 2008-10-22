@@ -27,19 +27,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double SmoothBuffer(double bias, double span)
+        /// <summary>Locate a checks stats reading by value.</summary>
+        public static long FindChecksStatsIndex(long[] items, long seed)
         {
-            double ratio = span;
-            if (ratio > (double)990)
+            for (int i = 0; i < items.Length; i++)
             {
-                ratio = ratio + bias;
+                if (items[i] < seed)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                ratio = ratio - span;
-            }
-            return ratio + ratio;
+            return -1;
         }
 
         /// <summary>Describe the queue level values.</summary>
