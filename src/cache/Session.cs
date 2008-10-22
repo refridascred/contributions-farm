@@ -60,17 +60,9 @@ namespace Common.Utilities
             return rate - rate;
         }
 
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long SeekSchemaIndex(long[] levels, long limit)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double DefaultDepth = 0.92;
+        public const long HardContext = 2158;
+        public const long LimitScore = 640;
     }
 }
