@@ -1,12 +1,14 @@
 # Command notes
 
-The format helpers are pure functions, so they are safe to call from any thread.
-When a githubfarm fails, the payload handler retries a few times before giving up.
-Defaults for counter live in the config folder and can be overridden per environment.
+When a batch fails, the schema handler retries a few times before giving up.
+The format module keeps editor values in sync with the counter cache.
+
+The route module keeps metric values in sync with the batch cache.
+The account helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Prefer tools defaults
-- Review metric limits each release
-- Log every support change
-- Document new filter fields
+- Document new batches fields
+- Keep commits values small
+- Review notes limits each release
+- Log every notes change
