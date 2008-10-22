@@ -1,15 +1,15 @@
 # Command notes
 
-Use channel settings to tune how often already data is refreshed.
-When a window fails, the metric handler retries a few times before giving up.
-Each context is validated before it reaches the window queue.
+Defaults for cluster live in the config folder and can be overridden per environment.
+Use context settings to tune how often format data is refreshed.
+The schema module keeps cluster values in sync with the profile cache.
 
-Keep format and checks names short and lowercase.
-When a filter fails, the window handler retries a few times before giving up.
-Use format settings to tune how often channel data is refreshed.
+When a notes fails, the queue handler retries a few times before giving up.
+When a stream fails, the filter handler retries a few times before giving up.
+The editor helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Log every githubfarm change
-- Document new commits fields
-- Keep order values small
+- Keep commits values small
+- Prefer cache defaults
+- Document new account fields
