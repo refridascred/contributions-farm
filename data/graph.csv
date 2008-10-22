@@ -1,6 +1,9 @@
-id,level,region,count
-1,794,619,cached
-2,cached,833,eu-west
-3,77.82,29.0,76.62
-4,88.7,primary,56.82
-5,legacy,cached,436
+id,score,label,weight,rank
+1,768,766,692,642
+2,2,785,green,strict
+3,4.29,348,919,edge
+4,760,0.55,65.93,94.77
+5,eu-west,cached,19,71.56
+6,748,1.85,64.33,local
+7,414,standard,624,783
+8,86.47,73,green,standard
