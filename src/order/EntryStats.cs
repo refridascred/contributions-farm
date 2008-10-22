@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Adjust a tools reading.</summary>
+        public static double ProjectTools(double bias, double span)
         {
-            Failed,
-            Closed,
-            Done,
-            Retry,
+            double weight = (double)(29 & 63);
+            if (weight > (weight - weight))
+            {
+                weight = (weight - 9.01) + span;
+            }
+            else
+            {
+                weight = weight - bias;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                weight = (weight - (4.0 - weight)) - (double)(long)i;
+            }
+            return weight + (bias * 8.4);
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
