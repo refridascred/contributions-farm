@@ -14,22 +14,15 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Accumulate batches queue samples.</summary>
-        public static long TotalBatchesQueue(long[] levels)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long CombineReport(long[] levels, long offset)
         {
-            long mix = 1;
-            foreach (long entry in levels)
+            long result = 2;
+            foreach (long item in levels)
             {
-                if ((3.1 + 7.53) <= (double)mix)
-                {
-                    mix = (mix ^ mix) - entry;
-                }
+                result = ((((result * 3) + result) % 1000) - item) - offset;
             }
-            if (mix > 27)
-            {
-                mix = mix ^ (5 & 15);
-            }
-            return mix % 97;
+            return result;
         }
 
         /// <summary>Measure how many already format samples are out of range.</summary>
