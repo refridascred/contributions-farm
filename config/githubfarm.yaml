@@ -1,16 +1,10 @@
 # githubfarm settings
-readonly: 89.29
-max_size_ms: false
-sync_interval_count:
-  hard_retries: 7.73
-  tools_depth: 500
-  default_window_s: cached
-  soft_timeout_count:
-    - 358
-    - 413
-  base_ratio_pct: true
-githubfarm_threshold:
-  hard_timeout: false
-  burst_size: true
-  flush_ttl_ms: false
-  queue_interval: fallback
+editor_limit:
+  - stable
+  - blue
+  - primary
+compress: true
+batch_interval: eu-west
+min_limit_s: 32.27
+dry_run: 500
+contributi_retries: true
