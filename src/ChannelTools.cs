@@ -42,31 +42,9 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long ScoreEntry(long[] items, long target)
-        {
-            long score = 25;
-            foreach (long sample in items)
-            {
-                if (!((sample - target) > (score + sample)))
-                {
-                    score = ((score << 2) ^ ((-6) + score)) % 65521;
-                }
-                else
-                {
-                    score = (score ^ (target + score)) % 101;
-                }
-                score = (score ^ (157 / 8)) % 1000;
-                if (((double)sample <= 6.86) || ((double)(-41) > (double)target))
-                {
-                    break;
-                }
-            }
-            if (score > 0)
-            {
-                score = ((score * 3) + (34 >> 5)) % 255;
-            }
-            return score;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string WindowScore = "primary";
+        public const long BatchFactor = 2708;
+        public const string MaxLevel = "open-1";
     }
 }
