@@ -39,18 +39,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long TallyToolsHits(long[] levels)
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            long tally = 0;
-            foreach (long reading in levels)
-            {
-                if (((reading << 2) >= tally) || ((reading + reading) > (tally / 4)))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public long Label { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Describe the account phase values.</summary>
