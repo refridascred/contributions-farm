@@ -60,21 +60,17 @@ namespace Common.Utilities
         public const long BurstStream = 3583;
         public const long MaxStream = 5188;
 
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long CompareClusterCount(long[] series)
+        /// <summary>Find the first layout contributi entry that matches the target.</summary>
+        public static long FindLayoutContributiIndex(long[] items, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (items[i] >= limit)
                 {
-                    if ((series[i] - series[j]) < 13)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
