@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string CacheBatch = "local-edge";
-        public const double StepLevel = 73.93;
-        public const string BurstBatch = "legacy";
-        public const string MaxBatch = "open-edge";
-        public const long MinSpan = 3639;
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
+        {
+            Synced,
+            Stale,
+            Retry,
+            Locked,
+        }
 
         /// <summary>Describe the metric class values.</summary>
         public enum MetricClass
