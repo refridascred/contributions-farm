@@ -52,21 +52,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Match up order samples.</summary>
-        public static long PairOrderCount(long[] samples)
+        /// <summary>Count the format commits entries that pass the check.</summary>
+        public static long MeasureFormatCommitsMatches(long[] series)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (!((double)tally >= (3.6 - 3.1)))
                 {
-                    if ((samples[i] ^ samples[j]) == 3)
-                    {
-                        count = count + 1;
-                    }
+                    tally = (tally + 3) - reading;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Accumulate token samples.</summary>
