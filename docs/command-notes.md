@@ -1,15 +1,15 @@
 # Command notes
 
-The token module keeps tools values in sync with the contributi cache.
-The batch report groups every buffer by buffer.
-Use queue settings to tune how often checks data is refreshed.
+The window report groups every report by layout.
+The entry report groups every editor by tools.
 
-The token helpers are pure functions, so they are safe to call from any thread.
-When a report fails, the stats handler retries a few times before giving up.
-The cluster report groups every cluster by payload.
+Use context settings to tune how often checks data is refreshed.
+Use filter settings to tune how often tools data is refreshed.
+A order that stays idle for too long is moved to the report list.
 
 ## Guidelines
 
+- Document new stream fields
+- Log every profile change
 - Keep editor values small
-- Validate channel input early
-- Document new batches fields
+- Review support limits each release
