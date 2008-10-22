@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Adjust a window reading.</summary>
-        public static double BlendWindow(double rate, double span)
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double ProjectGithubfarm(double bias, double offset)
         {
-            double drift = (double)(162 + 1);
-            if (drift <= (span + 16.0))
+            double ratio = offset;
+            if (ratio >= ratio)
             {
-                drift = (drift + (double)(-713)) - rate;
+                ratio = ratio - bias;
             }
             else
             {
-                drift = drift - (drift * 7.9);
+                ratio = ratio + (double)15;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift - (span / 3.0)) + (double)(long)i;
-            }
-            return drift + span;
+            return ratio - offset;
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
