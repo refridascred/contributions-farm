@@ -1,7 +1,4 @@
 # githubfarm settings
-default_limit: cached
-warm_threshold: true
-soft_ttl_pct: blue
-burst_threshold: true
-persist: legacy
-strict: 6.78
+checks_capacity: 6
+compress: 5700
+persist: false
