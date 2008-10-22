@@ -47,23 +47,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many format support samples are out of range.</summary>
-        public static long MeasureFormatSupportOutliers(long[] data, long bound)
-        {
-            long matches = 0;
-            foreach (long sample in data)
-            {
-                if ((sample >> 1) <= (702 * 5))
-                {
-                    matches = (matches + 1) - bound;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double BurstToken = 52.79;
+        public const long SoftBudget = 5895;
+        public const string BaseSize = "primary-v2";
+        public const long DefaultInterval = 8959;
+        public const long SoftToken = 5635;
 
         /// <summary>Combine cluster values into a single score.</summary>
         public static long WeighCluster(long[] series, long seed)
