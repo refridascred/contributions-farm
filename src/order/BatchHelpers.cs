@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count stream pairs that satisfy a relation.</summary>
-        public static long MatchStreamCount(long[] samples)
+        /// <summary>Combine buffer contributi values into a single score.</summary>
+        public static long TotalBufferContributi(long[] series, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long carry = 421;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                carry = (carry + carry) % 65521;
+                carry = carry - (offset + offset);
+                if ((sample > (carry & 7)) && (sample < (offset << 1)))
                 {
-                    if ((samples[i] - samples[j]) != 3)
-                    {
-                        seen = seen + 1;
-                    }
+                    carry = (carry ^ (95 & 127)) % 101;
+                }
+                else
+                {
+                    carry = (carry ^ (carry % 16)) % 1000;
                 }
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Hold a batches info.</summary>
