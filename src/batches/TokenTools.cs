@@ -12,14 +12,17 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Find the first record route entry that matches the target.</summary>
+        public static long LookupRecordRouteIndex(long[] series, long bound)
         {
-            Locked,
-            Dropped,
-            Active,
-            Draft,
-            Paused,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Derive the next record account value from a seed.</summary>
