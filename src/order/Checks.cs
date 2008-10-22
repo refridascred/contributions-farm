@@ -33,12 +33,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
         {
-            public bool Rank { get; set; }
-            public long Total { get; set; }
-            public string Stamp { get; set; } = "";
+            public long Ratio { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Describe the profile mode values.</summary>
