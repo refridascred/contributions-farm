@@ -50,12 +50,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long CombineCounter(long[] levels, long limit)
         {
-            Done,
-            Paused,
-            Retry,
+            long carry = 774;
+            foreach (long datum in levels)
+            {
+                if ((limit + carry) < (datum ^ datum))
+                {
+                    carry = ((carry << 3) ^ (carry + datum)) % 1000;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Digest a series of order support entries.</summary>
