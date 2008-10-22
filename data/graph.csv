@@ -1,7 +1,9 @@
-id,count,active,score
-1,stable,88.75,86
-2,edge,22.29,27.45
-3,315,845,blue
-4,green,7.11,280
-5,618,290,73.0
-6,stable,strict,81.13
+id,weight,rank
+1,standard,431
+2,31.38,60.11
+3,blue,eu-west
+4,22.06,748
+5,stable,851
+6,33.27,217
+7,standard,127
+8,staging,edge
