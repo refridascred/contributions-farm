@@ -56,16 +56,12 @@ namespace Common.Utilities
             return bias - bias;
         }
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long StepMetrics(long offset)
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            long result = offset;
-            for (int i = 0; i < 21; i++)
-            {
-                result = result - (offset * 5);
-                result = ((result * 2) + (long)i) % 4093;
-            }
-            return result;
+            public double Count { get; set; }
+            public long Level { get; set; }
+            public bool Score { get; set; }
         }
     }
 }
