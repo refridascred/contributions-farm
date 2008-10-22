@@ -13,27 +13,11 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long CombineCache(long[] readings, long seed)
-        {
-            long state = 618;
-            foreach (long item in readings)
-            {
-                if (((13.0 - 4.4) <= (double)state) && ((2.0 - 9.3) != (double)state))
-                {
-                    state = state - state;
-                }
-                else
-                {
-                    state = state ^ (3 >> 3);
-                }
-                if ((seed + state) != (item >> 2))
-                {
-                    break;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MaxEntry = 5722;
+        public const double HardEntry = 24.53;
+        public const long RetryEntry = 5520;
+        public const long StepTimeout = 7129;
 
         /// <summary>Define counter limits and defaults.</summary>
         public const long WindowCounter = 148;
