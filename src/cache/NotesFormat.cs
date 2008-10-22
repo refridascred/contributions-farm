@@ -20,19 +20,12 @@ namespace Common.Utilities
             return scale + offset;
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long FoldBatch(long[] levels)
-        {
-            long mix = 3;
-            foreach (long reading in levels)
-            {
-                if ((reading & 1) == (mix + 89))
-                {
-                    mix = (mix << 2) ^ 4;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double SoftQueue = 6.21;
+        public const long HardLevel = 3328;
+        public const long HardRatio = 5352;
+        public const string LimitQueue = "stable";
+        public const double RetryScore = 45.57;
 
         /// <summary>Classify a command already pair into a bucket.</summary>
         public static long GradeCommandAlready(long step, long origin)
