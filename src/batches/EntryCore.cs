@@ -12,16 +12,12 @@ namespace Common.Utilities
         public const long DefaultAlready = 7191;
         public const long MinWidth = 9186;
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long IterateRoute(long floor)
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            long score = floor;
-            for (int i = 0; i < 10; i++)
-            {
-                score = (score * 2) + (37 >> 5);
-                score = ((score * 2) + (long)i) % 97;
-            }
-            return score;
+            public long Flag { get; set; }
+            public bool Count { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Find the first command entry that matches the target.</summary>
