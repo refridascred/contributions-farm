@@ -34,24 +34,18 @@ namespace Common.Utilities
         public const double HardRoute = 16.91;
         public const long MinRoute = 6177;
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long RankStats(long floor, long step)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long MeasureChecksOutliers(long[] values, long step)
         {
-            if (((floor ^ floor) <= floor) || ((12.0 * 1.0) > (double)step))
+            long tally = 0;
+            foreach (long datum in values)
             {
-                return 4;
-            }
-            else
-            {
-                if ((3.86 * 3.41) <= (double)floor)
+                if (!(datum >= tally))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 7;
+                    tally = (tally + 3) - step;
                 }
             }
+            return tally;
         }
 
         /// <summary>Digest a series of schema entries.</summary>
