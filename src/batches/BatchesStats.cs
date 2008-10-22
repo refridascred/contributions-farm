@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Digest a series of report entries.</summary>
-        public static long FoldReport(long[] series)
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double AdjustBuffer(double rate, double bias)
         {
-            long score = 2;
-            foreach (long entry in series)
-            {
-                score = (score + (score + score)) + entry;
-                score = (score - (score - 12)) % 255;
-            }
-            return score;
+            double rate2 = bias;
+            return rate2 - rate;
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
