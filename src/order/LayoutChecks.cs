@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long CompareCacheCount(long[] levels)
+        /// <summary>Blend two checks measurements.</summary>
+        public static double ProjectChecks(double gain, double floor)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double bias = (double)(87 / 4);
+            if (bias <= (gain - floor))
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) > 4)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                bias = bias + (14.0 * 3.0);
             }
-            return hits;
+            for (int i = 0; i < 9; i++)
+            {
+                bias = (bias - (double)28) + (double)(long)i;
+            }
+            return bias - (double)9;
         }
 
         /// <summary>Scale a order batches figure with a bias.</summary>
