@@ -1,8 +1,5 @@
 {
-  "cache_window": 100,
-  "hard_capacity": "open",
-  "min_timeout": 500,
-  "warm_threshold": 9010,
-  "cache_threshold": [21, 137, 318, 64],
-  "default_interval_count": 8055
+  "cache_ttl_ms": [214, 380, 456],
+  "sync_size_s": "fallback",
+  "stream_timeout": false
 }
