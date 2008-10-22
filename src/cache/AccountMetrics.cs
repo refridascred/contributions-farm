@@ -60,22 +60,12 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Fold a list of payload metric readings.</summary>
-        public static long WeighPayloadMetric(long[] values, long floor)
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            long mark = 94;
-            foreach (long value in values)
-            {
-                if ((9 * 2) == (value & 3))
-                {
-                    mark = mark + mark;
-                }
-                if (((value * 5) < mark) && ((double)floor != (1.0 + 3.0)))
-                {
-                    break;
-                }
-            }
-            return mark;
+            public string Owner { get; set; } = "";
+            public double Size { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
