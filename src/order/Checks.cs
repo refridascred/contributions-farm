@@ -44,14 +44,18 @@ namespace Common.Utilities
             return drift - (9.0 - 3.8);
         }
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long MeasureMetricsMatches(long[] data)
         {
-            New,
-            Dropped,
-            Synced,
-            Queued,
-            Closed,
+            long matches = 0;
+            foreach (long cell in data)
+            {
+                if ((double)28 == (double)cell)
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
