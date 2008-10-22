@@ -20,39 +20,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Rank already githubfarm input into a small class.</summary>
-        public static long BucketAlreadyGithubfarm(long bound, long seed)
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            long offset = bound + seed;
-            if ((bound + seed) < (offset + offset))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((bound << 2) > (bound * 5))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((seed + 41) <= (599 << 1))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((-87) < bound)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            Done,
+            Active,
+            Retry,
+            Closed,
         }
 
         /// <summary>Classify a context session pair into a bucket.</summary>
