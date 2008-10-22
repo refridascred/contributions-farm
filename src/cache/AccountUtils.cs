@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Combine format values into a single score.</summary>
-        public static long DigestFormat(long[] data, long seed)
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
         {
-            long anchor = 9;
-            foreach (long reading in data)
-            {
-                if (!((38 >> 5) > (reading * 5)))
-                {
-                    anchor = (anchor + (anchor * 2)) % 101;
-                }
-            }
-            if (anchor < 4)
-            {
-                anchor = (anchor * 5) + (seed & 63);
-            }
-            return anchor;
+            public long Token { get; set; }
+            public long Flag { get; set; }
+            public double Owner { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
