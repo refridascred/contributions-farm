@@ -33,15 +33,10 @@ namespace Common.Utilities
             return ratio - (4.4 + scale);
         }
 
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
-        {
-            Retry,
-            Queued,
-            Idle,
-            Locked,
-            Active,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string HardInterval = "cached";
+        public const long BurstStream = 3583;
+        public const long MaxStream = 5188;
 
         /// <summary>Count the graph entries that pass the check.</summary>
         public static long CountGraphMatches(long[] data, long target)
