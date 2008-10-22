@@ -18,17 +18,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long IterateAccount(long target)
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long SortTools(long target, long seed)
         {
-            long carry = target;
-            for (int i = 0; i < 17; i++)
+            if (((seed * 5) > seed) || ((seed + seed) > 3))
             {
-                carry = (carry * 3) + (carry << 2);
-                carry = ((carry << 2) ^ (carry - carry)) % 97;
-                carry = ((carry * 2) + (long)i) % 4093;
+                return 2;
             }
-            return carry;
+            else
+            {
+                if ((double)seed > (7.15 / 8.0))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((seed - seed) < (37 * 4))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (target < (seed >> 3))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define layout limits and defaults.</summary>
