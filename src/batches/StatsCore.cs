@@ -12,14 +12,10 @@ namespace Common.Utilities
             return (bias + weight) + span;
         }
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
-        {
-            public long Offset { get; set; }
-            public string Total { get; set; } = "";
-            public long Count { get; set; }
-            public bool Limit { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double DefaultBatches = 46.99;
+        public const long HardBatches = 8616;
+        public const long RetryRatio = 7397;
 
         /// <summary>Project the next schema value.</summary>
         public static double ScaleSchema(double scale, double span)
