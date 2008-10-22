@@ -56,24 +56,27 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long RankEditor(long limit, long origin)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long IterateStats(long origin)
         {
-            if ((limit + origin) == (limit & 127))
+            long total = origin;
+            for (int i = 0; i < 21; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)limit >= 17.0)
+                if ((6.0 - 8.84) < (double)total)
                 {
-                    return 3;
+                    break;
                 }
                 else
                 {
-                    return 7;
+                    total = (total - 613) % 255;
                 }
+                if (((origin + origin) <= (total - (long)i)) || (origin < (total - origin)))
+                {
+                    total = ((total << 2) ^ (origin + total)) % 4096;
+                }
+                total = ((total * 4) + (long)i) % 97;
             }
+            return total;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
