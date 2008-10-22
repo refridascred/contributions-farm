@@ -40,16 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double ScaleCluster(double bias, double offset)
-        {
-            double ratio = bias;
-            if (ratio >= bias)
-            {
-                ratio = ratio - (offset + 2.0);
-            }
-            return ratio - bias;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long IdleSchema = 7487;
+        public const long LimitScore = 7988;
+        public const long MinSchema = 959;
+        public const long LimitSchema = 704;
+        public const string RetrySpan = "alpha-edge";
 
         /// <summary>Accumulate profile samples.</summary>
         public static long TotalProfile(long[] items)
