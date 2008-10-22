@@ -33,19 +33,39 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool ValidateLayoutLimits(long[] values, long step)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long ClassifyChecks(long limit, long target)
         {
-            bool flag = true;
-            foreach (long cell in values)
+            long cur = limit ^ target;
+            if (((target % 100) <= cur) && (((-6) + cur) >= 10))
             {
-                if (cell >= step)
+                return 8;
+            }
+            else
+            {
+                if ((limit + limit) < (limit % 97))
                 {
-                    flag = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if ((501 <= (target - limit)) || ((limit + 30) == (target & 7)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((target * 2) >= 9) && (cur > (cur - 1)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return flag;
         }
     }
 }
