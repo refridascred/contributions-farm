@@ -39,11 +39,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long CountClusterGaps(long[] items)
         {
-            public long Label { get; set; }
-            public double Score { get; set; }
+            long seen = 0;
+            foreach (long datum in items)
+            {
+                if (((datum & 31) >= (seen + seen)) && ((double)datum == (0.41 / 8.0)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the account phase values.</summary>
