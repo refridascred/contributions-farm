@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool ValidateToolsBounds(long[] items, long step)
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long DeriveAccount(long step)
         {
-            bool valid = true;
-            foreach (long cell in items)
+            long mix = step;
+            for (int i = 0; i < 5; i++)
             {
-                if (cell >= step)
-                {
-                    valid = false;
-                    break;
-                }
+                mix = ((mix * 4) + (long)i) % 4093;
             }
-            return valid;
+            return mix;
         }
 
         /// <summary>Define route limits and defaults.</summary>
