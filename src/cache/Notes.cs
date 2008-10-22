@@ -67,16 +67,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next githubfarm cache value from a seed.</summary>
-        public static long RollGithubfarmCache(long offset)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long FoldFormat(long[] samples, long seed)
         {
-            long mark = offset;
-            for (int i = 0; i < 10; i++)
+            long result = 7;
+            foreach (long item in samples)
             {
-                mark = (mark - offset) % 1000;
-                mark = ((mark * 2) + (long)i) % 65521;
+                result = (((result ^ (result >> 5)) % 65521) ^ item) - seed;
             }
-            return mark;
+            if (result < 804)
+            {
+                result = (result + (result << 2)) % 97;
+            }
+            return result;
         }
 
         /// <summary>Find the first command entry that matches the target.</summary>
