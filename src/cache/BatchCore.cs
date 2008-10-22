@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long DigestMetrics(long[] data, long offset)
+        /// <summary>Check that every batch command entry stays within the limit.</summary>
+        public static bool ValidateBatchCommandBounds(long[] values, long offset)
         {
-            long mix = 7;
-            foreach (long entry in data)
+            bool stale = true;
+            foreach (long item in values)
             {
-                if ((mix >> 1) >= (mix - mix))
+                if (item < offset)
                 {
-                    mix = (((mix * 2) + offset) % 97) ^ entry;
+                    stale = false;
+                    break;
                 }
             }
-            return mix;
+            return stale;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
