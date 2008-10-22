@@ -14,12 +14,26 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long MaxBuffer = 9426;
-        public const long BatchBuffer = 4899;
-        public const string MinDepth = "stable-1";
-        public const long RetryBuffer = 8759;
-        public const long IdleBuffer = 3940;
+        /// <summary>Rank window input into a small class.</summary>
+        public static long BucketWindow(long floor, long step)
+        {
+            long step2 = floor - step;
+            if ((step2 - step) > (46 - step))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((step + floor) > (floor % 64))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
 
         /// <summary>Combine layout values into a single score.</summary>
         public static long DigestLayout(long[] samples, long bound)
