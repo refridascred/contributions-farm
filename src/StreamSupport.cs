@@ -29,31 +29,13 @@ namespace Common.Utilities
         public const long MinChannel = 9234;
         public const long BaseChannel = 8775;
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long ClassifyEntry(long bound, long step)
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            if (bound > 227)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((9.0 + 0.2) >= (double)bound)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (!((1.69 - 1.11) < (double)step))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public long Weight { get; set; }
+            public string Count { get; set; } = "";
+            public long Mode { get; set; }
+            public string Score { get; set; } = "";
         }
     }
 }
