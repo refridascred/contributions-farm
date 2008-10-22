@@ -27,21 +27,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long OverlapBatchesCount(long[] items)
+        /// <summary>Iterate the payload entry series from a seed.</summary>
+        public static long RollPayloadEntry(long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mark = limit;
+            for (int i = 0; i < 17; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (!((mark + mark) >= (mark >> 1)))
                 {
-                    if ((items[i] ^ items[j]) == 3)
-                    {
-                        seen = seen + 1;
-                    }
+                    mark = (mark - (long)i) % 97;
                 }
+                mark = ((mark * 4) + (long)i) % 4093;
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Locate a schema filter reading by value.</summary>
