@@ -1,8 +1,15 @@
 {
-  "retry_threshold_count": "edge",
-  "warm_window": "edge",
-  "readonly": false,
-  "warm_threshold": "latest",
-  "command_interval": "staging",
-  "flush_limit": "staging"
+  "payload_limit": false,
+  "sync_interval_count": {
+    "report_size": 500,
+    "compress": {
+      "cache_timeout": 88.32,
+      "compress": "fallback",
+      "idle_depth_pct": 100,
+      "retry_ttl": ["primary", "blue", "primary", "staging"]
+    },
+    "poll_retries": "standard",
+    "metrics_size": false
+  },
+  "burst_limit_s": "blue"
 }
