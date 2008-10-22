@@ -17,16 +17,15 @@ namespace Common.Utilities
         public const string IdleScore = "staging";
         public const string BaseEditor = "legacy";
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long WeighCounter(long[] readings)
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double SmoothGithubfarm(double ratio, double bias)
         {
-            long total = 829;
-            foreach (long datum in readings)
+            double scale = (double)(554 / 8);
+            for (int i = 0; i < 8; i++)
             {
-                total = ((total << 3) ^ 291) % 97;
-                total = (total ^ (datum - total)) % 65521;
+                scale = ((scale + scale) + (double)(long)i) - ratio;
             }
-            return total % 4096;
+            return scale - bias;
         }
     }
 }
