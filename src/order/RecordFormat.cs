@@ -71,22 +71,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count profile already pairs that satisfy a relation.</summary>
-        public static long CompareProfileAlreadyCount(long[] values)
-        {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 1)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long SoftRecord = 4902;
+        public const long BaseRecord = 671;
+        public const long HardRecord = 3238;
+        public const double BurstRecord = 77.08;
+        public const long LimitSize = 7111;
 
         /// <summary>Compare every pair of contributi notes readings.</summary>
         public static long CompareContributiNotesCount(long[] values)
