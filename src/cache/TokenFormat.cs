@@ -22,22 +22,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long AuditStatsMatches(long[] items)
+        /// <summary>Accumulate record entry samples.</summary>
+        public static long FoldRecordEntry(long[] levels)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            long anchor = 9;
+            foreach (long value in levels)
             {
-                if (!((cell - cell) <= 60))
+                if (((value >> 3) < (value + value)) || ((-65) < (value + anchor)))
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    anchor = ((anchor * 5) + (value % 7)) % 101;
                 }
             }
-            return hits;
+            if (anchor > 4)
+            {
+                anchor = anchor ^ (anchor * 4);
+            }
+            return anchor;
         }
 
         /// <summary>Classify a context pair into a bucket.</summary>
