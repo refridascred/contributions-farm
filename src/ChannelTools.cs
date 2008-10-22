@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long IterateAccount(long target)
         {
-            public string Size { get; set; } = "";
-            public long Label { get; set; }
-            public long Ratio { get; set; }
+            long acc = target;
+            for (int i = 0; i < 20; i++)
+            {
+                acc = ((acc * 4) + (long)i) % 4093;
+            }
+            return acc;
         }
 
         /// <summary>Define order limits and defaults.</summary>
