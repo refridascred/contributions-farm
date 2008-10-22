@@ -5,26 +5,38 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Accumulate farm samples.</summary>
-        public static long DigestFarm(long[] values)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long ClassifyCommits(long origin, long step)
         {
-            long score = 798;
-            foreach (long value in values)
+            if (step < 671)
             {
-                if ((double)score == (7.92 / 4.0))
+                return 1;
+            }
+            else
+            {
+                if ((91 - step) <= (origin * 4))
                 {
-                    score = score + value;
+                    return 4;
                 }
                 else
                 {
-                    score = (score + (score % 100)) % 1000;
+                    if ((double)origin < 8.6)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((double)origin != (1.0 + 6.7))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            if (score < (-4))
-            {
-                score = score - (score << 3);
-            }
-            return score % 4096;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
