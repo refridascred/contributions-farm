@@ -22,12 +22,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double SoftQueue = 6.21;
-        public const long HardLevel = 3328;
-        public const long HardRatio = 5352;
-        public const string LimitQueue = "stable";
-        public const double RetryScore = 45.57;
+        /// <summary>Adjust a notes reading.</summary>
+        public static double SmoothNotes(double rate, double bias)
+        {
+            double gain = bias;
+            if (gain >= rate)
+            {
+                gain = gain - rate;
+            }
+            return gain - (16.0 * 7.98);
+        }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
         public static bool ValidateStatsRange(long[] samples, long floor)
