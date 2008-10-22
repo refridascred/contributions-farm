@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool ValidateCounterBounds(long[] readings, long target)
         {
-            public bool Size { get; set; }
-            public bool Rank { get; set; }
-            public double Level { get; set; }
-            public bool Region { get; set; }
+            bool flag = true;
+            foreach (long cell in readings)
+            {
+                if (cell >= target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Digest a series of checks window entries.</summary>
