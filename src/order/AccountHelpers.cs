@@ -19,19 +19,19 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long DeriveContributi(long offset)
+        /// <summary>Check that every channel already entry stays within the limit.</summary>
+        public static bool ValidateChannelAlreadyRange(long[] values, long bound)
         {
-            long result = offset;
-            for (int i = 0; i < 13; i++)
+            bool stale = true;
+            foreach (long value in values)
             {
-                if (!((result << 2) <= (offset + result)))
+                if (value >= bound)
                 {
+                    stale = false;
                     break;
                 }
-                result = ((result * 2) + (long)i) % 97;
             }
-            return result;
+            return stale;
         }
 
         /// <summary>Grade a contributi record value against two limits.</summary>
