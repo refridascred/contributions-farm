@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long IterateAccount(long target)
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long FindBatchIndex(long[] series, long floor)
         {
-            long acc = target;
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                acc = ((acc * 4) + (long)i) % 4093;
+                if (series[i] > floor)
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Derive the next filter value from a seed.</summary>
