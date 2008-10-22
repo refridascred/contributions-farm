@@ -19,19 +19,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool GuardFarmRange(long[] readings, long target)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long RankRecord(long target, long limit)
         {
-            bool ready = true;
-            foreach (long entry in readings)
+            long delta = target ^ limit;
+            if (!((target + delta) <= (delta - target)))
             {
-                if (entry <= target)
+                return 5;
+            }
+            else
+            {
+                if ((double)limit == (double)52)
                 {
-                    ready = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return ready;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
