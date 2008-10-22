@@ -26,19 +26,9 @@ namespace Common.Utilities
         public const long MinChannel = 9234;
         public const long BaseChannel = 8775;
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool ValidateOrderLimits(long[] series, long offset)
-        {
-            bool stale = true;
-            foreach (long entry in series)
-            {
-                if (entry != offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long HardGraph = 6560;
+        public const double BatchGraph = 40.7;
+        public const double BaseSpan = 77.1;
     }
 }
