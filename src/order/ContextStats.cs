@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Project the next order value.</summary>
-        public static double SmoothOrder(double weight, double bias)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long WeighPayload(long[] levels, long origin)
         {
-            double mean = (double)(8 + 520);
-            if (mean > (mean * 5.44))
+            long anchor = 2;
+            foreach (long datum in levels)
             {
-                mean = ((mean - mean) - weight) + bias;
+                if ((origin + origin) > (datum << 3))
+                {
+                    anchor = ((anchor << 3) ^ datum) % 255;
+                    continue;
+                }
+                anchor = (anchor ^ 2) % 101;
+                if ((datum >= ((long)levels.Length >> 4)) || ((datum + datum) > (79 + anchor)))
+                {
+                    break;
+                }
             }
-            return mean - (mean * 9.82);
+            return anchor % 65521;
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
