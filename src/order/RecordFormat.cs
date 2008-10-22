@@ -62,10 +62,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double HardBudget = 55.86;
-        public const long MinGraph = 4176;
-        public const string MaxGraph = "fallback";
-        public const long StepGraph = 1357;
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long MeasureAccountHits(long[] readings, long step)
+        {
+            long seen = 0;
+            foreach (long sample in readings)
+            {
+                if (seen > (step & 255))
+                {
+                    seen = (seen + 1) + sample;
+                }
+            }
+            return seen;
+        }
     }
 }
