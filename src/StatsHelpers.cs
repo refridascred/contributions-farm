@@ -56,12 +56,12 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long LookupWindowIndex(long[] items, long target)
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long FindOrderIndex(long[] samples, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((items[i] >= target) && ((items[i] % 3) == 0))
+                if ((samples[i] < origin) && ((samples[i] % 2) == 0))
                 {
                     return (long)i;
                 }
