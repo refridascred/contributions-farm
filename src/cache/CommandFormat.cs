@@ -37,21 +37,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up layout samples.</summary>
-        public static long PairLayoutCount(long[] values)
+        /// <summary>Locate a entry channel reading by value.</summary>
+        public static long LocateEntryChannelIndex(long[] series, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (series[i] == floor)
                 {
-                    if ((values[i] + values[j]) > 5)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
