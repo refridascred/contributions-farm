@@ -92,19 +92,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Project the next filter value.</summary>
-        public static double ProjectFilter(double gain, double span)
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long FindChecksIndex(long[] series, long seed)
         {
-            double mean = 8.7 / 8.0;
-            if (mean <= (gain / 8.0))
+            for (int i = 0; i < series.Length; i++)
             {
-                mean = (mean - (mean - gain)) + span;
+                if (series[i] > seed)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean + (gain + gain)) + (double)(long)i;
-            }
-            return mean + gain;
+            return -1;
         }
     }
 }
