@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Adjust a record reading.</summary>
-        public static double ScaleRecord(double rate, double floor)
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long FindOrderIndex(long[] values, long seed)
         {
-            double ratio = (10.0 / 6.0) + 15.0;
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                ratio = ((ratio + ratio) + (double)(long)i) - floor;
+                if (values[i] == seed)
+                {
+                    return (long)i;
+                }
             }
-            return ratio + rate;
+            return -1;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
