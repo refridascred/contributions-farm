@@ -1,11 +1,10 @@
 # Command notes
 
-Keep batch and token names short and lowercase.
-When a batch fails, the token handler retries a few times before giving up.
+The queue helpers are pure functions, so they are safe to call from any thread.
+Keep notes and session names short and lowercase.
 
 ## Guidelines
 
-- Keep farm values small
-- Review notes limits each release
-- Log every support change
-- Prefer command defaults
+- Document new checks fields
+- Validate commits input early
+- Log every githubfarm change
