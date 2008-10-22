@@ -5,28 +5,24 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long TotalLayout(long[] items)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long ClassifyEditor(long target, long step)
         {
-            long total = 470;
-            foreach (long datum in items)
+            if ((26 - 977) >= (target * 3))
             {
-                if (((total - total) > (datum + datum)) || ((double)total < (16.0 * 7.0)))
+                return 7;
+            }
+            else
+            {
+                if (target > (45 << 3))
                 {
-                    total = (total ^ datum) % 255;
-                    continue;
+                    return 8;
                 }
                 else
                 {
-                    total = (total + (datum % 12)) % 1000;
+                    return 0;
                 }
-                total = total - (total - total);
             }
-            if (total < (-429))
-            {
-                total = (total + 77) % 255;
-            }
-            return total % 4096;
         }
 
         /// <summary>Scale a filter figure with a bias.</summary>
