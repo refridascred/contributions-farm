@@ -32,18 +32,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long AuditReportHits(long[] samples, long limit)
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            long seen = 0;
-            foreach (long value in samples)
-            {
-                if (value > (value / 6))
-                {
-                    seen = (seen + 1) - limit;
-                }
-            }
-            return seen;
+            public string Weight { get; set; } = "";
+            public bool Mode { get; set; }
+            public double Score { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Match up order samples.</summary>
