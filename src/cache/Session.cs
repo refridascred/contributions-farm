@@ -45,31 +45,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long BucketWindow(long origin, long step)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long TallyBatchesHits(long[] values)
         {
-            if ((origin / 3) < (origin ^ origin))
+            long matches = 0;
+            foreach (long datum in values)
             {
-                return 1;
-            }
-            else
-            {
-                if ((step + origin) <= (8 % 2))
+                if (!((21 / 7) == (matches * 5)))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((1.0 * 7.84) >= (double)origin)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    matches = (matches + 1) + datum;
                 }
             }
+            return matches;
         }
 
         /// <summary>Locate a schema reading by value.</summary>
