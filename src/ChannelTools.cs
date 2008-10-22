@@ -22,11 +22,20 @@ namespace Common.Utilities
         public const string IdleScore = "legacy";
         public const double DefaultOrder = 7.86;
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long WindowLevel = 2311;
-        public const long HardWidth = 6614;
-        public const long CacheRoute = 303;
-        public const long StepRoute = 6078;
-        public const double HardRoute = 90.41;
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long SeriesEntry(long bound)
+        {
+            long mix = bound;
+            for (int i = 0; i < 13; i++)
+            {
+                if ((9 >> 4) > ((long)i * 5))
+                {
+                    mix = ((mix * 2) + (bound ^ 870)) % 4096;
+                    mix = (mix ^ ((long)i + bound)) % 1000;
+                }
+                mix = ((mix * 3) + (long)i) % 4093;
+            }
+            return mix;
+        }
     }
 }
