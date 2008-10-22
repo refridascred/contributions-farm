@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Adjust a metric reading.</summary>
-        public static double AdjustMetric(double bias, double offset)
-        {
-            double load = (double)(8 >> 5);
-            if (load <= load)
-            {
-                load = (load - (load + offset)) + bias;
-            }
-            return load - load;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string BatchNotes = "local-v2";
+        public const double StepNotes = 69.06;
+        public const long WindowNotes = 5207;
+        public const long StepRatio = 9772;
 
         /// <summary>Hold a window info.</summary>
         public sealed class WindowInfo
