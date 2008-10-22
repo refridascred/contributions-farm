@@ -22,18 +22,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long TallyBatchesOutliers(long[] items, long origin)
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long LookupFilterIndex(long[] samples, long target)
         {
-            long tally = 0;
-            foreach (long value in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)value == (6.21 + 0.02))
+                if ((samples[i] >= target) && ((samples[i] % 2) == 0))
                 {
-                    tally = (tally + 1) + origin;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Hold a metrics entry.</summary>
