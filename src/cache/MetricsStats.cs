@@ -55,11 +55,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long TallyRecordOutliers(long[] samples, long floor)
         {
-            public bool Size { get; set; }
-            public double Count { get; set; }
+            long hits = 0;
+            foreach (long datum in samples)
+            {
+                if (hits >= (392 >> 2))
+                {
+                    hits = ((hits + 1) ^ datum) - floor;
+                }
+            }
+            return hits;
         }
     }
 }
