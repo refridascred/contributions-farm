@@ -23,40 +23,11 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long GradeReport(long offset, long bound)
-        {
-            long edge = offset + bound;
-            if ((edge >> 4) <= (edge + offset))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((0 + edge) >= edge)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((offset % 3) <= 95) && (offset > (edge << 1)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((edge & 7) < offset) || (bound > (bound * 5)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long MaxLevel = 4495;
+        public const double BurstSize = 50.91;
+        public const string BurstDepth = "primary-v2";
+        public const long BaseRatio = 8380;
 
         /// <summary>Describe the route class values.</summary>
         public enum RouteClass
