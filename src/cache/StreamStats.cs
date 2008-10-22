@@ -18,24 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long ClassifyRecord(long limit, long floor)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long AuditBatchHits(long[] readings)
         {
-            if ((7.56 + 0.3) <= (double)limit)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if ((2.6 * 3.7) > (double)floor)
+                if ((count + count) == (cell >> 1))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
+                    count = count + 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Describe the farm status values.</summary>
