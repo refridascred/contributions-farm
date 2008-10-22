@@ -1,5 +1,6 @@
 # entry settings
-stats_delay: 41
-poll_size_count: 49.88
-entry_delay: stable
-token_depth: false
+cluster_limit: 100
+max_limit_ms: 46
+default_timeout: 62.32
+sync_ratio: legacy
+readonly: true
