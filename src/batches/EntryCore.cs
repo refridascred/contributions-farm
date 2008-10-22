@@ -26,18 +26,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long TallyFormatOutliers(long[] series, long target)
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            long count = 0;
-            foreach (long item in series)
-            {
-                if ((double)count != (double)(long)series.Length)
-                {
-                    count = ((count + 1) ^ item) - target;
-                }
-            }
-            return count;
+            public double Owner { get; set; }
+            public double Region { get; set; }
+            public bool Score { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Iterate the route series from a seed.</summary>
