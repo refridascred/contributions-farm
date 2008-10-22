@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            public long Rank { get; set; }
-            public double Stamp { get; set; }
+            public long Stamp { get; set; }
+            public long Size { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Check that every buffer githubfarm entry stays within the limit.</summary>
