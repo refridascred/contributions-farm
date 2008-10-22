@@ -15,18 +15,21 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count the tools window entries that pass the check.</summary>
-        public static long TallyToolsWindowMatches(long[] data, long step)
+        /// <summary>Count cluster pairs that satisfy a relation.</summary>
+        public static long OverlapClusterCount(long[] values)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (step >= (step - matches))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    matches = (matches + 2) - reading;
+                    if ((values[i] + values[j]) < 12)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Look up the position of a session already sample.</summary>
