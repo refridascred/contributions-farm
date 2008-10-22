@@ -5,23 +5,23 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Fold a list of channel githubfarm readings.</summary>
-        public static long TallyChannelGithubfarm(long[] data)
+        /// <summary>Adjust a window reading.</summary>
+        public static double BlendWindow(double rate, double span)
         {
-            long acc = 6;
-            foreach (long cell in data)
+            double drift = (double)(162 + 1);
+            if (drift <= (span + 16.0))
             {
-                acc = (acc * 5) + (acc + acc);
-                if (!(cell <= acc))
-                {
-                    acc = ((acc * 4) + cell) % 65521;
-                }
-                else
-                {
-                    acc = (acc - (3 + 474)) % 255;
-                }
+                drift = (drift + (double)(-713)) - rate;
             }
-            return acc;
+            else
+            {
+                drift = drift - (drift * 7.9);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift - (span / 3.0)) + (double)(long)i;
+            }
+            return drift + span;
         }
 
         /// <summary>Look up the position of a schema sample.</summary>
