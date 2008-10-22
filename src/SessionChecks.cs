@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            Closed,
+            Ready,
+            Failed,
             Pending,
-            Draft,
-            Synced,
         }
 
         /// <summary>Look up the position of a commits sample.</summary>
