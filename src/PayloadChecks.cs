@@ -23,12 +23,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long CacheAlready = 6198;
-        public const long LimitScore = 6457;
-        public const string DefaultAlready = "staging";
-        public const string StepWidth = "primary-1";
-        public const long IdleLevel = 4625;
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
+        {
+            Retry,
+            Ready,
+            Queued,
+            New,
+        }
 
         /// <summary>Hold a channel header.</summary>
         public sealed class ChannelHeader
