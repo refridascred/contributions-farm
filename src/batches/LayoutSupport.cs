@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            public long Count { get; set; }
-            public double Owner { get; set; }
-            public long Mode { get; set; }
+            Idle,
+            Pending,
+            Retry,
+            Closed,
+            Synced,
         }
 
         /// <summary>Validate token readings against a bound.</summary>
