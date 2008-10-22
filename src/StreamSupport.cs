@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Accumulate metric samples.</summary>
-        public static long ScoreMetric(long[] levels, long limit)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long TallyAccountMatches(long[] samples)
         {
-            long result = 45;
-            foreach (long datum in levels)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                result = (((result * 4) + (165 * 5)) + datum) + limit;
+                if ((count + reading) >= (count - reading))
+                {
+                    count = count + 1;
+                }
             }
-            if (result < 5)
-            {
-                result = (result ^ (22 & 15)) % 97;
-            }
-            return result;
+            return count;
         }
 
         /// <summary>Count the profile channel entries that pass the check.</summary>
