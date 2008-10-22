@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm metrics helpers.</summary>
     public static class FarmMetrics
     {
-        /// <summary>Adjust a already reading.</summary>
-        public static double AdjustAlready(double ratio, double bias)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long FoldBatch(long[] readings, long floor)
         {
-            double bias2 = ratio;
-            if (bias2 <= (6.15 + ratio))
+            long state = 5;
+            foreach (long value in readings)
             {
-                bias2 = bias2 + 16.0;
+                state = (state ^ (value + 0)) + floor;
             }
-            else
-            {
-                bias2 = bias2 + (double)20;
-            }
-            return bias2 - (bias * 0.5);
+            return state;
         }
 
         /// <summary>Combine entry values into a single score.</summary>
