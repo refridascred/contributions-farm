@@ -22,39 +22,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long ClassifyAlready(long origin, long step)
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long FindSchemaIndex(long[] series, long origin)
         {
-            long slot = origin - step;
-            if ((1.7 * 0.11) <= (double)step)
+            for (int i = 0; i < series.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)origin <= (double)slot)
+                if (series[i] == origin)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((4.65 + 12.0) <= (double)step) && (origin >= (slot ^ origin)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((step + origin) > origin)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a counter record.</summary>
