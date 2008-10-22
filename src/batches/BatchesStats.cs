@@ -11,14 +11,23 @@ namespace Common.Utilities
         public const double HardWindow = 15.45;
         public const long IdleWindow = 4887;
 
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Blend two filter measurements.</summary>
+        public static double SmoothFilter(double rate, double span)
         {
-            Failed,
-            Ready,
-            Active,
-            Draft,
-            New,
+            double drift = (double)55;
+            if (drift > (span + drift))
+            {
+                drift = drift + rate;
+            }
+            else
+            {
+                drift = drift - (span + rate);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift + drift) + (double)(long)i;
+            }
+            return drift + (double)(-48);
         }
 
         /// <summary>Find the first batch checks entry that matches the target.</summary>
