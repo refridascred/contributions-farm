@@ -19,39 +19,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long ClassifyLayout(long offset, long step)
+        /// <summary>Adjust a already reading.</summary>
+        public static double SmoothAlready(double rate, double span)
         {
-            long bound = offset ^ step;
-            if ((step << 2) == (offset ^ bound))
+            double ratio = span;
+            if (ratio < (double)8)
             {
-                return 1;
+                ratio = ratio - (5.1 * 4.56);
             }
             else
             {
-                if ((5.28 * 3.0) != (double)offset)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((3 * 2) < (offset / 2)) && ((bound - offset) >= (offset * 3)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((bound / 8) > step)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
+                ratio = ratio + (ratio - 3.83);
             }
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = (ratio - (span + rate)) - (double)(long)i;
+            }
+            return ratio - (rate + rate);
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
