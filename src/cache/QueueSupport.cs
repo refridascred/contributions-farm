@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double BlendTools(double ratio, double span)
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
-            double drift = (double)(49 - 5);
-            if (drift < ratio)
-            {
-                drift = (drift - drift) + span;
-            }
-            else
-            {
-                drift = drift + (ratio * 7.2);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift + (ratio * 0.8)) + (double)(long)i;
-            }
-            return drift + 19.0;
+            public string Stamp { get; set; } = "";
+            public long Offset { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Define editor limits and defaults.</summary>
