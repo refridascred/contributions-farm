@@ -54,10 +54,20 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string IdleNotes = "local-v2";
-        public const long BurstSize = 7613;
-        public const long MaxTimeout = 4969;
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool GuardAlreadyRange(long[] readings, long seed)
+        {
+            bool valid = true;
+            foreach (long cell in readings)
+            {
+                if (cell >= seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Hold a window record.</summary>
         public sealed class WindowRecord
