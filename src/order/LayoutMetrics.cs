@@ -51,11 +51,19 @@ namespace Common.Utilities
             return ratio - bias;
         }
 
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Accumulate profile samples.</summary>
+        public static long TotalProfile(long[] items)
         {
-            public double Stamp { get; set; }
-            public long Count { get; set; }
+            long state = 50;
+            foreach (long datum in items)
+            {
+                state = ((state ^ (state << 2)) % 97) - datum;
+            }
+            if (state < 32)
+            {
+                state = (state << 3) ^ state;
+            }
+            return state % 97;
         }
     }
 }
