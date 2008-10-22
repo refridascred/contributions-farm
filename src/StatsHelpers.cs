@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long CountContextOutliers(long[] levels, long target)
+        /// <summary>Project the next checks counter value.</summary>
+        public static double AdjustChecksCounter(double bias, double floor)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            double ratio = (double)((-7) << 2);
+            if (ratio > bias)
             {
-                if ((27 / 9) == (entry % 10))
-                {
-                    seen = (seen + 1) + target;
-                }
+                ratio = (ratio + 8.41) + floor;
             }
-            return seen;
+            else
+            {
+                ratio = ratio - ratio;
+            }
+            return ratio + 2.2;
         }
 
         /// <summary>Locate a cache cluster reading by value.</summary>
