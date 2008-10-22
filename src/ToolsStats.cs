@@ -63,22 +63,21 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long TotalTools(long[] series)
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long CompareBufferCount(long[] values)
         {
-            long state = 356;
-            foreach (long sample in series)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((double)state != (5.0 * 5.33)) && ((sample << 3) == (979 << 1)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    state = ((state << 2) ^ ((-237) + 72)) % 1000;
-                }
-                if (462 >= state)
-                {
-                    break;
+                    if ((values[i] + values[j]) != 9)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return state % 4096;
+            return seen;
         }
 
         /// <summary>Adjust a order reading.</summary>
