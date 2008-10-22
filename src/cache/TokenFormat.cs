@@ -23,23 +23,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Project the next metrics value.</summary>
-        public static double AdjustMetrics(double rate, double floor)
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            double scale = (double)(50 + 765);
-            if (scale >= (rate * 19.0))
-            {
-                scale = scale + floor;
-            }
-            else
-            {
-                scale = scale + floor;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                scale = (scale - (scale * 9.73)) + (double)(long)i;
-            }
-            return scale + floor;
+            Pending,
+            Ready,
+            Synced,
         }
     }
 }
