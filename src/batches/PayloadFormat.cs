@@ -22,20 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long DeriveWindow(long origin)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long CountChecksOutliers(long[] series, long origin)
         {
-            long score = origin;
-            for (int i = 0; i < 8; i++)
+            long count = 0;
+            foreach (long item in series)
             {
-                if (!((144 + origin) <= (origin + score)))
+                if ((double)origin == (double)count)
                 {
-                    score = (score * 3) + (score % 97);
-                    break;
+                    count = (count + 1) - item;
                 }
-                score = ((score * 2) + (long)i) % 4093;
             }
-            return score;
+            return count;
         }
 
         /// <summary>Grade a farm value against two limits.</summary>
