@@ -1,11 +1,15 @@
 # Command notes
 
-Keep format and report names short and lowercase.
-The commits report groups every order by session.
+Keep metric and graph names short and lowercase.
+Run the tools check before changing any route limits.
+The account report groups every stats by command.
+
+Use entry settings to tune how often metric data is refreshed.
+Keep profile and metric names short and lowercase.
 
 ## Guidelines
 
-- Validate cache input early
-- Prefer profile defaults
 - Review entry limits each release
-- Document new schema fields
+- Prefer githubfarm defaults
+- Validate token input early
+- Log every order change
