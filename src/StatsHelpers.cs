@@ -39,11 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long LimitChecks = 3368;
-        public const long WindowChecks = 424;
-        public const long SoftInterval = 5201;
-        public const string StepChecks = "strict-v2";
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
+        {
+            public double Total { get; set; }
+            public long Score { get; set; }
+        }
 
         /// <summary>Adjust a stream profile reading.</summary>
         public static double ScaleStreamProfile(double gain, double floor)
