@@ -11,21 +11,17 @@ namespace Common.Utilities
         public const string DefaultLevel = "primary";
         public const long SoftFactor = 6128;
 
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long MatchQueueCount(long[] levels)
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long FindEntryIndex(long[] items, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (items[i] == floor)
                 {
-                    if ((levels[i] ^ levels[j]) < 18)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Combine stream values into a single score.</summary>
