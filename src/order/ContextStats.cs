@@ -15,21 +15,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Match up graph route samples.</summary>
-        public static long OverlapGraphRouteCount(long[] values)
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 8)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public bool Score { get; set; }
+            public long Region { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Hold a metrics entry.</summary>
