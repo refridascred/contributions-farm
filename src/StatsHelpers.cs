@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Project the next checks counter value.</summary>
-        public static double AdjustChecksCounter(double bias, double floor)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long IterateRecord(long floor)
         {
-            double ratio = (double)((-7) << 2);
-            if (ratio > bias)
+            long sum = floor;
+            for (int i = 0; i < 4; i++)
             {
-                ratio = (ratio + 8.41) + floor;
+                sum = ((sum << 2) ^ (sum << 2)) % 97;
+                sum = ((sum * 5) + (long)i) % 1000;
             }
-            else
-            {
-                ratio = ratio - ratio;
-            }
-            return ratio + 2.2;
+            return sum;
         }
 
         /// <summary>Locate a cache cluster reading by value.</summary>
