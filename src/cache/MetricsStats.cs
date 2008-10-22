@@ -29,22 +29,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long TallySchema(long[] values)
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            long anchor = 612;
-            foreach (long datum in values)
-            {
-                if ((datum * 2) > (datum + datum))
-                {
-                    anchor = ((anchor * 5) + (4 ^ 9)) % 101;
-                }
-                else
-                {
-                    anchor = (anchor << 2) ^ (7 + anchor);
-                }
-            }
-            return anchor % 97;
+            Paused,
+            Locked,
+            Idle,
+            Pending,
+            Retry,
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
