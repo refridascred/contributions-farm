@@ -52,17 +52,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long LookupWindowIndex(long[] data, long target)
+        /// <summary>Adjust a batches reading.</summary>
+        public static double AdjustBatches(double ratio, double offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            double scale = 7.9;
+            if (scale <= (double)95)
             {
-                if (data[i] == target)
-                {
-                    return (long)i;
-                }
+                scale = scale + (18.0 + ratio);
             }
-            return -1;
+            for (int i = 0; i < 8; i++)
+            {
+                scale = (scale - offset) - (double)(long)i;
+            }
+            return scale + ratio;
         }
     }
 }
