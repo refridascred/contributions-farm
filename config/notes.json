@@ -1,6 +1,19 @@
 {
-  "audit": false,
-  "burst_capacity": false,
-  "notes_ttl": 30,
-  "persist": 90
+  "min_interval_s": true,
+  "commits_retries": [135, 293, 324],
+  "enabled": 5.59,
+  "context_interval": {
+    "dry_run": [385, 54],
+    "layout_threshold": 8.96,
+    "idle_retries_ms": {
+      "persist": "strict",
+      "warm_timeout": 20,
+      "tools_delay": [382, 289, 161, 375],
+      "max_depth_ms": 96,
+      "cluster_capacity": 3046
+    },
+    "contributi_delay": 68.13,
+    "poll_timeout_ms": 57.52
+  },
+  "cache_threshold": "open"
 }
