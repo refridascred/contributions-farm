@@ -1,13 +1,10 @@
 {
-  "metric_window": "standard",
-  "cache_threshold": {
-    "enabled": {
-      "max_threshold_s": 60,
-      "checks_ttl": "strict",
-      "poll_timeout_s": 98
-    },
-    "cache_ratio_pct": "open",
-    "strict": 6920
+  "base_timeout_count": {
+    "poll_limit": "staging",
+    "metrics_size": 44.42,
+    "default_capacity_s": ["legacy", "blue", "eu-west"]
   },
-  "dry_run": "edge"
+  "default_size_ms": "latest",
+  "poll_delay_count": "standard",
+  "idle_timeout": "eu-west"
 }
