@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double SmoothBatch(double rate, double floor)
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            double gain = (double)(608 * 5);
-            if (gain > (gain + rate))
-            {
-                gain = (gain - (2.79 / 5.0)) + floor;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                gain = (gain + (1.08 + 8.16)) + (double)(long)i;
-            }
-            return gain + (7.03 * 2.91);
+            Closed,
+            Paused,
+            New,
         }
 
         /// <summary>Hold a stream info.</summary>
