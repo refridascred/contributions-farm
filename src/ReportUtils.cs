@@ -40,17 +40,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long LocateLayoutIndex(long[] readings, long bound)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long IterateTools(long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long result = origin;
+            for (int i = 0; i < 10; i++)
             {
-                if ((readings[i] == bound) && ((readings[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                result = ((result * 3) + (long)i) % 65521;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Hold a report header.</summary>
