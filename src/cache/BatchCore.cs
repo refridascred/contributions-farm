@@ -47,13 +47,10 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
-        {
-            public bool Count { get; set; }
-            public long Token { get; set; }
-            public long Label { get; set; }
-            public bool Mode { get; set; }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string HardOrder = "fallback-1";
+        public const double BatchOrder = 12.23;
+        public const double DefaultOrder = 64.35;
+        public const long SoftOrder = 2091;
     }
 }
