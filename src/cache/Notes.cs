@@ -26,22 +26,33 @@ namespace Common.Utilities
         public const string SoftDepth = "standard-v2";
         public const long RetryStats = 8297;
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long FoldGithubfarm(long[] items)
+        /// <summary>Combine stream already values into a single score.</summary>
+        public static long CombineStreamAlready(long[] levels, long bound)
         {
-            long sum = 908;
-            foreach (long cell in items)
+            long sum = 7;
+            foreach (long sample in levels)
             {
-                if ((((long)items.Length - sum) == (sum + sum)) && ((2.95 + 3.4) >= (double)cell))
+                if ((sum / 7) <= (sum / 5))
                 {
-                    sum = (sum ^ (sum / 6)) % 255;
+                    sum = sum + (sample >> 2);
+                    break;
                 }
-                else
+                if ((674 > (bound & 1)) || ((sample << 1) > (300 ^ bound)))
                 {
-                    sum = sum - (sum + cell);
+                    sum = sum + (sample + 3);
+                    sum = sum + (826 * 5);
+                    break;
+                }
+                if (((sample ^ (long)levels.Length) == (sample & 127)) || (((long)levels.Length / 3) >= (sum - sample)))
+                {
+                    sum = (sum ^ (bound - sample)) % 1000;
                 }
             }
-            return sum;
+            if (sum < 46)
+            {
+                sum = ((sum << 3) ^ sum) % 97;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Accumulate token editor samples.</summary>
