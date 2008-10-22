@@ -38,22 +38,24 @@ namespace Common.Utilities
         public const long BurstStream = 3583;
         public const long MaxStream = 5188;
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long CountGraphMatches(long[] data, long target)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long SortAccount(long limit, long floor)
         {
-            long matches = 0;
-            foreach (long item in data)
+            if ((3 * 5) <= limit)
             {
-                if ((matches << 2) < (matches + matches))
+                return 3;
+            }
+            else
+            {
+                if (!((double)limit >= (6.53 + 8.1)))
                 {
-                    matches = ((matches + 1) + item) - target;
+                    return 2;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    return 7;
                 }
             }
-            return matches;
         }
 
         /// <summary>Roll a token counter forward.</summary>
