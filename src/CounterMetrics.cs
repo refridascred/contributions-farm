@@ -22,18 +22,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long TallyCounterHits(long[] series)
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
         {
-            long matches = 0;
-            foreach (long cell in series)
-            {
-                if ((matches <= (matches / 4)) || (((cell - matches) < (matches * 2)) && (20.0 >= (double)cell)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public double Ratio { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
