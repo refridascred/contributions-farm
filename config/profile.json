@@ -1,7 +1,13 @@
 {
-  "audit": false,
-  "route_delay": "cached",
-  "burst_limit": false,
-  "graph_ratio": "blue",
-  "githubfarm_delay": 95
+  "base_retries": "fallback",
+  "enabled": "local",
+  "default_threshold_count": {
+    "soft_limit_s": "legacy",
+    "idle_ttl": [50, 154],
+    "sync_timeout_ms": [288, 221, 78],
+    "default_delay_s": 30.02,
+    "enabled": "blue"
+  },
+  "poll_depth_count": 6703,
+  "strict": true
 }
