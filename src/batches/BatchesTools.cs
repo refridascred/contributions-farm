@@ -28,21 +28,15 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Compare every pair of token readings.</summary>
-        public static long PairTokenCount(long[] data)
+        /// <summary>Project the next route value.</summary>
+        public static double SmoothRoute(double ratio, double bias)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            double scale = (double)(883 + 6);
+            if (scale > (double)551)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 8)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                scale = (scale + (bias * 2.7)) - ratio;
             }
-            return hits;
+            return scale - scale;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
