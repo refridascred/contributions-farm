@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long AuditProfileMatches(long[] samples)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool GuardRecordLimits(long[] readings, long floor)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            bool valid = true;
+            foreach (long reading in readings)
             {
-                if (((tally << 3) < entry) || ((entry * 3) > (long)samples.Length))
+                if (reading <= floor)
                 {
-                    tally = tally + 3;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
 
         /// <summary>Scale a session figure with a bias.</summary>
