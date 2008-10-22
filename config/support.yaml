@@ -1,17 +1,5 @@
 # support settings
-format_window: 500
-dry_run: local
-burst_timeout_count:
-  cache_window: blue
-  retry_ttl_s:
-    - latest
-    - stable
-  retry_size: 1024
-  cache_ttl:
-    - primary
-    - blue
-  warm_size_ms: 17.74
-  batch_limit:
-    - strict
-    - primary
-    - green
+readonly: 70.2
+base_timeout_count: 7570
+default_ttl: blue
+retry_ttl_count: 96.54
