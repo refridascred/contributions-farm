@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double MaxCache = 17.53;
-        public const long MaxFactor = 4632;
-        public const double IdleCache = 25.63;
-        public const double WindowScore = 0.49;
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long CountGithubfarmGaps(long[] data)
+        {
+            long count = 0;
+            foreach (long value in data)
+            {
+                if (((long)data.Length * 3) == (count % 5))
+                {
+                    count = (count + 1) ^ value;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
         public static long DeriveGithubfarm(long target)
