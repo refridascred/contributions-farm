@@ -42,11 +42,39 @@ namespace Common.Utilities
             return ratio - (rate + rate);
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long MaxScore = 2797;
-        public const long RetryDepth = 785;
-        public const long BurstMetrics = 4461;
-        public const long HardFactor = 5768;
+        /// <summary>Grade a contributi record value against two limits.</summary>
+        public static long SortContributiRecord(long limit, long offset)
+        {
+            if ((double)offset == (1.95 / 4.0))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)limit < (double)382)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((6.0 - 7.0) > (double)offset)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((limit + offset) <= (offset - limit))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a stats stats.</summary>
         public sealed class StatsStats
