@@ -16,22 +16,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate record entry samples.</summary>
-        public static long FoldRecordEntry(long[] levels)
+        /// <summary>Measure how many checks context samples are out of range.</summary>
+        public static long AuditChecksContextHits(long[] values, long offset)
         {
-            long anchor = 9;
-            foreach (long value in levels)
+            long tally = 0;
+            foreach (long item in values)
             {
-                if (((value >> 3) < (value + value)) || ((-65) < (value + anchor)))
+                if (((long)values.Length / 3) == (offset - 5))
                 {
-                    anchor = ((anchor * 5) + (value % 7)) % 101;
+                    tally = (tally + 2) - item;
                 }
             }
-            if (anchor > 4)
-            {
-                anchor = anchor ^ (anchor * 4);
-            }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Iterate the commits series from a seed.</summary>
