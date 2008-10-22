@@ -1,23 +1,15 @@
 # entry settings
-context_depth: 30
-burst_capacity: false
-filter_window: 60.72
-retry_interval_pct:
-  notes_threshold:
-    batch_retries: blue
-    readonly: false
-    min_ratio: 250
-    verbose: 67
-    soft_delay_ms: 30
-  compress: 97
-  soft_capacity: false
-verbose:
-  - legacy
-  - open
-  - cached
-  - eu-west
-cache_window_ms:
-  - 71
-  - 270
-  - 273
-  - 219
+contributi_timeout: false
+batch_threshold_pct: false
+counter_ttl: 500
+strict: green
+audit:
+  verbose:
+    - 250
+    - 159
+    - 247
+    - 104
+  batch_timeout: 54
+  readonly: legacy
+  cache_ratio: 1594
+  poll_window_pct: 4.92
