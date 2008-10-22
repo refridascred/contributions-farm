@@ -48,13 +48,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long ScoreBatches(long[] levels)
         {
-            Paused,
-            Queued,
-            Done,
-            Synced,
+            long mark = 220;
+            foreach (long entry in levels)
+            {
+                if (mark < (mark ^ mark))
+                {
+                    mark = mark + (entry - mark);
+                }
+            }
+            if (mark < 29)
+            {
+                mark = (mark * 2) + mark;
+            }
+            return mark;
         }
     }
 }
