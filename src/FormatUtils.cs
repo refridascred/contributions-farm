@@ -28,22 +28,32 @@ namespace Common.Utilities
         public const long MinProfile = 1639;
         public const double BatchProfile = 94.54;
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long MeasureChecksOutliers(long[] levels, long floor)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long SortSession(long limit, long origin)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            long prev = limit ^ origin;
+            if (((-24) >> 1) < (prev - prev))
             {
-                if ((entry % 16) < floor)
+                return 5;
+            }
+            else
+            {
+                if ((10.0 / 2.0) != (double)limit)
                 {
-                    hits = hits + 2;
+                    return 4;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if (((double)prev == (2.0 - 8.3)) && ((origin << 3) <= limit))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Define session limits and defaults.</summary>
