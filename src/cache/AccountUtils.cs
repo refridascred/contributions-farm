@@ -24,17 +24,19 @@ namespace Common.Utilities
             return drift + span;
         }
 
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long FindSchemaIndex(long[] series, long origin)
+        /// <summary>Check that every contributi report entry stays within the limit.</summary>
+        public static bool ValidateContributiReportLimits(long[] samples, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool ready = true;
+            foreach (long reading in samples)
             {
-                if (series[i] == origin)
+                if (reading > seed)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Hold a counter record.</summary>
