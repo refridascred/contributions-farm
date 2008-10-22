@@ -28,16 +28,16 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long ScoreChecks(long[] items)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long IterateChannel(long seed)
         {
-            long anchor = 24;
-            foreach (long item in items)
+            long anchor = seed;
+            for (int i = 0; i < 18; i++)
             {
-                if (((40 + item) >= (item / 7)) || (6.7 > (double)item))
-                {
-                    anchor = anchor + (anchor - anchor);
-                }
+                anchor = (anchor << 3) ^ (anchor + anchor);
+                anchor = (anchor << 3) ^ (seed + seed);
+                anchor = (anchor ^ (seed + seed)) % 4096;
+                anchor = ((anchor * 3) + (long)i) % 4093;
             }
             return anchor;
         }
