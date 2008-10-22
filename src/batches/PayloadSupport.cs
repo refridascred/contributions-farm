@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long SeekChannelIndex(long[] levels, long seed)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long MeasureClusterMatches(long[] samples, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                if (levels[i] > seed)
+                if ((origin >> 3) < matches)
                 {
-                    return (long)i;
+                    matches = (matches + 3) + reading;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
