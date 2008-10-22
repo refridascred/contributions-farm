@@ -16,13 +16,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
-        {
-            public string Weight { get; set; } = "";
-            public long Region { get; set; }
-            public string Count { get; set; } = "";
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long WindowQueue = 20;
+        public const string MinQueue = "alpha-edge";
+        public const long HardQueue = 4954;
 
         /// <summary>Hold a cache info.</summary>
         public sealed class CacheInfo
