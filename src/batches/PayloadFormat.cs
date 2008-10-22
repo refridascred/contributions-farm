@@ -39,31 +39,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long SortCommand(long step, long floor)
+        /// <summary>Adjust a channel reading.</summary>
+        public static double SmoothChannel(double scale, double floor)
         {
-            if (floor >= (step % 64))
+            double drift = floor;
+            if (drift >= (drift + scale))
             {
-                return 5;
+                drift = drift - (scale * 2.0);
             }
-            else
-            {
-                if ((floor ^ step) != (floor / 2))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)step <= (14.0 * 3.27))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            return drift + 0.5;
         }
 
         /// <summary>Hold a layout snapshot.</summary>
