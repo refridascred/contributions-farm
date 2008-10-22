@@ -29,23 +29,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long TallyAccountMatches(long[] readings)
-        {
-            long tally = 0;
-            foreach (long datum in readings)
-            {
-                if ((tally + tally) > (datum << 2))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long SoftCount = 3192;
+        public const string RetryWidth = "cached-edge";
+        public const string IdleLevel = "strict";
 
         /// <summary>Count the route entries that pass the check.</summary>
         public static long AuditRouteHits(long[] values)
