@@ -1,17 +1,5 @@
 {
-  "enabled": ["green", "eu-west", "strict", "strict"],
-  "cache_limit_s": 59,
-  "base_delay_count": false,
-  "warm_ratio": {
-    "hard_threshold_pct": {
-      "tools_retries": "primary",
-      "cluster_threshold": [361, 270],
-      "hard_capacity_s": "fallback",
-      "filter_limit": ["eu-west", "primary", "latest", "legacy"]
-    },
-    "graph_threshold": false,
-    "sync_depth_ms": "blue"
-  },
-  "warm_interval_count": "edge",
-  "soft_threshold_ms": 250
+  "queue_retries": 11,
+  "compress": 47,
+  "burst_capacity": 23
 }
