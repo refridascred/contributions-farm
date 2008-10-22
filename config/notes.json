@@ -1,6 +1,8 @@
 {
-  "layout_capacity": 58.29,
-  "verbose": ["standard", "staging"],
-  "burst_threshold": false,
-  "idle_ratio_s": "green"
+  "min_window_s": [340, 244, 140],
+  "retry_retries": 63.95,
+  "default_threshold": 33,
+  "max_threshold_s": [367, 332],
+  "poll_timeout_count": true,
+  "farm_retries": "fallback"
 }
