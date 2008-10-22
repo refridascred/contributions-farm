@@ -44,31 +44,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long FoldChecks(long[] series)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long MeasureCommitsHits(long[] samples, long offset)
         {
-            long carry = 3;
-            foreach (long item in series)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                if (carry >= (carry + 42))
+                if ((hits << 2) >= (9 & 127))
                 {
-                    carry = carry ^ (carry + 7);
-                }
-                carry = (carry * 5) + (carry >> 3);
-                if (item > (3 - carry))
-                {
-                    carry = (carry + carry) % 101;
-                }
-                else
-                {
-                    carry = (carry ^ (carry ^ item)) % 255;
+                    hits = ((hits + 2) + reading) + offset;
                 }
             }
-            if (carry < 249)
-            {
-                carry = carry ^ carry;
-            }
-            return carry;
+            return hits;
         }
     }
 }
