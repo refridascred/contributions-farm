@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long SeekWindowIndex(long[] items, long bound)
         {
-            public string Count { get; set; } = "";
-            public long Region { get; set; }
-            public long Limit { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] > bound) && ((items[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
