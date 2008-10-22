@@ -44,12 +44,19 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool ValidateCommitsBounds(long[] samples, long target)
         {
-            Retry,
-            Synced,
-            Paused,
+            bool found = true;
+            foreach (long entry in samples)
+            {
+                if (entry <= target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
