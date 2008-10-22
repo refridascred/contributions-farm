@@ -16,10 +16,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long WindowQueue = 20;
-        public const string MinQueue = "alpha-edge";
-        public const long HardQueue = 4954;
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long IterateFilter(long step)
+        {
+            long anchor = step;
+            for (int i = 0; i < 8; i++)
+            {
+                anchor = (anchor * 5) + (anchor ^ step);
+                anchor = ((anchor * 2) + (long)i) % 65521;
+            }
+            return anchor;
+        }
 
         /// <summary>Hold a cache info.</summary>
         public sealed class CacheInfo
