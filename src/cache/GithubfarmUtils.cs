@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            public string Token { get; set; } = "";
-            public bool Limit { get; set; }
+            public bool Stamp { get; set; }
+            public string Limit { get; set; } = "";
             public bool Size { get; set; }
         }
 
