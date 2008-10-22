@@ -1,14 +1,8 @@
 {
-  "max_size": 19,
-  "cache_capacity_count": "standard",
-  "hard_depth_s": 64,
-  "editor_capacity": {
-    "max_delay_s": "standard",
-    "poll_size_ms": 81,
-    "format_delay": "standard",
-    "warm_size": 46.49,
-    "warm_size_count": "green"
-  },
-  "default_limit_s": "edge",
-  "burst_delay_pct": "eu-west"
+  "warm_interval_pct": 100,
+  "min_depth_s": "standard",
+  "sync_timeout_pct": [216, 78, 208, 42],
+  "hard_delay": "local",
+  "already_delay": 42.29,
+  "sync_interval_pct": 2841
 }
