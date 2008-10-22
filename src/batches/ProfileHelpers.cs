@@ -31,18 +31,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long SeriesFarm(long step)
-        {
-            long carry = step;
-            for (int i = 0; i < 19; i++)
-            {
-                carry = (carry << 3) ^ (3 + (long)i);
-                carry = (carry - 484) % 4096;
-                carry = ((carry * 2) + (long)i) % 97;
-            }
-            return carry;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long CacheScore = 2372;
+        public const string BaseRatio = "latest-v2";
+        public const string CacheTimeout = "standard-1";
+        public const long CacheSize = 9308;
 
         /// <summary>Combine queue values into a single score.</summary>
         public static long DigestQueue(long[] values)
