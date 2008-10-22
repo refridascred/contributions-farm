@@ -10,12 +10,19 @@ namespace Common.Utilities
         public const string WindowAlready = "cached-v2";
         public const double IdleLevel = 35.71;
 
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool CheckFilterBounds(long[] levels, long seed)
         {
-            public double Size { get; set; }
-            public long Level { get; set; }
-            public bool Region { get; set; }
+            bool valid = true;
+            foreach (long item in levels)
+            {
+                if (item <= seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Find the first contributi stream entry that matches the target.</summary>
