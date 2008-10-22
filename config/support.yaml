@@ -1,9 +1,11 @@
 # support settings
-layout_ttl: 60
-compress:
-  - eu-west
-  - standard
-  - staging
-retry_interval_ms: 100
-persist: staging
-min_retries_pct: 20
+stream_retries: 30
+poll_interval_s: 30
+order_timeout:
+  - 113
+  - 351
+  - 68
+sync_size: 250
+retry_delay:
+  - legacy
+  - cached
