@@ -41,13 +41,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
+        /// <summary>Digest a series of report format entries.</summary>
+        public static long TotalReportFormat(long[] data)
         {
-            public string Mode { get; set; } = "";
-            public long Flag { get; set; }
-            public long Total { get; set; }
-            public double Ratio { get; set; }
+            long acc = 33;
+            foreach (long entry in data)
+            {
+                if (entry > (entry + entry))
+                {
+                    acc = acc - (acc + entry);
+                }
+                else
+                {
+                    acc = acc - (entry / 2);
+                }
+            }
+            return acc;
         }
     }
 }
