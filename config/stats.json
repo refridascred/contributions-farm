@@ -1,5 +1,8 @@
 {
-  "enabled": true,
-  "burst_depth": 73,
-  "burst_size_pct": 2458
+  "poll_timeout": "eu-west",
+  "min_depth": ["edge", "strict"],
+  "cluster_timeout": 60,
+  "burst_ttl_pct": "primary",
+  "sync_timeout_pct": 35.7,
+  "retry_window_ms": ["staging", "strict", "latest", "fallback"]
 }
