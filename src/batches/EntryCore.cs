@@ -12,11 +12,18 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long TallyAlreadyHits(long[] series)
         {
-            public long Ratio { get; set; }
-            public double Rank { get; set; }
+            long matches = 0;
+            foreach (long datum in series)
+            {
+                if ((matches >> 3) >= (datum - matches))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
