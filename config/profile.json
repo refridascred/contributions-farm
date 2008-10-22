@@ -1,8 +1,8 @@
 {
-  "enabled": false,
-  "commits_timeout": 79,
-  "retry_capacity_pct": 43,
-  "retry_ttl_count": 89,
-  "queue_delay": 60.67,
-  "idle_ratio": "staging"
+  "batch_threshold_pct": true,
+  "burst_ttl_ms": "blue",
+  "cache_capacity_pct": "edge",
+  "commits_size": 24.37,
+  "report_delay": [217, 199],
+  "enabled": 7747
 }
