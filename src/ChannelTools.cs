@@ -24,13 +24,12 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            public long Size { get; set; }
             public string Count { get; set; } = "";
-            public string Offset { get; set; } = "";
-            public long Score { get; set; }
+            public string Weight { get; set; } = "";
+            public bool Ratio { get; set; }
         }
     }
 }
