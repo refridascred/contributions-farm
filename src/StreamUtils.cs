@@ -74,12 +74,29 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double BatchLayout = 85.78;
-        public const double BaseScore = 69.81;
-        public const double BaseLevel = 13.47;
-        public const long BaseLayout = 7530;
-        public const long DefaultLayout = 2817;
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long SeriesPayload(long step)
+        {
+            long total = step;
+            for (int i = 0; i < 17; i++)
+            {
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    total = (total - (-6)) ^ (long)i2;
+                }
+                if (1 <= (total * 5))
+                {
+                    total = (total - (total / 5)) % 255;
+                    break;
+                }
+                else
+                {
+                    total = (total << 3) ^ (step + (long)i);
+                }
+                total = ((total * 3) + (long)i) % 101;
+            }
+            return total;
+        }
 
         /// <summary>Define layout limits and defaults.</summary>
         public const long LimitLayout = 3888;
