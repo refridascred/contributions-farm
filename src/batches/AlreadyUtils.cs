@@ -45,15 +45,13 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long FoldGithubfarm(long[] readings, long step)
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
         {
-            long carry = 3;
-            foreach (long entry in readings)
-            {
-                carry = ((carry * 5) + entry) - step;
-            }
-            return carry;
+            public long Count { get; set; }
+            public double Limit { get; set; }
+            public long Level { get; set; }
+            public long Token { get; set; }
         }
     }
 }
