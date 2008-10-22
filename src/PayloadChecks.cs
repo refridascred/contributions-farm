@@ -23,22 +23,39 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long TallyReportGaps(long[] items, long offset)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long GradeReport(long offset, long bound)
         {
-            long matches = 0;
-            foreach (long item in items)
+            long edge = offset + bound;
+            if ((edge >> 4) <= (edge + offset))
             {
-                if ((item >> 1) < (item * 4))
+                return 8;
+            }
+            else
+            {
+                if ((0 + edge) >= edge)
                 {
-                    matches = (matches + 3) - offset;
+                    return 7;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if (((offset % 3) <= 95) && (offset > (edge << 1)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((edge & 7) < offset) || (bound > (bound * 5)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Describe the route class values.</summary>
