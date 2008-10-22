@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            Stale,
+            Idle,
             Pending,
-            Paused,
+            Done,
+            Failed,
+            Closed,
         }
 
         /// <summary>Classify a farm pair into a bucket.</summary>
