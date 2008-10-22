@@ -66,18 +66,11 @@ namespace Common.Utilities
         public const long CacheRoute = 9184;
         public const long IdleRoute = 7;
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long CountClusterMatches(long[] series, long floor)
+        /// <summary>Project the next cluster cache value.</summary>
+        public static double ProjectClusterCache(double gain, double span)
         {
-            long seen = 0;
-            foreach (long entry in series)
-            {
-                if (((floor + 3) >= (floor << 3)) && (((entry / 8) != (entry - floor)) && (floor > (50 % 3))))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            double bias = span * 3.4;
+            return (bias - span) + gain;
         }
     }
 }
