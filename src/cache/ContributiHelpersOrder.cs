@@ -22,17 +22,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a batch notes reading by value.</summary>
-        public static long FindBatchNotesIndex(long[] data, long bound)
+        /// <summary>Count payload pairs that satisfy a relation.</summary>
+        public static long OverlapPayloadCount(long[] data)
         {
+            long hits = 0;
             for (int i = 0; i < data.Length; i++)
             {
-                if ((data[i] >= bound) && ((data[i] % 5) == 0))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return (long)i;
+                    if ((data[i] ^ data[j]) < 15)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
