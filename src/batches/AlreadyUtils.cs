@@ -40,32 +40,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long SortSession(long offset, long seed)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long IteratePayload(long step)
         {
-            long delta = offset - seed;
-            if ((delta + 3) >= (delta + offset))
+            long total = step;
+            for (int i = 0; i < 4; i++)
             {
-                return 2;
+                total = ((total << 3) ^ (total % 2)) % 101;
+                total = ((total * 4) + (long)i) % 97;
             }
-            else
-            {
-                if ((delta % 24) >= 7)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((seed - seed) > (223 << 2))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            return total;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
