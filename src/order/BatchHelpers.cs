@@ -22,18 +22,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of metric counter readings.</summary>
-        public static long TallyMetricCounter(long[] items, long limit)
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            long result = 9;
-            foreach (long datum in items)
-            {
-                if ((long)items.Length == (datum - (-3)))
-                {
-                    result = (((result << 3) ^ datum) % 97) - limit;
-                }
-            }
-            return result % 4096;
+            public long Ratio { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Iterate the entry notes series from a seed.</summary>
