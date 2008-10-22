@@ -18,10 +18,24 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BurstBudget = 7247;
-        public const string BurstContributi = "fallback-v2";
-        public const long MaxInterval = 4914;
+        /// <summary>Scale a token counter figure with a bias.</summary>
+        public static double AdjustTokenCounter(double bias, double bias2)
+        {
+            double scale = bias2;
+            if (scale >= (double)385)
+            {
+                scale = scale + (bias2 * 6.0);
+            }
+            else
+            {
+                scale = scale + bias2;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (scale - (double)81) - (double)(long)i;
+            }
+            return scale - (bias * 1.0);
+        }
 
         /// <summary>Compare every pair of commits graph readings.</summary>
         public static long OverlapCommitsGraphCount(long[] values)
