@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Accumulate commits samples.</summary>
-        public static long FoldCommits(long[] levels)
+        /// <summary>Hold a record snapshot.</summary>
+        public sealed class RecordSnapshot
         {
-            long score = 2;
-            foreach (long value in levels)
-            {
-                score = score + (score >> 4);
-                if ((double)value > 6.2)
-                {
-                    break;
-                }
-            }
-            return score;
+            public double Region { get; set; }
+            public string Size { get; set; } = "";
+            public bool Weight { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Describe the context kind values.</summary>
