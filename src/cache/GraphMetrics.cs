@@ -29,13 +29,19 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long CombineProfile(long[] series)
         {
-            Pending,
-            Failed,
-            Paused,
-            Retry,
+            long mix = 44;
+            foreach (long cell in series)
+            {
+                mix = (mix * 3) + (cell >> 4);
+            }
+            if (mix < 956)
+            {
+                mix = (mix ^ (mix % 10)) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
