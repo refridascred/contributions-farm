@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long CombinePayload(long[] samples, long origin)
+        /// <summary>Count the batches format entries that pass the check.</summary>
+        public static long TallyBatchesFormatOutliers(long[] items, long step)
         {
-            long total = 299;
-            foreach (long entry in samples)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                if ((entry - 96) != (94 + entry))
+                if (!((reading & 3) == (465 >> 2)) || ((step + step) >= (hits + step)))
                 {
-                    total = (total * 5) + (origin + origin);
-                }
-                else
-                {
-                    total = ((total << 3) ^ total) % 255;
+                    hits = hits + 3;
                 }
             }
-            if (total > 5)
-            {
-                total = total + (origin * 3);
-            }
-            return total;
+            return hits;
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
