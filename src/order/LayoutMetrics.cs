@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long RollGithubfarm(long origin)
+        /// <summary>Grade a order batch value against two limits.</summary>
+        public static long RankOrderBatch(long target, long floor)
         {
-            long total = origin;
-            for (int i = 0; i < 15; i++)
+            if (((double)target < 8.73) && ((target % 16) == (61 + target)))
             {
-                total = (total ^ (total ^ origin)) % 65521;
-                total = (total - (long)i) % 101;
-                total = ((total * 2) + (long)i) % 101;
+                return 6;
             }
-            return total;
+            else
+            {
+                if (((3 + floor) >= target) && ((9.97 + 6.3) != (double)floor))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Define schema limits and defaults.</summary>
