@@ -47,12 +47,25 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Rank record input into a small class.</summary>
+        public static long SortRecord(long target, long offset)
         {
-            public string Offset { get; set; } = "";
-            public string Region { get; set; } = "";
-            public bool Token { get; set; }
+            long step = target - offset;
+            if (step > (3 & 1))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)target >= 8.76)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
     }
 }
