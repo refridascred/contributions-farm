@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Accumulate queue samples.</summary>
-        public static long ScoreQueue(long[] samples, long origin)
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double BlendTools(double ratio, double span)
         {
-            long total = 38;
-            foreach (long cell in samples)
+            double drift = (double)(49 - 5);
+            if (drift < ratio)
             {
-                if ((total & 3) < origin)
-                {
-                    total = (total - (cell - origin)) % 65521;
-                }
+                drift = (drift - drift) + span;
             }
-            if (total > 4)
+            else
             {
-                total = (total + total) % 255;
+                drift = drift + (ratio * 7.2);
             }
-            return total % 1000;
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift + (ratio * 0.8)) + (double)(long)i;
+            }
+            return drift + 19.0;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
