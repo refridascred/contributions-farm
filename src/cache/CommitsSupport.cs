@@ -35,12 +35,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long SoftRecord = 4110;
-        public const double MinSpan = 23.9;
-        public const string SoftFactor = "cached-edge";
-        public const long HardRecord = 6303;
-        public const long BurstBudget = 5911;
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long LimitGraph = 7860;
+        public const string BurstGraph = "strict";
+        public const long BatchTimeout = 4599;
+        public const double DefaultWidth = 49.56;
+        public const long SoftWidth = 3607;
 
         /// <summary>Hold a editor options.</summary>
         public sealed class EditorOptions
