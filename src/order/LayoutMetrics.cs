@@ -26,21 +26,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up payload samples.</summary>
-        public static long ComparePayloadCount(long[] samples)
+        /// <summary>Adjust a stream order reading.</summary>
+        public static double SmoothStreamOrder(double bias, double floor)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double mean = floor + bias;
+            if (mean > (12.0 * 6.5))
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 13)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mean = mean - floor;
             }
-            return hits;
+            return mean + (mean / 3.0);
         }
     }
 }
