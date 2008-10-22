@@ -58,14 +58,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
         {
-            Queued,
-            Paused,
-            Failed,
-            Ready,
-            Done,
+            public long Rank { get; set; }
+            public long Stamp { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
