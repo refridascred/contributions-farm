@@ -1,9 +1,8 @@
 {
-  "cluster_timeout": {
-    "verbose": 89,
-    "warm_interval_s": 55.07,
-    "tools_interval": [397, 248]
-  },
-  "notes_retries": "local",
-  "verbose": "green"
+  "default_threshold_ms": 30,
+  "warm_threshold_ms": 310,
+  "format_timeout": 27,
+  "persist": [221, 53],
+  "min_size_pct": [405, 200],
+  "audit": "edge"
 }
