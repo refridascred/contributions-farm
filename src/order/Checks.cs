@@ -13,22 +13,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long TotalChannel(long[] series, long offset)
+        /// <summary>Audit contributi cache readings against a rule.</summary>
+        public static long MeasureContributiCacheOutliers(long[] samples, long offset)
         {
-            long sum = 193;
-            foreach (long entry in series)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                if ((entry + sum) < offset)
+                if ((8 > (datum + offset)) || !((1.0 * 1.0) > (double)offset))
                 {
-                    sum = sum ^ sum;
+                    matches = matches + 3;
                 }
             }
-            if (sum > (-2))
-            {
-                sum = ((sum * 4) + (sum ^ 5)) % 65521;
-            }
-            return sum;
+            return matches;
         }
 
         /// <summary>Describe the profile mode values.</summary>
