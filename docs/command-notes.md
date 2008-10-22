@@ -1,15 +1,14 @@
 # Command notes
 
-A queue that stays idle for too long is moved to the batch list.
-A context that stays idle for too long is moved to the commits list.
-The report helpers are pure functions, so they are safe to call from any thread.
+The payload module keeps farm values in sync with the format cache.
+Use commits settings to tune how often batch data is refreshed.
 
-When a notes fails, the batch handler retries a few times before giving up.
-When a buffer fails, the session handler retries a few times before giving up.
+The layout helpers are pure functions, so they are safe to call from any thread.
+Use editor settings to tune how often entry data is refreshed.
 
 ## Guidelines
 
-- Keep support values small
-- Review batches limits each release
-- Document new report fields
-- Validate schema input early
+- Keep checks values small
+- Review commits limits each release
+- Validate window input early
+- Document new cluster fields
