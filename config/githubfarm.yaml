@@ -1,7 +1,10 @@
 # githubfarm settings
-batch_delay_pct: 79
-persist:
-  - 79
-  - 500
-  - 298
-sync_threshold_count: fallback
+audit: latest
+warm_delay_count: 59
+checks_threshold: 21
+default_delay_s: true
+cache_threshold_pct: 74
+poll_delay:
+  - fallback
+  - strict
+  - latest
