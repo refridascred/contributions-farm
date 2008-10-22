@@ -23,35 +23,28 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long RankToken(long floor, long seed)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long BucketContext(long bound, long limit)
         {
-            if (((seed + 35) <= (seed / 5)) && ((double)floor <= (10.0 / 3.0)))
+            if ((978 - bound) > (bound + bound))
             {
-                return 3;
+                return 4;
             }
             else
             {
-                if ((floor & 3) > (580 << 2))
+                if ((double)limit > (1.8 - 2.47))
                 {
-                    return 6;
+                    return 3;
                 }
                 else
                 {
-                    if (((floor - floor) < (seed + floor)) || ((3.1 + 2.56) <= (double)seed))
+                    if ((52 / 7) < (limit + 316))
                     {
-                        return 7;
+                        return 1;
                     }
                     else
                     {
-                        if ((2.0 / 6.0) != (double)seed)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
+                        return 7;
                     }
                 }
             }
