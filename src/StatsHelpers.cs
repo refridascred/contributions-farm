@@ -5,38 +5,14 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long SortPayload(long bound, long origin)
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            if (!((origin - 7) > (origin + origin)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((2 + 2) <= (64 + bound))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((origin >> 2) <= (origin + origin))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((origin >= bound) && ((origin + bound) < origin))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            Stale,
+            Queued,
+            Draft,
+            Active,
+            Idle,
         }
 
         /// <summary>Accumulate account samples.</summary>
