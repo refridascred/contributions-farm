@@ -19,17 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first commits channel entry that matches the target.</summary>
-        public static long LookupCommitsChannelIndex(long[] data, long seed)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long MeasureTokenGaps(long[] values)
         {
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                if ((data[i] < seed) && ((data[i] % 5) != 0))
+                if ((8.19 * 7.0) >= (double)cell)
                 {
-                    return (long)i;
+                    matches = matches + 2;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Match up command samples.</summary>
