@@ -65,19 +65,14 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool GuardCommandRange(long[] levels, long step)
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            bool flag = true;
-            foreach (long datum in levels)
-            {
-                if (datum > step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Draft,
+            Paused,
+            Pending,
+            Queued,
+            Dropped,
         }
     }
 }
