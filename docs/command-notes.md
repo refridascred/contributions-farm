@@ -1,15 +1,14 @@
 # Command notes
 
-When a githubfarm fails, the command handler retries a few times before giving up.
-A stats that stays idle for too long is moved to the command list.
-The record report groups every checks by channel.
+Use githubfarm settings to tune how often batch data is refreshed.
+The schema helpers are pure functions, so they are safe to call from any thread.
+Defaults for notes live in the config folder and can be overridden per environment.
 
-Keep record and format names short and lowercase.
-Use context settings to tune how often support data is refreshed.
-The profile report groups every contributi by command.
+When a stats fails, the editor handler retries a few times before giving up.
+Each metrics is validated before it reaches the report queue.
 
 ## Guidelines
 
-- Document new route fields
-- Keep editor values small
-- Prefer entry defaults
+- Keep counter values small
+- Validate command input early
+- Document new session fields
