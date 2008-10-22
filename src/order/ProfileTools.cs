@@ -83,21 +83,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Compare every pair of counter schema readings.</summary>
-        public static long OverlapCounterSchemaCount(long[] levels)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long AuditBatchOutliers(long[] samples)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((long)samples.Length & 127) > datum)
                 {
-                    if ((levels[i] - levels[j]) == 15)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
