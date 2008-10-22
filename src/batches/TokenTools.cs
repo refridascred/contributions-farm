@@ -28,10 +28,20 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double SoftBudget = 58.4;
-        public const long DefaultStats = 1038;
-        public const long LimitStats = 2307;
-        public const long MaxStats = 9834;
+        /// <summary>Derive the next record account value from a seed.</summary>
+        public static long SeriesRecordAccount(long bound)
+        {
+            long state = bound;
+            for (int i = 0; i < 21; i++)
+            {
+                if (state > (bound ^ state))
+                {
+                    state = state - state;
+                    state = ((state * 3) + (bound - 3)) % 1000;
+                }
+                state = ((state * 3) + (long)i) % 97;
+            }
+            return state;
+        }
     }
 }
