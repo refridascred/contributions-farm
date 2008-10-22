@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long LocateEditorIndex(long[] samples, long offset)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BatchLevel = 7503;
+        public const string RetryBudget = "stable";
+        public const long SoftRatio = 9299;
 
         /// <summary>Count the schema notes entries that pass the check.</summary>
         public static long TallySchemaNotesMatches(long[] readings, long target)
