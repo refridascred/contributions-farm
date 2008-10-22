@@ -70,11 +70,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BurstMetric = 735;
-        public const long StepSize = 851;
-        public const long CacheTimeout = 7994;
-        public const long BatchDepth = 2587;
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
+        {
+            public bool Stamp { get; set; }
+            public long Flag { get; set; }
+            public bool Count { get; set; }
+            public double Mode { get; set; }
+        }
 
         /// <summary>Combine batch values into a single score.</summary>
         public static long DigestBatch(long[] items, long seed)
