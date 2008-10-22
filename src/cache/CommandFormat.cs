@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Validate support session readings against a bound.</summary>
-        public static bool VerifySupportSessionRange(long[] samples, long seed)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long CountFilterHits(long[] items)
         {
-            bool ready = true;
-            foreach (long item in samples)
+            long count = 0;
+            foreach (long entry in items)
             {
-                if (item <= seed)
+                if ((((double)count != (12.0 + 3.0)) || (((-3) - entry) > count)) || ((((-3) / 5) < (entry ^ entry)) && ((119 + count) < (entry ^ count))))
                 {
-                    ready = false;
-                    break;
+                    count = count + 1;
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
