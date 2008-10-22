@@ -6,21 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-green}"
-case "${mode}" in
-    cached)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-CHANNEL_LIMIT=208
-log "limit is ${CHANNEL_LIMIT}"
-
-total=0
-for i in $(seq 1 3); do
-    total=$((total + i * 3))
+for item in cached staging primary green; do
+    log "checking ${item}"
 done
-log "total ${total}"
+
+CHANNEL_LIMIT=375
+log "limit is ${CHANNEL_LIMIT}"
