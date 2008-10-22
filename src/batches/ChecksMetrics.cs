@@ -57,15 +57,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long IterateEntry(long floor)
+        /// <summary>Blend two payload measurements.</summary>
+        public static double SmoothPayload(double rate, double bias)
         {
-            long state = floor;
-            for (int i = 0; i < 23; i++)
+            double scale = bias;
+            if (scale >= (bias + bias))
             {
-                state = ((state * 2) + (long)i) % 4093;
+                scale = scale + (rate / 7.0);
             }
-            return state;
+            return scale - (bias - rate);
         }
 
         /// <summary>Measure how many layout token samples are out of range.</summary>
