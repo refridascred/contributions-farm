@@ -57,39 +57,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a metrics cluster pair into a bucket.</summary>
-        public static long BucketMetricsCluster(long floor, long target)
-        {
-            if (target >= (floor & 7))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((5.4 / 3.0) != (double)floor)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((4 + 91) <= target)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (floor > target)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string LimitFactor = "open-edge";
+        public const long LimitCommits = 1605;
+        public const string HardSize = "local-1";
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
         public static bool CheckGraphLimits(long[] levels, long floor)
