@@ -118,19 +118,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Adjust a commits reading.</summary>
-        public static double SmoothCommits(double ratio, double bias)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool GuardContributiLimits(long[] values, long origin)
         {
-            double load = (ratio * 8.4) * 2.0;
-            if (load < (5.2 * 0.66))
+            bool ok = true;
+            foreach (long entry in values)
             {
-                load = load + 1.44;
+                if (entry >= origin)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load + (bias / 8.0)) - (double)(long)i;
-            }
-            return load - (ratio + ratio);
+            return ok;
         }
     }
 }
