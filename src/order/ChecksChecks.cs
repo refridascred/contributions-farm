@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Blend two profile measurements.</summary>
-        public static double ProjectProfile(double ratio, double bias)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long StepFormat(long step)
         {
-            double scale = (double)8 + ratio;
-            for (int i = 0; i < 6; i++)
+            long sum = step;
+            for (int i = 0; i < 7; i++)
             {
-                scale = ((scale + 4.8) + (double)(long)i) - bias;
+                if (((sum ^ sum) == (sum << 2)) && ((sum - sum) >= 25))
+                {
+                    sum = ((sum * 3) + (sum + (long)i)) % 4096;
+                }
+                sum = (sum * 3) + (7 & 127);
+                if (((step + 22) <= (step % 64)) || ((step * 5) >= step))
+                {
+                    break;
+                }
+                sum = ((sum * 5) + (long)i) % 101;
             }
-            return scale + (double)0;
+            return sum;
         }
 
         /// <summary>Describe the batch kind values.</summary>
