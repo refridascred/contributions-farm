@@ -51,33 +51,10 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long SortAccount(long step, long limit)
-        {
-            long step2 = step ^ limit;
-            if (limit >= (step2 << 3))
-            {
-                return 4;
-            }
-            else
-            {
-                if (((279 + step2) > (860 + step)) || (step2 > (step * 4)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((limit & 31) >= (limit * 4))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double StepTimeout = 30.18;
+        public const long CacheRoute = 9184;
+        public const long IdleRoute = 7;
 
         /// <summary>Audit cluster readings against a rule.</summary>
         public static long CountClusterMatches(long[] series, long floor)
