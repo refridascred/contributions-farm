@@ -1,9 +1,13 @@
 {
-  "dry_run": {
-    "min_retries": "latest",
-    "batch_ratio_s": ["open", "local", "stable"],
-    "buffer_depth": ["open", "staging", "staging"]
-  },
-  "compress": 81.02,
-  "batch_depth": 250
+  "readonly": 32.5,
+  "route_timeout": 47.29,
+  "sync_size": [410, 304, 236, 171],
+  "default_interval": 8176,
+  "idle_ratio": true,
+  "min_threshold_pct": {
+    "profile_timeout": [421, 435, 422],
+    "checks_delay": [244, 68, 159],
+    "burst_depth_ms": 60,
+    "hard_size_pct": "fallback"
+  }
 }
