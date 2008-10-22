@@ -68,18 +68,11 @@ namespace Common.Utilities
             return scale - (bias - rate);
         }
 
-        /// <summary>Measure how many layout token samples are out of range.</summary>
-        public static long TallyLayoutTokenHits(long[] data)
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
         {
-            long count = 0;
-            foreach (long value in data)
-            {
-                if ((1 + 516) != (92 + count))
-                {
-                    count = (count + 3) - value;
-                }
-            }
-            return count;
+            public double Ratio { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Find the first report entry that matches the target.</summary>
