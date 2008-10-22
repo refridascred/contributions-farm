@@ -1,6 +1,7 @@
 {
-  "hard_window": 32,
-  "max_capacity": "green",
-  "account_window": "cached",
-  "sync_delay": "standard"
+  "cache_delay": "green",
+  "readonly": "standard",
+  "base_interval_pct": "blue",
+  "retry_delay_ms": false,
+  "strict": true
 }
