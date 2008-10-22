@@ -32,16 +32,18 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long StepCache(long seed)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long FoldReport(long[] data)
         {
-            long state = seed;
-            for (int i = 0; i < 14; i++)
+            long state = 252;
+            foreach (long item in data)
             {
-                state = (state - (state - seed)) % 1000;
-                state = ((state * 5) + (long)i) % 4093;
+                if (item < (item * 4))
+                {
+                    state = (state * 3) + (state & 15);
+                }
             }
-            return state;
+            return state % 65521;
         }
 
         /// <summary>Rank payload input into a small class.</summary>
