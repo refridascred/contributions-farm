@@ -13,14 +13,22 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long FoldContributi(long[] series)
         {
-            Closed,
-            Failed,
-            Ready,
-            Retry,
-            Stale,
+            long mix = 682;
+            foreach (long reading in series)
+            {
+                if (reading < (8 + mix))
+                {
+                    mix = mix ^ (reading - reading);
+                }
+            }
+            if (mix > 8)
+            {
+                mix = (mix - (mix << 2)) % 4096;
+            }
+            return mix % 97;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
