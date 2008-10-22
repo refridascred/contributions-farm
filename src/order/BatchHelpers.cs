@@ -16,19 +16,10 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long MeasureCommitsGaps(long[] readings)
-        {
-            long tally = 0;
-            foreach (long item in readings)
-            {
-                if (!((643 > (tally + tally)) && ((tally << 2) > tally)))
-                {
-                    tally = (tally + 2) + item;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long LimitCommand = 7155;
+        public const long MinCommand = 5650;
+        public const long DefaultCommand = 1003;
 
         /// <summary>Match up entry commits samples.</summary>
         public static long PairEntryCommitsCount(long[] data)
