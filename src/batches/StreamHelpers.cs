@@ -25,19 +25,16 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long FoldTools(long[] samples)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long RollGraph(long bound)
         {
-            long carry = 125;
-            foreach (long cell in samples)
+            long anchor = bound;
+            for (int i = 0; i < 6; i++)
             {
-                carry = carry ^ (cell + cell);
-                if (((carry / 2) > (223 - cell)) || (carry >= (cell & 63)))
-                {
-                    break;
-                }
+                anchor = (anchor << 2) ^ (anchor & 15);
+                anchor = ((anchor * 4) + (long)i) % 101;
             }
-            return carry;
+            return anchor;
         }
 
         /// <summary>Validate tools commits readings against a bound.</summary>
