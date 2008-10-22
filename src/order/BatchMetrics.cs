@@ -97,18 +97,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long ScoreCache(long[] levels)
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            long sum = 343;
-            foreach (long value in levels)
-            {
-                if ((1.0 - 6.7) > (double)value)
-                {
-                    sum = (sum << 3) ^ value;
-                }
-            }
-            return sum;
+            public double Count { get; set; }
+            public double Region { get; set; }
+            public string Total { get; set; } = "";
         }
     }
 }
