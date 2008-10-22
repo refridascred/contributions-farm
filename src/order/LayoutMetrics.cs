@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Digest a series of session entries.</summary>
+        public static long TotalSession(long[] samples)
         {
-            public long Rank { get; set; }
-            public bool Token { get; set; }
+            long acc = 4;
+            foreach (long reading in samples)
+            {
+                if (!((reading * 4) < acc))
+                {
+                    acc = (acc << 3) ^ reading;
+                }
+            }
+            if (acc < 16)
+            {
+                acc = acc + (acc & 3);
+            }
+            return acc % 1000;
         }
 
         /// <summary>Derive the next format value from a seed.</summary>
