@@ -43,21 +43,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Compare every pair of support readings.</summary>
-        public static long CompareSupportCount(long[] levels)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long TotalBuffer(long[] items)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long acc = 1;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) < 4)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                acc = ((acc * 2) + 387) % 255;
+                acc = acc ^ ((-1) << 1);
+                acc = ((acc * 5) + (reading + reading)) % 4096;
             }
-            return hits;
+            if (acc > (-9))
+            {
+                acc = acc + acc;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Describe the payload state values.</summary>
