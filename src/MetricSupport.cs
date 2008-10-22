@@ -15,38 +15,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long GradeStats(long origin, long offset)
+        /// <summary>Count the tools window entries that pass the check.</summary>
+        public static long TallyToolsWindowMatches(long[] data, long step)
         {
-            if (20.0 > (double)origin)
+            long matches = 0;
+            foreach (long reading in data)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)origin <= (2.0 / 8.0))
+                if (step >= (step - matches))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((origin ^ offset) < 0)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((double)offset != (6.3 + 19.0)) && (origin < offset))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    matches = (matches + 2) - reading;
                 }
             }
+            return matches;
         }
 
         /// <summary>Scale a channel figure with a bias.</summary>
