@@ -1,9 +1,4 @@
 # githubfarm settings
-poll_ratio_s: blue
-context_ttl: legacy
-enabled:
-  base_ttl_pct: edge
-  cache_window_pct: 100
-  audit: 5
-  dry_run: local
-cache_capacity: legacy
+audit: 24
+enabled: 5343
+strict: blue
