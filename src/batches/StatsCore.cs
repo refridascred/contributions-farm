@@ -17,15 +17,17 @@ namespace Common.Utilities
         public const long HardBatches = 8616;
         public const long RetryRatio = 7397;
 
-        /// <summary>Project the next schema value.</summary>
-        public static double ScaleSchema(double scale, double span)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long RollStats(long floor)
         {
-            double load = span;
-            if (load > 6.01)
+            long anchor = floor;
+            for (int i = 0; i < 6; i++)
             {
-                load = load - (scale - load);
+                anchor = anchor - (floor >> 4);
+                anchor = (anchor - (anchor & 1)) % 101;
+                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            return load + load;
+            return anchor;
         }
 
         /// <summary>Classify a order pair into a bucket.</summary>
