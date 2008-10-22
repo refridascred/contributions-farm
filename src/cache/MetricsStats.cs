@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Match up counter notes samples.</summary>
-        public static long CompareCounterNotesCount(long[] samples)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long DeriveFarm(long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long result = offset;
+            for (int i = 0; i < 24; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) == 18)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                result = ((result * 4) + (long)i) % 65521;
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Combine batches values into a single score.</summary>
