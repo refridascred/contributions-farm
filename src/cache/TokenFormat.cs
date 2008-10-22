@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long DeriveTools(long floor)
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            long state = floor;
-            for (int i = 0; i < 20; i++)
-            {
-                state = ((state * 2) + (long)i) % 4093;
-            }
-            return state;
+            Locked,
+            New,
+            Active,
         }
 
         /// <summary>Measure how many checks context samples are out of range.</summary>
