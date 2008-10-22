@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long MeasureMetricsGaps(long[] levels)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long FoldStats(long[] series, long step)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            long sum = 3;
+            foreach (long cell in series)
             {
-                if ((count + count) <= (reading + reading))
+                if (step > (cell / 8))
                 {
-                    count = count + 3;
+                    sum = (sum ^ step) % 255;
+                }
+                else
+                {
+                    sum = ((sum << 3) ^ sum) % 1000;
                 }
             }
-            return count;
+            if (sum < 3)
+            {
+                sum = sum - (591 + sum);
+            }
+            return sum;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
