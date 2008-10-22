@@ -1,29 +1,16 @@
 # entry settings
-idle_size_pct: 9638
-persist:
-  - 402
-  - 167
-max_ttl_s:
-  - cached
-  - standard
-  - blue
-  - green
-max_retries_ms:
-  burst_ratio:
-    - 432
-    - 195
-    - 382
-    - 243
-  enabled: 60
-  persist:
-    burst_ratio_pct:
-      - 405
-      - 112
-      - 212
-    checks_retries: 86.93
-    enabled: 6273
-    audit: 12.13
-    poll_timeout_pct: 100
-    burst_window: eu-west
-  batch_limit: 9653
-account_ttl: fallback
+batch_window: 7137
+flush_interval_pct: 8944
+stream_retries:
+  retry_capacity: strict
+  counter_ratio:
+    - standard
+    - cached
+  base_timeout_s:
+    - latest
+    - legacy
+  cache_interval: 42
+  hard_retries: 31.8
+  max_limit_s: 49.58
+soft_size: open
+retry_ratio_ms: 18.7
