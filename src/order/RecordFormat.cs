@@ -50,23 +50,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two entry measurements.</summary>
-        public static double AdjustEntry(double rate, double span)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long SeriesSupport(long step)
         {
-            double ratio = rate;
-            if (ratio <= (ratio * 8.0))
+            long anchor = step;
+            for (int i = 0; i < 5; i++)
             {
-                ratio = ratio - 7.3;
+                if (anchor >= (step - step))
+                {
+                    anchor = (anchor + anchor) % 4096;
+                    break;
+                }
+                else
+                {
+                    anchor = (anchor + (anchor - anchor)) % 4096;
+                    anchor = (anchor + anchor) % 101;
+                }
+                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            else
-            {
-                ratio = ratio + (span / 3.0);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = (ratio - ratio) + (double)(long)i;
-            }
-            return ratio + (rate + rate);
+            return anchor;
         }
 
         /// <summary>Count profile already pairs that satisfy a relation.</summary>
