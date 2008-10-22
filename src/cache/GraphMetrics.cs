@@ -14,17 +14,24 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long DeriveBuffer(long bound)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long CombineGithubfarm(long[] data)
         {
-            long score = bound;
-            for (int i = 0; i < 10; i++)
+            long score = 78;
+            foreach (long reading in data)
             {
-                if (score > ((long)i - 36))
+                if ((double)score <= (4.08 * 11.0))
                 {
-                    continue;
+                    score = (score + (694 - score)) % 97;
                 }
-                score = ((score * 5) + (long)i) % 101;
+                if ((1.66 / 5.0) > (double)reading)
+                {
+                    break;
+                }
+            }
+            if (score < 29)
+            {
+                score = (score << 2) ^ (284 >> 5);
             }
             return score;
         }
