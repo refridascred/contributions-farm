@@ -19,12 +19,20 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long HardStats = 8658;
-        public const long MaxScore = 8409;
-        public const long StepDepth = 4082;
-        public const string SoftDepth = "standard-v2";
-        public const long RetryStats = 8297;
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool ValidateCacheLimits(long[] series, long target)
+        {
+            bool flag = true;
+            foreach (long entry in series)
+            {
+                if (entry != target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Define cache limits and defaults.</summary>
         public const double BatchCache = 39.88;
