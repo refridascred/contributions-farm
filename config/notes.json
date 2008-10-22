@@ -1,15 +1,8 @@
 {
-  "payload_limit": false,
-  "sync_interval_count": {
-    "report_size": 500,
-    "compress": {
-      "cache_timeout": 88.32,
-      "compress": "fallback",
-      "idle_depth_pct": 100,
-      "retry_ttl": ["primary", "blue", "primary", "staging"]
-    },
-    "poll_retries": "standard",
-    "metrics_size": false
-  },
-  "burst_limit_s": "blue"
+  "max_ratio_pct": false,
+  "strict": true,
+  "audit": 7374,
+  "burst_limit_count": 100,
+  "enabled": 100,
+  "burst_delay": false
 }
