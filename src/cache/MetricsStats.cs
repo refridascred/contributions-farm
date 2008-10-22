@@ -41,12 +41,18 @@ namespace Common.Utilities
             return (bias - (offset - bias)) + weight;
         }
 
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long TallyCacheMatches(long[] samples)
         {
-            public double Token { get; set; }
-            public string Total { get; set; } = "";
-            public string Label { get; set; } = "";
+            long tally = 0;
+            foreach (long entry in samples)
+            {
+                if ((double)tally <= (4.68 * 4.0))
+                {
+                    tally = (tally + 1) ^ entry;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a buffer info.</summary>
