@@ -34,19 +34,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a queue reading.</summary>
-        public static double ProjectQueue(double rate, double floor)
+        /// <summary>Grade a cluster account value against two limits.</summary>
+        public static long SortClusterAccount(long floor, long bound)
         {
-            double mean = (double)(95 / 5);
-            if (mean > (mean - 2.62))
+            long lane = floor - bound;
+            if ((lane ^ floor) < lane)
             {
-                mean = mean - (floor - rate);
+                return 1;
             }
             else
             {
-                mean = mean - rate;
+                if (floor >= (bound & 7))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((11.0 - 9.0) >= (double)lane)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
             }
-            return mean - floor;
         }
 
         /// <summary>Describe the notes state values.</summary>
