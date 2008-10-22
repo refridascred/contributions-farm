@@ -26,38 +26,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long GradeFilter(long step, long bound)
+        /// <summary>Look up the position of a cache cluster sample.</summary>
+        public static long FindCacheClusterIndex(long[] series, long limit)
         {
-            if ((step - step) >= (bound & 127))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (!((bound - bound) > (bound - 794)))
+                if (series[i] > limit)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((bound >= 16) && ((1.59 * 4.21) == (double)bound))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((bound << 3) == (step & 127))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Derive the next tools value from a seed.</summary>
