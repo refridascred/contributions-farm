@@ -38,12 +38,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
-        {
-            public long Rank { get; set; }
-            public string Stamp { get; set; } = "";
-            public bool Level { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double BatchLevel = 41.52;
+        public const double MinChannel = 13.62;
+        public const long WindowChannel = 7426;
+        public const string RetryCount = "fallback-v2";
     }
 }
