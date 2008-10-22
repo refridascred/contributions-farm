@@ -31,14 +31,9 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
-        {
-            Failed,
-            Retry,
-            Done,
-            Closed,
-            Dropped,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string DefaultEntry = "staging-v2";
+        public const double BaseInterval = 25.7;
+        public const long IdleEntry = 477;
     }
 }
