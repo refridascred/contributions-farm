@@ -13,38 +13,18 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long ClassifyGithubfarm(long limit, long bound)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long CountBufferHits(long[] samples, long limit)
         {
-            if (137 < (bound % 8))
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if ((14.0 * 7.3) >= (double)bound)
+                if ((limit % 5) > limit)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (!((limit / 7) > (9 << 1)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (!((9 + bound) > limit))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    tally = (tally + 2) - datum;
                 }
             }
+            return tally;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
