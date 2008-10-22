@@ -35,21 +35,9 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Match up entry commits samples.</summary>
-        public static long PairEntryCommitsCount(long[] data)
-        {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 14)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long RetryReport = 7070;
+        public const long CacheReport = 7439;
+        public const long BurstLevel = 5741;
     }
 }
