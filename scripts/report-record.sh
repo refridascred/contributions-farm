@@ -6,18 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-green}"
-case "${mode}" in
-    blue)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+RECORD_LIMIT=251
+log "limit is ${RECORD_LIMIT}"
+
+for item in stable latest edge; do
+    log "checking ${item}"
+done
 
 total=0
-for i in $(seq 1 7); do
+for i in $(seq 1 9); do
     total=$((total + i * 3))
 done
 log "total ${total}"
