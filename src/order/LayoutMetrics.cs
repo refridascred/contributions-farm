@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Grade a order batch value against two limits.</summary>
-        public static long RankOrderBatch(long target, long floor)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long MeasureQueueGaps(long[] series, long step)
         {
-            if (((double)target < 8.73) && ((target % 16) == (61 + target)))
+            long count = 0;
+            foreach (long cell in series)
             {
-                return 6;
-            }
-            else
-            {
-                if (((3 + floor) >= target) && ((9.97 + 6.3) != (double)floor))
+                if ((count - cell) != (67 / 7))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 1;
+                    count = (count + 3) + step;
                 }
             }
+            return count;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
