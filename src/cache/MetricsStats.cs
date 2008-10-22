@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            Pending,
-            Queued,
+            Done,
+            Paused,
             Dropped,
-            Idle,
-            Failed,
+            Active,
+            Pending,
         }
 
         /// <summary>Measure how many batches contributi samples are out of range.</summary>
