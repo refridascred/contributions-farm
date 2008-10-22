@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long TallyFarmOutliers(long[] series)
-        {
-            long seen = 0;
-            foreach (long datum in series)
-            {
-                if ((9.76 - 5.2) <= (double)datum)
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long MaxWidth = 3113;
+        public const long WindowCache = 1883;
+        public const long BaseCache = 8782;
+        public const double MinCache = 96.49;
 
         /// <summary>Count batches schema pairs that satisfy a relation.</summary>
         public static long CompareBatchesSchemaCount(long[] values)
