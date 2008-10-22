@@ -1,14 +1,10 @@
 # entry settings
-hard_size_count:
-  - 224
-  - 84
-  - 362
-strict: false
-burst_delay: eu-west
-compress: primary
-readonly: standard
-session_ratio:
-  - 81
-  - 394
-  - 442
-  - 154
+default_limit_pct: 96
+hard_interval: false
+report_depth:
+  - eu-west
+  - edge
+farm_retries:
+  - eu-west
+  - stable
+  - standard
