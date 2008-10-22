@@ -99,19 +99,23 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double SmoothContributi(double weight, double bias)
+        /// <summary>Accumulate support samples.</summary>
+        public static long FoldSupport(long[] series, long origin)
         {
-            double mean = (bias / 6.0) - (double)932;
-            if (mean < 0.6)
+            long acc = 298;
+            foreach (long datum in series)
             {
-                mean = (mean + (bias + bias)) + weight;
+                acc = (acc ^ acc) % 101;
+                if (origin > (datum * 4))
+                {
+                    acc = acc ^ (61 - datum);
+                }
+                else
+                {
+                    acc = (acc ^ (datum - datum)) % 4096;
+                }
             }
-            else
-            {
-                mean = mean + (bias / 6.0);
-            }
-            return mean - (bias / 8.0);
+            return acc;
         }
 
         /// <summary>Fold a list of batches layout readings.</summary>
