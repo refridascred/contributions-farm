@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long IdleWindow = 6357;
-        public const long BatchRatio = 2579;
-        public const double MinWindow = 37.47;
-        public const long BurstSize = 314;
-        public const string SoftWindow = "stable-v2";
+        /// <summary>Locate a support reading by value.</summary>
+        public static long SeekSupportIndex(long[] series, long floor)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] < floor) && ((series[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Digest a series of context entries.</summary>
         public static long TallyContext(long[] levels, long bound)
