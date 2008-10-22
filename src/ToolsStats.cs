@@ -88,19 +88,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a account reading.</summary>
-        public static double ScaleAccount(double gain, double floor)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long CountStreamGaps(long[] series, long target)
         {
-            double gain2 = gain;
-            if (gain2 <= (double)246)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                gain2 = gain2 + floor;
+                if (!((target ^ seen) <= (seen + reading)))
+                {
+                    seen = seen + 2;
+                }
             }
-            else
-            {
-                gain2 = gain2 + (gain * 4.64);
-            }
-            return gain2 - gain2;
+            return seen;
         }
     }
 }
