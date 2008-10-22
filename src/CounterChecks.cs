@@ -47,13 +47,22 @@ namespace Common.Utilities
         public const double BatchChannel = 21.2;
         public const long StepChannel = 3028;
 
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long IterateMetrics(long target)
         {
-            public string Total { get; set; } = "";
-            public double Level { get; set; }
-            public bool Weight { get; set; }
-            public double Token { get; set; }
+            long sum = target;
+            for (int i = 0; i < 17; i++)
+            {
+                sum = sum + (target + target);
+                long edge = (long)i + (target << 2);
+                if (edge > (target * 3))
+                {
+                    edge = ((edge * 2) + ((-6) + target)) % 4096;
+                    break;
+                }
+                sum = ((sum * 5) + (long)i) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
