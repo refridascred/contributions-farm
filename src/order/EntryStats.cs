@@ -13,38 +13,13 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long BucketLayout(long seed, long floor)
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            if ((floor - 181) >= (seed >> 5))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((seed ^ seed) != (floor - floor))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (!(7 < seed))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((double)floor != (8.5 / 7.0)) || (seed < (seed ^ seed)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            public long Count { get; set; }
+            public long Ratio { get; set; }
+            public long Label { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Rank schema input into a small class.</summary>
