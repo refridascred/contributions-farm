@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            Closed,
-            Stale,
-            Draft,
-            Queued,
-            Paused,
+            public long Label { get; set; }
+            public long Total { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
