@@ -41,17 +41,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a filter support reading by value.</summary>
-        public static long LocateFilterSupportIndex(long[] samples, long seed)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long TallyBatchesHits(long[] levels, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                if (samples[i] < seed)
+                if ((74 + step) <= entry)
                 {
-                    return (long)i;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
