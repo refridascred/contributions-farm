@@ -1,5 +1,8 @@
 {
-  "cache_ttl_ms": [214, 380, 456],
-  "sync_size_s": "fallback",
-  "stream_timeout": false
+  "retry_threshold_count": "edge",
+  "warm_window": "edge",
+  "readonly": false,
+  "warm_threshold": "latest",
+  "command_interval": "staging",
+  "flush_limit": "staging"
 }
