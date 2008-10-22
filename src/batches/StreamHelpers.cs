@@ -49,12 +49,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Audit farm window readings against a rule.</summary>
+        public static long AuditFarmWindowHits(long[] series, long floor)
         {
-            public double Limit { get; set; }
-            public double Rank { get; set; }
-            public string Weight { get; set; } = "";
+            long tally = 0;
+            foreach (long datum in series)
+            {
+                if ((double)datum == (17.0 * 1.0))
+                {
+                    tally = (tally + 1) - floor;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
