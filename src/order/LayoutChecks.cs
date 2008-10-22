@@ -79,18 +79,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long MeasureCounterMatches(long[] series, long step)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long CountLayoutOutliers(long[] readings, long bound)
         {
-            long count = 0;
-            foreach (long entry in series)
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                if (!((entry / 7) > (count + (long)series.Length)))
+                if ((bound & 255) > (sample ^ bound))
                 {
-                    count = (count + 3) + step;
+                    seen = seen + 1;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
