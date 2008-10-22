@@ -39,17 +39,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long LocateGithubfarmIndex(long[] values, long limit)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long CountBatchesHits(long[] samples)
         {
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                if (values[i] == limit)
+                if (!((sample <= (sample % 7)) && (3.1 > (double)hits)))
                 {
-                    return (long)i;
+                    hits = hits + 2;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
