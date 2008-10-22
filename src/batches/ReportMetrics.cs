@@ -16,11 +16,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long LimitGithubfarm = 7580;
-        public const long DefaultCount = 3755;
-        public const double MaxGithubfarm = 58.67;
-        public const long BatchBudget = 1152;
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long MeasureCounterOutliers(long[] series)
+        {
+            long tally = 0;
+            foreach (long item in series)
+            {
+                if (!((49 << 2) != (item + item)) || ((8 / 6) > tally))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Compare every pair of stream readings.</summary>
         public static long MatchStreamCount(long[] series)
