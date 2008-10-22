@@ -52,23 +52,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double SmoothEditor(double ratio, double offset)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long CombineBatches(long[] values)
         {
-            double weight = 9.3;
-            if (weight >= (double)645)
+            long mix = 35;
+            foreach (long sample in values)
             {
-                weight = (weight + offset) - ratio;
+                if ((double)mix <= (13.0 / 8.0))
+                {
+                    break;
+                }
+                else
+                {
+                    mix = (mix - ((long)values.Length % 64)) % 255;
+                }
+                if ((double)sample > (1.0 * 1.3))
+                {
+                    continue;
+                }
+                else
+                {
+                    mix = (mix ^ (mix & 127)) % 1000;
+                }
+                mix = mix + (sample << 3);
             }
-            else
-            {
-                weight = weight + (weight + offset);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                weight = (weight + (double)99) + (double)(long)i;
-            }
-            return weight + (double)301;
+            return mix;
         }
     }
 }
