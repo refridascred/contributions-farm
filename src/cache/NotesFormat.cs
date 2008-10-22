@@ -40,19 +40,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool ValidateStatsRange(long[] samples, long floor)
+        /// <summary>Locate a report reading by value.</summary>
+        public static long SeekReportIndex(long[] data, long origin)
         {
-            bool ready = true;
-            foreach (long datum in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (datum >= floor)
+                if (data[i] <= origin)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
     }
 }
