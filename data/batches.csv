@@ -1,6 +1,6 @@
-id,count,score,region
-1,36.03,45.63,80.58
-2,56.22,local,293
-3,687,31.27,24.99
-4,edge,44.79,edge
-5,98.57,100,open
+id,rank,level,score,label
+1,841,115,48.32,local
+2,886,stable,standard,52.63
+3,455,37.28,standard,662
+4,426,legacy,local,639
+5,48.26,standard,stable,stable
