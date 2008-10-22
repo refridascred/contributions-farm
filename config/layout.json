@@ -1,10 +1,8 @@
 {
-  "idle_threshold": ["local", "open"],
-  "batches_threshold": 2976,
-  "persist": {
-    "persist": "blue",
-    "retry_ratio": "green",
-    "min_delay": false
-  },
-  "enabled": 4.1
+  "counter_capacity": ["open", "local"],
+  "flush_ratio_count": 1627,
+  "payload_capacity": 58.78,
+  "cache_delay": 250,
+  "enabled": 9912,
+  "buffer_size": 9988
 }
