@@ -49,13 +49,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double AdjustChannel(double weight, double bias)
         {
-            Synced,
-            Active,
-            Ready,
-            Dropped,
+            double weight2 = (bias - weight) * 4.0;
+            return weight2 + (weight * 18.0);
         }
     }
 }
