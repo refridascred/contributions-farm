@@ -1,7 +1,7 @@
 # support settings
-payload_window: false
-burst_window_pct:
-  - 435
-  - 244
-channel_size: true
-strict: 30
+cache_interval_count: 60
+burst_retries: 6601
+base_delay_s:
+  - 281
+  - 23
+hard_interval_ms: true
