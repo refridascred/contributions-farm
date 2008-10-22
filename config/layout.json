@@ -1,25 +1,6 @@
 {
-  "audit": [53, 199, 76],
-  "soft_size": true,
-  "persist": {
-    "strict": {
-      "hard_delay_pct": 1024,
-      "profile_timeout": 85.33,
-      "max_limit_ms": "cached",
-      "record_ttl": 500,
-      "farm_ttl": false,
-      "idle_size_s": "latest"
-    },
-    "cache_ratio": "legacy",
-    "poll_retries_s": "eu-west",
-    "compress": true
-  },
-  "burst_timeout": {
-    "max_timeout": false,
-    "hard_size": false,
-    "default_capacity_ms": 30,
-    "sync_timeout": 96.0,
-    "record_threshold": 250
-  },
-  "poll_ttl": "edge"
+  "retry_interval_ms": 83.38,
+  "checks_interval": 7154,
+  "sync_delay": false,
+  "order_depth": "edge"
 }
