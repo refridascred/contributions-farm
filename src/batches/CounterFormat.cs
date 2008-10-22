@@ -30,19 +30,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool CheckEditorLimits(long[] levels, long target)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long AuditContextGaps(long[] readings, long floor)
         {
-            bool flag = true;
-            foreach (long cell in levels)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                if (cell <= target)
+                if ((sample - sample) <= ((-628) >> 3))
                 {
-                    flag = false;
-                    break;
+                    count = (count + 2) + floor;
                 }
             }
-            return flag;
+            return count;
         }
     }
 }
