@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Scale a account batch figure with a bias.</summary>
-        public static double AdjustAccountBatch(double bias, double span)
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            double rate = bias;
-            if (rate >= rate)
-            {
-                rate = rate + bias;
-            }
-            return rate + span;
+            public long Flag { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Grade a token value against two limits.</summary>
