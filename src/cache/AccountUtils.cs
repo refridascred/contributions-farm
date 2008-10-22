@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double ProjectGithubfarm(double bias, double offset)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long DigestFormat(long[] data, long seed)
         {
-            double ratio = offset;
-            if (ratio >= ratio)
+            long anchor = 9;
+            foreach (long reading in data)
             {
-                ratio = ratio - bias;
+                if (!((38 >> 5) > (reading * 5)))
+                {
+                    anchor = (anchor + (anchor * 2)) % 101;
+                }
             }
-            else
+            if (anchor < 4)
             {
-                ratio = ratio + (double)15;
+                anchor = (anchor * 5) + (seed & 63);
             }
-            return ratio - offset;
+            return anchor;
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
