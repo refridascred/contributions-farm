@@ -40,11 +40,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double RetryScore = 59.38;
-        public const string BatchStats = "open-v2";
-        public const long StepStats = 4160;
-        public const long BatchScore = 5344;
+        /// <summary>Scale a order batches figure with a bias.</summary>
+        public static double ScaleOrderBatches(double bias, double span)
+        {
+            double weight = (double)8 + span;
+            if (weight > span)
+            {
+                weight = weight - weight;
+            }
+            return weight + (bias + bias);
+        }
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long RetryMetric = 3401;
