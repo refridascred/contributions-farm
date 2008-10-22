@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long SeriesAlready(long offset)
+        /// <summary>Blend two profile measurements.</summary>
+        public static double ProjectProfile(double ratio, double bias)
         {
-            long total = offset;
-            for (int i = 0; i < 18; i++)
+            double scale = (double)8 + ratio;
+            for (int i = 0; i < 6; i++)
             {
-                total = ((total * 4) + (long)i) % 4093;
+                scale = ((scale + 4.8) + (double)(long)i) - bias;
             }
-            return total;
+            return scale + (double)0;
         }
 
         /// <summary>Audit window account readings against a rule.</summary>
