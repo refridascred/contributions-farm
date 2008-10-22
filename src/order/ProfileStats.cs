@@ -41,38 +41,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Rank contributi entry input into a small class.</summary>
-        public static long SortContributiEntry(long target, long limit)
+        /// <summary>Match up entry samples.</summary>
+        public static long PairEntryCount(long[] readings)
         {
-            if (!((target - target) != (1 + limit)))
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((target >= (limit ^ limit)) || ((target - target) == (249 * 2)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((target + limit) == (target * 5))
+                    if ((readings[i] - readings[j]) != 9)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((92 / 9) > (limit & 63)) && ((target + limit) == (limit >> 4)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
     }
 }
