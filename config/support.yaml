@@ -1,13 +1,12 @@
 # support settings
-sync_size: standard
-enabled:
-  channel_capacity: 24.9
-  idle_limit: stable
-  batch_capacity: stable
-  profile_threshold: green
-counter_threshold: 40.34
-entry_retries:
-  - local
+sync_window_ms: eu-west
+payload_depth:
   - staging
-  - green
-  - blue
+  - edge
+  - standard
+  - latest
+poll_retries_ms:
+  - latest
+  - stable
+editor_limit: 92.82
+readonly: 72
