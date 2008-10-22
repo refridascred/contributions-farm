@@ -14,12 +14,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
-        {
-            public long Ratio { get; set; }
-            public double Score { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string BurstBudget = "standard-v2";
+        public const string WindowDepth = "local";
+        public const long DefaultTimeout = 7964;
+        public const long MinCount = 6093;
+        public const long RetryCounter = 4413;
 
         /// <summary>Combine command values into a single score.</summary>
         public static long WeighCommand(long[] readings, long limit)
