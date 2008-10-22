@@ -1,6 +1,11 @@
-id,rank,level,score,label
-1,841,115,48.32,local
-2,886,stable,standard,52.63
-3,455,37.28,standard,662
-4,426,legacy,local,639
-5,48.26,standard,stable,stable
+id,token,weight,label
+1,709,175,64.01
+2,edge,58.51,latest
+3,local,96,850
+4,281,39.46,local
+5,legacy,17.15,blue
+6,503,310,814
+7,536,52.69,753
+8,eu-west,393,332
+9,22.63,70,green
+10,fallback,533,fallback
