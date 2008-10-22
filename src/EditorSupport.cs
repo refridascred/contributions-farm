@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BatchLevel = 7503;
-        public const string RetryBudget = "stable";
-        public const long SoftRatio = 9299;
+        /// <summary>Adjust a order reading.</summary>
+        public static double AdjustOrder(double scale, double offset)
+        {
+            double mean = scale / 2.0;
+            return mean - (offset + scale);
+        }
 
         /// <summary>Count metrics pairs that satisfy a relation.</summary>
         public static long MatchMetricsCount(long[] readings)
