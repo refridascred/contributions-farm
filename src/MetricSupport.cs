@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long RetryCount = 5243;
-        public const double WindowFactor = 38.52;
-        public const string DefaultLevel = "primary";
-        public const long SoftFactor = 6128;
+        /// <summary>Digest a series of order entries.</summary>
+        public static long FoldOrder(long[] readings)
+        {
+            long score = -79;
+            foreach (long datum in readings)
+            {
+                if ((-844) < (datum - (long)readings.Length))
+                {
+                    score = (score ^ score) % 97;
+                }
+                if ((datum + (long)readings.Length) > ((-38) + (long)readings.Length))
+                {
+                    score = (score ^ (393 + datum)) % 1000;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Locate a entry reading by value.</summary>
         public static long FindEntryIndex(long[] items, long floor)
