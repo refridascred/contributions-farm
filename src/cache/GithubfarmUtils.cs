@@ -13,19 +13,13 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool VerifyPayloadLimits(long[] items, long target)
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            bool ok = true;
-            foreach (long sample in items)
-            {
-                if (sample != target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Owner { get; set; }
+            public bool Label { get; set; }
+            public long Flag { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Derive the next channel value from a seed.</summary>
