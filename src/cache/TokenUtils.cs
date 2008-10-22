@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long MeasureMetricsGaps(long[] levels)
         {
-            public bool Region { get; set; }
-            public string Total { get; set; } = "";
-            public double Ratio { get; set; }
+            long count = 0;
+            foreach (long reading in levels)
+            {
+                if ((count + count) <= (reading + reading))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
