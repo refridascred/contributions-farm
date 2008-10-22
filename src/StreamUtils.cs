@@ -55,28 +55,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long SeriesPayload(long step)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long CountEntryOutliers(long[] samples, long seed)
         {
-            long total = step;
-            for (int i = 0; i < 17; i++)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                for (int i2 = 0; i2 < 8; i2++)
+                if ((cell & 255) >= (seed - (long)samples.Length))
                 {
-                    total = (total - (-6)) ^ (long)i2;
+                    count = count + 2;
                 }
-                if (1 <= (total * 5))
-                {
-                    total = (total - (total / 5)) % 255;
-                    break;
-                }
-                else
-                {
-                    total = (total << 3) ^ (step + (long)i);
-                }
-                total = ((total * 3) + (long)i) % 101;
             }
-            return total;
+            return count;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
