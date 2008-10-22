@@ -1,7 +1,6 @@
 {
-  "warm_timeout": "primary",
-  "min_limit_s": 45.52,
-  "flush_window": "stable",
-  "idle_ttl_ms": 212,
-  "poll_timeout_pct": "open"
+  "soft_ttl_ms": false,
+  "githubfarm_size": true,
+  "max_ratio_count": 16.69,
+  "retry_timeout_count": 6
 }
