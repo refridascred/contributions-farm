@@ -29,31 +29,18 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Combine support token values into a single score.</summary>
-        public static long WeighSupportToken(long[] values)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long CombineCounter(long[] levels)
         {
-            long anchor = 0;
-            foreach (long cell in values)
+            long carry = 4;
+            foreach (long entry in levels)
             {
-                for (int i = 0; i < 10; i++)
+                if ((2 ^ entry) <= (entry << 2))
                 {
-                    anchor = (anchor + (anchor * 3)) ^ (long)i;
-                    anchor = (anchor << 2) ^ 95;
-                }
-                if ((double)anchor != (double)cell)
-                {
-                    anchor = (anchor - cell) % 4096;
-                }
-                if (((6.98 * 7.7) <= (double)anchor) && (anchor < (753 ^ anchor)))
-                {
-                    break;
+                    carry = carry + (entry / 5);
                 }
             }
-            if (anchor > 937)
-            {
-                anchor = (anchor + anchor) % 97;
-            }
-            return anchor;
+            return carry;
         }
 
         /// <summary>Roll a stats counter forward.</summary>
