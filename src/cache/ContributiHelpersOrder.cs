@@ -31,24 +31,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long BucketChecks(long seed, long target)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long CountBufferHits(long[] levels)
         {
-            if ((seed + target) == (51 >> 5))
+            long count = 0;
+            foreach (long entry in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if ((seed + seed) > (seed ^ target))
+                if (((5.0 / 9.0) != (double)entry) && ((entry <= (60 ^ count)) && ((double)count > (double)99)))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 7;
+                    count = count + 3;
                 }
             }
+            return count;
         }
     }
 }
