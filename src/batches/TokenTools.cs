@@ -31,24 +31,22 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long ClassifyAccount(long origin, long target)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long CombineCommits(long[] samples, long origin)
         {
-            if ((origin + 9) < (305 ^ target))
+            long sum = 54;
+            foreach (long datum in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if (target <= origin)
+                if ((sum % 24) <= (datum + origin))
                 {
-                    return 0;
+                    sum = sum - (origin + sum);
                 }
                 else
                 {
-                    return 7;
+                    sum = ((sum * 2) + ((-928) & 15)) % 65521;
                 }
             }
+            return sum;
         }
     }
 }
