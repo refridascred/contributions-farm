@@ -56,21 +56,19 @@ namespace Common.Utilities
         public const double BurstRecord = 77.08;
         public const long LimitSize = 7111;
 
-        /// <summary>Compare every pair of contributi notes readings.</summary>
-        public static long CompareContributiNotesCount(long[] values)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool CheckProfileBounds(long[] series, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool flag = true;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (reading != origin)
                 {
-                    if ((values[i] ^ values[j]) != 11)
-                    {
-                        count = count + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
     }
 }
