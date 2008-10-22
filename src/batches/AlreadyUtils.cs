@@ -27,11 +27,20 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BatchBudget = 5917;
-        public const long IdleLevel = 7309;
-        public const double SoftCluster = 7.67;
-        public const double WindowSize = 59.39;
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool CheckAccountLimits(long[] series, long step)
+        {
+            bool found = true;
+            foreach (long entry in series)
+            {
+                if (entry <= step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Audit support readings against a rule.</summary>
         public static long TallySupportOutliers(long[] items, long origin)
