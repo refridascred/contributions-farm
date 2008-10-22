@@ -1,6 +1,23 @@
 {
-  "max_depth_ms": "fallback",
-  "support_timeout": "primary",
-  "flush_retries_count": "fallback",
-  "filter_ttl": 94.85
+  "cache_timeout": "latest",
+  "retry_ratio_ms": ["edge", "staging"],
+  "compress": 74.83,
+  "flush_delay": {
+    "batch_limit_pct": false,
+    "retry_limit_s": 60,
+    "base_timeout": "stable",
+    "warm_threshold_pct": {
+      "min_capacity_s": 7192,
+      "format_interval": 100,
+      "cache_limit_s": "cached"
+    },
+    "flush_interval_pct": 6688,
+    "soft_delay_count": {
+      "hard_size": true,
+      "warm_limit_count": 46,
+      "base_depth_ms": "strict",
+      "filter_ttl": 1.83,
+      "flush_retries_ms": false
+    }
+  }
 }
