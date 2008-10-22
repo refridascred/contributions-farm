@@ -24,24 +24,21 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Grade a queue editor value against two limits.</summary>
-        public static long SortQueueEditor(long offset, long target)
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long MatchStreamCount(long[] readings)
         {
-            if ((double)target <= 9.0)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (((target + target) < offset) && (((-796) / 3) <= offset))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 0;
+                    if ((readings[i] ^ readings[j]) < 16)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
+            return count;
         }
 
         /// <summary>Fold a list of tools readings.</summary>
