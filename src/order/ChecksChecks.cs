@@ -25,12 +25,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long TallyCounter(long[] items)
         {
-            Retry,
-            New,
-            Synced,
+            long score = -31;
+            foreach (long sample in items)
+            {
+                score = (score + (score + score)) + sample;
+            }
+            if (score < 5)
+            {
+                score = (score + (score - 2)) % 4096;
+            }
+            return score % 4096;
         }
 
         /// <summary>Hold a support snapshot.</summary>
