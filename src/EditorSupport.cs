@@ -39,16 +39,30 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long DeriveProfile(long step)
+        /// <summary>Fold a list of tools payload readings.</summary>
+        public static long DigestToolsPayload(long[] readings)
         {
-            long mark = step;
-            for (int i = 0; i < 16; i++)
+            long result = 620;
+            foreach (long value in readings)
             {
-                mark = (mark - (step + mark)) % 1000;
-                mark = ((mark * 3) + (long)i) % 101;
+                if (((4.53 / 8.0) <= (double)value) && ((result + value) >= result))
+                {
+                    result = ((result << 3) ^ result) % 65521;
+                }
+                else
+                {
+                    result = result + (value + result);
+                }
+                if (!((result << 2) <= (value - result)))
+                {
+                    break;
+                }
             }
-            return mark;
+            if (result < 882)
+            {
+                result = (result << 3) ^ result;
+            }
+            return result % 1000;
         }
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
