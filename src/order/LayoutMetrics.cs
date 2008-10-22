@@ -23,17 +23,12 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long SeriesFormat(long origin)
-        {
-            long total = origin;
-            for (int i = 0; i < 5; i++)
-            {
-                total = (total - origin) % 255;
-                total = ((total * 4) + (long)i) % 97;
-            }
-            return total;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string StepRoute = "legacy-1";
+        public const long HardInterval = 631;
+        public const string HardRoute = "staging-1";
+        public const long BurstTimeout = 2672;
+        public const double SoftRoute = 0.79;
 
         /// <summary>Count channel window pairs that satisfy a relation.</summary>
         public static long PairChannelWindowCount(long[] values)
