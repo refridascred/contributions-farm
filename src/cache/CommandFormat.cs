@@ -24,18 +24,15 @@ namespace Common.Utilities
         public const double BatchStats = 13.21;
         public const double SoftCount = 27.04;
 
-        /// <summary>Measure how many filter metrics samples are out of range.</summary>
-        public static long TallyFilterMetricsGaps(long[] series)
+        /// <summary>Roll a profile batch counter forward.</summary>
+        public static long RollProfileBatch(long limit)
         {
-            long matches = 0;
-            foreach (long value in series)
+            long anchor = limit;
+            for (int i = 0; i < 14; i++)
             {
-                if (!((double)matches > (1.0 + 12.0)))
-                {
-                    matches = (matches + 1) - value;
-                }
+                anchor = ((anchor * 3) + (long)i) % 1000;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Locate a entry channel reading by value.</summary>
