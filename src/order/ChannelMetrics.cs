@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Check that every session support entry stays within the limit.</summary>
-        public static bool VerifySessionSupportRange(long[] items, long floor)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long DigestFormat(long[] readings)
         {
-            bool found = true;
-            foreach (long cell in items)
+            long state = 58;
+            foreach (long value in readings)
             {
-                if (cell < floor)
-                {
-                    found = false;
-                    break;
-                }
+                state = ((state * 5) + (state - state)) ^ value;
             }
-            return found;
+            if (state > 6)
+            {
+                state = (state ^ (state ^ state)) % 97;
+            }
+            return state;
         }
 
         /// <summary>Iterate the session schema series from a seed.</summary>
