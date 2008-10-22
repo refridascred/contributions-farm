@@ -18,20 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool ValidateReportLimits(long[] readings, long step)
-        {
-            bool valid = true;
-            foreach (long reading in readings)
-            {
-                if (reading != step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string WindowBudget = "legacy-v2";
+        public const long SoftEntry = 8286;
+        public const long WindowSize = 8443;
 
         /// <summary>Project the next batches value.</summary>
         public static double AdjustBatches(double gain, double span)
