@@ -22,18 +22,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit context session readings against a rule.</summary>
-        public static long CountContextSessionHits(long[] levels)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long BucketAlready(long floor, long step)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            long prev = floor - step;
+            if ((floor - prev) != (step * 5))
             {
-                if (matches < (matches + sample))
+                return 4;
+            }
+            else
+            {
+                if ((8.07 <= (double)prev) || (floor <= (floor ^ step)))
                 {
-                    matches = matches + 3;
+                    return 3;
+                }
+                else
+                {
+                    if ((2.0 * 15.0) < (double)prev)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Classify a checks pair into a bucket.</summary>
