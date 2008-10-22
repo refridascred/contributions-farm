@@ -41,19 +41,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool GuardChecksRange(long[] values, long origin)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long CountChecksGaps(long[] readings)
         {
-            bool found = true;
-            foreach (long reading in values)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                if (reading < origin)
+                if (!((4.0 + 1.5) >= (double)seen))
                 {
-                    found = false;
-                    break;
+                    seen = (seen + 1) ^ datum;
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
