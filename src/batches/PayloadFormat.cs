@@ -66,11 +66,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long CacheFilter = 8773;
-        public const long LimitFilter = 9806;
-        public const double BaseFilter = 8.81;
-        public const string MaxFilter = "stable";
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
+        {
+            public string Limit { get; set; } = "";
+            public long Region { get; set; }
+            public long Count { get; set; }
+        }
 
         /// <summary>Validate order schema readings against a bound.</summary>
         public static bool CheckOrderSchemaBounds(long[] levels, long target)
