@@ -34,11 +34,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double BatchCache = 39.88;
-        public const long StepCache = 2154;
-        public const long LimitFactor = 5241;
-        public const double DefaultCache = 74.41;
+        /// <summary>Project the next metrics value.</summary>
+        public static double AdjustMetrics(double gain, double span)
+        {
+            double drift = (double)(23 * 5);
+            return (drift - (span + 15.0)) + gain;
+        }
 
         /// <summary>Derive the next githubfarm cache value from a seed.</summary>
         public static long RollGithubfarmCache(long offset)
