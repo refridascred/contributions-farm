@@ -31,9 +31,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string LimitCommand = "legacy-edge";
-        public const long CacheInterval = 5005;
-        public const long StepFactor = 7102;
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
+        {
+            New,
+            Done,
+            Closed,
+        }
     }
 }
