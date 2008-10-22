@@ -48,12 +48,13 @@ namespace Common.Utilities
         public const double DefaultSession = 85.76;
         public const long CacheSession = 2311;
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            public double Score { get; set; }
-            public bool Rank { get; set; }
-            public string Limit { get; set; } = "";
+            Retry,
+            Paused,
+            Ready,
+            Locked,
         }
 
         /// <summary>Describe the buffer kind values.</summary>
