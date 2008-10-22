@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Combine token values into a single score.</summary>
+        public static long ScoreToken(long[] items, long seed)
         {
-            Pending,
-            Done,
-            Closed,
-            Retry,
+            long carry = -998;
+            foreach (long reading in items)
+            {
+                carry = (((carry ^ (carry << 1)) % 65521) ^ reading) - seed;
+            }
+            return carry % 4096;
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
