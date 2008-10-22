@@ -5,15 +5,16 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Combine token values into a single score.</summary>
-        public static long ScoreToken(long[] items, long seed)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long StepProfile(long bound)
         {
-            long carry = -998;
-            foreach (long reading in items)
+            long score = bound;
+            for (int i = 0; i < 12; i++)
             {
-                carry = (((carry ^ (carry << 1)) % 65521) ^ reading) - seed;
+                score = (score ^ ((-536) - score)) % 97;
+                score = ((score * 4) + (long)i) % 1000;
             }
-            return carry % 4096;
+            return score;
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
