@@ -1,6 +1,24 @@
 {
-  "verbose": "staging",
-  "route_ttl": 53,
-  "readonly": 65.31,
-  "min_ttl_pct": 500
+  "idle_size_count": 9730,
+  "retry_threshold_count": 54,
+  "record_size": {
+    "filter_delay": "fallback",
+    "base_threshold_ms": {
+      "batch_ttl": 4,
+      "base_interval": 78.53,
+      "cache_capacity_s": 17.63,
+      "batch_window_s": 43.18,
+      "poll_timeout_pct": false,
+      "batch_limit": "cached"
+    },
+    "burst_ratio_count": {
+      "poll_window": 92.04,
+      "default_interval": false,
+      "flush_size_s": "local"
+    },
+    "soft_size": "edge",
+    "retry_ratio_ms": 79.79
+  },
+  "burst_depth_pct": 4687,
+  "idle_retries_ms": 86.33
 }
