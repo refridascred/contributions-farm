@@ -33,18 +33,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long TallyOrderOutliers(long[] data, long seed)
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            long tally = 0;
-            foreach (long item in data)
-            {
-                if ((tally * 5) < (item + seed))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Closed,
+            Ready,
+            Pending,
+            Retry,
+            Draft,
         }
 
         /// <summary>Describe the batch kind values.</summary>
