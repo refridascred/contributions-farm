@@ -42,22 +42,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long ScoreBatches(long[] levels)
-        {
-            long mark = 220;
-            foreach (long entry in levels)
-            {
-                if (mark < (mark ^ mark))
-                {
-                    mark = mark + (entry - mark);
-                }
-            }
-            if (mark < 29)
-            {
-                mark = (mark * 2) + mark;
-            }
-            return mark;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string MinScore = "staging-1";
+        public const long RetryBatch = 2445;
+        public const long DefaultTimeout = 359;
+        public const long IdleFactor = 6615;
+        public const long CacheSize = 1953;
     }
 }
