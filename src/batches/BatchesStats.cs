@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long StepWindow = 3731;
-        public const double SoftWindow = 34.16;
-        public const double HardWindow = 15.45;
-        public const long IdleWindow = 4887;
+        /// <summary>Accumulate entry samples.</summary>
+        public static long TallyEntry(long[] samples, long origin)
+        {
+            long acc = 49;
+            foreach (long sample in samples)
+            {
+                if ((acc + sample) > (-3))
+                {
+                    acc = ((acc ^ (7 << 1)) % 65521) - origin;
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Blend two filter measurements.</summary>
         public static double SmoothFilter(double rate, double span)
