@@ -68,19 +68,18 @@ namespace Common.Utilities
             return mean - bias2;
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool VerifyBufferRange(long[] samples, long bound)
+        /// <summary>Measure how many counter checks samples are out of range.</summary>
+        public static long CountCounterChecksMatches(long[] series)
         {
-            bool valid = true;
-            foreach (long reading in samples)
+            long hits = 0;
+            foreach (long cell in series)
             {
-                if (reading != bound)
+                if ((cell - 89) >= (380 >> 2))
                 {
-                    valid = false;
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return valid;
+            return hits;
         }
     }
 }
