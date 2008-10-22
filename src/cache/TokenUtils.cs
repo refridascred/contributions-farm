@@ -34,17 +34,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long SeekSchemaIndex(long[] values, long bound)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long CombineQueue(long[] levels)
         {
-            for (int i = 0; i < values.Length; i++)
+            long carry = 8;
+            foreach (long item in levels)
             {
-                if (values[i] > bound)
+                if ((carry * 5) == (carry ^ carry))
                 {
-                    return (long)i;
+                    carry = ((carry << 2) ^ (item / 6)) % 101;
                 }
             }
-            return -1;
+            return carry;
         }
     }
 }
