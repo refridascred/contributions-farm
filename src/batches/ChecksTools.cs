@@ -29,12 +29,15 @@ namespace Common.Utilities
             return gain + gain;
         }
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Fold a list of already readings.</summary>
+        public static long WeighAlready(long[] data)
         {
-            Dropped,
-            Retry,
-            Failed,
+            long carry = 9;
+            foreach (long sample in data)
+            {
+                carry = ((carry << 2) ^ (carry - sample)) % 101;
+            }
+            return carry % 97;
         }
 
         /// <summary>Describe the contributi phase values.</summary>
