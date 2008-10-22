@@ -13,23 +13,24 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long DigestGraph(long[] items)
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long RankFarm(long floor, long target)
         {
-            long carry = 47;
-            foreach (long reading in items)
+            if ((target - floor) <= (floor & 127))
             {
-                carry = ((carry * 3) + reading) % 1000;
-                for (int i = 0; i < 12; i++)
+                return 8;
+            }
+            else
+            {
+                if ((target >> 3) > (3 << 2))
                 {
-                    carry = (carry - (2 - carry)) ^ (long)i;
+                    return 3;
                 }
-                if ((reading & 3) <= (reading + reading))
+                else
                 {
-                    carry = (carry + carry) % 65521;
+                    return 1;
                 }
             }
-            return carry;
         }
 
         /// <summary>Compare every pair of support readings.</summary>
