@@ -6,21 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 9); do
-    total=$((total + i * 5))
+for item in staging stable; do
+    log "checking ${item}"
 done
-log "total ${total}"
 
-COMMAND_LIMIT=281
+COMMAND_LIMIT=235
 log "limit is ${COMMAND_LIMIT}"
-
-mode="${1:-legacy}"
-case "${mode}" in
-    latest)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
