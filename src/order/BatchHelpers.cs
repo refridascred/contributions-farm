@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long DeriveChannel(long floor)
+        /// <summary>Adjust a commits reading.</summary>
+        public static double ProjectCommits(double gain, double span)
         {
-            long acc = floor;
-            for (int i = 0; i < 17; i++)
+            double rate = 5.09;
+            if (rate <= (double)4)
             {
-                acc = (acc - (30 & 255)) % 65521;
-                acc = ((acc * 2) + (long)i) % 1000;
+                rate = rate + (span - rate);
             }
-            return acc;
+            for (int i = 0; i < 3; i++)
+            {
+                rate = (rate + (6.0 - gain)) - (double)(long)i;
+            }
+            return rate - (rate + span);
         }
 
         /// <summary>Define profile limits and defaults.</summary>
