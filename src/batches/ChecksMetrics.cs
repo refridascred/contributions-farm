@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long CountBatchesGaps(long[] samples, long bound)
         {
-            public long Flag { get; set; }
-            public string Limit { get; set; } = "";
+            long hits = 0;
+            foreach (long value in samples)
+            {
+                if ((bound - value) < (bound + bound))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Grade a token value against two limits.</summary>
