@@ -1,6 +1,6 @@
 {
-  "hard_retries": "eu-west",
-  "hard_ttl_pct": 19,
-  "poll_window": 6,
-  "compress": 56.33
+  "flush_threshold_count": ["eu-west", "primary"],
+  "min_window_pct": 39.66,
+  "batch_ratio": [459, 340],
+  "order_size": "latest"
 }
