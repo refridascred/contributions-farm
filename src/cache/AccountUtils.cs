@@ -13,15 +13,14 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Project the next editor order value.</summary>
-        public static double ScaleEditorOrder(double gain, double bias)
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            double mean = bias;
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean + (gain - 1.4)) + (double)(long)i;
-            }
-            return mean - 0.79;
+            Ready,
+            New,
+            Dropped,
+            Locked,
+            Pending,
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
