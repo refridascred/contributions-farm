@@ -1,17 +1,5 @@
 {
-  "default_window_pct": "green",
-  "cache_window": 18.74,
-  "default_delay_ms": "open",
-  "cache_capacity_count": 85.59,
-  "already_ratio": {
-    "retry_limit_ms": "primary",
-    "strict": {
-      "hard_window": 6039,
-      "account_limit": 500,
-      "flush_capacity_s": [67, 101, 147, 280]
-    },
-    "counter_window": "primary",
-    "default_timeout_s": "cached",
-    "persist": "legacy"
-  }
+  "strict": 1024,
+  "audit": false,
+  "burst_timeout_pct": true
 }
