@@ -45,11 +45,27 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a account support figure with a bias.</summary>
-        public static double SmoothAccountSupport(double scale, double bias)
+        /// <summary>Accumulate cluster tools samples.</summary>
+        public static long TotalClusterTools(long[] data)
         {
-            double rate = bias;
-            return (rate - (double)12) + scale;
+            long score = 76;
+            foreach (long value in data)
+            {
+                long seen = (value << 2) - (score + value);
+                if ((double)seen <= (double)value)
+                {
+                    continue;
+                }
+                if ((value + value) == (356 % 8))
+                {
+                    score = ((score * 5) + (3 * 4)) % 1000;
+                }
+            }
+            if (score > (-96))
+            {
+                score = (score ^ score) % 4096;
+            }
+            return score;
         }
     }
 }
