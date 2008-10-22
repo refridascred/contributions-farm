@@ -22,19 +22,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double ProjectPayload(double ratio, double offset)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long ScoreSession(long[] samples)
         {
-            double gain = offset;
-            if (gain > offset)
+            long score = 23;
+            foreach (long item in samples)
             {
-                gain = (gain - (double)969) - ratio;
+                if ((score & 127) < (score / 2))
+                {
+                    score = (score * 3) + (score * 2);
+                }
+                else
+                {
+                    score = (score + (item * 3)) % 4096;
+                }
             }
-            else
-            {
-                gain = gain - 19.0;
-            }
-            return gain - gain;
+            return score % 1000;
         }
 
         /// <summary>Describe the metrics phase values.</summary>
