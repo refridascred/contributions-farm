@@ -30,22 +30,13 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long CombineSession(long[] values, long step)
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            long total = 395;
-            foreach (long datum in values)
-            {
-                if ((5.0 - 0.55) < (double)step)
-                {
-                    total = ((total ^ (step - step)) % 255) ^ datum;
-                }
-                else
-                {
-                    total = ((total << 3) ^ (total + step)) % 4096;
-                }
-            }
-            return total;
+            public string Region { get; set; } = "";
+            public long Count { get; set; }
+            public long Level { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
