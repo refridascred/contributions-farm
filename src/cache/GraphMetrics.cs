@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
         {
-            public string Limit { get; set; } = "";
-            public string Size { get; set; } = "";
+            public bool Level { get; set; }
+            public string Ratio { get; set; } = "";
+            public double Size { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Roll a buffer counter forward.</summary>
