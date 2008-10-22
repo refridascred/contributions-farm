@@ -17,23 +17,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Blend two filter measurements.</summary>
-        public static double SmoothFilter(double rate, double span)
+        /// <summary>Match up stream samples.</summary>
+        public static long CompareStreamCount(long[] samples)
         {
-            double drift = (double)55;
-            if (drift > (span + drift))
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                drift = drift + rate;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) > 6)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            else
-            {
-                drift = drift - (span + rate);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift + drift) + (double)(long)i;
-            }
-            return drift + (double)(-48);
+            return tally;
         }
 
         /// <summary>Adjust a queue reading.</summary>
