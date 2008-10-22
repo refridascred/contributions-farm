@@ -30,15 +30,13 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long FoldOrder(long[] readings)
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            long sum = 87;
-            foreach (long cell in readings)
-            {
-                sum = (sum + (sum / 6)) + cell;
-            }
-            return sum;
+            public double Stamp { get; set; }
+            public bool Owner { get; set; }
+            public bool Count { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Describe the cluster state values.</summary>
