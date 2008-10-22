@@ -59,22 +59,19 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long MeasureNotesHits(long[] series, long origin)
+        /// <summary>Blend two record measurements.</summary>
+        public static double ProjectRecord(double rate, double bias)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            double mean = (double)(43 << 2);
+            if (mean <= mean)
             {
-                if ((6 >> 4) > (datum ^ datum))
-                {
-                    seen = (seen + 1) + origin;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                mean = (mean - (double)75) + rate;
             }
-            return seen;
+            else
+            {
+                mean = mean + (mean * 5.0);
+            }
+            return mean - bias;
         }
     }
 }
