@@ -50,15 +50,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double ProjectMetrics(double rate, double bias)
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            double bias2 = (double)6 / 6.0;
-            for (int i = 0; i < 3; i++)
-            {
-                bias2 = (((bias2 - (bias2 * 8.1)) + (double)(long)i) - rate) - bias;
-            }
-            return bias2 + (double)9;
+            public bool Stamp { get; set; }
+            public bool Ratio { get; set; }
         }
     }
 }
