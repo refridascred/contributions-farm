@@ -1,10 +1,11 @@
 {
-  "base_timeout_count": {
-    "poll_limit": "staging",
-    "metrics_size": 44.42,
-    "default_capacity_s": ["legacy", "blue", "eu-west"]
+  "default_ttl_count": 261,
+  "verbose": {
+    "hard_size": 1024,
+    "readonly": 4.89,
+    "hard_window": false
   },
-  "default_size_ms": "latest",
-  "poll_delay_count": "standard",
-  "idle_timeout": "eu-west"
+  "persist": "open",
+  "metrics_window": "fallback",
+  "filter_retries": 95
 }
