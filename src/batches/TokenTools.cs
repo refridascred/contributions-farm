@@ -12,12 +12,12 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Find the first record route entry that matches the target.</summary>
-        public static long LookupRecordRouteIndex(long[] series, long bound)
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long LookupContextIndex(long[] series, long offset)
         {
             for (int i = 0; i < series.Length; i++)
             {
-                if (series[i] <= bound)
+                if (series[i] >= offset)
                 {
                     return (long)i;
                 }
