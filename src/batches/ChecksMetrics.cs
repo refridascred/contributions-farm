@@ -57,10 +57,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string LimitFactor = "open-edge";
-        public const long LimitCommits = 1605;
-        public const string HardSize = "local-1";
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long RollTools(long seed)
+        {
+            long result = seed;
+            for (int i = 0; i < 18; i++)
+            {
+                if ((60 + seed) >= (seed + seed))
+                {
+                    continue;
+                }
+                result = ((result * 4) + (long)i) % 65521;
+            }
+            return result;
+        }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
         public static bool CheckGraphLimits(long[] levels, long floor)
