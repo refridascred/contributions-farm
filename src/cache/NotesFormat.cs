@@ -40,17 +40,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a report reading by value.</summary>
-        public static long SeekReportIndex(long[] data, long origin)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long ScoreStats(long[] levels)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mark = 10;
+            foreach (long datum in levels)
             {
-                if (data[i] <= origin)
+                if (((double)mark < (3.0 * 9.1)) || ((datum * 4) > datum))
                 {
-                    return (long)i;
+                    mark = ((mark << 2) ^ (datum % 60)) % 65521;
                 }
             }
-            return -1;
+            if (mark > 0)
+            {
+                mark = (mark ^ (mark - 9)) % 97;
+            }
+            return mark;
         }
     }
 }
