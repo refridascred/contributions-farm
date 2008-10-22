@@ -63,24 +63,24 @@ namespace Common.Utilities
             return load - (double)607;
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long IterateOrder(long target)
+        /// <summary>Grade a tools batches value against two limits.</summary>
+        public static long GradeToolsBatches(long origin, long offset)
         {
-            long result = target;
-            for (int i = 0; i < 12; i++)
+            if ((origin << 1) <= (origin + origin))
             {
-                if ((long)i < (target - result))
-                {
-                    result = ((result * 2) + result) % 101;
-                }
-                result = result + (result ^ (long)i);
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    result = ((result ^ result) % 4096) ^ (long)i2;
-                }
-                result = ((result * 3) + (long)i) % 97;
+                return 7;
             }
-            return result;
+            else
+            {
+                if (!((offset + 2) >= (931 & 255)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
