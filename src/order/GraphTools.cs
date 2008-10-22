@@ -5,27 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Fold a list of notes already readings.</summary>
-        public static long CombineNotesAlready(long[] data, long seed)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long CountCommitsHits(long[] data, long origin)
         {
-            long anchor = 5;
-            foreach (long datum in data)
+            long count = 0;
+            foreach (long sample in data)
             {
-                if (anchor < (anchor % 24))
+                if (sample >= origin)
                 {
-                    anchor = ((anchor - (anchor % 10)) % 97) + datum;
-                }
-                anchor = (anchor * 5) + (anchor * 4);
-                if ((7 - seed) <= seed)
-                {
-                    anchor = (anchor - (seed >> 3)) % 255;
-                }
-                else
-                {
-                    anchor = anchor + (seed % 16);
+                    count = count + 3;
                 }
             }
-            return anchor % 1000;
+            return count;
         }
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
