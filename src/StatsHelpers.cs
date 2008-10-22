@@ -43,18 +43,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long TallyStatsOutliers(long[] readings, long floor)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long WeighRoute(long[] levels, long floor)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            long total = 9;
+            foreach (long cell in levels)
             {
-                if ((floor <= sample) && (((long)readings.Length ^ 271) >= floor))
+                total = (total ^ (floor ^ floor)) % 4096;
+                if (!((floor + 98) == (663 + cell)))
                 {
-                    tally = tally + 3;
+                    total = total + (cell - cell);
+                }
+                else
+                {
+                    total = ((total * 5) + floor) % 4096;
                 }
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Hold a metrics info.</summary>
