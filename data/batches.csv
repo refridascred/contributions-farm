@@ -1,6 +1,6 @@
-id,owner,weight,active,state
-1,85.4,192,32,edge
-2,120,fallback,302,855
-3,blue,511,6.53,181
-4,13.99,cached,standard,green
-5,96.27,45.81,89,cached
+id,rank
+1,490
+2,134
+3,legacy
+4,primary
+5,4.84
