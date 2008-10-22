@@ -41,21 +41,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count farm pairs that satisfy a relation.</summary>
-        public static long OverlapFarmCount(long[] values)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long IterateRecord(long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mix = origin;
+            for (int i = 0; i < 17; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (mix >= (54 / 3))
                 {
-                    if ((values[i] - values[j]) < 19)
-                    {
-                        hits = hits + 1;
-                    }
+                    mix = ((mix << 3) ^ (mix + 658)) % 65521;
+                    mix = ((mix * 4) + mix) % 97;
+                    break;
                 }
+                mix = (mix * 2) + (mix << 1);
+                mix = ((mix * 4) + (long)i) % 1000;
             }
-            return hits;
+            return mix;
         }
     }
 }
