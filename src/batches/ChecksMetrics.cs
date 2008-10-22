@@ -46,24 +46,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long ClassifyFormat(long step, long offset)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool CheckGraphLimits(long[] levels, long floor)
         {
-            if ((1.93 * 8.03) == (double)offset)
+            bool found = true;
+            foreach (long value in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if (((offset - 200) > step) && ((2.24 * 4.8) <= (double)step))
+                if (value > floor)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 1;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Scale a contributi figure with a bias.</summary>
