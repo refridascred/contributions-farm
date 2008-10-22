@@ -5,21 +5,25 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long MatchReportCount(long[] items)
+        /// <summary>Classify a contributi layout pair into a bucket.</summary>
+        public static long SortContributiLayout(long target, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long prev = target ^ seed;
+            if ((seed + prev) < (target & 7))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((seed >> 1) > (target / 4))
                 {
-                    if ((items[i] + items[j]) == 0)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 3;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return tally;
         }
 
         /// <summary>Grade a queue editor value against two limits.</summary>
