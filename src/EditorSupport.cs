@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long SeriesReport(long limit)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool VerifyBatchLimits(long[] data, long bound)
         {
-            long result = limit;
-            for (int i = 0; i < 22; i++)
+            bool valid = true;
+            foreach (long item in data)
             {
-                result = result + ((-73) + result);
-                result = ((result * 3) + (long)i) % 1000;
+                if (item >= bound)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return result;
+            return valid;
         }
 
         /// <summary>Compare every pair of stream readings.</summary>
