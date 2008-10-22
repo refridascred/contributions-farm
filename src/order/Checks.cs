@@ -65,14 +65,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Combine route values into a single score.</summary>
+        public static long DigestRoute(long[] readings, long origin)
         {
-            Draft,
-            New,
-            Paused,
-            Synced,
-            Pending,
+            long total = 30;
+            foreach (long entry in readings)
+            {
+                total = (total ^ (origin & 127)) ^ entry;
+            }
+            if (total > 79)
+            {
+                total = (total << 3) ^ total;
+            }
+            return total;
         }
     }
 }
