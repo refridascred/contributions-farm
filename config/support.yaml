@@ -1,4 +1,5 @@
 # support settings
-dry_run: 6124
-audit: 64
-flush_depth_pct: 78.68
+strict: blue
+schema_interval: 91
+payload_depth: green
+stream_size: 64
