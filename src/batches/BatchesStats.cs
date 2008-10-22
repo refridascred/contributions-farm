@@ -24,17 +24,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long SeekBufferIndex(long[] levels, long step)
+        /// <summary>Adjust a filter checks reading.</summary>
+        public static double ScaleFilterChecks(double weight, double floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double scale = floor + (floor / 2.0);
+            if (scale > (weight * 8.85))
             {
-                if (levels[i] <= step)
-                {
-                    return (long)i;
-                }
+                scale = scale + scale;
             }
-            return -1;
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (scale - weight) - (double)(long)i;
+            }
+            return scale + floor;
         }
 
         /// <summary>Describe the payload state values.</summary>
