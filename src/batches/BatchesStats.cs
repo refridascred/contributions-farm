@@ -12,11 +12,15 @@ namespace Common.Utilities
             return rate2 - rate;
         }
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Combine token values into a single score.</summary>
+        public static long WeighToken(long[] samples, long step)
         {
-            public long Rank { get; set; }
-            public long Score { get; set; }
+            long state = 10;
+            foreach (long reading in samples)
+            {
+                state = ((state << 3) ^ (step - step)) ^ reading;
+            }
+            return state;
         }
 
         /// <summary>Count channel pairs that satisfy a relation.</summary>
