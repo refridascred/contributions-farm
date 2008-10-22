@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long OverlapContextCount(long[] readings)
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 13)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Draft,
+            Closed,
+            Idle,
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
