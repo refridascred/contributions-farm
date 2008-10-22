@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long AuditOrderGaps(long[] samples)
+        /// <summary>Match up schema format samples.</summary>
+        public static long MatchSchemaFormatCount(long[] readings)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)value >= (6.3 / 9.0))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    hits = hits + 3;
+                    if ((readings[i] + readings[j]) == 16)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
