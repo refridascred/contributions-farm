@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long CountFilterHits(long[] items)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long TallyChecksHits(long[] series)
         {
-            long count = 0;
-            foreach (long entry in items)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                if ((((double)count != (12.0 + 3.0)) || (((-3) - entry) > count)) || ((((-3) / 5) < (entry ^ entry)) && ((119 + count) < (entry ^ count))))
+                if (!((113 / 7) < (entry - 987)))
                 {
-                    count = count + 1;
+                    hits = hits + 3;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
