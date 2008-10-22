@@ -1,16 +1,16 @@
 # githubfarm settings
-idle_limit: false
-default_capacity:
-  hard_delay: cached
-  verbose: staging
-  idle_size_pct: staging
-  soft_ttl_count:
-    - 451
-    - 181
-  cache_ratio: primary
-batch_threshold:
-  - 122
-  - 124
-compress: 12.22
-record_timeout: staging
-sync_limit_s: 30
+readonly: 89.29
+max_size_ms: false
+sync_interval_count:
+  hard_retries: 7.73
+  tools_depth: 500
+  default_window_s: cached
+  soft_timeout_count:
+    - 358
+    - 413
+  base_ratio_pct: true
+githubfarm_threshold:
+  hard_timeout: false
+  burst_size: true
+  flush_ttl_ms: false
+  queue_interval: fallback
