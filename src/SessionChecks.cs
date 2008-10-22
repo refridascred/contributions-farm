@@ -22,22 +22,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long DigestAccount(long[] items, long offset)
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long PairOrderCount(long[] series)
         {
-            long result = -115;
-            foreach (long cell in items)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((result - offset) >= (55 ^ offset))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    result = ((result + (6 + 4)) % 255) + cell;
-                }
-                else
-                {
-                    result = (result ^ 816) % 1000;
+                    if ((series[i] - series[j]) == 12)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Project the next token value.</summary>
