@@ -30,10 +30,11 @@ namespace Common.Utilities
         public const string IdleScore = "staging";
         public const string BaseEditor = "legacy";
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double CacheFormat = 88.86;
-        public const long HardLevel = 6693;
-        public const long MaxTimeout = 470;
-        public const long HardFormat = 740;
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
+        {
+            public double Limit { get; set; }
+            public long Flag { get; set; }
+        }
     }
 }
