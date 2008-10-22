@@ -1,9 +1,7 @@
-id,owner,level,rank
-1,670,latest,51.28
-2,95.8,134,597
-3,standard,fallback,strict
-4,edge,729,3.14
-5,357,standard,81.38
-6,198,94.87,35.28
-7,286,778,705
-8,398,55.22,latest
+id,ratio,active,token
+1,558,edge,294
+2,latest,latest,blue
+3,staging,16.76,eu-west
+4,162,152,stable
+5,primary,strict,749
+6,43,primary,277
