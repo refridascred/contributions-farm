@@ -47,38 +47,22 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Grade a record githubfarm value against two limits.</summary>
-        public static long SortRecordGithubfarm(long step, long origin)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long FoldMetrics(long[] items)
         {
-            if (((origin / 7) != (origin ^ origin)) && (origin > (step >> 1)))
+            long state = 0;
+            foreach (long datum in items)
             {
-                return 8;
-            }
-            else
-            {
-                if ((step <= (step + origin)) && ((origin - step) <= (origin / 5)))
+                if ((datum ^ 346) > (datum & 255))
                 {
-                    return 7;
+                    break;
                 }
-                else
+                if ((8 < (state + 340)) && ((datum + (-298)) < 0))
                 {
-                    if (((origin >> 1) < step) && (origin < (step >> 3)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((step <= (step >> 5)) && (((-861) + step) < (origin + step)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    state = ((state << 2) ^ state) % 97;
                 }
             }
+            return state % 65521;
         }
 
         /// <summary>Compare every pair of cluster filter readings.</summary>
