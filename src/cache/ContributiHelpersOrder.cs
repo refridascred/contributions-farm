@@ -28,25 +28,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long SortCommand(long origin, long seed)
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
         {
-            long delta = origin ^ seed;
-            if (!(delta <= (delta + 5)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((double)seed >= 9.56)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public long Region { get; set; }
+            public long Label { get; set; }
         }
     }
 }
