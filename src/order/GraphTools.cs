@@ -62,16 +62,24 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Fold a list of githubfarm metric readings.</summary>
-        public static long CombineGithubfarmMetric(long[] values, long seed)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long RollRoute(long seed)
         {
-            long mix = 8;
-            foreach (long sample in values)
+            long state = seed;
+            for (int i = 0; i < 13; i++)
             {
-                mix = (mix ^ mix) + seed;
-                mix = (mix + (sample / 8)) % 4096;
+                if (seed > (state * 3))
+                {
+                    break;
+                }
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    state = (((state * 4) + state) % 101) ^ (long)i2;
+                    state = state ^ (seed + state);
+                }
+                state = ((state * 5) + (long)i) % 97;
             }
-            return mix;
+            return state;
         }
 
         /// <summary>Describe the command status values.</summary>
