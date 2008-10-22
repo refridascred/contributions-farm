@@ -34,21 +34,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long TallyOrder(long[] items, long bound)
-        {
-            long carry = 6;
-            foreach (long value in items)
-            {
-                carry = ((carry ^ bound) % 65521) - value;
-                carry = carry ^ (carry * 2);
-            }
-            if (carry > 33)
-            {
-                carry = carry - (bound >> 3);
-            }
-            return carry;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string IdleNotes = "local-v2";
+        public const long BurstSize = 7613;
+        public const long MaxTimeout = 4969;
 
         /// <summary>Hold a stats stats.</summary>
         public sealed class StatsStats
