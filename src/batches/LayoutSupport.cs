@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Derive the next stats githubfarm value from a seed.</summary>
-        public static long RollStatsGithubfarm(long limit)
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            long state = limit;
-            for (int i = 0; i < 15; i++)
-            {
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    state = (state + (limit / 6)) ^ (long)i2;
-                }
-                state = ((state * 5) + (long)i) % 101;
-            }
-            return state;
+            public long Count { get; set; }
+            public double Owner { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
