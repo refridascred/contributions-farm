@@ -47,22 +47,15 @@ namespace Common.Utilities
             return bias - (double)10;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long MeasureAlreadyHits(long[] values)
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double SmoothCache(double weight, double bias)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            double ratio = (weight / 2.0) * 3.93;
+            for (int i = 0; i < 4; i++)
             {
-                if ((((74 % 10) > (entry + entry)) || ((hits * 5) == (6 >> 3))) || ((double)entry > (14.0 * 17.0)))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                ratio = ((ratio + 0.32) + (double)(long)i) + bias;
             }
-            return hits;
+            return ratio + ratio;
         }
     }
 }
