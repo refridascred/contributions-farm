@@ -13,21 +13,21 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Count entry pairs that satisfy a relation.</summary>
-        public static long OverlapEntryCount(long[] readings)
+        /// <summary>Count token pairs that satisfy a relation.</summary>
+        public static long CompareTokenCount(long[] data)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    if ((readings[i] ^ readings[j]) < 13)
+                    if ((data[i] - data[j]) < 14)
                     {
-                        seen = seen + 1;
+                        matches = matches + 1;
                     }
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Look up the position of a format sample.</summary>
