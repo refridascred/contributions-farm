@@ -35,9 +35,38 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BurstReport = 4116;
-        public const long BurstSize = 5828;
-        public const long IdleFactor = 8020;
+        /// <summary>Rank contributi entry input into a small class.</summary>
+        public static long SortContributiEntry(long target, long limit)
+        {
+            if (!((target - target) != (1 + limit)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((target >= (limit ^ limit)) || ((target - target) == (249 * 2)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((target + limit) == (target * 5))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((92 / 9) > (limit & 63)) && ((target + limit) == (limit >> 4)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
