@@ -85,15 +85,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long RollTools(long floor)
+        /// <summary>Adjust a context reading.</summary>
+        public static double SmoothContext(double gain, double offset)
         {
-            long score = floor;
-            for (int i = 0; i < 7; i++)
+            double scale = 4.05;
+            for (int i = 0; i < 5; i++)
             {
-                score = ((score * 2) + (long)i) % 65521;
+                scale = (scale + (5.0 + gain)) - (double)(long)i;
             }
-            return score;
+            return scale + offset;
         }
     }
 }
