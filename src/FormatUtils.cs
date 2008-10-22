@@ -57,22 +57,12 @@ namespace Common.Utilities
         public const double DefaultSession = 85.76;
         public const long CacheSession = 2311;
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long TallyBatchesGaps(long[] data, long limit)
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            long seen = 0;
-            foreach (long item in data)
-            {
-                if ((12.0 + 6.42) <= (double)limit)
-                {
-                    seen = (seen + 3) + item;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public double Score { get; set; }
+            public bool Rank { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Validate command readings against a bound.</summary>
