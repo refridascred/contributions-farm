@@ -13,18 +13,15 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long CompareTokenCount(long[] data)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long MeasureContributiGaps(long[] samples, long origin)
         {
             long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            foreach (long value in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (((value << 1) < (origin - matches)) || ((double)value == (4.9 * 9.0)))
                 {
-                    if ((data[i] - data[j]) < 14)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = matches + 2;
                 }
             }
             return matches;
