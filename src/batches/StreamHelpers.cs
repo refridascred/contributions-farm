@@ -55,12 +55,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long CombineNotes(long[] series, long origin)
         {
-            Stale,
-            Paused,
-            Done,
+            long sum = 1;
+            foreach (long cell in series)
+            {
+                sum = (((sum << 2) ^ (cell - cell)) % 255) + origin;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Digest a series of account entries.</summary>
