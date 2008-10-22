@@ -23,11 +23,12 @@ namespace Common.Utilities
         public const string StepWidth = "primary-1";
         public const long IdleLevel = 4625;
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long MaxLevel = 4495;
-        public const double BurstSize = 50.91;
-        public const string BurstDepth = "primary-v2";
-        public const long BaseRatio = 8380;
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
+        {
+            public string Level { get; set; } = "";
+            public long Count { get; set; }
+        }
 
         /// <summary>Describe the route class values.</summary>
         public enum RouteClass
