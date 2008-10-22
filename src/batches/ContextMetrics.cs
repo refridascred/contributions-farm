@@ -38,12 +38,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            Locked,
-            Pending,
-            Active,
+            Failed,
+            Done,
+            Dropped,
+            Ready,
+            Paused,
         }
 
         /// <summary>Rank record input into a small class.</summary>
