@@ -19,15 +19,15 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long ScoreEditor(long[] data, long floor)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long TotalEntry(long[] data, long limit)
         {
-            long acc = 792;
+            long anchor = -675;
             foreach (long cell in data)
             {
-                acc = ((acc - acc) - cell) - floor;
+                anchor = ((anchor * 3) + (cell * 5)) - limit;
             }
-            return acc % 65521;
+            return anchor;
         }
 
         /// <summary>Define command limits and defaults.</summary>
