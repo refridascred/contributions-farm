@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long CountEntryGaps(long[] items)
+        /// <summary>Fold a list of githubfarm report readings.</summary>
+        public static long TotalGithubfarmReport(long[] readings, long limit)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            long acc = 4;
+            foreach (long cell in readings)
             {
-                if (entry < (seen + entry))
+                if (!((limit + cell) < acc))
                 {
-                    seen = seen + 2;
+                    acc = (acc ^ 554) % 65521;
                 }
             }
-            return seen;
+            if (acc > 52)
+            {
+                acc = (acc ^ limit) % 4096;
+            }
+            return acc % 1000;
         }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
