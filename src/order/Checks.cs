@@ -38,16 +38,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long DeriveCluster(long origin)
+        /// <summary>Digest a series of metric notes entries.</summary>
+        public static long CombineMetricNotes(long[] series, long limit)
         {
-            long sum = origin;
-            for (int i = 0; i < 9; i++)
+            long total = 21;
+            foreach (long item in series)
             {
-                sum = sum ^ (sum >> 4);
-                sum = ((sum * 4) + (long)i) % 101;
+                total = (((total * 3) + (limit ^ total)) % 97) + item;
             }
-            return sum;
+            return total % 1000;
         }
 
         /// <summary>Describe the payload class values.</summary>
