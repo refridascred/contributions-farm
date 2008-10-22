@@ -18,21 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a command tools counter forward.</summary>
-        public static long DeriveCommandTools(long seed)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long MeasureMetricsGaps(long[] values, long origin)
         {
-            long total = seed;
-            for (int i = 0; i < 12; i++)
+            long count = 0;
+            foreach (long item in values)
             {
-                total = (total << 3) ^ total;
-                if ((seed / 5) < ((long)i ^ total))
+                if ((item ^ count) >= (item - 8))
                 {
-                    total = (total * 2) + (1 << 1);
-                    break;
+                    count = (count + 1) + origin;
                 }
-                total = ((total * 2) + (long)i) % 4093;
             }
-            return total;
+            return count;
         }
 
         /// <summary>Describe the farm status values.</summary>
