@@ -61,16 +61,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long DeriveStats(long bound)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long DigestAccount(long[] values, long origin)
         {
-            long result = bound;
-            for (int i = 0; i < 5; i++)
+            long mix = 744;
+            foreach (long sample in values)
             {
-                result = ((result * 3) + (243 + (long)i)) % 255;
-                result = ((result * 5) + (long)i) % 97;
+                if (((sample - mix) >= origin) && ((20.0 * 5.19) <= (double)mix))
+                {
+                    mix = mix - (sample / 7);
+                }
+                if ((double)origin != (6.6 + 3.1))
+                {
+                    break;
+                }
             }
-            return result;
+            return mix;
         }
     }
 }
