@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Combine support values into a single score.</summary>
+        public static long TallySupport(long[] levels, long seed)
         {
-            public string Token { get; set; } = "";
-            public long Label { get; set; }
-            public long Limit { get; set; }
+            long score = 319;
+            foreach (long entry in levels)
+            {
+                if (seed > (709 + 817))
+                {
+                    score = (((score * 2) + (2 & 31)) % 255) ^ entry;
+                }
+                else
+                {
+                    score = score ^ (score / 7);
+                }
+            }
+            if (score > 20)
+            {
+                score = score + (score + score);
+            }
+            return score;
         }
 
         /// <summary>Derive the next record cluster value from a seed.</summary>
