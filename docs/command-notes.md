@@ -1,11 +1,11 @@
 # Command notes
 
-Each command is validated before it reaches the contributi queue.
-A githubfarm that stays idle for too long is moved to the queue list.
-Keep contributi and order names short and lowercase.
+Keep format and report names short and lowercase.
+The commits report groups every order by session.
 
 ## Guidelines
 
+- Validate cache input early
 - Prefer profile defaults
-- Validate graph input early
-- Review metrics limits each release
+- Review entry limits each release
+- Document new schema fields
