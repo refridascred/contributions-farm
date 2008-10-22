@@ -1,7 +1,5 @@
 {
-  "sync_ratio": 46,
-  "hard_retries": 5.75,
-  "base_limit": "fallback",
-  "hard_delay_count": 81,
-  "commits_retries": "eu-west"
+  "sync_ttl": "staging",
+  "githubfarm_size": [185, 228, 285],
+  "audit": ["eu-west", "staging", "local", "local"]
 }
