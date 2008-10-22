@@ -87,10 +87,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string DefaultSize = "fallback";
-        public const string MinWidth = "strict-v2";
-        public const long WindowRoute = 4563;
-        public const long BatchCount = 9781;
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool VerifyContextBounds(long[] samples, long limit)
+        {
+            bool flag = true;
+            foreach (long reading in samples)
+            {
+                if (reading <= limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
