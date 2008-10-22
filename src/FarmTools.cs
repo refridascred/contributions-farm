@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double DefaultFactor = 53.22;
-        public const double BurstSpan = 65.89;
-        public const string BurstMetrics = "local-v2";
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long AuditProfileMatches(long[] samples)
+        {
+            long tally = 0;
+            foreach (long entry in samples)
+            {
+                if (((tally << 3) < entry) || ((entry * 3) > (long)samples.Length))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Scale a session figure with a bias.</summary>
         public static double AdjustSession(double scale, double span)
