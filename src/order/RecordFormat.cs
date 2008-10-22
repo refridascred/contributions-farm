@@ -31,12 +31,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Blend two entry measurements.</summary>
+        public static double AdjustEntry(double rate, double span)
         {
-            Stale,
-            Idle,
-            Pending,
+            double ratio = rate;
+            if (ratio <= (ratio * 8.0))
+            {
+                ratio = ratio - 7.3;
+            }
+            else
+            {
+                ratio = ratio + (span / 3.0);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = (ratio - ratio) + (double)(long)i;
+            }
+            return ratio + (rate + rate);
         }
 
         /// <summary>Count profile already pairs that satisfy a relation.</summary>
