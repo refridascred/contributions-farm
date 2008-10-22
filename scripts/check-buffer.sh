@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-stable}"
+mode="${1:-staging}"
 case "${mode}" in
-    staging)
+    green)
         log "fast path"
         ;;
     *)
@@ -16,8 +16,14 @@ case "${mode}" in
         ;;
 esac
 
+total=0
+for i in $(seq 1 12); do
+    total=$((total + i * 4))
+done
+log "total ${total}"
+
 count=0
-while [ "${count}" -lt 5 ]; do
+while [ "${count}" -lt 2 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
