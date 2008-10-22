@@ -60,13 +60,27 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long FoldContributi(long[] samples, long floor)
         {
-            public long Flag { get; set; }
-            public string Label { get; set; } = "";
-            public double Total { get; set; }
-            public string Score { get; set; } = "";
+            long anchor = 3;
+            foreach (long sample in samples)
+            {
+                anchor = anchor - (floor + 855);
+                if ((anchor << 3) < (sample + anchor))
+                {
+                    anchor = ((anchor << 2) ^ sample) % 97;
+                }
+                else
+                {
+                    anchor = (anchor * 4) + (floor % 7);
+                }
+            }
+            if (anchor > 6)
+            {
+                anchor = ((anchor * 3) + (anchor - anchor)) % 65521;
+            }
+            return anchor;
         }
     }
 }
