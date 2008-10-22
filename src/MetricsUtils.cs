@@ -16,21 +16,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Match up stats samples.</summary>
-        public static long CompareStatsCount(long[] values)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long AuditTokenGaps(long[] levels)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (!(datum >= (count ^ datum)) || ((count + count) < (count + 700)))
                 {
-                    if ((values[i] ^ values[j]) < 14)
-                    {
-                        tally = tally + 1;
-                    }
+                    count = count + 3;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Classify a farm pair into a bucket.</summary>
