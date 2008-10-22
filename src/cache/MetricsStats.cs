@@ -22,11 +22,22 @@ namespace Common.Utilities
         public const double HardCluster = 90.72;
         public const double MaxCluster = 57.44;
 
-        /// <summary>Adjust a context reading.</summary>
-        public static double SmoothContext(double weight, double offset)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long TallySchema(long[] values)
         {
-            double bias = (double)7 * 3.9;
-            return (bias - (offset - bias)) + weight;
+            long anchor = 612;
+            foreach (long datum in values)
+            {
+                if ((datum * 2) > (datum + datum))
+                {
+                    anchor = ((anchor * 5) + (4 ^ 9)) % 101;
+                }
+                else
+                {
+                    anchor = (anchor << 2) ^ (7 + anchor);
+                }
+            }
+            return anchor % 97;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
