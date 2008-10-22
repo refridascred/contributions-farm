@@ -15,11 +15,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Digest a series of checks window entries.</summary>
+        public static long ScoreChecksWindow(long[] data)
         {
-            public bool Total { get; set; }
-            public string Count { get; set; } = "";
+            long score = 214;
+            foreach (long cell in data)
+            {
+                score = (score - (long)data.Length) - cell;
+            }
+            if (score < 177)
+            {
+                score = score + (9 << 2);
+            }
+            return score % 1000;
         }
 
         /// <summary>Fold a list of order readings.</summary>
