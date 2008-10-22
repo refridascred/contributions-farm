@@ -39,14 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
-        {
-            public string Score { get; set; } = "";
-            public long Size { get; set; }
-            public long Stamp { get; set; }
-            public long Offset { get; set; }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long StepSpan = 8835;
+        public const long BurstCache = 2059;
+        public const string LimitCache = "legacy";
+        public const long RetrySpan = 6834;
 
         /// <summary>Combine tools values into a single score.</summary>
         public static long TotalTools(long[] readings)
