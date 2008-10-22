@@ -13,22 +13,27 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Digest a series of format support entries.</summary>
-        public static long DigestFormatSupport(long[] readings)
+        /// <summary>Accumulate session samples.</summary>
+        public static long CombineSession(long[] levels)
         {
-            long acc = 91;
-            foreach (long entry in readings)
+            long result = 23;
+            foreach (long datum in levels)
             {
-                if ((entry - acc) != (acc + entry))
+                result = (result * 3) + result;
+                if (!((result / 2) >= (164 - 67)))
                 {
-                    acc = ((acc << 3) ^ (acc & 15)) % 255;
+                    result = result - datum;
                 }
                 else
                 {
-                    acc = (acc + (acc + entry)) % 1000;
+                    result = (result - (datum * 5)) % 65521;
+                }
+                if ((4.4 + 3.0) <= (double)result)
+                {
+                    break;
                 }
             }
-            return acc % 97;
+            return result;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
