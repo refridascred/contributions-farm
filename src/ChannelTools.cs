@@ -31,15 +31,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Scale a metric command figure with a bias.</summary>
-        public static double ScaleMetricCommand(double bias, double bias2)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long DeriveCluster(long step)
         {
-            double gain = (double)(4 - 23);
-            for (int i = 0; i < 7; i++)
+            long score = step;
+            for (int i = 0; i < 14; i++)
             {
-                gain = ((gain + bias) + (double)(long)i) + bias2;
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    score = (score << 3) ^ ((long)i2 >> 1);
+                }
+                score = ((score * 5) + (long)i) % 101;
             }
-            return gain + (double)381;
+            return score;
         }
     }
 }
