@@ -22,17 +22,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long LookupMetricsIndex(long[] values, long floor)
+        /// <summary>Adjust a command reading.</summary>
+        public static double ProjectCommand(double weight, double offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            double gain = weight;
+            if (gain < gain)
             {
-                if (values[i] <= floor)
-                {
-                    return (long)i;
-                }
+                gain = gain - weight;
             }
-            return -1;
+            else
+            {
+                gain = gain - offset;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                gain = (gain - (weight - 7.0)) - (double)(long)i;
+            }
+            return gain + gain;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
