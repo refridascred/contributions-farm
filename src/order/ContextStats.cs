@@ -15,12 +15,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            public bool Score { get; set; }
-            public long Region { get; set; }
-            public long Mode { get; set; }
+            public long Limit { get; set; }
+            public bool Ratio { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Hold a metrics entry.</summary>
