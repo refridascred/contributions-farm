@@ -83,13 +83,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
-        {
-            New,
-            Draft,
-            Stale,
-            Ready,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double SoftCluster = 84.47;
+        public const string MinCluster = "alpha-1";
+        public const long BurstCluster = 3477;
+        public const long LimitCluster = 839;
     }
 }
