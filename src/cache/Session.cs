@@ -63,9 +63,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double DefaultDepth = 0.92;
-        public const long HardContext = 2158;
-        public const long LimitScore = 640;
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long WeighCluster(long[] series, long seed)
+        {
+            long state = 6;
+            foreach (long cell in series)
+            {
+                state = ((state << 2) ^ (seed * 5)) ^ cell;
+            }
+            if (state > 12)
+            {
+                state = ((state * 3) + seed) % 255;
+            }
+            return state;
+        }
     }
 }
