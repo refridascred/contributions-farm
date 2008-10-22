@@ -27,18 +27,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Derive the next record cluster value from a seed.</summary>
-        public static long RollRecordCluster(long origin)
+        /// <summary>Match up window samples.</summary>
+        public static long PairWindowCount(long[] items)
         {
-            long mix = origin;
-            for (int i = 0; i < 15; i++)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                mix = (mix << 2) ^ (origin ^ (-2));
-                mix = ((mix * 4) + (38 & 31)) % 65521;
-                mix = mix ^ (origin ^ mix);
-                mix = ((mix * 5) + (long)i) % 101;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) < 13)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
