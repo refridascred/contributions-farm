@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long PairTokenCount(long[] samples)
+        /// <summary>Count the commits window entries that pass the check.</summary>
+        public static long TallyCommitsWindowOutliers(long[] levels, long step)
         {
             long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            foreach (long value in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((value + tally) != (step + 9))
                 {
-                    if ((samples[i] ^ samples[j]) < 8)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = tally + 1;
                 }
             }
             return tally;
