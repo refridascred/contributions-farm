@@ -1,10 +1,7 @@
 # entry settings
-default_limit_pct: 96
-hard_interval: false
-report_depth:
-  - eu-west
-  - edge
-farm_retries:
-  - eu-west
-  - stable
-  - standard
+idle_limit: local
+idle_ttl: true
+flush_depth_ms: 10.59
+report_ttl: 83.32
+flush_threshold_s: 44.55
+metric_interval: 60
