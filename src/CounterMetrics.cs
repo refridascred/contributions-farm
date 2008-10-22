@@ -34,19 +34,18 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool GuardWindowRange(long[] series, long target)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long MeasureFarmHits(long[] values)
         {
-            bool flag = true;
-            foreach (long item in series)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                if (item < target)
+                if (((5.9 / 4.0) <= (double)seen) && (((seen + seen) != (3 % 12)) && ((seen * 4) <= (datum & 7))))
                 {
-                    flag = false;
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return flag;
+            return seen;
         }
     }
 }
