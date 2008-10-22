@@ -44,21 +44,10 @@ namespace Common.Utilities
         public const string WindowTools = "alpha-1";
         public const long BaseLevel = 1172;
 
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long OverlapPayloadCount(long[] levels)
-        {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) != 11)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BaseTimeout = 4968;
+        public const long LimitContext = 1482;
+        public const string CacheContext = "open-v2";
+        public const double LimitWidth = 63.28;
     }
 }
