@@ -1,16 +1,15 @@
 {
-  "compress": 100,
-  "strict": 80,
-  "default_delay": [117, 355, 103, 442],
-  "metric_threshold": {
-    "cache_limit_pct": "blue",
-    "warm_limit": "open",
-    "strict": {
-      "report_delay": 80,
-      "warm_size_s": true,
-      "base_threshold_s": "blue"
-    },
-    "max_delay": 7430,
-    "channel_delay": false
-  }
+  "poll_delay_count": 47.57,
+  "cache_depth_ms": true,
+  "compress": {
+    "min_ttl_count": true,
+    "schema_capacity": 85.88,
+    "filter_capacity": "latest",
+    "cache_ttl_pct": 6425,
+    "poll_timeout_count": 88.7,
+    "base_retries_count": 17.41
+  },
+  "burst_retries": true,
+  "warm_window_s": true,
+  "audit": "cached"
 }
