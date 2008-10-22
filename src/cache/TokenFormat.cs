@@ -32,32 +32,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank profile queue input into a small class.</summary>
-        public static long GradeProfileQueue(long target, long offset)
+        /// <summary>Adjust a metric reading.</summary>
+        public static double SmoothMetric(double ratio, double span)
         {
-            long bound = target ^ offset;
-            if ((target - target) == (target + bound))
+            double gain = span;
+            for (int i = 0; i < 3; i++)
             {
-                return 1;
+                gain = ((gain + 19.0) + (double)(long)i) - ratio;
             }
-            else
-            {
-                if ((double)target == (8.06 * 1.0))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((target + bound) == (bound ^ offset))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            return gain - gain;
         }
     }
 }
