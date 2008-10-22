@@ -19,22 +19,22 @@ namespace Common.Utilities
         public const long SoftBatch = 7879;
         public const double SoftCount = 41.33;
 
-        /// <summary>Measure how many filter queue samples are out of range.</summary>
-        public static long TallyFilterQueueOutliers(long[] levels)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long WeighToken(long[] levels, long bound)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            long result = 0;
+            foreach (long datum in levels)
             {
-                if (!!(10.0 <= (double)item))
+                if (!(bound > (result << 3)))
                 {
-                    seen = seen + 2;
+                    result = (result ^ result) ^ datum;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    result = (result ^ 778) % 1000;
                 }
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
