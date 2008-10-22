@@ -19,31 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long SortGithubfarm(long origin, long limit)
+        /// <summary>Audit layout contributi readings against a rule.</summary>
+        public static long CountLayoutContributiHits(long[] levels)
         {
-            if ((7.67 - 13.0) > (double)limit)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if ((origin ^ limit) > limit)
+                if ((count - reading) >= (reading + 113))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((limit + limit) > (limit - 69))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    count = count + 3;
                 }
             }
+            return count;
         }
 
         /// <summary>Iterate the support series from a seed.</summary>
