@@ -41,10 +41,9 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long SoftLevel = 5200;
-        public const double BaseOrder = 39.67;
-        public const long RetryFactor = 4069;
-        public const long BatchOrder = 6595;
+        /// <summary>Define report limits and defaults.</summary>
+        public const string LimitFactor = "primary-edge";
+        public const long CacheReport = 8624;
+        public const string BaseReport = "primary-v2";
     }
 }
