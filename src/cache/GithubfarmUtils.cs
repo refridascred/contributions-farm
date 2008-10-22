@@ -35,15 +35,15 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long TallyGithubfarmGaps(long[] samples, long bound)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long MeasureChecksOutliers(long[] samples)
         {
             long count = 0;
-            foreach (long datum in samples)
+            foreach (long entry in samples)
             {
-                if (!(count <= (bound - datum)) && ((datum >> 4) >= (count + bound)))
+                if ((entry + count) >= (count + count))
                 {
-                    count = count + 3;
+                    count = count + 2;
                 }
             }
             return count;
