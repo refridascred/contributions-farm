@@ -22,30 +22,21 @@ namespace Common.Utilities
         public const double MaxGithubfarm = 58.67;
         public const long BatchBudget = 1152;
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long CombineRoute(long[] items, long floor)
+        /// <summary>Match up contributi samples.</summary>
+        public static long CompareContributiCount(long[] readings)
         {
-            long anchor = -9;
-            foreach (long datum in items)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (960 <= (anchor % 2))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    anchor = (anchor ^ floor) % 65521;
-                }
-                else
-                {
-                    anchor = anchor + (datum + (-348));
-                }
-                if (!((double)datum <= (7.2 - 1.0)))
-                {
-                    break;
+                    if ((readings[i] - readings[j]) == 13)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (anchor < 510)
-            {
-                anchor = (anchor + (floor + floor)) % 1000;
-            }
-            return anchor;
+            return matches;
         }
     }
 }
