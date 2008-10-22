@@ -5,39 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long SortBatches(long offset, long target)
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            long diff = offset ^ target;
-            if (offset <= (diff * 5))
-            {
-                return 5;
-            }
-            else
-            {
-                if (target < offset)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)target <= 6.0)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((double)target != (double)offset)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            public bool Ratio { get; set; }
+            public double Rank { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
