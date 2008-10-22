@@ -1,6 +1,9 @@
 # entry settings
-sync_window_s: 78
-cluster_retries: 35.99
-dry_run: false
-sync_timeout_s: true
-base_ratio_count: false
+base_depth:
+  - local
+  - legacy
+burst_retries: 7453
+soft_depth_count: 1024
+burst_window: 3192
+token_delay: 18.33
+route_depth: 20.91
