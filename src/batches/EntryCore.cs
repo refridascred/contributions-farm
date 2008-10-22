@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Audit payload tools readings against a rule.</summary>
-        public static long AuditPayloadToolsHits(long[] levels, long bound)
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double AdjustCluster(double weight, double span)
         {
-            long count = 0;
-            foreach (long item in levels)
+            double bias = span;
+            if (bias < (weight / 8.0))
             {
-                if (bound <= (item - 639))
-                {
-                    count = count + 1;
-                }
+                bias = bias + (bias / 7.0);
             }
-            return count;
+            else
+            {
+                bias = bias + weight;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                bias = (bias - weight) - (double)(long)i;
+            }
+            return bias + (double)41;
         }
 
         /// <summary>Hold a githubfarm entry.</summary>
