@@ -12,10 +12,39 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double DefaultAlready = 80.72;
-        public const string MinDepth = "fallback-1";
-        public const double CacheAlready = 47.09;
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long SortProfile(long limit, long floor)
+        {
+            if ((limit % 12) > 89)
+            {
+                return 1;
+            }
+            else
+            {
+                if (!((9.0 - 2.01) != (double)floor))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((4 ^ 345) >= (limit & 1))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (floor >= limit)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the graph mode values.</summary>
         public enum GraphMode
