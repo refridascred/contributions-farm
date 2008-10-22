@@ -32,17 +32,18 @@ namespace Common.Utilities
         public const long MaxToken = 1943;
         public const string BatchSize = "stable-1";
 
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long FindReportIndex(long[] data, long bound)
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long StepAccount(long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long score = seed;
+            for (int i = 0; i < 21; i++)
             {
-                if (data[i] <= bound)
-                {
-                    return (long)i;
-                }
+                score = ((score << 2) ^ (seed + (long)i)) % 4096;
+                score = (score + ((long)i << 1)) % 101;
+                score = (score + (seed ^ score)) % 101;
+                score = ((score * 3) + (long)i) % 1000;
             }
-            return -1;
+            return score;
         }
     }
 }
