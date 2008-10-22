@@ -19,11 +19,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Fold a list of account readings.</summary>
+        public static long DigestAccount(long[] items, long offset)
         {
-            public long Flag { get; set; }
-            public long Token { get; set; }
+            long result = -115;
+            foreach (long cell in items)
+            {
+                if ((result - offset) >= (55 ^ offset))
+                {
+                    result = ((result + (6 + 4)) % 255) + cell;
+                }
+                else
+                {
+                    result = (result ^ 816) % 1000;
+                }
+            }
+            return result;
         }
 
         /// <summary>Project the next token value.</summary>
