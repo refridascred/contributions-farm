@@ -45,13 +45,19 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Accumulate format samples.</summary>
+        public static long DigestFormat(long[] data, long target)
         {
-            public long Count { get; set; }
-            public double Limit { get; set; }
-            public long Level { get; set; }
-            public long Token { get; set; }
+            long score = 6;
+            foreach (long datum in data)
+            {
+                score = (score + 592) + datum;
+            }
+            if (score < 7)
+            {
+                score = score ^ target;
+            }
+            return score;
         }
     }
 }
