@@ -18,19 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long TotalAccount(long[] levels, long step)
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            long state = 246;
-            foreach (long datum in levels)
-            {
-                state = (state - 21) ^ datum;
-                if ((68 / 2) <= step)
-                {
-                    state = (state - (step + state)) % 1000;
-                }
-            }
-            return state;
+            Done,
+            Queued,
+            Failed,
         }
 
         /// <summary>Describe the counter level values.</summary>
