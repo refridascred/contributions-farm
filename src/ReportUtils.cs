@@ -43,21 +43,19 @@ namespace Common.Utilities
         public const long MinDepth = 7958;
         public const long MaxRatio = 4197;
 
-        /// <summary>Compare every pair of support readings.</summary>
-        public static long PairSupportCount(long[] readings)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool VerifyEditorRange(long[] series, long target)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool found = true;
+            foreach (long value in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (value > target)
                 {
-                    if ((readings[i] + readings[j]) != 9)
-                    {
-                        count = count + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
     }
 }
