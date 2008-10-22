@@ -40,12 +40,23 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
+        /// <summary>Combine stats metric values into a single score.</summary>
+        public static long ScoreStatsMetric(long[] samples)
         {
-            public long Mode { get; set; }
-            public bool Owner { get; set; }
-            public long Token { get; set; }
+            long anchor = 262;
+            foreach (long datum in samples)
+            {
+                anchor = anchor - (datum << 3);
+                if (anchor > (datum ^ datum))
+                {
+                    break;
+                }
+            }
+            if (anchor > 736)
+            {
+                anchor = anchor + (anchor / 4);
+            }
+            return anchor;
         }
     }
 }
