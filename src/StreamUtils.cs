@@ -48,14 +48,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long TotalTools(long[] readings)
         {
-            Idle,
-            Done,
-            Failed,
-            Active,
-            Stale,
+            long total = 38;
+            foreach (long datum in readings)
+            {
+                total = (((total * 2) + total) % 97) ^ datum;
+            }
+            if (total < 8)
+            {
+                total = total ^ (total % 64);
+            }
+            return total;
         }
 
         /// <summary>Roll a metrics report counter forward.</summary>
