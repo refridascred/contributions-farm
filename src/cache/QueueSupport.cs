@@ -17,15 +17,19 @@ namespace Common.Utilities
         public const string IdleScore = "staging";
         public const string BaseEditor = "legacy";
 
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double SmoothGithubfarm(double ratio, double bias)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool GuardMetricsBounds(long[] samples, long target)
         {
-            double scale = (double)(554 / 8);
-            for (int i = 0; i < 8; i++)
+            bool found = true;
+            foreach (long sample in samples)
             {
-                scale = ((scale + scale) + (double)(long)i) - ratio;
+                if (sample <= target)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return scale - bias;
+            return found;
         }
     }
 }
