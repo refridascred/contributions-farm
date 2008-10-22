@@ -30,15 +30,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next support value.</summary>
-        public static double ScaleSupport(double bias, double floor)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long CombineNotes(long[] levels)
         {
-            double mean = bias * 1.6;
-            if (mean >= mean)
+            long acc = -506;
+            foreach (long entry in levels)
             {
-                mean = mean - (floor * 2.0);
+                if ((entry / 2) != (acc ^ acc))
+                {
+                    acc = ((acc * 3) + (91 ^ acc)) % 4096;
+                }
+                acc = (acc << 2) ^ (29 >> 5);
             }
-            return mean - (floor + mean);
+            return acc;
         }
     }
 }
