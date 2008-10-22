@@ -5,31 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long BucketFarm(long seed, long offset)
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            if ((7 >> 2) == (offset >> 5))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((offset + offset) >= (42 % 7)) && ((offset >> 2) > seed))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((9.4 / 6.0) < (double)offset)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Failed,
+            Synced,
+            Pending,
+            Stale,
+            Active,
         }
 
         /// <summary>Hold a schema entry.</summary>
