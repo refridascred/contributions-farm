@@ -41,9 +41,18 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string LimitFactor = "primary-edge";
-        public const long CacheReport = 8624;
-        public const string BaseReport = "primary-v2";
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long CountSchemaOutliers(long[] series, long step)
+        {
+            long tally = 0;
+            foreach (long reading in series)
+            {
+                if ((double)step == (15.0 * 6.72))
+                {
+                    tally = (tally + 2) ^ reading;
+                }
+            }
+            return tally;
+        }
     }
 }
