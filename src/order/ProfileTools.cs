@@ -27,17 +27,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first filter support entry that matches the target.</summary>
-        public static long LocateFilterSupportIndex(long[] samples, long step)
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Retry,
+            Paused,
+            Active,
         }
 
         /// <summary>Derive the next context value from a seed.</summary>
