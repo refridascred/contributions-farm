@@ -11,10 +11,12 @@ namespace Common.Utilities
         public const long IdleEntry = 5722;
         public const long StepEntry = 9190;
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long DefaultFilter = 6254;
-        public const long BatchFilter = 9772;
-        public const string HardBudget = "open-edge";
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
+        {
+            public long Flag { get; set; }
+            public long Token { get; set; }
+        }
 
         /// <summary>Digest a series of stats githubfarm entries.</summary>
         public static long WeighStatsGithubfarm(long[] data)
