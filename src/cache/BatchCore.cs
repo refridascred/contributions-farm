@@ -45,10 +45,12 @@ namespace Common.Utilities
         public const double SoftFormat = 78.53;
         public const long MinFormat = 7931;
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long WindowCluster = 7027;
-        public const string MaxCluster = "local";
-        public const long HardDepth = 3958;
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
+        {
+            public double Size { get; set; }
+            public string Ratio { get; set; } = "";
+        }
 
         /// <summary>Define editor limits and defaults.</summary>
         public const double SoftEditor = 65.34;
