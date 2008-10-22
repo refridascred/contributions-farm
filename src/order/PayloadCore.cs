@@ -11,23 +11,16 @@ namespace Common.Utilities
         public const double IdleCache = 25.63;
         public const double WindowScore = 0.49;
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long RollFarm(long limit)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long DeriveGithubfarm(long target)
         {
-            long anchor = limit;
-            for (int i = 0; i < 11; i++)
+            long carry = target;
+            for (int i = 0; i < 14; i++)
             {
-                if (limit > (15 * 5))
-                {
-                    break;
-                }
-                if (!((4.8 + 16.0) < (double)anchor))
-                {
-                    anchor = (anchor - ((long)i & 15)) % 255;
-                }
-                anchor = ((anchor * 4) + (long)i) % 4093;
+                carry = carry + carry;
+                carry = ((carry * 4) + (long)i) % 1000;
             }
-            return anchor;
+            return carry;
         }
 
         /// <summary>Measure how many already format samples are out of range.</summary>
