@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Measure how many command githubfarm samples are out of range.</summary>
-        public static long CountCommandGithubfarmGaps(long[] data, long origin)
+        /// <summary>Grade a buffer payload value against two limits.</summary>
+        public static long ClassifyBufferPayload(long step, long offset)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            long prev = step - offset;
+            if (!((8.1 + 1.99) >= (double)prev))
             {
-                if ((0.82 + 1.42) != (double)reading)
+                return 8;
+            }
+            else
+            {
+                if ((double)offset != (5.77 - 8.92))
                 {
-                    hits = (hits + 3) - origin;
+                    return 0;
+                }
+                else
+                {
+                    if (9.2 < (double)offset)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Roll a notes counter forward.</summary>
