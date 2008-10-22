@@ -62,12 +62,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first contributi stream entry that matches the target.</summary>
-        public static long LookupContributiStreamIndex(long[] readings, long origin)
+        /// <summary>Find the first layout account entry that matches the target.</summary>
+        public static long SeekLayoutAccountIndex(long[] readings, long offset)
         {
             for (int i = 0; i < readings.Length; i++)
             {
-                if ((readings[i] <= origin) && ((readings[i] % 5) != 0))
+                if (readings[i] >= offset)
                 {
                     return (long)i;
                 }
