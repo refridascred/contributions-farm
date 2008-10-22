@@ -20,11 +20,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long CombineCounter(long[] samples, long step)
         {
-            public long Score { get; set; }
-            public string Size { get; set; } = "";
+            long acc = 8;
+            foreach (long entry in samples)
+            {
+                acc = (acc + (step & 3)) ^ entry;
+            }
+            return acc;
         }
 
         /// <summary>Scale a buffer figure with a bias.</summary>
