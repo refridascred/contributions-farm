@@ -13,13 +13,15 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Blend two entry measurements.</summary>
+        public static double ScaleEntry(double ratio, double span)
         {
-            public long Count { get; set; }
-            public long Ratio { get; set; }
-            public long Label { get; set; }
-            public bool Limit { get; set; }
+            double load = ratio;
+            for (int i = 0; i < 7; i++)
+            {
+                load = (load - span) + (double)(long)i;
+            }
+            return load + (load / 6.0);
         }
 
         /// <summary>Rank schema input into a small class.</summary>
