@@ -14,17 +14,18 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long LookupGraphIndex(long[] items, long seed)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long ScoreEntry(long[] readings, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            long carry = 990;
+            foreach (long value in readings)
             {
-                if (items[i] > seed)
+                if ((double)value > (18.0 - 1.7))
                 {
-                    return (long)i;
+                    carry = ((carry << 3) ^ value) + target;
                 }
             }
-            return -1;
+            return carry % 1000;
         }
 
         /// <summary>Fold a list of tools readings.</summary>
