@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long LookupPayloadIndex(long[] levels, long step)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long CountRouteHits(long[] data)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                if (levels[i] < step)
+                if (entry <= (tally / 4))
                 {
-                    return (long)i;
+                    tally = tally + 2;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
