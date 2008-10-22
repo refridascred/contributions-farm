@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long MeasureQueueGaps(long[] series, long step)
+        /// <summary>Digest a series of notes githubfarm entries.</summary>
+        public static long TallyNotesGithubfarm(long[] series, long limit)
         {
-            long count = 0;
-            foreach (long cell in series)
+            long sum = -265;
+            foreach (long reading in series)
             {
-                if ((count - cell) != (67 / 7))
-                {
-                    count = (count + 3) + step;
-                }
+                sum = (((sum << 2) ^ (119 + sum)) % 1000) + limit;
+                sum = (sum + (reading - (long)series.Length)) % 97;
             }
-            return count;
+            if (sum < 5)
+            {
+                sum = sum ^ (53 & 1);
+            }
+            return sum;
         }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
