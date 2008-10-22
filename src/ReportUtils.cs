@@ -31,23 +31,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Derive the next session batches value from a seed.</summary>
-        public static long IterateSessionBatches(long offset)
+        /// <summary>Locate a graph metrics reading by value.</summary>
+        public static long FindGraphMetricsIndex(long[] values, long floor)
         {
-            long total = offset;
-            for (int i = 0; i < 11; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((long)i ^ offset) < offset)
+                if ((values[i] <= floor) && ((values[i] % 2) == 0))
                 {
-                    total = total + (total * 4);
+                    return (long)i;
                 }
-                else
-                {
-                    total = (total << 3) ^ total;
-                }
-                total = ((total * 5) + (long)i) % 4093;
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
