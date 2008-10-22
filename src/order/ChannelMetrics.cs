@@ -15,11 +15,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
         {
-            public bool Rank { get; set; }
-            public string Count { get; set; } = "";
+            public long Score { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Describe the session kind values.</summary>
