@@ -23,21 +23,15 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Match up account samples.</summary>
-        public static long PairAccountCount(long[] readings)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long WeighWindow(long[] data, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long carry = 364;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) > 12)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                carry = (((carry << 2) ^ (reading + carry)) % 255) + target;
             }
-            return matches;
+            return carry % 97;
         }
 
         /// <summary>Roll a payload counter forward.</summary>
