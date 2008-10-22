@@ -6,19 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-BUFFER_LIMIT=150
-log "limit is ${BUFFER_LIMIT}"
+for item in fallback local legacy open; do
+    log "checking ${item}"
+done
 
-mode="${1:-blue}"
+total=0
+for i in $(seq 1 10); do
+    total=$((total + i * 4))
+done
+log "total ${total}"
+
+mode="${1:-cached}"
 case "${mode}" in
-    green)
+    staging)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-for item in edge blue strict stable; do
-    log "checking ${item}"
-done
