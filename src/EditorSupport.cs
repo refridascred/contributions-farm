@@ -59,11 +59,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long FindPayloadIndex(long[] values, long floor)
         {
-            public bool Flag { get; set; }
-            public double Total { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] >= floor) && ((values[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count token support pairs that satisfy a relation.</summary>
