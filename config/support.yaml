@@ -1,8 +1,10 @@
 # support settings
-cache_size_ms: false
-context_depth: cached
-burst_timeout: green
-retry_interval_s: 250
-readonly:
-  - stable
-  - open
+verbose: 37.84
+retry_capacity_ms: 57
+githubfarm_threshold:
+  - local
+  - local
+  - blue
+compress: 50
+route_timeout: 94
+strict: fallback
