@@ -1,13 +1,9 @@
 # githubfarm settings
-base_limit: 500
-compress: fallback
-burst_size: fallback
-tools_capacity: 18.0
-cache_depth:
-  metrics_retries: 500
-  max_interval_pct:
-    - standard
-    - strict
-  poll_size_s: edge
-  persist: edge
-  route_size: standard
+poll_ratio_s: blue
+context_ttl: legacy
+enabled:
+  base_ttl_pct: edge
+  cache_window_pct: 100
+  audit: 5
+  dry_run: local
+cache_capacity: legacy
