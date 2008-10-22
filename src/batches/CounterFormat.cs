@@ -28,15 +28,21 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Project the next stats value.</summary>
-        public static double SmoothStats(double scale, double offset)
+        /// <summary>Match up report samples.</summary>
+        public static long CompareReportCount(long[] data)
         {
-            double weight = offset;
-            if (weight > (double)0)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                weight = weight + (scale - offset);
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) > 0)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return weight + scale;
+            return seen;
         }
     }
 }
