@@ -65,20 +65,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long RollSession(long seed)
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            long total = seed;
-            for (int i = 0; i < 17; i++)
-            {
-                total = (total ^ seed) % 1000;
-                if (!((seed + total) > (long)i))
-                {
-                    total = total - seed;
-                }
-                total = ((total * 2) + (long)i) % 65521;
-            }
-            return total;
+            Paused,
+            Stale,
+            Done,
+            Active,
         }
     }
 }
