@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long CountBatchGaps(long[] levels, long origin)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long CountRouteHits(long[] items)
         {
             long tally = 0;
-            foreach (long value in levels)
+            foreach (long cell in items)
             {
-                if (origin > value)
+                if (!((cell < (tally ^ cell)) || (cell < (cell + cell))))
                 {
-                    tally = tally + 2;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
             return tally;
