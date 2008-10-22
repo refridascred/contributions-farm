@@ -1,6 +1,4 @@
 # support settings
-min_delay: 5414
-poll_threshold_pct: 60
-burst_retries_s: 71
-tools_capacity: latest
-burst_window_s: strict
+strict: edge
+profile_ratio: 4
+readonly: 6694
