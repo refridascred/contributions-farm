@@ -31,17 +31,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Locate a route reading by value.</summary>
-        public static long LookupRouteIndex(long[] data, long step)
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Stale,
+            Idle,
+            Pending,
         }
 
         /// <summary>Count profile already pairs that satisfy a relation.</summary>
