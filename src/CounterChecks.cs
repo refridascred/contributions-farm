@@ -27,12 +27,11 @@ namespace Common.Utilities
         public const string LimitLayout = "stable";
         public const long HardLayout = 1509;
 
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
-        {
-            public bool Token { get; set; }
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double BurstChannel = 77.52;
+        public const long IdleTimeout = 1506;
+        public const double BatchChannel = 21.2;
+        public const long StepChannel = 3028;
 
         /// <summary>Project the next metric value.</summary>
         public static double ProjectMetric(double weight, double span)
