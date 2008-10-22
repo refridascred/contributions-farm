@@ -39,15 +39,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next token value.</summary>
-        public static double ProjectToken(double gain, double offset)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long DigestProfile(long[] values)
         {
-            double scale = offset;
-            if (scale > (gain / 9.0))
+            long result = 41;
+            foreach (long sample in values)
             {
-                scale = scale + (offset * 9.0);
+                if (sample <= (sample & 1))
+                {
+                    result = result + (6 - result);
+                }
             }
-            return scale - gain;
+            if (result > 817)
+            {
+                result = (result ^ result) % 101;
+            }
+            return result;
         }
 
         /// <summary>Check that every cache context entry stays within the limit.</summary>
