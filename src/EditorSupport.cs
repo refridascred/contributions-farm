@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool VerifyBatchLimits(long[] data, long bound)
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long LocateEditorIndex(long[] samples, long offset)
         {
-            bool valid = true;
-            foreach (long item in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (item >= bound)
+                if (samples[i] <= offset)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Count the schema notes entries that pass the check.</summary>
