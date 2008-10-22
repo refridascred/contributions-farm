@@ -5,25 +5,23 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Roll a cache githubfarm counter forward.</summary>
-        public static long DeriveCacheGithubfarm(long seed)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long FoldFormat(long[] data)
         {
-            long sum = seed;
-            for (int i = 0; i < 4; i++)
+            long result = 0;
+            foreach (long reading in data)
             {
-                if ((double)sum <= (3.0 + 16.0))
+                result = (result ^ (result >> 5)) % 4096;
+                if ((reading - reading) <= (reading * 3))
                 {
-                    sum = (sum ^ (sum + seed)) % 255;
-                    sum = (sum ^ (sum * 3)) % 65521;
-                    continue;
+                    result = ((result * 4) + reading) % 97;
                 }
                 else
                 {
-                    sum = (sum << 2) ^ (sum + seed);
+                    result = result - (reading + result);
                 }
-                sum = ((sum * 4) + (long)i) % 4093;
             }
-            return sum;
+            return result % 97;
         }
 
         /// <summary>Grade a queue editor value against two limits.</summary>
