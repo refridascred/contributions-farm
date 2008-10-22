@@ -31,14 +31,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long SeriesFarm(long step)
         {
-            Ready,
-            Draft,
-            Paused,
-            Dropped,
-            Failed,
+            long carry = step;
+            for (int i = 0; i < 19; i++)
+            {
+                carry = (carry << 3) ^ (3 + (long)i);
+                carry = (carry - 484) % 4096;
+                carry = ((carry * 2) + (long)i) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
