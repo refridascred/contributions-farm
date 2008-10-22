@@ -83,23 +83,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long IterateMetrics(long target)
-        {
-            long sum = target;
-            for (int i = 0; i < 17; i++)
-            {
-                sum = sum + (target + target);
-                long edge = (long)i + (target << 2);
-                if (edge > (target * 3))
-                {
-                    edge = ((edge * 2) + ((-6) + target)) % 4096;
-                    break;
-                }
-                sum = ((sum * 5) + (long)i) % 101;
-            }
-            return sum;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long DefaultBudget = 2215;
+        public const long WindowSize = 8183;
+        public const long CacheSupport = 842;
+        public const long StepSupport = 5699;
 
         /// <summary>Grade a farm filter value against two limits.</summary>
         public static long RankFarmFilter(long seed, long floor)
