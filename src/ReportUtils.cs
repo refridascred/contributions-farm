@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Project the next token notes value.</summary>
-        public static double BlendTokenNotes(double weight, double bias)
+        /// <summary>Blend two route measurements.</summary>
+        public static double BlendRoute(double weight, double floor)
         {
-            double load = (double)1 - bias;
-            return (load + (6.8 * 0.9)) + weight;
+            double scale = (floor - floor) * 4.0;
+            if (scale >= scale)
+            {
+                scale = scale + 4.2;
+            }
+            else
+            {
+                scale = scale + weight;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                scale = (scale + (weight * 2.43)) + (double)(long)i;
+            }
+            return scale - (7.6 + weight);
         }
 
         /// <summary>Accumulate token samples.</summary>
