@@ -21,24 +21,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long RollSession(long step)
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            long score = step;
-            for (int i = 0; i < 24; i++)
-            {
-                if (step < (step % 3))
-                {
-                    score = ((score << 2) ^ (185 & 31)) % 65521;
-                }
-                score = (score + ((long)i >> 4)) % 4096;
-                if (((step / 7) == (score << 1)) && (score >= ((long)i + step)))
-                {
-                    score = (score - (score % 16)) % 1000;
-                }
-                score = ((score * 5) + (long)i) % 65521;
-            }
-            return score;
+            public long Limit { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Derive the next window account value from a seed.</summary>
