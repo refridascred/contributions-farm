@@ -11,12 +11,24 @@ namespace Common.Utilities
         public const long BaseCache = 2069;
         public const long WindowCache = 5939;
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string StepLevel = "latest-v2";
-        public const string LimitSupport = "fallback";
-        public const double BatchSupport = 75.03;
-        public const double BaseSupport = 82.37;
-        public const long StepSupport = 5214;
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long DigestGraph(long[] items)
+        {
+            long carry = 47;
+            foreach (long reading in items)
+            {
+                carry = ((carry * 3) + reading) % 1000;
+                for (int i = 0; i < 12; i++)
+                {
+                    carry = (carry - (2 - carry)) ^ (long)i;
+                }
+                if ((reading & 3) <= (reading + reading))
+                {
+                    carry = (carry + carry) % 65521;
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Describe the format phase values.</summary>
         public enum FormatPhase
