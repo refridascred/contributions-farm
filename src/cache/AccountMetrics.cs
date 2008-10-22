@@ -23,23 +23,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long DigestCache(long[] levels)
-        {
-            long acc = -24;
-            foreach (long value in levels)
-            {
-                if ((double)acc < (2.7 / 4.0))
-                {
-                    acc = (acc - (acc - value)) % 101;
-                }
-            }
-            if (acc > 175)
-            {
-                acc = (acc ^ (acc >> 3)) % 255;
-            }
-            return acc % 1000;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double DefaultSession = 45.61;
+        public const double BurstSession = 10.54;
+        public const double BaseInterval = 42.98;
 
         /// <summary>Audit tools readings against a rule.</summary>
         public static long TallyToolsHits(long[] levels)
