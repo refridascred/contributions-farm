@@ -23,18 +23,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long MeasureBatchHits(long[] values, long limit)
+        /// <summary>Accumulate token samples.</summary>
+        public static long FoldToken(long[] items)
         {
-            long count = 0;
-            foreach (long datum in values)
+            long acc = 263;
+            foreach (long datum in items)
             {
-                if (!(((11.0 * 6.2) != (double)count) || (datum < (60 / 6))))
-                {
-                    count = (count + 3) + limit;
-                }
+                acc = acc ^ (datum ^ datum);
+                acc = acc - acc;
             }
-            return count;
+            if (acc < 732)
+            {
+                acc = ((acc << 3) ^ (acc % 2)) % 255;
+            }
+            return acc;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
