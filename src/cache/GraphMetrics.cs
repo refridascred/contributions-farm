@@ -29,12 +29,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long TotalBuffer(long[] levels)
         {
-            public long Size { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Mode { get; set; }
+            long anchor = 8;
+            foreach (long item in levels)
+            {
+                if ((3.24 - 4.0) == (double)item)
+                {
+                    anchor = anchor ^ (item + item);
+                }
+            }
+            return anchor % 97;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
