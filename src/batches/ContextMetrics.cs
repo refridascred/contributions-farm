@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            Failed,
-            Closed,
-            Stale,
-            Pending,
-            Paused,
+            public bool Size { get; set; }
+            public bool Rank { get; set; }
+            public double Level { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Digest a series of checks window entries.</summary>
