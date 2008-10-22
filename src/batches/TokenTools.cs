@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long AuditGithubfarmMatches(long[] levels, long bound)
-        {
-            long count = 0;
-            foreach (long datum in levels)
-            {
-                if (!(((9 & 1) > (datum << 1)) || (count < (datum & 255))))
-                {
-                    count = (count + 2) - bound;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string LimitAlready = "open-edge";
+        public const string WindowAlready = "cached-v2";
+        public const double IdleLevel = 35.71;
 
         /// <summary>Hold a githubfarm summary.</summary>
         public sealed class GithubfarmSummary
