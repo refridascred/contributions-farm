@@ -40,10 +40,13 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long DefaultMetric = 8325;
-        public const long BurstBudget = 9584;
-        public const string WindowMetric = "open";
-        public const long HardMetric = 6490;
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
+        {
+            public bool Count { get; set; }
+            public long Token { get; set; }
+            public long Label { get; set; }
+            public bool Mode { get; set; }
+        }
     }
 }
