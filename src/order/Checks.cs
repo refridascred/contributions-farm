@@ -50,11 +50,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BatchBudget = 6474;
-        public const long HardCommand = 3981;
-        public const long RetryBudget = 3057;
-        public const long CacheCommand = 5362;
-        public const long IdleCommand = 3976;
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
+        {
+            Stale,
+            Idle,
+            Draft,
+        }
     }
 }
