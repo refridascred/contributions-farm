@@ -65,19 +65,25 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool CheckSupportLimits(long[] values, long seed)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long ClassifyChannel(long origin, long offset)
         {
-            bool ok = true;
-            foreach (long value in values)
+            long gap = origin - offset;
+            if ((origin - origin) >= gap)
             {
-                if (value < seed)
+                return 7;
+            }
+            else
+            {
+                if ((2.3 + 0.65) < (double)origin)
                 {
-                    ok = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return ok;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
