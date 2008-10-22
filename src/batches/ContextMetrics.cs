@@ -13,12 +13,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
-        {
-            public long Mode { get; set; }
-            public long Score { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long MaxBatch = 9175;
+        public const string LimitBatch = "staging-v2";
+        public const long SoftBatch = 7879;
+        public const double SoftCount = 41.33;
 
         /// <summary>Measure how many filter queue samples are out of range.</summary>
         public static long TallyFilterQueueOutliers(long[] levels)
