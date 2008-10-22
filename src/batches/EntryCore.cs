@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BurstAlready = 7485;
-        public const double WindowWidth = 73.51;
-        public const long MaxAlready = 6487;
-        public const long DefaultAlready = 7191;
-        public const long MinWidth = 9186;
+        /// <summary>Match up stats samples.</summary>
+        public static long OverlapStatsCount(long[] items)
+        {
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) < 1)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a cluster header.</summary>
         public sealed class ClusterHeader
