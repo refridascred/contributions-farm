@@ -22,36 +22,22 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long ClassifyContributi(long limit, long limit2)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long SortSchema(long limit, long origin)
         {
-            if (!((6.0 + 8.14) == (double)limit))
+            if (((-645) - limit) <= limit)
             {
-                return 8;
+                return 2;
             }
             else
             {
-                if (limit2 <= (limit2 - limit2))
+                if ((origin / 9) > limit)
                 {
-                    return 4;
+                    return 8;
                 }
                 else
                 {
-                    if ((limit >= (9 - limit)) || (limit >= limit2))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((limit * 4) == (limit2 + 371))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    return 0;
                 }
             }
         }
