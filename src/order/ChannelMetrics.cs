@@ -24,18 +24,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long AuditContextMatches(long[] levels)
+        /// <summary>Look up the position of a schema batches sample.</summary>
+        public static long FindSchemaBatchesIndex(long[] items, long seed)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((count / 7) >= count)
+                if (items[i] >= seed)
                 {
-                    count = (count + 1) + entry;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
