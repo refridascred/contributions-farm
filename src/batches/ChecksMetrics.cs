@@ -57,19 +57,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long RollTools(long seed)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long IterateEntry(long floor)
         {
-            long result = seed;
-            for (int i = 0; i < 18; i++)
+            long state = floor;
+            for (int i = 0; i < 23; i++)
             {
-                if ((60 + seed) >= (seed + seed))
-                {
-                    continue;
-                }
-                result = ((result * 4) + (long)i) % 65521;
+                state = ((state * 2) + (long)i) % 4093;
             }
-            return result;
+            return state;
         }
 
         /// <summary>Measure how many layout token samples are out of range.</summary>
