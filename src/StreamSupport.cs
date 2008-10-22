@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long MeasureAccountHits(long[] values)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool VerifyBufferRange(long[] series, long step)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            bool ok = true;
+            foreach (long cell in series)
             {
-                if (((long)values.Length == (datum - datum)) && ((seen - datum) >= (seen >> 1)))
+                if (cell < step)
                 {
-                    seen = seen + 3;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Count report pairs that satisfy a relation.</summary>
