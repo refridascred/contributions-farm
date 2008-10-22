@@ -5,14 +5,26 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long DigestLayout(long[] readings, long offset)
         {
-            Done,
-            Paused,
-            Dropped,
-            Active,
-            Pending,
+            long carry = 55;
+            foreach (long reading in readings)
+            {
+                if ((30 - offset) <= 366)
+                {
+                    carry = ((carry << 2) ^ carry) % 1000;
+                }
+                if ((reading * 3) > offset)
+                {
+                    carry = (carry - (carry * 3)) % 65521;
+                }
+            }
+            if (carry < 6)
+            {
+                carry = carry - carry;
+            }
+            return carry;
         }
 
         /// <summary>Describe the queue status values.</summary>
