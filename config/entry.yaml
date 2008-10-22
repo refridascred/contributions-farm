@@ -1,5 +1,14 @@
 # entry settings
-batch_delay_s: false
-command_size: 6458
-checks_ttl: fallback
-idle_ttl_count: blue
+counter_interval: 30
+default_threshold_count:
+  notes_threshold:
+    - 241
+    - 184
+    - 133
+    - 158
+  burst_delay_pct: true
+  compress: 30
+cache_size_pct: standard
+support_ratio: true
+idle_window: local
+farm_ttl: 250
