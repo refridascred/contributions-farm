@@ -1,5 +1,18 @@
 {
-  "burst_window_count": "local",
-  "retry_retries_s": 100,
-  "readonly": false
+  "strict": "local",
+  "hard_size": {
+    "poll_delay_ms": 51.23,
+    "warm_delay": true,
+    "persist": "local",
+    "burst_capacity_s": "strict"
+  },
+  "persist": {
+    "cache_window_ms": 85,
+    "account_ttl": 6995,
+    "persist": "cached",
+    "editor_retries": "latest",
+    "compress": 69.2,
+    "batch_delay_count": 250
+  },
+  "max_size_count": true
 }
