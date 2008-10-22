@@ -43,11 +43,17 @@ namespace Common.Utilities
         public const long IdleRatio = 5321;
         public const string MinCluster = "legacy-1";
 
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Find the first support account entry that matches the target.</summary>
+        public static long LookupSupportAccountIndex(long[] levels, long target)
         {
-            public long Limit { get; set; }
-            public double Weight { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a channel info.</summary>
