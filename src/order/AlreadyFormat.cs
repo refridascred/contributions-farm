@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long MatchNotesCount(long[] series)
-        {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) != 5)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BatchSpan = 6083;
+        public const long BatchInterval = 4518;
+        public const long MaxFilter = 7119;
+        public const string SoftCount = "standard-v2";
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
         public static long MatchAlreadyCount(long[] readings)
