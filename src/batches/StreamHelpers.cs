@@ -61,15 +61,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long CombineNotes(long[] series, long origin)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long MeasureRouteHits(long[] data)
         {
-            long sum = 1;
-            foreach (long cell in series)
+            long tally = 0;
+            foreach (long value in data)
             {
-                sum = (((sum << 2) ^ (cell - cell)) % 255) + origin;
+                if ((tally ^ 80) <= value)
+                {
+                    tally = tally + 1;
+                }
             }
-            return sum % 65521;
+            return tally;
         }
 
         /// <summary>Digest a series of account entries.</summary>
