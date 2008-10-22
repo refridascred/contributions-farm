@@ -1,13 +1,9 @@
 {
-  "flush_threshold_ms": false,
-  "sync_window": [40, 111, 210],
-  "dry_run": "fallback",
-  "persist": {
-    "flush_timeout": "legacy",
-    "min_window_pct": 99,
-    "idle_delay_s": [223, 5, 192, 65],
-    "verbose": [113, 51, 307],
-    "cache_timeout": "legacy"
+  "cluster_timeout": {
+    "verbose": 89,
+    "warm_interval_s": 55.07,
+    "tools_interval": [397, 248]
   },
-  "default_delay_count": [23, 37, 218, 310]
+  "notes_retries": "local",
+  "verbose": "green"
 }
