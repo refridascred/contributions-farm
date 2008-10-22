@@ -24,15 +24,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Adjust a stream order reading.</summary>
-        public static double SmoothStreamOrder(double bias, double floor)
+        /// <summary>Count channel window pairs that satisfy a relation.</summary>
+        public static long PairChannelWindowCount(long[] values)
         {
-            double mean = floor + bias;
-            if (mean > (12.0 * 6.5))
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                mean = mean - floor;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) != 1)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return mean + (mean / 3.0);
+            return count;
         }
     }
 }
