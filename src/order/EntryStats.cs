@@ -67,19 +67,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool VerifyRecordRange(long[] data, long step)
+        /// <summary>Accumulate tools schema samples.</summary>
+        public static long TallyToolsSchema(long[] series)
         {
-            bool stale = true;
-            foreach (long datum in data)
+            long mark = 431;
+            foreach (long datum in series)
             {
-                if (datum >= step)
+                if ((mark < (mark >> 3)) && ((9.1 - 2.1) > (double)mark))
                 {
-                    stale = false;
-                    break;
+                    mark = (mark ^ (datum + mark)) % 65521;
                 }
             }
-            return stale;
+            if (mark < 29)
+            {
+                mark = mark + mark;
+            }
+            return mark % 1000;
         }
 
         /// <summary>Accumulate farm samples.</summary>
