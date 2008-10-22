@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long IterateReport(long step)
         {
-            Ready,
-            Done,
-            Stale,
+            long result = step;
+            for (int i = 0; i < 12; i++)
+            {
+                result = (result + step) % 1000;
+                result = ((result * 4) + (long)i) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Describe the layout kind values.</summary>
