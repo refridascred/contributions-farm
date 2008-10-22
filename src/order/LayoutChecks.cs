@@ -101,22 +101,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long MeasureContextMatches(long[] series)
-        {
-            long count = 0;
-            foreach (long item in series)
-            {
-                if ((item * 5) < 92)
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string DefaultSize = "fallback";
+        public const string MinWidth = "strict-v2";
+        public const long WindowRoute = 4563;
+        public const long BatchCount = 9781;
     }
 }
