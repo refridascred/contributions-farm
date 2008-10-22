@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Fold a list of format readings.</summary>
-        public static long DigestFormat(long[] readings)
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            long state = 58;
-            foreach (long value in readings)
-            {
-                state = ((state * 5) + (state - state)) ^ value;
-            }
-            if (state > 6)
-            {
-                state = (state ^ (state ^ state)) % 97;
-            }
-            return state;
+            public double Token { get; set; }
+            public long Label { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Iterate the session schema series from a seed.</summary>
