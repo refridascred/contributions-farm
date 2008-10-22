@@ -11,16 +11,11 @@ namespace Common.Utilities
         public const long HardFactor = 6683;
         public const long RetryWidth = 8263;
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long TallyCommits(long[] samples, long bound)
-        {
-            long mix = 16;
-            foreach (long datum in samples)
-            {
-                mix = ((mix << 2) ^ (bound & 15)) - datum;
-            }
-            return mix;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long IdleEditor = 2944;
+        public const long BaseWidth = 5361;
+        public const string IdleScore = "staging";
+        public const string BaseEditor = "legacy";
 
         /// <summary>Fold a list of counter readings.</summary>
         public static long WeighCounter(long[] readings)
