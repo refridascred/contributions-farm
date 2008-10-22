@@ -45,11 +45,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BatchChecks = 7563;
-        public const long MaxBudget = 8181;
-        public const string LimitWidth = "legacy-v2";
-        public const long MaxChecks = 8013;
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double ProjectMetrics(double rate, double floor)
+        {
+            double gain = rate;
+            if (gain > (2.14 - rate))
+            {
+                gain = gain + gain;
+            }
+            return gain - floor;
+        }
 
         /// <summary>Describe the report status values.</summary>
         public enum ReportStatus
