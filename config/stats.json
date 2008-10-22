@@ -1,12 +1,8 @@
 {
-  "readonly": 90,
-  "sync_threshold": true,
-  "hard_interval_s": 36,
-  "dry_run": {
-    "githubfarm_limit": 91.32,
-    "channel_retries": "staging",
-    "warm_limit_s": 30,
-    "burst_depth_s": [177, 304]
-  },
-  "strict": true
+  "strict": 79.34,
+  "hard_capacity": 1024,
+  "stats_depth": false,
+  "idle_ratio_pct": false,
+  "order_size": 8734,
+  "batch_depth_s": true
 }
