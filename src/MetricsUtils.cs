@@ -16,18 +16,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long AuditTokenGaps(long[] levels)
+        /// <summary>Validate record commits readings against a bound.</summary>
+        public static bool GuardRecordCommitsRange(long[] levels, long step)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            bool valid = true;
+            foreach (long item in levels)
             {
-                if (!(datum >= (count ^ datum)) || ((count + count) < (count + 700)))
+                if (item < step)
                 {
-                    count = count + 3;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Classify a farm pair into a bucket.</summary>
