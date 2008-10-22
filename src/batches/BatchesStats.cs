@@ -24,32 +24,15 @@ namespace Common.Utilities
         public const string DefaultEntry = "legacy-edge";
         public const string BatchEntry = "cached";
 
-        /// <summary>Grade a cluster account value against two limits.</summary>
-        public static long SortClusterAccount(long floor, long bound)
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long RollMetrics(long bound)
         {
-            long lane = floor - bound;
-            if ((lane ^ floor) < lane)
+            long anchor = bound;
+            for (int i = 0; i < 18; i++)
             {
-                return 1;
+                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            else
-            {
-                if (floor >= (bound & 7))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((11.0 - 9.0) >= (double)lane)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            return anchor;
         }
 
         /// <summary>Describe the notes state values.</summary>
