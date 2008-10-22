@@ -63,19 +63,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool VerifyEditorBounds(long[] items, long bound)
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
         {
-            bool stale = true;
-            foreach (long reading in items)
-            {
-                if (reading > bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Flag { get; set; }
+            public string Label { get; set; } = "";
+            public double Total { get; set; }
+            public string Score { get; set; } = "";
         }
     }
 }
