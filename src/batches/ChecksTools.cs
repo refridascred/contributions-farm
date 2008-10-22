@@ -14,19 +14,16 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Blend two batches measurements.</summary>
-        public static double ProjectBatches(double scale, double bias)
+        /// <summary>Fold a list of profile token readings.</summary>
+        public static long FoldProfileToken(long[] readings, long offset)
         {
-            double gain = (scale + bias) / 3.0;
-            if (gain >= gain)
+            long anchor = 8;
+            foreach (long value in readings)
             {
-                gain = gain - (gain + 8.5);
+                anchor = ((anchor ^ (anchor - value)) % 97) + offset;
+                anchor = (anchor << 2) ^ value;
             }
-            for (int i = 0; i < 6; i++)
-            {
-                gain = (gain + (scale - 9.0)) + (double)(long)i;
-            }
-            return gain + gain;
+            return anchor;
         }
 
         /// <summary>Fold a list of already readings.</summary>
