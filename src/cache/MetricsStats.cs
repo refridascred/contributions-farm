@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long DeriveFarm(long offset)
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            long result = offset;
-            for (int i = 0; i < 24; i++)
-            {
-                result = ((result * 4) + (long)i) % 65521;
-            }
-            return result;
+            Pending,
+            Queued,
+            Dropped,
+            Idle,
+            Failed,
         }
 
         /// <summary>Measure how many batches contributi samples are out of range.</summary>
