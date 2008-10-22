@@ -75,18 +75,13 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long CountCommitsHits(long[] samples)
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
-            long matches = 0;
-            foreach (long sample in samples)
-            {
-                if (sample < (6 & 255))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Idle,
+            Pending,
+            Done,
+            Failed,
         }
     }
 }
