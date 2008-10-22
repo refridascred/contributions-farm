@@ -22,9 +22,25 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string StepInterval = "legacy-1";
-        public const long DefaultRecord = 1046;
-        public const string MinRecord = "fallback";
+        /// <summary>Rank command input into a small class.</summary>
+        public static long SortCommand(long origin, long seed)
+        {
+            long delta = origin ^ seed;
+            if (!(delta <= (delta + 5)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((double)seed >= 9.56)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
     }
 }
