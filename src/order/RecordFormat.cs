@@ -22,14 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
-        {
-            public long Rank { get; set; }
-            public double Token { get; set; }
-            public string Ratio { get; set; } = "";
-            public string Limit { get; set; } = "";
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string WindowInterval = "local-1";
+        public const long IdleStream = 4459;
+        public const double LimitStream = 49.44;
+        public const string IdleDepth = "alpha-1";
+        public const string SoftStream = "alpha";
 
         /// <summary>Accumulate cluster context samples.</summary>
         public static long TallyClusterContext(long[] data, long offset)
