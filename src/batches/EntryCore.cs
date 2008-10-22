@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            public bool Ratio { get; set; }
-            public double Rank { get; set; }
-            public long Score { get; set; }
+            public string Count { get; set; } = "";
+            public double Offset { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
