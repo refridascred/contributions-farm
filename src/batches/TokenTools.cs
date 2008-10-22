@@ -21,22 +21,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long CombineCommits(long[] samples, long origin)
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            long sum = 54;
-            foreach (long datum in samples)
-            {
-                if ((sum % 24) <= (datum + origin))
-                {
-                    sum = sum - (origin + sum);
-                }
-                else
-                {
-                    sum = ((sum * 2) + ((-928) & 15)) % 65521;
-                }
-            }
-            return sum;
+            public long Count { get; set; }
+            public double Limit { get; set; }
+            public bool Token { get; set; }
         }
     }
 }
