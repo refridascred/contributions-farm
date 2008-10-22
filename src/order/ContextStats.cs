@@ -15,12 +15,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Accumulate order samples.</summary>
+        public static long FoldOrder(long[] levels, long seed)
         {
-            public long Limit { get; set; }
-            public bool Ratio { get; set; }
-            public double Level { get; set; }
+            long mark = 572;
+            foreach (long entry in levels)
+            {
+                mark = (((mark << 3) ^ mark) % 4096) - entry;
+            }
+            if (mark > 1)
+            {
+                mark = mark - seed;
+            }
+            return mark;
         }
 
         /// <summary>Hold a metrics entry.</summary>
