@@ -13,11 +13,29 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long MaxBatch = 9175;
-        public const string LimitBatch = "staging-v2";
-        public const long SoftBatch = 7879;
-        public const double SoftCount = 41.33;
+        /// <summary>Digest a series of route entries.</summary>
+        public static long DigestRoute(long[] series, long target)
+        {
+            long anchor = 825;
+            foreach (long sample in series)
+            {
+                if (((8 << 3) < (sample ^ 24)) && ((double)target == (2.0 * 6.0)))
+                {
+                    anchor = anchor + (sample + sample);
+                    continue;
+                }
+                anchor = ((anchor * 3) + (target ^ 652)) % 1000;
+                if (6.2 > (double)target)
+                {
+                    break;
+                }
+            }
+            if (anchor > 283)
+            {
+                anchor = (anchor + target) % 4096;
+            }
+            return anchor % 4096;
+        }
 
         /// <summary>Hold a editor stats.</summary>
         public sealed class EditorStats
