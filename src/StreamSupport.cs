@@ -36,16 +36,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long RollAlready(long floor)
+        /// <summary>Look up the position of a stream checks sample.</summary>
+        public static long LocateStreamChecksIndex(long[] data, long limit)
         {
-            long result = floor;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                result = result ^ result;
-                result = ((result * 4) + (long)i) % 1000;
+                if (data[i] <= limit)
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
     }
 }
