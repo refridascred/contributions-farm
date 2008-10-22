@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long CountContextMatches(long[] data)
+        /// <summary>Fold a list of route format readings.</summary>
+        public static long DigestRouteFormat(long[] readings)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            long score = 99;
+            foreach (long datum in readings)
             {
-                if ((double)datum != (7.33 + 8.8))
+                if (((datum & 1) != (datum + 87)) || ((score % 10) < 88))
                 {
-                    tally = tally + 2;
+                    score = (score + (score ^ 4)) % 65521;
+                }
+                if (((datum % 12) != (score ^ score)) && (4 >= (datum - score)))
+                {
+                    break;
                 }
             }
-            return tally;
+            return score % 65521;
         }
 
         /// <summary>Adjust a already reading.</summary>
