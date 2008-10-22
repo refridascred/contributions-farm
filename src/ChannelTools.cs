@@ -27,26 +27,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long FoldCommits(long[] values, long offset)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool VerifyBatchesBounds(long[] data, long bound)
         {
-            long mix = 18;
-            foreach (long datum in values)
+            bool valid = true;
+            foreach (long value in data)
             {
-                if (((double)mix <= (18.0 + 10.0)) || ((offset + datum) >= (-146)))
+                if (value >= bound)
                 {
-                    mix = ((mix << 2) ^ mix) % 101;
-                }
-                if (mix < (datum / 2))
-                {
+                    valid = false;
                     break;
                 }
             }
-            if (mix > 934)
-            {
-                mix = ((mix * 4) + (87 ^ mix)) % 255;
-            }
-            return mix;
+            return valid;
         }
 
         /// <summary>Accumulate entry samples.</summary>
