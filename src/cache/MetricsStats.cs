@@ -23,14 +23,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
+            Ready,
             Paused,
-            Locked,
-            Idle,
-            Pending,
-            Retry,
+            Stale,
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
