@@ -51,14 +51,25 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long RankMetrics(long bound, long floor)
         {
-            Done,
-            Synced,
-            Pending,
-            Draft,
-            Retry,
+            long delta = bound ^ floor;
+            if ((delta + 278) >= (delta + delta))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((9.0 - 16.0) != (double)delta)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
     }
 }
