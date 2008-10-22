@@ -1,7 +1,12 @@
 # support settings
-enabled: false
-soft_window_ms: 27.58
-warm_size: fallback
-flush_limit: standard
-soft_depth_pct: 69.65
-layout_size: stable
+warm_ratio: standard
+context_retries: 3861
+warm_limit_s: standard
+githubfarm_limit:
+  farm_retries: 6442
+  poll_capacity_pct: 65.1
+  base_capacity_count: 68
+  compress: 46.03
+enabled:
+  - strict
+  - primary
