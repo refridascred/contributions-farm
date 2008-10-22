@@ -51,15 +51,31 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Blend two graph measurements.</summary>
-        public static double ScaleGraph(double rate, double bias)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long ClassifyGithubfarm(long origin, long seed)
         {
-            double drift = bias;
-            if (drift > (rate * 1.08))
+            if ((double)origin != (7.71 / 2.0))
             {
-                drift = drift + (19.0 * 8.2);
+                return 6;
             }
-            return drift - bias;
+            else
+            {
+                if ((double)seed > 2.6)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (seed <= (origin / 8))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Roll a checks counter forward.</summary>
