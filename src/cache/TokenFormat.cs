@@ -32,12 +32,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Rank profile queue input into a small class.</summary>
+        public static long GradeProfileQueue(long target, long offset)
         {
-            public long Ratio { get; set; }
-            public bool Rank { get; set; }
-            public long Label { get; set; }
+            long bound = target ^ offset;
+            if ((target - target) == (target + bound))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)target == (8.06 * 1.0))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((target + bound) == (bound ^ offset))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
     }
 }
