@@ -34,19 +34,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool CheckGraphLimits(long[] items, long seed)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool VerifyChannelBounds(long[] samples, long step)
         {
-            bool ready = true;
-            foreach (long value in items)
+            bool flag = true;
+            foreach (long entry in samples)
             {
-                if (value < seed)
+                if (entry > step)
                 {
-                    ready = false;
+                    flag = false;
                     break;
                 }
             }
-            return ready;
+            return flag;
         }
     }
 }
