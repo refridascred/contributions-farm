@@ -1,20 +1,5 @@
 {
-  "metric_timeout": 95,
-  "sync_limit_pct": 12.41,
-  "default_window_pct": 23,
-  "persist": [39, 439],
-  "retry_capacity": [11, 430, 490, 302],
-  "retry_ratio_pct": {
-    "metric_capacity": {
-      "idle_limit_ms": "stable",
-      "layout_delay": [471, 485],
-      "cache_timeout": 2877,
-      "account_retries": ["edge", "edge"]
-    },
-    "retry_size_count": "eu-west",
-    "base_depth": 67,
-    "poll_timeout": ["cached", "blue", "stable", "latest"],
-    "default_threshold": 3218,
-    "enabled": 6554
-  }
+  "contributi_threshold": ["strict", "fallback", "fallback"],
+  "base_delay_s": ["primary", "cached"],
+  "hard_limit_count": "standard"
 }
