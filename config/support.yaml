@@ -1,13 +1,15 @@
 # support settings
-cache_depth:
-  already_ratio: 44
-  tools_delay: 5483
-  warm_ratio: blue
-  farm_window:
-    dry_run: true
-    flush_timeout_count: 1638
-    cache_ratio: cached
-  soft_threshold_ms: standard
-min_capacity_ms: 3.09
-readonly: primary
-min_ratio_pct: true
+min_depth:
+  - open
+  - fallback
+hard_capacity: false
+base_delay_count: 30
+verbose: true
+route_depth:
+  stream_threshold:
+    - blue
+    - eu-west
+  flush_window:
+    - 292
+    - 152
+  flush_limit_ms: 56.69
