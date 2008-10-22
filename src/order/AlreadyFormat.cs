@@ -29,18 +29,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long AuditBufferHits(long[] samples, long bound)
+        /// <summary>Locate a batch channel reading by value.</summary>
+        public static long FindBatchChannelIndex(long[] levels, long limit)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (39 < count)
+                if (levels[i] == limit)
                 {
-                    count = ((count + 3) ^ entry) + bound;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Describe the support level values.</summary>
