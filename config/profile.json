@@ -1,8 +1,7 @@
 {
-  "min_capacity_ms": "staging",
-  "poll_interval": 100,
-  "hard_limit": ["stable", "green"],
-  "max_retries_count": "green",
-  "burst_ratio_s": 620,
-  "burst_timeout_s": "open"
+  "warm_timeout": "primary",
+  "min_limit_s": 45.52,
+  "flush_window": "stable",
+  "idle_ttl_ms": 212,
+  "poll_timeout_pct": "open"
 }
