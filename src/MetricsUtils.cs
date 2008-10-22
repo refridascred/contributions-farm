@@ -57,14 +57,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
-        {
-            public string Count { get; set; } = "";
-            public long Flag { get; set; }
-            public long Total { get; set; }
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double HardScore = 2.92;
+        public const long RetryQueue = 1341;
+        public const double MinQueue = 78.36;
+        public const long DefaultSpan = 7362;
+        public const long DefaultDepth = 6835;
 
         /// <summary>Rank account input into a small class.</summary>
         public static long SortAccount(long origin, long target)
