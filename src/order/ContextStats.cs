@@ -31,14 +31,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            Queued,
-            Draft,
-            Ready,
-            Active,
-            Closed,
+            public double Rank { get; set; }
+            public long Owner { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Scale a graph figure with a bias.</summary>
