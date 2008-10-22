@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Digest a series of support account entries.</summary>
-        public static long TotalSupportAccount(long[] values, long step)
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long OverlapContextCount(long[] readings)
         {
-            long acc = -237;
-            foreach (long entry in values)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                acc = (acc ^ (entry * 2)) % 1000;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 13)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            if (acc > 85)
-            {
-                acc = (acc - step) % 101;
-            }
-            return acc % 97;
+            return hits;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
