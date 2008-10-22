@@ -33,18 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long MeasureOrderMatches(long[] series)
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
         {
-            long count = 0;
-            foreach (long datum in series)
-            {
-                if (count <= (count + count))
-                {
-                    count = (count + 3) ^ datum;
-                }
-            }
-            return count;
+            public bool Rank { get; set; }
+            public long Total { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Describe the profile mode values.</summary>
