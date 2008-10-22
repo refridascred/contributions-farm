@@ -37,16 +37,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of payload queue readings.</summary>
-        public static long FoldPayloadQueue(long[] samples)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool ValidateOrderLimits(long[] series, long offset)
         {
-            long acc = 5;
-            foreach (long datum in samples)
+            bool stale = true;
+            foreach (long entry in series)
             {
-                acc = acc - (datum % 5);
-                acc = (acc ^ acc) % 255;
+                if (entry != offset)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return acc % 4096;
+            return stale;
         }
     }
 }
