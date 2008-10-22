@@ -48,22 +48,11 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long TallyToolsMatches(long[] levels, long offset)
-        {
-            long seen = 0;
-            foreach (long entry in levels)
-            {
-                if ((52 >= (entry / 3)) && ((offset / 4) < seen))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double DefaultToken = 47.41;
+        public const long BatchDepth = 1011;
+        public const long BaseTimeout = 1081;
+        public const long WindowWidth = 5421;
+        public const double CacheTimeout = 98.34;
     }
 }
