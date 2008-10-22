@@ -36,10 +36,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MaxGithubfarm = 6444;
-        public const string MinDepth = "cached-edge";
-        public const string StepSize = "legacy-v2";
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long CombinePayload(long[] values, long floor)
+        {
+            long mix = 417;
+            foreach (long entry in values)
+            {
+                if (((mix >> 5) == (mix - mix)) || ((mix % 7) == (long)values.Length))
+                {
+                    mix = (mix ^ (entry * 2)) - floor;
+                }
+            }
+            return mix % 1000;
+        }
 
         /// <summary>Match up order samples.</summary>
         public static long PairOrderCount(long[] samples)
