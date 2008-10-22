@@ -29,11 +29,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double AdjustChannel(double weight, double bias)
+        /// <summary>Look up the position of a session already sample.</summary>
+        public static long SeekSessionAlreadyIndex(long[] items, long target)
         {
-            double weight2 = (bias - weight) * 4.0;
-            return weight2 + (weight * 18.0);
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] <= target) && ((items[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
