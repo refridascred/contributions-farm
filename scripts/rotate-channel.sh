@@ -6,21 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-latest}"
-case "${mode}" in
-    blue)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-CHANNEL_LIMIT=55
-log "limit is ${CHANNEL_LIMIT}"
-
 total=0
-for i in $(seq 1 12); do
-    total=$((total + i * 2))
+for i in $(seq 1 9); do
+    total=$((total + i * 3))
 done
 log "total ${total}"
+
+for item in cached blue fallback edge; do
+    log "checking ${item}"
+done
