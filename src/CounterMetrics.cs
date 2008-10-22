@@ -12,11 +12,12 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            public string Ratio { get; set; } = "";
-            public long Level { get; set; }
+            Ready,
+            Paused,
+            Failed,
         }
 
         /// <summary>Accumulate entry samples.</summary>
