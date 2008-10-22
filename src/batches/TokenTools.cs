@@ -39,39 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank order githubfarm input into a small class.</summary>
-        public static long BucketOrderGithubfarm(long offset, long limit)
+        /// <summary>Combine report schema values into a single score.</summary>
+        public static long ScoreReportSchema(long[] series, long target)
         {
-            long offset2 = offset + limit;
-            if (limit <= (offset + offset))
+            long acc = 33;
+            foreach (long item in series)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)limit > (double)offset2)
+                if ((double)item > 3.4)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((offset - offset) <= (limit / 2))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((limit - 4) >= limit)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    acc = (acc * 4) + (target >> 4);
                 }
             }
+            return acc;
         }
 
         /// <summary>Find the first layout account entry that matches the target.</summary>
