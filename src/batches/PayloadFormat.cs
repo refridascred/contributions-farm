@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long AuditMetricMatches(long[] values, long bound)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long ClassifyWindow(long offset, long origin)
         {
-            long count = 0;
-            foreach (long datum in values)
+            if ((3 + offset) == (origin >> 5))
             {
-                if ((bound / 9) >= (9 % 24))
+                return 0;
+            }
+            else
+            {
+                if (!(origin < offset))
                 {
-                    count = (count + 2) ^ datum;
+                    return 4;
+                }
+                else
+                {
+                    if (offset < (origin + offset))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (!((offset << 3) >= offset))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
