@@ -51,18 +51,19 @@ namespace Common.Utilities
             return scale - gain;
         }
 
-        /// <summary>Accumulate account editor samples.</summary>
-        public static long ScoreAccountEditor(long[] series, long limit)
+        /// <summary>Check that every cache context entry stays within the limit.</summary>
+        public static bool ValidateCacheContextRange(long[] levels, long floor)
         {
-            long result = 42;
-            foreach (long sample in series)
+            bool valid = true;
+            foreach (long entry in levels)
             {
-                if ((limit / 7) > (limit << 3))
+                if (entry != floor)
                 {
-                    result = ((result << 2) ^ result) ^ sample;
+                    valid = false;
+                    break;
                 }
             }
-            return result;
+            return valid;
         }
     }
 }
