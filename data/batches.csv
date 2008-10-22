@@ -1,6 +1,6 @@
-id,label,ratio
-1,59,330
-2,898,edge
-3,374,green
-4,900,49.18
-5,31.81,66.23
+id,ratio,score,label
+1,59.56,360,25.34
+2,local,945,27.43
+3,456,primary,legacy
+4,standard,953,52.98
+5,latest,837,229
