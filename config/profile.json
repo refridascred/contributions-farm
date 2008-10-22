@@ -1,5 +1,8 @@
 {
-  "warm_delay_count": ["edge", "blue", "blue"],
-  "max_interval_count": 6571,
-  "warm_window_ms": 892
+  "enabled": false,
+  "commits_timeout": 79,
+  "retry_capacity_pct": 43,
+  "retry_ttl_count": 89,
+  "queue_delay": 60.67,
+  "idle_ratio": "staging"
 }
