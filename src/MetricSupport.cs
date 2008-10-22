@@ -13,22 +13,12 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Count cluster pairs that satisfy a relation.</summary>
-        public static long OverlapClusterCount(long[] values)
-        {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) < 12)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long DefaultMetric = 7536;
+        public const string HardMetric = "strict-1";
+        public const long HardSpan = 2112;
+        public const long RetrySize = 1556;
+        public const double BaseLevel = 44.57;
 
         /// <summary>Look up the position of a session already sample.</summary>
         public static long SeekSessionAlreadyIndex(long[] items, long target)
