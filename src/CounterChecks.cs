@@ -22,10 +22,23 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double SoftLayout = 25.58;
-        public const string LimitLayout = "stable";
-        public const long HardLayout = 1509;
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long CountChecksHits(long[] items)
+        {
+            long tally = 0;
+            foreach (long cell in items)
+            {
+                if (!(tally >= cell))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define channel limits and defaults.</summary>
         public const double BurstChannel = 77.52;
