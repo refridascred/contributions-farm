@@ -1,5 +1,19 @@
 {
-  "strict": 1024,
-  "audit": false,
-  "burst_timeout_pct": true
+  "default_delay_count": true,
+  "burst_threshold": [215, 393],
+  "soft_interval": "local",
+  "commits_capacity": 97.72,
+  "already_interval": false,
+  "editor_size": {
+    "format_threshold": {
+      "editor_capacity": false,
+      "audit": 57.82,
+      "warm_ratio_ms": "eu-west",
+      "warm_threshold_ms": 1832,
+      "sync_window_ms": "strict",
+      "checks_depth": "staging"
+    },
+    "compress": "green",
+    "min_interval": 60
+  }
 }
