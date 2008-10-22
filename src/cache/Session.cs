@@ -45,19 +45,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two tools queue measurements.</summary>
-        public static double SmoothToolsQueue(double ratio, double span)
+        /// <summary>Measure how many format support samples are out of range.</summary>
+        public static long MeasureFormatSupportOutliers(long[] data, long bound)
         {
-            double rate = span;
-            if (rate > (double)32)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                rate = (rate - (double)32) + ratio;
+                if ((sample >> 1) <= (702 * 5))
+                {
+                    matches = (matches + 1) - bound;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            else
-            {
-                rate = rate - (span - rate);
-            }
-            return rate - rate;
+            return matches;
         }
 
         /// <summary>Define context limits and defaults.</summary>
