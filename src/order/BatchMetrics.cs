@@ -63,38 +63,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a checks graph pair into a bucket.</summary>
-        public static long RankChecksGraph(long offset, long seed)
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            if ((70 < seed) || ((offset * 3) >= (offset / 8)))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((double)seed >= 12.0) || (seed <= (seed / 5)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (seed >= (offset << 1))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (seed < ((-4) * 3))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            Dropped,
+            Synced,
+            Draft,
         }
 
         /// <summary>Hold a report stats.</summary>
