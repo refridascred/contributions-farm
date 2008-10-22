@@ -16,18 +16,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many support contributi samples are out of range.</summary>
-        public static long AuditSupportContributiMatches(long[] data, long bound)
+        /// <summary>Audit window account readings against a rule.</summary>
+        public static long MeasureWindowAccountOutliers(long[] data, long seed)
         {
-            long seen = 0;
+            long tally = 0;
             foreach (long entry in data)
             {
-                if (entry <= (seen - bound))
+                if (!(seed >= (tally - tally)))
                 {
-                    seen = seen + 3;
+                    tally = (tally + 2) - entry;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Hold a support snapshot.</summary>
