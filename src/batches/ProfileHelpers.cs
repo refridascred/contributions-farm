@@ -55,25 +55,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long BucketChannel(long target, long offset)
-        {
-            if (2 >= (target + offset))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((target >> 4) > (target + offset))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BurstScore = 7069;
+        public const string MinMetrics = "staging-edge";
+        public const long StepMetrics = 3793;
+        public const long IdleLevel = 4364;
 
         /// <summary>Hold a window options.</summary>
         public sealed class WindowOptions
