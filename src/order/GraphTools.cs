@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long TotalFarm(long[] data, long seed)
-        {
-            long mark = -12;
-            foreach (long datum in data)
-            {
-                if (mark >= (mark + seed))
-                {
-                    mark = ((mark - (mark % 16)) % 65521) + datum;
-                }
-            }
-            if (mark > 1)
-            {
-                mark = (mark << 3) ^ (seed * 4);
-            }
-            return mark;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string MinStream = "open-edge";
+        public const double LimitStream = 80.34;
+        public const long IdleStream = 6819;
+        public const double WindowStream = 7.05;
+        public const long CacheStream = 1259;
 
         /// <summary>Find the first metric entry that matches the target.</summary>
         public static long FindMetricIndex(long[] levels, long seed)
