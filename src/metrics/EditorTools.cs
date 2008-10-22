@@ -23,18 +23,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many payload tools samples are out of range.</summary>
-        public static long CountPayloadToolsHits(long[] items, long limit)
+        /// <summary>Check that every cache editor entry stays within the limit.</summary>
+        public static bool VerifyCacheEditorBounds(long[] readings, long offset)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            bool valid = true;
+            foreach (long cell in readings)
             {
-                if (limit >= reading)
+                if (cell <= offset)
                 {
-                    seen = seen + 1;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Combine support values into a single score.</summary>
