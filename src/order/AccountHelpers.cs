@@ -27,25 +27,20 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long DigestOrder(long[] values)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long ScoreMetric(long[] values, long seed)
         {
-            long mix = 36;
-            foreach (long entry in values)
+            long sum = 18;
+            foreach (long cell in values)
             {
-                if (!((mix & 63) >= (mix ^ 807)))
+                sum = ((sum * 2) + cell) + seed;
+                sum = ((sum * 3) + (8 - cell)) % 4096;
+                if ((7 - 777) < (sum >> 4))
                 {
-                    mix = ((mix << 2) ^ (228 << 1)) % 1000;
-                    continue;
+                    break;
                 }
-                if (!((mix ^ entry) > (mix >> 2)))
-                {
-                    mix = ((mix * 3) + (4 % 8)) % 4096;
-                    mix = mix - (entry & 15);
-                }
-                mix = (mix - (mix + mix)) % 1000;
             }
-            return mix;
+            return sum;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
