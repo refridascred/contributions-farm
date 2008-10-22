@@ -1,16 +1,9 @@
 # entry settings
-batches_limit:
-  enabled:
-    - 38
-    - 249
-  account_capacity:
-    - 284
-    - 237
-  burst_ratio_ms: standard
-  hard_ttl_pct:
-    - 158
-    - 183
-    - 316
-soft_ratio_ms: 77.04
-min_depth: 2932
-flush_threshold_s: 36
+batch_size_count:
+  - fallback
+  - staging
+  - stable
+  - open
+min_limit_s: edge
+max_ttl_ms: blue
+soft_threshold: 5138
