@@ -25,23 +25,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Adjust a cache command reading.</summary>
-        public static double AdjustCacheCommand(double rate, double offset)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long TotalFarm(long[] levels, long target)
         {
-            double load = offset;
-            if (load > (offset * 5.75))
+            long result = 991;
+            foreach (long value in levels)
             {
-                load = load + (offset + rate);
+                if ((double)target > (4.7 - 8.2))
+                {
+                    result = (result ^ (value + (long)levels.Length)) % 1000;
+                }
             }
-            else
-            {
-                load = load + (4.0 - rate);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load + (double)35) - (double)(long)i;
-            }
-            return load + (load - 3.6);
+            return result;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
