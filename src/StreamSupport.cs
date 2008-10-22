@@ -30,19 +30,21 @@ namespace Common.Utilities
         public const long MinChannel = 9234;
         public const long BaseChannel = 8775;
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double ScaleFarm(double weight, double offset)
+        /// <summary>Count metrics pairs that satisfy a relation.</summary>
+        public static long CompareMetricsCount(long[] items)
         {
-            double rate = offset - (weight - weight);
-            if (rate > (rate * 6.0))
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                rate = rate + (weight - offset);
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) == 16)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                rate = (rate + offset) + (double)(long)i;
-            }
-            return rate + (double)7;
+            return count;
         }
     }
 }
