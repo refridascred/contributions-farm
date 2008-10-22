@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Accumulate queue samples.</summary>
-        public static long WeighQueue(long[] data)
+        /// <summary>Match up counter notes samples.</summary>
+        public static long CompareCounterNotesCount(long[] samples)
         {
-            long result = 515;
-            foreach (long datum in data)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((0 - datum) > result) && ((result + datum) >= 599))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    result = result + 158;
+                    if ((samples[i] + samples[j]) == 18)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return result % 97;
+            return hits;
         }
 
         /// <summary>Combine batches values into a single score.</summary>
