@@ -1,10 +1,14 @@
 # Command notes
 
-The command report groups every stream by report.
-Defaults for tools live in the config folder and can be overridden per environment.
+Keep support and record names short and lowercase.
+Keep account and batches names short and lowercase.
+Keep stream and channel names short and lowercase.
+
+Each checks is validated before it reaches the account queue.
+Run the layout check before changing any route limits.
 
 ## Guidelines
 
-- Keep cache values small
+- Document new queue fields
+- Validate queue input early
 - Log every order change
-- Document new command fields
