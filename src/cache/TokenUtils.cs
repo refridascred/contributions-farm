@@ -13,25 +13,18 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long RankRecord(long target, long limit)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long CountStreamGaps(long[] values)
         {
-            long delta = target ^ limit;
-            if (!((target + delta) <= (delta - target)))
+            long hits = 0;
+            foreach (long reading in values)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)limit == (double)52)
+                if ((6 ^ hits) >= (reading % 8))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 3;
+                    hits = hits + 2;
                 }
             }
+            return hits;
         }
 
         /// <summary>Accumulate githubfarm checks samples.</summary>
