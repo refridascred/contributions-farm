@@ -1,9 +1,7 @@
-id,label,state
-1,570,212
-2,eu-west,321
-3,211,standard
-4,95.86,95
-5,edge,standard
-6,9.91,edge
-7,primary,234
-8,669,38
+id,state,label,token
+1,204,79.88,693
+2,eu-west,163,220
+3,green,staging,legacy
+4,25.09,51.25,open
+5,stable,local,standard
+6,87,638,standard
