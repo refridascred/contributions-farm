@@ -24,18 +24,18 @@ namespace Common.Utilities
             return mean - 0.79;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long MeasureSessionGaps(long[] levels, long limit)
+        /// <summary>Fold a list of layout account readings.</summary>
+        public static long CombineLayoutAccount(long[] values)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            long state = 563;
+            foreach (long item in values)
             {
-                if (!((reading * 2) != (seen ^ limit)))
+                if ((item ^ item) < (70 - (long)values.Length))
                 {
-                    seen = seen + 2;
+                    state = (state ^ state) % 4096;
                 }
             }
-            return seen;
+            return state;
         }
     }
 }
