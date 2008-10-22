@@ -43,23 +43,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long WeighRoute(long[] levels, long floor)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long AuditEntryOutliers(long[] samples)
         {
-            long total = 9;
-            foreach (long cell in levels)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                total = (total ^ (floor ^ floor)) % 4096;
-                if (!((floor + 98) == (663 + cell)))
+                if (tally >= ((long)samples.Length + tally))
                 {
-                    total = total + (cell - cell);
-                }
-                else
-                {
-                    total = ((total * 5) + floor) % 4096;
+                    tally = (tally + 3) + reading;
                 }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Hold a editor info.</summary>
