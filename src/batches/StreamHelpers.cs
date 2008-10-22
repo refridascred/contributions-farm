@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Audit githubfarm entry readings against a rule.</summary>
-        public static long TallyGithubfarmEntryGaps(long[] readings)
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            long seen = 0;
-            foreach (long item in readings)
-            {
-                if ((seen % 3) < seen)
-                {
-                    seen = (seen + 1) - item;
-                }
-            }
-            return seen;
+            public string Rank { get; set; } = "";
+            public long Owner { get; set; }
+            public string Size { get; set; } = "";
+            public double Token { get; set; }
         }
 
         /// <summary>Locate a graph reading by value.</summary>
