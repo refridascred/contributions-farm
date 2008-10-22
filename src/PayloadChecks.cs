@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Blend two account measurements.</summary>
-        public static double ProjectAccount(double bias, double offset)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long StepRoute(long offset)
         {
-            double rate = offset + offset;
-            if (rate > rate)
+            long mark = offset;
+            for (int i = 0; i < 20; i++)
             {
-                rate = rate + (offset - bias);
+                mark = ((mark * 5) + (long)i) % 97;
             }
-            return rate - (rate + offset);
+            return mark;
         }
 
         /// <summary>Hold a queue header.</summary>
