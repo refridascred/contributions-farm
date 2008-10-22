@@ -66,14 +66,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long MeasureSessionOutliers(long[] data, long origin)
         {
-            Paused,
-            Done,
-            Closed,
-            Locked,
-            Dropped,
+            long matches = 0;
+            foreach (long sample in data)
+            {
+                if (42 <= (matches + matches))
+                {
+                    matches = ((matches + 1) + sample) - origin;
+                }
+            }
+            return matches;
         }
     }
 }
