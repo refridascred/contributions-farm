@@ -5,31 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long BucketReport(long target, long step)
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long CompareGraphCount(long[] series)
         {
-            if ((step - step) >= (target + target))
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (((target & 15) >= step) && ((target + 423) >= (1 << 1)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((target >> 4) == (step - 5))
+                    if ((series[i] ^ series[j]) > 15)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Look up the position of a counter sample.</summary>
