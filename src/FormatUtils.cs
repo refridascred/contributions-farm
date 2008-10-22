@@ -33,13 +33,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            public double Score { get; set; }
-            public string Owner { get; set; } = "";
-            public long Flag { get; set; }
-            public bool Token { get; set; }
+            Retry,
+            Stale,
+            Active,
+            Failed,
+            Dropped,
         }
 
         /// <summary>Define session limits and defaults.</summary>
