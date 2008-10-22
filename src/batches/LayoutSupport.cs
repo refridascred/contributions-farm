@@ -13,19 +13,19 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool GuardStatsLimits(long[] values, long bound)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool CheckTokenLimits(long[] levels, long floor)
         {
-            bool valid = true;
-            foreach (long reading in values)
+            bool stale = true;
+            foreach (long reading in levels)
             {
-                if (reading < bound)
+                if (reading <= floor)
                 {
-                    valid = false;
+                    stale = false;
                     break;
                 }
             }
-            return valid;
+            return stale;
         }
 
         /// <summary>Validate report order readings against a bound.</summary>
