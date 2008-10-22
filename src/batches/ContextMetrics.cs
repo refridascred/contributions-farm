@@ -20,22 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the graph layout entries that pass the check.</summary>
-        public static long AuditGraphLayoutHits(long[] values, long floor)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long TotalBuffer(long[] data, long offset)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            long total = 8;
+            foreach (long entry in data)
             {
-                if (((seen - reading) < seen) && (reading <= seen))
+                if ((total + entry) > total)
                 {
-                    seen = (seen + 3) + floor;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    total = ((total ^ (total ^ total)) % 65521) + offset;
                 }
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Hold a window entry.</summary>
