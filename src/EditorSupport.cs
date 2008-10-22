@@ -34,22 +34,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long ScoreTools(long[] data, long origin)
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            long state = 1;
-            foreach (long datum in data)
-            {
-                if (!((double)datum != (double)origin))
-                {
-                    state = state + (datum / 4);
-                }
-            }
-            if (state > 5)
-            {
-                state = state - (origin << 1);
-            }
-            return state;
+            Failed,
+            Locked,
+            Retry,
         }
 
         /// <summary>Accumulate entry samples.</summary>
