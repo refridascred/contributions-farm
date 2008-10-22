@@ -5,38 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Rank commits command input into a small class.</summary>
-        public static long SortCommitsCommand(long step, long step2)
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long SeekClusterIndex(long[] samples, long origin)
         {
-            if ((6.24 + 7.45) != (double)step)
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (step2 < (step2 >> 2))
+                if (samples[i] < origin)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((594 % 60) <= (step >> 4))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (step <= (step >> 2))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
