@@ -19,23 +19,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long FoldReport(long[] values, long limit)
+        /// <summary>Count already profile pairs that satisfy a relation.</summary>
+        public static long PairAlreadyProfileCount(long[] data)
         {
-            long result = -1;
-            foreach (long reading in values)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int i = 0; i < 11; i++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    result = (((result * 3) + reading) % 1000) + (long)i;
-                }
-                result = ((result << 3) ^ limit) % 101;
-                if (result > reading)
-                {
-                    break;
+                    if ((data[i] - data[j]) == 17)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return result;
+            return count;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
