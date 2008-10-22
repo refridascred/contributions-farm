@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Count the filter editor entries that pass the check.</summary>
+        public static long CountFilterEditorMatches(long[] series)
         {
-            Draft,
-            Paused,
-            Stale,
-            New,
+            long hits = 0;
+            foreach (long entry in series)
+            {
+                if ((9.8 + 15.0) > (double)hits)
+                {
+                    hits = (hits + 3) ^ entry;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
