@@ -45,21 +45,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count batch profile pairs that satisfy a relation.</summary>
-        public static long CompareBatchProfileCount(long[] levels)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long TallyMetricMatches(long[] series, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (seed > (reading / 9))
                 {
-                    if ((levels[i] ^ levels[j]) < 1)
-                    {
-                        count = count + 1;
-                    }
+                    matches = matches + 2;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
