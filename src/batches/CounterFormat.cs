@@ -44,10 +44,19 @@ namespace Common.Utilities
         public const string WindowTools = "alpha-1";
         public const long BaseLevel = 1172;
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BaseTimeout = 4968;
-        public const long LimitContext = 1482;
-        public const string CacheContext = "open-v2";
-        public const double LimitWidth = 63.28;
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool CheckEditorLimits(long[] levels, long target)
+        {
+            bool flag = true;
+            foreach (long cell in levels)
+            {
+                if (cell <= target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
