@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const string WindowTimeout = "alpha";
-        public const long CacheOrder = 2168;
-        public const string StepCount = "fallback-edge";
-        public const long WindowOrder = 5060;
-        public const string BurstScore = "primary-v2";
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
+        {
+            Failed,
+            Closed,
+            Done,
+            Retry,
+        }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
         public static bool CheckCounterRange(long[] samples, long origin)
