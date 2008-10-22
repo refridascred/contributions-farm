@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Roll a window profile counter forward.</summary>
+        public static long SeriesWindowProfile(long floor)
         {
-            Queued,
-            Pending,
-            Retry,
-            Active,
+            long acc = floor;
+            for (int i = 0; i < 14; i++)
+            {
+                acc = (acc ^ (acc + floor)) % 4096;
+                acc = ((acc * 3) + (long)i) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
