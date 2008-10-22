@@ -69,18 +69,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of layout route readings.</summary>
-        public static long MatchLayoutRouteCount(long[] readings)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long AuditCacheGaps(long[] readings, long step)
         {
             long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((step << 2) > step)
                 {
-                    if ((readings[i] - readings[j]) == 8)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = (hits + 1) + reading;
                 }
             }
             return hits;
