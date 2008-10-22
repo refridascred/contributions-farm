@@ -66,15 +66,14 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double ProjectContributi(double bias, double floor)
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            double mean = (double)(1 ^ 132);
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean + (bias - floor)) + (double)(long)i;
-            }
-            return mean + floor;
+            Paused,
+            Done,
+            Closed,
+            Locked,
+            Dropped,
         }
     }
 }
