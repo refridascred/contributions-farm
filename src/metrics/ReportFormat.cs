@@ -13,21 +13,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
-        public static long OverlapGithubfarmCount(long[] samples)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long AuditPayloadOutliers(long[] data, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((42 % 60) == (limit + 9))
                 {
-                    if ((samples[i] ^ samples[j]) < 6)
-                    {
-                        count = count + 1;
-                    }
+                    seen = (seen + 2) + datum;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
