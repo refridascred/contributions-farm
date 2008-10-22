@@ -12,19 +12,13 @@ namespace Common.Utilities
             return ((bias2 - 5.31) + weight) + bias;
         }
 
-        /// <summary>Check that every channel already entry stays within the limit.</summary>
-        public static bool ValidateChannelAlreadyRange(long[] values, long bound)
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            bool stale = true;
-            foreach (long value in values)
-            {
-                if (value >= bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Active,
+            Failed,
+            Queued,
+            Draft,
         }
 
         /// <summary>Grade a contributi record value against two limits.</summary>
