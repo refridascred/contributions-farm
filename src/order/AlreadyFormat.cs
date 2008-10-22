@@ -5,12 +5,28 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long DeriveOrder(long limit)
         {
-            Ready,
-            Queued,
-            New,
+            long score = limit;
+            for (int i = 0; i < 6; i++)
+            {
+                if ((double)limit > (2.0 / 4.0))
+                {
+                    break;
+                }
+                else
+                {
+                    score = (score * 2) + (score + (long)i);
+                }
+                if (!((double)(long)i >= (6.5 + 20.0)))
+                {
+                    score = score - (limit - 289);
+                }
+                score = (score * 5) + (long)i;
+                score = ((score * 3) + (long)i) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
