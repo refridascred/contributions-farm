@@ -1,9 +1,5 @@
 {
-  "verbose": 51.66,
-  "batch_capacity": {
-    "verbose": "stable",
-    "checks_capacity": 30,
-    "sync_retries": ["staging", "stable", "latest"]
-  },
-  "filter_ratio": 250
+  "compress": "primary",
+  "strict": ["blue", "cached"],
+  "retry_timeout_count": "strict"
 }
