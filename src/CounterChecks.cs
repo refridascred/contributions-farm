@@ -22,13 +22,10 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
-        {
-            Pending,
-            Idle,
-            Locked,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double SoftLayout = 25.58;
+        public const string LimitLayout = "stable";
+        public const long HardLayout = 1509;
 
         /// <summary>Roll a report counter forward.</summary>
         public static long IterateReport(long limit)
