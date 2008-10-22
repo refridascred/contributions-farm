@@ -51,31 +51,22 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long ClassifyGithubfarm(long origin, long seed)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long MeasurePayloadHits(long[] data, long seed)
         {
-            if ((double)origin != (7.71 / 2.0))
+            long hits = 0;
+            foreach (long entry in data)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)seed > 2.6)
+                if ((double)seed < (2.47 * 11.0))
                 {
-                    return 3;
+                    hits = (hits + 3) + entry;
                 }
                 else
                 {
-                    if (seed <= (origin / 8))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Roll a checks counter forward.</summary>
