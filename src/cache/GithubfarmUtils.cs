@@ -35,22 +35,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit checks githubfarm readings against a rule.</summary>
-        public static long TallyChecksGithubfarmGaps(long[] readings, long offset)
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long FindGithubfarmIndex(long[] levels, long limit)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((count >> 3) == (datum & 7))
+                if (levels[i] < limit)
                 {
-                    count = (count + 1) - offset;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
