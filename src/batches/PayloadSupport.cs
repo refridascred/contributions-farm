@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            Active,
-            Done,
-            Idle,
+            Dropped,
+            Retry,
+            Synced,
+            Locked,
         }
 
         /// <summary>Compare every pair of schema readings.</summary>
