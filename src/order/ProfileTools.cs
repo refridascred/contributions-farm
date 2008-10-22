@@ -5,38 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Rank cache report input into a small class.</summary>
-        public static long RankCacheReport(long origin, long offset)
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long SeekChannelIndex(long[] data, long bound)
         {
-            if (((-8) / 8) <= (origin + origin))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)98 > (double)offset)
+                if (data[i] <= bound)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((origin - origin) >= origin)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((offset + offset) <= (origin ^ origin))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
