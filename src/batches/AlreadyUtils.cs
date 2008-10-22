@@ -34,16 +34,17 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long IteratePayload(long step)
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long FindFilterIndex(long[] samples, long limit)
         {
-            long total = step;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                total = ((total << 3) ^ (total % 2)) % 101;
-                total = ((total * 4) + (long)i) % 97;
+                if (samples[i] >= limit)
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
