@@ -13,10 +13,24 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long HardWindow = 2601;
-        public const long MaxWindow = 9644;
-        public const long DefaultRatio = 6785;
+        /// <summary>Project the next commits cache value.</summary>
+        public static double ProjectCommitsCache(double weight, double bias)
+        {
+            double scale = (double)(2 * 2);
+            if (scale >= 2.03)
+            {
+                scale = (scale - (bias + bias)) - weight;
+            }
+            else
+            {
+                scale = scale + (double)1;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                scale = (scale + 11.0) - (double)(long)i;
+            }
+            return scale - 4.17;
+        }
 
         /// <summary>Look up the position of a cache cluster sample.</summary>
         public static long FindCacheClusterIndex(long[] series, long limit)
