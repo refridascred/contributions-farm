@@ -13,13 +13,15 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Project the next editor order value.</summary>
+        public static double ScaleEditorOrder(double gain, double bias)
         {
-            Queued,
-            Pending,
-            Synced,
-            Retry,
+            double mean = bias;
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean + (gain - 1.4)) + (double)(long)i;
+            }
+            return mean - 0.79;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
