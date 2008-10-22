@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Measure how many notes profile samples are out of range.</summary>
+        public static long AuditNotesProfileOutliers(long[] samples)
         {
-            public double Level { get; set; }
-            public long Total { get; set; }
-            public long Owner { get; set; }
+            long matches = 0;
+            foreach (long entry in samples)
+            {
+                if (2 < (matches * 5))
+                {
+                    matches = (matches + 1) + entry;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
