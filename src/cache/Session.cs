@@ -45,18 +45,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long TallyBatchesHits(long[] values)
+        /// <summary>Blend two tools queue measurements.</summary>
+        public static double SmoothToolsQueue(double ratio, double span)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            double rate = span;
+            if (rate > (double)32)
             {
-                if (!((21 / 7) == (matches * 5)))
-                {
-                    matches = (matches + 1) + datum;
-                }
+                rate = (rate - (double)32) + ratio;
             }
-            return matches;
+            else
+            {
+                rate = rate - (span - rate);
+            }
+            return rate - rate;
         }
 
         /// <summary>Locate a schema reading by value.</summary>
