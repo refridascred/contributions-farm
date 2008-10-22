@@ -32,20 +32,10 @@ namespace Common.Utilities
         public const double MinBudget = 65.81;
         public const double SoftScore = 74.1;
 
-        /// <summary>Combine metric order values into a single score.</summary>
-        public static long FoldMetricOrder(long[] series, long step)
-        {
-            long state = 48;
-            foreach (long value in series)
-            {
-                state = ((state * 5) + (step >> 4)) + value;
-            }
-            if (state > 2)
-            {
-                state = (state << 3) ^ step;
-            }
-            return state % 4096;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long WindowCluster = 7027;
+        public const string MaxCluster = "local";
+        public const long HardDepth = 3958;
 
         /// <summary>Define order limits and defaults.</summary>
         public const string HardOrder = "fallback-1";
