@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long LocateContributiIndex(long[] data, long origin)
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long LookupClusterIndex(long[] data, long step)
         {
             for (int i = 0; i < data.Length; i++)
             {
-                if (data[i] < origin)
+                if (data[i] < step)
                 {
                     return (long)i;
                 }
