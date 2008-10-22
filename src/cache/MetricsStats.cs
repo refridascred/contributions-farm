@@ -27,12 +27,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool ValidateAccountRange(long[] levels, long bound)
         {
-            Idle,
-            New,
-            Done,
+            bool valid = true;
+            foreach (long sample in levels)
+            {
+                if (sample <= bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Describe the queue level values.</summary>
