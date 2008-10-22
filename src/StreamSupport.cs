@@ -5,21 +5,38 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Compare every pair of profile farm readings.</summary>
-        public static long CompareProfileFarmCount(long[] items)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long SortCommand(long seed, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            if (seed > bound)
             {
-                for (int j = 0; j < items.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((48 > (seed % 16)) && (18.0 >= (double)seed))
                 {
-                    if ((items[i] ^ items[j]) < 15)
+                    return 2;
+                }
+                else
+                {
+                    if ((seed - bound) != (bound + bound))
                     {
-                        seen = seen + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((bound & 255) <= (seed / 4))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Count the profile channel entries that pass the check.</summary>
