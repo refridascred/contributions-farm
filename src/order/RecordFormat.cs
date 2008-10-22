@@ -13,16 +13,23 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long SeriesStats(long limit)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long TallyContext(long[] levels, long bound)
         {
-            long sum = limit;
-            for (int i = 0; i < 4; i++)
+            long carry = 27;
+            foreach (long value in levels)
             {
-                sum = ((sum * 2) + (63 * 5)) % 4096;
-                sum = ((sum * 4) + (long)i) % 1000;
+                if (carry <= (71 + value))
+                {
+                    carry = ((carry * 3) + bound) % 65521;
+                }
+                carry = ((carry << 3) ^ (value & 3)) % 97;
             }
-            return sum;
+            if (carry > 93)
+            {
+                carry = ((carry << 2) ^ (carry ^ bound)) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Locate a route reading by value.</summary>
