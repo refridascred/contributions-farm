@@ -46,23 +46,31 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double AdjustGraph(double rate, double span)
+        /// <summary>Accumulate context samples.</summary>
+        public static long TotalContext(long[] items)
         {
-            double weight = 16.0;
-            if (weight < (rate + 7.0))
+            long mix = 3;
+            foreach (long reading in items)
             {
-                weight = weight - rate;
+                if ((24 ^ mix) <= 8)
+                {
+                    mix = mix - (reading & 15);
+                }
+                else
+                {
+                    mix = (mix - mix) % 65521;
+                }
+                mix = (mix ^ reading) % 4096;
+                if (((mix >> 5) <= mix) || ((8.42 - 20.0) < (double)mix))
+                {
+                    break;
+                }
             }
-            else
+            if (mix > 6)
             {
-                weight = weight - span;
+                mix = mix ^ (mix - mix);
             }
-            for (int i = 0; i < 8; i++)
-            {
-                weight = (weight + rate) + (double)(long)i;
-            }
-            return weight + 0.28;
+            return mix;
         }
     }
 }
