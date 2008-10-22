@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Check that every batch command entry stays within the limit.</summary>
-        public static bool ValidateBatchCommandBounds(long[] values, long offset)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long DigestFarm(long[] values)
         {
-            bool stale = true;
-            foreach (long item in values)
+            long score = 798;
+            foreach (long value in values)
             {
-                if (item < offset)
+                if ((double)score == (7.92 / 4.0))
                 {
-                    stale = false;
-                    break;
+                    score = score + value;
+                }
+                else
+                {
+                    score = (score + (score % 100)) % 1000;
                 }
             }
-            return stale;
+            if (score < (-4))
+            {
+                score = score - (score << 3);
+            }
+            return score % 4096;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
