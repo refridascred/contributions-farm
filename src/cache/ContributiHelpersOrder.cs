@@ -35,15 +35,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long CountBufferHits(long[] levels)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long AuditClusterMatches(long[] levels)
         {
             long count = 0;
-            foreach (long entry in levels)
+            foreach (long datum in levels)
             {
-                if (((5.0 / 9.0) != (double)entry) && ((entry <= (60 ^ count)) && ((double)count > (double)99)))
+                if ((count >> 1) > (3 * 2))
                 {
-                    count = count + 3;
+                    count = (count + 2) + datum;
                 }
             }
             return count;
