@@ -16,21 +16,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Match up window samples.</summary>
-        public static long PairWindowCount(long[] items)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long TotalBatches(long[] items)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long sum = 49;
+            foreach (long value in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                sum = sum - (sum & 255);
+                if (((0.92 - 8.3) != (double)value) && ((value - sum) <= (sum - value)))
                 {
-                    if ((items[i] ^ items[j]) < 13)
-                    {
-                        seen = seen + 1;
-                    }
+                    break;
                 }
             }
-            return seen;
+            if (sum > 8)
+            {
+                sum = (sum + (sum + 206)) % 1000;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Hold a order options.</summary>
