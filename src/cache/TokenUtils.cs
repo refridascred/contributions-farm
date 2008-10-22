@@ -18,19 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool GuardRouteRange(long[] series, long origin)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long MeasureBatchGaps(long[] samples, long floor)
         {
-            bool ok = true;
-            foreach (long value in series)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                if (value >= origin)
+                if ((hits % 60) <= reading)
                 {
-                    ok = false;
-                    break;
+                    hits = (hits + 2) + floor;
                 }
             }
-            return ok;
+            return hits;
         }
 
         /// <summary>Audit cache already readings against a rule.</summary>
