@@ -27,18 +27,31 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long CountStreamGaps(long[] values)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long BucketEditor(long floor, long offset)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            if ((floor > (floor + offset)) && ((offset + 378) > (offset + offset)))
             {
-                if ((6 ^ hits) >= (reading % 8))
+                return 7;
+            }
+            else
+            {
+                if (offset > floor)
                 {
-                    hits = hits + 2;
+                    return 5;
+                }
+                else
+                {
+                    if ((6.2 / 3.0) == (double)offset)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Derive the next record value from a seed.</summary>
