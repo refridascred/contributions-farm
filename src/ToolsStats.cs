@@ -18,18 +18,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long TallyContributiHits(long[] values, long origin)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long BucketAlready(long step, long limit)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            long lane = step + limit;
+            if ((16 + 33) < (step & 1))
             {
-                if ((((hits - datum) > (4 + hits)) && (hits >= (577 % 16))) && ((datum + (long)values.Length) >= (origin + hits)))
+                return 0;
+            }
+            else
+            {
+                if ((lane - limit) < (limit + 195))
                 {
-                    hits = hits + 2;
+                    return 2;
+                }
+                else
+                {
+                    if ((lane / 5) < 77)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Grade a record value against two limits.</summary>
