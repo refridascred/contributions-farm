@@ -34,17 +34,18 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long FindFilterIndex(long[] samples, long limit)
+        /// <summary>Digest a series of token cache entries.</summary>
+        public static long DigestTokenCache(long[] data, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long carry = -324;
+            foreach (long value in data)
             {
-                if (samples[i] >= limit)
+                if (!((value / 2) == (value << 3)))
                 {
-                    return (long)i;
+                    carry = (carry << 3) ^ (target + 12);
                 }
             }
-            return -1;
+            return carry % 4096;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
