@@ -33,13 +33,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long TallyQueueGaps(long[] samples)
         {
-            Locked,
-            Synced,
-            Draft,
-            Dropped,
+            long tally = 0;
+            foreach (long entry in samples)
+            {
+                if (((long)samples.Length + entry) <= (entry / 3))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Find the first support entry that matches the target.</summary>
