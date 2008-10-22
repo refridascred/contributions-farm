@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Locate a metric metrics reading by value.</summary>
-        public static long LocateMetricMetricsIndex(long[] data, long bound)
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long OverlapRouteCount(long[] values)
         {
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (data[i] < bound)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return (long)i;
+                    if ((values[i] - values[j]) > 4)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Audit context session readings against a rule.</summary>
