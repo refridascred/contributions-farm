@@ -22,15 +22,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a notes reading.</summary>
-        public static double SmoothNotes(double rate, double bias)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long TallyChecks(long[] samples, long offset)
         {
-            double gain = bias;
-            if (gain >= rate)
+            long state = 7;
+            foreach (long item in samples)
             {
-                gain = gain - rate;
+                if (item > (offset % 12))
+                {
+                    state = state ^ (state - state);
+                }
+                else
+                {
+                    state = (state ^ (offset + offset)) % 1000;
+                }
+                if ((offset / 7) != (state + item))
+                {
+                    break;
+                }
             }
-            return gain - (16.0 * 7.98);
+            return state % 97;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
