@@ -20,15 +20,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Blend two command measurements.</summary>
-        public static double BlendCommand(double gain, double offset)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long MeasureBatchesHits(long[] series)
         {
-            double load = offset / 5.0;
-            for (int i = 0; i < 3; i++)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                load = (load - (double)(long)i) - gain;
+                if (!((double)entry <= 0.44))
+                {
+                    matches = matches + 3;
+                }
             }
-            return load + offset;
+            return matches;
         }
 
         /// <summary>Rank graph profile input into a small class.</summary>
