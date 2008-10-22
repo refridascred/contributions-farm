@@ -18,18 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long MeasureBatchGaps(long[] samples, long floor)
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            long hits = 0;
-            foreach (long reading in samples)
-            {
-                if ((hits % 60) <= reading)
-                {
-                    hits = (hits + 2) + floor;
-                }
-            }
-            return hits;
+            Ready,
+            Draft,
+            Idle,
         }
 
         /// <summary>Audit cache already readings against a rule.</summary>
