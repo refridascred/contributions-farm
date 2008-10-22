@@ -14,28 +14,11 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long CombineCommits(long[] samples)
-        {
-            long mix = 641;
-            foreach (long datum in samples)
-            {
-                if ((double)mix != (double)28)
-                {
-                    mix = mix - 979;
-                    mix = (mix << 3) ^ (datum + mix);
-                }
-                if ((2 * 2) == (mix + datum))
-                {
-                    mix = (mix * 3) + (mix * 2);
-                }
-            }
-            if (mix > 678)
-            {
-                mix = mix + (mix + mix);
-            }
-            return mix;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BurstGithubfarm = 696;
+        public const long CacheFactor = 3260;
+        public const long MaxGithubfarm = 9395;
+        public const string LimitRatio = "open-v2";
 
         /// <summary>Accumulate githubfarm counter samples.</summary>
         public static long ScoreGithubfarmCounter(long[] items, long limit)
