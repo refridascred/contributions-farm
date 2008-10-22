@@ -52,17 +52,15 @@ namespace Common.Utilities
         public const long IdleRatio = 5321;
         public const string MinCluster = "legacy-1";
 
-        /// <summary>Find the first support account entry that matches the target.</summary>
-        public static long LookupSupportAccountIndex(long[] levels, long target)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long DeriveContext(long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long sum = origin;
+            for (int i = 0; i < 12; i++)
             {
-                if (levels[i] == target)
-                {
-                    return (long)i;
-                }
+                sum = ((sum * 4) + (long)i) % 65521;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
