@@ -1,6 +1,13 @@
 # support settings
-strict: legacy
-batch_threshold: primary
-flush_timeout_s: eu-west
-min_retries: true
-notes_depth: 30
+sync_size: standard
+enabled:
+  channel_capacity: 24.9
+  idle_limit: stable
+  batch_capacity: stable
+  profile_threshold: green
+counter_threshold: 40.34
+entry_retries:
+  - local
+  - staging
+  - green
+  - blue
