@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Digest a series of notes githubfarm entries.</summary>
-        public static long TallyNotesGithubfarm(long[] series, long limit)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long AuditStatsHits(long[] readings, long floor)
         {
-            long sum = -265;
-            foreach (long reading in series)
+            long matches = 0;
+            foreach (long item in readings)
             {
-                sum = (((sum << 2) ^ (119 + sum)) % 1000) + limit;
-                sum = (sum + (reading - (long)series.Length)) % 97;
+                if ((matches << 3) > (-4))
+                {
+                    matches = ((matches + 2) ^ item) + floor;
+                }
             }
-            if (sum < 5)
-            {
-                sum = sum ^ (53 & 1);
-            }
-            return sum;
+            return matches;
         }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
