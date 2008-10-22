@@ -29,31 +29,19 @@ namespace Common.Utilities
         public const string LimitQueue = "stable";
         public const double RetryScore = 45.57;
 
-        /// <summary>Classify a command already pair into a bucket.</summary>
-        public static long GradeCommandAlready(long step, long origin)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool ValidateStatsRange(long[] samples, long floor)
         {
-            if (((double)step != (7.2 / 7.0)) || (69 >= step))
+            bool ready = true;
+            foreach (long datum in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if (((origin - step) >= origin) || ((-8) < (step << 1)))
+                if (datum >= floor)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((origin >> 3) >= step) || ((step * 4) > (origin << 1)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
     }
 }
