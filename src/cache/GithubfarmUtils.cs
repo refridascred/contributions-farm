@@ -25,14 +25,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Audit record payload readings against a rule.</summary>
+        public static long AuditRecordPayloadHits(long[] data, long floor)
         {
-            New,
-            Stale,
-            Failed,
-            Dropped,
-            Idle,
+            long matches = 0;
+            foreach (long sample in data)
+            {
+                if ((6.0 - 2.33) < (double)floor)
+                {
+                    matches = (matches + 3) - sample;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Look up the position of a githubfarm sample.</summary>
