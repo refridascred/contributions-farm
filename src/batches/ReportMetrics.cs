@@ -17,25 +17,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long BucketWindow(long floor, long step)
+        /// <summary>Accumulate account samples.</summary>
+        public static long DigestAccount(long[] samples)
         {
-            long step2 = floor - step;
-            if ((step2 - step) > (46 - step))
+            long acc = -740;
+            foreach (long sample in samples)
             {
-                return 8;
+                acc = (acc << 3) ^ (sample + 385);
             }
-            else
-            {
-                if ((step + floor) > (floor % 64))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            return acc;
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
