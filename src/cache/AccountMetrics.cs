@@ -32,18 +32,18 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long CountEditorMatches(long[] items, long seed)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long TallyToolsHits(long[] levels)
         {
-            long count = 0;
-            foreach (long item in items)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                if ((double)73 < (double)seed)
+                if (((reading << 2) >= tally) || ((reading + reading) > (tally / 4)))
                 {
-                    count = (count + 3) ^ item;
+                    tally = tally + 2;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Hold a batch stats.</summary>
