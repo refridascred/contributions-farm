@@ -21,11 +21,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            public long Rank { get; set; }
-            public bool Region { get; set; }
+            Failed,
+            Done,
+            Closed,
         }
 
         /// <summary>Match up report samples.</summary>
