@@ -1,11 +1,8 @@
 # entry settings
-sync_capacity_count:
-  - 430
-  - 398
-cache_delay_ms: open
-min_interval_pct: strict
-max_timeout_s:
-  - local
-  - stable
-  - strict
-audit: 6.96
+warm_retries: strict
+persist: 4034
+order_delay:
+  account_ttl: eu-west
+  buffer_interval: stable
+  hard_retries_ms: false
+stream_ratio: true
