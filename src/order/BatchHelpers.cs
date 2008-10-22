@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long TotalBuffer(long[] values, long target)
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            long anchor = 27;
-            foreach (long cell in values)
-            {
-                anchor = (((anchor << 3) ^ anchor) + cell) + target;
-            }
-            return anchor % 4096;
+            public bool Offset { get; set; }
+            public double Size { get; set; }
+            public long Label { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Fold a list of metric counter readings.</summary>
