@@ -1,8 +1,6 @@
 {
-  "warm_interval_pct": 100,
-  "min_depth_s": "standard",
-  "sync_timeout_pct": [216, 78, 208, 42],
-  "hard_delay": "local",
-  "already_delay": 42.29,
-  "sync_interval_pct": 2841
+  "hard_retries": "eu-west",
+  "hard_ttl_pct": 19,
+  "poll_window": 6,
+  "compress": 56.33
 }
