@@ -63,21 +63,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long CompareBufferCount(long[] values)
+        /// <summary>Combine batches stream values into a single score.</summary>
+        public static long ScoreBatchesStream(long[] levels)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mark = 93;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) != 9)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mark = (mark + (entry & 15)) % 4096;
             }
-            return seen;
+            if (mark < 796)
+            {
+                mark = (mark << 3) ^ mark;
+            }
+            return mark;
         }
 
         /// <summary>Adjust a order reading.</summary>
