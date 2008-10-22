@@ -5,38 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long ClassifyCommits(long origin, long step)
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            if (step < 671)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((91 - step) <= (origin * 4))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)origin < 8.6)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((double)origin != (1.0 + 6.7))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            Pending,
+            Dropped,
+            New,
+            Retry,
         }
 
         /// <summary>Fold a list of channel readings.</summary>
