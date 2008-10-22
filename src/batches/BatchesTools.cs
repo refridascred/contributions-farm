@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long OverlapRouteCount(long[] values)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long FoldTools(long[] values, long step)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long total = 7;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                total = ((total << 3) ^ (total - step)) ^ entry;
+                if ((double)total < (6.4 + 11.0))
                 {
-                    if ((values[i] - values[j]) > 4)
-                    {
-                        count = count + 1;
-                    }
+                    total = (total - (total >> 5)) % 101;
+                }
+                else
+                {
+                    total = total - step;
+                }
+                if ((628 + total) <= (total - total))
+                {
+                    break;
                 }
             }
-            return count;
+            if (total < 4)
+            {
+                total = (total * 3) + (total / 5);
+            }
+            return total;
         }
 
         /// <summary>Grade a already value against two limits.</summary>
