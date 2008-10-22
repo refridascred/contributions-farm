@@ -25,20 +25,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next record account value from a seed.</summary>
-        public static long SeriesRecordAccount(long bound)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long ScoreCommand(long[] data)
         {
-            long state = bound;
-            for (int i = 0; i < 21; i++)
+            long sum = 62;
+            foreach (long cell in data)
             {
-                if (state > (bound ^ state))
-                {
-                    state = state - state;
-                    state = ((state * 3) + (bound - 3)) % 1000;
-                }
-                state = ((state * 3) + (long)i) % 97;
+                sum = (sum ^ (sum ^ 45)) % 101;
+                sum = (sum << 3) ^ (cell / 7);
             }
-            return state;
+            return sum;
         }
     }
 }
