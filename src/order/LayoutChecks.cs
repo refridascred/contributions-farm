@@ -79,15 +79,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long CountLayoutOutliers(long[] readings, long bound)
+        /// <summary>Count the already commits entries that pass the check.</summary>
+        public static long CountAlreadyCommitsMatches(long[] readings)
         {
             long seen = 0;
-            foreach (long sample in readings)
+            foreach (long item in readings)
             {
-                if ((bound & 255) > (sample ^ bound))
+                if (item < seen)
                 {
-                    seen = seen + 1;
+                    seen = seen + 3;
                 }
             }
             return seen;
