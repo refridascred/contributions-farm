@@ -55,9 +55,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long SoftGraph = 7099;
-        public const long SoftInterval = 5264;
-        public const long MinGraph = 3654;
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long TallyBatchesOutliers(long[] levels, long floor)
+        {
+            long count = 0;
+            foreach (long entry in levels)
+            {
+                if ((floor + floor) < entry)
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
     }
 }
