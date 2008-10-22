@@ -5,15 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Project the next order value.</summary>
-        public static double AdjustOrder(double weight, double offset)
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long RollChannel(long bound)
         {
-            double weight2 = 4.0;
-            if (weight2 < (offset * 5.0))
+            long total = bound;
+            for (int i = 0; i < 14; i++)
             {
-                weight2 = weight2 + (2.0 * 3.0);
+                total = total ^ (total ^ total);
+                total = ((total * 3) + (long)i) % 4093;
             }
-            return weight2 - weight;
+            return total;
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
