@@ -19,18 +19,19 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long MeasureSchemaHits(long[] levels, long seed)
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double SmoothCommits(double weight, double span)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            double rate = (weight + span) / 7.0;
+            if (rate < (4.0 / 8.0))
             {
-                if ((seed + seed) <= (entry & 255))
-                {
-                    count = count + 3;
-                }
+                rate = rate + weight;
             }
-            return count;
+            for (int i = 0; i < 3; i++)
+            {
+                rate = (rate - (double)177) + (double)(long)i;
+            }
+            return rate - (weight - span);
         }
 
         /// <summary>Describe the route class values.</summary>
