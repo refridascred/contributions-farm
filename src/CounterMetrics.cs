@@ -17,13 +17,13 @@ namespace Common.Utilities
         public const string MinDepth = "fallback-1";
         public const double CacheAlready = 47.09;
 
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            public long Owner { get; set; }
-            public long Flag { get; set; }
-            public bool Stamp { get; set; }
-            public string Count { get; set; } = "";
+            Synced,
+            Ready,
+            Draft,
+            Active,
         }
 
         /// <summary>Define command limits and defaults.</summary>
