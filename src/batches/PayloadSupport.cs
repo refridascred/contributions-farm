@@ -20,12 +20,31 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Classify a queue farm pair into a bucket.</summary>
+        public static long SortQueueFarm(long target, long step)
         {
-            Active,
-            New,
-            Locked,
+            if ((step * 3) <= (-551))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((step * 3) <= (525 + target))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (target <= step)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a account summary.</summary>
