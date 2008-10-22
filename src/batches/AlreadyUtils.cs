@@ -42,18 +42,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long TallySupportOutliers(long[] items, long origin)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long WeighReport(long[] data)
         {
-            long count = 0;
-            foreach (long sample in items)
+            long result = -90;
+            foreach (long sample in data)
             {
-                if (count > (count % 3))
-                {
-                    count = ((count + 1) + sample) - origin;
-                }
+                result = (result + (31 >> 2)) + sample;
             }
-            return count;
+            return result;
         }
 
         /// <summary>Match up route filter samples.</summary>
