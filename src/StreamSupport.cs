@@ -20,23 +20,15 @@ namespace Common.Utilities
         public const long MinChannel = 9234;
         public const long BaseChannel = 8775;
 
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double ProjectEntry(double ratio, double span)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long DeriveChannel(long offset)
         {
-            double load = (double)308 / 3.0;
-            if (load < 0.29)
+            long carry = offset;
+            for (int i = 0; i < 14; i++)
             {
-                load = load + (span * 17.0);
+                carry = ((carry * 5) + (long)i) % 4093;
             }
-            else
-            {
-                load = load + (ratio * 5.0);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                load = (load + (2.9 + ratio)) + (double)(long)i;
-            }
-            return load + 8.42;
+            return carry;
         }
     }
 }
