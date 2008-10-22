@@ -48,13 +48,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double SmoothMetric(double weight, double bias)
         {
-            Paused,
-            Stale,
-            Done,
-            Active,
+            double ratio = weight;
+            if (ratio < bias)
+            {
+                ratio = ratio - weight;
+            }
+            else
+            {
+                ratio = ratio + weight;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                ratio = (ratio + 6.9) + (double)(long)i;
+            }
+            return ratio + 8.36;
         }
     }
 }
