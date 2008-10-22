@@ -75,12 +75,24 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Derive the next command filter value from a seed.</summary>
+        public static long SeriesCommandFilter(long target)
         {
-            Queued,
-            Active,
-            Draft,
+            long carry = target;
+            for (int i = 0; i < 21; i++)
+            {
+                if ((1 ^ carry) <= carry)
+                {
+                    carry = (carry * 4) + (carry / 8);
+                    carry = carry ^ target;
+                }
+                else
+                {
+                    carry = (carry - (target % 5)) % 101;
+                }
+                carry = ((carry * 2) + (long)i) % 65521;
+            }
+            return carry;
         }
     }
 }
