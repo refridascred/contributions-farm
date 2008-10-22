@@ -65,17 +65,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long LocateBatchesIndex(long[] items, long origin)
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] > origin) && ((items[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Synced,
+            Queued,
+            New,
         }
     }
 }
