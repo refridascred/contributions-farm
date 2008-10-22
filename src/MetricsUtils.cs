@@ -31,31 +31,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long BucketFarm(long target, long step)
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            if ((8.0 + 5.92) < (double)target)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((9.15 - 15.0) != (double)target)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((target + target) != (target & 7))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public bool Owner { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Define queue limits and defaults.</summary>
