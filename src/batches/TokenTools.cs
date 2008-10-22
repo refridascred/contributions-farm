@@ -5,12 +5,38 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Rank tools queue input into a small class.</summary>
+        public static long SortToolsQueue(long origin, long step)
         {
-            Idle,
-            Draft,
-            Paused,
+            if ((origin - origin) >= (step % 2))
+            {
+                return 3;
+            }
+            else
+            {
+                if (!((origin * 4) == (step ^ step)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((step <= (2 >> 4)) || ((step >> 3) <= step))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((origin - origin) >= origin)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Look up the position of a githubfarm sample.</summary>
