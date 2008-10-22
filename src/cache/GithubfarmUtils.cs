@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
-        {
-            Closed,
-            Paused,
-            New,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string WindowSpan = "fallback-1";
+        public const long StepFormat = 5712;
+        public const long MaxFormat = 7871;
+        public const double WindowCount = 68.12;
+        public const double WindowFormat = 11.06;
 
         /// <summary>Hold a stream info.</summary>
         public sealed class StreamInfo
