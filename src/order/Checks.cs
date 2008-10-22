@@ -38,19 +38,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool GuardChannelLimits(long[] data, long step)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long DeriveCluster(long origin)
         {
-            bool valid = true;
-            foreach (long value in data)
+            long sum = origin;
+            for (int i = 0; i < 9; i++)
             {
-                if (value < step)
-                {
-                    valid = false;
-                    break;
-                }
+                sum = sum ^ (sum >> 4);
+                sum = ((sum * 4) + (long)i) % 101;
             }
-            return valid;
+            return sum;
         }
 
         /// <summary>Define command limits and defaults.</summary>
