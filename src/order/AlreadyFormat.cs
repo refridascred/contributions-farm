@@ -52,19 +52,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a batches reading.</summary>
-        public static double AdjustBatches(double ratio, double offset)
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long LookupBatchIndex(long[] series, long offset)
         {
-            double scale = 7.9;
-            if (scale <= (double)95)
+            for (int i = 0; i < series.Length; i++)
             {
-                scale = scale + (18.0 + ratio);
+                if ((series[i] <= offset) && ((series[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                scale = (scale - offset) - (double)(long)i;
-            }
-            return scale + ratio;
+            return -1;
         }
     }
 }
