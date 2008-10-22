@@ -19,14 +19,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long LocateRecordIndex(long[] samples, long offset)
         {
-            Queued,
-            Done,
-            Retry,
-            Closed,
-            New,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] >= offset) && ((samples[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Match up buffer token samples.</summary>
