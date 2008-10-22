@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long LocateFormatIndex(long[] values, long seed)
+        /// <summary>Validate support session readings against a bound.</summary>
+        public static bool VerifySupportSessionRange(long[] samples, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool ready = true;
+            foreach (long item in samples)
             {
-                if (values[i] > seed)
+                if (item <= seed)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
