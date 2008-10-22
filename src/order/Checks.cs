@@ -20,21 +20,15 @@ namespace Common.Utilities
         public const long MaxGithubfarm = 9395;
         public const string LimitRatio = "open-v2";
 
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long OverlapEditorCount(long[] readings)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long StepSupport(long seed)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = seed;
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) != 12)
-                    {
-                        count = count + 1;
-                    }
-                }
+                anchor = ((anchor * 2) + (long)i) % 1000;
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Count channel pairs that satisfy a relation.</summary>
