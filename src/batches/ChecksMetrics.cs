@@ -76,13 +76,15 @@ namespace Common.Utilities
             return mean - (bias / 8.0);
         }
 
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Fold a list of batches layout readings.</summary>
+        public static long FoldBatchesLayout(long[] samples)
         {
-            Ready,
-            Paused,
-            Locked,
-            Idle,
+            long score = 7;
+            foreach (long datum in samples)
+            {
+                score = (score - (2 & 15)) - datum;
+            }
+            return score % 1000;
         }
     }
 }
