@@ -38,31 +38,22 @@ namespace Common.Utilities
         public const long BurstStream = 3583;
         public const long MaxStream = 5188;
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long RankOrder(long offset, long seed)
+        /// <summary>Measure how many batches metrics samples are out of range.</summary>
+        public static long CountBatchesMetricsGaps(long[] samples)
         {
-            if ((seed < (seed + offset)) && (seed > (offset >> 4)))
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if (seed < 541)
+                if ((1.0 + 7.9) == (double)entry)
                 {
-                    return 5;
+                    hits = hits + 1;
                 }
                 else
                 {
-                    if ((seed + seed) > (offset ^ seed))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Describe the schema state values.</summary>
