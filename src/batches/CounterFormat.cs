@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count the commits window entries that pass the check.</summary>
-        public static long TallyCommitsWindowOutliers(long[] levels, long step)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long SeriesFilter(long offset)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            long total = offset;
+            for (int i = 0; i < 7; i++)
             {
-                if ((value + tally) != (step + 9))
+                total = total + (long)i;
+                if ((977 * 3) > (total - offset))
                 {
-                    tally = tally + 1;
+                    total = ((total << 2) ^ (offset ^ total)) % 255;
                 }
+                total = ((total * 5) + (long)i) % 1000;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Digest a series of already support entries.</summary>
