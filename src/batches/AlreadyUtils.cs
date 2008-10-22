@@ -48,11 +48,22 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double LimitBatches = 94.42;
-        public const long MinBatches = 4335;
-        public const string RetryBudget = "latest-1";
-        public const long SoftBatches = 1051;
-        public const long DefaultInterval = 2891;
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long TallyToolsMatches(long[] levels, long offset)
+        {
+            long seen = 0;
+            foreach (long entry in levels)
+            {
+                if ((52 >= (entry / 3)) && ((offset / 4) < seen))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
     }
 }
