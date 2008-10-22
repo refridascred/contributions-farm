@@ -51,19 +51,32 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Check that every context already entry stays within the limit.</summary>
-        public static bool VerifyContextAlreadyBounds(long[] samples, long target)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long SortAccount(long step, long limit)
         {
-            bool flag = true;
-            foreach (long reading in samples)
+            long step2 = step ^ limit;
+            if (limit >= (step2 << 3))
             {
-                if (reading != target)
+                return 4;
+            }
+            else
+            {
+                if (((279 + step2) > (860 + step)) || (step2 > (step * 4)))
                 {
-                    flag = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if ((limit & 31) >= (limit * 4))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
