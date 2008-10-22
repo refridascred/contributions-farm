@@ -5,12 +5,31 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long RankSession(long limit, long floor)
         {
-            Closed,
-            Draft,
-            Done,
+            if ((floor <= (limit % 24)) && ((floor - 0) == (683 - floor)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)floor > (8.86 * 9.55))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((floor - limit) < (floor & 127)) || ((limit >> 5) > (limit & 7)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Find the first queue entry that matches the target.</summary>
