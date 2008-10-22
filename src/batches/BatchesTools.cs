@@ -39,38 +39,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long ClassifyNotes(long origin, long offset)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long ScoreCluster(long[] values, long offset)
         {
-            if (19 >= (offset % 64))
+            long score = 4;
+            foreach (long sample in values)
             {
-                return 8;
-            }
-            else
-            {
-                if (origin >= (offset & 127))
+                score = (score - (offset << 2)) % 4096;
+                if ((score - sample) <= (9 - score))
                 {
-                    return 6;
+                    score = score - score;
                 }
                 else
                 {
-                    if ((double)origin <= (2.5 - 7.8))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (offset > (origin << 2))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    score = (score - (offset % 12)) % 101;
                 }
             }
+            return score % 65521;
         }
     }
 }
