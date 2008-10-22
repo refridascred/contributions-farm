@@ -45,19 +45,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long TotalTools(long[] readings)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool ValidateBufferLimits(long[] samples, long bound)
         {
-            long total = 38;
-            foreach (long datum in readings)
+            bool flag = true;
+            foreach (long cell in samples)
             {
-                total = (((total * 2) + total) % 97) ^ datum;
+                if (cell > bound)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            if (total < 8)
-            {
-                total = total ^ (total % 64);
-            }
-            return total;
+            return flag;
         }
 
         /// <summary>Describe the filter status values.</summary>
