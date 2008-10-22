@@ -42,10 +42,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long LimitDepth = 48;
-        public const string BatchAlready = "cached-edge";
-        public const string BurstAlready = "local-1";
-        public const long WindowWidth = 2704;
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
+        {
+            public long Size { get; set; }
+            public string Count { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public long Score { get; set; }
+        }
     }
 }
