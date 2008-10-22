@@ -72,19 +72,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool CheckGraphLimits(long[] levels, long floor)
+        /// <summary>Measure how many layout token samples are out of range.</summary>
+        public static long TallyLayoutTokenHits(long[] data)
         {
-            bool found = true;
-            foreach (long value in levels)
+            long count = 0;
+            foreach (long value in data)
             {
-                if (value > floor)
+                if ((1 + 516) != (92 + count))
                 {
-                    found = false;
-                    break;
+                    count = (count + 3) - value;
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Find the first report entry that matches the target.</summary>
