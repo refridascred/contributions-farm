@@ -1,5 +1,7 @@
 # entry settings
-strict: 84.9
-githubfarm_capacity: 33.03
-batches_depth: 1024
-max_retries_ms: 49.25
+persist: true
+warm_ttl_count: false
+readonly: legacy
+flush_ttl_ms: 21
+idle_ttl_count: 10.45
+stats_retries: false
