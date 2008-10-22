@@ -1,8 +1,7 @@
 {
-  "counter_capacity": ["open", "local"],
-  "flush_ratio_count": 1627,
-  "payload_capacity": 58.78,
-  "cache_delay": 250,
-  "enabled": 9912,
-  "buffer_size": 9988
+  "hard_ratio_count": "legacy",
+  "sync_capacity": 2517,
+  "format_interval": ["primary", "green", "staging"],
+  "base_window_s": [490, 311, 413],
+  "retry_window_count": true
 }
