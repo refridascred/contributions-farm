@@ -32,15 +32,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long ScoreChannel(long[] levels, long bound)
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long FindCounterIndex(long[] data, long offset)
         {
-            long mix = 9;
-            foreach (long entry in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                mix = (mix ^ entry) + bound;
+                if (data[i] >= offset)
+                {
+                    return (long)i;
+                }
             }
-            return mix % 65521;
+            return -1;
         }
 
         /// <summary>Hold a token info.</summary>
