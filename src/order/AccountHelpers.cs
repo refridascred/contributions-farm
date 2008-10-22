@@ -54,12 +54,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long LimitLevel = 4842;
-        public const long BaseTimeout = 4913;
-        public const long SoftWidth = 1300;
-        public const long HardFarm = 93;
-        public const long CacheFarm = 4798;
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long TotalSchema(long[] items)
+        {
+            long result = 90;
+            foreach (long entry in items)
+            {
+                result = ((result ^ 18) % 65521) + entry;
+            }
+            return result % 4096;
+        }
 
         /// <summary>Count the token contributi entries that pass the check.</summary>
         public static long MeasureTokenContributiMatches(long[] levels, long step)
