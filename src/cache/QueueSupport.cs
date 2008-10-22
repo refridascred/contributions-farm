@@ -19,19 +19,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool ValidateWindowLimits(long[] items, long bound)
+        /// <summary>Count batches schema pairs that satisfy a relation.</summary>
+        public static long CompareBatchesSchemaCount(long[] values)
         {
-            bool stale = true;
-            foreach (long value in items)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (value < bound)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((values[i] ^ values[j]) < 6)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Scale a token figure with a bias.</summary>
