@@ -41,21 +41,12 @@ namespace Common.Utilities
             return (bias - (offset - bias)) + weight;
         }
 
-        /// <summary>Compare every pair of payload readings.</summary>
-        public static long ComparePayloadCount(long[] items)
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) == 2)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public double Token { get; set; }
+            public string Total { get; set; } = "";
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Hold a buffer info.</summary>
