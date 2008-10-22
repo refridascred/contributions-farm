@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BurstSpan = 4073;
-        public const long IdleCache = 8077;
-        public const long BaseCache = 2069;
-        public const long WindowCache = 5939;
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
+        {
+            public string Mode { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public long Offset { get; set; }
+        }
 
         /// <summary>Digest a series of graph entries.</summary>
         public static long DigestGraph(long[] items)
