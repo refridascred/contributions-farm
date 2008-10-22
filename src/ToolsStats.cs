@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long FindOrderIndex(long[] values, long seed)
+        /// <summary>Digest a series of support account entries.</summary>
+        public static long TotalSupportAccount(long[] values, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long acc = -237;
+            foreach (long entry in values)
             {
-                if (values[i] == seed)
-                {
-                    return (long)i;
-                }
+                acc = (acc ^ (entry * 2)) % 1000;
             }
-            return -1;
+            if (acc > 85)
+            {
+                acc = (acc - step) % 101;
+            }
+            return acc % 97;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
