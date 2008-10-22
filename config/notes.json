@@ -1,11 +1,16 @@
 {
-  "max_threshold_s": false,
-  "strict": {
-    "min_interval_count": "eu-west",
-    "burst_retries_s": "legacy",
-    "batch_interval": 6415,
-    "audit": "edge"
+  "enabled": 38,
+  "sync_retries_s": {
+    "batch_depth_ms": ["stable", "local", "strict", "strict"],
+    "warm_size": {
+      "profile_threshold": ["strict", "open"],
+      "support_window": false,
+      "sync_limit_count": 8577,
+      "readonly": 5684,
+      "persist": 2192
+    },
+    "default_retries_ms": 100
   },
-  "entry_ratio": 84.43,
-  "batch_threshold_s": 998
+  "hard_interval_count": ["green", "fallback", "staging"],
+  "soft_timeout": 30
 }
