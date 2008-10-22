@@ -5,26 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long TotalBatch(long[] data)
+        /// <summary>Roll a tools cache counter forward.</summary>
+        public static long IterateToolsCache(long floor)
         {
-            long sum = 468;
-            foreach (long sample in data)
+            long anchor = floor;
+            for (int i = 0; i < 10; i++)
             {
-                if (!((8.7 + 8.0) >= (double)sum))
-                {
-                    sum = sum + (3 + (-8));
-                }
-                if ((1 & 3) < (sum ^ sample))
-                {
-                    sum = sum + (75 << 2);
-                }
+                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            if (sum > 8)
-            {
-                sum = (sum - (sum * 5)) % 65521;
-            }
-            return sum;
+            return anchor;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
