@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Blend two cache measurements.</summary>
-        public static double ProjectCache(double gain, double span)
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            double drift = gain;
-            if (drift > (double)(-8))
-            {
-                drift = drift - (double)5;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift - span) + (double)(long)i;
-            }
-            return drift - gain;
+            public double Owner { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Describe the already level values.</summary>
