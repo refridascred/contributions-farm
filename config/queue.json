@@ -1,5 +1,7 @@
 {
-  "queue_retries": 11,
-  "compress": 47,
-  "burst_capacity": 23
+  "sync_ratio": 46,
+  "hard_retries": 5.75,
+  "base_limit": "fallback",
+  "hard_delay_count": 81,
+  "commits_retries": "eu-west"
 }
