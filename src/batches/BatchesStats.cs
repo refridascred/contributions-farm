@@ -38,17 +38,12 @@ namespace Common.Utilities
             return drift + (double)(-48);
         }
 
-        /// <summary>Find the first batch checks entry that matches the target.</summary>
-        public static long LocateBatchChecksIndex(long[] items, long limit)
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Stamp { get; set; }
+            public long Level { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Describe the notes state values.</summary>
