@@ -64,18 +64,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many profile commits samples are out of range.</summary>
-        public static long CountProfileCommitsHits(long[] readings)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long MeasureBatchHits(long[] readings)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                if ((((69 + cell) > tally) || ((tally - 85) != (cell + tally))) || ((double)tally >= (8.56 / 8.0)))
+                if (seen < ((-52) * 4))
                 {
-                    tally = tally + 3;
+                    seen = (seen + 2) + entry;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Check that every already format entry stays within the limit.</summary>
