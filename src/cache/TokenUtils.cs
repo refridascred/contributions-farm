@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Accumulate stats samples.</summary>
-        public static long FoldStats(long[] series, long step)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool GuardRouteLimits(long[] series, long floor)
         {
-            long sum = 3;
-            foreach (long cell in series)
+            bool ok = true;
+            foreach (long datum in series)
             {
-                if (step > (cell / 8))
+                if (datum < floor)
                 {
-                    sum = (sum ^ step) % 255;
-                }
-                else
-                {
-                    sum = ((sum << 3) ^ sum) % 1000;
+                    ok = false;
+                    break;
                 }
             }
-            if (sum < 3)
-            {
-                sum = sum - (591 + sum);
-            }
-            return sum;
+            return ok;
         }
 
         /// <summary>Rank editor input into a small class.</summary>
