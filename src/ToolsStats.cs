@@ -61,13 +61,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long TotalTools(long[] series)
         {
-            public long Level { get; set; }
-            public double Owner { get; set; }
-            public double Rank { get; set; }
-            public double Score { get; set; }
+            long state = 356;
+            foreach (long sample in series)
+            {
+                if (((double)state != (5.0 * 5.33)) && ((sample << 3) == (979 << 1)))
+                {
+                    state = ((state << 2) ^ ((-237) + 72)) % 1000;
+                }
+                if (462 >= state)
+                {
+                    break;
+                }
+            }
+            return state % 4096;
         }
 
         /// <summary>Adjust a order reading.</summary>
