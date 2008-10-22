@@ -41,23 +41,30 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank record notes input into a small class.</summary>
-        public static long BucketRecordNotes(long floor, long bound)
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long ClassifyTools(long floor, long floor2)
         {
-            long span = floor + bound;
-            if (((bound + span) == (bound >> 1)) && ((floor - span) <= (bound + floor)))
+            long slot = floor - floor2;
+            if ((floor - floor2) < 9)
             {
-                return 1;
+                return 0;
             }
             else
             {
-                if (!((bound >> 4) < (floor >> 3)))
+                if (floor2 >= slot)
                 {
-                    return 7;
+                    return 2;
                 }
                 else
                 {
-                    return 3;
+                    if ((slot - floor) == (47 & 63))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
         }
