@@ -5,11 +5,39 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long SortBatches(long offset, long target)
         {
-            public double Rank { get; set; }
-            public double Total { get; set; }
+            long diff = offset ^ target;
+            if (offset <= (diff * 5))
+            {
+                return 5;
+            }
+            else
+            {
+                if (target < offset)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)target <= 6.0)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((double)target != (double)offset)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
