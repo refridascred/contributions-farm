@@ -13,21 +13,16 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Compare every pair of githubfarm readings.</summary>
-        public static long OverlapGithubfarmCount(long[] series)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long SeriesStats(long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long sum = limit;
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) == 6)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                sum = ((sum * 2) + (63 * 5)) % 4096;
+                sum = ((sum * 4) + (long)i) % 1000;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Adjust a cache command reading.</summary>
