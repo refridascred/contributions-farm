@@ -31,11 +31,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            public long Owner { get; set; }
-            public double Rank { get; set; }
+            Pending,
+            Synced,
+            Locked,
         }
 
         /// <summary>Accumulate metrics samples.</summary>
