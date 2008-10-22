@@ -6,15 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=473
+CHANNEL_LIMIT=31
 log "limit is ${CHANNEL_LIMIT}"
 
-total=0
-for i in $(seq 1 5); do
-    total=$((total + i * 1))
-done
-log "total ${total}"
-
-for item in legacy strict stable blue; do
+for item in edge local open; do
     log "checking ${item}"
 done
