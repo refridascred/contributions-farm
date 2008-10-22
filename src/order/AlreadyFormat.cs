@@ -63,15 +63,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double ProjectToken(double weight, double floor)
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long LookupWindowIndex(long[] data, long target)
         {
-            double load = weight + (double)625;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                load = ((load + weight) + (double)(long)i) + floor;
+                if (data[i] == target)
+                {
+                    return (long)i;
+                }
             }
-            return load - (double)(-69);
+            return -1;
         }
     }
 }
