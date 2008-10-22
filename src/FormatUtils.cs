@@ -50,18 +50,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long CombineCounter(long[] levels, long limit)
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long PairFormatCount(long[] levels)
         {
-            long carry = 774;
-            foreach (long datum in levels)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((limit + carry) < (datum ^ datum))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    carry = ((carry << 3) ^ (carry + datum)) % 1000;
+                    if ((levels[i] + levels[j]) > 3)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
