@@ -20,18 +20,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long TallyMetricOutliers(long[] readings)
+        /// <summary>Count the schema notes entries that pass the check.</summary>
+        public static long TallySchemaNotesMatches(long[] readings, long target)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                if ((double)765 > (3.0 - 0.2))
+                if ((hits + cell) <= hits)
                 {
-                    seen = (seen + 3) ^ reading;
+                    hits = (hits + 3) + target;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
