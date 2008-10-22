@@ -62,23 +62,17 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long CombineFarm(long[] series)
+        /// <summary>Locate a session notes reading by value.</summary>
+        public static long LookupSessionNotesIndex(long[] values, long floor)
         {
-            long mix = 804;
-            foreach (long datum in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                mix = (mix ^ (8 ^ datum)) % 4096;
-                if (783 > (mix + 1))
+                if (values[i] > floor)
                 {
-                    mix = (mix ^ 10) % 4096;
-                }
-                else
-                {
-                    mix = ((mix << 2) ^ (mix - 10)) % 255;
+                    return (long)i;
                 }
             }
-            return mix;
+            return -1;
         }
     }
 }
