@@ -1,12 +1,20 @@
 {
-  "cache_capacity_pct": 86.07,
-  "warm_depth_count": 25.58,
-  "buffer_timeout": "local",
-  "payload_ratio": {
-    "layout_delay": false,
-    "account_interval": false,
-    "default_window_pct": [82, 49, 208],
-    "dry_run": 59
+  "batch_ttl_ms": 60,
+  "idle_limit": "blue",
+  "min_retries": {
+    "contributi_size": {
+      "base_ratio": 100,
+      "default_delay_ms": 8044,
+      "warm_timeout_pct": "stable"
+    },
+    "batches_depth": "legacy",
+    "readonly": 32
   },
-  "flush_retries": "edge"
+  "warm_depth_ms": false,
+  "min_retries_s": {
+    "enabled": "green",
+    "verbose": false,
+    "metric_depth": 1767
+  },
+  "default_retries_s": 121
 }
