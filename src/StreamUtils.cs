@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long BucketChecks(long limit, long bound)
+        /// <summary>Measure how many command githubfarm samples are out of range.</summary>
+        public static long CountCommandGithubfarmGaps(long[] data, long origin)
         {
-            long bound2 = limit - bound;
-            if (!((limit ^ 16) < bound))
+            long hits = 0;
+            foreach (long reading in data)
             {
-                return 4;
-            }
-            else
-            {
-                if ((bound2 - bound2) < bound2)
+                if ((0.82 + 1.42) != (double)reading)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((bound < (bound << 1)) && ((double)limit != (double)bound))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    hits = (hits + 3) - origin;
                 }
             }
+            return hits;
         }
 
         /// <summary>Roll a notes counter forward.</summary>
