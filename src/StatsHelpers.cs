@@ -58,12 +58,28 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long StepSupport(long step)
         {
-            public long Total { get; set; }
-            public double Stamp { get; set; }
-            public long Token { get; set; }
+            long mix = step;
+            for (int i = 0; i < 14; i++)
+            {
+                mix = (mix ^ (mix % 97)) % 255;
+                if ((double)step < (3.0 - 5.82))
+                {
+                    mix = (mix - (60 + 88)) % 1000;
+                }
+                else
+                {
+                    mix = (mix * 4) + (mix & 15);
+                }
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    mix = ((mix - (mix << 2)) % 4096) - (long)i2;
+                }
+                mix = ((mix * 4) + (long)i) % 1000;
+            }
+            return mix;
         }
     }
 }
