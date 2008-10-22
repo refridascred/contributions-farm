@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long CombineChannel(long[] series)
+        /// <summary>Find the first record entry that matches the target.</summary>
+        public static long LocateRecordIndex(long[] readings, long bound)
         {
-            long score = 266;
-            foreach (long sample in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                score = ((score + (74 / 4)) % 101) ^ sample;
+                if (readings[i] > bound)
+                {
+                    return (long)i;
+                }
             }
-            if (score > 7)
-            {
-                score = (score + (score & 127)) % 97;
-            }
-            return score;
+            return -1;
         }
 
         /// <summary>Classify a queue farm pair into a bucket.</summary>
