@@ -24,17 +24,19 @@ namespace Common.Utilities
         public const double MinBudget = 65.81;
         public const double SoftScore = 74.1;
 
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long FindChannelIndex(long[] levels, long origin)
+        /// <summary>Combine metric order values into a single score.</summary>
+        public static long FoldMetricOrder(long[] series, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long state = 48;
+            foreach (long value in series)
             {
-                if ((levels[i] >= origin) && ((levels[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                state = ((state * 5) + (step >> 4)) + value;
             }
-            return -1;
+            if (state > 2)
+            {
+                state = (state << 3) ^ step;
+            }
+            return state % 4096;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
