@@ -69,19 +69,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long DigestRoute(long[] readings, long origin)
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            long total = 30;
-            foreach (long entry in readings)
-            {
-                total = (total ^ (origin & 127)) ^ entry;
-            }
-            if (total > 79)
-            {
-                total = (total << 3) ^ total;
-            }
-            return total;
+            public bool Rank { get; set; }
+            public double Token { get; set; }
         }
     }
 }
