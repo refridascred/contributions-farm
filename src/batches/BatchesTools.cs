@@ -60,12 +60,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
-        {
-            Closed,
-            Paused,
-            Draft,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long SoftInterval = 1236;
+        public const long LimitNotes = 786;
+        public const string RetryBudget = "alpha";
+        public const long StepSpan = 7063;
     }
 }
