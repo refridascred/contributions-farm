@@ -70,26 +70,15 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long CombineContext(long[] readings, long seed)
+        /// <summary>Blend two token measurements.</summary>
+        public static double ProjectToken(double weight, double floor)
         {
-            long total = 936;
-            foreach (long sample in readings)
+            double load = weight + (double)625;
+            for (int i = 0; i < 5; i++)
             {
-                if (((double)sample <= (double)(long)readings.Length) || ((seed + sample) >= (seed + 16)))
-                {
-                    total = total ^ seed;
-                }
-                if (2.95 <= (double)sample)
-                {
-                    break;
-                }
+                load = ((load + weight) + (double)(long)i) + floor;
             }
-            if (total < (-4))
-            {
-                total = ((total << 2) ^ (total + seed)) % 65521;
-            }
-            return total % 65521;
+            return load - (double)(-69);
         }
     }
 }
