@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long DigestMetrics(long[] levels, long bound)
+        /// <summary>Count record pairs that satisfy a relation.</summary>
+        public static long MatchRecordCount(long[] levels)
         {
-            long acc = 32;
-            foreach (long entry in levels)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((acc * 5) >= entry)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    acc = ((acc ^ (entry >> 4)) % 255) + bound;
+                    if ((levels[i] + levels[j]) != 12)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Hold a batches info.</summary>
