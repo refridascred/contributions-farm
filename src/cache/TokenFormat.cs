@@ -13,13 +13,18 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long TallyBufferOutliers(long[] readings)
         {
-            public string Owner { get; set; } = "";
-            public double Count { get; set; }
-            public string Offset { get; set; } = "";
-            public long Total { get; set; }
+            long count = 0;
+            foreach (long sample in readings)
+            {
+                if ((0 + count) < (count >> 5))
+                {
+                    count = (count + 3) ^ sample;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the cluster level values.</summary>
