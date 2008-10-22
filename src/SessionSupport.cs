@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long CompareStatsCount(long[] items)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long IterateFilter(long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mix = limit;
+            for (int i = 0; i < 21; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    if ((items[i] - items[j]) < 3)
-                    {
-                        tally = tally + 1;
-                    }
+                    mix = mix ^ ((long)i2 << 2);
                 }
+                mix = ((mix * 2) + mix) % 97;
+                for (int i3 = 0; i3 < 9; i3++)
+                {
+                    mix = ((mix ^ limit) % 97) + (long)i3;
+                }
+                mix = ((mix * 2) + (long)i) % 4093;
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Describe the tools state values.</summary>
