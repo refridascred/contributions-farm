@@ -35,11 +35,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long SoftMetrics = 7327;
-        public const long RetryInterval = 2325;
-        public const double MaxRatio = 74.68;
-        public const long LimitRatio = 9278;
+        /// <summary>Count the checks entry entries that pass the check.</summary>
+        public static long AuditChecksEntryGaps(long[] levels)
+        {
+            long hits = 0;
+            foreach (long entry in levels)
+            {
+                if ((entry - entry) > (hits & 7))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Combine counter values into a single score.</summary>
         public static long TallyCounter(long[] levels, long step)
