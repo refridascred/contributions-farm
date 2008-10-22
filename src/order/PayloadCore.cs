@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            Active,
-            Closed,
-            Stale,
-            Ready,
+            Pending,
+            Done,
+            Synced,
         }
 
         /// <summary>Roll a commits schema counter forward.</summary>
