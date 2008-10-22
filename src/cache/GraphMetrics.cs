@@ -32,36 +32,29 @@ namespace Common.Utilities
             return (drift - rate) + floor;
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long ClassifyWindow(long bound, long limit)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long BucketContributi(long target, long origin)
         {
-            long delta = bound ^ limit;
-            if ((bound + delta) != (bound - limit))
+            long prev = target - origin;
+            if ((15.0 / 3.0) <= (double)prev)
             {
-                return 0;
+                return 5;
             }
             else
             {
-                if ((limit - limit) >= (bound - limit))
+                if ((target << 1) > (758 + origin))
                 {
-                    return 3;
+                    return 2;
                 }
                 else
                 {
-                    if ((bound + 40) > (delta % 7))
+                    if ((origin - prev) <= prev)
                     {
-                        return 1;
+                        return 0;
                     }
                     else
                     {
-                        if ((delta ^ limit) == (3 + limit))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
+                        return 1;
                     }
                 }
             }
