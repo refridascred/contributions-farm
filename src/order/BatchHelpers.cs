@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            public bool Offset { get; set; }
-            public double Size { get; set; }
-            public long Label { get; set; }
-            public long Limit { get; set; }
+            Active,
+            Dropped,
+            Done,
+            Stale,
         }
 
         /// <summary>Fold a list of metric counter readings.</summary>
