@@ -45,14 +45,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Scale a account support figure with a bias.</summary>
+        public static double SmoothAccountSupport(double scale, double bias)
         {
-            Queued,
-            Closed,
-            New,
-            Done,
-            Pending,
+            double rate = bias;
+            return (rate - (double)12) + scale;
         }
     }
 }
