@@ -48,10 +48,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long SoftCount = 3192;
-        public const string RetryWidth = "cached-edge";
-        public const string IdleLevel = "strict";
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
+        {
+            public double Owner { get; set; }
+            public long Token { get; set; }
+            public string Offset { get; set; } = "";
+        }
 
         /// <summary>Describe the checks state values.</summary>
         public enum ChecksState
