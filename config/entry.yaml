@@ -1,7 +1,10 @@
 # entry settings
-batch_delay_count:
-  verbose: legacy
-  tools_timeout: 60
-  min_timeout: 48
-command_limit: strict
-base_size_count: 60
+max_delay_pct: standard
+batch_ratio_ms:
+  graph_limit:
+    - open
+    - open
+  poll_capacity_s: open
+  burst_size_ms: 7260
+flush_ratio: false
+enabled: 4435
