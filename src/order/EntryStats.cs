@@ -56,21 +56,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up session samples.</summary>
-        public static long OverlapSessionCount(long[] readings)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long GradeProfile(long bound, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long gap = bound - target;
+            if ((31 - bound) != (gap - target))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((3.8 * 8.6) < (double)gap)
                 {
-                    if ((readings[i] ^ readings[j]) < 13)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 3;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return matches;
         }
 
         /// <summary>Classify a session pair into a bucket.</summary>
