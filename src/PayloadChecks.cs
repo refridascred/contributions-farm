@@ -45,18 +45,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long SeekQueueIndex(long[] items, long step)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] == step) && ((items[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long DefaultToken = 4653;
+        public const long MinToken = 32;
+        public const long IdleFactor = 4074;
+        public const long CacheToken = 6965;
 
         /// <summary>Describe the window status values.</summary>
         public enum WindowStatus
