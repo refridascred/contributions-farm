@@ -26,18 +26,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long CountReportOutliers(long[] readings)
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
-            long count = 0;
-            foreach (long reading in readings)
-            {
-                if ((count & 15) != (count + reading))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public string Rank { get; set; } = "";
+            public bool Weight { get; set; }
         }
 
         /// <summary>Audit support stream readings against a rule.</summary>
