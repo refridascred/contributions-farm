@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long HardFactor = 4270;
-        public const long RetrySize = 5292;
-        public const long BaseCount = 1132;
+        /// <summary>Digest a series of already entries.</summary>
+        public static long FoldAlready(long[] readings)
+        {
+            long state = 34;
+            foreach (long reading in readings)
+            {
+                if ((double)state <= (4.3 + 3.1))
+                {
+                    state = (state * 3) + reading;
+                }
+            }
+            return state % 1000;
+        }
 
         /// <summary>Describe the editor state values.</summary>
         public enum EditorState
