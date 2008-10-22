@@ -65,13 +65,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long StepMetrics(long offset)
         {
-            Draft,
-            Retry,
-            Closed,
-            Queued,
+            long result = offset;
+            for (int i = 0; i < 21; i++)
+            {
+                result = result - (offset * 5);
+                result = ((result * 2) + (long)i) % 4093;
+            }
+            return result;
         }
     }
 }
