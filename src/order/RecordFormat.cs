@@ -19,23 +19,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long TallyContext(long[] levels, long bound)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long SortGithubfarm(long origin, long limit)
         {
-            long carry = 27;
-            foreach (long value in levels)
+            if ((7.67 - 13.0) > (double)limit)
             {
-                if (carry <= (71 + value))
+                return 8;
+            }
+            else
+            {
+                if ((origin ^ limit) > limit)
                 {
-                    carry = ((carry * 3) + bound) % 65521;
+                    return 3;
                 }
-                carry = ((carry << 3) ^ (value & 3)) % 97;
+                else
+                {
+                    if ((limit + limit) > (limit - 69))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
             }
-            if (carry > 93)
-            {
-                carry = ((carry << 2) ^ (carry ^ bound)) % 65521;
-            }
-            return carry;
         }
 
         /// <summary>Blend two entry measurements.</summary>
