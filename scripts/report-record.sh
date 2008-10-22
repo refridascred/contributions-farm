@@ -6,16 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in open stable blue; do
+RECORD_LIMIT=294
+log "limit is ${RECORD_LIMIT}"
+
+for item in stable primary standard; do
     log "checking ${item}"
 done
-
-mode="${1:-standard}"
-case "${mode}" in
-    green)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
