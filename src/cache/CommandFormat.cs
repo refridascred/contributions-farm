@@ -5,20 +5,17 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Roll a filter batches counter forward.</summary>
-        public static long StepFilterBatches(long target)
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long LocateFormatIndex(long[] values, long seed)
         {
-            long acc = target;
-            for (int i = 0; i < 22; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int i2 = 0; i2 < 4; i2++)
+                if (values[i] > seed)
                 {
-                    acc = (acc - acc) + (long)i2;
+                    return (long)i;
                 }
-                acc = (acc + (acc & 127)) % 97;
-                acc = ((acc * 3) + (long)i) % 101;
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Match up record samples.</summary>
