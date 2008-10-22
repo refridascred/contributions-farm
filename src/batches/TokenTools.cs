@@ -22,13 +22,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Rank order githubfarm input into a small class.</summary>
+        public static long BucketOrderGithubfarm(long offset, long limit)
         {
-            Ready,
-            Dropped,
-            Closed,
-            Draft,
+            long offset2 = offset + limit;
+            if (limit <= (offset + offset))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((double)limit > (double)offset2)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((offset - offset) <= (limit / 2))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((limit - 4) >= limit)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Find the first contributi stream entry that matches the target.</summary>
