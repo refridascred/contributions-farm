@@ -24,10 +24,20 @@ namespace Common.Utilities
             return drift + span;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double SoftLevel = 45.95;
-        public const double DefaultMetric = 78.13;
-        public const string SoftScore = "staging-edge";
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool CheckContributiRange(long[] samples, long limit)
+        {
+            bool ok = true;
+            foreach (long reading in samples)
+            {
+                if (reading > limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Audit window readings against a rule.</summary>
         public static long MeasureWindowMatches(long[] samples)
