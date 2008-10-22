@@ -5,20 +5,39 @@ namespace Common.Utilities
     /// <summary>Metric helpers.</summary>
     public static class Metric
     {
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long SeriesSchema(long step)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long SortSession(long step, long offset)
         {
-            long carry = step;
-            for (int i = 0; i < 20; i++)
+            long slot = step - offset;
+            if (((4.7 - 11.0) > (double)step) && ((offset ^ 45) <= (offset - offset)))
             {
-                if ((((-7) >> 3) == (carry & 15)) && ((step & 63) == (carry * 4)))
-                {
-                    carry = ((carry << 3) ^ (carry - (long)i)) % 101;
-                    continue;
-                }
-                carry = ((carry * 2) + (long)i) % 101;
+                return 2;
             }
-            return carry;
+            else
+            {
+                if (((-43) + offset) < (slot - step))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((slot & 255) != (slot + step)) || ((slot + offset) > (offset * 5)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((offset - 8) >= slot)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Roll a stream counter forward.</summary>
