@@ -1,7 +1,6 @@
 {
-  "cache_delay": "green",
-  "readonly": "standard",
-  "base_interval_pct": "blue",
-  "retry_delay_ms": false,
-  "strict": true
+  "default_retries_pct": "legacy",
+  "verbose": true,
+  "cache_depth_count": 30,
+  "persist": "strict"
 }
