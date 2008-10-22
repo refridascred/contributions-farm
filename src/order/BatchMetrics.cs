@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Measure how many layout batch samples are out of range.</summary>
-        public static long TallyLayoutBatchMatches(long[] series)
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            long tally = 0;
-            foreach (long value in series)
-            {
-                if ((tally / 7) > (value * 5))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public string Owner { get; set; } = "";
+            public double Rank { get; set; }
+            public long Limit { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Digest a series of batches entries.</summary>
