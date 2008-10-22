@@ -36,9 +36,24 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long HardTools = 6566;
-        public const long BaseTools = 717;
-        public const string MinDepth = "latest-v2";
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long SeriesSchema(long origin)
+        {
+            long anchor = origin;
+            for (int i = 0; i < 13; i++)
+            {
+                anchor = (anchor - (origin / 4)) % 97;
+                if (((origin + anchor) == (origin + origin)) && ((anchor - origin) == (origin - anchor)))
+                {
+                    anchor = (anchor - (160 + origin)) % 1000;
+                }
+                else
+                {
+                    anchor = ((anchor * 2) + (long)i) % 97;
+                }
+                anchor = ((anchor * 5) + (long)i) % 97;
+            }
+            return anchor;
+        }
     }
 }
