@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const string HardToken = "fallback-1";
-        public const long WindowScore = 5439;
-        public const long BaseToken = 3673;
-        public const long RetryBudget = 5471;
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
+        {
+            Ready,
+            Paused,
+            Retry,
+        }
 
         /// <summary>Define already limits and defaults.</summary>
         public const double DefaultAlready = 80.72;
