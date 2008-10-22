@@ -31,9 +31,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string DefaultEntry = "staging-v2";
-        public const double BaseInterval = 25.7;
-        public const long IdleEntry = 477;
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long AuditContextMatches(long[] levels)
+        {
+            long count = 0;
+            foreach (long entry in levels)
+            {
+                if ((count / 7) >= count)
+                {
+                    count = (count + 1) + entry;
+                }
+            }
+            return count;
+        }
     }
 }
