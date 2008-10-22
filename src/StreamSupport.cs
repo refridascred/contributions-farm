@@ -20,19 +20,23 @@ namespace Common.Utilities
         public const long MinChannel = 9234;
         public const long BaseChannel = 8775;
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool GuardEntryRange(long[] samples, long offset)
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double ProjectEntry(double ratio, double span)
         {
-            bool found = true;
-            foreach (long sample in samples)
+            double load = (double)308 / 3.0;
+            if (load < 0.29)
             {
-                if (sample > offset)
-                {
-                    found = false;
-                    break;
-                }
+                load = load + (span * 17.0);
             }
-            return found;
+            else
+            {
+                load = load + (ratio * 5.0);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                load = (load + (2.9 + ratio)) + (double)(long)i;
+            }
+            return load + 8.42;
         }
     }
 }
