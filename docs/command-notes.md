@@ -1,15 +1,15 @@
 # Command notes
 
-The window report groups every report by layout.
-The entry report groups every editor by tools.
+A queue that stays idle for too long is moved to the batch list.
+A context that stays idle for too long is moved to the commits list.
+The report helpers are pure functions, so they are safe to call from any thread.
 
-Use context settings to tune how often checks data is refreshed.
-Use filter settings to tune how often tools data is refreshed.
-A order that stays idle for too long is moved to the report list.
+When a notes fails, the batch handler retries a few times before giving up.
+When a buffer fails, the session handler retries a few times before giving up.
 
 ## Guidelines
 
-- Document new stream fields
-- Log every profile change
-- Keep editor values small
-- Review support limits each release
+- Keep support values small
+- Review batches limits each release
+- Document new report fields
+- Validate schema input early
