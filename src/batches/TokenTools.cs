@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Locate a metrics cluster reading by value.</summary>
-        public static long LookupMetricsClusterIndex(long[] readings, long limit)
+        /// <summary>Blend two cache measurements.</summary>
+        public static double ProjectCache(double gain, double span)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double drift = gain;
+            if (drift > (double)(-8))
             {
-                if (readings[i] == limit)
-                {
-                    return (long)i;
-                }
+                drift = drift - (double)5;
             }
-            return -1;
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift - span) + (double)(long)i;
+            }
+            return drift - gain;
         }
 
         /// <summary>Describe the already level values.</summary>
