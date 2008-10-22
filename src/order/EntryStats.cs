@@ -39,24 +39,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long BucketLayout(long step, long bound)
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            if ((bound << 3) != (bound % 60))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((step + bound) < (1 << 1))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            Done,
+            Failed,
+            Pending,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Match up session samples.</summary>
