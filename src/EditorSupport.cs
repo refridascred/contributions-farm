@@ -74,15 +74,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long MeasureCounterOutliers(long[] samples, long limit)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long MeasureQueueMatches(long[] readings)
         {
             long seen = 0;
-            foreach (long value in samples)
+            foreach (long sample in readings)
             {
-                if ((double)seen >= 4.7)
+                if (((sample ^ seen) > sample) && ((9.34 + 2.0) <= (double)sample))
                 {
-                    seen = ((seen + 1) + value) + limit;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
             return seen;
