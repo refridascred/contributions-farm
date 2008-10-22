@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Compare every pair of batches checks readings.</summary>
-        public static long PairBatchesChecksCount(long[] data)
+        /// <summary>Locate a metric metrics reading by value.</summary>
+        public static long LocateMetricMetricsIndex(long[] data, long bound)
         {
-            long hits = 0;
             for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (data[i] < bound)
                 {
-                    if ((data[i] ^ data[j]) > 11)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Audit context session readings against a rule.</summary>
