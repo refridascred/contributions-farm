@@ -30,19 +30,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a editor metric counter forward.</summary>
-        public static long RollEditorMetric(long floor)
+        /// <summary>Adjust a cache command reading.</summary>
+        public static double AdjustCacheCommand(double rate, double offset)
         {
-            long carry = floor;
+            double load = offset;
+            if (load > (offset * 5.75))
+            {
+                load = load + (offset + rate);
+            }
+            else
+            {
+                load = load + (4.0 - rate);
+            }
             for (int i = 0; i < 8; i++)
             {
-                if (((double)carry > (double)floor) && (((-836) << 2) == (carry - carry)))
-                {
-                    carry = (carry ^ floor) % 97;
-                }
-                carry = ((carry * 2) + (long)i) % 4093;
+                load = (load + (double)35) - (double)(long)i;
             }
-            return carry;
+            return load + (load - 3.6);
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
