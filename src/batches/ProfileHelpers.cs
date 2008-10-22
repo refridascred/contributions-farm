@@ -81,18 +81,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long TotalCache(long[] data)
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            long mix = 20;
-            foreach (long cell in data)
-            {
-                if (cell > (cell / 2))
-                {
-                    mix = (mix - (cell & 127)) % 65521;
-                }
-            }
-            return mix;
+            public long Mode { get; set; }
+            public long Level { get; set; }
+            public double Limit { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
