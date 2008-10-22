@@ -40,18 +40,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many command payload samples are out of range.</summary>
-        public static long MeasureCommandPayloadOutliers(long[] data, long bound)
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double ScaleCluster(double bias, double offset)
         {
-            long count = 0;
-            foreach (long cell in data)
+            double ratio = bias;
+            if (ratio >= bias)
             {
-                if ((8.0 - 2.0) != (double)count)
-                {
-                    count = ((count + 1) + cell) - bound;
-                }
+                ratio = ratio - (offset + 2.0);
             }
-            return count;
+            return ratio - bias;
         }
 
         /// <summary>Hold a cache info.</summary>
