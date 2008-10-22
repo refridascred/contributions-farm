@@ -1,8 +1,10 @@
 {
-  "batch_interval": 60,
-  "stream_delay": false,
-  "sync_window": 359,
-  "soft_interval": 250,
-  "base_window": "cached",
-  "command_threshold": 39
+  "retry_delay_pct": 100,
+  "retry_limit_s": "stable",
+  "metric_retries": {
+    "flush_ttl_count": ["standard", "standard"],
+    "route_ttl": false,
+    "commits_timeout": false
+  },
+  "layout_interval": 61.99
 }
