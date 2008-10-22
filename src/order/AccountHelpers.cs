@@ -72,13 +72,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
         {
-            public bool Total { get; set; }
-            public bool Token { get; set; }
-            public bool Count { get; set; }
-            public long Level { get; set; }
+            public long Rank { get; set; }
+            public double Owner { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Hold a channel info.</summary>
