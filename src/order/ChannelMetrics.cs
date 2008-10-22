@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long DigestCluster(long[] readings)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool ValidateToolsBounds(long[] items, long step)
         {
-            long result = -752;
-            foreach (long entry in readings)
+            bool valid = true;
+            foreach (long cell in items)
             {
-                result = result + entry;
-                if (entry > (result - result))
+                if (cell >= step)
                 {
-                    result = (result ^ entry) % 97;
+                    valid = false;
+                    break;
                 }
             }
-            if (result > 207)
-            {
-                result = (result + (result / 9)) % 65521;
-            }
-            return result;
+            return valid;
         }
 
         /// <summary>Validate checks format readings against a bound.</summary>
