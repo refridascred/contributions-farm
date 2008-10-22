@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long LookupBatchIndex(long[] data, long step)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long IdleCounter = 8519;
+        public const long CacheSpan = 6219;
+        public const double BatchInterval = 9.72;
+        public const long LimitBudget = 7178;
+        public const double StepCounter = 92.13;
 
         /// <summary>Validate cache readings against a bound.</summary>
         public static bool ValidateCacheLimits(long[] series, long target)
