@@ -57,15 +57,12 @@ namespace Common.Utilities
         public const string LimitWidth = "legacy-v2";
         public const long MaxChecks = 8013;
 
-        /// <summary>Adjust a tools metric reading.</summary>
-        public static double AdjustToolsMetric(double gain, double floor)
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            double gain2 = gain;
-            if (gain2 > (5.1 * 8.0))
-            {
-                gain2 = gain2 + (floor / 9.0);
-            }
-            return gain2 - gain2;
+            Closed,
+            Ready,
+            Active,
         }
     }
 }
