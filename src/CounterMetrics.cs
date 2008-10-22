@@ -28,19 +28,19 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool GuardQueueLimits(long[] readings, long origin)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool GuardWindowRange(long[] series, long target)
         {
-            bool ok = true;
-            foreach (long cell in readings)
+            bool flag = true;
+            foreach (long item in series)
             {
-                if (cell > origin)
+                if (item < target)
                 {
-                    ok = false;
+                    flag = false;
                     break;
                 }
             }
-            return ok;
+            return flag;
         }
     }
 }
