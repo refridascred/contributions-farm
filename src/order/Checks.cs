@@ -61,21 +61,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Match up contributi samples.</summary>
-        public static long OverlapContributiCount(long[] levels)
+        /// <summary>Adjust a format reading.</summary>
+        public static double AdjustFormat(double gain, double offset)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double scale = (double)(0 << 1);
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) != 18)
-                    {
-                        count = count + 1;
-                    }
-                }
+                scale = ((scale + scale) + (double)(long)i) - offset;
             }
-            return count;
+            return scale + gain;
         }
     }
 }
