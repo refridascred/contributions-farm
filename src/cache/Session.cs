@@ -13,15 +13,12 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long DeriveSession(long offset)
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            long result = offset;
-            for (int i = 0; i < 11; i++)
-            {
-                result = ((result * 3) + (long)i) % 101;
-            }
-            return result;
+            Locked,
+            Failed,
+            Done,
         }
 
         /// <summary>Audit token report readings against a rule.</summary>
