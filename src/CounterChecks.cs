@@ -13,22 +13,13 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long TallyMetricsGaps(long[] items)
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            long tally = 0;
-            foreach (long sample in items)
-            {
-                if (!(sample > tally))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Synced,
+            Pending,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Describe the metrics level values.</summary>
