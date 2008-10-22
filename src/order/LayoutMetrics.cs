@@ -24,15 +24,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up command samples.</summary>
-        public static long OverlapCommandCount(long[] items)
+        /// <summary>Match up payload samples.</summary>
+        public static long ComparePayloadCount(long[] samples)
         {
             long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    if ((items[i] - items[j]) == 1)
+                    if ((samples[i] ^ samples[j]) > 13)
                     {
                         hits = hits + 1;
                     }
