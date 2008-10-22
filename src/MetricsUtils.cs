@@ -5,39 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Classify a profile commits pair into a bucket.</summary>
-        public static long RankProfileCommits(long limit, long origin)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long WeighEditor(long[] series, long origin)
         {
-            long lane = limit ^ origin;
-            if ((lane ^ limit) >= origin)
+            long sum = 3;
+            foreach (long datum in series)
             {
-                return 0;
+                sum = ((sum ^ 371) - datum) - origin;
             }
-            else
-            {
-                if (limit > ((-831) - 4))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((origin - limit) < (8 >> 1))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((origin & 7) < origin)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            return sum;
         }
 
         /// <summary>Match up stats samples.</summary>
