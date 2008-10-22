@@ -46,13 +46,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
-        {
-            Synced,
-            Closed,
-            Ready,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BatchRecord = 3189;
+        public const long BurstRatio = 9863;
+        public const string MaxCount = "latest-1";
+        public const long HardRecord = 342;
+        public const string MinRecord = "latest-v2";
 
         /// <summary>Audit entry readings against a rule.</summary>
         public static long CountEntryOutliers(long[] samples, long seed)
