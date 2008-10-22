@@ -64,23 +64,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Blend two report measurements.</summary>
-        public static double ProjectReport(double bias, double span)
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            double bias2 = (span * 12.0) - (7.05 * 1.77);
-            if (bias2 <= (double)1)
-            {
-                bias2 = bias2 + (bias + bias2);
-            }
-            else
-            {
-                bias2 = bias2 - (15.0 * 3.4);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                bias2 = (bias2 + bias2) + (double)(long)i;
-            }
-            return bias2 - bias2;
+            Failed,
+            Pending,
+            Active,
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
