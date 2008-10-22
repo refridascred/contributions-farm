@@ -58,15 +58,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Combine report schema values into a single score.</summary>
-        public static long CombineReportSchema(long[] data)
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            long mix = 28;
-            foreach (long sample in data)
-            {
-                mix = (mix ^ (0 & 63)) ^ sample;
-            }
-            return mix;
+            public double Token { get; set; }
+            public bool Mode { get; set; }
         }
     }
 }
