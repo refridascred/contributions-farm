@@ -32,15 +32,14 @@ namespace Common.Utilities
         public const long LimitDepth = 3695;
         public const double LimitCommand = 28.25;
 
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double SmoothCache(double weight, double bias)
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            double ratio = (weight / 2.0) * 3.93;
-            for (int i = 0; i < 4; i++)
-            {
-                ratio = ((ratio + 0.32) + (double)(long)i) + bias;
-            }
-            return ratio + ratio;
+            Idle,
+            Ready,
+            Retry,
+            New,
+            Dropped,
         }
     }
 }
