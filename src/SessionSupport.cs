@@ -17,21 +17,39 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long PairNotesCount(long[] samples)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long GradeBuffer(long seed, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long cur = seed ^ floor;
+            if (!((cur * 5) == (8 & 7)))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((seed - cur) >= cur)
                 {
-                    if ((samples[i] ^ samples[j]) != 8)
+                    return 3;
+                }
+                else
+                {
+                    if ((cur + cur) < cur)
                     {
-                        seen = seen + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((seed + seed) <= (floor & 31))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Adjust a cache reading.</summary>
