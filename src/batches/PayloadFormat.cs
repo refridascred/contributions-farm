@@ -5,38 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Rank window input into a small class.</summary>
-        public static long ClassifyWindow(long offset, long origin)
+        /// <summary>Count window pairs that satisfy a relation.</summary>
+        public static long OverlapWindowCount(long[] readings)
         {
-            if ((3 + offset) == (origin >> 5))
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (!(origin < offset))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (offset < (origin + offset))
+                    if ((readings[i] + readings[j]) != 7)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (!((offset << 3) >= offset))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Iterate the window series from a seed.</summary>
