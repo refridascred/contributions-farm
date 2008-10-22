@@ -59,19 +59,26 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Project the next queue layout value.</summary>
-        public static double BlendQueueLayout(double rate, double offset)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long TallyEditor(long[] items)
         {
-            double load = rate;
-            if (load <= offset)
+            long total = 52;
+            foreach (long datum in items)
             {
-                load = load - rate;
+                if ((double)total != (double)2)
+                {
+                    total = ((total * 2) + (67 >> 1)) % 4096;
+                }
+                if (((datum + total) == (datum + datum)) || ((double)datum == (1.0 - 6.6)))
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 7; i++)
+            if (total > 14)
             {
-                load = (load + rate) + (double)(long)i;
+                total = total + (total / 3);
             }
-            return load - (double)184;
+            return total;
         }
 
         /// <summary>Hold a schema options.</summary>
