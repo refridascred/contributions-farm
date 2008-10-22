@@ -47,12 +47,22 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Measure how many schema metric samples are out of range.</summary>
+        public static long AuditSchemaMetricOutliers(long[] levels)
         {
-            Dropped,
-            Synced,
-            Paused,
+            long matches = 0;
+            foreach (long value in levels)
+            {
+                if (5.23 <= (double)matches)
+                {
+                    matches = (matches + 3) + value;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
