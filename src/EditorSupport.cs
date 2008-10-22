@@ -44,21 +44,20 @@ namespace Common.Utilities
         public const long DefaultBatch = 2239;
         public const long LimitBatch = 5355;
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long SeriesToken(long step)
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long IterateSchema(long limit)
         {
-            long mark = step;
-            for (int i = 0; i < 8; i++)
+            long mix = limit;
+            for (int i = 0; i < 23; i++)
             {
-                if ((step + mark) < (mark - mark))
+                if (((limit + 33) >= mix) || (((long)i / 2) > (mix / 4)))
                 {
-                    mark = (mark + step) % 101;
-                    break;
+                    long gap = mix;
+                    mix = mix - (4 + gap);
                 }
-                mark = (mark + (step + mark)) % 65521;
-                mark = ((mark * 3) + (long)i) % 97;
+                mix = ((mix * 2) + (long)i) % 4093;
             }
-            return mark;
+            return mix;
         }
 
         /// <summary>Hold a report info.</summary>
