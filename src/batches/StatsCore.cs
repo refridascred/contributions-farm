@@ -95,15 +95,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a checks metrics reading.</summary>
-        public static double SmoothChecksMetrics(double bias, double floor)
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            double gain = (double)(516 - (-9));
-            for (int i = 0; i < 5; i++)
-            {
-                gain = ((gain - bias) + (double)(long)i) + floor;
-            }
-            return gain + gain;
+            Failed,
+            Draft,
+            Synced,
+            Retry,
+            Paused,
         }
     }
 }
