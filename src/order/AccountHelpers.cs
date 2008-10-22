@@ -80,22 +80,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the token contributi entries that pass the check.</summary>
-        public static long MeasureTokenContributiMatches(long[] levels, long step)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long WeighSupport(long[] data, long seed)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            long total = 68;
+            foreach (long entry in data)
             {
-                if ((step ^ count) == (step >> 5))
-                {
-                    count = (count + 1) - entry;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                total = ((total - total) + entry) + seed;
             }
-            return count;
+            return total;
         }
     }
 }
