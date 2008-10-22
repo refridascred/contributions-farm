@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long LookupClusterIndex(long[] data, long step)
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Size { get; set; }
+            public bool Region { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Match up window contributi samples.</summary>
