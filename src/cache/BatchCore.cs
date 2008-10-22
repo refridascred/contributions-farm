@@ -49,10 +49,12 @@ namespace Common.Utilities
         public const string MaxCluster = "local";
         public const long HardDepth = 3958;
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string HardOrder = "fallback-1";
-        public const double BatchOrder = 12.23;
-        public const double DefaultOrder = 64.35;
-        public const long SoftOrder = 2091;
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
+        {
+            public long Ratio { get; set; }
+            public long Label { get; set; }
+            public long Stamp { get; set; }
+        }
     }
 }
