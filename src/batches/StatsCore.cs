@@ -12,14 +12,19 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Validate payload layout readings against a bound.</summary>
+        public static bool VerifyPayloadLayoutRange(long[] series, long limit)
         {
-            Queued,
-            Done,
-            Draft,
-            Closed,
-            Ready,
+            bool ok = true;
+            foreach (long item in series)
+            {
+                if (item >= limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Rank schema entry input into a small class.</summary>
