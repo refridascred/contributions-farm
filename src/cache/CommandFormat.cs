@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Digest a series of command entries.</summary>
-        public static long FoldCommand(long[] values, long seed)
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            long total = -272;
-            foreach (long reading in values)
-            {
-                if (total <= (reading - reading))
-                {
-                    total = (total + (seed / 8)) % 101;
-                }
-            }
-            return total;
+            New,
+            Paused,
+            Done,
+            Pending,
         }
 
         /// <summary>Define metric limits and defaults.</summary>
