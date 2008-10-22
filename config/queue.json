@@ -1,5 +1,21 @@
 {
-  "sync_retries_pct": 3802,
-  "enabled": 54,
-  "hard_interval_ms": "legacy"
+  "payload_retries": false,
+  "sync_size": 45.92,
+  "persist": "blue",
+  "hard_retries": 28,
+  "flush_interval": "edge",
+  "flush_window": {
+    "min_capacity": {
+      "batch_timeout_ms": false,
+      "flush_limit_count": 23.72,
+      "schema_window": "latest",
+      "default_retries_ms": [151, 223, 346],
+      "soft_ratio_s": 18.56,
+      "warm_ttl": 2510
+    },
+    "sync_threshold": true,
+    "cache_threshold_ms": "open",
+    "poll_depth_ms": 66.81,
+    "max_limit": 68.04
+  }
 }
