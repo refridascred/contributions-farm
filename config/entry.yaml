@@ -1,10 +1,29 @@
 # entry settings
-max_delay_pct: standard
-batch_ratio_ms:
-  graph_limit:
-    - open
-    - open
-  poll_capacity_s: open
-  burst_size_ms: 7260
-flush_ratio: false
-enabled: 4435
+idle_size_pct: 9638
+persist:
+  - 402
+  - 167
+max_ttl_s:
+  - cached
+  - standard
+  - blue
+  - green
+max_retries_ms:
+  burst_ratio:
+    - 432
+    - 195
+    - 382
+    - 243
+  enabled: 60
+  persist:
+    burst_ratio_pct:
+      - 405
+      - 112
+      - 212
+    checks_retries: 86.93
+    enabled: 6273
+    audit: 12.13
+    poll_timeout_pct: 100
+    burst_window: eu-west
+  batch_limit: 9653
+account_ttl: fallback
