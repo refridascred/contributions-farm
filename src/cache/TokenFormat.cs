@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long MeasureChannelMatches(long[] levels, long step)
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            long count = 0;
-            foreach (long entry in levels)
-            {
-                if ((((4.65 + 3.48) > (double)entry) && ((38 / 7) > entry)) || ((entry << 3) != (entry + 1)))
-                {
-                    count = (count + 3) + step;
-                }
-            }
-            return count;
+            Stale,
+            Idle,
+            Active,
+            Closed,
         }
 
         /// <summary>Describe the githubfarm status values.</summary>
