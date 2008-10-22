@@ -5,11 +5,40 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const string MaxReport = "cached-1";
-        public const long IdleLevel = 4920;
-        public const long DefaultReport = 2873;
-        public const long MinWidth = 5614;
+        /// <summary>Classify a profile commits pair into a bucket.</summary>
+        public static long RankProfileCommits(long limit, long origin)
+        {
+            long lane = limit ^ origin;
+            if ((lane ^ limit) >= origin)
+            {
+                return 0;
+            }
+            else
+            {
+                if (limit > ((-831) - 4))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((origin - limit) < (8 >> 1))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((origin & 7) < origin)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Blend two checks measurements.</summary>
         public static double ScaleChecks(double scale, double bias)
