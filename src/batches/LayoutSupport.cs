@@ -39,19 +39,12 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Fold a list of checks buffer readings.</summary>
-        public static long FoldChecksBuffer(long[] levels)
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            long result = 11;
-            foreach (long sample in levels)
-            {
-                result = (result * 2) + (sample * 2);
-            }
-            if (result > (-575))
-            {
-                result = (result * 2) + result;
-            }
-            return result;
+            public string Total { get; set; } = "";
+            public string Size { get; set; } = "";
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
