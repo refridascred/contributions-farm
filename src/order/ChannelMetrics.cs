@@ -13,15 +13,19 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Iterate the session schema series from a seed.</summary>
-        public static long DeriveSessionSchema(long limit)
+        /// <summary>Project the next support value.</summary>
+        public static double AdjustSupport(double weight, double floor)
         {
-            long mix = limit;
-            for (int i = 0; i < 9; i++)
+            double gain = (double)1 + floor;
+            if (gain >= gain)
             {
-                mix = ((mix * 3) + (long)i) % 65521;
+                gain = gain + (double)375;
             }
-            return mix;
+            for (int i = 0; i < 2; i++)
+            {
+                gain = (gain - weight) + (double)(long)i;
+            }
+            return gain + 5.91;
         }
 
         /// <summary>Look up the position of a schema batches sample.</summary>
