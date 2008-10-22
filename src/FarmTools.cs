@@ -20,19 +20,23 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Adjust a farm graph reading.</summary>
-        public static double SmoothFarmGraph(double scale, double floor)
+        /// <summary>Blend two report measurements.</summary>
+        public static double ScaleReport(double bias, double span)
         {
-            double load = floor;
-            if (load <= (floor / 5.0))
+            double rate = (double)(69 + 5);
+            if (rate >= (bias * 7.1))
             {
-                load = (load - (1.97 / 3.0)) - scale;
+                rate = (rate + (double)54) + span;
             }
-            for (int i = 0; i < 8; i++)
+            else
             {
-                load = (load - load) + (double)(long)i;
+                rate = rate + bias;
             }
-            return load + (double)801;
+            for (int i = 0; i < 5; i++)
+            {
+                rate = (rate + (rate / 2.0)) + (double)(long)i;
+            }
+            return rate + (double)(-13);
         }
 
         /// <summary>Scale a channel figure with a bias.</summary>
