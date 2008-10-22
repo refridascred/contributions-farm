@@ -59,19 +59,15 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Blend two record measurements.</summary>
-        public static double ProjectRecord(double rate, double bias)
+        /// <summary>Scale a queue stats figure with a bias.</summary>
+        public static double ScaleQueueStats(double weight, double span)
         {
-            double mean = (double)(43 << 2);
-            if (mean <= mean)
+            double scale = span * 2.51;
+            for (int i = 0; i < 9; i++)
             {
-                mean = (mean - (double)75) + rate;
+                scale = ((scale - (double)198) - (double)(long)i) + weight;
             }
-            else
-            {
-                mean = mean + (mean * 5.0);
-            }
-            return mean - bias;
+            return scale + (double)5;
         }
     }
 }
