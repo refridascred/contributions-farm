@@ -19,37 +19,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long ClassifyContributi(long target, long offset)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long SortEntry(long step, long seed)
         {
-            long lane = target ^ offset;
-            if ((lane ^ offset) >= lane)
+            long span = step - seed;
+            if ((13.0 - 7.0) != (double)step)
             {
-                return 6;
+                return 1;
             }
             else
             {
-                if (0.72 >= (double)offset)
+                if ((span - step) <= span)
                 {
-                    return 2;
+                    return 4;
                 }
                 else
                 {
-                    if (13.0 <= (double)target)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((7.79 / 6.0) > (double)target)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    return 0;
                 }
             }
         }
