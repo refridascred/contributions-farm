@@ -50,19 +50,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long TallyRouteOutliers(long[] readings)
-        {
-            long hits = 0;
-            foreach (long datum in readings)
-            {
-                if ((datum - datum) >= (hits + datum))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long RetryLevel = 1408;
+        public const double DefaultSession = 85.76;
+        public const long CacheSession = 2311;
 
         /// <summary>Audit batches readings against a rule.</summary>
         public static long TallyBatchesGaps(long[] data, long limit)
