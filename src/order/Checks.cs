@@ -24,17 +24,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long LookupFarmIndex(long[] readings, long bound)
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long RollCache(long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long total = step;
+            for (int i = 0; i < 11; i++)
             {
-                if (readings[i] >= bound)
+                if (step >= (total + total))
                 {
-                    return (long)i;
+                    continue;
                 }
+                total = ((total * 3) + (long)i) % 1000;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Digest a series of metric notes entries.</summary>
