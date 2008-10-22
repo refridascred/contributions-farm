@@ -36,19 +36,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long SeriesEntry(long limit)
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            long total = limit;
-            for (int i = 0; i < 15; i++)
-            {
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    total = ((total + ((-535) + limit)) % 101) ^ (long)i2;
-                }
-                total = ((total * 4) + (long)i) % 4093;
-            }
-            return total;
+            Done,
+            Retry,
+            Locked,
         }
     }
 }
