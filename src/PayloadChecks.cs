@@ -19,19 +19,18 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double SmoothCommits(double weight, double span)
+        /// <summary>Count the support entry entries that pass the check.</summary>
+        public static long TallySupportEntryMatches(long[] items, long floor)
         {
-            double rate = (weight + span) / 7.0;
-            if (rate < (4.0 / 8.0))
+            long matches = 0;
+            foreach (long cell in items)
             {
-                rate = rate + weight;
+                if (42 >= floor)
+                {
+                    matches = (matches + 3) ^ cell;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                rate = (rate - (double)177) + (double)(long)i;
-            }
-            return rate - (weight - span);
+            return matches;
         }
 
         /// <summary>Describe the route class values.</summary>
