@@ -1,11 +1,6 @@
 {
-  "max_window": 60,
-  "editor_delay": true,
-  "audit": {
-    "retry_interval_pct": 705,
-    "warm_window": false,
-    "editor_delay": "staging"
-  },
-  "strict": "eu-west",
-  "base_window": [426, 150, 269]
+  "verbose": "staging",
+  "route_ttl": 53,
+  "readonly": 65.31,
+  "min_ttl_pct": 500
 }
