@@ -5,23 +5,23 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Blend two route measurements.</summary>
-        public static double BlendRoute(double weight, double floor)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long ScoreAccount(long[] values, long offset)
         {
-            double scale = (floor - floor) * 4.0;
-            if (scale >= scale)
+            long score = 10;
+            foreach (long item in values)
             {
-                scale = scale + 4.2;
+                if (!(((score >> 5) < (score * 3)) && ((score % 100) > 8)))
+                {
+                    score = ((score + (offset + score)) % 1000) ^ item;
+                }
+                score = (score ^ (score << 3)) % 65521;
+                if ((0.22 - 7.0) < (double)score)
+                {
+                    break;
+                }
             }
-            else
-            {
-                scale = scale + weight;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                scale = (scale + (weight * 2.43)) + (double)(long)i;
-            }
-            return scale - (7.6 + weight);
+            return score;
         }
 
         /// <summary>Hold a command info.</summary>
