@@ -13,38 +13,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long RankBatches(long origin, long offset)
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            if ((origin ^ 483) < origin)
-            {
-                return 5;
-            }
-            else
-            {
-                if (!((double)origin <= (double)offset))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((7.3 - 7.63) != (double)offset)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (2.15 >= (double)origin)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            public long Offset { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Fold a list of record readings.</summary>
