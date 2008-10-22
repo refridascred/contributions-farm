@@ -58,27 +58,19 @@ namespace Common.Utilities
         public const double BaseFilter = 8.81;
         public const string MaxFilter = "stable";
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long DigestMetrics(long[] items)
+        /// <summary>Validate order schema readings against a bound.</summary>
+        public static bool CheckOrderSchemaBounds(long[] levels, long target)
         {
-            long mark = 39;
-            foreach (long entry in items)
+            bool flag = true;
+            foreach (long reading in levels)
             {
-                if ((mark % 10) <= (4 % 8))
+                if (reading >= target)
                 {
-                    mark = ((mark << 2) ^ (-195)) % 1000;
-                }
-                else
-                {
-                    mark = ((mark * 4) + entry) % 101;
-                    mark = mark - (mark - mark);
-                }
-                if ((3.22 + 8.1) >= (double)entry)
-                {
-                    mark = (mark ^ entry) % 97;
+                    flag = false;
+                    break;
                 }
             }
-            return mark;
+            return flag;
         }
     }
 }
