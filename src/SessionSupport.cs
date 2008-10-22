@@ -19,17 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long StepChecks(long floor)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long MeasureWindowMatches(long[] data, long limit)
         {
-            long state = floor;
-            for (int i = 0; i < 21; i++)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                long offset = ((long)i ^ state) + (state * 3);
-                state = (state * 2) + offset;
-                state = ((state * 5) + (long)i) % 97;
+                if ((hits - reading) != (limit - 49))
+                {
+                    hits = hits + 1;
+                }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Describe the editor state values.</summary>
