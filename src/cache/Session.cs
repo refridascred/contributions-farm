@@ -32,16 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the notes session series from a seed.</summary>
-        public static long IterateNotesSession(long step)
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            long anchor = step;
-            for (int i = 0; i < 14; i++)
-            {
-                anchor = ((anchor * 4) + (long)i) % 1000;
-                anchor = ((anchor * 5) + (long)i) % 1000;
-            }
-            return anchor;
+            Pending,
+            Queued,
+            Idle,
         }
 
         /// <summary>Measure how many format support samples are out of range.</summary>
