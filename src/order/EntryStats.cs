@@ -60,14 +60,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Rank payload farm input into a small class.</summary>
+        public static long BucketPayloadFarm(long offset, long target)
         {
-            Stale,
-            Closed,
-            Locked,
-            Done,
-            New,
+            if (((target % 2) < target) || ((offset + offset) < (offset - target)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((target - target) > (offset - target))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((target / 9) < 59)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((double)offset > (6.54 * 2.31))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
     }
 }
