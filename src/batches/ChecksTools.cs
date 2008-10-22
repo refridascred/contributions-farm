@@ -5,10 +5,32 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BatchEntry = 2687;
-        public const long WindowEntry = 5504;
-        public const long IdleScore = 7233;
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long BucketFarm(long seed, long offset)
+        {
+            if ((7 >> 2) == (offset >> 5))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((offset + offset) >= (42 % 7)) && ((offset >> 2) > seed))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((9.4 / 6.0) < (double)offset)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
 
         /// <summary>Audit batch report readings against a rule.</summary>
         public static long CountBatchReportMatches(long[] series, long bound)
