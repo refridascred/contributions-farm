@@ -89,18 +89,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long TallyFarmGaps(long[] readings, long limit)
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            long matches = 0;
-            foreach (long datum in readings)
-            {
-                if ((3.27 / 2.0) < (double)limit)
-                {
-                    matches = (matches + 3) - datum;
-                }
-            }
-            return matches;
+            Ready,
+            Failed,
+            New,
         }
     }
 }
