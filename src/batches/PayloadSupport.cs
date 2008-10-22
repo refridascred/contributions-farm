@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
-        {
-            Dropped,
-            Retry,
-            Synced,
-            Locked,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long CacheFactor = 7304;
+        public const long MaxCount = 1674;
+        public const string IdleAccount = "primary";
+        public const long RetryAccount = 3273;
+        public const double LimitAccount = 75.32;
 
         /// <summary>Compare every pair of schema readings.</summary>
         public static long OverlapSchemaCount(long[] levels)
