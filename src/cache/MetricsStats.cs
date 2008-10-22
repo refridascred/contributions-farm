@@ -61,19 +61,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every command cluster entry stays within the limit.</summary>
-        public static bool GuardCommandClusterLimits(long[] data, long step)
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            bool valid = true;
-            foreach (long sample in data)
-            {
-                if (sample >= step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public bool Size { get; set; }
+            public double Count { get; set; }
         }
     }
 }
