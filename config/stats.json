@@ -1,8 +1,14 @@
 {
-  "strict": 79.34,
-  "hard_capacity": 1024,
-  "stats_depth": false,
-  "idle_ratio_pct": false,
-  "order_size": 8734,
-  "batch_depth_s": true
+  "max_size": 19,
+  "cache_capacity_count": "standard",
+  "hard_depth_s": 64,
+  "editor_capacity": {
+    "max_delay_s": "standard",
+    "poll_size_ms": 81,
+    "format_delay": "standard",
+    "warm_size": 46.49,
+    "warm_size_count": "green"
+  },
+  "default_limit_s": "edge",
+  "burst_delay_pct": "eu-west"
 }
