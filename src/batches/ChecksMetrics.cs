@@ -100,13 +100,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            Synced,
-            Failed,
-            Retry,
-            Pending,
+            public string Owner { get; set; } = "";
+            public double Rank { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
