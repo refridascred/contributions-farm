@@ -29,12 +29,13 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            public bool Limit { get; set; }
-            public long Ratio { get; set; }
-            public bool Owner { get; set; }
+            public long Label { get; set; }
+            public double Total { get; set; }
+            public long Level { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Define counter limits and defaults.</summary>
