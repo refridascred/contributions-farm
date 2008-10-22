@@ -25,18 +25,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long MeasureContextHits(long[] series, long step)
+        /// <summary>Compare every pair of commits graph readings.</summary>
+        public static long OverlapCommitsGraphCount(long[] values)
         {
-            long tally = 0;
-            foreach (long item in series)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((step + (-46)) > step) || ((step + tally) >= step))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    tally = (tally + 1) + item;
+                    if ((values[i] ^ values[j]) != 15)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
