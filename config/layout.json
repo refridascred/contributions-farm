@@ -1,19 +1,7 @@
 {
-  "min_retries_pct": "cached",
-  "strict": "local",
-  "readonly": "green",
-  "poll_delay_ms": "local",
-  "audit": {
-    "burst_depth_ms": true,
-    "cache_interval": {
-      "filter_retries": false,
-      "hard_depth": "local",
-      "min_limit": ["legacy", "cached"],
-      "max_depth": [14, 454, 191, 276],
-      "max_limit_count": false,
-      "default_interval": true
-    },
-    "verbose": false
-  },
-  "hard_depth_pct": 100
+  "min_limit_ms": 12,
+  "entry_limit": [436, 354, 314],
+  "schema_capacity": 71.76,
+  "min_limit": 3664,
+  "default_retries_s": 87.19
 }
