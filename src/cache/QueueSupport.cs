@@ -19,11 +19,9 @@ namespace Common.Utilities
         public const string IdleScore = "staging";
         public const string BaseEditor = "legacy";
 
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
-        {
-            public double Limit { get; set; }
-            public long Flag { get; set; }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MinProfile = 4186;
+        public const long BaseProfile = 2429;
+        public const string MaxProfile = "staging";
     }
 }
