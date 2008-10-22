@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long CountQueueGaps(long[] samples)
         {
-            public long Count { get; set; }
-            public string Score { get; set; } = "";
-            public bool Region { get; set; }
+            long tally = 0;
+            foreach (long cell in samples)
+            {
+                if ((cell << 1) > (tally % 24))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the buffer mode values.</summary>
