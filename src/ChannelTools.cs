@@ -27,22 +27,11 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Audit route schema readings against a rule.</summary>
-        public static long AuditRouteSchemaMatches(long[] levels)
-        {
-            long count = 0;
-            foreach (long sample in levels)
-            {
-                if ((603 < (sample / 8)) || (((count - count) <= (sample << 3)) || ((sample & 63) > (sample + sample))))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long WindowLevel = 2311;
+        public const long HardWidth = 6614;
+        public const long CacheRoute = 303;
+        public const long StepRoute = 6078;
+        public const double HardRoute = 90.41;
     }
 }
