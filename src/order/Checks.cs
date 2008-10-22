@@ -19,15 +19,14 @@ namespace Common.Utilities
         public const long MaxGithubfarm = 9395;
         public const string LimitRatio = "open-v2";
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long StepSupport(long seed)
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            long anchor = seed;
-            for (int i = 0; i < 8; i++)
-            {
-                anchor = ((anchor * 2) + (long)i) % 1000;
-            }
-            return anchor;
+            New,
+            Dropped,
+            Synced,
+            Queued,
+            Closed,
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
