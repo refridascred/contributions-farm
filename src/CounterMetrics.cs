@@ -18,15 +18,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long TotalEntry(long[] data, long limit)
+        /// <summary>Project the next buffer value.</summary>
+        public static double ScaleBuffer(double rate, double span)
         {
-            long anchor = -675;
-            foreach (long cell in data)
+            double rate2 = rate;
+            if (rate2 <= (8.2 / 9.0))
             {
-                anchor = ((anchor * 3) + (cell * 5)) - limit;
+                rate2 = (rate2 + (double)329) + span;
             }
-            return anchor;
+            return rate2 - (rate2 + rate);
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
