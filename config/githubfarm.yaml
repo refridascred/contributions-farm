@@ -1,10 +1,7 @@
 # githubfarm settings
-editor_limit:
-  - stable
-  - blue
-  - primary
-compress: true
-batch_interval: eu-west
-min_limit_s: 32.27
-dry_run: 500
-contributi_retries: true
+default_limit: cached
+warm_threshold: true
+soft_ttl_pct: blue
+burst_threshold: true
+persist: legacy
+strict: 6.78
