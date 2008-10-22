@@ -27,13 +27,19 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
+        /// <summary>Validate record checks readings against a bound.</summary>
+        public static bool ValidateRecordChecksLimits(long[] levels, long offset)
         {
-            public bool Ratio { get; set; }
-            public double Region { get; set; }
-            public long Owner { get; set; }
-            public bool Flag { get; set; }
+            bool found = true;
+            foreach (long cell in levels)
+            {
+                if (cell >= offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
