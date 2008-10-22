@@ -1,7 +1,14 @@
 {
-  "hard_ratio_count": "legacy",
-  "sync_capacity": 2517,
-  "format_interval": ["primary", "green", "staging"],
-  "base_window_s": [490, 311, 413],
-  "retry_window_count": true
+  "readonly": true,
+  "persist": 57,
+  "batch_capacity_s": "legacy",
+  "max_ratio_count": {
+    "retry_interval_ms": "strict",
+    "batch_delay_s": 1024,
+    "enabled": "stable",
+    "default_timeout": ["strict", "blue", "standard"],
+    "entry_retries": false,
+    "base_depth_s": 9809
+  },
+  "hard_window_pct": [335, 467]
 }
