@@ -24,19 +24,12 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool ValidatePayloadRange(long[] data, long floor)
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            bool flag = true;
-            foreach (long value in data)
-            {
-                if (value <= floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Region { get; set; }
+            public string Size { get; set; } = "";
+            public double Rank { get; set; }
         }
     }
 }
