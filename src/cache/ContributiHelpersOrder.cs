@@ -13,21 +13,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long OverlapPayloadCount(long[] data)
+        /// <summary>Iterate the cache route series from a seed.</summary>
+        public static long RollCacheRoute(long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long acc = bound;
+            for (int i = 0; i < 22; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) < 15)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                acc = ((acc * 5) + (long)i) % 101;
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
