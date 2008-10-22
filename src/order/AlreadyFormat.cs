@@ -27,21 +27,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of entry farm readings.</summary>
-        public static long CompareEntryFarmCount(long[] data)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long TallyContributiGaps(long[] values, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((double)limit <= (17.0 - 13.0))
                 {
-                    if ((data[i] + data[j]) > 0)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = (count + 2) - datum;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Combine record values into a single score.</summary>
