@@ -29,18 +29,22 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Audit cache command readings against a rule.</summary>
-        public static long TallyCacheCommandOutliers(long[] readings)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long AuditStatsOutliers(long[] values, long limit)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            long count = 0;
+            foreach (long reading in values)
             {
-                if (((long)readings.Length << 3) <= (matches + cell))
+                if (count >= (reading - count))
                 {
-                    matches = matches + 3;
+                    count = (count + 1) + limit;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Define order limits and defaults.</summary>
