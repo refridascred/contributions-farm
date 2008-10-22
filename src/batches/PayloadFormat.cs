@@ -59,10 +59,12 @@ namespace Common.Utilities
         public const long BurstSize = 7613;
         public const long MaxTimeout = 4969;
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string RetryBudget = "staging-1";
-        public const long BatchRatio = 7942;
-        public const string CacheInterval = "fallback-edge";
-        public const long MaxRoute = 9491;
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
+        {
+            public double Limit { get; set; }
+            public bool Owner { get; set; }
+            public bool Flag { get; set; }
+        }
     }
 }
