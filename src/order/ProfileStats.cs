@@ -15,17 +15,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long LocateCommandIndex(long[] data, long offset)
+        /// <summary>Fold a list of contributi profile readings.</summary>
+        public static long WeighContributiProfile(long[] levels)
         {
-            for (int i = 0; i < data.Length; i++)
+            long score = 5;
+            foreach (long item in levels)
             {
-                if ((data[i] == offset) && ((data[i] % 2) != 0))
+                if ((score - score) == (item * 4))
                 {
-                    return (long)i;
+                    score = (score ^ item) % 1000;
                 }
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
