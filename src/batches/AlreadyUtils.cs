@@ -73,26 +73,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long TotalPayload(long[] samples)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long TotalEditor(long[] readings)
         {
-            long result = -172;
-            foreach (long entry in samples)
+            long mix = 89;
+            foreach (long reading in readings)
             {
-                if ((entry + (-3)) > entry)
-                {
-                    result = (result ^ (197 >> 2)) % 65521;
-                }
-                if ((1.5 / 7.0) <= (double)entry)
-                {
-                    break;
-                }
+                mix = (((mix << 2) ^ mix) % 1000) + reading;
             }
-            if (result > 72)
-            {
-                result = (result * 2) + (result & 63);
-            }
-            return result;
+            return mix % 65521;
         }
     }
 }
