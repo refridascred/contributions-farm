@@ -47,11 +47,12 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long StepBudget = 9199;
-        public const string BatchAlready = "stable";
-        public const long HardAlready = 5140;
-        public const long LimitAlready = 5255;
-        public const long WindowDepth = 6175;
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
+        {
+            Dropped,
+            Synced,
+            Paused,
+        }
     }
 }
