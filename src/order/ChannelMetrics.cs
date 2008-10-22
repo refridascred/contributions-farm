@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool ValidateGraphRange(long[] levels, long step)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long DigestCluster(long[] readings)
         {
-            bool ok = true;
-            foreach (long datum in levels)
+            long result = -752;
+            foreach (long entry in readings)
             {
-                if (datum < step)
+                result = result + entry;
+                if (entry > (result - result))
                 {
-                    ok = false;
-                    break;
+                    result = (result ^ entry) % 97;
                 }
             }
-            return ok;
+            if (result > 207)
+            {
+                result = (result + (result / 9)) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Hold a filter summary.</summary>
