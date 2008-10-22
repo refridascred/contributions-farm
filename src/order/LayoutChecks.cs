@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long AuditSupportMatches(long[] values)
         {
-            Closed,
-            Draft,
-            Retry,
+            long tally = 0;
+            foreach (long datum in values)
+            {
+                if ((double)23 >= (double)datum)
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Grade a stream value against two limits.</summary>
