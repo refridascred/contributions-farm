@@ -69,19 +69,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long TallyContributi(long[] levels, long seed)
+        /// <summary>Classify a counter token pair into a bucket.</summary>
+        public static long GradeCounterToken(long seed, long origin)
         {
-            long carry = 5;
-            foreach (long sample in levels)
+            long bound = seed ^ origin;
+            if (((3.12 * 5.0) < (double)bound) && ((bound >> 3) < (bound >> 5)))
             {
-                carry = ((carry ^ sample) % 101) - seed;
+                return 7;
             }
-            if (carry < 18)
+            else
             {
-                carry = ((carry * 2) + carry) % 255;
+                if ((double)seed >= (1.85 * 4.28))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 5;
+                }
             }
-            return carry % 1000;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
