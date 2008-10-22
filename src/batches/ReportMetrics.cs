@@ -13,22 +13,17 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long FoldContributi(long[] series)
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long LookupMetricsIndex(long[] readings, long offset)
         {
-            long mix = 682;
-            foreach (long reading in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (reading < (8 + mix))
+                if (readings[i] == offset)
                 {
-                    mix = mix ^ (reading - reading);
+                    return (long)i;
                 }
             }
-            if (mix > 8)
-            {
-                mix = (mix - (mix << 2)) % 4096;
-            }
-            return mix % 97;
+            return -1;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
