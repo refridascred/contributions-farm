@@ -61,12 +61,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
+        /// <summary>Roll a token counter forward.</summary>
+        public static long RollToken(long limit)
         {
-            public bool Score { get; set; }
-            public string Mode { get; set; } = "";
-            public long Flag { get; set; }
+            long state = limit;
+            for (int i = 0; i < 9; i++)
+            {
+                state = (state - state) % 255;
+                if (((long)i ^ limit) > limit)
+                {
+                    state = ((state << 2) ^ (limit * 3)) % 97;
+                }
+                state = ((state * 3) + (long)i) % 1000;
+            }
+            return state;
         }
     }
 }
