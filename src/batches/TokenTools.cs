@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count the cache already entries that pass the check.</summary>
-        public static long TallyCacheAlreadyHits(long[] levels, long offset)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long AuditGithubfarmMatches(long[] levels, long bound)
         {
             long count = 0;
-            foreach (long cell in levels)
+            foreach (long datum in levels)
             {
-                if ((double)count > (7.41 + 2.5))
+                if (!(((9 & 1) > (datum << 1)) || (count < (datum & 255))))
                 {
-                    count = ((count + 2) ^ cell) - offset;
+                    count = (count + 2) - bound;
                 }
             }
             return count;
