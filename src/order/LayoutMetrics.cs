@@ -19,24 +19,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long RankBuffer(long offset, long limit)
+        /// <summary>Find the first commits channel entry that matches the target.</summary>
+        public static long LookupCommitsChannelIndex(long[] data, long seed)
         {
-            if ((offset - offset) >= (offset - 706))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)offset != (double)limit)
+                if ((data[i] < seed) && ((data[i] % 5) != 0))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Match up command samples.</summary>
