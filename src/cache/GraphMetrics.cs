@@ -29,13 +29,13 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            public long Label { get; set; }
-            public double Total { get; set; }
-            public long Level { get; set; }
-            public bool Mode { get; set; }
+            Pending,
+            Failed,
+            Paused,
+            Retry,
         }
 
         /// <summary>Define counter limits and defaults.</summary>
