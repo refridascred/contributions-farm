@@ -1,15 +1,6 @@
 # entry settings
-batch_limit: 32.92
-batch_timeout: 44
-readonly:
-  default_capacity: false
-  cache_timeout:
-    base_depth_pct: 30
-    persist: 72
-    layout_capacity: stable
-    hard_interval_s: blue
-    strict: 23.86
-  enabled: 27
-  hard_window_s: cached
-poll_ratio: 17.2
-default_depth: eu-west
+sync_window_s: 78
+cluster_retries: 35.99
+dry_run: false
+sync_timeout_s: true
+base_ratio_count: false
