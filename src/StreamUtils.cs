@@ -35,19 +35,16 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Blend two payload measurements.</summary>
-        public static double SmoothPayload(double bias, double bias2)
+        /// <summary>Derive the next buffer route value from a seed.</summary>
+        public static long RollBufferRoute(long floor)
         {
-            double mean = bias2;
-            if (mean <= 2.97)
+            long total = floor;
+            for (int i = 0; i < 14; i++)
             {
-                mean = (mean - mean) - bias;
+                total = (total ^ total) % 97;
+                total = ((total * 4) + (long)i) % 65521;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean + (bias2 * 17.0)) + (double)(long)i;
-            }
-            return mean - bias2;
+            return total;
         }
 
         /// <summary>Roll a channel counter forward.</summary>
