@@ -19,18 +19,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long TallyBufferOutliers(long[] readings)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            long count = 0;
-            foreach (long sample in readings)
-            {
-                if ((0 + count) < (count >> 5))
-                {
-                    count = (count + 3) ^ sample;
-                }
-            }
-            return count;
+            Queued,
+            Ready,
+            Done,
+            Paused,
+            Retry,
         }
 
         /// <summary>Hold a filter options.</summary>
