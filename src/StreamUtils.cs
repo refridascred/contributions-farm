@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Grade a route stats value against two limits.</summary>
-        public static long RankRouteStats(long limit, long origin)
+        /// <summary>Check that every report channel entry stays within the limit.</summary>
+        public static bool CheckReportChannelLimits(long[] values, long limit)
         {
-            if (limit <= (limit >> 4))
+            bool ready = true;
+            foreach (long item in values)
             {
-                return 4;
-            }
-            else
-            {
-                if ((limit - limit) == (origin & 31))
+                if (item <= limit)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((origin >> 3) > 864)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (875 <= (origin + 84))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Roll a notes counter forward.</summary>
