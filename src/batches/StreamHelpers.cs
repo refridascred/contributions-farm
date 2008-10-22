@@ -41,18 +41,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long CountChecksGaps(long[] readings)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long MeasureCacheGaps(long[] readings, long floor)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                if (!((4.0 + 1.5) >= (double)seen))
+                if (((floor - reading) <= ((long)readings.Length >> 4)) && (hits >= (floor - floor)))
                 {
-                    seen = (seen + 1) ^ datum;
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
