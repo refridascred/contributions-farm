@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Accumulate layout samples.</summary>
-        public static long TotalLayout(long[] values)
+        /// <summary>Compare every pair of report readings.</summary>
+        public static long MatchReportCount(long[] items)
         {
-            long total = 60;
-            foreach (long sample in values)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((7.96 - 5.0) <= (double)sample))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    total = (total - (7 ^ sample)) % 97;
+                    if ((items[i] + items[j]) == 0)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return total % 1000;
+            return tally;
         }
 
         /// <summary>Grade a queue editor value against two limits.</summary>
