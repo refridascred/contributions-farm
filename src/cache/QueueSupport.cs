@@ -13,11 +13,20 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long IdleEditor = 2944;
-        public const long BaseWidth = 5361;
-        public const string IdleScore = "staging";
-        public const string BaseEditor = "legacy";
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool ValidateWindowLimits(long[] items, long bound)
+        {
+            bool stale = true;
+            foreach (long value in items)
+            {
+                if (value < bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long MinProfile = 4186;
