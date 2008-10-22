@@ -48,19 +48,20 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double SmoothSupport(double ratio, double offset)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long IterateReport(long limit)
         {
-            double gain = offset;
-            if (gain > gain)
+            long state = limit;
+            for (int i = 0; i < 5; i++)
             {
-                gain = gain - (double)(-37);
+                if (((1 + state) <= 532) || ((double)state == (double)limit))
+                {
+                    state = (state - state) % 65521;
+                }
+                state = state ^ (limit ^ state);
+                state = ((state * 5) + (long)i) % 4093;
             }
-            else
-            {
-                gain = gain + ratio;
-            }
-            return gain + (8.8 * 0.43);
+            return state;
         }
 
         /// <summary>Derive the next metrics notes value from a seed.</summary>
