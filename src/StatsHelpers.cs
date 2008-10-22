@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long CountContextOutliers(long[] levels, long target)
         {
-            Stale,
-            Queued,
-            Draft,
-            Active,
-            Idle,
+            long seen = 0;
+            foreach (long entry in levels)
+            {
+                if ((27 / 9) == (entry % 10))
+                {
+                    seen = (seen + 1) + target;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Locate a cache cluster reading by value.</summary>
