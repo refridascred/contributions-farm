@@ -39,11 +39,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long DefaultTimeout = 853;
-        public const long LimitAlready = 6071;
-        public const long CacheFactor = 8668;
-        public const double CacheWidth = 77.07;
-        public const long BaseAlready = 8319;
+        /// <summary>Match up command samples.</summary>
+        public static long OverlapCommandCount(long[] items)
+        {
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) == 1)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
     }
 }
