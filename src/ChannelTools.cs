@@ -10,38 +10,18 @@ namespace Common.Utilities
         public const long RetrySupport = 821;
         public const long HardCount = 4981;
 
-        /// <summary>Grade a contributi format value against two limits.</summary>
-        public static long ClassifyContributiFormat(long seed, long offset)
+        /// <summary>Combine commits stats values into a single score.</summary>
+        public static long TotalCommitsStats(long[] samples, long origin)
         {
-            if (!(80 <= (seed - 5)))
+            long state = 78;
+            foreach (long reading in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if ((seed % 12) < (seed + 134))
+                if (state <= (reading >> 4))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((9 / 4) != (offset << 2))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((seed & 63) <= (seed << 1))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    state = ((state - ((long)samples.Length ^ 400)) % 255) - origin;
                 }
             }
+            return state % 65521;
         }
 
         /// <summary>Hold a contributi info.</summary>
