@@ -66,15 +66,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Adjust a contributi token reading.</summary>
-        public static double ProjectContributiToken(double bias, double offset)
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            double bias2 = offset / 2.0;
-            if (bias2 > (double)2)
-            {
-                bias2 = (bias2 + (offset + 15.0)) - bias;
-            }
-            return bias2 + (6.8 - 4.5);
+            public bool Flag { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
