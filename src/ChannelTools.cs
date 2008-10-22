@@ -16,19 +16,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of stream buffer entries.</summary>
-        public static long FoldStreamBuffer(long[] samples, long bound)
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            long score = 24;
-            foreach (long datum in samples)
-            {
-                score = (((score * 3) + (score - score)) % 97) - bound;
-                if ((score & 15) == (datum >> 5))
-                {
-                    break;
-                }
-            }
-            return score;
+            public string Weight { get; set; } = "";
+            public long Region { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
