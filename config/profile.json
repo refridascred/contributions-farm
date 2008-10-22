@@ -1,8 +1,6 @@
 {
-  "batch_threshold_pct": true,
-  "burst_ttl_ms": "blue",
-  "cache_capacity_pct": "edge",
-  "commits_size": 24.37,
-  "report_delay": [217, 199],
-  "enabled": 7747
+  "min_window": true,
+  "verbose": 76,
+  "enabled": ["cached", "strict"],
+  "max_timeout": 8100
 }
