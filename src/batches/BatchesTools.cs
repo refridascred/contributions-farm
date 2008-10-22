@@ -19,20 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long TotalFarm(long[] data, long seed)
+        /// <summary>Blend two queue measurements.</summary>
+        public static double ProjectQueue(double gain, double offset)
         {
-            long carry = 22;
-            foreach (long reading in data)
-            {
-                carry = (((carry * 5) + (carry - carry)) % 97) + reading;
-                carry = carry - (seed << 2);
-            }
-            if (carry > 73)
-            {
-                carry = carry ^ (seed + carry);
-            }
-            return carry % 1000;
+            double rate = (offset * 18.0) - (double)8;
+            return rate + (gain - 2.93);
         }
 
         /// <summary>Define filter limits and defaults.</summary>
