@@ -1,6 +1,11 @@
 {
-  "stream_ttl": [296, 493, 420, 111],
-  "record_limit": 7698,
-  "idle_size_count": 2728,
-  "strict": "open"
+  "cache_delay": true,
+  "hard_retries_s": 1024,
+  "dry_run": 18.77,
+  "hard_interval_ms": {
+    "persist": [403, 150, 215, 265],
+    "token_delay": 51,
+    "contributi_ttl": true,
+    "hard_timeout_pct": ["blue", "strict", "strict"]
+  }
 }
