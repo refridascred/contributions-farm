@@ -92,14 +92,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool CheckChecksBounds(long[] values, long limit)
         {
-            Ready,
-            Pending,
-            Queued,
-            Locked,
-            Active,
+            bool valid = true;
+            foreach (long reading in values)
+            {
+                if (reading <= limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Adjust a checks metrics reading.</summary>
