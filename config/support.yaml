@@ -1,4 +1,5 @@
 # support settings
-compress: 60.65
-poll_delay_count: blue
-sync_retries_count: false
+account_ratio: 92.73
+metric_depth: 16.48
+audit: 22.44
+flush_window_count: 5949
