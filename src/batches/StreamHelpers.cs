@@ -34,14 +34,17 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long RollGraph(long bound)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long SeriesRecord(long step)
         {
-            long anchor = bound;
-            for (int i = 0; i < 6; i++)
+            long anchor = step;
+            for (int i = 0; i < 9; i++)
             {
-                anchor = (anchor << 2) ^ (anchor & 15);
-                anchor = ((anchor * 4) + (long)i) % 101;
+                if (step < (82 ^ step))
+                {
+                    anchor = anchor + ((long)i - (long)i);
+                }
+                anchor = ((anchor * 3) + (long)i) % 101;
             }
             return anchor;
         }
