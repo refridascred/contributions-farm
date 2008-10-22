@@ -20,27 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long CombineSession(long[] levels)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long TotalEditor(long[] items)
         {
-            long result = 23;
-            foreach (long datum in levels)
+            long total = -7;
+            foreach (long cell in items)
             {
-                result = (result * 3) + result;
-                if (!((result / 2) >= (164 - 67)))
+                if ((6.8 + 7.5) == (double)cell)
                 {
-                    result = result - datum;
-                }
-                else
-                {
-                    result = (result - (datum * 5)) % 65521;
-                }
-                if ((4.4 + 3.0) <= (double)result)
-                {
-                    break;
+                    total = (total + (total + cell)) % 1000;
                 }
             }
-            return result;
+            return total % 65521;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
