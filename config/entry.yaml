@@ -1,23 +1,14 @@
 # entry settings
-burst_size: primary
-hard_ratio_ms:
-  metric_threshold: false
-  compress:
-    - open
-    - standard
-  enabled:
-    - 472
-    - 268
-  max_threshold: local
-  contributi_retries: 2265
-  record_window: 100
-hard_limit_s:
-  - 473
-  - 69
-dry_run: 37
-counter_ttl:
-  - 444
-  - 492
-  - 283
-  - 455
-base_size_count: legacy
+hard_size_count:
+  - 224
+  - 84
+  - 362
+strict: false
+burst_delay: eu-west
+compress: primary
+readonly: standard
+session_ratio:
+  - 81
+  - 394
+  - 442
+  - 154
