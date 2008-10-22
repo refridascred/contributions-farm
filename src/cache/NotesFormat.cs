@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long WeighChannel(long[] items, long target)
+        /// <summary>Look up the position of a batches contributi sample.</summary>
+        public static long FindBatchesContributiIndex(long[] samples, long bound)
         {
-            long sum = 516;
-            foreach (long sample in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                sum = ((sum << 3) ^ (sample - target)) % 255;
+                if (samples[i] < bound)
+                {
+                    return (long)i;
+                }
             }
-            return sum % 1000;
+            return -1;
         }
 
         /// <summary>Accumulate batch samples.</summary>
