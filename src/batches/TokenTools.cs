@@ -13,12 +13,17 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long SeekFilterIndex(long[] readings, long target)
         {
-            Active,
-            Synced,
-            Idle,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] == target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Find the first contributi stream entry that matches the target.</summary>
