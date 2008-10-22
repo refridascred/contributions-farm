@@ -37,19 +37,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool ValidateFarmLimits(long[] values, long origin)
+        /// <summary>Match up layout samples.</summary>
+        public static long PairLayoutCount(long[] values)
         {
-            bool valid = true;
-            foreach (long sample in values)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (sample != origin)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((values[i] + values[j]) > 5)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return valid;
+            return count;
         }
     }
 }
