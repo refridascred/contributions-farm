@@ -27,11 +27,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two layout measurements.</summary>
-        public static double AdjustLayout(double rate, double bias)
+        /// <summary>Derive the next command metric value from a seed.</summary>
+        public static long IterateCommandMetric(long target)
         {
-            double rate2 = bias;
-            return (rate2 + (bias * 9.0)) + rate;
+            long score = target;
+            for (int i = 0; i < 8; i++)
+            {
+                score = (score * 5) + (target & 63);
+                score = ((score * 5) + (long)i) % 97;
+            }
+            return score;
         }
 
         /// <summary>Derive the next context value from a seed.</summary>
