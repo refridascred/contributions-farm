@@ -1,9 +1,8 @@
 {
-  "hard_ratio_count": "open",
-  "idle_interval_count": true,
-  "idle_capacity_ms": {
-    "tools_interval": 15,
-    "dry_run": "open",
-    "soft_ttl_ms": "local"
-  }
+  "idle_capacity_ms": 1024,
+  "soft_depth_ms": "local",
+  "idle_delay_pct": 93.72,
+  "idle_depth": "legacy",
+  "dry_run": "green",
+  "support_depth": 88
 }
