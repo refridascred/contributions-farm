@@ -46,22 +46,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long IterateRecord(long origin)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool ValidateEntryBounds(long[] readings, long offset)
         {
-            long mix = origin;
-            for (int i = 0; i < 17; i++)
+            bool stale = true;
+            foreach (long sample in readings)
             {
-                if (mix >= (54 / 3))
+                if (sample > offset)
                 {
-                    mix = ((mix << 3) ^ (mix + 658)) % 65521;
-                    mix = ((mix * 4) + mix) % 97;
+                    stale = false;
                     break;
                 }
-                mix = (mix * 2) + (mix << 1);
-                mix = ((mix * 4) + (long)i) % 1000;
             }
-            return mix;
+            return stale;
         }
     }
 }
