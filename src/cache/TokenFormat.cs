@@ -22,19 +22,19 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Digest a series of window metric entries.</summary>
-        public static long CombineWindowMetric(long[] series)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool GuardPayloadRange(long[] readings, long bound)
         {
-            long score = 2;
-            foreach (long sample in series)
+            bool valid = true;
+            foreach (long cell in readings)
             {
-                score = ((score * 3) + (sample * 2)) % 101;
-                if (((1.3 - 15.0) <= (double)sample) || (sample < (long)series.Length))
+                if (cell > bound)
                 {
-                    score = score - (sample + 1);
+                    valid = false;
+                    break;
                 }
             }
-            return score;
+            return valid;
         }
     }
 }
