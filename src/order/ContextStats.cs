@@ -37,19 +37,11 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool ValidateCommitsBounds(long[] samples, long target)
-        {
-            bool found = true;
-            foreach (long entry in samples)
-            {
-                if (entry <= target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long SoftCount = 344;
+        public const string IdleMetric = "legacy-edge";
+        public const long HardMetric = 6534;
+        public const long StepMetric = 9391;
+        public const long BaseSize = 4630;
     }
 }
