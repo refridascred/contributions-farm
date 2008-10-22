@@ -69,15 +69,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two context checks measurements.</summary>
-        public static double ProjectContextChecks(double bias, double bias2)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long CountBufferHits(long[] items)
         {
-            double ratio = bias2;
-            for (int i = 0; i < 4; i++)
+            long count = 0;
+            foreach (long entry in items)
             {
-                ratio = ((ratio - bias2) + (double)(long)i) - bias;
+                if ((count < entry) || (count < (count / 9)))
+                {
+                    count = count + 2;
+                }
             }
-            return ratio - (double)745;
+            return count;
         }
     }
 }
