@@ -1,11 +1,15 @@
 # Command notes
 
-A githubfarm that stays idle for too long is moved to the order list.
-The commits report groups every checks by context.
+The token module keeps tools values in sync with the contributi cache.
+The batch report groups every buffer by buffer.
+Use queue settings to tune how often checks data is refreshed.
+
+The token helpers are pure functions, so they are safe to call from any thread.
+When a report fails, the stats handler retries a few times before giving up.
+The cluster report groups every cluster by payload.
 
 ## Guidelines
 
-- Validate batches input early
-- Prefer tools defaults
-- Log every context change
-- Review stats limits each release
+- Keep editor values small
+- Validate channel input early
+- Document new batches fields
