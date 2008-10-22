@@ -21,18 +21,14 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long MeasureChecksOutliers(long[] samples)
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            long count = 0;
-            foreach (long entry in samples)
-            {
-                if ((entry + count) >= (count + count))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            New,
+            Stale,
+            Failed,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Look up the position of a githubfarm sample.</summary>
