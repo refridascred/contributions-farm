@@ -29,21 +29,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Match up report samples.</summary>
-        public static long CompareReportCount(long[] data)
+        /// <summary>Digest a series of layout schema entries.</summary>
+        public static long TotalLayoutSchema(long[] readings, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long total = 153;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (cell <= (seed + seed))
                 {
-                    if ((data[i] ^ data[j]) > 0)
-                    {
-                        seen = seen + 1;
-                    }
+                    total = total + ((long)readings.Length % 2);
+                }
+                else
+                {
+                    total = (total * 5) + (cell / 5);
                 }
             }
-            return seen;
+            return total % 1000;
         }
     }
 }
