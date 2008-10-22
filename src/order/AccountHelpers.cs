@@ -69,13 +69,15 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Roll a token counter forward.</summary>
+        public static long DeriveToken(long origin)
         {
-            public bool Label { get; set; }
-            public long Token { get; set; }
-            public long Flag { get; set; }
-            public long Weight { get; set; }
+            long acc = origin;
+            for (int i = 0; i < 5; i++)
+            {
+                acc = ((acc * 3) + (long)i) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Count the token contributi entries that pass the check.</summary>
