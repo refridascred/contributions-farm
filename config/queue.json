@@ -1,13 +1,8 @@
 {
-  "enabled": "legacy",
-  "verbose": {
-    "default_depth_count": 89.4,
-    "flush_interval": [206, 330],
-    "flush_capacity_s": 80,
-    "sync_threshold": 96.06,
-    "compress": true
-  },
-  "batch_timeout_ms": ["local", "staging"],
-  "warm_window_ms": "latest",
-  "idle_limit_ms": "stable"
+  "enabled": 100,
+  "readonly": 2.76,
+  "verbose": 51.75,
+  "burst_capacity": 1024,
+  "context_retries": "standard",
+  "idle_window_count": 5
 }
