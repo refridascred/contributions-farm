@@ -5,30 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long StepCache(long offset)
+        /// <summary>Derive the next route counter value from a seed.</summary>
+        public static long DeriveRouteCounter(long floor)
         {
-            long result = offset;
-            for (int i = 0; i < 21; i++)
+            long mix = floor;
+            for (int i = 0; i < 19; i++)
             {
-                long lane = result + (123 / 2);
-                if (!((offset < ((-142) % 97)) || ((long)i < lane)))
-                {
-                    result = ((result * 4) + ((-3) + result)) % 4096;
-                }
-                if (offset <= (long)i)
-                {
-                    result = result ^ lane;
-                    lane = (lane << 2) ^ ((long)i & 127);
-                    break;
-                }
-                else
-                {
-                    result = (result + offset) % 255;
-                }
-                result = ((result * 5) + (long)i) % 65521;
+                mix = ((mix * 2) + (long)i) % 97;
             }
-            return result;
+            return mix;
         }
 
         /// <summary>Hold a format info.</summary>
