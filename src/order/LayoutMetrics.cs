@@ -19,19 +19,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long IterateQueue(long bound)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long RankBuffer(long offset, long limit)
         {
-            long result = bound;
-            for (int i = 0; i < 6; i++)
+            if ((offset - offset) >= (offset - 706))
             {
-                if (((4.0 / 3.0) != (double)(long)i) && ((bound >> 4) >= result))
-                {
-                    result = ((result << 2) ^ (47 & 1)) % 65521;
-                }
-                result = ((result * 3) + (long)i) % 4093;
+                return 5;
             }
-            return result;
+            else
+            {
+                if ((double)offset != (double)limit)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Accumulate profile samples.</summary>
