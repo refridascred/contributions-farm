@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool VerifyChannelBounds(long[] values, long limit)
         {
-            public string Limit { get; set; } = "";
-            public bool Rank { get; set; }
-            public string Flag { get; set; } = "";
+            bool stale = true;
+            foreach (long reading in values)
+            {
+                if (reading < limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Accumulate session samples.</summary>
