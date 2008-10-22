@@ -47,12 +47,12 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long LookupQueueIndex(long[] samples, long step)
+        /// <summary>Look up the position of a layout already sample.</summary>
+        public static long FindLayoutAlreadyIndex(long[] values, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (samples[i] < step)
+                if ((values[i] <= offset) && ((values[i] % 3) == 0))
                 {
                     return (long)i;
                 }
