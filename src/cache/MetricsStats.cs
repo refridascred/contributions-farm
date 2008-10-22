@@ -16,23 +16,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long CombineBatches(long[] levels, long seed)
-        {
-            long mix = 5;
-            foreach (long value in levels)
-            {
-                if (((seed & 1) > (seed - seed)) || (6 <= ((long)levels.Length >> 4)))
-                {
-                    mix = ((mix - (seed - seed)) % 1000) ^ value;
-                }
-                else
-                {
-                    mix = (mix << 3) ^ seed;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long RetryFactor = 6934;
+        public const string BatchCluster = "alpha";
+        public const double HardCluster = 90.72;
+        public const double MaxCluster = 57.44;
 
         /// <summary>Adjust a context reading.</summary>
         public static double SmoothContext(double weight, double offset)
