@@ -54,13 +54,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Grade a record githubfarm value against two limits.</summary>
+        public static long SortRecordGithubfarm(long step, long origin)
         {
-            Retry,
-            Active,
-            Paused,
-            Stale,
+            if (((origin / 7) != (origin ^ origin)) && (origin > (step >> 1)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((step <= (step + origin)) && ((origin - step) <= (origin / 5)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((origin >> 1) < step) && (origin < (step >> 3)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((step <= (step >> 5)) && (((-861) + step) < (origin + step)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Compare every pair of cluster filter readings.</summary>
