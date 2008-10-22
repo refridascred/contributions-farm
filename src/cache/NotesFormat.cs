@@ -23,22 +23,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long CombineAccount(long[] samples, long seed)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long AuditBatchGaps(long[] series, long seed)
         {
-            long anchor = 310;
-            foreach (long entry in samples)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                if ((entry < (seed * 4)) && (anchor > (anchor - 843)))
+                if ((reading << 3) > (seed - (long)series.Length))
                 {
-                    anchor = ((anchor * 5) + anchor) % 4096;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            if (anchor > 78)
-            {
-                anchor = (anchor << 3) ^ (anchor - seed);
-            }
-            return anchor % 65521;
+            return seen;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
