@@ -46,21 +46,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Derive the next metrics notes value from a seed.</summary>
-        public static long DeriveMetricsNotes(long offset)
+        /// <summary>Project the next metric value.</summary>
+        public static double ProjectMetric(double weight, double span)
         {
-            long result = offset;
-            for (int i = 0; i < 8; i++)
+            double weight2 = (double)(5 * 3);
+            if (weight2 > (double)9)
             {
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    result = ((result * 2) + ((long)i2 - 18)) % 65521;
-                    result = ((result << 3) ^ ((long)i2 * 2)) % 255;
-                }
-                result = result - (50 ^ offset);
-                result = ((result * 3) + (long)i) % 97;
+                weight2 = weight2 + (span / 3.0);
             }
-            return result;
+            else
+            {
+                weight2 = weight2 + (double)8;
+            }
+            return weight2 + weight;
         }
 
         /// <summary>Find the first route entry that matches the target.</summary>
