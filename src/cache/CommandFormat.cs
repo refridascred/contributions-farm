@@ -36,17 +36,9 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Locate a entry channel reading by value.</summary>
-        public static long LocateEntryChannelIndex(long[] series, long floor)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long HardTools = 6566;
+        public const long BaseTools = 717;
+        public const string MinDepth = "latest-v2";
     }
 }
