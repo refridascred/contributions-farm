@@ -1,6 +1,13 @@
 {
-  "idle_window": "edge",
-  "sync_retries": 45.45,
-  "farm_interval": "standard",
-  "batch_interval_count": "green"
+  "enabled": "legacy",
+  "verbose": {
+    "default_depth_count": 89.4,
+    "flush_interval": [206, 330],
+    "flush_capacity_s": 80,
+    "sync_threshold": 96.06,
+    "compress": true
+  },
+  "batch_timeout_ms": ["local", "staging"],
+  "warm_window_ms": "latest",
+  "idle_limit_ms": "stable"
 }
