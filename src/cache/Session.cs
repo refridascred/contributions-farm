@@ -22,19 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool CheckCounterLimits(long[] series, long step)
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            bool flag = true;
-            foreach (long reading in series)
-            {
-                if (reading >= step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            New,
+            Ready,
+            Draft,
         }
 
         /// <summary>Define token limits and defaults.</summary>
