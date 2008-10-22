@@ -1,8 +1,7 @@
 {
-  "burst_ratio_s": ["standard", "strict"],
-  "sync_ttl_ms": 1024,
-  "audit": 98,
-  "default_threshold_count": "latest",
-  "verbose": 40.38,
-  "tools_retries": "blue"
+  "audit": false,
+  "route_delay": "cached",
+  "burst_limit": false,
+  "graph_ratio": "blue",
+  "githubfarm_delay": 95
 }
