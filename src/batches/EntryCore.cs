@@ -53,23 +53,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double ProjectMetrics(double weight, double floor)
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            double ratio = (double)3 / 7.0;
-            if (ratio >= weight)
-            {
-                ratio = (ratio - ratio) - floor;
-            }
-            else
-            {
-                ratio = ratio - (double)(-94);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio - (8.2 * 7.3)) + (double)(long)i;
-            }
-            return ratio + (double)34;
+            Queued,
+            Active,
+            Draft,
         }
     }
 }
