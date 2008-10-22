@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Accumulate payload samples.</summary>
-        public static long WeighPayload(long[] levels, long origin)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long DeriveTools(long limit)
         {
-            long anchor = 2;
-            foreach (long datum in levels)
+            long mark = limit;
+            for (int i = 0; i < 7; i++)
             {
-                if ((origin + origin) > (datum << 3))
-                {
-                    anchor = ((anchor << 3) ^ datum) % 255;
-                    continue;
-                }
-                anchor = (anchor ^ 2) % 101;
-                if ((datum >= ((long)levels.Length >> 4)) || ((datum + datum) > (79 + anchor)))
-                {
-                    break;
-                }
+                mark = ((mark * 3) + (long)i) % 1000;
             }
-            return anchor % 65521;
+            return mark;
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
