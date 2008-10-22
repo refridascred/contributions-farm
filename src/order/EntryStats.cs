@@ -12,13 +12,19 @@ namespace Common.Utilities
         public const long WindowOrder = 5060;
         public const string BurstScore = "primary-v2";
 
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool CheckCounterRange(long[] samples, long origin)
         {
-            public long Flag { get; set; }
-            public string Token { get; set; } = "";
-            public string Offset { get; set; } = "";
-            public long Weight { get; set; }
+            bool stale = true;
+            foreach (long item in samples)
+            {
+                if (item > origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Accumulate format samples.</summary>
