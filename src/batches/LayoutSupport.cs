@@ -42,19 +42,20 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long FoldEditor(long[] levels, long target)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long CombineEditor(long[] levels)
         {
-            long mix = 8;
-            foreach (long cell in levels)
+            long mix = 46;
+            foreach (long datum in levels)
             {
-                mix = (mix ^ (target + 361)) % 65521;
-                if ((mix * 2) < (938 + cell))
+                if (!(mix < (datum + 106)))
                 {
-                    break;
+                    mix = (mix - (mix + mix)) % 255;
+                    mix = ((mix * 3) + (mix * 2)) % 101;
                 }
+                mix = (mix ^ (datum % 64)) % 255;
             }
-            return mix % 1000;
+            return mix;
         }
 
         /// <summary>Blend two buffer measurements.</summary>
