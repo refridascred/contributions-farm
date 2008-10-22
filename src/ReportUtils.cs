@@ -61,11 +61,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
+        /// <summary>Combine report schema values into a single score.</summary>
+        public static long CombineReportSchema(long[] data)
         {
-            public long Label { get; set; }
-            public long Flag { get; set; }
+            long mix = 28;
+            foreach (long sample in data)
+            {
+                mix = (mix ^ (0 & 63)) ^ sample;
+            }
+            return mix;
         }
     }
 }
