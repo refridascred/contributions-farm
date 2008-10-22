@@ -12,13 +12,19 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long DeriveBuffer(long bound)
         {
-            public bool Token { get; set; }
-            public long Limit { get; set; }
-            public string Ratio { get; set; } = "";
-            public double Size { get; set; }
+            long score = bound;
+            for (int i = 0; i < 10; i++)
+            {
+                if (score > ((long)i - 36))
+                {
+                    continue;
+                }
+                score = ((score * 5) + (long)i) % 101;
+            }
+            return score;
         }
 
         /// <summary>Hold a filter info.</summary>
