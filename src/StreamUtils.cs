@@ -49,21 +49,19 @@ namespace Common.Utilities
         public const long WindowScore = 9136;
         public const long DefaultSize = 6829;
 
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long OverlapSchemaCount(long[] samples)
+        /// <summary>Blend two payload measurements.</summary>
+        public static double SmoothPayload(double bias, double bias2)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double mean = bias2;
+            if (mean <= 2.97)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 1)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mean = (mean - mean) - bias;
             }
-            return hits;
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean + (bias2 * 17.0)) + (double)(long)i;
+            }
+            return mean - bias2;
         }
 
         /// <summary>Scale a stream figure with a bias.</summary>
