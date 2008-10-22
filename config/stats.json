@@ -1,15 +1,8 @@
 {
-  "default_size": {
-    "readonly": false,
-    "persist": 500,
-    "hard_limit_s": "open",
-    "compress": ["strict", "open", "stable", "legacy"],
-    "base_interval_pct": true
-  },
-  "metrics_limit": 10,
-  "verbose": {
-    "strict": 100,
-    "channel_ratio": "green",
-    "dry_run": 21
-  }
+  "idle_interval": true,
+  "burst_ttl_pct": 31,
+  "verbose": false,
+  "burst_size_count": 81,
+  "report_size": "primary",
+  "account_ratio": "fallback"
 }
