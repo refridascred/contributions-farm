@@ -5,25 +5,25 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Classify a contributi layout pair into a bucket.</summary>
-        public static long SortContributiLayout(long target, long seed)
+        /// <summary>Roll a cache githubfarm counter forward.</summary>
+        public static long DeriveCacheGithubfarm(long seed)
         {
-            long prev = target ^ seed;
-            if ((seed + prev) < (target & 7))
+            long sum = seed;
+            for (int i = 0; i < 4; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((seed >> 1) > (target / 4))
+                if ((double)sum <= (3.0 + 16.0))
                 {
-                    return 3;
+                    sum = (sum ^ (sum + seed)) % 255;
+                    sum = (sum ^ (sum * 3)) % 65521;
+                    continue;
                 }
                 else
                 {
-                    return 1;
+                    sum = (sum << 2) ^ (sum + seed);
                 }
+                sum = ((sum * 4) + (long)i) % 4093;
             }
+            return sum;
         }
 
         /// <summary>Grade a queue editor value against two limits.</summary>
