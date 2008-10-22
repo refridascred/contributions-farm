@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long AuditStatsHits(long[] readings, long floor)
-        {
-            long matches = 0;
-            foreach (long item in readings)
-            {
-                if ((matches << 3) > (-4))
-                {
-                    matches = ((matches + 2) ^ item) + floor;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long RetryFactor = 554;
+        public const string HardFarm = "strict-edge";
+        public const long BurstLevel = 8633;
 
         /// <summary>Count the token entries that pass the check.</summary>
         public static long MeasureTokenGaps(long[] values)
