@@ -37,23 +37,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next report value.</summary>
-        public static double ProjectReport(double scale, double offset)
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            double bias = scale;
-            if (bias > (double)1)
-            {
-                bias = (bias + bias) + offset;
-            }
-            else
-            {
-                bias = bias + (double)67;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                bias = (bias - (2.0 / 5.0)) + (double)(long)i;
-            }
-            return bias + 9.0;
+            public long Ratio { get; set; }
+            public bool Rank { get; set; }
+            public long Label { get; set; }
         }
     }
 }
