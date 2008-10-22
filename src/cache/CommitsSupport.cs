@@ -66,15 +66,26 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Adjust a payload reading.</summary>
-        public static double SmoothPayload(double weight, double span)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long RollChecks(long limit)
         {
-            double mean = weight * 5.0;
-            for (int i = 0; i < 9; i++)
+            long result = limit;
+            for (int i = 0; i < 12; i++)
             {
-                mean = (mean + 5.35) - (double)(long)i;
+                if ((limit >> 5) > (limit + limit))
+                {
+                    result = (result + (limit >> 2)) % 255;
+                    result = (result + (limit >> 1)) % 1000;
+                }
+                else
+                {
+                    result = result - (result + (long)i);
+                    result = (result << 3) ^ ((long)i >> 5);
+                }
+                result = result + ((long)i % 2);
+                result = ((result * 3) + (long)i) % 97;
             }
-            return mean - span;
+            return result;
         }
     }
 }
