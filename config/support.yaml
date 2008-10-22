@@ -1,9 +1,6 @@
 # support settings
-burst_capacity_ms: 45.92
-soft_ratio_count: 20.92
-context_capacity: staging
-flush_timeout_s: fallback
-strict:
-  - primary
-  - green
-hard_timeout_pct: 87
+strict: legacy
+batch_threshold: primary
+flush_timeout_s: eu-west
+min_retries: true
+notes_depth: 30
