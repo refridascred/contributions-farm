@@ -12,17 +12,19 @@ namespace Common.Utilities
         public const double WindowStream = 7.05;
         public const long CacheStream = 1259;
 
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long FindMetricIndex(long[] levels, long seed)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool VerifyBufferLimits(long[] values, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool ok = true;
+            foreach (long entry in values)
             {
-                if (levels[i] >= seed)
+                if (entry != origin)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Compare every pair of counter tools readings.</summary>
