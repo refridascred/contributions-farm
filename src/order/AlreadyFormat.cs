@@ -43,19 +43,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool GuardAlreadyBounds(long[] series, long seed)
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            bool found = true;
-            foreach (long cell in series)
-            {
-                if (cell < seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Stale,
+            Queued,
+            Pending,
+            Draft,
+            New,
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
