@@ -18,12 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            Ready,
-            Draft,
-            Idle,
+            New,
+            Pending,
+            Dropped,
+            Closed,
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
