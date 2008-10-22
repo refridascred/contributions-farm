@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
-        {
-            New,
-            Retry,
-            Done,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double CacheAlready = 20.79;
+        public const long BatchScore = 3761;
+        public const double StepTimeout = 57.44;
+        public const long BurstLevel = 2227;
+        public const long IdleAlready = 6196;
 
         /// <summary>Fold a list of order readings.</summary>
         public static long ScoreOrder(long[] items)
