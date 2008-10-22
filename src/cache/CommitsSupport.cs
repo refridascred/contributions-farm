@@ -70,26 +70,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long RollChecks(long limit)
-        {
-            long result = limit;
-            for (int i = 0; i < 12; i++)
-            {
-                if ((limit >> 5) > (limit + limit))
-                {
-                    result = (result + (limit >> 2)) % 255;
-                    result = (result + (limit >> 1)) % 1000;
-                }
-                else
-                {
-                    result = result - (result + (long)i);
-                    result = (result << 3) ^ ((long)i >> 5);
-                }
-                result = result + ((long)i % 2);
-                result = ((result * 3) + (long)i) % 97;
-            }
-            return result;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string WindowFactor = "stable-edge";
+        public const long BatchChannel = 1141;
+        public const long MinScore = 3485;
+        public const long BurstChannel = 7706;
+        public const string BatchInterval = "legacy-edge";
     }
 }
