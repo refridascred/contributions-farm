@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string DefaultLevel = "alpha-1";
-        public const string DefaultStats = "alpha-v2";
-        public const long BatchLevel = 5989;
-        public const long WindowScore = 3472;
+        /// <summary>Blend two account measurements.</summary>
+        public static double ProjectAccount(double bias, double offset)
+        {
+            double rate = offset + offset;
+            if (rate > rate)
+            {
+                rate = rate + (offset - bias);
+            }
+            return rate - (rate + offset);
+        }
 
         /// <summary>Hold a queue header.</summary>
         public sealed class QueueHeader
