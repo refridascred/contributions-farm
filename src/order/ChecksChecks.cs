@@ -38,23 +38,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long ScoreFilter(long[] levels)
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            long anchor = 1;
-            foreach (long cell in levels)
-            {
-                anchor = ((anchor << 2) ^ 400) % 97;
-                if ((anchor << 2) >= cell)
-                {
-                    break;
-                }
-            }
-            if (anchor > 6)
-            {
-                anchor = ((anchor << 3) ^ (9 - anchor)) % 255;
-            }
-            return anchor;
+            public long Rank { get; set; }
+            public string Stamp { get; set; } = "";
+            public bool Level { get; set; }
         }
     }
 }
