@@ -39,11 +39,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double IdleSpan = 15.92;
-        public const long WindowFormat = 3518;
-        public const double SoftFormat = 78.53;
-        public const long MinFormat = 7931;
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
+        {
+            public double Offset { get; set; }
+            public bool Ratio { get; set; }
+            public double Rank { get; set; }
+            public double Limit { get; set; }
+        }
 
         /// <summary>Hold a token info.</summary>
         public sealed class TokenInfo
