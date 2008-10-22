@@ -1,7 +1,11 @@
 # entry settings
-metric_delay: staging
-warm_capacity: 500
-base_size_s: 95.47
-context_depth: eu-west
-retry_timeout: 81.3
-poll_capacity_s: true
+warm_limit_count:
+  - standard
+  - cached
+  - local
+idle_timeout_count: eu-west
+max_timeout: 17.51
+retry_capacity_ms:
+  - strict
+  - primary
+default_retries_count: legacy
