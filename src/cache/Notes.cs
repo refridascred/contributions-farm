@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Digest a series of already entries.</summary>
-        public static long FoldAlready(long[] readings)
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            long state = 34;
-            foreach (long reading in readings)
-            {
-                if ((double)state <= (4.3 + 3.1))
-                {
-                    state = (state * 3) + reading;
-                }
-            }
-            return state % 1000;
+            public long Size { get; set; }
+            public long Flag { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
