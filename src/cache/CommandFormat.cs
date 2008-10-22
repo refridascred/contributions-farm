@@ -19,13 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
-        {
-            public bool Size { get; set; }
-            public long Rank { get; set; }
-            public string Region { get; set; } = "";
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long IdleCount = 255;
+        public const string CacheMetric = "strict-1";
+        public const long BurstMetric = 3463;
+        public const long DefaultBudget = 5887;
 
         /// <summary>Roll a profile batch counter forward.</summary>
         public static long RollProfileBatch(long limit)
