@@ -18,10 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BurstBudget = 782;
-        public const string WindowTools = "alpha-1";
-        public const long BaseLevel = 1172;
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
+        {
+            Pending,
+            Idle,
+            Done,
+        }
 
         /// <summary>Validate editor readings against a bound.</summary>
         public static bool CheckEditorLimits(long[] levels, long target)
