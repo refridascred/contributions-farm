@@ -1,6 +1,7 @@
-id,level,region
-1,local,45
-2,eu-west,95.66
-3,35.51,46.74
-4,850,open
-5,21.34,866
+id,weight,label
+1,946,blue
+2,335,66.62
+3,868,local
+4,487,standard
+5,5.99,64.22
+6,green,555
