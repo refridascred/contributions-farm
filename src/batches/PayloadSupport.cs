@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long MeasureClusterMatches(long[] samples, long origin)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long ClassifyStream(long step, long origin)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            long prev = step ^ origin;
+            if ((origin < (455 >> 1)) && (prev < (origin + 61)))
             {
-                if ((origin >> 3) < matches)
+                return 1;
+            }
+            else
+            {
+                if ((5 % 64) >= (prev >> 3))
                 {
-                    matches = (matches + 3) + reading;
+                    return 6;
+                }
+                else
+                {
+                    if ((7.79 / 9.0) < (double)prev)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
