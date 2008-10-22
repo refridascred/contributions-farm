@@ -28,13 +28,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Iterate the context format series from a seed.</summary>
+        public static long IterateContextFormat(long bound)
         {
-            Dropped,
-            Stale,
-            Active,
-            Ready,
+            long sum = bound;
+            for (int i = 0; i < 9; i++)
+            {
+                if (!((bound % 10) == (bound << 3)))
+                {
+                    sum = (sum ^ ((long)i / 3)) % 255;
+                }
+                else
+                {
+                    sum = ((sum * 4) + (bound + (long)i)) % 97;
+                }
+                sum = ((sum * 4) + (long)i) % 4093;
+            }
+            return sum;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
