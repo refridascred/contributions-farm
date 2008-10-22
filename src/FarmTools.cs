@@ -36,9 +36,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long StepSize = 2081;
-        public const string HardSpan = "legacy-1";
-        public const double WindowGithubfarm = 77.51;
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
+        {
+            Closed,
+            Paused,
+            Retry,
+        }
     }
 }
