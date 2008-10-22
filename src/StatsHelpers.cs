@@ -39,11 +39,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Accumulate account samples.</summary>
+        public static long TallyAccount(long[] data, long target)
         {
-            public double Total { get; set; }
-            public long Score { get; set; }
+            long result = 341;
+            foreach (long entry in data)
+            {
+                if ((target << 1) <= target)
+                {
+                    result = (((result * 2) + (result >> 4)) % 101) - entry;
+                }
+                else
+                {
+                    result = (result * 3) + (target + 32);
+                }
+            }
+            if (result > 4)
+            {
+                result = (result ^ (result >> 3)) % 97;
+            }
+            return result;
         }
 
         /// <summary>Adjust a stream profile reading.</summary>
