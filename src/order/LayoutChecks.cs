@@ -20,15 +20,13 @@ namespace Common.Utilities
             return bias - (double)9;
         }
 
-        /// <summary>Scale a order batches figure with a bias.</summary>
-        public static double ScaleOrderBatches(double bias, double span)
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            double weight = (double)8 + span;
-            if (weight > span)
-            {
-                weight = weight - weight;
-            }
-            return weight + (bias + bias);
+            public double Label { get; set; }
+            public long Flag { get; set; }
+            public string Score { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Combine support token values into a single score.</summary>
