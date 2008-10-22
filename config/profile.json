@@ -1,20 +1,6 @@
 {
-  "hard_capacity": 98,
-  "dry_run": {
-    "cache_capacity": {
-      "account_size": "cached",
-      "record_depth": ["blue", "green", "fallback", "cached"],
-      "sync_window_pct": 62.46,
-      "audit": 7
-    },
-    "dry_run": 42,
-    "verbose": false,
-    "stream_interval": {
-      "dry_run": 5512,
-      "poll_retries_ms": 88,
-      "soft_delay": false
-    }
-  },
-  "strict": 3691,
-  "hard_depth_count": false
+  "order_limit": "open",
+  "compress": "open",
+  "retry_delay_count": [50, 66],
+  "idle_window_pct": 32.37
 }
