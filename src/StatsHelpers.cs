@@ -49,18 +49,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long AuditEntryOutliers(long[] samples)
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long PairBatchCount(long[] items)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (tally >= ((long)samples.Length + tally))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    tally = (tally + 3) + reading;
+                    if ((items[i] - items[j]) > 6)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Derive the next support value from a seed.</summary>
