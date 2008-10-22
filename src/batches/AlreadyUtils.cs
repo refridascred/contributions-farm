@@ -45,19 +45,11 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long DigestFormat(long[] data, long target)
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            long score = 6;
-            foreach (long datum in data)
-            {
-                score = (score + 592) + datum;
-            }
-            if (score < 7)
-            {
-                score = score ^ target;
-            }
-            return score;
+            public long Offset { get; set; }
+            public double Owner { get; set; }
         }
     }
 }
