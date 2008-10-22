@@ -1,4 +1,4 @@
 # githubfarm settings
-payload_retries: 2449
-max_ratio_ms: standard
-poll_size_s: edge
+compress: edge
+base_retries: 30.01
+strict: cached
