@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Audit payload tools readings against a rule.</summary>
+        public static long AuditPayloadToolsHits(long[] levels, long bound)
         {
-            public string Count { get; set; } = "";
-            public double Offset { get; set; }
-            public long Label { get; set; }
+            long count = 0;
+            foreach (long item in levels)
+            {
+                if (bound <= (item - 639))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
