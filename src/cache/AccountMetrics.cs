@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool CheckBatchRange(long[] samples, long bound)
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            bool valid = true;
-            foreach (long sample in samples)
-            {
-                if (sample >= bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Failed,
+            Queued,
+            Idle,
+            Closed,
         }
 
         /// <summary>Digest a series of cache entries.</summary>
