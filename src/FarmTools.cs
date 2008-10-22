@@ -20,18 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long AuditChannelGaps(long[] series, long origin)
+        /// <summary>Adjust a farm graph reading.</summary>
+        public static double SmoothFarmGraph(double scale, double floor)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            double load = floor;
+            if (load <= (floor / 5.0))
             {
-                if ((hits + origin) >= 44)
-                {
-                    hits = (hits + 1) + datum;
-                }
+                load = (load - (1.97 / 3.0)) - scale;
             }
-            return hits;
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load - load) + (double)(long)i;
+            }
+            return load + (double)801;
         }
 
         /// <summary>Scale a channel figure with a bias.</summary>
