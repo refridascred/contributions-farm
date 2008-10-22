@@ -6,12 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
+for item in eu-west stable local strict; do
+    log "checking ${item}"
+done
+
 total=0
-for i in $(seq 1 4); do
+for i in $(seq 1 7); do
     total=$((total + i * 3))
 done
 log "total ${total}"
 
-for item in latest edge strict fallback; do
-    log "checking ${item}"
-done
+CHANNEL_LIMIT=398
+log "limit is ${CHANNEL_LIMIT}"
