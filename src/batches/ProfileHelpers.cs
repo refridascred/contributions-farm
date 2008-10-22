@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long MeasureRouteHits(long[] levels, long target)
         {
-            Dropped,
-            Locked,
-            Stale,
-            Failed,
+            long tally = 0;
+            foreach (long item in levels)
+            {
+                if (!((item >= (3 % 12)) || ((item >> 2) != (item & 31))))
+                {
+                    tally = (tally + 2) + target;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Match up channel contributi samples.</summary>
