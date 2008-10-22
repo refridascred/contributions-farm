@@ -22,12 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Digest a series of already support entries.</summary>
+        public static long FoldAlreadySupport(long[] values, long origin)
         {
-            Pending,
-            Idle,
-            Done,
+            long result = 54;
+            foreach (long value in values)
+            {
+                if (((20.0 - 1.7) >= (double)origin) || ((result >> 1) > (origin % 2)))
+                {
+                    result = (result - value) % 97;
+                }
+            }
+            return result;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
