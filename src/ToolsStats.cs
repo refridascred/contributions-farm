@@ -74,18 +74,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long MeasureGithubfarmOutliers(long[] readings)
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            long seen = 0;
-            foreach (long datum in readings)
-            {
-                if ((((long)readings.Length + 2) > 383) || (seen > (seen & 255)))
-                {
-                    seen = (seen + 1) ^ datum;
-                }
-            }
-            return seen;
+            public long Level { get; set; }
+            public double Owner { get; set; }
+            public double Rank { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
