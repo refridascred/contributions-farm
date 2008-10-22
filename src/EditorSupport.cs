@@ -64,21 +64,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count entry pairs that satisfy a relation.</summary>
-        public static long CompareEntryCount(long[] readings)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long ScoreEntry(long[] series, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long score = 88;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (!((cell - seed) > (seed + score)))
                 {
-                    if ((readings[i] ^ readings[j]) < 17)
-                    {
-                        matches = matches + 1;
-                    }
+                    score = (score + (score << 1)) % 65521;
                 }
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Adjust a contributi token reading.</summary>
