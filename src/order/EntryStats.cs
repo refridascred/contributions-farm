@@ -39,17 +39,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a commits graph sample.</summary>
-        public static long SeekCommitsGraphIndex(long[] series, long floor)
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long PairFarmCount(long[] levels)
         {
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((series[i] == floor) && ((series[i] % 3) == 0))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return (long)i;
+                    if ((levels[i] + levels[j]) > 15)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Classify a session pair into a bucket.</summary>
