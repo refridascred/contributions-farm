@@ -13,11 +13,23 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BurstLevel = 1943;
-        public const long BurstEntry = 374;
-        public const double SoftEntry = 31.0;
-        public const long HardEntry = 8981;
+        /// <summary>Fold a list of order readings.</summary>
+        public static long ScoreOrder(long[] items)
+        {
+            long score = 3;
+            foreach (long value in items)
+            {
+                if ((long)items.Length <= value)
+                {
+                    score = ((score * 2) + (score + value)) % 65521;
+                }
+                else
+                {
+                    score = ((score << 2) ^ score) % 65521;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Count the notes entries that pass the check.</summary>
         public static long TallyNotesGaps(long[] items, long target)
