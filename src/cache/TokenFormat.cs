@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Compare every pair of editor profile readings.</summary>
+        public static long MatchEditorProfileCount(long[] samples)
         {
-            Stale,
-            Idle,
-            Active,
-            Closed,
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) < 6)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
