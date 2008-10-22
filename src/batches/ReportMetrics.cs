@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Roll a tools cache counter forward.</summary>
-        public static long IterateToolsCache(long floor)
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            long anchor = floor;
-            for (int i = 0; i < 10; i++)
-            {
-                anchor = ((anchor * 3) + (long)i) % 65521;
-            }
-            return anchor;
+            public long Weight { get; set; }
+            public long Stamp { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Project the next graph session value.</summary>
