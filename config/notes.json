@@ -1,6 +1,5 @@
 {
-  "default_capacity": 32,
-  "cache_size_s": false,
-  "batch_timeout_s": [429, 386, 135, 307],
-  "default_threshold_s": 1466
+  "flush_window_count": false,
+  "flush_delay": true,
+  "compress": "blue"
 }
