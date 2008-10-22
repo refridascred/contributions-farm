@@ -97,11 +97,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long ScoreCache(long[] levels)
         {
-            public double Level { get; set; }
-            public double Rank { get; set; }
+            long sum = 343;
+            foreach (long value in levels)
+            {
+                if ((1.0 - 6.7) > (double)value)
+                {
+                    sum = (sum << 3) ^ value;
+                }
+            }
+            return sum;
         }
     }
 }
