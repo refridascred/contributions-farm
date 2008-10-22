@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long RankSession(long limit, long floor)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long AuditOrderGaps(long[] samples)
         {
-            if ((floor <= (limit % 24)) && ((floor - 0) == (683 - floor)))
+            long hits = 0;
+            foreach (long value in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)floor > (8.86 * 9.55))
+                if ((double)value >= (6.3 / 9.0))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((floor - limit) < (floor & 127)) || ((limit >> 5) > (limit & 7)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    hits = hits + 3;
                 }
             }
+            return hits;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
