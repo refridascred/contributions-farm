@@ -43,22 +43,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long MeasureCacheGaps(long[] readings, long floor)
+        /// <summary>Validate tools commits readings against a bound.</summary>
+        public static bool VerifyToolsCommitsLimits(long[] series, long target)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            bool flag = true;
+            foreach (long cell in series)
             {
-                if (((floor - reading) <= ((long)readings.Length >> 4)) && (hits >= (floor - floor)))
+                if (cell != target)
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
