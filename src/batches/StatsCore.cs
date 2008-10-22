@@ -95,14 +95,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
-        {
-            Failed,
-            Draft,
-            Synced,
-            Retry,
-            Paused,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long HardSize = 704;
+        public const long MaxCluster = 9117;
+        public const long DefaultTimeout = 232;
+        public const long DefaultCluster = 4323;
     }
 }
