@@ -40,15 +40,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long DigestCache(long[] levels, long floor)
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
         {
-            long sum = 29;
-            foreach (long value in levels)
-            {
-                sum = ((sum * 5) + (value - floor)) % 65521;
-            }
-            return sum % 65521;
+            public long Owner { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Grade a record githubfarm value against two limits.</summary>
