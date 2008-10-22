@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long RollChecks(long offset)
         {
-            Idle,
-            Dropped,
-            New,
-            Retry,
+            long mark = offset;
+            for (int i = 0; i < 4; i++)
+            {
+                mark = ((mark * 4) + (long)i) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Describe the batch class values.</summary>
