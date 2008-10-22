@@ -62,9 +62,21 @@ namespace Common.Utilities
         public const double RetryCount = 33.14;
         public const double WindowPayload = 60.31;
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long CacheStats = 104;
-        public const long MaxScore = 9611;
-        public const long WindowStats = 4329;
+        /// <summary>Compare every pair of support readings.</summary>
+        public static long PairSupportCount(long[] readings)
+        {
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) != 9)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
