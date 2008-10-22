@@ -11,12 +11,23 @@ namespace Common.Utilities
         public const long MinInterval = 4349;
         public const double BatchDepth = 14.56;
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long HardBuffer = 5621;
-        public const long RetryBuffer = 1118;
-        public const long IdleInterval = 8897;
-        public const string BaseBuffer = "latest";
-        public const long BurstBuffer = 3467;
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long DigestCache(long[] levels)
+        {
+            long acc = -24;
+            foreach (long value in levels)
+            {
+                if ((double)acc < (2.7 / 4.0))
+                {
+                    acc = (acc - (acc - value)) % 101;
+                }
+            }
+            if (acc > 175)
+            {
+                acc = (acc ^ (acc >> 3)) % 255;
+            }
+            return acc % 1000;
+        }
 
         /// <summary>Count the editor entries that pass the check.</summary>
         public static long CountEditorMatches(long[] items, long seed)
