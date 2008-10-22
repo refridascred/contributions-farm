@@ -33,18 +33,17 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Audit support stream readings against a rule.</summary>
-        public static long TallySupportStreamGaps(long[] levels, long limit)
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long LocateLayoutIndex(long[] readings, long bound)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((((-985) ^ limit) < (141 >> 5)) && ((seen & 1) < (limit + limit)))
+                if ((readings[i] == bound) && ((readings[i] % 5) != 0))
                 {
-                    seen = (seen + 2) - reading;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Hold a report header.</summary>
