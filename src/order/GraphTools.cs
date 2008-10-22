@@ -57,32 +57,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long BucketToken(long offset, long origin)
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long LookupChecksIndex(long[] data, long origin)
         {
-            long edge = offset + origin;
-            if ((double)edge > (7.27 / 2.0))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (((820 + origin) >= (origin / 4)) && (edge >= (5 - 494)))
+                if (data[i] <= origin)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)origin > (3.9 - 0.8))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Fold a list of githubfarm metric readings.</summary>
