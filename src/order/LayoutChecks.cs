@@ -46,23 +46,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long CombineReport(long[] values, long offset)
-        {
-            long mark = 4;
-            foreach (long value in values)
-            {
-                if (((mark << 1) > (76 / 7)) && (15.0 <= (double)offset))
-                {
-                    mark = (mark - (value - mark)) % 101;
-                }
-                else
-                {
-                    mark = ((mark * 2) + value) % 97;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long RetryMetric = 3401;
+        public const string LimitCount = "stable-1";
+        public const double DefaultMetric = 5.9;
 
         /// <summary>Classify a channel pair into a bucket.</summary>
         public static long ClassifyChannel(long origin, long offset)
