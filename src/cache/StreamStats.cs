@@ -26,14 +26,31 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long RankReport(long bound, long floor)
         {
-            New,
-            Closed,
-            Done,
-            Ready,
-            Retry,
+            if ((bound ^ 0) >= (floor + bound))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((floor >> 5) >= (9 + (-611)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((floor << 2) <= (bound % 24))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the profile phase values.</summary>
