@@ -44,18 +44,32 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long AuditToolsMatches(long[] values, long seed)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long SortSession(long offset, long seed)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            long delta = offset - seed;
+            if ((delta + 3) >= (delta + offset))
             {
-                if ((hits % 10) > (hits ^ seed))
+                return 2;
+            }
+            else
+            {
+                if ((delta % 24) >= 7)
                 {
-                    hits = (hits + 1) + reading;
+                    return 6;
+                }
+                else
+                {
+                    if ((seed - seed) > (223 << 2))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Scale a githubfarm entry figure with a bias.</summary>
