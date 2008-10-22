@@ -24,19 +24,19 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long DeriveCluster(long step)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool ValidatePayloadRange(long[] data, long floor)
         {
-            long score = step;
-            for (int i = 0; i < 14; i++)
+            bool flag = true;
+            foreach (long value in data)
             {
-                for (int i2 = 0; i2 < 10; i2++)
+                if (value <= floor)
                 {
-                    score = (score << 3) ^ ((long)i2 >> 1);
+                    flag = false;
+                    break;
                 }
-                score = ((score * 5) + (long)i) % 101;
             }
-            return score;
+            return flag;
         }
     }
 }
