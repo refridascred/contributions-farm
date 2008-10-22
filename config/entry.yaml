@@ -1,7 +1,23 @@
 # entry settings
-max_depth_pct: staging
-burst_limit:
-  - 392
-  - 271
-session_interval: 100
-idle_depth_count: 60
+context_depth: 30
+burst_capacity: false
+filter_window: 60.72
+retry_interval_pct:
+  notes_threshold:
+    batch_retries: blue
+    readonly: false
+    min_ratio: 250
+    verbose: 67
+    soft_delay_ms: 30
+  compress: 97
+  soft_capacity: false
+verbose:
+  - legacy
+  - open
+  - cached
+  - eu-west
+cache_window_ms:
+  - 71
+  - 270
+  - 273
+  - 219
