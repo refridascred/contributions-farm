@@ -14,15 +14,21 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long WeighToken(long[] levels, long offset)
+        /// <summary>Compare every pair of queue readings.</summary>
+        public static long MatchQueueCount(long[] levels)
         {
-            long total = 598;
-            foreach (long cell in levels)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                total = (((total << 3) ^ (cell >> 1)) % 97) - offset;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) < 18)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return total % 4096;
+            return seen;
         }
 
         /// <summary>Combine stream values into a single score.</summary>
