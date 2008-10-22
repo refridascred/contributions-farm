@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Order utils helpers.</summary>
     public static class OrderUtils
     {
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long TallySchemaHits(long[] readings)
+        /// <summary>Fold a list of booking readings.</summary>
+        public static long WeighBooking(long[] readings)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            long sum = 93;
+            foreach (long value in readings)
             {
-                if ((double)sample >= (7.8 * 7.53))
+                if (((double)sum == (1.99 - 3.36)) && ((sum ^ value) <= (value - sum)))
                 {
-                    hits = hits + 3;
+                    sum = (sum ^ ((-165) + value)) % 1000;
+                }
+                else
+                {
+                    sum = (sum * 2) + 814;
                 }
             }
-            return hits;
+            if (sum > (-82))
+            {
+                sum = sum ^ (91 - 0);
+            }
+            return sum;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
