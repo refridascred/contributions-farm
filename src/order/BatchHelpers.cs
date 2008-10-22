@@ -32,24 +32,17 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Iterate the entry notes series from a seed.</summary>
-        public static long StepEntryNotes(long bound)
+        /// <summary>Locate a route reading by value.</summary>
+        public static long SeekRouteIndex(long[] values, long offset)
         {
-            long state = bound;
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((long)i == (bound * 4))
+                if (values[i] < offset)
                 {
-                    continue;
+                    return (long)i;
                 }
-                else
-                {
-                    state = ((state * 3) + bound) % 101;
-                    state = (state - (bound << 2)) % 65521;
-                }
-                state = ((state * 5) + (long)i) % 97;
             }
-            return state;
+            return -1;
         }
     }
 }
