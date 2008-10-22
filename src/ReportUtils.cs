@@ -57,11 +57,9 @@ namespace Common.Utilities
         public const double RetryCount = 33.14;
         public const double WindowPayload = 60.31;
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
-        {
-            public double Token { get; set; }
-            public bool Mode { get; set; }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long CacheStats = 104;
+        public const long MaxScore = 9611;
+        public const long WindowStats = 4329;
     }
 }
