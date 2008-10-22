@@ -17,15 +17,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long DigestAccount(long[] samples)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long AuditCacheMatches(long[] readings, long origin)
         {
-            long acc = -740;
-            foreach (long sample in samples)
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                acc = (acc << 3) ^ (sample + 385);
+                if (cell < (origin & 3))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
