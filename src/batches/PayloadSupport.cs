@@ -45,21 +45,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of cache readings.</summary>
-        public static long OverlapCacheCount(long[] readings)
-        {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) != 14)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string RetryWidth = "staging";
+        public const long MinSpan = 104;
+        public const long MaxQueue = 2498;
+        public const long LimitLevel = 4710;
+        public const string WindowRatio = "fallback-1";
     }
 }
