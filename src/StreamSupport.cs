@@ -30,21 +30,19 @@ namespace Common.Utilities
         public const long MinChannel = 9234;
         public const long BaseChannel = 8775;
 
-        /// <summary>Count tools pairs that satisfy a relation.</summary>
-        public static long OverlapToolsCount(long[] series)
+        /// <summary>Adjust a farm reading.</summary>
+        public static double ScaleFarm(double weight, double offset)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            double rate = offset - (weight - weight);
+            if (rate > (rate * 6.0))
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) != 14)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                rate = rate + (weight - offset);
             }
-            return matches;
+            for (int i = 0; i < 2; i++)
+            {
+                rate = (rate + offset) + (double)(long)i;
+            }
+            return rate + (double)7;
         }
     }
 }
