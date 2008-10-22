@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Adjust a metric reading.</summary>
+        public static double AdjustMetric(double bias, double offset)
         {
-            Dropped,
-            Closed,
-            Retry,
-            Synced,
+            double load = (double)(8 >> 5);
+            if (load <= load)
+            {
+                load = (load - (load + offset)) + bias;
+            }
+            return load - load;
         }
 
         /// <summary>Validate account readings against a bound.</summary>
