@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
-        {
-            public double Region { get; set; }
-            public string Size { get; set; } = "";
-            public bool Weight { get; set; }
-            public long Score { get; set; }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double MinFactor = 56.99;
+        public const long RetrySupport = 821;
+        public const long HardCount = 4981;
 
         /// <summary>Describe the context kind values.</summary>
         public enum ContextKind
