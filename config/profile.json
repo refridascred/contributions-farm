@@ -1,13 +1,20 @@
 {
-  "base_retries": "fallback",
-  "enabled": "local",
-  "default_threshold_count": {
-    "soft_limit_s": "legacy",
-    "idle_ttl": [50, 154],
-    "sync_timeout_ms": [288, 221, 78],
-    "default_delay_s": 30.02,
-    "enabled": "blue"
+  "hard_capacity": 98,
+  "dry_run": {
+    "cache_capacity": {
+      "account_size": "cached",
+      "record_depth": ["blue", "green", "fallback", "cached"],
+      "sync_window_pct": 62.46,
+      "audit": 7
+    },
+    "dry_run": 42,
+    "verbose": false,
+    "stream_interval": {
+      "dry_run": 5512,
+      "poll_retries_ms": 88,
+      "soft_delay": false
+    }
   },
-  "poll_depth_count": 6703,
-  "strict": true
+  "strict": 3691,
+  "hard_depth_count": false
 }
