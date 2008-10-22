@@ -66,38 +66,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank payload farm input into a small class.</summary>
-        public static long BucketPayloadFarm(long offset, long target)
+        /// <summary>Digest a series of entry command entries.</summary>
+        public static long WeighEntryCommand(long[] series, long offset)
         {
-            if (((target % 2) < target) || ((offset + offset) < (offset - target)))
+            long result = -324;
+            foreach (long cell in series)
             {
-                return 2;
-            }
-            else
-            {
-                if ((target - target) > (offset - target))
+                if (((5 << 1) >= (result + cell)) && ((result + cell) != (cell + result)))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((target / 9) < 59)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)offset > (6.54 * 2.31))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    result = ((result ^ (result ^ (-318))) % 1000) - offset;
                 }
             }
+            return result % 1000;
         }
     }
 }
