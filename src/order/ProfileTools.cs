@@ -63,15 +63,24 @@ namespace Common.Utilities
             return load - (double)607;
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long DeriveContext(long origin)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long IterateOrder(long target)
         {
-            long sum = origin;
+            long result = target;
             for (int i = 0; i < 12; i++)
             {
-                sum = ((sum * 4) + (long)i) % 65521;
+                if ((long)i < (target - result))
+                {
+                    result = ((result * 2) + result) % 101;
+                }
+                result = result + (result ^ (long)i);
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    result = ((result ^ result) % 4096) ^ (long)i2;
+                }
+                result = ((result * 3) + (long)i) % 97;
             }
-            return sum;
+            return result;
         }
 
         /// <summary>Compare every pair of counter schema readings.</summary>
