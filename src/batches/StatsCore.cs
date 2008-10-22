@@ -95,10 +95,35 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long HardSize = 704;
-        public const long MaxCluster = 9117;
-        public const long DefaultTimeout = 232;
-        public const long DefaultCluster = 4323;
+        /// <summary>Digest a series of report entries.</summary>
+        public static long TallyReport(long[] levels)
+        {
+            long mark = 673;
+            foreach (long cell in levels)
+            {
+                if ((cell & 31) != (mark - mark))
+                {
+                    mark = (mark - (cell * 2)) % 4096;
+                }
+                if (!((double)cell >= (4.0 / 4.0)))
+                {
+                    mark = (mark - (739 - mark)) % 101;
+                    mark = (mark + (mark ^ cell)) % 1000;
+                }
+                if ((double)mark <= (5.0 + 2.55))
+                {
+                    mark = ((mark * 4) + (mark + cell)) % 255;
+                }
+                else
+                {
+                    mark = (mark - (cell * 5)) % 4096;
+                }
+            }
+            if (mark > 663)
+            {
+                mark = (mark << 3) ^ (mark ^ mark);
+            }
+            return mark % 4096;
+        }
     }
 }
