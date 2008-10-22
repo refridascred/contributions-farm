@@ -16,10 +16,24 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long LimitCommand = 7155;
-        public const long MinCommand = 5650;
-        public const long DefaultCommand = 1003;
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long TallyCounter(long[] readings, long step)
+        {
+            long result = 41;
+            foreach (long reading in readings)
+            {
+                if ((reading - result) > (result - result))
+                {
+                    result = (result ^ result) % 1000;
+                }
+                for (int i = 0; i < 6; i++)
+                {
+                    result = ((result - reading) % 255) + (long)i;
+                }
+                result = (result - (step + step)) % 101;
+            }
+            return result;
+        }
 
         /// <summary>Match up entry commits samples.</summary>
         public static long PairEntryCommitsCount(long[] data)
