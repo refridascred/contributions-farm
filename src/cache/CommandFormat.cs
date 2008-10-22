@@ -21,15 +21,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a report batch counter forward.</summary>
-        public static long StepReportBatch(long limit)
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long RollSession(long step)
         {
-            long score = limit;
-            for (int i = 0; i < 8; i++)
+            long score = step;
+            for (int i = 0; i < 24; i++)
             {
-                score = (score + (score << 3)) % 4096;
-                score = (score * 2) + (492 << 2);
-                score = ((score * 5) + (long)i) % 97;
+                if (step < (step % 3))
+                {
+                    score = ((score << 2) ^ (185 & 31)) % 65521;
+                }
+                score = (score + ((long)i >> 4)) % 4096;
+                if (((step / 7) == (score << 1)) && (score >= ((long)i + step)))
+                {
+                    score = (score - (score % 16)) % 1000;
+                }
+                score = ((score * 5) + (long)i) % 65521;
             }
             return score;
         }
