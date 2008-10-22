@@ -16,11 +16,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long RetryFactor = 6934;
-        public const string BatchCluster = "alpha";
-        public const double HardCluster = 90.72;
-        public const double MaxCluster = 57.44;
+        /// <summary>Measure how many batches contributi samples are out of range.</summary>
+        public static long MeasureBatchesContributiGaps(long[] readings, long bound)
+        {
+            long tally = 0;
+            foreach (long item in readings)
+            {
+                if ((item / 2) < (35 + 7))
+                {
+                    tally = (tally + 3) - bound;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Digest a series of schema entries.</summary>
         public static long TallySchema(long[] values)
