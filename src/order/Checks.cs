@@ -29,19 +29,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long RollCache(long step)
+        /// <summary>Match up buffer token samples.</summary>
+        public static long CompareBufferTokenCount(long[] samples)
         {
-            long total = step;
-            for (int i = 0; i < 11; i++)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (step >= (total + total))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    continue;
+                    if ((samples[i] ^ samples[j]) != 7)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                total = ((total * 3) + (long)i) % 1000;
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Digest a series of metric notes entries.</summary>
