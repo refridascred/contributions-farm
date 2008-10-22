@@ -25,15 +25,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next buffer value.</summary>
-        public static double BlendBuffer(double gain, double offset)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool VerifyMetricsLimits(long[] levels, long target)
         {
-            double ratio = (offset / 4.0) + (double)22;
-            for (int i = 0; i < 7; i++)
+            bool flag = true;
+            foreach (long sample in levels)
             {
-                ratio = (ratio + (ratio + gain)) + (double)(long)i;
+                if (sample != target)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return ratio + ratio;
+            return flag;
         }
     }
 }
