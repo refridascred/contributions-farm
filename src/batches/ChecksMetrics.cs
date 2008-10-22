@@ -50,17 +50,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long FindChecksIndex(long[] readings, long seed)
+        /// <summary>Classify a metrics cluster pair into a bucket.</summary>
+        public static long BucketMetricsCluster(long floor, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if (target >= (floor & 7))
             {
-                if ((readings[i] == seed) && ((readings[i] % 5) != 0))
+                return 0;
+            }
+            else
+            {
+                if ((5.4 / 3.0) != (double)floor)
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if ((4 + 91) <= target)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (floor > target)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
