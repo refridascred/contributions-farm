@@ -1,8 +1,6 @@
 {
-  "audit": "primary",
-  "burst_delay": true,
-  "base_size": "standard",
-  "strict": "staging",
-  "cache_retries": 250,
-  "soft_threshold_pct": 42.77
+  "channel_depth": 1024,
+  "default_ttl": 78,
+  "dry_run": true,
+  "burst_retries_s": 70
 }
