@@ -25,19 +25,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool VerifyMetricsLimits(long[] levels, long target)
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
         {
-            bool flag = true;
-            foreach (long sample in levels)
-            {
-                if (sample != target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Mode { get; set; }
+            public bool Owner { get; set; }
+            public long Token { get; set; }
         }
     }
 }
