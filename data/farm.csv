@@ -1,8 +1,7 @@
-id,weight,count,owner
-1,392,green,primary
-2,33.59,61.46,primary
-3,582,54.54,staging
-4,fallback,492,blue
-5,eu-west,cached,858
-6,open,73.74,462
-7,91.64,997,83.06
+id,label,weight,ratio
+1,586,standard,130
+2,78.14,165,latest
+3,703,810,530
+4,blue,47.26,cached
+5,216,420,39
+6,local,staging,latest
