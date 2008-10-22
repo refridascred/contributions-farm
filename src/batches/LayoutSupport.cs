@@ -39,12 +39,17 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long SeekBufferIndex(long[] samples, long offset)
         {
-            public string Total { get; set; } = "";
-            public string Size { get; set; } = "";
-            public string Rank { get; set; } = "";
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
