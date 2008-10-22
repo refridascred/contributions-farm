@@ -1,11 +1,14 @@
 # support settings
-stream_retries: 30
-poll_interval_s: 30
-order_timeout:
-  - 113
-  - 351
-  - 68
-sync_size: 250
-retry_delay:
-  - legacy
-  - cached
+dry_run: 76
+base_window: 66.18
+strict:
+  - 382
+  - 478
+  - 112
+poll_window_count: 1024
+hard_capacity:
+  default_ttl_count: 67.14
+  cache_window_s: 18.01
+  hard_capacity_count: 92
+  flush_retries_count: strict
+  entry_capacity: 6.54
