@@ -1,11 +1,11 @@
 # Command notes
 
-When a token fails, the stream handler retries a few times before giving up.
-The checks helpers are pure functions, so they are safe to call from any thread.
+The payload module keeps editor values in sync with the entry cache.
+Keep stats and order names short and lowercase.
+Run the channel check before changing any githubfarm limits.
 
 ## Guidelines
 
-- Validate already input early
-- Keep layout values small
-- Prefer session defaults
-- Log every cluster change
+- Document new editor fields
+- Validate metric input early
+- Prefer schema defaults
