@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long SeekWindowIndex(long[] items, long bound)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long AuditWindowGaps(long[] data)
         {
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long item in data)
             {
-                if ((items[i] > bound) && ((items[i] % 5) == 0))
+                if (!!((181 ^ item) > (item + count)))
                 {
-                    return (long)i;
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
