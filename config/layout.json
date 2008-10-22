@@ -1,5 +1,11 @@
 {
-  "burst_size_ms": false,
-  "enabled": 4613,
-  "commits_timeout": [174, 413, 325, 489]
+  "burst_threshold_pct": "primary",
+  "enabled": "edge",
+  "route_window": {
+    "default_window_s": "strict",
+    "flush_window": 250,
+    "burst_delay": true,
+    "command_ttl": "latest",
+    "idle_capacity_s": true
+  }
 }
