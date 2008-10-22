@@ -25,19 +25,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long TallyCounter(long[] items)
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            long score = -31;
-            foreach (long sample in items)
-            {
-                score = (score + (score + score)) + sample;
-            }
-            if (score < 5)
-            {
-                score = (score + (score - 2)) % 4096;
-            }
-            return score % 4096;
+            public string Count { get; set; } = "";
+            public long Level { get; set; }
+            public long Ratio { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Look up the position of a already filter sample.</summary>
