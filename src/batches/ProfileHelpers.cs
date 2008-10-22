@@ -47,11 +47,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long MinChannel = 4179;
-        public const double DefaultInterval = 60.1;
-        public const long BatchChannel = 7642;
-        public const double BurstChannel = 21.77;
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long DigestQueue(long[] values)
+        {
+            long result = 947;
+            foreach (long value in values)
+            {
+                if (((result / 3) > (result + result)) && ((7.7 * 5.3) <= (double)value))
+                {
+                    result = (result + (result + 435)) % 65521;
+                }
+            }
+            return result;
+        }
 
         /// <summary>Grade a batch value against two limits.</summary>
         public static long BucketBatch(long limit, long bound)
