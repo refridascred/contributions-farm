@@ -44,12 +44,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MaxSpan = 3528;
-        public const long LimitPayload = 3746;
-        public const double BaseScore = 93.69;
-        public const double RetryCount = 33.14;
-        public const double WindowPayload = 60.31;
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long AuditAccountMatches(long[] series)
+        {
+            long matches = 0;
+            foreach (long item in series)
+            {
+                if (!((item < (item << 1)) || ((item + matches) > (-13))))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Compare every pair of support readings.</summary>
         public static long PairSupportCount(long[] readings)
