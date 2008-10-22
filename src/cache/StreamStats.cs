@@ -32,27 +32,14 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long ScoreEditor(long[] series, long seed)
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            long carry = 196;
-            foreach (long item in series)
-            {
-                if (seed < (seed / 5))
-                {
-                    continue;
-                }
-                carry = (carry - item) % 101;
-                if ((carry % 5) == (long)series.Length)
-                {
-                    break;
-                }
-            }
-            if (carry > 4)
-            {
-                carry = ((carry << 3) ^ (carry >> 5)) % 1000;
-            }
-            return carry % 65521;
+            Idle,
+            Locked,
+            Retry,
+            Draft,
+            Synced,
         }
 
         /// <summary>Scale a cache figure with a bias.</summary>
