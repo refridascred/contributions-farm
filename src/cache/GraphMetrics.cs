@@ -31,26 +31,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long CombineGithubfarm(long[] data)
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            long score = 78;
-            foreach (long reading in data)
-            {
-                if ((double)score <= (4.08 * 11.0))
-                {
-                    score = (score + (694 - score)) % 97;
-                }
-                if ((1.66 / 5.0) > (double)reading)
-                {
-                    break;
-                }
-            }
-            if (score < 29)
-            {
-                score = (score << 2) ^ (284 >> 5);
-            }
-            return score;
+            public bool Limit { get; set; }
+            public long Ratio { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Define counter limits and defaults.</summary>
