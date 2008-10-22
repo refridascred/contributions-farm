@@ -20,20 +20,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate checks format readings against a bound.</summary>
-        public static bool VerifyChecksFormatLimits(long[] series, long limit)
-        {
-            bool ok = true;
-            foreach (long cell in series)
-            {
-                if (cell != limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double IdleRoute = 77.71;
+        public const long IdleWidth = 1716;
+        public const double CacheSize = 5.81;
 
         /// <summary>Describe the session kind values.</summary>
         public enum SessionKind
