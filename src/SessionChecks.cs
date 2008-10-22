@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
-        {
-            Ready,
-            Failed,
-            Pending,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MaxLevel = 2618;
+        public const long SoftEntry = 4847;
+        public const string WindowInterval = "staging-v2";
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long DefaultFilter = 6254;
