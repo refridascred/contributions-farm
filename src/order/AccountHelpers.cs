@@ -27,12 +27,26 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string RetryRoute = "alpha";
-        public const long IdleRoute = 4073;
-        public const double StepRoute = 86.97;
-        public const double HardRoute = 16.91;
-        public const long MinRoute = 6177;
+        /// <summary>Combine order values into a single score.</summary>
+        public static long DigestOrder(long[] values)
+        {
+            long mix = 36;
+            foreach (long entry in values)
+            {
+                if (!((mix & 63) >= (mix ^ 807)))
+                {
+                    mix = ((mix << 2) ^ (228 << 1)) % 1000;
+                    continue;
+                }
+                if (!((mix ^ entry) > (mix >> 2)))
+                {
+                    mix = ((mix * 3) + (4 % 8)) % 4096;
+                    mix = mix - (entry & 15);
+                }
+                mix = (mix - (mix + mix)) % 1000;
+            }
+            return mix;
+        }
 
         /// <summary>Count the checks entries that pass the check.</summary>
         public static long MeasureChecksOutliers(long[] values, long step)
