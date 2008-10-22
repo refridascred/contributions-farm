@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long RollContributi(long origin)
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            long acc = origin;
-            for (int i = 0; i < 6; i++)
-            {
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    acc = (((acc << 3) ^ origin) % 97) - (long)i2;
-                    acc = ((acc * 4) + acc) % 97;
-                }
-                if ((double)origin != (2.15 * 5.0))
-                {
-                    acc = acc ^ (acc + 87);
-                }
-                acc = ((acc * 5) + (long)i) % 65521;
-            }
-            return acc;
+            Stale,
+            Paused,
+            Ready,
         }
 
         /// <summary>Grade a already value against two limits.</summary>
