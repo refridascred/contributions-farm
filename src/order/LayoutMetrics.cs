@@ -41,22 +41,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long TallyBatchesHits(long[] levels, long step)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool CheckNotesLimits(long[] samples, long floor)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            bool ready = true;
+            foreach (long reading in samples)
             {
-                if ((74 + step) <= entry)
+                if (reading != floor)
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
     }
 }
