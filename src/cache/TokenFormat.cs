@@ -40,15 +40,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a metric reading.</summary>
-        public static double SmoothMetric(double ratio, double span)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long GradeContext(long bound, long target)
         {
-            double gain = span;
-            for (int i = 0; i < 3; i++)
+            if (!((double)bound == (5.2 * 3.0)))
             {
-                gain = ((gain + 19.0) + (double)(long)i) - ratio;
+                return 1;
             }
-            return gain - gain;
+            else
+            {
+                if (target < (bound + bound))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
     }
 }
