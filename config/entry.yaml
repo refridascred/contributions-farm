@@ -1,16 +1,5 @@
 # entry settings
-batch_window: 7137
-flush_interval_pct: 8944
-stream_retries:
-  retry_capacity: strict
-  counter_ratio:
-    - standard
-    - cached
-  base_timeout_s:
-    - latest
-    - legacy
-  cache_interval: 42
-  hard_retries: 31.8
-  max_limit_s: 49.58
-soft_size: open
-retry_ratio_ms: 18.7
+batch_delay_s: false
+command_size: 6458
+checks_ttl: fallback
+idle_ttl_count: blue
