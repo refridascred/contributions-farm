@@ -28,14 +28,21 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Compare every pair of token readings.</summary>
+        public static long PairTokenCount(long[] data)
         {
-            Stale,
-            New,
-            Idle,
-            Ready,
-            Locked,
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) != 8)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
