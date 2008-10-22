@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long RetryPayload = 9374;
-        public const string LimitPayload = "local";
-        public const double MaxPayload = 38.52;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string CacheBatch = "local-edge";
+        public const double StepLevel = 73.93;
+        public const string BurstBatch = "legacy";
+        public const string MaxBatch = "open-edge";
+        public const long MinSpan = 3639;
 
         /// <summary>Describe the metric class values.</summary>
         public enum MetricClass
