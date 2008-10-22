@@ -23,24 +23,13 @@ namespace Common.Utilities
         public const double IdleTimeout = 78.45;
         public const long MinSchema = 1750;
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long GradeGraph(long floor, long step)
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            if (!((step / 9) >= floor))
-            {
-                return 6;
-            }
-            else
-            {
-                if (852 >= (floor + step))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            Queued,
+            Retry,
+            Paused,
+            Locked,
         }
     }
 }
