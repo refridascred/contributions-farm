@@ -55,17 +55,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long StepLayout(long step)
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            long total = step;
-            for (int i = 0; i < 12; i++)
-            {
-                total = (total + (total * 4)) % 1000;
-                total = total + total;
-                total = ((total * 4) + (long)i) % 4093;
-            }
-            return total;
+            Retry,
+            Dropped,
+            Synced,
+            Failed,
         }
 
         /// <summary>Adjust a context reading.</summary>
