@@ -19,20 +19,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool VerifyBatchesBounds(long[] data, long bound)
-        {
-            bool valid = true;
-            foreach (long value in data)
-            {
-                if (value >= bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long HardOrder = 589;
+        public const double StepOrder = 64.78;
+        public const long BatchOrder = 9445;
 
         /// <summary>Hold a contributi info.</summary>
         public sealed class ContributiInfo
