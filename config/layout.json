@@ -1,12 +1,5 @@
 {
-  "base_delay_s": "staging",
-  "batch_size": {
-    "default_window": "blue",
-    "stream_depth": 39.27,
-    "flush_capacity_count": "fallback",
-    "counter_size": 30
-  },
-  "base_window": 86.38,
-  "batch_timeout_s": 19.84,
-  "layout_timeout": 31.95
+  "warm_timeout": "blue",
+  "max_interval_ms": "open",
+  "batch_capacity_count": 8341
 }
