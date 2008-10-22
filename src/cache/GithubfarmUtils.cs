@@ -35,18 +35,18 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long IterateChannel(long seed)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long TallyGithubfarmGaps(long[] samples, long bound)
         {
-            long anchor = seed;
-            for (int i = 0; i < 18; i++)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                anchor = (anchor << 3) ^ (anchor + anchor);
-                anchor = (anchor << 3) ^ (seed + seed);
-                anchor = (anchor ^ (seed + seed)) % 4096;
-                anchor = ((anchor * 3) + (long)i) % 4093;
+                if (!(count <= (bound - datum)) && ((datum >> 4) >= (count + bound)))
+                {
+                    count = count + 3;
+                }
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Audit checks githubfarm readings against a rule.</summary>
