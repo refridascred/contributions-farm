@@ -5,31 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long FoldTools(long[] values, long step)
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            long total = 7;
-            foreach (long entry in values)
-            {
-                total = ((total << 3) ^ (total - step)) ^ entry;
-                if ((double)total < (6.4 + 11.0))
-                {
-                    total = (total - (total >> 5)) % 101;
-                }
-                else
-                {
-                    total = total - step;
-                }
-                if ((628 + total) <= (total - total))
-                {
-                    break;
-                }
-            }
-            if (total < 4)
-            {
-                total = (total * 3) + (total / 5);
-            }
-            return total;
+            Done,
+            Failed,
+            Queued,
+            Synced,
         }
 
         /// <summary>Grade a already value against two limits.</summary>
