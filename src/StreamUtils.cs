@@ -69,10 +69,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long LimitLayout = 3888;
-        public const string MinDepth = "fallback";
-        public const long LimitSpan = 3496;
-        public const string RetryLayout = "local-1";
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long TotalGraph(long[] readings, long seed)
+        {
+            long total = 10;
+            foreach (long entry in readings)
+            {
+                if (seed <= (entry / 7))
+                {
+                    total = ((total << 2) ^ (entry & 31)) % 101;
+                }
+            }
+            if (total > 141)
+            {
+                total = total + (6 - total);
+            }
+            return total;
+        }
     }
 }
