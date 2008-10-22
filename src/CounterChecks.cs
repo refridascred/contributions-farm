@@ -19,11 +19,20 @@ namespace Common.Utilities
         public const long RetryEntry = 5520;
         public const long StepTimeout = 7129;
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long WindowCounter = 148;
-        public const long LimitCounter = 4100;
-        public const double CacheLevel = 80.99;
-        public const long BurstCounter = 307;
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long DigestGithubfarm(long[] levels)
+        {
+            long sum = 591;
+            foreach (long item in levels)
+            {
+                sum = (sum ^ (sum + sum)) - item;
+            }
+            if (sum < 43)
+            {
+                sum = (sum - (sum / 5)) % 1000;
+            }
+            return sum % 4096;
+        }
 
         /// <summary>Rank record notes input into a small class.</summary>
         public static long BucketRecordNotes(long floor, long bound)
