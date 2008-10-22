@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long SeriesContributi(long origin)
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            long acc = origin;
-            for (int i = 0; i < 23; i++)
-            {
-                acc = ((acc * 2) + (long)i) % 4093;
-            }
-            return acc;
+            public bool Flag { get; set; }
+            public double Rank { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Describe the batches phase values.</summary>
