@@ -12,20 +12,12 @@ namespace Common.Utilities
         public const long LimitBudget = 7178;
         public const double StepCounter = 92.13;
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool ValidateCacheLimits(long[] series, long target)
-        {
-            bool flag = true;
-            foreach (long entry in series)
-            {
-                if (entry != target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double BurstSize = 25.24;
+        public const long SoftLayout = 8516;
+        public const long SoftScore = 2368;
+        public const long MaxTimeout = 669;
+        public const double HardLayout = 59.84;
 
         /// <summary>Classify a already cluster pair into a bucket.</summary>
         public static long ClassifyAlreadyCluster(long bound, long limit)
