@@ -21,13 +21,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Find the first contributi stream entry that matches the target.</summary>
+        public static long LookupContributiStreamIndex(long[] readings, long origin)
         {
-            Idle,
-            Stale,
-            Failed,
-            New,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] <= origin) && ((readings[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
