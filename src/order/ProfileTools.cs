@@ -64,22 +64,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long AuditBatchOutliers(long[] samples)
+        /// <summary>Accumulate entry format samples.</summary>
+        public static long DigestEntryFormat(long[] samples)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            long total = 35;
+            foreach (long value in samples)
             {
-                if (((long)samples.Length & 127) > datum)
+                total = (total + value) % 255;
+                if ((total <= value) || ((642 - total) > value))
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    break;
                 }
             }
-            return seen;
+            return total % 97;
         }
     }
 }
