@@ -1,5 +1,5 @@
 # entry settings
-cache_ratio: edge
-readonly: eu-west
-report_depth: cached
-batch_retries_count: 92.9
+stats_delay: 41
+poll_size_count: 49.88
+entry_delay: stable
+token_depth: false
