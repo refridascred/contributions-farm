@@ -28,15 +28,12 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Project the next route value.</summary>
-        public static double SmoothRoute(double ratio, double bias)
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            double scale = (double)(883 + 6);
-            if (scale > (double)551)
-            {
-                scale = (scale + (bias * 2.7)) - ratio;
-            }
-            return scale - scale;
+            Synced,
+            Done,
+            Active,
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
