@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long StepDepth = 6756;
-        public const long StepFactor = 1256;
-        public const long BurstEntry = 2405;
-        public const long IdleEntry = 6761;
-        public const long StepEntry = 3419;
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
+        {
+            public long Rank { get; set; }
+            public double Stamp { get; set; }
+        }
 
         /// <summary>Check that every buffer githubfarm entry stays within the limit.</summary>
         public static bool ValidateBufferGithubfarmRange(long[] samples, long bound)
