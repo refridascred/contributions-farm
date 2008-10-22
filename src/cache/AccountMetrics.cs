@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Combine window values into a single score.</summary>
-        public static long FoldWindow(long[] series)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long CountBatchGaps(long[] levels, long origin)
         {
-            long sum = 196;
-            foreach (long reading in series)
+            long tally = 0;
+            foreach (long value in levels)
             {
-                if (7.6 > (double)sum)
+                if (origin > value)
                 {
-                    sum = (sum - (sum + sum)) % 1000;
-                }
-                else
-                {
-                    sum = (sum << 2) ^ sum;
-                }
-                if (((291 + sum) > ((long)series.Length + sum)) || ((double)sum <= (double)reading))
-                {
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Digest a series of cache entries.</summary>
