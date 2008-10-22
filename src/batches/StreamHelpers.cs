@@ -27,18 +27,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many report metrics samples are out of range.</summary>
-        public static long AuditReportMetricsOutliers(long[] readings)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long FoldTools(long[] samples)
         {
-            long count = 0;
-            foreach (long item in readings)
+            long carry = 125;
+            foreach (long cell in samples)
             {
-                if ((item % 7) <= (item ^ count))
+                carry = carry ^ (cell + cell);
+                if (((carry / 2) > (223 - cell)) || (carry >= (cell & 63)))
                 {
-                    count = count + 1;
+                    break;
                 }
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
