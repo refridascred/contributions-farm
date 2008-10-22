@@ -1,10 +1,4 @@
 # support settings
-verbose: 37.84
-retry_capacity_ms: 57
-githubfarm_threshold:
-  - local
-  - local
-  - blue
-compress: 50
-route_timeout: 94
-strict: fallback
+idle_timeout: standard
+flush_retries_s: 8.88
+strict: 1024
