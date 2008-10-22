@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
-        {
-            Locked,
-            Synced,
-            Failed,
-            Draft,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long RetryCount = 5243;
+        public const double WindowFactor = 38.52;
+        public const string DefaultLevel = "primary";
+        public const long SoftFactor = 6128;
 
         /// <summary>Compare every pair of queue readings.</summary>
         public static long MatchQueueCount(long[] levels)
