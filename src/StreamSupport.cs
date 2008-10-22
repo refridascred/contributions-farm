@@ -22,12 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long CacheRatio = 1397;
-        public const long BatchSpan = 3832;
-        public const long IdleChannel = 8473;
-        public const long MinChannel = 9234;
-        public const long BaseChannel = 8775;
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long DigestSchema(long[] series)
+        {
+            long mark = -3;
+            foreach (long value in series)
+            {
+                if (((mark - mark) < (mark * 4)) && ((mark * 5) > ((-327) ^ mark)))
+                {
+                    mark = (mark ^ (26 >> 2)) + value;
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Hold a cache options.</summary>
         public sealed class CacheOptions
