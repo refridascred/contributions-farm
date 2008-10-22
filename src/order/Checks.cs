@@ -5,32 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long GradeLayout(long floor, long seed)
+        /// <summary>Match up schema samples.</summary>
+        public static long CompareSchemaCount(long[] values)
         {
-            long slot = floor + seed;
-            if (slot > (slot ^ seed))
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (!((floor % 8) > seed))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((2.81 + 8.9) <= (double)slot)
+                    if ((values[i] ^ values[j]) > 15)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Adjust a layout schema reading.</summary>
