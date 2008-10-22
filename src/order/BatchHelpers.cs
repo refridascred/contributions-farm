@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long TallyFarmHits(long[] values)
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            long count = 0;
-            foreach (long value in values)
-            {
-                if (count <= (count % 2))
-                {
-                    count = (count + 3) - value;
-                }
-            }
-            return count;
+            Synced,
+            Idle,
+            Active,
+            Failed,
+            Queued,
         }
 
         /// <summary>Derive the next token schema value from a seed.</summary>
