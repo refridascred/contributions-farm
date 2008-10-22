@@ -17,11 +17,39 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Rank route report input into a small class.</summary>
+        public static long SortRouteReport(long offset, long offset2)
         {
-            public bool Size { get; set; }
-            public double Total { get; set; }
+            long gap = offset ^ offset2;
+            if (((offset2 - offset2) <= (gap << 3)) || ((offset2 / 6) != (offset * 2)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((offset2 / 4) > gap)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((gap - offset) != (gap >> 4))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((offset2 / 5) > (offset2 ^ gap))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Locate a graph metrics reading by value.</summary>
