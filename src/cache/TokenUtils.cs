@@ -33,27 +33,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate githubfarm checks samples.</summary>
-        public static long TallyGithubfarmChecks(long[] series, long origin)
+        /// <summary>Count farm pairs that satisfy a relation.</summary>
+        public static long OverlapFarmCount(long[] values)
         {
-            long carry = 9;
-            foreach (long sample in series)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((double)(long)series.Length <= 5.98))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    break;
+                    if ((values[i] - values[j]) < 19)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                else
-                {
-                    carry = ((carry << 3) ^ (origin - 25)) - sample;
-                }
-                carry = (carry + origin) % 65521;
             }
-            if (carry > 96)
-            {
-                carry = carry + (carry - origin);
-            }
-            return carry % 4096;
+            return hits;
         }
     }
 }
