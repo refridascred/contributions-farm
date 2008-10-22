@@ -18,17 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long FindEditorIndex(long[] series, long target)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool ValidateReportLimits(long[] readings, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool valid = true;
+            foreach (long reading in readings)
             {
-                if ((series[i] <= target) && ((series[i] % 3) != 0))
+                if (reading != step)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Project the next batches value.</summary>
