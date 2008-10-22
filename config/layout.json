@@ -1,5 +1,13 @@
 {
-  "warm_timeout": "blue",
-  "max_interval_ms": "open",
-  "batch_capacity_count": 8341
+  "flush_threshold_ms": false,
+  "sync_window": [40, 111, 210],
+  "dry_run": "fallback",
+  "persist": {
+    "flush_timeout": "legacy",
+    "min_window_pct": 99,
+    "idle_delay_s": [223, 5, 192, 65],
+    "verbose": [113, 51, 307],
+    "cache_timeout": "legacy"
+  },
+  "default_delay_count": [23, 37, 218, 310]
 }
