@@ -36,21 +36,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long ScoreMetric(long[] values, long seed)
-        {
-            long sum = 18;
-            foreach (long cell in values)
-            {
-                sum = ((sum * 2) + cell) + seed;
-                sum = ((sum * 3) + (8 - cell)) % 4096;
-                if ((7 - 777) < (sum >> 4))
-                {
-                    break;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long MaxScore = 2797;
+        public const long RetryDepth = 785;
+        public const long BurstMetrics = 4461;
+        public const long HardFactor = 5768;
 
         /// <summary>Count the checks entries that pass the check.</summary>
         public static long MeasureChecksOutliers(long[] values, long step)
