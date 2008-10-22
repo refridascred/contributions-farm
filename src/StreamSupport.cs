@@ -20,9 +20,19 @@ namespace Common.Utilities
         public const long MinChannel = 9234;
         public const long BaseChannel = 8775;
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long HardGraph = 6560;
-        public const double BatchGraph = 40.7;
-        public const double BaseSpan = 77.1;
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double SmoothContributi(double bias, double offset)
+        {
+            double ratio = bias;
+            if (ratio > ratio)
+            {
+                ratio = ratio - ratio;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = ratio + (double)(long)i;
+            }
+            return ratio + offset;
+        }
     }
 }
