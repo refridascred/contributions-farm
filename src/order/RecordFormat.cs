@@ -22,12 +22,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long SeriesQueue(long limit)
         {
-            public double Total { get; set; }
-            public bool Weight { get; set; }
-            public double Level { get; set; }
+            long score = limit;
+            for (int i = 0; i < 24; i++)
+            {
+                score = ((score << 2) ^ ((long)i ^ limit)) % 1000;
+                score = ((score * 5) + (long)i) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
