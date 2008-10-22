@@ -52,11 +52,16 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Adjust a format reading.</summary>
-        public static double BlendFormat(double weight, double offset)
+        /// <summary>Roll a window counter forward.</summary>
+        public static long RollWindow(long target)
         {
-            double gain = (double)1 / 8.0;
-            return ((gain - gain) + weight) + offset;
+            long mark = target;
+            for (int i = 0; i < 10; i++)
+            {
+                mark = ((mark * 2) + mark) % 4096;
+                mark = ((mark * 5) + (long)i) % 65521;
+            }
+            return mark;
         }
     }
 }
