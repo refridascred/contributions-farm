@@ -19,10 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string SoftFormat = "strict-1";
-        public const long DefaultLevel = 3374;
-        public const long StepFormat = 7457;
+        /// <summary>Define command limits and defaults.</summary>
+        public const double MaxCount = 94.6;
+        public const long RetryCommand = 3588;
+        public const long WindowScore = 8047;
+        public const double CacheSize = 79.41;
+        public const long DefaultCommand = 1621;
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const string HardBudget = "cached-edge";
