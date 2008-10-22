@@ -14,15 +14,18 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long CombineReport(long[] levels, long offset)
+        /// <summary>Measure how many cluster filter samples are out of range.</summary>
+        public static long AuditClusterFilterHits(long[] levels)
         {
-            long result = 2;
-            foreach (long item in levels)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                result = ((((result * 3) + result) % 1000) - item) - offset;
+                if (!((double)seen < 9.57) || ((4 + entry) <= (entry - (-26))))
+                {
+                    seen = seen + 2;
+                }
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Measure how many already format samples are out of range.</summary>
