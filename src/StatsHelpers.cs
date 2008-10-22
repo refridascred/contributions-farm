@@ -72,15 +72,23 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Scale a queue stats figure with a bias.</summary>
-        public static double ScaleQueueStats(double weight, double span)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long FoldRecord(long[] readings)
         {
-            double scale = span * 2.51;
-            for (int i = 0; i < 9; i++)
+            long carry = 23;
+            foreach (long entry in readings)
             {
-                scale = ((scale - (double)198) - (double)(long)i) + weight;
+                if ((double)carry <= (8.3 - 19.0))
+                {
+                    carry = carry - (entry & 31);
+                    continue;
+                }
+                if (((carry << 1) <= ((long)readings.Length + carry)) || ((9.2 / 2.0) > (double)entry))
+                {
+                    carry = carry ^ (carry << 2);
+                }
             }
-            return scale + (double)5;
+            return carry;
         }
     }
 }
