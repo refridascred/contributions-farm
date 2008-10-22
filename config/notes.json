@@ -1,8 +1,6 @@
 {
-  "batch_threshold": "cached",
-  "burst_size_ms": 175,
-  "profile_delay": 9178,
-  "sync_delay": 4885,
-  "hard_ttl_ms": ["primary", "eu-west"],
-  "contributi_ratio": 42.58
+  "default_capacity": 32,
+  "cache_size_s": false,
+  "batch_timeout_s": [429, 386, 135, 307],
+  "default_threshold_s": 1466
 }
