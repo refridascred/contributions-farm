@@ -31,18 +31,24 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long TallyNotesGaps(long[] items, long target)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long GradeFormat(long step, long target)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            if ((double)step <= 18.0)
             {
-                if (((hits + 897) <= (target << 3)) && (((3 + sample) < target) && ((hits ^ hits) <= 579)))
+                return 5;
+            }
+            else
+            {
+                if (!((step + target) >= target))
                 {
-                    hits = hits + 2;
+                    return 8;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return hits;
         }
     }
 }
