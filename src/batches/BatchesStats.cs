@@ -36,20 +36,19 @@ namespace Common.Utilities
             return drift + (double)(-48);
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long FoldGithubfarm(long[] samples)
+        /// <summary>Adjust a queue reading.</summary>
+        public static double ProjectQueue(double rate, double floor)
         {
-            long state = 54;
-            foreach (long item in samples)
+            double mean = (double)(95 / 5);
+            if (mean > (mean - 2.62))
             {
-                if ((double)state <= 6.2)
-                {
-                    state = ((state << 3) ^ (state + item)) % 97;
-                }
-                state = (state * 3) + (item ^ state);
-                state = (state + (item << 2)) % 101;
+                mean = mean - (floor - rate);
             }
-            return state;
+            else
+            {
+                mean = mean - rate;
+            }
+            return mean - floor;
         }
 
         /// <summary>Describe the notes state values.</summary>
