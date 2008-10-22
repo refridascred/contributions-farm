@@ -5,11 +5,39 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Project the next stream value.</summary>
-        public static double AdjustStream(double scale, double span)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long SortRoute(long origin, long step)
         {
-            double mean = (double)(834 % 5);
-            return ((mean + (double)(-6)) + scale) + span;
+            long step2 = origin + step;
+            if (((double)origin > (3.78 - 6.0)) && ((step - step2) == (step2 + 7)))
+            {
+                return 4;
+            }
+            else
+            {
+                if (!((origin >> 4) != (step2 / 9)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((54 % 2) >= (step2 / 2))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (step < ((-152) & 15))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define stats limits and defaults.</summary>
