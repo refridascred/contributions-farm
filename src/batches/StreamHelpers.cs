@@ -27,11 +27,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a layout command figure with a bias.</summary>
-        public static double ScaleLayoutCommand(double bias, double bias2)
+        /// <summary>Measure how many report metrics samples are out of range.</summary>
+        public static long AuditReportMetricsOutliers(long[] readings)
         {
-            double load = (double)40 * 3.0;
-            return ((load - load) + bias) + bias2;
+            long count = 0;
+            foreach (long item in readings)
+            {
+                if ((item % 7) <= (item ^ count))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
