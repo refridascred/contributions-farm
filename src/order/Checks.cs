@@ -53,31 +53,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long GradeBatches(long bound, long origin)
-        {
-            if ((1.99 - 18.0) == (double)origin)
-            {
-                return 0;
-            }
-            else
-            {
-                if (bound >= (bound << 3))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((6.09 * 3.7) >= (double)origin)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BatchBudget = 6474;
+        public const long HardCommand = 3981;
+        public const long RetryBudget = 3057;
+        public const long CacheCommand = 5362;
+        public const long IdleCommand = 3976;
     }
 }
