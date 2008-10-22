@@ -30,12 +30,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
-        {
-            Done,
-            Retry,
-            Locked,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long CacheBudget = 8073;
+        public const double SoftEntry = 69.89;
+        public const long BurstLevel = 5567;
+        public const long DefaultEntry = 3670;
+        public const double MinEntry = 52.59;
     }
 }
