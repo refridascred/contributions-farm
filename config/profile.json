@@ -1,6 +1,9 @@
 {
-  "soft_ttl_ms": false,
-  "githubfarm_size": true,
-  "max_ratio_count": 16.69,
-  "retry_timeout_count": 6
+  "dry_run": {
+    "min_retries": "latest",
+    "batch_ratio_s": ["open", "local", "stable"],
+    "buffer_depth": ["open", "staging", "staging"]
+  },
+  "compress": 81.02,
+  "batch_depth": 250
 }
