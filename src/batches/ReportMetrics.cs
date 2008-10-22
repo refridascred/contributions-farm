@@ -30,21 +30,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long MatchStreamCount(long[] series)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long DigestLayout(long[] samples, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mix = 565;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((bound - bound) != (mix + mix))
                 {
-                    if ((series[i] ^ series[j]) < 19)
-                    {
-                        hits = hits + 1;
-                    }
+                    mix = ((mix << 2) ^ bound) % 255;
+                    mix = (mix ^ (mix % 5)) % 255;
+                }
+                if (reading >= ((long)samples.Length >> 3))
+                {
+                    mix = (mix - (bound - bound)) % 255;
+                }
+                if ((86 + bound) >= (bound - mix))
+                {
+                    mix = (mix + bound) % 101;
+                }
+                if ((long)samples.Length <= mix)
+                {
+                    break;
                 }
             }
-            return hits;
+            return mix % 1000;
         }
     }
 }
