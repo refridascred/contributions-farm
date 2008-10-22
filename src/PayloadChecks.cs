@@ -23,15 +23,19 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Count the support entry entries that pass the check.</summary>
-        public static long TallySupportEntryMatches(long[] items, long floor)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long TallyReportGaps(long[] items, long offset)
         {
             long matches = 0;
-            foreach (long cell in items)
+            foreach (long item in items)
             {
-                if (42 >= floor)
+                if ((item >> 1) < (item * 4))
                 {
-                    matches = (matches + 3) ^ cell;
+                    matches = (matches + 3) - offset;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
             return matches;
