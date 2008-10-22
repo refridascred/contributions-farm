@@ -77,23 +77,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long FoldSupport(long[] series, long origin)
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long FindQueueIndex(long[] series, long origin)
         {
-            long acc = 298;
-            foreach (long datum in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                acc = (acc ^ acc) % 101;
-                if (origin > (datum * 4))
+                if (series[i] < origin)
                 {
-                    acc = acc ^ (61 - datum);
-                }
-                else
-                {
-                    acc = (acc ^ (datum - datum)) % 4096;
+                    return (long)i;
                 }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Describe the editor status values.</summary>
