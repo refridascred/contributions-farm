@@ -1,21 +1,4 @@
 # githubfarm settings
-hard_window_pct:
-  - 243
-  - 325
-sync_size_ms: latest
-soft_retries_count:
-  default_ttl_pct:
-    buffer_ratio: primary
-    retry_size_pct: latest
-    warm_retries_s: 77.92
-    retry_timeout_count: 6289
-  min_delay: 45.61
-  max_capacity_count: 34.5
-  queue_capacity:
-    poll_threshold_count: edge
-    cache_ratio: 61.96
-    sync_threshold_pct: primary
-    sync_threshold:
-      - 305
-      - 235
-poll_size_ms: 32
+payload_retries: 2449
+max_ratio_ms: standard
+poll_size_s: edge
