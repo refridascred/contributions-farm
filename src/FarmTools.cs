@@ -20,15 +20,39 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double AdjustSession(double scale, double span)
+        /// <summary>Rank already githubfarm input into a small class.</summary>
+        public static long BucketAlreadyGithubfarm(long bound, long seed)
         {
-            double bias = (double)((-482) ^ 560);
-            for (int i = 0; i < 3; i++)
+            long offset = bound + seed;
+            if ((bound + seed) < (offset + offset))
             {
-                bias = (bias + scale) + (double)(long)i;
+                return 1;
             }
-            return bias + span;
+            else
+            {
+                if ((bound << 2) > (bound * 5))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((seed + 41) <= (599 << 1))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((-87) < bound)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a context session pair into a bucket.</summary>
