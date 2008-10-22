@@ -1,5 +1,13 @@
 {
-  "compress": "primary",
-  "strict": ["blue", "cached"],
-  "retry_timeout_count": "strict"
+  "hard_timeout_s": {
+    "compress": 18.66,
+    "batch_threshold_count": true,
+    "hard_ttl_s": "blue",
+    "batch_size_count": "primary"
+  },
+  "warm_retries_s": ["green", "standard", "local"],
+  "idle_size_count": 8030,
+  "editor_interval": 500,
+  "soft_capacity": 68,
+  "min_capacity_s": 919
 }
