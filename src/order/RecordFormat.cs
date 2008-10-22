@@ -25,18 +25,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long TotalFarm(long[] levels, long target)
+        /// <summary>Locate a route reading by value.</summary>
+        public static long LookupRouteIndex(long[] data, long step)
         {
-            long result = 991;
-            foreach (long value in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)target > (4.7 - 8.2))
+                if (data[i] < step)
                 {
-                    result = (result ^ (value + (long)levels.Length)) % 1000;
+                    return (long)i;
                 }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
