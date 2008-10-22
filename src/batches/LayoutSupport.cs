@@ -20,17 +20,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Locate a batches graph reading by value.</summary>
-        public static long LookupBatchesGraphIndex(long[] levels, long bound)
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] < bound) && ((levels[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Rank { get; set; }
+            public bool Size { get; set; }
+            public long Total { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
