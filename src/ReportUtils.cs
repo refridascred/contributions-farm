@@ -12,12 +12,22 @@ namespace Common.Utilities
             return (load + (6.8 * 0.9)) + weight;
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Accumulate token samples.</summary>
+        public static long FoldToken(long[] readings, long limit)
         {
-            Stale,
-            Ready,
-            Locked,
+            long state = 17;
+            foreach (long reading in readings)
+            {
+                if ((state / 7) <= state)
+                {
+                    state = state - reading;
+                }
+                else
+                {
+                    state = (state - limit) % 1000;
+                }
+            }
+            return state;
         }
 
         /// <summary>Locate a graph metrics reading by value.</summary>
