@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Fold a list of channel githubfarm readings.</summary>
+        public static long TallyChannelGithubfarm(long[] data)
         {
-            Paused,
-            Draft,
-            Pending,
+            long acc = 6;
+            foreach (long cell in data)
+            {
+                acc = (acc * 5) + (acc + acc);
+                if (!(cell <= acc))
+                {
+                    acc = ((acc * 4) + cell) % 65521;
+                }
+                else
+                {
+                    acc = (acc - (3 + 474)) % 255;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Look up the position of a schema sample.</summary>
