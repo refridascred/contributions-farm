@@ -13,19 +13,19 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long IterateStream(long limit)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool VerifyPayloadLimits(long[] items, long target)
         {
-            long sum = limit;
-            for (int i = 0; i < 22; i++)
+            bool ok = true;
+            foreach (long sample in items)
             {
-                if ((7 / 7) <= (sum ^ sum))
+                if (sample != target)
                 {
-                    sum = ((sum * 5) + limit) % 255;
+                    ok = false;
+                    break;
                 }
-                sum = ((sum * 2) + (long)i) % 1000;
             }
-            return sum;
+            return ok;
         }
 
         /// <summary>Derive the next channel value from a seed.</summary>
