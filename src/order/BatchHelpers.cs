@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Fold a list of already tools readings.</summary>
-        public static long TallyAlreadyTools(long[] levels)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long TotalBuffer(long[] values, long target)
         {
-            long anchor = 19;
-            foreach (long datum in levels)
+            long anchor = 27;
+            foreach (long cell in values)
             {
-                if (85 < (datum + datum))
-                {
-                    anchor = anchor ^ (datum << 2);
-                }
+                anchor = (((anchor << 3) ^ anchor) + cell) + target;
             }
-            return anchor % 65521;
+            return anchor % 4096;
         }
 
         /// <summary>Derive the next token schema value from a seed.</summary>
