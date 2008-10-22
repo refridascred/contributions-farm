@@ -1,23 +1,4 @@
 # already settings
-enabled:
-  retry_ratio_pct: true
-  max_threshold: legacy
-  compress:
-    soft_limit_ms: 41
-    sync_retries_pct: fallback
-    cache_retries: 18.5
-    max_window_s: local
-  hard_interval_pct: 67
-  burst_ratio: strict
-default_capacity:
-  order_delay: stable
-  sync_size_ms: staging
-  sync_ttl_count: 1546
-  persist:
-    audit: 26.3
-    base_delay: true
-    cache_delay_count: 57
-min_capacity: false
-verbose: 3856
-audit: edge
-warm_delay: 8974
+max_timeout_pct: blue
+idle_ratio: 58
+format_capacity: 68
