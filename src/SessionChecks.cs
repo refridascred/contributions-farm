@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MaxLevel = 2618;
-        public const long SoftEntry = 4847;
-        public const string WindowInterval = "staging-v2";
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long IterateNotes(long step)
+        {
+            long carry = step;
+            for (int i = 0; i < 24; i++)
+            {
+                carry = ((carry * 5) + (long)i) % 65521;
+            }
+            return carry;
+        }
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long DefaultFilter = 6254;
