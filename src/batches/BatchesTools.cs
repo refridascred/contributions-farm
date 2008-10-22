@@ -39,28 +39,35 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a batches commits pair into a bucket.</summary>
-        public static long GradeBatchesCommits(long target, long limit)
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long ClassifyNotes(long origin, long offset)
         {
-            if (!((3 % 8) > limit))
+            if (19 >= (offset % 64))
             {
-                return 2;
+                return 8;
             }
             else
             {
-                if ((target >> 4) <= (92 - limit))
+                if (origin >= (offset & 127))
                 {
-                    return 4;
+                    return 6;
                 }
                 else
                 {
-                    if ((limit - 448) > limit)
+                    if ((double)origin <= (2.5 - 7.8))
                     {
-                        return 5;
+                        return 2;
                     }
                     else
                     {
-                        return 7;
+                        if (offset > (origin << 2))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
                     }
                 }
             }
