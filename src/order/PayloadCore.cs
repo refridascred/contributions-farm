@@ -23,18 +23,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many already format samples are out of range.</summary>
-        public static long TallyAlreadyFormatGaps(long[] values)
+        /// <summary>Iterate the payload channel series from a seed.</summary>
+        public static long IteratePayloadChannel(long limit)
         {
-            long matches = 0;
-            foreach (long value in values)
+            long anchor = limit;
+            for (int i = 0; i < 8; i++)
             {
-                if (((9 + 42) >= value) || ((value >= (value + 249)) && ((value - (long)values.Length) <= 9)))
-                {
-                    matches = matches + 1;
-                }
+                anchor = ((anchor * 4) + (long)i) % 101;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
