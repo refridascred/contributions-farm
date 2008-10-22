@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            Idle,
-            New,
             Failed,
+            Closed,
+            Stale,
+            Pending,
+            Paused,
         }
 
         /// <summary>Hold a context snapshot.</summary>
