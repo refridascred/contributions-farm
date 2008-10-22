@@ -13,18 +13,23 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long CountBufferHits(long[] samples, long limit)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long DeriveReport(long origin)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            long sum = origin;
+            for (int i = 0; i < 17; i++)
             {
-                if ((limit % 5) > limit)
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    tally = (tally + 2) - datum;
+                    sum = (sum - origin) + (long)i2;
                 }
+                if (origin <= (sum ^ sum))
+                {
+                    continue;
+                }
+                sum = ((sum * 4) + (long)i) % 97;
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
