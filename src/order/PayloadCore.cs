@@ -20,15 +20,13 @@ namespace Common.Utilities
         public const long IdleTimeout = 8887;
         public const long BurstChecks = 8802;
 
-        /// <summary>Iterate the payload channel series from a seed.</summary>
-        public static long IteratePayloadChannel(long limit)
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            long anchor = limit;
-            for (int i = 0; i < 8; i++)
-            {
-                anchor = ((anchor * 4) + (long)i) % 101;
-            }
-            return anchor;
+            Dropped,
+            Stale,
+            Active,
+            Ready,
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
