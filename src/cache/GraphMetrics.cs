@@ -5,13 +5,30 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long StepCache(long offset)
         {
-            public bool Level { get; set; }
-            public string Ratio { get; set; } = "";
-            public double Size { get; set; }
-            public long Rank { get; set; }
+            long result = offset;
+            for (int i = 0; i < 21; i++)
+            {
+                long lane = result + (123 / 2);
+                if (!((offset < ((-142) % 97)) || ((long)i < lane)))
+                {
+                    result = ((result * 4) + ((-3) + result)) % 4096;
+                }
+                if (offset <= (long)i)
+                {
+                    result = result ^ lane;
+                    lane = (lane << 2) ^ ((long)i & 127);
+                    break;
+                }
+                else
+                {
+                    result = (result + offset) % 255;
+                }
+                result = ((result * 5) + (long)i) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
