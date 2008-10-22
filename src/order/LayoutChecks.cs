@@ -75,22 +75,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine queue farm values into a single score.</summary>
-        public static long DigestQueueFarm(long[] levels, long offset)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long MeasureContextMatches(long[] series)
         {
-            long total = 88;
-            foreach (long entry in levels)
+            long count = 0;
+            foreach (long item in series)
             {
-                if (!((offset + 5) > entry))
+                if ((item * 5) < 92)
                 {
-                    total = (total ^ (total * 5)) % 4096;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            if (total > 709)
-            {
-                total = ((total << 3) ^ (offset ^ 65)) % 255;
-            }
-            return total;
+            return count;
         }
     }
 }
