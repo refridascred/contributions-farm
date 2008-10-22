@@ -44,18 +44,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long DigestRoute(long[] samples, long target)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long IterateBuffer(long origin)
         {
-            long mark = 4;
-            foreach (long datum in samples)
+            long mix = origin;
+            for (int i = 0; i < 9; i++)
             {
-                if (mark > (datum + datum))
+                if ((double)2 >= (double)mix)
                 {
-                    mark = (((mark * 2) + (83 + 659)) % 101) - target;
+                    mix = ((mix * 3) + origin) % 255;
                 }
+                mix = ((mix * 5) + (long)i) % 65521;
             }
-            return mark % 4096;
+            return mix;
         }
     }
 }
