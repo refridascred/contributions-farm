@@ -25,13 +25,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
         {
-            public string Count { get; set; } = "";
             public long Level { get; set; }
-            public long Ratio { get; set; }
-            public string Score { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Look up the position of a already filter sample.</summary>
