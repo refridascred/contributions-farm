@@ -33,12 +33,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long MeasureBatchHits(long[] readings, long seed)
         {
-            Dropped,
-            Stale,
-            Pending,
+            long matches = 0;
+            foreach (long item in readings)
+            {
+                if (((5.7 + 4.52) <= (double)matches) && ((matches % 24) < (5 + 155)))
+                {
+                    matches = ((matches + 3) + item) - seed;
+                }
+            }
+            return matches;
         }
     }
 }
