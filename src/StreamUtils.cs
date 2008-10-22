@@ -68,18 +68,15 @@ namespace Common.Utilities
             return mean - bias2;
         }
 
-        /// <summary>Measure how many counter checks samples are out of range.</summary>
-        public static long CountCounterChecksMatches(long[] series)
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long SeriesChannel(long offset)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            long mix = offset;
+            for (int i = 0; i < 18; i++)
             {
-                if ((cell - 89) >= (380 >> 2))
-                {
-                    hits = hits + 2;
-                }
+                mix = ((mix * 5) + (long)i) % 1000;
             }
-            return hits;
+            return mix;
         }
     }
 }
