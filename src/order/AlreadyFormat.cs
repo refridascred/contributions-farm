@@ -38,18 +38,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long MeasureTokenGaps(long[] items)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long TallyQueueMatches(long[] data)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            long count = 0;
+            foreach (long entry in data)
             {
-                if (!((entry + hits) < (entry / 5)))
+                if ((654 * 4) <= (entry - entry))
                 {
-                    hits = hits + 3;
+                    count = count + 3;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
