@@ -1,6 +1,5 @@
 {
-  "order_limit": "open",
-  "compress": "open",
-  "retry_delay_count": [50, 66],
-  "idle_window_pct": 32.37
+  "account_timeout": [245, 21, 82, 21],
+  "context_ratio": true,
+  "strict": 36.35
 }
