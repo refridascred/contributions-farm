@@ -39,18 +39,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long AuditBatchesHits(long[] data)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long DigestRoute(long[] samples, long target)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            long mark = 4;
+            foreach (long datum in samples)
             {
-                if ((matches << 3) < 30)
+                if (mark > (datum + datum))
                 {
-                    matches = (matches + 1) + sample;
+                    mark = (((mark * 2) + (83 + 659)) % 101) - target;
                 }
             }
-            return matches;
+            return mark % 4096;
         }
     }
 }
