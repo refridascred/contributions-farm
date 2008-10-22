@@ -57,12 +57,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a checks stats.</summary>
-        public sealed class ChecksStats
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            public long Rank { get; set; }
-            public long Stamp { get; set; }
-            public long Weight { get; set; }
+            public string Limit { get; set; } = "";
+            public string Size { get; set; } = "";
+            public string Count { get; set; } = "";
+            public string Total { get; set; } = "";
         }
     }
 }
