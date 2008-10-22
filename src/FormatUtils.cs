@@ -49,18 +49,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long MeasureBatchHits(long[] readings)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long TallyRouteOutliers(long[] readings)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                if (seen < ((-52) * 4))
+                if ((datum - datum) >= (hits + datum))
                 {
-                    seen = (seen + 2) + entry;
+                    hits = hits + 3;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
