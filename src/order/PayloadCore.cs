@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Roll a already counter forward.</summary>
-        public static long IterateAlready(long seed)
-        {
-            long sum = seed;
-            for (int i = 0; i < 10; i++)
-            {
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    sum = (sum + (seed ^ seed)) ^ (long)i2;
-                }
-                sum = ((sum * 3) + (long)i) % 97;
-            }
-            return sum;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double MaxCache = 17.53;
+        public const long MaxFactor = 4632;
+        public const double IdleCache = 25.63;
+        public const double WindowScore = 0.49;
 
         /// <summary>Iterate the farm series from a seed.</summary>
         public static long RollFarm(long limit)
