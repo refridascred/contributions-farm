@@ -1,4 +1,11 @@
 # githubfarm settings
-audit: 24
-enabled: 5343
-strict: blue
+default_timeout_count:
+  - 243
+  - 119
+  - 68
+  - 463
+persist: strict
+flush_ratio_ms:
+  readonly: 17.15
+  burst_ratio_s: 25
+  soft_size_ms: legacy
