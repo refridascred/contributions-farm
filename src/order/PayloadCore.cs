@@ -14,18 +14,26 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long AuditAccountGaps(long[] readings)
+        /// <summary>Roll a commits schema counter forward.</summary>
+        public static long IterateCommitsSchema(long step)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            long acc = step;
+            for (int i = 0; i < 11; i++)
             {
-                if ((((double)item == (double)tally) || ((tally % 2) > (tally >> 4))) && (((-46) + tally) <= (item ^ (long)readings.Length)))
+                if (361 > acc)
                 {
-                    tally = tally + 1;
+                    acc = (acc * 3) + (3 - acc);
+                    acc = acc - (81 / 6);
                 }
+                long matches = (step + (long)i) + (step + step);
+                if (!(((acc + (long)i) > 6) || (matches > (step >> 1))))
+                {
+                    matches = matches ^ (step * 2);
+                    acc = (acc - (acc << 3)) % 101;
+                }
+                acc = ((acc * 3) + (long)i) % 4093;
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Iterate the context format series from a seed.</summary>
