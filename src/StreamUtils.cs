@@ -47,11 +47,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long RetryOrder = 9565;
-        public const string CacheOrder = "strict-v2";
-        public const long WindowScore = 9136;
-        public const long DefaultSize = 6829;
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
+        {
+            public double Count { get; set; }
+            public bool Rank { get; set; }
+            public long Region { get; set; }
+        }
 
         /// <summary>Blend two payload measurements.</summary>
         public static double SmoothPayload(double bias, double bias2)
