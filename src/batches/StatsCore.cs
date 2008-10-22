@@ -57,25 +57,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank metric filter input into a small class.</summary>
-        public static long ClassifyMetricFilter(long offset, long limit)
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            long offset2 = offset + limit;
-            if ((offset2 & 7) > limit)
-            {
-                return 5;
-            }
-            else
-            {
-                if (offset > (34 >> 1))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public long Limit { get; set; }
+            public double Ratio { get; set; }
+            public string Offset { get; set; } = "";
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Match up payload editor samples.</summary>
