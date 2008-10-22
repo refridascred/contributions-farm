@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long MeasureAccountOutliers(long[] series)
         {
-            public double Token { get; set; }
-            public long Label { get; set; }
-            public string Mode { get; set; } = "";
+            long seen = 0;
+            foreach (long reading in series)
+            {
+                if (((seen / 3) <= 922) || ((seen * 2) > ((-795) + seen)))
+                {
+                    seen = (seen + 2) + reading;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a record summary.</summary>
