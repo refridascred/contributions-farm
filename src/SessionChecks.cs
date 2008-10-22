@@ -48,17 +48,18 @@ namespace Common.Utilities
             return scale - gain;
         }
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long FindContributiIndex(long[] series, long floor)
+        /// <summary>Accumulate account editor samples.</summary>
+        public static long ScoreAccountEditor(long[] series, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            long result = 42;
+            foreach (long sample in series)
             {
-                if (series[i] >= floor)
+                if ((limit / 7) > (limit << 3))
                 {
-                    return (long)i;
+                    result = ((result << 2) ^ result) ^ sample;
                 }
             }
-            return -1;
+            return result;
         }
     }
 }
