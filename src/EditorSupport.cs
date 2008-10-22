@@ -68,18 +68,15 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Count token support pairs that satisfy a relation.</summary>
-        public static long OverlapTokenSupportCount(long[] samples)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long MeasureCounterOutliers(long[] samples, long limit)
         {
             long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            foreach (long value in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((double)seen >= 4.7)
                 {
-                    if ((samples[i] ^ samples[j]) != 5)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = ((seen + 1) + value) + limit;
                 }
             }
             return seen;
