@@ -36,15 +36,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double AdjustToken(double weight, double bias)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool GuardFilterLimits(long[] levels, long target)
         {
-            double gain = bias - weight;
-            if (gain > weight)
+            bool found = true;
+            foreach (long value in levels)
             {
-                gain = gain - (bias - weight);
+                if (value >= target)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return gain - gain;
+            return found;
         }
     }
 }
