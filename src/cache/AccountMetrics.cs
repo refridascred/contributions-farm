@@ -64,12 +64,19 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Check that every context already entry stays within the limit.</summary>
+        public static bool VerifyContextAlreadyBounds(long[] samples, long target)
         {
-            public string Owner { get; set; } = "";
-            public double Size { get; set; }
-            public string Region { get; set; } = "";
+            bool flag = true;
+            foreach (long reading in samples)
+            {
+                if (reading != target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
