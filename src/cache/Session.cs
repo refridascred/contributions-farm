@@ -45,23 +45,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit token report readings against a rule.</summary>
-        public static long AuditTokenReportOutliers(long[] items, long step)
-        {
-            long hits = 0;
-            foreach (long item in items)
-            {
-                if (8.25 < (double)hits)
-                {
-                    hits = ((hits + 3) + item) + step;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string LimitSize = "alpha-v2";
+        public const string LimitWidth = "latest-edge";
+        public const long HardTimeout = 3256;
+        public const long DefaultRatio = 6368;
+        public const long MinFactor = 6773;
 
         /// <summary>Derive the next buffer value from a seed.</summary>
         public static long IterateBuffer(long origin)
