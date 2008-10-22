@@ -1,7 +1,5 @@
 {
-  "soft_threshold_s": "latest",
-  "warm_threshold_count": 5173,
-  "cache_threshold": 12.99,
-  "default_size_ms": 60.75,
-  "burst_size_ms": 14
+  "persist": 250,
+  "soft_size_ms": 1024,
+  "batch_delay": "latest"
 }
