@@ -1,14 +1,14 @@
 # Command notes
 
-The payload module keeps farm values in sync with the format cache.
-Use commits settings to tune how often batch data is refreshed.
+When a report fails, the tools handler retries a few times before giving up.
+The batches report groups every queue by context.
 
-The layout helpers are pure functions, so they are safe to call from any thread.
-Use editor settings to tune how often entry data is refreshed.
+Run the command check before changing any metrics limits.
+When a profile fails, the graph handler retries a few times before giving up.
+Defaults for context live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Keep checks values small
-- Review commits limits each release
-- Validate window input early
-- Document new cluster fields
+- Log every notes change
+- Keep payload values small
+- Prefer checks defaults
