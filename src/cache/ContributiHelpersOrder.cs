@@ -22,23 +22,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a command reading.</summary>
-        public static double ProjectCommand(double weight, double offset)
+        /// <summary>Locate a batch notes reading by value.</summary>
+        public static long FindBatchNotesIndex(long[] data, long bound)
         {
-            double gain = weight;
-            if (gain < gain)
+            for (int i = 0; i < data.Length; i++)
             {
-                gain = gain - weight;
+                if ((data[i] >= bound) && ((data[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                gain = gain - offset;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                gain = (gain - (weight - 7.0)) - (double)(long)i;
-            }
-            return gain + gain;
+            return -1;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
