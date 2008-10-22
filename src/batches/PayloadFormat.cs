@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long MinOrder = 1002;
-        public const long IdleOrder = 2127;
-        public const double MaxOrder = 78.39;
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
+        {
+            public long Offset { get; set; }
+            public bool Size { get; set; }
+            public string Count { get; set; } = "";
+        }
 
         /// <summary>Combine graph values into a single score.</summary>
         public static long TotalGraph(long[] levels)
