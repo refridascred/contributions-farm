@@ -29,23 +29,15 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Digest a series of stats githubfarm entries.</summary>
-        public static long WeighStatsGithubfarm(long[] data)
+        /// <summary>Project the next token value.</summary>
+        public static double ProjectToken(double gain, double offset)
         {
-            long acc = 9;
-            foreach (long datum in data)
+            double scale = offset;
+            if (scale > (gain / 9.0))
             {
-                acc = acc + 8;
-                if ((7 ^ acc) > (datum % 2))
-                {
-                    acc = (acc - (datum - datum)) % 255;
-                }
-                else
-                {
-                    acc = (acc + (632 + 2)) % 97;
-                }
+                scale = scale + (offset * 9.0);
             }
-            return acc;
+            return scale - gain;
         }
 
         /// <summary>Hold a commits info.</summary>
