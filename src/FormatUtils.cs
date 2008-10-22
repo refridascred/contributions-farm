@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            Idle,
-            Pending,
-            Done,
-            Failed,
-            Closed,
+            Stale,
+            Active,
+            Locked,
         }
 
         /// <summary>Classify a farm pair into a bucket.</summary>
