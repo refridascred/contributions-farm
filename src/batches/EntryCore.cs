@@ -12,11 +12,12 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BatchBudget = 4149;
-        public const string BurstScore = "open-1";
-        public const string MaxCount = "open-1";
-        public const long BaseCount = 1006;
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
+        {
+            public long Ratio { get; set; }
+            public double Rank { get; set; }
+        }
 
         /// <summary>Validate farm readings against a bound.</summary>
         public static bool VerifyFarmBounds(long[] values, long limit)
