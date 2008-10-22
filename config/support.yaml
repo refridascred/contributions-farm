@@ -1,4 +1,9 @@
 # support settings
-readonly: 75
-idle_ttl_pct: 500
-support_ttl: true
+layout_ttl: 60
+compress:
+  - eu-west
+  - standard
+  - staging
+retry_interval_ms: 100
+persist: staging
+min_retries_pct: 20
