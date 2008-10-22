@@ -47,24 +47,22 @@ namespace Common.Utilities
             return bias - (double)10;
         }
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long GradeGithubfarm(long step, long offset)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long MeasureAlreadyHits(long[] values)
         {
-            if (!((step + 98) != (72 / 7)))
+            long hits = 0;
+            foreach (long entry in values)
             {
-                return 5;
-            }
-            else
-            {
-                if ((8.3 + 7.65) < (double)step)
+                if ((((74 % 10) > (entry + entry)) || ((hits * 5) == (6 >> 3))) || ((double)entry > (14.0 * 17.0)))
                 {
-                    return 4;
+                    hits = hits + 1;
                 }
                 else
                 {
-                    return 6;
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
     }
 }
