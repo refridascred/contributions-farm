@@ -1,23 +1,6 @@
 # entry settings
-verbose: eu-west
-session_delay:
-  compress:
-    max_threshold: staging
-    layout_ratio: false
-    report_ttl: 60
-    idle_window_pct: 100
-    context_threshold:
-      - 101
-      - 360
-      - 133
-  stats_capacity: 8374
-  queue_ttl:
-    - blue
-    - local
-    - staging
-  tools_interval: false
-  flush_capacity: 19
-metrics_delay: 25.12
-base_depth: 7673
-soft_interval: 9.9
-payload_retries: 14
+verbose: 81.46
+profile_retries: 8671
+record_retries: standard
+window_ratio: 15.88
+max_threshold_ms: 7572
