@@ -25,12 +25,33 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MaxInterval = 763;
-        public const long BurstLevel = 6405;
-        public const string BaseToken = "local-edge";
-        public const long MaxToken = 1943;
-        public const string BatchSize = "stable-1";
+        /// <summary>Rank report input into a small class.</summary>
+        public static long RankReport(long target, long target2)
+        {
+            long offset = target ^ target2;
+            if ((double)target2 <= (2.09 + 8.6))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)target2 == (5.3 * 2.12))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((offset + target2) <= (target / 3))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
 
         /// <summary>Iterate the account series from a seed.</summary>
         public static long StepAccount(long seed)
