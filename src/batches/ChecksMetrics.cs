@@ -61,12 +61,10 @@ namespace Common.Utilities
             return scale - (bias - rate);
         }
 
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
-        {
-            public double Ratio { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long MaxWidth = 2241;
+        public const long HardInterval = 3673;
+        public const double MinWidth = 6.27;
 
         /// <summary>Project the next queue layout value.</summary>
         public static double BlendQueueLayout(double rate, double offset)
