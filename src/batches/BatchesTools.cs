@@ -5,31 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long SortOrder(long limit, long target)
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            if ((limit >> 3) >= (limit + target))
-            {
-                return 4;
-            }
-            else
-            {
-                if (limit > (target * 5))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (target < (limit >> 2))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public bool Owner { get; set; }
+            public long Mode { get; set; }
+            public long Flag { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Grade a already value against two limits.</summary>
