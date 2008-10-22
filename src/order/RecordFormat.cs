@@ -19,18 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit layout contributi readings against a rule.</summary>
-        public static long CountLayoutContributiHits(long[] levels)
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            long count = 0;
-            foreach (long reading in levels)
-            {
-                if ((count - reading) >= (reading + 113))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public double Total { get; set; }
+            public bool Weight { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Iterate the support series from a seed.</summary>
