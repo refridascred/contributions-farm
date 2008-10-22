@@ -70,13 +70,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            public bool Stamp { get; set; }
-            public long Flag { get; set; }
-            public bool Count { get; set; }
-            public double Mode { get; set; }
+            Paused,
+            Done,
+            Locked,
         }
 
         /// <summary>Combine batch values into a single score.</summary>
