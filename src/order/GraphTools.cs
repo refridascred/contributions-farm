@@ -19,25 +19,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long SortEntry(long step, long seed)
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long FindMetricIndex(long[] levels, long seed)
         {
-            long span = step - seed;
-            if ((13.0 - 7.0) != (double)step)
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((span - step) <= span)
+                if (levels[i] >= seed)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Compare every pair of counter tools readings.</summary>
