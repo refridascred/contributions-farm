@@ -18,17 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long LocateGithubfarmIndex(long[] samples, long bound)
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] == bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Locked,
+            Dropped,
+            Active,
+            Draft,
+            Paused,
         }
 
         /// <summary>Define stats limits and defaults.</summary>
