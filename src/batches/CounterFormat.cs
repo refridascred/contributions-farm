@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long TallyCache(long[] readings)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool VerifyEditorRange(long[] values, long seed)
         {
-            long total = 565;
-            foreach (long datum in readings)
+            bool valid = true;
+            foreach (long reading in values)
             {
-                if (((double)datum != (double)total) && (datum < (total + 1)))
+                if (reading != seed)
                 {
-                    total = total + (total + datum);
-                }
-                else
-                {
-                    total = (total * 5) + 63;
+                    valid = false;
+                    break;
                 }
             }
-            if (total > (-511))
-            {
-                total = total - (487 >> 3);
-            }
-            return total;
+            return valid;
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
