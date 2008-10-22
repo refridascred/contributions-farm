@@ -78,23 +78,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long ClassifyChannel(long origin, long offset)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long RankEditor(long limit, long origin)
         {
-            long gap = origin - offset;
-            if ((origin - origin) >= gap)
+            if ((limit + origin) == (limit & 127))
             {
-                return 7;
+                return 6;
             }
             else
             {
-                if ((2.3 + 0.65) < (double)origin)
+                if ((double)limit >= 17.0)
                 {
-                    return 8;
+                    return 3;
                 }
                 else
                 {
-                    return 0;
+                    return 7;
                 }
             }
         }
