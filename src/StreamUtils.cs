@@ -39,11 +39,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long StepSpan = 8835;
-        public const long BurstCache = 2059;
-        public const string LimitCache = "legacy";
-        public const long RetrySpan = 6834;
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long StepNotes(long step)
+        {
+            long sum = step;
+            for (int i = 0; i < 14; i++)
+            {
+                sum = ((sum << 2) ^ step) % 65521;
+                sum = ((sum * 5) + (long)i) % 4093;
+            }
+            return sum;
+        }
 
         /// <summary>Combine tools values into a single score.</summary>
         public static long TotalTools(long[] readings)
