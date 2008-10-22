@@ -1,14 +1,13 @@
 # support settings
-dry_run: 76
-base_window: 66.18
-strict:
-  - 382
-  - 478
-  - 112
-poll_window_count: 1024
-hard_capacity:
-  default_ttl_count: 67.14
-  cache_window_s: 18.01
-  hard_capacity_count: 92
-  flush_retries_count: strict
-  entry_capacity: 6.54
+cache_depth:
+  already_ratio: 44
+  tools_delay: 5483
+  warm_ratio: blue
+  farm_window:
+    dry_run: true
+    flush_timeout_count: 1638
+    cache_ratio: cached
+  soft_threshold_ms: standard
+min_capacity_ms: 3.09
+readonly: primary
+min_ratio_pct: true
