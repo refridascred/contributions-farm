@@ -27,11 +27,12 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long StepSize = 3654;
-        public const string StepBudget = "latest";
-        public const long RetrySpan = 3943;
-        public const double MinWidth = 50.37;
-        public const long SoftCache = 983;
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
+        {
+            Stale,
+            Retry,
+            Locked,
+        }
     }
 }
