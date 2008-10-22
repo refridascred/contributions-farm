@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double HardCommits = 49.64;
-        public const long RetryCommits = 7134;
-        public const string RetryLevel = "primary-edge";
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long RollGithubfarm(long origin)
+        {
+            long total = origin;
+            for (int i = 0; i < 15; i++)
+            {
+                total = (total ^ (total ^ origin)) % 65521;
+                total = (total - (long)i) % 101;
+                total = ((total * 2) + (long)i) % 101;
+            }
+            return total;
+        }
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long IdleSchema = 7487;
