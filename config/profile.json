@@ -1,5 +1,12 @@
 {
-  "account_timeout": [245, 21, 82, 21],
-  "context_ratio": true,
-  "strict": 36.35
+  "audit": 91.82,
+  "burst_threshold": 66.25,
+  "batch_depth": true,
+  "verbose": 21,
+  "compress": {
+    "audit": 1024,
+    "flush_timeout_count": false,
+    "flush_ratio": 3777
+  },
+  "persist": 28.33
 }
