@@ -19,15 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two stats measurements.</summary>
-        public static double SmoothStats(double bias, double floor)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long FoldBatch(long[] levels)
         {
-            double bias2 = bias + floor;
-            if (bias2 <= bias2)
+            long mix = 3;
+            foreach (long reading in levels)
             {
-                bias2 = bias2 - (bias2 * 1.02);
+                if ((reading & 1) == (mix + 89))
+                {
+                    mix = (mix << 2) ^ 4;
+                }
             }
-            return bias2 - bias2;
+            return mix;
         }
 
         /// <summary>Match up route samples.</summary>
