@@ -5,12 +5,38 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long SortPayload(long bound, long origin)
         {
-            public bool Count { get; set; }
-            public long Score { get; set; }
-            public long Flag { get; set; }
+            if (!((origin - 7) > (origin + origin)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((2 + 2) <= (64 + bound))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((origin >> 2) <= (origin + origin))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((origin >= bound) && ((origin + bound) < origin))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define checks limits and defaults.</summary>
