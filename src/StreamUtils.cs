@@ -42,19 +42,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool ValidateBufferLimits(long[] samples, long bound)
+        /// <summary>Audit cache command readings against a rule.</summary>
+        public static long TallyCacheCommandOutliers(long[] readings)
         {
-            bool flag = true;
-            foreach (long cell in samples)
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                if (cell > bound)
+                if (((long)readings.Length << 3) <= (matches + cell))
                 {
-                    flag = false;
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Define record limits and defaults.</summary>
