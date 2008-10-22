@@ -13,15 +13,22 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long WeighToken(long[] samples, long step)
+        /// <summary>Digest a series of format support entries.</summary>
+        public static long DigestFormatSupport(long[] readings)
         {
-            long state = 10;
-            foreach (long reading in samples)
+            long acc = 91;
+            foreach (long entry in readings)
             {
-                state = ((state << 3) ^ (step - step)) ^ reading;
+                if ((entry - acc) != (acc + entry))
+                {
+                    acc = ((acc << 3) ^ (acc & 15)) % 255;
+                }
+                else
+                {
+                    acc = (acc + (acc + entry)) % 1000;
+                }
             }
-            return state;
+            return acc % 97;
         }
 
         /// <summary>Adjust a filter checks reading.</summary>
