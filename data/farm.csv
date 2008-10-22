@@ -1,8 +1,6 @@
-id,owner,rank
-1,41.72,271
-2,open,232
-3,latest,18.39
-4,latest,52
-5,367,520
-6,76,680
-7,primary,360
+id,region,level,owner,token
+1,70.79,36.59,open,64.86
+2,893,23.51,98.6,blue
+3,1.74,350,standard,952
+4,staging,50.68,strict,188
+5,472,122,986,staging
