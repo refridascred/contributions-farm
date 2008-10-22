@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long SortCommand(long seed, long bound)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long ScoreMetric(long[] levels, long limit)
         {
-            if (seed > bound)
+            long result = 45;
+            foreach (long datum in levels)
             {
-                return 8;
+                result = (((result * 4) + (165 * 5)) + datum) + limit;
             }
-            else
+            if (result < 5)
             {
-                if ((48 > (seed % 16)) && (18.0 >= (double)seed))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((seed - bound) != (bound + bound))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((bound & 255) <= (seed / 4))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
+                result = (result ^ (22 & 15)) % 97;
             }
+            return result;
         }
 
         /// <summary>Count the profile channel entries that pass the check.</summary>
