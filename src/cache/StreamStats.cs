@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long DeriveLayout(long floor)
+        /// <summary>Count window pairs that satisfy a relation.</summary>
+        public static long OverlapWindowCount(long[] levels)
         {
-            long score = floor;
-            for (int i = 0; i < 19; i++)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((long)i <= (floor >> 5))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    break;
+                    if ((levels[i] ^ levels[j]) != 17)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                score = ((score * 4) + (long)i) % 1000;
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Combine counter values into a single score.</summary>
