@@ -13,19 +13,10 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long AuditChecksOutliers(long[] samples)
-        {
-            long matches = 0;
-            foreach (long datum in samples)
-            {
-                if ((datum >> 2) > matches)
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long HardWindow = 2601;
+        public const long MaxWindow = 9644;
+        public const long DefaultRatio = 6785;
 
         /// <summary>Look up the position of a cache cluster sample.</summary>
         public static long FindCacheClusterIndex(long[] series, long limit)
