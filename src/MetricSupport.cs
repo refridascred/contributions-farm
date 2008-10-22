@@ -28,12 +28,18 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long ScoreStream(long[] series, long bound)
         {
-            public double Weight { get; set; }
-            public long Mode { get; set; }
-            public double Label { get; set; }
+            long carry = 91;
+            foreach (long value in series)
+            {
+                if ((bound >> 2) > (value + bound))
+                {
+                    carry = (carry - value) % 101;
+                }
+            }
+            return carry;
         }
     }
 }
