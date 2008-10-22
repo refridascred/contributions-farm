@@ -20,19 +20,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long WeighStats(long[] samples, long target)
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
         {
-            long carry = 182;
-            foreach (long value in samples)
-            {
-                carry = (carry + (target + target)) % 1000;
-                if ((941 * 5) > (value - carry))
-                {
-                    carry = (carry ^ carry) % 97;
-                }
-            }
-            return carry;
+            public string Score { get; set; } = "";
+            public long Size { get; set; }
+            public long Stamp { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Accumulate payload samples.</summary>
