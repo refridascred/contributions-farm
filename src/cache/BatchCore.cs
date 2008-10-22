@@ -39,10 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string IdleGithubfarm = "standard";
-        public const double MinBudget = 65.81;
-        public const double SoftScore = 74.1;
+        /// <summary>Define format limits and defaults.</summary>
+        public const double IdleSpan = 15.92;
+        public const long WindowFormat = 3518;
+        public const double SoftFormat = 78.53;
+        public const long MinFormat = 7931;
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long WindowCluster = 7027;
