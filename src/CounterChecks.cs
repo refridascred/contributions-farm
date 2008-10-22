@@ -74,11 +74,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long DefaultBudget = 2215;
-        public const long WindowSize = 8183;
-        public const long CacheSupport = 842;
-        public const long StepSupport = 5699;
+        /// <summary>Locate a record reading by value.</summary>
+        public static long FindRecordIndex(long[] readings, long limit)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] >= limit) && ((readings[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Grade a farm filter value against two limits.</summary>
         public static long RankFarmFilter(long seed, long floor)
