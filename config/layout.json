@@ -1,27 +1,8 @@
 {
-  "retry_capacity_ms": "latest",
-  "commits_capacity": 87.18,
-  "batches_window": false,
-  "verbose": {
-    "schema_interval": {
-      "flush_delay_s": 19,
-      "burst_retries_count": false,
-      "record_delay": 2,
-      "batch_window_s": 250,
-      "strict": "green",
-      "persist": 235
-    },
-    "farm_retries": "primary",
-    "dry_run": 84.22,
-    "burst_retries": {
-      "compress": 100,
-      "default_ttl_pct": "open",
-      "cluster_ttl": false,
-      "flush_capacity": "green",
-      "warm_limit_count": "blue",
-      "strict": 33.83
-    },
-    "poll_retries": "fallback"
-  },
-  "burst_ttl_ms": 14.25
+  "batch_interval": 60,
+  "stream_delay": false,
+  "sync_window": 359,
+  "soft_interval": 250,
+  "base_window": "cached",
+  "command_threshold": 39
 }
