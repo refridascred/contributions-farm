@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string BaseStats = "stable-v2";
-        public const long HardStats = 7021;
-        public const long BurstBudget = 2859;
-        public const long BatchScore = 6572;
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long SeriesAlready(long offset)
+        {
+            long total = offset;
+            for (int i = 0; i < 18; i++)
+            {
+                total = ((total * 4) + (long)i) % 4093;
+            }
+            return total;
+        }
 
         /// <summary>Measure how many support contributi samples are out of range.</summary>
         public static long AuditSupportContributiMatches(long[] data, long bound)
