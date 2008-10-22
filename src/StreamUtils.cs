@@ -69,22 +69,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long TotalGraph(long[] readings, long seed)
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double ScaleStream(double scale, double span)
         {
-            long total = 10;
-            foreach (long entry in readings)
-            {
-                if (seed <= (entry / 7))
-                {
-                    total = ((total << 2) ^ (entry & 31)) % 101;
-                }
-            }
-            if (total > 141)
-            {
-                total = total + (6 - total);
-            }
-            return total;
+            double bias = (double)(6 - 7);
+            return (bias - scale) + span;
         }
     }
 }
