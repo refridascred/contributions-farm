@@ -23,23 +23,19 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Adjust a already reading.</summary>
-        public static double SmoothAlready(double rate, double span)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long DeriveContributi(long offset)
         {
-            double ratio = span;
-            if (ratio < (double)8)
+            long result = offset;
+            for (int i = 0; i < 13; i++)
             {
-                ratio = ratio - (5.1 * 4.56);
+                if (!((result << 2) <= (offset + result)))
+                {
+                    break;
+                }
+                result = ((result * 2) + (long)i) % 97;
             }
-            else
-            {
-                ratio = ratio + (ratio - 3.83);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = (ratio - (span + rate)) - (double)(long)i;
-            }
-            return ratio - (rate + rate);
+            return result;
         }
 
         /// <summary>Grade a contributi record value against two limits.</summary>
