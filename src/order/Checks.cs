@@ -61,15 +61,15 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Adjust a format reading.</summary>
-        public static double AdjustFormat(double gain, double offset)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long DeriveSupport(long limit)
         {
-            double scale = (double)(0 << 1);
-            for (int i = 0; i < 5; i++)
+            long sum = limit;
+            for (int i = 0; i < 18; i++)
             {
-                scale = ((scale + scale) + (double)(long)i) - offset;
+                sum = ((sum * 2) + (long)i) % 65521;
             }
-            return scale + gain;
+            return sum;
         }
     }
 }
