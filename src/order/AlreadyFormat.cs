@@ -57,30 +57,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long WeighRecord(long[] items)
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            long mark = 65;
-            foreach (long cell in items)
-            {
-                if ((cell / 6) < (mark + mark))
-                {
-                    mark = ((mark * 2) + (5 / 3)) % 97;
-                }
-                if (cell >= 91)
-                {
-                    mark = (mark ^ mark) % 101;
-                }
-                else
-                {
-                    mark = mark + (mark - mark);
-                }
-                if (((mark >> 2) > (cell - mark)) || (mark >= (long)items.Length))
-                {
-                    break;
-                }
-            }
-            return mark % 1000;
+            Locked,
+            Ready,
+            Retry,
+            Stale,
         }
 
         /// <summary>Blend two token measurements.</summary>
