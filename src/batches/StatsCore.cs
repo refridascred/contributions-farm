@@ -92,15 +92,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double ProjectMetrics(double rate, double floor)
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            double gain = rate;
-            if (gain > (2.14 - rate))
-            {
-                gain = gain + gain;
-            }
-            return gain - floor;
+            Retry,
+            Idle,
+            Failed,
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
