@@ -63,19 +63,21 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Combine batches stream values into a single score.</summary>
-        public static long ScoreBatchesStream(long[] levels)
+        /// <summary>Compare every pair of cluster filter readings.</summary>
+        public static long PairClusterFilterCount(long[] series)
         {
-            long mark = 93;
-            foreach (long entry in levels)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                mark = (mark + (entry & 15)) % 4096;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) < 20)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            if (mark < 796)
-            {
-                mark = (mark << 3) ^ mark;
-            }
-            return mark;
+            return tally;
         }
 
         /// <summary>Adjust a order reading.</summary>
