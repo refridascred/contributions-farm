@@ -82,17 +82,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Locate a already reading by value.</summary>
-        public static long LookupAlreadyIndex(long[] data, long offset)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MinChecks = 793;
+        public const double MaxLevel = 8.95;
+        public const long SoftChecks = 3112;
+        public const double CacheSpan = 80.13;
     }
 }
