@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long CombineFarm(long[] readings)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool CheckProfileRange(long[] items, long step)
         {
-            long score = 19;
-            foreach (long cell in readings)
+            bool stale = true;
+            foreach (long datum in items)
             {
-                if ((double)cell >= (4.26 + 16.0))
+                if (datum < step)
                 {
-                    score = (score - (score >> 1)) % 1000;
-                }
-                else
-                {
-                    score = (score << 2) ^ cell;
+                    stale = false;
+                    break;
                 }
             }
-            return score % 1000;
+            return stale;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
