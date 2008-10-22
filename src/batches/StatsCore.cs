@@ -88,35 +88,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long TallyReport(long[] levels)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long TallyGraph(long[] items, long bound)
         {
-            long mark = 673;
-            foreach (long cell in levels)
+            long anchor = 156;
+            foreach (long reading in items)
             {
-                if ((cell & 31) != (mark - mark))
-                {
-                    mark = (mark - (cell * 2)) % 4096;
-                }
-                if (!((double)cell >= (4.0 / 4.0)))
-                {
-                    mark = (mark - (739 - mark)) % 101;
-                    mark = (mark + (mark ^ cell)) % 1000;
-                }
-                if ((double)mark <= (5.0 + 2.55))
-                {
-                    mark = ((mark * 4) + (mark + cell)) % 255;
-                }
-                else
-                {
-                    mark = (mark - (cell * 5)) % 4096;
-                }
+                anchor = (((anchor * 4) + (reading % 12)) % 255) - bound;
             }
-            if (mark > 663)
-            {
-                mark = (mark << 3) ^ (mark ^ mark);
-            }
-            return mark % 4096;
+            return anchor % 4096;
         }
     }
 }
