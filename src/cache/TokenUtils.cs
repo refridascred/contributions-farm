@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long FindBatchesIndex(long[] items, long offset)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long TallyNotesOutliers(long[] data, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long value in data)
             {
-                if ((items[i] <= offset) && ((items[i] % 3) == 0))
+                if (8.59 > (double)offset)
                 {
-                    return (long)i;
+                    count = (count + 1) + value;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Describe the account level values.</summary>
