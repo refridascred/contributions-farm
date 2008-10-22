@@ -20,19 +20,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool ValidateContributiBounds(long[] samples, long seed)
+        /// <summary>Iterate the session schema series from a seed.</summary>
+        public static long DeriveSessionSchema(long limit)
         {
-            bool ready = true;
-            foreach (long entry in samples)
+            long mix = limit;
+            for (int i = 0; i < 9; i++)
             {
-                if (entry > seed)
-                {
-                    ready = false;
-                    break;
-                }
+                mix = ((mix * 3) + (long)i) % 65521;
             }
-            return ready;
+            return mix;
         }
 
         /// <summary>Describe the window state values.</summary>
