@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            public long Count { get; set; }
-            public string Weight { get; set; } = "";
-            public long Mode { get; set; }
+            public long Weight { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Hold a checks info.</summary>
