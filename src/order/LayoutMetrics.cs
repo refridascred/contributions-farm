@@ -19,12 +19,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long IdleSchema = 7487;
-        public const long LimitScore = 7988;
-        public const long MinSchema = 959;
-        public const long LimitSchema = 704;
-        public const string RetrySpan = "alpha-edge";
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long IterateQueue(long bound)
+        {
+            long result = bound;
+            for (int i = 0; i < 6; i++)
+            {
+                if (((4.0 / 3.0) != (double)(long)i) && ((bound >> 4) >= result))
+                {
+                    result = ((result << 2) ^ (47 & 1)) % 65521;
+                }
+                result = ((result * 3) + (long)i) % 4093;
+            }
+            return result;
+        }
 
         /// <summary>Accumulate profile samples.</summary>
         public static long TotalProfile(long[] items)
