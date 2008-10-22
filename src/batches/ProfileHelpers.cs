@@ -61,30 +61,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long BucketBatch(long limit, long bound)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long BucketChannel(long target, long offset)
         {
-            long lane = limit + bound;
-            if ((7.09 * 14.0) == (double)lane)
+            if (2 >= (target + offset))
             {
-                return 2;
+                return 8;
             }
             else
             {
-                if (!((limit * 4) >= (limit ^ bound)))
+                if ((target >> 4) > (target + offset))
                 {
-                    return 6;
+                    return 4;
                 }
                 else
                 {
-                    if (limit > (lane / 8))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    return 5;
                 }
             }
         }
