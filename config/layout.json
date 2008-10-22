@@ -1,14 +1,12 @@
 {
-  "readonly": true,
-  "persist": 57,
-  "batch_capacity_s": "legacy",
-  "max_ratio_count": {
-    "retry_interval_ms": "strict",
-    "batch_delay_s": 1024,
-    "enabled": "stable",
-    "default_timeout": ["strict", "blue", "standard"],
-    "entry_retries": false,
-    "base_depth_s": 9809
+  "base_delay_s": "staging",
+  "batch_size": {
+    "default_window": "blue",
+    "stream_depth": 39.27,
+    "flush_capacity_count": "fallback",
+    "counter_size": 30
   },
-  "hard_window_pct": [335, 467]
+  "base_window": 86.38,
+  "batch_timeout_s": 19.84,
+  "layout_timeout": 31.95
 }
