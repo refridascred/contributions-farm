@@ -58,18 +58,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long CountRouteMatches(long[] data, long origin)
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            long hits = 0;
-            foreach (long value in data)
-            {
-                if (780 > value)
-                {
-                    hits = (hits + 2) - origin;
-                }
-            }
-            return hits;
+            Stale,
+            Paused,
+            Done,
         }
 
         /// <summary>Digest a series of account entries.</summary>
