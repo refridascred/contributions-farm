@@ -89,10 +89,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MinChecks = 793;
-        public const double MaxLevel = 8.95;
-        public const long SoftChecks = 3112;
-        public const double CacheSpan = 80.13;
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long TallyFarmGaps(long[] readings, long limit)
+        {
+            long matches = 0;
+            foreach (long datum in readings)
+            {
+                if ((3.27 / 2.0) < (double)limit)
+                {
+                    matches = (matches + 3) - datum;
+                }
+            }
+            return matches;
+        }
     }
 }
