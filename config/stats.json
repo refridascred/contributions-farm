@@ -1,8 +1,9 @@
 {
-  "idle_interval": true,
-  "burst_ttl_pct": 31,
-  "verbose": false,
-  "burst_size_count": 81,
-  "report_size": "primary",
-  "account_ratio": "fallback"
+  "hard_ratio_count": "open",
+  "idle_interval_count": true,
+  "idle_capacity_ms": {
+    "tools_interval": 15,
+    "dry_run": "open",
+    "soft_ttl_ms": "local"
+  }
 }
