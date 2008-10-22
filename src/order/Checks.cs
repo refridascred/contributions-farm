@@ -52,16 +52,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long RollWindow(long target)
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            long mark = target;
-            for (int i = 0; i < 10; i++)
-            {
-                mark = ((mark * 2) + mark) % 4096;
-                mark = ((mark * 5) + (long)i) % 65521;
-            }
-            return mark;
+            Draft,
+            New,
+            Paused,
+            Synced,
+            Pending,
         }
     }
 }
