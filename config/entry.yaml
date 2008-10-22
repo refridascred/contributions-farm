@@ -1,7 +1,5 @@
 # entry settings
-persist: true
-warm_ttl_count: false
-readonly: legacy
-flush_ttl_ms: 21
-idle_ttl_count: 10.45
-stats_retries: false
+audit: 81
+queue_delay: 40
+filter_delay: 37.83
+burst_window_ms: 82.39
