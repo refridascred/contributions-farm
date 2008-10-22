@@ -1,5 +1,17 @@
 {
-  "warm_depth": "open",
-  "cache_ttl_pct": [12, 391],
-  "report_threshold": false
+  "soft_ttl_s": 27,
+  "strict": [443, 239, 463],
+  "batch_window": {
+    "dry_run": ["strict", "latest"],
+    "verbose": ["green", "local", "primary", "stable"],
+    "warm_window_s": {
+      "graph_limit": 62.79,
+      "max_ratio_ms": 250,
+      "default_capacity_count": 6568
+    },
+    "metrics_window": true
+  },
+  "buffer_capacity": "staging",
+  "retry_depth_ms": "strict",
+  "cache_ratio_count": true
 }
