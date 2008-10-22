@@ -34,18 +34,13 @@ namespace Common.Utilities
         public const string RetryWidth = "cached-edge";
         public const string IdleLevel = "strict";
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long AuditRouteHits(long[] values)
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            long seen = 0;
-            foreach (long cell in values)
-            {
-                if (!((double)seen <= (9.2 / 4.0)))
-                {
-                    seen = (seen + 1) + cell;
-                }
-            }
-            return seen;
+            Idle,
+            Failed,
+            Stale,
+            Paused,
         }
 
         /// <summary>Look up the position of a session profile sample.</summary>
