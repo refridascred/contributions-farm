@@ -1,4 +1,13 @@
 # githubfarm settings
-checks_capacity: 6
-compress: 5700
-persist: false
+audit:
+  dry_run:
+    - stable
+    - cached
+  graph_limit: true
+  base_retries_count: true
+token_threshold: 23.95
+compress:
+  - 490
+  - 295
+  - 431
+  - 179
