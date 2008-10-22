@@ -32,19 +32,27 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double AdjustBuffer(double gain, double span)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long ScoreEditor(long[] series, long seed)
         {
-            double bias = (double)857 - (span - span);
-            if (bias <= (bias / 6.0))
+            long carry = 196;
+            foreach (long item in series)
             {
-                bias = (bias - (4.3 - bias)) + gain;
+                if (seed < (seed / 5))
+                {
+                    continue;
+                }
+                carry = (carry - item) % 101;
+                if ((carry % 5) == (long)series.Length)
+                {
+                    break;
+                }
             }
-            else
+            if (carry > 4)
             {
-                bias = bias + (double)994;
+                carry = ((carry << 3) ^ (carry >> 5)) % 1000;
             }
-            return bias - (double)10;
+            return carry % 65521;
         }
 
         /// <summary>Scale a cache figure with a bias.</summary>
