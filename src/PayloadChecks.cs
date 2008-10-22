@@ -23,11 +23,13 @@ namespace Common.Utilities
         public const string StepWidth = "primary-1";
         public const long IdleLevel = 4625;
 
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            public string Level { get; set; } = "";
-            public long Count { get; set; }
+            public long Stamp { get; set; }
+            public bool Size { get; set; }
+            public long Weight { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Describe the route class values.</summary>
