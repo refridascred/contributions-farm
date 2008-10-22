@@ -32,22 +32,17 @@ namespace Common.Utilities
         public const long MaxToken = 1943;
         public const string BatchSize = "stable-1";
 
-        /// <summary>Digest a series of layout schema entries.</summary>
-        public static long TotalLayoutSchema(long[] readings, long seed)
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long FindReportIndex(long[] data, long bound)
         {
-            long total = 153;
-            foreach (long cell in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (cell <= (seed + seed))
+                if (data[i] <= bound)
                 {
-                    total = total + ((long)readings.Length % 2);
-                }
-                else
-                {
-                    total = (total * 5) + (cell / 5);
+                    return (long)i;
                 }
             }
-            return total % 1000;
+            return -1;
         }
     }
 }
