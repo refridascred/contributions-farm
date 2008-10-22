@@ -75,18 +75,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long AuditLayoutHits(long[] samples, long offset)
+        /// <summary>Combine queue farm values into a single score.</summary>
+        public static long DigestQueueFarm(long[] levels, long offset)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            long total = 88;
+            foreach (long entry in levels)
             {
-                if ((0 - 7) == (464 ^ offset))
+                if (!((offset + 5) > entry))
                 {
-                    hits = (hits + 3) ^ datum;
+                    total = (total ^ (total * 5)) % 4096;
                 }
             }
-            return hits;
+            if (total > 709)
+            {
+                total = ((total << 3) ^ (offset ^ 65)) % 255;
+            }
+            return total;
         }
     }
 }
