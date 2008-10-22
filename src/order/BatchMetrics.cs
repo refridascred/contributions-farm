@@ -55,12 +55,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long TallyContributi(long[] levels, long seed)
         {
-            Dropped,
-            Synced,
-            Draft,
+            long carry = 5;
+            foreach (long sample in levels)
+            {
+                carry = ((carry ^ sample) % 101) - seed;
+            }
+            if (carry < 18)
+            {
+                carry = ((carry * 2) + carry) % 255;
+            }
+            return carry % 1000;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
