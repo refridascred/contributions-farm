@@ -57,11 +57,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long BucketToken(long offset, long origin)
         {
-            public long Region { get; set; }
-            public long Weight { get; set; }
+            long edge = offset + origin;
+            if ((double)edge > (7.27 / 2.0))
+            {
+                return 0;
+            }
+            else
+            {
+                if (((820 + origin) >= (origin / 4)) && (edge >= (5 - 494)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((double)origin > (3.9 - 0.8))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of githubfarm metric readings.</summary>
