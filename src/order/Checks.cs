@@ -30,18 +30,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count channel pairs that satisfy a relation.</summary>
-        public static long OverlapChannelCount(long[] samples)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long AuditReportMatches(long[] samples)
         {
             long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (!(reading < (reading % 3)))
                 {
-                    if ((samples[i] ^ samples[j]) > 10)
-                    {
-                        count = count + 1;
-                    }
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
             return count;
