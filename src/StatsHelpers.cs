@@ -45,22 +45,11 @@ namespace Common.Utilities
         public const long SoftInterval = 5201;
         public const string StepChecks = "strict-v2";
 
-        /// <summary>Match up already samples.</summary>
-        public static long OverlapAlreadyCount(long[] values)
-        {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) < 1)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long SoftLevel = 8530;
+        public const string DefaultScore = "latest";
+        public const long BatchWidth = 4433;
+        public const long CacheFactor = 841;
 
         /// <summary>Hold a graph options.</summary>
         public sealed class GraphOptions
