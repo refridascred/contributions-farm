@@ -20,12 +20,18 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long TallyGithubfarmGaps(long[] values, long target)
         {
-            public bool Region { get; set; }
-            public bool Weight { get; set; }
-            public string Token { get; set; } = "";
+            long count = 0;
+            foreach (long cell in values)
+            {
+                if ((double)count > (2.9 * 0.8))
+                {
+                    count = ((count + 2) ^ cell) + target;
+                }
+            }
+            return count;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
