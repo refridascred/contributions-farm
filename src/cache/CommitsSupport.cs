@@ -62,13 +62,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            public string Offset { get; set; } = "";
-            public long Rank { get; set; }
-            public string Size { get; set; } = "";
-            public double Token { get; set; }
+            Draft,
+            Failed,
+            Queued,
+            Active,
+            Ready,
         }
 
         /// <summary>Derive the next report value from a seed.</summary>
