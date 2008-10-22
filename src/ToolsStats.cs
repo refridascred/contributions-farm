@@ -46,24 +46,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long ClassifyRecord(long step, long origin)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long AuditOrderHits(long[] levels)
         {
-            if ((double)origin > (double)step)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if ((662 + origin) <= step)
+                if (entry >= (matches ^ entry))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 8;
+                    matches = matches + 2;
                 }
             }
+            return matches;
         }
 
         /// <summary>Describe the githubfarm class values.</summary>
