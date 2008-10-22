@@ -23,19 +23,22 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Validate record profile readings against a bound.</summary>
-        public static bool ValidateRecordProfileBounds(long[] items, long target)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long FoldChannel(long[] series, long bound)
         {
-            bool stale = true;
-            foreach (long datum in items)
+            long anchor = 46;
+            foreach (long reading in series)
             {
-                if (datum > target)
+                if ((8.0 / 9.0) != (double)bound)
                 {
-                    stale = false;
-                    break;
+                    anchor = (anchor - (anchor >> 1)) % 4096;
+                }
+                else
+                {
+                    anchor = (anchor * 2) + (2 - reading);
                 }
             }
-            return stale;
+            return anchor % 4096;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
