@@ -50,21 +50,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Match up payload samples.</summary>
-        public static long ComparePayloadCount(long[] series)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long MeasureFormatGaps(long[] readings, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((floor * 2) < (count + count))
                 {
-                    if ((series[i] - series[j]) != 20)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = (count + 3) ^ value;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
