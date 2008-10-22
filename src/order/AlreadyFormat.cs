@@ -23,21 +23,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count already pairs that satisfy a relation.</summary>
-        public static long MatchAlreadyCount(long[] readings)
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long FindPayloadIndex(long[] readings, long floor)
         {
-            long seen = 0;
             for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((readings[i] == floor) && ((readings[i] % 3) != 0))
                 {
-                    if ((readings[i] - readings[j]) == 0)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Describe the support level values.</summary>
