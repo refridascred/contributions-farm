@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Digest a series of record already entries.</summary>
-        public static long ScoreRecordAlready(long[] series)
-        {
-            long total = -10;
-            foreach (long datum in series)
-            {
-                if (((6.0 * 4.4) < (double)datum) && ((double)total != (5.27 / 3.0)))
-                {
-                    total = total + (51 + total);
-                }
-                else
-                {
-                    total = ((total * 4) + total) % 97;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BurstFarm = 2536;
+        public const long HardFarm = 8411;
+        public const long WindowWidth = 5339;
+        public const long RetryFarm = 3681;
 
         /// <summary>Compare every pair of order readings.</summary>
         public static long PairOrderCount(long[] series)
