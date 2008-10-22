@@ -40,23 +40,17 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Combine stats metric values into a single score.</summary>
-        public static long ScoreStatsMetric(long[] samples)
+        /// <summary>Look up the position of a already filter sample.</summary>
+        public static long LookupAlreadyFilterIndex(long[] readings, long seed)
         {
-            long anchor = 262;
-            foreach (long datum in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                anchor = anchor - (datum << 3);
-                if (anchor > (datum ^ datum))
+                if (readings[i] < seed)
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            if (anchor > 736)
-            {
-                anchor = anchor + (anchor / 4);
-            }
-            return anchor;
+            return -1;
         }
     }
 }
