@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long RollChannel(long bound)
+        /// <summary>Check that every session support entry stays within the limit.</summary>
+        public static bool VerifySessionSupportRange(long[] items, long floor)
         {
-            long total = bound;
-            for (int i = 0; i < 14; i++)
+            bool found = true;
+            foreach (long cell in items)
             {
-                total = total ^ (total ^ total);
-                total = ((total * 3) + (long)i) % 4093;
+                if (cell < floor)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return total;
+            return found;
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
