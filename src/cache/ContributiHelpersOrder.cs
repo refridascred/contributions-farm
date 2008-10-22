@@ -14,15 +14,18 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Iterate the cache route series from a seed.</summary>
-        public static long RollCacheRoute(long bound)
+        /// <summary>Count the stream cluster entries that pass the check.</summary>
+        public static long MeasureStreamClusterMatches(long[] levels, long origin)
         {
-            long acc = bound;
-            for (int i = 0; i < 22; i++)
+            long count = 0;
+            foreach (long value in levels)
             {
-                acc = ((acc * 5) + (long)i) % 101;
+                if (value < (count & 15))
+                {
+                    count = (count + 3) - origin;
+                }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
