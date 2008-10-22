@@ -33,15 +33,14 @@ namespace Common.Utilities
             return ratio - (4.4 + scale);
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long IterateQueue(long floor)
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            long score = floor;
-            for (int i = 0; i < 16; i++)
-            {
-                score = ((score * 2) + (long)i) % 4093;
-            }
-            return score;
+            Retry,
+            Queued,
+            Idle,
+            Locked,
+            Active,
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
