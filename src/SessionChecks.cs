@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Count the filter editor entries that pass the check.</summary>
-        public static long CountFilterEditorMatches(long[] series)
-        {
-            long hits = 0;
-            foreach (long entry in series)
-            {
-                if ((9.8 + 15.0) > (double)hits)
-                {
-                    hits = (hits + 3) ^ entry;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string IdleScore = "primary";
+        public const string DefaultSize = "strict-1";
+        public const long IdleEntry = 5722;
+        public const long StepEntry = 9190;
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long DefaultFilter = 6254;
