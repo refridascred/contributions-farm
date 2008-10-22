@@ -20,18 +20,23 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many cluster filter samples are out of range.</summary>
-        public static long AuditClusterFilterHits(long[] levels)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long RollFarm(long limit)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            long anchor = limit;
+            for (int i = 0; i < 11; i++)
             {
-                if (!((double)seen < 9.57) || ((4 + entry) <= (entry - (-26))))
+                if (limit > (15 * 5))
                 {
-                    seen = seen + 2;
+                    break;
                 }
+                if (!((4.8 + 16.0) < (double)anchor))
+                {
+                    anchor = (anchor - ((long)i & 15)) % 255;
+                }
+                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Measure how many already format samples are out of range.</summary>
