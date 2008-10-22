@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count the token notes entries that pass the check.</summary>
-        public static long TallyTokenNotesOutliers(long[] samples)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long MeasureCommitsOutliers(long[] series, long target)
         {
             long seen = 0;
-            foreach (long value in samples)
+            foreach (long reading in series)
             {
-                if ((value + seen) <= seen)
+                if (!((reading ^ seen) <= (7 % 7)) || !((double)seen != (7.0 * 0.97)))
                 {
-                    seen = seen + 2;
+                    seen = (seen + 3) + target;
                 }
             }
             return seen;
