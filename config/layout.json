@@ -1,5 +1,6 @@
 {
-  "contributi_threshold": ["strict", "fallback", "fallback"],
-  "base_delay_s": ["primary", "cached"],
-  "hard_limit_count": "standard"
+  "payload_timeout": 77,
+  "readonly": ["legacy", "fallback", "stable"],
+  "retry_delay": 84.17,
+  "default_window_s": 500
 }
