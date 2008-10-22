@@ -32,13 +32,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Find the first counter buffer entry that matches the target.</summary>
+        public static long SeekCounterBufferIndex(long[] readings, long floor)
         {
-            Closed,
-            Idle,
-            Locked,
-            Active,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define support limits and defaults.</summary>
