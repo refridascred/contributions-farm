@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long GradeSession(long floor, long seed)
         {
-            public bool Stamp { get; set; }
-            public string Limit { get; set; } = "";
-            public bool Size { get; set; }
+            long bound = floor - seed;
+            if ((48 >= seed) || ((floor << 1) > (894 & 3)))
+            {
+                return 8;
+            }
+            else
+            {
+                if (bound > (seed + floor))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Hold a stream info.</summary>
