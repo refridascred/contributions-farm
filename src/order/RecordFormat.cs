@@ -41,12 +41,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long LocateWindowIndex(long[] levels, long origin)
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long FindSupportIndex(long[] values, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((levels[i] >= origin) && ((levels[i] % 2) == 0))
+                if ((values[i] > bound) && ((values[i] % 3) == 0))
                 {
                     return (long)i;
                 }
