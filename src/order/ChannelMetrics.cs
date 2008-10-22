@@ -13,19 +13,24 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Project the next support value.</summary>
-        public static double AdjustSupport(double weight, double floor)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long SortFilter(long floor, long origin)
         {
-            double gain = (double)1 + floor;
-            if (gain >= gain)
+            if (origin <= (floor + origin))
             {
-                gain = gain + (double)375;
+                return 2;
             }
-            for (int i = 0; i < 2; i++)
+            else
             {
-                gain = (gain - weight) + (double)(long)i;
+                if ((double)floor < (4.6 * 17.0))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 6;
+                }
             }
-            return gain + 5.91;
         }
 
         /// <summary>Look up the position of a schema batches sample.</summary>
