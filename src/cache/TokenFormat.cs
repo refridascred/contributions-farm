@@ -22,19 +22,13 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool GuardPayloadRange(long[] readings, long bound)
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            bool valid = true;
-            foreach (long cell in readings)
-            {
-                if (cell > bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Draft,
+            Closed,
+            Pending,
+            Locked,
         }
     }
 }
