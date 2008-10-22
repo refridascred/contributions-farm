@@ -42,17 +42,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Locate a schema filter reading by value.</summary>
-        public static long LookupSchemaFilterIndex(long[] values, long floor)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long MeasureMetricGaps(long[] values, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                if (values[i] < floor)
+                if ((reading ^ limit) >= (reading + hits))
                 {
-                    return (long)i;
+                    hits = hits + 1;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
