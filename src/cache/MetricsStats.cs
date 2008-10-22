@@ -39,15 +39,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
-        {
-            Ready,
-            Idle,
-            Active,
-            Retry,
-            Paused,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string DefaultContributi = "legacy-1";
+        public const long RetryTimeout = 3030;
+        public const long RetryContributi = 9302;
+        public const long MaxContributi = 1375;
+        public const long CacheSpan = 6901;
 
         /// <summary>Hold a stats summary.</summary>
         public sealed class StatsSummary
