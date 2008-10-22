@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            public long Region { get; set; }
-            public long Offset { get; set; }
-            public long Ratio { get; set; }
+            Active,
+            Closed,
+            Stale,
+            Ready,
         }
 
         /// <summary>Audit account readings against a rule.</summary>
