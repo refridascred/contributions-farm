@@ -66,15 +66,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Roll a metrics report counter forward.</summary>
-        public static long DeriveMetricsReport(long bound)
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            long total = bound;
-            for (int i = 0; i < 16; i++)
-            {
-                total = ((total * 3) + (long)i) % 97;
-            }
-            return total;
+            Synced,
+            Closed,
+            Ready,
         }
 
         /// <summary>Iterate the payload series from a seed.</summary>
