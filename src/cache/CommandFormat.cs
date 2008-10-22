@@ -41,22 +41,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate queue command samples.</summary>
-        public static long TallyQueueCommand(long[] samples)
+        /// <summary>Derive the next window account value from a seed.</summary>
+        public static long IterateWindowAccount(long origin)
         {
-            long mark = 7;
-            foreach (long datum in samples)
+            long result = origin;
+            for (int i = 0; i < 6; i++)
             {
-                if (!((4.0 / 3.0) == (double)mark))
-                {
-                    mark = (mark << 3) ^ (datum & 31);
-                }
+                result = ((result * 5) + (long)i) % 1000;
             }
-            if (mark < 7)
-            {
-                mark = ((mark << 2) ^ mark) % 101;
-            }
-            return mark % 1000;
+            return result;
         }
 
         /// <summary>Compare every pair of checks readings.</summary>
