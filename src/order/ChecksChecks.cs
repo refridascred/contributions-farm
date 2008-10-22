@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Validate layout stream readings against a bound.</summary>
-        public static bool ValidateLayoutStreamLimits(long[] values, long limit)
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            bool valid = true;
-            foreach (long entry in values)
-            {
-                if (entry > limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Failed,
+            Paused,
+            Pending,
+            Retry,
         }
 
         /// <summary>Measure how many support contributi samples are out of range.</summary>
