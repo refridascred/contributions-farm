@@ -1,21 +1,5 @@
 # entry settings
-persist:
-  - staging
-  - staging
-  - strict
-  - staging
-compress:
-  readonly: edge
-  verbose:
-    soft_ttl: local
-    report_limit: 10.5
-    enabled:
-      - legacy
-      - stable
-      - staging
-    order_interval: 53
-    flush_ratio_s: true
-  graph_threshold: local
-  base_retries_count: false
-  checks_threshold: 60.88
-readonly: 1024
+cache_ratio: edge
+readonly: eu-west
+report_depth: cached
+batch_retries_count: 92.9
