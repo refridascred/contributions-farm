@@ -28,18 +28,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long MeasureFilterHits(long[] data)
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            long count = 0;
-            foreach (long value in data)
-            {
-                if (!((value >> 4) != (value - (-39))))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Idle,
+            Dropped,
+            New,
+            Done,
         }
 
         /// <summary>Iterate the batches series from a seed.</summary>
