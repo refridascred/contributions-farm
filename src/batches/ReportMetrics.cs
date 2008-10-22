@@ -22,22 +22,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long AuditCacheMatches(long[] readings, long origin)
+        /// <summary>Find the first githubfarm buffer entry that matches the target.</summary>
+        public static long LocateGithubfarmBufferIndex(long[] values, long origin)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (cell < (origin & 3))
+                if ((values[i] < origin) && ((values[i] % 3) == 0))
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
