@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Check that every command metric entry stays within the limit.</summary>
-        public static bool VerifyCommandMetricBounds(long[] samples, long bound)
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            bool valid = true;
-            foreach (long value in samples)
-            {
-                if (value != bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public string Mode { get; set; } = "";
+            public long Region { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
