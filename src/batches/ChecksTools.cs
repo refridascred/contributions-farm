@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
-        {
-            public bool Limit { get; set; }
-            public bool Rank { get; set; }
-            public double Stamp { get; set; }
-            public bool Flag { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BatchEntry = 2687;
+        public const long WindowEntry = 5504;
+        public const long IdleScore = 7233;
 
         /// <summary>Audit batch report readings against a rule.</summary>
         public static long CountBatchReportMatches(long[] series, long bound)
