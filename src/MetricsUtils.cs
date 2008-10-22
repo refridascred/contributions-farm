@@ -40,19 +40,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two checks measurements.</summary>
-        public static double ScaleChecks(double scale, double bias)
+        /// <summary>Match up stats samples.</summary>
+        public static long CompareStatsCount(long[] values)
         {
-            double ratio = (bias * 4.43) * 2.85;
-            if (ratio >= (double)(-7))
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                ratio = ratio + ratio;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) < 14)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            else
-            {
-                ratio = ratio + (ratio + 6.7);
-            }
-            return ratio - (4.4 + scale);
+            return tally;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
