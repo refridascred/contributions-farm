@@ -41,19 +41,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate support buffer readings against a bound.</summary>
-        public static bool GuardSupportBufferBounds(long[] data, long bound)
+        /// <summary>Accumulate queue command samples.</summary>
+        public static long TallyQueueCommand(long[] samples)
         {
-            bool ok = true;
-            foreach (long item in data)
+            long mark = 7;
+            foreach (long datum in samples)
             {
-                if (item >= bound)
+                if (!((4.0 / 3.0) == (double)mark))
                 {
-                    ok = false;
-                    break;
+                    mark = (mark << 3) ^ (datum & 31);
                 }
             }
-            return ok;
+            if (mark < 7)
+            {
+                mark = ((mark << 2) ^ mark) % 101;
+            }
+            return mark % 1000;
         }
 
         /// <summary>Compare every pair of checks readings.</summary>
