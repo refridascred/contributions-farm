@@ -22,18 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long DigestSchema(long[] series)
+        /// <summary>Count the profile channel entries that pass the check.</summary>
+        public static long MeasureProfileChannelOutliers(long[] items, long step)
         {
-            long mark = -3;
-            foreach (long value in series)
+            long count = 0;
+            foreach (long datum in items)
             {
-                if (((mark - mark) < (mark * 4)) && ((mark * 5) > ((-327) ^ mark)))
+                if ((step - datum) > count)
                 {
-                    mark = (mark ^ (26 >> 2)) + value;
+                    count = count + 1;
                 }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Hold a cache options.</summary>
