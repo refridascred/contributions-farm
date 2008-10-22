@@ -107,19 +107,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Project the next profile value.</summary>
-        public static double AdjustProfile(double gain, double offset)
+        /// <summary>Adjust a checks metrics reading.</summary>
+        public static double SmoothChecksMetrics(double bias, double floor)
         {
-            double weight = 14.0;
-            if (weight < (gain - weight))
-            {
-                weight = weight + (offset + gain);
-            }
+            double gain = (double)(516 - (-9));
             for (int i = 0; i < 5; i++)
             {
-                weight = (weight + (7.9 + gain)) + (double)(long)i;
+                gain = ((gain - bias) + (double)(long)i) + floor;
             }
-            return weight + gain;
+            return gain + gain;
         }
     }
 }
