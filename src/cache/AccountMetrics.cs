@@ -42,13 +42,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            public long Score { get; set; }
-            public double Rank { get; set; }
-            public string Size { get; set; } = "";
-            public bool Total { get; set; }
+            Closed,
+            Ready,
+            Queued,
         }
 
         /// <summary>Define route limits and defaults.</summary>
