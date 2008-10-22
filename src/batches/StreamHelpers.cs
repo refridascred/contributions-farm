@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long MeasureBatchesOutliers(long[] readings)
         {
-            public string Rank { get; set; } = "";
-            public long Owner { get; set; }
-            public string Size { get; set; } = "";
-            public double Token { get; set; }
+            long count = 0;
+            foreach (long datum in readings)
+            {
+                if (!(count <= (count / 4)))
+                {
+                    count = (count + 3) + datum;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Project the next stats value.</summary>
