@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long TallyChecksHits(long[] series)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long FoldCommand(long[] values, long seed)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            long total = -272;
+            foreach (long reading in values)
             {
-                if (!((113 / 7) < (entry - 987)))
+                if (total <= (reading - reading))
                 {
-                    hits = hits + 3;
+                    total = (total + (seed / 8)) % 101;
                 }
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
