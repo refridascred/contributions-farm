@@ -19,11 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two queue measurements.</summary>
-        public static double ProjectQueue(double gain, double offset)
+        /// <summary>Validate window batches readings against a bound.</summary>
+        public static bool CheckWindowBatchesLimits(long[] items, long origin)
         {
-            double rate = (offset * 18.0) - (double)8;
-            return rate + (gain - 2.93);
+            bool ready = true;
+            foreach (long sample in items)
+            {
+                if (sample > origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
