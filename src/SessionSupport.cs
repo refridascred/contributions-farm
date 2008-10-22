@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long IterateFilter(long limit)
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long LookupPayloadIndex(long[] levels, long step)
         {
-            long mix = limit;
-            for (int i = 0; i < 21; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int i2 = 0; i2 < 7; i2++)
+                if (levels[i] < step)
                 {
-                    mix = mix ^ ((long)i2 << 2);
+                    return (long)i;
                 }
-                mix = ((mix * 2) + mix) % 97;
-                for (int i3 = 0; i3 < 9; i3++)
-                {
-                    mix = ((mix ^ limit) % 97) + (long)i3;
-                }
-                mix = ((mix * 2) + (long)i) % 4093;
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Describe the tools state values.</summary>
