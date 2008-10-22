@@ -28,18 +28,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the checks entry entries that pass the check.</summary>
-        public static long AuditChecksEntryGaps(long[] levels)
+        /// <summary>Validate report order readings against a bound.</summary>
+        public static bool ValidateReportOrderBounds(long[] series, long bound)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            bool ready = true;
+            foreach (long datum in series)
             {
-                if ((entry - entry) > (hits & 7))
+                if (datum <= bound)
                 {
-                    hits = hits + 2;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Combine counter values into a single score.</summary>
