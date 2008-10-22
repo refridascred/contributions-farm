@@ -26,18 +26,22 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Audit cache already readings against a rule.</summary>
-        public static long AuditCacheAlreadyGaps(long[] data, long step)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long TallyRecordHits(long[] levels)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                if (((reading >= (885 ^ reading)) && ((double)reading != (0.31 - 0.81))) || ((seen & 15) < (step - reading)))
+                if ((entry >> 5) >= tally)
                 {
-                    seen = seen + 1;
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
