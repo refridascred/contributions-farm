@@ -24,15 +24,14 @@ namespace Common.Utilities
         public const string DefaultEntry = "legacy-edge";
         public const string BatchEntry = "cached";
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long RollMetrics(long bound)
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            long anchor = bound;
-            for (int i = 0; i < 18; i++)
-            {
-                anchor = ((anchor * 2) + (long)i) % 101;
-            }
-            return anchor;
+            Paused,
+            Failed,
+            Closed,
+            Draft,
+            Active,
         }
 
         /// <summary>Describe the notes state values.</summary>
