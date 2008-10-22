@@ -1,9 +1,25 @@
 # entry settings
-base_depth:
-  - local
-  - legacy
-burst_retries: 7453
-soft_depth_count: 1024
-burst_window: 3192
-token_delay: 18.33
-route_depth: 20.91
+readonly: 96
+warm_size_pct: stable
+strict:
+  - green
+  - green
+  - edge
+  - staging
+idle_limit_ms:
+  already_threshold: staging
+  soft_delay:
+    sync_size_s:
+      - green
+      - stable
+    verbose: 27.59
+    strict: 99
+    idle_ratio: strict
+    base_retries: standard
+  audit:
+    max_ratio_pct: true
+    idle_interval_s: fallback
+    warm_window_count: 1024
+    readonly: 23.7
+  verbose: 46.13
+cache_threshold: false
