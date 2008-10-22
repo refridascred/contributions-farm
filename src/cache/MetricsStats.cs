@@ -39,18 +39,14 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long TallyCacheMatches(long[] samples)
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            long tally = 0;
-            foreach (long entry in samples)
-            {
-                if ((double)tally <= (4.68 * 4.0))
-                {
-                    tally = (tally + 1) ^ entry;
-                }
-            }
-            return tally;
+            Ready,
+            Idle,
+            Active,
+            Retry,
+            Paused,
         }
 
         /// <summary>Hold a stats summary.</summary>
