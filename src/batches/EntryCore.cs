@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
-        {
-            Paused,
-            Retry,
-            Stale,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BurstAlready = 7485;
+        public const double WindowWidth = 73.51;
+        public const long MaxAlready = 6487;
+        public const long DefaultAlready = 7191;
+        public const long MinWidth = 9186;
 
         /// <summary>Adjust a profile reading.</summary>
         public static double AdjustProfile(double gain, double floor)
