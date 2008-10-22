@@ -30,31 +30,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a payload already value against two limits.</summary>
-        public static long SortPayloadAlready(long floor, long offset)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long SeekRouteIndex(long[] samples, long target)
         {
-            if (1.6 < (double)offset)
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((floor << 2) > floor)
+                if ((samples[i] > target) && ((samples[i] % 2) != 0))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (!(floor > (offset >> 3)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
