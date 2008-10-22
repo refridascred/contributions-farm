@@ -74,19 +74,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long MeasureFormatGaps(long[] readings, long floor)
-        {
-            long count = 0;
-            foreach (long value in readings)
-            {
-                if ((floor * 2) < (count + count))
-                {
-                    count = (count + 3) ^ value;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double BatchLayout = 85.78;
+        public const double BaseScore = 69.81;
+        public const double BaseLevel = 13.47;
+        public const long BaseLayout = 7530;
+        public const long DefaultLayout = 2817;
 
         /// <summary>Define layout limits and defaults.</summary>
         public const long LimitLayout = 3888;
