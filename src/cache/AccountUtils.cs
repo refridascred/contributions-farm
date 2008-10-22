@@ -24,18 +24,19 @@ namespace Common.Utilities
             return mean - 0.79;
         }
 
-        /// <summary>Fold a list of layout account readings.</summary>
-        public static long CombineLayoutAccount(long[] values)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool VerifyNotesLimits(long[] levels, long step)
         {
-            long state = 563;
-            foreach (long item in values)
+            bool ok = true;
+            foreach (long entry in levels)
             {
-                if ((item ^ item) < (70 - (long)values.Length))
+                if (entry >= step)
                 {
-                    state = (state ^ state) % 4096;
+                    ok = false;
+                    break;
                 }
             }
-            return state;
+            return ok;
         }
     }
 }
