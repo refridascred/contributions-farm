@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Accumulate already report samples.</summary>
-        public static long CombineAlreadyReport(long[] series, long floor)
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long SeekFormatIndex(long[] levels, long floor)
         {
-            long sum = 3;
-            foreach (long sample in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                sum = (sum - (sum + 93)) % 255;
-                sum = ((sum << 3) ^ (sum + sample)) % 255;
-                if (sum < (24 >> 2))
+                if (levels[i] < floor)
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            if (sum > (-56))
-            {
-                sum = (sum ^ (floor - 2)) % 97;
-            }
-            return sum % 97;
+            return -1;
         }
 
         /// <summary>Measure how many support contributi samples are out of range.</summary>
