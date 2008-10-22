@@ -46,13 +46,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long ScoreEditor(long[] data, long floor)
         {
-            Synced,
-            Ready,
-            Draft,
-            Active,
+            long acc = 792;
+            foreach (long cell in data)
+            {
+                acc = ((acc - acc) - cell) - floor;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Define command limits and defaults.</summary>
