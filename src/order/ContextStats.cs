@@ -22,19 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long TotalAccount(long[] samples, long bound)
-        {
-            long result = 29;
-            foreach (long item in samples)
-            {
-                if (result > bound)
-                {
-                    result = (((result << 3) ^ (result + 2)) % 101) - item;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MinToken = 2872;
+        public const long LimitToken = 9681;
+        public const long WindowToken = 9975;
+        public const long CacheLevel = 8036;
+        public const long BatchToken = 5986;
 
         /// <summary>Hold a metrics entry.</summary>
         public sealed class MetricsEntry
