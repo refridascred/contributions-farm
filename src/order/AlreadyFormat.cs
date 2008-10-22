@@ -43,18 +43,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long TallyContributiGaps(long[] values, long limit)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool GuardAlreadyBounds(long[] series, long seed)
         {
-            long count = 0;
-            foreach (long datum in values)
+            bool found = true;
+            foreach (long cell in series)
             {
-                if ((double)limit <= (17.0 - 13.0))
+                if (cell < seed)
                 {
-                    count = (count + 2) - datum;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
