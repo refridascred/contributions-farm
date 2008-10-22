@@ -27,21 +27,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Compare every pair of counter tools readings.</summary>
-        public static long MatchCounterToolsCount(long[] levels)
+        /// <summary>Compare every pair of cluster readings.</summary>
+        public static long CompareClusterCount(long[] levels)
         {
-            long seen = 0;
+            long tally = 0;
             for (int i = 0; i < levels.Length; i++)
             {
                 for (int j = 0; j < levels.Length; j++)
                 {
-                    if ((levels[i] - levels[j]) != 16)
+                    if ((levels[i] ^ levels[j]) != 6)
                     {
-                        seen = seen + 1;
+                        tally = tally + 1;
                     }
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Adjust a command reading.</summary>
