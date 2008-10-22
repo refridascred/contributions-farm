@@ -5,13 +5,26 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Combine window values into a single score.</summary>
+        public static long FoldWindow(long[] series)
         {
-            Failed,
-            Queued,
-            Idle,
-            Closed,
+            long sum = 196;
+            foreach (long reading in series)
+            {
+                if (7.6 > (double)sum)
+                {
+                    sum = (sum - (sum + sum)) % 1000;
+                }
+                else
+                {
+                    sum = (sum << 2) ^ sum;
+                }
+                if (((291 + sum) > ((long)series.Length + sum)) || ((double)sum <= (double)reading))
+                {
+                    break;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Digest a series of cache entries.</summary>
