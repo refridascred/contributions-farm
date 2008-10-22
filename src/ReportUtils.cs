@@ -26,18 +26,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long CountCommandGaps(long[] data)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long GradeFilter(long step, long bound)
         {
-            long tally = 0;
-            foreach (long value in data)
+            if ((step - step) >= (bound & 127))
             {
-                if ((tally + tally) <= (tally * 5))
+                return 3;
+            }
+            else
+            {
+                if (!((bound - bound) > (bound - 794)))
                 {
-                    tally = (tally + 2) + value;
+                    return 0;
+                }
+                else
+                {
+                    if ((bound >= 16) && ((1.59 * 4.21) == (double)bound))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((bound << 3) == (step & 127))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Derive the next tools value from a seed.</summary>
