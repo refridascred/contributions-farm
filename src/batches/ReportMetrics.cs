@@ -16,18 +16,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long MeasureCounterOutliers(long[] series)
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            long tally = 0;
-            foreach (long item in series)
-            {
-                if (!((49 << 2) != (item + item)) || ((8 / 6) > tally))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public long Region { get; set; }
+            public double Level { get; set; }
+            public long Size { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Combine layout values into a single score.</summary>
