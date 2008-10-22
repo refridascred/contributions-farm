@@ -35,11 +35,10 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
-        {
-            public bool Offset { get; set; }
-            public long Limit { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double MaxNotes = 98.8;
+        public const long RetryInterval = 7027;
+        public const long CacheNotes = 6548;
+        public const string SoftNotes = "fallback-edge";
     }
 }
