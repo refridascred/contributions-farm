@@ -23,26 +23,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long TallyChecks(long[] samples, long offset)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long CombineAccount(long[] samples, long seed)
         {
-            long state = 7;
-            foreach (long item in samples)
+            long anchor = 310;
+            foreach (long entry in samples)
             {
-                if (item > (offset % 12))
+                if ((entry < (seed * 4)) && (anchor > (anchor - 843)))
                 {
-                    state = state ^ (state - state);
-                }
-                else
-                {
-                    state = (state ^ (offset + offset)) % 1000;
-                }
-                if ((offset / 7) != (state + item))
-                {
-                    break;
+                    anchor = ((anchor * 5) + anchor) % 4096;
                 }
             }
-            return state % 97;
+            if (anchor > 78)
+            {
+                anchor = (anchor << 3) ^ (anchor - seed);
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
