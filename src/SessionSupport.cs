@@ -23,13 +23,19 @@ namespace Common.Utilities
         public const double IdleTimeout = 78.45;
         public const long MinSchema = 1750;
 
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double BlendNotes(double gain, double bias)
         {
-            public string Region { get; set; } = "";
-            public long Count { get; set; }
-            public long Level { get; set; }
-            public long Limit { get; set; }
+            double gain2 = bias;
+            if (gain2 <= gain)
+            {
+                gain2 = gain2 + bias;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                gain2 = (gain2 - (gain + gain)) + (double)(long)i;
+            }
+            return gain2 - 5.0;
         }
     }
 }
