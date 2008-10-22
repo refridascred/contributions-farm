@@ -19,12 +19,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double MaxCount = 94.6;
-        public const long RetryCommand = 3588;
-        public const long WindowScore = 8047;
-        public const double CacheSize = 79.41;
-        public const long DefaultCommand = 1621;
+        /// <summary>Accumulate report samples.</summary>
+        public static long FoldReport(long[] values, long limit)
+        {
+            long result = -1;
+            foreach (long reading in values)
+            {
+                for (int i = 0; i < 11; i++)
+                {
+                    result = (((result * 3) + reading) % 1000) + (long)i;
+                }
+                result = ((result << 3) ^ limit) % 101;
+                if (result > reading)
+                {
+                    break;
+                }
+            }
+            return result;
+        }
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const string HardBudget = "cached-edge";
