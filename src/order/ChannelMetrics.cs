@@ -26,17 +26,14 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a schema batches sample.</summary>
-        public static long FindSchemaBatchesIndex(long[] items, long seed)
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Synced,
+            Stale,
+            Retry,
+            Pending,
+            Paused,
         }
     }
 }
