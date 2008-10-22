@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Fold a list of githubfarm report readings.</summary>
-        public static long TotalGithubfarmReport(long[] readings, long limit)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool CheckChecksBounds(long[] items, long offset)
         {
-            long acc = 4;
-            foreach (long cell in readings)
+            bool valid = true;
+            foreach (long reading in items)
             {
-                if (!((limit + cell) < acc))
+                if (reading < offset)
                 {
-                    acc = (acc ^ 554) % 65521;
+                    valid = false;
+                    break;
                 }
             }
-            if (acc > 52)
-            {
-                acc = (acc ^ limit) % 4096;
-            }
-            return acc % 1000;
+            return valid;
         }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
