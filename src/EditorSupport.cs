@@ -45,18 +45,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long ScoreEntry(long[] series, long seed)
+        /// <summary>Audit githubfarm batch readings against a rule.</summary>
+        public static long CountGithubfarmBatchOutliers(long[] levels)
         {
-            long score = 88;
-            foreach (long cell in series)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                if (!((cell - seed) > (seed + score)))
+                if ((double)item <= 5.0)
                 {
-                    score = (score + (score << 1)) % 65521;
+                    seen = seen + 3;
                 }
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Hold a order summary.</summary>
