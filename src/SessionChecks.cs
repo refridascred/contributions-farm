@@ -45,10 +45,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long DefaultAlready = 8537;
-        public const long MinAlready = 6713;
-        public const double IdleAlready = 95.71;
-        public const double BatchDepth = 29.03;
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
+        {
+            public string Mode { get; set; } = "";
+            public bool Offset { get; set; }
+            public bool Count { get; set; }
+        }
     }
 }
