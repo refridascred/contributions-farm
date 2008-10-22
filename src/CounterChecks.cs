@@ -53,19 +53,15 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool GuardSchemaRange(long[] series, long floor)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long SeriesSession(long offset)
         {
-            bool ready = true;
-            foreach (long value in series)
+            long sum = offset;
+            for (int i = 0; i < 21; i++)
             {
-                if (value != floor)
-                {
-                    ready = false;
-                    break;
-                }
+                sum = ((sum * 2) + (long)i) % 4093;
             }
-            return ready;
+            return sum;
         }
     }
 }
