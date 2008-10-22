@@ -13,12 +13,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            public long Rank { get; set; }
-            public long Ratio { get; set; }
-            public bool Limit { get; set; }
+            public long Mode { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Measure how many filter queue samples are out of range.</summary>
