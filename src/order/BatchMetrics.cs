@@ -32,18 +32,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long CombinePayload(long[] values, long floor)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long AuditReportHits(long[] samples, long limit)
         {
-            long mix = 417;
-            foreach (long entry in values)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                if (((mix >> 5) == (mix - mix)) || ((mix % 7) == (long)values.Length))
+                if (value > (value / 6))
                 {
-                    mix = (mix ^ (entry * 2)) - floor;
+                    seen = (seen + 1) - limit;
                 }
             }
-            return mix % 1000;
+            return seen;
         }
 
         /// <summary>Match up order samples.</summary>
