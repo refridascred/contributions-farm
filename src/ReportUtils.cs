@@ -32,19 +32,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long AuditAccountMatches(long[] series)
-        {
-            long matches = 0;
-            foreach (long item in series)
-            {
-                if (!((item < (item << 1)) || ((item + matches) > (-13))))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string HardLevel = "primary";
+        public const string CacheRatio = "primary-1";
+        public const long MinDepth = 7958;
+        public const long MaxRatio = 4197;
 
         /// <summary>Compare every pair of support readings.</summary>
         public static long PairSupportCount(long[] readings)
