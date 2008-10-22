@@ -1,22 +1,7 @@
 # support settings
-audit: 1083
-persist: latest
-counter_capacity:
-  sync_timeout_count:
-    base_size_s: true
-    dry_run: strict
-    warm_retries_s: legacy
-    token_ratio: fallback
-  queue_retries:
-    burst_limit_count: 45.2
-    batch_interval_count: false
-    notes_retries: true
-    flush_window_pct: false
-  max_limit: 7.89
-  max_timeout_s: 16
-  poll_retries_pct: eu-west
-  base_ratio_ms:
-    poll_timeout_ms: 0.81
-    enabled: 24.82
-    metric_size: 23
-githubfarm_delay: strict
+payload_window: false
+burst_window_pct:
+  - 435
+  - 244
+channel_size: true
+strict: 30
