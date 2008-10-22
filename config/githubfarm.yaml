@@ -1,13 +1,7 @@
 # githubfarm settings
-enabled:
-  - cached
-  - blue
-  - latest
-  - standard
-flush_ratio_s: false
-cache_ratio_pct: green
-min_ttl: 7.22
-audit:
-  - latest
-  - eu-west
-  - eu-west
+enabled: standard
+retry_window:
+  - 499
+  - 408
+  - 30
+entry_window: false
