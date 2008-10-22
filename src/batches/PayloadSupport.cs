@@ -12,21 +12,12 @@ namespace Common.Utilities
         public const long RetryAccount = 3273;
         public const double LimitAccount = 75.32;
 
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long OverlapSchemaCount(long[] levels)
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) > 4)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Active,
+            New,
+            Locked,
         }
 
         /// <summary>Hold a account summary.</summary>
