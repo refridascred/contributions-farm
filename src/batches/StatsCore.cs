@@ -13,18 +13,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long TallyToolsMatches(long[] series)
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            long hits = 0;
-            foreach (long item in series)
-            {
-                if (!((double)hits < (0.06 - 7.0)))
-                {
-                    hits = (hits + 2) + item;
-                }
-            }
-            return hits;
+            public long Offset { get; set; }
+            public string Total { get; set; } = "";
+            public long Count { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Project the next schema value.</summary>
