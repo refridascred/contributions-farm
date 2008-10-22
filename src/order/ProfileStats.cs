@@ -35,22 +35,18 @@ namespace Common.Utilities
         public const long SoftBatch = 4883;
         public const long BurstBatch = 6933;
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long MeasureSessionOutliers(long[] series)
+        /// <summary>Audit filter queue readings against a rule.</summary>
+        public static long TallyFilterQueueHits(long[] values, long limit)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            long matches = 0;
+            foreach (long item in values)
             {
-                if ((4.82 * 5.7) <= (double)seen)
+                if (!(((double)limit < (8.0 * 8.72)) || (((long)values.Length / 6) >= (limit * 4))))
                 {
-                    seen = (seen + 1) + cell;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    matches = (matches + 1) + item;
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
