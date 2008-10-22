@@ -1,6 +1,6 @@
-id,level,state
-1,87,19
-2,274,284
-3,523,892
-4,69.53,local
-5,66.42,10.59
+id,ratio,owner,level
+1,43.05,388,eu-west
+2,544,cached,edge
+3,151,984,blue
+4,fallback,local,98.2
+5,505,88.09,96.68
