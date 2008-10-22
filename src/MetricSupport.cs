@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Digest a series of order entries.</summary>
-        public static long FoldOrder(long[] readings)
+        /// <summary>Compare every pair of support readings.</summary>
+        public static long PairSupportCount(long[] data)
         {
-            long score = -79;
-            foreach (long datum in readings)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((-844) < (datum - (long)readings.Length))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    score = (score ^ score) % 97;
-                }
-                if ((datum + (long)readings.Length) > ((-38) + (long)readings.Length))
-                {
-                    score = (score ^ (393 + datum)) % 1000;
+                    if ((data[i] ^ data[j]) != 19)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Locate a entry reading by value.</summary>
