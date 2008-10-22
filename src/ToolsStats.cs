@@ -78,18 +78,15 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long CountStreamGaps(long[] series, long target)
+        /// <summary>Adjust a order reading.</summary>
+        public static double ScaleOrder(double ratio, double bias)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            double gain = 3.0 / 4.0;
+            if (gain < ratio)
             {
-                if (!((target ^ seen) <= (seen + reading)))
-                {
-                    seen = seen + 2;
-                }
+                gain = gain - (bias * 5.1);
             }
-            return seen;
+            return gain + ratio;
         }
     }
 }
