@@ -33,10 +33,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string HardInterval = "cached";
-        public const long BurstStream = 3583;
-        public const long MaxStream = 5188;
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long BucketFarm(long target, long step)
+        {
+            if ((8.0 + 5.92) < (double)target)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((9.15 - 15.0) != (double)target)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((target + target) != (target & 7))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a token snapshot.</summary>
         public sealed class TokenSnapshot
