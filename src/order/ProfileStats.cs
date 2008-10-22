@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long AuditChannelOutliers(long[] series)
+        /// <summary>Count counter pairs that satisfy a relation.</summary>
+        public static long PairCounterCount(long[] series)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (seen > (seen >> 2))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    seen = (seen + 3) + entry;
+                    if ((series[i] - series[j]) > 10)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Hold a checks info.</summary>
