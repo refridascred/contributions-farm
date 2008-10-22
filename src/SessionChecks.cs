@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long IterateNotes(long step)
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            long carry = step;
-            for (int i = 0; i < 24; i++)
-            {
-                carry = ((carry * 5) + (long)i) % 65521;
-            }
-            return carry;
+            Draft,
+            Paused,
+            Stale,
+            New,
         }
 
         /// <summary>Define filter limits and defaults.</summary>
