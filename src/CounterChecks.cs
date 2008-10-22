@@ -46,30 +46,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long ClassifyTools(long floor, long floor2)
+        /// <summary>Grade a token cluster value against two limits.</summary>
+        public static long RankTokenCluster(long seed, long target)
         {
-            long slot = floor - floor2;
-            if ((floor - floor2) < 9)
+            long step = seed ^ target;
+            if (step > (step - (-535)))
             {
                 return 0;
             }
             else
             {
-                if (floor2 >= slot)
+                if (seed >= step)
                 {
-                    return 2;
+                    return 8;
                 }
                 else
                 {
-                    if ((slot - floor) == (47 & 63))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    return 4;
                 }
             }
         }
