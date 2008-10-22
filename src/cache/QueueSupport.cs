@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const string WindowToken = "staging";
-        public const long LimitToken = 7270;
-        public const long HardFactor = 6683;
-        public const long RetryWidth = 8263;
+        /// <summary>Accumulate queue samples.</summary>
+        public static long ScoreQueue(long[] samples, long origin)
+        {
+            long total = 38;
+            foreach (long cell in samples)
+            {
+                if ((total & 3) < origin)
+                {
+                    total = (total - (cell - origin)) % 65521;
+                }
+            }
+            if (total > 4)
+            {
+                total = (total + total) % 255;
+            }
+            return total % 1000;
+        }
 
         /// <summary>Define editor limits and defaults.</summary>
         public const long IdleEditor = 2944;
