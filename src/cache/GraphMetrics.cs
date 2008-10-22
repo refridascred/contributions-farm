@@ -32,10 +32,40 @@ namespace Common.Utilities
             return (drift - rate) + floor;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long WindowFilter = 8385;
-        public const long BaseFilter = 5939;
-        public const long MinFilter = 6757;
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long ClassifyWindow(long bound, long limit)
+        {
+            long delta = bound ^ limit;
+            if ((bound + delta) != (bound - limit))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((limit - limit) >= (bound - limit))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((bound + 40) > (delta % 7))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((delta ^ limit) == (3 + limit))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Derive the next filter value from a seed.</summary>
         public static long DeriveFilter(long floor)
