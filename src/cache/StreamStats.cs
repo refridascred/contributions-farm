@@ -26,22 +26,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count context pairs that satisfy a relation.</summary>
-        public static long CompareContextCount(long[] values)
-        {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) < 1)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string BaseCommand = "fallback";
+        public const double BurstScore = 10.8;
+        public const long LimitDepth = 3695;
+        public const double LimitCommand = 28.25;
 
         /// <summary>Scale a cache figure with a bias.</summary>
         public static double SmoothCache(double weight, double bias)
