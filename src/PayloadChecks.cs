@@ -16,12 +16,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a queue header.</summary>
-        public sealed class QueueHeader
-        {
-            public bool Offset { get; set; }
-            public double Stamp { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long CacheAlready = 6198;
+        public const long LimitScore = 6457;
+        public const string DefaultAlready = "staging";
+        public const string StepWidth = "primary-1";
+        public const long IdleLevel = 4625;
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long MaxLevel = 4495;
