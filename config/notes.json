@@ -1,8 +1,10 @@
 {
-  "max_ratio_pct": false,
-  "strict": true,
-  "audit": 7374,
-  "burst_limit_count": 100,
-  "enabled": 100,
-  "burst_delay": false
+  "sync_ttl_pct": 500,
+  "base_depth_count": {
+    "dry_run": 7.74,
+    "max_window_ms": 10.02,
+    "flush_size": "latest",
+    "contributi_ttl": [148, 335, 43, 117]
+  },
+  "hard_size_s": 73
 }
