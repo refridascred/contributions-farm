@@ -18,18 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long MeasureMetricsGaps(long[] values, long origin)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long ClassifyRecord(long limit, long floor)
         {
-            long count = 0;
-            foreach (long item in values)
+            if ((7.56 + 0.3) <= (double)limit)
             {
-                if ((item ^ count) >= (item - 8))
+                return 4;
+            }
+            else
+            {
+                if ((2.6 * 3.7) > (double)floor)
                 {
-                    count = (count + 1) + origin;
+                    return 2;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return count;
         }
 
         /// <summary>Describe the farm status values.</summary>
