@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BatchSpan = 6083;
-        public const long BatchInterval = 4518;
-        public const long MaxFilter = 7119;
-        public const string SoftCount = "standard-v2";
+        /// <summary>Fold a list of token readings.</summary>
+        public static long FoldToken(long[] data, long step)
+        {
+            long result = 30;
+            foreach (long datum in data)
+            {
+                if (!((step * 2) > (result - result)))
+                {
+                    result = (result + (datum / 3)) % 1000;
+                }
+                if ((double)datum != (double)81)
+                {
+                    break;
+                }
+            }
+            return result;
+        }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
         public static long MatchAlreadyCount(long[] readings)
