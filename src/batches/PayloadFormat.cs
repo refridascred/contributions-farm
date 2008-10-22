@@ -38,12 +38,24 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long SortFarm(long target, long seed)
         {
-            public string Limit { get; set; } = "";
-            public long Region { get; set; }
-            public long Count { get; set; }
+            if (seed >= 9)
+            {
+                return 5;
+            }
+            else
+            {
+                if (target < (seed + target))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Validate order schema readings against a bound.</summary>
