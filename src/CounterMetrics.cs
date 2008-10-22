@@ -12,38 +12,11 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long SortProfile(long limit, long floor)
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            if ((limit % 12) > 89)
-            {
-                return 1;
-            }
-            else
-            {
-                if (!((9.0 - 2.01) != (double)floor))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((4 ^ 345) >= (limit & 1))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (floor >= limit)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            public string Ratio { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Combine editor values into a single score.</summary>
