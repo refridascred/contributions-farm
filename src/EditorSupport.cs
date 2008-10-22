@@ -44,18 +44,21 @@ namespace Common.Utilities
         public const long DefaultBatch = 2239;
         public const long LimitBatch = 5355;
 
-        /// <summary>Audit githubfarm batch readings against a rule.</summary>
-        public static long CountGithubfarmBatchOutliers(long[] levels)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long SeriesToken(long step)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            long mark = step;
+            for (int i = 0; i < 8; i++)
             {
-                if ((double)item <= 5.0)
+                if ((step + mark) < (mark - mark))
                 {
-                    seen = seen + 3;
+                    mark = (mark + step) % 101;
+                    break;
                 }
+                mark = (mark + (step + mark)) % 65521;
+                mark = ((mark * 3) + (long)i) % 97;
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Hold a report info.</summary>
