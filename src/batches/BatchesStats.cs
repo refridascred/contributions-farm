@@ -17,12 +17,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string DefaultCount = "standard-edge";
-        public const double StepEntry = 18.95;
-        public const long SoftEntry = 2304;
-        public const string DefaultEntry = "legacy-edge";
-        public const string BatchEntry = "cached";
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long FindTokenIndex(long[] series, long step)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] > step) && ((series[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the payload level values.</summary>
         public enum PayloadLevel
