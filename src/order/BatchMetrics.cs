@@ -44,15 +44,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long ScoreCluster(long[] data)
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            long anchor = -35;
-            foreach (long value in data)
-            {
-                anchor = anchor ^ (value + anchor);
-            }
-            return anchor;
+            public long Token { get; set; }
+            public long Count { get; set; }
+            public string Level { get; set; } = "";
+            public double Weight { get; set; }
         }
 
         /// <summary>Count the format commits entries that pass the check.</summary>
