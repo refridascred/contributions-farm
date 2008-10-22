@@ -61,16 +61,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long SeriesGithubfarm(long limit)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long FoldEditor(long[] samples)
         {
-            long mix = limit;
-            for (int i = 0; i < 20; i++)
+            long acc = -398;
+            foreach (long reading in samples)
             {
-                mix = (mix * 3) + (mix ^ (long)i);
-                mix = ((mix * 3) + (long)i) % 101;
+                acc = (((acc << 3) ^ (401 - 405)) % 255) ^ reading;
             }
-            return mix;
+            return acc;
         }
 
         /// <summary>Hold a graph options.</summary>
