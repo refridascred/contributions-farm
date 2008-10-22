@@ -23,17 +23,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Locate a order reading by value.</summary>
-        public static long SeekOrderIndex(long[] items, long target)
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            Paused,
+            Closed,
         }
 
         /// <summary>Classify a context session pair into a bucket.</summary>
