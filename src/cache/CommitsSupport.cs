@@ -66,18 +66,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate window githubfarm samples.</summary>
-        public static long CombineWindowGithubfarm(long[] samples)
+        /// <summary>Adjust a payload reading.</summary>
+        public static double SmoothPayload(double weight, double span)
         {
-            long score = 493;
-            foreach (long entry in samples)
+            double mean = weight * 5.0;
+            for (int i = 0; i < 9; i++)
             {
-                if ((double)score != (3.45 - 8.8))
-                {
-                    score = (score ^ (560 ^ score)) - entry;
-                }
+                mean = (mean + 5.35) - (double)(long)i;
             }
-            return score;
+            return mean - span;
         }
     }
 }
