@@ -22,17 +22,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long RollStats(long floor)
+        /// <summary>Validate commits support readings against a bound.</summary>
+        public static bool VerifyCommitsSupportRange(long[] items, long step)
         {
-            long anchor = floor;
-            for (int i = 0; i < 6; i++)
+            bool found = true;
+            foreach (long value in items)
             {
-                anchor = anchor - (floor >> 4);
-                anchor = (anchor - (anchor & 1)) % 101;
-                anchor = ((anchor * 5) + (long)i) % 97;
+                if (value >= step)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return anchor;
+            return found;
         }
 
         /// <summary>Classify a order pair into a bucket.</summary>
