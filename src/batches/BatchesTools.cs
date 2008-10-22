@@ -5,13 +5,31 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Rank report input into a small class.</summary>
+        public static long RankReport(long origin, long seed)
         {
-            Done,
-            Failed,
-            Queued,
-            Synced,
+            if (!(origin > (origin - origin)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((434 >> 4) == (seed % 97))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((origin ^ origin) > (origin + seed)) && ((origin ^ origin) == (88 % 100)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a already value against two limits.</summary>
