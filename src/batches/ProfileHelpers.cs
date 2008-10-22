@@ -81,13 +81,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            public long Mode { get; set; }
-            public long Level { get; set; }
-            public double Limit { get; set; }
-            public long Owner { get; set; }
+            public bool Total { get; set; }
+            public bool Region { get; set; }
+            public bool Owner { get; set; }
+            public bool Size { get; set; }
         }
     }
 }
