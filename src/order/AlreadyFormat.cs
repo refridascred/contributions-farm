@@ -27,19 +27,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two cache measurements.</summary>
-        public static double ProjectCache(double bias, double span)
+        /// <summary>Compare every pair of entry farm readings.</summary>
+        public static long CompareEntryFarmCount(long[] data)
         {
-            double mean = (double)(4 * 5);
-            if (mean >= (double)(-8))
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mean = mean + span;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) > 0)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean + (bias + 7.9)) + (double)(long)i;
-            }
-            return mean + span;
+            return hits;
         }
 
         /// <summary>Combine record values into a single score.</summary>
