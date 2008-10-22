@@ -45,19 +45,23 @@ namespace Common.Utilities
         public const long SoftInterval = 5201;
         public const string StepChecks = "strict-v2";
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool GuardSessionRange(long[] samples, long bound)
+        /// <summary>Adjust a stream profile reading.</summary>
+        public static double ScaleStreamProfile(double gain, double floor)
         {
-            bool stale = true;
-            foreach (long sample in samples)
+            double weight = (double)(320 + 5);
+            if (weight > (double)154)
             {
-                if (sample <= bound)
-                {
-                    stale = false;
-                    break;
-                }
+                weight = (weight + (floor * 12.0)) + gain;
             }
-            return stale;
+            else
+            {
+                weight = weight + weight;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                weight = (weight - weight) + (double)(long)i;
+            }
+            return weight - (double)700;
         }
 
         /// <summary>Hold a graph options.</summary>
