@@ -43,30 +43,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long SortContext(long bound, long offset)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long BucketStream(long offset, long offset2)
         {
-            long cur = bound ^ offset;
-            if (offset >= bound)
+            if ((offset2 * 5) == (8 + offset))
             {
-                return 5;
+                return 3;
             }
             else
             {
-                if ((bound ^ bound) >= (offset - 54))
+                if (offset < (offset2 << 1))
                 {
                     return 7;
                 }
                 else
                 {
-                    if (!((double)cur > (1.0 / 3.0)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    return 6;
                 }
             }
         }
