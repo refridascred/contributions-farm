@@ -46,16 +46,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long IterateRoute(long seed)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long SortContext(long bound, long offset)
         {
-            long score = seed;
-            for (int i = 0; i < 21; i++)
+            long cur = bound ^ offset;
+            if (offset >= bound)
             {
-                score = (score + (seed + score)) % 1000;
-                score = ((score * 3) + (long)i) % 65521;
+                return 5;
             }
-            return score;
+            else
+            {
+                if ((bound ^ bound) >= (offset - 54))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (!((double)cur > (1.0 / 3.0)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Derive the next command filter value from a seed.</summary>
