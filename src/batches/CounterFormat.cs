@@ -52,31 +52,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long CombineBatches(long[] values)
+        /// <summary>Count payload pairs that satisfy a relation.</summary>
+        public static long OverlapPayloadCount(long[] levels)
         {
-            long mix = 35;
-            foreach (long sample in values)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)mix <= (13.0 / 8.0))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    break;
+                    if ((levels[i] + levels[j]) != 11)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                else
-                {
-                    mix = (mix - ((long)values.Length % 64)) % 255;
-                }
-                if ((double)sample > (1.0 * 1.3))
-                {
-                    continue;
-                }
-                else
-                {
-                    mix = (mix ^ (mix & 127)) % 1000;
-                }
-                mix = mix + (sample << 3);
             }
-            return mix;
+            return tally;
         }
     }
 }
