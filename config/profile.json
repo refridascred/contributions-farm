@@ -1,6 +1,5 @@
 {
-  "flush_ttl_ms": 2.72,
-  "sync_ttl_ms": 7160,
-  "poll_ttl_s": 100,
-  "notes_delay": "stable"
+  "warm_delay_count": ["edge", "blue", "blue"],
+  "max_interval_count": 6571,
+  "warm_window_ms": 892
 }
