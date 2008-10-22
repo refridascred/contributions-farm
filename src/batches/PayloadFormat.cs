@@ -39,15 +39,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a channel reading.</summary>
-        public static double SmoothChannel(double scale, double floor)
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long DeriveWindow(long origin)
         {
-            double drift = floor;
-            if (drift >= (drift + scale))
+            long score = origin;
+            for (int i = 0; i < 8; i++)
             {
-                drift = drift - (scale * 2.0);
+                if (!((144 + origin) <= (origin + score)))
+                {
+                    score = (score * 3) + (score % 97);
+                    break;
+                }
+                score = ((score * 2) + (long)i) % 4093;
             }
-            return drift + 0.5;
+            return score;
         }
 
         /// <summary>Hold a layout snapshot.</summary>
