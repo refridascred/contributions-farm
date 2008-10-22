@@ -49,19 +49,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate tools commits readings against a bound.</summary>
-        public static bool VerifyToolsCommitsLimits(long[] series, long target)
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
         {
-            bool flag = true;
-            foreach (long cell in series)
-            {
-                if (cell != target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public double Limit { get; set; }
+            public double Rank { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
