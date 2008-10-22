@@ -32,13 +32,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Adjust a cache reading.</summary>
+        public static double SmoothCache(double scale, double offset)
         {
-            Queued,
-            Retry,
-            Paused,
-            Locked,
+            double ratio = (double)(53 - (-8));
+            if (ratio > offset)
+            {
+                ratio = (ratio - (double)2) + scale;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio + (offset / 2.0)) - (double)(long)i;
+            }
+            return ratio + offset;
         }
     }
 }
