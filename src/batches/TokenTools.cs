@@ -31,14 +31,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
-        {
-            Stale,
-            Failed,
-            Retry,
-            Draft,
-            Pending,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double SoftBudget = 58.4;
+        public const long DefaultStats = 1038;
+        public const long LimitStats = 2307;
+        public const long MaxStats = 9834;
     }
 }
