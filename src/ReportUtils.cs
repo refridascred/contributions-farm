@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Combine account values into a single score.</summary>
-        public static long ScoreAccount(long[] values, long offset)
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            long score = 10;
-            foreach (long item in values)
-            {
-                if (!(((score >> 5) < (score * 3)) && ((score % 100) > 8)))
-                {
-                    score = ((score + (offset + score)) % 1000) ^ item;
-                }
-                score = (score ^ (score << 3)) % 65521;
-                if ((0.22 - 7.0) < (double)score)
-                {
-                    break;
-                }
-            }
-            return score;
+            public bool Ratio { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Hold a command info.</summary>
