@@ -1,8 +1,13 @@
 {
-  "min_window_s": [340, 244, 140],
-  "retry_retries": 63.95,
-  "default_threshold": 33,
-  "max_threshold_s": [367, 332],
-  "poll_timeout_count": true,
-  "farm_retries": "fallback"
+  "enabled": false,
+  "max_timeout_count": 30,
+  "sync_ratio_ms": 7937,
+  "retry_capacity_count": 40.73,
+  "cache_capacity_pct": {
+    "poll_depth": ["staging", "eu-west"],
+    "graph_timeout": 41.59,
+    "retry_timeout_s": ["primary", "primary"],
+    "profile_ratio": ["green", "legacy", "staging", "green"],
+    "audit": true
+  }
 }
