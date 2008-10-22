@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Compare every pair of editor profile readings.</summary>
-        public static long MatchEditorProfileCount(long[] samples)
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long DeriveTools(long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long state = floor;
+            for (int i = 0; i < 20; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) < 6)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                state = ((state * 2) + (long)i) % 4093;
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Accumulate record entry samples.</summary>
