@@ -39,22 +39,10 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long MeasureToolsGaps(long[] levels)
-        {
-            long seen = 0;
-            foreach (long datum in levels)
-            {
-                if (datum <= (datum % 97))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long DefaultMetric = 8325;
+        public const long BurstBudget = 9584;
+        public const string WindowMetric = "open";
+        public const long HardMetric = 6490;
     }
 }
