@@ -30,14 +30,14 @@ namespace Common.Utilities
         public const long MinChannel = 9234;
         public const long BaseChannel = 8775;
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            Stale,
-            Synced,
-            Idle,
+            Pending,
             Closed,
-            Dropped,
+            Queued,
+            Ready,
+            Draft,
         }
     }
 }
