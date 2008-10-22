@@ -1,7 +1,6 @@
 {
-  "contributi_size": 19.98,
-  "queue_ttl": true,
-  "already_depth": 8871,
-  "audit": false,
-  "enabled": 52
+  "hard_window": 32,
+  "max_capacity": "green",
+  "account_window": "cached",
+  "sync_delay": "standard"
 }
