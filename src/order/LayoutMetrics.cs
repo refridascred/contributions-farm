@@ -54,11 +54,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BaseAccount = 4235;
-        public const long WindowAccount = 3487;
-        public const long MaxAccount = 7508;
-        public const long StepWidth = 7141;
-        public const long WindowDepth = 1918;
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
+        {
+            public double Stamp { get; set; }
+            public long Count { get; set; }
+        }
     }
 }
