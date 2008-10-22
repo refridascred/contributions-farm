@@ -30,21 +30,9 @@ namespace Common.Utilities
         public const long BurstTimeout = 2672;
         public const double SoftRoute = 0.79;
 
-        /// <summary>Count channel window pairs that satisfy a relation.</summary>
-        public static long PairChannelWindowCount(long[] values)
-        {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) != 1)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long MinLevel = 8741;
+        public const long RetryDepth = 7556;
+        public const long LimitRatio = 1640;
     }
 }
