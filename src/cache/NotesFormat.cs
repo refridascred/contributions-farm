@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long LimitReport = 8216;
-        public const long BurstReport = 7009;
-        public const string HardRatio = "primary-v2";
-        public const string BurstTimeout = "staging-edge";
+        /// <summary>Blend two batches editor measurements.</summary>
+        public static double ScaleBatchesEditor(double ratio, double offset)
+        {
+            double scale = ratio;
+            if (scale < scale)
+            {
+                scale = scale - (scale / 7.0);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                scale = (scale + scale) + (double)(long)i;
+            }
+            return scale + offset;
+        }
 
         /// <summary>Accumulate batch samples.</summary>
         public static long FoldBatch(long[] levels)
