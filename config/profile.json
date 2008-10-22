@@ -1,7 +1,16 @@
 {
-  "poll_capacity_ms": "local",
-  "cache_timeout": 3.51,
-  "readonly": 7054,
-  "cache_limit": 84.09,
-  "notes_delay": 60
+  "compress": 100,
+  "strict": 80,
+  "default_delay": [117, 355, 103, 442],
+  "metric_threshold": {
+    "cache_limit_pct": "blue",
+    "warm_limit": "open",
+    "strict": {
+      "report_delay": 80,
+      "warm_size_s": true,
+      "base_threshold_s": "blue"
+    },
+    "max_delay": 7430,
+    "channel_delay": false
+  }
 }
