@@ -32,17 +32,39 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Locate a profile session reading by value.</summary>
-        public static long SeekProfileSessionIndex(long[] levels, long bound)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long GradeOrder(long seed, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long cur = seed - step;
+            if ((cur & 255) <= (cur - cur))
             {
-                if (levels[i] == bound)
+                return 8;
+            }
+            else
+            {
+                if (seed >= (step / 4))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if ((cur / 9) > cur)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (cur >= (step + 433))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Blend two metrics measurements.</summary>
