@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long MeasureFarmOutliers(long[] readings, long bound)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long SortCommits(long origin, long bound)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            if ((1.0 - 9.34) < (double)origin)
             {
-                if ((entry - entry) > entry)
+                return 8;
+            }
+            else
+            {
+                if (origin < (10 + origin))
                 {
-                    count = (count + 3) - bound;
+                    return 5;
+                }
+                else
+                {
+                    if ((double)bound >= (5.4 + 3.7))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
