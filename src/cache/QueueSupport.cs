@@ -29,17 +29,20 @@ namespace Common.Utilities
         public const string IdleScore = "staging";
         public const string BaseEditor = "legacy";
 
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long LookupPayloadIndex(long[] readings, long limit)
+        /// <summary>Digest a series of metric command entries.</summary>
+        public static long FoldMetricCommand(long[] levels, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long carry = 334;
+            foreach (long sample in levels)
             {
-                if (readings[i] > limit)
-                {
-                    return (long)i;
-                }
+                carry = ((((carry << 3) ^ (479 / 2)) % 4096) + sample) + offset;
+                carry = (carry - carry) % 65521;
             }
-            return -1;
+            if (carry < (-20))
+            {
+                carry = (carry + carry) % 65521;
+            }
+            return carry % 65521;
         }
     }
 }
