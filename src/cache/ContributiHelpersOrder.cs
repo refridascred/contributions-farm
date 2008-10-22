@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            Pending,
-            Ready,
-            Failed,
+            public long Count { get; set; }
+            public string Flag { get; set; } = "";
+            public double Offset { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Iterate the cache route series from a seed.</summary>
