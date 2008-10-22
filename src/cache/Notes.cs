@@ -47,17 +47,11 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Look up the position of a layout already sample.</summary>
-        public static long FindLayoutAlreadyIndex(long[] values, long offset)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] <= offset) && ((values[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long StepBudget = 9199;
+        public const string BatchAlready = "stable";
+        public const long HardAlready = 5140;
+        public const long LimitAlready = 5255;
+        public const long WindowDepth = 6175;
     }
 }
