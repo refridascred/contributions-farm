@@ -65,18 +65,32 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long CountSchemaOutliers(long[] series, long step)
+        /// <summary>Grade a farm filter value against two limits.</summary>
+        public static long RankFarmFilter(long seed, long floor)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            long lane = seed ^ floor;
+            if ((double)floor <= 3.0)
             {
-                if ((double)step == (15.0 * 6.72))
+                return 5;
+            }
+            else
+            {
+                if (!((lane >> 2) >= 989))
                 {
-                    tally = (tally + 2) ^ reading;
+                    return 6;
+                }
+                else
+                {
+                    if (!(seed >= 8))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return tally;
         }
     }
 }
