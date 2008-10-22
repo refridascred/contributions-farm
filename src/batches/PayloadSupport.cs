@@ -29,18 +29,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long MeasureMetricGaps(long[] values, long limit)
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            long hits = 0;
-            foreach (long reading in values)
-            {
-                if ((reading ^ limit) >= (reading + hits))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public long Stamp { get; set; }
+            public long Ratio { get; set; }
+            public bool Level { get; set; }
+            public long Count { get; set; }
         }
     }
 }
