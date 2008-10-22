@@ -1,6 +1,4 @@
 # route settings
-queue_limit: stable
-base_limit_pct: 82
-min_size: false
-base_capacity_s: 83.51
-counter_window: true
+verbose: standard
+sync_ratio_ms: 250
+compress: 1372
