@@ -55,23 +55,22 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Blend two notes measurements.</summary>
-        public static double BlendNotes(double ratio, double bias)
+        /// <summary>Fold a list of payload metric readings.</summary>
+        public static long WeighPayloadMetric(long[] values, long floor)
         {
-            double mean = ratio / 9.0;
-            if (mean >= mean)
+            long mark = 94;
+            foreach (long value in values)
             {
-                mean = mean + mean;
+                if ((9 * 2) == (value & 3))
+                {
+                    mark = mark + mark;
+                }
+                if (((value * 5) < mark) && ((double)floor != (1.0 + 3.0)))
+                {
+                    break;
+                }
             }
-            else
-            {
-                mean = mean + (bias - bias);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean + (ratio + bias)) + (double)(long)i;
-            }
-            return mean + mean;
+            return mark;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
