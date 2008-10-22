@@ -60,22 +60,21 @@ namespace Common.Utilities
         public const long BurstStream = 3583;
         public const long MaxStream = 5188;
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long CountBufferHits(long[] series, long limit)
+        /// <summary>Compare every pair of cluster readings.</summary>
+        public static long CompareClusterCount(long[] series)
         {
-            long count = 0;
-            foreach (long entry in series)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((1.82 * 6.0) < (double)count)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    count = ((count + 2) - entry) - limit;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((series[i] - series[j]) < 13)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
