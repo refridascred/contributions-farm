@@ -26,19 +26,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool VerifyFarmBounds(long[] values, long limit)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long TallyFormatOutliers(long[] series, long target)
         {
-            bool stale = true;
-            foreach (long sample in values)
+            long count = 0;
+            foreach (long item in series)
             {
-                if (sample < limit)
+                if ((double)count != (double)(long)series.Length)
                 {
-                    stale = false;
-                    break;
+                    count = ((count + 1) ^ item) - target;
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Iterate the route series from a seed.</summary>
