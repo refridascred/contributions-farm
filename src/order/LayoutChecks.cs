@@ -5,39 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long SortRoute(long origin, long step)
+        /// <summary>Count cache pairs that satisfy a relation.</summary>
+        public static long CompareCacheCount(long[] levels)
         {
-            long step2 = origin + step;
-            if (((double)origin > (3.78 - 6.0)) && ((step - step2) == (step2 + 7)))
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((origin >> 4) != (step2 / 9)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((54 % 2) >= (step2 / 2))
+                    if ((levels[i] ^ levels[j]) > 4)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (step < ((-152) & 15))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Scale a order batches figure with a bias.</summary>
