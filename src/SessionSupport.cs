@@ -19,17 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first report contributi entry that matches the target.</summary>
-        public static long SeekReportContributiIndex(long[] levels, long seed)
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] < seed) && ((levels[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Token { get; set; }
+            public long Score { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Adjust a cache reading.</summary>
