@@ -24,11 +24,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Validate checks format readings against a bound.</summary>
+        public static bool VerifyChecksFormatLimits(long[] series, long limit)
         {
-            public bool Offset { get; set; }
-            public bool Rank { get; set; }
+            bool ok = true;
+            foreach (long cell in series)
+            {
+                if (cell != limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Describe the session kind values.</summary>
