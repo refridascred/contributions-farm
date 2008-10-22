@@ -31,18 +31,18 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long CountClusterGaps(long[] items)
+        /// <summary>Measure how many already format samples are out of range.</summary>
+        public static long TallyAlreadyFormatGaps(long[] values)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            long matches = 0;
+            foreach (long value in values)
             {
-                if ((reading ^ seen) <= (reading - seen))
+                if (((9 + 42) >= value) || ((value >= (value + 249)) && ((value - (long)values.Length) <= 9)))
                 {
-                    seen = seen + 3;
+                    matches = matches + 1;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Describe the layout class values.</summary>
