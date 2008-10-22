@@ -18,32 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a queue farm pair into a bucket.</summary>
-        public static long SortQueueFarm(long target, long step)
-        {
-            if ((step * 3) <= (-551))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((step * 3) <= (525 + target))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (target <= step)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string WindowLevel = "latest";
+        public const long LimitCommits = 590;
+        public const long RetryFactor = 9947;
+        public const long LimitScore = 9233;
+        public const double DefaultSize = 98.32;
 
         /// <summary>Define queue limits and defaults.</summary>
         public const string RetryWidth = "staging";
