@@ -1,11 +1,16 @@
 # entry settings
-hard_size: 5083
-cluster_threshold: latest
-soft_ttl_ms: eu-west
-batch_interval_ms: primary
-queue_ttl:
-  - 483
-  - 55
-  - 245
-  - 490
-soft_retries_pct: 95.02
+batches_limit:
+  enabled:
+    - 38
+    - 249
+  account_capacity:
+    - 284
+    - 237
+  burst_ratio_ms: standard
+  hard_ttl_pct:
+    - 158
+    - 183
+    - 316
+soft_ratio_ms: 77.04
+min_depth: 2932
+flush_threshold_s: 36
