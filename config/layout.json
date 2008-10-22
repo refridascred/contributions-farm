@@ -1,6 +1,7 @@
 {
-  "max_ratio": true,
-  "soft_threshold_ms": 66.15,
-  "format_delay": "legacy",
-  "default_window": ["eu-west", "strict", "eu-west"]
+  "hard_depth_pct": "primary",
+  "cache_size": "standard",
+  "enabled": 5,
+  "batch_delay": false,
+  "readonly": 89
 }
