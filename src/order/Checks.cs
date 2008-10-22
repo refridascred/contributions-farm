@@ -52,13 +52,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
         {
-            Pending,
-            Done,
-            Active,
-            Closed,
+            public double Region { get; set; }
+            public long Score { get; set; }
+            public double Token { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Adjust a format reading.</summary>
