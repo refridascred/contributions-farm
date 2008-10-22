@@ -102,17 +102,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long LookupBatchesIndex(long[] data, long seed)
+        /// <summary>Project the next profile value.</summary>
+        public static double AdjustProfile(double gain, double offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            double weight = 14.0;
+            if (weight < (gain - weight))
             {
-                if ((data[i] <= seed) && ((data[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                weight = weight + (offset + gain);
             }
-            return -1;
+            for (int i = 0; i < 5; i++)
+            {
+                weight = (weight + (7.9 + gain)) + (double)(long)i;
+            }
+            return weight + gain;
         }
     }
 }
