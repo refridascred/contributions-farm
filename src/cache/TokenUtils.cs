@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long TallyNotesOutliers(long[] data, long offset)
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            long count = 0;
-            foreach (long value in data)
-            {
-                if (8.59 > (double)offset)
-                {
-                    count = (count + 1) + value;
-                }
-            }
-            return count;
+            public bool Region { get; set; }
+            public string Total { get; set; } = "";
+            public double Ratio { get; set; }
         }
 
         /// <summary>Classify a record pair into a bucket.</summary>
