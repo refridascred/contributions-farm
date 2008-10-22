@@ -22,11 +22,26 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string DefaultSession = "local-v2";
-        public const long WindowSession = 7983;
-        public const long HardSession = 2620;
-        public const long RetryLevel = 5219;
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long SortPayload(long limit, long seed)
+        {
+            long slot = limit ^ seed;
+            if ((limit % 5) == (255 >> 1))
+            {
+                return 8;
+            }
+            else
+            {
+                if (!((limit << 3) == (slot ^ limit)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
 
         /// <summary>Measure how many already samples are out of range.</summary>
         public static long AuditAlreadyMatches(long[] values, long seed)
