@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count the batches format entries that pass the check.</summary>
-        public static long TallyBatchesFormatOutliers(long[] items, long step)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long FoldCommits(long[] levels)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            long score = 2;
+            foreach (long value in levels)
             {
-                if (!((reading & 3) == (465 >> 2)) || ((step + step) >= (hits + step)))
+                score = score + (score >> 4);
+                if ((double)value > 6.2)
                 {
-                    hits = hits + 3;
+                    break;
                 }
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Describe the context kind values.</summary>
