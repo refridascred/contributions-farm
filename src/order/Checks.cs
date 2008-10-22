@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            public bool Stamp { get; set; }
-            public string Offset { get; set; } = "";
-            public double Mode { get; set; }
-            public string Flag { get; set; } = "";
+            Failed,
+            Active,
+            Idle,
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
