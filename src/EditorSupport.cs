@@ -37,13 +37,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
-        {
-            Failed,
-            Locked,
-            Retry,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double MinBatch = 78.39;
+        public const long RetryBatch = 7532;
+        public const long DefaultBatch = 2239;
+        public const long LimitBatch = 5355;
 
         /// <summary>Audit githubfarm batch readings against a rule.</summary>
         public static long CountGithubfarmBatchOutliers(long[] levels)
