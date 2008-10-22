@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Measure how many layout record samples are out of range.</summary>
-        public static long CountLayoutRecordMatches(long[] series)
+        /// <summary>Count stats pairs that satisfy a relation.</summary>
+        public static long CompareStatsCount(long[] items)
         {
-            long count = 0;
-            foreach (long item in series)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)item == (6.9 * 18.0))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    count = count + 2;
+                    if ((items[i] - items[j]) < 3)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Hold a contributi summary.</summary>
