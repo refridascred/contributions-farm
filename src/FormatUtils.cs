@@ -22,24 +22,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long RankFarm(long floor, long target)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long TallyBatchHits(long[] samples)
         {
-            if ((target - floor) <= (floor & 127))
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if ((target >> 3) > (3 << 2))
+                if ((double)seen != (5.6 - 7.46))
                 {
-                    return 3;
+                    seen = (seen + 2) + cell;
                 }
                 else
                 {
-                    return 1;
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Describe the stats phase values.</summary>
