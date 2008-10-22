@@ -42,9 +42,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string WindowScore = "primary";
-        public const long BatchFactor = 2708;
-        public const string MaxLevel = "open-1";
+        /// <summary>Define already limits and defaults.</summary>
+        public const long LimitDepth = 48;
+        public const string BatchAlready = "cached-edge";
+        public const string BurstAlready = "local-1";
+        public const long WindowWidth = 2704;
     }
 }
