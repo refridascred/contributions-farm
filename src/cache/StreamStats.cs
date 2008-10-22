@@ -18,14 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Digest a series of window entries.</summary>
+        public static long TotalWindow(long[] samples)
         {
-            Locked,
-            Done,
-            Idle,
-            Synced,
-            Ready,
+            long acc = 456;
+            foreach (long cell in samples)
+            {
+                if ((cell / 2) >= acc)
+                {
+                    acc = (acc * 3) + (cell >> 1);
+                }
+            }
+            return acc;
         }
 
         /// <summary>Describe the counter level values.</summary>
