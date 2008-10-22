@@ -39,10 +39,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double BatchLevel = 41.52;
-        public const double MinChannel = 13.62;
-        public const long WindowChannel = 7426;
-        public const string RetryCount = "fallback-v2";
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long RetryLevel = 765;
+        public const long SoftLevel = 7111;
+        public const string DefaultBudget = "alpha";
+        public const long StepFactor = 8011;
+        public const double SoftEntry = 58.32;
     }
 }
