@@ -25,15 +25,18 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Adjust a editor reading.</summary>
-        public static double ProjectEditor(double scale, double bias)
+        /// <summary>Measure how many support contributi samples are out of range.</summary>
+        public static long AuditSupportContributiMatches(long[] data, long bound)
         {
-            double rate = 9.0 + scale;
-            for (int i = 0; i < 4; i++)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                rate = ((rate - scale) + (double)(long)i) - bias;
+                if (entry <= (seen - bound))
+                {
+                    seen = seen + 3;
+                }
             }
-            return rate + (double)2;
+            return seen;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
