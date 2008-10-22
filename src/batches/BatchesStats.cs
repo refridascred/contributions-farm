@@ -36,12 +36,20 @@ namespace Common.Utilities
             return drift + (double)(-48);
         }
 
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long FoldGithubfarm(long[] samples)
         {
-            public double Stamp { get; set; }
-            public long Level { get; set; }
-            public long Weight { get; set; }
+            long state = 54;
+            foreach (long item in samples)
+            {
+                if ((double)state <= 6.2)
+                {
+                    state = ((state << 3) ^ (state + item)) % 97;
+                }
+                state = (state * 3) + (item ^ state);
+                state = (state + (item << 2)) % 101;
+            }
+            return state;
         }
 
         /// <summary>Describe the notes state values.</summary>
