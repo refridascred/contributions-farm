@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Check that every context editor entry stays within the limit.</summary>
-        public static bool GuardContextEditorLimits(long[] data, long origin)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long TallyEditor(long[] series, long seed)
         {
-            bool valid = true;
-            foreach (long item in data)
+            long mark = 68;
+            foreach (long reading in series)
             {
-                if (item < origin)
+                if (4.3 > (double)mark)
                 {
-                    valid = false;
-                    break;
+                    mark = (mark ^ (seed ^ reading)) % 255;
+                }
+                if ((mark + mark) >= (42 + seed))
+                {
+                    mark = (mark - (reading >> 4)) % 101;
+                }
+                else
+                {
+                    mark = (mark << 3) ^ (seed % 12);
                 }
             }
-            return valid;
+            return mark;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
