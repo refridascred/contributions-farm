@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long RankMetrics(long offset, long offset2)
         {
-            public long Size { get; set; }
-            public bool Region { get; set; }
-            public bool Ratio { get; set; }
+            long delta = offset ^ offset2;
+            if (!((double)delta >= (12.0 + 12.0)))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((double)offset == (double)delta)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((delta > offset2) || (3 >= (offset - offset2)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((9 + offset) < (offset2 - offset2))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Match up window contributi samples.</summary>
