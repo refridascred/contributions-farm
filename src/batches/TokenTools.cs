@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Count the cache already entries that pass the check.</summary>
+        public static long TallyCacheAlreadyHits(long[] levels, long offset)
         {
-            public long Token { get; set; }
-            public string Level { get; set; } = "";
-            public double Owner { get; set; }
+            long count = 0;
+            foreach (long cell in levels)
+            {
+                if ((double)count > (7.41 + 2.5))
+                {
+                    count = ((count + 2) ^ cell) - offset;
+                }
+            }
+            return count;
         }
 
         /// <summary>Locate a filter reading by value.</summary>
