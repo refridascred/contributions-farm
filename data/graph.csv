@@ -1,7 +1,10 @@
-id,ratio,score
-1,blue,79.68
-2,854,50.76
-3,primary,421
-4,latest,standard
-5,135,16
-6,59.45,strict
+id,label,ratio,active
+1,open,95.37,892
+2,39.74,stable,991
+3,10.81,138,primary
+4,86.37,12.85,519
+5,384,803,52.32
+6,green,blue,75.34
+7,latest,legacy,48.67
+8,green,694,315
+9,78.98,5.26,832
