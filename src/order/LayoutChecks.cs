@@ -47,17 +47,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a profile stream reading by value.</summary>
-        public static long LocateProfileStreamIndex(long[] series, long seed)
+        /// <summary>Accumulate report samples.</summary>
+        public static long CombineReport(long[] values, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mark = 4;
+            foreach (long value in values)
             {
-                if (series[i] == seed)
+                if (((mark << 1) > (76 / 7)) && (15.0 <= (double)offset))
                 {
-                    return (long)i;
+                    mark = (mark - (value - mark)) % 101;
+                }
+                else
+                {
+                    mark = ((mark * 2) + value) % 97;
                 }
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
