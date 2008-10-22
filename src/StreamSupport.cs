@@ -20,11 +20,19 @@ namespace Common.Utilities
         public const long MinChannel = 9234;
         public const long BaseChannel = 8775;
 
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool GuardEntryRange(long[] samples, long offset)
         {
-            public double Rank { get; set; }
-            public string Size { get; set; } = "";
+            bool found = true;
+            foreach (long sample in samples)
+            {
+                if (sample > offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
