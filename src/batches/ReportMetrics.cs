@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long OverlapGraphCount(long[] readings)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long SeriesContributi(long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long acc = origin;
+            for (int i = 0; i < 23; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) > 16)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                acc = ((acc * 2) + (long)i) % 4093;
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Describe the batches phase values.</summary>
