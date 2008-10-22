@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long RankFarm(long target, long step)
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            long span = target - step;
-            if ((step < (335 + 93)) && ((4 + target) != (149 >> 1)))
-            {
-                return 6;
-            }
-            else
-            {
-                if (!((step + span) < (step & 31)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((step << 1) >= (step + target))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Closed,
+            Draft,
+            Retry,
         }
 
         /// <summary>Measure how many checks schema samples are out of range.</summary>
