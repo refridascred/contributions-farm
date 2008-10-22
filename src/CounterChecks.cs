@@ -27,24 +27,11 @@ namespace Common.Utilities
         public const string LimitLayout = "stable";
         public const long HardLayout = 1509;
 
-        /// <summary>Grade a counter batches value against two limits.</summary>
-        public static long ClassifyCounterBatches(long origin, long origin2)
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            if (((origin % 64) <= (origin & 3)) && (6 <= (origin2 - origin)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((((-69) * 4) < (origin ^ origin)) || ((origin + origin) != (origin2 << 1)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public bool Token { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Project the next metric value.</summary>
