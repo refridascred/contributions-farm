@@ -52,19 +52,17 @@ namespace Common.Utilities
         public const long DefaultRatio = 6368;
         public const long MinFactor = 6773;
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long IterateBuffer(long origin)
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long SeekSchemaIndex(long[] levels, long limit)
         {
-            long mix = origin;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)2 >= (double)mix)
+                if (levels[i] == limit)
                 {
-                    mix = ((mix * 3) + origin) % 255;
+                    return (long)i;
                 }
-                mix = ((mix * 5) + (long)i) % 65521;
             }
-            return mix;
+            return -1;
         }
     }
 }
