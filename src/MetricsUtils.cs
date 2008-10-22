@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long LookupEntryIndex(long[] data, long floor)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string MaxReport = "cached-1";
+        public const long IdleLevel = 4920;
+        public const long DefaultReport = 2873;
+        public const long MinWidth = 5614;
 
         /// <summary>Blend two checks measurements.</summary>
         public static double ScaleChecks(double scale, double bias)
