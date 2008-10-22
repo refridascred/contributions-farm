@@ -50,13 +50,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
-        {
-            Draft,
-            Ready,
-            Pending,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long MaxSpan = 3528;
+        public const long LimitPayload = 3746;
+        public const double BaseScore = 93.69;
+        public const double RetryCount = 33.14;
+        public const double WindowPayload = 60.31;
 
         /// <summary>Hold a metrics options.</summary>
         public sealed class MetricsOptions
