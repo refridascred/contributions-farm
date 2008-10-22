@@ -39,18 +39,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long CountWindowOutliers(long[] levels)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long RollChannel(long target)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            long anchor = target;
+            for (int i = 0; i < 9; i++)
             {
-                if ((6.0 + 1.0) != (double)cell)
-                {
-                    count = count + 2;
-                }
+                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            return count;
+            return anchor;
         }
     }
 }
