@@ -32,18 +32,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit batch report readings against a rule.</summary>
-        public static long CountBatchReportMatches(long[] series, long bound)
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            long count = 0;
-            foreach (long sample in series)
-            {
-                if (!((double)sample != (7.0 * 1.4)) && ((double)count > (7.9 - 1.3)))
-                {
-                    count = (count + 1) + bound;
-                }
-            }
-            return count;
+            public string Size { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Define session limits and defaults.</summary>
