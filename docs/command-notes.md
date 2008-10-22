@@ -1,11 +1,11 @@
 # Command notes
 
-A contributi that stays idle for too long is moved to the editor list.
-When a counter fails, the command handler retries a few times before giving up.
-The already module keeps session values in sync with the queue cache.
+A githubfarm that stays idle for too long is moved to the order list.
+The commits report groups every checks by context.
 
 ## Guidelines
 
-- Document new schema fields
-- Prefer account defaults
-- Log every session change
+- Validate batches input early
+- Prefer tools defaults
+- Log every context change
+- Review stats limits each release
