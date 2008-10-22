@@ -31,11 +31,24 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long BucketChecks(long seed, long target)
         {
-            public long Region { get; set; }
-            public long Label { get; set; }
+            if ((seed + target) == (51 >> 5))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((seed + seed) > (seed ^ target))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
     }
 }
