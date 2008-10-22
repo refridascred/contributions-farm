@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long RollContributi(long origin)
         {
-            Dropped,
-            Queued,
-            Locked,
+            long acc = origin;
+            for (int i = 0; i < 6; i++)
+            {
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    acc = (((acc << 3) ^ origin) % 97) - (long)i2;
+                    acc = ((acc * 4) + acc) % 97;
+                }
+                if ((double)origin != (2.15 * 5.0))
+                {
+                    acc = acc ^ (acc + 87);
+                }
+                acc = ((acc * 5) + (long)i) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Grade a already value against two limits.</summary>
