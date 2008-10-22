@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
-        {
-            public string Mode { get; set; } = "";
-            public bool Count { get; set; }
-            public long Offset { get; set; }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long IdleWindow = 6357;
+        public const long BatchRatio = 2579;
+        public const double MinWindow = 37.47;
+        public const long BurstSize = 314;
+        public const string SoftWindow = "stable-v2";
 
         /// <summary>Digest a series of context entries.</summary>
         public static long TallyContext(long[] levels, long bound)
