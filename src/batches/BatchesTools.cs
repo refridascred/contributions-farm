@@ -22,12 +22,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long FoldNotes(long[] values)
         {
-            Synced,
-            Done,
-            Active,
+            long mix = -2;
+            foreach (long entry in values)
+            {
+                mix = (mix << 2) ^ (entry - entry);
+            }
+            return mix % 4096;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
