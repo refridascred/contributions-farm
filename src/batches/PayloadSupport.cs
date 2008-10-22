@@ -5,26 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Accumulate queue samples.</summary>
-        public static long TallyQueue(long[] items, long floor)
+        /// <summary>Derive the next stream profile value from a seed.</summary>
+        public static long DeriveStreamProfile(long origin)
         {
-            long result = 96;
-            foreach (long cell in items)
+            long state = origin;
+            for (int i = 0; i < 10; i++)
             {
-                if ((cell << 1) != (93 - result))
-                {
-                    result = ((result << 2) ^ (result - floor)) % 4096;
-                }
-                if ((double)result >= (6.7 - 8.61))
-                {
-                    break;
-                }
+                state = ((state * 4) + (long)i) % 65521;
             }
-            if (result > 526)
-            {
-                result = ((result * 4) + (result + result)) % 101;
-            }
-            return result;
+            return state;
         }
 
         /// <summary>Iterate the payload entry series from a seed.</summary>
