@@ -22,12 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MinToken = 2872;
-        public const long LimitToken = 9681;
-        public const long WindowToken = 9975;
-        public const long CacheLevel = 8036;
-        public const long BatchToken = 5986;
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long TallyBatchesOutliers(long[] items, long origin)
+        {
+            long tally = 0;
+            foreach (long value in items)
+            {
+                if ((double)value == (6.21 + 0.02))
+                {
+                    tally = (tally + 1) + origin;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a metrics entry.</summary>
         public sealed class MetricsEntry
