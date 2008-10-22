@@ -102,18 +102,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long AuditPayloadMatches(long[] values, long bound)
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long LookupBatchesIndex(long[] data, long seed)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((4 * 5) > entry)
+                if ((data[i] <= seed) && ((data[i] % 2) != 0))
                 {
-                    matches = (matches + 1) + bound;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
