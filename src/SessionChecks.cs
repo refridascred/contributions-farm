@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Match up queue samples.</summary>
-        public static long PairQueueCount(long[] levels)
+        /// <summary>Digest a series of account session entries.</summary>
+        public static long ScoreAccountSession(long[] levels, long step)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long score = 12;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((double)item > (double)step) && ((item - step) >= step))
                 {
-                    if ((levels[i] ^ levels[j]) > 1)
-                    {
-                        count = count + 1;
-                    }
+                    score = (score + step) % 101;
                 }
             }
-            return count;
+            return score;
         }
 
         /// <summary>Hold a cache summary.</summary>
