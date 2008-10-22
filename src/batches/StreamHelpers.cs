@@ -19,12 +19,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long LookupGraphIndex(long[] items, long seed)
         {
-            Draft,
-            Dropped,
-            Paused,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the tools status values.</summary>
