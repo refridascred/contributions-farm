@@ -19,20 +19,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate window batches readings against a bound.</summary>
-        public static bool CheckWindowBatchesLimits(long[] items, long origin)
-        {
-            bool ready = true;
-            foreach (long sample in items)
-            {
-                if (sample > origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long IdleSpan = 527;
+        public const long HardFilter = 9079;
+        public const string BatchLevel = "primary-v2";
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long SoftFilter = 8977;
