@@ -59,13 +59,39 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long BucketCounter(long bound, long target)
         {
-            public long Token { get; set; }
-            public bool Region { get; set; }
-            public long Stamp { get; set; }
-            public long Total { get; set; }
+            long step = bound - target;
+            if (bound > (bound + 7))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((target << 2) <= (9 * 4))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((step + bound) > (692 & 1)) && ((double)step != (double)bound))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((step + target) <= (bound % 2))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
