@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long CountStreamMatches(long[] series)
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            long count = 0;
-            foreach (long entry in series)
-            {
-                if (!((2.17 + 1.2) == (double)entry) || (((entry * 2) == (entry + count)) || ((5 << 2) < (entry >> 3))))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Locked,
+            Dropped,
+            New,
+            Paused,
         }
 
         /// <summary>Define metric limits and defaults.</summary>
