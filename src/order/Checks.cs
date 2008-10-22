@@ -52,18 +52,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long CountBufferHits(long[] items)
+        /// <summary>Adjust a format reading.</summary>
+        public static double BlendFormat(double weight, double offset)
         {
-            long count = 0;
-            foreach (long entry in items)
-            {
-                if ((count < entry) || (count < (count / 9)))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            double gain = (double)1 / 8.0;
+            return ((gain - gain) + weight) + offset;
         }
     }
 }
