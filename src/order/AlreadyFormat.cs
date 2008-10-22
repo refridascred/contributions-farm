@@ -5,28 +5,13 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long DeriveOrder(long limit)
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            long score = limit;
-            for (int i = 0; i < 6; i++)
-            {
-                if ((double)limit > (2.0 / 4.0))
-                {
-                    break;
-                }
-                else
-                {
-                    score = (score * 2) + (score + (long)i);
-                }
-                if (!((double)(long)i >= (6.5 + 20.0)))
-                {
-                    score = score - (limit - 289);
-                }
-                score = (score * 5) + (long)i;
-                score = ((score * 3) + (long)i) % 1000;
-            }
-            return score;
+            public long Ratio { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Weight { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Locate a batch channel reading by value.</summary>
