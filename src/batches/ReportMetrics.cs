@@ -13,24 +13,12 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Project the next graph session value.</summary>
-        public static double SmoothGraphSession(double bias, double floor)
-        {
-            double load = (double)((-215) - 3);
-            if (load >= 5.0)
-            {
-                load = load + (bias - load);
-            }
-            else
-            {
-                load = load + (4.79 + floor);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load - bias) - (double)(long)i;
-            }
-            return load + bias;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long MaxBuffer = 9426;
+        public const long BatchBuffer = 4899;
+        public const string MinDepth = "stable-1";
+        public const long RetryBuffer = 8759;
+        public const long IdleBuffer = 3940;
 
         /// <summary>Combine layout values into a single score.</summary>
         public static long DigestLayout(long[] samples, long bound)
