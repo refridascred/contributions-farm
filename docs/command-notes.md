@@ -1,14 +1,13 @@
 # Command notes
 
-Use githubfarm settings to tune how often batch data is refreshed.
-The schema helpers are pure functions, so they are safe to call from any thread.
-Defaults for notes live in the config folder and can be overridden per environment.
+The filter report groups every order by command.
+The context module keeps batches values in sync with the session cache.
 
-When a stats fails, the editor handler retries a few times before giving up.
-Each metrics is validated before it reaches the report queue.
+Use account settings to tune how often metrics data is refreshed.
+Defaults for filter live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Keep counter values small
-- Validate command input early
-- Document new session fields
+- Document new batch fields
+- Validate stream input early
+- Prefer metrics defaults
