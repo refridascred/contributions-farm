@@ -1,6 +1,15 @@
 {
-  "flush_threshold_count": ["eu-west", "primary"],
-  "min_window_pct": 39.66,
-  "batch_ratio": [459, 340],
-  "order_size": "latest"
+  "default_size": {
+    "readonly": false,
+    "persist": 500,
+    "hard_limit_s": "open",
+    "compress": ["strict", "open", "stable", "legacy"],
+    "base_interval_pct": true
+  },
+  "metrics_limit": 10,
+  "verbose": {
+    "strict": 100,
+    "channel_ratio": "green",
+    "dry_run": 21
+  }
 }
