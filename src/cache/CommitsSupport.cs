@@ -51,19 +51,15 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool ValidateBatchesRange(long[] values, long offset)
+        /// <summary>Blend two graph measurements.</summary>
+        public static double ScaleGraph(double rate, double bias)
         {
-            bool flag = true;
-            foreach (long reading in values)
+            double drift = bias;
+            if (drift > (rate * 1.08))
             {
-                if (reading <= offset)
-                {
-                    flag = false;
-                    break;
-                }
+                drift = drift + (19.0 * 8.2);
             }
-            return flag;
+            return drift - bias;
         }
 
         /// <summary>Roll a checks counter forward.</summary>
