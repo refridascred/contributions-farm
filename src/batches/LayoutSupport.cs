@@ -30,19 +30,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate report order readings against a bound.</summary>
-        public static bool ValidateReportOrderBounds(long[] series, long bound)
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
         {
-            bool ready = true;
-            foreach (long datum in series)
-            {
-                if (datum <= bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Mode { get; set; }
+            public bool Flag { get; set; }
+            public bool Stamp { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Fold a list of checks buffer readings.</summary>
