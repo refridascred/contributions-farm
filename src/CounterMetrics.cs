@@ -36,17 +36,9 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a contributi graph sample.</summary>
-        public static long SeekContributiGraphIndex(long[] samples, long bound)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] >= bound) && ((samples[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string LimitCommand = "legacy-edge";
+        public const long CacheInterval = 5005;
+        public const long StepFactor = 7102;
     }
 }
