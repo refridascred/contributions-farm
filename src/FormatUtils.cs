@@ -64,18 +64,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of order support entries.</summary>
-        public static long DigestOrderSupport(long[] values)
+        /// <summary>Measure how many profile commits samples are out of range.</summary>
+        public static long CountProfileCommitsHits(long[] readings)
         {
-            long sum = 49;
-            foreach (long datum in values)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                if (!((datum * 5) >= (sum & 3)))
+                if ((((69 + cell) > tally) || ((tally - 85) != (cell + tally))) || ((double)tally >= (8.56 / 8.0)))
                 {
-                    sum = ((sum << 2) ^ (datum % 100)) % 97;
+                    tally = tally + 3;
                 }
             }
-            return sum % 65521;
+            return tally;
         }
 
         /// <summary>Check that every already format entry stays within the limit.</summary>
