@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            public long Limit { get; set; }
-            public string Flag { get; set; } = "";
+            public string Level { get; set; } = "";
             public long Ratio { get; set; }
+            public double Label { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Accumulate batches queue samples.</summary>
