@@ -1,4 +1,8 @@
 # entry settings
-poll_size_ms: 90.15
-burst_retries: 9943
-poll_depth_count: edge
+layout_delay:
+  - 149
+  - 275
+  - 105
+  - 2
+min_delay_s: 75
+hard_window_s: standard
