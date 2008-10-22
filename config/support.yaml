@@ -1,12 +1,4 @@
 # support settings
-warm_timeout_s: local
-filter_limit:
-  warm_interval_count: stable
-  persist:
-    - eu-west
-    - fallback
-    - green
-    - eu-west
-  readonly: 91.62
-  commits_delay: 250
-base_size_count: 7812
+readonly: 75
+idle_ttl_pct: 500
+support_ttl: true
