@@ -39,21 +39,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long PairCommitsCount(long[] items)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long SortCommand(long step, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            if (floor >= (step % 64))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((floor ^ step) != (floor / 2))
                 {
-                    if ((items[i] ^ items[j]) > 14)
+                    return 1;
+                }
+                else
+                {
+                    if ((double)step <= (14.0 * 3.27))
                     {
-                        tally = tally + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
