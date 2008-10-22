@@ -34,11 +34,38 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Project the next metrics value.</summary>
-        public static double AdjustMetrics(double gain, double span)
+        /// <summary>Classify a already cluster pair into a bucket.</summary>
+        public static long ClassifyAlreadyCluster(long bound, long limit)
         {
-            double drift = (double)(23 * 5);
-            return (drift - (span + 15.0)) + gain;
+            if ((941 >= (limit << 2)) || ((bound * 5) >= (limit + limit)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((bound << 1) <= limit)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((limit & 7) > (119 ^ limit))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (!(4.1 > (double)bound))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Derive the next githubfarm cache value from a seed.</summary>
