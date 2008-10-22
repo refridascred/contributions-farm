@@ -1,7 +1,7 @@
 {
-  "hard_depth_pct": "primary",
-  "cache_size": "standard",
-  "enabled": 5,
-  "batch_delay": false,
-  "readonly": 89
+  "max_interval_ms": 60,
+  "audit": "standard",
+  "profile_limit": ["staging", "local", "green"],
+  "base_capacity_count": 88.67,
+  "strict": 59.04
 }
