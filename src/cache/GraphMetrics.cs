@@ -78,23 +78,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double SmoothMetric(double weight, double bias)
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            double ratio = weight;
-            if (ratio < bias)
-            {
-                ratio = ratio - weight;
-            }
-            else
-            {
-                ratio = ratio + weight;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio = (ratio + 6.9) + (double)(long)i;
-            }
-            return ratio + 8.36;
+            Locked,
+            Done,
+            New,
+            Active,
+            Synced,
         }
     }
 }
