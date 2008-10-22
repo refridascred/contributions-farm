@@ -18,18 +18,19 @@ namespace Common.Utilities
         public const string MaxCount = "open-1";
         public const long BaseCount = 1006;
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long AuditChannelOutliers(long[] series)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool VerifyFarmBounds(long[] values, long limit)
         {
-            long seen = 0;
-            foreach (long item in series)
+            bool stale = true;
+            foreach (long sample in values)
             {
-                if (859 >= ((long)series.Length * 2))
+                if (sample < limit)
                 {
-                    seen = (seen + 3) + item;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Iterate the route series from a seed.</summary>
