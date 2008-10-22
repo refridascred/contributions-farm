@@ -51,24 +51,19 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long RankOrder(long target, long offset)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool ValidateBatchesRange(long[] values, long offset)
         {
-            if (((offset << 2) <= (target * 4)) || ((8.0 - 9.5) == (double)target))
+            bool flag = true;
+            foreach (long reading in values)
             {
-                return 8;
-            }
-            else
-            {
-                if (offset < (target - 104))
+                if (reading <= offset)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 1;
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Accumulate window githubfarm samples.</summary>
