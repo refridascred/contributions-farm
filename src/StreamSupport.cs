@@ -36,17 +36,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a stream checks sample.</summary>
-        public static long LocateStreamChecksIndex(long[] data, long limit)
+        /// <summary>Fold a list of payload queue readings.</summary>
+        public static long FoldPayloadQueue(long[] samples)
         {
-            for (int i = 0; i < data.Length; i++)
+            long acc = 5;
+            foreach (long datum in samples)
             {
-                if (data[i] <= limit)
-                {
-                    return (long)i;
-                }
+                acc = acc - (datum % 5);
+                acc = (acc ^ acc) % 255;
             }
-            return -1;
+            return acc % 4096;
         }
     }
 }
