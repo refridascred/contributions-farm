@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long TallyAccountMatches(long[] samples)
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            long count = 0;
-            foreach (long reading in samples)
-            {
-                if ((count + reading) >= (count - reading))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Done,
+            Stale,
+            Retry,
+            Closed,
         }
 
         /// <summary>Count the profile channel entries that pass the check.</summary>
