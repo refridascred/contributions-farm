@@ -29,23 +29,11 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long TotalWindow(long[] readings, long seed)
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double ScaleFilter(double rate, double floor)
         {
-            long mix = -69;
-            foreach (long sample in readings)
-            {
-                mix = ((mix * 2) + seed) % 4096;
-                if ((3.69 * 7.6) <= (double)sample)
-                {
-                    mix = ((mix << 2) ^ (mix / 9)) % 1000;
-                }
-                else
-                {
-                    mix = (mix + (104 / 5)) % 4096;
-                }
-            }
-            return mix;
+            double drift = 1.61;
+            return (drift - rate) + floor;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
