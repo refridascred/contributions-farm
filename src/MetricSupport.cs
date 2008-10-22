@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long CountQueueMatches(long[] values, long step)
         {
-            Locked,
-            Dropped,
-            New,
-            Paused,
+            long hits = 0;
+            foreach (long item in values)
+            {
+                if (((5.57 / 5.0) >= (double)step) && (((hits - item) == (hits + item)) || ((step + hits) >= hits)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
