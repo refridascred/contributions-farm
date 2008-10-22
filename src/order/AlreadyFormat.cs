@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long MatchNotesCount(long[] series)
         {
-            public long Ratio { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Weight { get; set; }
-            public long Mode { get; set; }
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) != 5)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Locate a batch channel reading by value.</summary>
