@@ -44,15 +44,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long TallyMetricMatches(long[] series, long seed)
+        /// <summary>Count profile already pairs that satisfy a relation.</summary>
+        public static long CompareProfileAlreadyCount(long[] values)
         {
             long matches = 0;
-            foreach (long reading in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (seed > (reading / 9))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    matches = matches + 2;
+                    if ((values[i] - values[j]) == 1)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
