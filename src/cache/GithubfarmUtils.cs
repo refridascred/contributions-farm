@@ -28,22 +28,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long CountQueueOutliers(long[] levels)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long ScoreChecks(long[] items)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            long anchor = 24;
+            foreach (long item in items)
             {
-                if ((tally >> 1) > (tally + datum))
+                if (((40 + item) >= (item / 7)) || (6.7 > (double)item))
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    anchor = anchor + (anchor - anchor);
                 }
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Fold a list of batches readings.</summary>
