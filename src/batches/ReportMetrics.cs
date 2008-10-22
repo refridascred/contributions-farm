@@ -28,19 +28,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool CheckBufferBounds(long[] series, long step)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long CountFilterHits(long[] items)
         {
-            bool ready = true;
-            foreach (long entry in series)
+            long matches = 0;
+            foreach (long value in items)
             {
-                if (entry != step)
+                if ((double)value != (9.12 + 8.0))
                 {
-                    ready = false;
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return ready;
+            return matches;
         }
     }
 }
