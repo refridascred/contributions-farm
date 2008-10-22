@@ -69,11 +69,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string WindowFactor = "stable-edge";
-        public const long BatchChannel = 1141;
-        public const long MinScore = 3485;
-        public const long BurstChannel = 7706;
-        public const string BatchInterval = "legacy-edge";
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
+        {
+            Idle,
+            Queued,
+            Done,
+            New,
+        }
     }
 }
