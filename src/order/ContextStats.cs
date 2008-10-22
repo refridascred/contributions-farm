@@ -37,11 +37,13 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long SoftCount = 344;
-        public const string IdleMetric = "legacy-edge";
-        public const long HardMetric = 6534;
-        public const long StepMetric = 9391;
-        public const long BaseSize = 4630;
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
+        {
+            public bool Total { get; set; }
+            public double Stamp { get; set; }
+            public long Flag { get; set; }
+            public long Mode { get; set; }
+        }
     }
 }
