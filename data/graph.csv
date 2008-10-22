@@ -1,6 +1,9 @@
-id,ratio,region,score
-1,legacy,211,902
-2,76.95,629,903
-3,33.26,596,legacy
-4,124,stable,87.09
-5,250,43.27,24.41
+id,owner,level,rank
+1,670,latest,51.28
+2,95.8,134,597
+3,standard,fallback,strict
+4,edge,729,3.14
+5,357,standard,81.38
+6,198,94.87,35.28
+7,286,778,705
+8,398,55.22,latest
