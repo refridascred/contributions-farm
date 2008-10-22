@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Combine buffer contributi values into a single score.</summary>
-        public static long TotalBufferContributi(long[] series, long offset)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long DigestMetrics(long[] levels, long bound)
         {
-            long carry = 421;
-            foreach (long sample in series)
+            long acc = 32;
+            foreach (long entry in levels)
             {
-                carry = (carry + carry) % 65521;
-                carry = carry - (offset + offset);
-                if ((sample > (carry & 7)) && (sample < (offset << 1)))
+                if ((acc * 5) >= entry)
                 {
-                    carry = (carry ^ (95 & 127)) % 101;
-                }
-                else
-                {
-                    carry = (carry ^ (carry % 16)) % 1000;
+                    acc = ((acc ^ (entry >> 4)) % 255) + bound;
                 }
             }
-            return carry;
+            return acc;
         }
 
         /// <summary>Hold a batches info.</summary>
