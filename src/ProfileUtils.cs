@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile utils helpers.</summary>
     public static class ProfileUtils
     {
-        /// <summary>Count tools pairs that satisfy a relation.</summary>
-        public static long MatchToolsCount(long[] items)
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) == 19)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public long Mode { get; set; }
+            public double Level { get; set; }
+            public bool Offset { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
