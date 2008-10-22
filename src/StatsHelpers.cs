@@ -61,23 +61,16 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Adjust a stream profile reading.</summary>
-        public static double ScaleStreamProfile(double gain, double floor)
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long SeriesGithubfarm(long limit)
         {
-            double weight = (double)(320 + 5);
-            if (weight > (double)154)
+            long mix = limit;
+            for (int i = 0; i < 20; i++)
             {
-                weight = (weight + (floor * 12.0)) + gain;
+                mix = (mix * 3) + (mix ^ (long)i);
+                mix = ((mix * 3) + (long)i) % 101;
             }
-            else
-            {
-                weight = weight + weight;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                weight = (weight - weight) + (double)(long)i;
-            }
-            return weight - (double)700;
+            return mix;
         }
 
         /// <summary>Hold a graph options.</summary>
