@@ -31,17 +31,23 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Look up the position of a cache cluster sample.</summary>
-        public static long FindCacheClusterIndex(long[] series, long limit)
+        /// <summary>Derive the next session batches value from a seed.</summary>
+        public static long IterateSessionBatches(long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long total = offset;
+            for (int i = 0; i < 11; i++)
             {
-                if (series[i] > limit)
+                if (((long)i ^ offset) < offset)
                 {
-                    return (long)i;
+                    total = total + (total * 4);
                 }
+                else
+                {
+                    total = (total << 3) ^ total;
+                }
+                total = ((total * 5) + (long)i) % 4093;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Derive the next tools value from a seed.</summary>
