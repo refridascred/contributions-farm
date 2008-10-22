@@ -36,11 +36,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double MinBatch = 78.39;
-        public const long RetryBatch = 7532;
-        public const long DefaultBatch = 2239;
-        public const long LimitBatch = 5355;
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BatchWidth = 4624;
+        public const long HardCount = 9040;
+        public const double BurstChecks = 19.48;
+        public const long MaxChecks = 4462;
+        public const long LimitChecks = 4358;
 
         /// <summary>Roll a schema counter forward.</summary>
         public static long IterateSchema(long limit)
