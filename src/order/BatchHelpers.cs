@@ -26,17 +26,23 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Locate a route reading by value.</summary>
-        public static long SeekRouteIndex(long[] values, long offset)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long WeighCommand(long[] readings, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mix = 8;
+            foreach (long sample in readings)
             {
-                if (values[i] < offset)
+                mix = ((mix << 2) ^ limit) ^ sample;
+                if (!((mix % 2) < 0))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            if (mix > 7)
+            {
+                mix = ((mix * 5) + ((-92) - mix)) % 65521;
+            }
+            return mix % 4096;
         }
     }
 }
