@@ -38,14 +38,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            Ready,
-            Failed,
+            Pending,
             Idle,
             Locked,
-            Retry,
         }
 
         /// <summary>Roll a report counter forward.</summary>
