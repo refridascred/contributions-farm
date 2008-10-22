@@ -1,4 +1,4 @@
 # support settings
-max_ratio_pct: 89
-poll_limit: 13.09
-githubfarm_capacity: false
+compress: 60.65
+poll_delay_count: blue
+sync_retries_count: false
