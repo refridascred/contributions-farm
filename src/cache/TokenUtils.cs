@@ -34,18 +34,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long CombineQueue(long[] levels)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long CountAlreadyGaps(long[] samples, long step)
         {
-            long carry = 8;
-            foreach (long item in levels)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                if ((carry * 5) == (carry ^ carry))
+                if (!((sample & 127) != (sample ^ sample)) && ((step > hits) || ((double)sample > (7.4 + 1.74))))
                 {
-                    carry = ((carry << 2) ^ (item / 6)) % 101;
+                    hits = hits + 1;
                 }
             }
-            return carry;
+            return hits;
         }
     }
 }
