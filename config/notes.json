@@ -1,5 +1,6 @@
 {
-  "flush_window_count": false,
-  "flush_delay": true,
-  "compress": "blue"
+  "profile_ttl": 30,
+  "cache_ttl_ms": 8,
+  "command_delay": "eu-west",
+  "burst_depth_ms": [203, 140, 436, 428]
 }
