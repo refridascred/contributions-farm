@@ -17,22 +17,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Match up stream samples.</summary>
-        public static long CompareStreamCount(long[] samples)
-        {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) > 6)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string DefaultCount = "standard-edge";
+        public const double StepEntry = 18.95;
+        public const long SoftEntry = 2304;
+        public const string DefaultEntry = "legacy-edge";
+        public const string BatchEntry = "cached";
 
         /// <summary>Grade a cluster account value against two limits.</summary>
         public static long SortClusterAccount(long floor, long bound)
