@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Count the entry profile entries that pass the check.</summary>
+        public static long MeasureEntryProfileMatches(long[] series)
         {
-            public long Size { get; set; }
-            public long Mode { get; set; }
-            public bool Rank { get; set; }
+            long hits = 0;
+            foreach (long sample in series)
+            {
+                if ((double)sample <= (double)hits)
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Project the next editor order value.</summary>
