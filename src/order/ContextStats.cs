@@ -40,18 +40,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long MeasureChecksOutliers(long[] values, long target)
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            long count = 0;
-            foreach (long entry in values)
-            {
-                if (8.4 <= (double)entry)
-                {
-                    count = (count + 1) - target;
-                }
-            }
-            return count;
+            Queued,
+            Draft,
+            Ready,
+            Active,
+            Closed,
         }
 
         /// <summary>Scale a graph figure with a bias.</summary>
