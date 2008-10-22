@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            public long Weight { get; set; }
-            public long Stamp { get; set; }
-            public double Region { get; set; }
+            public string Offset { get; set; } = "";
+            public long Rank { get; set; }
+            public bool Mode { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
