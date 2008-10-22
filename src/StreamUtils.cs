@@ -63,18 +63,21 @@ namespace Common.Utilities
         public const long HardRecord = 342;
         public const string MinRecord = "latest-v2";
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long CountEntryOutliers(long[] samples, long seed)
+        /// <summary>Compare every pair of schema readings.</summary>
+        public static long OverlapSchemaCount(long[] samples)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((cell & 255) >= (seed - (long)samples.Length))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    count = count + 2;
+                    if ((samples[i] - samples[j]) == 1)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Scale a stream figure with a bias.</summary>
