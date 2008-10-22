@@ -6,13 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in local staging legacy; do
-    log "checking ${item}"
-done
+RECORD_LIMIT=175
+log "limit is ${RECORD_LIMIT}"
 
-mode="${1:-staging}"
+total=0
+for i in $(seq 1 5); do
+    total=$((total + i * 5))
+done
+log "total ${total}"
+
+mode="${1:-fallback}"
 case "${mode}" in
-    strict)
+    open)
         log "fast path"
         ;;
     *)
