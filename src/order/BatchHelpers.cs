@@ -27,19 +27,11 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Validate record checks readings against a bound.</summary>
-        public static bool ValidateRecordChecksLimits(long[] levels, long offset)
-        {
-            bool found = true;
-            foreach (long cell in levels)
-            {
-                if (cell >= offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long StepSize = 3654;
+        public const string StepBudget = "latest";
+        public const long RetrySpan = 3943;
+        public const double MinWidth = 50.37;
+        public const long SoftCache = 983;
     }
 }
