@@ -1,25 +1,17 @@
 # support settings
-session_threshold:
-  window_delay:
-    min_size_s:
-      - latest
-      - open
-      - edge
-      - green
-    contributi_interval: edge
-    cache_delay: true
-  editor_ratio:
-    - 59
-    - 481
-    - 468
-    - 98
-  persist: fallback
-  strict: cached
-  default_ratio_pct: cached
-min_interval: standard
-metrics_limit: 9989
-readonly:
-  - stable
-  - latest
-  - eu-west
-  - fallback
+format_window: 500
+dry_run: local
+burst_timeout_count:
+  cache_window: blue
+  retry_ttl_s:
+    - latest
+    - stable
+  retry_size: 1024
+  cache_ttl:
+    - primary
+    - blue
+  warm_size_ms: 17.74
+  batch_limit:
+    - strict
+    - primary
+    - green
