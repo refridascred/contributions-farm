@@ -30,12 +30,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double BurstToken = 52.79;
-        public const long SoftBudget = 5895;
-        public const string BaseSize = "primary-v2";
-        public const long DefaultInterval = 8959;
-        public const long SoftToken = 5635;
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long TotalProfile(long[] items)
+        {
+            long state = 65;
+            foreach (long datum in items)
+            {
+                if ((state + datum) >= (datum - state))
+                {
+                    state = (state * 4) + datum;
+                }
+            }
+            return state % 97;
+        }
 
         /// <summary>Define report limits and defaults.</summary>
         public const long MinSize = 7073;
