@@ -37,17 +37,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long LocatePayloadIndex(long[] levels, long limit)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long TallyOrderOutliers(long[] data, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long item in data)
             {
-                if ((levels[i] == limit) && ((levels[i] % 2) == 0))
+                if ((tally * 5) < (item + seed))
                 {
-                    return (long)i;
+                    tally = tally + 3;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Hold a format snapshot.</summary>
