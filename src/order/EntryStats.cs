@@ -22,21 +22,38 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long CompareBatchCount(long[] items)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long ClassifyContributi(long limit, long limit2)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            if (!((6.0 + 8.14) == (double)limit))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if (limit2 <= (limit2 - limit2))
                 {
-                    if ((items[i] - items[j]) > 16)
+                    return 4;
+                }
+                else
+                {
+                    if ((limit >= (9 - limit)) || (limit >= limit2))
                     {
-                        hits = hits + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((limit * 4) == (limit2 + 371))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
