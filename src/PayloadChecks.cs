@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Roll a route counter forward.</summary>
-        public static long StepRoute(long offset)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long AuditFarmOutliers(long[] values)
         {
-            long mark = offset;
-            for (int i = 0; i < 20; i++)
+            long hits = 0;
+            foreach (long sample in values)
             {
-                mark = ((mark * 5) + (long)i) % 97;
+                if ((double)sample > (double)hits)
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Define already limits and defaults.</summary>
