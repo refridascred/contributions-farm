@@ -48,25 +48,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long SortRecord(long target, long offset)
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
         {
-            long step = target - offset;
-            if (step > (3 & 1))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)target >= 8.76)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public string Mode { get; set; } = "";
+            public long Flag { get; set; }
+            public long Total { get; set; }
+            public double Ratio { get; set; }
         }
     }
 }
