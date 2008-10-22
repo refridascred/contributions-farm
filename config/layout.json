@@ -1,5 +1,6 @@
 {
-  "batch_ratio_s": "strict",
-  "dry_run": 500,
-  "sync_threshold_count": 81.83
+  "retry_interval_count": 9802,
+  "persist": "blue",
+  "batch_ttl": "staging",
+  "strict": 20.56
 }
