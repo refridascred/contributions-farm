@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=297
-log "limit is ${RECORD_LIMIT}"
-
-for item in green fallback strict legacy; do
+for item in legacy staging strict blue; do
     log "checking ${item}"
 done
+
+RECORD_LIMIT=237
+log "limit is ${RECORD_LIMIT}"
