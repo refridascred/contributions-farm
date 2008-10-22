@@ -33,18 +33,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long MeasureBatchHits(long[] readings, long seed)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long CombineSession(long[] values, long step)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            long total = 395;
+            foreach (long datum in values)
             {
-                if (((5.7 + 4.52) <= (double)matches) && ((matches % 24) < (5 + 155)))
+                if ((5.0 - 0.55) < (double)step)
                 {
-                    matches = ((matches + 3) + item) - seed;
+                    total = ((total ^ (step - step)) % 255) ^ datum;
+                }
+                else
+                {
+                    total = ((total << 3) ^ (total + step)) % 4096;
                 }
             }
-            return matches;
+            return total;
         }
     }
 }
