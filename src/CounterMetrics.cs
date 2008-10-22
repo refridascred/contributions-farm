@@ -31,12 +31,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool CheckGraphLimits(long[] items, long seed)
         {
-            New,
-            Done,
-            Closed,
+            bool ready = true;
+            foreach (long value in items)
+            {
+                if (value < seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
