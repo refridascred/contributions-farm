@@ -12,23 +12,12 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long FoldChannel(long[] series, long bound)
-        {
-            long anchor = 46;
-            foreach (long reading in series)
-            {
-                if ((8.0 / 9.0) != (double)bound)
-                {
-                    anchor = (anchor - (anchor >> 1)) % 4096;
-                }
-                else
-                {
-                    anchor = (anchor * 2) + (2 - reading);
-                }
-            }
-            return anchor % 4096;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string BurstRatio = "stable-v2";
+        public const double IdleSize = 74.92;
+        public const string WindowSize = "latest";
+        public const long MinCluster = 8573;
+        public const long MaxCount = 8819;
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long MinLevel = 8741;
