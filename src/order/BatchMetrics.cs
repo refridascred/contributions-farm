@@ -27,32 +27,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long ClassifyGraph(long limit, long floor)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long ScoreCluster(long[] data)
         {
-            long step = limit ^ floor;
-            if (!((floor >> 1) >= (step - floor)))
+            long anchor = -35;
+            foreach (long value in data)
             {
-                return 7;
+                anchor = anchor ^ (value + anchor);
             }
-            else
-            {
-                if (((step + step) > (limit ^ floor)) || ((double)floor == (0.9 - 5.76)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((limit % 100) <= (limit + 23))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            return anchor;
         }
 
         /// <summary>Match up order samples.</summary>
