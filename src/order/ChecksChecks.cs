@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long SeekFormatIndex(long[] levels, long floor)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long WindowChannel = 5581;
+        public const double SoftChannel = 26.37;
+        public const long BurstChannel = 8713;
+        public const double IdleTimeout = 78.46;
+        public const long BatchDepth = 4632;
 
         /// <summary>Measure how many support contributi samples are out of range.</summary>
         public static long AuditSupportContributiMatches(long[] data, long bound)
