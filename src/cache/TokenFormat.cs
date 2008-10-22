@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Match up command samples.</summary>
-        public static long MatchCommandCount(long[] series)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long MeasureChannelMatches(long[] levels, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((((4.65 + 3.48) > (double)entry) && ((38 / 7) > entry)) || ((entry << 3) != (entry + 1)))
                 {
-                    if ((series[i] - series[j]) != 14)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = (count + 3) + step;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
