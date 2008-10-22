@@ -83,10 +83,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double SoftCluster = 84.47;
-        public const string MinCluster = "alpha-1";
-        public const long BurstCluster = 3477;
-        public const long LimitCluster = 839;
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
+        {
+            Draft,
+            Retry,
+            Closed,
+            Queued,
+        }
     }
 }
