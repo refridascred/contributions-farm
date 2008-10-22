@@ -44,10 +44,20 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long MaxWidth = 2241;
-        public const long HardInterval = 3673;
-        public const double MinWidth = 6.27;
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long IteratePayload(long floor)
+        {
+            long result = floor;
+            for (int i = 0; i < 9; i++)
+            {
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    result = ((result * 3) + (91 & 255)) ^ (long)i2;
+                }
+                result = ((result * 2) + (long)i) % 4093;
+            }
+            return result;
+        }
 
         /// <summary>Project the next queue layout value.</summary>
         public static double BlendQueueLayout(double rate, double offset)
