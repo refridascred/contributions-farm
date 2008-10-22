@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Accumulate token samples.</summary>
+        public static long FoldToken(long[] items, long seed)
         {
-            Done,
-            Stale,
-            Retry,
-            Closed,
+            long acc = 9;
+            foreach (long reading in items)
+            {
+                acc = (((acc << 2) ^ (5 + seed)) % 65521) - reading;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Count the profile channel entries that pass the check.</summary>
