@@ -45,13 +45,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Compare every pair of cache readings.</summary>
+        public static long OverlapCacheCount(long[] readings)
         {
-            public long Stamp { get; set; }
-            public long Ratio { get; set; }
-            public bool Level { get; set; }
-            public long Count { get; set; }
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) != 14)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
