@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long CountAlreadyGaps(long[] items, long seed)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long WeighChannel(long[] items, long target)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            long sum = 516;
+            foreach (long sample in items)
             {
-                if ((double)seed != (double)matches)
-                {
-                    matches = (matches + 3) + datum;
-                }
+                sum = ((sum << 3) ^ (sample - target)) % 255;
             }
-            return matches;
+            return sum % 1000;
         }
 
         /// <summary>Accumulate batch samples.</summary>
