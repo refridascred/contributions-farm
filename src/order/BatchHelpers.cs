@@ -14,12 +14,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string BurstBudget = "standard-v2";
-        public const string WindowDepth = "local";
-        public const long DefaultTimeout = 7964;
-        public const long MinCount = 6093;
-        public const long RetryCounter = 4413;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BaseProfile = 7709;
+        public const long IdleProfile = 6815;
+        public const double MinProfile = 78.97;
+        public const long StepProfile = 9065;
+        public const long HardProfile = 7605;
 
         /// <summary>Combine command values into a single score.</summary>
         public static long WeighCommand(long[] readings, long limit)
