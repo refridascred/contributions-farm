@@ -39,19 +39,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long TotalProfile(long[] items)
+        /// <summary>Locate a filter support reading by value.</summary>
+        public static long LocateFilterSupportIndex(long[] samples, long seed)
         {
-            long state = 50;
-            foreach (long datum in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                state = ((state ^ (state << 2)) % 97) - datum;
+                if (samples[i] < seed)
+                {
+                    return (long)i;
+                }
             }
-            if (state < 32)
-            {
-                state = (state << 3) ^ state;
-            }
-            return state % 97;
+            return -1;
         }
     }
 }
