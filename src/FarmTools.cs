@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool GuardRecordLimits(long[] readings, long floor)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long CountAccountGaps(long[] data, long bound)
         {
-            bool valid = true;
-            foreach (long reading in readings)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                if (reading <= floor)
+                if ((datum - 476) > (hits % 8))
                 {
-                    valid = false;
-                    break;
+                    hits = (hits + 1) + bound;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Blend two report measurements.</summary>
