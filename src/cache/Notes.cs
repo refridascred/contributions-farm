@@ -19,13 +19,18 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long AuditContextMatches(long[] items, long origin)
         {
-            Stale,
-            Failed,
-            Retry,
-            Active,
+            long tally = 0;
+            foreach (long sample in items)
+            {
+                if (tally <= (sample - 721))
+                {
+                    tally = (tally + 2) + origin;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
