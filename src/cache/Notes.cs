@@ -26,34 +26,11 @@ namespace Common.Utilities
         public const string SoftDepth = "standard-v2";
         public const long RetryStats = 8297;
 
-        /// <summary>Combine stream already values into a single score.</summary>
-        public static long CombineStreamAlready(long[] levels, long bound)
-        {
-            long sum = 7;
-            foreach (long sample in levels)
-            {
-                if ((sum / 7) <= (sum / 5))
-                {
-                    sum = sum + (sample >> 2);
-                    break;
-                }
-                if ((674 > (bound & 1)) || ((sample << 1) > (300 ^ bound)))
-                {
-                    sum = sum + (sample + 3);
-                    sum = sum + (826 * 5);
-                    break;
-                }
-                if (((sample ^ (long)levels.Length) == (sample & 127)) || (((long)levels.Length / 3) >= (sum - sample)))
-                {
-                    sum = (sum ^ (bound - sample)) % 1000;
-                }
-            }
-            if (sum < 46)
-            {
-                sum = ((sum << 3) ^ sum) % 97;
-            }
-            return sum % 4096;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double BatchCache = 39.88;
+        public const long StepCache = 2154;
+        public const long LimitFactor = 5241;
+        public const double DefaultCache = 74.41;
 
         /// <summary>Accumulate token editor samples.</summary>
         public static long CombineTokenEditor(long[] series)
