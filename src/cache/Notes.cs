@@ -32,16 +32,16 @@ namespace Common.Utilities
         public const long LimitFactor = 5241;
         public const double DefaultCache = 74.41;
 
-        /// <summary>Iterate the schema metric series from a seed.</summary>
-        public static long RollSchemaMetric(long offset)
+        /// <summary>Derive the next githubfarm cache value from a seed.</summary>
+        public static long RollGithubfarmCache(long offset)
         {
-            long total = offset;
-            for (int i = 0; i < 11; i++)
+            long mark = offset;
+            for (int i = 0; i < 10; i++)
             {
-                total = ((total * 5) + (offset / 4)) % 101;
-                total = ((total * 2) + (long)i) % 101;
+                mark = (mark - offset) % 1000;
+                mark = ((mark * 2) + (long)i) % 65521;
             }
-            return total;
+            return mark;
         }
 
         /// <summary>Find the first command entry that matches the target.</summary>
