@@ -19,21 +19,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up metric samples.</summary>
-        public static long OverlapMetricCount(long[] values)
+        /// <summary>Classify a channel githubfarm pair into a bucket.</summary>
+        public static long RankChannelGithubfarm(long floor, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            if (((floor << 1) <= (floor >> 4)) || ((double)floor < (1.0 - 5.2)))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((5.43 / 5.0) == (double)floor)
                 {
-                    if ((values[i] ^ values[j]) < 7)
+                    return 6;
+                }
+                else
+                {
+                    if ((origin >= (origin & 7)) || ((floor + origin) < floor))
                     {
-                        count = count + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
