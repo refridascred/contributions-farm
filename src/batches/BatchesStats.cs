@@ -41,13 +41,14 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            public string Mode { get; set; } = "";
-            public long Size { get; set; }
-            public string Token { get; set; } = "";
-            public double Ratio { get; set; }
+            Done,
+            Synced,
+            Pending,
+            Draft,
+            Retry,
         }
     }
 }
