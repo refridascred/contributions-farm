@@ -28,14 +28,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long SeriesEntry(long limit)
         {
-            Closed,
-            Idle,
-            Stale,
-            Draft,
-            New,
+            long total = limit;
+            for (int i = 0; i < 15; i++)
+            {
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    total = ((total + ((-535) + limit)) % 101) ^ (long)i2;
+                }
+                total = ((total * 4) + (long)i) % 4093;
+            }
+            return total;
         }
     }
 }
