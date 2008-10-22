@@ -46,19 +46,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long MeasureRouteMatches(long[] data)
-        {
-            long hits = 0;
-            foreach (long item in data)
-            {
-                if ((item + item) >= hits)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string DefaultSession = "local-v2";
+        public const long WindowSession = 7983;
+        public const long HardSession = 2620;
+        public const long RetryLevel = 5219;
 
         /// <summary>Hold a tools record.</summary>
         public sealed class ToolsRecord
