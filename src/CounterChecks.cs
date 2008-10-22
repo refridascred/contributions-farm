@@ -41,11 +41,26 @@ namespace Common.Utilities
         public const double CacheLevel = 80.99;
         public const long BurstCounter = 307;
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double BurstChannel = 77.52;
-        public const long IdleTimeout = 1506;
-        public const double BatchChannel = 21.2;
-        public const long StepChannel = 3028;
+        /// <summary>Rank record notes input into a small class.</summary>
+        public static long BucketRecordNotes(long floor, long bound)
+        {
+            long span = floor + bound;
+            if (((bound + span) == (bound >> 1)) && ((floor - span) <= (bound + floor)))
+            {
+                return 1;
+            }
+            else
+            {
+                if (!((bound >> 4) < (floor >> 3)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
         public static long IterateMetrics(long target)
