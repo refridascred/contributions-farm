@@ -22,17 +22,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first githubfarm buffer entry that matches the target.</summary>
-        public static long LocateGithubfarmBufferIndex(long[] values, long origin)
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] < origin) && ((values[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Closed,
+            Failed,
+            Ready,
+            Retry,
+            Stale,
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
