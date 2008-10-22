@@ -62,15 +62,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
-        {
-            Draft,
-            Failed,
-            Queued,
-            Active,
-            Ready,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BurstMetric = 735;
+        public const long StepSize = 851;
+        public const long CacheTimeout = 7994;
+        public const long BatchDepth = 2587;
 
         /// <summary>Derive the next report value from a seed.</summary>
         public static long SeriesReport(long offset)
