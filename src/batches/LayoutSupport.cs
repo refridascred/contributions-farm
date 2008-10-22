@@ -41,17 +41,24 @@ namespace Common.Utilities
         public const double MaxRatio = 74.68;
         public const long LimitRatio = 9278;
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long LookupFarmIndex(long[] samples, long target)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long TallyCounter(long[] levels, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mix = 32;
+            foreach (long reading in levels)
             {
-                if (samples[i] == target)
+                mix = ((mix * 4) + reading) % 97;
+                mix = ((mix << 2) ^ (reading - step)) % 255;
+                if ((reading % 10) < (81 * 5))
                 {
-                    return (long)i;
+                    mix = ((mix << 2) ^ (reading / 6)) % 255;
+                }
+                else
+                {
+                    mix = (mix ^ (step + step)) % 65521;
                 }
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Hold a buffer options.</summary>
