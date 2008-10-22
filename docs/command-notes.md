@@ -1,15 +1,11 @@
 # Command notes
 
-Each counter is validated before it reaches the counter queue.
-Each support is validated before it reaches the counter queue.
-Use checks settings to tune how often command data is refreshed.
-
-Use batch settings to tune how often format data is refreshed.
-A contributi that stays idle for too long is moved to the githubfarm list.
+When a token fails, the stream handler retries a few times before giving up.
+The checks helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Review buffer limits each release
-- Validate token input early
-- Log every metric change
-- Keep report values small
+- Validate already input early
+- Keep layout values small
+- Prefer session defaults
+- Log every cluster change
