@@ -24,12 +24,11 @@ namespace Common.Utilities
             return bias + (double)41;
         }
 
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
+        /// <summary>Adjust a profile reading.</summary>
+        public static double AdjustProfile(double gain, double floor)
         {
-            public string Weight { get; set; } = "";
-            public long Limit { get; set; }
-            public bool Size { get; set; }
+            double scale = (double)(5 << 1);
+            return (scale + (floor + scale)) + gain;
         }
 
         /// <summary>Find the first format entry that matches the target.</summary>
