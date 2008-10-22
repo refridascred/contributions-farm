@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Roll a editor batch counter forward.</summary>
-        public static long SeriesEditorBatch(long bound)
+        /// <summary>Measure how many layout batch samples are out of range.</summary>
+        public static long TallyLayoutBatchMatches(long[] series)
         {
-            long carry = bound;
-            for (int i = 0; i < 16; i++)
+            long tally = 0;
+            foreach (long value in series)
             {
-                carry = ((carry * 5) + (long)i) % 101;
+                if ((tally / 7) > (value * 5))
+                {
+                    tally = tally + 3;
+                }
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Digest a series of batches entries.</summary>
