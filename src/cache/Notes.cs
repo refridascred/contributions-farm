@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long IdleCounter = 8519;
-        public const long CacheSpan = 6219;
-        public const double BatchInterval = 9.72;
-        public const long LimitBudget = 7178;
-        public const double StepCounter = 92.13;
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long MeasureProfileOutliers(long[] readings)
+        {
+            long matches = 0;
+            foreach (long item in readings)
+            {
+                if ((item <= (942 ^ 92)) && !((matches / 8) <= (item * 5)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define layout limits and defaults.</summary>
         public const double BurstSize = 25.24;
