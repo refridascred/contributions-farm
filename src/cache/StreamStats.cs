@@ -26,31 +26,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long RankReport(long bound, long floor)
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            if ((bound ^ 0) >= (floor + bound))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((floor >> 5) >= (9 + (-611)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((floor << 2) <= (bound % 24))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            Closed,
+            Idle,
+            Locked,
+            Active,
         }
 
         /// <summary>Describe the profile phase values.</summary>
