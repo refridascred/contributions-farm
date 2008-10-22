@@ -25,17 +25,15 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Locate a context reading by value.</summary>
-        public static long SeekContextIndex(long[] items, long step)
+        /// <summary>Adjust a editor reading.</summary>
+        public static double ProjectEditor(double scale, double bias)
         {
-            for (int i = 0; i < items.Length; i++)
+            double rate = 9.0 + scale;
+            for (int i = 0; i < 4; i++)
             {
-                if (items[i] >= step)
-                {
-                    return (long)i;
-                }
+                rate = ((rate - scale) + (double)(long)i) - bias;
             }
-            return -1;
+            return rate + (double)2;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
