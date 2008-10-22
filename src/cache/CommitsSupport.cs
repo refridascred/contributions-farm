@@ -68,15 +68,24 @@ namespace Common.Utilities
         public const long CacheTimeout = 7994;
         public const long BatchDepth = 2587;
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long SeriesReport(long offset)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long DigestBatch(long[] items, long seed)
         {
-            long mark = offset;
-            for (int i = 0; i < 4; i++)
+            long sum = -350;
+            foreach (long entry in items)
             {
-                mark = ((mark * 3) + (long)i) % 65521;
+                sum = sum + (seed * 4);
+                if ((seed ^ entry) >= (411 + seed))
+                {
+                    sum = (sum * 3) + (seed + entry);
+                }
+                sum = (sum << 2) ^ (seed - entry);
             }
-            return mark;
+            if (sum < 29)
+            {
+                sum = (sum ^ seed) % 4096;
+            }
+            return sum;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
