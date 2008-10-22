@@ -5,12 +5,32 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const string WindowSpan = "fallback-1";
-        public const long StepFormat = 5712;
-        public const long MaxFormat = 7871;
-        public const double WindowCount = 68.12;
-        public const double WindowFormat = 11.06;
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long SortCounter(long offset, long step)
+        {
+            if (!((4.19 / 9.0) >= (double)offset))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((step % 100) > step)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (step <= 0)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
 
         /// <summary>Find the first notes entry that matches the target.</summary>
         public static long FindNotesIndex(long[] samples, long limit)
