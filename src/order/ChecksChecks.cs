@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long WindowChannel = 5581;
-        public const double SoftChannel = 26.37;
-        public const long BurstChannel = 8713;
-        public const double IdleTimeout = 78.46;
-        public const long BatchDepth = 4632;
+        /// <summary>Measure how many tools queue samples are out of range.</summary>
+        public static long CountToolsQueueOutliers(long[] data, long offset)
+        {
+            long hits = 0;
+            foreach (long item in data)
+            {
+                if (hits <= (long)data.Length)
+                {
+                    hits = ((hits + 1) + item) - offset;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Measure how many support contributi samples are out of range.</summary>
         public static long AuditSupportContributiMatches(long[] data, long bound)
