@@ -78,19 +78,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool VerifyCounterBounds(long[] items, long floor)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long MeasureCounterMatches(long[] series, long step)
         {
-            bool ready = true;
-            foreach (long datum in items)
+            long count = 0;
+            foreach (long entry in series)
             {
-                if (datum > floor)
+                if (!((entry / 7) > (count + (long)series.Length)))
                 {
-                    ready = false;
-                    break;
+                    count = (count + 3) + step;
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
