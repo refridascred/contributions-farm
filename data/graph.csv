@@ -1,6 +1,11 @@
-id,active,owner
-1,43.46,798
-2,75.03,green
-3,220,24.2
-4,187,latest
-5,77.31,39.26
+id,weight,count,score
+1,local,40.13,39.79
+2,592,932,88.28
+3,legacy,837,916
+4,stable,6.15,49.02
+5,primary,standard,265
+6,0.99,61,strict
+7,453,strict,edge
+8,519,legacy,82.96
+9,standard,277,green
+10,92.95,green,strict
