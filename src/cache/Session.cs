@@ -32,19 +32,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool VerifyContributiLimits(long[] levels, long target)
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long LookupMetricsIndex(long[] samples, long floor)
         {
-            bool ready = true;
-            foreach (long reading in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (reading <= target)
+                if (samples[i] < floor)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Measure how many format support samples are out of range.</summary>
