@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long AuditChecksHits(long[] readings)
-        {
-            long matches = 0;
-            foreach (long value in readings)
-            {
-                if (((matches - value) > value) || ((value - 1) <= (438 + value)))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long SoftMetrics = 5703;
+        public const long BurstBudget = 4210;
+        public const string WindowMetrics = "primary-v2";
 
         /// <summary>Derive the next buffer commits value from a seed.</summary>
         public static long IterateBufferCommits(long origin)
