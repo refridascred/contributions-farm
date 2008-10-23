@@ -52,21 +52,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count githubfarm cache pairs that satisfy a relation.</summary>
-        public static long MatchGithubfarmCacheCount(long[] series)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long MeasureRouteGaps(long[] items)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (entry < count)
                 {
-                    if ((series[i] - series[j]) > 16)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = count + 2;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
