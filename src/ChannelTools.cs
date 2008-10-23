@@ -27,11 +27,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long SeriesCache(long bound)
         {
-            public string Score { get; set; } = "";
-            public string Weight { get; set; } = "";
+            long total = bound;
+            for (int i = 0; i < 19; i++)
+            {
+                total = ((total * 5) + (long)i) % 65521;
+            }
+            return total;
         }
     }
 }
