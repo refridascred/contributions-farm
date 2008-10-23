@@ -30,18 +30,14 @@ namespace Common.Utilities
         public const string LimitSpan = "stable-v2";
         public const double MinFactor = 70.33;
 
-        /// <summary>Count the farm stream entries that pass the check.</summary>
-        public static long CountFarmStreamGaps(long[] values, long target)
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            long tally = 0;
-            foreach (long reading in values)
-            {
-                if ((tally + target) <= reading)
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Stale,
+            Active,
+            Ready,
+            Retry,
+            Synced,
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
