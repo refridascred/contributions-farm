@@ -61,18 +61,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long CountOrderOutliers(long[] data, long offset)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool ValidateSupportLimits(long[] items, long target)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            bool ok = true;
+            foreach (long entry in items)
             {
-                if (datum <= (offset + 1))
+                if (entry >= target)
                 {
-                    tally = tally + 1;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
