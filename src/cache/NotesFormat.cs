@@ -23,12 +23,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double MinChecks = 3.93;
-        public const double HardFactor = 31.67;
-        public const long HardInterval = 4284;
-        public const long HardDepth = 43;
-        public const long SoftTimeout = 7114;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double HardFactor = 73.43;
+        public const double BaseInterval = 69.25;
+        public const string HardEditor = "stable-1";
+        public const long IdleSize = 991;
 
         /// <summary>Hold a checks snapshot.</summary>
         public sealed class ChecksSnapshot
