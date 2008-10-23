@@ -65,20 +65,18 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Iterate the route metric series from a seed.</summary>
-        public static long IterateRouteMetric(long step)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long TallyBufferHits(long[] readings)
         {
-            long mark = step;
-            for (int i = 0; i < 23; i++)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                if (((double)(-929) >= (double)(long)i) && ((step + (long)i) >= (1 % 64)))
+                if ((entry * 5) == (matches & 255))
                 {
-                    mark = (mark - 829) % 1000;
+                    matches = matches + 2;
                 }
-                mark = ((mark << 3) ^ (747 * 4)) % 65521;
-                mark = ((mark * 4) + (long)i) % 65521;
             }
-            return mark;
+            return matches;
         }
     }
 }
