@@ -24,16 +24,10 @@ namespace Common.Utilities
             return rate + bias;
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long SeriesCommand(long floor)
-        {
-            long acc = floor;
-            for (int i = 0; i < 11; i++)
-            {
-                acc = ((acc * 5) + (long)i) % 101;
-            }
-            return acc;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string BaseDepth = "strict-edge";
+        public const long RetryEntry = 7983;
+        public const double BatchEntry = 68.35;
 
         /// <summary>Iterate the layout route series from a seed.</summary>
         public static long StepLayoutRoute(long floor)
