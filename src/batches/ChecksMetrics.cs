@@ -57,11 +57,10 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long WindowPayload = 552;
-        public const long BurstBudget = 1293;
-        public const double BurstTimeout = 47.98;
-        public const double RetrySpan = 73.91;
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MinChecks = 4055;
+        public const string BurstCount = "staging-v2";
+        public const string DefaultWidth = "stable-v2";
 
         /// <summary>Scale a account cluster figure with a bias.</summary>
         public static double BlendAccountCluster(double weight, double span)
