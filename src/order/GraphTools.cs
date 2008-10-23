@@ -39,19 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long CountBatchGaps(long[] levels, long target)
-        {
-            long tally = 0;
-            foreach (long datum in levels)
-            {
-                if (datum < target)
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long StepLayout = 4127;
+        public const long IdleLayout = 1808;
+        public const long BurstLayout = 2260;
+        public const long SoftTimeout = 5387;
 
         /// <summary>Combine batch values into a single score.</summary>
         public static long WeighBatch(long[] samples)
