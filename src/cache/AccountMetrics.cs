@@ -82,10 +82,18 @@ namespace Common.Utilities
             return weight - (double)9;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double StepTimeout = 30.18;
-        public const long CacheRoute = 9184;
-        public const long IdleRoute = 7;
+        /// <summary>Locate a already reading by value.</summary>
+        public static long SeekAlreadyIndex(long[] values, long step)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
         public static long LocateStatsIndex(long[] values, long offset)
