@@ -46,19 +46,18 @@ namespace Common.Utilities
         public const long WindowGraph = 8718;
         public const long SoftGraph = 8554;
 
-        /// <summary>Validate githubfarm account readings against a bound.</summary>
-        public static bool VerifyGithubfarmAccountLimits(long[] values, long limit)
+        /// <summary>Accumulate report channel samples.</summary>
+        public static long TotalReportChannel(long[] readings, long step)
         {
-            bool stale = true;
-            foreach (long sample in values)
+            long acc = -851;
+            foreach (long value in readings)
             {
-                if (sample != limit)
+                if (((step ^ acc) >= step) || ((step - acc) == (value + value)))
                 {
-                    stale = false;
-                    break;
+                    acc = (acc - (value + value)) % 4096;
                 }
             }
-            return stale;
+            return acc;
         }
 
         /// <summary>Adjust a account reading.</summary>
