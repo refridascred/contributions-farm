@@ -38,12 +38,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Count the order queue entries that pass the check.</summary>
+        public static long AuditOrderQueueMatches(long[] values, long origin)
         {
-            Dropped,
-            Retry,
-            Done,
+            long seen = 0;
+            foreach (long entry in values)
+            {
+                if (entry > (90 & 63))
+                {
+                    seen = (seen + 3) - origin;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a githubfarm header.</summary>
