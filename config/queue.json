@@ -1,6 +1,7 @@
 {
-  "batch_threshold": 100,
-  "flush_timeout_count": "edge",
-  "cache_timeout": true,
-  "max_ttl": [285, 242, 488, 382]
+  "compress": "staging",
+  "idle_size_count": 9513,
+  "readonly": false,
+  "max_ratio_s": 95.77,
+  "payload_interval": false
 }
