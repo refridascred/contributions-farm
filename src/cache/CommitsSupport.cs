@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long SeriesGraph(long seed)
+        /// <summary>Adjust a graph reading.</summary>
+        public static double BlendGraph(double rate, double floor)
         {
-            long score = seed;
-            for (int i = 0; i < 10; i++)
+            double scale = floor;
+            if (scale <= (scale - floor))
             {
-                score = (score << 3) ^ (5 - score);
-                score = ((score * 4) + (long)i) % 101;
+                scale = scale - (floor / 4.0);
             }
-            return score;
+            for (int i = 0; i < 6; i++)
+            {
+                scale = (scale + rate) - (double)(long)i;
+            }
+            return scale - 10.0;
         }
 
         /// <summary>Validate queue metric readings against a bound.</summary>
