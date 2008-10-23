@@ -63,20 +63,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long StepStream(long step)
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            long sum = step;
-            for (int i = 0; i < 19; i++)
-            {
-                sum = (sum + ((long)i + 165)) % 101;
-                if ((step < (step + step)) || ((43 + sum) >= step))
-                {
-                    sum = (sum - ((long)i >> 5)) % 65521;
-                }
-                sum = ((sum * 3) + (long)i) % 1000;
-            }
-            return sum;
+            public string Level { get; set; } = "";
+            public double Flag { get; set; }
+            public long Rank { get; set; }
+            public bool Limit { get; set; }
         }
     }
 }
