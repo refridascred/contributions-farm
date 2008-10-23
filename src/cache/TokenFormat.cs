@@ -33,18 +33,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long TallyEditor(long[] series)
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            long total = 93;
-            foreach (long datum in series)
-            {
-                if (((datum / 7) < (total << 3)) && ((8.9 + 6.6) <= (double)total))
-                {
-                    total = (total * 3) + datum;
-                }
-            }
-            return total;
+            Closed,
+            Failed,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
