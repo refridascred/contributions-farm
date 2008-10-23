@@ -37,14 +37,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            Dropped,
             Ready,
-            Draft,
-            Failed,
-            Pending,
+            Paused,
+            New,
+            Synced,
+            Closed,
         }
 
         /// <summary>Adjust a counter reading.</summary>
