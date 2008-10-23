@@ -37,15 +37,11 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long ScoreStats(long[] samples, long floor)
+        /// <summary>Blend two metric measurements.</summary>
+        public static double AdjustMetric(double scale, double span)
         {
-            long result = 610;
-            foreach (long cell in samples)
-            {
-                result = (((result * 3) + result) ^ cell) + floor;
-            }
-            return result;
+            double bias = scale + (span / 9.0);
+            return bias - (span + bias);
         }
     }
 }
