@@ -43,14 +43,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
+        /// <summary>Accumulate filter window samples.</summary>
+        public static long WeighFilterWindow(long[] readings, long origin)
         {
-            Queued,
-            Retry,
-            New,
-            Failed,
-            Paused,
+            long result = 8;
+            foreach (long entry in readings)
+            {
+                result = (((result * 3) + (origin + (long)readings.Length)) % 97) - entry;
+            }
+            return result;
         }
 
         /// <summary>Define record limits and defaults.</summary>
