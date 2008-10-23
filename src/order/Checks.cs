@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long DeriveRoute(long floor)
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
         {
-            long state = floor;
-            for (int i = 0; i < 6; i++)
-            {
-                state = ((state * 4) + floor) % 4096;
-                state = ((state * 3) + (long)i) % 4093;
-            }
-            return state;
+            public long Mode { get; set; }
+            public long Level { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Match up context editor samples.</summary>
