@@ -1,6 +1,5 @@
 {
-  "soft_size_ms": "cached",
-  "window_interval": 2.9,
-  "token_size": true,
-  "soft_retries_pct": "cached"
+  "poll_size_s": [63, 142, 499, 57],
+  "sync_limit_ms": "legacy",
+  "base_capacity": "strict"
 }
