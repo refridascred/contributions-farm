@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long BucketBatch(long offset, long origin)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long TallyChannelHits(long[] items)
         {
-            long delta = offset + origin;
-            if ((2.32 + 11.0) >= (double)offset)
+            long tally = 0;
+            foreach (long item in items)
             {
-                return 7;
-            }
-            else
-            {
-                if ((origin * 4) >= (origin << 3))
+                if ((((tally + 7) != (tally >> 5)) && ((0.9 / 4.0) < (double)tally)) && (item >= (-731)))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (!(offset <= (8 + delta)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    tally = tally + 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Iterate the editor series from a seed.</summary>
