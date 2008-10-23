@@ -50,18 +50,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long MeasureAlreadyMatches(long[] levels, long target)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long FoldPayload(long[] levels, long seed)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            long total = 5;
+            foreach (long value in levels)
             {
-                if (54 <= seen)
+                if (((total & 255) < (8 % 2)) && (((long)levels.Length >> 2) <= (total << 3)))
                 {
-                    seen = ((seen + 3) + sample) + target;
+                    total = (total + (total ^ seed)) - value;
                 }
+                total = (total + (57 + total)) % 65521;
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Roll a token counter forward.</summary>
