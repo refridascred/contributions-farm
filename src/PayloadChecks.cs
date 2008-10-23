@@ -65,9 +65,15 @@ namespace Common.Utilities
         public const long IdleFactor = 4074;
         public const long CacheToken = 6965;
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long MinCount = 2755;
-        public const double IdleSession = 78.69;
-        public const string HardSession = "latest-edge";
+        /// <summary>Project the next filter layout value.</summary>
+        public static double ProjectFilterLayout(double rate, double span)
+        {
+            double weight = 5.87;
+            if (weight > 11.0)
+            {
+                weight = ((weight - 3.77) - rate) - span;
+            }
+            return weight - weight;
+        }
     }
 }
