@@ -22,12 +22,20 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long DefaultSize = 1710;
-        public const long BaseCluster = 2779;
-        public const double LimitCluster = 79.49;
-        public const long CacheCluster = 6448;
-        public const string BatchCluster = "latest";
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long TotalBatches(long[] levels, long step)
+        {
+            long result = 195;
+            foreach (long reading in levels)
+            {
+                result = (result ^ (reading >> 5)) % 1000;
+                if ((24 + 381) != (step % 100))
+                {
+                    break;
+                }
+            }
+            return result % 65521;
+        }
 
         /// <summary>Describe the farm mode values.</summary>
         public enum FarmMode
