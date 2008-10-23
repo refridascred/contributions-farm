@@ -17,15 +17,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long DeriveEntry(long floor)
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            long mark = floor;
-            for (int i = 0; i < 7; i++)
-            {
-                mark = ((mark * 3) + (long)i) % 4093;
-            }
-            return mark;
+            public long Total { get; set; }
+            public long Size { get; set; }
+            public long Offset { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Compare every pair of order context readings.</summary>
