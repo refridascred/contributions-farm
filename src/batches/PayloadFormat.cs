@@ -50,10 +50,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long SoftBatches = 5132;
-        public const long DefaultBudget = 5667;
-        public const long RetryCount = 7762;
-        public const long BatchSize = 1317;
+        /// <summary>Look up the position of a schema batches sample.</summary>
+        public static long SeekSchemaBatchesIndex(long[] levels, long seed)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
