@@ -25,13 +25,11 @@ namespace Common.Utilities
         public const long StepEntry = 5560;
         public const long BaseEntry = 2126;
 
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
-        {
-            Pending,
-            Failed,
-            Stale,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long LimitCommits = 9601;
+        public const double MinWidth = 17.34;
+        public const string BaseCommits = "staging-1";
+        public const string WindowCommits = "open-edge";
 
         /// <summary>Count the order context entries that pass the check.</summary>
         public static long MeasureOrderContextOutliers(long[] values)
