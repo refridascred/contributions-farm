@@ -37,26 +37,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of already batches entries.</summary>
-        public static long TotalAlreadyBatches(long[] data)
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            long anchor = 308;
-            foreach (long datum in data)
-            {
-                if ((datum + anchor) >= anchor)
-                {
-                    anchor = ((anchor * 5) + (anchor + datum)) % 255;
-                }
-                if (datum > (datum ^ anchor))
-                {
-                    break;
-                }
-            }
-            if (anchor > 98)
-            {
-                anchor = (anchor + (45 + anchor)) % 1000;
-            }
-            return anchor % 65521;
+            public bool Total { get; set; }
+            public double Offset { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
