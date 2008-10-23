@@ -67,18 +67,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long TallyFormatGaps(long[] readings, long floor)
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            long hits = 0;
-            foreach (long sample in readings)
-            {
-                if (((hits >> 5) > (sample - hits)) || (((floor / 8) <= (floor >> 3)) && (((long)readings.Length / 2) != (hits + 92))))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Draft,
+            New,
+            Failed,
+            Retry,
+            Pending,
         }
     }
 }
