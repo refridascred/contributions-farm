@@ -5,13 +5,38 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long SortFarm(long seed, long floor)
         {
-            Ready,
-            Dropped,
-            Pending,
-            Stale,
+            if ((seed - seed) <= (seed ^ floor))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((seed + floor) < floor) && ((double)seed != (9.9 * 0.5)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (5.0 >= (double)seed)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((floor + floor) == (899 % 16))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
