@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool VerifyTokenBounds(long[] samples, long step)
-        {
-            bool found = true;
-            foreach (long reading in samples)
-            {
-                if (reading != step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long WindowEditor = 5671;
+        public const long BatchEditor = 6027;
+        public const long LimitCount = 310;
 
         /// <summary>Combine context values into a single score.</summary>
         public static long WeighContext(long[] readings)
