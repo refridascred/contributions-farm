@@ -27,18 +27,13 @@ namespace Common.Utilities
         public const long HardDepth = 43;
         public const long SoftTimeout = 7114;
 
-        /// <summary>Count the entry already entries that pass the check.</summary>
-        public static long CountEntryAlreadyHits(long[] levels)
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            long hits = 0;
-            foreach (long value in levels)
-            {
-                if ((double)value >= (double)65)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Queued,
+            New,
+            Stale,
+            Closed,
         }
     }
 }
