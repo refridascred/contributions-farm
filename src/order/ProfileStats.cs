@@ -20,27 +20,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long CombineNotes(long[] samples)
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
         {
-            long carry = -72;
-            foreach (long reading in samples)
-            {
-                if (!((0.48 * 3.0) < (9.0 / 3.0)))
-                {
-                    carry = carry ^ (reading << 2);
-                    continue;
-                }
-                if (!((carry & 63) < (reading % 8)))
-                {
-                    carry = (carry ^ (carry - 4)) % 65521;
-                }
-            }
-            if (carry < 0)
-            {
-                carry = (carry ^ (carry >> 2)) % 101;
-            }
-            return carry;
+            public long Ratio { get; set; }
+            public double Limit { get; set; }
+            public double Score { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Measure how many payload stats samples are out of range.</summary>
