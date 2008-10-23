@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long WindowEditor = 5671;
-        public const long BatchEditor = 6027;
-        public const long LimitCount = 310;
+        /// <summary>Audit context batch readings against a rule.</summary>
+        public static long CountContextBatchGaps(long[] data, long origin)
+        {
+            long hits = 0;
+            foreach (long value in data)
+            {
+                if ((value * 3) == (value - value))
+                {
+                    hits = (hits + 3) - origin;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Combine context values into a single score.</summary>
         public static long WeighContext(long[] readings)
