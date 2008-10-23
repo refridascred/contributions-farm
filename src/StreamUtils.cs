@@ -76,11 +76,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            public long Rank { get; set; }
-            public long Flag { get; set; }
+            public double Flag { get; set; }
+            public string Size { get; set; } = "";
+            public long Region { get; set; }
         }
     }
 }
