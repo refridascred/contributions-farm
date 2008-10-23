@@ -34,11 +34,18 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long TallyGraphGaps(long[] data, long origin)
         {
-            public long Token { get; set; }
-            public long Limit { get; set; }
+            long seen = 0;
+            foreach (long cell in data)
+            {
+                if (!(((cell + cell) != (seen - origin)) || (7.5 <= (double)seen)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
     }
 }
