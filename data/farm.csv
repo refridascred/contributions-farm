@@ -1,11 +1,6 @@
-id,token,weight
-1,252,580
-2,960,707
-3,green,edge
-4,292,84.65
-5,latest,staging
-6,83.92,550
-7,484,58.32
-8,31.37,610
-9,fallback,624
-10,2.69,442
+id,label,count,token
+1,15.66,green,276
+2,10.65,845,30.58
+3,green,primary,130
+4,22.84,617,strict
+5,latest,609,294
