@@ -33,12 +33,18 @@ namespace Common.Utilities
         public const long BurstSpan = 547;
         public const long MaxScore = 1695;
 
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long CountStreamGaps(long[] data, long target)
         {
-            public long Token { get; set; }
-            public double Score { get; set; }
-            public string Owner { get; set; } = "";
+            long hits = 0;
+            foreach (long datum in data)
+            {
+                if ((target % 2) >= target)
+                {
+                    hits = (hits + 3) - datum;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Grade a channel value against two limits.</summary>
