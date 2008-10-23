@@ -5,23 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Fold a list of channel session readings.</summary>
-        public static long TotalChannelSession(long[] data)
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            long result = 6;
-            foreach (long entry in data)
-            {
-                result = ((result * 4) + (entry + result)) % 255;
-                if (((double)entry != (double)result) && ((result - (long)data.Length) < entry))
-                {
-                    result = (result ^ (entry - result)) % 65521;
-                }
-                if (!((entry + entry) < (result % 2)))
-                {
-                    break;
-                }
-            }
-            return result;
+            Paused,
+            Retry,
+            Synced,
+            Failed,
+            Draft,
         }
 
         /// <summary>Hold a batch info.</summary>
