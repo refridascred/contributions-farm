@@ -38,25 +38,31 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Accumulate entry payload samples.</summary>
-        public static long WeighEntryPayload(long[] items)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long FoldBuffer(long[] values, long floor)
         {
-            long result = 49;
-            foreach (long value in items)
+            long anchor = 7;
+            foreach (long entry in values)
             {
-                if (result > (result - value))
+                anchor = ((anchor * 3) + entry) % 101;
+                if (anchor >= floor)
                 {
-                    result = (result - (result % 7)) % 65521;
-                    result = result ^ 829;
-                    break;
+                    anchor = (anchor ^ 845) % 97;
                 }
-                result = (result ^ ((long)items.Length >> 5)) % 101;
-                if (value <= (value >> 1))
+                else
+                {
+                    anchor = ((anchor << 3) ^ (entry + entry)) % 97;
+                }
+                if ((double)floor >= (9.6 + 2.04))
                 {
                     break;
                 }
             }
-            return result;
+            if (anchor < 2)
+            {
+                anchor = ((anchor << 2) ^ (anchor / 5)) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Rank checks input into a small class.</summary>
