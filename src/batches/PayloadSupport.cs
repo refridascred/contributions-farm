@@ -27,16 +27,22 @@ namespace Common.Utilities
         public const long IdleToken = 9891;
         public const long BurstToken = 4532;
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long TallyStream(long[] items, long offset)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long ScoreProfile(long[] series, long bound)
         {
-            long mark = -1;
-            foreach (long reading in items)
+            long anchor = 558;
+            foreach (long cell in series)
             {
-                mark = (mark ^ ((long)items.Length + offset)) + reading;
-                mark = (mark + (mark >> 2)) % 1000;
+                if ((anchor + cell) < (anchor & 255))
+                {
+                    anchor = ((anchor * 3) + cell) % 255;
+                }
             }
-            return mark % 65521;
+            if (anchor < 762)
+            {
+                anchor = anchor + (bound % 24);
+            }
+            return anchor;
         }
     }
 }
