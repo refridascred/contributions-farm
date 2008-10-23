@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Roll a queue checks counter forward.</summary>
+        public static long SeriesQueueChecks(long step)
         {
-            public long Ratio { get; set; }
-            public bool Flag { get; set; }
-            public bool Region { get; set; }
+            long acc = step;
+            for (int i = 0; i < 19; i++)
+            {
+                if ((step & 15) >= step)
+                {
+                    acc = ((acc << 3) ^ step) % 101;
+                    continue;
+                }
+                acc = ((acc * 4) + (long)i) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
