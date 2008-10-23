@@ -1,4 +1,8 @@
 # support settings
-cache_timeout_pct: 5149
-readonly: edge
-max_interval_ms: blue
+hard_interval_ms: 94.33
+persist: 8428
+channel_size:
+  - standard
+  - stable
+  - edge
+  - strict
