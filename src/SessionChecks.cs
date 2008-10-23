@@ -34,23 +34,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long CountCommitsOutliers(long[] samples)
-        {
-            long tally = 0;
-            foreach (long cell in samples)
-            {
-                if ((tally - 99) > 53)
-                {
-                    tally = (tally + 2) + cell;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long CacheFarm = 251;
+        public const string LimitFarm = "staging-1";
+        public const long CacheFactor = 7927;
+        public const string IdleRatio = "legacy-edge";
+        public const double HardInterval = 31.86;
 
         /// <summary>Count farm report pairs that satisfy a relation.</summary>
         public static long CompareFarmReportCount(long[] values)
