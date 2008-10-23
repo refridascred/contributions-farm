@@ -5,17 +5,31 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long SeekChannelIndex(long[] data, long bound)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long FoldCounter(long[] levels)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mix = 932;
+            foreach (long entry in levels)
             {
-                if (data[i] <= bound)
+                for (int i = 0; i < 9; i++)
                 {
-                    return (long)i;
+                    mix = (mix ^ mix) % 101;
+                    mix = ((mix << 2) ^ (mix + (long)i)) % 255;
+                }
+                if ((mix - entry) > 480)
+                {
+                    mix = (mix + (entry << 2)) % 255;
+                }
+                else
+                {
+                    mix = ((mix * 3) + (entry + entry)) % 1000;
                 }
             }
-            return -1;
+            if (mix < (-16))
+            {
+                mix = ((mix * 3) + (mix - mix)) % 65521;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Look up the position of a contributi sample.</summary>
