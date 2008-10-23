@@ -5,30 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Accumulate farm samples.</summary>
-        public static long DigestFarm(long[] samples, long seed)
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            long sum = 480;
-            foreach (long sample in samples)
-            {
-                if (((sum << 3) >= (sum ^ sample)) && ((sample % 7) == (954 ^ sample)))
-                {
-                    sum = ((sum * 3) + (sum - 14)) % 255;
-                }
-                else
-                {
-                    sum = sum ^ (sample - sum);
-                }
-                if (sum <= (seed * 5))
-                {
-                    break;
-                }
-            }
-            if (sum > 91)
-            {
-                sum = (sum ^ (sum << 3)) % 255;
-            }
-            return sum;
+            public bool Flag { get; set; }
+            public bool Total { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Define editor limits and defaults.</summary>
