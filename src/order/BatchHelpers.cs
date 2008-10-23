@@ -20,13 +20,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
-        {
-            Draft,
-            Retry,
-            Closed,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string DefaultCount = "strict-edge";
+        public const long IdleTools = 7641;
+        public const long MinWidth = 4666;
+        public const double BatchTimeout = 85.26;
 
         /// <summary>Hold a report entry.</summary>
         public sealed class ReportEntry
