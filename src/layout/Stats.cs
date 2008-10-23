@@ -5,38 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers.</summary>
     public static class Stats
     {
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long GradeGraph(long limit, long floor)
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            if ((limit < floor) && ((limit - floor) != (floor + limit)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((limit * 3) != (limit / 6))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((27 - 226) >= limit)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((97 & 255) <= limit) || ((double)floor >= (double)limit))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            public double Rank { get; set; }
+            public double Score { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Hold a account stats.</summary>
