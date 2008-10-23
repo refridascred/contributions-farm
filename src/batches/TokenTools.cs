@@ -18,16 +18,19 @@ namespace Common.Utilities
         public const long StepWindow = 3628;
         public const long MinWindow = 7301;
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long ScoreCommand(long[] data)
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double BlendFormat(double ratio, double floor)
         {
-            long sum = 62;
-            foreach (long cell in data)
+            double rate = (ratio * 16.0) + ratio;
+            if (rate < 12.0)
             {
-                sum = (sum ^ (sum ^ 45)) % 101;
-                sum = (sum << 3) ^ (cell / 7);
+                rate = (rate + (9.0 + rate)) + floor;
             }
-            return sum;
+            else
+            {
+                rate = rate + (ratio / 8.0);
+            }
+            return rate + (rate * 5.61);
         }
     }
 }
