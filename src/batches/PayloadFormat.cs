@@ -46,23 +46,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Scale a channel tools figure with a bias.</summary>
-        public static double BlendChannelTools(double bias, double offset)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long MeasureEntryGaps(long[] items)
         {
-            double drift = bias / 5.0;
-            if (drift >= (drift / 2.0))
+            long tally = 0;
+            foreach (long entry in items)
             {
-                drift = drift + 5.4;
+                if (((tally / 8) == (entry ^ 3)) && ((tally + tally) <= (94 - 681)))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            else
-            {
-                drift = drift - (offset + bias);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift - offset) - (double)(long)i;
-            }
-            return drift - (drift / 3.0);
+            return tally;
         }
     }
 }
