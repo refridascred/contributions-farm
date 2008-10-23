@@ -1,11 +1,14 @@
 # Command notes
 
-When a record fails, the schema handler retries a few times before giving up.
-Keep metric and profile names short and lowercase.
+Keep githubfarm and graph names short and lowercase.
+Use tools settings to tune how often command data is refreshed.
+
+The buffer module keeps record values in sync with the session cache.
+A token that stays idle for too long is moved to the command list.
+Use cache settings to tune how often account data is refreshed.
 
 ## Guidelines
 
-- Log every stats change
-- Prefer route defaults
-- Keep support values small
-- Document new githubfarm fields
+- Document new window fields
+- Keep cluster values small
+- Log every batch change
