@@ -1,17 +1,6 @@
 {
-  "already_window": 16.12,
-  "retry_depth_count": false,
-  "min_limit_count": {
-    "idle_threshold": true,
-    "soft_delay_count": "stable",
-    "base_size_count": {
-      "audit": false,
-      "githubfarm_interval": [172, 420],
-      "enabled": [373, 221, 25, 223],
-      "command_delay": 56.92,
-      "readonly": "blue",
-      "batch_size_ms": 30.5
-    },
-    "account_threshold": 250
-  }
+  "batch_threshold": 7065,
+  "farm_window": 500,
+  "enabled": 500,
+  "warm_capacity_count": false
 }
