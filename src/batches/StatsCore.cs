@@ -12,12 +12,13 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            Closed,
-            Retry,
-            Paused,
+            public double Score { get; set; }
+            public string Limit { get; set; } = "";
+            public string Total { get; set; } = "";
+            public bool Rank { get; set; }
         }
 
         /// <summary>Rank schema entry input into a small class.</summary>
