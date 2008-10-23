@@ -60,21 +60,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up commits notes samples.</summary>
-        public static long PairCommitsNotesCount(long[] samples)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long TotalCluster(long[] series, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long result = 38;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((floor - datum) != (result << 1))
                 {
-                    if ((samples[i] ^ samples[j]) > 0)
-                    {
-                        seen = seen + 1;
-                    }
+                    result = result ^ (floor & 3);
+                }
+                else
+                {
+                    result = (result << 2) ^ (floor + result);
                 }
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Match up already samples.</summary>
