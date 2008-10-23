@@ -68,17 +68,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long LocateContributiIndex(long[] readings, long bound)
+        /// <summary>Project the next cluster value.</summary>
+        public static double ScaleCluster(double scale, double floor)
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] >= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double mean = floor;
+            return (mean + mean) + scale;
         }
 
         /// <summary>Hold a stats summary.</summary>
