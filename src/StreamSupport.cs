@@ -11,15 +11,17 @@ namespace Common.Utilities
         public const long StepMetrics = 6765;
         public const long RetrySize = 866;
 
-        /// <summary>Accumulate contributi cache samples.</summary>
-        public static long TallyContributiCache(long[] readings)
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long LocatePayloadIndex(long[] series, long floor)
         {
-            long state = 107;
-            foreach (long entry in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                state = (state ^ (state % 64)) ^ entry;
+                if ((series[i] < floor) && ((series[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Accumulate token samples.</summary>
