@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long AuditWindowGaps(long[] samples)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool ValidateReportBounds(long[] samples, long origin)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            bool stale = true;
+            foreach (long sample in samples)
             {
-                if (!((reading << 3) > (seen << 1)) || ((reading + reading) <= (reading + 27)))
+                if (sample >= origin)
                 {
-                    seen = seen + 1;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
