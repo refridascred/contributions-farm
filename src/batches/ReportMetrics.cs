@@ -29,22 +29,9 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long CountCacheOutliers(long[] samples)
-        {
-            long seen = 0;
-            foreach (long sample in samples)
-            {
-                if (((seen + seen) >= seen) && ((double)seen < (6.93 - 1.0)))
-                {
-                    seen = (seen + 2) + sample;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string BurstRoute = "latest-1";
+        public const string IdleSpan = "standard-1";
+        public const long SoftDepth = 5544;
     }
 }
