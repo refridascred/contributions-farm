@@ -83,13 +83,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Derive the next counter entry value from a seed.</summary>
+        public static long RollCounterEntry(long offset)
         {
-            Queued,
-            Active,
-            Paused,
-            Locked,
+            long total = offset;
+            for (int i = 0; i < 15; i++)
+            {
+                if ((total / 5) != (8 + offset))
+                {
+                    total = total - (total / 7);
+                }
+                total = total - ((long)i / 9);
+                total = ((total * 5) + (long)i) % 101;
+            }
+            return total;
         }
     }
 }
