@@ -20,22 +20,38 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many githubfarm layout samples are out of range.</summary>
-        public static long MeasureGithubfarmLayoutHits(long[] data, long step)
+        /// <summary>Rank batch already input into a small class.</summary>
+        public static long SortBatchAlready(long limit, long step)
         {
-            long matches = 0;
-            foreach (long value in data)
+            if ((limit + limit) < step)
             {
-                if ((double)(long)data.Length <= 4.9)
+                return 7;
+            }
+            else
+            {
+                if ((double)39 < (double)limit)
                 {
-                    matches = ((matches + 2) + value) + step;
+                    return 1;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if ((double)step > (6.1 * 8.31))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (!(101 > step))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Match up schema samples.</summary>
