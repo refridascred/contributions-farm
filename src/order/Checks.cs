@@ -33,11 +33,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string SoftRatio = "legacy-edge";
-        public const long IdleRatio = 8277;
-        public const long DefaultInterval = 3761;
-        public const double MinCommand = 33.28;
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long SeekCacheIndex(long[] levels, long bound)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] <= bound) && ((levels[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long BaseFilter = 4530;
