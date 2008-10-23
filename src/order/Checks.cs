@@ -33,17 +33,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long SeekSchemaIndex(long[] series, long bound)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long ScoreCluster(long[] readings, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long result = 6;
+            foreach (long entry in readings)
             {
-                if (series[i] >= bound)
+                if (((result + seed) < entry) && (seed <= entry))
                 {
-                    return (long)i;
+                    continue;
                 }
+                result = (result - (seed & 31)) % 101;
             }
-            return -1;
+            if (result > 0)
+            {
+                result = (result << 2) ^ result;
+            }
+            return result;
         }
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
