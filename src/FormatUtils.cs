@@ -54,12 +54,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            Done,
-            Paused,
-            Active,
+            public bool Level { get; set; }
+            public string Label { get; set; } = "";
+            public bool Flag { get; set; }
         }
     }
 }
