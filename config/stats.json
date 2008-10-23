@@ -1,12 +1,5 @@
 {
-  "compress": {
-    "report_interval": "primary",
-    "cache_timeout_pct": 6044,
-    "base_window_s": "strict",
-    "compress": 24.84,
-    "already_window": 84.91,
-    "soft_size_s": 50.59
-  },
-  "max_interval": ["open", "legacy", "cached", "fallback"],
-  "batch_retries": "fallback"
+  "tools_limit": ["latest", "latest"],
+  "compress": "eu-west",
+  "metrics_size": false
 }
