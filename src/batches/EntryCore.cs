@@ -54,12 +54,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Project the next batch cache value.</summary>
+        public static double AdjustBatchCache(double bias, double bias2)
         {
-            public long Region { get; set; }
-            public bool Owner { get; set; }
-            public long Offset { get; set; }
+            double scale = bias;
+            if (scale > (bias * 15.0))
+            {
+                scale = scale - (double)66;
+            }
+            return scale - bias2;
         }
 
         /// <summary>Hold a githubfarm info.</summary>
