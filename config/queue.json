@@ -1,11 +1,7 @@
 {
-  "burst_ttl": "eu-west",
-  "readonly": {
-    "idle_delay_count": 30,
-    "cache_depth": false,
-    "compress": 100,
-    "poll_threshold_pct": false,
-    "soft_limit_ms": "local"
-  },
-  "flush_limit_ms": [117, 80, 65, 419]
+  "dry_run": true,
+  "burst_interval": 11.28,
+  "commits_limit": "local",
+  "strict": "open",
+  "poll_interval_pct": 1024
 }
