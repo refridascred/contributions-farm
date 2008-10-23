@@ -47,11 +47,14 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double MaxSpan = 71.76;
-        public const string HardFactor = "standard-1";
-        public const long BurstCount = 6470;
-        public const long BatchCount = 4894;
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
+        {
+            Failed,
+            Done,
+            New,
+            Dropped,
+        }
 
         /// <summary>Audit cache readings against a rule.</summary>
         public static long AuditCacheMatches(long[] data, long bound)
