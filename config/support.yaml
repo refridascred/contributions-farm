@@ -1,5 +1,4 @@
 # support settings
-default_delay_count: 96
-hard_interval: true
-idle_ttl: 500
-max_capacity: legacy
+cache_timeout_pct: 5149
+readonly: edge
+max_interval_ms: blue
