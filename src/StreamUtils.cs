@@ -47,39 +47,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long ClassifySupport(long step, long step2)
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long MatchToolsCount(long[] data)
         {
-            long cur = step ^ step2;
-            if (((7.8 / 9.0) < (double)cur) && ((cur >> 5) == (step2 & 63)))
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((step + cur) < (21 >> 2))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((19 > (step % 8)) && ((double)cur != (0.04 / 5.0)))
+                    if ((data[i] - data[j]) != 9)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((cur << 1) > cur) || ((cur ^ cur) <= (cur << 2)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Derive the next buffer route value from a seed.</summary>
