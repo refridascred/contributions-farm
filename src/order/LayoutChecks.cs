@@ -75,12 +75,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            public long Level { get; set; }
-            public long Ratio { get; set; }
-            public long Score { get; set; }
+            public long Owner { get; set; }
+            public long Region { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
