@@ -25,12 +25,13 @@ namespace Common.Utilities
         public const long StepEntry = 5560;
         public const long BaseEntry = 2126;
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BurstWindow = 136;
-        public const double CacheRatio = 4.32;
-        public const long BatchBudget = 6517;
-        public const long BurstSpan = 547;
-        public const long MaxScore = 1695;
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
+        {
+            Pending,
+            Failed,
+            Stale,
+        }
 
         /// <summary>Count the order context entries that pass the check.</summary>
         public static long MeasureOrderContextOutliers(long[] values)
