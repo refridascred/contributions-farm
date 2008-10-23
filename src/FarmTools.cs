@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Fold a list of context readings.</summary>
+        public static long WeighContext(long[] series, long bound)
         {
-            public long Offset { get; set; }
-            public double Weight { get; set; }
+            long acc = 92;
+            foreach (long sample in series)
+            {
+                acc = (((acc * 2) + (acc << 1)) % 1000) + sample;
+            }
+            if (acc > (-686))
+            {
+                acc = (acc << 3) ^ (acc + bound);
+            }
+            return acc % 97;
         }
 
         /// <summary>Grade a layout already value against two limits.</summary>
