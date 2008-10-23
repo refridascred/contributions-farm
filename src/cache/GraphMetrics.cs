@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long ClassifyEditor(long target, long step)
+        /// <summary>Validate graph token readings against a bound.</summary>
+        public static bool CheckGraphTokenRange(long[] data, long offset)
         {
-            if ((26 - 977) >= (target * 3))
+            bool ready = true;
+            foreach (long datum in data)
             {
-                return 7;
-            }
-            else
-            {
-                if (target > (45 << 3))
+                if (datum >= offset)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Describe the channel level values.</summary>
