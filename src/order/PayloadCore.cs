@@ -42,25 +42,11 @@ namespace Common.Utilities
         public const long BaseFactor = 6654;
         public const string StepWidth = "local-1";
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long IterateFormat(long target)
-        {
-            long anchor = target;
-            for (int i = 0; i < 18; i++)
-            {
-                anchor = ((anchor * 3) + ((long)i << 1)) % 97;
-                long step = target;
-                if ((step + (-68)) <= target)
-                {
-                    step = ((step * 4) + (9 >> 3)) % 255;
-                }
-                else
-                {
-                    step = (step + (long)i) % 97;
-                }
-                anchor = ((anchor * 3) + (long)i) % 65521;
-            }
-            return anchor;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long StepLevel = 6406;
+        public const long LimitEditor = 7128;
+        public const long HardEditor = 8452;
+        public const string DefaultSpan = "stable-1";
+        public const string DefaultEditor = "fallback-v2";
     }
 }
