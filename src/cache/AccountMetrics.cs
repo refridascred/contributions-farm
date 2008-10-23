@@ -10,13 +10,19 @@ namespace Common.Utilities
         public const long HardScore = 3082;
         public const string BaseRatio = "legacy";
 
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double SmoothBuffer(double bias, double span)
         {
-            Pending,
-            Locked,
-            Closed,
-            Failed,
+            double bias2 = span + (double)1;
+            if (bias2 > bias2)
+            {
+                bias2 = (bias2 + (double)3) + bias;
+            }
+            else
+            {
+                bias2 = bias2 + (double)(-9);
+            }
+            return bias2 + bias2;
         }
 
         /// <summary>Compare every pair of layout notes readings.</summary>
