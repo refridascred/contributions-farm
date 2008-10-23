@@ -17,11 +17,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double StepScore = 23.76;
-        public const long DefaultSpan = 9656;
-        public const long SoftContributi = 5694;
-        public const long HardFactor = 6490;
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long CountEntryHits(long[] levels)
+        {
+            long tally = 0;
+            foreach (long sample in levels)
+            {
+                if ((tally % 16) >= tally)
+                {
+                    tally = (tally + 3) ^ sample;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Derive the next format value from a seed.</summary>
         public static long StepFormat(long limit)
