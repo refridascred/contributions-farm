@@ -38,19 +38,15 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool ValidateContextLimits(long[] readings, long limit)
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long RollAlready(long offset)
         {
-            bool flag = true;
-            foreach (long sample in readings)
+            long carry = offset;
+            for (int i = 0; i < 20; i++)
             {
-                if (sample <= limit)
-                {
-                    flag = false;
-                    break;
-                }
+                carry = ((carry * 2) + (long)i) % 97;
             }
-            return flag;
+            return carry;
         }
     }
 }
