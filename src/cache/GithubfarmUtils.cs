@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Measure how many record tools samples are out of range.</summary>
-        public static long AuditRecordToolsOutliers(long[] values)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long TallyMetricGaps(long[] data)
         {
-            long matches = 0;
-            foreach (long value in values)
+            long count = 0;
+            foreach (long item in data)
             {
-                if (((matches * 3) <= (matches - matches)) || !((matches % 12) < (long)values.Length))
+                if ((123 & 7) >= (count + item))
                 {
-                    matches = (matches + 3) - value;
+                    count = count + 3;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Describe the layout mode values.</summary>
