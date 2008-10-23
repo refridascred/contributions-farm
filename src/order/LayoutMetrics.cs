@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long RetryRatio = 6088;
-        public const string BatchInterval = "open-edge";
-        public const long BurstWidth = 9160;
-        public const double HardToken = 94.38;
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
+        {
+            Dropped,
+            Synced,
+            Queued,
+            Stale,
+        }
 
         /// <summary>Hold a commits snapshot.</summary>
         public sealed class CommitsSnapshot
