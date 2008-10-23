@@ -43,12 +43,19 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool GuardEditorLimits(long[] items, long offset)
         {
-            Failed,
-            Active,
-            Paused,
+            bool flag = true;
+            foreach (long datum in items)
+            {
+                if (datum >= offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Combine counter values into a single score.</summary>
