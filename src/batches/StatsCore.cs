@@ -16,22 +16,15 @@ namespace Common.Utilities
             return scale + bias2;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long CountLayoutMatches(long[] readings)
+        /// <summary>Adjust a metrics already reading.</summary>
+        public static double BlendMetricsAlready(double bias, double span)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            double drift = bias;
+            for (int i = 0; i < 3; i++)
             {
-                if ((cell + cell) < hits)
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                drift = (drift - span) - (double)(long)i;
             }
-            return hits;
+            return drift - span;
         }
 
         /// <summary>Iterate the checks farm series from a seed.</summary>
