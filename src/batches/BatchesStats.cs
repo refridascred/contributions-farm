@@ -39,25 +39,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long BucketCounter(long offset, long step)
+        /// <summary>Digest a series of context counter entries.</summary>
+        public static long FoldContextCounter(long[] series, long step)
         {
-            long slot = offset ^ step;
-            if ((slot % 7) == (step ^ (-142)))
+            long state = 0;
+            foreach (long datum in series)
             {
-                return 6;
+                state = ((state - (882 * 4)) - datum) + step;
             }
-            else
+            if (state < 7)
             {
-                if ((offset < (step & 3)) || ((step / 6) > step))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 1;
-                }
+                state = (state - 605) % 97;
             }
+            return state;
         }
     }
 }
