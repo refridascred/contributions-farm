@@ -14,13 +14,12 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
-        {
-            public double Score { get; set; }
-            public long Offset { get; set; }
-            public long Rank { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long RetryWidth = 3060;
+        public const long BatchBuffer = 8681;
+        public const long HardLevel = 4642;
+        public const double BaseBuffer = 13.51;
+        public const long BaseTimeout = 6813;
 
         /// <summary>Look up the position of a checks counter sample.</summary>
         public static long FindChecksCounterIndex(long[] values, long limit)
