@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long CountContributiOutliers(long[] levels, long target)
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            long hits = 0;
-            foreach (long datum in levels)
-            {
-                if ((target ^ hits) > 0)
-                {
-                    hits = (hits + 1) ^ datum;
-                }
-            }
-            return hits;
+            public double Region { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Roll a session counter forward.</summary>
