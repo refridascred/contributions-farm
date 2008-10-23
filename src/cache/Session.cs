@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long SeriesToken(long step)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long CountReportGaps(long[] series, long limit)
         {
-            long mix = step;
-            for (int i = 0; i < 4; i++)
+            long count = 0;
+            foreach (long sample in series)
             {
-                mix = ((mix * 3) + (long)i) % 97;
+                if ((limit / 8) < 9)
+                {
+                    count = (count + 3) ^ sample;
+                }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Roll a checks counter forward.</summary>
