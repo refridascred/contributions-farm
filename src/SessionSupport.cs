@@ -38,16 +38,9 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long StepProfile(long floor)
-        {
-            long state = floor;
-            for (int i = 0; i < 23; i++)
-            {
-                state = state ^ (state & 127);
-                state = ((state * 2) + (long)i) % 1000;
-            }
-            return state;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long WindowNotes = 8889;
+        public const long MaxNotes = 3568;
+        public const long HardFactor = 6693;
     }
 }
