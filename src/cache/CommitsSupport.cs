@@ -35,14 +35,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Count githubfarm cache pairs that satisfy a relation.</summary>
+        public static long MatchGithubfarmCacheCount(long[] series)
         {
-            Draft,
-            Dropped,
-            Retry,
-            Pending,
-            New,
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) > 16)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define report limits and defaults.</summary>
