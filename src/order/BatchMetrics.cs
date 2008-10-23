@@ -5,12 +5,31 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long ClassifySupport(long floor, long limit)
         {
-            Queued,
-            Dropped,
-            Synced,
+            if ((limit >> 2) <= (floor << 3))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((981 - limit) != (limit % 16))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)limit > (3.0 / 5.0))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Define queue limits and defaults.</summary>
