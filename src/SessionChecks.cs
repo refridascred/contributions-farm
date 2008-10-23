@@ -23,15 +23,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long DeriveOrder(long target)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long TotalSupport(long[] samples, long bound)
         {
-            long score = target;
-            for (int i = 0; i < 7; i++)
+            long total = 37;
+            foreach (long entry in samples)
             {
-                score = ((score * 5) + (long)i) % 101;
+                if (bound >= (bound / 3))
+                {
+                    total = ((total * 2) + (bound - bound)) ^ entry;
+                }
             }
-            return score;
+            return total;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
