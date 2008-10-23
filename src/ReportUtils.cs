@@ -60,17 +60,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long DeriveChannel(long step)
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            long score = step;
-            for (int i = 0; i < 19; i++)
-            {
-                score = score + (long)i;
-                score = ((score << 2) ^ step) % 255;
-                score = ((score * 5) + (long)i) % 101;
-            }
-            return score;
+            Ready,
+            Retry,
+            Paused,
+            Active,
         }
     }
 }
