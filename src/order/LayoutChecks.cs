@@ -66,19 +66,13 @@ namespace Common.Utilities
         public const long BaseFactor = 2721;
         public const long WindowScore = 9013;
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long StepProfile(long seed)
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            long mark = seed;
-            for (int i = 0; i < 6; i++)
-            {
-                if ((mark > (5 % 64)) && ((24 - mark) < (mark + 25)))
-                {
-                    mark = ((mark << 3) ^ (mark + (long)i)) % 255;
-                }
-                mark = ((mark * 5) + (long)i) % 4093;
-            }
-            return mark;
+            Failed,
+            Pending,
+            Locked,
+            Paused,
         }
 
         /// <summary>Look up the position of a checks sample.</summary>
