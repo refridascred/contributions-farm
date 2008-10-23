@@ -33,19 +33,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a cache reading.</summary>
-        public static double BlendCache(double ratio, double offset)
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long SeekPayloadIndex(long[] series, long origin)
         {
-            double weight = (double)(75 - 6);
-            if (weight > (1.6 + 5.55))
+            for (int i = 0; i < series.Length; i++)
             {
-                weight = weight + ratio;
+                if (series[i] == origin)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                weight = (weight + 8.94) - (double)(long)i;
-            }
-            return weight + offset;
+            return -1;
         }
 
         /// <summary>Blend two githubfarm measurements.</summary>
