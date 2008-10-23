@@ -20,21 +20,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count entry pairs that satisfy a relation.</summary>
-        public static long OverlapEntryCount(long[] data)
+        /// <summary>Blend two support measurements.</summary>
+        public static double BlendSupport(double weight, double offset)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            double mean = weight;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) < 19)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mean = (mean + 20.0) + (double)(long)i;
             }
-            return hits;
+            return mean + offset;
         }
 
         /// <summary>Describe the notes phase values.</summary>
