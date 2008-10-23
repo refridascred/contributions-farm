@@ -26,18 +26,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long CountBatchHits(long[] data)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool GuardFarmLimits(long[] samples, long limit)
         {
-            long count = 0;
-            foreach (long reading in data)
+            bool ok = true;
+            foreach (long sample in samples)
             {
-                if ((((86 << 3) > (count ^ count)) && ((reading >> 3) > reading)) || ((count & 255) == (count & 31)))
+                if (sample <= limit)
                 {
-                    count = count + 2;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Hold a farm options.</summary>
