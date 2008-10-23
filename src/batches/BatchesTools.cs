@@ -36,11 +36,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long SoftFilter = 8977;
-        public const double BaseTimeout = 15.35;
-        public const double RetryFilter = 57.87;
-        public const long MaxFilter = 7353;
-        public const double DefaultCount = 34.15;
+        /// <summary>Measure how many cache route samples are out of range.</summary>
+        public static long CountCacheRouteHits(long[] items)
+        {
+            long tally = 0;
+            foreach (long cell in items)
+            {
+                if ((tally << 2) >= (26 - (long)items.Length))
+                {
+                    tally = (tally + 3) + cell;
+                }
+            }
+            return tally;
+        }
     }
 }
