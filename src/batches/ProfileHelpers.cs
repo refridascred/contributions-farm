@@ -61,18 +61,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long ScoreMetric(long[] samples)
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
         {
-            long anchor = 60;
-            foreach (long entry in samples)
-            {
-                if ((anchor + entry) > entry)
-                {
-                    anchor = (anchor + (79 & 127)) % 255;
-                }
-            }
-            return anchor;
+            public long Region { get; set; }
+            public bool Label { get; set; }
+            public bool Total { get; set; }
+            public string Stamp { get; set; } = "";
         }
     }
 }
