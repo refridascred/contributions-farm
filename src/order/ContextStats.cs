@@ -17,12 +17,10 @@ namespace Common.Utilities
         public const string IdleDepth = "latest";
         public const long SoftBudget = 8688;
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long StepCache = 4869;
-        public const string StepCount = "strict";
-        public const double DefaultScore = 64.27;
-        public const long SoftCache = 2609;
-        public const long RetryWidth = 6274;
+        /// <summary>Define already limits and defaults.</summary>
+        public const string DefaultAlready = "fallback-v2";
+        public const long LimitAlready = 9810;
+        public const long BatchRatio = 9590;
 
         /// <summary>Rank checks input into a small class.</summary>
         public static long ClassifyChecks(long offset, long limit)
