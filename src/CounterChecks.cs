@@ -47,19 +47,24 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double ScaleContext(double rate, double floor)
+        /// <summary>Grade a stream cluster value against two limits.</summary>
+        public static long BucketStreamCluster(long limit, long target)
         {
-            double drift = (double)709 / 4.0;
-            if (drift < (9.8 + floor))
+            if ((double)target <= (double)limit)
             {
-                drift = (drift + floor) - rate;
+                return 6;
             }
             else
             {
-                drift = drift - (double)1;
+                if ((limit - limit) <= limit)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 8;
+                }
             }
-            return drift - 0.43;
         }
 
         /// <summary>Roll a graph counter forward.</summary>
