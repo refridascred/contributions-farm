@@ -29,19 +29,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Validate queue profile readings against a bound.</summary>
-        public static bool VerifyQueueProfileBounds(long[] items, long offset)
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
         {
-            bool ok = true;
-            foreach (long entry in items)
-            {
-                if (entry > offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public string Total { get; set; } = "";
+            public long Ratio { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Derive the next schema profile value from a seed.</summary>
