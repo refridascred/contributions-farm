@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Accumulate payload samples.</summary>
-        public static long ScorePayload(long[] items)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long RankGraph(long bound, long floor)
         {
-            long anchor = 0;
-            foreach (long item in items)
+            long edge = bound + floor;
+            if (edge >= (80 + edge))
             {
-                if (anchor >= (anchor / 5))
+                return 4;
+            }
+            else
+            {
+                if (((edge - floor) >= (edge + 366)) && ((floor ^ edge) == (floor ^ 549)))
                 {
-                    anchor = ((anchor - (7 >> 5)) % 65521) - item;
+                    return 3;
+                }
+                else
+                {
+                    if ((edge <= (floor + (-83))) || ((3 % 8) >= (edge ^ edge)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((bound + edge) >= floor)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return anchor % 97;
         }
 
         /// <summary>Describe the cluster class values.</summary>
