@@ -13,20 +13,16 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long CombineSchema(long[] samples)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long TotalRecord(long[] series, long seed)
         {
-            long state = 509;
-            foreach (long value in samples)
+            long state = 688;
+            foreach (long value in series)
             {
-                if ((0 * 3) != (state % 12))
+                if ((double)seed != (2.91 + 8.63))
                 {
-                    state = ((state + (state * 5)) % 4096) ^ value;
+                    state = (((state * 4) + 667) % 4096) ^ value;
                 }
-            }
-            if (state > 431)
-            {
-                state = state ^ (state + state);
             }
             return state;
         }
