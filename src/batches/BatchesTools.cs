@@ -34,23 +34,17 @@ namespace Common.Utilities
             return gain - (2.8 + span);
         }
 
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double ProjectChannel(double gain, double floor)
+        /// <summary>Locate a channel route reading by value.</summary>
+        public static long LookupChannelRouteIndex(long[] readings, long bound)
         {
-            double weight = (double)(87 * 5);
-            if (weight > floor)
+            for (int i = 0; i < readings.Length; i++)
             {
-                weight = weight + (floor - gain);
+                if ((readings[i] == bound) && ((readings[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                weight = weight + gain;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                weight = (weight - 3.3) + (double)(long)i;
-            }
-            return weight + (floor * 7.94);
+            return -1;
         }
     }
 }
