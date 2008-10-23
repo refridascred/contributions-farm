@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            public double Score { get; set; }
-            public string Region { get; set; } = "";
-            public long Flag { get; set; }
+            Queued,
+            Pending,
+            Ready,
+            Dropped,
+            Paused,
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
