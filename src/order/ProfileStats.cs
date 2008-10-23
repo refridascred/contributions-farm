@@ -11,13 +11,21 @@ namespace Common.Utilities
         public const long BatchReport = 1592;
         public const string BurstReport = "staging-v2";
 
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long PairAccountCount(long[] data)
         {
-            public long Ratio { get; set; }
-            public double Limit { get; set; }
-            public double Score { get; set; }
-            public string Owner { get; set; } = "";
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) != 4)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Measure how many payload stats samples are out of range.</summary>
