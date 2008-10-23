@@ -32,14 +32,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
-        {
-            public bool Total { get; set; }
-            public string Rank { get; set; } = "";
-            public double Offset { get; set; }
-            public string Level { get; set; } = "";
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BurstTools = 8012;
+        public const long MaxTools = 7893;
+        public const long StepFactor = 2064;
+        public const long BurstScore = 3748;
+        public const string IdleTools = "fallback-1";
 
         /// <summary>Look up the position of a contributi farm sample.</summary>
         public static long SeekContributiFarmIndex(long[] values, long seed)
