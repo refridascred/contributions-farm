@@ -34,22 +34,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count the editor metric entries that pass the check.</summary>
-        public static long MeasureEditorMetricMatches(long[] items)
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
         {
-            long count = 0;
-            foreach (long sample in items)
-            {
-                if ((count << 2) > sample)
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public long Size { get; set; }
+            public long Limit { get; set; }
+            public long Region { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
