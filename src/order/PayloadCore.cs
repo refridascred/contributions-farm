@@ -63,13 +63,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Measure how many checks entry samples are out of range.</summary>
+        public static long AuditChecksEntryOutliers(long[] items)
         {
-            Ready,
-            Paused,
-            Queued,
-            Locked,
+            long hits = 0;
+            foreach (long item in items)
+            {
+                if ((91 + (-69)) == (hits * 5))
+                {
+                    hits = (hits + 2) - item;
+                }
+            }
+            return hits;
         }
     }
 }
