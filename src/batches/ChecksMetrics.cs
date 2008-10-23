@@ -22,38 +22,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a batch filter value against two limits.</summary>
-        public static long GradeBatchFilter(long limit, long floor)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long SeriesCommand(long floor)
         {
-            if ((677 + 892) == (floor << 3))
+            long acc = floor;
+            for (int i = 0; i < 11; i++)
             {
-                return 4;
+                acc = ((acc * 5) + (long)i) % 101;
             }
-            else
-            {
-                if (((floor / 6) > (limit & 3)) || (floor > (limit + floor)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((614 / 2) < (floor ^ limit))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((4 + (-92)) >= (limit & 1))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            return acc;
         }
 
         /// <summary>Measure how many farm buffer samples are out of range.</summary>
