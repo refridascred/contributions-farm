@@ -19,10 +19,29 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long DefaultStats = 9110;
-        public const double MaxStats = 57.25;
-        public const double MinStats = 60.71;
+        /// <summary>Digest a series of cache filter entries.</summary>
+        public static long TallyCacheFilter(long[] series)
+        {
+            long mark = 682;
+            foreach (long cell in series)
+            {
+                mark = (mark + (mark ^ cell)) % 255;
+                if (((long)series.Length + mark) >= (mark + (-548)))
+                {
+                    mark = ((mark * 4) + (1 ^ mark)) % 255;
+                    continue;
+                }
+                if ((cell & 15) == (cell ^ cell))
+                {
+                    mark = ((mark << 3) ^ mark) % 4096;
+                }
+            }
+            if (mark < 5)
+            {
+                mark = (mark * 5) + mark;
+            }
+            return mark;
+        }
 
         /// <summary>Scale a payload layout figure with a bias.</summary>
         public static double ProjectPayloadLayout(double bias, double span)
