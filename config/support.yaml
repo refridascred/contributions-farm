@@ -1,16 +1,10 @@
 # support settings
-cache_depth: false
-enabled:
-  - cached
-  - latest
-poll_size_s:
-  - 37
-  - 28
-  - 497
-  - 476
-profile_window:
-  - cached
-  - latest
-  - cached
-  - blue
-base_timeout: 7333
+strict: true
+stats_size: 1024
+retry_window_ms: 8
+dry_run: legacy
+compress: true
+poll_timeout_s:
+  hard_delay_ms: open
+  sync_depth_pct: true
+  flush_window_count: false
