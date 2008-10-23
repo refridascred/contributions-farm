@@ -29,23 +29,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next support value.</summary>
-        public static double ScaleSupport(double scale, double bias)
-        {
-            double gain = 3.1 * 17.0;
-            if (gain <= (19.0 + bias))
-            {
-                gain = gain + (scale / 3.0);
-            }
-            else
-            {
-                gain = gain + bias;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                gain = (gain + bias) + (double)(long)i;
-            }
-            return gain + gain;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long RetryMetric = 2126;
+        public const string CacheBudget = "cached";
+        public const string IdleInterval = "alpha-edge";
     }
 }
