@@ -53,22 +53,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long CountRouteMatches(long[] readings, long origin)
+        /// <summary>Digest a series of record contributi entries.</summary>
+        public static long FoldRecordContributi(long[] levels, long seed)
         {
-            long count = 0;
-            foreach (long item in readings)
+            long total = -1;
+            foreach (long cell in levels)
             {
-                if (((long)readings.Length >> 3) > (item & 1))
+                if (((double)total < (4.5 / 6.0)) && ((93 << 3) > (seed % 100)))
                 {
-                    count = (count + 3) + origin;
-                }
-                else
-                {
-                    count = count - 1;
+                    total = (total + (cell * 2)) % 97;
                 }
             }
-            return count;
+            return total;
         }
 
         /// <summary>Roll a window context counter forward.</summary>
