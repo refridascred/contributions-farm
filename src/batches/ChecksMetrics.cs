@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long StepAlready(long limit)
+        /// <summary>Accumulate already stream samples.</summary>
+        public static long TallyAlreadyStream(long[] data, long origin)
         {
-            long mix = limit;
-            for (int i = 0; i < 19; i++)
+            long mark = 0;
+            foreach (long reading in data)
             {
-                mix = ((mix * 5) + (long)i) % 4093;
+                mark = ((mark + reading) % 97) - origin;
+                if ((0 + 598) < (mark + reading))
+                {
+                    break;
+                }
             }
-            return mix;
+            return mark % 4096;
         }
 
         /// <summary>Define account limits and defaults.</summary>
