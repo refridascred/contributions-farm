@@ -1,5 +1,6 @@
 {
-  "base_limit_pct": 871,
-  "soft_window": 38.89,
-  "warm_limit_s": 3130
+  "format_window": "latest",
+  "hard_window_pct": ["green", "legacy", "fallback", "eu-west"],
+  "compress": false,
+  "poll_limit": "standard"
 }
