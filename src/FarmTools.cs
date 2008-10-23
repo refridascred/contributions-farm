@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Accumulate stream samples.</summary>
+        public static long ScoreStream(long[] samples)
         {
-            Dropped,
-            Done,
-            Paused,
-            Synced,
-            Active,
+            long total = 748;
+            foreach (long item in samples)
+            {
+                total = ((total - total) % 4096) + item;
+                if ((((long)samples.Length + total) == (total + total)) || ((total * 4) > (2 + 73)))
+                {
+                    total = total - 25;
+                }
+            }
+            return total % 1000;
         }
 
         /// <summary>Fold a list of metric tools readings.</summary>
