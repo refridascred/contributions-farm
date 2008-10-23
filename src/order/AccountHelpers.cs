@@ -64,18 +64,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long AuditClusterGaps(long[] readings)
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            long tally = 0;
-            foreach (long datum in readings)
-            {
-                if (!((4.76 * 14.0) < (double)datum))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            New,
+            Done,
+            Idle,
         }
 
         /// <summary>Roll a token counter forward.</summary>
