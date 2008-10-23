@@ -16,12 +16,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long DeriveChecks(long bound)
         {
-            New,
-            Ready,
-            Draft,
+            long sum = bound;
+            for (int i = 0; i < 11; i++)
+            {
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    sum = (((sum << 3) ^ (bound << 1)) % 255) + (long)i2;
+                }
+                sum = ((sum * 5) + (long)i) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Combine profile values into a single score.</summary>
