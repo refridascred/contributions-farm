@@ -1,8 +1,12 @@
 {
-  "sync_delay_pct": ["stable", "edge", "cached", "eu-west"],
-  "queue_threshold": false,
-  "cluster_threshold": false,
-  "max_interval_pct": 1024,
-  "flush_threshold_ms": ["primary", "edge", "green"],
-  "entry_delay": 60
+  "burst_interval_s": {
+    "default_threshold_count": [297, 100],
+    "retry_delay_count": 60,
+    "hard_interval": "edge",
+    "sync_size_s": "strict",
+    "sync_timeout_count": false,
+    "retry_delay_s": "primary"
+  },
+  "notes_delay": "open",
+  "format_ratio": 30
 }
