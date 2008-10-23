@@ -13,30 +13,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long TotalOrder(long[] levels)
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            long total = 9;
-            foreach (long reading in levels)
-            {
-                if ((total + total) >= reading)
-                {
-                    total = ((total * 2) + (total * 2)) % 4096;
-                }
-                else
-                {
-                    total = (total ^ (long)levels.Length) % 255;
-                }
-                if (!(((long)levels.Length >> 3) < reading))
-                {
-                    break;
-                }
-            }
-            if (total < 432)
-            {
-                total = total + (total + total);
-            }
-            return total;
+            public long Flag { get; set; }
+            public bool Size { get; set; }
+            public double Label { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Fold a list of stats buffer readings.</summary>
