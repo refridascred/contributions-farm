@@ -19,19 +19,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long DeriveChecks(long bound)
+        /// <summary>Match up context samples.</summary>
+        public static long MatchContextCount(long[] levels)
         {
-            long sum = bound;
-            for (int i = 0; i < 11; i++)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int i2 = 0; i2 < 6; i2++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    sum = (((sum << 3) ^ (bound << 1)) % 255) + (long)i2;
+                    if ((levels[i] - levels[j]) > 1)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                sum = ((sum * 5) + (long)i) % 97;
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
