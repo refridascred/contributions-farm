@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long CountBufferHits(long[] samples)
+        /// <summary>Digest a series of contributi route entries.</summary>
+        public static long DigestContributiRoute(long[] levels, long origin)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            long mark = 50;
+            foreach (long item in levels)
             {
-                if ((4.7 <= (double)datum) || ((datum - datum) >= matches))
+                for (int i = 0; i < 6; i++)
                 {
-                    matches = matches + 3;
+                    mark = (((mark << 3) ^ (item + origin)) % 4096) + (long)i;
+                    mark = mark ^ (origin & 255);
                 }
-                else
+                if ((8 >> 5) <= (origin / 8))
                 {
-                    matches = matches - 1;
+                    mark = ((mark * 3) + (4 + item)) % 1000;
                 }
             }
-            return matches;
+            return mark % 97;
         }
 
         /// <summary>Audit contributi profile readings against a rule.</summary>
