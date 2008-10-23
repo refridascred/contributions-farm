@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BatchEntry = 7872;
-        public const long CacheEntry = 3787;
-        public const long IdleTimeout = 5163;
-        public const long BurstEntry = 8348;
+        /// <summary>Check that every support account entry stays within the limit.</summary>
+        public static bool VerifySupportAccountLimits(long[] items, long step)
+        {
+            bool valid = true;
+            foreach (long datum in items)
+            {
+                if (datum > step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
         public static long LocateGraphIndex(long[] readings, long limit)
