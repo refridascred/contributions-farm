@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long WeighCluster(long[] data, long offset)
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            long total = 313;
-            foreach (long item in data)
-            {
-                total = (((total - 44) % 65521) + item) + offset;
-            }
-            return total;
+            New,
+            Queued,
+            Done,
         }
 
         /// <summary>Iterate the editor series from a seed.</summary>
