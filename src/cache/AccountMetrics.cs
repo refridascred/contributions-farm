@@ -5,13 +5,38 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long GradeMetrics(long bound, long offset)
         {
-            Ready,
-            Paused,
-            Failed,
-            Stale,
+            if (!((898 & 3) <= bound))
+            {
+                return 3;
+            }
+            else
+            {
+                if (2.0 <= (double)bound)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((offset - bound) != (69 - bound))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((bound + offset) < (offset - offset))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Blend two buffer measurements.</summary>
