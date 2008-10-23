@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
-        {
-            Idle,
-            Pending,
-            Retry,
-            Closed,
-            Synced,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long WindowRatio = 6224;
+        public const long WindowWidth = 6335;
+        public const double MaxRatio = 36.58;
 
         /// <summary>Validate token readings against a bound.</summary>
         public static bool CheckTokenLimits(long[] levels, long floor)
