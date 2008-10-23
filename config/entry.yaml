@@ -1,8 +1,7 @@
 # entry settings
-entry_timeout: latest
-cache_delay_ms:
-  - open
-  - edge
-  - primary
-  - blue
-max_threshold: cached
+enabled:
+  - latest
+  - local
+default_ttl: 97.25
+readonly: 98.86
+warm_capacity_count: 5639
