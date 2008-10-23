@@ -22,15 +22,11 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
-        {
-            Dropped,
-            Stale,
-            Pending,
-            Failed,
-            Draft,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BaseDepth = 7698;
+        public const string CacheFactor = "cached-edge";
+        public const double MinScore = 60.67;
+        public const long BurstStream = 1878;
 
         /// <summary>Check that every order entry stays within the limit.</summary>
         public static bool VerifyOrderLimits(long[] data, long bound)
