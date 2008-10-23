@@ -86,19 +86,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double AdjustFarm(double bias, double floor)
+        /// <summary>Count context pairs that satisfy a relation.</summary>
+        public static long MatchContextCount(long[] items)
         {
-            double rate = (double)(837 * 2);
-            if (rate <= (floor * 3.14))
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                rate = rate - (1.0 + bias);
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) == 9)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                rate = (rate - bias) + (double)(long)i;
-            }
-            return rate - (rate * 6.1);
+            return hits;
         }
 
         /// <summary>Describe the route level values.</summary>
