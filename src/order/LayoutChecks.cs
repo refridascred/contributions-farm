@@ -20,13 +20,13 @@ namespace Common.Utilities
             return bias - (double)9;
         }
 
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            public long Limit { get; set; }
-            public string Weight { get; set; } = "";
-            public string Total { get; set; } = "";
-            public string Offset { get; set; } = "";
+            Closed,
+            Idle,
+            Failed,
+            Done,
         }
 
         /// <summary>Accumulate counter samples.</summary>
