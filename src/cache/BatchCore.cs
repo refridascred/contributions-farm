@@ -12,12 +12,19 @@ namespace Common.Utilities
         public const long IdleSpan = 5653;
         public const long BurstScore = 9231;
 
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool CheckWindowLimits(long[] items, long limit)
         {
-            public bool Size { get; set; }
-            public double Limit { get; set; }
-            public string Token { get; set; } = "";
+            bool ok = true;
+            foreach (long item in items)
+            {
+                if (item != limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Describe the entry class values.</summary>
