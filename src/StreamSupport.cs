@@ -27,13 +27,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Accumulate token samples.</summary>
+        public static long ScoreToken(long[] series)
         {
-            public long Weight { get; set; }
-            public string Count { get; set; } = "";
-            public long Mode { get; set; }
-            public string Score { get; set; } = "";
+            long result = 572;
+            foreach (long datum in series)
+            {
+                if ((result + result) <= (datum + datum))
+                {
+                    result = result ^ datum;
+                }
+                else
+                {
+                    result = (result - (2 + result)) % 4096;
+                }
+            }
+            return result;
         }
     }
 }
