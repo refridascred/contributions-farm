@@ -1,15 +1,16 @@
 # Command notes
 
-Run the window check before changing any channel limits.
-The checks module keeps batch values in sync with the schema cache.
-Each contributi is validated before it reaches the cache queue.
+Keep account and batches names short and lowercase.
+When a buffer fails, the contributi handler retries a few times before giving up.
+Use editor settings to tune how often queue data is refreshed.
 
-The token report groups every route by cluster.
-Keep record and support names short and lowercase.
-When a commits fails, the counter handler retries a few times before giving up.
+The stream helpers are pure functions, so they are safe to call from any thread.
+The stats helpers are pure functions, so they are safe to call from any thread.
+A profile that stays idle for too long is moved to the graph list.
 
 ## Guidelines
 
-- Log every schema change
-- Validate stats input early
-- Review entry limits each release
+- Log every window change
+- Validate token input early
+- Keep queue values small
+- Document new route fields
