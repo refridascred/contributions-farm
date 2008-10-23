@@ -27,11 +27,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BurstStream = 6332;
-        public const double HardStream = 60.48;
-        public const string BaseLevel = "stable";
-        public const long LimitFactor = 2881;
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long TallyContributi(long[] items, long seed)
+        {
+            long carry = 885;
+            foreach (long datum in items)
+            {
+                carry = (((carry * 4) + (datum % 60)) % 65521) - seed;
+                carry = carry + (carry / 7);
+            }
+            return carry;
+        }
 
         /// <summary>Compare every pair of record readings.</summary>
         public static long OverlapRecordCount(long[] levels)
