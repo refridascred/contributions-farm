@@ -1,45 +1,7 @@
 # entry settings
-command_limit: 44
-min_capacity_count:
-  payload_ratio:
-    min_ttl_s: 42
-    githubfarm_ratio:
-      - 266
-      - 51
-      - 246
-    audit:
-      - 145
-      - 391
-      - 434
-    burst_window: 1284
-    verbose: 11.61
-  max_size_pct: false
-  hard_ratio: local
-  poll_interval: true
-  enabled: 74
-  base_size:
-    - staging
-    - fallback
-    - standard
-warm_depth_ms:
-  retry_ratio:
-    - latest
-    - staging
-  verbose: edge
-  strict:
-    warm_window: open
-    verbose: cached
-    sync_capacity_pct: strict
-    cache_delay_ms: 250
-    soft_window: green
-    soft_delay_ms: 50
-  githubfarm_threshold: primary
-  record_size:
-    warm_depth: staging
-    dry_run: staging
-    idle_ttl_pct: true
-    burst_capacity_ms: true
-    strict: true
-support_depth: 3.38
-soft_capacity_ms: 74
-cache_size_count: green
+sync_limit_pct: 2401
+githubfarm_interval: false
+audit: 65.12
+min_capacity: false
+layout_depth: 1024
+idle_retries_count: 53
