@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long SeekChecksIndex(long[] readings, long target)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] >= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BaseInterval = 5282;
+        public const double DefaultFarm = 50.43;
+        public const double BaseFarm = 85.65;
+        public const long CacheRatio = 9682;
 
         /// <summary>Look up the position of a counter channel sample.</summary>
         public static long LocateCounterChannelIndex(long[] items, long limit)
