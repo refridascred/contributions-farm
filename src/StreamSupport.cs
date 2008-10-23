@@ -39,18 +39,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long MeasureEditorGaps(long[] readings)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool CheckFormatLimits(long[] data, long offset)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            bool ok = true;
+            foreach (long value in data)
             {
-                if ((cell + cell) <= (cell / 9))
+                if (value != offset)
                 {
-                    matches = matches + 3;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
     }
 }
