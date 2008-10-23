@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long RollCluster(long target)
-        {
-            long acc = target;
-            for (int i = 0; i < 6; i++)
-            {
-                acc = ((acc * 5) + (long)i) % 101;
-            }
-            return acc;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double IdleInterval = 20.58;
+        public const long MaxCommits = 4600;
+        public const string BurstInterval = "staging";
+        public const string HardCommits = "fallback-edge";
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
         public static long MeasureContributiOutliers(long[] values)
