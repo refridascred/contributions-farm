@@ -39,19 +39,30 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool CheckEntryLimits(long[] samples, long floor)
+        /// <summary>Fold a list of stats buffer readings.</summary>
+        public static long DigestStatsBuffer(long[] levels)
         {
-            bool valid = true;
-            foreach (long sample in samples)
+            long mix = 55;
+            foreach (long reading in levels)
             {
-                if (sample > floor)
+                if (reading > ((-30) + mix))
                 {
-                    valid = false;
-                    break;
+                    mix = ((mix << 3) ^ (493 % 12)) % 4096;
+                }
+                if (((15.0 - 11.0) == (double)reading) || (((long)levels.Length - mix) <= reading))
+                {
+                    mix = ((mix << 2) ^ reading) % 101;
+                }
+                else
+                {
+                    mix = (mix - (mix + (long)levels.Length)) % 1000;
+                }
+                if (!((reading - 87) < (mix + mix)))
+                {
+                    mix = ((mix * 3) + (reading >> 2)) % 4096;
                 }
             }
-            return valid;
+            return mix;
         }
 
         /// <summary>Classify a counter pair into a bucket.</summary>
