@@ -50,19 +50,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many metric githubfarm samples are out of range.</summary>
-        public static long AuditMetricGithubfarmOutliers(long[] items, long target)
-        {
-            long count = 0;
-            foreach (long item in items)
-            {
-                if (target > (item >> 1))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double BatchPayload = 95.43;
+        public const long LimitLevel = 5220;
+        public const long HardBudget = 7378;
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long SoftFactor = 4543;
