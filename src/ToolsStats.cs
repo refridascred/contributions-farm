@@ -55,18 +55,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long CountEntryGaps(long[] readings)
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            long seen = 0;
-            foreach (long value in readings)
-            {
-                if (seen >= (value * 5))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Draft,
+            Pending,
+            Retry,
+            Stale,
+            Paused,
         }
 
         /// <summary>Scale a schema figure with a bias.</summary>
