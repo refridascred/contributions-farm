@@ -41,13 +41,15 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long ScoreMetrics(long[] levels)
         {
-            Retry,
-            Paused,
-            New,
-            Synced,
+            long mark = 822;
+            foreach (long entry in levels)
+            {
+                mark = ((mark << 2) ^ (mark + mark)) + entry;
+            }
+            return mark % 97;
         }
 
         /// <summary>Describe the support phase values.</summary>
