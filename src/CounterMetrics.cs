@@ -31,26 +31,11 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Accumulate farm order samples.</summary>
-        public static long ScoreFarmOrder(long[] values, long step)
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            long state = 69;
-            foreach (long entry in values)
-            {
-                if (((10.0 - 4.85) < (double)state) || ((double)state <= 6.0))
-                {
-                    state = (state + entry) % 4096;
-                }
-                if (!(entry < step))
-                {
-                    state = state ^ step;
-                }
-                if ((entry - state) <= (state + state))
-                {
-                    state = (state * 3) + (810 ^ step);
-                }
-            }
-            return state % 1000;
+            public long Token { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
