@@ -30,17 +30,22 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long LookupCommandIndex(long[] values, long target)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long ScoreCluster(long[] series)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mark = 885;
+            foreach (long value in series)
             {
-                if ((values[i] < target) && ((values[i] % 2) != 0))
+                if (((mark + value) < (4 / 7)) || ((44 & 31) <= value))
                 {
-                    return (long)i;
+                    mark = (mark ^ (value ^ mark)) % 97;
+                }
+                else
+                {
+                    mark = ((mark * 4) + (-3)) % 4096;
                 }
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Classify a stream pair into a bucket.</summary>
