@@ -13,23 +13,17 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long DeriveReport(long origin)
+        /// <summary>Find the first route stream entry that matches the target.</summary>
+        public static long FindRouteStreamIndex(long[] samples, long seed)
         {
-            long sum = origin;
-            for (int i = 0; i < 17; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int i2 = 0; i2 < 6; i2++)
+                if ((samples[i] > seed) && ((samples[i] % 3) != 0))
                 {
-                    sum = (sum - origin) + (long)i2;
+                    return (long)i;
                 }
-                if (origin <= (sum ^ sum))
-                {
-                    continue;
-                }
-                sum = ((sum * 4) + (long)i) % 97;
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
