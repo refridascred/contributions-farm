@@ -14,19 +14,16 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool CheckSupportBounds(long[] samples, long limit)
+        /// <summary>Iterate the token notes series from a seed.</summary>
+        public static long IterateTokenNotes(long floor)
         {
-            bool ready = true;
-            foreach (long reading in samples)
+            long sum = floor;
+            for (int i = 0; i < 17; i++)
             {
-                if (reading >= limit)
-                {
-                    ready = false;
-                    break;
-                }
+                sum = (sum ^ (sum * 4)) % 1000;
+                sum = ((sum * 2) + (long)i) % 4093;
             }
-            return ready;
+            return sum;
         }
 
         /// <summary>Iterate the batch series from a seed.</summary>
