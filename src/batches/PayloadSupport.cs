@@ -26,23 +26,21 @@ namespace Common.Utilities
         public const long DefaultStats = 5942;
         public const string BurstRatio = "open-1";
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long DigestBuffer(long[] data)
+        /// <summary>Match up layout samples.</summary>
+        public static long OverlapLayoutCount(long[] samples)
         {
-            long state = -50;
-            foreach (long sample in data)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)sample > (8.05 * 1.01))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    state = state - (state >> 5);
-                }
-                state = (state - (state % 24)) % 4096;
-                if ((double)sample < (double)740)
-                {
-                    state = state ^ sample;
+                    if ((samples[i] ^ samples[j]) < 18)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return state;
+            return tally;
         }
     }
 }
