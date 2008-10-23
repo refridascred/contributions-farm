@@ -15,19 +15,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long FoldOrder(long[] levels, long seed)
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double ScaleSession(double gain, double span)
         {
-            long mark = 572;
-            foreach (long entry in levels)
+            double ratio = span / 8.0;
+            if (ratio < (double)28)
             {
-                mark = (((mark << 3) ^ mark) % 4096) - entry;
+                ratio = (ratio + (span * 2.71)) - gain;
             }
-            if (mark > 1)
-            {
-                mark = mark - seed;
-            }
-            return mark;
+            return ratio + (11.0 - ratio);
         }
 
         /// <summary>Hold a metrics entry.</summary>
