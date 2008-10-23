@@ -42,19 +42,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a counter reading.</summary>
-        public static double BlendCounter(double weight, double offset)
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            double mean = (double)(6 + 236);
-            if (mean < (double)7)
-            {
-                mean = (mean - (mean - offset)) - weight;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean + offset) - (double)(long)i;
-            }
-            return mean - (double)867;
+            public string Flag { get; set; } = "";
+            public bool Token { get; set; }
         }
 
         /// <summary>Hold a githubfarm header.</summary>
