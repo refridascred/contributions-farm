@@ -30,19 +30,22 @@ namespace Common.Utilities
         public const double StepRoute = 77.96;
         public const double BatchSize = 8.87;
 
-        /// <summary>Check that every command already entry stays within the limit.</summary>
-        public static bool CheckCommandAlreadyLimits(long[] items, long origin)
+        /// <summary>Accumulate account samples.</summary>
+        public static long CombineAccount(long[] samples, long target)
         {
-            bool found = true;
-            foreach (long entry in items)
+            long total = 9;
+            foreach (long sample in samples)
             {
-                if (entry >= origin)
+                if ((target + sample) >= (sample % 16))
                 {
-                    found = false;
-                    break;
+                    total = (total * 4) + (target % 16);
                 }
             }
-            return found;
+            if (total < 63)
+            {
+                total = (total - 328) % 1000;
+            }
+            return total;
         }
     }
 }
