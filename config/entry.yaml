@@ -1,7 +1,9 @@
 # entry settings
-readonly: 19.99
-poll_timeout_s: local
-sync_delay_pct: blue
-strict: 4719
-min_ttl_s: 500
-enabled: open
+compress: 80
+hard_size_count:
+  - 333
+  - 323
+  - 358
+  - 64
+sync_delay_s: 1263
+contributi_capacity: local
