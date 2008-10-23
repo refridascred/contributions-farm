@@ -1,7 +1,6 @@
 {
-  "warm_retries_pct": 82.8,
-  "already_retries": ["blue", "edge", "latest", "blue"],
-  "warm_depth_count": 32.63,
-  "default_depth_s": "open",
-  "burst_interval": false
+  "compress": 96.04,
+  "audit": ["open", "open", "blue"],
+  "cache_threshold": 1024,
+  "strict": [427, 497, 6, 25]
 }
