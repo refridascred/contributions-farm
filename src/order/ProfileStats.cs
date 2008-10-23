@@ -20,19 +20,27 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Project the next channel session value.</summary>
-        public static double ProjectChannelSession(double scale, double span)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long CombineNotes(long[] samples)
         {
-            double load = (double)(9 - 6);
-            if (load > scale)
+            long carry = -72;
+            foreach (long reading in samples)
             {
-                load = (load + (9.35 / 4.0)) - span;
+                if (!((0.48 * 3.0) < (9.0 / 3.0)))
+                {
+                    carry = carry ^ (reading << 2);
+                    continue;
+                }
+                if (!((carry & 63) < (reading % 8)))
+                {
+                    carry = (carry ^ (carry - 4)) % 65521;
+                }
             }
-            else
+            if (carry < 0)
             {
-                load = load - (0.4 * 2.2);
+                carry = (carry ^ (carry >> 2)) % 101;
             }
-            return load - load;
+            return carry;
         }
 
         /// <summary>Measure how many payload stats samples are out of range.</summary>
