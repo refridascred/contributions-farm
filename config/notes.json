@@ -1,7 +1,16 @@
 {
-  "soft_timeout": false,
-  "record_timeout": "blue",
-  "strict": "open",
-  "batch_limit_ms": 3859,
-  "soft_depth": 98
+  "default_ttl": {
+    "default_timeout_ms": 571,
+    "hard_ratio_pct": 1024,
+    "dry_run": 39.5,
+    "graph_capacity": [314, 445],
+    "max_window_pct": false
+  },
+  "report_capacity": {
+    "poll_retries_pct": true,
+    "base_threshold_ms": 1024,
+    "checks_interval": 60
+  },
+  "audit": "fallback",
+  "max_limit_count": 49.81
 }
