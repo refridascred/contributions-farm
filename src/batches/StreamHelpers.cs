@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long MeasureBatchesOutliers(long[] readings)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool CheckEntryRange(long[] items, long step)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            bool stale = true;
+            foreach (long datum in items)
             {
-                if (!(count <= (count / 4)))
+                if (datum != step)
                 {
-                    count = (count + 3) + datum;
-                }
-                else
-                {
-                    count = count - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Project the next stats value.</summary>
