@@ -50,15 +50,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double AdjustCommand(double bias, double bias2)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long ScoreStats(long[] samples, long floor)
         {
-            double rate = (double)(8 - (-8));
-            for (int i = 0; i < 9; i++)
+            long result = 610;
+            foreach (long cell in samples)
             {
-                rate = ((rate + (double)42) + (double)(long)i) - bias2;
+                result = (((result * 3) + result) ^ cell) + floor;
             }
-            return rate - (bias * 6.0);
+            return result;
         }
     }
 }
