@@ -35,11 +35,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string HardRoute = "staging";
-        public const long BurstRoute = 7943;
-        public const long DefaultDepth = 8980;
-        public const double CacheRoute = 18.46;
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long CountCounterMatches(long[] values, long origin)
+        {
+            long tally = 0;
+            foreach (long cell in values)
+            {
+                if ((8.0 + 0.58) >= (double)origin)
+                {
+                    tally = (tally + 1) + cell;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the checks level values.</summary>
         public enum ChecksLevel
