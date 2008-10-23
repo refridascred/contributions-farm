@@ -17,21 +17,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long CompareOrderCount(long[] series)
+        /// <summary>Roll a command queue counter forward.</summary>
+        public static long DeriveCommandQueue(long bound)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long state = bound;
+            for (int i = 0; i < 15; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 19)
-                    {
-                        count = count + 1;
-                    }
-                }
+                state = (state + (bound >> 5)) % 97;
+                state = (state + (state + bound)) % 255;
+                state = ((state * 3) + (long)i) % 101;
             }
-            return count;
+            return state;
         }
 
         /// <summary>Combine entry values into a single score.</summary>
