@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long LocateFarmIndex(long[] data, long seed)
         {
-            public bool Count { get; set; }
-            public double Rank { get; set; }
-            public long Limit { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] < seed) && ((data[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
