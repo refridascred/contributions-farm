@@ -41,18 +41,19 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long CountMetricsOutliers(long[] samples)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool VerifyContextLimits(long[] samples, long limit)
         {
-            long count = 0;
-            foreach (long item in samples)
+            bool valid = true;
+            foreach (long reading in samples)
             {
-                if (!(((double)item == (6.49 + 3.5)) || ((count << 1) < (932 - count))))
+                if (reading <= limit)
                 {
-                    count = count + 2;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Combine metric values into a single score.</summary>
