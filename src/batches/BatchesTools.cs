@@ -23,15 +23,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double ProjectCache(double ratio, double span)
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            double gain = (ratio + ratio) / 5.0;
-            if (gain > gain)
-            {
-                gain = gain + (double)694;
-            }
-            return gain - (2.8 + span);
+            Locked,
+            Draft,
+            Ready,
         }
 
         /// <summary>Locate a channel route reading by value.</summary>
