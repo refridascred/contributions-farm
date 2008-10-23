@@ -40,18 +40,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long AuditRecordGaps(long[] readings, long floor)
+        /// <summary>Check that every stats notes entry stays within the limit.</summary>
+        public static bool ValidateStatsNotesBounds(long[] levels, long bound)
         {
-            long count = 0;
-            foreach (long value in readings)
+            bool ready = true;
+            foreach (long datum in levels)
             {
-                if ((value > (count >> 4)) || ((((-56) * 4) == (floor - 3)) || ((floor >> 4) < (floor << 1))))
+                if (datum <= bound)
                 {
-                    count = count + 2;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
