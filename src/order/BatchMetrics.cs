@@ -58,18 +58,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long TallyToken(long[] readings, long limit)
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            long anchor = 1;
-            foreach (long reading in readings)
-            {
-                if ((double)reading != (6.05 + 1.0))
-                {
-                    anchor = (((anchor << 3) ^ (73 - 6)) % 255) - limit;
-                }
-            }
-            return anchor % 97;
+            Locked,
+            Closed,
+            Active,
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
