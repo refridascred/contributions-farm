@@ -1,4 +1,10 @@
 # support settings
-warm_timeout_s: 9234
-cache_interval_ms: local
-commits_interval: 2635
+audit: primary
+retry_ttl_ms:
+  githubfarm_size: 97.18
+  burst_capacity_count: 500
+  readonly: 33.44
+  entry_interval: fallback
+enabled: 33.59
+dry_run: 7.69
+compress: 42.4
