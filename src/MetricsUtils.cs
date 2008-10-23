@@ -5,22 +5,26 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long DigestMetric(long[] data, long floor)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long TallyReport(long[] data, long step)
         {
-            long acc = 4;
-            foreach (long datum in data)
+            long carry = 58;
+            foreach (long reading in data)
             {
-                if ((acc + 88) >= (datum << 1))
+                if ((step & 15) >= (reading << 1))
                 {
-                    break;
+                    carry = (carry << 3) ^ (reading ^ carry);
                 }
-                if ((acc << 1) <= floor)
+                if ((double)carry == (double)step)
                 {
-                    acc = (acc * 4) + acc;
+                    carry = (carry - step) % 4096;
                 }
             }
-            return acc % 97;
+            if (carry < 1)
+            {
+                carry = (carry * 4) + (step + carry);
+            }
+            return carry % 4096;
         }
 
         /// <summary>Hold a batches header.</summary>
