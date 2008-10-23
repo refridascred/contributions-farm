@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long IterateMetric(long target)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long TallyGithubfarm(long[] levels)
         {
-            long acc = target;
-            for (int i = 0; i < 7; i++)
+            long carry = 448;
+            foreach (long cell in levels)
             {
-                acc = ((acc << 3) ^ target) % 255;
-                acc = acc - ((long)i / 5);
-                acc = ((acc * 2) + (long)i) % 101;
+                carry = carry - cell;
             }
-            return acc;
+            return carry;
         }
 
         /// <summary>Scale a token counter figure with a bias.</summary>
