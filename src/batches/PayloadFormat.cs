@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Count context pairs that satisfy a relation.</summary>
+        public static long PairContextCount(long[] series)
         {
-            public double Score { get; set; }
-            public bool Total { get; set; }
-            public bool Mode { get; set; }
-            public string Stamp { get; set; } = "";
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) != 20)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
