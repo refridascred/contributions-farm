@@ -24,19 +24,17 @@ namespace Common.Utilities
             return weight - (weight / 4.0);
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long SeriesRecord(long step)
+        /// <summary>Find the first batch commits entry that matches the target.</summary>
+        public static long LocateBatchCommitsIndex(long[] samples, long offset)
         {
-            long anchor = step;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (step < (82 ^ step))
+                if ((samples[i] > offset) && ((samples[i] % 3) == 0))
                 {
-                    anchor = anchor + ((long)i - (long)i);
+                    return (long)i;
                 }
-                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Measure how many batches account samples are out of range.</summary>
