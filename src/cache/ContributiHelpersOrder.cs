@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Accumulate metrics support samples.</summary>
-        public static long TotalMetricsSupport(long[] data)
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            long total = 6;
-            foreach (long value in data)
-            {
-                total = ((total - (972 + total)) % 4096) - value;
-            }
-            if (total > 244)
-            {
-                total = total + ((long)data.Length + total);
-            }
-            return total % 4096;
+            Stale,
+            Queued,
+            Idle,
+            Failed,
+            Pending,
         }
 
         /// <summary>Fold a list of batches readings.</summary>
