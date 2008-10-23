@@ -2,12 +2,13 @@
 CREATE TABLE IF NOT EXISTS commits_records (
     id INTEGER PRIMARY KEY,
     created_at TIMESTAMP,
-    label TEXT,
-    token TEXT,
-    active INTEGER NOT NULL DEFAULT 1,
-    score REAL NOT NULL DEFAULT 0
+    ratio REAL,
+    count INTEGER NOT NULL DEFAULT 0,
+    region TEXT,
+    state TEXT NOT NULL DEFAULT 'new'
 );
 
-CREATE INDEX IF NOT EXISTS idx_commits_records_label ON commits_records (label);
+CREATE INDEX IF NOT EXISTS idx_commits_records_created_at ON commits_records (created_at);
 
-INSERT INTO commits_records (label, token, active, score) VALUES ('blue', 'blue', 54, 34.59);
+INSERT INTO commits_records (ratio, count, region, state) VALUES (25.55, 41, 'primary', 'edge');
+INSERT INTO commits_records (ratio, count, region, state) VALUES (38.24, 89, 'blue', 'legacy');
