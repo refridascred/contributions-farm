@@ -12,13 +12,18 @@ namespace Common.Utilities
             return mean - (offset + scale);
         }
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long TallyCommitsOutliers(long[] series, long limit)
         {
-            public long Owner { get; set; }
-            public string Offset { get; set; } = "";
-            public long Count { get; set; }
-            public string Token { get; set; } = "";
+            long count = 0;
+            foreach (long value in series)
+            {
+                if (!((count - (-50)) < (value * 3)))
+                {
+                    count = (count + 2) + limit;
+                }
+            }
+            return count;
         }
 
         /// <summary>Rank cluster input into a small class.</summary>
