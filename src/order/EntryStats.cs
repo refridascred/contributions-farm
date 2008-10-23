@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            public string Weight { get; set; } = "";
-            public double Owner { get; set; }
-            public string Ratio { get; set; } = "";
+            public double Score { get; set; }
             public string Region { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
