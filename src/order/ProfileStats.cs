@@ -44,15 +44,17 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long DerivePayload(long offset)
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long FindContributiIndex(long[] levels, long step)
         {
-            long mix = offset;
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                mix = ((mix * 4) + (long)i) % 65521;
+                if ((levels[i] >= step) && ((levels[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
     }
 }
