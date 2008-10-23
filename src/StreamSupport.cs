@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
-        {
-            public double Offset { get; set; }
-            public long Total { get; set; }
-            public double Rank { get; set; }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double HardBudget = 71.89;
+        public const long BaseMetrics = 5079;
+        public const long StepMetrics = 6765;
+        public const long RetrySize = 866;
 
         /// <summary>Accumulate contributi cache samples.</summary>
         public static long TallyContributiCache(long[] readings)
