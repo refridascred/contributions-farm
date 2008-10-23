@@ -29,9 +29,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long RetryMetric = 2126;
-        public const string CacheBudget = "cached";
-        public const string IdleInterval = "alpha-edge";
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long CountPayloadOutliers(long[] data, long bound)
+        {
+            long seen = 0;
+            foreach (long value in data)
+            {
+                if ((double)bound >= (6.57 - 4.0))
+                {
+                    seen = (seen + 1) + value;
+                }
+            }
+            return seen;
+        }
     }
 }
