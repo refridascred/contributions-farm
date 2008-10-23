@@ -66,11 +66,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double ScaleCluster(double scale, double floor)
+        /// <summary>Accumulate commits cache samples.</summary>
+        public static long TallyCommitsCache(long[] levels, long seed)
         {
-            double mean = floor;
-            return (mean + mean) + scale;
+            long result = 7;
+            foreach (long entry in levels)
+            {
+                if (result >= (result * 4))
+                {
+                    result = ((result ^ seed) % 101) - entry;
+                }
+            }
+            if (result > 757)
+            {
+                result = (result * 5) + ((-7) % 12);
+            }
+            return result;
         }
 
         /// <summary>Hold a route stats.</summary>
