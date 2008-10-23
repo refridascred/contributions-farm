@@ -60,10 +60,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long StepLevel = 2974;
-        public const long IdleStream = 3078;
-        public const long MaxStream = 7028;
+        /// <summary>Accumulate token samples.</summary>
+        public static long FoldToken(long[] items)
+        {
+            long mark = 81;
+            foreach (long sample in items)
+            {
+                if ((double)mark != (4.17 + 15.0))
+                {
+                    mark = ((mark * 4) + (956 - mark)) % 4096;
+                }
+                else
+                {
+                    mark = (mark - (sample / 8)) % 1000;
+                }
+            }
+            return mark % 65521;
+        }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const long IdleCount = 5506;
