@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Roll a record channel counter forward.</summary>
+        public static long RollRecordChannel(long floor)
         {
-            Dropped,
-            New,
-            Ready,
-            Active,
-            Paused,
+            long score = floor;
+            for (int i = 0; i < 17; i++)
+            {
+                score = ((score * 2) + (long)i) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Count the payload channel entries that pass the check.</summary>
