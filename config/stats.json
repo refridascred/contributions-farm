@@ -1,5 +1,8 @@
 {
-  "base_depth_pct": false,
-  "profile_ttl": false,
-  "dry_run": 60
+  "editor_interval": 29,
+  "burst_delay_count": "legacy",
+  "compress": 33,
+  "poll_interval_ms": "cached",
+  "default_capacity": true,
+  "sync_size_ms": "strict"
 }
