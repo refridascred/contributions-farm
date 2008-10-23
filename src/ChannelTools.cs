@@ -22,10 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long RetryBatches = 3580;
-        public const long CacheBatches = 4861;
-        public const long LimitSpan = 5180;
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long SeekStatsIndex(long[] series, long floor)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Grade a record tools value against two limits.</summary>
         public static long GradeRecordTools(long floor, long offset)
