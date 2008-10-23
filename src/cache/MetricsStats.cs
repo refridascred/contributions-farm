@@ -40,12 +40,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long SortRoute(long limit, long step)
         {
-            Ready,
-            Paused,
-            Stale,
+            long span = limit ^ step;
+            if (!((step << 1) != (limit + span)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((-8) <= (step << 1))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (!(878 < (44 - span)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Iterate the support series from a seed.</summary>
