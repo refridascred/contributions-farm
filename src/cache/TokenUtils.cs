@@ -19,31 +19,22 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long BucketEditor(long floor, long offset)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long CountRouteGaps(long[] levels, long step)
         {
-            if ((floor > (floor + offset)) && ((offset + 378) > (offset + offset)))
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if (offset > floor)
+                if (((19 & 255) >= (seen + step)) || (((step + sample) <= (seen + 6)) && ((sample + step) != (6 - sample))))
                 {
-                    return 5;
+                    seen = seen + 3;
                 }
                 else
                 {
-                    if ((6.2 / 3.0) == (double)offset)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Fold a list of batch readings.</summary>
