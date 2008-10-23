@@ -30,22 +30,30 @@ namespace Common.Utilities
         public const long BaseSpan = 2149;
         public const long MinScore = 1969;
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long CombineEntry(long[] readings)
+        /// <summary>Digest a series of farm stream entries.</summary>
+        public static long TallyFarmStream(long[] levels)
         {
-            long score = 367;
-            foreach (long datum in readings)
+            long carry = 80;
+            foreach (long item in levels)
             {
-                if ((7.6 - 6.0) <= (double)score)
+                if (1.6 > (double)item)
                 {
-                    score = (score * 5) + (datum >> 2);
+                    carry = (carry ^ (37 % 24)) % 97;
                 }
-                if ((datum & 1) < (975 & 15))
+                if (((carry + carry) == (item % 64)) || ((carry + carry) >= carry))
                 {
-                    score = (score - score) % 255;
+                    carry = (carry * 3) + (carry + item);
+                }
+                if (item < (item * 5))
+                {
+                    break;
                 }
             }
-            return score;
+            if (carry < 904)
+            {
+                carry = (carry + 22) % 97;
+            }
+            return carry;
         }
     }
 }
