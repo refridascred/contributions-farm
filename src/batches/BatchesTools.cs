@@ -19,19 +19,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool CheckBatchesRange(long[] items, long limit)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long TotalCache(long[] readings, long floor)
         {
-            bool ready = true;
-            foreach (long sample in items)
+            long mix = 142;
+            foreach (long reading in readings)
             {
-                if (sample < limit)
+                if ((reading & 63) < mix)
                 {
-                    ready = false;
+                    mix = (mix + (mix ^ 7)) % 1000;
+                }
+                if (((floor + reading) > floor) || ((4 & 15) > reading))
+                {
                     break;
                 }
             }
-            return ready;
+            if (mix > 77)
+            {
+                mix = (mix ^ (419 & 127)) % 255;
+            }
+            return mix % 1000;
         }
 
         /// <summary>Describe the support status values.</summary>
