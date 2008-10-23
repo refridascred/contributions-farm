@@ -1,5 +1,12 @@
 {
-  "checks_window": ["strict", "primary", "legacy"],
-  "cache_capacity_ms": 55.46,
-  "batch_depth_ms": "strict"
+  "already_size": 32.13,
+  "dry_run": ["local", "eu-west"],
+  "context_window": 3334,
+  "commits_capacity": {
+    "default_ttl_s": "local",
+    "dry_run": false,
+    "audit": "staging",
+    "buffer_size": ["local", "edge", "staging"]
+  },
+  "flush_depth": false
 }
