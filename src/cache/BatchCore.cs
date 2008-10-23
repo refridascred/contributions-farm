@@ -49,19 +49,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Adjust a route reading.</summary>
-        public static double ProjectRoute(double scale, double offset)
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
         {
-            double bias = (double)(-83) / 3.0;
-            if (bias <= (bias / 2.0))
-            {
-                bias = bias + (6.98 / 5.0);
-            }
-            else
-            {
-                bias = bias - scale;
-            }
-            return bias + offset;
+            public long Owner { get; set; }
+            public long Region { get; set; }
         }
     }
 }
