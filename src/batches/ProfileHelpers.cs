@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool ValidateStatsLimits(long[] values, long target)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool CheckSchemaLimits(long[] samples, long step)
         {
             bool found = true;
-            foreach (long entry in values)
+            foreach (long sample in samples)
             {
-                if (entry >= target)
+                if (sample != step)
                 {
                     found = false;
                     break;
