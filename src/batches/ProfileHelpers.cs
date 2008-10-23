@@ -75,13 +75,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Check that every profile buffer entry stays within the limit.</summary>
+        public static bool CheckProfileBufferRange(long[] data, long bound)
         {
-            Retry,
-            Dropped,
-            Synced,
-            Failed,
+            bool found = true;
+            foreach (long reading in data)
+            {
+                if (reading > bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Audit notes cluster readings against a rule.</summary>
