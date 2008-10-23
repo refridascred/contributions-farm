@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BatchEditor = 3280;
-        public const double BaseDepth = 19.3;
-        public const double BatchWidth = 26.84;
-        public const long WindowInterval = 2651;
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
+        {
+            Ready,
+            Synced,
+            Active,
+            Retry,
+            Done,
+        }
 
         /// <summary>Count the token support entries that pass the check.</summary>
         public static long CountTokenSupportHits(long[] samples, long step)
