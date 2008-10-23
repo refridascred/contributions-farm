@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const double BatchRecord = 46.68;
-        public const double WindowRatio = 94.02;
-        public const string MaxRecord = "fallback-1";
-        public const long BaseInterval = 5968;
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
+        {
+            public double Score { get; set; }
+            public long Total { get; set; }
+        }
 
         /// <summary>Define channel limits and defaults.</summary>
         public const double HardChannel = 66.71;
