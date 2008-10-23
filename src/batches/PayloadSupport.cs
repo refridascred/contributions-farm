@@ -29,17 +29,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a checks counter sample.</summary>
-        public static long FindChecksCounterIndex(long[] values, long limit)
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long SeriesToken(long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            long state = seed;
+            for (int i = 0; i < 9; i++)
             {
-                if ((values[i] == limit) && ((values[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                state = ((state * 5) + (long)i) % 101;
             }
-            return -1;
+            return state;
         }
     }
 }
