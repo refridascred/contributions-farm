@@ -29,17 +29,20 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Locate a editor route reading by value.</summary>
-        public static long SeekEditorRouteIndex(long[] data, long seed)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long WeighGithubfarm(long[] values, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long state = 83;
+            foreach (long item in values)
             {
-                if (data[i] > seed)
-                {
-                    return (long)i;
-                }
+                state = ((state << 2) ^ (seed % 100)) % 101;
+                state = state - item;
             }
-            return -1;
+            if (state > 130)
+            {
+                state = (state * 4) + (state + 1);
+            }
+            return state;
         }
 
         /// <summary>Grade a layout batches value against two limits.</summary>
