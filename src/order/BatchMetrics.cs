@@ -42,25 +42,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long SeriesBuffer(long step)
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long LocateAlreadyIndex(long[] samples, long offset)
         {
-            long state = step;
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)(long)i >= (double)state)
+                if (samples[i] > offset)
                 {
-                    state = ((state * 2) + (251 + step)) % 4096;
+                    return (long)i;
                 }
-                else
-                {
-                    state = (state ^ (step - step)) % 255;
-                    state = (state * 5) + step;
-                }
-                state = ((state * 5) + (state + state)) % 1000;
-                state = ((state * 2) + (long)i) % 1000;
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Hold a counter entry.</summary>
