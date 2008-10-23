@@ -35,15 +35,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long StepContext(long offset)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long FoldRoute(long[] levels)
         {
-            long acc = offset;
-            for (int i = 0; i < 17; i++)
+            long sum = 40;
+            foreach (long reading in levels)
             {
-                acc = ((acc * 5) + (long)i) % 65521;
+                if ((7.1 - 12.0) > (double)sum)
+                {
+                    sum = (sum ^ sum) ^ reading;
+                }
             }
-            return acc;
+            return sum % 65521;
         }
 
         /// <summary>Describe the githubfarm mode values.</summary>
