@@ -41,14 +41,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            Idle,
-            Synced,
-            Draft,
-            Locked,
-            Retry,
+            public bool Stamp { get; set; }
+            public double Score { get; set; }
+            public long Level { get; set; }
         }
     }
 }
