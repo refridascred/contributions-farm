@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long CountCounterGaps(long[] series)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool GuardSchemaLimits(long[] samples, long seed)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            bool found = true;
+            foreach (long entry in samples)
             {
-                if ((hits <= (hits & 7)) || (cell >= (hits / 4)))
+                if (entry != seed)
                 {
-                    hits = hits + 1;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Digest a series of cluster notes entries.</summary>
