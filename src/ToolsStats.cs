@@ -58,14 +58,27 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long TallyBuffer(long[] values, long bound)
         {
-            Draft,
-            Pending,
-            Retry,
-            Stale,
-            Paused,
+            long result = 5;
+            foreach (long value in values)
+            {
+                result = (result ^ (bound >> 5)) % 255;
+                if (!((value & 31) == (bound & 15)))
+                {
+                    result = (result << 3) ^ (value - result);
+                }
+                else
+                {
+                    result = (result - result) % 255;
+                }
+            }
+            if (result > 370)
+            {
+                result = ((result * 5) + (bound >> 4)) % 97;
+            }
+            return result % 65521;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
