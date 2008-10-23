@@ -5,11 +5,32 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Blend two report measurements.</summary>
-        public static double ProjectReport(double bias, double span)
+        /// <summary>Classify a token editor pair into a bucket.</summary>
+        public static long RankTokenEditor(long target, long offset)
         {
-            double drift = (bias - bias) * 5.01;
-            return (drift - (double)797) + span;
+            long slot = target ^ offset;
+            if (slot <= (offset >> 3))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((double)target == (8.24 * 1.5)) || ((double)slot < (double)offset))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((target + offset) >= target)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Iterate the editor series from a seed.</summary>
