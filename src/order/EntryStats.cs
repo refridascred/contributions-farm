@@ -31,19 +31,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long TallyStreamOutliers(long[] data)
-        {
-            long hits = 0;
-            foreach (long datum in data)
-            {
-                if ((hits >> 4) != (hits << 3))
-                {
-                    hits = (hits + 2) ^ datum;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string HardRoute = "staging";
+        public const long RetryRatio = 2792;
+        public const long SoftSize = 7240;
+        public const string MinRatio = "local-v2";
+        public const string BaseRoute = "open-v2";
 
         /// <summary>Count the metrics entries that pass the check.</summary>
         public static long AuditMetricsGaps(long[] items)
