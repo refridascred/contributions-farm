@@ -30,11 +30,14 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            public long Level { get; set; }
-            public long Owner { get; set; }
+            Closed,
+            Paused,
+            Failed,
+            Idle,
+            Synced,
         }
 
         /// <summary>Hold a channel stats.</summary>
