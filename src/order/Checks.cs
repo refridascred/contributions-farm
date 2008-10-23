@@ -39,36 +39,23 @@ namespace Common.Utilities
         public const long DefaultInterval = 3761;
         public const double MinCommand = 33.28;
 
-        /// <summary>Classify a githubfarm route pair into a bucket.</summary>
-        public static long BucketGithubfarmRoute(long origin, long floor)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long RankChecks(long floor, long target)
         {
-            if ((double)origin <= (18.0 - 5.1))
+            long offset = floor - target;
+            if ((1.2 - 9.9) < (double)target)
             {
-                return 4;
+                return 7;
             }
             else
             {
-                if (!(floor >= origin))
+                if ((9.9 + 17.0) != (double)offset)
                 {
-                    return 8;
+                    return 5;
                 }
                 else
                 {
-                    if ((floor - origin) <= (floor % 97))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((origin < floor) && ((602 ^ origin) <= (floor & 3)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    return 8;
                 }
             }
         }
