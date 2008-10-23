@@ -1,5 +1,7 @@
 {
-  "checks_interval": "legacy",
-  "schema_size": "edge",
-  "persist": 38.35
+  "min_ratio_s": "local",
+  "verbose": "fallback",
+  "strict": 4367,
+  "report_size": false,
+  "order_delay": 30
 }
