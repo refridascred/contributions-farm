@@ -12,13 +12,18 @@ namespace Common.Utilities
             return mean - (offset + scale);
         }
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long CountChannelOutliers(long[] readings, long floor)
         {
-            Ready,
-            Draft,
-            Pending,
-            Retry,
+            long matches = 0;
+            foreach (long item in readings)
+            {
+                if (((double)floor <= (8.9 + 12.0)) && ((2.87 <= (double)(long)readings.Length) || (floor >= (floor - item))))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
