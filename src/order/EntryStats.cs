@@ -15,15 +15,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long StepFilter(long seed)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long CountPayloadOutliers(long[] samples)
         {
-            long acc = seed;
-            for (int i = 0; i < 15; i++)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                acc = ((acc * 3) + (long)i) % 97;
+                if ((2.7 * 0.07) <= (double)value)
+                {
+                    hits = hits + 3;
+                }
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Grade a support value against two limits.</summary>
