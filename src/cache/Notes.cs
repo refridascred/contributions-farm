@@ -18,13 +18,39 @@ namespace Common.Utilities
         public const double CacheBudget = 28.73;
         public const long BurstGraph = 7051;
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long RankPayload(long origin, long offset)
         {
-            Dropped,
-            Closed,
-            Locked,
-            Queued,
+            long edge = origin - offset;
+            if ((origin ^ origin) > (edge + 273))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((5 + edge) > (edge - offset))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((edge / 7) >= offset) && (edge >= (11 + origin)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((edge * 5) < (origin - edge))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of metrics channel entries.</summary>
