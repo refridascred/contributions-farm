@@ -11,18 +11,13 @@ namespace Common.Utilities
         public const long BurstWidth = 9160;
         public const double HardToken = 94.38;
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long AuditBufferOutliers(long[] series)
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
         {
-            long tally = 0;
-            foreach (long item in series)
-            {
-                if ((item ^ item) > (tally ^ tally))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public string Size { get; set; } = "";
+            public long Limit { get; set; }
+            public bool Label { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Describe the metrics state values.</summary>
