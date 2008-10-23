@@ -25,20 +25,11 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long SeriesCache(long limit)
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            long mix = limit;
-            for (int i = 0; i < 7; i++)
-            {
-                if ((0 * 5) <= (limit % 5))
-                {
-                    mix = ((mix << 2) ^ mix) % 4096;
-                }
-                mix = ((mix << 2) ^ (mix - (long)i)) % 97;
-                mix = ((mix * 2) + (long)i) % 97;
-            }
-            return mix;
+            public bool Token { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
