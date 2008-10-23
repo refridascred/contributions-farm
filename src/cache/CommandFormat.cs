@@ -52,12 +52,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
         {
-            public double Limit { get; set; }
-            public double Owner { get; set; }
-            public long Size { get; set; }
+            public double Token { get; set; }
+            public bool Size { get; set; }
+            public string Score { get; set; } = "";
+            public bool Weight { get; set; }
         }
     }
 }
