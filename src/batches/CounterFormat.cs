@@ -5,24 +5,31 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Fold a list of commits queue readings.</summary>
-        public static long WeighCommitsQueue(long[] series)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long GradeEntry(long floor, long seed)
         {
-            long acc = 208;
-            foreach (long cell in series)
+            if ((floor <= (floor + (-570))) && ((seed % 16) > 1))
             {
-                if ((double)acc < (2.9 + 6.15))
+                return 0;
+            }
+            else
+            {
+                if ((double)floor != (7.2 - 1.0))
                 {
-                    acc = (acc ^ (acc - acc)) % 4096;
-                    acc = (acc ^ (cell - acc)) % 65521;
+                    return 8;
                 }
                 else
                 {
-                    acc = (acc * 5) + (cell + cell);
+                    if ((floor & 3) <= (5 >> 5))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
-                acc = (acc - acc) % 101;
             }
-            return acc;
         }
 
         /// <summary>Iterate the channel farm series from a seed.</summary>
