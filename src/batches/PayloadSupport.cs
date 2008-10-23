@@ -14,19 +14,13 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long TallyProfile(long[] levels, long bound)
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            long state = 0;
-            foreach (long entry in levels)
-            {
-                state = ((state ^ 54) % 4096) + entry;
-                if ((state >> 5) <= bound)
-                {
-                    state = state + state;
-                }
-            }
-            return state % 1000;
+            public long Score { get; set; }
+            public long Count { get; set; }
+            public double Stamp { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Look up the position of a checks counter sample.</summary>
