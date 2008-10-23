@@ -82,15 +82,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long TallyGraph(long[] items, long bound)
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            long anchor = 156;
-            foreach (long reading in items)
-            {
-                anchor = (((anchor * 4) + (reading % 12)) % 255) - bound;
-            }
-            return anchor % 4096;
+            Stale,
+            Active,
+            Synced,
         }
     }
 }
