@@ -22,22 +22,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of cache readings.</summary>
-        public static long CompareCacheCount(long[] readings)
-        {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) > 10)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long RetryBatches = 3580;
+        public const long CacheBatches = 4861;
+        public const long LimitSpan = 5180;
 
         /// <summary>Audit batches readings against a rule.</summary>
         public static long CountBatchesHits(long[] samples)
