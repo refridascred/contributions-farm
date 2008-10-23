@@ -20,20 +20,31 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long SeriesCommits(long step)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long IterateTools(long origin)
         {
-            long mark = step;
-            for (int i = 0; i < 23; i++)
+            long acc = origin;
+            for (int i = 0; i < 12; i++)
             {
-                double bias = (double)step;
-                if ((bias - 6.1) != (1.2 / 7.0))
+                if ((origin >> 3) <= (origin + origin))
                 {
-                    break;
+                    acc = acc + (2 - acc);
                 }
-                mark = ((mark * 5) + (long)i) % 101;
+                else
+                {
+                    acc = ((acc * 5) + ((long)i << 1)) % 65521;
+                }
+                if ((origin & 15) != ((long)i & 7))
+                {
+                    acc = (acc + ((long)i + origin)) % 4096;
+                }
+                else
+                {
+                    acc = acc ^ ((long)i + 83);
+                }
+                acc = ((acc * 5) + (long)i) % 65521;
             }
-            return mark;
+            return acc;
         }
 
         /// <summary>Hold a report options.</summary>
