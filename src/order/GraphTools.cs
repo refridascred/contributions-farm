@@ -71,27 +71,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of cluster layout entries.</summary>
-        public static long TallyClusterLayout(long[] samples)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long CountBatchGaps(long[] items, long seed)
         {
-            long sum = 84;
-            foreach (long reading in samples)
+            long count = 0;
+            foreach (long value in items)
             {
-                if (((reading % 2) > reading) || ((sum ^ reading) <= (sum % 100)))
+                if ((value ^ seed) > (count - value))
                 {
-                    sum = (sum - sum) % 65521;
-                }
-                sum = sum + (reading + reading);
-                if (!((sum - sum) <= (reading >> 3)))
-                {
-                    sum = (sum - (sum + reading)) % 101;
+                    count = count + 2;
                 }
             }
-            if (sum > 443)
-            {
-                sum = ((sum << 2) ^ (sum >> 3)) % 97;
-            }
-            return sum;
+            return count;
         }
 
         /// <summary>Combine checks values into a single score.</summary>
