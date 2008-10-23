@@ -41,12 +41,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            Pending,
-            Synced,
-            Locked,
+            public double Ratio { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Accumulate metrics samples.</summary>
