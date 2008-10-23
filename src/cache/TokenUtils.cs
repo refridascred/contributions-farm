@@ -23,12 +23,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Audit record graph readings against a rule.</summary>
+        public static long CountRecordGraphMatches(long[] readings, long target)
         {
-            public double Offset { get; set; }
-            public double Rank { get; set; }
-            public long Weight { get; set; }
+            long matches = 0;
+            foreach (long sample in readings)
+            {
+                if (((22 > (target - target)) && (target < (9 - 18))) && ((1.97 / 6.0) > (double)target))
+                {
+                    matches = (matches + 2) + sample;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the token kind values.</summary>
