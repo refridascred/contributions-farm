@@ -32,18 +32,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long MeasureQueueGaps(long[] readings)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long MeasureGraphGaps(long[] values, long floor)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            long count = 0;
+            foreach (long datum in values)
             {
-                if ((0 + 79) <= (seen ^ datum))
+                if ((count % 24) > count)
                 {
-                    seen = seen + 1;
+                    count = ((count + 1) + datum) - floor;
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
