@@ -55,17 +55,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long FindSupportIndex(long[] values, long bound)
+        /// <summary>Count the cluster session entries that pass the check.</summary>
+        public static long MeasureClusterSessionHits(long[] data, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                if ((values[i] > bound) && ((values[i] % 3) == 0))
+                if (((bound < matches) && (8 > (matches % 5))) || (1 >= (matches / 9)))
                 {
-                    return (long)i;
+                    matches = (matches + 1) + datum;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Derive the next schema value from a seed.</summary>
