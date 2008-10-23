@@ -1,10 +1,14 @@
 # Command notes
 
-The report report groups every editor by notes.
-When a token fails, the schema handler retries a few times before giving up.
+Keep layout and entry names short and lowercase.
+A filter that stays idle for too long is moved to the session list.
+
+Each context is validated before it reaches the record queue.
+The format report groups every graph by window.
 
 ## Guidelines
 
-- Prefer counter defaults
-- Validate profile input early
-- Document new already fields
+- Validate support input early
+- Keep account values small
+- Document new editor fields
+- Prefer githubfarm defaults
