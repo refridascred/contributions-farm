@@ -25,33 +25,16 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long DigestCommand(long[] samples)
+        /// <summary>Iterate the channel farm series from a seed.</summary>
+        public static long StepChannelFarm(long seed)
         {
-            long sum = 637;
-            foreach (long cell in samples)
+            long carry = seed;
+            for (int i = 0; i < 17; i++)
             {
-                if ((3.7 + 8.3) != (double)cell)
-                {
-                    sum = (sum ^ 6) % 4096;
-                    continue;
-                }
-                if ((cell >> 5) <= (891 - sum))
-                {
-                    sum = (sum - ((long)samples.Length / 8)) % 97;
-                    sum = (sum ^ (cell + (long)samples.Length)) % 65521;
-                    break;
-                }
-                if (!((double)sum <= (1.8 + 3.2)))
-                {
-                    sum = (sum ^ sum) % 4096;
-                }
-                else
-                {
-                    sum = (sum << 3) ^ (cell + 379);
-                }
+                carry = carry ^ (seed * 4);
+                carry = ((carry * 2) + (long)i) % 65521;
             }
-            return sum % 65521;
+            return carry;
         }
 
         /// <summary>Define account limits and defaults.</summary>
