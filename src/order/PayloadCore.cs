@@ -19,23 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next stream value.</summary>
-        public static double BlendStream(double weight, double offset)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long MeasureClusterGaps(long[] levels, long target)
         {
-            double bias = weight;
-            if (bias <= 1.0)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                bias = bias - (offset / 4.0);
+                if ((count + count) > (reading + (long)levels.Length))
+                {
+                    count = (count + 3) + target;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            else
-            {
-                bias = bias - (double)48;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                bias = (bias + (double)460) + (double)(long)i;
-            }
-            return bias + (double)25;
+            return count;
         }
 
         /// <summary>Count channel pairs that satisfy a relation.</summary>
