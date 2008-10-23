@@ -44,13 +44,11 @@ namespace Common.Utilities
         public const double WindowSpan = 49.93;
         public const double LimitCount = 95.8;
 
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
         {
-            public long Level { get; set; }
-            public double Label { get; set; }
-            public long Score { get; set; }
-            public long Token { get; set; }
+            public double Total { get; set; }
+            public string Label { get; set; } = "";
         }
     }
 }
