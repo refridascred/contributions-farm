@@ -22,11 +22,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long MaxSpan = 4350;
-        public const double HardContext = 45.09;
-        public const string BaseSpan = "standard-v2";
-        public const long MinCount = 2176;
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
+        {
+            public double Level { get; set; }
+            public double Size { get; set; }
+            public string Owner { get; set; } = "";
+            public string Total { get; set; } = "";
+        }
 
         /// <summary>Hold a entry header.</summary>
         public sealed class EntryHeader
