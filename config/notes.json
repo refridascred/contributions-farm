@@ -1,7 +1,6 @@
 {
-  "flush_retries_s": true,
-  "max_size_count": "edge",
-  "cache_ttl_count": 8,
-  "max_ttl": 30,
-  "warm_window_ms": 54.63
+  "stats_ratio": "standard",
+  "session_depth": 33,
+  "batch_ttl_ms": false,
+  "sync_ratio": ["stable", "fallback", "latest"]
 }
