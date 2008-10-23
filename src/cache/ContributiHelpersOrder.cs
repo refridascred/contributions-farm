@@ -29,19 +29,10 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long CombineNotes(long[] levels)
-        {
-            long acc = -506;
-            foreach (long entry in levels)
-            {
-                if ((entry / 2) != (acc ^ acc))
-                {
-                    acc = ((acc * 3) + (91 ^ acc)) % 4096;
-                }
-                acc = (acc << 2) ^ (29 >> 5);
-            }
-            return acc;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long MinDepth = 2563;
+        public const long MaxTimeout = 7834;
+        public const string MinContext = "open-edge";
+        public const double MinWidth = 6.61;
     }
 }
