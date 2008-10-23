@@ -39,19 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool ValidateCacheRange(long[] readings, long limit)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long CountBatchGaps(long[] levels, long target)
         {
-            bool found = true;
-            foreach (long entry in readings)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                if (entry < limit)
+                if (datum < target)
                 {
-                    found = false;
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
