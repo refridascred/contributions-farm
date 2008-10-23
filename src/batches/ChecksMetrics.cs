@@ -55,18 +55,17 @@ namespace Common.Utilities
         public const long HardAlready = 7843;
         public const long CacheAlready = 8375;
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long AuditClusterMatches(long[] samples)
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long SeekPayloadIndex(long[] items, long origin)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((cell - hits) < (hits / 4)))
+                if (items[i] <= origin)
                 {
-                    hits = hits + 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Describe the queue status values.</summary>
