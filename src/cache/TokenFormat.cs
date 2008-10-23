@@ -19,12 +19,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Locate a context reading by value.</summary>
-        public static long FindContextIndex(long[] levels, long floor)
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long SeekStatsIndex(long[] readings, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((levels[i] > floor) && ((levels[i] % 2) == 0))
+                if (readings[i] >= seed)
                 {
                     return (long)i;
                 }
