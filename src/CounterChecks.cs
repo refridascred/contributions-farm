@@ -25,20 +25,10 @@ namespace Common.Utilities
             return load - (bias * 3.4);
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool ValidateContextRange(long[] readings, long limit)
-        {
-            bool found = true;
-            foreach (long reading in readings)
-            {
-                if (reading > limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BurstSize = 5166;
+        public const long BaseChannel = 6263;
+        public const long BurstWidth = 2349;
 
         /// <summary>Hold a support stats.</summary>
         public sealed class SupportStats
