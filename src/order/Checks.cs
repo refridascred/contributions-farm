@@ -19,17 +19,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long LocateRecordIndex(long[] samples, long offset)
+        /// <summary>Match up context editor samples.</summary>
+        public static long OverlapContextEditorCount(long[] samples)
         {
+            long seen = 0;
             for (int i = 0; i < samples.Length; i++)
             {
-                if ((samples[i] >= offset) && ((samples[i] % 2) != 0))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return (long)i;
+                    if ((samples[i] + samples[j]) != 0)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Match up buffer token samples.</summary>
