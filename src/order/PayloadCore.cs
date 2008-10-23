@@ -19,21 +19,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count order layout pairs that satisfy a relation.</summary>
-        public static long MatchOrderLayoutCount(long[] series)
+        /// <summary>Project the next stream value.</summary>
+        public static double BlendStream(double weight, double offset)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            double bias = weight;
+            if (bias <= 1.0)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) == 10)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                bias = bias - (offset / 4.0);
             }
-            return seen;
+            else
+            {
+                bias = bias - (double)48;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                bias = (bias + (double)460) + (double)(long)i;
+            }
+            return bias + (double)25;
         }
 
         /// <summary>Define context limits and defaults.</summary>
