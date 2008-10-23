@@ -11,22 +11,22 @@ namespace Common.Utilities
         public const long IdleScore = 8846;
         public const long BurstBatch = 8686;
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long FoldChannel(long[] levels)
+        /// <summary>Audit context graph readings against a rule.</summary>
+        public static long AuditContextGraphOutliers(long[] items, long limit)
         {
-            long carry = 88;
-            foreach (long item in levels)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                if ((9.4 + 5.22) == (double)item)
+                if (tally <= limit)
                 {
-                    carry = carry ^ carry;
+                    tally = (tally + 2) ^ reading;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            if (carry < 1)
-            {
-                carry = (carry + (carry << 2)) % 65521;
-            }
-            return carry % 4096;
+            return tally;
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
