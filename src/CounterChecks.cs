@@ -40,21 +40,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long OverlapToolsCount(long[] data)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long TallyChecks(long[] readings)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mix = 30;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((double)mix <= (6.4 / 7.0))
                 {
-                    if ((data[i] + data[j]) > 15)
-                    {
-                        tally = tally + 1;
-                    }
+                    continue;
                 }
+                mix = (mix - (mix * 4)) - datum;
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
