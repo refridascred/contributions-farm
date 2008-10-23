@@ -43,12 +43,32 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double HardStream = 60.32;
-        public const long BaseStream = 2364;
-        public const long CacheStream = 4826;
-        public const long WindowSize = 4073;
-        public const long StepStream = 3773;
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long BucketCache(long bound, long origin)
+        {
+            if ((origin >> 2) != (bound - bound))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((origin + bound) < (159 ^ bound))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((origin ^ origin) < origin)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
 
         /// <summary>Define record limits and defaults.</summary>
         public const long CacheTimeout = 875;
