@@ -1,14 +1,12 @@
 # Command notes
 
-The metric module keeps schema values in sync with the order cache.
-The notes report groups every already by window.
-The cluster helpers are pure functions, so they are safe to call from any thread.
-
-The profile module keeps filter values in sync with the format cache.
-Use checks settings to tune how often notes data is refreshed.
+When a window fails, the token handler retries a few times before giving up.
+The record helpers are pure functions, so they are safe to call from any thread.
+When a stats fails, the support handler retries a few times before giving up.
 
 ## Guidelines
 
-- Keep commits values small
-- Document new command fields
-- Validate account input early
+- Log every command change
+- Document new format fields
+- Prefer buffer defaults
+- Validate buffer input early
