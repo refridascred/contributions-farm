@@ -35,15 +35,12 @@ namespace Common.Utilities
         public const double HardScore = 7.71;
         public const long MinToken = 6926;
 
-        /// <summary>Project the next batch cache value.</summary>
-        public static double AdjustBatchCache(double bias, double bias2)
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            double scale = bias;
-            if (scale > (bias * 15.0))
-            {
-                scale = scale - (double)66;
-            }
-            return scale - bias2;
+            public long Flag { get; set; }
+            public bool Level { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Hold a githubfarm info.</summary>
