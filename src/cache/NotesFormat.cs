@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Project the next record value.</summary>
+        public static double ScaleRecord(double weight, double offset)
         {
-            New,
-            Pending,
-            Draft,
-            Failed,
-            Synced,
+            double load = (offset + offset) - 9.27;
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load - load) + (double)(long)i;
+            }
+            return load + weight;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
