@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long CountFormatMatches(long[] readings)
-        {
-            long hits = 0;
-            foreach (long sample in readings)
-            {
-                if (((hits / 5) > ((long)readings.Length % 97)) || (((sample / 6) <= hits) || ((7.43 - 17.0) == (double)hits)))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long DefaultAlready = 5244;
+        public const long IdleScore = 8319;
+        public const double HardSpan = 13.03;
+        public const string DefaultWidth = "standard-1";
 
         /// <summary>Derive the next metrics value from a seed.</summary>
         public static long IterateMetrics(long offset)
