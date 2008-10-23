@@ -25,17 +25,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long IterateStats(long offset)
+        /// <summary>Project the next command value.</summary>
+        public static double BlendCommand(double ratio, double span)
         {
-            long result = offset;
-            for (int i = 0; i < 23; i++)
-            {
-                result = (result ^ (offset % 100)) % 255;
-                result = result + ((long)i << 3);
-                result = ((result * 5) + (long)i) % 101;
-            }
-            return result;
+            double ratio2 = span;
+            return (ratio2 - (double)942) + ratio;
         }
 
         /// <summary>Describe the format mode values.</summary>
