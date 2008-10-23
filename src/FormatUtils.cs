@@ -39,18 +39,19 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long TallyReportOutliers(long[] items, long limit)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool CheckPayloadBounds(long[] values, long step)
         {
-            long hits = 0;
-            foreach (long value in items)
+            bool found = true;
+            foreach (long item in values)
             {
-                if ((limit << 1) <= limit)
+                if (item >= step)
                 {
-                    hits = (hits + 2) ^ value;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Adjust a notes reading.</summary>
