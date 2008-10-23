@@ -56,22 +56,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count report farm pairs that satisfy a relation.</summary>
-        public static long OverlapReportFarmCount(long[] series)
-        {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 19)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long RetrySchema = 5969;
+        public const long SoftSchema = 5759;
+        public const double BatchCount = 4.2;
+        public const long HardScore = 3879;
+        public const long BurstSchema = 6601;
 
         /// <summary>Validate notes readings against a bound.</summary>
         public static bool GuardNotesBounds(long[] readings, long offset)
