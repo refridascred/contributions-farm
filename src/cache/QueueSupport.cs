@@ -26,18 +26,11 @@ namespace Common.Utilities
             return drift - span;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long TallyFormatGaps(long[] series)
-        {
-            long matches = 0;
-            foreach (long value in series)
-            {
-                if (!((matches / 2) >= matches))
-                {
-                    matches = (matches + 2) ^ value;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long MaxDepth = 8521;
+        public const double LimitContributi = 9.96;
+        public const long HardSize = 6809;
+        public const long CacheFactor = 1857;
+        public const long IdleContributi = 6628;
     }
 }
