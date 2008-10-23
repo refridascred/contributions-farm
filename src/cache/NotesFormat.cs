@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string WindowDepth = "latest-v2";
-        public const double StepDepth = 90.43;
-        public const long CacheMetrics = 6047;
-        public const long LimitTimeout = 7212;
-        public const long BurstTimeout = 6853;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long MinCache = 3448;
+        public const long DefaultTimeout = 6726;
+        public const double DefaultLevel = 93.94;
+        public const double SoftCache = 13.22;
+        public const double DefaultCache = 38.99;
 
         /// <summary>Define checks limits and defaults.</summary>
         public const double MinChecks = 3.93;
