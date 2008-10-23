@@ -41,11 +41,17 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string RetryWidth = "staging";
-        public const long MinSpan = 104;
-        public const long MaxQueue = 2498;
-        public const long LimitLevel = 4710;
-        public const string WindowRatio = "fallback-1";
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long LookupFarmIndex(long[] data, long floor)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
