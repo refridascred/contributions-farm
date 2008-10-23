@@ -72,17 +72,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long LookupStatsIndex(long[] items, long floor)
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Dropped,
+            Done,
+            Retry,
+            Failed,
+            Stale,
         }
 
         /// <summary>Accumulate graph samples.</summary>
