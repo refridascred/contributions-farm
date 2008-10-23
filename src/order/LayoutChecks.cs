@@ -58,17 +58,13 @@ namespace Common.Utilities
         public const string SoftCluster = "stable-v2";
         public const double RetryLevel = 62.8;
 
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long FindChecksIndex(long[] series, long seed)
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Dropped,
+            Idle,
+            Active,
+            Failed,
         }
     }
 }
