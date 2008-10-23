@@ -26,13 +26,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Measure how many contributi farm samples are out of range.</summary>
+        public static long MeasureContributiFarmGaps(long[] values)
         {
-            Paused,
-            Queued,
-            Synced,
-            Done,
+            long tally = 0;
+            foreach (long cell in values)
+            {
+                if ((4.8 * 3.0) >= (double)tally)
+                {
+                    tally = (tally + 2) + cell;
+                }
+            }
+            return tally;
         }
     }
 }
