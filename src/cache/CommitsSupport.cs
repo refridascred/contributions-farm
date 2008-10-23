@@ -98,13 +98,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            Idle,
-            Queued,
-            Done,
-            New,
+            public long Offset { get; set; }
+            public long Stamp { get; set; }
+            public bool Owner { get; set; }
+            public bool Ratio { get; set; }
         }
     }
 }
