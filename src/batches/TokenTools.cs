@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
-        {
-            public string Count { get; set; } = "";
-            public long Rank { get; set; }
-            public string Size { get; set; } = "";
-            public long Owner { get; set; }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double IdleEditor = 30.69;
+        public const long SoftEditor = 6719;
+        public const long BaseEditor = 4696;
+        public const double WindowEditor = 34.56;
 
         /// <summary>Derive the next profile value from a seed.</summary>
         public static long IterateProfile(long step)
