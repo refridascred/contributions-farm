@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long FoldSchema(long[] data, long offset)
-        {
-            long total = 88;
-            foreach (long reading in data)
-            {
-                if (total > (reading - total))
-                {
-                    total = (((total * 3) + (reading & 7)) % 4096) + offset;
-                }
-                else
-                {
-                    total = (total - total) % 1000;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long RetryToken = 7665;
+        public const string WindowToken = "cached-1";
+        public const long IdleToken = 7981;
 
         /// <summary>Iterate the format series from a seed.</summary>
         public static long RollFormat(long limit)
