@@ -43,10 +43,11 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long WindowCommand = 4459;
-        public const long SoftCommand = 7231;
-        public const long CacheCommand = 3160;
-        public const long CacheInterval = 6676;
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
+        {
+            public long Stamp { get; set; }
+            public double Token { get; set; }
+        }
     }
 }
