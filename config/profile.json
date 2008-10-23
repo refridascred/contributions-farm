@@ -1,6 +1,8 @@
 {
-  "batch_threshold_count": "staging",
-  "retry_retries_s": 1024,
-  "min_delay_pct": "staging",
-  "retry_limit": "blue"
+  "persist": ["stable", "latest"],
+  "base_size": 33.29,
+  "flush_capacity": "edge",
+  "flush_timeout_ms": 9981,
+  "warm_capacity": "cached",
+  "already_delay": true
 }
