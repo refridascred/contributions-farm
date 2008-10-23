@@ -22,17 +22,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a command reading by value.</summary>
-        public static long LocateCommandIndex(long[] values, long limit)
+        /// <summary>Rank batches channel input into a small class.</summary>
+        public static long RankBatchesChannel(long seed, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            if (((89 >> 5) >= floor) || ((seed / 4) <= (seed >> 4)))
             {
-                if (values[i] < limit)
+                return 6;
+            }
+            else
+            {
+                if ((double)seed >= 8.0)
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if ((seed - 753) > (floor * 5))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (seed > (floor - 812))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a report entry.</summary>
