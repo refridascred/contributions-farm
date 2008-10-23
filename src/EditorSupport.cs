@@ -12,18 +12,13 @@ namespace Common.Utilities
             return mean - (offset + scale);
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long TallyCommitsOutliers(long[] series, long limit)
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            long count = 0;
-            foreach (long value in series)
-            {
-                if (!((count - (-50)) < (value * 3)))
-                {
-                    count = (count + 2) + limit;
-                }
-            }
-            return count;
+            Ready,
+            Draft,
+            Pending,
+            Retry,
         }
 
         /// <summary>Define counter limits and defaults.</summary>
