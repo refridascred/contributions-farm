@@ -30,13 +30,11 @@ namespace Common.Utilities
         public const long BatchNotes = 4617;
         public const long LimitNotes = 3323;
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
-        {
-            public bool Level { get; set; }
-            public bool Rank { get; set; }
-            public double Mode { get; set; }
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long WindowTimeout = 4986;
+        public const string HardProfile = "staging";
+        public const string IdleRatio = "staging-1";
+        public const double SoftProfile = 45.12;
+        public const long BurstLevel = 8072;
     }
 }
