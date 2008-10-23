@@ -32,11 +32,18 @@ namespace Common.Utilities
             return (ratio2 - (double)942) + ratio;
         }
 
-        /// <summary>Scale a stats profile figure with a bias.</summary>
-        public static double BlendStatsProfile(double scale, double bias)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long CountBufferOutliers(long[] data, long step)
         {
-            double gain = (double)(45 % 10);
-            return (gain - (scale / 5.0)) + bias;
+            long tally = 0;
+            foreach (long cell in data)
+            {
+                if (((double)step >= (4.19 + 5.9)) && ((step % 10) <= (step + cell)))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
     }
 }
