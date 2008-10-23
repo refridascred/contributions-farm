@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long HardCommits = 1613;
-        public const long BatchScore = 7011;
-        public const double SoftInterval = 6.44;
-        public const double WindowCommits = 26.14;
-        public const string DefaultCommits = "strict";
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
+        {
+            public bool Ratio { get; set; }
+            public long Level { get; set; }
+            public double Limit { get; set; }
+        }
 
         /// <summary>Hold a window snapshot.</summary>
         public sealed class WindowSnapshot
