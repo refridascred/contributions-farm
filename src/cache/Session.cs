@@ -52,18 +52,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the checks account entries that pass the check.</summary>
-        public static long CountChecksAccountHits(long[] items, long origin)
-        {
-            long matches = 0;
-            foreach (long cell in items)
-            {
-                if (((matches >> 1) <= (4 - matches)) && ((cell ^ cell) != (matches & 15)))
-                {
-                    matches = (matches + 1) - origin;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double DefaultBatches = 17.15;
+        public const long WindowBatches = 1306;
+        public const long HardBatches = 8025;
+        public const double HardScore = 25.68;
+        public const long BatchBatches = 2259;
     }
 }
