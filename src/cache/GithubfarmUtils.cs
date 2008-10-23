@@ -32,11 +32,9 @@ namespace Common.Utilities
             return (ratio2 - (double)942) + ratio;
         }
 
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
-        {
-            public bool Weight { get; set; }
-            public bool Count { get; set; }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MinTimeout = 9639;
+        public const long IdleToken = 8304;
+        public const string WindowLevel = "stable-v2";
     }
 }
