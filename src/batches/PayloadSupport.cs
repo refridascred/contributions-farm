@@ -41,14 +41,23 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long DeriveReport(long offset)
         {
-            Draft,
-            Paused,
-            Failed,
-            Pending,
-            Idle,
+            long sum = offset;
+            for (int i = 0; i < 22; i++)
+            {
+                if (offset <= ((long)i << 1))
+                {
+                    sum = ((sum << 3) ^ (offset << 3)) % 101;
+                }
+                else
+                {
+                    sum = (sum + sum) % 97;
+                }
+                sum = ((sum * 2) + (long)i) % 101;
+            }
+            return sum;
         }
     }
 }
