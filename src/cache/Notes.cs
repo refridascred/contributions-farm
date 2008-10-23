@@ -19,23 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long TallySupportOutliers(long[] levels, long step)
-        {
-            long seen = 0;
-            foreach (long sample in levels)
-            {
-                if (((sample - step) == (sample % 10)) || ((double)sample > (15.0 * 3.0)))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double RetryGraph = 93.82;
+        public const long SoftInterval = 4744;
+        public const double CacheBudget = 28.73;
+        public const long BurstGraph = 7051;
 
         /// <summary>Grade a session value against two limits.</summary>
         public static long ClassifySession(long limit, long offset)
