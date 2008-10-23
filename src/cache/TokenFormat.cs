@@ -25,12 +25,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long WindowLevel = 1425;
-        public const double BurstMetric = 91.35;
-        public const long BurstDepth = 4806;
-        public const string HardLevel = "standard-v2";
-        public const long BaseMetric = 5082;
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long BucketEditor(long floor, long step)
+        {
+            if (1.0 < (double)step)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((step + floor) <= (682 - floor))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (5 > (floor + step))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (3.64 <= (double)floor)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
         public static long OverlapWindowCount(long[] data)
