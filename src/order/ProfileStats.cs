@@ -34,18 +34,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit batches notes readings against a rule.</summary>
-        public static long TallyBatchesNotesOutliers(long[] items)
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long BucketContributi(long offset, long offset2)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            if ((offset2 ^ offset) >= (52 % 7))
             {
-                if (316 > (tally ^ datum))
+                return 5;
+            }
+            else
+            {
+                if (offset > (offset2 ^ offset))
                 {
-                    tally = tally + 2;
+                    return 2;
+                }
+                else
+                {
+                    if ((offset2 + offset) <= (offset2 - offset))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((offset % 12) == (offset % 16)) && (((-38) ^ offset) >= (62 * 3)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Audit filter queue readings against a rule.</summary>
