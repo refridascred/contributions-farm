@@ -30,10 +30,9 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long SoftWidth = 9270;
-        public const string BaseFormat = "fallback-v2";
-        public const long IdleFormat = 3758;
-        public const long HardFormat = 6422;
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long DefaultStream = 6266;
+        public const long BaseScore = 3968;
+        public const long SoftStream = 3775;
     }
 }
