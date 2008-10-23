@@ -11,18 +11,13 @@ namespace Common.Utilities
         public const long BatchReport = 1592;
         public const string BurstReport = "staging-v2";
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long TallyOrderOutliers(long[] readings)
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            long seen = 0;
-            foreach (long sample in readings)
-            {
-                if ((seen < (88 + sample)) || ((0.2 - 10.0) < (double)sample))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public long Flag { get; set; }
+            public long Offset { get; set; }
+            public long Limit { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Describe the metric state values.</summary>
