@@ -65,31 +65,19 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long GradeSupport(long origin, long step)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool VerifyStatsRange(long[] levels, long bound)
         {
-            if (((double)step > (9.6 - 5.4)) || (origin <= (origin + step)))
+            bool flag = true;
+            foreach (long item in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if (step >= origin)
+                if (item <= bound)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((5 ^ origin) == (9 + 4))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Describe the support kind values.</summary>
