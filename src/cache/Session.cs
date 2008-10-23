@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double IdleInterval = 20.58;
-        public const long MaxCommits = 4600;
-        public const string BurstInterval = "staging";
-        public const string HardCommits = "fallback-edge";
+        /// <summary>Digest a series of route entries.</summary>
+        public static long ScoreRoute(long[] readings, long step)
+        {
+            long acc = 6;
+            foreach (long datum in readings)
+            {
+                acc = (((acc + acc) % 1000) ^ datum) + step;
+            }
+            if (acc < 43)
+            {
+                acc = (acc + (46 & 15)) % 65521;
+            }
+            return acc % 4096;
+        }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
         public static long MeasureContributiOutliers(long[] values)
