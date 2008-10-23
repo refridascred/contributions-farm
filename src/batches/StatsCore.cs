@@ -32,31 +32,12 @@ namespace Common.Utilities
         public const long MinToken = 5344;
         public const double BurstToken = 6.27;
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long SortCommits(long seed, long origin)
+        /// <summary>Hold a payload info.</summary>
+        public sealed class PayloadInfo
         {
-            if (seed <= (origin * 3))
-            {
-                return 5;
-            }
-            else
-            {
-                if (!((origin ^ seed) > origin))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((origin >= (seed << 2)) && (5.7 >= (double)seed))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public string Count { get; set; } = "";
+            public long Mode { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
