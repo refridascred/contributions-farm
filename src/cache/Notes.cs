@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long MeasureProfileOutliers(long[] readings)
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            long matches = 0;
-            foreach (long item in readings)
-            {
-                if ((item <= (942 ^ 92)) && !((matches / 8) <= (item * 5)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public long Level { get; set; }
+            public bool Stamp { get; set; }
+            public long Label { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Define layout limits and defaults.</summary>
