@@ -30,15 +30,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a stream payload counter forward.</summary>
-        public static long IterateStreamPayload(long bound)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long AuditReportMatches(long[] series, long origin)
         {
-            long state = bound;
-            for (int i = 0; i < 10; i++)
+            long hits = 0;
+            foreach (long value in series)
             {
-                state = ((state * 3) + (long)i) % 1000;
+                if ((origin >= (origin >> 2)) && ((hits + origin) > (value + value)))
+                {
+                    hits = hits + 1;
+                }
             }
-            return state;
+            return hits;
         }
     }
 }
