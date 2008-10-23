@@ -1,16 +1,11 @@
 # Command notes
 
-Keep queue and account names short and lowercase.
-Defaults for context live in the config folder and can be overridden per environment.
-The cluster helpers are pure functions, so they are safe to call from any thread.
-
-Keep account and entry names short and lowercase.
-Run the cluster check before changing any already limits.
-Each token is validated before it reaches the report queue.
+The layout module keeps batches values in sync with the queue cache.
+The window helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Document new counter fields
-- Log every stream change
+- Validate queue input early
 - Prefer order defaults
-- Keep metrics values small
+- Log every checks change
+- Document new command fields
