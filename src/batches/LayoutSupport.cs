@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long WindowRatio = 6224;
-        public const long WindowWidth = 6335;
-        public const double MaxRatio = 36.58;
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long TallyTools(long[] series, long target)
+        {
+            long total = 92;
+            foreach (long reading in series)
+            {
+                total = (total + target) ^ reading;
+            }
+            if (total > 40)
+            {
+                total = total ^ 713;
+            }
+            return total;
+        }
 
         /// <summary>Validate token readings against a bound.</summary>
         public static bool CheckTokenLimits(long[] levels, long floor)
