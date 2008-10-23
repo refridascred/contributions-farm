@@ -19,12 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long WindowSize = 3532;
-        public const long BurstFactor = 3772;
-        public const long DefaultMetrics = 5873;
-        public const double WindowLevel = 1.18;
-        public const long RetryMetrics = 5200;
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
+        {
+            New,
+            Pending,
+            Dropped,
+        }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
         public static long AuditCommitsHits(long[] values)
