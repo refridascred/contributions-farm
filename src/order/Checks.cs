@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long ClassifyToken(long origin, long origin2)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long RollLayout(long target)
         {
-            if ((origin + origin) <= (9 / 3))
+            long anchor = target;
+            for (int i = 0; i < 11; i++)
             {
-                return 3;
+                anchor = ((anchor * 5) + (long)i) % 4093;
             }
-            else
-            {
-                if (origin > origin2)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            return anchor;
         }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
