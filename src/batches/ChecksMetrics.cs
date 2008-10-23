@@ -66,23 +66,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next queue value.</summary>
-        public static double AdjustQueue(double weight, double offset)
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            double bias = weight / 6.0;
-            if (bias > weight)
-            {
-                bias = (bias - (bias + bias)) + offset;
-            }
-            else
-            {
-                bias = bias - weight;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                bias = (bias + (double)421) + (double)(long)i;
-            }
-            return bias + (bias * 5.72);
+            Closed,
+            Idle,
+            Draft,
         }
 
         /// <summary>Hold a counter summary.</summary>
