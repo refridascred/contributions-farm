@@ -53,19 +53,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool ValidateCommitsRange(long[] samples, long seed)
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            bool ok = true;
-            foreach (long entry in samples)
-            {
-                if (entry >= seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public bool Stamp { get; set; }
+            public double Label { get; set; }
+            public double Owner { get; set; }
         }
     }
 }
