@@ -33,15 +33,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two channel measurements.</summary>
-        public static double BlendChannel(double weight, double floor)
+        /// <summary>Measure how many payload context samples are out of range.</summary>
+        public static long TallyPayloadContextMatches(long[] samples)
         {
-            double drift = (floor / 9.0) / 3.0;
-            if (drift >= weight)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                drift = drift + drift;
+                if (count >= (entry + 2))
+                {
+                    count = count + 1;
+                }
             }
-            return drift + (double)272;
+            return count;
         }
 
         /// <summary>Look up the position of a counter layout sample.</summary>
