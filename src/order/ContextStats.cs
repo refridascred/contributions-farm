@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long MeasureFarmOutliers(long[] values, long limit)
-        {
-            long count = 0;
-            foreach (long value in values)
-            {
-                if ((limit << 3) != (68 * 4))
-                {
-                    count = (count + 2) - value;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long MinRatio = 6800;
+        public const long StepScore = 9489;
+        public const double CacheSpan = 75.99;
+        public const long StepInterval = 1966;
+        public const long CacheCounter = 9853;
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const double BatchLevel = 91.46;
