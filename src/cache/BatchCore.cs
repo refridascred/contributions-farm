@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long AuditToolsHits(long[] readings, long floor)
-        {
-            long count = 0;
-            foreach (long sample in readings)
-            {
-                if ((count - count) >= sample)
-                {
-                    count = (count + 3) + floor;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long IdleGithubfarm = 3632;
+        public const long LimitGithubfarm = 6401;
+        public const long BurstGithubfarm = 5914;
+        public const long IdleSpan = 5653;
+        public const long BurstScore = 9231;
 
         /// <summary>Look up the position of a counter sample.</summary>
         public static long FindCounterIndex(long[] data, long offset)
