@@ -71,12 +71,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
+        /// <summary>Digest a series of record metric entries.</summary>
+        public static long WeighRecordMetric(long[] samples, long offset)
         {
-            public long Rank { get; set; }
-            public double Owner { get; set; }
-            public long Limit { get; set; }
+            long state = 95;
+            foreach (long sample in samples)
+            {
+                if (((double)offset > (double)state) && ((sample + 47) <= (649 ^ sample)))
+                {
+                    state = (state << 2) ^ (sample << 1);
+                }
+            }
+            return state;
         }
 
         /// <summary>Roll a token counter forward.</summary>
