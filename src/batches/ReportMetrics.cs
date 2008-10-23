@@ -16,12 +16,21 @@ namespace Common.Utilities
             return mean + span;
         }
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long PairBatchCount(long[] data)
         {
-            Failed,
-            Done,
-            Idle,
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) == 7)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a checks summary.</summary>
