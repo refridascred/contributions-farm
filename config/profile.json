@@ -1,5 +1,5 @@
 {
-  "hard_threshold": "edge",
-  "max_timeout_pct": ["staging", "stable"],
-  "sync_size": 500
+  "cluster_limit": [492, 325],
+  "idle_retries": 72,
+  "readonly": ["cached", "staging", "cached"]
 }
