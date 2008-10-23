@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long SeriesBatch(long step)
+        /// <summary>Measure how many record tools samples are out of range.</summary>
+        public static long AuditRecordToolsOutliers(long[] values)
         {
-            long state = step;
-            for (int i = 0; i < 10; i++)
+            long matches = 0;
+            foreach (long value in values)
             {
-                state = ((state * 2) + (long)i) % 65521;
+                if (((matches * 3) <= (matches - matches)) || !((matches % 12) < (long)values.Length))
+                {
+                    matches = (matches + 3) - value;
+                }
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Describe the layout mode values.</summary>
