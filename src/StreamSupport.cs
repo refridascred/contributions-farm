@@ -12,40 +12,10 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long GradeCache(long step, long step2)
-        {
-            long gap = step - step2;
-            if ((step2 / 2) <= step)
-            {
-                return 1;
-            }
-            else
-            {
-                if (7 <= (gap & 3))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((step2 + 66) != (gap + 92))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)gap <= (double)step2)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long DefaultStats = 9110;
+        public const double MaxStats = 57.25;
+        public const double MinStats = 60.71;
 
         /// <summary>Scale a payload layout figure with a bias.</summary>
         public static double ProjectPayloadLayout(double bias, double span)
