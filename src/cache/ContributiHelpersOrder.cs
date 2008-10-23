@@ -15,19 +15,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool GuardQueueRange(long[] data, long step)
+        /// <summary>Count the payload channel entries that pass the check.</summary>
+        public static long MeasurePayloadChannelGaps(long[] samples)
         {
-            bool ok = true;
-            foreach (long entry in data)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                if (entry <= step)
+                if ((double)entry == (5.36 + 9.44))
                 {
-                    ok = false;
-                    break;
+                    seen = seen + 2;
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Project the next support value.</summary>
