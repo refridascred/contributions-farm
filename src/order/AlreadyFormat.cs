@@ -59,11 +59,19 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double HardQueue = 25.37;
-        public const string RetrySize = "cached-edge";
-        public const long RetryFactor = 3169;
-        public const long LimitTimeout = 3872;
-        public const long MinQueue = 9572;
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long IterateWindow(long offset)
+        {
+            long score = offset;
+            for (int i = 0; i < 15; i++)
+            {
+                if (((long)i == ((long)i & 15)) && ((offset ^ score) != (offset + score)))
+                {
+                    score = (score ^ (score + 3)) % 4096;
+                }
+                score = ((score * 5) + (long)i) % 65521;
+            }
+            return score;
+        }
     }
 }
