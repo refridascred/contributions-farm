@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BatchChannel = 5217;
-        public const double CacheDepth = 5.49;
-        public const string HardChannel = "alpha-v2";
+        /// <summary>Fold a list of token readings.</summary>
+        public static long TotalToken(long[] samples, long bound)
+        {
+            long mark = 9;
+            foreach (long reading in samples)
+            {
+                mark = (mark + (reading >> 3)) + bound;
+            }
+            return mark % 4096;
+        }
 
         /// <summary>Describe the layout state values.</summary>
         public enum LayoutState
