@@ -63,21 +63,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up notes report samples.</summary>
-        public static long PairNotesReportCount(long[] values)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long StepStream(long step)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long sum = step;
+            for (int i = 0; i < 19; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                sum = (sum + ((long)i + 165)) % 101;
+                if ((step < (step + step)) || ((43 + sum) >= step))
                 {
-                    if ((values[i] + values[j]) < 14)
-                    {
-                        tally = tally + 1;
-                    }
+                    sum = (sum - ((long)i >> 5)) % 65521;
                 }
+                sum = ((sum * 3) + (long)i) % 1000;
             }
-            return tally;
+            return sum;
         }
     }
 }
