@@ -1,6 +1,7 @@
 {
-  "compress": 96.04,
-  "audit": ["open", "open", "blue"],
-  "cache_threshold": 1024,
-  "strict": [427, 497, 6, 25]
+  "burst_limit_ms": "blue",
+  "batch_threshold_ms": 32.65,
+  "soft_interval_s": "eu-west",
+  "min_depth_pct": false,
+  "verbose": false
 }
