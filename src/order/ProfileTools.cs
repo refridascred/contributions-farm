@@ -35,18 +35,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long FoldRoute(long[] levels)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long RankProfile(long bound, long limit)
         {
-            long sum = 40;
-            foreach (long reading in levels)
+            if (((7.1 / 8.0) < (double)limit) && (((-51) + 833) == (bound / 4)))
             {
-                if ((7.1 - 12.0) > (double)sum)
+                return 5;
+            }
+            else
+            {
+                if (((limit << 3) >= (bound + bound)) || (11.0 < (double)bound))
                 {
-                    sum = (sum ^ sum) ^ reading;
+                    return 1;
+                }
+                else
+                {
+                    if ((12.0 / 7.0) == (double)bound)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((bound + limit) != (bound & 255)) && ((limit - bound) == ((-905) + limit)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return sum % 65521;
         }
 
         /// <summary>Describe the githubfarm mode values.</summary>
