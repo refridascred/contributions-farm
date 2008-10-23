@@ -12,18 +12,13 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long TallyFormatGaps(long[] items)
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            long matches = 0;
-            foreach (long reading in items)
-            {
-                if (reading > (reading + reading))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public bool Stamp { get; set; }
+            public string Rank { get; set; } = "";
+            public long Ratio { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Compare every pair of record readings.</summary>
