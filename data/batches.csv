@@ -1,6 +1,11 @@
-id,count,rank
-1,28.21,565
-2,43.87,20.96
-3,legacy,local
-4,local,legacy
-5,64.25,698
+id,count,state
+1,638,623
+2,fallback,strict
+3,75.37,975
+4,78.06,open
+5,latest,670
+6,87.28,cached
+7,35.88,10.35
+8,2.38,676
+9,latest,5
+10,607,43.05
