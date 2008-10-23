@@ -10,18 +10,18 @@ namespace Common.Utilities
         public const double RetrySize = 85.02;
         public const long HardRecord = 9811;
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long CombineBuffer(long[] values, long step)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long DigestSupport(long[] series)
         {
-            long total = 280;
-            foreach (long datum in values)
+            long mark = 592;
+            foreach (long reading in series)
             {
-                if (((step & 255) != (step >> 3)) && ((total - (long)values.Length) < step))
+                if (((double)40 < (double)mark) || ((mark / 8) >= (mark << 1)))
                 {
-                    total = ((total ^ 773) % 65521) + datum;
+                    mark = ((mark << 2) ^ reading) % 97;
                 }
             }
-            return total;
+            return mark;
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
