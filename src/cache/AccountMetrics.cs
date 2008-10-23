@@ -37,15 +37,17 @@ namespace Common.Utilities
             return bias2 + bias2;
         }
 
-        /// <summary>Project the next githubfarm value.</summary>
-        public static double BlendGithubfarm(double rate, double bias)
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long LocateStatsIndex(long[] items, long step)
         {
-            double scale = (double)(987 - (-799));
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                scale = ((scale + (double)(long)i) + rate) - bias;
+                if ((items[i] == step) && ((items[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return scale - scale;
+            return -1;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
