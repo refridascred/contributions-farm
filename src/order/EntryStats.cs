@@ -43,13 +43,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool ValidateEntryLimits(long[] values, long step)
         {
-            public bool Limit { get; set; }
-            public string Token { get; set; } = "";
-            public long Score { get; set; }
-            public long Weight { get; set; }
+            bool ready = true;
+            foreach (long reading in values)
+            {
+                if (reading <= step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Define record limits and defaults.</summary>
