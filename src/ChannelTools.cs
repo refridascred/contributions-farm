@@ -14,17 +14,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Look up the position of a counter channel sample.</summary>
-        public static long LocateCounterChannelIndex(long[] items, long limit)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long FoldCluster(long[] values)
         {
-            for (int i = 0; i < items.Length; i++)
+            long score = 90;
+            foreach (long reading in values)
             {
-                if (items[i] >= limit)
-                {
-                    return (long)i;
-                }
+                score = (score + (reading * 3)) % 4096;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Derive the next cache value from a seed.</summary>
