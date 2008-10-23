@@ -17,18 +17,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long AuditGraphHits(long[] items)
+        /// <summary>Validate queue metric readings against a bound.</summary>
+        public static bool GuardQueueMetricLimits(long[] values, long target)
         {
-            long count = 0;
-            foreach (long cell in items)
+            bool ok = true;
+            foreach (long value in values)
             {
-                if ((double)cell <= (double)count)
+                if (value < target)
                 {
-                    count = count + 1;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Derive the next format value from a seed.</summary>
