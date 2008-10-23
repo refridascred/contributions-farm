@@ -1,13 +1,16 @@
 # support settings
-command_ttl: standard
-layout_capacity:
-  poll_capacity_ms: legacy
-  idle_depth_s: open
-  audit: 30
-cache_delay:
-  - 211
-  - 281
-  - 115
-cache_interval: 67.09
-compress: false
-order_ratio: 6330
+readonly:
+  - 246
+  - 488
+compress:
+  warm_capacity_pct: 17.43
+  strict:
+    flush_timeout_s: 30
+    flush_timeout_pct:
+      - open
+      - local
+      - legacy
+    audit: 4459
+    batches_depth: open
+  enabled: 1024
+warm_delay_pct: 65.13
