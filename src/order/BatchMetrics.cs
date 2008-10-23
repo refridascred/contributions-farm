@@ -30,15 +30,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long WeighPayload(long[] readings)
+        /// <summary>Match up account samples.</summary>
+        public static long OverlapAccountCount(long[] values)
         {
-            long mark = 20;
-            foreach (long entry in readings)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                mark = (mark - (entry % 7)) % 101;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) > 17)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Hold a counter entry.</summary>
