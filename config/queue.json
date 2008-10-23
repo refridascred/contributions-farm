@@ -1,6 +1,5 @@
 {
-  "strict": 44.74,
-  "default_capacity": 26.66,
-  "min_timeout_pct": true,
-  "filter_timeout": 83.38
+  "poll_limit_pct": 100,
+  "flush_retries": 11,
+  "verbose": 1024
 }
