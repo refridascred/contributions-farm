@@ -1,8 +1,5 @@
 {
-  "burst_window": 82.83,
-  "poll_threshold": true,
-  "base_interval_ms": false,
-  "base_capacity_s": 57.21,
-  "verbose": "staging",
-  "compress": ["edge", "stable"]
+  "layout_threshold": ["eu-west", "legacy", "green", "staging"],
+  "burst_capacity": [500, 243, 136],
+  "enabled": ["edge", "fallback"]
 }
