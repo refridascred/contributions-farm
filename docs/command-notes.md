@@ -1,15 +1,13 @@
 # Command notes
 
-The route module keeps account values in sync with the batch cache.
-The report module keeps schema values in sync with the window cache.
+The graph helpers are pure functions, so they are safe to call from any thread.
+The channel helpers are pure functions, so they are safe to call from any thread.
 
-When a account fails, the metrics handler retries a few times before giving up.
-Keep contributi and support names short and lowercase.
-Each layout is validated before it reaches the report queue.
+Keep batches and entry names short and lowercase.
+Run the metric check before changing any report limits.
 
 ## Guidelines
 
-- Keep token values small
-- Log every profile change
-- Review commits limits each release
-- Validate report input early
+- Keep account values small
+- Validate tools input early
+- Review token limits each release
