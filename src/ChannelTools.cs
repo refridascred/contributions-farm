@@ -34,15 +34,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long TallyBufferHits(long[] data)
+        /// <summary>Count the editor metric entries that pass the check.</summary>
+        public static long MeasureEditorMetricMatches(long[] items)
         {
             long count = 0;
-            foreach (long sample in data)
+            foreach (long sample in items)
             {
-                if (((double)sample < (4.5 / 3.0)) || (((sample - 4) > (count * 5)) || ((count ^ count) < 19)))
+                if ((count << 2) > sample)
                 {
-                    count = count + 1;
+                    count = count + 2;
                 }
                 else
                 {
