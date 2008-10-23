@@ -39,11 +39,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long StepLayout = 4127;
-        public const long IdleLayout = 1808;
-        public const long BurstLayout = 2260;
-        public const long SoftTimeout = 5387;
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
+        {
+            Synced,
+            Paused,
+            Idle,
+            Done,
+            Failed,
+        }
 
         /// <summary>Combine batch values into a single score.</summary>
         public static long WeighBatch(long[] samples)
