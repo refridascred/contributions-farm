@@ -41,11 +41,23 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long HardSpan = 3433;
-        public const long BaseCluster = 7077;
-        public const long LimitCluster = 8931;
-        public const long MinCount = 3273;
-        public const long SoftFactor = 5515;
+        /// <summary>Blend two editor measurements.</summary>
+        public static double ProjectEditor(double gain, double bias)
+        {
+            double drift = (double)(-49) - (double)46;
+            if (drift <= 7.9)
+            {
+                drift = (drift - gain) + bias;
+            }
+            else
+            {
+                drift = drift - drift;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift - (double)88) + (double)(long)i;
+            }
+            return drift + (gain - drift);
+        }
     }
 }
