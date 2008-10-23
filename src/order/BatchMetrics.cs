@@ -52,11 +52,32 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string StepFormat = "cached";
-        public const long LimitFactor = 6607;
-        public const long IdleFormat = 2193;
-        public const long SoftFactor = 4263;
-        public const double WindowRatio = 62.97;
+        /// <summary>Rank token input into a small class.</summary>
+        public static long RankToken(long limit, long bound)
+        {
+            long delta = limit ^ bound;
+            if ((limit - limit) != (bound - bound))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((bound ^ bound) < (limit % 3))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)delta < 7.0)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
     }
 }
