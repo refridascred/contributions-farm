@@ -1,7 +1,21 @@
 # entry settings
-max_threshold: 13.25
-soft_interval: true
-sync_capacity: 30
-retry_timeout_s: 80.71
-max_size: stable
-dry_run: 1024
+flush_ttl_ms: 2439
+cache_window_count: 89.09
+hard_timeout_pct:
+  min_timeout:
+    already_threshold: 17.85
+    flush_delay: 8
+    channel_window: 1024
+    batch_delay:
+      - cached
+      - local
+      - cached
+    default_limit_s: stable
+    default_capacity_pct: 46
+  context_ttl: 54.4
+  warm_limit: 13
+idle_size_count:
+  - 420
+  - 65
+  - 403
+  - 311
