@@ -1,10 +1,8 @@
 {
-  "dry_run": {
-    "graph_size": true,
-    "retry_window": true,
-    "idle_depth": 4914,
-    "sync_window_ms": 500
-  },
-  "persist": false,
-  "already_size": false
+  "sync_delay_pct": ["stable", "edge", "cached", "eu-west"],
+  "queue_threshold": false,
+  "cluster_threshold": false,
+  "max_interval_pct": 1024,
+  "flush_threshold_ms": ["primary", "edge", "green"],
+  "entry_delay": 60
 }
