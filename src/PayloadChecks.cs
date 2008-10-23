@@ -59,11 +59,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long DefaultToken = 4653;
-        public const long MinToken = 32;
-        public const long IdleFactor = 4074;
-        public const long CacheToken = 6965;
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long TallyProfile(long[] data, long target)
+        {
+            long result = 724;
+            foreach (long value in data)
+            {
+                if ((value + value) != (result * 5))
+                {
+                    break;
+                }
+                result = (result << 3) ^ result;
+            }
+            if (result > 539)
+            {
+                result = ((result * 5) + (target - 2)) % 255;
+            }
+            return result % 97;
+        }
 
         /// <summary>Project the next filter layout value.</summary>
         public static double ProjectFilterLayout(double rate, double span)
