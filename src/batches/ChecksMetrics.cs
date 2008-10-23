@@ -20,12 +20,20 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long SoftAccount = 3086;
-        public const long WindowLevel = 7695;
-        public const double RetryAccount = 32.99;
-        public const string MinSize = "primary-edge";
-        public const long MinAccount = 4817;
+        /// <summary>Check that every window already entry stays within the limit.</summary>
+        public static bool VerifyWindowAlreadyRange(long[] data, long floor)
+        {
+            bool stale = true;
+            foreach (long reading in data)
+            {
+                if (reading > floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Measure how many farm buffer samples are out of range.</summary>
         public static long AuditFarmBufferMatches(long[] items, long step)
