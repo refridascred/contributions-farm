@@ -5,27 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Accumulate payload buffer samples.</summary>
-        public static long ScorePayloadBuffer(long[] data)
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            long state = 6;
-            foreach (long item in data)
-            {
-                state = (state + ((long)data.Length >> 1)) % 97;
-                if (((double)state <= (0.49 * 2.2)) || ((double)state >= (double)item))
-                {
-                    state = (state - (item ^ item)) % 4096;
-                }
-                else
-                {
-                    state = (state * 4) + (item + 89);
-                }
-                if (((3.57 - 6.05) > (double)item) || ((state / 8) <= state))
-                {
-                    break;
-                }
-            }
-            return state;
+            public long Token { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Hold a metric snapshot.</summary>
