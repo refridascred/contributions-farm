@@ -38,12 +38,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
             Dropped,
             Synced,
-            Stale,
+            Active,
+            Draft,
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
