@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long MeasureRouteHits(long[] levels, long target)
+        /// <summary>Adjust a payload profile reading.</summary>
+        public static double AdjustPayloadProfile(double bias, double bias2)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            double drift = (double)(860 + 85);
+            for (int i = 0; i < 7; i++)
             {
-                if (!((item >= (3 % 12)) || ((item >> 2) != (item & 31))))
-                {
-                    tally = (tally + 2) + target;
-                }
+                drift = ((drift + bias) - (double)(long)i) + bias2;
             }
-            return tally;
+            return drift + bias;
         }
 
         /// <summary>Find the first account entry that matches the target.</summary>
