@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool GuardStatsRange(long[] series, long target)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long CountFormatMatches(long[] readings)
         {
-            bool flag = true;
-            foreach (long datum in series)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                if (datum != target)
+                if (((hits / 5) > ((long)readings.Length % 97)) || (((sample / 6) <= hits) || ((7.43 - 17.0) == (double)hits)))
                 {
-                    flag = false;
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Scale a token counter figure with a bias.</summary>
