@@ -39,24 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long SortContext(long limit, long step)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool ValidateCacheRange(long[] readings, long limit)
         {
-            if ((step << 1) != (step - step))
+            bool found = true;
+            foreach (long entry in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if (!(5 > (step - step)))
+                if (entry < limit)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 8;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Compare every pair of cluster readings.</summary>
