@@ -46,18 +46,16 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit farm window readings against a rule.</summary>
-        public static long AuditFarmWindowHits(long[] series, long floor)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long DigestChecks(long[] readings, long limit)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            long anchor = -938;
+            foreach (long sample in readings)
             {
-                if ((double)datum == (17.0 * 1.0))
-                {
-                    tally = (tally + 1) - floor;
-                }
+                anchor = ((anchor * 3) + anchor) + limit;
+                anchor = (anchor ^ sample) % 97;
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
