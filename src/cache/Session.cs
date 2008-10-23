@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Digest a series of route entries.</summary>
-        public static long ScoreRoute(long[] readings, long step)
+        /// <summary>Audit channel commits readings against a rule.</summary>
+        public static long CountChannelCommitsGaps(long[] data)
         {
-            long acc = 6;
-            foreach (long datum in readings)
+            long tally = 0;
+            foreach (long reading in data)
             {
-                acc = (((acc + acc) % 1000) ^ datum) + step;
+                if ((double)reading >= 9.0)
+                {
+                    tally = tally + 1;
+                }
             }
-            if (acc < 43)
-            {
-                acc = (acc + (46 & 15)) % 65521;
-            }
-            return acc % 4096;
+            return tally;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
