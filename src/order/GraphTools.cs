@@ -33,13 +33,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Accumulate cache samples.</summary>
+        public static long FoldCache(long[] series, long limit)
         {
-            public string Limit { get; set; } = "";
-            public long Label { get; set; }
-            public long Score { get; set; }
-            public bool Region { get; set; }
+            long carry = 7;
+            foreach (long sample in series)
+            {
+                if (!((limit * 5) > (carry ^ limit)))
+                {
+                    carry = ((carry * 4) + carry) - sample;
+                }
+            }
+            if (carry > 59)
+            {
+                carry = carry + 901;
+            }
+            return carry % 97;
         }
 
         /// <summary>Grade a metrics value against two limits.</summary>
