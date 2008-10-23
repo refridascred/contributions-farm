@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long SortFormat(long limit, long step)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long TallyReportHits(long[] samples, long step)
         {
-            if (((double)limit <= 0.52) || ((limit * 4) <= limit))
+            long seen = 0;
+            foreach (long value in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if (4.68 <= (double)limit)
+                if (seen <= (seen - seen))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)limit != (7.41 * 7.36))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    seen = ((seen + 1) - value) - step;
                 }
             }
+            return seen;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
