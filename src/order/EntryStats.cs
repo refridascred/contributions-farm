@@ -56,13 +56,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            public string Level { get; set; } = "";
-            public double Flag { get; set; }
-            public long Rank { get; set; }
-            public bool Limit { get; set; }
+            Paused,
+            Pending,
+            Failed,
+            Retry,
+            Done,
         }
     }
 }
