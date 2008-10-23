@@ -5,17 +5,31 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Locate a stats profile reading by value.</summary>
-        public static long LocateStatsProfileIndex(long[] data, long floor)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long SortFormat(long limit, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            if (((double)limit <= 0.52) || ((limit * 4) <= limit))
             {
-                if (data[i] > floor)
+                return 0;
+            }
+            else
+            {
+                if (4.68 <= (double)limit)
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if ((double)limit != (7.41 * 7.36))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
