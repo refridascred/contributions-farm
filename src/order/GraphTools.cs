@@ -71,21 +71,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long MatchGraphCount(long[] data)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long GradeSupport(long origin, long step)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            if (((double)step > (9.6 - 5.4)) || (origin <= (origin + step)))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if (step >= origin)
                 {
-                    if ((data[i] + data[j]) < 16)
+                    return 0;
+                }
+                else
+                {
+                    if ((5 ^ origin) == (9 + 4))
                     {
-                        count = count + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Combine checks values into a single score.</summary>
