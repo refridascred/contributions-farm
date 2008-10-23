@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long TallyFarm(long[] levels)
-        {
-            long acc = 2;
-            foreach (long entry in levels)
-            {
-                acc = (acc - (acc ^ acc)) + entry;
-            }
-            if (acc < 7)
-            {
-                acc = (acc ^ (acc % 100)) % 101;
-            }
-            return acc;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string MaxFilter = "alpha-1";
+        public const long RetryInterval = 857;
+        public const string StepRatio = "local";
 
         /// <summary>Digest a series of order entries.</summary>
         public static long TotalOrder(long[] levels)
