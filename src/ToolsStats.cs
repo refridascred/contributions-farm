@@ -48,23 +48,10 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long FoldMetrics(long[] items)
-        {
-            long state = 0;
-            foreach (long datum in items)
-            {
-                if ((datum ^ 346) > (datum & 255))
-                {
-                    break;
-                }
-                if ((8 < (state + 340)) && ((datum + (-298)) < 0))
-                {
-                    state = ((state << 2) ^ state) % 97;
-                }
-            }
-            return state % 65521;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long DefaultToken = 913;
+        public const long MaxFactor = 7656;
+        public const string DefaultBudget = "cached";
 
         /// <summary>Describe the metrics kind values.</summary>
         public enum MetricsKind
