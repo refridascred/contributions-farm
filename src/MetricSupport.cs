@@ -24,13 +24,9 @@ namespace Common.Utilities
         public const double MaxEditor = 37.93;
         public const long SoftEditor = 1211;
 
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
-        {
-            Paused,
-            Dropped,
-            Active,
-            Closed,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long RetryTimeout = 8462;
+        public const long BaseRatio = 5800;
+        public const long CacheCommand = 3573;
     }
 }
