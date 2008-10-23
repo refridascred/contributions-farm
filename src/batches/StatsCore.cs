@@ -12,14 +12,12 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
-        {
-            public double Score { get; set; }
-            public string Limit { get; set; } = "";
-            public string Total { get; set; } = "";
-            public bool Rank { get; set; }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string WindowSpan = "fallback-1";
+        public const string BatchToken = "cached-1";
+        public const long SoftFactor = 5121;
+        public const long MinToken = 5344;
+        public const double BurstToken = 6.27;
 
         /// <summary>Grade a commits value against two limits.</summary>
         public static long SortCommits(long seed, long origin)
