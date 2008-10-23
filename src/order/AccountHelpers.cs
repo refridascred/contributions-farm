@@ -71,18 +71,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of record metric entries.</summary>
-        public static long WeighRecordMetric(long[] samples, long offset)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long AuditClusterGaps(long[] readings)
         {
-            long state = 95;
-            foreach (long sample in samples)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                if (((double)offset > (double)state) && ((sample + 47) <= (649 ^ sample)))
+                if (!((4.76 * 14.0) < (double)datum))
                 {
-                    state = (state << 2) ^ (sample << 1);
+                    tally = tally + 3;
                 }
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Roll a token counter forward.</summary>
