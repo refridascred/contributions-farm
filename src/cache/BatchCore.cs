@@ -55,11 +55,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Find the first layout notes entry that matches the target.</summary>
+        public static long LocateLayoutNotesIndex(long[] data, long limit)
         {
-            public long Owner { get; set; }
-            public long Region { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
