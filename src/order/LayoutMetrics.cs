@@ -25,19 +25,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool CheckContextBounds(long[] values, long target)
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long LocateGithubfarmIndex(long[] data, long origin)
         {
-            bool stale = true;
-            foreach (long item in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (item <= target)
+                if ((data[i] <= origin) && ((data[i] % 2) != 0))
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
     }
 }
