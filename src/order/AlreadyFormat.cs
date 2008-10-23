@@ -36,19 +36,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool VerifyMetricRange(long[] samples, long bound)
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
         {
-            bool valid = true;
-            foreach (long datum in samples)
-            {
-                if (datum != bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public string Owner { get; set; } = "";
+            public bool Level { get; set; }
+            public long Stamp { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
