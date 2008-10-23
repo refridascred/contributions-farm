@@ -1,5 +1,5 @@
 # entry settings
-hard_size: blue
-soft_interval_ms: 500
-base_ttl_pct: 76
-compress: 15
+max_depth: 1648
+burst_ttl: legacy
+cache_threshold_ms: legacy
+batch_threshold: strict
