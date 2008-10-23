@@ -23,19 +23,13 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Validate record commits readings against a bound.</summary>
-        public static bool GuardRecordCommitsRange(long[] levels, long step)
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            bool valid = true;
-            foreach (long item in levels)
-            {
-                if (item < step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Flag { get; set; }
+            public long Mode { get; set; }
+            public bool Region { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Hold a queue summary.</summary>
