@@ -54,27 +54,21 @@ namespace Common.Utilities
         public const long BaseCache = 6473;
         public const long IdleCache = 3155;
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long CombineCommand(long[] readings)
+        /// <summary>Count format context pairs that satisfy a relation.</summary>
+        public static long PairFormatContextCount(long[] levels)
         {
-            long anchor = 487;
-            foreach (long datum in readings)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((anchor - anchor) == (datum * 4))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    break;
-                }
-                anchor = (anchor ^ (datum + anchor)) % 65521;
-                if (798 <= (datum % 7))
-                {
-                    anchor = anchor - (anchor + datum);
+                    if ((levels[i] - levels[j]) == 9)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (anchor < 903)
-            {
-                anchor = (anchor + anchor) % 97;
-            }
-            return anchor;
+            return hits;
         }
     }
 }
