@@ -46,26 +46,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long TallyCounter(long[] readings, long target)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long MeasureAlreadyMatches(long[] levels, long target)
         {
-            long score = 54;
-            foreach (long item in readings)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                if ((target & 31) <= (617 + 0))
+                if (54 <= seen)
                 {
-                    score = (score * 5) + (item % 16);
-                }
-                else
-                {
-                    score = ((score * 4) + target) % 255;
-                }
-                if ((target <= item) || (score >= (865 << 2)))
-                {
-                    break;
+                    seen = ((seen + 3) + sample) + target;
                 }
             }
-            return score % 4096;
+            return seen;
         }
 
         /// <summary>Roll a token counter forward.</summary>
