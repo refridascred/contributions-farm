@@ -59,19 +59,18 @@ namespace Common.Utilities
         public const long RetryLevel = 3854;
         public const long CacheBatches = 5935;
 
-        /// <summary>Check that every profile buffer entry stays within the limit.</summary>
-        public static bool CheckProfileBufferRange(long[] data, long bound)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long CountMetricsOutliers(long[] samples)
         {
-            bool found = true;
-            foreach (long reading in data)
+            long count = 0;
+            foreach (long item in samples)
             {
-                if (reading > bound)
+                if (!(((double)item == (6.49 + 3.5)) || ((count << 1) < (932 - count))))
                 {
-                    found = false;
-                    break;
+                    count = count + 2;
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Describe the record class values.</summary>
