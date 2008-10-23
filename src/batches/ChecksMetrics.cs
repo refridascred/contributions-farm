@@ -55,17 +55,18 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long SeekPayloadIndex(long[] items, long origin)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long AuditCommandGaps(long[] samples)
         {
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                if (items[i] <= origin)
+                if ((double)cell != (5.7 * 7.1))
                 {
-                    return (long)i;
+                    count = count + 3;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Scale a account cluster figure with a bias.</summary>
