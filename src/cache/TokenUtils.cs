@@ -23,10 +23,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string BaseEditor = "stable";
-        public const double BaseSpan = 41.7;
-        public const string RetryEditor = "open";
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
+        {
+            Draft,
+            Dropped,
+            Retry,
+            Done,
+            Stale,
+        }
 
         /// <summary>Hold a githubfarm options.</summary>
         public sealed class GithubfarmOptions
