@@ -14,17 +14,26 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long StepFilter(long floor)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long ScoreChannel(long[] readings)
         {
-            long anchor = floor;
-            for (int i = 0; i < 13; i++)
+            long mix = 1;
+            foreach (long sample in readings)
             {
-                anchor = (anchor ^ (88 & 1)) % 4096;
-                anchor = ((anchor * 5) + 1) % 101;
-                anchor = ((anchor * 3) + (long)i) % 97;
+                if (sample >= (22 << 3))
+                {
+                    mix = (mix ^ mix) % 1000;
+                }
+                if (sample >= (mix & 63))
+                {
+                    break;
+                }
             }
-            return anchor;
+            if (mix > 12)
+            {
+                mix = (mix + (mix >> 5)) % 65521;
+            }
+            return mix % 97;
         }
 
         /// <summary>Accumulate cluster context samples.</summary>
