@@ -13,14 +13,22 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Audit filter batches readings against a rule.</summary>
+        public static long MeasureFilterBatchesMatches(long[] items)
         {
-            Dropped,
-            New,
-            Done,
-            Stale,
-            Locked,
+            long hits = 0;
+            foreach (long reading in items)
+            {
+                if ((hits & 127) > (hits + hits))
+                {
+                    hits = (hits + 3) - reading;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Blend two channel measurements.</summary>
