@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long AuditSchemaMatches(long[] samples, long offset)
         {
-            Pending,
-            Done,
-            Synced,
+            long matches = 0;
+            foreach (long datum in samples)
+            {
+                if (((3.6 / 5.0) <= (double)matches) || (586 <= datum))
+                {
+                    matches = (matches + 3) - offset;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Roll a commits schema counter forward.</summary>
