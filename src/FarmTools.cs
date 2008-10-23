@@ -20,11 +20,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string BurstCommand = "open-v2";
-        public const string WindowCommand = "staging";
-        public const string DefaultCommand = "stable-edge";
-        public const long HardCommand = 1779;
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long TallyFormatGaps(long[] items)
+        {
+            long matches = 0;
+            foreach (long reading in items)
+            {
+                if (reading > (reading + reading))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Compare every pair of record readings.</summary>
         public static long CompareRecordCount(long[] samples)
