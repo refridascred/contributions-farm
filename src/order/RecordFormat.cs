@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Match up format samples.</summary>
-        public static long CompareFormatCount(long[] samples)
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 6)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Retry,
+            Active,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Define stream limits and defaults.</summary>
