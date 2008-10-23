@@ -14,12 +14,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string WindowInterval = "local-1";
-        public const long IdleStream = 4459;
-        public const double LimitStream = 49.44;
-        public const string IdleDepth = "alpha-1";
-        public const string SoftStream = "alpha";
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long StepFilter(long floor)
+        {
+            long anchor = floor;
+            for (int i = 0; i < 13; i++)
+            {
+                anchor = (anchor ^ (88 & 1)) % 4096;
+                anchor = ((anchor * 5) + 1) % 101;
+                anchor = ((anchor * 3) + (long)i) % 97;
+            }
+            return anchor;
+        }
 
         /// <summary>Accumulate cluster context samples.</summary>
         public static long TallyClusterContext(long[] data, long offset)
