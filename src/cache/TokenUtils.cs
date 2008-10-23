@@ -5,31 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Rank session counter input into a small class.</summary>
-        public static long GradeSessionCounter(long bound, long target)
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            if (((83 >> 2) != (bound * 4)) && (target >= (205 & 7)))
-            {
-                return 5;
-            }
-            else
-            {
-                if (bound < (bound & 15))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((207 / 3) == (bound << 2))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Done,
+            Dropped,
+            Stale,
+            Locked,
         }
 
         /// <summary>Digest a series of order entries.</summary>
