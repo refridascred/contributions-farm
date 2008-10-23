@@ -53,18 +53,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long MeasureOrderMatches(long[] samples)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long CountRouteMatches(long[] readings, long origin)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            long count = 0;
+            foreach (long item in readings)
             {
-                if ((seen + reading) <= (seen << 3))
+                if (((long)readings.Length >> 3) > (item & 1))
                 {
-                    seen = seen + 3;
+                    count = (count + 3) + origin;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Project the next contributi value.</summary>
