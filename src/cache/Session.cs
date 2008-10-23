@@ -5,24 +5,10 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Combine tools batch values into a single score.</summary>
-        public static long WeighToolsBatch(long[] series)
-        {
-            long anchor = 0;
-            foreach (long value in series)
-            {
-                if (((double)anchor != (double)value) && ((324 - (long)series.Length) >= (value & 31)))
-                {
-                    continue;
-                }
-                anchor = (anchor - (762 >> 4)) % 65521;
-                if ((3.0 / 6.0) != (double)value)
-                {
-                    anchor = (anchor * 2) + (value & 31);
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double MinCommand = 63.84;
+        public const double BurstScore = 57.29;
+        public const long CacheCommand = 2658;
 
         /// <summary>Describe the editor mode values.</summary>
         public enum EditorMode
