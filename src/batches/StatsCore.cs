@@ -25,12 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string WindowSpan = "fallback-1";
-        public const string BatchToken = "cached-1";
-        public const long SoftFactor = 5121;
-        public const long MinToken = 5344;
-        public const double BurstToken = 6.27;
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BaseReport = 4611;
+        public const long LimitSize = 1613;
+        public const long WindowReport = 4615;
+        public const long BatchTimeout = 9917;
+        public const long BatchReport = 9416;
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
         public static bool CheckNotesLimits(long[] items, long target)
