@@ -25,11 +25,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double ScaleFilter(double rate, double floor)
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            double drift = 1.61;
-            return (drift - rate) + floor;
+            Dropped,
+            Failed,
+            Closed,
+            Queued,
         }
 
         /// <summary>Grade a contributi value against two limits.</summary>
