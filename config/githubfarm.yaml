@@ -1,6 +1,19 @@
 # githubfarm settings
-max_capacity_ms: 2073
-cache_delay_count:
-  - fallback
-  - cached
-soft_limit: primary
+enabled: 30
+batch_interval: 30
+token_interval: false
+hard_capacity_pct:
+  flush_depth:
+    - blue
+    - stable
+    - green
+  compress:
+    - 453
+    - 248
+    - 155
+    - 148
+  already_timeout:
+    - strict
+    - latest
+    - cached
+    - blue
