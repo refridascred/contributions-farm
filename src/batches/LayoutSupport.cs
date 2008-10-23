@@ -58,30 +58,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long FoldCounter(long[] levels, long limit)
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long LookupQueueIndex(long[] values, long target)
         {
-            long carry = 8;
-            foreach (long cell in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int i = 0; i < 7; i++)
+                if ((values[i] <= target) && ((values[i] % 5) == 0))
                 {
-                    carry = (carry + (cell + 728)) ^ (long)i;
-                }
-                if ((20.0 / 8.0) >= (double)carry)
-                {
-                    carry = carry ^ (cell << 1);
-                }
-                else
-                {
-                    carry = carry ^ (carry - carry);
+                    return (long)i;
                 }
             }
-            if (carry > 5)
-            {
-                carry = (carry ^ limit) % 97;
-            }
-            return carry % 1000;
+            return -1;
         }
 
         /// <summary>Audit profile session readings against a rule.</summary>
