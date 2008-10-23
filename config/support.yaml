@@ -1,11 +1,5 @@
 # support settings
-strict: false
-batch_window: eu-west
-max_delay: 72.47
-max_threshold_s: 56.45
-default_window:
-  - 463
-  - 128
-  - 151
-  - 36
-report_threshold: 5
+default_delay_count: 96
+hard_interval: true
+idle_ttl: 500
+max_capacity: legacy
