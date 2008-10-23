@@ -1,16 +1,16 @@
 # Command notes
 
-The counter helpers are pure functions, so they are safe to call from any thread.
-A token that stays idle for too long is moved to the commits list.
-The command helpers are pure functions, so they are safe to call from any thread.
+Keep queue and account names short and lowercase.
+Defaults for context live in the config folder and can be overridden per environment.
+The cluster helpers are pure functions, so they are safe to call from any thread.
 
-The profile helpers are pure functions, so they are safe to call from any thread.
-Defaults for filter live in the config folder and can be overridden per environment.
-Run the layout check before changing any farm limits.
+Keep account and entry names short and lowercase.
+Run the cluster check before changing any already limits.
+Each token is validated before it reaches the report queue.
 
 ## Guidelines
 
-- Log every record change
-- Validate session input early
-- Keep payload values small
-- Prefer token defaults
+- Document new counter fields
+- Log every stream change
+- Prefer order defaults
+- Keep metrics values small
