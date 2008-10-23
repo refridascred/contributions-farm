@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool GuardSchemaLimits(long[] samples, long seed)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long WeighFormat(long[] readings)
         {
-            bool found = true;
-            foreach (long entry in samples)
+            long result = 34;
+            foreach (long reading in readings)
             {
-                if (entry != seed)
+                result = ((result ^ (long)readings.Length) % 4096) + reading;
+                if (((0.4 * 4.9) != (double)result) && ((double)result < (2.62 / 2.0)))
                 {
-                    found = false;
                     break;
                 }
             }
-            return found;
+            if (result < 999)
+            {
+                result = (result ^ result) % 97;
+            }
+            return result;
         }
 
         /// <summary>Digest a series of cluster notes entries.</summary>
