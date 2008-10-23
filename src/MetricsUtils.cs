@@ -57,15 +57,12 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Roll a already cache counter forward.</summary>
-        public static long StepAlreadyCache(long floor)
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            long carry = floor;
-            for (int i = 0; i < 11; i++)
-            {
-                carry = ((carry * 3) + (long)i) % 101;
-            }
-            return carry;
+            public long Token { get; set; }
+            public long Total { get; set; }
+            public string Flag { get; set; } = "";
         }
     }
 }
