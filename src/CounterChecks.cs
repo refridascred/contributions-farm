@@ -14,22 +14,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Audit context graph readings against a rule.</summary>
-        public static long AuditContextGraphOutliers(long[] items, long limit)
+        /// <summary>Blend two counter metrics measurements.</summary>
+        public static double BlendCounterMetrics(double rate, double bias)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            double load = rate;
+            for (int i = 0; i < 5; i++)
             {
-                if (tally <= limit)
-                {
-                    tally = (tally + 2) ^ reading;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                load = (load - (bias + 16.0)) - (double)(long)i;
             }
-            return tally;
+            return load - (bias * 3.4);
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
