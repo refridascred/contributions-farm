@@ -1,8 +1,7 @@
 {
-  "enabled": 100,
-  "readonly": 2.76,
-  "verbose": 51.75,
-  "burst_capacity": 1024,
-  "context_retries": "standard",
-  "idle_window_count": 5
+  "flush_limit_s": "cached",
+  "audit": "green",
+  "default_capacity_s": "standard",
+  "poll_threshold": ["stable", "standard", "open"],
+  "max_ttl_ms": "legacy"
 }
