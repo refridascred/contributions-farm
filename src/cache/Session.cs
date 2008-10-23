@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Look up the position of a channel entry sample.</summary>
-        public static long FindChannelEntryIndex(long[] values, long origin)
+        /// <summary>Audit order record readings against a rule.</summary>
+        public static long TallyOrderRecordHits(long[] samples, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                if ((values[i] <= origin) && ((values[i] % 5) == 0))
+                if ((reading << 1) > seen)
                 {
-                    return (long)i;
+                    seen = (seen + 1) + target;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Describe the editor mode values.</summary>
