@@ -19,11 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BatchSpan = 7718;
-        public const double LimitWindow = 97.45;
-        public const long SoftWindow = 2761;
-        public const double BatchDepth = 7.17;
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long CountBatchMatches(long[] items)
+        {
+            long tally = 0;
+            foreach (long cell in items)
+            {
+                if ((tally + 66) > tally)
+                {
+                    tally = (tally + 1) + cell;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Measure how many session samples are out of range.</summary>
         public static long AuditSessionGaps(long[] series)
