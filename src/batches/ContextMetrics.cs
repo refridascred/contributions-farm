@@ -15,17 +15,10 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Roll a cache notes counter forward.</summary>
-        public static long DeriveCacheNotes(long step)
-        {
-            long result = step;
-            for (int i = 0; i < 24; i++)
-            {
-                result = (result ^ step) % 101;
-                result = ((result * 5) + (long)i) % 65521;
-            }
-            return result;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long MaxCount = 4902;
+        public const long IdleStream = 2366;
+        public const long HardSpan = 3863;
 
         /// <summary>Define context limits and defaults.</summary>
         public const long RetryCount = 3365;
