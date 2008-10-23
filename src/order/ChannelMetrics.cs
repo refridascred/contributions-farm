@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool CheckCounterLimits(long[] samples, long floor)
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
         {
-            bool ready = true;
-            foreach (long value in samples)
-            {
-                if (value >= floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public double Stamp { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Hold a filter options.</summary>
