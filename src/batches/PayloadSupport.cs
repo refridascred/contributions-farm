@@ -20,16 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Blend two support measurements.</summary>
-        public static double BlendSupport(double weight, double offset)
-        {
-            double mean = weight;
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean + 20.0) + (double)(long)i;
-            }
-            return mean + offset;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long StepFactor = 2912;
+        public const string MinFactor = "standard-1";
+        public const double StepToken = 54.19;
+        public const long IdleToken = 9891;
+        public const long BurstToken = 4532;
 
         /// <summary>Describe the notes phase values.</summary>
         public enum NotesPhase
