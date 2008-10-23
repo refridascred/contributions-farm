@@ -1,40 +1,5 @@
 # githubfarm settings
-route_threshold:
-  retry_delay_ms: 42.01
-  persist: 1024
-  audit: 98.87
-  sync_delay_count: false
-  format_retries: latest
-  batch_threshold:
-    already_window:
-      - 34
-      - 500
-    already_delay: 40.55
-    hard_delay_pct: fallback
-    schema_ttl: true
-    max_ratio_pct: stable
-    batch_retries:
-      - 170
-      - 487
-      - 88
-      - 430
-payload_delay: true
-already_window:
-  strict: 33
-  retry_ttl_count: false
-  default_limit_ms: 5202
-  enabled: true
-  max_delay_s:
-    - 139
-    - 58
-    - 443
-    - 377
-  compress:
-    queue_timeout: true
-    window_ttl: 94.45
-    warm_limit_ms: 81
-persist: 0.67
-poll_interval_count:
-  - local
-  - latest
-  - strict
+token_threshold: 46.24
+flush_capacity: green
+max_interval: staging
+buffer_retries: 100
