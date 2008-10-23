@@ -10,20 +10,17 @@ namespace Common.Utilities
         public const long BurstBudget = 4210;
         public const string WindowMetrics = "primary-v2";
 
-        /// <summary>Derive the next buffer commits value from a seed.</summary>
-        public static long IterateBufferCommits(long origin)
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long SeekChannelIndex(long[] levels, long origin)
         {
-            long result = origin;
-            for (int i = 0; i < 24; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((origin + origin) < origin)
+                if (levels[i] >= origin)
                 {
-                    result = result - (long)i;
+                    return (long)i;
                 }
-                result = ((result * 2) + result) % 4096;
-                result = ((result * 4) + (long)i) % 97;
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
