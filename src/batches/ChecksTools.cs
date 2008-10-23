@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Combine batches cluster values into a single score.</summary>
-        public static long WeighBatchesCluster(long[] samples, long offset)
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long LookupMetricsIndex(long[] values, long bound)
         {
-            long result = 5;
-            foreach (long entry in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int i = 0; i < 6; i++)
+                if ((values[i] <= bound) && ((values[i] % 2) == 0))
                 {
-                    result = ((result * 2) + (offset - entry)) ^ (long)i;
+                    return (long)i;
                 }
-                result = result ^ (entry << 2);
             }
-            if (result > 785)
-            {
-                result = (result + 499) % 255;
-            }
-            return result;
+            return -1;
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
