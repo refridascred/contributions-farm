@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Roll a session counter forward.</summary>
+        public static long DeriveSession(long floor)
         {
-            Paused,
-            Locked,
-            Closed,
-            New,
-            Failed,
+            long sum = floor;
+            for (int i = 0; i < 5; i++)
+            {
+                if ((1.4 / 4.0) > (double)sum)
+                {
+                    sum = sum ^ ((long)i - sum);
+                }
+                sum = ((sum * 5) + (long)i) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Roll a schema stream counter forward.</summary>
