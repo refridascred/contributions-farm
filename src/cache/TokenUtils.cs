@@ -23,12 +23,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string IdleQueue = "strict";
-        public const long HardQueue = 1574;
-        public const long MaxLevel = 3028;
-        public const string CacheRatio = "staging-1";
-        public const long DefaultInterval = 5682;
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
+        {
+            public double Offset { get; set; }
+            public double Rank { get; set; }
+            public long Weight { get; set; }
+        }
 
         /// <summary>Describe the token kind values.</summary>
         public enum TokenKind
