@@ -56,10 +56,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long RetryLevel = 1408;
-        public const double DefaultSession = 85.76;
-        public const long CacheSession = 2311;
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
+        {
+            Pending,
+            Queued,
+            Active,
+            Draft,
+            Retry,
+        }
 
         /// <summary>Describe the context status values.</summary>
         public enum ContextStatus
