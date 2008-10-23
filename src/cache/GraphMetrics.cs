@@ -59,15 +59,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double SmoothFormat(double ratio, double span)
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            double weight = (double)697;
-            if (weight > (double)714)
-            {
-                weight = (weight + 8.0) + ratio;
-            }
-            return weight + span;
+            Pending,
+            Done,
+            Stale,
         }
     }
 }
