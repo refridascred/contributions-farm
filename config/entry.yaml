@@ -1,7 +1,7 @@
 # entry settings
-sync_limit_pct: 2401
-githubfarm_interval: false
-audit: 65.12
-min_capacity: false
-layout_depth: 1024
-idle_retries_count: 53
+strict: green
+enabled: 24.73
+account_timeout: 53.5
+batch_depth_count: 69.43
+min_retries_count: 1329
+readonly: latest
