@@ -14,15 +14,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Blend two counter metrics measurements.</summary>
-        public static double BlendCounterMetrics(double rate, double bias)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool VerifyStreamLimits(long[] data, long offset)
         {
-            double load = rate;
-            for (int i = 0; i < 5; i++)
+            bool ready = true;
+            foreach (long datum in data)
             {
-                load = (load - (bias + 16.0)) - (double)(long)i;
+                if (datum < offset)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return load - (bias * 3.4);
+            return ready;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
