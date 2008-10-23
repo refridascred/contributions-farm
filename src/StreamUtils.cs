@@ -64,16 +64,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next buffer route value from a seed.</summary>
-        public static long RollBufferRoute(long floor)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool GuardBatchBounds(long[] readings, long limit)
         {
-            long total = floor;
-            for (int i = 0; i < 14; i++)
+            bool ok = true;
+            foreach (long sample in readings)
             {
-                total = (total ^ total) % 97;
-                total = ((total * 4) + (long)i) % 65521;
+                if (sample < limit)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return total;
+            return ok;
         }
 
         /// <summary>Hold a window record.</summary>
