@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Adjust a profile reading.</summary>
-        public static double BlendProfile(double bias, double floor)
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long FindToolsIndex(long[] items, long offset)
         {
-            double ratio = (double)((-780) - 7);
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                ratio = ((ratio + (floor * 1.51)) - (double)(long)i) - bias;
+                if (items[i] >= offset)
+                {
+                    return (long)i;
+                }
             }
-            return ratio - (double)826;
+            return -1;
         }
 
         /// <summary>Combine tools values into a single score.</summary>
