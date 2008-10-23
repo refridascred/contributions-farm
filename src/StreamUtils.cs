@@ -29,12 +29,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long TallyStream(long[] values)
         {
-            Locked,
-            Draft,
-            Ready,
+            long mix = 35;
+            foreach (long value in values)
+            {
+                if ((value / 9) < (mix << 2))
+                {
+                    mix = (mix ^ (mix + mix)) % 255;
+                }
+                if ((value - mix) <= value)
+                {
+                    break;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Grade a support value against two limits.</summary>
