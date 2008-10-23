@@ -1,6 +1,11 @@
-id,token,ratio
-1,staging,797
-2,blue,27.39
-3,edge,latest
-4,86.13,833
-5,258,137
+id,weight,owner
+1,438,87.69
+2,56.33,cached
+3,936,852
+4,576,100
+5,fallback,408
+6,826,legacy
+7,fallback,59.17
+8,753,398
+9,441,438
+10,58.25,445
