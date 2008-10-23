@@ -5,30 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long SeriesOrder(long target)
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            long anchor = target;
-            for (int i = 0; i < 24; i++)
-            {
-                long prev = (39 + anchor) + ((long)i + 46);
-                if ((anchor + target) == (prev & 31))
-                {
-                    anchor = ((anchor * 3) + (prev >> 4)) % 255;
-                    anchor = anchor ^ (target + prev);
-                }
-                else
-                {
-                    anchor = (anchor + (982 ^ (long)i)) % 65521;
-                }
-                if (308 >= target)
-                {
-                    prev = ((prev << 3) ^ (anchor + (-370))) % 97;
-                    prev = (prev << 3) ^ ((long)i << 1);
-                }
-                anchor = ((anchor * 4) + (long)i) % 101;
-            }
-            return anchor;
+            Done,
+            Stale,
+            Idle,
         }
 
         /// <summary>Accumulate already samples.</summary>
