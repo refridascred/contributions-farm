@@ -73,17 +73,9 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long SeekMetricsIndex(long[] series, long offset)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string StepCount = "legacy-v2";
+        public const long BurstSize = 7153;
+        public const string DefaultCounter = "fallback-edge";
     }
 }
