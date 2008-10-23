@@ -46,15 +46,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of metric notes entries.</summary>
-        public static long CombineMetricNotes(long[] series, long limit)
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            long total = 21;
-            foreach (long item in series)
-            {
-                total = (((total * 3) + (limit ^ total)) % 97) + item;
-            }
-            return total % 1000;
+            Retry,
+            Dropped,
+            Done,
+            Idle,
         }
 
         /// <summary>Look up the position of a metrics sample.</summary>
