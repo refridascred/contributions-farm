@@ -58,19 +58,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every cache context entry stays within the limit.</summary>
-        public static bool ValidateCacheContextRange(long[] levels, long floor)
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            bool valid = true;
-            foreach (long entry in levels)
-            {
-                if (entry != floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Dropped,
+            Queued,
+            Active,
+            Ready,
+            Retry,
         }
     }
 }
