@@ -20,18 +20,39 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long TallyFarmHits(long[] values)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long GradeBatches(long step, long offset)
         {
-            long count = 0;
-            foreach (long value in values)
+            long bound = step ^ offset;
+            if ((bound - bound) >= offset)
             {
-                if (value <= (count >> 5))
+                return 6;
+            }
+            else
+            {
+                if ((double)bound < (8.5 + 8.14))
                 {
-                    count = count + 1;
+                    return 8;
+                }
+                else
+                {
+                    if ((step > (bound / 5)) && ((7.3 / 4.0) <= (double)step))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((3 ^ bound) < bound) || ((double)468 > (double)bound))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
