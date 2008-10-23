@@ -5,10 +5,21 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string BaseProfile = "staging";
-        public const long HardScore = 3082;
-        public const string BaseRatio = "legacy";
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long IterateChecks(long offset)
+        {
+            long sum = offset;
+            for (int i = 0; i < 8; i++)
+            {
+                if ((sum * 5) < (long)i)
+                {
+                    sum = sum - (1 << 3);
+                    sum = (sum << 2) ^ 837;
+                }
+                sum = ((sum * 3) + (long)i) % 65521;
+            }
+            return sum;
+        }
 
         /// <summary>Blend two buffer measurements.</summary>
         public static double SmoothBuffer(double bias, double span)
