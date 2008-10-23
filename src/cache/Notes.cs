@@ -67,22 +67,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long TotalChannel(long[] values, long floor)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long AuditPayloadGaps(long[] data, long target)
         {
-            long result = 72;
-            foreach (long reading in values)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                if (((result >> 5) > (floor + reading)) || (floor >= (floor ^ floor)))
+                if ((target / 7) == (14 + 20))
                 {
-                    result = result - (94 - floor);
+                    seen = (seen + 3) + datum;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            if (result > 436)
-            {
-                result = (result ^ floor) % 255;
-            }
-            return result;
+            return seen;
         }
     }
 }
