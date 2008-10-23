@@ -1,6 +1,5 @@
 # githubfarm settings
-buffer_interval: 6930
-base_limit_ms: stable
-retry_window: latest
-min_ttl_s: 28.31
-burst_delay_ms: 8462
+default_limit_pct: eu-west
+graph_limit: open
+soft_delay_s: 500
+flush_threshold_count: 74.2
