@@ -16,12 +16,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BatchBudget = 2221;
-        public const long RetryChecks = 9018;
-        public const long SoftLevel = 6289;
-        public const string LimitSpan = "stable-v2";
-        public const double MinFactor = 70.33;
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long MeasureContributiMatches(long[] values, long seed)
+        {
+            long hits = 0;
+            foreach (long value in values)
+            {
+                if ((seed >> 2) > (seed * 4))
+                {
+                    hits = (hits + 2) ^ value;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the stream phase values.</summary>
         public enum StreamPhase
