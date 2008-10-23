@@ -78,21 +78,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long PairStatsCount(long[] levels)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool ValidateChecksBounds(long[] samples, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool stale = true;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (item <= floor)
                 {
-                    if ((levels[i] - levels[j]) > 19)
-                    {
-                        tally = tally + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
     }
 }
