@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            Closed,
-            Locked,
-            Retry,
-            Pending,
-            Paused,
+            public double Rank { get; set; }
+            public bool Count { get; set; }
+            public string Token { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Describe the notes status values.</summary>
