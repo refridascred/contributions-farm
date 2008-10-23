@@ -21,26 +21,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long FoldRoute(long[] data)
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long SeekLayoutIndex(long[] series, long bound)
         {
-            long total = 56;
-            foreach (long datum in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((long)data.Length ^ total) < datum)
+                if (series[i] == bound)
                 {
-                    total = (total - total) % 4096;
-                }
-                if ((datum + datum) > (3 - total))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (total < 54)
-            {
-                total = (total ^ total) % 101;
-            }
-            return total % 97;
+            return -1;
         }
     }
 }
