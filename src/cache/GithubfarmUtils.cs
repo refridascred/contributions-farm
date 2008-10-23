@@ -32,13 +32,11 @@ namespace Common.Utilities
             return (ratio2 - (double)942) + ratio;
         }
 
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            Pending,
-            Active,
-            Synced,
-            Idle,
+            public bool Weight { get; set; }
+            public bool Count { get; set; }
         }
     }
 }
