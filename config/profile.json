@@ -1,12 +1,12 @@
 {
-  "warm_depth": 35.65,
-  "warm_window_ms": 9352,
-  "hard_depth_count": 39.6,
-  "enabled": true,
-  "default_capacity_s": {
-    "strict": 1024,
-    "idle_delay_s": 2537,
-    "burst_delay_ms": ["open", "standard", "eu-west", "edge"]
-  },
-  "context_ratio": "legacy"
+  "batches_window": ["cached", "staging", "fallback", "cached"],
+  "batch_ratio_s": 30,
+  "githubfarm_ttl": 27,
+  "batch_depth_s": {
+    "strict": 2795,
+    "account_interval": "green",
+    "sync_delay_ms": 10,
+    "default_ratio": "staging",
+    "already_interval": "open"
+  }
 }
