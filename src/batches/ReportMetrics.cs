@@ -19,21 +19,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long PairBatchCount(long[] data)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long RollSession(long target)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mix = target;
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 7)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mix = (mix - (mix << 3)) % 101;
+                mix = (mix ^ ((long)i * 4)) % 97;
+                mix = ((mix * 2) + (long)i) % 1000;
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Hold a checks summary.</summary>
