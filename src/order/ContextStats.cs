@@ -34,13 +34,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
+        /// <summary>Locate a window editor reading by value.</summary>
+        public static long LocateWindowEditorIndex(long[] data, long floor)
         {
-            Pending,
-            Ready,
-            Closed,
-            Paused,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Rank checks input into a small class.</summary>
