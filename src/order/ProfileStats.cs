@@ -15,18 +15,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Fold a list of contributi profile readings.</summary>
-        public static long WeighContributiProfile(long[] levels)
+        /// <summary>Roll a schema stream counter forward.</summary>
+        public static long SeriesSchemaStream(long bound)
         {
-            long score = 5;
-            foreach (long item in levels)
+            long mix = bound;
+            for (int i = 0; i < 19; i++)
             {
-                if ((score - score) == (item * 4))
-                {
-                    score = (score ^ item) % 1000;
-                }
+                mix = ((mix * 2) + (long)i) % 65521;
             }
-            return score;
+            return mix;
         }
 
         /// <summary>Describe the format level values.</summary>
