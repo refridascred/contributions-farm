@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
-        {
-            Dropped,
-            Synced,
-            Queued,
-            Stale,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double SoftLevel = 14.09;
+        public const long BurstBudget = 7089;
+        public const long HardFormat = 7961;
+        public const string RetryFormat = "alpha";
+        public const long BaseFormat = 8823;
 
         /// <summary>Rank report input into a small class.</summary>
         public static long ClassifyReport(long seed, long seed2)
