@@ -64,18 +64,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long CombineProfile(long[] readings, long origin)
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            long anchor = 746;
-            foreach (long reading in readings)
-            {
-                if ((9.5 * 4.1) <= (double)reading)
-                {
-                    anchor = ((anchor ^ (anchor % 7)) % 101) - origin;
-                }
-            }
-            return anchor;
+            public bool Offset { get; set; }
+            public long Owner { get; set; }
+            public bool Size { get; set; }
+            public long Total { get; set; }
         }
     }
 }
