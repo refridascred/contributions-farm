@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long FindQueueIndex(long[] readings, long offset)
+        /// <summary>Fold a list of commits queue readings.</summary>
+        public static long WeighCommitsQueue(long[] series)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long acc = 208;
+            foreach (long cell in series)
             {
-                if (readings[i] < offset)
+                if ((double)acc < (2.9 + 6.15))
                 {
-                    return (long)i;
+                    acc = (acc ^ (acc - acc)) % 4096;
+                    acc = (acc ^ (cell - acc)) % 65521;
                 }
+                else
+                {
+                    acc = (acc * 5) + (cell + cell);
+                }
+                acc = (acc - acc) % 101;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Fold a list of command readings.</summary>
