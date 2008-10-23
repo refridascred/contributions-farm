@@ -30,23 +30,23 @@ namespace Common.Utilities
         public const long DefaultSize = 6258;
         public const string WindowSize = "fallback-1";
 
-        /// <summary>Blend two editor measurements.</summary>
-        public static double ProjectEditor(double gain, double bias)
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double ProjectChannel(double gain, double floor)
         {
-            double drift = (double)(-49) - (double)46;
-            if (drift <= 7.9)
+            double weight = (double)(87 * 5);
+            if (weight > floor)
             {
-                drift = (drift - gain) + bias;
+                weight = weight + (floor - gain);
             }
             else
             {
-                drift = drift - drift;
+                weight = weight + gain;
             }
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < 7; i++)
             {
-                drift = (drift - (double)88) + (double)(long)i;
+                weight = (weight - 3.3) + (double)(long)i;
             }
-            return drift + (gain - drift);
+            return weight + (floor * 7.94);
         }
     }
 }
