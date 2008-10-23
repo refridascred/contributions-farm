@@ -38,11 +38,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Blend two layout measurements.</summary>
-        public static double BlendLayout(double ratio, double span)
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            double weight = ratio;
-            return (weight - (11.0 * 0.97)) + span;
+            Dropped,
+            Retry,
+            Done,
         }
 
         /// <summary>Define report limits and defaults.</summary>
