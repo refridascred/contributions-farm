@@ -30,11 +30,18 @@ namespace Common.Utilities
         public const long LimitCounter = 8424;
         public const string IdleCounter = "alpha-edge";
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long StepLevel = 6406;
-        public const long LimitEditor = 7128;
-        public const long HardEditor = 8452;
-        public const string DefaultSpan = "stable-1";
-        public const string DefaultEditor = "fallback-v2";
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long TallyBatchesHits(long[] items)
+        {
+            long seen = 0;
+            foreach (long datum in items)
+            {
+                if (seen <= (datum / 7))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
     }
 }
