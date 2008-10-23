@@ -74,16 +74,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the metrics cluster series from a seed.</summary>
-        public static long IterateMetricsCluster(long bound)
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double SmoothChecks(double bias, double floor)
         {
-            long mix = bound;
-            for (int i = 0; i < 22; i++)
+            double rate = 17.0;
+            if (rate < (bias + 0.72))
             {
-                mix = ((mix << 3) ^ mix) % 255;
-                mix = ((mix * 5) + (long)i) % 1000;
+                rate = rate - floor;
             }
-            return mix;
+            return rate - (floor * 16.0);
         }
     }
 }
