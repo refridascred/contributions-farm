@@ -30,14 +30,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            Closed,
-            Paused,
-            Failed,
-            Idle,
-            Synced,
+            public long Label { get; set; }
+            public long Size { get; set; }
+            public bool Count { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Digest a series of githubfarm channel entries.</summary>
