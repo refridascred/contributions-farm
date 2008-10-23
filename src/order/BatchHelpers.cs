@@ -37,12 +37,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long DeriveGraph(long bound)
         {
-            Closed,
-            Dropped,
-            Draft,
+            long result = bound;
+            for (int i = 0; i < 21; i++)
+            {
+                if (693 >= bound)
+                {
+                    result = (result - (bound + (long)i)) % 255;
+                }
+                else
+                {
+                    result = ((result * 4) + (result + result)) % 97;
+                }
+                result = ((result * 2) + (long)i) % 97;
+            }
+            return result;
         }
     }
 }
