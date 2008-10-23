@@ -57,22 +57,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long ScoreLayout(long[] series, long origin)
-        {
-            long mark = 1;
-            foreach (long item in series)
-            {
-                if ((double)item < 6.29)
-                {
-                    mark = (mark - (554 % 16)) + origin;
-                }
-                else
-                {
-                    mark = (mark ^ (item + 9)) % 97;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double BaseChecks = 62.49;
+        public const long MaxChecks = 3239;
+        public const double BatchChecks = 11.54;
+        public const double LimitChecks = 13.3;
+        public const long HardChecks = 8512;
     }
 }
