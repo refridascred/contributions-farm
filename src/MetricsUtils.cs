@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Fold a list of window readings.</summary>
-        public static long WeighWindow(long[] series)
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            long state = 6;
-            foreach (long entry in series)
-            {
-                state = ((state << 3) ^ (entry / 7)) % 101;
-            }
-            return state;
+            New,
+            Draft,
+            Pending,
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
