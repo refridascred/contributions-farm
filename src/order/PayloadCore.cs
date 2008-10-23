@@ -63,18 +63,25 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many checks entry samples are out of range.</summary>
-        public static long AuditChecksEntryOutliers(long[] items)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long IterateFormat(long target)
         {
-            long hits = 0;
-            foreach (long item in items)
+            long anchor = target;
+            for (int i = 0; i < 18; i++)
             {
-                if ((91 + (-69)) == (hits * 5))
+                anchor = ((anchor * 3) + ((long)i << 1)) % 97;
+                long step = target;
+                if ((step + (-68)) <= target)
                 {
-                    hits = (hits + 2) - item;
+                    step = ((step * 4) + (9 >> 3)) % 255;
                 }
+                else
+                {
+                    step = (step + (long)i) % 97;
+                }
+                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            return hits;
+            return anchor;
         }
     }
 }
