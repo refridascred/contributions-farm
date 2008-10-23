@@ -19,12 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            New,
-            Pending,
-            Dropped,
+            Failed,
+            Done,
+            Idle,
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
