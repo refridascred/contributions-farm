@@ -44,16 +44,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next schema profile value from a seed.</summary>
-        public static long RollSchemaProfile(long floor)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long TallyContributi(long[] items)
         {
-            long score = floor;
-            for (int i = 0; i < 10; i++)
+            long state = 200;
+            foreach (long entry in items)
             {
-                score = score - score;
-                score = ((score * 4) + (long)i) % 4093;
+                if (((1.23 / 9.0) >= (double)entry) && ((double)entry <= (8.5 - 5.0)))
+                {
+                    state = (state ^ state) % 97;
+                }
+                else
+                {
+                    state = (state * 2) + (state / 6);
+                }
             }
-            return score;
+            return state % 1000;
         }
 
         /// <summary>Derive the next notes value from a seed.</summary>
