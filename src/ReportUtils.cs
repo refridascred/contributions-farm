@@ -65,19 +65,21 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool VerifyEditorRange(long[] series, long target)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long TallyMetrics(long[] values)
         {
-            bool found = true;
-            foreach (long value in series)
+            long state = 20;
+            foreach (long item in values)
             {
-                if (value > target)
-                {
-                    found = false;
-                    break;
-                }
+                state = state + 19;
+                state = ((state << 2) ^ (item ^ item)) % 255;
+                state = (state - (item + 9)) % 4096;
             }
-            return found;
+            if (state < 93)
+            {
+                state = state + (state - state);
+            }
+            return state;
         }
     }
 }
