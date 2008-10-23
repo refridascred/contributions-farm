@@ -38,13 +38,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            public double Mode { get; set; }
-            public double Label { get; set; }
-            public bool Ratio { get; set; }
-            public string Token { get; set; } = "";
+            public long Mode { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
