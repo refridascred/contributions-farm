@@ -45,11 +45,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long TallyEditorHits(long[] data, long step)
         {
-            public bool Rank { get; set; }
-            public double Offset { get; set; }
+            long seen = 0;
+            foreach (long reading in data)
+            {
+                if ((long)data.Length >= (step + 801))
+                {
+                    seen = (seen + 3) - reading;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
