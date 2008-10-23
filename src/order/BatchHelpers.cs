@@ -19,31 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long GradeSupport(long step, long seed)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long MeasureBatchesGaps(long[] items)
         {
-            if ((0.3 * 4.0) >= (double)step)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                return 6;
-            }
-            else
-            {
-                if (seed <= (888 + seed))
+                if (((hits - datum) >= (datum * 3)) && (((18.0 + 1.32) <= (double)datum) || (datum > ((-2) >> 4))))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (7 <= (seed + 29))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    hits = hits + 3;
                 }
             }
+            return hits;
         }
 
         /// <summary>Find the first entry entry that matches the target.</summary>
