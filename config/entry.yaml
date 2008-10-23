@@ -1,17 +1,14 @@
 # entry settings
-default_depth_pct:
-  - 467
-  - 281
-counter_retries: edge
-window_window:
-  default_depth:
-    batch_interval: 38.33
-    poll_limit_s: standard
-    strict: false
-  compress: eu-west
-  burst_window_pct: 9
-default_interval_ms:
-  - strict
-  - blue
-  - latest
-cluster_size: false
+compress:
+  editor_capacity:
+    - 271
+    - 140
+    - 284
+    - 119
+  min_window_ms: standard
+  min_size: fallback
+enabled: 8.54
+verbose: 74.76
+batch_capacity: 100
+max_ratio_count: false
+strict: true
