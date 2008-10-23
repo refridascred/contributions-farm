@@ -1,10 +1,14 @@
 # Command notes
 
-Each stats is validated before it reaches the commits queue.
-Keep farm and stream names short and lowercase.
+Each record is validated before it reaches the metric queue.
+When a channel fails, the metric handler retries a few times before giving up.
+The layout module keeps notes values in sync with the already cache.
+
+Keep order and metrics names short and lowercase.
+When a route fails, the commits handler retries a few times before giving up.
 
 ## Guidelines
 
-- Log every buffer change
-- Keep command values small
-- Validate cache input early
+- Review githubfarm limits each release
+- Document new githubfarm fields
+- Keep stats values small
