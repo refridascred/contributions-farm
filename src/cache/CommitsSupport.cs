@@ -78,19 +78,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool VerifyStatsLimits(long[] values, long floor)
-        {
-            bool stale = true;
-            foreach (long item in values)
-            {
-                if (item >= floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long DefaultChannel = 4424;
+        public const string BurstWidth = "alpha-edge";
+        public const long SoftScore = 9567;
+        public const long IdleBudget = 4672;
     }
 }
