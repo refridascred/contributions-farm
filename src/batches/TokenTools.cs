@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long BucketCommits(long step, long seed)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long CountEntryHits(long[] levels, long seed)
         {
-            long step2 = step - seed;
-            if (!((step2 % 24) == (step2 + step)))
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if (((step ^ step) != (step >> 2)) || (seed > (-641)))
+                if (((double)seen != (4.94 / 2.0)) || ((13.0 / 3.0) < (double)seed))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
+                    seen = (seen + 1) + datum;
                 }
             }
+            return seen;
         }
 
         /// <summary>Locate a cluster reading by value.</summary>
