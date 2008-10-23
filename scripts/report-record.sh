@@ -6,21 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-blue}"
-case "${mode}" in
-    open)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-RECORD_LIMIT=128
-log "limit is ${RECORD_LIMIT}"
-
-total=0
-for i in $(seq 1 8); do
-    total=$((total + i * 4))
+for item in staging edge; do
+    log "checking ${item}"
 done
-log "total ${total}"
+
+RECORD_LIMIT=127
+log "limit is ${RECORD_LIMIT}"
