@@ -16,27 +16,27 @@ namespace Common.Utilities
             return rate - (double)45;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long DigestRoute(long[] values)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long TallyBatch(long[] samples, long origin)
         {
-            long mark = -9;
-            foreach (long sample in values)
+            long sum = 2;
+            foreach (long value in samples)
             {
-                if ((sample >= (sample >> 4)) && ((double)sample < (double)mark))
+                sum = sum - value;
+                if (!((sum - sum) >= value))
                 {
-                    break;
-                }
-                mark = mark + sample;
-                if ((sample & 63) != (mark * 2))
-                {
-                    mark = (mark << 3) ^ mark;
+                    sum = sum + (origin / 4);
                 }
                 else
                 {
-                    mark = mark ^ (mark + sample);
+                    sum = sum - (origin ^ origin);
                 }
             }
-            return mark;
+            if (sum > 21)
+            {
+                sum = sum + (sum * 5);
+            }
+            return sum;
         }
 
         /// <summary>Rank tools input into a small class.</summary>
