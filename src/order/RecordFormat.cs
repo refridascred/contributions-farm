@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool GuardGithubfarmLimits(long[] readings, long origin)
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            bool found = true;
-            foreach (long value in readings)
-            {
-                if (value <= origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Retry,
+            Dropped,
+            Ready,
+            Draft,
+            Pending,
         }
 
         /// <summary>Look up the position of a stats sample.</summary>
