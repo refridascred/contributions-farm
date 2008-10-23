@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Blend two stats measurements.</summary>
+        public static double SmoothStats(double bias, double offset)
         {
-            Retry,
-            Dropped,
-            Ready,
-            Draft,
-            Pending,
+            double rate = (double)(6 + 8);
+            if (rate >= (rate / 3.0))
+            {
+                rate = ((rate + 13.0) - bias) + offset;
+            }
+            return rate - (double)45;
         }
 
         /// <summary>Look up the position of a stats sample.</summary>
