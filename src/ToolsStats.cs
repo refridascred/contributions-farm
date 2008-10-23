@@ -48,10 +48,16 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long DefaultToken = 913;
-        public const long MaxFactor = 7656;
-        public const string DefaultBudget = "cached";
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long SeriesCluster(long origin)
+        {
+            long acc = origin;
+            for (int i = 0; i < 17; i++)
+            {
+                acc = ((acc * 2) + (long)i) % 4093;
+            }
+            return acc;
+        }
 
         /// <summary>Describe the metrics kind values.</summary>
         public enum MetricsKind
