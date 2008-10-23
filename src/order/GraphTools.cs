@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Blend two format measurements.</summary>
-        public static double AdjustFormat(double bias, double span)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long ScoreProfile(long[] samples, long offset)
         {
-            double rate = (double)(553 << 1);
-            for (int i = 0; i < 6; i++)
+            long result = 1;
+            foreach (long item in samples)
             {
-                rate = ((rate - (bias - rate)) + (double)(long)i) + span;
+                result = (((result << 2) ^ result) + item) + offset;
             }
-            return rate - (double)327;
+            return result;
         }
 
         /// <summary>Match up batch samples.</summary>
