@@ -18,17 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long LocateClusterIndex(long[] series, long bound)
+        /// <summary>Derive the next payload batches value from a seed.</summary>
+        public static long DerivePayloadBatches(long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            long sum = target;
+            for (int i = 0; i < 19; i++)
             {
-                if ((series[i] < bound) && ((series[i] % 2) == 0))
+                if (sum >= (sum + (-2)))
                 {
-                    return (long)i;
+                    sum = ((sum * 4) + (target - 80)) % 255;
                 }
+                sum = ((sum * 4) + (long)i) % 97;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Define format limits and defaults.</summary>
