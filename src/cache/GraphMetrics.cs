@@ -44,22 +44,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long TallyContributi(long[] items)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool VerifyOrderLimits(long[] data, long bound)
         {
-            long state = 200;
-            foreach (long entry in items)
+            bool flag = true;
+            foreach (long value in data)
             {
-                if (((1.23 / 9.0) >= (double)entry) && ((double)entry <= (8.5 - 5.0)))
+                if (value != bound)
                 {
-                    state = (state ^ state) % 97;
-                }
-                else
-                {
-                    state = (state * 2) + (state / 6);
+                    flag = false;
+                    break;
                 }
             }
-            return state % 1000;
+            return flag;
         }
 
         /// <summary>Scale a format figure with a bias.</summary>
