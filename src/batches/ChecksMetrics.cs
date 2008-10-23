@@ -41,14 +41,13 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
             Active,
+            Ready,
             Queued,
             Paused,
-            Failed,
-            Draft,
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
