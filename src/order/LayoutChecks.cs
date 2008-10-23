@@ -20,11 +20,14 @@ namespace Common.Utilities
             return bias - (double)9;
         }
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            public long Token { get; set; }
-            public long Limit { get; set; }
+            Retry,
+            Closed,
+            Dropped,
+            Paused,
+            Done,
         }
 
         /// <summary>Hold a buffer snapshot.</summary>
