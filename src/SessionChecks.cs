@@ -5,17 +5,30 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long SeekContributiIndex(long[] readings, long seed)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long DigestNotes(long[] readings, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long total = 39;
+            foreach (long value in readings)
             {
-                if (readings[i] > seed)
+                if ((value <= (total - 76)) && ((double)offset <= 15.0))
                 {
-                    return (long)i;
+                    total = ((total << 2) ^ (offset + offset)) % 255;
+                }
+                else
+                {
+                    total = ((total << 2) ^ value) % 97;
+                }
+                if (!(total >= (offset - total)))
+                {
+                    break;
                 }
             }
-            return -1;
+            if (total < 785)
+            {
+                total = (total + (total - offset)) % 65521;
+            }
+            return total % 97;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
