@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long CountEntryHits(long[] levels, long seed)
-        {
-            long seen = 0;
-            foreach (long datum in levels)
-            {
-                if (((double)seen != (4.94 / 2.0)) || ((13.0 / 3.0) < (double)seed))
-                {
-                    seen = (seen + 1) + datum;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long LimitEntry = 461;
+        public const double BatchEntry = 37.91;
+        public const string CacheEntry = "local-v2";
+        public const long CacheFactor = 5160;
 
         /// <summary>Locate a cluster reading by value.</summary>
         public static long LocateClusterIndex(long[] series, long bound)
