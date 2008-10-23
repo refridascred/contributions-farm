@@ -1,12 +1,11 @@
 {
-  "already_size": 32.13,
-  "dry_run": ["local", "eu-west"],
-  "context_window": 3334,
-  "commits_capacity": {
-    "default_ttl_s": "local",
-    "dry_run": false,
-    "audit": "staging",
-    "buffer_size": ["local", "edge", "staging"]
-  },
-  "flush_depth": false
+  "tools_size": 58.69,
+  "sync_timeout_count": 97,
+  "audit": 89.28,
+  "max_capacity_ms": {
+    "min_delay_s": 35.77,
+    "persist": 12.36,
+    "min_depth_ms": 5116,
+    "graph_size": 66.09
+  }
 }
