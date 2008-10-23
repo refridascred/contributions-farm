@@ -1,6 +1,6 @@
 {
-  "min_ratio_s": false,
-  "idle_delay_pct": false,
-  "enabled": 1024,
-  "graph_timeout": 250
+  "metric_limit": false,
+  "payload_retries": ["latest", "blue"],
+  "burst_timeout_ms": 500,
+  "entry_limit": 100
 }
