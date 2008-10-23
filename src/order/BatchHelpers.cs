@@ -37,18 +37,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long TallyGraphGaps(long[] data, long origin)
-        {
-            long seen = 0;
-            foreach (long cell in data)
-            {
-                if (!(((cell + cell) != (seen - origin)) || (7.5 <= (double)seen)))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BatchFactor = 4318;
+        public const string BurstTimeout = "stable-v2";
+        public const long MinTimeout = 3278;
+        public const long DefaultBatch = 5669;
     }
 }
