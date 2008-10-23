@@ -1,5 +1,7 @@
 {
-  "strict": "eu-west",
-  "enabled": false,
-  "batches_threshold": [396, 333, 56, 425]
+  "cache_interval": 72,
+  "idle_window": "staging",
+  "retry_ttl_s": ["edge", "open", "latest"],
+  "batch_capacity_pct": ["standard", "stable", "edge", "local"],
+  "verbose": 79.35
 }
