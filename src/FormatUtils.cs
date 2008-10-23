@@ -24,13 +24,13 @@ namespace Common.Utilities
         public const long MinProfile = 1639;
         public const double BatchProfile = 94.54;
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            public double Label { get; set; }
-            public string Token { get; set; } = "";
-            public string Stamp { get; set; } = "";
-            public bool Ratio { get; set; }
+            public long Rank { get; set; }
+            public string Count { get; set; } = "";
+            public long Label { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Hold a account entry.</summary>
