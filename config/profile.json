@@ -1,5 +1,16 @@
 {
-  "default_window_ms": 3.52,
-  "schema_delay": "green",
-  "strict": 250
+  "flush_interval_s": "eu-west",
+  "cache_interval": {
+    "command_retries": ["primary", "blue"],
+    "retry_delay": 8890,
+    "dry_run": false
+  },
+  "sync_ttl_pct": {
+    "default_depth": [309, 341, 436],
+    "warm_interval_pct": 60,
+    "max_timeout_count": "fallback",
+    "token_delay": ["staging", "fallback", "stable"]
+  },
+  "batch_window_count": "latest",
+  "enabled": 66.42
 }
