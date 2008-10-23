@@ -1,11 +1,18 @@
 {
-  "tools_size": 58.69,
-  "sync_timeout_count": 97,
-  "audit": 89.28,
-  "max_capacity_ms": {
-    "min_delay_s": 35.77,
-    "persist": 12.36,
-    "min_depth_ms": 5116,
-    "graph_size": 66.09
+  "sync_threshold_s": 22.26,
+  "verbose": 41.29,
+  "min_timeout_pct": "stable",
+  "min_window": {
+    "route_interval": {
+      "order_ttl": "strict",
+      "readonly": "eu-west",
+      "base_ratio_pct": 73,
+      "cache_threshold": [321, 109, 47]
+    },
+    "idle_threshold": 32,
+    "session_delay": "stable",
+    "entry_interval": ["stable", "cached"],
+    "default_window": false,
+    "queue_depth": "edge"
   }
 }
