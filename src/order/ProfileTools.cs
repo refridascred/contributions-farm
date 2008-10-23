@@ -22,13 +22,17 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Locate a window reading by value.</summary>
+        public static long FindWindowIndex(long[] samples, long floor)
         {
-            public string Stamp { get; set; } = "";
-            public double Owner { get; set; }
-            public string Offset { get; set; } = "";
-            public double Limit { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Rank queue input into a small class.</summary>
