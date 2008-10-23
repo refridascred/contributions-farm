@@ -1,5 +1,5 @@
 {
-  "channel_delay": ["primary", "legacy"],
-  "readonly": 73.04,
-  "batch_timeout_pct": "local"
+  "base_depth_pct": false,
+  "profile_ttl": false,
+  "dry_run": 60
 }
