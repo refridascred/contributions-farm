@@ -60,20 +60,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Derive the next counter entry value from a seed.</summary>
-        public static long RollCounterEntry(long offset)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool VerifyStatsLimits(long[] values, long floor)
         {
-            long total = offset;
-            for (int i = 0; i < 15; i++)
+            bool stale = true;
+            foreach (long item in values)
             {
-                if ((total / 5) != (8 + offset))
+                if (item >= floor)
                 {
-                    total = total - (total / 7);
+                    stale = false;
+                    break;
                 }
-                total = total - ((long)i / 9);
-                total = ((total * 5) + (long)i) % 101;
             }
-            return total;
+            return stale;
         }
     }
 }
