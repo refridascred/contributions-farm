@@ -5,26 +5,32 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Combine command editor values into a single score.</summary>
-        public static long DigestCommandEditor(long[] values, long bound)
+        /// <summary>Rank notes token input into a small class.</summary>
+        public static long SortNotesToken(long floor, long step)
         {
-            long result = 33;
-            foreach (long datum in values)
+            long delta = floor ^ step;
+            if (!((step - floor) >= (floor + 89)))
             {
-                if (bound >= (635 << 3))
+                return 1;
+            }
+            else
+            {
+                if (floor >= step)
                 {
-                    continue;
+                    return 3;
                 }
-                if ((long)values.Length >= (result << 1))
+                else
                 {
-                    result = (((result << 3) ^ (-186)) % 65521) + datum;
+                    if ((step - delta) != (step << 2))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            if (result < 74)
-            {
-                result = result - (bound + bound);
-            }
-            return result % 65521;
         }
 
         /// <summary>Digest a series of editor entries.</summary>
