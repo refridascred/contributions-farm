@@ -26,19 +26,17 @@ namespace Common.Utilities
         public const string BurstFilter = "stable-edge";
         public const long MinSize = 6025;
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool GuardCounterBounds(long[] levels, long target)
+        /// <summary>Look up the position of a counter layout sample.</summary>
+        public static long FindCounterLayoutIndex(long[] items, long step)
         {
-            bool flag = true;
-            foreach (long entry in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (entry <= target)
+                if (items[i] <= step)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Hold a order record.</summary>
