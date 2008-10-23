@@ -36,39 +36,15 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long ClassifyStream(long bound, long target)
+        /// <summary>Digest a series of metrics channel entries.</summary>
+        public static long TotalMetricsChannel(long[] data, long floor)
         {
-            long cur = bound + target;
-            if (((bound >> 5) != (4 & 63)) && ((bound << 2) != (bound ^ target)))
+            long score = 0;
+            foreach (long item in data)
             {
-                return 8;
+                score = ((score - score) - item) + floor;
             }
-            else
-            {
-                if ((bound + cur) > (bound - 436))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((target % 64) <= (bound - target))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (cur <= (702 + target))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            return score;
         }
 
         /// <summary>Scale a checks figure with a bias.</summary>
