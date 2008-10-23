@@ -41,19 +41,31 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool VerifyContextLimits(long[] samples, long limit)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long RankChannel(long seed, long target)
         {
-            bool valid = true;
-            foreach (long reading in samples)
+            if ((seed ^ target) > (target + target))
             {
-                if (reading <= limit)
+                return 7;
+            }
+            else
+            {
+                if ((391 + seed) < (7 & 7))
                 {
-                    valid = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if ((double)seed <= 16.0)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Combine metric values into a single score.</summary>
