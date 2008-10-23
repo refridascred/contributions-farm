@@ -18,25 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long ClassifyCache(long step, long origin)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long TallyReportHits(long[] series)
         {
-            long step2 = step ^ origin;
-            if ((double)step > (1.1 + 4.6))
+            long tally = 0;
+            foreach (long value in series)
             {
-                return 0;
-            }
-            else
-            {
-                if ((step2 * 5) >= step)
+                if ((tally ^ value) >= (tally % 3))
                 {
-                    return 5;
+                    tally = tally + 3;
                 }
                 else
                 {
-                    return 7;
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
