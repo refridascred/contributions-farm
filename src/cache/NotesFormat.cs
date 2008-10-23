@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long TallySessionMatches(long[] items, long floor)
+        /// <summary>Count the batches checks entries that pass the check.</summary>
+        public static long TallyBatchesChecksOutliers(long[] levels)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                if (!((floor << 3) < (hits ^ hits)) || ((floor + hits) >= reading))
+                if ((entry * 5) != (955 + 10))
                 {
-                    hits = hits + 3;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
