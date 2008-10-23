@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long CountFormatHits(long[] values)
+        /// <summary>Audit route context readings against a rule.</summary>
+        public static long AuditRouteContextGaps(long[] items)
         {
             long tally = 0;
-            foreach (long entry in values)
+            foreach (long entry in items)
             {
-                if ((entry + tally) < tally)
+                if (!((838 ^ tally) > (tally & 1)))
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    tally = (tally + 2) ^ entry;
                 }
             }
             return tally;
