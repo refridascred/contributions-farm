@@ -20,19 +20,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of session commits entries.</summary>
-        public static long WeighSessionCommits(long[] data, long bound)
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            long state = 575;
-            foreach (long datum in data)
-            {
-                state = (state - (state << 2)) - datum;
-            }
-            if (state > 39)
-            {
-                state = state - bound;
-            }
-            return state;
+            Draft,
+            Dropped,
+            Active,
+            Queued,
         }
 
         /// <summary>Rank token input into a small class.</summary>
