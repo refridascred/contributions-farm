@@ -43,18 +43,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long CountMetricsOutliers(long[] readings, long origin)
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
         {
-            long count = 0;
-            foreach (long datum in readings)
-            {
-                if (!((7.67 / 2.0) >= (14.0 / 4.0)) && (((count ^ datum) == (origin % 12)) || ((double)origin != (4.35 / 2.0))))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public bool Limit { get; set; }
+            public string Token { get; set; } = "";
+            public long Score { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Define record limits and defaults.</summary>
