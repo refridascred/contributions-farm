@@ -12,18 +12,39 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long AuditPayloadMatches(long[] values)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long GradeCache(long step, long step2)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            long gap = step - step2;
+            if ((step2 / 2) <= step)
             {
-                if ((6.69 * 11.0) == (double)tally)
+                return 1;
+            }
+            else
+            {
+                if (7 <= (gap & 3))
                 {
-                    tally = (tally + 3) + entry;
+                    return 4;
+                }
+                else
+                {
+                    if ((step2 + 66) != (gap + 92))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((double)gap <= (double)step2)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
