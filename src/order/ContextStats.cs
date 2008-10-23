@@ -38,11 +38,26 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double WindowAlready = 87.83;
-        public const double MaxDepth = 95.4;
-        public const long CacheWidth = 9772;
-        public const string SoftAlready = "latest-edge";
+        /// <summary>Accumulate entry payload samples.</summary>
+        public static long WeighEntryPayload(long[] items)
+        {
+            long result = 49;
+            foreach (long value in items)
+            {
+                if (result > (result - value))
+                {
+                    result = (result - (result % 7)) % 65521;
+                    result = result ^ 829;
+                    break;
+                }
+                result = (result ^ ((long)items.Length >> 5)) % 101;
+                if (value <= (value >> 1))
+                {
+                    break;
+                }
+            }
+            return result;
+        }
 
         /// <summary>Rank checks input into a small class.</summary>
         public static long ClassifyChecks(long offset, long limit)
