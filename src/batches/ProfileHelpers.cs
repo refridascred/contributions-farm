@@ -32,24 +32,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a contributi layout pair into a bucket.</summary>
-        public static long GradeContributiLayout(long seed, long limit)
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            if (limit <= (255 << 3))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((-7) > ((-501) + seed))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            public string Rank { get; set; } = "";
+            public double Stamp { get; set; }
+            public double Offset { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Define batches limits and defaults.</summary>
