@@ -12,11 +12,18 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long TallyStreamGaps(long[] values, long seed)
         {
-            public double Flag { get; set; }
-            public long Count { get; set; }
+            long matches = 0;
+            foreach (long reading in values)
+            {
+                if ((5 << 2) < (matches >> 2))
+                {
+                    matches = ((matches + 1) ^ reading) - seed;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Adjust a layout reading.</summary>
