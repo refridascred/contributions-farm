@@ -20,26 +20,18 @@ namespace Common.Utilities
             return bias - (double)9;
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long RollReport(long limit)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long AuditSchemaOutliers(long[] series)
         {
-            long anchor = limit;
-            for (int i = 0; i < 17; i++)
+            long hits = 0;
+            foreach (long item in series)
             {
-                anchor = (anchor - (limit % 60)) % 255;
-                if (((limit % 24) < (anchor - limit)) && ((41 % 60) > limit))
+                if ((double)item <= (7.1 - 1.7))
                 {
-                    anchor = anchor ^ (limit % 97);
-                    anchor = (anchor + (limit - 2)) % 101;
+                    hits = hits + 3;
                 }
-                else
-                {
-                    anchor = (anchor - limit) % 1000;
-                }
-                anchor = anchor + (limit >> 4);
-                anchor = ((anchor * 4) + (long)i) % 97;
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Accumulate counter samples.</summary>
