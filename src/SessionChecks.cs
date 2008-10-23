@@ -15,22 +15,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long AuditCounterGaps(long[] samples)
+        /// <summary>Check that every batch metrics entry stays within the limit.</summary>
+        public static bool GuardBatchMetricsRange(long[] samples, long origin)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            bool stale = true;
+            foreach (long item in samples)
             {
-                if ((matches <= datum) && ((4.65 * 5.0) > (double)datum))
+                if (item > origin)
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
