@@ -55,11 +55,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BaseFactor = 1956;
-        public const long BaseRatio = 8429;
-        public const long LimitWidth = 8696;
-        public const double LimitGraph = 42.42;
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
+        {
+            New,
+            Paused,
+            Retry,
+        }
 
         /// <summary>Derive the next schema value from a seed.</summary>
         public static long DeriveSchema(long origin)
