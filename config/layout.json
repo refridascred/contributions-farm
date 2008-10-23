@@ -1,5 +1,7 @@
 {
-  "strict": "cached",
-  "sync_limit_pct": 55.04,
-  "persist": 30
+  "sync_timeout_ms": 61,
+  "enabled": 5710,
+  "dry_run": false,
+  "checks_ttl": [9, 453, 422],
+  "idle_window_pct": 6516
 }
