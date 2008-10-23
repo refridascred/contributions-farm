@@ -27,12 +27,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double BaseBudget = 41.68;
-        public const long BatchTimeout = 898;
-        public const string WindowInterval = "standard";
-        public const long WindowWidth = 8403;
-        public const string StepBatches = "standard-1";
+        /// <summary>Match up tools samples.</summary>
+        public static long CompareToolsCount(long[] levels)
+        {
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) < 18)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
         public static bool VerifyToolsBounds(long[] levels, long floor)
