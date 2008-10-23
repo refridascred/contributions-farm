@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long WeighChannel(long[] items, long seed)
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long LocateBatchesIndex(long[] data, long floor)
         {
-            long score = 12;
-            foreach (long entry in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                score = ((score + (score + score)) % 1000) ^ entry;
-                if ((score & 63) <= (seed & 15))
+                if (data[i] == floor)
                 {
-                    score = score + (seed - seed);
+                    return (long)i;
                 }
             }
-            return score % 1000;
+            return -1;
         }
 
         /// <summary>Fold a list of support readings.</summary>
