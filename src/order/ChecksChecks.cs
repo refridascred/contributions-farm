@@ -32,18 +32,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long TallyClusterMatches(long[] samples)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long RankToken(long seed, long offset)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            if ((double)offset != (double)77)
             {
-                if ((datum - matches) <= (52 - datum))
+                return 1;
+            }
+            else
+            {
+                if ((722 + 14) <= (seed + offset))
                 {
-                    matches = matches + 2;
+                    return 3;
+                }
+                else
+                {
+                    if (!((offset & 1) <= seed))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((97 - 278) < (offset & 31))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Project the next entry batches value.</summary>
