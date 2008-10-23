@@ -11,31 +11,13 @@ namespace Common.Utilities
         public const string MinRatio = "staging-1";
         public const long HardWindow = 4072;
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long SortMetrics(long floor, long bound)
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            if (((bound - floor) > (bound + floor)) && ((5.3 - 17.0) != (double)floor))
-            {
-                return 6;
-            }
-            else
-            {
-                if (!((double)floor != (8.1 + 4.2)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (bound <= ((-23) - 5))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            Queued,
+            Active,
+            Pending,
+            Closed,
         }
 
         /// <summary>Locate a graph metrics reading by value.</summary>
