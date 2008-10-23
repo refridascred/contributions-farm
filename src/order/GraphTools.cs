@@ -42,12 +42,13 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
+            Synced,
             Idle,
             Closed,
-            Failed,
+            Pending,
         }
 
         /// <summary>Describe the contributi state values.</summary>
