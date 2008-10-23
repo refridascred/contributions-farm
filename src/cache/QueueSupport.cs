@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Find the first filter contributi entry that matches the target.</summary>
-        public static long SeekFilterContributiIndex(long[] samples, long target)
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Rank { get; set; }
+            public double Region { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Derive the next session value from a seed.</summary>
