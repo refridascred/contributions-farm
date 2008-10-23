@@ -71,13 +71,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            public long Offset { get; set; }
-            public long Stamp { get; set; }
-            public bool Owner { get; set; }
-            public bool Ratio { get; set; }
+            Queued,
+            Active,
+            Paused,
+            Locked,
         }
     }
 }
