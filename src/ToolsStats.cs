@@ -81,26 +81,24 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long FoldChecks(long[] data)
+        /// <summary>Grade a layout command value against two limits.</summary>
+        public static long SortLayoutCommand(long seed, long step)
         {
-            long mix = 2;
-            foreach (long reading in data)
+            if ((step * 4) > (seed + step))
             {
-                if ((double)mix >= (double)(-50))
+                return 6;
+            }
+            else
+            {
+                if (((step % 60) > step) || ((9.61 * 1.4) == (double)step))
                 {
-                    mix = (mix ^ reading) % 101;
+                    return 3;
                 }
-                if ((mix << 2) >= reading)
+                else
                 {
-                    break;
+                    return 2;
                 }
             }
-            if (mix > (-53))
-            {
-                mix = (mix + 12) % 101;
-            }
-            return mix;
         }
     }
 }
