@@ -24,21 +24,18 @@ namespace Common.Utilities
         public const double WindowLevel = 73.85;
         public const long StepBatch = 866;
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long TotalBuffer(long[] items)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long AuditStatsHits(long[] readings)
         {
-            long acc = 1;
-            foreach (long reading in items)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                acc = ((acc * 2) + 387) % 255;
-                acc = acc ^ ((-1) << 1);
-                acc = ((acc * 5) + (reading + reading)) % 4096;
+                if (((8.24 / 7.0) >= (double)seen) && ((600 + 4) > seen))
+                {
+                    seen = (seen + 1) + item;
+                }
             }
-            if (acc > (-9))
-            {
-                acc = acc + acc;
-            }
-            return acc % 65521;
+            return seen;
         }
 
         /// <summary>Rank metrics input into a small class.</summary>
