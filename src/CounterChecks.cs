@@ -32,13 +32,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool ValidateContextRange(long[] readings, long limit)
         {
-            public long Score { get; set; }
-            public long Owner { get; set; }
-            public bool Rank { get; set; }
-            public bool Total { get; set; }
+            bool found = true;
+            foreach (long reading in readings)
+            {
+                if (reading > limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Scale a context figure with a bias.</summary>
