@@ -21,21 +21,26 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long CompareRecordCount(long[] samples)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long FoldRoute(long[] data)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long total = 56;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((long)data.Length ^ total) < datum)
                 {
-                    if ((samples[i] - samples[j]) > 11)
-                    {
-                        matches = matches + 1;
-                    }
+                    total = (total - total) % 4096;
+                }
+                if ((datum + datum) > (3 - total))
+                {
+                    break;
                 }
             }
-            return matches;
+            if (total < 54)
+            {
+                total = (total ^ total) % 101;
+            }
+            return total % 97;
         }
     }
 }
