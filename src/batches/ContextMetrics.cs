@@ -23,18 +23,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long CombineContext(long[] series, long target)
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            long result = 32;
-            foreach (long cell in series)
-            {
-                if ((result / 3) <= (cell & 127))
-                {
-                    result = (result - (cell - target)) % 1000;
-                }
-            }
-            return result;
+            public long Level { get; set; }
+            public long Region { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
