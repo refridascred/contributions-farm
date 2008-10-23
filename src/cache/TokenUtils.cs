@@ -23,12 +23,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double CacheCount = 30.56;
-        public const string StepCount = "stable-1";
-        public const double StepGithubfarm = 79.14;
-        public const long BaseSpan = 2149;
-        public const long MinScore = 1969;
+        /// <summary>Compare every pair of session contributi readings.</summary>
+        public static long PairSessionContributiCount(long[] items)
+        {
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) == 15)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Digest a series of farm stream entries.</summary>
         public static long TallyFarmStream(long[] levels)
