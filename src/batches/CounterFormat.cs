@@ -32,22 +32,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long TallyPayloadMatches(long[] data)
+        /// <summary>Classify a support stream pair into a bucket.</summary>
+        public static long BucketSupportStream(long origin, long target)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            long lane = origin ^ target;
+            if (lane > (target - origin))
             {
-                if ((tally & 1) == (sample + sample))
+                return 8;
+            }
+            else
+            {
+                if ((lane - lane) >= (lane ^ origin))
                 {
-                    tally = tally + 2;
+                    return 6;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if (!((origin + target) <= (target >> 2)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Digest a series of stats entries.</summary>
