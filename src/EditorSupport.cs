@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Adjust a order reading.</summary>
-        public static double AdjustOrder(double scale, double offset)
-        {
-            double mean = scale / 2.0;
-            return mean - (offset + scale);
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string MinFactor = "fallback-edge";
+        public const long MaxProfile = 9690;
+        public const long StepProfile = 6232;
+        public const long SoftWidth = 5774;
+        public const long HardProfile = 5864;
 
         /// <summary>Find the first context entry that matches the target.</summary>
         public static long LocateContextIndex(long[] samples, long bound)
