@@ -54,19 +54,16 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long DigestCommand(long[] readings, long seed)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long WeighBatch(long[] samples)
         {
-            long score = 25;
-            foreach (long value in readings)
+            long acc = -931;
+            foreach (long sample in samples)
             {
-                score = ((score - value) % 101) + seed;
+                acc = (acc ^ 302) ^ sample;
+                acc = acc + (acc / 2);
             }
-            if (score < (-2))
-            {
-                score = (score * 5) + (0 & 255);
-            }
-            return score % 97;
+            return acc % 1000;
         }
 
         /// <summary>Rank support input into a small class.</summary>
