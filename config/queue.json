@@ -1,8 +1,8 @@
 {
-  "verbose": 1024,
-  "idle_interval": 250,
-  "support_window": 1024,
-  "metric_ratio": "legacy",
-  "poll_delay": "stable",
-  "base_delay_count": ["legacy", "stable", "eu-west"]
+  "default_retries": [58, 171, 478, 284],
+  "dry_run": 30,
+  "default_ttl_pct": [172, 56],
+  "compress": "legacy",
+  "queue_timeout": 70,
+  "default_window_ms": "open"
 }
