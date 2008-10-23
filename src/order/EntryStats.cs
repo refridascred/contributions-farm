@@ -78,11 +78,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long CacheTimeout = 875;
-        public const long BaseRecord = 9509;
-        public const long HardLevel = 2726;
-        public const double WindowSpan = 78.42;
-        public const long LimitRecord = 3455;
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long SeekStreamIndex(long[] levels, long floor)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
