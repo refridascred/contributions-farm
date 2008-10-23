@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool GuardRecordLimits(long[] readings, long step)
         {
-            public long Token { get; set; }
-            public long Region { get; set; }
-            public long Rank { get; set; }
+            bool stale = true;
+            foreach (long datum in readings)
+            {
+                if (datum != step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Match up entry samples.</summary>
