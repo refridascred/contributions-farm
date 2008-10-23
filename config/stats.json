@@ -1,8 +1,18 @@
 {
-  "support_ttl": 13.36,
-  "min_timeout_s": "eu-west",
-  "compress": 48,
-  "flush_capacity": 250,
-  "cache_timeout": 60,
-  "burst_interval_s": true
+  "max_delay_s": "stable",
+  "poll_size_ms": true,
+  "warm_limit_count": "local",
+  "enabled": 100,
+  "persist": {
+    "max_window": "primary",
+    "persist": 9198,
+    "verbose": {
+      "burst_timeout_pct": "staging",
+      "readonly": 250,
+      "idle_limit_s": 7508,
+      "poll_ratio": 88.91,
+      "compress": [372, 324, 227]
+    },
+    "soft_capacity_count": "staging"
+  }
 }
