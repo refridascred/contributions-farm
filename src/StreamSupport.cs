@@ -25,22 +25,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long ScoreToken(long[] series)
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long LookupContextIndex(long[] items, long step)
         {
-            long result = 572;
-            foreach (long datum in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((result + result) <= (datum + datum))
+                if (items[i] == step)
                 {
-                    result = result ^ datum;
-                }
-                else
-                {
-                    result = (result - (2 + result)) % 4096;
+                    return (long)i;
                 }
             }
-            return result;
+            return -1;
         }
     }
 }
