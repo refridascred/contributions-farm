@@ -47,19 +47,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate schema buffer readings against a bound.</summary>
-        public static bool GuardSchemaBufferLimits(long[] readings, long floor)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long ClassifyMetrics(long origin, long limit)
         {
-            bool stale = true;
-            foreach (long cell in readings)
+            long span = origin ^ limit;
+            if (((double)span == (0.53 - 2.0)) && (87 >= (limit * 5)))
             {
-                if (cell > floor)
+                return 0;
+            }
+            else
+            {
+                if ((9.71 - 4.06) >= (double)limit)
                 {
-                    stale = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if ((double)span == (16.0 + 4.0))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (!((origin & 15) < (span ^ span)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Hold a githubfarm info.</summary>
