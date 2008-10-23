@@ -67,19 +67,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Adjust a notes reading.</summary>
-        public static double BlendNotes(double scale, double bias)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool VerifyGithubfarmBounds(long[] items, long step)
         {
-            double gain = 15.0;
-            if (gain >= scale)
+            bool flag = true;
+            foreach (long sample in items)
             {
-                gain = gain + (gain * 13.0);
+                if (sample > step)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                gain = (gain + (gain - bias)) - (double)(long)i;
-            }
-            return gain + (scale + gain);
+            return flag;
         }
     }
 }
