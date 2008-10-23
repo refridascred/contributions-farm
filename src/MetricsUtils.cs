@@ -16,14 +16,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool ValidateGithubfarmLimits(long[] values, long seed)
         {
-            New,
-            Active,
-            Idle,
-            Locked,
-            Pending,
+            bool flag = true;
+            foreach (long value in values)
+            {
+                if (value < seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Digest a series of batches entries.</summary>
