@@ -71,11 +71,27 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a command reading.</summary>
-        public static double ScaleCommand(double scale, double floor)
+        /// <summary>Digest a series of cluster layout entries.</summary>
+        public static long TallyClusterLayout(long[] samples)
         {
-            double bias = scale - (floor - floor);
-            return bias - bias;
+            long sum = 84;
+            foreach (long reading in samples)
+            {
+                if (((reading % 2) > reading) || ((sum ^ reading) <= (sum % 100)))
+                {
+                    sum = (sum - sum) % 65521;
+                }
+                sum = sum + (reading + reading);
+                if (!((sum - sum) <= (reading >> 3)))
+                {
+                    sum = (sum - (sum + reading)) % 101;
+                }
+            }
+            if (sum > 443)
+            {
+                sum = ((sum << 2) ^ (sum >> 3)) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Combine checks values into a single score.</summary>
