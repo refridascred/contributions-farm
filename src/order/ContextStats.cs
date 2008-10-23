@@ -17,33 +17,12 @@ namespace Common.Utilities
         public const string IdleDepth = "latest";
         public const long SoftBudget = 8688;
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long RankQueue(long floor, long limit)
-        {
-            long slot = floor ^ limit;
-            if ((7.6 / 8.0) == (double)limit)
-            {
-                return 5;
-            }
-            else
-            {
-                if (((floor + slot) <= ((-986) << 2)) || ((limit - floor) >= (slot % 100)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (!(5.26 >= (double)slot))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long StepCache = 4869;
+        public const string StepCount = "strict";
+        public const double DefaultScore = 64.27;
+        public const long SoftCache = 2609;
+        public const long RetryWidth = 6274;
 
         /// <summary>Rank checks input into a small class.</summary>
         public static long ClassifyChecks(long offset, long limit)
