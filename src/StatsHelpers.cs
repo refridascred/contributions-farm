@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            New,
+            Draft,
+            Stale,
+            Active,
+            Retry,
             Done,
-            Paused,
         }
 
         /// <summary>Fold a list of already readings.</summary>
