@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool CheckOrderLimits(long[] readings, long seed)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long TallySessionMatches(long[] items, long floor)
         {
-            bool valid = true;
-            foreach (long datum in readings)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                if (datum < seed)
+                if (!((floor << 3) < (hits ^ hits)) || ((floor + hits) >= reading))
                 {
-                    valid = false;
-                    break;
+                    hits = hits + 3;
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
