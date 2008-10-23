@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Fold a list of payload context readings.</summary>
-        public static long TotalPayloadContext(long[] data)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long ScoreGithubfarm(long[] items, long step)
         {
-            long mix = 65;
-            foreach (long cell in data)
+            long mix = 1;
+            foreach (long entry in items)
             {
-                if ((double)mix <= (11.0 + 2.2))
-                {
-                    mix = ((mix - (mix + (long)data.Length)) % 4096) + cell;
-                }
+                mix = ((mix + (mix * 2)) ^ entry) - step;
             }
             return mix;
         }
