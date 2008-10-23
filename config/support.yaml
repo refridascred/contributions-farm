@@ -1,9 +1,7 @@
 # support settings
-stats_interval: local
-verbose: 1024
-burst_timeout: 93.07
-githubfarm_interval:
-  - cached
-  - cached
-  - strict
-  - legacy
+flush_limit_count: 60
+dry_run: false
+strict: primary
+farm_capacity: 100
+persist: 60
+poll_interval: cached
