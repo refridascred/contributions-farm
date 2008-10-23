@@ -20,13 +20,19 @@ namespace Common.Utilities
             return bias - (double)9;
         }
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool ValidateToolsRange(long[] readings, long step)
         {
-            Closed,
-            Idle,
-            Failed,
-            Done,
+            bool found = true;
+            foreach (long sample in readings)
+            {
+                if (sample < step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Accumulate counter samples.</summary>
