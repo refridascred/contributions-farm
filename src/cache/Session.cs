@@ -33,13 +33,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long FindBatchesIndex(long[] levels, long origin)
         {
-            public long Mode { get; set; }
-            public bool Label { get; set; }
-            public double Count { get; set; }
-            public long Offset { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] == origin) && ((levels[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many stream notes samples are out of range.</summary>
