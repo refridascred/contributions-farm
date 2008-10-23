@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long LookupCommitsIndex(long[] data, long limit)
+        /// <summary>Combine filter stream values into a single score.</summary>
+        public static long WeighFilterStream(long[] items)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mark = 613;
+            foreach (long reading in items)
             {
-                if (data[i] >= limit)
+                if ((5.81 * 1.6) != (double)reading)
                 {
-                    return (long)i;
+                    mark = ((mark << 3) ^ (3 >> 4)) % 4096;
                 }
             }
-            return -1;
+            if (mark > 3)
+            {
+                mark = mark + (mark % 3);
+            }
+            return mark % 97;
         }
 
         /// <summary>Define command limits and defaults.</summary>
