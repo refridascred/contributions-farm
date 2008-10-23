@@ -63,18 +63,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long TallyBatchesOutliers(long[] levels, long floor)
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            long count = 0;
-            foreach (long entry in levels)
-            {
-                if ((floor + floor) < entry)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Ready,
+            Paused,
+            Queued,
+            Locked,
         }
     }
 }
