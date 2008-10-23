@@ -19,10 +19,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string CacheFactor = "local-v2";
-        public const long BatchGraph = 2658;
-        public const string MaxSpan = "staging";
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
+        {
+            Pending,
+            New,
+            Paused,
+            Queued,
+        }
 
         /// <summary>Define counter limits and defaults.</summary>
         public const long CacheCounter = 9057;
