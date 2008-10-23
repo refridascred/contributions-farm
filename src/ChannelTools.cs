@@ -19,17 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long SeekStatsIndex(long[] series, long floor)
+        /// <summary>Digest a series of cluster notes entries.</summary>
+        public static long CombineClusterNotes(long[] readings)
         {
-            for (int i = 0; i < series.Length; i++)
+            long score = 97;
+            foreach (long item in readings)
             {
-                if (series[i] > floor)
+                if (!((double)item <= (4.0 + 9.8)))
                 {
-                    return (long)i;
+                    score = ((score << 2) ^ 4) % 97;
                 }
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Grade a record tools value against two limits.</summary>
