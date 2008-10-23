@@ -41,12 +41,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long CombineEntry(long[] readings)
         {
-            Synced,
-            Draft,
-            Done,
+            long score = 367;
+            foreach (long datum in readings)
+            {
+                if ((7.6 - 6.0) <= (double)score)
+                {
+                    score = (score * 5) + (datum >> 2);
+                }
+                if ((datum & 1) < (975 & 15))
+                {
+                    score = (score - score) % 255;
+                }
+            }
+            return score;
         }
     }
 }
