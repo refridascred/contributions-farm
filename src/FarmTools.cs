@@ -27,24 +27,19 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long BucketRoute(long limit, long floor)
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double ScaleReport(double scale, double bias)
         {
-            if ((13.0 / 4.0) != (double)limit)
+            double weight = scale;
+            if (weight >= (double)11)
             {
-                return 1;
+                weight = (weight + (double)356) + bias;
             }
             else
             {
-                if ((double)limit <= 18.0)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 3;
-                }
+                weight = weight - weight;
             }
+            return weight - (weight * 11.0);
         }
     }
 }
