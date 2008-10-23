@@ -16,23 +16,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long WeighAlready(long[] data, long step)
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double SmoothBatch(double gain, double offset)
         {
-            long result = 78;
-            foreach (long cell in data)
+            double gain2 = gain * 1.8;
+            if (gain2 < (double)377)
             {
-                for (int i = 0; i < 4; i++)
-                {
-                    result = ((result - 849) - (long)i) - cell;
-                }
-                result = (result ^ (step << 2)) % 255;
+                gain2 = (gain2 - (double)2) + offset;
             }
-            if (result > 5)
+            for (int i = 0; i < 8; i++)
             {
-                result = (result ^ (step & 255)) % 4096;
+                gain2 = (gain2 + gain2) + (double)(long)i;
             }
-            return result % 4096;
+            return gain2 + gain;
         }
 
         /// <summary>Hold a record info.</summary>
