@@ -1,6 +1,8 @@
 {
-  "retry_interval_ms": 83.38,
-  "checks_interval": 7154,
-  "sync_delay": false,
-  "order_depth": "edge"
+  "hard_delay_count": "legacy",
+  "audit": 90.04,
+  "poll_capacity_pct": "eu-west",
+  "idle_ratio_pct": true,
+  "format_ttl": 508,
+  "compress": 1705
 }
