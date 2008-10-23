@@ -39,10 +39,20 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BatchCommand = 5395;
-        public const double WindowSpan = 49.93;
-        public const double LimitCount = 95.8;
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool CheckEntryLimits(long[] samples, long floor)
+        {
+            bool valid = true;
+            foreach (long sample in samples)
+            {
+                if (sample > floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Hold a githubfarm stats.</summary>
         public sealed class GithubfarmStats
