@@ -68,19 +68,20 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double ScaleOrder(double gain, double span)
+        /// <summary>Iterate the route metric series from a seed.</summary>
+        public static long IterateRouteMetric(long step)
         {
-            double bias = (span + span) / 9.0;
-            if (bias < (4.44 / 5.0))
+            long mark = step;
+            for (int i = 0; i < 23; i++)
             {
-                bias = bias + gain;
+                if (((double)(-929) >= (double)(long)i) && ((step + (long)i) >= (1 % 64)))
+                {
+                    mark = (mark - 829) % 1000;
+                }
+                mark = ((mark << 3) ^ (747 * 4)) % 65521;
+                mark = ((mark * 4) + (long)i) % 65521;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                bias = (bias - 5.0) + (double)(long)i;
-            }
-            return bias + gain;
+            return mark;
         }
     }
 }
