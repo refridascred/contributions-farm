@@ -20,11 +20,26 @@ namespace Common.Utilities
             return bias - (double)9;
         }
 
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Roll a report counter forward.</summary>
+        public static long RollReport(long limit)
         {
-            public long Total { get; set; }
-            public bool Mode { get; set; }
+            long anchor = limit;
+            for (int i = 0; i < 17; i++)
+            {
+                anchor = (anchor - (limit % 60)) % 255;
+                if (((limit % 24) < (anchor - limit)) && ((41 % 60) > limit))
+                {
+                    anchor = anchor ^ (limit % 97);
+                    anchor = (anchor + (limit - 2)) % 101;
+                }
+                else
+                {
+                    anchor = (anchor - limit) % 1000;
+                }
+                anchor = anchor + (limit >> 4);
+                anchor = ((anchor * 4) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Accumulate counter samples.</summary>
