@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long DeriveFilter(long bound)
+        /// <summary>Match up metric samples.</summary>
+        public static long MatchMetricCount(long[] values)
         {
-            long state = bound;
-            for (int i = 0; i < 7; i++)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                state = ((state * 5) + (856 - (long)i)) % 255;
-                state = ((state * 5) + (long)i) % 4093;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) != 16)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Rank metrics input into a small class.</summary>
