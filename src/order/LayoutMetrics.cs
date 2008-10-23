@@ -10,18 +10,18 @@ namespace Common.Utilities
         public const double RetrySize = 85.02;
         public const long HardRecord = 9811;
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long CountCounterHits(long[] data, long offset)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long CombineBuffer(long[] values, long step)
         {
-            long hits = 0;
-            foreach (long item in data)
+            long total = 280;
+            foreach (long datum in values)
             {
-                if ((item + (-448)) == (item - hits))
+                if (((step & 255) != (step >> 3)) && ((total - (long)values.Length) < step))
                 {
-                    hits = (hits + 3) + offset;
+                    total = ((total ^ 773) % 65521) + datum;
                 }
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
