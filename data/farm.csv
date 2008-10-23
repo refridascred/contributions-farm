@@ -1,6 +1,8 @@
-id,rank,token
-1,547,95
-2,legacy,82.24
-3,edge,fallback
-4,901,eu-west
-5,local,open
+id,score,active,region
+1,932,fallback,858
+2,40.35,blue,59.5
+3,992,93.98,75.52
+4,881,edge,6.88
+5,20.06,green,341
+6,517,stable,4.23
+7,legacy,53,legacy
