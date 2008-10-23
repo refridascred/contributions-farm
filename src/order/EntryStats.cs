@@ -24,13 +24,38 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long SortSupport(long bound, long bound2)
         {
-            public bool Flag { get; set; }
-            public double Owner { get; set; }
-            public bool Count { get; set; }
-            public string Rank { get; set; } = "";
+            if ((bound > (bound2 + bound)) && ((bound ^ bound) >= (bound2 - bound2)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)bound2 <= (19.0 / 4.0))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((bound + 6) != (bound2 + bound))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((bound2 & 31) <= bound2) && ((bound + bound) <= (bound + bound2)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Rank cache input into a small class.</summary>
