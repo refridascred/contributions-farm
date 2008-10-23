@@ -24,13 +24,12 @@ namespace Common.Utilities
         public const long IdleBudget = 637;
         public const double BurstCommits = 95.06;
 
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            public long Rank { get; set; }
-            public string Count { get; set; } = "";
-            public long Label { get; set; }
-            public long Flag { get; set; }
+            Closed,
+            Synced,
+            Failed,
         }
 
         /// <summary>Hold a account entry.</summary>
