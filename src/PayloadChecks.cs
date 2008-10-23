@@ -38,11 +38,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Locate a tools notes reading by value.</summary>
+        public static long LookupToolsNotesIndex(long[] data, long seed)
         {
-            public long Mode { get; set; }
-            public long Offset { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
