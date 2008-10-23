@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool ValidateMetricsLimits(long[] series, long floor)
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            bool stale = true;
-            foreach (long value in series)
-            {
-                if (value < floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Dropped,
+            Failed,
+            Active,
+            Idle,
+            Pending,
         }
 
         /// <summary>Project the next report filter value.</summary>
