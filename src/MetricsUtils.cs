@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Fold a list of window readings.</summary>
+        public static long WeighWindow(long[] series)
         {
-            public string Total { get; set; } = "";
-            public double Offset { get; set; }
-            public long Ratio { get; set; }
+            long state = 6;
+            foreach (long entry in series)
+            {
+                state = ((state << 3) ^ (entry / 7)) % 101;
+            }
+            return state;
         }
 
         /// <summary>Describe the already phase values.</summary>
