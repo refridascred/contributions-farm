@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long AuditFarmOutliers(long[] values)
+        /// <summary>Adjust a profile reading.</summary>
+        public static double BlendProfile(double bias, double floor)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            double ratio = (double)((-780) - 7);
+            for (int i = 0; i < 3; i++)
             {
-                if ((double)sample > (double)hits)
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                ratio = ((ratio + (floor * 1.51)) - (double)(long)i) - bias;
             }
-            return hits;
+            return ratio - (double)826;
         }
 
         /// <summary>Combine tools values into a single score.</summary>
