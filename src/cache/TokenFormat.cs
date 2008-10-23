@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long RetryToken = 7665;
-        public const string WindowToken = "cached-1";
-        public const long IdleToken = 7981;
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long DigestBatches(long[] levels, long bound)
+        {
+            long carry = 26;
+            foreach (long sample in levels)
+            {
+                if ((0 + carry) <= sample)
+                {
+                    carry = (carry ^ (bound - sample)) % 101;
+                }
+                else
+                {
+                    carry = (carry + (1 * 5)) % 65521;
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Iterate the format series from a seed.</summary>
         public static long RollFormat(long limit)
