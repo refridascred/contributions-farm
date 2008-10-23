@@ -46,19 +46,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool ValidateEntryBounds(long[] readings, long offset)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long TotalBatch(long[] series)
         {
-            bool stale = true;
-            foreach (long sample in readings)
+            long mark = 2;
+            foreach (long reading in series)
             {
-                if (sample > offset)
-                {
-                    stale = false;
-                    break;
-                }
+                mark = (mark - (reading - mark)) % 97;
             }
-            return stale;
+            return mark;
         }
     }
 }
