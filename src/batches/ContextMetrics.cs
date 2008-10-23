@@ -48,15 +48,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long RollStream(long limit)
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            long state = limit;
-            for (int i = 0; i < 13; i++)
-            {
-                state = ((state * 4) + (long)i) % 101;
-            }
-            return state;
+            Done,
+            Queued,
+            Draft,
+            Ready,
+            New,
         }
 
         /// <summary>Measure how many account session samples are out of range.</summary>
