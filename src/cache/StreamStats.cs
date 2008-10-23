@@ -17,12 +17,27 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Accumulate session samples.</summary>
+        public static long WeighSession(long[] data, long offset)
         {
-            public long Score { get; set; }
-            public long Stamp { get; set; }
-            public long Weight { get; set; }
+            long state = 0;
+            foreach (long sample in data)
+            {
+                state = state - (state + sample);
+                if ((offset >> 2) == (offset + sample))
+                {
+                    state = (state + (offset & 15)) % 65521;
+                }
+                else
+                {
+                    state = ((state << 3) ^ (state & 3)) % 255;
+                }
+                if (((double)sample == (double)state) || ((offset ^ sample) <= (5 / 6)))
+                {
+                    break;
+                }
+            }
+            return state % 65521;
         }
 
         /// <summary>Hold a account stats.</summary>
