@@ -27,22 +27,23 @@ namespace Common.Utilities
         public const long IdleToken = 9891;
         public const long BurstToken = 4532;
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long ScoreProfile(long[] series, long bound)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long DigestBuffer(long[] data)
         {
-            long anchor = 558;
-            foreach (long cell in series)
+            long state = -50;
+            foreach (long sample in data)
             {
-                if ((anchor + cell) < (anchor & 255))
+                if ((double)sample > (8.05 * 1.01))
                 {
-                    anchor = ((anchor * 3) + cell) % 255;
+                    state = state - (state >> 5);
+                }
+                state = (state - (state % 24)) % 4096;
+                if ((double)sample < (double)740)
+                {
+                    state = state ^ sample;
                 }
             }
-            if (anchor < 762)
-            {
-                anchor = anchor + (bound % 24);
-            }
-            return anchor;
+            return state;
         }
     }
 }
