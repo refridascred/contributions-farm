@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long CountReportGaps(long[] series, long limit)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long RollCluster(long target)
         {
-            long count = 0;
-            foreach (long sample in series)
+            long acc = target;
+            for (int i = 0; i < 6; i++)
             {
-                if ((limit / 8) < 9)
-                {
-                    count = (count + 3) ^ sample;
-                }
+                acc = ((acc * 5) + (long)i) % 101;
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Match up context samples.</summary>
