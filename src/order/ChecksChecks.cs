@@ -30,18 +30,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long DigestOrder(long[] levels, long offset)
+        /// <summary>Validate buffer profile readings against a bound.</summary>
+        public static bool CheckBufferProfileBounds(long[] series, long limit)
         {
-            long total = 6;
-            foreach (long datum in levels)
+            bool valid = true;
+            foreach (long reading in series)
             {
-                if (total >= 21)
+                if (reading > limit)
                 {
-                    total = ((total - total) ^ datum) - offset;
+                    valid = false;
+                    break;
                 }
             }
-            return total % 1000;
+            return valid;
         }
     }
 }
