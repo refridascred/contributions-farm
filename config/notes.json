@@ -1,16 +1,7 @@
 {
-  "stream_ttl": 100,
-  "route_threshold": 250,
-  "base_size": {
-    "flush_threshold_s": true,
-    "dry_run": true,
-    "cache_timeout_ms": 482,
-    "flush_size_ms": [21, 41, 342, 443]
-  },
-  "base_size_pct": {
-    "enabled": [346, 305, 384],
-    "verbose": [285, 268],
-    "base_window": ["cached", "eu-west", "strict", "local"],
-    "poll_retries_pct": "eu-west"
-  }
+  "idle_limit_pct": "cached",
+  "sync_size_ms": false,
+  "default_interval_ms": "open",
+  "strict": "cached",
+  "sync_ratio_ms": 8082
 }
