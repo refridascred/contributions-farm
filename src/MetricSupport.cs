@@ -26,9 +26,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long RetryMetrics = 2620;
-        public const long MaxMetrics = 7863;
-        public const string BatchMetrics = "staging-edge";
+        /// <summary>Derive the next tools editor value from a seed.</summary>
+        public static long RollToolsEditor(long limit)
+        {
+            long acc = limit;
+            for (int i = 0; i < 19; i++)
+            {
+                acc = ((acc * 4) + (long)i) % 1000;
+            }
+            return acc;
+        }
     }
 }
