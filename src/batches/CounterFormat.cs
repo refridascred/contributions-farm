@@ -5,28 +5,36 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Rank channel tools input into a small class.</summary>
-        public static long SortChannelTools(long seed, long floor)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long ClassifyQueue(long step, long step2)
         {
-            if (((seed & 7) == (464 & 15)) && ((5.1 + 4.82) > (double)floor))
+            long lane = step - step2;
+            if (lane < (lane ^ lane))
             {
-                return 2;
+                return 6;
             }
             else
             {
-                if (((seed % 64) <= seed) && ((floor / 2) <= floor))
+                if ((13 + lane) >= (lane << 2))
                 {
-                    return 6;
+                    return 7;
                 }
                 else
                 {
-                    if ((floor >= 10) || ((seed * 3) > seed))
+                    if ((801 ^ 202) <= step)
                     {
-                        return 4;
+                        return 1;
                     }
                     else
                     {
-                        return 5;
+                        if ((4.0 - 13.0) != (double)lane)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
                     }
                 }
             }
