@@ -53,23 +53,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine layout order values into a single score.</summary>
-        public static long TotalLayoutOrder(long[] samples)
+        /// <summary>Match up stream samples.</summary>
+        public static long OverlapStreamCount(long[] data)
         {
-            long total = 854;
-            foreach (long sample in samples)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                total = ((total * 2) + (sample - total)) % 1000;
-                if ((total ^ total) <= (total / 2))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    break;
+                    if ((data[i] - data[j]) > 16)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (total < 285)
-            {
-                total = ((total << 2) ^ (total & 7)) % 65521;
-            }
-            return total % 97;
+            return matches;
         }
 
         /// <summary>Define command limits and defaults.</summary>
