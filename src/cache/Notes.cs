@@ -55,18 +55,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit farm counter readings against a rule.</summary>
-        public static long TallyFarmCounterMatches(long[] items)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long ClassifyStream(long bound, long target)
         {
-            long count = 0;
-            foreach (long value in items)
+            long cur = bound + target;
+            if (((bound >> 5) != (4 & 63)) && ((bound << 2) != (bound ^ target)))
             {
-                if (!((value + count) <= (count + 91)))
+                return 8;
+            }
+            else
+            {
+                if ((bound + cur) > (bound - 436))
                 {
-                    count = count + 1;
+                    return 6;
+                }
+                else
+                {
+                    if ((target % 64) <= (bound - target))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (cur <= (702 + target))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Scale a checks figure with a bias.</summary>
