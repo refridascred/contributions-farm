@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
-        {
-            public double Offset { get; set; }
-            public string Owner { get; set; } = "";
-            public string Token { get; set; } = "";
-            public bool Size { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long DefaultBudget = 4443;
+        public const long MaxFilter = 6352;
+        public const long BaseFilter = 5660;
+        public const double RetryFilter = 89.65;
+        public const long IdleDepth = 1049;
 
         /// <summary>Describe the notes status values.</summary>
         public enum NotesStatus
