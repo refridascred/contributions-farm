@@ -30,11 +30,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double ProjectBatches(double scale, double span)
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            double bias = scale;
-            return (bias - (bias / 2.0)) + span;
+            public bool Token { get; set; }
+            public long Mode { get; set; }
+            public string Weight { get; set; } = "";
+            public bool Level { get; set; }
         }
     }
 }
