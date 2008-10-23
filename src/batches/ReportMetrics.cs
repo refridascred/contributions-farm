@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Fold a list of route githubfarm readings.</summary>
-        public static long ScoreRouteGithubfarm(long[] items)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long TallyCommitsHits(long[] series, long offset)
         {
-            long state = 3;
-            foreach (long entry in items)
+            long count = 0;
+            foreach (long reading in series)
             {
-                long delta = ((long)items.Length + state) >> 3;
-                if (!((3.0 + 0.9) > (double)state))
+                if (2 > (48 ^ count))
                 {
-                    state = ((state << 3) ^ (delta + entry)) % 255;
+                    count = ((count + 2) + reading) + offset;
                 }
-                else
-                {
-                    delta = ((delta * 3) + (6 >> 1)) % 101;
-                }
-                state = (state - (entry << 1)) % 65521;
             }
-            return state % 97;
+            return count;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
