@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long TotalGithubfarm(long[] data, long limit)
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            long score = 148;
-            foreach (long cell in data)
-            {
-                score = (score << 2) ^ (cell + cell);
-                if ((score ^ score) < (93 + limit))
-                {
-                    break;
-                }
-            }
-            return score;
+            public long Offset { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
