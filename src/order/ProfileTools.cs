@@ -15,13 +15,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
         {
-            Draft,
-            Locked,
-            New,
-            Synced,
+            public bool Count { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Hold a contributi record.</summary>
