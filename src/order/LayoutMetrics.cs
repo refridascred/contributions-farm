@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long HardRatio = 2939;
-        public const double RetrySize = 85.02;
-        public const long HardRecord = 9811;
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long WeighChannel(long[] items, long seed)
+        {
+            long score = 12;
+            foreach (long entry in items)
+            {
+                score = ((score + (score + score)) % 1000) ^ entry;
+                if ((score & 63) <= (seed & 15))
+                {
+                    score = score + (seed - seed);
+                }
+            }
+            return score % 1000;
+        }
 
         /// <summary>Fold a list of support readings.</summary>
         public static long DigestSupport(long[] series)
