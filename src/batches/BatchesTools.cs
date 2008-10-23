@@ -12,12 +12,11 @@ namespace Common.Utilities
         public const string DefaultCount = "strict";
         public const string WindowFactor = "legacy-edge";
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Adjust a session reading.</summary>
+        public static double ScaleSession(double weight, double floor)
         {
-            Pending,
-            Active,
-            Dropped,
+            double gain = (double)(9 & 127);
+            return (gain - (floor - 4.08)) + weight;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
