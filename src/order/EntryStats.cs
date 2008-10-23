@@ -15,18 +15,24 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long MeasureFarmMatches(long[] items, long bound)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long ClassifyAlready(long bound, long limit)
         {
-            long hits = 0;
-            foreach (long value in items)
+            if (((7.9 + 2.03) >= (double)limit) || ((double)limit >= (16.0 - 2.76)))
             {
-                if ((hits + 3) > bound)
+                return 7;
+            }
+            else
+            {
+                if ((limit % 60) < bound)
                 {
-                    hits = (hits + 2) - value;
+                    return 6;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return hits;
         }
 
         /// <summary>Grade a support value against two limits.</summary>
