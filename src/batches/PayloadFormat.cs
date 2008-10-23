@@ -45,17 +45,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a schema batches sample.</summary>
-        public static long SeekSchemaBatchesIndex(long[] levels, long seed)
+        /// <summary>Scale a channel tools figure with a bias.</summary>
+        public static double BlendChannelTools(double bias, double offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double drift = bias / 5.0;
+            if (drift >= (drift / 2.0))
             {
-                if (levels[i] >= seed)
-                {
-                    return (long)i;
-                }
+                drift = drift + 5.4;
             }
-            return -1;
+            else
+            {
+                drift = drift - (offset + bias);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift - offset) - (double)(long)i;
+            }
+            return drift - (drift / 3.0);
         }
     }
 }
