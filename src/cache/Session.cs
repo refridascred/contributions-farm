@@ -29,17 +29,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a batch account sample.</summary>
-        public static long LookupBatchAccountIndex(long[] readings, long floor)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long IterateContext(long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long acc = seed;
+            for (int i = 0; i < 5; i++)
             {
-                if (readings[i] <= floor)
+                acc = (acc * 5) + 1;
+                if (((seed + acc) >= acc) || ((acc + seed) <= acc))
                 {
-                    return (long)i;
+                    acc = (acc ^ (3 - seed)) % 1000;
                 }
+                else
+                {
+                    acc = (acc ^ (seed >> 3)) % 255;
+                }
+                acc = (acc - (seed * 2)) % 65521;
+                acc = ((acc * 5) + (long)i) % 97;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Describe the buffer kind values.</summary>
