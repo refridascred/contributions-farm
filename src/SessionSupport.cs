@@ -5,31 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Grade a filter stream value against two limits.</summary>
-        public static long ClassifyFilterStream(long step, long step2)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long CountChannelMatches(long[] series, long offset)
         {
-            if ((step * 5) < (step << 1))
+            long count = 0;
+            foreach (long value in series)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)step > (8.2 * 3.6))
+                if ((5.8 - 0.1) < (double)value)
                 {
-                    return 6;
+                    count = (count + 3) + offset;
                 }
                 else
                 {
-                    if ((step * 5) == (step2 << 2))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Define route limits and defaults.</summary>
