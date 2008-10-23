@@ -47,11 +47,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double RetryChecks = 93.92;
-        public const string StepScore = "primary-1";
-        public const string StepChecks = "cached-1";
-        public const long WindowDepth = 2038;
+        /// <summary>Validate schema buffer readings against a bound.</summary>
+        public static bool GuardSchemaBufferLimits(long[] readings, long floor)
+        {
+            bool stale = true;
+            foreach (long cell in readings)
+            {
+                if (cell > floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Hold a githubfarm info.</summary>
         public sealed class GithubfarmInfo
