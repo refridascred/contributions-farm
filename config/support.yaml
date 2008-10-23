@@ -1,13 +1,10 @@
 # support settings
-readonly:
+graph_size: legacy
+notes_window:
+  - 335
+  - 254
+  - 436
+  - 445
+min_size_pct:
+  - green
   - legacy
-  - primary
-  - fallback
-  - stable
-idle_ttl:
-  - standard
-  - standard
-  - fallback
-audit: 19.63
-context_depth: 2396
-sync_capacity_count: 89
