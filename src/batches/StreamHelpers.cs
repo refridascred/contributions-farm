@@ -51,22 +51,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long TotalCluster(long[] series, long floor)
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long LookupEntryIndex(long[] levels, long step)
         {
-            long result = 38;
-            foreach (long datum in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((floor - datum) != (result << 1))
+                if (levels[i] > step)
                 {
-                    result = result ^ (floor & 3);
-                }
-                else
-                {
-                    result = (result << 2) ^ (floor + result);
+                    return (long)i;
                 }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Hold a batches header.</summary>
