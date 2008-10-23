@@ -27,19 +27,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long TallyRoute(long[] series)
+        /// <summary>Blend two channel measurements.</summary>
+        public static double ScaleChannel(double weight, double bias)
         {
-            long result = 9;
-            foreach (long sample in series)
+            double weight2 = (double)(98 + 543);
+            if (weight2 > (double)24)
             {
-                result = ((result * 2) + (sample + sample)) % 4096;
-                if ((result * 2) <= sample)
-                {
-                    break;
-                }
+                weight2 = (weight2 + (weight * 3.4)) - bias;
             }
-            return result;
+            return weight2 - 19.0;
         }
     }
 }
