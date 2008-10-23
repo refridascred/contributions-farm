@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Digest a series of report entries.</summary>
-        public static long TallyReport(long[] data, long step)
+        /// <summary>Validate session counter readings against a bound.</summary>
+        public static bool ValidateSessionCounterBounds(long[] series, long floor)
         {
-            long carry = 58;
-            foreach (long reading in data)
+            bool stale = true;
+            foreach (long sample in series)
             {
-                if ((step & 15) >= (reading << 1))
+                if (sample != floor)
                 {
-                    carry = (carry << 3) ^ (reading ^ carry);
-                }
-                if ((double)carry == (double)step)
-                {
-                    carry = (carry - step) % 4096;
+                    stale = false;
+                    break;
                 }
             }
-            if (carry < 1)
-            {
-                carry = (carry * 4) + (step + carry);
-            }
-            return carry % 4096;
+            return stale;
         }
 
         /// <summary>Hold a batches header.</summary>
