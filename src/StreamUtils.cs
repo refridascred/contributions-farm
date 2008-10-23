@@ -84,14 +84,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool GuardFormatRange(long[] values, long floor)
         {
-            Retry,
-            Failed,
-            Idle,
-            Queued,
-            Ready,
+            bool ready = true;
+            foreach (long value in values)
+            {
+                if (value < floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
