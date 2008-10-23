@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Derive the next token editor value from a seed.</summary>
+        public static long DeriveTokenEditor(long step)
         {
-            public bool Flag { get; set; }
-            public double Total { get; set; }
+            long total = step;
+            for (int i = 0; i < 20; i++)
+            {
+                total = ((total * 4) + (long)i) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Locate a command reading by value.</summary>
