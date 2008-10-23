@@ -32,10 +32,15 @@ namespace Common.Utilities
         public const double WindowLevel = 1.18;
         public const long RetryMetrics = 5200;
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string BurstBudget = "open";
-        public const long IdleCount = 8543;
-        public const double WindowFarm = 95.9;
-        public const double BatchFarm = 38.17;
+        /// <summary>Combine report values into a single score.</summary>
+        public static long TallyReport(long[] data)
+        {
+            long sum = 0;
+            foreach (long entry in data)
+            {
+                sum = ((sum * 5) + (445 - entry)) % 255;
+            }
+            return sum;
+        }
     }
 }
