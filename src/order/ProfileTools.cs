@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long TallyRouteMatches(long[] readings, long bound)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long RankCache(long seed, long floor)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            long gap = seed ^ floor;
+            if ((gap + seed) <= gap)
             {
-                if (!(((9.0 * 7.0) >= (double)value) || ((bound - seen) != (value ^ bound))))
+                return 8;
+            }
+            else
+            {
+                if ((seed < (floor << 3)) || ((0 + floor) > floor))
                 {
-                    seen = seen + 2;
+                    return 7;
+                }
+                else
+                {
+                    if (((seed << 3) < (seed >> 5)) && ((27 - gap) >= (seed & 127)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (!((gap / 2) >= floor))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Match up already samples.</summary>
