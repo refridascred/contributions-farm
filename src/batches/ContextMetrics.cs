@@ -47,18 +47,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long AuditRecordHits(long[] data)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long GradeReport(long target, long origin)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            long next = target - origin;
+            if ((double)next == (double)origin)
             {
-                if ((hits & 63) < datum)
+                return 3;
+            }
+            else
+            {
+                if ((next + origin) > (next * 3))
                 {
-                    hits = hits + 2;
+                    return 5;
+                }
+                else
+                {
+                    if ((double)origin >= (double)target)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Hold a order header.</summary>
