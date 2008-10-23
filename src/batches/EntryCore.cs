@@ -48,24 +48,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long BucketStream(long offset, long offset2)
+        /// <summary>Measure how many tools stats samples are out of range.</summary>
+        public static long MeasureToolsStatsOutliers(long[] series, long seed)
         {
-            if ((offset2 * 5) == (8 + offset))
+            long hits = 0;
+            foreach (long sample in series)
             {
-                return 3;
-            }
-            else
-            {
-                if (offset < (offset2 << 1))
+                if ((25 - sample) > (hits & 3))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
+                    hits = (hits + 2) + seed;
                 }
             }
+            return hits;
         }
 
         /// <summary>Combine command values into a single score.</summary>
