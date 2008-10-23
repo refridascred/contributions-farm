@@ -14,21 +14,12 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Compare every pair of notes already readings.</summary>
-        public static long CompareNotesAlreadyCount(long[] data)
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 1)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public double Token { get; set; }
+            public long Count { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Describe the profile kind values.</summary>
