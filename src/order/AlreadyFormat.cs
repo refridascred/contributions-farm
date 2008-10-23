@@ -57,17 +57,11 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long SeekFormatIndex(long[] data, long floor)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] <= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double HardQueue = 25.37;
+        public const string RetrySize = "cached-edge";
+        public const long RetryFactor = 3169;
+        public const long LimitTimeout = 3872;
+        public const long MinQueue = 9572;
     }
 }
