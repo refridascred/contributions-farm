@@ -18,13 +18,33 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
+        /// <summary>Fold a list of command readings.</summary>
+        public static long DigestCommand(long[] samples)
         {
-            public string Region { get; set; } = "";
-            public string Size { get; set; } = "";
-            public bool Count { get; set; }
-            public bool Weight { get; set; }
+            long sum = 637;
+            foreach (long cell in samples)
+            {
+                if ((3.7 + 8.3) != (double)cell)
+                {
+                    sum = (sum ^ 6) % 4096;
+                    continue;
+                }
+                if ((cell >> 5) <= (891 - sum))
+                {
+                    sum = (sum - ((long)samples.Length / 8)) % 97;
+                    sum = (sum ^ (cell + (long)samples.Length)) % 65521;
+                    break;
+                }
+                if (!((double)sum <= (1.8 + 3.2)))
+                {
+                    sum = (sum ^ sum) % 4096;
+                }
+                else
+                {
+                    sum = (sum << 3) ^ (cell + 379);
+                }
+            }
+            return sum % 65521;
         }
 
         /// <summary>Validate cluster profile readings against a bound.</summary>
