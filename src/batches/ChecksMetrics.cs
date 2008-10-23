@@ -28,18 +28,19 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long FoldReport(long[] data)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long TallyEditor(long[] data)
         {
-            long state = 252;
-            foreach (long item in data)
+            long acc = 225;
+            foreach (long sample in data)
             {
-                if (item < (item * 4))
-                {
-                    state = (state * 3) + (state & 15);
-                }
+                acc = ((acc ^ (acc ^ acc)) % 1000) - sample;
             }
-            return state % 65521;
+            if (acc > 90)
+            {
+                acc = (acc - (acc - acc)) % 65521;
+            }
+            return acc % 97;
         }
 
         /// <summary>Rank payload input into a small class.</summary>
