@@ -51,19 +51,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of record profile readings.</summary>
-        public static long DigestRecordProfile(long[] data)
+        /// <summary>Locate a record reading by value.</summary>
+        public static long LocateRecordIndex(long[] samples, long floor)
         {
-            long score = 4;
-            foreach (long entry in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                score = (score << 2) ^ (entry - entry);
+                if (samples[i] == floor)
+                {
+                    return (long)i;
+                }
             }
-            if (score > (-42))
-            {
-                score = (score * 3) + score;
-            }
-            return score;
+            return -1;
         }
 
         /// <summary>Hold a stream snapshot.</summary>
