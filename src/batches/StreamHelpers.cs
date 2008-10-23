@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool CheckEntryRange(long[] items, long step)
+        /// <summary>Adjust a command farm reading.</summary>
+        public static double SmoothCommandFarm(double ratio, double floor)
         {
-            bool stale = true;
-            foreach (long datum in items)
+            double gain = ratio - ratio;
+            if (gain >= gain)
             {
-                if (datum != step)
-                {
-                    stale = false;
-                    break;
-                }
+                gain = gain + (gain / 7.0);
             }
-            return stale;
+            else
+            {
+                gain = gain - (gain + floor);
+            }
+            return gain + (floor + floor);
         }
 
         /// <summary>Hold a counter snapshot.</summary>
