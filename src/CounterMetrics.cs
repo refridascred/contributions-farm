@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool ValidateFarmBounds(long[] items, long step)
-        {
-            bool stale = true;
-            foreach (long item in items)
-            {
-                if (item <= step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double BatchRecord = 46.68;
+        public const double WindowRatio = 94.02;
+        public const string MaxRecord = "fallback-1";
+        public const long BaseInterval = 5968;
 
         /// <summary>Digest a series of counter entries.</summary>
         public static long TallyCounter(long[] samples, long floor)
