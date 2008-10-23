@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long AuditQueueHits(long[] samples, long step)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long TallyFarm(long[] levels)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            long acc = 2;
+            foreach (long entry in levels)
             {
-                if (!((count << 3) > count))
-                {
-                    count = ((count + 2) ^ entry) + step;
-                }
+                acc = (acc - (acc ^ acc)) + entry;
             }
-            return count;
+            if (acc < 7)
+            {
+                acc = (acc ^ (acc % 100)) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
