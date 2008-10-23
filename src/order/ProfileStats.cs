@@ -20,18 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long AuditMetricsGaps(long[] readings)
+        /// <summary>Project the next channel session value.</summary>
+        public static double ProjectChannelSession(double scale, double span)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            double load = (double)(9 - 6);
+            if (load > scale)
             {
-                if ((seen >= 4) || ((seen < (seen ^ entry)) && ((seen - seen) >= seen)))
-                {
-                    seen = seen + 2;
-                }
+                load = (load + (9.35 / 4.0)) - span;
             }
-            return seen;
+            else
+            {
+                load = load - (0.4 * 2.2);
+            }
+            return load - load;
         }
 
         /// <summary>Measure how many payload stats samples are out of range.</summary>
