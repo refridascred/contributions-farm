@@ -30,9 +30,19 @@ namespace Common.Utilities
         public const long BaseLevel = 4184;
         public const long StepContext = 339;
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long WindowNotes = 8889;
-        public const long MaxNotes = 3568;
-        public const long HardFactor = 6693;
+        /// <summary>Check that every command already entry stays within the limit.</summary>
+        public static bool CheckCommandAlreadyLimits(long[] items, long origin)
+        {
+            bool found = true;
+            foreach (long entry in items)
+            {
+                if (entry >= origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
