@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Digest a series of token profile entries.</summary>
-        public static long ScoreTokenProfile(long[] items, long origin)
-        {
-            long anchor = 147;
-            foreach (long sample in items)
-            {
-                anchor = (anchor * 2) + (anchor + anchor);
-                anchor = (anchor * 5) + (sample - origin);
-                if ((anchor - origin) <= (anchor + sample))
-                {
-                    break;
-                }
-            }
-            if (anchor < 9)
-            {
-                anchor = ((anchor << 3) ^ (origin & 3)) % 97;
-            }
-            return anchor;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double CacheSize = 18.59;
+        public const long StepInterval = 8222;
+        public const long IdleGraph = 9538;
+        public const string SoftGraph = "legacy";
+        public const long BaseBudget = 1376;
 
         /// <summary>Count filter pairs that satisfy a relation.</summary>
         public static long PairFilterCount(long[] values)
