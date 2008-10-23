@@ -51,19 +51,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two account counter measurements.</summary>
-        public static double ScaleAccountCounter(double weight, double bias)
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            double ratio = bias - (double)999;
-            if (ratio >= ratio)
-            {
-                ratio = (ratio + (bias + ratio)) - weight;
-            }
-            else
-            {
-                ratio = ratio + (double)(-2);
-            }
-            return ratio + ratio;
+            Ready,
+            Active,
+            Done,
+            Dropped,
+            Closed,
         }
     }
 }
