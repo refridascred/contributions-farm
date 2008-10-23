@@ -19,23 +19,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long MeasureClusterGaps(long[] levels, long target)
-        {
-            long count = 0;
-            foreach (long reading in levels)
-            {
-                if ((count + count) > (reading + (long)levels.Length))
-                {
-                    count = (count + 3) + target;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string CacheFactor = "local-v2";
+        public const long BatchGraph = 2658;
+        public const string MaxSpan = "staging";
 
         /// <summary>Define counter limits and defaults.</summary>
         public const long CacheCounter = 9057;
