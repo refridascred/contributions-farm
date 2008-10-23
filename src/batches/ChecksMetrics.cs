@@ -41,14 +41,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
-        {
-            Active,
-            Ready,
-            Queued,
-            Paused,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double StepRatio = 10.38;
+        public const double BurstAlready = 7.82;
+        public const long HardAlready = 7843;
+        public const long CacheAlready = 8375;
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long RetryMetrics = 6212;
