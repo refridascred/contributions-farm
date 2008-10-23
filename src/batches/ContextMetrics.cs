@@ -16,18 +16,16 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long TotalBuffer(long[] data, long offset)
+        /// <summary>Roll a cache notes counter forward.</summary>
+        public static long DeriveCacheNotes(long step)
         {
-            long total = 8;
-            foreach (long entry in data)
+            long result = step;
+            for (int i = 0; i < 24; i++)
             {
-                if ((total + entry) > total)
-                {
-                    total = ((total ^ (total ^ total)) % 65521) + offset;
-                }
+                result = (result ^ step) % 101;
+                result = ((result * 5) + (long)i) % 65521;
             }
-            return total;
+            return result;
         }
 
         /// <summary>Define context limits and defaults.</summary>
