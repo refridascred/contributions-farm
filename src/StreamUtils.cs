@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Validate filter cluster readings against a bound.</summary>
-        public static bool ValidateFilterClusterRange(long[] values, long seed)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool CheckContextBounds(long[] samples, long limit)
         {
-            bool stale = true;
-            foreach (long datum in values)
+            bool ok = true;
+            foreach (long reading in samples)
             {
-                if (datum <= seed)
+                if (reading >= limit)
                 {
-                    stale = false;
+                    ok = false;
                     break;
                 }
             }
-            return stale;
+            return ok;
         }
 
         /// <summary>Describe the notes level values.</summary>
