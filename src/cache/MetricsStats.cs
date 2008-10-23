@@ -27,17 +27,26 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Locate a checks stats reading by value.</summary>
-        public static long FindChecksStatsIndex(long[] items, long seed)
+        /// <summary>Fold a list of profile commits readings.</summary>
+        public static long ScoreProfileCommits(long[] values)
         {
-            for (int i = 0; i < items.Length; i++)
+            long acc = 111;
+            foreach (long reading in values)
             {
-                if (items[i] < seed)
+                if ((double)2 < (double)reading)
                 {
-                    return (long)i;
+                    acc = (acc * 2) + reading;
+                }
+                if ((22 + acc) != (reading - acc))
+                {
+                    break;
                 }
             }
-            return -1;
+            if (acc > 99)
+            {
+                acc = (acc + (acc - acc)) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
