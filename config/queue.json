@@ -1,10 +1,6 @@
 {
-  "checks_threshold": {
-    "account_timeout": 94.33,
-    "token_ttl": "local",
-    "batch_capacity": 500,
-    "sync_ttl": 40
-  },
-  "window_ttl": 29,
-  "audit": [427, 203, 35]
+  "strict": 44.74,
+  "default_capacity": 26.66,
+  "min_timeout_pct": true,
+  "filter_timeout": 83.38
 }
