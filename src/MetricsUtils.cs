@@ -29,27 +29,12 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Derive the next command counter value from a seed.</summary>
-        public static long RollCommandCounter(long limit)
-        {
-            long anchor = limit;
-            for (int i = 0; i < 20; i++)
-            {
-                if (((long)i <= (anchor % 100)) && ((double)limit == (double)(long)i))
-                {
-                    anchor = anchor ^ (anchor & 7);
-                    anchor = anchor + (anchor & 255);
-                    continue;
-                }
-                anchor = ((anchor * 2) + ((long)i + (long)i)) % 4096;
-                if (((9.12 / 3.0) < (double)(long)i) && ((anchor & 3) < limit))
-                {
-                    anchor = ((anchor << 3) ^ ((long)i / 4)) % 97;
-                }
-                anchor = ((anchor * 3) + (long)i) % 101;
-            }
-            return anchor;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long DefaultSize = 1710;
+        public const long BaseCluster = 2779;
+        public const double LimitCluster = 79.49;
+        public const long CacheCluster = 6448;
+        public const string BatchCluster = "latest";
 
         /// <summary>Audit commits editor readings against a rule.</summary>
         public static long AuditCommitsEditorMatches(long[] data, long limit)
