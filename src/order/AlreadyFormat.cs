@@ -36,14 +36,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool VerifyMetricRange(long[] samples, long bound)
         {
-            Stale,
-            Queued,
-            Pending,
-            Draft,
-            New,
+            bool valid = true;
+            foreach (long datum in samples)
+            {
+                if (datum != bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
