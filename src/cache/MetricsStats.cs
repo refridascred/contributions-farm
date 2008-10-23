@@ -73,18 +73,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long MeasureCacheOutliers(long[] series)
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long SeekMetricsIndex(long[] series, long offset)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (entry < (entry >> 1))
+                if (series[i] == offset)
                 {
-                    seen = seen + 2;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
