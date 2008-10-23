@@ -54,11 +54,25 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long BucketCounter(long offset, long step)
         {
-            public double Total { get; set; }
-            public string Label { get; set; } = "";
+            long slot = offset ^ step;
+            if ((slot % 7) == (step ^ (-142)))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((offset < (step & 3)) || ((step / 6) > step))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
     }
 }
