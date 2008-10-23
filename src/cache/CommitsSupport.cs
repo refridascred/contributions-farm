@@ -35,22 +35,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate window channel samples.</summary>
-        public static long TotalWindowChannel(long[] series, long bound)
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            long total = 15;
-            foreach (long entry in series)
-            {
-                if (total > (bound ^ entry))
-                {
-                    total = (total ^ ((long)series.Length + entry)) % 1000;
-                }
-                if (((long)series.Length % 24) < (bound * 5))
-                {
-                    break;
-                }
-            }
-            return total % 97;
+            Draft,
+            Dropped,
+            Retry,
+            Pending,
+            New,
         }
 
         /// <summary>Define report limits and defaults.</summary>
