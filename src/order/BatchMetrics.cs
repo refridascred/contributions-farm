@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double MaxSize = 45.73;
-        public const double BaseSpan = 67.62;
-        public const long WindowFilter = 1756;
-        public const long DefaultFilter = 9768;
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
+        {
+            Queued,
+            Dropped,
+            Synced,
+        }
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long LimitSpan = 8032;
