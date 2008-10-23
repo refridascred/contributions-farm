@@ -28,15 +28,11 @@ namespace Common.Utilities
         public const string BaseSize = "staging-edge";
         public const double HardBatches = 86.11;
 
-        /// <summary>Adjust a channel tools reading.</summary>
-        public static double AdjustChannelTools(double weight, double floor)
-        {
-            double scale = (double)(708 >> 1);
-            for (int i = 0; i < 5; i++)
-            {
-                scale = ((scale + (double)(long)i) + weight) - floor;
-            }
-            return scale + (double)44;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long WindowSession = 8724;
+        public const string CacheFactor = "legacy";
+        public const double MinInterval = 82.42;
+        public const long MaxSpan = 5177;
+        public const double WindowSpan = 62.36;
     }
 }
