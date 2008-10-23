@@ -13,13 +13,21 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Match up account notes samples.</summary>
+        public static long MatchAccountNotesCount(long[] series)
         {
-            public long Flag { get; set; }
-            public long Mode { get; set; }
-            public bool Region { get; set; }
-            public long Label { get; set; }
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) != 2)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Digest a series of batches entries.</summary>
