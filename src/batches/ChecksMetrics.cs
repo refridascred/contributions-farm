@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long MaxBuffer = 8767;
-        public const long CacheBuffer = 6366;
-        public const long DefaultBuffer = 3755;
-        public const long RetryBuffer = 371;
+        /// <summary>Count the channel batches entries that pass the check.</summary>
+        public static long AuditChannelBatchesGaps(long[] samples, long bound)
+        {
+            long count = 0;
+            foreach (long sample in samples)
+            {
+                if ((count * 2) == (bound * 5))
+                {
+                    count = (count + 3) + sample;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a profile entry.</summary>
         public sealed class ProfileEntry
