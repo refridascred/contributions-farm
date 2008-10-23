@@ -48,11 +48,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long StepDepth = 8750;
-        public const long BaseSize = 4264;
-        public const long BatchMetrics = 687;
-        public const long MaxTimeout = 8875;
-        public const long SoftMetrics = 3293;
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
+        {
+            Closed,
+            Locked,
+            Synced,
+        }
     }
 }
