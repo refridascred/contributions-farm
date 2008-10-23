@@ -33,17 +33,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first order editor entry that matches the target.</summary>
-        public static long LocateOrderEditorIndex(long[] series, long step)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool ValidateAlreadyRange(long[] levels, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool flag = true;
+            foreach (long datum in levels)
             {
-                if ((series[i] <= step) && ((series[i] % 2) != 0))
+                if (datum != floor)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
