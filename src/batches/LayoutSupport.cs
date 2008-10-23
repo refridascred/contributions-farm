@@ -25,17 +25,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long LookupNotesIndex(long[] items, long limit)
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Score { get; set; }
+            public double Token { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
