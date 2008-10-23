@@ -47,10 +47,20 @@ namespace Common.Utilities
         public const long HardAlready = 7843;
         public const long CacheAlready = 8375;
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long RetryMetrics = 6212;
-        public const long BurstInterval = 1192;
-        public const long BaseSize = 30;
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool GuardTokenBounds(long[] samples, long step)
+        {
+            bool flag = true;
+            foreach (long item in samples)
+            {
+                if (item > step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Describe the queue status values.</summary>
         public enum QueueStatus
