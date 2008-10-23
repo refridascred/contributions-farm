@@ -26,11 +26,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long CacheLevel = 5047;
-        public const long HardBudget = 4833;
-        public const long StepWindow = 3628;
-        public const long MinWindow = 7301;
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
+        {
+            public string Stamp { get; set; } = "";
+            public long Token { get; set; }
+        }
 
         /// <summary>Scale a format figure with a bias.</summary>
         public static double BlendFormat(double ratio, double floor)
