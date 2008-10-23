@@ -1,6 +1,7 @@
 {
-  "batch_threshold": 7065,
-  "farm_window": 500,
-  "enabled": 500,
-  "warm_capacity_count": false
+  "flush_retries_s": true,
+  "max_size_count": "edge",
+  "cache_ttl_count": 8,
+  "max_ttl": 30,
+  "warm_window_ms": 54.63
 }
