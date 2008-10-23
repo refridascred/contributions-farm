@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long CountBatchesGaps(long[] samples, long bound)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long TallyChannelGaps(long[] series, long seed)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                if ((bound - value) < (bound + bound))
+                if ((entry >= (8 / 5)) || (((entry + seed) < seen) || ((7.37 * 5.3) < (double)entry)))
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    seen = seen + 3;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Hold a profile entry.</summary>
