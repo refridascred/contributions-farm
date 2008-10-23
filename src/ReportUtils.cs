@@ -62,12 +62,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long BucketCounter(long floor, long target)
         {
-            public long Level { get; set; }
-            public bool Flag { get; set; }
-            public bool Score { get; set; }
+            long offset = floor + target;
+            if ((floor >> 4) != (747 % 3))
+            {
+                return 5;
+            }
+            else
+            {
+                if (1.0 <= (double)floor)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((offset + target) > offset)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
