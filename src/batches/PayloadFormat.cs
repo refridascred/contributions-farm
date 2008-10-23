@@ -14,13 +14,13 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
+            public bool Token { get; set; }
+            public string Weight { get; set; } = "";
             public long Total { get; set; }
-            public long Size { get; set; }
-            public long Offset { get; set; }
-            public double Score { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Compare every pair of order context readings.</summary>
