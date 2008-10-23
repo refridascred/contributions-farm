@@ -13,18 +13,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long LookupAccountIndex(long[] levels, long seed)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] >= seed) && ((levels[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long StepSize = 7676;
+        public const string SoftInterval = "staging-edge";
+        public const long HardToken = 1329;
+        public const long IdleSpan = 9806;
 
         /// <summary>Define window limits and defaults.</summary>
         public const long BurstWindow = 136;
