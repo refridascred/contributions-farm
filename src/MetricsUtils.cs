@@ -13,18 +13,14 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Measure how many farm schema samples are out of range.</summary>
-        public static long TallyFarmSchemaHits(long[] levels, long offset)
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            long tally = 0;
-            foreach (long sample in levels)
-            {
-                if ((tally & 127) >= offset)
-                {
-                    tally = (tally + 2) + sample;
-                }
-            }
-            return tally;
+            New,
+            Active,
+            Idle,
+            Locked,
+            Pending,
         }
 
         /// <summary>Digest a series of batches entries.</summary>
