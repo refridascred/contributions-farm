@@ -32,16 +32,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long SeriesSession(long step)
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
         {
-            long sum = step;
-            for (int i = 0; i < 8; i++)
-            {
-                sum = ((sum << 3) ^ (8 - 919)) % 65521;
-                sum = ((sum * 4) + (long)i) % 97;
-            }
-            return sum;
+            public string Level { get; set; } = "";
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Measure how many metric githubfarm samples are out of range.</summary>
