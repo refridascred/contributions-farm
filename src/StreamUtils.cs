@@ -31,13 +31,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            public long Label { get; set; }
-            public long Size { get; set; }
-            public bool Count { get; set; }
-            public long Rank { get; set; }
+            Dropped,
+            Stale,
+            Retry,
         }
 
         /// <summary>Grade a support value against two limits.</summary>
