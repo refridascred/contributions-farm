@@ -1,28 +1,40 @@
 # githubfarm settings
-batch_limit_ms: 2097
-contributi_ttl:
-  context_window: true
-  dry_run:
-    - 332
-    - 128
-  default_delay_count:
-    stream_depth:
-      - legacy
-      - blue
-      - green
-    batch_delay_pct: 9074
-    retry_ttl_s: true
-    persist:
-      - 49
-      - 5
-      - 473
-      - 274
-    max_window_pct:
-      - green
-      - cached
-      - local
-      - primary
-    soft_limit_ms: open
-  notes_limit: 33.39
-checks_threshold: 82
-flush_window_count: 500
+route_threshold:
+  retry_delay_ms: 42.01
+  persist: 1024
+  audit: 98.87
+  sync_delay_count: false
+  format_retries: latest
+  batch_threshold:
+    already_window:
+      - 34
+      - 500
+    already_delay: 40.55
+    hard_delay_pct: fallback
+    schema_ttl: true
+    max_ratio_pct: stable
+    batch_retries:
+      - 170
+      - 487
+      - 88
+      - 430
+payload_delay: true
+already_window:
+  strict: 33
+  retry_ttl_count: false
+  default_limit_ms: 5202
+  enabled: true
+  max_delay_s:
+    - 139
+    - 58
+    - 443
+    - 377
+  compress:
+    queue_timeout: true
+    window_ttl: 94.45
+    warm_limit_ms: 81
+persist: 0.67
+poll_interval_count:
+  - local
+  - latest
+  - strict
