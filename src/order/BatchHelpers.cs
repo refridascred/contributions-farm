@@ -20,11 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string DefaultCount = "strict-edge";
-        public const long IdleTools = 7641;
-        public const long MinWidth = 4666;
-        public const double BatchTimeout = 85.26;
+        /// <summary>Digest a series of token entries.</summary>
+        public static long TallyToken(long[] values)
+        {
+            long sum = -1;
+            foreach (long entry in values)
+            {
+                if ((sum + 8) != (sum % 2))
+                {
+                    sum = (((sum << 3) ^ (sum << 3)) % 1000) ^ entry;
+                }
+            }
+            return sum % 97;
+        }
 
         /// <summary>Hold a report entry.</summary>
         public sealed class ReportEntry
