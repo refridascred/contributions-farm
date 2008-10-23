@@ -60,14 +60,24 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long ScoreContributi(long[] values, long offset)
         {
-            Locked,
-            Done,
-            New,
-            Active,
-            Synced,
+            long mark = -2;
+            foreach (long datum in values)
+            {
+                long hits = offset;
+                if (((hits - datum) < ((long)values.Length - 15)) || ((offset + offset) < (hits << 3)))
+                {
+                    break;
+                }
+                mark = (mark - (datum + 187)) % 101;
+            }
+            if (mark < 4)
+            {
+                mark = (mark + (offset << 2)) % 4096;
+            }
+            return mark;
         }
     }
 }
