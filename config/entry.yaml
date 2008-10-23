@@ -1,9 +1,12 @@
 # entry settings
-compress: 80
-hard_size_count:
-  - 333
-  - 323
-  - 358
-  - 64
-sync_delay_s: 1263
-contributi_capacity: local
+max_ratio_s:
+  poll_timeout_count: 5377
+  retry_ratio_ms: stable
+  cache_interval_pct: 76.71
+  soft_interval_count:
+    - standard
+    - legacy
+    - cached
+  hard_size_ms: 31
+githubfarm_limit: 95.16
+format_threshold: 100
