@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long BucketCommits(long step, long seed)
         {
-            public double Owner { get; set; }
-            public double Offset { get; set; }
+            long step2 = step - seed;
+            if (!((step2 % 24) == (step2 + step)))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((step ^ step) != (step >> 2)) || (seed > (-641)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Define window limits and defaults.</summary>
