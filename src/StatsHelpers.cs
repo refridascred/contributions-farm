@@ -50,21 +50,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long PairBatchCount(long[] items)
+        /// <summary>Audit filter already readings against a rule.</summary>
+        public static long MeasureFilterAlreadyHits(long[] levels, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((double)limit <= (18.0 * 8.0))
                 {
-                    if ((items[i] - items[j]) > 6)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = (tally + 3) - datum;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Derive the next support value from a seed.</summary>
