@@ -44,15 +44,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long SeriesCluster(long origin)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long AuditRecordGaps(long[] readings, long floor)
         {
-            long acc = origin;
-            for (int i = 0; i < 17; i++)
+            long count = 0;
+            foreach (long value in readings)
             {
-                acc = ((acc * 2) + (long)i) % 4093;
+                if ((value > (count >> 4)) || ((((-56) * 4) == (floor - 3)) || ((floor >> 4) < (floor << 1))))
+                {
+                    count = count + 2;
+                }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Describe the already class values.</summary>
