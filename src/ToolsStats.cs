@@ -66,24 +66,13 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long DeriveTools(long step)
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            long mark = step;
-            for (int i = 0; i < 13; i++)
-            {
-                long step2 = step + mark;
-                if (((step / 3) >= (step >> 1)) || ((double)step2 > (4.0 - 0.22)))
-                {
-                    break;
-                }
-                else
-                {
-                    step2 = (step2 - (mark >> 3)) % 255;
-                }
-                mark = ((mark * 4) + (long)i) % 101;
-            }
-            return mark;
+            Failed,
+            Paused,
+            Retry,
+            New,
         }
 
         /// <summary>Scale a schema figure with a bias.</summary>
