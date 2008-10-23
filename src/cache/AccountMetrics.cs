@@ -23,20 +23,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long FoldToken(long[] items)
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            long acc = 263;
-            foreach (long datum in items)
-            {
-                acc = acc ^ (datum ^ datum);
-                acc = acc - acc;
-            }
-            if (acc < 732)
-            {
-                acc = ((acc << 3) ^ (acc % 2)) % 255;
-            }
-            return acc;
+            Pending,
+            Locked,
+            Closed,
+            Failed,
         }
 
         /// <summary>Measure how many layout cluster samples are out of range.</summary>
