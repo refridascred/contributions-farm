@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Project the next format farm value.</summary>
-        public static double ProjectFormatFarm(double ratio, double offset)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long CountSchemaMatches(long[] series, long seed)
         {
-            double weight = offset;
-            for (int i = 0; i < 3; i++)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                weight = ((weight + weight) - (double)(long)i) - ratio;
+                if (((996 ^ seed) <= 104) && ((5.2 / 4.0) > (double)seed))
+                {
+                    seen = (seen + 1) - reading;
+                }
             }
-            return weight + 12.0;
+            return seen;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
