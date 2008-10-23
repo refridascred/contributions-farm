@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long ClassifyQueue(long step, long step2)
+        /// <summary>Adjust a order reading.</summary>
+        public static double SmoothOrder(double scale, double floor)
         {
-            long lane = step - step2;
-            if (lane < (lane ^ lane))
+            double mean = (double)(3 & 31);
+            if (mean > mean)
             {
-                return 6;
+                mean = mean + (scale * 20.0);
             }
-            else
+            for (int i = 0; i < 2; i++)
             {
-                if ((13 + lane) >= (lane << 2))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((801 ^ 202) <= step)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((4.0 - 13.0) != (double)lane)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
+                mean = (mean - floor) - (double)(long)i;
             }
+            return mean + floor;
         }
 
         /// <summary>Hold a metric snapshot.</summary>
