@@ -41,39 +41,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long BucketGraph(long target, long bound)
+        /// <summary>Locate a route reading by value.</summary>
+        public static long SeekRouteIndex(long[] items, long origin)
         {
-            long cur = target ^ bound;
-            if (((bound * 2) != (target << 1)) || ((double)91 >= (double)cur))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((5.8 - 2.3) >= (double)target)
+                if (items[i] <= origin)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (bound >= (cur % 2))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((1.0 + 12.0) != (double)target) && (bound >= (bound + target)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
