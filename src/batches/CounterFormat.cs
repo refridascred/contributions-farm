@@ -47,19 +47,9 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Validate cluster profile readings against a bound.</summary>
-        public static bool GuardClusterProfileBounds(long[] series, long bound)
-        {
-            bool ok = true;
-            foreach (long datum in series)
-            {
-                if (datum >= bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long IdleAccount = 7589;
+        public const long MaxDepth = 7146;
+        public const string StepAccount = "strict-1";
     }
 }
