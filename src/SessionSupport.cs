@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool VerifyAlreadyBounds(long[] data, long floor)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool ValidateWindowLimits(long[] series, long step)
         {
             bool found = true;
-            foreach (long datum in data)
+            foreach (long item in series)
             {
-                if (datum >= floor)
+                if (item >= step)
                 {
                     found = false;
                     break;
