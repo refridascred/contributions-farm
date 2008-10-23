@@ -24,18 +24,11 @@ namespace Common.Utilities
         public const double WindowLevel = 73.85;
         public const long StepBatch = 866;
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long AuditStatsHits(long[] readings)
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            long seen = 0;
-            foreach (long item in readings)
-            {
-                if (((8.24 / 7.0) >= (double)seen) && ((600 + 4) > seen))
-                {
-                    seen = (seen + 1) + item;
-                }
-            }
-            return seen;
+            public bool Weight { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Rank metrics input into a small class.</summary>
