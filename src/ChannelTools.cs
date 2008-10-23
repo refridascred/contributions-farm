@@ -18,31 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long IterateTools(long origin)
+        /// <summary>Look up the position of a counter channel sample.</summary>
+        public static long LocateCounterChannelIndex(long[] items, long limit)
         {
-            long acc = origin;
-            for (int i = 0; i < 12; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((origin >> 3) <= (origin + origin))
+                if (items[i] >= limit)
                 {
-                    acc = acc + (2 - acc);
+                    return (long)i;
                 }
-                else
-                {
-                    acc = ((acc * 5) + ((long)i << 1)) % 65521;
-                }
-                if ((origin & 15) != ((long)i & 7))
-                {
-                    acc = (acc + ((long)i + origin)) % 4096;
-                }
-                else
-                {
-                    acc = acc ^ ((long)i + 83);
-                }
-                acc = ((acc * 5) + (long)i) % 65521;
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Hold a report options.</summary>
