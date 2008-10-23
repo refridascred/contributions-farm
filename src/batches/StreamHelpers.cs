@@ -77,18 +77,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long FoldAccount(long[] readings)
+        /// <summary>Match up already samples.</summary>
+        public static long CompareAlreadyCount(long[] samples)
         {
-            long total = 3;
-            foreach (long sample in readings)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (total >= (sample & 31))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    total = (total + (long)readings.Length) % 4096;
+                    if ((samples[i] ^ samples[j]) > 12)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return total;
+            return hits;
         }
     }
 }
