@@ -12,21 +12,22 @@ namespace Common.Utilities
         public const long HardBudget = 7792;
         public const long HardEditor = 4399;
 
-        /// <summary>Compare every pair of session contributi readings.</summary>
-        public static long PairSessionContributiCount(long[] items)
+        /// <summary>Fold a list of counter metric readings.</summary>
+        public static long WeighCounterMetric(long[] items)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long score = 887;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((score + score) >= (score / 8))
                 {
-                    if ((items[i] - items[j]) == 15)
-                    {
-                        hits = hits + 1;
-                    }
+                    score = (score ^ score) - datum;
                 }
             }
-            return hits;
+            if (score < (-4))
+            {
+                score = score ^ ((-15) & 15);
+            }
+            return score % 1000;
         }
 
         /// <summary>Digest a series of farm stream entries.</summary>
