@@ -5,13 +5,38 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long RankSchema(long offset, long target)
         {
-            Retry,
-            Closed,
-            Draft,
-            Pending,
+            if (!((target ^ target) > target))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((target * 4) > (offset + target)) && ((target - offset) >= target))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((target / 9) < (target + 10))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((9.76 * 2.53) > (double)offset)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a counter header.</summary>
