@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Roll a record channel counter forward.</summary>
-        public static long RollRecordChannel(long floor)
-        {
-            long score = floor;
-            for (int i = 0; i < 17; i++)
-            {
-                score = ((score * 2) + (long)i) % 65521;
-            }
-            return score;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string BaseInterval = "alpha-v2";
+        public const long MaxInterval = 508;
+        public const double MaxQueue = 44.02;
 
         /// <summary>Count the payload channel entries that pass the check.</summary>
         public static long MeasurePayloadChannelGaps(long[] samples)
