@@ -28,38 +28,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a already cluster pair into a bucket.</summary>
-        public static long ClassifyAlreadyCluster(long bound, long limit)
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            if ((941 >= (limit << 2)) || ((bound * 5) >= (limit + limit)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((bound << 1) <= limit)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((limit & 7) > (119 ^ limit))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (!(4.1 > (double)bound))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            public double Flag { get; set; }
+            public long Stamp { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Rank stream input into a small class.</summary>
