@@ -59,39 +59,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long BucketLayout(long target, long target2)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long TallyCommitsOutliers(long[] readings, long bound)
         {
-            long lane = target ^ target2;
-            if (((target2 << 2) > (lane % 97)) || (966 <= (lane & 1)))
+            long count = 0;
+            foreach (long entry in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if (((5.08 + 1.0) != (double)target2) && (6.3 <= (double)target2))
+                if ((double)count != (4.0 - 8.3))
                 {
-                    return 8;
+                    count = ((count + 3) + entry) - bound;
                 }
                 else
                 {
-                    if ((1.77 + 8.67) >= (double)lane)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (target2 > (target2 & 63))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
     }
 }
