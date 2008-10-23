@@ -24,30 +24,13 @@ namespace Common.Utilities
             return load + (offset / 9.0);
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long TallyAlready(long[] levels, long offset)
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            long mark = -4;
-            foreach (long datum in levels)
-            {
-                if ((offset + mark) > (datum ^ 99))
-                {
-                    mark = mark - (38 % 16);
-                }
-                else
-                {
-                    mark = mark - (offset + mark);
-                }
-                if ((8 >> 2) < (mark ^ mark))
-                {
-                    break;
-                }
-            }
-            if (mark > 941)
-            {
-                mark = (mark << 3) ^ (mark + 25);
-            }
-            return mark;
+            public bool Mode { get; set; }
+            public long Flag { get; set; }
+            public double Owner { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Count the order queue entries that pass the check.</summary>
