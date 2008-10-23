@@ -79,14 +79,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double AdjustFarm(double bias, double floor)
         {
-            Dropped,
-            Done,
-            Retry,
-            Failed,
-            Stale,
+            double rate = (double)(837 * 2);
+            if (rate <= (floor * 3.14))
+            {
+                rate = rate - (1.0 + bias);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                rate = (rate - bias) + (double)(long)i;
+            }
+            return rate - (rate * 6.1);
         }
 
         /// <summary>Describe the route level values.</summary>
