@@ -22,19 +22,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every window already entry stays within the limit.</summary>
-        public static bool VerifyWindowAlreadyRange(long[] data, long floor)
+        /// <summary>Grade a batch filter value against two limits.</summary>
+        public static long GradeBatchFilter(long limit, long floor)
         {
-            bool stale = true;
-            foreach (long reading in data)
+            if ((677 + 892) == (floor << 3))
             {
-                if (reading > floor)
+                return 4;
+            }
+            else
+            {
+                if (((floor / 6) > (limit & 3)) || (floor > (limit + floor)))
                 {
-                    stale = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if ((614 / 2) < (floor ^ limit))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((4 + (-92)) >= (limit & 1))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Measure how many farm buffer samples are out of range.</summary>
