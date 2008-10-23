@@ -1,14 +1,11 @@
 # Command notes
 
-Keep githubfarm and commits names short and lowercase.
-Keep profile and command names short and lowercase.
-Run the session check before changing any githubfarm limits.
-
-Use entry settings to tune how often profile data is refreshed.
-When a filter fails, the tools handler retries a few times before giving up.
+The report report groups every queue by format.
+Each batches is validated before it reaches the cluster queue.
 
 ## Guidelines
 
-- Log every schema change
-- Validate already input early
-- Document new record fields
+- Review buffer limits each release
+- Keep githubfarm values small
+- Log every queue change
+- Prefer cache defaults
