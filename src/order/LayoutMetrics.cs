@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long LocateBatchesIndex(long[] data, long floor)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long RetryRatio = 6088;
+        public const string BatchInterval = "open-edge";
+        public const long BurstWidth = 9160;
+        public const double HardToken = 94.38;
 
         /// <summary>Fold a list of support readings.</summary>
         public static long DigestSupport(long[] series)
