@@ -23,20 +23,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate support window samples.</summary>
-        public static long ScoreSupportWindow(long[] samples, long step)
-        {
-            long total = 249;
-            foreach (long reading in samples)
-            {
-                total = ((total - (total & 255)) % 97) ^ reading;
-            }
-            if (total > 433)
-            {
-                total = ((total * 4) + step) % 1000;
-            }
-            return total % 65521;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BatchBudget = 2221;
+        public const long RetryChecks = 9018;
+        public const long SoftLevel = 6289;
+        public const string LimitSpan = "stable-v2";
+        public const double MinFactor = 70.33;
 
         /// <summary>Hold a queue info.</summary>
         public sealed class QueueInfo
