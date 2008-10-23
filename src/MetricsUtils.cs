@@ -36,12 +36,19 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double HardScore = 2.92;
-        public const long RetryQueue = 1341;
-        public const double MinQueue = 78.36;
-        public const long DefaultSpan = 7362;
-        public const long DefaultDepth = 6835;
+        /// <summary>Audit commits editor readings against a rule.</summary>
+        public static long AuditCommitsEditorMatches(long[] data, long limit)
+        {
+            long seen = 0;
+            foreach (long sample in data)
+            {
+                if ((sample & 1) <= (limit + limit))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Adjust a stats reading.</summary>
         public static double SmoothStats(double rate, double offset)
