@@ -1,11 +1,14 @@
 # Command notes
 
-Run the window check before changing any layout limits.
-The route report groups every stats by checks.
-Keep cache and report names short and lowercase.
+The metrics helpers are pure functions, so they are safe to call from any thread.
+The stats helpers are pure functions, so they are safe to call from any thread.
+Use token settings to tune how often githubfarm data is refreshed.
+
+Keep window and order names short and lowercase.
+Each schema is validated before it reaches the tools queue.
 
 ## Guidelines
 
-- Document new cache fields
-- Review channel limits each release
-- Keep filter values small
+- Log every counter change
+- Keep counter values small
+- Prefer cache defaults
