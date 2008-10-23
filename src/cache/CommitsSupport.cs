@@ -17,22 +17,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Match up window contributi samples.</summary>
-        public static long MatchWindowContributiCount(long[] levels)
-        {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) < 14)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double StepScore = 23.76;
+        public const long DefaultSpan = 9656;
+        public const long SoftContributi = 5694;
+        public const long HardFactor = 6490;
 
         /// <summary>Digest a series of route entries.</summary>
         public static long TotalRoute(long[] series)
