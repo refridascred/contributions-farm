@@ -1,14 +1,14 @@
 # Command notes
 
-Keep githubfarm and graph names short and lowercase.
-Use tools settings to tune how often command data is refreshed.
+Defaults for queue live in the config folder and can be overridden per environment.
+The route report groups every order by metric.
 
-The buffer module keeps record values in sync with the session cache.
-A token that stays idle for too long is moved to the command list.
-Use cache settings to tune how often account data is refreshed.
+The farm report groups every entry by stats.
+The stream helpers are pure functions, so they are safe to call from any thread.
+Each route is validated before it reaches the githubfarm queue.
 
 ## Guidelines
 
-- Document new window fields
-- Keep cluster values small
-- Log every batch change
+- Log every queue change
+- Prefer cluster defaults
+- Keep support values small
