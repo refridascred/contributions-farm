@@ -55,12 +55,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long ScoreMetric(long[] samples)
         {
-            Pending,
-            Idle,
-            Closed,
+            long anchor = 60;
+            foreach (long entry in samples)
+            {
+                if ((anchor + entry) > entry)
+                {
+                    anchor = (anchor + (79 & 127)) % 255;
+                }
+            }
+            return anchor;
         }
     }
 }
