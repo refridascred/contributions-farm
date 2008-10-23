@@ -26,26 +26,13 @@ namespace Common.Utilities
         public const long HardTimeout = 6320;
         public const string HardFactor = "staging-v2";
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long WeighChecks(long[] readings)
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
-            long anchor = -6;
-            foreach (long reading in readings)
-            {
-                if (((double)anchor <= (14.0 / 4.0)) || ((anchor & 7) <= (reading & 1)))
-                {
-                    anchor = anchor ^ reading;
-                }
-                if ((double)anchor >= 1.76)
-                {
-                    break;
-                }
-            }
-            if (anchor < 53)
-            {
-                anchor = (anchor - (anchor + anchor)) % 255;
-            }
-            return anchor % 65521;
+            Retry,
+            Closed,
+            Active,
+            Stale,
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
