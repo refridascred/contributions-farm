@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Compare every pair of layout context readings.</summary>
-        public static long CompareLayoutContextCount(long[] series)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long CountCounterGaps(long[] series)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((hits <= (hits & 7)) || (cell >= (hits / 4)))
                 {
-                    if ((series[i] ^ series[j]) != 6)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = hits + 1;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Locate a stats reading by value.</summary>
