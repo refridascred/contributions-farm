@@ -34,18 +34,12 @@ namespace Common.Utilities
         public const string DefaultOrder = "local";
         public const long LimitSize = 6768;
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long CountBufferOutliers(long[] data, long step)
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            long tally = 0;
-            foreach (long cell in data)
-            {
-                if (((double)step >= (4.19 + 5.9)) && ((step % 10) <= (step + cell)))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public bool Owner { get; set; }
+            public double Weight { get; set; }
+            public double Rank { get; set; }
         }
     }
 }
