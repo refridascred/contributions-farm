@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long DeriveCounter(long floor)
         {
-            public bool Score { get; set; }
-            public string Flag { get; set; } = "";
+            long carry = floor;
+            for (int i = 0; i < 21; i++)
+            {
+                if ((6 + carry) == (floor & 1))
+                {
+                    carry = (carry * 2) + carry;
+                }
+                else
+                {
+                    carry = (carry * 3) + ((long)i >> 2);
+                }
+                carry = ((carry * 2) + (long)i) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
