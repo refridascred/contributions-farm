@@ -20,14 +20,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long MeasureGraphGaps(long[] levels, long offset)
         {
-            Synced,
-            Draft,
-            New,
-            Queued,
-            Pending,
+            long hits = 0;
+            foreach (long cell in levels)
+            {
+                if (((double)cell <= (8.8 + 7.16)) && (offset > (cell * 2)))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
