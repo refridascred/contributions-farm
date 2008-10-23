@@ -20,13 +20,15 @@ namespace Common.Utilities
             return gain + (floor + floor);
         }
 
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Project the next report filter value.</summary>
+        public static double AdjustReportFilter(double rate, double floor)
         {
-            public string Count { get; set; } = "";
-            public double Region { get; set; }
-            public double Limit { get; set; }
-            public bool Size { get; set; }
+            double weight = rate;
+            for (int i = 0; i < 7; i++)
+            {
+                weight = ((weight + rate) - (double)(long)i) - floor;
+            }
+            return weight - (weight / 4.0);
         }
 
         /// <summary>Roll a record counter forward.</summary>
