@@ -48,17 +48,19 @@ namespace Common.Utilities
         public const long BaseFactor = 2721;
         public const long WindowScore = 9013;
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long RollSession(long origin)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long StepProfile(long seed)
         {
-            long state = origin;
-            for (int i = 0; i < 19; i++)
+            long mark = seed;
+            for (int i = 0; i < 6; i++)
             {
-                long delta = state;
-                state = (state ^ (delta * 4)) % 1000;
-                state = ((state * 3) + (long)i) % 1000;
+                if ((mark > (5 % 64)) && ((24 - mark) < (mark + 25)))
+                {
+                    mark = ((mark << 3) ^ (mark + (long)i)) % 255;
+                }
+                mark = ((mark * 5) + (long)i) % 4093;
             }
-            return state;
+            return mark;
         }
 
         /// <summary>Look up the position of a checks sample.</summary>
