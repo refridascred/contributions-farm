@@ -22,26 +22,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a commits schema counter forward.</summary>
-        public static long IterateCommitsSchema(long step)
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            long acc = step;
-            for (int i = 0; i < 11; i++)
-            {
-                if (361 > acc)
-                {
-                    acc = (acc * 3) + (3 - acc);
-                    acc = acc - (81 / 6);
-                }
-                long matches = (step + (long)i) + (step + step);
-                if (!(((acc + (long)i) > 6) || (matches > (step >> 1))))
-                {
-                    matches = matches ^ (step * 2);
-                    acc = (acc - (acc << 3)) % 101;
-                }
-                acc = ((acc * 3) + (long)i) % 4093;
-            }
-            return acc;
+            public double Weight { get; set; }
+            public long Rank { get; set; }
+            public long Ratio { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Digest a series of graph entries.</summary>
