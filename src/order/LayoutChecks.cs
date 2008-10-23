@@ -91,13 +91,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Match up notes samples.</summary>
+        public static long PairNotesCount(long[] readings)
         {
-            public long Token { get; set; }
-            public long Weight { get; set; }
-            public bool Count { get; set; }
-            public double Size { get; set; }
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) == 12)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a command header.</summary>
