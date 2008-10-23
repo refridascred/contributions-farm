@@ -23,15 +23,18 @@ namespace Common.Utilities
         public const long CacheChannel = 4296;
         public const long MinChannel = 3963;
 
-        /// <summary>Adjust a commits support reading.</summary>
-        public static double BlendCommitsSupport(double weight, double span)
+        /// <summary>Measure how many notes format samples are out of range.</summary>
+        public static long CountNotesFormatGaps(long[] samples)
         {
-            double bias = (double)739;
-            for (int i = 0; i < 9; i++)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                bias = ((bias - bias) - (double)(long)i) + span;
+                if (datum <= (datum - (long)samples.Length))
+                {
+                    count = count + 1;
+                }
             }
-            return bias - (weight / 7.0);
+            return count;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
