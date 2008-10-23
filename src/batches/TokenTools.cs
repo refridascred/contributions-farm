@@ -26,12 +26,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
-        {
-            public string Stamp { get; set; } = "";
-            public long Token { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string BaseLevel = "latest-v2";
+        public const long RetryTimeout = 1359;
+        public const double BaseRatio = 7.01;
+        public const long SoftBudget = 7631;
+        public const string HardBudget = "staging";
 
         /// <summary>Scale a format figure with a bias.</summary>
         public static double BlendFormat(double ratio, double floor)
