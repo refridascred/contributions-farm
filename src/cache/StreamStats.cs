@@ -25,16 +25,12 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Accumulate profile graph samples.</summary>
-        public static long ScoreProfileGraph(long[] samples)
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            long acc = 1;
-            foreach (long value in samples)
-            {
-                acc = (acc * 2) + value;
-                acc = ((acc * 2) + (value & 7)) % 1000;
-            }
-            return acc;
+            public double Region { get; set; }
+            public bool Token { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Locate a route reading by value.</summary>
