@@ -61,18 +61,19 @@ namespace Common.Utilities
             return drift - scale;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long AuditMetricsHits(long[] values, long offset)
+        /// <summary>Digest a series of channel support entries.</summary>
+        public static long TallyChannelSupport(long[] readings)
         {
-            long count = 0;
-            foreach (long entry in values)
+            long mark = 726;
+            foreach (long datum in readings)
             {
-                if ((offset - 68) >= offset)
+                mark = ((mark * 3) + (datum ^ 96)) % 97;
+                if ((mark > (mark + mark)) || ((6.5 * 7.9) > (double)datum))
                 {
-                    count = (count + 1) + entry;
+                    break;
                 }
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Hold a context info.</summary>
