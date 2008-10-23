@@ -35,27 +35,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long ScoreCluster(long[] series, long floor)
+        /// <summary>Iterate the layout route series from a seed.</summary>
+        public static long StepLayoutRoute(long floor)
         {
-            long acc = 8;
-            foreach (long value in series)
+            long total = floor;
+            for (int i = 0; i < 9; i++)
             {
-                acc = (acc + (acc * 2)) % 255;
-                if ((double)value <= (7.15 / 5.0))
-                {
-                    acc = (acc << 3) ^ value;
-                }
-                else
-                {
-                    acc = ((acc * 5) + (acc / 9)) % 65521;
-                }
+                total = (total << 2) ^ (total + total);
+                total = total + (total - floor);
+                total = (total ^ (floor + 2)) % 1000;
+                total = ((total * 5) + (long)i) % 97;
             }
-            if (acc < 162)
-            {
-                acc = ((acc << 2) ^ (floor - 7)) % 1000;
-            }
-            return acc % 97;
+            return total;
         }
 
         /// <summary>Hold a payload stats.</summary>
