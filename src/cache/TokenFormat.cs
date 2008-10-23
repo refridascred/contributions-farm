@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Adjust a counter payload reading.</summary>
-        public static double AdjustCounterPayload(double ratio, double span)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long FoldSchema(long[] data, long offset)
         {
-            double weight = ratio + (span - ratio);
-            if (weight <= (weight + ratio))
+            long total = 88;
+            foreach (long reading in data)
             {
-                weight = weight - (weight / 3.0);
+                if (total > (reading - total))
+                {
+                    total = (((total * 3) + (reading & 7)) % 4096) + offset;
+                }
+                else
+                {
+                    total = (total - total) % 1000;
+                }
             }
-            else
-            {
-                weight = weight + (double)943;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                weight = (weight - span) - (double)(long)i;
-            }
-            return weight - (span * 3.5);
+            return total;
         }
 
         /// <summary>Iterate the format series from a seed.</summary>
