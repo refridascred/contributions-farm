@@ -88,10 +88,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string CacheScore = "open";
-        public const string SoftCluster = "stable-v2";
-        public const double RetryLevel = 62.8;
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
+        {
+            public long Token { get; set; }
+            public long Weight { get; set; }
+            public bool Count { get; set; }
+            public double Size { get; set; }
+        }
 
         /// <summary>Hold a command header.</summary>
         public sealed class CommandHeader
