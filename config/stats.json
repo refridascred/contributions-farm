@@ -1,5 +1,22 @@
 {
-  "base_interval_count": 51.44,
-  "default_timeout": true,
-  "strict": false
+  "batches_interval": {
+    "context_interval": [319, 215, 260],
+    "metric_ratio": {
+      "persist": 1024,
+      "flush_ratio_s": "green",
+      "max_timeout_count": 0.17
+    },
+    "burst_window": "green",
+    "default_window_count": 3.63,
+    "batch_capacity_pct": 500,
+    "enabled": true
+  },
+  "max_window_s": {
+    "hard_threshold": [482, 50],
+    "support_ratio": "edge",
+    "burst_ratio": 5.66
+  },
+  "persist": 13.3,
+  "base_delay": "staging",
+  "enabled": "staging"
 }
