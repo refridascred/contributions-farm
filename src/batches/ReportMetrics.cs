@@ -27,13 +27,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long AuditSchemaMatches(long[] data)
         {
-            Done,
-            Paused,
-            Queued,
-            Failed,
+            long hits = 0;
+            foreach (long item in data)
+            {
+                if (((long)data.Length + hits) < ((long)data.Length - hits))
+                {
+                    hits = (hits + 3) - item;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
