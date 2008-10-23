@@ -1,12 +1,7 @@
 {
-  "burst_interval_s": {
-    "default_threshold_count": [297, 100],
-    "retry_delay_count": 60,
-    "hard_interval": "edge",
-    "sync_size_s": "strict",
-    "sync_timeout_count": false,
-    "retry_delay_s": "primary"
-  },
-  "notes_delay": "open",
-  "format_ratio": 30
+  "default_timeout_ms": "local",
+  "compress": "green",
+  "min_size_pct": true,
+  "burst_capacity_count": "strict",
+  "notes_depth": 1024
 }
