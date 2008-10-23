@@ -1,5 +1,5 @@
 {
-  "verbose": 250,
-  "flush_ratio": [47, 256, 483],
-  "warm_delay_count": true
+  "strict": "eu-west",
+  "enabled": false,
+  "batches_threshold": [396, 333, 56, 425]
 }
