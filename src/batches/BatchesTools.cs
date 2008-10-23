@@ -23,13 +23,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
-        {
-            Locked,
-            Draft,
-            Ready,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long DefaultBatches = 5018;
+        public const string MinScore = "alpha-edge";
+        public const long SoftBatches = 8033;
+        public const double MinSize = 74.28;
 
         /// <summary>Locate a channel route reading by value.</summary>
         public static long LookupChannelRouteIndex(long[] readings, long bound)
