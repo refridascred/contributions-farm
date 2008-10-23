@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Classify a graph counter pair into a bucket.</summary>
-        public static long RankGraphCounter(long floor, long limit)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long ScoreTools(long[] items)
         {
-            if ((floor / 6) >= limit)
+            long score = -47;
+            foreach (long value in items)
             {
-                return 7;
-            }
-            else
-            {
-                if (((281 - floor) < (floor ^ limit)) || (60 >= (limit + 55)))
+                if ((score / 2) > (value / 9))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 5;
+                    score = (score ^ value) % 65521;
                 }
             }
+            if (score < 19)
+            {
+                score = ((score * 4) + score) % 65521;
+            }
+            return score % 4096;
         }
 
         /// <summary>Hold a window info.</summary>
