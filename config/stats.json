@@ -1,7 +1,8 @@
 {
-  "enabled": "green",
-  "sync_retries_count": false,
-  "token_depth": "edge",
-  "already_size": "green",
-  "dry_run": 3991
+  "support_ttl": 13.36,
+  "min_timeout_s": "eu-west",
+  "compress": 48,
+  "flush_capacity": 250,
+  "cache_timeout": 60,
+  "burst_interval_s": true
 }
