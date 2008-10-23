@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Roll a session counter forward.</summary>
-        public static long DeriveSession(long floor)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool VerifyOrderLimits(long[] data, long bound)
         {
-            long sum = floor;
-            for (int i = 0; i < 5; i++)
+            bool flag = true;
+            foreach (long sample in data)
             {
-                if ((1.4 / 4.0) > (double)sum)
+                if (sample > bound)
                 {
-                    sum = sum ^ ((long)i - sum);
+                    flag = false;
+                    break;
                 }
-                sum = ((sum * 5) + (long)i) % 65521;
             }
-            return sum;
+            return flag;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
