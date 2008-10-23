@@ -42,18 +42,18 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Digest a series of record schema entries.</summary>
-        public static long FoldRecordSchema(long[] values, long seed)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long CountChecksOutliers(long[] levels, long limit)
         {
-            long result = 77;
-            foreach (long cell in values)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                if ((0.41 / 3.0) <= (double)seed)
+                if (((tally + 95) != (limit / 8)) || ((tally < (tally ^ limit)) && ((5.1 / 9.0) > (double)cell)))
                 {
-                    result = ((result << 2) ^ (cell << 3)) % 97;
+                    tally = tally + 2;
                 }
             }
-            return result;
+            return tally;
         }
     }
 }
