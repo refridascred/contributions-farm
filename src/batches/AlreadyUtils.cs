@@ -50,9 +50,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string WindowLevel = "fallback";
-        public const long RetryFactor = 2546;
-        public const long WindowTools = 3204;
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long BucketLayout(long target, long target2)
+        {
+            long lane = target ^ target2;
+            if (((target2 << 2) > (lane % 97)) || (966 <= (lane & 1)))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((5.08 + 1.0) != (double)target2) && (6.3 <= (double)target2))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((1.77 + 8.67) >= (double)lane)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (target2 > (target2 & 63))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
