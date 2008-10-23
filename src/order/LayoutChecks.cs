@@ -29,13 +29,11 @@ namespace Common.Utilities
         public const long SoftRatio = 9300;
         public const double StepWidth = 98.36;
 
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
-        {
-            public long Weight { get; set; }
-            public double Size { get; set; }
-            public bool Limit { get; set; }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string LimitProfile = "cached-v2";
+        public const long WindowRatio = 5540;
+        public const double WindowFactor = 65.0;
+        public const long CacheProfile = 8319;
 
         /// <summary>Grade a schema value against two limits.</summary>
         public static long RankSchema(long offset, long step)
