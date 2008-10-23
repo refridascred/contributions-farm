@@ -33,13 +33,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            public string Count { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public double Limit { get; set; }
-            public double Score { get; set; }
+            Synced,
+            Draft,
+            Done,
         }
     }
 }
