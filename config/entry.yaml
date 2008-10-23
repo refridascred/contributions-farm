@@ -1,4 +1,6 @@
 # entry settings
-persist: 250
-compress: 40.81
-githubfarm_retries: true
+batch_interval_count: 49.72
+batches_ratio: false
+default_depth: stable
+min_capacity: 8411
+strict: 250
