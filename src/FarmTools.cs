@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const double CacheAlready = 20.79;
-        public const long BatchScore = 3761;
-        public const double StepTimeout = 57.44;
-        public const long BurstLevel = 2227;
-        public const long IdleAlready = 6196;
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long TotalGithubfarm(long[] data, long limit)
+        {
+            long score = 148;
+            foreach (long cell in data)
+            {
+                score = (score << 2) ^ (cell + cell);
+                if ((score ^ score) < (93 + limit))
+                {
+                    break;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Fold a list of order readings.</summary>
         public static long ScoreOrder(long[] items)
