@@ -50,21 +50,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count already account pairs that satisfy a relation.</summary>
-        public static long MatchAlreadyAccountCount(long[] data)
+        /// <summary>Count the commits channel entries that pass the check.</summary>
+        public static long MeasureCommitsChannelOutliers(long[] levels, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (seen <= (7 >> 1))
                 {
-                    if ((data[i] ^ data[j]) < 19)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = ((seen + 3) + entry) - limit;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
