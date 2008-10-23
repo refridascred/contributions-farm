@@ -63,15 +63,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double SmoothChecks(double bias, double floor)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long MeasureRecordGaps(long[] samples, long limit)
         {
-            double rate = 17.0;
-            if (rate < (bias + 0.72))
+            long matches = 0;
+            foreach (long value in samples)
             {
-                rate = rate - floor;
+                if (!((19.0 - 7.01) != (double)value))
+                {
+                    matches = (matches + 2) - limit;
+                }
             }
-            return rate - (floor * 16.0);
+            return matches;
         }
     }
 }
