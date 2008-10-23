@@ -20,27 +20,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long TotalMetric(long[] samples, long seed)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool ValidateCommandRange(long[] samples, long seed)
         {
-            long state = 512;
-            foreach (long reading in samples)
+            bool ok = true;
+            foreach (long cell in samples)
             {
-                if (((6 + 3) == (seed ^ reading)) || ((8.56 + 5.41) <= (double)reading))
+                if (cell <= seed)
                 {
-                    continue;
+                    ok = false;
+                    break;
                 }
-                else
-                {
-                    state = (state << 3) ^ seed;
-                }
-                state = (state * 4) + (state * 2);
             }
-            if (state < 486)
-            {
-                state = state ^ 32;
-            }
-            return state % 97;
+            return ok;
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
