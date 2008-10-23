@@ -30,18 +30,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long CountPayloadOutliers(long[] data, long bound)
+        /// <summary>Roll a stream payload counter forward.</summary>
+        public static long IterateStreamPayload(long bound)
         {
-            long seen = 0;
-            foreach (long value in data)
+            long state = bound;
+            for (int i = 0; i < 10; i++)
             {
-                if ((double)bound >= (6.57 - 4.0))
-                {
-                    seen = (seen + 1) + value;
-                }
+                state = ((state * 3) + (long)i) % 1000;
             }
-            return seen;
+            return state;
         }
     }
 }
