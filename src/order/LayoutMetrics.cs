@@ -14,13 +14,25 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Rank report input into a small class.</summary>
+        public static long ClassifyReport(long seed, long seed2)
         {
-            public string Size { get; set; } = "";
-            public long Limit { get; set; }
-            public bool Label { get; set; }
-            public long Weight { get; set; }
+            long diff = seed ^ seed2;
+            if (!((seed2 + diff) < (seed2 % 100)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((4.6 * 8.0) >= (double)seed2)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Combine filter values into a single score.</summary>
