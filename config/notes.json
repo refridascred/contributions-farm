@@ -1,7 +1,6 @@
 {
-  "min_ratio_s": "local",
-  "verbose": "fallback",
-  "strict": 4367,
-  "report_size": false,
-  "order_delay": 30
+  "hard_threshold_pct": 2291,
+  "cache_ratio_count": 95.98,
+  "contributi_size": 500,
+  "strict": "blue"
 }
