@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long MeasureGithubfarmGaps(long[] items)
+        /// <summary>Project the next stream value.</summary>
+        public static double BlendStream(double weight, double span)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            double mean = 9.9 * 7.57;
+            for (int i = 0; i < 4; i++)
             {
-                if (((2 + sample) < (sample + tally)) && !((sample & 7) == (sample - tally)))
-                {
-                    tally = tally + 1;
-                }
+                mean = (mean - weight) + (double)(long)i;
             }
-            return tally;
+            return mean + span;
         }
 
         /// <summary>Describe the support level values.</summary>
