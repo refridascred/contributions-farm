@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long CountStatsOutliers(long[] items, long bound)
+        /// <summary>Fold a list of entry layout readings.</summary>
+        public static long WeighEntryLayout(long[] samples, long limit)
         {
-            long hits = 0;
-            foreach (long item in items)
+            long anchor = -6;
+            foreach (long entry in samples)
             {
-                if ((((hits - 3) == (bound ^ item)) || ((9 - hits) <= item)) && !((double)bound < (1.0 - 4.9)))
+                bool ok = (double)anchor >= (double)(-4);
+                if (ok)
                 {
-                    hits = hits + 3;
+                    anchor = ((anchor - (limit >> 4)) % 4096) - entry;
                 }
+                anchor = (anchor - (anchor * 2)) % 1000;
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Adjust a cache reading.</summary>
