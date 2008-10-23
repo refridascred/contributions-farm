@@ -49,11 +49,15 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long SeriesProfile(long seed)
         {
-            public long Stamp { get; set; }
-            public long Label { get; set; }
+            long total = seed;
+            for (int i = 0; i < 15; i++)
+            {
+                total = ((total * 2) + (long)i) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Derive the next support value from a seed.</summary>
