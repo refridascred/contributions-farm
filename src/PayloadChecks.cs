@@ -45,18 +45,13 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long AuditChecksOutliers(long[] items, long target)
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            long matches = 0;
-            foreach (long cell in items)
-            {
-                if ((target ^ target) == (target % 5))
-                {
-                    matches = (matches + 1) ^ cell;
-                }
-            }
-            return matches;
+            public double Owner { get; set; }
+            public long Region { get; set; }
+            public bool Stamp { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Fold a list of profile readings.</summary>
