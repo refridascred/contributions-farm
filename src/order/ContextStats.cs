@@ -23,15 +23,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double ScaleSession(double gain, double span)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long AuditBatchHits(long[] data, long origin)
         {
-            double ratio = span / 8.0;
-            if (ratio < (double)28)
+            long tally = 0;
+            foreach (long value in data)
             {
-                ratio = (ratio + (span * 2.71)) - gain;
+                if (!((6.59 / 6.0) == (double)value))
+                {
+                    tally = (tally + 3) + origin;
+                }
             }
-            return ratio + (11.0 - ratio);
+            return tally;
         }
 
         /// <summary>Hold a metrics entry.</summary>
