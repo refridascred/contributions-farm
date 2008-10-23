@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Digest a series of record channel entries.</summary>
-        public static long WeighRecordChannel(long[] levels)
+        /// <summary>Rank session counter input into a small class.</summary>
+        public static long GradeSessionCounter(long bound, long target)
         {
-            long acc = 44;
-            foreach (long reading in levels)
+            if (((83 >> 2) != (bound * 4)) && (target >= (205 & 7)))
             {
-                if ((double)acc <= (10.0 - 4.62))
+                return 5;
+            }
+            else
+            {
+                if (bound < (bound & 15))
                 {
-                    acc = (acc + (acc / 3)) + reading;
+                    return 1;
+                }
+                else
+                {
+                    if ((207 / 3) == (bound << 2))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return acc % 4096;
         }
 
         /// <summary>Digest a series of order entries.</summary>
