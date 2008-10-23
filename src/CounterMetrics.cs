@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long FoldCluster(long[] data)
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long FindRouteIndex(long[] levels, long seed)
         {
-            long state = 311;
-            foreach (long sample in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int i = 0; i < 5; i++)
+                if (levels[i] >= seed)
                 {
-                    state = ((state + (state % 7)) % 1000) - (long)i;
-                }
-                if ((state ^ sample) < sample)
-                {
-                    state = (state - state) % 101;
-                    break;
-                }
-                if ((state ^ sample) >= sample)
-                {
-                    state = (state ^ (sample / 7)) % 101;
+                    return (long)i;
                 }
             }
-            if (state < 761)
-            {
-                state = state ^ (state ^ state);
-            }
-            return state;
+            return -1;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
