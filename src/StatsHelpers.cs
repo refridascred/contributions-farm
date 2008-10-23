@@ -24,13 +24,32 @@ namespace Common.Utilities
             return load + (offset / 9.0);
         }
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Classify a commits token pair into a bucket.</summary>
+        public static long ClassifyCommitsToken(long origin, long bound)
         {
-            public bool Mode { get; set; }
-            public long Flag { get; set; }
-            public double Owner { get; set; }
-            public long Offset { get; set; }
+            long lane = origin + bound;
+            if (lane < (bound * 5))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((lane * 3) >= (lane + 9))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((2.0 / 6.0) <= (8.0 / 8.0))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Adjust a counter reading.</summary>
