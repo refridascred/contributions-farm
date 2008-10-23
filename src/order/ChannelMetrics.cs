@@ -31,15 +31,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two channel measurements.</summary>
-        public static double ScaleChannel(double weight, double bias)
+        /// <summary>Iterate the batches window series from a seed.</summary>
+        public static long IterateBatchesWindow(long target)
         {
-            double weight2 = (double)(98 + 543);
-            if (weight2 > (double)24)
+            long mark = target;
+            for (int i = 0; i < 16; i++)
             {
-                weight2 = (weight2 + (weight * 3.4)) - bias;
+                mark = ((mark * 4) + (long)i) % 4093;
             }
-            return weight2 - 19.0;
+            return mark;
         }
     }
 }
