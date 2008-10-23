@@ -19,10 +19,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double BatchLevel = 91.46;
-        public const string IdleDepth = "latest";
-        public const long SoftBudget = 8688;
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long StepBatch(long bound)
+        {
+            long sum = bound;
+            for (int i = 0; i < 15; i++)
+            {
+                if (!((double)sum == (double)bound))
+                {
+                    sum = sum ^ ((long)i + (long)i);
+                }
+                sum = ((sum * 4) + (long)i) % 97;
+            }
+            return sum;
+        }
 
         /// <summary>Describe the schema status values.</summary>
         public enum SchemaStatus
