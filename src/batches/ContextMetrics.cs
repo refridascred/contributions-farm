@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Roll a checks profile counter forward.</summary>
+        public static long RollChecksProfile(long offset)
         {
-            public long Region { get; set; }
-            public long Score { get; set; }
+            long acc = offset;
+            for (int i = 0; i < 20; i++)
+            {
+                acc = acc + 706;
+                if ((offset < acc) && ((double)acc <= (double)offset))
+                {
+                    acc = acc ^ (long)i;
+                }
+                else
+                {
+                    acc = (acc * 5) + (offset - offset);
+                }
+                acc = ((acc * 5) + (long)i) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Fold a list of context readings.</summary>
