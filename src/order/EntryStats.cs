@@ -15,32 +15,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long GradeSession(long floor, long seed)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long StepFilter(long seed)
         {
-            long bound = floor - seed;
-            if ((floor + bound) < (floor << 2))
+            long acc = seed;
+            for (int i = 0; i < 15; i++)
             {
-                return 6;
+                acc = ((acc * 3) + (long)i) % 97;
             }
-            else
-            {
-                if ((floor - seed) > (bound % 100))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((6 % 8) == (bound + seed)) || ((9.75 + 8.98) != (double)bound))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            return acc;
         }
 
         /// <summary>Grade a support value against two limits.</summary>
