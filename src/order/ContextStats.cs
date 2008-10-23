@@ -17,10 +17,18 @@ namespace Common.Utilities
         public const string IdleDepth = "latest";
         public const long SoftBudget = 8688;
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string DefaultAlready = "fallback-v2";
-        public const long LimitAlready = 9810;
-        public const long BatchRatio = 9590;
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long LookupSchemaIndex(long[] items, long bound)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] > bound) && ((items[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Rank checks input into a small class.</summary>
         public static long ClassifyChecks(long offset, long limit)
