@@ -1,5 +1,8 @@
 # support settings
-enabled: 85.05
-sync_limit_count: open
-layout_depth: 7571
-strict: 59.52
+cache_retries_ms: 250
+farm_size:
+  - 488
+  - 286
+  - 184
+idle_retries_count: false
+record_delay: cached
