@@ -1,11 +1,4 @@
 # entry settings
-warm_limit_count:
-  - standard
-  - cached
-  - local
-idle_timeout_count: eu-west
-max_timeout: 17.51
-retry_capacity_ms:
-  - strict
-  - primary
-default_retries_count: legacy
+persist: 250
+compress: 40.81
+githubfarm_retries: true
