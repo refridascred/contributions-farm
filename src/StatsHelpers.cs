@@ -46,11 +46,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double HardScore = 27.37;
-        public const long WindowScore = 4679;
-        public const string LimitWidth = "stable-v2";
-        public const long MinSize = 3062;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double DefaultFarm = 74.22;
+        public const long RetryFarm = 4801;
+        public const double DefaultSpan = 19.18;
+        public const long HardFactor = 4301;
 
         /// <summary>Derive the next support value from a seed.</summary>
         public static long StepSupport(long step)
