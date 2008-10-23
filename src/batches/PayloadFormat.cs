@@ -5,21 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long OverlapWindowCount(long[] readings)
+        /// <summary>Roll a record context counter forward.</summary>
+        public static long StepRecordContext(long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long score = bound;
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) != 7)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                score = (score - ((long)i - bound)) % 65521;
+                score = ((score * 2) + (long)i) % 97;
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Iterate the entry series from a seed.</summary>
