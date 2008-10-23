@@ -5,14 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Iterate the layout metrics series from a seed.</summary>
+        public static long RollLayoutMetrics(long target)
         {
-            Paused,
-            Retry,
-            Synced,
-            Failed,
-            Draft,
+            long total = target;
+            for (int i = 0; i < 8; i++)
+            {
+                total = total + (25 + target);
+                total = ((total * 2) + (long)i) % 101;
+            }
+            return total;
         }
 
         /// <summary>Hold a batch info.</summary>
