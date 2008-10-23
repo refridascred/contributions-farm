@@ -41,9 +41,25 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string BurstRoute = "latest-1";
-        public const string IdleSpan = "standard-1";
-        public const long SoftDepth = 5544;
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long ClassifyMetric(long step, long offset)
+        {
+            long prev = step - offset;
+            if ((20.0 / 4.0) <= (double)prev)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)step >= (7.0 - 14.0))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
     }
 }
