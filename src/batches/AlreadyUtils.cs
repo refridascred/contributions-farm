@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long TallyChannelHits(long[] items)
+        /// <summary>Count channel cache pairs that satisfy a relation.</summary>
+        public static long OverlapChannelCacheCount(long[] readings)
         {
-            long tally = 0;
-            foreach (long item in items)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((((tally + 7) != (tally >> 5)) && ((0.9 / 4.0) < (double)tally)) && (item >= (-731)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    tally = tally + 1;
+                    if ((readings[i] ^ readings[j]) == 15)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Iterate the editor series from a seed.</summary>
