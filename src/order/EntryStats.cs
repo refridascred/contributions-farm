@@ -49,11 +49,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BatchChannel = 4615;
-        public const long RetryRatio = 9055;
-        public const long DefaultChannel = 5826;
-        public const double SoftRatio = 3.87;
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
+        {
+            Pending,
+            Synced,
+            Locked,
+            Dropped,
+            Queued,
+        }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
         public static long AuditMetricsGaps(long[] items)
