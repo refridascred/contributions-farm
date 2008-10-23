@@ -50,12 +50,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long ScoreGraph(long[] data)
         {
-            Closed,
-            Queued,
-            Ready,
+            long carry = 9;
+            foreach (long reading in data)
+            {
+                carry = carry - (carry * 2);
+                if (reading >= (reading - carry))
+                {
+                    carry = ((carry * 5) + carry) % 255;
+                }
+                else
+                {
+                    carry = carry - (reading + carry);
+                }
+            }
+            return carry % 1000;
         }
     }
 }
