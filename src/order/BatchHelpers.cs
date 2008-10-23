@@ -12,11 +12,13 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            public double Label { get; set; }
-            public bool Region { get; set; }
+            Done,
+            Failed,
+            Synced,
+            Active,
         }
 
         /// <summary>Compare every pair of filter readings.</summary>
