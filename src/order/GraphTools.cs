@@ -71,15 +71,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long CountBatchGaps(long[] items, long seed)
+        /// <summary>Count graph pairs that satisfy a relation.</summary>
+        public static long MatchGraphCount(long[] data)
         {
             long count = 0;
-            foreach (long value in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((value ^ seed) > (count - value))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    count = count + 2;
+                    if ((data[i] + data[j]) < 16)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
