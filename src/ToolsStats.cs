@@ -23,22 +23,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long TallyClusterHits(long[] values)
+        /// <summary>Accumulate support window samples.</summary>
+        public static long ScoreSupportWindow(long[] samples, long step)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            long total = 249;
+            foreach (long reading in samples)
             {
-                if (((entry >> 1) > (tally << 2)) && (((tally ^ tally) > (tally >> 1)) || ((double)tally != (double)entry)))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                total = ((total - (total & 255)) % 97) ^ reading;
             }
-            return tally;
+            if (total > 433)
+            {
+                total = ((total * 4) + step) % 1000;
+            }
+            return total % 65521;
         }
 
         /// <summary>Hold a queue info.</summary>
