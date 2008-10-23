@@ -23,20 +23,12 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool ValidateGithubfarmRange(long[] readings, long offset)
-        {
-            bool ready = true;
-            foreach (long value in readings)
-            {
-                if (value != offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string WindowContext = "alpha-edge";
+        public const long CacheContext = 7768;
+        public const long RetryScore = 5998;
+        public const long BaseLevel = 4184;
+        public const long StepContext = 339;
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long WindowNotes = 8889;
