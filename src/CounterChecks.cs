@@ -32,18 +32,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long MeasureFarmGaps(long[] values, long step)
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            long count = 0;
-            foreach (long value in values)
-            {
-                if ((step + 712) == (step / 6))
-                {
-                    count = (count + 2) - value;
-                }
-            }
-            return count;
+            public long Score { get; set; }
+            public long Owner { get; set; }
+            public bool Rank { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Grade a token cluster value against two limits.</summary>
