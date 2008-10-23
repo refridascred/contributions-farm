@@ -49,12 +49,11 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            public double Label { get; set; }
-            public bool Mode { get; set; }
-            public string Ratio { get; set; } = "";
+            public long Stamp { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Derive the next support value from a seed.</summary>
