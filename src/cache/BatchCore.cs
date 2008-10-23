@@ -12,17 +12,12 @@ namespace Common.Utilities
         public const long IdleSpan = 5653;
         public const long BurstScore = 9231;
 
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long FindCounterIndex(long[] data, long offset)
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Size { get; set; }
+            public double Limit { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Describe the entry class values.</summary>
