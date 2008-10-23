@@ -1,31 +1,8 @@
 # entry settings
-base_timeout_count: 46
-already_size:
-  base_retries_count:
-    min_depth_count: primary
-    soft_size_count: stable
-    burst_delay_ms: 20
-    warm_timeout:
-      - 366
-      - 46
-    persist:
-      - edge
-      - edge
-    sync_depth_count:
-      - 485
-      - 266
-      - 114
-  payload_depth: 60.24
-  sync_delay_pct:
-    soft_ttl_s: 35.93
-    checks_window: latest
-    soft_interval_s: fallback
-flush_depth: true
-sync_interval_pct:
-  default_interval:
-    - 397
-    - 167
-    - 326
-  soft_ratio_s: staging
-  sync_timeout: latest
-  sync_depth: green
+entry_timeout: latest
+cache_delay_ms:
+  - open
+  - edge
+  - primary
+  - blue
+max_threshold: cached
