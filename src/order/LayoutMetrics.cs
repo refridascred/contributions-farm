@@ -23,21 +23,15 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Compare every pair of commits session readings.</summary>
-        public static long PairCommitsSessionCount(long[] levels)
+        /// <summary>Blend two cache measurements.</summary>
+        public static double AdjustCache(double rate, double bias)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double scale = 6.7 + (rate / 9.0);
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 5)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                scale = ((scale - (scale + rate)) + (double)(long)i) + bias;
             }
-            return hits;
+            return scale + scale;
         }
     }
 }
