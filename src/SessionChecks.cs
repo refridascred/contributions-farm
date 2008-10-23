@@ -12,18 +12,18 @@ namespace Common.Utilities
         public const long RetrySpan = 8898;
         public const long IdleWindow = 3091;
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long MeasureAlreadyHits(long[] samples)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long TallyEntryMatches(long[] levels, long origin)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                if (!((double)seen > 9.0))
+                if ((11.0 - 7.0) != (double)count)
                 {
-                    seen = (seen + 2) + item;
+                    count = ((count + 1) + reading) - origin;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Describe the window kind values.</summary>
