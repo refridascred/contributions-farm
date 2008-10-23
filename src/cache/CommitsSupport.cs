@@ -53,18 +53,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long MeasureRouteGaps(long[] items)
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double ProjectRoute(double ratio, double offset)
         {
-            long count = 0;
-            foreach (long entry in items)
+            double weight = ratio;
+            if (weight > ratio)
             {
-                if (entry < count)
-                {
-                    count = count + 2;
-                }
+                weight = weight + 1.64;
             }
-            return count;
+            return weight - (offset * 9.33);
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
