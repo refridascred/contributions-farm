@@ -31,19 +31,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool VerifyFarmLimits(long[] levels, long seed)
-        {
-            bool flag = true;
-            foreach (long entry in levels)
-            {
-                if (entry <= seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long SoftWidth = 9270;
+        public const string BaseFormat = "fallback-v2";
+        public const long IdleFormat = 3758;
+        public const long HardFormat = 6422;
     }
 }
