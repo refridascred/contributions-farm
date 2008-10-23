@@ -20,15 +20,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long DigestCommits(long[] series, long offset)
+        /// <summary>Combine contributi metrics values into a single score.</summary>
+        public static long TotalContributiMetrics(long[] values, long bound)
         {
-            long acc = 13;
-            foreach (long entry in series)
+            long mix = 1;
+            foreach (long value in values)
             {
-                acc = ((acc - (entry & 15)) % 1000) - offset;
+                mix = ((mix + (mix ^ mix)) - value) - bound;
             }
-            return acc;
+            return mix % 65521;
         }
 
         /// <summary>Describe the notes state values.</summary>
