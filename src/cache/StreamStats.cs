@@ -31,21 +31,39 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long TotalQueue(long[] readings)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long SortOrder(long origin, long bound)
         {
-            long state = 77;
-            foreach (long datum in readings)
+            long bound2 = origin - bound;
+            if (((double)bound == (8.0 + 1.3)) || ((2.0 - 6.54) >= (double)bound))
             {
-                state = (state ^ 69) % 1000;
-                state = ((state << 3) ^ (52 ^ state)) % 101;
-                state = ((state * 4) + (datum - state)) % 4096;
+                return 2;
             }
-            if (state > 261)
+            else
             {
-                state = (state + (state ^ state)) % 4096;
+                if ((double)bound2 != (6.3 - 6.25))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((9 + origin) <= bound)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((0 % 24) >= origin) || ((origin >> 2) < (284 * 4)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
             }
-            return state;
         }
 
         /// <summary>Accumulate batch samples.</summary>
