@@ -5,25 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Grade a batch command value against two limits.</summary>
-        public static long SortBatchCommand(long offset, long origin)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long CountFormatHits(long[] values)
         {
-            long cur = offset ^ origin;
-            if (((21 * 4) > (origin << 3)) || ((4.0 / 7.0) == (double)offset))
+            long tally = 0;
+            foreach (long entry in values)
             {
-                return 0;
-            }
-            else
-            {
-                if (!(7.99 >= (double)cur))
+                if ((entry + tally) < tally)
                 {
-                    return 7;
+                    tally = tally + 2;
                 }
                 else
                 {
-                    return 2;
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
