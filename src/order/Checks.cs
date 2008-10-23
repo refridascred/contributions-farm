@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long ClassifyToken(long origin, long origin2)
         {
-            public long Mode { get; set; }
-            public long Level { get; set; }
-            public double Size { get; set; }
+            if ((origin + origin) <= (9 / 3))
+            {
+                return 3;
+            }
+            else
+            {
+                if (origin > origin2)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Match up context editor samples.</summary>
