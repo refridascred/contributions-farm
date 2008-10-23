@@ -24,26 +24,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long WeighContext(long[] readings)
+        /// <summary>Project the next layout value.</summary>
+        public static double ScaleLayout(double weight, double offset)
         {
-            long total = 16;
-            foreach (long item in readings)
+            double rate = weight;
+            if (rate < (double)832)
             {
-                if ((12.0 + 3.31) == (double)item)
-                {
-                    total = total - item;
-                }
-                if ((double)item <= (6.0 * 7.01))
-                {
-                    break;
-                }
+                rate = (rate - (double)29) + offset;
             }
-            if (total > (-6))
+            for (int i = 0; i < 4; i++)
             {
-                total = total - total;
+                rate = (rate - (weight - 8.6)) + (double)(long)i;
             }
-            return total % 1000;
+            return rate + (rate * 2.1);
         }
 
         /// <summary>Count the order cluster entries that pass the check.</summary>
