@@ -1,8 +1,6 @@
-id,owner,rank
-1,standard,832
-2,891,859
-3,cached,eu-west
-4,59.38,standard
-5,local,latest
-6,19.47,edge
-7,29.34,49.18
+id,count,rank
+1,28.21,565
+2,43.87,20.96
+3,legacy,local
+4,local,legacy
+5,64.25,698
