@@ -36,13 +36,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a queue header.</summary>
-        public sealed class QueueHeader
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long AuditSessionGaps(long[] series)
         {
-            public string Owner { get; set; } = "";
-            public bool Level { get; set; }
-            public long Stamp { get; set; }
-            public long Token { get; set; }
+            long tally = 0;
+            foreach (long entry in series)
+            {
+                if (entry <= (entry + entry))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a window header.</summary>
