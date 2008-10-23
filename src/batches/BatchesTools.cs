@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count the window channel entries that pass the check.</summary>
-        public static long TallyWindowChannelMatches(long[] items, long origin)
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            long count = 0;
-            foreach (long datum in items)
-            {
-                if ((5.0 - 15.0) != (double)datum)
-                {
-                    count = (count + 3) - origin;
-                }
-            }
-            return count;
+            public double Offset { get; set; }
+            public long Token { get; set; }
+            public double Total { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Accumulate cache samples.</summary>
