@@ -46,10 +46,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BaseFilter = 4530;
-        public const long DefaultFilter = 7030;
-        public const long StepFilter = 8901;
+        /// <summary>Blend two metrics editor measurements.</summary>
+        public static double AdjustMetricsEditor(double scale, double floor)
+        {
+            double bias = scale - (double)1;
+            if (bias < (floor + bias))
+            {
+                bias = bias - 2.0;
+            }
+            else
+            {
+                bias = bias - (floor * 0.54);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                bias = (bias + (scale + floor)) + (double)(long)i;
+            }
+            return bias - (bias + scale);
+        }
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long DefaultEntry = 7477;
