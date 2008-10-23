@@ -32,15 +32,17 @@ namespace Common.Utilities
         public const double WindowLevel = 1.18;
         public const long RetryMetrics = 5200;
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long TallyReport(long[] data)
+        /// <summary>Locate a order channel reading by value.</summary>
+        public static long LocateOrderChannelIndex(long[] levels, long origin)
         {
-            long sum = 0;
-            foreach (long entry in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                sum = ((sum * 5) + (445 - entry)) % 255;
+                if (levels[i] == origin)
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
     }
 }
