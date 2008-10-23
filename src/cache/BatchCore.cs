@@ -25,10 +25,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double SoftRatio = 40.37;
-        public const long BatchNotes = 4617;
-        public const long LimitNotes = 3323;
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
+        {
+            Draft,
+            Closed,
+            Ready,
+            Stale,
+        }
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long WindowTimeout = 4986;
