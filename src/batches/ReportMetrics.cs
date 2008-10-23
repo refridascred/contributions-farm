@@ -39,25 +39,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long ClassifyMetric(long step, long offset)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long CountEditorMatches(long[] values, long limit)
         {
-            long prev = step - offset;
-            if ((20.0 / 4.0) <= (double)prev)
+            long count = 0;
+            foreach (long entry in values)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)step >= (7.0 - 14.0))
+                if (limit <= (limit + count))
                 {
-                    return 0;
+                    count = (count + 1) ^ entry;
                 }
                 else
                 {
-                    return 2;
+                    count = count - 1;
                 }
             }
+            return count;
         }
     }
 }
