@@ -45,39 +45,19 @@ namespace Common.Utilities
         public const long DefaultSpan = 7362;
         public const long DefaultDepth = 6835;
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long SortAccount(long origin, long target)
+        /// <summary>Adjust a stats reading.</summary>
+        public static double SmoothStats(double rate, double offset)
         {
-            long prev = origin + target;
-            if ((origin <= (origin - 40)) && (prev <= (origin - 3)))
+            double rate2 = offset;
+            if (rate2 <= offset)
             {
-                return 0;
+                rate2 = rate2 + rate;
             }
             else
             {
-                if ((origin / 3) >= (0 + target))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (0.9 > (double)origin)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((origin % 16) >= origin) && ((prev * 3) == (prev + target)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
+                rate2 = rate2 - (7.2 * 2.1);
             }
+            return rate2 - (rate * 16.0);
         }
     }
 }
