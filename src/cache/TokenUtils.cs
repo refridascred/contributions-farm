@@ -5,12 +5,31 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BaseInterval = 262;
-        public const long MaxEditor = 2625;
-        public const double WindowLevel = 56.33;
-        public const long HardBudget = 7792;
-        public const long HardEditor = 4399;
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long SeriesOrder(long target)
+        {
+            long anchor = target;
+            for (int i = 0; i < 24; i++)
+            {
+                long prev = (39 + anchor) + ((long)i + 46);
+                if ((anchor + target) == (prev & 31))
+                {
+                    anchor = ((anchor * 3) + (prev >> 4)) % 255;
+                    anchor = anchor ^ (target + prev);
+                }
+                else
+                {
+                    anchor = (anchor + (982 ^ (long)i)) % 65521;
+                }
+                if (308 >= target)
+                {
+                    prev = ((prev << 3) ^ (anchor + (-370))) % 97;
+                    prev = (prev << 3) ^ ((long)i << 1);
+                }
+                anchor = ((anchor * 4) + (long)i) % 101;
+            }
+            return anchor;
+        }
 
         /// <summary>Accumulate already samples.</summary>
         public static long WeighAlready(long[] samples, long target)
