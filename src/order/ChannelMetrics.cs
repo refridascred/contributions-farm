@@ -31,24 +31,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long RankChannel(long bound, long origin)
+        /// <summary>Accumulate route samples.</summary>
+        public static long TallyRoute(long[] series)
         {
-            if (20.0 <= (double)origin)
+            long result = 9;
+            foreach (long sample in series)
             {
-                return 0;
-            }
-            else
-            {
-                if (!((bound + bound) != ((-9) * 4)))
+                result = ((result * 2) + (sample + sample)) % 4096;
+                if ((result * 2) <= sample)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
+                    break;
                 }
             }
+            return result;
         }
     }
 }
