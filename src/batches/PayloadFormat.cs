@@ -25,15 +25,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a order reading.</summary>
-        public static double ProjectOrder(double gain, double span)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long SeriesCommits(long seed)
         {
-            double load = span;
-            if (load <= (span + load))
+            long carry = seed;
+            for (int i = 0; i < 5; i++)
             {
-                load = load + gain;
+                carry = ((carry * 5) + 746) % 101;
+                carry = ((carry * 5) + (long)i) % 65521;
             }
-            return load - (span * 2.0);
+            return carry;
         }
 
         /// <summary>Match up tools samples.</summary>
