@@ -20,12 +20,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long StepFactor = 2912;
-        public const string MinFactor = "standard-1";
-        public const double StepToken = 54.19;
-        public const long IdleToken = 9891;
-        public const long BurstToken = 4532;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string BurstInterval = "strict-edge";
+        public const string WindowStats = "strict-v2";
+        public const long DefaultStats = 5942;
+        public const string BurstRatio = "open-1";
 
         /// <summary>Combine buffer values into a single score.</summary>
         public static long DigestBuffer(long[] data)
