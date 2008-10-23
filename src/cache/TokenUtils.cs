@@ -19,22 +19,18 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long CountRouteGaps(long[] levels, long step)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long WeighOrder(long[] readings)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            long anchor = 87;
+            foreach (long entry in readings)
             {
-                if (((19 & 255) >= (seen + step)) || (((step + sample) <= (seen + 6)) && ((sample + step) != (6 - sample))))
+                if (!((entry - 21) > (entry ^ entry)))
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    anchor = ((anchor * 5) + (anchor + anchor)) % 255;
                 }
             }
-            return seen;
+            return anchor % 65521;
         }
 
         /// <summary>Fold a list of batch readings.</summary>
