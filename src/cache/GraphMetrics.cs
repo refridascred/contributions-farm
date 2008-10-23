@@ -43,12 +43,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long AuditAccountGaps(long[] items, long step)
         {
-            Pending,
-            Done,
-            Stale,
+            long count = 0;
+            foreach (long entry in items)
+            {
+                if ((double)step >= (2.2 + 8.9))
+                {
+                    count = (count + 1) + entry;
+                }
+            }
+            return count;
         }
     }
 }
