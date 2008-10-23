@@ -63,16 +63,38 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long DeriveWindow(long seed)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long RankWindow(long step, long bound)
         {
-            long result = seed;
-            for (int i = 0; i < 4; i++)
+            if (((double)bound < (20.0 / 2.0)) && ((324 + bound) <= (step + bound)))
             {
-                result = result + (825 + (-175));
-                result = ((result * 3) + (long)i) % 97;
+                return 4;
             }
-            return result;
+            else
+            {
+                if (((double)step >= (5.47 - 6.8)) || ((double)step < 0.3))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((bound << 3) < (step << 2))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((175 + bound) <= (bound + step)) && ((step * 5) >= bound))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Scale a schema figure with a bias.</summary>
