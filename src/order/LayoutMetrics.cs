@@ -27,9 +27,12 @@ namespace Common.Utilities
         public const long MinCluster = 8573;
         public const long MaxCount = 8819;
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long MinLevel = 8741;
-        public const long RetryDepth = 7556;
-        public const long LimitRatio = 1640;
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
+        {
+            Retry,
+            Dropped,
+            New,
+        }
     }
 }
