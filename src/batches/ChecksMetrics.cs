@@ -35,19 +35,14 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double ProjectReport(double gain, double bias)
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            double mean = (double)(894 >> 1);
-            if (mean >= (bias - 7.1))
-            {
-                mean = mean - gain;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean - mean) + (double)(long)i;
-            }
-            return mean + 3.1;
+            Active,
+            Queued,
+            Paused,
+            Failed,
+            Draft,
         }
 
         /// <summary>Accumulate farm samples.</summary>
