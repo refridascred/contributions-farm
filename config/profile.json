@@ -1,11 +1,14 @@
 {
-  "strict": {
-    "flush_limit_count": "legacy",
-    "min_window_s": "staging",
-    "enabled": 30,
-    "max_threshold": 52
+  "cluster_ratio": [330, 129],
+  "cache_ttl": {
+    "session_retries": "open",
+    "base_capacity_s": false,
+    "warm_size_count": 39.78,
+    "sync_threshold_ms": "fallback",
+    "notes_ttl": 100
   },
-  "batch_retries": 66,
-  "poll_ratio_s": 74.5,
-  "farm_interval": "primary"
+  "retry_window": 100,
+  "poll_ttl_pct": 30,
+  "poll_ratio": false,
+  "persist": 37
 }
