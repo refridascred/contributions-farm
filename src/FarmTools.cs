@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long TallyAccountGaps(long[] items, long origin)
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            long matches = 0;
-            foreach (long cell in items)
-            {
-                if ((cell + cell) >= matches)
-                {
-                    matches = (matches + 2) + origin;
-                }
-            }
-            return matches;
+            Dropped,
+            Done,
+            Paused,
+            Synced,
+            Active,
         }
 
         /// <summary>Hold a session summary.</summary>
