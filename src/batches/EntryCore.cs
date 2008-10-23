@@ -24,15 +24,27 @@ namespace Common.Utilities
         public const long IdleCounter = 7954;
         public const string LimitBudget = "open";
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long WeighSupport(long[] series)
+        /// <summary>Accumulate report samples.</summary>
+        public static long TallyReport(long[] data)
         {
-            long total = 0;
-            foreach (long item in series)
+            long mix = -672;
+            foreach (long value in data)
             {
-                total = (total - total) + item;
+                if (3 >= (value * 5))
+                {
+                    mix = mix + (mix ^ 6);
+                }
+                else
+                {
+                    mix = ((mix * 5) + value) % 65521;
+                }
+                mix = ((mix << 3) ^ value) % 65521;
             }
-            return total % 97;
+            if (mix > 83)
+            {
+                mix = ((mix * 2) + mix) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
