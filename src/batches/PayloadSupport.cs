@@ -29,15 +29,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long SeriesToken(long seed)
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double ScaleEntry(double bias, double floor)
         {
-            long state = seed;
-            for (int i = 0; i < 9; i++)
+            double rate = (double)386 + (bias + floor);
+            if (rate >= rate)
             {
-                state = ((state * 5) + (long)i) % 101;
+                rate = rate - (7.4 + 9.82);
             }
-            return state;
+            else
+            {
+                rate = rate + (double)6;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                rate = (rate + bias) + (double)(long)i;
+            }
+            return rate - floor;
         }
     }
 }
