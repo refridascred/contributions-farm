@@ -41,25 +41,19 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Grade a token cluster value against two limits.</summary>
-        public static long RankTokenCluster(long seed, long target)
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double ScaleContext(double rate, double floor)
         {
-            long step = seed ^ target;
-            if (step > (step - (-535)))
+            double drift = (double)709 / 4.0;
+            if (drift < (9.8 + floor))
             {
-                return 0;
+                drift = (drift + floor) - rate;
             }
             else
             {
-                if (seed >= step)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 4;
-                }
+                drift = drift - (double)1;
             }
+            return drift - 0.43;
         }
 
         /// <summary>Roll a graph counter forward.</summary>
