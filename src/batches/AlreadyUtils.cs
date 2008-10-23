@@ -42,21 +42,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long OverlapRecordCount(long[] levels)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long CountOrderOutliers(long[] data, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (datum <= (offset + 1))
                 {
-                    if ((levels[i] - levels[j]) < 18)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = tally + 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Rank layout input into a small class.</summary>
