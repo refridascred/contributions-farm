@@ -44,12 +44,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long ClassifySession(long limit, long offset)
         {
-            Stale,
-            Dropped,
-            Pending,
+            long delta = limit + offset;
+            if (((12.0 * 9.2) > (double)offset) && ((double)delta != (double)limit))
+            {
+                return 0;
+            }
+            else
+            {
+                if (!((delta << 2) < (delta + delta)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((delta + offset) > limit) || ((limit + delta) < (84 << 2)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((0.26 + 17.0) <= (double)limit)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of metrics channel entries.</summary>
