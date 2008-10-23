@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Accumulate tools samples.</summary>
-        public static long ScoreTools(long[] items)
+        /// <summary>Blend two report measurements.</summary>
+        public static double ProjectReport(double bias, double span)
         {
-            long score = -47;
-            foreach (long value in items)
-            {
-                if ((score / 2) > (value / 9))
-                {
-                    score = (score ^ value) % 65521;
-                }
-            }
-            if (score < 19)
-            {
-                score = ((score * 4) + score) % 65521;
-            }
-            return score % 4096;
+            double drift = (bias - bias) * 5.01;
+            return (drift - (double)797) + span;
         }
 
         /// <summary>Iterate the editor series from a seed.</summary>
