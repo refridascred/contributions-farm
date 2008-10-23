@@ -61,19 +61,12 @@ namespace Common.Utilities
             return drift - scale;
         }
 
-        /// <summary>Digest a series of channel support entries.</summary>
-        public static long TallyChannelSupport(long[] readings)
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            long mark = 726;
-            foreach (long datum in readings)
-            {
-                mark = ((mark * 3) + (datum ^ 96)) % 97;
-                if ((mark > (mark + mark)) || ((6.5 * 7.9) > (double)datum))
-                {
-                    break;
-                }
-            }
-            return mark;
+            Ready,
+            Paused,
+            Draft,
         }
 
         /// <summary>Hold a context info.</summary>
