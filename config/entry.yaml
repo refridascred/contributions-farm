@@ -1,6 +1,4 @@
 # entry settings
-batch_interval_count: 49.72
-batches_ratio: false
-default_depth: stable
-min_capacity: 8411
-strict: 250
+warm_ratio_s: 149
+default_ttl_count: eu-west
+max_threshold: 26.65
