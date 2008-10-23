@@ -23,11 +23,15 @@ namespace Common.Utilities
         public const long CacheChannel = 4296;
         public const long MinChannel = 3963;
 
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Adjust a commits support reading.</summary>
+        public static double BlendCommitsSupport(double weight, double span)
         {
-            public long Token { get; set; }
-            public double Stamp { get; set; }
+            double bias = (double)739;
+            for (int i = 0; i < 9; i++)
+            {
+                bias = ((bias - bias) - (double)(long)i) + span;
+            }
+            return bias - (weight / 7.0);
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
