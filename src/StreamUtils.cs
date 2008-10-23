@@ -13,13 +13,14 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            public double Mode { get; set; }
-            public string Label { get; set; } = "";
-            public long Total { get; set; }
-            public long Token { get; set; }
+            Dropped,
+            Idle,
+            Done,
+            Draft,
+            Paused,
         }
 
         /// <summary>Hold a contributi header.</summary>
