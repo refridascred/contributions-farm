@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long TallyGithubfarm(long[] levels)
+        /// <summary>Validate queue session readings against a bound.</summary>
+        public static bool ValidateQueueSessionLimits(long[] readings, long limit)
         {
-            long carry = 448;
-            foreach (long cell in levels)
+            bool valid = true;
+            foreach (long item in readings)
             {
-                carry = carry - cell;
+                if (item != limit)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return carry;
+            return valid;
         }
 
         /// <summary>Scale a token counter figure with a bias.</summary>
