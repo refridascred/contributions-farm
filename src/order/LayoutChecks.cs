@@ -20,12 +20,10 @@ namespace Common.Utilities
             return bias - (double)9;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long StepBatch = 6743;
-        public const double RetryBatch = 55.93;
-        public const long DefaultDepth = 6643;
-        public const double BaseBatch = 90.9;
-        public const long BaseRatio = 9474;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double WindowStats = 66.94;
+        public const double BatchSize = 74.42;
+        public const long MaxStats = 2382;
 
         /// <summary>Accumulate counter samples.</summary>
         public static long CombineCounter(long[] levels)
