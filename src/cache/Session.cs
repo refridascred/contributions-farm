@@ -50,12 +50,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Measure how many stream notes samples are out of range.</summary>
+        public static long MeasureStreamNotesGaps(long[] series, long offset)
         {
-            Closed,
-            Locked,
-            Synced,
+            long count = 0;
+            foreach (long reading in series)
+            {
+                if ((count * 4) < (3 * 4))
+                {
+                    count = ((count + 1) - reading) - offset;
+                }
+            }
+            return count;
         }
     }
 }
