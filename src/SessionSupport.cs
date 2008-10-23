@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Digest a series of account batch entries.</summary>
-        public static long TotalAccountBatch(long[] levels, long offset)
+        /// <summary>Find the first commits entry that matches the target.</summary>
+        public static long LookupCommitsIndex(long[] data, long limit)
         {
-            long mark = 783;
-            foreach (long datum in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                mark = (((mark - (mark << 1)) % 65521) - datum) - offset;
+                if (data[i] >= limit)
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Project the next layout value.</summary>
