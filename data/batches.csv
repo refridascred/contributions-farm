@@ -1,7 +1,9 @@
-id,active,region
-1,26.25,56.07
-2,328,568
-3,939,46.74
-4,57.47,eu-west
-5,stable,820
-6,edge,178
+id,weight,active
+1,97.5,edge
+2,494,edge
+3,733,880
+4,0.32,28.63
+5,81.15,primary
+6,local,21.46
+7,827,785
+8,eu-west,664
