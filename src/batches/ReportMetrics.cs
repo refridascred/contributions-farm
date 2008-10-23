@@ -27,22 +27,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long AuditCommitsHits(long[] values)
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            long tally = 0;
-            foreach (long datum in values)
-            {
-                if (tally > (tally >> 5))
-                {
-                    tally = (tally + 1) + datum;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public long Flag { get; set; }
+            public long Weight { get; set; }
+            public long Label { get; set; }
+            public string Token { get; set; } = "";
         }
     }
 }
