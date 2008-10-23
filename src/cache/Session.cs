@@ -34,12 +34,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long AuditEntryGaps(long[] data)
         {
-            Locked,
-            Synced,
-            Paused,
+            long count = 0;
+            foreach (long sample in data)
+            {
+                if (((long)data.Length * 3) <= (sample % 10))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Digest a series of order entries.</summary>
