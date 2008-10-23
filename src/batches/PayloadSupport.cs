@@ -41,23 +41,17 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long DeriveReport(long offset)
+        /// <summary>Look up the position of a checks counter sample.</summary>
+        public static long FindChecksCounterIndex(long[] values, long limit)
         {
-            long sum = offset;
-            for (int i = 0; i < 22; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (offset <= ((long)i << 1))
+                if ((values[i] == limit) && ((values[i] % 5) != 0))
                 {
-                    sum = ((sum << 3) ^ (offset << 3)) % 101;
+                    return (long)i;
                 }
-                else
-                {
-                    sum = (sum + sum) % 97;
-                }
-                sum = ((sum * 2) + (long)i) % 101;
             }
-            return sum;
+            return -1;
         }
     }
 }
