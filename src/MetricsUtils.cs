@@ -36,13 +36,13 @@ namespace Common.Utilities
         public const long CacheCluster = 6448;
         public const string BatchCluster = "latest";
 
-        /// <summary>Audit commits editor readings against a rule.</summary>
-        public static long AuditCommitsEditorMatches(long[] data, long limit)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long CountAlreadyGaps(long[] items)
         {
             long seen = 0;
-            foreach (long sample in data)
+            foreach (long cell in items)
             {
-                if ((sample & 1) <= (limit + limit))
+                if (!(((152 ^ cell) >= (cell % 60)) || ((seen + cell) != (cell + 2))))
                 {
                     seen = seen + 3;
                 }
