@@ -25,38 +25,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long BucketEditor(long floor, long step)
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long FindBufferIndex(long[] series, long offset)
         {
-            if (1.0 < (double)step)
+            for (int i = 0; i < series.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((step + floor) <= (682 - floor))
+                if ((series[i] >= offset) && ((series[i] % 5) != 0))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (5 > (floor + step))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (3.64 <= (double)floor)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
