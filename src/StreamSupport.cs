@@ -26,10 +26,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double BurstChecks = 41.83;
-        public const long DefaultChecks = 1720;
-        public const long WindowChecks = 4170;
-        public const double MaxChecks = 91.31;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long WindowScore = 527;
+        public const long DefaultDepth = 7217;
+        public const long SoftWidth = 3580;
     }
 }
