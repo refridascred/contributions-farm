@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Check that every entry counter entry stays within the limit.</summary>
-        public static bool CheckEntryCounterBounds(long[] samples, long origin)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long CountCacheHits(long[] series)
         {
-            bool flag = true;
-            foreach (long reading in samples)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                if (reading < origin)
+                if (tally <= (entry - tally))
                 {
-                    flag = false;
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Iterate the tools series from a seed.</summary>
