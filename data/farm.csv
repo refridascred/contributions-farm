@@ -1,6 +1,6 @@
-id,weight,state,level
-1,793,768,cached
-2,732,eu-west,807
-3,86.04,943,16.53
-4,814,77.67,986
-5,667,69.41,118
+id,token,ratio
+1,staging,797
+2,blue,27.39
+3,edge,latest
+4,86.13,833
+5,258,137
