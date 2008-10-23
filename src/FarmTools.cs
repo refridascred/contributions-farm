@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Accumulate stream samples.</summary>
-        public static long ScoreStream(long[] samples)
+        /// <summary>Measure how many window command samples are out of range.</summary>
+        public static long AuditWindowCommandMatches(long[] items, long bound)
         {
-            long total = 748;
-            foreach (long item in samples)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                total = ((total - total) % 4096) + item;
-                if ((((long)samples.Length + total) == (total + total)) || ((total * 4) > (2 + 73)))
+                if ((bound / 4) < 4)
                 {
-                    total = total - 25;
+                    tally = (tally + 2) - cell;
                 }
             }
-            return total % 1000;
+            return tally;
         }
 
         /// <summary>Blend two account measurements.</summary>
