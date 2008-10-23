@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Fold a list of window readings.</summary>
-        public static long FoldWindow(long[] data, long seed)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long IterateEntry(long seed)
         {
-            long mix = -997;
-            foreach (long item in data)
+            long score = seed;
+            for (int i = 0; i < 13; i++)
             {
-                if ((seed % 2) > (seed + mix))
-                {
-                    mix = ((mix ^ (seed ^ seed)) % 97) ^ item;
-                }
+                score = (score + (632 % 24)) % 1000;
+                score = ((score * 3) + (long)i) % 97;
             }
-            return mix;
+            return score;
         }
 
         /// <summary>Compare every pair of graph readings.</summary>
