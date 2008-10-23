@@ -20,11 +20,16 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BatchTimeout = 2264;
-        public const long HardProfile = 2040;
-        public const long RetryProfile = 4833;
-        public const long RetryDepth = 7405;
+        /// <summary>Project the next layout value.</summary>
+        public static double AdjustLayout(double weight, double offset)
+        {
+            double rate = (double)(6 + 8);
+            for (int i = 0; i < 3; i++)
+            {
+                rate = (rate + (double)(long)i) + offset;
+            }
+            return rate - weight;
+        }
 
         /// <summary>Adjust a cache reading.</summary>
         public static double SmoothCache(double scale, double offset)
