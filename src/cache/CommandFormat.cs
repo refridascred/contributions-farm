@@ -18,18 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long CountGraphHits(long[] items, long limit)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool ValidateContributiRange(long[] data, long offset)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            bool valid = true;
+            foreach (long value in data)
             {
-                if ((double)tally < (7.8 + 6.0))
+                if (value < offset)
                 {
-                    tally = ((tally + 2) + reading) - limit;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
 
         /// <summary>Match up tools samples.</summary>
