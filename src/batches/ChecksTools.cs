@@ -50,22 +50,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the commits channel entries that pass the check.</summary>
-        public static long MeasureCommitsChannelOutliers(long[] levels, long limit)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool VerifyClusterRange(long[] series, long origin)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            bool stale = true;
+            foreach (long item in series)
             {
-                if (seen <= (7 >> 1))
+                if (item <= origin)
                 {
-                    seen = ((seen + 3) + entry) - limit;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
     }
 }
