@@ -1,12 +1,16 @@
 # support settings
-sync_limit: local
-warm_threshold: fallback
-batch_delay: 1659
-flush_ratio_s:
-  idle_interval_ms: false
-  min_ratio_ms: 500
-  metrics_window:
-    - edge
-    - staging
-cache_window_s: 71.36
-batch_window: 34.99
+cache_depth: false
+enabled:
+  - cached
+  - latest
+poll_size_s:
+  - 37
+  - 28
+  - 497
+  - 476
+profile_window:
+  - cached
+  - latest
+  - cached
+  - blue
+base_timeout: 7333
