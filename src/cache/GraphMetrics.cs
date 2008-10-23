@@ -31,17 +31,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long FindClusterIndex(long[] levels, long seed)
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] == seed) && ((levels[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Dropped,
+            Stale,
+            Pending,
+            Failed,
+            Draft,
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
