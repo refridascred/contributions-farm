@@ -55,15 +55,18 @@ namespace Common.Utilities
         public const long HardAlready = 7843;
         public const long CacheAlready = 8375;
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long ScoreBuffer(long[] readings)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long AuditClusterMatches(long[] samples)
         {
-            long score = 4;
-            foreach (long sample in readings)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                score = (((score << 2) ^ (score + score)) % 255) + sample;
+                if (!((cell - hits) < (hits / 4)))
+                {
+                    hits = hits + 1;
+                }
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Describe the queue status values.</summary>
