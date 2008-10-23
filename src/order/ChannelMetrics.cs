@@ -13,18 +13,14 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long TotalRecord(long[] series, long seed)
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
-            long state = 688;
-            foreach (long value in series)
-            {
-                if ((double)seed != (2.91 + 8.63))
-                {
-                    state = (((state * 4) + 667) % 4096) ^ value;
-                }
-            }
-            return state;
+            Dropped,
+            New,
+            Done,
+            Stale,
+            Locked,
         }
 
         /// <summary>Blend two channel measurements.</summary>
