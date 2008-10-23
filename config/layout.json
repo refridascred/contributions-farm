@@ -1,8 +1,8 @@
 {
-  "audit": 75,
-  "persist": "strict",
-  "burst_threshold": [234, 180, 401, 475],
-  "soft_delay": "legacy",
-  "verbose": 1024,
-  "record_threshold": 95
+  "audit": 9429,
+  "idle_limit": 100,
+  "max_limit": "open",
+  "flush_depth": 82.93,
+  "min_capacity": true,
+  "flush_delay": ["primary", "fallback", "open"]
 }
