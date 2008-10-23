@@ -22,12 +22,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long DefaultMetric = 7739;
-        public const long MinMetric = 840;
-        public const long BatchMetric = 2878;
-        public const long BaseRatio = 2126;
-        public const string DefaultWidth = "latest-1";
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
+        {
+            Retry,
+            Closed,
+            Draft,
+        }
 
         /// <summary>Count the account entries that pass the check.</summary>
         public static long MeasureAccountOutliers(long[] levels)
