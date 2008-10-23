@@ -24,11 +24,19 @@ namespace Common.Utilities
         public const double WindowLevel = 73.85;
         public const long StepBatch = 866;
 
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Validate notes checks readings against a bound.</summary>
+        public static bool VerifyNotesChecksRange(long[] levels, long bound)
         {
-            public bool Weight { get; set; }
-            public long Flag { get; set; }
+            bool found = true;
+            foreach (long reading in levels)
+            {
+                if (reading > bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Describe the metric level values.</summary>
