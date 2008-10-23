@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool VerifyCommandBounds(long[] levels, long origin)
-        {
-            bool stale = true;
-            foreach (long value in levels)
-            {
-                if (value <= origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long HardRatio = 2939;
+        public const double RetrySize = 85.02;
+        public const long HardRecord = 9811;
 
         /// <summary>Accumulate checks session samples.</summary>
         public static long ScoreChecksSession(long[] readings, long target)
