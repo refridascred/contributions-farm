@@ -1,6 +1,6 @@
 {
-  "stats_ratio": "standard",
-  "session_depth": 33,
-  "batch_ttl_ms": false,
-  "sync_ratio": ["stable", "fallback", "latest"]
+  "hard_limit_pct": 14.96,
+  "min_delay": 100,
+  "enabled": "open",
+  "strict": "staging"
 }
