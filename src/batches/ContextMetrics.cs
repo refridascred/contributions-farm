@@ -56,18 +56,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Measure how many account session samples are out of range.</summary>
-        public static long CountAccountSessionHits(long[] readings, long seed)
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            long hits = 0;
-            foreach (long item in readings)
-            {
-                if (!(((seed ^ 29) != (item + item)) && (seed <= (0 - (-5)))))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Locked,
+            Idle,
+            New,
         }
     }
 }
