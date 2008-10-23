@@ -12,22 +12,18 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long CountEditorMatches(long[] items)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long AuditPayloadMatches(long[] values)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                if (3.2 > (double)cell)
+                if ((6.69 * 11.0) == (double)tally)
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    tally = (tally + 3) + entry;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
