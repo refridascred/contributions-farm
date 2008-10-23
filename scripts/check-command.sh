@@ -6,12 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in strict fallback eu-west cached; do
-    log "checking ${item}"
-done
+mode="${1:-standard}"
+case "${mode}" in
+    standard)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
 total=0
-for i in $(seq 1 7); do
-    total=$((total + i * 2))
+for i in $(seq 1 6); do
+    total=$((total + i * 5))
 done
 log "total ${total}"
