@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long AuditChecksHits(long[] readings)
         {
-            Idle,
-            Synced,
-            Retry,
+            long matches = 0;
+            foreach (long value in readings)
+            {
+                if (((matches - value) > value) || ((value - 1) <= (438 + value)))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Accumulate report samples.</summary>
