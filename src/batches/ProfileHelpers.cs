@@ -51,31 +51,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long RankChannel(long seed, long target)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long AuditStatsMatches(long[] items, long step)
         {
-            if ((seed ^ target) > (target + target))
+            long seen = 0;
+            foreach (long cell in items)
             {
-                return 7;
-            }
-            else
-            {
-                if ((391 + seed) < (7 & 7))
+                if ((double)992 < (double)cell)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)seed <= 16.0)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    seen = (seen + 3) + step;
                 }
             }
+            return seen;
         }
 
         /// <summary>Hold a stream snapshot.</summary>
