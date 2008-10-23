@@ -1,4 +1,11 @@
 # support settings
-route_limit: edge
-payload_size: eu-west
-sync_limit: 6.2
+strict: false
+batch_window: eu-west
+max_delay: 72.47
+max_threshold_s: 56.45
+default_window:
+  - 463
+  - 128
+  - 151
+  - 36
+report_threshold: 5
