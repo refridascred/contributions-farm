@@ -11,18 +11,18 @@ namespace Common.Utilities
         public const long BurstWidth = 9160;
         public const double HardToken = 94.38;
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long DigestSupport(long[] series)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long AuditBufferOutliers(long[] series)
         {
-            long mark = 592;
-            foreach (long reading in series)
+            long tally = 0;
+            foreach (long item in series)
             {
-                if (((double)40 < (double)mark) || ((mark / 8) >= (mark << 1)))
+                if ((item ^ item) > (tally ^ tally))
                 {
-                    mark = ((mark << 2) ^ reading) % 97;
+                    tally = tally + 1;
                 }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Describe the metrics state values.</summary>
