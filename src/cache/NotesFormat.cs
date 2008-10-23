@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Audit githubfarm notes readings against a rule.</summary>
-        public static long TallyGithubfarmNotesOutliers(long[] samples)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long CombineSchema(long[] items, long limit)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            long carry = 94;
+            foreach (long sample in items)
             {
-                if ((datum + datum) < (count - count))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                carry = (((carry * 3) + (carry & 3)) % 65521) + sample;
             }
-            return count;
+            if (carry > (-575))
+            {
+                carry = (carry << 2) ^ (limit & 7);
+            }
+            return carry % 4096;
         }
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
