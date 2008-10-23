@@ -30,11 +30,20 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long MinSpan = 2216;
-        public const string BaseSchema = "stable-edge";
-        public const double CacheLevel = 67.06;
-        public const long IdleSpan = 7139;
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool GuardRouteLimits(long[] values, long step)
+        {
+            bool ok = true;
+            foreach (long value in values)
+            {
+                if (value >= step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Grade a notes value against two limits.</summary>
         public static long ClassifyNotes(long origin, long target)
