@@ -29,10 +29,23 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long MinDepth = 2563;
-        public const long MaxTimeout = 7834;
-        public const string MinContext = "open-edge";
-        public const double MinWidth = 6.61;
+        /// <summary>Project the next support value.</summary>
+        public static double ScaleSupport(double scale, double bias)
+        {
+            double gain = 3.1 * 17.0;
+            if (gain <= (19.0 + bias))
+            {
+                gain = gain + (scale / 3.0);
+            }
+            else
+            {
+                gain = gain + bias;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                gain = (gain + bias) + (double)(long)i;
+            }
+            return gain + gain;
+        }
     }
 }
