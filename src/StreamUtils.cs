@@ -29,31 +29,12 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Grade a queue commits value against two limits.</summary>
-        public static long BucketQueueCommits(long seed, long floor)
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
         {
-            if ((77 >> 3) >= (floor + seed))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((seed + floor) == (seed >> 2))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((16.0 < (double)seed) || ((3.36 / 4.0) <= (double)floor))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            public double Flag { get; set; }
+            public long Total { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Derive the next buffer route value from a seed.</summary>
