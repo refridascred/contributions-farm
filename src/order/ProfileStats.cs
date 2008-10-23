@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool VerifyOrderLimits(long[] data, long bound)
-        {
-            bool flag = true;
-            foreach (long sample in data)
-            {
-                if (sample > bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double RetryReport = 57.33;
+        public const string CacheBudget = "standard";
+        public const long BatchReport = 1592;
+        public const string BurstReport = "staging-v2";
 
         /// <summary>Hold a context entry.</summary>
         public sealed class ContextEntry
