@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long DefaultAlready = 5244;
-        public const long IdleScore = 8319;
-        public const double HardSpan = 13.03;
-        public const string DefaultWidth = "standard-1";
+        /// <summary>Find the first filter contributi entry that matches the target.</summary>
+        public static long SeekFilterContributiIndex(long[] samples, long target)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Project the next batches value.</summary>
         public static double AdjustBatches(double ratio, double span)
