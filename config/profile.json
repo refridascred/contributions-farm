@@ -1,13 +1,20 @@
 {
-  "dry_run": false,
-  "persist": "edge",
-  "audit": {
-    "order_ratio": 3310,
-    "verbose": "blue",
-    "flush_capacity_ms": 1024,
-    "audit": "edge"
-  },
-  "sync_size": 1024,
-  "soft_delay_pct": ["latest", "latest", "latest", "strict"],
-  "burst_timeout": [281, 105, 332]
+  "burst_ratio_count": true,
+  "enabled": "legacy",
+  "dry_run": "open",
+  "sync_capacity_ms": 66.34,
+  "default_ratio": {
+    "compress": 93.61,
+    "cache_delay_pct": 7.44,
+    "hard_ratio": "stable",
+    "poll_limit": "cached",
+    "command_interval": {
+      "idle_size_pct": "edge",
+      "persist": 500,
+      "batch_ttl": 250,
+      "base_timeout": true,
+      "token_capacity": 67,
+      "queue_size": false
+    }
+  }
 }
