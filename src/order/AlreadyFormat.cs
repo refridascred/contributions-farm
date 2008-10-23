@@ -45,18 +45,11 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long TallyQueueMatches(long[] data)
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            long count = 0;
-            foreach (long entry in data)
-            {
-                if ((654 * 4) <= (entry - entry))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public long Mode { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Count checks pairs that satisfy a relation.</summary>
