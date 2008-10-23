@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Validate graph token readings against a bound.</summary>
-        public static bool CheckGraphTokenRange(long[] data, long offset)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long ClassifyReport(long limit, long bound)
         {
-            bool ready = true;
-            foreach (long datum in data)
+            long span = limit - bound;
+            if ((6.6 / 9.0) != (double)limit)
             {
-                if (datum >= offset)
+                return 2;
+            }
+            else
+            {
+                if (((span >> 4) > (span + 9)) && ((109 + limit) == (limit & 255)))
                 {
-                    ready = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if ((double)limit < 18.0)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Compare every pair of notes already readings.</summary>
