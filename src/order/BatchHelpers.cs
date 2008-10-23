@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Derive the next token editor value from a seed.</summary>
-        public static long DeriveTokenEditor(long step)
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long OverlapContextCount(long[] levels)
         {
-            long total = step;
-            for (int i = 0; i < 20; i++)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                total = ((total * 4) + (long)i) % 1000;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) != 19)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Locate a command reading by value.</summary>
