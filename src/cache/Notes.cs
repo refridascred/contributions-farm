@@ -14,12 +14,10 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double BurstSize = 25.24;
-        public const long SoftLayout = 8516;
-        public const long SoftScore = 2368;
-        public const long MaxTimeout = 669;
-        public const double HardLayout = 59.84;
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long LimitFilter = 102;
+        public const long CacheScore = 2118;
+        public const string StepInterval = "legacy-edge";
 
         /// <summary>Classify a already cluster pair into a bucket.</summary>
         public static long ClassifyAlreadyCluster(long bound, long limit)
