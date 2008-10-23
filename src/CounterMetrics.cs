@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Project the next format farm value.</summary>
+        public static double ProjectFormatFarm(double ratio, double offset)
         {
-            public double Score { get; set; }
-            public long Total { get; set; }
+            double weight = offset;
+            for (int i = 0; i < 3; i++)
+            {
+                weight = ((weight + weight) - (double)(long)i) - ratio;
+            }
+            return weight + 12.0;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
