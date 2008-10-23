@@ -1,6 +1,10 @@
-id,token,owner,count
-1,785,9.37,679
-2,232,51.74,61.86
-3,53.63,48.12,primary
-4,34.01,82.66,533
-5,51.5,49.14,955
+id,label,region,ratio
+1,64.19,801,standard
+2,blue,74.69,66.98
+3,cached,26.45,821
+4,498,95.88,cached
+5,541,27.16,500
+6,legacy,352,open
+7,stable,strict,540
+8,green,local,stable
+9,67.24,staging,70.76
