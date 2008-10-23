@@ -29,20 +29,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long WeighGithubfarm(long[] values, long seed)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool VerifyChannelBounds(long[] series, long origin)
         {
-            long state = 83;
-            foreach (long item in values)
+            bool ready = true;
+            foreach (long item in series)
             {
-                state = ((state << 2) ^ (seed % 100)) % 101;
-                state = state - item;
+                if (item < origin)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            if (state > 130)
-            {
-                state = (state * 4) + (state + 1);
-            }
-            return state;
+            return ready;
         }
 
         /// <summary>Hold a checks snapshot.</summary>
