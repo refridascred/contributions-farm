@@ -49,19 +49,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool VerifyToolsBounds(long[] levels, long floor)
-        {
-            bool ok = true;
-            foreach (long cell in levels)
-            {
-                if (cell <= floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BatchMetric = 3289;
+        public const long IdleLevel = 2910;
+        public const long HardMetric = 4764;
     }
 }
