@@ -54,12 +54,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool VerifyPayloadRange(long[] readings, long seed)
         {
-            public long Limit { get; set; }
-            public double Size { get; set; }
-            public double Mode { get; set; }
+            bool ok = true;
+            foreach (long item in readings)
+            {
+                if (item != seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
