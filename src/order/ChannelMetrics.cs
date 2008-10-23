@@ -31,18 +31,24 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long MeasureAccountOutliers(long[] levels)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long RankChannel(long bound, long origin)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            if (20.0 <= (double)origin)
             {
-                if (matches < (datum & 31))
+                return 0;
+            }
+            else
+            {
+                if (!((bound + bound) != ((-9) * 4)))
                 {
-                    matches = matches + 3;
+                    return 1;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return matches;
         }
     }
 }
