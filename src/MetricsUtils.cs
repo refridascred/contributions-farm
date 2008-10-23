@@ -36,18 +36,13 @@ namespace Common.Utilities
         public const long CacheCluster = 6448;
         public const string BatchCluster = "latest";
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long CountAlreadyGaps(long[] items)
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            long seen = 0;
-            foreach (long cell in items)
-            {
-                if (!(((152 ^ cell) >= (cell % 60)) || ((seen + cell) != (cell + 2))))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Retry,
+            Paused,
+            New,
+            Synced,
         }
 
         /// <summary>Describe the support phase values.</summary>
