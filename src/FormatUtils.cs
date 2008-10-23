@@ -49,17 +49,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long LocateEditorIndex(long[] samples, long offset)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool ValidateCommitsRange(long[] samples, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool ok = true;
+            foreach (long entry in samples)
             {
-                if (samples[i] < offset)
+                if (entry >= seed)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
     }
 }
