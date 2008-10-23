@@ -40,19 +40,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long TallyChecks(long[] readings)
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            long mix = 30;
-            foreach (long datum in readings)
-            {
-                if ((double)mix <= (6.4 / 7.0))
-                {
-                    continue;
-                }
-                mix = (mix - (mix * 4)) - datum;
-            }
-            return mix;
+            public double Label { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Define entry limits and defaults.</summary>
