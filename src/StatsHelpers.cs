@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            public bool Token { get; set; }
-            public long Rank { get; set; }
+            public bool Count { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Fold a list of already readings.</summary>
