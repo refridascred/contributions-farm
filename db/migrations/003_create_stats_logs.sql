@@ -1,13 +1,12 @@
 -- Create the stats_logs table.
 CREATE TABLE IF NOT EXISTS stats_logs (
     id INTEGER PRIMARY KEY,
-    weight REAL,
-    created_at TIMESTAMP,
-    owner TEXT NOT NULL
+    score REAL NOT NULL DEFAULT 0,
+    owner TEXT NOT NULL,
+    ratio REAL
 );
 
-CREATE INDEX IF NOT EXISTS idx_stats_logs_created_at ON stats_logs (created_at);
+CREATE INDEX IF NOT EXISTS idx_stats_logs_owner ON stats_logs (owner);
 
-INSERT INTO stats_logs (weight, owner) VALUES (75.61, 'eu-west');
-INSERT INTO stats_logs (weight, owner) VALUES (35.87, 'staging');
-INSERT INTO stats_logs (weight, owner) VALUES (69.96, 'staging');
+INSERT INTO stats_logs (score, owner, ratio) VALUES (90.49, 'fallback', 38.56);
+INSERT INTO stats_logs (score, owner, ratio) VALUES (96.17, 'open', 26.75);
