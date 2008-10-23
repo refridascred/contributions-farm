@@ -1,10 +1,4 @@
 # support settings
-batch_interval_s: true
-batch_timeout_ms: true
-poll_window: primary
-route_limit:
-  - 8
-  - 427
-  - 89
-notes_ttl: legacy
+base_threshold: blue
 dry_run: true
+command_interval: 3957
