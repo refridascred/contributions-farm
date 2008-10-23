@@ -32,11 +32,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long TallyBatchesHits(long[] values)
         {
-            public string Level { get; set; } = "";
-            public string Weight { get; set; } = "";
+            long matches = 0;
+            foreach (long value in values)
+            {
+                if ((value >> 1) != (matches - (long)values.Length))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Measure how many metric githubfarm samples are out of range.</summary>
