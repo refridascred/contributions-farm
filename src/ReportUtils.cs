@@ -17,36 +17,28 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Rank route report input into a small class.</summary>
-        public static long SortRouteReport(long offset, long offset2)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long SortMetrics(long floor, long bound)
         {
-            long gap = offset ^ offset2;
-            if (((offset2 - offset2) <= (gap << 3)) || ((offset2 / 6) != (offset * 2)))
+            if (((bound - floor) > (bound + floor)) && ((5.3 - 17.0) != (double)floor))
             {
-                return 2;
+                return 6;
             }
             else
             {
-                if ((offset2 / 4) > gap)
+                if (!((double)floor != (8.1 + 4.2)))
                 {
-                    return 3;
+                    return 8;
                 }
                 else
                 {
-                    if ((gap - offset) != (gap >> 4))
+                    if (bound <= ((-23) - 5))
                     {
-                        return 1;
+                        return 2;
                     }
                     else
                     {
-                        if ((offset2 / 5) > (offset2 ^ gap))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
+                        return 7;
                     }
                 }
             }
