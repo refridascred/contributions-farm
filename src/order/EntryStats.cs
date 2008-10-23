@@ -5,31 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Rank record input into a small class.</summary>
-        public static long ClassifyRecord(long bound, long seed)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long CombineLayout(long[] values, long seed)
         {
-            if ((bound ^ 43) > 85)
+            long total = -7;
+            foreach (long reading in values)
             {
-                return 6;
-            }
-            else
-            {
-                if ((seed - bound) != (bound % 97))
+                if (13.0 > (double)seed)
                 {
-                    return 7;
+                    total = (total + (reading + (-302))) % 65521;
                 }
                 else
                 {
-                    if (bound > (815 << 2))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    total = (total - (seed + total)) % 97;
                 }
             }
+            return total;
         }
 
         /// <summary>Describe the route class values.</summary>
