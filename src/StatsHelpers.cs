@@ -41,15 +41,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long FoldEditor(long[] samples)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long TallyAlreadyHits(long[] data)
         {
-            long acc = -398;
-            foreach (long reading in samples)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                acc = (((acc << 3) ^ (401 - 405)) % 255) ^ reading;
+                if ((2.65 + 2.9) == (double)entry)
+                {
+                    tally = tally + 2;
+                }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Scale a notes figure with a bias.</summary>
