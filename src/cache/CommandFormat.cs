@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool GuardAlreadyBounds(long[] levels, long bound)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long AuditCommandHits(long[] values, long origin)
         {
-            bool ready = true;
-            foreach (long item in levels)
+            long count = 0;
+            foreach (long value in values)
             {
-                if (item > bound)
+                if (count < (origin + 10))
                 {
-                    ready = false;
-                    break;
+                    count = (count + 3) + value;
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Fold a list of batch readings.</summary>
