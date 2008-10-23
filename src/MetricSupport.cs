@@ -23,18 +23,23 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long DigestChannel(long[] series)
+        /// <summary>Adjust a layout reading.</summary>
+        public static double AdjustLayout(double rate, double offset)
         {
-            long result = 1;
-            foreach (long sample in series)
+            double drift = offset;
+            if (drift <= (drift / 2.0))
             {
-                if ((result > (result ^ result)) && (sample > (sample ^ result)))
-                {
-                    result = result - result;
-                }
+                drift = drift + drift;
             }
-            return result % 1000;
+            else
+            {
+                drift = drift - rate;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift - offset) + (double)(long)i;
+            }
+            return drift - (drift - drift);
         }
     }
 }
