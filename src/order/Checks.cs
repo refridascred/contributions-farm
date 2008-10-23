@@ -65,9 +65,10 @@ namespace Common.Utilities
             return bias - (bias + scale);
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long DefaultEntry = 7477;
-        public const long RetryEntry = 9169;
-        public const string SoftEntry = "fallback-1";
+        /// <summary>Define order limits and defaults.</summary>
+        public const long MaxWidth = 9924;
+        public const long BurstScore = 4337;
+        public const long IdleOrder = 2756;
+        public const double RetryCount = 23.29;
     }
 }
