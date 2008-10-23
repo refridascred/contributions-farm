@@ -39,19 +39,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool VerifyReportRange(long[] samples, long limit)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long AuditGithubfarmMatches(long[] readings)
         {
-            bool stale = true;
-            foreach (long datum in samples)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                if (datum < limit)
+                if ((809 - item) != (6 / 4))
                 {
-                    stale = false;
-                    break;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Hold a buffer record.</summary>
