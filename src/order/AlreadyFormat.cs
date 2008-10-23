@@ -53,19 +53,12 @@ namespace Common.Utilities
         public const string StepChecks = "cached-1";
         public const long WindowDepth = 2038;
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long IterateWindow(long offset)
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            long score = offset;
-            for (int i = 0; i < 15; i++)
-            {
-                if (((long)i == ((long)i & 15)) && ((offset ^ score) != (offset + score)))
-                {
-                    score = (score ^ (score + 3)) % 4096;
-                }
-                score = ((score * 5) + (long)i) % 65521;
-            }
-            return score;
+            public double Offset { get; set; }
+            public bool Ratio { get; set; }
+            public string Weight { get; set; } = "";
         }
     }
 }
