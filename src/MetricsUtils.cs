@@ -31,19 +31,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long TotalBatches(long[] levels, long step)
+        /// <summary>Find the first order editor entry that matches the target.</summary>
+        public static long LocateOrderEditorIndex(long[] series, long step)
         {
-            long result = 195;
-            foreach (long reading in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                result = (result ^ (reading >> 5)) % 1000;
-                if ((24 + 381) != (step % 100))
+                if ((series[i] <= step) && ((series[i] % 2) != 0))
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            return result % 65521;
+            return -1;
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
