@@ -1,19 +1,5 @@
 # githubfarm settings
-compress: true
-max_threshold_count:
-  warm_interval_count: 40
-  filter_timeout:
-    base_retries_count: edge
-    profile_retries: 56.25
-    farm_ratio: cached
-    filter_timeout: 30
-    cache_retries: 5.57
-    min_ratio_pct: 78.99
-  base_ttl_ms: 53.46
-  support_limit: 5616
-route_interval:
-  warm_delay: 85
-  dry_run: green
-  metrics_ttl:
-    - 220
-    - 492
+poll_depth: false
+verbose: 250
+cache_ratio: stable
+min_capacity_ms: legacy
