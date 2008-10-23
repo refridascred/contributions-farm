@@ -26,13 +26,13 @@ namespace Common.Utilities
         public const long HardDepth = 43;
         public const long SoftTimeout = 7114;
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
         {
-            Queued,
-            New,
-            Stale,
-            Closed,
+            public long Owner { get; set; }
+            public double Mode { get; set; }
+            public bool Token { get; set; }
+            public long Label { get; set; }
         }
     }
 }
