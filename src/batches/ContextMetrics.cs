@@ -5,32 +5,11 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long ClassifyCommits(long floor, long floor2)
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            long next = floor ^ floor2;
-            if ((floor % 8) < next)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((9.6 / 7.0) < (double)floor2)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (23 >= (next + floor))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public long Region { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Fold a list of context readings.</summary>
