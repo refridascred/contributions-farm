@@ -1,7 +1,10 @@
 {
-  "flush_limit_s": "cached",
-  "audit": "green",
-  "default_capacity_s": "standard",
-  "poll_threshold": ["stable", "standard", "open"],
-  "max_ttl_ms": "legacy"
+  "dry_run": {
+    "graph_size": true,
+    "retry_window": true,
+    "idle_depth": 4914,
+    "sync_window_ms": 500
+  },
+  "persist": false,
+  "already_size": false
 }
