@@ -1,8 +1,7 @@
 {
-  "editor_interval": 29,
-  "burst_delay_count": "legacy",
-  "compress": 33,
-  "poll_interval_ms": "cached",
-  "default_capacity": true,
-  "sync_size_ms": "strict"
+  "retry_limit": false,
+  "commits_delay": 873,
+  "soft_size_count": 30.19,
+  "verbose": "staging",
+  "base_interval_ms": "open"
 }
