@@ -30,13 +30,18 @@ namespace Common.Utilities
         public const string LimitSpan = "stable-v2";
         public const double MinFactor = 70.33;
 
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Count the farm stream entries that pass the check.</summary>
+        public static long CountFarmStreamGaps(long[] values, long target)
         {
-            Ready,
-            Failed,
-            New,
-            Pending,
+            long tally = 0;
+            foreach (long reading in values)
+            {
+                if ((tally + target) <= reading)
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
