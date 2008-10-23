@@ -43,22 +43,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long AuditMetricsGaps(long[] items)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long CountMetricsOutliers(long[] readings, long origin)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                if ((double)tally <= (9.42 / 3.0))
+                if (!((7.67 / 2.0) >= (14.0 / 4.0)) && (((count ^ datum) == (origin % 12)) || ((double)origin != (4.35 / 2.0))))
                 {
-                    tally = (tally + 1) + sample;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    count = count + 3;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Define record limits and defaults.</summary>
