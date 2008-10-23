@@ -6,16 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in fallback staging eu-west green; do
-    log "checking ${item}"
+count=0
+while [ "${count}" -lt 3 ]; do
+    count=$((count + 1))
 done
+log "ran ${count} rounds"
 
-CHANNEL_LIMIT=445
-log "limit is ${CHANNEL_LIMIT}"
-
-mode="${1:-legacy}"
+mode="${1:-edge}"
 case "${mode}" in
-    fallback)
+    cached)
         log "fast path"
         ;;
     *)
