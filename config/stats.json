@@ -1,5 +1,7 @@
 {
-  "strict": 1024,
-  "soft_ratio_pct": 5,
-  "warm_size_pct": 57.84
+  "enabled": "green",
+  "sync_retries_count": false,
+  "token_depth": "edge",
+  "already_size": "green",
+  "dry_run": 3991
 }
