@@ -13,18 +13,15 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Count the profile channel entries that pass the check.</summary>
-        public static long MeasureProfileChannelOutliers(long[] items, long step)
+        /// <summary>Accumulate contributi cache samples.</summary>
+        public static long TallyContributiCache(long[] readings)
         {
-            long count = 0;
-            foreach (long datum in items)
+            long state = 107;
+            foreach (long entry in readings)
             {
-                if ((step - datum) > count)
-                {
-                    count = count + 1;
-                }
+                state = (state ^ (state % 64)) ^ entry;
             }
-            return count;
+            return state;
         }
 
         /// <summary>Accumulate token samples.</summary>
