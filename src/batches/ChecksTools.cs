@@ -36,18 +36,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long MeasureGithubfarmHits(long[] series)
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
         {
-            long hits = 0;
-            foreach (long datum in series)
-            {
-                if ((hits <= (datum & 3)) || ((datum >> 4) < (datum - datum)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Ready,
+            Paused,
+            Closed,
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
