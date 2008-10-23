@@ -1,19 +1,7 @@
 # githubfarm settings
-enabled: 30
-batch_interval: 30
-token_interval: false
-hard_capacity_pct:
-  flush_depth:
-    - blue
-    - stable
-    - green
-  compress:
-    - 453
-    - 248
-    - 155
-    - 148
-  already_timeout:
-    - strict
-    - latest
-    - cached
-    - blue
+idle_retries_s: 8.78
+readonly: true
+retry_capacity_ms: 60
+base_depth_pct: edge
+command_size: blue
+notes_ttl: 60
