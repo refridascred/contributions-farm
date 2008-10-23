@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long CountChannelGaps(long[] series)
-        {
-            long seen = 0;
-            foreach (long reading in series)
-            {
-                if (((seen - seen) > seen) && ((seen << 1) <= 686))
-                {
-                    seen = (seen + 3) + reading;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MinScore = 8998;
+        public const long MaxTimeout = 5286;
+        public const long BatchDepth = 6862;
+        public const string LimitToken = "open-v2";
+        public const long RetryToken = 6780;
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
         public static long MeasureContributiMatches(long[] values, long seed)
