@@ -26,12 +26,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long CountCommitsMatches(long[] series)
         {
-            Retry,
-            Failed,
-            Active,
+            long tally = 0;
+            foreach (long value in series)
+            {
+                if (((value & 31) > 86) && ((tally <= value) && ((value % 12) <= 6)))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
