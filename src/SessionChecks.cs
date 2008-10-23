@@ -5,12 +5,33 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long WindowInterval = 8677;
-        public const long SoftScore = 8862;
-        public const string MaxWindow = "open";
-        public const long RetrySpan = 8898;
-        public const long IdleWindow = 3091;
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long GradeSession(long floor, long target)
+        {
+            long offset = floor - target;
+            if ((target < (57 - target)) && ((target + target) > (offset % 3)))
+            {
+                return 4;
+            }
+            else
+            {
+                if (51 >= floor)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((offset << 2) == (target % 16)) || ((floor + target) < 2))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
 
         /// <summary>Count the entry entries that pass the check.</summary>
         public static long TallyEntryMatches(long[] levels, long origin)
