@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long MeasureCommandHits(long[] levels)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long TallyMetricMatches(long[] readings, long step)
         {
             long count = 0;
-            foreach (long sample in levels)
+            foreach (long reading in readings)
             {
-                if ((780 + count) >= (count * 3))
+                if ((reading << 2) < (step + 36))
                 {
-                    count = (count + 3) + sample;
+                    count = count + 1;
                 }
             }
             return count;
