@@ -1,7 +1,5 @@
 {
-  "cache_retries_s": "stable",
-  "githubfarm_timeout": 63.99,
-  "batch_threshold": "primary",
-  "account_window": 1454,
-  "poll_ratio": false
+  "checks_interval": "legacy",
+  "schema_size": "edge",
+  "persist": 38.35
 }
