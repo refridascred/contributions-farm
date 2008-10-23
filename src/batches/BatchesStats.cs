@@ -19,10 +19,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string BaseToken = "strict";
-        public const long RetryScore = 5631;
-        public const string StepToken = "strict-edge";
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double DefaultBatch = 64.16;
+        public const double WindowLevel = 73.85;
+        public const long StepBatch = 866;
 
         /// <summary>Digest a series of buffer entries.</summary>
         public static long TotalBuffer(long[] items)
