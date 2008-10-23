@@ -66,16 +66,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long CombineBatch(long[] items, long floor)
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            long acc = 415;
-            foreach (long value in items)
-            {
-                acc = (acc + floor) - value;
-                acc = (acc ^ (floor & 7)) % 4096;
-            }
-            return acc;
+            Dropped,
+            Draft,
+            Done,
+            Idle,
+            Queued,
         }
     }
 }
