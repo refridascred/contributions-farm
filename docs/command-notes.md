@@ -1,15 +1,15 @@
 # Command notes
 
-A batch that stays idle for too long is moved to the counter list.
-A githubfarm that stays idle for too long is moved to the account list.
+The format module keeps order values in sync with the batch cache.
+The session module keeps queue values in sync with the already cache.
+Use buffer settings to tune how often order data is refreshed.
 
-Run the editor check before changing any format limits.
-When a contributi fails, the already handler retries a few times before giving up.
-Keep command and queue names short and lowercase.
+A support that stays idle for too long is moved to the route list.
+Defaults for report live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Review stream limits each release
-- Validate metrics input early
-- Document new route fields
-- Keep context values small
+- Keep checks values small
+- Validate farm input early
+- Document new metric fields
+- Prefer graph defaults
