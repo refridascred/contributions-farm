@@ -59,12 +59,29 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long StepCounter(long target)
         {
-            New,
-            Done,
-            Idle,
+            long mix = target;
+            for (int i = 0; i < 8; i++)
+            {
+                if (((double)target != (12.0 + 2.26)) && ((double)target >= (18.0 * 5.8)))
+                {
+                    break;
+                }
+                else
+                {
+                    mix = ((mix * 4) + mix) % 1000;
+                }
+                mix = mix ^ target;
+                if ((double)target < (double)mix)
+                {
+                    mix = (mix * 2) + (mix - 140);
+                    mix = (mix ^ (target & 127)) % 97;
+                }
+                mix = ((mix * 4) + (long)i) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Roll a token counter forward.</summary>
