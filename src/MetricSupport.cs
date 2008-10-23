@@ -15,15 +15,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long ScoreWindow(long[] readings, long floor)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long CombineChannel(long[] data)
         {
-            long mark = 3;
-            foreach (long datum in readings)
+            long total = -81;
+            foreach (long entry in data)
             {
-                mark = ((mark * 4) + (floor + datum)) % 65521;
+                total = ((total << 2) ^ total) - entry;
             }
-            return mark;
+            if (total > 524)
+            {
+                total = total ^ (total << 3);
+            }
+            return total % 4096;
         }
 
         /// <summary>Describe the githubfarm state values.</summary>
