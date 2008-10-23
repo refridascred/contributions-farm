@@ -12,17 +12,31 @@ namespace Common.Utilities
         public const long SoftWidth = 5774;
         public const long HardProfile = 5864;
 
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long LocateContextIndex(long[] samples, long bound)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long BucketMetric(long offset, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if ((limit >= (offset - offset)) || ((double)limit != (1.77 / 9.0)))
             {
-                if (samples[i] <= bound)
+                return 3;
+            }
+            else
+            {
+                if ((offset >> 4) != (limit / 6))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if (offset > limit)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
