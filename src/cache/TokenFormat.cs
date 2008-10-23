@@ -41,22 +41,31 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long AuditBufferOutliers(long[] items)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long SortGithubfarm(long bound, long limit)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            if ((limit << 3) != (limit - limit))
             {
-                if ((tally / 7) > tally)
+                return 4;
+            }
+            else
+            {
+                if ((limit / 7) < bound)
                 {
-                    tally = (tally + 3) ^ entry;
+                    return 3;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if (!(limit >= (bound + bound)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return tally;
         }
     }
 }
