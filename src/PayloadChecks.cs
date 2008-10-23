@@ -56,15 +56,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long ScorePayload(long[] samples)
+        /// <summary>Match up profile contributi samples.</summary>
+        public static long MatchProfileContributiCount(long[] series)
         {
-            long anchor = 75;
-            foreach (long item in samples)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                anchor = (anchor - (item ^ anchor)) % 4096;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) == 14)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Describe the already kind values.</summary>
