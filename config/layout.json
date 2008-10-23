@@ -1,18 +1,8 @@
 {
-  "base_ttl": {
-    "graph_timeout": true,
-    "base_ratio_ms": ["green", "primary", "strict", "primary"],
-    "persist": 66.55,
-    "base_size": 2808,
-    "enabled": true,
-    "retry_interval": "primary"
-  },
-  "idle_retries": 2293,
-  "session_size": false,
-  "farm_ttl": {
-    "min_threshold_count": 852,
-    "already_window": ["latest", "blue", "stable"],
-    "stats_depth": 3314
-  },
-  "warm_size": 250
+  "audit": 75,
+  "persist": "strict",
+  "burst_threshold": [234, 180, 401, 475],
+  "soft_delay": "legacy",
+  "verbose": 1024,
+  "record_threshold": 95
 }
