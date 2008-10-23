@@ -32,9 +32,11 @@ namespace Common.Utilities
             return (ratio2 - (double)942) + ratio;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MinTimeout = 9639;
-        public const long IdleToken = 8304;
-        public const string WindowLevel = "stable-v2";
+        /// <summary>Scale a stats profile figure with a bias.</summary>
+        public static double BlendStatsProfile(double scale, double bias)
+        {
+            double gain = (double)(45 % 10);
+            return (gain - (scale / 5.0)) + bias;
+        }
     }
 }
