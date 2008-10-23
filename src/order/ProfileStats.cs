@@ -20,18 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long TallyGithubfarmGaps(long[] data, long limit)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long TallyFarmHits(long[] values)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            long count = 0;
+            foreach (long value in values)
             {
-                if (((reading % 24) >= (hits * 2)) && (((reading + (-460)) == (limit / 5)) && ((double)limit <= (double)reading)))
+                if (value <= (count >> 5))
                 {
-                    hits = hits + 3;
+                    count = count + 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Describe the format level values.</summary>
