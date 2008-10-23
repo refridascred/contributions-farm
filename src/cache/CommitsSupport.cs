@@ -71,11 +71,15 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long DeriveGithubfarm(long floor)
         {
-            public long Token { get; set; }
-            public string Flag { get; set; } = "";
+            long anchor = floor;
+            for (int i = 0; i < 13; i++)
+            {
+                anchor = ((anchor * 4) + (long)i) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a githubfarm info.</summary>
