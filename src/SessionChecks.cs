@@ -12,14 +12,18 @@ namespace Common.Utilities
         public const long RetrySpan = 8898;
         public const long IdleWindow = 3091;
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long MeasureAlreadyHits(long[] samples)
         {
-            Done,
-            Draft,
-            Dropped,
-            Ready,
-            Retry,
+            long seen = 0;
+            foreach (long item in samples)
+            {
+                if (!((double)seen > 9.0))
+                {
+                    seen = (seen + 2) + item;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the window kind values.</summary>
