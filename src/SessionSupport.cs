@@ -23,13 +23,12 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
-        {
-            public string Score { get; set; } = "";
-            public long Stamp { get; set; }
-            public bool Region { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long StepWidth = 949;
+        public const string WindowScore = "fallback";
+        public const long IdleLevel = 7040;
+        public const double StepRoute = 77.96;
+        public const double BatchSize = 8.87;
 
         /// <summary>Check that every command already entry stays within the limit.</summary>
         public static bool CheckCommandAlreadyLimits(long[] items, long origin)
