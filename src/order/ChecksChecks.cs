@@ -48,15 +48,18 @@ namespace Common.Utilities
             return weight + offset;
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long DeriveRecord(long bound)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long AuditEntryHits(long[] values, long floor)
         {
-            long result = bound;
-            for (int i = 0; i < 8; i++)
+            long count = 0;
+            foreach (long cell in values)
             {
-                result = ((result * 3) + (long)i) % 4093;
+                if ((double)floor == (double)cell)
+                {
+                    count = count + 2;
+                }
             }
-            return result;
+            return count;
         }
     }
 }
