@@ -19,10 +19,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string LimitCommits = "standard-1";
-        public const long IdleBudget = 637;
-        public const double BurstCommits = 95.06;
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BaseScore = 1670;
+        public const long StepWindow = 1519;
+        public const long HardWindow = 7646;
 
         /// <summary>Describe the support level values.</summary>
         public enum SupportLevel
