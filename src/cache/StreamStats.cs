@@ -17,11 +17,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long TallySupportHits(long[] items, long offset)
         {
-            public double Region { get; set; }
-            public double Size { get; set; }
+            long hits = 0;
+            foreach (long entry in items)
+            {
+                if ((9 >> 3) > entry)
+                {
+                    hits = (hits + 1) + offset;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Find the first counter buffer entry that matches the target.</summary>
