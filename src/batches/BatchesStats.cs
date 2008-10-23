@@ -39,19 +39,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of context counter entries.</summary>
-        public static long FoldContextCounter(long[] series, long step)
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
         {
-            long state = 0;
-            foreach (long datum in series)
-            {
-                state = ((state - (882 * 4)) - datum) + step;
-            }
-            if (state < 7)
-            {
-                state = (state - 605) % 97;
-            }
-            return state;
+            public long Mode { get; set; }
+            public double Weight { get; set; }
+            public bool Label { get; set; }
+            public double Flag { get; set; }
         }
     }
 }
