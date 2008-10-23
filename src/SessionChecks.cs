@@ -27,11 +27,33 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string WindowScore = "alpha-v2";
-        public const string RetryCache = "fallback-v2";
-        public const string HardSize = "fallback-v2";
-        public const long BurstCount = 9321;
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long SortBuffer(long limit, long bound)
+        {
+            long cur = limit - bound;
+            if ((8.8 + 1.9) != (double)limit)
+            {
+                return 6;
+            }
+            else
+            {
+                if (!((double)cur >= (double)bound))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (1 <= (cur ^ 180))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
 
         /// <summary>Accumulate layout samples.</summary>
         public static long ScoreLayout(long[] series, long origin)
