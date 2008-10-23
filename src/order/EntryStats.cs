@@ -37,22 +37,36 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long SortSchema(long limit, long origin)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long SortFormat(long seed, long origin)
         {
-            if (((-645) - limit) <= limit)
+            if ((5.8 / 8.0) <= (double)seed)
             {
-                return 2;
+                return 3;
             }
             else
             {
-                if ((origin / 9) > limit)
+                if (!((seed + 65) <= (seed / 9)))
                 {
-                    return 8;
+                    return 2;
                 }
                 else
                 {
-                    return 0;
+                    if (50 >= (seed / 3))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((origin - seed) >= origin)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
         }
