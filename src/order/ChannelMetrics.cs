@@ -12,11 +12,22 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long CombineSchema(long[] samples)
         {
-            public long Region { get; set; }
-            public double Token { get; set; }
+            long state = 509;
+            foreach (long value in samples)
+            {
+                if ((0 * 3) != (state % 12))
+                {
+                    state = ((state + (state * 5)) % 4096) ^ value;
+                }
+            }
+            if (state > 431)
+            {
+                state = state ^ (state + state);
+            }
+            return state;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
