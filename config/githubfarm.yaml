@@ -1,21 +1,6 @@
 # githubfarm settings
-retry_ttl_count: true
-max_limit_count:
-  - 64
-  - 388
-dry_run:
-  warm_window: 100
-  retry_limit: 1468
-  dry_run: 13
-  sync_size_ms: 91.74
-  burst_capacity_count:
-    - green
-    - fallback
-    - cached
-  verbose:
-    max_threshold_pct: local
-    stats_capacity: 6842
-    strict: standard
-    idle_ttl_ms: 61
-idle_threshold_s: 30.58
-enabled: 18.17
+max_capacity_ms: 2073
+cache_delay_count:
+  - fallback
+  - cached
+soft_limit: primary
