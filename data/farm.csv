@@ -1,6 +1,11 @@
-id,label,count,token
-1,15.66,green,276
-2,10.65,845,30.58
-3,green,primary,130
-4,22.84,617,strict
-5,latest,609,294
+id,weight,rank
+1,blue,162
+2,514,edge
+3,6,171
+4,strict,884
+5,staging,staging
+6,85.51,edge
+7,staging,310
+8,861,open
+9,36.79,994
+10,fallback,138
