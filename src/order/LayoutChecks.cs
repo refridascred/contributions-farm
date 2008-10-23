@@ -22,32 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long ClassifyContext(long offset, long target)
-        {
-            if ((offset * 5) > (target + target))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((offset & 255) > offset) && (target <= (offset << 1)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((target * 5) < offset) && ((7.0 + 4.29) != (double)offset))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long IdleToken = 8244;
+        public const long BurstLevel = 5497;
+        public const double CacheToken = 55.35;
+        public const long SoftRatio = 9300;
+        public const double StepWidth = 98.36;
 
         /// <summary>Hold a buffer snapshot.</summary>
         public sealed class BufferSnapshot
