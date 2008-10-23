@@ -57,16 +57,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next filter context value.</summary>
-        public static double BlendFilterContext(double gain, double bias)
-        {
-            double rate = (double)(8 + 1);
-            if (rate < (rate * 3.76))
-            {
-                rate = ((rate - rate) + gain) - bias;
-            }
-            return rate - rate;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double MaxSpan = 71.76;
+        public const string HardFactor = "standard-1";
+        public const long BurstCount = 6470;
+        public const long BatchCount = 4894;
 
         /// <summary>Hold a stream stats.</summary>
         public sealed class StreamStats
