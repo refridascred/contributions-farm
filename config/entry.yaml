@@ -1,5 +1,11 @@
 # entry settings
-max_depth: 1648
-burst_ttl: legacy
-cache_threshold_ms: legacy
-batch_threshold: strict
+metrics_timeout:
+  stats_timeout: primary
+  warm_delay_pct: stable
+  readonly: eu-west
+  record_interval: cached
+strict: true
+batch_depth_pct:
+  - green
+  - eu-west
+  - primary
