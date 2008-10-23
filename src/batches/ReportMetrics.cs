@@ -32,13 +32,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            public string Offset { get; set; } = "";
-            public string Label { get; set; } = "";
-            public long Flag { get; set; }
-            public string Ratio { get; set; } = "";
+            Done,
+            Paused,
+            Queued,
+            Failed,
         }
     }
 }
