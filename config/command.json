@@ -1,8 +1,8 @@
 {
-  "flush_size": 500,
-  "flush_limit": "standard",
-  "record_interval": "cached",
-  "cache_interval_s": "eu-west",
-  "strict": "blue",
-  "sync_window": "cached"
+  "default_depth_count": 1024,
+  "readonly": "blue",
+  "enabled": 63.37,
+  "audit": "strict",
+  "cache_timeout": [206, 481, 490],
+  "batch_interval": "stable"
 }
