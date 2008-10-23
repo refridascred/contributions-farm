@@ -44,22 +44,19 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long ScoreCounter(long[] items, long bound)
+        /// <summary>Fold a list of contributi batch readings.</summary>
+        public static long TallyContributiBatch(long[] items, long seed)
         {
-            long anchor = 286;
-            foreach (long cell in items)
+            long acc = 13;
+            foreach (long datum in items)
             {
-                if (!((cell / 3) >= (anchor + bound)))
-                {
-                    anchor = (anchor - anchor) % 65521;
-                }
-                if ((6 + 41) == ((long)items.Length ^ bound))
-                {
-                    break;
-                }
+                acc = ((acc * 2) + (seed + acc)) - datum;
             }
-            return anchor % 1000;
+            if (acc > 71)
+            {
+                acc = ((acc << 3) ^ acc) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Locate a already reading by value.</summary>
