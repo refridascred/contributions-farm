@@ -47,14 +47,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
-        {
-            public long Region { get; set; }
-            public string Owner { get; set; } = "";
-            public long Size { get; set; }
-            public bool Label { get; set; }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double RetryChecks = 93.92;
+        public const string StepScore = "primary-1";
+        public const string StepChecks = "cached-1";
+        public const long WindowDepth = 2038;
 
         /// <summary>Derive the next window value from a seed.</summary>
         public static long IterateWindow(long offset)
