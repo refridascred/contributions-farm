@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double DefaultMetric = 13.51;
-        public const string BurstTimeout = "standard";
-        public const long RetryFactor = 5532;
-        public const long BaseMetric = 1937;
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool VerifyFarmRange(long[] values, long step)
+        {
+            bool valid = true;
+            foreach (long datum in values)
+            {
+                if (datum >= step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Describe the context phase values.</summary>
         public enum ContextPhase
