@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long SeekFilterIndex(long[] series, long target)
+        /// <summary>Locate a cache format reading by value.</summary>
+        public static long LocateCacheFormatIndex(long[] values, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((series[i] >= target) && ((series[i] % 2) == 0))
+                if ((values[i] >= target) && ((values[i] % 3) == 0))
                 {
                     return (long)i;
                 }
