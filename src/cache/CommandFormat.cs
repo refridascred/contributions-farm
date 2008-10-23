@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long AuditCommandHits(long[] values, long origin)
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            long count = 0;
-            foreach (long value in values)
-            {
-                if (count < (origin + 10))
-                {
-                    count = (count + 3) + value;
-                }
-            }
-            return count;
+            Queued,
+            Pending,
+            Synced,
+            Done,
         }
 
         /// <summary>Digest a series of githubfarm record entries.</summary>
