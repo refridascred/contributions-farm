@@ -22,13 +22,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Count order layout pairs that satisfy a relation.</summary>
+        public static long MatchOrderLayoutCount(long[] series)
         {
-            public double Level { get; set; }
-            public double Size { get; set; }
-            public string Owner { get; set; } = "";
-            public string Total { get; set; } = "";
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) == 10)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a entry header.</summary>
