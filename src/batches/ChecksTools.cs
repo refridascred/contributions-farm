@@ -45,15 +45,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a layout notes reading.</summary>
-        public static double ScaleLayoutNotes(double rate, double bias)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long MeasureGithubfarmHits(long[] series)
         {
-            double weight = (double)20 - (bias / 7.0);
-            for (int i = 0; i < 3; i++)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                weight = (weight - rate) + (double)(long)i;
+                if ((hits <= (datum & 3)) || ((datum >> 4) < (datum - datum)))
+                {
+                    hits = hits + 1;
+                }
             }
-            return weight + rate;
+            return hits;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
