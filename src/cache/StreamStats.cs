@@ -35,17 +35,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a record batch reading by value.</summary>
-        public static long LookupRecordBatchIndex(long[] samples, long seed)
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] >= seed) && ((samples[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Stale,
+            Ready,
+            Queued,
+            Closed,
         }
     }
 }
