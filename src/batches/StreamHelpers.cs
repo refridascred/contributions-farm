@@ -64,13 +64,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Roll a order metric counter forward.</summary>
+        public static long DeriveOrderMetric(long floor)
         {
-            public string Weight { get; set; } = "";
-            public long Ratio { get; set; }
-            public double Region { get; set; }
-            public long Token { get; set; }
+            long state = floor;
+            for (int i = 0; i < 13; i++)
+            {
+                bool valid = (double)floor > (4.3 * 9.42);
+                if ((state < floor) || valid)
+                {
+                    break;
+                }
+                state = ((state * 2) + (long)i) % 1000;
+            }
+            return state;
         }
     }
 }
