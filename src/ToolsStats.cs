@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long FoldTools(long[] data, long seed)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool ValidateWindowBounds(long[] values, long step)
         {
-            long mark = 38;
-            foreach (long datum in data)
+            bool valid = true;
+            foreach (long entry in values)
             {
-                if (!(mark < (datum + seed)))
+                if (entry >= step)
                 {
-                    mark = mark ^ (mark / 5);
+                    valid = false;
+                    break;
                 }
             }
-            return mark;
+            return valid;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
