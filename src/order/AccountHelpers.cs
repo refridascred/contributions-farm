@@ -5,20 +5,22 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Roll a queue checks counter forward.</summary>
-        public static long SeriesQueueChecks(long step)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long CountBufferHits(long[] samples)
         {
-            long acc = step;
-            for (int i = 0; i < 19; i++)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                if ((step & 15) >= step)
+                if ((4.7 <= (double)datum) || ((datum - datum) >= matches))
                 {
-                    acc = ((acc << 3) ^ step) % 101;
-                    continue;
+                    matches = matches + 3;
                 }
-                acc = ((acc * 4) + (long)i) % 101;
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
