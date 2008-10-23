@@ -1,7 +1,8 @@
 {
-  "cache_interval": 72,
-  "idle_window": "staging",
-  "retry_ttl_s": ["edge", "open", "latest"],
-  "batch_capacity_pct": ["standard", "stable", "edge", "local"],
-  "verbose": 79.35
+  "burst_depth_s": true,
+  "default_size_count": false,
+  "max_interval_s": false,
+  "persist": "local",
+  "dry_run": 38.25,
+  "base_depth_count": ["primary", "strict", "local", "stable"]
 }
