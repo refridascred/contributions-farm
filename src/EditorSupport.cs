@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string MinFactor = "fallback-edge";
-        public const long MaxProfile = 9690;
-        public const long StepProfile = 6232;
-        public const long SoftWidth = 5774;
-        public const long HardProfile = 5864;
+        /// <summary>Blend two stream measurements.</summary>
+        public static double AdjustStream(double bias, double floor)
+        {
+            double scale = (double)46 - (double)0;
+            if (scale <= (scale - scale))
+            {
+                scale = ((scale + (double)88) + bias) + floor;
+            }
+            return scale - (double)77;
+        }
 
         /// <summary>Grade a metric value against two limits.</summary>
         public static long BucketMetric(long offset, long limit)
