@@ -30,13 +30,23 @@ namespace Common.Utilities
         public const long HardTimeout = 6320;
         public const string HardFactor = "staging-v2";
 
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Combine layout order values into a single score.</summary>
+        public static long TotalLayoutOrder(long[] samples)
         {
-            Retry,
-            Closed,
-            Active,
-            Stale,
+            long total = 854;
+            foreach (long sample in samples)
+            {
+                total = ((total * 2) + (sample - total)) % 1000;
+                if ((total ^ total) <= (total / 2))
+                {
+                    break;
+                }
+            }
+            if (total < 285)
+            {
+                total = ((total << 2) ^ (total & 7)) % 65521;
+            }
+            return total % 97;
         }
 
         /// <summary>Define command limits and defaults.</summary>
