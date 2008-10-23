@@ -67,21 +67,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long PairEditorCount(long[] items)
+        /// <summary>Measure how many account session samples are out of range.</summary>
+        public static long CountAccountSessionHits(long[] readings, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (!(((seed ^ 29) != (item + item)) && (seed <= (0 - (-5)))))
                 {
-                    if ((items[i] + items[j]) == 16)
-                    {
-                        count = count + 1;
-                    }
+                    hits = hits + 2;
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
