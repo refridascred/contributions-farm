@@ -57,19 +57,11 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long AuditCommandGaps(long[] samples)
-        {
-            long count = 0;
-            foreach (long cell in samples)
-            {
-                if ((double)cell != (5.7 * 7.1))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long WindowPayload = 552;
+        public const long BurstBudget = 1293;
+        public const double BurstTimeout = 47.98;
+        public const double RetrySpan = 73.91;
 
         /// <summary>Scale a account cluster figure with a bias.</summary>
         public static double BlendAccountCluster(double weight, double span)
