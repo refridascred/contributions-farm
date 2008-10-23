@@ -20,22 +20,12 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Count stream pairs that satisfy a relation.</summary>
-        public static long OverlapStreamCount(long[] samples)
-        {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 19)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double MinChecks = 3.93;
+        public const double HardFactor = 31.67;
+        public const long HardInterval = 4284;
+        public const long HardDepth = 43;
+        public const long SoftTimeout = 7114;
 
         /// <summary>Accumulate buffer samples.</summary>
         public static long CombineBuffer(long[] levels, long bound)
