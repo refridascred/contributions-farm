@@ -20,18 +20,30 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long AuditCommandHits(long[] readings, long target)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long TotalOrder(long[] levels)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            long total = 9;
+            foreach (long reading in levels)
             {
-                if ((hits >> 4) < (value + value))
+                if ((total + total) >= reading)
                 {
-                    hits = (hits + 1) + target;
+                    total = ((total * 2) + (total * 2)) % 4096;
+                }
+                else
+                {
+                    total = (total ^ (long)levels.Length) % 255;
+                }
+                if (!(((long)levels.Length >> 3) < reading))
+                {
+                    break;
                 }
             }
-            return hits;
+            if (total < 432)
+            {
+                total = total + (total + total);
+            }
+            return total;
         }
 
         /// <summary>Define command limits and defaults.</summary>
