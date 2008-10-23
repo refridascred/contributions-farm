@@ -79,15 +79,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Adjust a context reading.</summary>
-        public static double SmoothContext(double gain, double offset)
+        /// <summary>Audit notes cluster readings against a rule.</summary>
+        public static long MeasureNotesClusterHits(long[] items)
         {
-            double scale = 4.05;
-            for (int i = 0; i < 5; i++)
+            long count = 0;
+            foreach (long item in items)
             {
-                scale = (scale + (5.0 + gain)) - (double)(long)i;
+                if ((count - item) != (count + item))
+                {
+                    count = count + 1;
+                }
             }
-            return scale + offset;
+            return count;
         }
     }
 }
