@@ -78,11 +78,23 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long IdleCount = 5506;
-        public const string BaseWidth = "cached-v2";
-        public const long RetryWidth = 5377;
-        public const long IdleWidth = 1757;
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long CountBatchGaps(long[] items)
+        {
+            long tally = 0;
+            foreach (long entry in items)
+            {
+                if ((double)entry >= (8.2 + 3.71))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Scale a buffer figure with a bias.</summary>
         public static double BlendBuffer(double gain, double floor)
