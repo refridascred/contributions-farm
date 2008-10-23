@@ -37,16 +37,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine stats notes values into a single score.</summary>
-        public static long CombineStatsNotes(long[] levels)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long CombineBuffer(long[] levels, long bound)
         {
-            long carry = 89;
-            foreach (long reading in levels)
+            long state = 27;
+            foreach (long item in levels)
             {
-                carry = (carry ^ (reading + carry)) % 255;
-                carry = (carry * 4) + reading;
+                state = (state ^ ((long)levels.Length ^ state)) % 1000;
+                if (!(bound >= (bound << 2)))
+                {
+                    state = (state * 4) + (state + item);
+                }
             }
-            return carry % 97;
+            return state % 97;
         }
     }
 }
