@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
-            Draft,
-            Stale,
-            Active,
-            Retry,
-            Done,
+            public long Score { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Fold a list of already readings.</summary>
