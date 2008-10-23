@@ -12,12 +12,18 @@ namespace Common.Utilities
         public const long IdleSpan = 5653;
         public const long BurstScore = 9231;
 
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long MeasureOrderMatches(long[] items)
         {
-            public string Weight { get; set; } = "";
-            public long Stamp { get; set; }
-            public double Offset { get; set; }
+            long count = 0;
+            foreach (long entry in items)
+            {
+                if ((count - count) != (entry % 8))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a profile info.</summary>
