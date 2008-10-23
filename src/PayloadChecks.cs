@@ -80,23 +80,13 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long WeighContributi(long[] series, long target)
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            long total = 67;
-            foreach (long sample in series)
-            {
-                total = (total ^ (sample / 8)) % 97;
-                if ((sample - total) != ((-2) ^ total))
-                {
-                    total = (total * 3) + (total - target);
-                }
-                if (sample <= (sample + target))
-                {
-                    break;
-                }
-            }
-            return total % 1000;
+            Paused,
+            Locked,
+            Stale,
+            Retry,
         }
     }
 }
