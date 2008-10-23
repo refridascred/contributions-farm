@@ -1,7 +1,11 @@
 # entry settings
-strict: green
-enabled: 24.73
-account_timeout: 53.5
-batch_depth_count: 69.43
-min_retries_count: 1329
-readonly: latest
+context_size: legacy
+max_interval_ms: 60
+verbose:
+  schema_timeout: 4
+  hard_capacity: 9874
+  strict: stable
+  default_ratio: 29
+  compress: 500
+  batch_window_ms: cached
+enabled: standard
