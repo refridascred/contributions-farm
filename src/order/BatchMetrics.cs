@@ -62,9 +62,11 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long RetryEditor = 6990;
-        public const long BurstDepth = 5026;
-        public const double IdleEditor = 65.63;
+        /// <summary>Define format limits and defaults.</summary>
+        public const string StepFormat = "cached";
+        public const long LimitFactor = 6607;
+        public const long IdleFormat = 2193;
+        public const long SoftFactor = 4263;
+        public const double WindowRatio = 62.97;
     }
 }
