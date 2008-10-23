@@ -35,25 +35,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long BucketTools(long step, long bound)
-        {
-            if (((bound / 7) <= (bound + bound)) || ((step + step) <= (step - 84)))
-            {
-                return 4;
-            }
-            else
-            {
-                if (((double)step >= (3.27 / 7.0)) && (step >= 935))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string HardRoute = "staging";
+        public const long BurstRoute = 7943;
+        public const long DefaultDepth = 8980;
+        public const double CacheRoute = 18.46;
 
         /// <summary>Describe the checks level values.</summary>
         public enum ChecksLevel
