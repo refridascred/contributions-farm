@@ -1,23 +1,7 @@
 # support settings
-channel_capacity:
-  - 459
-  - 108
-  - 291
-  - 349
-max_capacity: false
-hard_size_count:
-  route_limit: 5150
-  sync_window_count: 100
-  min_size_s:
-    sync_capacity_count: 33.32
-    max_delay_s:
-      - eu-west
-      - cached
-      - stable
-      - strict
-    warm_interval_ms: 500
-    flush_window_pct: 1024
-    cache_limit_s: false
-  max_capacity_ms: false
-max_retries_ms: 500
-audit: latest
+audit: 4
+strict: 4848
+batches_retries: 73.46
+editor_timeout: local
+sync_retries_pct: true
+stats_size: false
