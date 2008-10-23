@@ -29,33 +29,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long BucketContributi(long target, long origin)
-        {
-            long prev = target - origin;
-            if ((15.0 / 3.0) <= (double)prev)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((target << 1) > (758 + origin))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((origin - prev) <= prev)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long StepScore = 536;
+        public const long IdleMetric = 9878;
+        public const string SoftMetric = "fallback";
+        public const long BatchMetric = 6811;
+        public const double BatchInterval = 1.1;
 
         /// <summary>Derive the next schema profile value from a seed.</summary>
         public static long RollSchemaProfile(long floor)
