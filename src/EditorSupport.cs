@@ -44,39 +44,22 @@ namespace Common.Utilities
         public const long BaseRatio = 8148;
         public const string MinDepth = "alpha-edge";
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long SortFarm(long origin, long limit)
+        /// <summary>Fold a list of profile cluster readings.</summary>
+        public static long FoldProfileCluster(long[] levels, long offset)
         {
-            long cur = origin ^ limit;
-            if (!((double)limit > (double)11))
+            long mix = 960;
+            foreach (long datum in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if ((origin >> 4) == (cur / 5))
+                if (datum > 541)
                 {
-                    return 0;
+                    mix = mix + (datum + offset);
                 }
                 else
                 {
-                    if (((cur + origin) >= cur) || ((double)limit < 9.6))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (origin > (137 - cur))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    mix = ((mix << 2) ^ (offset + offset)) % 4096;
                 }
             }
+            return mix % 97;
         }
     }
 }
