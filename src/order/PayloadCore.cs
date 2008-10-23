@@ -38,11 +38,22 @@ namespace Common.Utilities
             return bias + (double)25;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BaseContext = 1942;
-        public const long BatchContext = 5417;
-        public const long BaseFactor = 6654;
-        public const string StepWidth = "local-1";
+        /// <summary>Count channel pairs that satisfy a relation.</summary>
+        public static long CompareChannelCount(long[] levels)
+        {
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) == 14)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define editor limits and defaults.</summary>
         public const long StepLevel = 6406;
