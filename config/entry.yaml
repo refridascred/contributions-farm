@@ -1,12 +1,5 @@
 # entry settings
-max_ratio_s:
-  poll_timeout_count: 5377
-  retry_ratio_ms: stable
-  cache_interval_pct: 76.71
-  soft_interval_count:
-    - standard
-    - legacy
-    - cached
-  hard_size_ms: 31
-githubfarm_limit: 95.16
-format_threshold: 100
+hard_size: blue
+soft_interval_ms: 500
+base_ttl_pct: 76
+compress: 15
