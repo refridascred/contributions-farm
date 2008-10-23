@@ -1,7 +1,9 @@
-id,weight,state
-1,77.41,55.84
-2,staging,443
-3,64.02,77.53
-4,fallback,234
-5,green,806
-6,96,87.91
+id,weight,level,region
+1,78.39,4.28,78.7
+2,54.18,491,63.96
+3,157,602,primary
+4,496,759,open
+5,65.51,green,standard
+6,green,98.44,717
+7,local,green,74.61
+8,stable,20.52,5.85
