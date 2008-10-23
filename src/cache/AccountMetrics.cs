@@ -72,17 +72,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long LocateStatsIndex(long[] values, long offset)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long TotalSupport(long[] levels, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            long score = 8;
+            foreach (long cell in levels)
             {
-                if ((values[i] >= offset) && ((values[i] % 5) != 0))
+                score = score + (85 % 5);
+                if ((cell + score) == (floor + floor))
                 {
-                    return (long)i;
+                    continue;
                 }
+                score = ((score * 2) + (398 * 5)) % 1000;
             }
-            return -1;
+            return score % 65521;
         }
     }
 }
