@@ -6,22 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-edge}"
-case "${mode}" in
-    standard)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-for item in standard stable open latest; do
+for item in primary staging green local; do
     log "checking ${item}"
 done
 
+CHANNEL_LIMIT=429
+log "limit is ${CHANNEL_LIMIT}"
+
 total=0
-for i in $(seq 1 12); do
-    total=$((total + i * 4))
+for i in $(seq 1 7); do
+    total=$((total + i * 2))
 done
 log "total ${total}"
