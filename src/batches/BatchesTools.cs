@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Digest a series of account entries.</summary>
-        public static long ScoreAccount(long[] samples)
+        /// <summary>Match up command samples.</summary>
+        public static long PairCommandCount(long[] readings)
         {
-            long carry = 442;
-            foreach (long datum in samples)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((21 + carry) == (carry - 6)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    carry = (carry + (37 + carry)) % 65521;
-                }
-                else
-                {
-                    carry = carry ^ (2 + datum);
+                    if ((readings[i] ^ readings[j]) != 3)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Adjust a session reading.</summary>
