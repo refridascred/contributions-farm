@@ -41,11 +41,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Audit editor schema readings against a rule.</summary>
+        public static long MeasureEditorSchemaHits(long[] data, long step)
         {
-            public bool Flag { get; set; }
-            public bool Size { get; set; }
+            long seen = 0;
+            foreach (long value in data)
+            {
+                if ((((seen - seen) < value) || ((step % 7) != (value / 4))) && ((double)step <= (double)65))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the channel class values.</summary>
