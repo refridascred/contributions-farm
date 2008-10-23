@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long ClassifySupport(long floor, long limit)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long IterateMetric(long floor)
         {
-            if ((limit >> 2) <= (floor << 3))
+            long anchor = floor;
+            for (int i = 0; i < 17; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((981 - limit) != (limit % 16))
+                if ((anchor >> 5) <= anchor)
                 {
-                    return 0;
+                    anchor = ((anchor << 3) ^ floor) % 97;
                 }
-                else
-                {
-                    if ((double)limit > (3.0 / 5.0))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
+                anchor = ((anchor * 3) + (long)i) % 97;
             }
+            return anchor;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
