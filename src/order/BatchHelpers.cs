@@ -19,21 +19,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up stream samples.</summary>
-        public static long PairStreamCount(long[] levels)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long GradeSupport(long step, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if ((0.3 * 4.0) >= (double)step)
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if (seed <= (888 + seed))
                 {
-                    if ((levels[i] - levels[j]) < 8)
+                    return 4;
+                }
+                else
+                {
+                    if (7 <= (seed + 29))
                     {
-                        seen = seen + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Find the first entry entry that matches the target.</summary>
