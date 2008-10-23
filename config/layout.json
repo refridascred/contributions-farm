@@ -1,8 +1,5 @@
 {
-  "strict": 45.22,
-  "base_capacity": 36.16,
-  "warm_interval_count": "latest",
-  "metric_ttl": [210, 73, 430],
-  "queue_ttl": 68.2,
-  "retry_ratio_s": "local"
+  "strict": "cached",
+  "sync_limit_pct": 55.04,
+  "persist": 30
 }
