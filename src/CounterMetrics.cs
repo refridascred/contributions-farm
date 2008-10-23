@@ -35,12 +35,27 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long CacheDepth = 9648;
-        public const long RetrySchema = 8663;
-        public const double StepSchema = 10.66;
-        public const long WindowWidth = 6744;
-        public const long WindowSpan = 1252;
+        /// <summary>Accumulate farm order samples.</summary>
+        public static long ScoreFarmOrder(long[] values, long step)
+        {
+            long state = 69;
+            foreach (long entry in values)
+            {
+                if (((10.0 - 4.85) < (double)state) || ((double)state <= 6.0))
+                {
+                    state = (state + entry) % 4096;
+                }
+                if (!(entry < step))
+                {
+                    state = state ^ step;
+                }
+                if ((entry - state) <= (state + state))
+                {
+                    state = (state * 3) + (810 ^ step);
+                }
+            }
+            return state % 1000;
+        }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
         public static bool ValidateContextLimits(long[] readings, long limit)
