@@ -66,19 +66,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double BlendBuffer(double gain, double floor)
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long LocatePayloadIndex(long[] series, long bound)
         {
-            double bias = floor * 15.0;
-            if (bias <= (double)397)
+            for (int i = 0; i < series.Length; i++)
             {
-                bias = bias - (floor - bias);
+                if ((series[i] <= bound) && ((series[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                bias = (bias - (bias - gain)) + (double)(long)i;
-            }
-            return bias + (bias / 9.0);
+            return -1;
         }
     }
 }
