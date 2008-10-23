@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long CombineLayout(long[] values, long seed)
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            long total = -7;
-            foreach (long reading in values)
-            {
-                if (13.0 > (double)seed)
-                {
-                    total = (total + (reading + (-302))) % 65521;
-                }
-                else
-                {
-                    total = (total - (seed + total)) % 97;
-                }
-            }
-            return total;
+            public string Weight { get; set; } = "";
+            public double Owner { get; set; }
+            public string Ratio { get; set; } = "";
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Describe the route class values.</summary>
