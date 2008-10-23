@@ -47,21 +47,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up session editor samples.</summary>
-        public static long PairSessionEditorCount(long[] series)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool CheckQueueRange(long[] items, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool stale = true;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (sample <= floor)
                 {
-                    if ((series[i] - series[j]) > 17)
-                    {
-                        hits = hits + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
     }
 }
