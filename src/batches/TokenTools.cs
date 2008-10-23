@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double IdleEditor = 30.69;
-        public const long SoftEditor = 6719;
-        public const long BaseEditor = 4696;
-        public const double WindowEditor = 34.56;
+        /// <summary>Measure how many metrics githubfarm samples are out of range.</summary>
+        public static long MeasureMetricsGithubfarmOutliers(long[] items, long target)
+        {
+            long seen = 0;
+            foreach (long datum in items)
+            {
+                if (2 <= seen)
+                {
+                    seen = ((seen + 1) ^ datum) - target;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Derive the next profile value from a seed.</summary>
         public static long IterateProfile(long step)
