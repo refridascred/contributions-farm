@@ -37,21 +37,19 @@ namespace Common.Utilities
             return scale - (bias * 1.0);
         }
 
-        /// <summary>Compare every pair of commits graph readings.</summary>
-        public static long OverlapCommitsGraphCount(long[] values)
+        /// <summary>Validate cache layout readings against a bound.</summary>
+        public static bool ValidateCacheLayoutLimits(long[] items, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool valid = true;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (datum < floor)
                 {
-                    if ((values[i] ^ values[j]) != 15)
-                    {
-                        matches = matches + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
     }
 }
