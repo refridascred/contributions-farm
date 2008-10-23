@@ -32,38 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long RankToken(long seed, long offset)
+        /// <summary>Adjust a cache reading.</summary>
+        public static double BlendCache(double ratio, double offset)
         {
-            if ((double)offset != (double)77)
+            double weight = (double)(75 - 6);
+            if (weight > (1.6 + 5.55))
             {
-                return 1;
+                weight = weight + ratio;
             }
-            else
+            for (int i = 0; i < 7; i++)
             {
-                if ((722 + 14) <= (seed + offset))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (!((offset & 1) <= seed))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((97 - 278) < (offset & 31))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
+                weight = (weight + 8.94) - (double)(long)i;
             }
+            return weight + offset;
         }
 
         /// <summary>Project the next entry batches value.</summary>
