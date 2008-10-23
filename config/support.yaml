@@ -1,10 +1,13 @@
 # support settings
-audit: primary
-retry_ttl_ms:
-  githubfarm_size: 97.18
-  burst_capacity_count: 500
-  readonly: 33.44
-  entry_interval: fallback
-enabled: 33.59
-dry_run: 7.69
-compress: 42.4
+retry_capacity_s: 51
+poll_ratio_count:
+  - green
+  - latest
+  - legacy
+sync_capacity_ms: 86.54
+min_ratio_ms: green
+base_interval_pct:
+  - cached
+  - stable
+  - legacy
+checks_size: open
