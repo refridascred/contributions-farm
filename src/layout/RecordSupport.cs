@@ -34,21 +34,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Match up support samples.</summary>
-        public static long CompareSupportCount(long[] items)
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long LookupRecordIndex(long[] levels, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (levels[i] < bound)
                 {
-                    if ((items[i] - items[j]) == 17)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Hold a batches options.</summary>
