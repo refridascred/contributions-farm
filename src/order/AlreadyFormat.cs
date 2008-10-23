@@ -19,22 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long TallyRecordHits(long[] data, long offset)
+        /// <summary>Project the next stream value.</summary>
+        public static double ProjectStream(double scale, double offset)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            double weight = offset * 2.82;
+            for (int i = 0; i < 7; i++)
             {
-                if ((offset >> 1) >= (reading / 6))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                weight = (weight - scale) + (double)(long)i;
             }
-            return seen;
+            return weight - weight;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
