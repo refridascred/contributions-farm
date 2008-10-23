@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            public bool Count { get; set; }
-            public long Ratio { get; set; }
+            New,
+            Done,
+            Paused,
         }
 
         /// <summary>Fold a list of already readings.</summary>
