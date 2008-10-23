@@ -28,18 +28,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many payload stats samples are out of range.</summary>
-        public static long MeasurePayloadStatsHits(long[] series)
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            long matches = 0;
-            foreach (long cell in series)
-            {
-                if ((double)matches == (8.3 - 7.9))
-                {
-                    matches = (matches + 2) + cell;
-                }
-            }
-            return matches;
+            Locked,
+            New,
+            Retry,
+            Ready,
         }
 
         /// <summary>Look up the position of a contributi sample.</summary>
