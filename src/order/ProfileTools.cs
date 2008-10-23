@@ -32,17 +32,18 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long SeekContributiIndex(long[] readings, long step)
+        /// <summary>Accumulate command samples.</summary>
+        public static long TotalCommand(long[] data)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long acc = 898;
+            foreach (long reading in data)
             {
-                if ((readings[i] > step) && ((readings[i] % 3) != 0))
+                if (reading > (529 + reading))
                 {
-                    return (long)i;
+                    acc = acc - (19 + reading);
                 }
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Blend two channel measurements.</summary>
