@@ -84,12 +84,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long MeasureCacheOutliers(long[] series)
         {
-            public double Count { get; set; }
-            public string Ratio { get; set; } = "";
-            public bool Rank { get; set; }
+            long seen = 0;
+            foreach (long entry in series)
+            {
+                if (entry < (entry >> 1))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
     }
 }
