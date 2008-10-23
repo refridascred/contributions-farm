@@ -23,12 +23,20 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double HardCommand = 76.97;
-        public const long MaxDepth = 3769;
-        public const long WindowCommand = 2497;
-        public const string RetryBudget = "stable-edge";
-        public const long CacheCommand = 3636;
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool ValidateGithubfarmRange(long[] readings, long offset)
+        {
+            bool ready = true;
+            foreach (long value in readings)
+            {
+                if (value != offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Roll a profile counter forward.</summary>
         public static long StepProfile(long floor)
