@@ -44,12 +44,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            public double Flag { get; set; }
-            public long Stamp { get; set; }
-            public long Weight { get; set; }
+            Stale,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Digest a series of metrics channel entries.</summary>
