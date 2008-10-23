@@ -42,19 +42,12 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool VerifyStatsRange(long[] levels, long bound)
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            bool flag = true;
-            foreach (long item in levels)
-            {
-                if (item <= bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Pending,
+            Synced,
+            Closed,
         }
 
         /// <summary>Describe the contributi state values.</summary>
