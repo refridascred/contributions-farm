@@ -63,12 +63,18 @@ namespace Common.Utilities
         public const long BurstCount = 6470;
         public const long BatchCount = 4894;
 
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long AuditCacheMatches(long[] data, long bound)
         {
-            public bool Ratio { get; set; }
-            public long Limit { get; set; }
-            public double Offset { get; set; }
+            long count = 0;
+            foreach (long cell in data)
+            {
+                if (cell > (495 - 5))
+                {
+                    count = (count + 2) - bound;
+                }
+            }
+            return count;
         }
     }
 }
