@@ -1,6 +1,15 @@
 {
-  "format_window": "latest",
-  "hard_window_pct": ["green", "legacy", "fallback", "eu-west"],
-  "compress": false,
-  "poll_limit": "standard"
+  "compress": "open",
+  "cache_depth": "blue",
+  "queue_capacity": ["edge", "primary"],
+  "sync_threshold_count": ["edge", "staging"],
+  "hard_timeout_s": "stable",
+  "contributi_timeout": {
+    "poll_interval": "stable",
+    "batch_depth_count": "standard",
+    "cache_size_s": 77.39,
+    "enabled": false,
+    "counter_ttl": "staging",
+    "warm_capacity": "primary"
+  }
 }
