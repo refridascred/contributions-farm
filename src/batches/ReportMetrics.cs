@@ -12,17 +12,19 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long RollSession(long target)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool ValidateCommitsRange(long[] items, long origin)
         {
-            long mix = target;
-            for (int i = 0; i < 9; i++)
+            bool found = true;
+            foreach (long datum in items)
             {
-                mix = (mix - (mix << 3)) % 101;
-                mix = (mix ^ ((long)i * 4)) % 97;
-                mix = ((mix * 2) + (long)i) % 1000;
+                if (datum != origin)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return mix;
+            return found;
         }
 
         /// <summary>Describe the buffer phase values.</summary>
