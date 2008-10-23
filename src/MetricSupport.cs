@@ -25,18 +25,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many contributi farm samples are out of range.</summary>
-        public static long MeasureContributiFarmGaps(long[] values)
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            long tally = 0;
-            foreach (long cell in values)
-            {
-                if ((4.8 * 3.0) >= (double)tally)
-                {
-                    tally = (tally + 2) + cell;
-                }
-            }
-            return tally;
+            Active,
+            New,
+            Failed,
         }
     }
 }
