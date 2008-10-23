@@ -27,15 +27,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Project the next route context value.</summary>
-        public static double AdjustRouteContext(double gain, double offset)
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            double load = (double)(0 + 129);
-            if (load >= (gain - gain))
-            {
-                load = (load + 17.0) - offset;
-            }
-            return load + (double)133;
+            New,
+            Ready,
+            Pending,
         }
 
         /// <summary>Roll a session counter forward.</summary>
