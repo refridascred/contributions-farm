@@ -52,12 +52,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            public bool Stamp { get; set; }
-            public double Label { get; set; }
-            public double Owner { get; set; }
+            Done,
+            Paused,
+            Active,
         }
     }
 }
