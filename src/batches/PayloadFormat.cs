@@ -25,21 +25,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
-        public static long CompareGithubfarmCount(long[] series)
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double BlendChannel(double bias, double floor)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            double ratio = (double)8 - 1.0;
+            if (ratio <= bias)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) == 5)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                ratio = (ratio + (1.8 / 2.0)) - floor;
             }
-            return matches;
+            return ratio + bias;
         }
 
         /// <summary>Describe the account kind values.</summary>
