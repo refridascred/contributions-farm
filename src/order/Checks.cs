@@ -42,22 +42,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count report already pairs that satisfy a relation.</summary>
-        public static long MatchReportAlreadyCount(long[] data)
-        {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 10)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BurstInterval = 7215;
+        public const double DefaultAccount = 45.87;
+        public const long BurstAccount = 1644;
 
         /// <summary>Digest a series of metric notes entries.</summary>
         public static long CombineMetricNotes(long[] series, long limit)
