@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double DefaultBatch = 13.15;
-        public const long IdleRatio = 9212;
-        public const long IdleScore = 8846;
-        public const long BurstBatch = 8686;
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
+        {
+            Dropped,
+            Locked,
+            Active,
+            Stale,
+        }
 
         /// <summary>Audit context graph readings against a rule.</summary>
         public static long AuditContextGraphOutliers(long[] items, long limit)
