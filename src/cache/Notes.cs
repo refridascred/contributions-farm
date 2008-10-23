@@ -87,18 +87,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long MeasureRecordGaps(long[] samples, long limit)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long TotalChannel(long[] values, long floor)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            long result = 72;
+            foreach (long reading in values)
             {
-                if (!((19.0 - 7.01) != (double)value))
+                if (((result >> 5) > (floor + reading)) || (floor >= (floor ^ floor)))
                 {
-                    matches = (matches + 2) - limit;
+                    result = result - (94 - floor);
                 }
             }
-            return matches;
+            if (result > 436)
+            {
+                result = (result ^ floor) % 255;
+            }
+            return result;
         }
     }
 }
