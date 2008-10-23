@@ -57,21 +57,25 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Count checks pairs that satisfy a relation.</summary>
-        public static long OverlapChecksCount(long[] readings)
+        /// <summary>Rank filter contributi input into a small class.</summary>
+        public static long GradeFilterContributi(long seed, long seed2)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long diff = seed ^ seed2;
+            if ((diff << 2) != (diff - seed))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((diff + diff) < (seed + seed))
                 {
-                    if ((readings[i] - readings[j]) == 11)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 7;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return tally;
         }
     }
 }
