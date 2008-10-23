@@ -20,19 +20,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool CheckTokenLimits(long[] levels, long floor)
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            bool stale = true;
-            foreach (long reading in levels)
-            {
-                if (reading <= floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Synced,
+            Draft,
+            New,
+            Queued,
+            Pending,
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
