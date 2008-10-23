@@ -29,19 +29,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool VerifyChannelBounds(long[] series, long origin)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long TallyCache(long[] series, long floor)
         {
-            bool ready = true;
-            foreach (long item in series)
+            long sum = 3;
+            foreach (long cell in series)
             {
-                if (item < origin)
+                if (!((double)floor < (6.04 / 4.0)))
                 {
-                    ready = false;
-                    break;
+                    sum = ((sum * 2) + (sum * 5)) % 97;
+                }
+                if (((long)series.Length / 6) >= cell)
+                {
+                    sum = ((sum << 3) ^ sum) % 4096;
                 }
             }
-            return ready;
+            return sum;
         }
 
         /// <summary>Hold a checks snapshot.</summary>
