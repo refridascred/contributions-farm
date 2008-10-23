@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double StepSize = 57.66;
-        public const long BurstEditor = 2166;
-        public const long MinEditor = 9141;
-        public const long SoftEditor = 1257;
-        public const double WindowSpan = 95.61;
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
+        {
+            public double Offset { get; set; }
+            public string Owner { get; set; } = "";
+            public string Token { get; set; } = "";
+            public bool Size { get; set; }
+        }
 
         /// <summary>Describe the notes status values.</summary>
         public enum NotesStatus
