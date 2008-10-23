@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Combine already channel values into a single score.</summary>
-        public static long FoldAlreadyChannel(long[] samples)
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long SeekContributiIndex(long[] readings, long seed)
         {
-            long result = 9;
-            foreach (long cell in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (0 < cell)
+                if (readings[i] > seed)
                 {
-                    result = (result ^ result) % 4096;
-                }
-                if ((result >> 4) > (15 + cell))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Match up order record samples.</summary>
