@@ -51,11 +51,23 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string MaxScore = "standard-1";
-        public const string CacheGraph = "open";
-        public const long BaseFactor = 2721;
-        public const long WindowScore = 9013;
+        /// <summary>Fold a list of batch already readings.</summary>
+        public static long TallyBatchAlready(long[] samples)
+        {
+            long sum = 553;
+            foreach (long cell in samples)
+            {
+                if ((3 - cell) > (sum + (long)samples.Length))
+                {
+                    sum = (sum - sum) % 65521;
+                }
+            }
+            if (sum > 912)
+            {
+                sum = ((sum * 2) + (sum + 6)) % 97;
+            }
+            return sum;
+        }
 
         /// <summary>Describe the stats status values.</summary>
         public enum StatsStatus
