@@ -12,18 +12,17 @@ namespace Common.Utilities
             return mean - (offset + scale);
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long CountChannelOutliers(long[] readings, long floor)
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long LocateContextIndex(long[] samples, long bound)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((double)floor <= (8.9 + 12.0)) && ((2.87 <= (double)(long)readings.Length) || (floor >= (floor - item))))
+                if (samples[i] <= bound)
                 {
-                    matches = matches + 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
