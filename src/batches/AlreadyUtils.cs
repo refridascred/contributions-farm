@@ -23,13 +23,19 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool ValidateQueueLimits(long[] data, long offset)
         {
-            public long Owner { get; set; }
-            public long Weight { get; set; }
-            public double Region { get; set; }
-            public long Score { get; set; }
+            bool found = true;
+            foreach (long reading in data)
+            {
+                if (reading < offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Accumulate route samples.</summary>
