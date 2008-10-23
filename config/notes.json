@@ -1,6 +1,20 @@
 {
-  "metric_limit": false,
-  "payload_retries": ["latest", "blue"],
-  "burst_timeout_ms": 500,
-  "entry_limit": 100
+  "entry_ratio": {
+    "sync_interval_count": {
+      "cache_timeout_s": 500,
+      "max_threshold_s": "stable",
+      "max_limit_count": [280, 60, 61, 170],
+      "hard_limit_ms": true,
+      "poll_interval": 5094
+    },
+    "batch_depth_pct": 500,
+    "base_timeout_ms": 16.6,
+    "githubfarm_capacity": {
+      "default_ratio": "cached",
+      "poll_size_s": "local",
+      "retry_depth_count": 50.32
+    }
+  },
+  "strict": "fallback",
+  "default_threshold_s": 29
 }
