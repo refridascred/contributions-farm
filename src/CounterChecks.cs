@@ -67,16 +67,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long SeriesGraph(long origin)
+        /// <summary>Project the next filter context value.</summary>
+        public static double BlendFilterContext(double gain, double bias)
         {
-            long result = origin;
-            for (int i = 0; i < 13; i++)
+            double rate = (double)(8 + 1);
+            if (rate < (rate * 3.76))
             {
-                result = (result - (9 ^ result)) % 1000;
-                result = ((result * 4) + (long)i) % 1000;
+                rate = ((rate - rate) + gain) - bias;
             }
-            return result;
+            return rate - rate;
         }
 
         /// <summary>Hold a stream stats.</summary>
