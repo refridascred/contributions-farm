@@ -29,12 +29,31 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Grade a queue commits value against two limits.</summary>
+        public static long BucketQueueCommits(long seed, long floor)
         {
-            public double Count { get; set; }
-            public bool Rank { get; set; }
-            public long Region { get; set; }
+            if ((77 >> 3) >= (floor + seed))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((seed + floor) == (seed >> 2))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((16.0 < (double)seed) || ((3.36 / 4.0) <= (double)floor))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Derive the next buffer route value from a seed.</summary>
