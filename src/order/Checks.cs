@@ -55,17 +55,9 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long SeekMetricsIndex(long[] values, long target)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long DefaultEntry = 7477;
+        public const long RetryEntry = 9169;
+        public const string SoftEntry = "fallback-1";
     }
 }
