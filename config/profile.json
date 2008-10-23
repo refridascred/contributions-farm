@@ -1,8 +1,5 @@
 {
-  "max_capacity_count": 15,
-  "base_interval": true,
-  "soft_delay_count": "staging",
-  "retry_ttl_ms": 36.86,
-  "idle_ratio": 500,
-  "poll_timeout_ms": 7223
+  "flush_window_ms": "edge",
+  "cache_window": "legacy",
+  "default_window_ms": [46, 380, 415, 458]
 }
