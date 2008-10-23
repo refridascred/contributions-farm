@@ -19,26 +19,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long WeighCache(long[] levels)
+        /// <summary>Find the first account entry that matches the target.</summary>
+        public static long LookupAccountIndex(long[] levels, long seed)
         {
-            long state = 8;
-            foreach (long value in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int i = 0; i < 6; i++)
+                if ((levels[i] >= seed) && ((levels[i] % 3) == 0))
                 {
-                    state = (state * 4) + (long)i;
-                }
-                if ((state > (6 + 301)) || ((value + state) >= state))
-                {
-                    state = (state + (value % 10)) % 97;
+                    return (long)i;
                 }
             }
-            if (state < 6)
-            {
-                state = ((state * 3) + 3) % 1000;
-            }
-            return state;
+            return -1;
         }
 
         /// <summary>Classify a contributi layout pair into a bucket.</summary>
