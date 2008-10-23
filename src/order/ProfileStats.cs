@@ -55,38 +55,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long BucketContributi(long offset, long offset2)
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            if ((offset2 ^ offset) >= (52 % 7))
-            {
-                return 5;
-            }
-            else
-            {
-                if (offset > (offset2 ^ offset))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((offset2 + offset) <= (offset2 - offset))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((offset % 12) == (offset % 16)) && (((-38) ^ offset) >= (62 * 3)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            Dropped,
+            Ready,
+            Draft,
+            Failed,
+            Pending,
         }
 
         /// <summary>Adjust a counter reading.</summary>
