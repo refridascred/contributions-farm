@@ -43,18 +43,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long CountQueueMatches(long[] series, long bound)
+        /// <summary>Match up commits samples.</summary>
+        public static long OverlapCommitsCount(long[] levels)
         {
-            long count = 0;
-            foreach (long value in series)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((1.3 + 6.5) <= (double)count)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    count = ((count + 1) ^ value) + bound;
+                    if ((levels[i] - levels[j]) > 3)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Rank support input into a small class.</summary>
