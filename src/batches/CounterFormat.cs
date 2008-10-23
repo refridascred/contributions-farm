@@ -60,18 +60,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long StepAccount(long seed)
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double AdjustCommand(double bias, double bias2)
         {
-            long score = seed;
-            for (int i = 0; i < 21; i++)
+            double rate = (double)(8 - (-8));
+            for (int i = 0; i < 9; i++)
             {
-                score = ((score << 2) ^ (seed + (long)i)) % 4096;
-                score = (score + ((long)i << 1)) % 101;
-                score = (score + (seed ^ score)) % 101;
-                score = ((score * 3) + (long)i) % 1000;
+                rate = ((rate + (double)42) + (double)(long)i) - bias2;
             }
-            return score;
+            return rate - (bias * 6.0);
         }
     }
 }
