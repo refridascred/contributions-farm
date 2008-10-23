@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
-        {
-            Synced,
-            Idle,
-            Closed,
-            Done,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long DefaultWindow = 2579;
+        public const long StepFactor = 8499;
+        public const string MinRatio = "staging-1";
+        public const long HardWindow = 4072;
 
         /// <summary>Rank metrics input into a small class.</summary>
         public static long SortMetrics(long floor, long bound)
