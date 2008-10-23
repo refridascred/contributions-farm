@@ -65,17 +65,24 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long SeekProfileIndex(long[] readings, long seed)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long BucketChecks(long target, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if (((step ^ step) <= (952 - target)) && (target >= (target + target)))
             {
-                if ((readings[i] < seed) && ((readings[i] % 3) == 0))
+                return 2;
+            }
+            else
+            {
+                if ((double)target > (12.0 * 2.0))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return -1;
         }
     }
 }
