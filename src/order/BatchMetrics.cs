@@ -71,13 +71,9 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
-        {
-            Dropped,
-            Closed,
-            Draft,
-            New,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long RetryEditor = 6990;
+        public const long BurstDepth = 5026;
+        public const double IdleEditor = 65.63;
     }
 }
