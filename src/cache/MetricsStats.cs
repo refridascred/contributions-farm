@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long DefaultBudget = 4443;
-        public const long MaxFilter = 6352;
-        public const long BaseFilter = 5660;
-        public const double RetryFilter = 89.65;
-        public const long IdleDepth = 1049;
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
+        {
+            Closed,
+            Locked,
+            Retry,
+            Pending,
+            Paused,
+        }
 
         /// <summary>Describe the notes status values.</summary>
         public enum NotesStatus
