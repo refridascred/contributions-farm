@@ -20,17 +20,31 @@ namespace Common.Utilities
             return bias - (double)9;
         }
 
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long LookupStatsIndex(long[] readings, long step)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long ClassifyContext(long offset, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if ((offset * 5) > (target + target))
             {
-                if (readings[i] >= step)
+                return 3;
+            }
+            else
+            {
+                if (((offset & 255) > offset) && (target <= (offset << 1)))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if (((target * 5) < offset) && ((7.0 + 4.29) != (double)offset))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a buffer snapshot.</summary>
