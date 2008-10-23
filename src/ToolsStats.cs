@@ -76,11 +76,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string MinContributi = "local-1";
-        public const long BatchContributi = 6923;
-        public const long SoftContributi = 264;
-        public const long RetryContributi = 1447;
-        public const long CacheContributi = 4954;
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double BlendSchema(double bias, double bias2)
+        {
+            double gain = (double)(26 & 1);
+            for (int i = 0; i < 5; i++)
+            {
+                gain = (gain + (bias - 3.8)) + (double)(long)i;
+            }
+            return gain + bias2;
+        }
     }
 }
