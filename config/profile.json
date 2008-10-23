@@ -1,7 +1,5 @@
 {
-  "schema_delay": "latest",
-  "strict": "standard",
-  "hard_ratio": 4456,
-  "compress": [433, 315],
-  "order_threshold": "blue"
+  "soft_ttl_pct": "latest",
+  "graph_depth": 90.06,
+  "max_size_ms": 1024
 }
