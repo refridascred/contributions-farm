@@ -13,15 +13,18 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Project the next report filter value.</summary>
-        public static double AdjustReportFilter(double rate, double floor)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long CountBufferHits(long[] data)
         {
-            double weight = rate;
-            for (int i = 0; i < 7; i++)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                weight = ((weight + rate) - (double)(long)i) - floor;
+                if (!(4.08 < (double)seen))
+                {
+                    seen = (seen + 2) - cell;
+                }
             }
-            return weight - (weight / 4.0);
+            return seen;
         }
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
