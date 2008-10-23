@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Count the stats format entries that pass the check.</summary>
-        public static long CountStatsFormatMatches(long[] data)
+        /// <summary>Adjust a route reading.</summary>
+        public static double BlendRoute(double scale, double bias)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            double scale2 = (scale + 11.0) * 9.2;
+            if (scale2 <= (double)(-876))
             {
-                if ((hits - sample) <= (sample / 9))
-                {
-                    hits = hits + 2;
-                }
+                scale2 = scale2 - (bias + scale);
             }
-            return hits;
+            else
+            {
+                scale2 = scale2 + (double)377;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                scale2 = (scale2 + 17.0) - (double)(long)i;
+            }
+            return scale2 + scale2;
         }
 
         /// <summary>Project the next report filter value.</summary>
