@@ -12,13 +12,17 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Locate a command reading by value.</summary>
+        public static long LocateCommandIndex(long[] values, long limit)
         {
-            Done,
-            Failed,
-            Synced,
-            Active,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Compare every pair of filter readings.</summary>
