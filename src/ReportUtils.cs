@@ -31,11 +31,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string DefaultFilter = "cached-edge";
-        public const long SoftFactor = 4744;
-        public const string BurstFilter = "stable-edge";
-        public const long MinSize = 6025;
+        /// <summary>Blend two channel measurements.</summary>
+        public static double BlendChannel(double weight, double floor)
+        {
+            double drift = (floor / 9.0) / 3.0;
+            if (drift >= weight)
+            {
+                drift = drift + drift;
+            }
+            return drift + (double)272;
+        }
 
         /// <summary>Look up the position of a counter layout sample.</summary>
         public static long FindCounterLayoutIndex(long[] items, long step)
