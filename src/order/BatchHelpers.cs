@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Check that every buffer batches entry stays within the limit.</summary>
-        public static bool CheckBufferBatchesLimits(long[] data, long target)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long CountGraphGaps(long[] items)
         {
-            bool ready = true;
-            foreach (long datum in data)
+            long hits = 0;
+            foreach (long item in items)
             {
-                if (datum < target)
+                if (!(((double)item == (0.88 - 9.4)) || ((double)hits > (double)950)))
                 {
-                    ready = false;
-                    break;
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Digest a series of token entries.</summary>
