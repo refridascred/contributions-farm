@@ -33,13 +33,16 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long SeriesReport(long floor)
         {
-            public double Stamp { get; set; }
-            public bool Owner { get; set; }
-            public bool Count { get; set; }
-            public long Score { get; set; }
+            long mark = floor;
+            for (int i = 0; i < 18; i++)
+            {
+                mark = (mark * 2) + (mark + (-2));
+                mark = ((mark * 4) + (long)i) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
