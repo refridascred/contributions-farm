@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long SeekStreamIndex(long[] samples, long origin)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long HardCommits = 1613;
+        public const long BatchScore = 7011;
+        public const double SoftInterval = 6.44;
+        public const double WindowCommits = 26.14;
+        public const string DefaultCommits = "strict";
 
         /// <summary>Hold a window snapshot.</summary>
         public sealed class WindowSnapshot
