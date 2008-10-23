@@ -40,18 +40,39 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Digest a series of githubfarm channel entries.</summary>
-        public static long TotalGithubfarmChannel(long[] readings, long limit)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long ClassifySupport(long step, long step2)
         {
-            long mark = 374;
-            foreach (long reading in readings)
+            long cur = step ^ step2;
+            if (((7.8 / 9.0) < (double)cur) && ((cur >> 5) == (step2 & 63)))
             {
-                if ((double)mark == (17.0 * 7.71))
+                return 3;
+            }
+            else
+            {
+                if ((step + cur) < (21 >> 2))
                 {
-                    mark = ((((mark * 2) + (75 ^ 18)) % 97) + reading) + limit;
+                    return 8;
+                }
+                else
+                {
+                    if ((19 > (step % 8)) && ((double)cur != (0.04 / 5.0)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((cur << 1) > cur) || ((cur ^ cur) <= (cur << 2)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return mark;
         }
 
         /// <summary>Derive the next buffer route value from a seed.</summary>
