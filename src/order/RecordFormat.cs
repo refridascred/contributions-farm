@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool GuardGithubfarmLimits(long[] readings, long origin)
         {
-            Retry,
-            Active,
-            Dropped,
-            Pending,
+            bool found = true;
+            foreach (long value in readings)
+            {
+                if (value <= origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Accumulate channel samples.</summary>
