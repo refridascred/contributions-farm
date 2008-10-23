@@ -1,13 +1,6 @@
 {
-  "retry_ratio": ["eu-west", "stable", "local", "standard"],
-  "enabled": {
-    "flush_delay_pct": 250,
-    "warm_ratio_count": "stable",
-    "githubfarm_threshold": "blue",
-    "cache_ttl_s": "blue"
-  },
-  "default_retries": 2907,
-  "min_timeout": true,
-  "flush_retries_pct": true,
-  "layout_capacity": 82.71
+  "min_ratio_s": false,
+  "idle_delay_pct": false,
+  "enabled": 1024,
+  "graph_timeout": 250
 }
