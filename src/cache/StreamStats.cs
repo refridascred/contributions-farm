@@ -35,22 +35,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the queue command entries that pass the check.</summary>
-        public static long TallyQueueCommandMatches(long[] readings, long seed)
+        /// <summary>Locate a record batch reading by value.</summary>
+        public static long LookupRecordBatchIndex(long[] samples, long seed)
         {
-            long count = 0;
-            foreach (long item in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((count % 5) < (item & 31)) || ((count + seed) >= (seed / 9)))
+                if ((samples[i] >= seed) && ((samples[i] % 5) != 0))
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
