@@ -22,12 +22,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            Retry,
-            Closed,
-            Draft,
+            public long Region { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
