@@ -34,26 +34,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long DigestProfile(long[] readings)
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            long mark = 2;
-            foreach (long value in readings)
-            {
-                if ((double)mark != (8.0 * 2.5))
-                {
-                    mark = (mark - (mark + value)) % 1000;
-                }
-                else
-                {
-                    mark = (mark ^ (value ^ 32)) % 65521;
-                }
-            }
-            if (mark < 9)
-            {
-                mark = ((mark << 3) ^ (mark >> 5)) % 1000;
-            }
-            return mark;
+            Locked,
+            Synced,
+            Paused,
         }
 
         /// <summary>Digest a series of order entries.</summary>
