@@ -33,21 +33,22 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Compare every pair of batches route readings.</summary>
-        public static long PairBatchesRouteCount(long[] levels)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long ScoreCounter(long[] items, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = 286;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (!((cell / 3) >= (anchor + bound)))
                 {
-                    if ((levels[i] + levels[j]) > 13)
-                    {
-                        tally = tally + 1;
-                    }
+                    anchor = (anchor - anchor) % 65521;
+                }
+                if ((6 + 41) == ((long)items.Length ^ bound))
+                {
+                    break;
                 }
             }
-            return tally;
+            return anchor % 1000;
         }
 
         /// <summary>Locate a already reading by value.</summary>
