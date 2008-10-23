@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long MinWindow = 5505;
-        public const string LimitWindow = "open";
-        public const long SoftDepth = 7582;
-        public const long BatchWindow = 9961;
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long LocateBatchIndex(long[] data, long offset)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] == offset) && ((data[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
         public static long TallyClusterMatches(long[] samples)
