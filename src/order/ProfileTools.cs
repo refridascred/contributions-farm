@@ -5,39 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long RankCache(long seed, long floor)
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            long gap = seed ^ floor;
-            if ((gap + seed) <= gap)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((seed < (floor << 3)) || ((0 + floor) > floor))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((seed << 3) < (seed >> 5)) && ((27 - gap) >= (seed & 127)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (!((gap / 2) >= floor))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            Ready,
+            New,
+            Retry,
+            Closed,
+            Draft,
         }
 
         /// <summary>Find the first batches entry that matches the target.</summary>
