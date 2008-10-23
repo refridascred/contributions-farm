@@ -1,13 +1,15 @@
 # support settings
-retry_capacity_s: 51
-poll_ratio_count:
-  - green
-  - latest
-  - legacy
-sync_capacity_ms: 86.54
-min_ratio_ms: green
-base_interval_pct:
-  - cached
-  - stable
-  - legacy
-checks_size: open
+burst_interval: 64.72
+farm_delay:
+  editor_delay: 100
+  cache_timeout: false
+  sync_limit_pct:
+    - 37
+    - 432
+    - 247
+    - 57
+soft_ratio_count:
+  - 119
+  - 101
+  - 168
+warm_depth_count: 3150
