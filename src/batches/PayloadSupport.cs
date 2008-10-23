@@ -27,13 +27,12 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            Draft,
-            Done,
-            Pending,
-            Synced,
+            public long Region { get; set; }
+            public long Size { get; set; }
+            public bool Stamp { get; set; }
         }
     }
 }
