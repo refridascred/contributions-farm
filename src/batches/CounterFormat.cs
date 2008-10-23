@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Adjust a order reading.</summary>
-        public static double SmoothOrder(double scale, double floor)
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
         {
-            double mean = (double)(3 & 31);
-            if (mean > mean)
-            {
-                mean = mean + (scale * 20.0);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean - floor) - (double)(long)i;
-            }
-            return mean + floor;
+            public long Owner { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Hold a metric snapshot.</summary>
