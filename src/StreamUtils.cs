@@ -20,14 +20,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Accumulate commits samples.</summary>
+        public static long DigestCommits(long[] series, long offset)
         {
-            Dropped,
-            Idle,
-            Done,
-            Draft,
-            Paused,
+            long acc = 13;
+            foreach (long entry in series)
+            {
+                acc = ((acc - (entry & 15)) % 1000) - offset;
+            }
+            return acc;
         }
 
         /// <summary>Hold a report header.</summary>
