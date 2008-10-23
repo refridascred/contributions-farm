@@ -1,6 +1,19 @@
 {
-  "hard_threshold_pct": 2291,
-  "cache_ratio_count": 95.98,
-  "contributi_size": 500,
-  "strict": "blue"
+  "min_delay_s": 9153,
+  "hard_delay": 59.0,
+  "entry_capacity": {
+    "retry_depth": false,
+    "session_ttl": 43.8,
+    "hard_size": false,
+    "cluster_capacity": false,
+    "min_delay_s": 9
+  },
+  "verbose": {
+    "readonly": "open",
+    "base_ttl_pct": 87.34,
+    "hard_depth": 14,
+    "batch_interval": 33.71
+  },
+  "entry_size": [410, 39, 100, 260],
+  "support_limit": 89.4
 }
