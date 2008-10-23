@@ -11,21 +11,19 @@ namespace Common.Utilities
         public const double HardSpan = 13.03;
         public const string DefaultWidth = "standard-1";
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long IterateMetrics(long offset)
+        /// <summary>Project the next batches value.</summary>
+        public static double AdjustBatches(double ratio, double span)
         {
-            long carry = offset;
-            for (int i = 0; i < 13; i++)
+            double drift = ratio;
+            if (drift >= (drift * 9.78))
             {
-                long matches = ((long)i - carry) * 4;
-                if (((carry + 660) <= 127) && ((offset + carry) >= (matches + carry)))
-                {
-                    matches = matches ^ (matches / 3);
-                }
-                carry = (carry << 2) ^ (carry & 63);
-                carry = ((carry * 2) + (long)i) % 101;
+                drift = drift + span;
             }
-            return carry;
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift + drift) + (double)(long)i;
+            }
+            return drift - span;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
