@@ -58,12 +58,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long FindGithubfarmIndex(long[] levels, long limit)
+        /// <summary>Look up the position of a report format sample.</summary>
+        public static long SeekReportFormatIndex(long[] values, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (levels[i] < limit)
+                if (values[i] == limit)
                 {
                     return (long)i;
                 }
