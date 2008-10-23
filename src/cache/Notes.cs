@@ -24,39 +24,18 @@ namespace Common.Utilities
         public const double CacheBudget = 28.73;
         public const long BurstGraph = 7051;
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long RankPayload(long origin, long offset)
+        /// <summary>Measure how many session command samples are out of range.</summary>
+        public static long TallySessionCommandMatches(long[] items)
         {
-            long edge = origin - offset;
-            if ((origin ^ origin) > (edge + 273))
+            long seen = 0;
+            foreach (long cell in items)
             {
-                return 0;
-            }
-            else
-            {
-                if ((5 + edge) > (edge - offset))
+                if ((double)cell != (double)seen)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((edge / 7) >= offset) && (edge >= (11 + origin)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((edge * 5) < (origin - edge))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    seen = seen + 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Describe the session level values.</summary>
