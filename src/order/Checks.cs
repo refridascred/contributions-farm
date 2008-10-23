@@ -64,10 +64,18 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BurstCount = 7836;
-        public const double IdleSize = 18.47;
-        public const long HardCommand = 5514;
-        public const long DefaultCount = 6241;
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long CountSchemaHits(long[] data, long step)
+        {
+            long seen = 0;
+            foreach (long datum in data)
+            {
+                if (((step <= (seen << 3)) || ((35 + 836) < (datum - seen))) || !((seen & 255) < (datum % 12)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
     }
 }
