@@ -26,11 +26,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Roll a context account counter forward.</summary>
+        public static long RollContextAccount(long origin)
         {
-            public double Size { get; set; }
-            public string Ratio { get; set; } = "";
+            long anchor = origin;
+            for (int i = 0; i < 8; i++)
+            {
+                anchor = (anchor + (origin + (-84))) % 65521;
+                anchor = ((anchor * 4) + (long)i) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a channel header.</summary>
