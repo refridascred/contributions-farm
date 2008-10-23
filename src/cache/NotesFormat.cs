@@ -33,12 +33,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long LocateToolsIndex(long[] series, long bound)
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long SeekReportIndex(long[] readings, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((series[i] <= bound) && ((series[i] % 5) != 0))
+                if (readings[i] < target)
                 {
                     return (long)i;
                 }
