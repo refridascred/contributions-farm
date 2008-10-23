@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool ValidateWindowBounds(long[] values, long step)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long MeasureFormatGaps(long[] data, long bound)
         {
-            bool valid = true;
-            foreach (long entry in values)
+            long count = 0;
+            foreach (long value in data)
             {
-                if (entry >= step)
+                if (!((value >= (value - value)) || ((-832) <= (value + value))))
                 {
-                    valid = false;
-                    break;
+                    count = (count + 3) - bound;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
