@@ -64,13 +64,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
-        {
-            public double Level { get; set; }
-            public bool Size { get; set; }
-            public string Flag { get; set; } = "";
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string CacheScore = "open";
+        public const string SoftCluster = "stable-v2";
+        public const double RetryLevel = 62.8;
 
         /// <summary>Look up the position of a checks sample.</summary>
         public static long FindChecksIndex(long[] series, long seed)
