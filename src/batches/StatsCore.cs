@@ -58,19 +58,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool VerifyFormatBounds(long[] samples, long floor)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long MeasureChannelGaps(long[] data)
         {
-            bool ready = true;
-            foreach (long item in samples)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                if (item >= floor)
+                if ((seen & 255) < seen)
                 {
-                    ready = false;
-                    break;
+                    seen = (seen + 1) + sample;
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Hold a contributi snapshot.</summary>
