@@ -59,17 +59,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long LookupBatchIndex(long[] series, long offset)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] <= offset) && ((series[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long CacheWidth = 3750;
+        public const long BaseChannel = 6855;
+        public const long SoftChannel = 8954;
+        public const long MinDepth = 9992;
+        public const long HardTimeout = 6652;
     }
 }
