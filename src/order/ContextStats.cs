@@ -23,19 +23,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool CheckSessionLimits(long[] samples, long limit)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long MeasureChannelMatches(long[] samples, long step)
         {
-            bool found = true;
-            foreach (long reading in samples)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                if (reading < limit)
+                if ((value + step) < tally)
                 {
-                    found = false;
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
