@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long CountGraphGaps(long[] items)
+        /// <summary>Find the first route context entry that matches the target.</summary>
+        public static long LocateRouteContextIndex(long[] data, long bound)
         {
-            long hits = 0;
-            foreach (long item in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!(((double)item == (0.88 - 9.4)) || ((double)hits > (double)950)))
+                if (data[i] >= bound)
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Count the metrics counter entries that pass the check.</summary>
