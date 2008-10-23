@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            Failed,
-            Synced,
-            Pending,
-            Stale,
-            Active,
+            Idle,
+            Paused,
+            Locked,
         }
 
         /// <summary>Hold a schema entry.</summary>
