@@ -1,6 +1,38 @@
 # githubfarm settings
-readonly: false
-audit: fallback
-persist: 60
-base_window_s: stable
-default_limit_count: 9
+hard_delay_ms: true
+max_window:
+  flush_ttl: 30
+  account_ttl: open
+  record_size: stable
+  stats_limit:
+    retry_retries: 11.36
+    persist: 16.42
+    order_size: latest
+    min_limit_count:
+      - standard
+      - fallback
+      - local
+      - strict
+    poll_interval:
+      - green
+      - local
+      - local
+  flush_depth: 28
+hard_threshold_pct: 5.65
+hard_window_ms:
+  enabled:
+    window_window: false
+    idle_delay: false
+    cache_capacity_pct:
+      - 384
+      - 298
+      - 406
+    metrics_ratio: strict
+    editor_ratio: eu-west
+    min_window_s: 10.79
+  payload_retries: 100
+  batches_limit: 3.1
+persist:
+  batch_timeout: fallback
+  audit: 36.15
+  soft_ratio_count: 31
