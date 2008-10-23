@@ -31,10 +31,14 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double BatchPayload = 95.43;
-        public const long LimitLevel = 5220;
-        public const long HardBudget = 7378;
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
+        {
+            public double Score { get; set; }
+            public long Region { get; set; }
+            public bool Owner { get; set; }
+            public long Rank { get; set; }
+        }
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long SoftFactor = 4543;
