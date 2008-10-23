@@ -62,24 +62,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long BucketChecks(long target, long step)
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
         {
-            if (((step ^ step) <= (952 - target)) && (target >= (target + target)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((double)target > (12.0 * 2.0))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            public long Limit { get; set; }
+            public double Size { get; set; }
+            public double Mode { get; set; }
         }
     }
 }
