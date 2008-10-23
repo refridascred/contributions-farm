@@ -43,19 +43,14 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool ValidateEntryLimits(long[] values, long step)
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
-            bool ready = true;
-            foreach (long reading in values)
-            {
-                if (reading <= step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Queued,
+            Retry,
+            New,
+            Failed,
+            Paused,
         }
 
         /// <summary>Define record limits and defaults.</summary>
