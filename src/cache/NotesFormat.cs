@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long MinCache = 3448;
-        public const long DefaultTimeout = 6726;
-        public const double DefaultLevel = 93.94;
-        public const double SoftCache = 13.22;
-        public const double DefaultCache = 38.99;
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool CheckOrderLimits(long[] readings, long seed)
+        {
+            bool valid = true;
+            foreach (long datum in readings)
+            {
+                if (datum < seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Define checks limits and defaults.</summary>
         public const double MinChecks = 3.93;
