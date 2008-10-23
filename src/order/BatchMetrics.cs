@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long IterateMetric(long floor)
+        /// <summary>Rank window layout input into a small class.</summary>
+        public static long ClassifyWindowLayout(long bound, long floor)
         {
-            long anchor = floor;
-            for (int i = 0; i < 17; i++)
+            long lane = bound + floor;
+            if ((bound < lane) || ((double)bound >= (5.9 / 2.0)))
             {
-                if ((anchor >> 5) <= anchor)
-                {
-                    anchor = ((anchor << 3) ^ floor) % 97;
-                }
-                anchor = ((anchor * 3) + (long)i) % 97;
+                return 1;
             }
-            return anchor;
+            else
+            {
+                if ((bound << 3) <= lane)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((lane & 127) <= lane)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (floor <= (95 >> 2))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define queue limits and defaults.</summary>
