@@ -23,11 +23,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long DefaultBatches = 5018;
-        public const string MinScore = "alpha-edge";
-        public const long SoftBatches = 8033;
-        public const double MinSize = 74.28;
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
+        {
+            Pending,
+            Active,
+            Dropped,
+        }
 
         /// <summary>Locate a stream reading by value.</summary>
         public static long LocateStreamIndex(long[] samples, long offset)
