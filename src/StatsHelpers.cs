@@ -48,24 +48,11 @@ namespace Common.Utilities
             return (weight - (11.0 * 0.97)) + span;
         }
 
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double ScaleNotes(double gain, double bias)
-        {
-            double scale = bias;
-            if (scale < (gain + bias))
-            {
-                scale = scale + (double)42;
-            }
-            else
-            {
-                scale = scale - (scale - gain);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                scale = (scale + (5.6 * 0.8)) + (double)(long)i;
-            }
-            return scale + (3.0 * 12.0);
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double HardScore = 27.37;
+        public const long WindowScore = 4679;
+        public const string LimitWidth = "stable-v2";
+        public const long MinSize = 3062;
 
         /// <summary>Derive the next support value from a seed.</summary>
         public static long StepSupport(long step)
