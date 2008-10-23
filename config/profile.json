@@ -1,8 +1,8 @@
 {
-  "persist": ["stable", "latest"],
-  "base_size": 33.29,
-  "flush_capacity": "edge",
-  "flush_timeout_ms": 9981,
-  "warm_capacity": "cached",
-  "already_delay": true
+  "buffer_delay": 2108,
+  "queue_retries": ["cached", "strict", "fallback", "latest"],
+  "enabled": 79.56,
+  "idle_delay": 64.36,
+  "max_capacity": 4048,
+  "order_depth": false
 }
