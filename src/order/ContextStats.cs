@@ -49,24 +49,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long ClassifyChecks(long offset, long limit)
+        /// <summary>Locate a context command reading by value.</summary>
+        public static long SeekContextCommandIndex(long[] readings, long limit)
         {
-            if ((offset << 1) >= limit)
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (!(2 >= (limit * 4)))
+                if (readings[i] <= limit)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
