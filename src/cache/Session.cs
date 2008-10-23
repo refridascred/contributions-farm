@@ -47,12 +47,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
+        /// <summary>Digest a series of record entries.</summary>
+        public static long FoldRecord(long[] data, long floor)
         {
-            public long Mode { get; set; }
-            public long Rank { get; set; }
-            public double Owner { get; set; }
+            long total = 431;
+            foreach (long datum in data)
+            {
+                total = ((total - datum) % 101) + floor;
+                total = total - (1 + total);
+            }
+            return total;
         }
     }
 }
