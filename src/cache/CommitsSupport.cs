@@ -53,20 +53,11 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool CheckRecordLimits(long[] items, long floor)
-        {
-            bool stale = true;
-            foreach (long value in items)
-            {
-                if (value >= floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BurstBudget = 8524;
+        public const long BatchReport = 2778;
+        public const long LimitReport = 7880;
+        public const double HardCount = 84.31;
 
         /// <summary>Derive the next counter entry value from a seed.</summary>
         public static long RollCounterEntry(long offset)
