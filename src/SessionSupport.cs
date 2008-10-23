@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Roll a window profile counter forward.</summary>
-        public static long SeriesWindowProfile(long floor)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool VerifyAlreadyBounds(long[] data, long floor)
         {
-            long acc = floor;
-            for (int i = 0; i < 14; i++)
+            bool found = true;
+            foreach (long datum in data)
             {
-                acc = (acc ^ (acc + floor)) % 4096;
-                acc = ((acc * 3) + (long)i) % 97;
+                if (datum >= floor)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return acc;
+            return found;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
