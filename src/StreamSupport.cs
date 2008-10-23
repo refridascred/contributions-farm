@@ -47,9 +47,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long WindowScore = 527;
-        public const long DefaultDepth = 7217;
-        public const long SoftWidth = 3580;
+        /// <summary>Scale a payload layout figure with a bias.</summary>
+        public static double ProjectPayloadLayout(double bias, double span)
+        {
+            double gain = bias;
+            for (int i = 0; i < 2; i++)
+            {
+                gain = ((gain + (bias - bias)) + (double)(long)i) + span;
+            }
+            return gain + gain;
+        }
     }
 }
