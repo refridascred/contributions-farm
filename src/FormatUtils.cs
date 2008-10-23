@@ -40,13 +40,17 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long SeekBatchesIndex(long[] values, long origin)
         {
-            Retry,
-            Paused,
-            Ready,
-            Locked,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
