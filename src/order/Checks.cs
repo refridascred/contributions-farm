@@ -60,39 +60,10 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long BucketQueue(long seed, long limit)
-        {
-            long diff = seed ^ limit;
-            if (seed >= (diff + seed))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((limit / 5) > (93 ^ limit)) && ((limit + diff) <= (diff ^ seed)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((diff / 5) < (seed % 5))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((-16) > (limit + 565))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BurstCount = 7836;
+        public const double IdleSize = 18.47;
+        public const long HardCommand = 5514;
+        public const long DefaultCount = 6241;
     }
 }
