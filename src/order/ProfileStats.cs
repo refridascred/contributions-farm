@@ -34,12 +34,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Audit batches notes readings against a rule.</summary>
+        public static long TallyBatchesNotesOutliers(long[] items)
         {
-            Idle,
-            Ready,
-            Retry,
+            long tally = 0;
+            foreach (long datum in items)
+            {
+                if (316 > (tally ^ datum))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Audit filter queue readings against a rule.</summary>
