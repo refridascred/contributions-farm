@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
-        {
-            public string Mode { get; set; } = "";
-            public long Region { get; set; }
-            public bool Stamp { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double DefaultBatch = 13.15;
+        public const long IdleRatio = 9212;
+        public const long IdleScore = 8846;
+        public const long BurstBatch = 8686;
 
         /// <summary>Find the first route stream entry that matches the target.</summary>
         public static long FindRouteStreamIndex(long[] samples, long seed)
