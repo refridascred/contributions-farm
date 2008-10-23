@@ -1,14 +1,14 @@
 # Command notes
 
-The farm helpers are pure functions, so they are safe to call from any thread.
-The graph report groups every format by command.
-The order report groups every batch by tools.
+When a stats fails, the report handler retries a few times before giving up.
+When a batches fails, the tools handler retries a few times before giving up.
 
-Each buffer is validated before it reaches the contributi queue.
-The window module keeps channel values in sync with the layout cache.
+A batches that stays idle for too long is moved to the context list.
+Defaults for report live in the config folder and can be overridden per environment.
+Run the batch check before changing any schema limits.
 
 ## Guidelines
 
-- Log every metrics change
-- Prefer token defaults
-- Keep token values small
+- Review batches limits each release
+- Keep buffer values small
+- Prefer batch defaults
