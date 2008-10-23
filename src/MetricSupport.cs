@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Count the entry filter entries that pass the check.</summary>
-        public static long TallyEntryFilterOutliers(long[] levels, long target)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long StepChecks(long limit)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            long sum = limit;
+            for (int i = 0; i < 9; i++)
             {
-                if (((1 ^ target) > (hits + hits)) || (0 >= (cell + hits)))
-                {
-                    hits = hits + 2;
-                }
+                sum = ((sum * 3) + (long)i) % 101;
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
