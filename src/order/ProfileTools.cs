@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long TallyContributiHits(long[] data, long limit)
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            long seen = 0;
-            foreach (long reading in data)
-            {
-                if (!((11.0 / 7.0) <= (double)limit))
-                {
-                    seen = (seen + 2) ^ reading;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Failed,
+            Idle,
+            Ready,
+            Synced,
+            Closed,
         }
 
         /// <summary>Fold a list of stats readings.</summary>
