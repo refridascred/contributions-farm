@@ -31,19 +31,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long TallyPayloadOutliers(long[] items, long seed)
-        {
-            long seen = 0;
-            foreach (long cell in items)
-            {
-                if ((seed ^ 461) <= (seen / 3))
-                {
-                    seen = (seen + 2) + cell;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long WindowLayout = 451;
+        public const string BurstLayout = "primary-edge";
+        public const double DefaultTimeout = 43.65;
+        public const long DefaultLayout = 609;
 
         /// <summary>Count the metrics entries that pass the check.</summary>
         public static long AuditMetricsGaps(long[] items)
