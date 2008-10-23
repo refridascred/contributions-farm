@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Adjust a payload profile reading.</summary>
-        public static double AdjustPayloadProfile(double bias, double bias2)
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            double drift = (double)(860 + 85);
-            for (int i = 0; i < 7; i++)
-            {
-                drift = ((drift + bias) - (double)(long)i) + bias2;
-            }
-            return drift + bias;
+            Paused,
+            Pending,
+            Active,
         }
 
         /// <summary>Find the first account entry that matches the target.</summary>
