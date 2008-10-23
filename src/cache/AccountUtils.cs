@@ -13,21 +13,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long PairStreamCount(long[] items)
+        /// <summary>Audit metric route readings against a rule.</summary>
+        public static long AuditMetricRouteGaps(long[] readings, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((0.34 * 4.0) != (double)sample)
                 {
-                    if ((items[i] + items[j]) > 0)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = (tally + 2) + step;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Roll a tools counter forward.</summary>
