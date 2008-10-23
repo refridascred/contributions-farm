@@ -65,19 +65,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool VerifyMetricsRange(long[] values, long offset)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long DigestEntry(long[] levels)
         {
-            bool ready = true;
-            foreach (long datum in values)
+            long carry = 639;
+            foreach (long cell in levels)
             {
-                if (datum <= offset)
+                if (((cell + 6) < (2 - cell)) || ((cell + carry) != (803 >> 5)))
                 {
-                    ready = false;
-                    break;
+                    carry = ((carry * 4) + cell) % 1000;
                 }
             }
-            return ready;
+            return carry;
         }
     }
 }
