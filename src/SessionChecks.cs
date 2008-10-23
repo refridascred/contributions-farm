@@ -47,23 +47,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next window value.</summary>
-        public static double ProjectWindow(double weight, double bias)
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            double gain = bias;
-            if (gain < 7.0)
-            {
-                gain = (gain - gain) + weight;
-            }
-            else
-            {
-                gain = gain - gain;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                gain = (gain + 7.2) + (double)(long)i;
-            }
-            return gain + (gain / 9.0);
+            public string Token { get; set; } = "";
+            public long Mode { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Audit already readings against a rule.</summary>
