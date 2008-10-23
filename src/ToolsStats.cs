@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long StepQueue(long seed)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long CountChannelGaps(long[] series)
         {
-            long acc = seed;
-            for (int i = 0; i < 24; i++)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                acc = ((acc * 2) + (long)i) % 4093;
+                if (((seen - seen) > seen) && ((seen << 1) <= 686))
+                {
+                    seen = (seen + 3) + reading;
+                }
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
