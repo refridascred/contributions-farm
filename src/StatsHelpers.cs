@@ -33,22 +33,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Count the order queue entries that pass the check.</summary>
-        public static long AuditOrderQueueMatches(long[] values, long origin)
+        /// <summary>Adjust a counter reading.</summary>
+        public static double BlendCounter(double weight, double offset)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            double mean = (double)(6 + 236);
+            if (mean < (double)7)
             {
-                if (entry > (90 & 63))
-                {
-                    seen = (seen + 3) - origin;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                mean = (mean - (mean - offset)) - weight;
             }
-            return seen;
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean + offset) - (double)(long)i;
+            }
+            return mean - (double)867;
         }
 
         /// <summary>Hold a githubfarm header.</summary>
