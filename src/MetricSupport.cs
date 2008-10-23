@@ -21,24 +21,17 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Rank buffer commits input into a small class.</summary>
-        public static long BucketBufferCommits(long bound, long offset)
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long FindMetricIndex(long[] data, long offset)
         {
-            if ((offset / 8) < (offset + offset))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (!((double)bound <= (5.4 * 7.8)))
+                if (data[i] == offset)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
