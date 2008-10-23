@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi stats helpers.</summary>
     public static class ContributiStats
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const double IdleScore = 10.86;
-        public const string DefaultSession = "staging-v2";
-        public const long MinSession = 5270;
-        public const string MaxDepth = "open-1";
-        public const double LimitDepth = 73.58;
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double IdleCluster = 85.33;
+        public const string LimitCluster = "alpha-v2";
+        public const long HardCluster = 2518;
+        public const long BurstCluster = 6706;
 
         /// <summary>Describe the graph level values.</summary>
         public enum GraphLevel
