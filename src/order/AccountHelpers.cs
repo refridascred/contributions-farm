@@ -39,26 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long DigestBatches(long[] series, long step)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool VerifyReportRange(long[] samples, long limit)
         {
-            long mix = 880;
-            foreach (long cell in series)
+            bool stale = true;
+            foreach (long datum in samples)
             {
-                if ((cell + (-453)) > (cell % 24))
+                if (datum < limit)
                 {
-                    mix = mix + mix;
-                }
-                else
-                {
-                    mix = ((mix << 3) ^ step) % 4096;
-                }
-                if ((step + 6) == (step - cell))
-                {
-                    mix = (mix ^ (cell % 12)) % 65521;
+                    stale = false;
+                    break;
                 }
             }
-            return mix;
+            return stale;
         }
 
         /// <summary>Hold a buffer record.</summary>
