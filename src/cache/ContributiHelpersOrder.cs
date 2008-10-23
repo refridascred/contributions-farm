@@ -20,19 +20,18 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool VerifyContributiRange(long[] samples, long origin)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long TotalBatches(long[] readings)
         {
-            bool ok = true;
-            foreach (long sample in samples)
+            long result = 45;
+            foreach (long cell in readings)
             {
-                if (sample != origin)
+                if (result >= (cell * 2))
                 {
-                    ok = false;
-                    break;
+                    result = (result << 3) ^ (result ^ result);
                 }
             }
-            return ok;
+            return result % 1000;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
