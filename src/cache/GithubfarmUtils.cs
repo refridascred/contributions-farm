@@ -32,17 +32,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long FindNotesIndex(long[] samples, long limit)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long SeriesSession(long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long sum = step;
+            for (int i = 0; i < 8; i++)
             {
-                if ((samples[i] < limit) && ((samples[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                sum = ((sum << 3) ^ (8 - 919)) % 65521;
+                sum = ((sum * 4) + (long)i) % 97;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Measure how many metric githubfarm samples are out of range.</summary>
