@@ -2,11 +2,8 @@
 CREATE TABLE IF NOT EXISTS layout_items (
     id INTEGER PRIMARY KEY,
     count INTEGER NOT NULL DEFAULT 0,
-    active INTEGER NOT NULL DEFAULT 1,
-    ratio REAL
+    score REAL NOT NULL DEFAULT 0,
+    token TEXT
 );
 
-CREATE INDEX IF NOT EXISTS idx_layout_items_count ON layout_items (count);
-
-INSERT INTO layout_items (count, active, ratio) VALUES (55, 79, 70.52);
-INSERT INTO layout_items (count, active, ratio) VALUES (37, 89, 33.14);
+CREATE INDEX IF NOT EXISTS idx_layout_items_score ON layout_items (score);
