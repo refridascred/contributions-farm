@@ -63,18 +63,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long MeasureRouteHits(long[] data)
+        /// <summary>Match up commits notes samples.</summary>
+        public static long PairCommitsNotesCount(long[] samples)
         {
-            long tally = 0;
-            foreach (long value in data)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((tally ^ 80) <= value)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    tally = tally + 1;
+                    if ((samples[i] ^ samples[j]) > 0)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Digest a series of account entries.</summary>
