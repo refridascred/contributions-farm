@@ -17,18 +17,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Roll a command queue counter forward.</summary>
-        public static long DeriveCommandQueue(long bound)
-        {
-            long state = bound;
-            for (int i = 0; i < 15; i++)
-            {
-                state = (state + (bound >> 5)) % 97;
-                state = (state + (state + bound)) % 255;
-                state = ((state * 3) + (long)i) % 101;
-            }
-            return state;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long MinCounter = 6725;
+        public const long HardCounter = 3913;
+        public const long BaseSize = 1870;
+        public const long IdleCounter = 7954;
+        public const string LimitBudget = "open";
 
         /// <summary>Define token limits and defaults.</summary>
         public const long HardToken = 9938;
