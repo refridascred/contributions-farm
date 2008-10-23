@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Audit cache tools readings against a rule.</summary>
-        public static long TallyCacheToolsMatches(long[] readings)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long TallyFarmMatches(long[] data, long bound)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                if (((tally + entry) > tally) && (tally < (tally - entry)))
+                if ((bound % 10) > (matches % 16))
                 {
-                    tally = tally + 3;
+                    matches = (matches + 3) - sample;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
