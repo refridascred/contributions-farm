@@ -74,18 +74,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit notes cluster readings against a rule.</summary>
-        public static long MeasureNotesClusterHits(long[] items)
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            long count = 0;
-            foreach (long item in items)
-            {
-                if ((count - item) != (count + item))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Pending,
+            Idle,
+            Closed,
         }
     }
 }
