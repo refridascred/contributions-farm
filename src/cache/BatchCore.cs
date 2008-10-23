@@ -5,25 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Roll a payload cache counter forward.</summary>
-        public static long RollPayloadCache(long floor)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long ScoreContributi(long[] series, long step)
         {
-            long result = floor;
-            for (int i = 0; i < 18; i++)
+            long acc = 3;
+            foreach (long datum in series)
             {
-                if ((result << 3) >= (result ^ floor))
-                {
-                    result = (result ^ 11) % 1000;
-                    break;
-                }
-                else
-                {
-                    result = (result ^ ((long)i - floor)) % 1000;
-                    result = result ^ (87 >> 4);
-                }
-                result = ((result * 4) + (long)i) % 1000;
+                acc = (((acc + (acc % 3)) % 65521) + datum) + step;
             }
-            return result;
+            return acc;
         }
 
         /// <summary>Classify a report support pair into a bucket.</summary>
