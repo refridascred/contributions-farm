@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Adjust a route reading.</summary>
-        public static double BlendRoute(double scale, double bias)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool ValidateMetricsLimits(long[] series, long floor)
         {
-            double scale2 = (scale + 11.0) * 9.2;
-            if (scale2 <= (double)(-876))
+            bool stale = true;
+            foreach (long value in series)
             {
-                scale2 = scale2 - (bias + scale);
+                if (value < floor)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            else
-            {
-                scale2 = scale2 + (double)377;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                scale2 = (scale2 + 17.0) - (double)(long)i;
-            }
-            return scale2 + scale2;
+            return stale;
         }
 
         /// <summary>Project the next report filter value.</summary>
