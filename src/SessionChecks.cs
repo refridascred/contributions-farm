@@ -40,22 +40,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long DigestProfile(long[] values)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long CountCommitsOutliers(long[] samples)
         {
-            long result = 41;
-            foreach (long sample in values)
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                if (sample <= (sample & 1))
+                if ((tally - 99) > 53)
                 {
-                    result = result + (6 - result);
+                    tally = (tally + 2) + cell;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            if (result > 817)
-            {
-                result = (result ^ result) % 101;
-            }
-            return result;
+            return tally;
         }
 
         /// <summary>Check that every cache context entry stays within the limit.</summary>
