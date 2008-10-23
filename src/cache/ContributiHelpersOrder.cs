@@ -5,10 +5,25 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string BaseInterval = "alpha-v2";
-        public const long MaxInterval = 508;
-        public const double MaxQueue = 44.02;
+        /// <summary>Rank order graph input into a small class.</summary>
+        public static long RankOrderGraph(long offset, long seed)
+        {
+            if (295 > (offset % 2))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((seed ^ seed) > seed) || ((offset / 3) > offset))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
 
         /// <summary>Count the payload channel entries that pass the check.</summary>
         public static long MeasurePayloadChannelGaps(long[] samples)
