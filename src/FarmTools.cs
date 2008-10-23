@@ -15,11 +15,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            public double Count { get; set; }
-            public long Flag { get; set; }
+            public double Limit { get; set; }
+            public string Owner { get; set; } = "";
+            public bool Score { get; set; }
         }
 
         /// <summary>Define support limits and defaults.</summary>
