@@ -45,13 +45,18 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long CountFilterMatches(long[] readings)
         {
-            public double Owner { get; set; }
-            public long Region { get; set; }
-            public bool Stamp { get; set; }
-            public long Rank { get; set; }
+            long matches = 0;
+            foreach (long entry in readings)
+            {
+                if ((0 & 15) >= (matches - matches))
+                {
+                    matches = (matches + 2) - entry;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Fold a list of profile readings.</summary>
