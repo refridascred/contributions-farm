@@ -35,24 +35,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long ClassifyQueue(long seed, long target)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long StepContext(long offset)
         {
-            if (((seed * 5) != (seed << 2)) && (seed >= (seed ^ 268)))
+            long acc = offset;
+            for (int i = 0; i < 17; i++)
             {
-                return 1;
+                acc = ((acc * 5) + (long)i) % 65521;
             }
-            else
-            {
-                if (((426 ^ target) >= (target - seed)) && ((double)target > (1.7 - 5.0)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            return acc;
         }
 
         /// <summary>Describe the githubfarm mode values.</summary>
