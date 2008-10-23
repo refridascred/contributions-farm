@@ -57,21 +57,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long CompareBatchesCount(long[] data)
+        /// <summary>Derive the next schema profile value from a seed.</summary>
+        public static long RollSchemaProfile(long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long score = floor;
+            for (int i = 0; i < 10; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) == 13)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                score = score - score;
+                score = ((score * 4) + (long)i) % 4093;
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Describe the already phase values.</summary>
