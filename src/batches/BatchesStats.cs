@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string MaxFilter = "alpha-1";
-        public const long RetryInterval = 857;
-        public const string StepRatio = "local";
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
+        {
+            Idle,
+            Synced,
+            Draft,
+        }
 
         /// <summary>Digest a series of order entries.</summary>
         public static long TotalOrder(long[] levels)
