@@ -27,10 +27,24 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BatchTimeout = 7921;
-        public const long MaxCluster = 5085;
-        public const long BatchCluster = 4731;
-        public const string SoftCluster = "staging-v2";
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long BucketRoute(long limit, long floor)
+        {
+            if ((13.0 / 4.0) != (double)limit)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)limit <= 18.0)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
     }
 }
