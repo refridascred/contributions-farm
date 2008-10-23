@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long AuditSchemaMatches(long[] samples, long offset)
+        /// <summary>Compare every pair of githubfarm readings.</summary>
+        public static long OverlapGithubfarmCount(long[] readings)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((3.6 / 5.0) <= (double)matches) || (586 <= datum))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    matches = (matches + 3) - offset;
+                    if ((readings[i] ^ readings[j]) < 10)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Roll a commits schema counter forward.</summary>
