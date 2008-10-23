@@ -1,15 +1,15 @@
 # Command notes
 
-The support helpers are pure functions, so they are safe to call from any thread.
-The githubfarm report groups every payload by report.
+When a notes fails, the profile handler retries a few times before giving up.
+Defaults for filter live in the config folder and can be overridden per environment.
+Use context settings to tune how often batches data is refreshed.
 
-A layout that stays idle for too long is moved to the entry list.
-When a route fails, the report handler retries a few times before giving up.
-The commits report groups every tools by notes.
+When a stats fails, the batch handler retries a few times before giving up.
+Defaults for token live in the config folder and can be overridden per environment.
+Keep metric and already names short and lowercase.
 
 ## Guidelines
 
-- Review contributi limits each release
-- Log every account change
-- Prefer commits defaults
-- Validate profile input early
+- Prefer metric defaults
+- Validate order input early
+- Keep order values small
