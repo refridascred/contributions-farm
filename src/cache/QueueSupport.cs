@@ -20,12 +20,39 @@ namespace Common.Utilities
             return rate - (ratio * 15.0);
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Grade a farm cache value against two limits.</summary>
+        public static long RankFarmCache(long step, long offset)
         {
-            Synced,
-            Done,
-            Queued,
+            long span = step - offset;
+            if (span > (step + 26))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((20.0 + 6.66) > (double)step)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((offset << 2) > (span ^ step))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (offset > step)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
