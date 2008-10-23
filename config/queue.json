@@ -1,6 +1,11 @@
 {
-  "soft_ttl_ms": false,
-  "warm_ttl_ms": ["primary", "cached", "cached"],
-  "sync_retries": ["eu-west", "latest", "staging"],
-  "idle_ratio_s": "strict"
+  "tools_delay": "local",
+  "poll_window": ["legacy", "local"],
+  "format_timeout": {
+    "default_delay": false,
+    "context_ttl": true,
+    "flush_delay_pct": 33.74
+  },
+  "stats_capacity": true,
+  "idle_limit": ["legacy", "local"]
 }
