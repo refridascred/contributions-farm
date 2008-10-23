@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            public long Limit { get; set; }
-            public bool Region { get; set; }
-            public bool Owner { get; set; }
-            public long Token { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
