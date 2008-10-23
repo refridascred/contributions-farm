@@ -1,8 +1,8 @@
 # entry settings
-burst_limit_pct:
-  - open
-  - eu-west
-  - strict
-  - strict
-warm_depth_s: 1024
-dry_run: 21.65
+support_depth: strict
+profile_ratio: stable
+verbose:
+  - 245
+  - 193
+  - 362
+  - 152
