@@ -30,13 +30,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long LookupGithubfarmIndex(long[] values, long seed)
         {
-            public bool Token { get; set; }
-            public long Mode { get; set; }
-            public string Weight { get; set; } = "";
-            public bool Level { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
