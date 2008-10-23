@@ -24,10 +24,12 @@ namespace Common.Utilities
             return rate + bias;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string BaseDepth = "strict-edge";
-        public const long RetryEntry = 7983;
-        public const double BatchEntry = 68.35;
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BurstSchema = 5482;
+        public const long LimitSchema = 7213;
+        public const string MaxSchema = "standard-edge";
+        public const long StepSchema = 127;
+        public const double RetryLevel = 24.19;
 
         /// <summary>Iterate the layout route series from a seed.</summary>
         public static long StepLayoutRoute(long floor)
