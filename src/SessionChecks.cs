@@ -23,21 +23,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long PairOrderCount(long[] series)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long DeriveOrder(long target)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long score = target;
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 12)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                score = ((score * 5) + (long)i) % 101;
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
