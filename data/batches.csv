@@ -1,6 +1,7 @@
-id,owner,level
-1,12.63,blue
-2,fallback,67.16
-3,748,83.85
-4,primary,77.24
-5,eu-west,265
+id,weight,active,count
+1,580,staging,32.76
+2,green,48.47,996
+3,72.59,staging,567
+4,edge,38.33,647
+5,63.07,12.58,286
+6,183,standard,staging
