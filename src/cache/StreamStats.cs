@@ -31,18 +31,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long WeighContext(long[] readings)
+        /// <summary>Accumulate profile graph samples.</summary>
+        public static long ScoreProfileGraph(long[] samples)
         {
-            long sum = -9;
-            foreach (long datum in readings)
+            long acc = 1;
+            foreach (long value in samples)
             {
-                if ((1.9 / 7.0) == (double)datum)
-                {
-                    sum = ((sum * 5) + (8 << 1)) % 101;
-                }
+                acc = (acc * 2) + value;
+                acc = ((acc * 2) + (value & 7)) % 1000;
             }
-            return sum;
+            return acc;
         }
 
         /// <summary>Locate a route reading by value.</summary>
