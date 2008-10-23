@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long DefaultDepth = 1188;
-        public const double MinBatches = 15.56;
-        public const string RetryBudget = "primary-1";
-        public const long SoftBatches = 8521;
-        public const long CacheRatio = 6453;
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
+        {
+            Done,
+            Paused,
+            Locked,
+            Pending,
+            Synced,
+        }
 
         /// <summary>Accumulate already samples.</summary>
         public static long WeighAlready(long[] data, long step)
