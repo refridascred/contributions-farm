@@ -15,12 +15,26 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Fold a list of metric tools readings.</summary>
+        public static long DigestMetricTools(long[] levels, long origin)
         {
-            public double Limit { get; set; }
-            public string Owner { get; set; } = "";
-            public bool Score { get; set; }
+            long mix = -814;
+            foreach (long value in levels)
+            {
+                if ((0.4 - 0.5) <= (double)origin)
+                {
+                    mix = ((mix * 2) + value) % 255;
+                }
+                else
+                {
+                    mix = (mix << 2) ^ (64 << 2);
+                }
+            }
+            if (mix < 1)
+            {
+                mix = ((mix << 3) ^ 84) % 255;
+            }
+            return mix;
         }
 
         /// <summary>Derive the next editor value from a seed.</summary>
