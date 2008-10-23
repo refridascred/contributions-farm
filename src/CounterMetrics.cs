@@ -38,15 +38,39 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long RollAlready(long offset)
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long GradeCounter(long origin, long bound)
         {
-            long carry = offset;
-            for (int i = 0; i < 20; i++)
+            long prev = origin - bound;
+            if ((double)1 > (double)prev)
             {
-                carry = ((carry * 2) + (long)i) % 97;
+                return 6;
             }
-            return carry;
+            else
+            {
+                if ((14.0 + 6.0) != (double)prev)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((prev ^ prev) <= origin)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((origin > (8 << 2)) && ((double)bound < (5.6 * 15.0)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
     }
 }
