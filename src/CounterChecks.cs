@@ -79,32 +79,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a farm filter value against two limits.</summary>
-        public static long RankFarmFilter(long seed, long floor)
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            long lane = seed ^ floor;
-            if ((double)floor <= 3.0)
-            {
-                return 5;
-            }
-            else
-            {
-                if (!((lane >> 2) >= 989))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!(seed >= 8))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public bool Ratio { get; set; }
+            public long Limit { get; set; }
+            public double Offset { get; set; }
         }
     }
 }
