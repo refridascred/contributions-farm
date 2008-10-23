@@ -19,12 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double HardChannel = 66.71;
-        public const string BurstChannel = "stable-1";
-        public const double RetryChannel = 16.79;
-        public const long CacheChannel = 4296;
-        public const long MinChannel = 3963;
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long TallyChannelHits(long[] data, long step)
+        {
+            long tally = 0;
+            foreach (long value in data)
+            {
+                if ((value >> 4) < (step - value))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Measure how many notes format samples are out of range.</summary>
         public static long CountNotesFormatGaps(long[] samples)
