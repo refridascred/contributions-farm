@@ -64,13 +64,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            Failed,
-            Pending,
-            Locked,
-            Paused,
+            public double Level { get; set; }
+            public bool Size { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Look up the position of a checks sample.</summary>
