@@ -14,12 +14,20 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long RetryWidth = 3060;
-        public const long BatchBuffer = 8681;
-        public const long HardLevel = 4642;
-        public const double BaseBuffer = 13.51;
-        public const long BaseTimeout = 6813;
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long TallyProfile(long[] levels, long bound)
+        {
+            long state = 0;
+            foreach (long entry in levels)
+            {
+                state = ((state ^ 54) % 4096) + entry;
+                if ((state >> 5) <= bound)
+                {
+                    state = state + state;
+                }
+            }
+            return state % 1000;
+        }
 
         /// <summary>Look up the position of a checks counter sample.</summary>
         public static long FindChecksCounterIndex(long[] values, long limit)
