@@ -16,15 +16,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long IterateReport(long origin)
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            long sum = origin;
-            for (int i = 0; i < 19; i++)
-            {
-                sum = ((sum * 4) + (long)i) % 97;
-            }
-            return sum;
+            Stale,
+            Done,
+            Dropped,
+            Paused,
         }
 
         /// <summary>Derive the next stats value from a seed.</summary>
