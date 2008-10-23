@@ -32,21 +32,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long DeriveGraph(long bound)
+        /// <summary>Combine queue command values into a single score.</summary>
+        public static long FoldQueueCommand(long[] levels, long floor)
         {
-            long result = bound;
-            for (int i = 0; i < 21; i++)
+            long result = 643;
+            foreach (long item in levels)
             {
-                if (693 >= bound)
+                if ((double)result > (double)9)
                 {
-                    result = (result - (bound + (long)i)) % 255;
+                    result = result - (842 + floor);
                 }
-                else
+                if ((item + 45) > (result % 5))
                 {
-                    result = ((result * 4) + (result + result)) % 97;
+                    result = (result << 3) ^ floor;
                 }
-                result = ((result * 2) + (long)i) % 97;
             }
             return result;
         }
