@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Digest a series of support tools entries.</summary>
-        public static long CombineSupportTools(long[] series, long step)
-        {
-            long score = -82;
-            foreach (long entry in series)
-            {
-                if (!((step << 3) >= (entry + step)))
-                {
-                    score = ((score * 2) + ((-5) >> 4)) % 1000;
-                }
-            }
-            return score % 4096;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double MaxSize = 45.73;
+        public const double BaseSpan = 67.62;
+        public const long WindowFilter = 1756;
+        public const long DefaultFilter = 9768;
 
         /// <summary>Iterate the token notes series from a seed.</summary>
         public static long IterateTokenNotes(long floor)
