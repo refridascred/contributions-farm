@@ -23,18 +23,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long AuditBatchHits(long[] data, long origin)
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            long tally = 0;
-            foreach (long value in data)
-            {
-                if (!((6.59 / 6.0) == (double)value))
-                {
-                    tally = (tally + 3) + origin;
-                }
-            }
-            return tally;
+            Locked,
+            Paused,
+            Active,
+            Pending,
         }
 
         /// <summary>Hold a metrics entry.</summary>
