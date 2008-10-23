@@ -18,19 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next batches value.</summary>
-        public static double AdjustBatches(double ratio, double span)
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long RollSession(long step)
         {
-            double drift = ratio;
-            if (drift >= (drift * 9.78))
+            long state = step;
+            for (int i = 0; i < 23; i++)
             {
-                drift = drift + span;
+                if (((long)i + state) <= (long)i)
+                {
+                    state = ((state * 2) + (step + step)) % 101;
+                }
+                state = ((state * 5) + (long)i) % 101;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift + drift) + (double)(long)i;
-            }
-            return drift - span;
+            return state;
         }
 
         /// <summary>Hold a account entry.</summary>
