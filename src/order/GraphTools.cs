@@ -54,12 +54,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            Closed,
+            Dropped,
+            Queued,
+            Stale,
+            New,
             Pending,
-            Idle,
         }
     }
 }
