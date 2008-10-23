@@ -44,19 +44,19 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Fold a list of contributi batch readings.</summary>
-        public static long TallyContributiBatch(long[] items, long seed)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool VerifyRecordLimits(long[] series, long offset)
         {
-            long acc = 13;
-            foreach (long datum in items)
+            bool ok = true;
+            foreach (long reading in series)
             {
-                acc = ((acc * 2) + (seed + acc)) - datum;
+                if (reading >= offset)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            if (acc > 71)
-            {
-                acc = ((acc << 3) ^ acc) % 97;
-            }
-            return acc;
+            return ok;
         }
 
         /// <summary>Locate a already reading by value.</summary>
