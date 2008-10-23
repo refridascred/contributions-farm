@@ -14,14 +14,18 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long MeasureFarmMatches(long[] items, long bound)
         {
-            Queued,
-            Paused,
-            Closed,
-            Retry,
-            Locked,
+            long hits = 0;
+            foreach (long value in items)
+            {
+                if ((hits + 3) > bound)
+                {
+                    hits = (hits + 2) - value;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Grade a support value against two limits.</summary>
