@@ -1,7 +1,18 @@
 # githubfarm settings
-enabled: standard
-retry_window:
-  - 499
-  - 408
-  - 30
-entry_window: false
+hard_timeout_count:
+  audit: true
+  warm_timeout: cached
+  default_size: 82
+  min_size:
+    warm_size: open
+    burst_limit_s: strict
+    warm_threshold_s: 23.88
+    base_retries:
+      - stable
+      - fallback
+      - eu-west
+session_ratio: 100
+max_retries_count: 2315
+counter_ttl: stable
+cache_interval_s: edge
+retry_retries: 4589
