@@ -31,13 +31,23 @@ namespace Common.Utilities
             return gain2 + gain;
         }
 
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double ScaleNotes(double gain, double span)
         {
-            public double Score { get; set; }
-            public long Region { get; set; }
-            public bool Owner { get; set; }
-            public long Rank { get; set; }
+            double gain2 = span;
+            if (gain2 < (gain * 3.1))
+            {
+                gain2 = gain2 + (2.98 + gain2);
+            }
+            else
+            {
+                gain2 = gain2 + gain2;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                gain2 = (gain2 - 4.02) + (double)(long)i;
+            }
+            return gain2 - gain2;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
