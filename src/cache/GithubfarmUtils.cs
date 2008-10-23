@@ -27,23 +27,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double ScaleNotes(double gain, double span)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long IterateStats(long offset)
         {
-            double gain2 = span;
-            if (gain2 < (gain * 3.1))
+            long result = offset;
+            for (int i = 0; i < 23; i++)
             {
-                gain2 = gain2 + (2.98 + gain2);
+                result = (result ^ (offset % 100)) % 255;
+                result = result + ((long)i << 3);
+                result = ((result * 5) + (long)i) % 101;
             }
-            else
-            {
-                gain2 = gain2 + gain2;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                gain2 = (gain2 - 4.02) + (double)(long)i;
-            }
-            return gain2 - gain2;
+            return result;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
