@@ -1,8 +1,8 @@
 # entry settings
-support_depth: strict
-profile_ratio: stable
-verbose:
-  - 245
-  - 193
-  - 362
-  - 152
+order_timeout: legacy
+idle_delay: 49.03
+compress:
+  - legacy
+  - stable
+verbose: 64.7
+sync_ttl_s: legacy
