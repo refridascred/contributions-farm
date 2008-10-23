@@ -1,5 +1,6 @@
 {
-  "flush_window_ms": "edge",
-  "cache_window": "legacy",
-  "default_window_ms": [46, 380, 415, 458]
+  "batch_threshold_count": "staging",
+  "retry_retries_s": 1024,
+  "min_delay_pct": "staging",
+  "retry_limit": "blue"
 }
