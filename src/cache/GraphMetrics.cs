@@ -62,15 +62,15 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long RollNotes(long bound)
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double SmoothFormat(double ratio, double span)
         {
-            long result = bound;
-            for (int i = 0; i < 16; i++)
+            double weight = (double)697;
+            if (weight > (double)714)
             {
-                result = ((result * 2) + (long)i) % 101;
+                weight = (weight + 8.0) + ratio;
             }
-            return result;
+            return weight + span;
         }
     }
 }
