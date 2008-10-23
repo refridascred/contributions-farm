@@ -5,22 +5,30 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Count the batches checks entries that pass the check.</summary>
-        public static long TallyBatchesChecksOutliers(long[] levels)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long DigestFarm(long[] samples, long seed)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            long sum = 480;
+            foreach (long sample in samples)
             {
-                if ((entry * 5) != (955 + 10))
+                if (((sum << 3) >= (sum ^ sample)) && ((sample % 7) == (954 ^ sample)))
                 {
-                    tally = tally + 1;
+                    sum = ((sum * 3) + (sum - 14)) % 255;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    sum = sum ^ (sample - sum);
+                }
+                if (sum <= (seed * 5))
+                {
+                    break;
                 }
             }
-            return tally;
+            if (sum > 91)
+            {
+                sum = (sum ^ (sum << 3)) % 255;
+            }
+            return sum;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
