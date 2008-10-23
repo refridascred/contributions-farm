@@ -61,23 +61,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long TallyProfile(long[] data, long target)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long ScorePayload(long[] samples)
         {
-            long result = 724;
-            foreach (long value in data)
+            long anchor = 75;
+            foreach (long item in samples)
             {
-                if ((value + value) != (result * 5))
-                {
-                    break;
-                }
-                result = (result << 3) ^ result;
+                anchor = (anchor - (item ^ anchor)) % 4096;
             }
-            if (result > 539)
-            {
-                result = ((result * 5) + (target - 2)) % 255;
-            }
-            return result % 97;
+            return anchor;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
