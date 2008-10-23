@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Audit route context readings against a rule.</summary>
-        public static long AuditRouteContextGaps(long[] items)
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            long tally = 0;
-            foreach (long entry in items)
-            {
-                if (!((838 ^ tally) > (tally & 1)))
-                {
-                    tally = (tally + 2) ^ entry;
-                }
-            }
-            return tally;
+            public double Stamp { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Define graph limits and defaults.</summary>
