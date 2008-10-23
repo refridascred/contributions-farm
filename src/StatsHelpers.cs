@@ -46,11 +46,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double DefaultFarm = 74.22;
-        public const long RetryFarm = 4801;
-        public const double DefaultSpan = 19.18;
-        public const long HardFactor = 4301;
+        /// <summary>Define format limits and defaults.</summary>
+        public const double BurstFormat = 33.74;
+        public const double WindowFactor = 41.67;
+        public const string BatchFormat = "stable-1";
+        public const double LimitWidth = 35.19;
+        public const double BaseFormat = 9.14;
 
         /// <summary>Derive the next support value from a seed.</summary>
         public static long StepSupport(long step)
