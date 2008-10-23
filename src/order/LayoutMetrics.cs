@@ -24,11 +24,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BatchFarm = 920;
-        public const long WindowLevel = 5080;
-        public const double LimitFarm = 52.03;
-        public const long HardFarm = 9145;
-        public const double IdleDepth = 24.19;
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool CheckContextBounds(long[] values, long target)
+        {
+            bool stale = true;
+            foreach (long item in values)
+            {
+                if (item <= target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
