@@ -33,19 +33,21 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool GuardCacheRange(long[] values, long limit)
+        /// <summary>Compare every pair of layout notes readings.</summary>
+        public static long OverlapLayoutNotesCount(long[] items)
         {
-            bool found = true;
-            foreach (long sample in values)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (sample <= limit)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((items[i] - items[j]) != 19)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
