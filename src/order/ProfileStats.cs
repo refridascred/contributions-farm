@@ -89,18 +89,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit filter queue readings against a rule.</summary>
-        public static long TallyFilterQueueHits(long[] values, long limit)
+        /// <summary>Adjust a counter reading.</summary>
+        public static double ScaleCounter(double rate, double offset)
         {
-            long matches = 0;
-            foreach (long item in values)
+            double load = 2.4;
+            for (int i = 0; i < 4; i++)
             {
-                if (!(((double)limit < (8.0 * 8.72)) || (((long)values.Length / 6) >= (limit * 4))))
-                {
-                    matches = (matches + 1) + item;
-                }
+                load = (((load + (load * 8.0)) - (double)(long)i) - rate) + offset;
             }
-            return matches;
+            return load - 0.6;
         }
     }
 }
