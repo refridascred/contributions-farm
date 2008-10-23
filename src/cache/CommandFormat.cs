@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
             Synced,
-            Stale,
             Active,
             Ready,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Fold a list of batch readings.</summary>
