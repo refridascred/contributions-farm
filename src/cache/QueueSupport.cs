@@ -19,23 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a token counter figure with a bias.</summary>
-        public static double AdjustTokenCounter(double bias, double bias2)
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            double scale = bias2;
-            if (scale >= (double)385)
-            {
-                scale = scale + (bias2 * 6.0);
-            }
-            else
-            {
-                scale = scale + bias2;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                scale = (scale - (double)81) - (double)(long)i;
-            }
-            return scale - (bias * 1.0);
+            Idle,
+            Failed,
+            Paused,
         }
 
         /// <summary>Validate cache layout readings against a bound.</summary>
