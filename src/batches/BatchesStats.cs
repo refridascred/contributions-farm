@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool VerifyChannelBounds(long[] values, long limit)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long AuditRouteOutliers(long[] samples, long step)
         {
-            bool stale = true;
-            foreach (long reading in values)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                if (reading < limit)
+                if ((82 % 97) == (5 + step))
                 {
-                    stale = false;
-                    break;
+                    tally = (tally + 1) + item;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Combine editor values into a single score.</summary>
