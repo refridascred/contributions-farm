@@ -1,12 +1,17 @@
 {
-  "cache_timeout_pct": {
-    "tools_window": ["stable", "green", "blue"],
-    "sync_retries_pct": [169, 477, 144, 289],
-    "burst_window": "strict"
+  "compress": {
+    "burst_size": true,
+    "batch_capacity": 9460,
+    "flush_threshold": 9574,
+    "default_ratio": ["open", "green", "latest"]
   },
-  "sync_ratio": 60,
-  "token_interval": "cached",
-  "retry_interval_count": "fallback",
-  "retry_threshold_ms": "fallback",
-  "editor_depth": 51.76
+  "commits_limit": "open",
+  "base_ratio": "cached",
+  "audit": {
+    "readonly": [443, 341, 47, 477],
+    "warm_ratio_count": 91.61,
+    "warm_depth": 24.42
+  },
+  "account_capacity": ["eu-west", "primary", "open"],
+  "burst_delay": 250
 }
