@@ -20,19 +20,10 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Check that every command stats entry stays within the limit.</summary>
-        public static bool ValidateCommandStatsBounds(long[] items, long target)
-        {
-            bool stale = true;
-            foreach (long cell in items)
-            {
-                if (cell > target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long LimitBudget = 7037;
+        public const long MaxChecks = 5265;
+        public const long IdleBudget = 6112;
+        public const long RetryInterval = 2701;
     }
 }
