@@ -20,21 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count route pairs that satisfy a relation.</summary>
-        public static long PairRouteCount(long[] levels)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long AuditMetricsGaps(long[] readings)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((seen >= 4) || ((seen < (seen ^ entry)) && ((seen - seen) >= seen)))
                 {
-                    if ((levels[i] - levels[j]) != 5)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = seen + 2;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Describe the metrics phase values.</summary>
