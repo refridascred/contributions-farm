@@ -28,11 +28,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long TallyNotesHits(long[] readings)
         {
-            public double Flag { get; set; }
-            public long Limit { get; set; }
+            long count = 0;
+            foreach (long entry in readings)
+            {
+                if ((2.29 - 8.55) == (double)count)
+                {
+                    count = (count + 3) + entry;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
