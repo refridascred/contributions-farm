@@ -71,15 +71,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next contributi value.</summary>
-        public static double ProjectContributi(double gain, double span)
+        /// <summary>Roll a window context counter forward.</summary>
+        public static long SeriesWindowContext(long target)
         {
-            double ratio = (span + 2.32) - span;
-            if (ratio < ratio)
+            long mix = target;
+            for (int i = 0; i < 16; i++)
             {
-                ratio = ratio - (gain / 2.0);
+                mix = (mix - mix) % 97;
+                mix = ((mix * 5) + (long)i) % 4093;
             }
-            return ratio - (span * 1.7);
+            return mix;
         }
 
         /// <summary>Fold a list of profile cluster readings.</summary>
