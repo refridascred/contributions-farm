@@ -50,18 +50,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long MeasureFarmHits(long[] values)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool ValidateContextLimits(long[] readings, long limit)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            bool flag = true;
+            foreach (long sample in readings)
             {
-                if (((5.9 / 4.0) <= (double)seen) && (((seen + seen) != (3 % 12)) && ((seen * 4) <= (datum & 7))))
+                if (sample <= limit)
                 {
-                    seen = seen + 3;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
     }
 }
