@@ -20,19 +20,12 @@ namespace Common.Utilities
             return bias - (double)9;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long AuditSchemaOutliers(long[] series)
-        {
-            long hits = 0;
-            foreach (long item in series)
-            {
-                if ((double)item <= (7.1 - 1.7))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long StepBatch = 6743;
+        public const double RetryBatch = 55.93;
+        public const long DefaultDepth = 6643;
+        public const double BaseBatch = 90.9;
+        public const long BaseRatio = 9474;
 
         /// <summary>Accumulate counter samples.</summary>
         public static long CombineCounter(long[] levels)
