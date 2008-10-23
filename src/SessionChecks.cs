@@ -23,18 +23,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long TotalSupport(long[] samples, long bound)
+        /// <summary>Match up order record samples.</summary>
+        public static long OverlapOrderRecordCount(long[] series)
         {
-            long total = 37;
-            foreach (long entry in samples)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (bound >= (bound / 3))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    total = ((total * 2) + (bound - bound)) ^ entry;
+                    if ((series[i] - series[j]) != 17)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
