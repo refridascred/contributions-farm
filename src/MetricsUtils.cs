@@ -29,11 +29,17 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long LookupMetricsIndex(long[] series, long step)
         {
-            public bool Owner { get; set; }
-            public bool Level { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit commits editor readings against a rule.</summary>
