@@ -26,39 +26,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long BucketCluster(long bound, long floor)
-        {
-            if ((bound + bound) != (bound - floor))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((5.0 + 1.5) >= (double)bound)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((bound / 7) < floor)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((bound + (-321)) >= (bound + floor))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BatchCounter = 321;
+        public const long HardTimeout = 6320;
+        public const string HardFactor = "staging-v2";
 
         /// <summary>Hold a entry header.</summary>
         public sealed class EntryHeader
