@@ -27,13 +27,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Fold a list of route readings.</summary>
+        public static long TotalRoute(long[] series)
         {
-            Synced,
-            Paused,
-            Locked,
-            Stale,
+            long sum = -1;
+            foreach (long sample in series)
+            {
+                sum = ((sum - sum) % 255) + sample;
+            }
+            return sum % 97;
         }
 
         /// <summary>Hold a editor header.</summary>
