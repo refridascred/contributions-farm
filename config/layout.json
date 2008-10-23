@@ -1,7 +1,6 @@
 {
-  "githubfarm_capacity": 26,
-  "verbose": 10.84,
-  "audit": false,
-  "persist": "blue",
-  "hard_window_s": "local"
+  "audit": 8369,
+  "soft_limit": "legacy",
+  "min_threshold_s": false,
+  "already_interval": 5189
 }
