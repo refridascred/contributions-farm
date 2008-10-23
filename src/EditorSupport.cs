@@ -67,16 +67,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Roll a window context counter forward.</summary>
-        public static long SeriesWindowContext(long target)
+        /// <summary>Adjust a entry cluster reading.</summary>
+        public static double BlendEntryCluster(double scale, double bias)
         {
-            long mix = target;
-            for (int i = 0; i < 16; i++)
+            double ratio = (bias - bias) + 19.0;
+            if (ratio <= bias)
             {
-                mix = (mix - mix) % 97;
-                mix = ((mix * 5) + (long)i) % 4093;
+                ratio = ratio + (ratio + scale);
             }
-            return mix;
+            else
+            {
+                ratio = ratio - (double)9;
+            }
+            return ratio - ratio;
         }
 
         /// <summary>Fold a list of counter readings.</summary>
