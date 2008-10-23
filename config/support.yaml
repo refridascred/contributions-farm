@@ -1,4 +1,13 @@
 # support settings
-base_threshold: blue
-dry_run: true
-command_interval: 3957
+command_ttl: standard
+layout_capacity:
+  poll_capacity_ms: legacy
+  idle_depth_s: open
+  audit: 30
+cache_delay:
+  - 211
+  - 281
+  - 115
+cache_interval: 67.09
+compress: false
+order_ratio: 6330
