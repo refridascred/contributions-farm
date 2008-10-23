@@ -15,24 +15,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long ClassifyAlready(long bound, long limit)
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            if (((7.9 + 2.03) >= (double)limit) || ((double)limit >= (16.0 - 2.76)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((limit % 60) < bound)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public bool Mode { get; set; }
+            public string Rank { get; set; } = "";
+            public long Size { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Grade a support value against two limits.</summary>
