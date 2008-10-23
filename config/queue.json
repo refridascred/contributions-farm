@@ -1,7 +1,6 @@
 {
-  "compress": "staging",
-  "idle_size_count": 9513,
-  "readonly": false,
-  "max_ratio_s": 95.77,
-  "payload_interval": false
+  "soft_size_ms": "cached",
+  "window_interval": 2.9,
+  "token_size": true,
+  "soft_retries_pct": "cached"
 }
