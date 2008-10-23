@@ -25,39 +25,13 @@ namespace Common.Utilities
         public const double CacheBudget = 28.73;
         public const long BurstGraph = 7051;
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long ClassifySession(long limit, long offset)
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            long delta = limit + offset;
-            if (((12.0 * 9.2) > (double)offset) && ((double)delta != (double)limit))
-            {
-                return 0;
-            }
-            else
-            {
-                if (!((delta << 2) < (delta + delta)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((delta + offset) > limit) || ((limit + delta) < (84 << 2)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((0.26 + 17.0) <= (double)limit)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            Dropped,
+            Closed,
+            Locked,
+            Queued,
         }
 
         /// <summary>Digest a series of metrics channel entries.</summary>
