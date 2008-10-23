@@ -26,14 +26,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Blend two graph measurements.</summary>
+        public static double SmoothGraph(double bias, double offset)
         {
-            New,
-            Dropped,
-            Ready,
-            Closed,
-            Done,
+            double rate = 6.8 - (double)(-9);
+            for (int i = 0; i < 6; i++)
+            {
+                rate = ((rate + (6.0 - offset)) + (double)(long)i) + bias;
+            }
+            return rate + offset;
         }
 
         /// <summary>Scale a format figure with a bias.</summary>
