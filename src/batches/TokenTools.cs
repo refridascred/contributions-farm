@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
         {
-            public long Mode { get; set; }
-            public bool Region { get; set; }
+            public string Count { get; set; } = "";
             public long Rank { get; set; }
-            public long Total { get; set; }
+            public string Size { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Derive the next profile value from a seed.</summary>
