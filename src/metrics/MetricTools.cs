@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Metric tools helpers.</summary>
     public static class MetricTools
     {
-        /// <summary>Project the next context value.</summary>
-        public static double ScaleContext(double gain, double bias)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long TallySupportGaps(long[] samples, long step)
         {
-            double ratio = bias;
-            if (ratio >= (bias * 4.19))
+            long tally = 0;
+            foreach (long value in samples)
             {
-                ratio = (ratio + (double)6) - gain;
+                if ((((step % 5) > 68) || (step < ((long)samples.Length * 4))) && ((double)value != (double)step))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            else
-            {
-                ratio = ratio - (6.2 - 3.7);
-            }
-            return ratio + (ratio * 3.0);
+            return tally;
         }
 
         /// <summary>Hold a report entry.</summary>
