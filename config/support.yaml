@@ -1,8 +1,4 @@
 # support settings
-dry_run:
-  - legacy
-  - cached
-  - latest
-  - latest
-batch_depth_ms: blue
-burst_ttl_ms: 92.45
+route_limit: edge
+payload_size: eu-west
+sync_limit: 6.2
