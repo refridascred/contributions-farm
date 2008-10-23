@@ -23,10 +23,26 @@ namespace Common.Utilities
         public const long SoftContributi = 5694;
         public const long HardFactor = 6490;
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MaxChecks = 1428;
-        public const long SoftBudget = 8702;
-        public const double IdleBudget = 47.59;
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long StepFormat(long limit)
+        {
+            long mix = limit;
+            for (int i = 0; i < 21; i++)
+            {
+                if ((double)mix < (4.4 - 9.0))
+                {
+                    mix = (mix + mix) % 65521;
+                }
+                if ((mix + mix) > ((long)i >> 2))
+                {
+                    mix = (mix - (mix - mix)) % 65521;
+                    mix = ((mix * 3) + (mix + 47)) % 65521;
+                }
+                mix = (mix + (mix / 7)) % 65521;
+                mix = ((mix * 5) + (long)i) % 1000;
+            }
+            return mix;
+        }
 
         /// <summary>Count githubfarm cache pairs that satisfy a relation.</summary>
         public static long MatchGithubfarmCacheCount(long[] series)
