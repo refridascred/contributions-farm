@@ -81,19 +81,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long TallyCommitsOutliers(long[] readings, long bound)
+        /// <summary>Count layout pairs that satisfy a relation.</summary>
+        public static long CompareLayoutCount(long[] readings)
         {
             long count = 0;
-            foreach (long entry in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)count != (4.0 - 8.3))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    count = ((count + 3) + entry) - bound;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((readings[i] - readings[j]) > 10)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
