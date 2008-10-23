@@ -46,26 +46,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine metrics cluster values into a single score.</summary>
-        public static long DigestMetricsCluster(long[] values, long target)
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            long mix = 686;
-            foreach (long item in values)
-            {
-                if ((item + mix) < 4)
-                {
-                    mix = mix + (target / 8);
-                }
-                else
-                {
-                    mix = (mix + 21) % 97;
-                }
-            }
-            if (mix > 23)
-            {
-                mix = mix ^ mix;
-            }
-            return mix % 97;
+            public bool Size { get; set; }
+            public bool Count { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
