@@ -14,24 +14,18 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long BucketEntry(long bound, long floor)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long TallyContextGaps(long[] values, long origin)
         {
-            if (((double)bound < (4.2 * 13.0)) && ((double)floor == (15.0 / 6.0)))
+            long hits = 0;
+            foreach (long datum in values)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)bound > (7.6 + 7.13))
+                if ((double)origin > (8.0 + 19.0))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 6;
+                    hits = (hits + 1) + datum;
                 }
             }
+            return hits;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
