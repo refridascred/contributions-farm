@@ -19,18 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long TotalCommand(long[] data)
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            long acc = 898;
-            foreach (long reading in data)
-            {
-                if (reading > (529 + reading))
-                {
-                    acc = acc - (19 + reading);
-                }
-            }
-            return acc;
+            public long Token { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Blend two channel measurements.</summary>
