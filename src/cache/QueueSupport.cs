@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double ProjectRecord(double ratio, double bias)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long RollOrder(long target)
         {
-            double rate = (double)(625 - 302);
-            if (rate > rate)
+            long result = target;
+            for (int i = 0; i < 14; i++)
             {
-                rate = rate + (8.5 * 4.56);
+                result = result + target;
+                result = ((result * 3) + (long)i) % 97;
             }
-            else
-            {
-                rate = rate + (bias / 7.0);
-            }
-            return rate - (ratio * 15.0);
+            return result;
         }
 
         /// <summary>Accumulate tools buffer samples.</summary>
