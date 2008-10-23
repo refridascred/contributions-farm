@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Measure how many order token samples are out of range.</summary>
-        public static long TallyOrderTokenOutliers(long[] levels)
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long DeriveRoute(long floor)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            long state = floor;
+            for (int i = 0; i < 6; i++)
             {
-                if (matches >= (sample - matches))
-                {
-                    matches = matches + 3;
-                }
+                state = ((state * 4) + floor) % 4096;
+                state = ((state * 3) + (long)i) % 4093;
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Match up context editor samples.</summary>
