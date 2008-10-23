@@ -30,18 +30,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long CombineAlready(long[] levels, long bound)
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double ProjectBatches(double scale, double span)
         {
-            long state = 9;
-            foreach (long sample in levels)
-            {
-                if (bound <= (bound - bound))
-                {
-                    state = ((state - (2 >> 4)) % 65521) - sample;
-                }
-            }
-            return state;
+            double bias = scale;
+            return (bias - (bias / 2.0)) + span;
         }
     }
 }
