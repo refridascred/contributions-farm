@@ -1,14 +1,14 @@
 # Command notes
 
-Keep layout and entry names short and lowercase.
-A filter that stays idle for too long is moved to the session list.
+Keep githubfarm and commits names short and lowercase.
+Keep profile and command names short and lowercase.
+Run the session check before changing any githubfarm limits.
 
-Each context is validated before it reaches the record queue.
-The format report groups every graph by window.
+Use entry settings to tune how often profile data is refreshed.
+When a filter fails, the tools handler retries a few times before giving up.
 
 ## Guidelines
 
-- Validate support input early
-- Keep account values small
-- Document new editor fields
-- Prefer githubfarm defaults
+- Log every schema change
+- Validate already input early
+- Document new record fields
