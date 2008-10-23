@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long ScoreGithubfarm(long[] items, long step)
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            long mix = 1;
-            foreach (long entry in items)
-            {
-                mix = ((mix + (mix * 2)) ^ entry) - step;
-            }
-            return mix;
+            Queued,
+            Closed,
+            Dropped,
+            Done,
+            Locked,
         }
 
         /// <summary>Roll a cache notes counter forward.</summary>
