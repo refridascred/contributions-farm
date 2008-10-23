@@ -20,13 +20,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Compare every pair of notes already readings.</summary>
+        public static long CompareNotesAlreadyCount(long[] data)
         {
-            Dropped,
-            Failed,
-            Closed,
-            Queued,
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) != 1)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a editor summary.</summary>
