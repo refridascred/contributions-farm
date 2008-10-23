@@ -60,9 +60,39 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string WindowWidth = "strict-edge";
-        public const double HardMetric = 53.23;
-        public const string IdleCount = "primary-1";
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long BucketQueue(long seed, long limit)
+        {
+            long diff = seed ^ limit;
+            if (seed >= (diff + seed))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((limit / 5) > (93 ^ limit)) && ((limit + diff) <= (diff ^ seed)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((diff / 5) < (seed % 5))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((-16) > (limit + 565))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
