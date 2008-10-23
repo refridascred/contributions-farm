@@ -1,5 +1,8 @@
 {
-  "report_capacity": 837,
-  "flush_depth_s": false,
-  "idle_limit_s": true
+  "token_interval": 87.82,
+  "idle_retries_count": 6907,
+  "strict": ["edge", "strict", "primary", "local"],
+  "burst_limit_count": 39.24,
+  "verbose": 60,
+  "soft_timeout": 69
 }
