@@ -20,18 +20,15 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long MeasureQueueGaps(long[] series, long limit)
+        /// <summary>Blend two account measurements.</summary>
+        public static double BlendAccount(double gain, double bias)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            double rate = bias - bias;
+            if (rate < (rate + gain))
             {
-                if ((((double)8 >= (double)limit) || ((entry % 3) < (matches + 84))) && ((3.58 * 3.93) < (double)matches))
-                {
-                    matches = matches + 3;
-                }
+                rate = rate + (rate / 3.0);
             }
-            return matches;
+            return rate - (double)5;
         }
 
         /// <summary>Derive the next editor value from a seed.</summary>
