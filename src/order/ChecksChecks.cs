@@ -5,32 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Classify a tools farm pair into a bucket.</summary>
-        public static long BucketToolsFarm(long seed, long offset)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long DeriveSession(long seed)
         {
-            long cur = seed - offset;
-            if ((899 ^ cur) > (offset + offset))
+            long result = seed;
+            for (int i = 0; i < 17; i++)
             {
-                return 3;
+                result = result + 25;
+                result = ((result * 3) + (long)i) % 97;
             }
-            else
-            {
-                if (cur > (cur * 5))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((seed % 2) == (seed - cur))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            return result;
         }
 
         /// <summary>Locate a payload reading by value.</summary>
