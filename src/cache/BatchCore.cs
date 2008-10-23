@@ -35,19 +35,31 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long DigestOrder(long[] items, long target)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long GradeRoute(long step, long target)
         {
-            long result = -598;
-            foreach (long value in items)
+            if ((3.3 + 6.0) <= (double)step)
             {
-                result = ((result ^ (value - value)) % 97) - target;
-                if (!((double)result <= 2.8))
+                return 7;
+            }
+            else
+            {
+                if ((7 / 8) > step)
                 {
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if ((step * 3) > (3 + target))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return result % 65521;
         }
     }
 }
