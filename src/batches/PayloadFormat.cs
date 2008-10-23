@@ -46,22 +46,26 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long MeasureEntryGaps(long[] items)
+        /// <summary>Combine metrics cluster values into a single score.</summary>
+        public static long DigestMetricsCluster(long[] values, long target)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            long mix = 686;
+            foreach (long item in values)
             {
-                if (((tally / 8) == (entry ^ 3)) && ((tally + tally) <= (94 - 681)))
+                if ((item + mix) < 4)
                 {
-                    tally = tally + 2;
+                    mix = mix + (target / 8);
                 }
                 else
                 {
-                    tally = tally - 1;
+                    mix = (mix + 21) % 97;
                 }
             }
-            return tally;
+            if (mix > 23)
+            {
+                mix = mix ^ mix;
+            }
+            return mix % 97;
         }
     }
 }
