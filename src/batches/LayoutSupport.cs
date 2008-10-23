@@ -72,19 +72,14 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool ValidateToolsLimits(long[] readings, long floor)
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            bool valid = true;
-            foreach (long datum in readings)
-            {
-                if (datum < floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Idle,
+            Stale,
+            Closed,
+            Queued,
+            Ready,
         }
     }
 }
