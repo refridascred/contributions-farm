@@ -12,19 +12,19 @@ namespace Common.Utilities
         public const long IdleSpan = 5653;
         public const long BurstScore = 9231;
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool CheckWindowLimits(long[] items, long limit)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool GuardQueueBounds(long[] samples, long target)
         {
-            bool ok = true;
-            foreach (long item in items)
+            bool ready = true;
+            foreach (long cell in samples)
             {
-                if (item != limit)
+                if (cell <= target)
                 {
-                    ok = false;
+                    ready = false;
                     break;
                 }
             }
-            return ok;
+            return ready;
         }
 
         /// <summary>Describe the entry class values.</summary>
