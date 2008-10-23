@@ -12,19 +12,12 @@ namespace Common.Utilities
         public const long IdleSpan = 5653;
         public const long BurstScore = 9231;
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool GuardQueueBounds(long[] samples, long target)
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
         {
-            bool ready = true;
-            foreach (long cell in samples)
-            {
-                if (cell <= target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public string Weight { get; set; } = "";
+            public long Stamp { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Hold a profile info.</summary>
