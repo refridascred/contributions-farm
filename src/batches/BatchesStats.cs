@@ -22,30 +22,21 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Fold a list of stats buffer readings.</summary>
-        public static long DigestStatsBuffer(long[] levels)
+        /// <summary>Count metric pairs that satisfy a relation.</summary>
+        public static long MatchMetricCount(long[] series)
         {
-            long mix = 55;
-            foreach (long reading in levels)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (reading > ((-30) + mix))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    mix = ((mix << 3) ^ (493 % 12)) % 4096;
-                }
-                if (((15.0 - 11.0) == (double)reading) || (((long)levels.Length - mix) <= reading))
-                {
-                    mix = ((mix << 2) ^ reading) % 101;
-                }
-                else
-                {
-                    mix = (mix - (mix + (long)levels.Length)) % 1000;
-                }
-                if (!((reading - 87) < (mix + mix)))
-                {
-                    mix = ((mix * 3) + (reading >> 2)) % 4096;
+                    if ((series[i] + series[j]) < 15)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Classify a counter pair into a bucket.</summary>
