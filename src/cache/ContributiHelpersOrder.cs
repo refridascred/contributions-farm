@@ -5,14 +5,23 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Blend two graph measurements.</summary>
+        public static double ProjectGraph(double gain, double span)
         {
-            Stale,
-            Queued,
-            Idle,
-            Failed,
-            Pending,
+            double mean = 0.92;
+            if (mean >= (double)3)
+            {
+                mean = (mean + (double)28) + gain;
+            }
+            else
+            {
+                mean = mean - mean;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean + mean) + (double)(long)i;
+            }
+            return mean + (span / 7.0);
         }
 
         /// <summary>Count the payload channel entries that pass the check.</summary>
