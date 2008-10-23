@@ -43,22 +43,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long MeasureContextMatches(long[] data, long bound)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long RollStream(long limit)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            long state = limit;
+            for (int i = 0; i < 13; i++)
             {
-                if (((bound + bound) <= (3 - bound)) || ((bound - bound) < bound))
-                {
-                    matches = (matches + 2) + cell;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                state = ((state * 4) + (long)i) % 101;
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
