@@ -1,6 +1,14 @@
 {
-  "burst_ttl": 88.21,
-  "min_limit_ms": 53,
-  "enabled": 30,
-  "poll_size": 1024
+  "burst_timeout_ms": "blue",
+  "cache_ratio": 75.43,
+  "sync_depth_count": 45,
+  "record_size": {
+    "default_retries_count": [393, 273, 448, 245],
+    "payload_window": "open",
+    "burst_timeout_pct": ["cached", "edge", "latest", "staging"],
+    "hard_ratio_pct": ["fallback", "cached"],
+    "dry_run": "open",
+    "soft_size": true
+  },
+  "support_ttl": [99, 104, 35]
 }
