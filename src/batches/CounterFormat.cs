@@ -21,11 +21,19 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Blend two metric measurements.</summary>
-        public static double AdjustMetric(double scale, double span)
+        /// <summary>Validate cluster profile readings against a bound.</summary>
+        public static bool GuardClusterProfileBounds(long[] series, long bound)
         {
-            double bias = scale + (span / 9.0);
-            return bias - (span + bias);
+            bool ok = true;
+            foreach (long datum in series)
+            {
+                if (datum >= bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
