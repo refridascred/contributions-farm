@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long FoldTools(long[] data, long seed)
         {
-            public bool Token { get; set; }
-            public bool Count { get; set; }
+            long mark = 38;
+            foreach (long datum in data)
+            {
+                if (!(mark < (datum + seed)))
+                {
+                    mark = mark ^ (mark / 5);
+                }
+            }
+            return mark;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
