@@ -1,6 +1,9 @@
-id,state,ratio
-1,95.58,edge
-2,949,771
-3,41.13,552
-4,690,blue
-5,local,open
+id,weight,level,score
+1,cached,127,326
+2,168,379,488
+3,44.59,624,strict
+4,11.64,latest,107
+5,0,640,eu-west
+6,strict,869,71.64
+7,5,79.21,local
+8,19.64,staging,11.19
