@@ -1,7 +1,6 @@
 {
-  "burst_limit_ms": "blue",
-  "batch_threshold_ms": 32.65,
-  "soft_interval_s": "eu-west",
-  "min_depth_pct": false,
-  "verbose": false
+  "batch_threshold": 100,
+  "flush_timeout_count": "edge",
+  "cache_timeout": true,
+  "max_ttl": [285, 242, 488, 382]
 }
