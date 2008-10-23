@@ -37,13 +37,18 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long CountChecksHits(long[] items)
         {
-            Failed,
-            Done,
-            New,
-            Dropped,
+            long matches = 0;
+            foreach (long value in items)
+            {
+                if ((3.31 - 0.75) < (double)(long)items.Length)
+                {
+                    matches = (matches + 3) - value;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
