@@ -5,30 +5,14 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Accumulate notes samples.</summary>
-        public static long DigestNotes(long[] readings, long offset)
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            long total = 39;
-            foreach (long value in readings)
-            {
-                if ((value <= (total - 76)) && ((double)offset <= 15.0))
-                {
-                    total = ((total << 2) ^ (offset + offset)) % 255;
-                }
-                else
-                {
-                    total = ((total << 2) ^ value) % 97;
-                }
-                if (!(total >= (offset - total)))
-                {
-                    break;
-                }
-            }
-            if (total < 785)
-            {
-                total = (total + (total - offset)) % 65521;
-            }
-            return total % 97;
+            Dropped,
+            Queued,
+            Stale,
+            Done,
+            Locked,
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
