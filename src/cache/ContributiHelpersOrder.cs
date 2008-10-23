@@ -5,23 +5,14 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Blend two graph measurements.</summary>
-        public static double ProjectGraph(double gain, double span)
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            double mean = 0.92;
-            if (mean >= (double)3)
-            {
-                mean = (mean + (double)28) + gain;
-            }
-            else
-            {
-                mean = mean - mean;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean + mean) + (double)(long)i;
-            }
-            return mean + (span / 7.0);
+            Dropped,
+            New,
+            Ready,
+            Active,
+            Paused,
         }
 
         /// <summary>Count the payload channel entries that pass the check.</summary>
