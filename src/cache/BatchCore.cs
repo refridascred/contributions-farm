@@ -47,12 +47,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            public double Label { get; set; }
-            public bool Owner { get; set; }
-            public string Rank { get; set; } = "";
+            Failed,
+            Idle,
+            Synced,
+            Retry,
+            Ready,
         }
 
         /// <summary>Adjust a route reading.</summary>
