@@ -19,18 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long CountBatchMatches(long[] items)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long TallyRecordHits(long[] data, long offset)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                if ((tally + 66) > tally)
+                if ((offset >> 1) >= (reading / 6))
                 {
-                    tally = (tally + 1) + cell;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
