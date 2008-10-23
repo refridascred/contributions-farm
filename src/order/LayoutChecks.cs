@@ -20,14 +20,17 @@ namespace Common.Utilities
             return bias - (double)9;
         }
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long LookupStatsIndex(long[] readings, long step)
         {
-            Retry,
-            Closed,
-            Dropped,
-            Paused,
-            Done,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a buffer snapshot.</summary>
