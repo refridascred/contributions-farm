@@ -12,18 +12,6 @@ while [ "${count}" -lt 6 ]; do
 done
 log "ran ${count} rounds"
 
-mode="${1:-strict}"
-case "${mode}" in
-    edge)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-total=0
-for i in $(seq 1 11); do
-    total=$((total + i * 3))
+for item in edge primary stable green; do
+    log "checking ${item}"
 done
-log "total ${total}"
