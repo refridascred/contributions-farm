@@ -49,9 +49,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BatchMetric = 3289;
-        public const long IdleLevel = 2910;
-        public const long HardMetric = 4764;
+        /// <summary>Grade a layout batches value against two limits.</summary>
+        public static long GradeLayoutBatches(long limit, long limit2)
+        {
+            long gap = limit - limit2;
+            if ((double)limit != (double)(-3))
+            {
+                return 6;
+            }
+            else
+            {
+                if (!((4.46 * 8.0) <= (double)limit2))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((89 % 60) <= limit2)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (limit <= (limit - gap))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
