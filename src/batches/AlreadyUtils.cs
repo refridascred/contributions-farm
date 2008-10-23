@@ -33,16 +33,24 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long TallyContributi(long[] items, long seed)
+        /// <summary>Rank record stats input into a small class.</summary>
+        public static long ClassifyRecordStats(long limit, long bound)
         {
-            long carry = 885;
-            foreach (long datum in items)
+            if ((-72) <= (limit * 2))
             {
-                carry = (((carry * 4) + (datum % 60)) % 65521) - seed;
-                carry = carry + (carry / 7);
+                return 0;
             }
-            return carry;
+            else
+            {
+                if (!((double)limit > (18.0 * 9.9)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
