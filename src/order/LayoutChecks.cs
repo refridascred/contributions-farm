@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long TallyRouteGaps(long[] values)
+        /// <summary>Count batches buffer pairs that satisfy a relation.</summary>
+        public static long OverlapBatchesBufferCount(long[] items)
         {
-            long count = 0;
-            foreach (long value in values)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((count >> 3) != (value * 4))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    count = count + 1;
+                    if ((items[i] + items[j]) < 2)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Grade a context value against two limits.</summary>
