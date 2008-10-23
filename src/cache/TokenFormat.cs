@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Rank context input into a small class.</summary>
-        public static long RankContext(long bound, long floor)
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            if (bound < (bound + bound))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)bound >= 4.0)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public string Label { get; set; } = "";
+            public bool Owner { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Hold a githubfarm header.</summary>
