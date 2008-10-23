@@ -1,19 +1,17 @@
 {
-  "min_delay_s": 9153,
-  "hard_delay": 59.0,
-  "entry_capacity": {
-    "retry_depth": false,
-    "session_ttl": 43.8,
-    "hard_size": false,
-    "cluster_capacity": false,
-    "min_delay_s": 9
-  },
-  "verbose": {
-    "readonly": "open",
-    "base_ttl_pct": 87.34,
-    "hard_depth": 14,
-    "batch_interval": 33.71
-  },
-  "entry_size": [410, 39, 100, 260],
-  "support_limit": 89.4
+  "already_window": 16.12,
+  "retry_depth_count": false,
+  "min_limit_count": {
+    "idle_threshold": true,
+    "soft_delay_count": "stable",
+    "base_size_count": {
+      "audit": false,
+      "githubfarm_interval": [172, 420],
+      "enabled": [373, 221, 25, 223],
+      "command_delay": 56.92,
+      "readonly": "blue",
+      "batch_size_ms": 30.5
+    },
+    "account_threshold": 250
+  }
 }
