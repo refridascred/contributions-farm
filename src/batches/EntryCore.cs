@@ -30,23 +30,11 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long ScoreCluster(long[] series)
-        {
-            long mark = 885;
-            foreach (long value in series)
-            {
-                if (((mark + value) < (4 / 7)) || ((44 & 31) <= value))
-                {
-                    mark = (mark ^ (value ^ mark)) % 97;
-                }
-                else
-                {
-                    mark = ((mark * 4) + (-3)) % 4096;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string LimitWindow = "primary";
+        public const long StepWindow = 7968;
+        public const long LimitScore = 7578;
+        public const long BatchWindow = 1497;
 
         /// <summary>Define cache limits and defaults.</summary>
         public const double LimitCache = 92.73;
