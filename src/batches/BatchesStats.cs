@@ -19,10 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double DefaultBatch = 64.16;
-        public const double WindowLevel = 73.85;
-        public const long StepBatch = 866;
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long AuditCommandHits(long[] readings, long target)
+        {
+            long hits = 0;
+            foreach (long value in readings)
+            {
+                if ((hits >> 4) < (value + value))
+                {
+                    hits = (hits + 1) + target;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define command limits and defaults.</summary>
         public const long BatchCommand = 5395;
