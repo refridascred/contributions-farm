@@ -1,6 +1,7 @@
 {
-  "route_ttl": true,
-  "compress": false,
-  "default_delay_ms": 35,
-  "checks_limit": 4899
+  "sync_ratio_ms": 5282,
+  "sync_capacity_count": ["primary", "standard"],
+  "idle_retries_s": false,
+  "enabled": "standard",
+  "burst_timeout_s": "edge"
 }
