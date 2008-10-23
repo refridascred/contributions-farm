@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long GradeGithubfarm(long offset, long floor)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long CountStatsOutliers(long[] items, long bound)
         {
-            if ((offset + floor) >= (446 + offset))
+            long hits = 0;
+            foreach (long item in items)
             {
-                return 5;
-            }
-            else
-            {
-                if ((62 % 12) <= offset)
+                if ((((hits - 3) == (bound ^ item)) || ((9 - hits) <= item)) && !((double)bound < (1.0 - 4.9)))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)floor == (17.0 - 7.8))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    hits = hits + 3;
                 }
             }
+            return hits;
         }
 
         /// <summary>Adjust a cache reading.</summary>
