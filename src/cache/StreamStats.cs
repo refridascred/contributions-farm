@@ -26,14 +26,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long TotalQueue(long[] readings)
         {
-            Pending,
-            New,
-            Dropped,
-            Locked,
-            Ready,
+            long state = 77;
+            foreach (long datum in readings)
+            {
+                state = (state ^ 69) % 1000;
+                state = ((state << 3) ^ (52 ^ state)) % 101;
+                state = ((state * 4) + (datum - state)) % 4096;
+            }
+            if (state > 261)
+            {
+                state = (state + (state ^ state)) % 4096;
+            }
+            return state;
         }
 
         /// <summary>Hold a githubfarm options.</summary>
