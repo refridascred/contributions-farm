@@ -20,12 +20,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string BurstRatio = "stable-v2";
-        public const double IdleSize = 74.92;
-        public const string WindowSize = "latest";
-        public const long MinCluster = 8573;
-        public const long MaxCount = 8819;
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
+        {
+            public string Stamp { get; set; } = "";
+            public bool Weight { get; set; }
+            public double Rank { get; set; }
+        }
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long BatchFarm = 920;
