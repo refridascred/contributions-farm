@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Blend two stats measurements.</summary>
-        public static double SmoothStats(double bias, double offset)
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
-            double rate = (double)(6 + 8);
-            if (rate >= (rate / 3.0))
-            {
-                rate = ((rate + 13.0) - bias) + offset;
-            }
-            return rate - (double)45;
+            public long Region { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Combine batch values into a single score.</summary>
