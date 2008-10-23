@@ -50,22 +50,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate commits cache samples.</summary>
-        public static long TallyCommitsCache(long[] levels, long seed)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool VerifyFarmLimits(long[] values, long floor)
         {
-            long result = 7;
-            foreach (long entry in levels)
+            bool ok = true;
+            foreach (long cell in values)
             {
-                if (result >= (result * 4))
+                if (cell != floor)
                 {
-                    result = ((result ^ seed) % 101) - entry;
+                    ok = false;
+                    break;
                 }
             }
-            if (result > 757)
-            {
-                result = (result * 5) + ((-7) % 12);
-            }
-            return result;
+            return ok;
         }
 
         /// <summary>Look up the position of a profile sample.</summary>
