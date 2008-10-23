@@ -24,10 +24,23 @@ namespace Common.Utilities
         public const long IdleCounter = 7954;
         public const string LimitBudget = "open";
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long HardToken = 9938;
-        public const double HardScore = 7.71;
-        public const long MinToken = 6926;
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long MeasureGraphMatches(long[] items, long step)
+        {
+            long seen = 0;
+            foreach (long cell in items)
+            {
+                if ((18.0 >= (double)seen) || ((6.5 > (double)cell) || ((seen + step) == (seen / 7))))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Iterate the route series from a seed.</summary>
         public static long StepRoute(long step)
