@@ -1,8 +1,6 @@
-id,label,state
-1,eu-west,44.88
-2,latest,474
-3,53.99,69.87
-4,180,982
-5,32.15,legacy
-6,28.72,49.6
-7,942,759
+id,state,ratio
+1,95.58,edge
+2,949,771
+3,41.13,552
+4,690,blue
+5,local,open
