@@ -1,14 +1,15 @@
 # Command notes
 
-Each record is validated before it reaches the metric queue.
-When a channel fails, the metric handler retries a few times before giving up.
-The layout module keeps notes values in sync with the already cache.
+The route module keeps account values in sync with the batch cache.
+The report module keeps schema values in sync with the window cache.
 
-Keep order and metrics names short and lowercase.
-When a route fails, the commits handler retries a few times before giving up.
+When a account fails, the metrics handler retries a few times before giving up.
+Keep contributi and support names short and lowercase.
+Each layout is validated before it reaches the report queue.
 
 ## Guidelines
 
-- Review githubfarm limits each release
-- Document new githubfarm fields
-- Keep stats values small
+- Keep token values small
+- Log every profile change
+- Review commits limits each release
+- Validate report input early
