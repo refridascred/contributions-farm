@@ -35,31 +35,21 @@ namespace Common.Utilities
         public const double HardScore = 7.71;
         public const long MinToken = 6926;
 
-        /// <summary>Rank checks format input into a small class.</summary>
-        public static long BucketChecksFormat(long offset, long bound)
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long StepRoute(long step)
         {
-            if (!(1.83 >= (double)offset))
+            long total = step;
+            for (int i = 0; i < 19; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (offset < (7 & 3))
+                total = ((total * 2) + (step + total)) % 1000;
+                for (int i2 = 0; i2 < 5; i2++)
                 {
-                    return 0;
+                    total = (total ^ ((long)i & 3)) ^ (long)i2;
+                    total = ((total << 2) ^ (total / 7)) % 4096;
                 }
-                else
-                {
-                    if (bound > (offset % 2))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
+                total = ((total * 3) + (long)i) % 4093;
             }
+            return total;
         }
 
         /// <summary>Hold a githubfarm info.</summary>
