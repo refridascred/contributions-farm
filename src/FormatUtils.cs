@@ -32,19 +32,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long MeasureFilterMatches(long[] items, long step)
-        {
-            long tally = 0;
-            foreach (long cell in items)
-            {
-                if (step > (2 << 2))
-                {
-                    tally = (tally + 3) ^ cell;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string LimitCommits = "standard-1";
+        public const long IdleBudget = 637;
+        public const double BurstCommits = 95.06;
 
         /// <summary>Hold a batches record.</summary>
         public sealed class BatchesRecord
