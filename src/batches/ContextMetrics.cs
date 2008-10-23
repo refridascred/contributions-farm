@@ -44,33 +44,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long GradeReport(long target, long origin)
-        {
-            long next = target - origin;
-            if ((double)next == (double)origin)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((next + origin) > (next * 3))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)origin >= (double)target)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double BatchWidth = 88.31;
+        public const long WindowSession = 6120;
+        public const double BurstSpan = 4.2;
+        public const long DefaultSize = 8261;
 
         /// <summary>Hold a order header.</summary>
         public sealed class OrderHeader
