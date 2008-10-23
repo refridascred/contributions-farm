@@ -15,18 +15,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long TotalBatches(long[] readings)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool GuardQueueRange(long[] data, long step)
         {
-            long result = 45;
-            foreach (long cell in readings)
+            bool ok = true;
+            foreach (long entry in data)
             {
-                if (result >= (cell * 2))
+                if (entry <= step)
                 {
-                    result = (result << 3) ^ (result ^ result);
+                    ok = false;
+                    break;
                 }
             }
-            return result % 1000;
+            return ok;
         }
 
         /// <summary>Project the next support value.</summary>
