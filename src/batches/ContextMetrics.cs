@@ -33,10 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long MaxCount = 4902;
-        public const long IdleStream = 2366;
-        public const long HardSpan = 3863;
+        /// <summary>Fold a list of context readings.</summary>
+        public static long CombineContext(long[] series, long target)
+        {
+            long result = 32;
+            foreach (long cell in series)
+            {
+                if ((result / 3) <= (cell & 127))
+                {
+                    result = (result - (cell - target)) % 1000;
+                }
+            }
+            return result;
+        }
 
         /// <summary>Define context limits and defaults.</summary>
         public const long RetryCount = 3365;
