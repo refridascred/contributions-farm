@@ -29,23 +29,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long IterateContext(long seed)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long RollBuffer(long floor)
         {
-            long acc = seed;
-            for (int i = 0; i < 5; i++)
+            long acc = floor;
+            for (int i = 0; i < 10; i++)
             {
-                acc = (acc * 5) + 1;
-                if (((seed + acc) >= acc) || ((acc + seed) <= acc))
-                {
-                    acc = (acc ^ (3 - seed)) % 1000;
-                }
-                else
-                {
-                    acc = (acc ^ (seed >> 3)) % 255;
-                }
-                acc = (acc - (seed * 2)) % 65521;
-                acc = ((acc * 5) + (long)i) % 97;
+                acc = ((acc << 2) ^ (floor - floor)) % 4096;
+                acc = ((acc * 5) + (long)i) % 65521;
             }
             return acc;
         }
