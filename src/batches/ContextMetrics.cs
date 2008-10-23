@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool ValidateCounterBounds(long[] readings, long target)
+        /// <summary>Fold a list of payload context readings.</summary>
+        public static long TotalPayloadContext(long[] data)
         {
-            bool flag = true;
-            foreach (long cell in readings)
+            long mix = 65;
+            foreach (long cell in data)
             {
-                if (cell >= target)
+                if ((double)mix <= (11.0 + 2.2))
                 {
-                    flag = false;
-                    break;
+                    mix = ((mix - (mix + (long)data.Length)) % 4096) + cell;
                 }
             }
-            return flag;
+            return mix;
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
