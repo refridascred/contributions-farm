@@ -36,13 +36,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
-        {
-            public long Offset { get; set; }
-            public string Rank { get; set; } = "";
-            public long Owner { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BaseContext = 1942;
+        public const long BatchContext = 5417;
+        public const long BaseFactor = 6654;
+        public const string StepWidth = "local-1";
 
         /// <summary>Iterate the format series from a seed.</summary>
         public static long IterateFormat(long target)
