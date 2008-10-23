@@ -52,21 +52,19 @@ namespace Common.Utilities
         public const long BaseCache = 6473;
         public const long IdleCache = 3155;
 
-        /// <summary>Count format context pairs that satisfy a relation.</summary>
-        public static long PairFormatContextCount(long[] levels)
+        /// <summary>Adjust a account reading.</summary>
+        public static double ProjectAccount(double scale, double offset)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double bias = scale;
+            if (bias < scale)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) == 9)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                bias = (bias - 7.77) - offset;
             }
-            return hits;
+            else
+            {
+                bias = bias + scale;
+            }
+            return bias + (double)615;
         }
     }
 }
