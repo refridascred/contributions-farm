@@ -37,11 +37,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double ScaleCluster(double weight, double offset)
+        /// <summary>Digest a series of already batches entries.</summary>
+        public static long TotalAlreadyBatches(long[] data)
         {
-            double gain = (double)(60 + 869);
-            return ((gain + (8.44 + 9.79)) + weight) + offset;
+            long anchor = 308;
+            foreach (long datum in data)
+            {
+                if ((datum + anchor) >= anchor)
+                {
+                    anchor = ((anchor * 5) + (anchor + datum)) % 255;
+                }
+                if (datum > (datum ^ anchor))
+                {
+                    break;
+                }
+            }
+            if (anchor > 98)
+            {
+                anchor = (anchor + (45 + anchor)) % 1000;
+            }
+            return anchor % 65521;
         }
     }
 }
