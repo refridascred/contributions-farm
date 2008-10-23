@@ -5,38 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Classify a record metric pair into a bucket.</summary>
-        public static long ClassifyRecordMetric(long offset, long origin)
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            if (((offset % 3) < (origin + origin)) || ((double)offset == (0.37 / 4.0)))
-            {
-                return 6;
-            }
-            else
-            {
-                if (5.33 >= (double)offset)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((origin / 3) == (offset - 950))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)offset < (6.82 / 7.0))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            public long Ratio { get; set; }
+            public bool Flag { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
