@@ -18,12 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a filter reading.</summary>
-        public static double AdjustFilter(double ratio, double offset)
-        {
-            double weight = offset;
-            return weight + ratio;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BurstEditor = 9842;
+        public const long BatchSpan = 7974;
+        public const double MaxEditor = 37.93;
+        public const long SoftEditor = 1211;
 
         /// <summary>Describe the githubfarm state values.</summary>
         public enum GithubfarmState
