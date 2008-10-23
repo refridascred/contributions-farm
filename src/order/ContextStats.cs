@@ -44,18 +44,24 @@ namespace Common.Utilities
         public const long CacheWidth = 9772;
         public const string SoftAlready = "latest-edge";
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long CountChecksOutliers(long[] levels, long limit)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long ClassifyChecks(long offset, long limit)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            if ((offset << 1) >= limit)
             {
-                if (((tally + 95) != (limit / 8)) || ((tally < (tally ^ limit)) && ((5.1 / 9.0) > (double)cell)))
+                return 0;
+            }
+            else
+            {
+                if (!(2 >= (limit * 4)))
                 {
-                    tally = tally + 2;
+                    return 1;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return tally;
         }
     }
 }
