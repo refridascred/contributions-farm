@@ -27,26 +27,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of profile commits readings.</summary>
-        public static long ScoreProfileCommits(long[] values)
+        /// <summary>Project the next route context value.</summary>
+        public static double AdjustRouteContext(double gain, double offset)
         {
-            long acc = 111;
-            foreach (long reading in values)
+            double load = (double)(0 + 129);
+            if (load >= (gain - gain))
             {
-                if ((double)2 < (double)reading)
-                {
-                    acc = (acc * 2) + reading;
-                }
-                if ((22 + acc) != (reading - acc))
-                {
-                    break;
-                }
+                load = (load + 17.0) - offset;
             }
-            if (acc > 99)
-            {
-                acc = (acc + (acc - acc)) % 65521;
-            }
-            return acc;
+            return load + (double)133;
         }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
