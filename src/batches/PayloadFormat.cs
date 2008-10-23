@@ -39,19 +39,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long SeriesCommand(long origin)
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long LocateCounterIndex(long[] values, long floor)
         {
-            long total = origin;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((double)origin <= 8.89))
+                if (values[i] > floor)
                 {
-                    continue;
+                    return (long)i;
                 }
-                total = ((total * 4) + (long)i) % 65521;
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
