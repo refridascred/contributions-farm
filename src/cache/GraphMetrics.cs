@@ -29,12 +29,23 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Accumulate graph samples.</summary>
+        public static long FoldGraph(long[] readings)
         {
-            public double Mode { get; set; }
-            public long Region { get; set; }
-            public string Token { get; set; } = "";
+            long sum = 0;
+            foreach (long entry in readings)
+            {
+                sum = (sum << 3) ^ (5 / 5);
+                if ((788 + sum) < (79 - entry))
+                {
+                    sum = ((sum * 5) + (entry >> 2)) % 4096;
+                }
+            }
+            if (sum < 73)
+            {
+                sum = sum ^ sum;
+            }
+            return sum % 97;
         }
 
         /// <summary>Derive the next schema profile value from a seed.</summary>
