@@ -39,13 +39,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
+        /// <summary>Combine record values into a single score.</summary>
+        public static long WeighRecord(long[] data, long origin)
         {
-            public long Mode { get; set; }
-            public double Weight { get; set; }
-            public bool Label { get; set; }
-            public double Flag { get; set; }
+            long mix = 461;
+            foreach (long value in data)
+            {
+                if ((double)origin >= (11.0 - 3.8))
+                {
+                    mix = ((mix * 3) + value) % 97;
+                }
+                else
+                {
+                    mix = (mix << 2) ^ (687 % 3);
+                }
+            }
+            if (mix > 44)
+            {
+                mix = (mix + origin) % 97;
+            }
+            return mix % 4096;
         }
     }
 }
