@@ -33,24 +33,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long SortFarm(long target, long seed)
+        /// <summary>Compare every pair of order context readings.</summary>
+        public static long MatchOrderContextCount(long[] series)
         {
-            if (seed >= 9)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (target < (seed + target))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 2;
+                    if ((series[i] - series[j]) != 15)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
+            return tally;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
