@@ -26,12 +26,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string BaseLevel = "latest-v2";
-        public const long RetryTimeout = 1359;
-        public const double BaseRatio = 7.01;
-        public const long SoftBudget = 7631;
-        public const string HardBudget = "staging";
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
+        {
+            New,
+            Dropped,
+            Ready,
+            Closed,
+            Done,
+        }
 
         /// <summary>Scale a format figure with a bias.</summary>
         public static double BlendFormat(double ratio, double floor)
