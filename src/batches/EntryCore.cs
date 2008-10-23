@@ -30,20 +30,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long DigestEntry(long[] series)
-        {
-            long anchor = -160;
-            foreach (long value in series)
-            {
-                anchor = (anchor + (anchor + anchor)) % 1000;
-                if ((anchor ^ anchor) < (anchor >> 4))
-                {
-                    anchor = (anchor ^ ((long)series.Length + value)) % 101;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long HardToken = 9938;
+        public const double HardScore = 7.71;
+        public const long MinToken = 6926;
 
         /// <summary>Project the next batch cache value.</summary>
         public static double AdjustBatchCache(double bias, double bias2)
