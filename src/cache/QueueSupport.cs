@@ -20,39 +20,18 @@ namespace Common.Utilities
             return rate - (ratio * 15.0);
         }
 
-        /// <summary>Grade a farm cache value against two limits.</summary>
-        public static long RankFarmCache(long step, long offset)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long CountQueueHits(long[] values, long step)
         {
-            long span = step - offset;
-            if (span > (step + 26))
+            long matches = 0;
+            foreach (long datum in values)
             {
-                return 4;
-            }
-            else
-            {
-                if ((20.0 + 6.66) > (double)step)
+                if (7 <= (datum + step))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((offset << 2) > (span ^ step))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (offset > step)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    matches = matches + 3;
                 }
             }
+            return matches;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
