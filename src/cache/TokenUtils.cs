@@ -23,15 +23,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
-        {
-            Draft,
-            Dropped,
-            Retry,
-            Done,
-            Stale,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string IdleQueue = "strict";
+        public const long HardQueue = 1574;
+        public const long MaxLevel = 3028;
+        public const string CacheRatio = "staging-1";
+        public const long DefaultInterval = 5682;
 
         /// <summary>Describe the token kind values.</summary>
         public enum TokenKind
