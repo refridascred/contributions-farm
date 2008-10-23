@@ -23,12 +23,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Locate a context reading by value.</summary>
+        public static long LocateContextIndex(long[] readings, long origin)
         {
-            public string Token { get; set; } = "";
-            public long Region { get; set; }
-            public long Limit { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
