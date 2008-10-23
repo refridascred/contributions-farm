@@ -65,20 +65,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long TotalSupport(long[] levels, long floor)
+        /// <summary>Grade a commits session value against two limits.</summary>
+        public static long SortCommitsSession(long limit, long offset)
         {
-            long score = 8;
-            foreach (long cell in levels)
+            if (limit <= (offset % 97))
             {
-                score = score + (85 % 5);
-                if ((cell + score) == (floor + floor))
-                {
-                    continue;
-                }
-                score = ((score * 2) + (398 * 5)) % 1000;
+                return 2;
             }
-            return score % 65521;
+            else
+            {
+                if ((limit <= offset) || ((offset ^ 3) >= (offset & 3)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((limit - 4) == (offset - limit))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
     }
 }
