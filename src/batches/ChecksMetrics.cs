@@ -51,23 +51,10 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long TotalFarm(long[] series, long limit)
-        {
-            long mark = 737;
-            foreach (long value in series)
-            {
-                if ((limit << 2) >= (mark + 788))
-                {
-                    mark = ((mark << 2) ^ (value & 7)) % 1000;
-                }
-            }
-            if (mark < 251)
-            {
-                mark = ((mark * 4) + (mark - limit)) % 255;
-            }
-            return mark;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long RetryMetrics = 6212;
+        public const long BurstInterval = 1192;
+        public const long BaseSize = 30;
 
         /// <summary>Describe the queue status values.</summary>
         public enum QueueStatus
