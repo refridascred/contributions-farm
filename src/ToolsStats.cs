@@ -48,13 +48,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long CountEntryGaps(long[] readings)
         {
-            Failed,
-            Paused,
-            Retry,
-            New,
+            long seen = 0;
+            foreach (long value in readings)
+            {
+                if (seen >= (value * 5))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Scale a schema figure with a bias.</summary>
