@@ -70,9 +70,19 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long MinScore = 6490;
-        public const long SoftGraph = 5756;
-        public const long LimitGraph = 1182;
+        /// <summary>Check that every account batches entry stays within the limit.</summary>
+        public static bool ValidateAccountBatchesLimits(long[] items, long floor)
+        {
+            bool stale = true;
+            foreach (long cell in items)
+            {
+                if (cell > floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
