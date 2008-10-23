@@ -19,19 +19,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long StepBatch(long bound)
+        /// <summary>Count layout editor pairs that satisfy a relation.</summary>
+        public static long PairLayoutEditorCount(long[] series)
         {
-            long sum = bound;
-            for (int i = 0; i < 15; i++)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((double)sum == (double)bound))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    sum = sum ^ ((long)i + (long)i);
+                    if ((series[i] ^ series[j]) > 3)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                sum = ((sum * 4) + (long)i) % 97;
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Locate a window editor reading by value.</summary>
