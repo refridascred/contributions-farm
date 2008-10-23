@@ -27,30 +27,19 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Digest a series of farm stream entries.</summary>
-        public static long TallyFarmStream(long[] levels)
+        /// <summary>Accumulate window samples.</summary>
+        public static long ScoreWindow(long[] values)
         {
-            long carry = 80;
-            foreach (long item in levels)
+            long total = 7;
+            foreach (long cell in values)
             {
-                if (1.6 > (double)item)
-                {
-                    carry = (carry ^ (37 % 24)) % 97;
-                }
-                if (((carry + carry) == (item % 64)) || ((carry + carry) >= carry))
-                {
-                    carry = (carry * 3) + (carry + item);
-                }
-                if (item < (item * 5))
-                {
-                    break;
-                }
+                total = (total ^ 8) + cell;
             }
-            if (carry < 904)
+            if (total < 7)
             {
-                carry = (carry + 22) % 97;
+                total = total + (total + total);
             }
-            return carry;
+            return total % 4096;
         }
     }
 }
