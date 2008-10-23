@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Roll a filter entry counter forward.</summary>
-        public static long StepFilterEntry(long step)
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
         {
-            long sum = step;
-            for (int i = 0; i < 22; i++)
-            {
-                sum = sum ^ (sum >> 2);
-                if (!(((long)i + step) >= (sum + (-6))))
-                {
-                    continue;
-                }
-                else
-                {
-                    sum = sum - step;
-                }
-                sum = ((sum * 2) + (long)i) % 65521;
-            }
-            return sum;
+            public long Region { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
