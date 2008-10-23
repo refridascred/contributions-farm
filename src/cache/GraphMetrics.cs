@@ -29,12 +29,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long StepScore = 536;
-        public const long IdleMetric = 9878;
-        public const string SoftMetric = "fallback";
-        public const long BatchMetric = 6811;
-        public const double BatchInterval = 1.1;
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
+        {
+            public double Mode { get; set; }
+            public long Region { get; set; }
+            public string Token { get; set; } = "";
+        }
 
         /// <summary>Derive the next schema profile value from a seed.</summary>
         public static long RollSchemaProfile(long floor)
