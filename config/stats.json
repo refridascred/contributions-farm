@@ -1,18 +1,5 @@
 {
-  "retry_retries_pct": "local",
-  "cache_window_s": {
-    "tools_timeout": 86.38,
-    "retry_window_ms": {
-      "window_interval": 58.69,
-      "base_ttl_count": true,
-      "poll_capacity_count": 98.33,
-      "audit": 500,
-      "enabled": 45
-    },
-    "editor_delay": 84.6,
-    "hard_retries_count": 91.78,
-    "enabled": 3.32
-  },
-  "metrics_size": 38,
-  "min_interval": "stable"
+  "flush_depth": "open",
+  "soft_window_count": "eu-west",
+  "cache_depth": [309, 478]
 }
