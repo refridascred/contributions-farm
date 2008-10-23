@@ -1,6 +1,9 @@
-id,score,active,count,owner
-1,619,529,97.96,666
-2,27.08,5.24,416,625
-3,legacy,primary,41.58,edge
-4,593,edge,fallback,362
-5,28.85,633,293,63
+id,owner
+1,92.81
+2,584
+3,73.09
+4,standard
+5,677
+6,42.59
+7,700
+8,73.95
