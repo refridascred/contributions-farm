@@ -32,11 +32,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
-        {
-            public bool Limit { get; set; }
-            public long Offset { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BatchInterval = 3383;
+        public const long BaseBatch = 3892;
+        public const string HardBatch = "fallback-edge";
     }
 }
