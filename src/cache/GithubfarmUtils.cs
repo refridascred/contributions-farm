@@ -58,17 +58,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a report format sample.</summary>
-        public static long SeekReportFormatIndex(long[] values, long limit)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long SoftFactor = 4543;
+        public const long BatchScore = 9684;
+        public const string BatchChannel = "alpha";
     }
 }
