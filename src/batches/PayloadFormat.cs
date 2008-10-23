@@ -53,19 +53,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate order schema readings against a bound.</summary>
-        public static bool CheckOrderSchemaBounds(long[] levels, long target)
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            bool flag = true;
-            foreach (long reading in levels)
-            {
-                if (reading >= target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Closed,
+            Retry,
+            New,
+            Pending,
         }
     }
 }
