@@ -1,7 +1,6 @@
 {
-  "dry_run": true,
-  "burst_interval": 11.28,
-  "commits_limit": "local",
-  "strict": "open",
-  "poll_interval_pct": 1024
+  "counter_interval": "cached",
+  "batch_window_count": 500,
+  "default_timeout": 22.54,
+  "idle_timeout": 250
 }
