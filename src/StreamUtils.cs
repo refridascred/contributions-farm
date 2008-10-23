@@ -22,10 +22,12 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string MinStats = "cached-v2";
-        public const long LimitBudget = 9809;
-        public const long StepScore = 3567;
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
+        {
+            public long Level { get; set; }
+            public long Owner { get; set; }
+        }
 
         /// <summary>Hold a cache record.</summary>
         public sealed class CacheRecord
