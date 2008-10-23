@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long LookupGraphIndex(long[] readings, long floor)
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] <= floor) && ((readings[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Paused,
+            New,
+            Idle,
+            Retry,
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
