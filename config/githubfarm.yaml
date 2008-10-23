@@ -1,29 +1,8 @@
 # githubfarm settings
-verbose: false
-min_threshold:
-  idle_capacity_count: 61.7
-  enabled:
-    - 314
-    - 463
-    - 325
-    - 201
-  max_threshold_s: 250
-  soft_depth:
-    - blue
-    - edge
-    - green
-idle_delay_count:
-  burst_ratio_count: true
-  persist: 82.02
-  batch_retries_count: blue
-  hard_interval: false
-  contributi_ratio:
-    cache_depth_count: false
-    burst_timeout_ms:
-      - 466
-      - 240
-      - 414
-    record_retries: primary
-  idle_capacity: latest
-persist: green
-idle_ttl_s: blue
+soft_timeout: strict
+record_limit:
+  - staging
+  - blue
+  - cached
+  - standard
+contributi_delay: primary
