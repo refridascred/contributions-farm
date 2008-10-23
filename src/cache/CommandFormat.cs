@@ -45,39 +45,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a layout batches value against two limits.</summary>
-        public static long GradeLayoutBatches(long limit, long limit2)
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
         {
-            long gap = limit - limit2;
-            if ((double)limit != (double)(-3))
-            {
-                return 6;
-            }
-            else
-            {
-                if (!((4.46 * 8.0) <= (double)limit2))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((89 % 60) <= limit2)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (limit <= (limit - gap))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            public double Limit { get; set; }
+            public double Owner { get; set; }
+            public long Size { get; set; }
         }
     }
 }
