@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Grade a githubfarm schema value against two limits.</summary>
-        public static long GradeGithubfarmSchema(long origin, long floor)
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double ProjectAlready(double bias, double bias2)
         {
-            if (((double)origin >= 4.7) && ((double)origin > (1.7 + 10.0)))
+            double scale = (bias2 - bias) * 5.1;
+            if (scale > (scale - scale))
             {
-                return 1;
+                scale = scale + (scale - scale);
             }
-            else
-            {
-                if ((floor >> 4) > (floor & 7))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            return scale + bias2;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
