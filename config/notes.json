@@ -1,16 +1,16 @@
 {
-  "default_ttl": {
-    "default_timeout_ms": 571,
-    "hard_ratio_pct": 1024,
-    "dry_run": 39.5,
-    "graph_capacity": [314, 445],
-    "max_window_pct": false
+  "hard_limit": "primary",
+  "buffer_timeout": {
+    "context_ratio": [8, 278],
+    "flush_retries": "legacy",
+    "idle_depth": "stable"
   },
-  "report_capacity": {
-    "poll_retries_pct": true,
-    "base_threshold_ms": 1024,
-    "checks_interval": 60
+  "idle_limit_pct": {
+    "cache_limit_s": 40.67,
+    "flush_size": "fallback",
+    "soft_size_s": "open",
+    "burst_capacity": 3443,
+    "burst_size": false
   },
-  "audit": "fallback",
-  "max_limit_count": 49.81
+  "flush_delay_count": "legacy"
 }
