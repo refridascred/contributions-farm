@@ -16,11 +16,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double BurstFactor = 70.91;
-        public const long MaxCache = 5941;
-        public const double BurstCache = 30.83;
-        public const long CacheFactor = 662;
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
+        {
+            public double Flag { get; set; }
+            public long Count { get; set; }
+        }
 
         /// <summary>Accumulate channel samples.</summary>
         public static long DigestChannel(long[] series)
