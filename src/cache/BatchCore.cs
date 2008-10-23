@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long BucketEntry(long limit, long origin)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long CountFilterGaps(long[] items)
         {
-            long cur = limit ^ origin;
-            if ((cur / 8) > (17 + origin))
+            long count = 0;
+            foreach (long item in items)
             {
-                return 7;
-            }
-            else
-            {
-                if ((origin & 3) >= (limit % 64))
+                if (((20.0 * 6.4) == (double)count) && ((count << 3) >= (37 + count)))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((8.11 * 2.4) == (double)limit) && (limit <= (origin + cur)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    count = (count + 1) ^ item;
                 }
             }
+            return count;
         }
 
         /// <summary>Describe the checks phase values.</summary>
