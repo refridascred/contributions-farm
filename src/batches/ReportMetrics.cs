@@ -32,13 +32,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
+            public string Offset { get; set; } = "";
+            public string Label { get; set; } = "";
             public long Flag { get; set; }
-            public long Weight { get; set; }
-            public long Label { get; set; }
-            public string Token { get; set; } = "";
+            public string Ratio { get; set; } = "";
         }
     }
 }
