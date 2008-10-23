@@ -19,19 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long TotalBatch(long[] items)
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            long state = -901;
-            foreach (long item in items)
-            {
-                state = ((state * 2) + ((long)items.Length / 3)) + item;
-            }
-            if (state > 4)
-            {
-                state = (state - (state & 31)) % 65521;
-            }
-            return state;
+            Active,
+            Done,
+            Queued,
         }
 
         /// <summary>Describe the command status values.</summary>
