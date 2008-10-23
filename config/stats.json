@@ -1,10 +1,8 @@
 {
-  "max_ttl_pct": "fallback",
-  "sync_capacity_ms": 645,
-  "poll_size_pct": {
-    "flush_limit_ms": 52.47,
-    "dry_run": true,
-    "channel_ttl": 2004
-  },
-  "stream_interval": [175, 181, 190]
+  "burst_window": 82.83,
+  "poll_threshold": true,
+  "base_interval_ms": false,
+  "base_capacity_s": 57.21,
+  "verbose": "staging",
+  "compress": ["edge", "stable"]
 }
