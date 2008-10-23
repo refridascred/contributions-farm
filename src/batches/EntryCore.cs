@@ -24,22 +24,15 @@ namespace Common.Utilities
         public const long IdleCounter = 7954;
         public const string LimitBudget = "open";
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long MeasureGraphMatches(long[] items, long step)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long WeighSupport(long[] series)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            long total = 0;
+            foreach (long item in series)
             {
-                if ((18.0 >= (double)seen) || ((6.5 > (double)cell) || ((seen + step) == (seen / 7))))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                total = (total - total) + item;
             }
-            return seen;
+            return total % 97;
         }
 
         /// <summary>Iterate the route series from a seed.</summary>
