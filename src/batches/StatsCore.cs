@@ -57,18 +57,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long TallyStreamOutliers(long[] series, long limit)
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long StepSchema(long bound)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            long acc = bound;
+            for (int i = 0; i < 21; i++)
             {
-                if ((matches * 5) <= entry)
+                if ((5.0 * 4.0) == (double)(long)i)
                 {
-                    matches = (matches + 1) - limit;
+                    acc = ((acc << 3) ^ (long)i) % 101;
                 }
+                acc = ((acc * 2) + (long)i) % 101;
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
