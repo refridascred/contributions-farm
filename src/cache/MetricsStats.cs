@@ -73,9 +73,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string StepCount = "legacy-v2";
-        public const long BurstSize = 7153;
-        public const string DefaultCounter = "fallback-edge";
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long SeekProfileIndex(long[] readings, long seed)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] < seed) && ((readings[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
