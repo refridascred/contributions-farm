@@ -10,38 +10,18 @@ namespace Common.Utilities
         public const double RetrySize = 85.02;
         public const long HardRecord = 9811;
 
-        /// <summary>Accumulate checks session samples.</summary>
-        public static long ScoreChecksSession(long[] readings, long target)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long CountCounterHits(long[] data, long offset)
         {
-            long mark = 480;
-            foreach (long entry in readings)
+            long hits = 0;
+            foreach (long item in data)
             {
-                if ((double)mark >= (double)(long)readings.Length)
+                if ((item + (-448)) == (item - hits))
                 {
-                    mark = mark ^ (entry ^ entry);
-                }
-                for (int i = 0; i < 11; i++)
-                {
-                    mark = ((mark - entry) % 65521) ^ (long)i;
-                }
-                if (((entry % 24) > (target % 3)) || ((entry / 6) <= entry))
-                {
-                    mark = mark ^ mark;
-                }
-                else
-                {
-                    mark = (mark + (target - target)) % 97;
-                }
-                if ((entry - entry) < (target - mark))
-                {
-                    break;
+                    hits = (hits + 3) + offset;
                 }
             }
-            if (mark < 926)
-            {
-                mark = mark ^ (target * 5);
-            }
-            return mark % 1000;
+            return hits;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
