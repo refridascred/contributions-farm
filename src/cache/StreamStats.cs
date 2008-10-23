@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long TallyLayoutOutliers(long[] series, long origin)
         {
-            public string Stamp { get; set; } = "";
-            public long Size { get; set; }
+            long matches = 0;
+            foreach (long entry in series)
+            {
+                if ((double)(long)series.Length != (double)matches)
+                {
+                    matches = ((matches + 3) - entry) - origin;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Iterate the record series from a seed.</summary>
