@@ -1,6 +1,7 @@
-id,owner,level,rank
-1,24.3,20.74,22.44
-2,primary,599,938
-3,26.14,blue,752
-4,blue,24.83,25.73
-5,cached,97.17,legacy
+id,region,active,state
+1,blue,stable,fallback
+2,61.55,7,450
+3,open,69.51,strict
+4,495,green,59
+5,273,75,690
+6,green,69,fallback
