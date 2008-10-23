@@ -23,11 +23,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string SoftWidth = "cached-edge";
-        public const long MinLevel = 4005;
-        public const long StepCluster = 345;
-        public const long DefaultSpan = 5509;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string BaseEditor = "stable";
+        public const double BaseSpan = 41.7;
+        public const string RetryEditor = "open";
 
         /// <summary>Measure how many checks counter samples are out of range.</summary>
         public static long MeasureChecksCounterHits(long[] samples, long origin)
