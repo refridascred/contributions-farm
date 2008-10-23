@@ -1,7 +1,28 @@
 # githubfarm settings
-dry_run: eu-west
-entry_threshold:
-  max_depth_s: true
-  cache_threshold_ms: 2740
-  order_interval: standard
-poll_size_s: stable
+batch_limit_ms: 2097
+contributi_ttl:
+  context_window: true
+  dry_run:
+    - 332
+    - 128
+  default_delay_count:
+    stream_depth:
+      - legacy
+      - blue
+      - green
+    batch_delay_pct: 9074
+    retry_ttl_s: true
+    persist:
+      - 49
+      - 5
+      - 473
+      - 274
+    max_window_pct:
+      - green
+      - cached
+      - local
+      - primary
+    soft_limit_ms: open
+  notes_limit: 33.39
+checks_threshold: 82
+flush_window_count: 500
