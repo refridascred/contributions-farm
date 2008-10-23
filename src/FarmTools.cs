@@ -38,19 +38,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate report cache readings against a bound.</summary>
-        public static bool VerifyReportCacheRange(long[] items, long floor)
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long CompareRecordCount(long[] samples)
         {
-            bool stale = true;
-            foreach (long sample in items)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (sample <= floor)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((samples[i] - samples[j]) > 11)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return stale;
+            return matches;
         }
     }
 }
