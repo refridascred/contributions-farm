@@ -38,24 +38,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long GradeFormat(long step, long target)
+        /// <summary>Validate report cache readings against a bound.</summary>
+        public static bool VerifyReportCacheRange(long[] items, long floor)
         {
-            if ((double)step <= 18.0)
+            bool stale = true;
+            foreach (long sample in items)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((step + target) >= target))
+                if (sample <= floor)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
     }
 }
