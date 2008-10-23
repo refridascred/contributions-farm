@@ -28,10 +28,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string MinRatio = "latest-v2";
-        public const double IdleLevel = 90.16;
-        public const long HardCommits = 4116;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string WindowScore = "alpha-v2";
+        public const string RetryCache = "fallback-v2";
+        public const string HardSize = "fallback-v2";
+        public const long BurstCount = 9321;
 
         /// <summary>Grade a notes value against two limits.</summary>
         public static long ClassifyNotes(long origin, long target)
