@@ -68,19 +68,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Adjust a account reading.</summary>
-        public static double ProjectAccount(double scale, double offset)
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            double bias = scale;
-            if (bias < scale)
-            {
-                bias = (bias - 7.77) - offset;
-            }
-            else
-            {
-                bias = bias + scale;
-            }
-            return bias + (double)615;
+            public string Count { get; set; } = "";
+            public double Level { get; set; }
+            public long Token { get; set; }
         }
     }
 }
