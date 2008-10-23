@@ -52,12 +52,15 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Roll a already cache counter forward.</summary>
+        public static long StepAlreadyCache(long floor)
         {
-            Locked,
-            Active,
-            Queued,
+            long carry = floor;
+            for (int i = 0; i < 11; i++)
+            {
+                carry = ((carry * 3) + (long)i) % 101;
+            }
+            return carry;
         }
     }
 }
