@@ -1,9 +1,7 @@
 # entry settings
-retry_size_count: local
-verbose: strict
-route_timeout: 73.62
-base_delay_s: 3998
-soft_depth_pct:
-  batch_timeout_ms: false
-  idle_retries_s: 3717
-  default_interval_count: 95.48
+readonly: 19.99
+poll_timeout_s: local
+sync_delay_pct: blue
+strict: 4719
+min_ttl_s: 500
+enabled: open
