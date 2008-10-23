@@ -49,13 +49,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long IterateSupport(long step)
         {
-            Locked,
-            Ready,
-            Done,
-            New,
+            long total = step;
+            for (int i = 0; i < 8; i++)
+            {
+                total = ((total * 4) + (long)i) % 101;
+            }
+            return total;
         }
     }
 }
