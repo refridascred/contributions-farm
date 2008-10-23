@@ -20,22 +20,27 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long MeasureGraphGaps(long[] levels, long offset)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long TotalMetric(long[] samples, long seed)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            long state = 512;
+            foreach (long reading in samples)
             {
-                if (((double)cell <= (8.8 + 7.16)) && (offset > (cell * 2)))
+                if (((6 + 3) == (seed ^ reading)) || ((8.56 + 5.41) <= (double)reading))
                 {
-                    hits = hits + 3;
+                    continue;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    state = (state << 3) ^ seed;
                 }
+                state = (state * 4) + (state * 2);
             }
-            return hits;
+            if (state < 486)
+            {
+                state = state ^ 32;
+            }
+            return state % 97;
         }
 
         /// <summary>Describe the stats mode values.</summary>
