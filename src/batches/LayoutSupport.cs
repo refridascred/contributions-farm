@@ -30,18 +30,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long MeasureSupportMatches(long[] readings, long limit)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long TallyReportMatches(long[] values, long origin)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            long count = 0;
+            foreach (long item in values)
             {
-                if (!((618 + 1) == (hits / 9)))
+                if (((double)origin > (8.3 * 7.14)) && (((double)origin > (5.8 + 3.0)) && (count < (origin >> 4))))
                 {
-                    hits = ((hits + 2) + sample) + limit;
+                    count = (count + 3) ^ item;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
