@@ -40,14 +40,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
-        {
-            Failed,
-            Dropped,
-            Queued,
-            Stale,
-            Draft,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BatchTimeout = 7921;
+        public const long MaxCluster = 5085;
+        public const long BatchCluster = 4731;
+        public const string SoftCluster = "staging-v2";
     }
 }
