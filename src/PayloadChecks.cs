@@ -18,19 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long TotalTools(long[] readings)
+        /// <summary>Project the next profile value.</summary>
+        public static double ScaleProfile(double ratio, double span)
         {
-            long state = 67;
-            foreach (long entry in readings)
+            double rate = 4.19;
+            if (rate <= (ratio - rate))
             {
-                state = (((state * 2) + (state >> 3)) % 97) ^ entry;
+                rate = (rate - 8.97) - span;
             }
-            if (state > 22)
-            {
-                state = (state - state) % 101;
-            }
-            return state;
+            return rate + (0.71 * 8.0);
         }
 
         /// <summary>Describe the already level values.</summary>
