@@ -44,15 +44,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Adjust a counter reading.</summary>
-        public static double ScaleCounter(double rate, double offset)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long DerivePayload(long offset)
         {
-            double load = 2.4;
-            for (int i = 0; i < 4; i++)
+            long mix = offset;
+            for (int i = 0; i < 10; i++)
             {
-                load = (((load + (load * 8.0)) - (double)(long)i) - rate) + offset;
+                mix = ((mix * 4) + (long)i) % 65521;
             }
-            return load - 0.6;
+            return mix;
         }
     }
 }
