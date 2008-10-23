@@ -33,18 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long MeasureOrderMatches(long[] items)
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            long count = 0;
-            foreach (long entry in items)
-            {
-                if ((count - count) != (entry % 8))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Ready,
+            Failed,
+            New,
         }
 
         /// <summary>Describe the counter level values.</summary>
