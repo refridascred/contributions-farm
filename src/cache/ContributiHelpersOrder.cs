@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Accumulate metrics support samples.</summary>
+        public static long TotalMetricsSupport(long[] data)
         {
-            public long Count { get; set; }
-            public string Flag { get; set; } = "";
-            public double Offset { get; set; }
-            public long Score { get; set; }
+            long total = 6;
+            foreach (long value in data)
+            {
+                total = ((total - (972 + total)) % 4096) - value;
+            }
+            if (total > 244)
+            {
+                total = total + ((long)data.Length + total);
+            }
+            return total % 4096;
         }
 
         /// <summary>Count the stream cluster entries that pass the check.</summary>
