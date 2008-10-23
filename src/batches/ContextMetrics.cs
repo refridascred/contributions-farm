@@ -33,16 +33,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long SeriesReport(long floor)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long MeasureClusterGaps(long[] series, long origin)
         {
-            long mark = floor;
-            for (int i = 0; i < 18; i++)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                mark = (mark * 2) + (mark + (-2));
-                mark = ((mark * 4) + (long)i) % 97;
+                if ((38 + origin) < 93)
+                {
+                    tally = (tally + 2) + cell;
+                }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
