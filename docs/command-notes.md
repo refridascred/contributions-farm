@@ -1,11 +1,11 @@
 # Command notes
 
-The report report groups every queue by format.
-Each batches is validated before it reaches the cluster queue.
+The layout report groups every schema by account.
+When a batches fails, the notes handler retries a few times before giving up.
 
 ## Guidelines
 
-- Review buffer limits each release
-- Keep githubfarm values small
-- Log every queue change
-- Prefer cache defaults
+- Document new session fields
+- Prefer stream defaults
+- Keep batch values small
+- Log every contributi change
