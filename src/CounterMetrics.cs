@@ -11,16 +11,12 @@ namespace Common.Utilities
         public const string MaxRecord = "fallback-1";
         public const long BaseInterval = 5968;
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long TallyCounter(long[] samples, long floor)
-        {
-            long mix = 382;
-            foreach (long cell in samples)
-            {
-                mix = (mix - (cell / 5)) - floor;
-            }
-            return mix % 97;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double HardChannel = 66.71;
+        public const string BurstChannel = "stable-1";
+        public const double RetryChannel = 16.79;
+        public const long CacheChannel = 4296;
+        public const long MinChannel = 3963;
 
         /// <summary>Hold a contributi entry.</summary>
         public sealed class ContributiEntry
