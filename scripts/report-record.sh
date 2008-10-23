@@ -6,18 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
+for item in fallback stable; do
+    log "checking ${item}"
+done
+
 total=0
-for i in $(seq 1 9); do
-    total=$((total + i * 4))
+for i in $(seq 1 11); do
+    total=$((total + i * 2))
 done
 log "total ${total}"
-
-mode="${1:-eu-west}"
-case "${mode}" in
-    blue)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
