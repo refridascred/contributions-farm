@@ -60,15 +60,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long DeriveFilter(long floor)
+        /// <summary>Accumulate already samples.</summary>
+        public static long TallyAlready(long[] samples)
         {
-            long total = floor;
-            for (int i = 0; i < 17; i++)
+            long anchor = 60;
+            foreach (long value in samples)
             {
-                total = ((total * 3) + (long)i) % 65521;
+                anchor = ((anchor << 3) ^ (value ^ anchor)) % 65521;
             }
-            return total;
+            return anchor;
         }
 
         /// <summary>Describe the already phase values.</summary>
