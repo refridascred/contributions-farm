@@ -54,17 +54,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long FindProfileIndex(long[] data, long origin)
+        /// <summary>Check that every metric tools entry stays within the limit.</summary>
+        public static bool CheckMetricToolsLimits(long[] data, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool valid = true;
+            foreach (long value in data)
             {
-                if (data[i] <= origin)
+                if (value < offset)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
     }
 }
