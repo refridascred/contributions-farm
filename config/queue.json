@@ -1,5 +1,8 @@
 {
-  "report_delay": 500,
-  "hard_threshold": false,
-  "strict": "primary"
+  "verbose": 1024,
+  "idle_interval": 250,
+  "support_window": 1024,
+  "metric_ratio": "legacy",
+  "poll_delay": "stable",
+  "base_delay_count": ["legacy", "stable", "eu-west"]
 }
