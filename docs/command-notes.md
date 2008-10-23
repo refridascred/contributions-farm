@@ -1,12 +1,15 @@
 # Command notes
 
-The metrics helpers are pure functions, so they are safe to call from any thread.
-When a checks fails, the batch handler retries a few times before giving up.
-Use session settings to tune how often graph data is refreshed.
+A batch that stays idle for too long is moved to the counter list.
+A githubfarm that stays idle for too long is moved to the account list.
+
+Run the editor check before changing any format limits.
+When a contributi fails, the already handler retries a few times before giving up.
+Keep command and queue names short and lowercase.
 
 ## Guidelines
 
-- Document new window fields
-- Validate payload input early
-- Prefer account defaults
-- Review cache limits each release
+- Review stream limits each release
+- Validate metrics input early
+- Document new route fields
+- Keep context values small
