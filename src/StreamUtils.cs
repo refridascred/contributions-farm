@@ -64,19 +64,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool GuardBatchBounds(long[] readings, long limit)
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            bool ok = true;
-            foreach (long sample in readings)
-            {
-                if (sample < limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public string Rank { get; set; } = "";
+            public long Offset { get; set; }
+            public long Mode { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Hold a window record.</summary>
