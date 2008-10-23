@@ -39,26 +39,10 @@ namespace Common.Utilities
         public const long DefaultInterval = 3761;
         public const double MinCommand = 33.28;
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long RankChecks(long floor, long target)
-        {
-            long offset = floor - target;
-            if ((1.2 - 9.9) < (double)target)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((9.9 + 17.0) != (double)offset)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BaseFilter = 4530;
+        public const long DefaultFilter = 7030;
+        public const long StepFilter = 8901;
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long DefaultEntry = 7477;
