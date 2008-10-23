@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Validate queue session readings against a bound.</summary>
-        public static bool ValidateQueueSessionLimits(long[] readings, long limit)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool GuardStatsRange(long[] series, long target)
         {
-            bool valid = true;
-            foreach (long item in readings)
+            bool flag = true;
+            foreach (long datum in series)
             {
-                if (item != limit)
+                if (datum != target)
                 {
-                    valid = false;
+                    flag = false;
                     break;
                 }
             }
-            return valid;
+            return flag;
         }
 
         /// <summary>Scale a token counter figure with a bias.</summary>
