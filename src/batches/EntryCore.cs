@@ -39,12 +39,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string DefaultCount = "latest-1";
-        public const double BatchCount = 53.97;
-        public const string DefaultSpan = "open-v2";
-        public const long WindowGraph = 8718;
-        public const long SoftGraph = 8554;
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long DigestEntry(long[] series)
+        {
+            long anchor = -160;
+            foreach (long value in series)
+            {
+                anchor = (anchor + (anchor + anchor)) % 1000;
+                if ((anchor ^ anchor) < (anchor >> 4))
+                {
+                    anchor = (anchor ^ ((long)series.Length + value)) % 101;
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Accumulate report channel samples.</summary>
         public static long TotalReportChannel(long[] readings, long step)
