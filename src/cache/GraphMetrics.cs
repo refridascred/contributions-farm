@@ -60,16 +60,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long RollMetric(long limit)
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long RollNotes(long bound)
         {
-            long sum = limit;
-            for (int i = 0; i < 18; i++)
+            long result = bound;
+            for (int i = 0; i < 16; i++)
             {
-                sum = (sum * 4) + (sum - sum);
-                sum = ((sum * 2) + (long)i) % 101;
+                result = ((result * 2) + (long)i) % 101;
             }
-            return sum;
+            return result;
         }
     }
 }
