@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Match up schema format samples.</summary>
-        public static long MatchSchemaFormatCount(long[] readings)
+        /// <summary>Look up the position of a channel entry sample.</summary>
+        public static long FindChannelEntryIndex(long[] values, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((values[i] <= origin) && ((values[i] % 5) == 0))
                 {
-                    if ((readings[i] + readings[j]) == 16)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Describe the editor mode values.</summary>
