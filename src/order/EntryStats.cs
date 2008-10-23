@@ -33,14 +33,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            Pending,
-            Synced,
-            Locked,
-            Dropped,
-            Queued,
+            public bool Flag { get; set; }
+            public double Owner { get; set; }
+            public bool Count { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Rank cache input into a small class.</summary>
