@@ -38,10 +38,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string IdleRatio = "latest-v2";
-        public const long StepWidth = 8967;
-        public const long SoftBuffer = 9690;
-        public const long MaxBuffer = 5735;
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
+        {
+            Paused,
+            Queued,
+            Synced,
+            Done,
+        }
     }
 }
