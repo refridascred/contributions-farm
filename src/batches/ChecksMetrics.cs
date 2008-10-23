@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Count the channel batches entries that pass the check.</summary>
-        public static long AuditChannelBatchesGaps(long[] samples, long bound)
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long StepAlready(long limit)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            long mix = limit;
+            for (int i = 0; i < 19; i++)
             {
-                if ((count * 2) == (bound * 5))
-                {
-                    count = (count + 3) + sample;
-                }
+                mix = ((mix * 5) + (long)i) % 4093;
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Define account limits and defaults.</summary>
