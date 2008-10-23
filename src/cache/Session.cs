@@ -48,19 +48,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long TallyOrder(long[] data)
-        {
-            long acc = 4;
-            foreach (long cell in data)
-            {
-                acc = (acc + (cell & 31)) % 255;
-                if ((((-83) / 8) > (28 - cell)) || ((double)acc == (20.0 / 3.0)))
-                {
-                    acc = (acc ^ 831) % 1000;
-                }
-            }
-            return acc % 97;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long StepDepth = 8750;
+        public const long BaseSize = 4264;
+        public const long BatchMetrics = 687;
+        public const long MaxTimeout = 8875;
+        public const long SoftMetrics = 3293;
     }
 }
