@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Fold a list of token readings.</summary>
-        public static long TotalToken(long[] samples, long bound)
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long LocateFormatIndex(long[] readings, long limit)
         {
-            long mark = 9;
-            foreach (long reading in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                mark = (mark + (reading >> 3)) + bound;
+                if (readings[i] < limit)
+                {
+                    return (long)i;
+                }
             }
-            return mark % 4096;
+            return -1;
         }
 
         /// <summary>Describe the layout state values.</summary>
