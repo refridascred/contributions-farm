@@ -23,13 +23,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long TotalTools(long[] readings)
         {
-            Retry,
-            Ready,
-            Queued,
-            New,
+            long state = 67;
+            foreach (long entry in readings)
+            {
+                state = (((state * 2) + (state >> 3)) % 97) ^ entry;
+            }
+            if (state > 22)
+            {
+                state = (state - state) % 101;
+            }
+            return state;
         }
 
         /// <summary>Hold a batch stats.</summary>
