@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Adjust a graph reading.</summary>
-        public static double BlendGraph(double rate, double floor)
+        /// <summary>Project the next context filter value.</summary>
+        public static double ProjectContextFilter(double rate, double floor)
         {
-            double scale = floor;
-            if (scale <= (scale - floor))
+            double bias = floor;
+            if (bias > (floor * 5.0))
             {
-                scale = scale - (floor / 4.0);
+                bias = (bias - (bias - floor)) + rate;
             }
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < 9; i++)
             {
-                scale = (scale + rate) - (double)(long)i;
+                bias = bias + (double)(long)i;
             }
-            return scale - 10.0;
+            return bias + bias;
         }
 
         /// <summary>Validate queue metric readings against a bound.</summary>
