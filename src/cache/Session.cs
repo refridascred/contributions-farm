@@ -36,18 +36,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long AuditEntryGaps(long[] data)
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            long count = 0;
-            foreach (long sample in data)
-            {
-                if (((long)data.Length * 3) <= (sample % 10))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public long Mode { get; set; }
+            public bool Label { get; set; }
+            public double Count { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Measure how many stream notes samples are out of range.</summary>
