@@ -38,15 +38,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next tools editor value from a seed.</summary>
-        public static long RollToolsEditor(long limit)
-        {
-            long acc = limit;
-            for (int i = 0; i < 19; i++)
-            {
-                acc = ((acc * 4) + (long)i) % 1000;
-            }
-            return acc;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string IdleRatio = "latest-v2";
+        public const long StepWidth = 8967;
+        public const long SoftBuffer = 9690;
+        public const long MaxBuffer = 5735;
     }
 }
