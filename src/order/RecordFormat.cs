@@ -39,16 +39,24 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate cluster context samples.</summary>
-        public static long TallyClusterContext(long[] data, long offset)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long BucketTools(long step, long bound)
         {
-            long mark = 9;
-            foreach (long value in data)
+            if (((bound / 7) <= (bound + bound)) || ((step + step) <= (step - 84)))
             {
-                mark = (mark - (offset + mark)) - value;
-                mark = ((mark << 3) ^ (mark - offset)) % 4096;
+                return 4;
             }
-            return mark;
+            else
+            {
+                if (((double)step >= (3.27 / 7.0)) && (step >= 935))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Find the first support entry that matches the target.</summary>
