@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BaseInterval = 5282;
-        public const double DefaultFarm = 50.43;
-        public const double BaseFarm = 85.65;
-        public const long CacheRatio = 9682;
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
+        {
+            Active,
+            Synced,
+            New,
+            Queued,
+        }
 
         /// <summary>Look up the position of a counter channel sample.</summary>
         public static long LocateCounterChannelIndex(long[] items, long limit)
