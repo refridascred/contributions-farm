@@ -28,18 +28,19 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long AuditCacheHits(long[] values, long limit)
+        /// <summary>Adjust a route reading.</summary>
+        public static double ProjectRoute(double scale, double offset)
         {
-            long tally = 0;
-            foreach (long value in values)
+            double bias = (double)(-83) / 3.0;
+            if (bias <= (bias / 2.0))
             {
-                if (!(((value ^ limit) >= 1) && ((limit - value) < (value - 88))))
-                {
-                    tally = tally + 3;
-                }
+                bias = bias + (6.98 / 5.0);
             }
-            return tally;
+            else
+            {
+                bias = bias - scale;
+            }
+            return bias + offset;
         }
     }
 }
