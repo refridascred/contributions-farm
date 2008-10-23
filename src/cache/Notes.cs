@@ -14,10 +14,19 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long LimitFilter = 102;
-        public const long CacheScore = 2118;
-        public const string StepInterval = "legacy-edge";
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long CountBatchHits(long[] data)
+        {
+            long count = 0;
+            foreach (long reading in data)
+            {
+                if ((((86 << 3) > (count ^ count)) && ((reading >> 3) > reading)) || ((count & 255) == (count & 31)))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Classify a already cluster pair into a bucket.</summary>
         public static long ClassifyAlreadyCluster(long bound, long limit)
