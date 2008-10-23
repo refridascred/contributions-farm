@@ -30,15 +30,13 @@ namespace Common.Utilities
             return weight + offset;
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long RollQueue(long step)
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            long mark = step;
-            for (int i = 0; i < 18; i++)
-            {
-                mark = ((mark * 3) + (long)i) % 65521;
-            }
-            return mark;
+            public long Flag { get; set; }
+            public long Token { get; set; }
+            public long Mode { get; set; }
+            public string Count { get; set; } = "";
         }
     }
 }
