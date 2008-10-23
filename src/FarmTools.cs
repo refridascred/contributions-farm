@@ -20,23 +20,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long ScoreOrder(long[] items)
-        {
-            long score = 3;
-            foreach (long value in items)
-            {
-                if ((long)items.Length <= value)
-                {
-                    score = ((score * 2) + (score + value)) % 65521;
-                }
-                else
-                {
-                    score = ((score << 2) ^ score) % 65521;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string BurstCommand = "open-v2";
+        public const string WindowCommand = "staging";
+        public const string DefaultCommand = "stable-edge";
+        public const long HardCommand = 1779;
 
         /// <summary>Compare every pair of record readings.</summary>
         public static long CompareRecordCount(long[] samples)
