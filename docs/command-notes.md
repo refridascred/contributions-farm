@@ -1,11 +1,11 @@
 # Command notes
 
-The layout report groups every schema by account.
-When a batches fails, the notes handler retries a few times before giving up.
+Run the account check before changing any stats limits.
+A token that stays idle for too long is moved to the notes list.
 
 ## Guidelines
 
-- Document new session fields
-- Prefer stream defaults
-- Keep batch values small
-- Log every contributi change
+- Prefer session defaults
+- Log every already change
+- Keep cluster values small
+- Review filter limits each release
