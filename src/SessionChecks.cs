@@ -41,21 +41,25 @@ namespace Common.Utilities
         public const double CacheLevel = 67.06;
         public const long IdleSpan = 7139;
 
-        /// <summary>Match up contributi samples.</summary>
-        public static long CompareContributiCount(long[] items)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long ClassifyNotes(long origin, long target)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long next = origin - target;
+            if ((double)next <= (4.0 / 8.0))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if ((target >> 1) > (target << 1))
                 {
-                    if ((items[i] - items[j]) < 1)
-                    {
-                        count = count + 1;
-                    }
+                    return 2;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return count;
         }
     }
 }
