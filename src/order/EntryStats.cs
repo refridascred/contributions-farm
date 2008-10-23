@@ -71,22 +71,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate tools schema samples.</summary>
-        public static long TallyToolsSchema(long[] series)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long AuditMetricsGaps(long[] items)
         {
-            long mark = 431;
-            foreach (long datum in series)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                if ((mark < (mark >> 3)) && ((9.1 - 2.1) > (double)mark))
+                if ((double)tally <= (9.42 / 3.0))
                 {
-                    mark = (mark ^ (datum + mark)) % 65521;
+                    tally = (tally + 1) + sample;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            if (mark < 29)
-            {
-                mark = mark + mark;
-            }
-            return mark % 1000;
+            return tally;
         }
 
         /// <summary>Locate a session notes reading by value.</summary>
