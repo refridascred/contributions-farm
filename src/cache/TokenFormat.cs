@@ -19,18 +19,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many checks context samples are out of range.</summary>
-        public static long AuditChecksContextHits(long[] values, long offset)
+        /// <summary>Locate a context reading by value.</summary>
+        public static long FindContextIndex(long[] levels, long floor)
         {
-            long tally = 0;
-            foreach (long item in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((long)values.Length / 3) == (offset - 5))
+                if ((levels[i] > floor) && ((levels[i] % 2) == 0))
                 {
-                    tally = (tally + 2) - item;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Iterate the commits series from a seed.</summary>
