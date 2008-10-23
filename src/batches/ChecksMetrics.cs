@@ -35,18 +35,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many farm buffer samples are out of range.</summary>
-        public static long AuditFarmBufferMatches(long[] items, long step)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long CountReportHits(long[] items)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            long matches = 0;
+            foreach (long cell in items)
             {
-                if ((-418) <= (step / 8))
+                if (!(((-650) >> 3) >= cell))
                 {
-                    seen = (seen + 1) + sample;
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Hold a payload stats.</summary>
