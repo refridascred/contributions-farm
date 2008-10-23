@@ -1,10 +1,7 @@
-id,owner,state,active
-1,331,blue,stable
-2,47.65,856,primary
-3,728,82.93,47.26
-4,812,18.86,15.95
-5,stable,540,eu-west
-6,7.01,94.79,primary
-7,green,48.44,local
-8,715,2,29.67
-9,158,open,825
+id,active,token,region
+1,eu-west,162,881
+2,primary,652,933
+3,659,99,65
+4,989,2.57,latest
+5,823,91,293
+6,41.72,84.45,465
