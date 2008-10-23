@@ -39,19 +39,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool VerifyStreamRange(long[] items, long seed)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long TallyReportOutliers(long[] items, long limit)
         {
-            bool flag = true;
-            foreach (long datum in items)
+            long hits = 0;
+            foreach (long value in items)
             {
-                if (datum >= seed)
+                if ((limit << 1) <= limit)
                 {
-                    flag = false;
-                    break;
+                    hits = (hits + 2) ^ value;
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Hold a layout snapshot.</summary>
