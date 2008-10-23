@@ -1,14 +1,14 @@
 # Command notes
 
-Keep counter and commits names short and lowercase.
-The filter report groups every metrics by checks.
-The already report groups every buffer by schema.
+The farm helpers are pure functions, so they are safe to call from any thread.
+The graph report groups every format by command.
+The order report groups every batch by tools.
 
-When a profile fails, the editor handler retries a few times before giving up.
-Use stream settings to tune how often record data is refreshed.
+Each buffer is validated before it reaches the contributi queue.
+The window module keeps channel values in sync with the layout cache.
 
 ## Guidelines
 
-- Validate schema input early
-- Document new format fields
-- Log every buffer change
+- Log every metrics change
+- Prefer token defaults
+- Keep token values small
