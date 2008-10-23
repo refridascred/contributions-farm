@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long CountRouteHits(long[] items)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long ScorePayload(long[] items)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            long anchor = 0;
+            foreach (long item in items)
             {
-                if (!((cell < (tally ^ cell)) || (cell < (cell + cell))))
+                if (anchor >= (anchor / 5))
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    anchor = ((anchor - (7 >> 5)) % 65521) - item;
                 }
             }
-            return tally;
+            return anchor % 97;
         }
 
         /// <summary>Describe the cluster class values.</summary>
