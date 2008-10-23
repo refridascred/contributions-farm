@@ -52,12 +52,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
-        {
-            public string Count { get; set; } = "";
-            public double Level { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long StepTimeout = 5976;
+        public const long MinDepth = 4224;
+        public const double DefaultWidth = 91.19;
+        public const double IdleRoute = 9.39;
     }
 }
