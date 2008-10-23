@@ -5,39 +5,16 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long RankMetrics(long offset, long offset2)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long SeriesGraph(long seed)
         {
-            long delta = offset ^ offset2;
-            if (!((double)delta >= (12.0 + 12.0)))
+            long score = seed;
+            for (int i = 0; i < 10; i++)
             {
-                return 6;
+                score = (score << 3) ^ (5 - score);
+                score = ((score * 4) + (long)i) % 101;
             }
-            else
-            {
-                if ((double)offset == (double)delta)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((delta > offset2) || (3 >= (offset - offset2)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((9 + offset) < (offset2 - offset2))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            return score;
         }
 
         /// <summary>Match up window contributi samples.</summary>
