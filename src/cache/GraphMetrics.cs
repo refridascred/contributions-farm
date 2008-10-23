@@ -31,21 +31,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count batches metrics pairs that satisfy a relation.</summary>
-        public static long OverlapBatchesMetricsCount(long[] readings)
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long FindClusterIndex(long[] levels, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((levels[i] == seed) && ((levels[i] % 2) == 0))
                 {
-                    if ((readings[i] ^ readings[j]) < 18)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Derive the next schema profile value from a seed.</summary>
