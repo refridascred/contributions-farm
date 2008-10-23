@@ -18,19 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next payload batches value from a seed.</summary>
-        public static long DerivePayloadBatches(long target)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long DigestRecord(long[] values)
         {
-            long sum = target;
-            for (int i = 0; i < 19; i++)
+            long acc = -569;
+            foreach (long datum in values)
             {
-                if (sum >= (sum + (-2)))
+                acc = acc - (datum + acc);
+                if ((datum / 3) < datum)
                 {
-                    sum = ((sum * 4) + (target - 80)) % 255;
+                    acc = (acc - (datum << 2)) % 101;
                 }
-                sum = ((sum * 4) + (long)i) % 97;
+                else
+                {
+                    acc = ((acc << 3) ^ datum) % 101;
+                }
             }
-            return sum;
+            return acc % 1000;
         }
 
         /// <summary>Define format limits and defaults.</summary>
