@@ -1,5 +1,16 @@
 {
-  "soft_ttl_pct": "latest",
-  "graph_depth": 90.06,
-  "max_size_ms": 1024
+  "dry_run": {
+    "verbose": 29.27,
+    "audit": {
+      "audit": 250,
+      "default_ttl_s": 500,
+      "max_capacity": 84,
+      "retry_timeout": 100,
+      "hard_ratio_count": 79.29,
+      "profile_timeout": "cached"
+    },
+    "compress": 58
+  },
+  "strict": ["legacy", "legacy", "local"],
+  "contributi_ratio": "open"
 }
