@@ -74,11 +74,9 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
-        {
-            public long Offset { get; set; }
-            public double Owner { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string WindowLevel = "fallback";
+        public const long RetryFactor = 2546;
+        public const long WindowTools = 3204;
     }
 }
