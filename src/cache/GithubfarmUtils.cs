@@ -28,13 +28,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
-        {
-            Synced,
-            Failed,
-            New,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long SoftDepth = 2138;
+        public const string RetryOrder = "open-v2";
+        public const string DefaultOrder = "local";
+        public const long LimitSize = 6768;
 
         /// <summary>Count the buffer entries that pass the check.</summary>
         public static long CountBufferOutliers(long[] data, long step)
