@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Find the first route context entry that matches the target.</summary>
-        public static long LocateRouteContextIndex(long[] data, long bound)
+        /// <summary>Audit layout contributi readings against a rule.</summary>
+        public static long CountLayoutContributiOutliers(long[] values, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                if (data[i] >= bound)
+                if ((double)seen >= (double)reading)
                 {
-                    return (long)i;
+                    seen = (seen + 3) - limit;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Match up stream samples.</summary>
