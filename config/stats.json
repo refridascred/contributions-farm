@@ -1,5 +1,5 @@
 {
-  "tools_limit": ["latest", "latest"],
-  "compress": "eu-west",
-  "metrics_size": false
+  "channel_delay": ["primary", "legacy"],
+  "readonly": 73.04,
+  "batch_timeout_pct": "local"
 }
