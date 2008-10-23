@@ -83,22 +83,34 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of profile cluster readings.</summary>
-        public static long FoldProfileCluster(long[] levels, long offset)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long FoldCounter(long[] readings)
         {
-            long mix = 960;
-            foreach (long datum in levels)
+            long carry = 98;
+            foreach (long item in readings)
             {
-                if (datum > 541)
+                if (!((565 - 7) != (item / 8)))
                 {
-                    mix = mix + (datum + offset);
+                    carry = (carry + (item ^ (long)readings.Length)) % 97;
+                }
+                if ((item >> 5) > (item + 43))
+                {
+                    carry = carry - item;
                 }
                 else
                 {
-                    mix = ((mix << 2) ^ (offset + offset)) % 4096;
+                    carry = (carry << 3) ^ (carry + carry);
+                }
+                if (((item - item) >= (683 % 2)) || ((item % 24) > 9))
+                {
+                    break;
                 }
             }
-            return mix % 97;
+            if (carry < 9)
+            {
+                carry = ((carry << 2) ^ (38 + carry)) % 65521;
+            }
+            return carry;
         }
     }
 }
