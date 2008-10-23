@@ -1,15 +1,5 @@
 # support settings
-burst_interval: 64.72
-farm_delay:
-  editor_delay: 100
-  cache_timeout: false
-  sync_limit_pct:
-    - 37
-    - 432
-    - 247
-    - 57
-soft_ratio_count:
-  - 119
-  - 101
-  - 168
-warm_depth_count: 3150
+max_limit: 6100
+poll_ttl_ms: 60
+idle_ratio: primary
+cache_ttl_ms: edge
