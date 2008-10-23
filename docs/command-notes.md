@@ -1,12 +1,14 @@
 # Command notes
 
-Keep queue and counter names short and lowercase.
-Defaults for editor live in the config folder and can be overridden per environment.
-Keep command and channel names short and lowercase.
+Each route is validated before it reaches the editor queue.
+Run the context check before changing any counter limits.
+Use queue settings to tune how often farm data is refreshed.
+
+A cluster that stays idle for too long is moved to the counter list.
+Use context settings to tune how often batches data is refreshed.
 
 ## Guidelines
 
-- Keep checks values small
-- Prefer cluster defaults
-- Document new graph fields
-- Review profile limits each release
+- Review batches limits each release
+- Prefer session defaults
+- Log every report change
