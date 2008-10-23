@@ -1,24 +1,15 @@
 # githubfarm settings
-hard_ttl_pct: 91.51
-poll_depth:
-  persist: false
-  min_retries: 53.0
-  readonly: false
-  max_ratio_ms: false
-  soft_ttl_count: standard
-buffer_capacity: false
-base_delay_ms:
-  batch_interval_count: false
-  metrics_delay: 4.39
-  githubfarm_timeout:
-    account_timeout: 48.78
-    min_size_count: true
-    min_retries_s: legacy
-    audit: 20
-    checks_ratio:
-      - blue
-      - fallback
-      - cached
-      - cached
-  poll_capacity_s: true
-schema_interval: 30
+stats_ttl: 7885
+compress:
+  min_timeout_pct: legacy
+  idle_depth_pct:
+    - eu-west
+    - legacy
+    - latest
+    - primary
+  retry_depth_count: 2651
+  layout_timeout: 19.68
+  verbose: 6056
+format_threshold: green
+token_delay: edge
+verbose: blue
