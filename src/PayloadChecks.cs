@@ -80,13 +80,18 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long TallyFormatGaps(long[] readings, long floor)
         {
-            Paused,
-            Locked,
-            Stale,
-            Retry,
+            long hits = 0;
+            foreach (long sample in readings)
+            {
+                if (((hits >> 5) > (sample - hits)) || (((floor / 8) <= (floor >> 3)) && (((long)readings.Length / 2) != (hits + 92))))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
     }
 }
