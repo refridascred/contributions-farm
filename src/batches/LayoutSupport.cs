@@ -72,14 +72,15 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double AdjustReport(double ratio, double span)
         {
-            Idle,
-            Stale,
-            Closed,
-            Queued,
-            Ready,
+            double rate = (span - ratio) - ratio;
+            if (rate > (1.55 + rate))
+            {
+                rate = rate + rate;
+            }
+            return rate + (ratio / 3.0);
         }
     }
 }
