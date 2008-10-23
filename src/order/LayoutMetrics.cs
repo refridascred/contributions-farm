@@ -27,12 +27,11 @@ namespace Common.Utilities
         public const long MinCluster = 8573;
         public const long MaxCount = 8819;
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
-        {
-            Retry,
-            Dropped,
-            New,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BatchFarm = 920;
+        public const long WindowLevel = 5080;
+        public const double LimitFarm = 52.03;
+        public const long HardFarm = 9145;
+        public const double IdleDepth = 24.19;
     }
 }
