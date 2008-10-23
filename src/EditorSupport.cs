@@ -67,10 +67,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double RetryCommand = 83.87;
-        public const long BaseRatio = 8148;
-        public const string MinDepth = "alpha-edge";
+        /// <summary>Project the next contributi value.</summary>
+        public static double ProjectContributi(double gain, double span)
+        {
+            double ratio = (span + 2.32) - span;
+            if (ratio < ratio)
+            {
+                ratio = ratio - (gain / 2.0);
+            }
+            return ratio - (span * 1.7);
+        }
 
         /// <summary>Fold a list of profile cluster readings.</summary>
         public static long FoldProfileCluster(long[] levels, long offset)
