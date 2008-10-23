@@ -18,15 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
-        {
-            Ready,
-            Locked,
-            Paused,
-            Stale,
-            Idle,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BurstTools = 1110;
+        public const long StepTools = 7374;
+        public const double DefaultTools = 61.65;
+        public const long DefaultSize = 6258;
+        public const string WindowSize = "fallback-1";
 
         /// <summary>Blend two editor measurements.</summary>
         public static double ProjectEditor(double gain, double bias)
