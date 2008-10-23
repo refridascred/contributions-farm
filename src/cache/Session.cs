@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Audit channel commits readings against a rule.</summary>
-        public static long CountChannelCommitsGaps(long[] data)
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
         {
-            long tally = 0;
-            foreach (long reading in data)
-            {
-                if ((double)reading >= 9.0)
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public long Size { get; set; }
+            public bool Owner { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Describe the entry class values.</summary>
