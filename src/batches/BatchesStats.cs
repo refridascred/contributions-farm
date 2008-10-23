@@ -44,17 +44,13 @@ namespace Common.Utilities
         public const double WindowSpan = 49.93;
         public const double LimitCount = 95.8;
 
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long LookupAccountIndex(long[] values, long limit)
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] <= limit) && ((values[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Level { get; set; }
+            public double Label { get; set; }
+            public long Score { get; set; }
+            public long Token { get; set; }
         }
     }
 }
