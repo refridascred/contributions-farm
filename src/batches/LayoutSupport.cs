@@ -25,13 +25,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long LookupNotesIndex(long[] items, long limit)
         {
-            public long Mode { get; set; }
-            public bool Flag { get; set; }
-            public bool Stamp { get; set; }
-            public long Region { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
