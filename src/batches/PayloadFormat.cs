@@ -53,13 +53,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
-        {
-            Closed,
-            Retry,
-            New,
-            Pending,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long SoftBatches = 5132;
+        public const long DefaultBudget = 5667;
+        public const long RetryCount = 7762;
+        public const long BatchSize = 1317;
     }
 }
