@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Grade a githubfarm schema value against two limits.</summary>
+        public static long GradeGithubfarmSchema(long origin, long floor)
         {
-            public bool Size { get; set; }
-            public string Rank { get; set; } = "";
+            if (((double)origin >= 4.7) && ((double)origin > (1.7 + 10.0)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((floor >> 4) > (floor & 7))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Define token limits and defaults.</summary>
