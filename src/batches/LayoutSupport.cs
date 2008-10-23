@@ -38,18 +38,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long TallyReportMatches(long[] values, long origin)
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            long count = 0;
-            foreach (long item in values)
-            {
-                if (((double)origin > (8.3 * 7.14)) && (((double)origin > (5.8 + 3.0)) && (count < (origin >> 4))))
-                {
-                    count = (count + 3) ^ item;
-                }
-            }
-            return count;
+            Failed,
+            Active,
+            Paused,
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
