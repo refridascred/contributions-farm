@@ -84,18 +84,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of graph counter readings.</summary>
-        public static long ScoreGraphCounter(long[] values)
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            long mix = -343;
-            foreach (long entry in values)
-            {
-                if (((-563) + mix) <= mix)
-                {
-                    mix = (mix - (mix ^ entry)) % 255;
-                }
-            }
-            return mix % 97;
+            Retry,
+            Failed,
+            Idle,
+            Queued,
+            Ready,
         }
     }
 }
