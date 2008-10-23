@@ -13,13 +13,25 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Grade a account layout value against two limits.</summary>
+        public static long ClassifyAccountLayout(long bound, long limit)
         {
-            public long Flag { get; set; }
-            public bool Size { get; set; }
-            public double Label { get; set; }
-            public double Count { get; set; }
+            long prev = bound ^ limit;
+            if ((limit ^ bound) >= (limit ^ limit))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((prev + limit) >= (bound ^ 770))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
