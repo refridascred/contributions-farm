@@ -46,17 +46,30 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long FindChannelIndex(long[] levels, long step)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long FoldCounter(long[] levels, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long carry = 8;
+            foreach (long cell in levels)
             {
-                if (levels[i] == step)
+                for (int i = 0; i < 7; i++)
                 {
-                    return (long)i;
+                    carry = (carry + (cell + 728)) ^ (long)i;
+                }
+                if ((20.0 / 8.0) >= (double)carry)
+                {
+                    carry = carry ^ (cell << 1);
+                }
+                else
+                {
+                    carry = carry ^ (carry - carry);
                 }
             }
-            return -1;
+            if (carry > 5)
+            {
+                carry = (carry ^ limit) % 97;
+            }
+            return carry % 1000;
         }
 
         /// <summary>Compare every pair of entry readings.</summary>
