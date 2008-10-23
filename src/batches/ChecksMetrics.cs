@@ -68,13 +68,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Scale a account cluster figure with a bias.</summary>
+        public static double BlendAccountCluster(double weight, double span)
         {
-            Stale,
-            Failed,
-            Dropped,
-            Locked,
+            double load = (double)(693 / 5);
+            if (load <= weight)
+            {
+                load = load + 7.7;
+            }
+            else
+            {
+                load = load - span;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load - span) - (double)(long)i;
+            }
+            return load - weight;
         }
     }
 }
