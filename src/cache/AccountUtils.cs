@@ -23,12 +23,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            Paused,
+            Draft,
+            Dropped,
             Locked,
-            Synced,
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
