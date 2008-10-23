@@ -12,18 +12,16 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long MeasureCounterGaps(long[] values, long seed)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long StepRecord(long origin)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            long result = origin;
+            for (int i = 0; i < 11; i++)
             {
-                if ((sample % 100) >= (seed ^ matches))
-                {
-                    matches = matches + 1;
-                }
+                result = ((result * 4) + origin) % 97;
+                result = ((result * 2) + (long)i) % 65521;
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Digest a series of queue entries.</summary>
