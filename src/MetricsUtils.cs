@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Validate session counter readings against a bound.</summary>
-        public static bool ValidateSessionCounterBounds(long[] series, long floor)
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            bool stale = true;
-            foreach (long sample in series)
-            {
-                if (sample != floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public string Total { get; set; } = "";
+            public double Offset { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Hold a batches header.</summary>
