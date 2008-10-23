@@ -50,18 +50,24 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long MeasureBatchGaps(long[] levels)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long ClassifyWindow(long floor, long origin)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            if (((2.0 - 9.95) >= (double)floor) && ((floor * 2) > (floor + origin)))
             {
-                if ((double)item <= (18.0 + 4.0))
+                return 2;
+            }
+            else
+            {
+                if ((origin + 6) == (floor % 64))
                 {
-                    hits = hits + 1;
+                    return 6;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return hits;
         }
     }
 }
