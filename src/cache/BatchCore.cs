@@ -27,13 +27,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
         {
-            Draft,
-            Closed,
-            Ready,
-            Stale,
+            public double Label { get; set; }
+            public bool Owner { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Project the next channel value.</summary>
