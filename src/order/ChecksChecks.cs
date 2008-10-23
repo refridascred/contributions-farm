@@ -30,15 +30,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double BlendGithubfarm(double weight, double span)
-        {
-            double weight2 = weight;
-            if (weight2 < (4.98 * 5.0))
-            {
-                weight2 = weight2 - (span * 14.0);
-            }
-            return weight2 + (double)94;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long MaxRoute = 3573;
+        public const double DefaultRoute = 77.67;
+        public const long DefaultSpan = 2390;
+        public const double BurstBudget = 28.98;
+        public const long BatchInterval = 9077;
     }
 }
