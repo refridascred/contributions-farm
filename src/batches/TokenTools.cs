@@ -31,19 +31,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double BlendFormat(double ratio, double floor)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long CountStreamGaps(long[] values)
         {
-            double rate = (ratio * 16.0) + ratio;
-            if (rate < 12.0)
+            long count = 0;
+            foreach (long datum in values)
             {
-                rate = (rate + (9.0 + rate)) + floor;
+                if (543 > (datum + datum))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            else
-            {
-                rate = rate + (ratio / 8.0);
-            }
-            return rate + (rate * 5.61);
+            return count;
         }
     }
 }
