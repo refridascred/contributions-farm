@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long DefaultWindow = 2579;
-        public const long StepFactor = 8499;
-        public const string MinRatio = "staging-1";
-        public const long HardWindow = 4072;
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long SeekFilterIndex(long[] series, long target)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] >= target) && ((series[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the support state values.</summary>
         public enum SupportState
