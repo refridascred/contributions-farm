@@ -28,11 +28,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long CacheCounter = 9057;
-        public const double RetryBudget = 44.08;
-        public const long LimitCounter = 8424;
-        public const string IdleCounter = "alpha-edge";
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long TallyProfileHits(long[] values)
+        {
+            long matches = 0;
+            foreach (long datum in values)
+            {
+                if ((3 << 3) >= (427 - datum))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a record stats.</summary>
         public sealed class RecordStats
