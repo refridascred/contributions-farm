@@ -1,15 +1,12 @@
 {
-  "base_depth_s": false,
-  "sync_timeout": 43.38,
-  "dry_run": {
-    "warm_depth_pct": 45,
-    "idle_timeout": {
-      "batch_size_ms": false,
-      "audit": 5293,
-      "warm_capacity": false,
-      "hard_ratio_ms": 27
-    },
-    "hard_window_s": 166
+  "warm_depth": 35.65,
+  "warm_window_ms": 9352,
+  "hard_depth_count": 39.6,
+  "enabled": true,
+  "default_capacity_s": {
+    "strict": 1024,
+    "idle_delay_s": 2537,
+    "burst_delay_ms": ["open", "standard", "eu-west", "edge"]
   },
-  "order_window": false
+  "context_ratio": "legacy"
 }
