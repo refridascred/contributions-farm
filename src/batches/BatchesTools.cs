@@ -34,18 +34,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many cache route samples are out of range.</summary>
-        public static long CountCacheRouteHits(long[] items)
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            long tally = 0;
-            foreach (long cell in items)
-            {
-                if ((tally << 2) >= (26 - (long)items.Length))
-                {
-                    tally = (tally + 3) + cell;
-                }
-            }
-            return tally;
+            Paused,
+            Dropped,
+            Queued,
+            Active,
         }
     }
 }
