@@ -1,7 +1,4 @@
 # entry settings
-enabled:
-  - latest
-  - local
-default_ttl: 97.25
-readonly: 98.86
-warm_capacity_count: 5639
+batch_ttl_ms: blue
+sync_retries: green
+readonly: edge
