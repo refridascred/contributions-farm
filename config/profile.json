@@ -1,7 +1,17 @@
 {
-  "cache_retries": 89,
-  "queue_delay": false,
-  "retry_timeout_ms": 3026,
-  "persist": [198, 471],
-  "flush_capacity_count": [400, 40, 407, 118]
+  "batch_retries_s": [169, 373],
+  "persist": {
+    "strict": 60,
+    "route_ttl": {
+      "max_capacity_count": 2667,
+      "poll_ttl": 3931,
+      "default_size_ms": 30
+    },
+    "stream_capacity": 60,
+    "poll_window": 250,
+    "report_window": [61, 131]
+  },
+  "compress": ["legacy", "open", "edge", "strict"],
+  "payload_threshold": "green",
+  "filter_threshold": true
 }
