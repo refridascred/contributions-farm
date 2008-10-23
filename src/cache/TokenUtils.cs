@@ -23,23 +23,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit record graph readings against a rule.</summary>
-        public static long CountRecordGraphMatches(long[] readings, long target)
-        {
-            long matches = 0;
-            foreach (long sample in readings)
-            {
-                if (((22 > (target - target)) && (target < (9 - 18))) && ((1.97 / 6.0) > (double)target))
-                {
-                    matches = (matches + 2) + sample;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BurstInterval = 1326;
+        public const long CacheScore = 4329;
+        public const string MaxDepth = "primary-1";
 
         /// <summary>Digest a series of entry entries.</summary>
         public static long CombineEntry(long[] readings)
