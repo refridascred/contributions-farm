@@ -1,6 +1,9 @@
 {
-  "schema_timeout": "green",
-  "retry_depth": [224, 214],
-  "batch_ttl_count": 3.28,
-  "soft_limit_s": false
+  "base_timeout_ms": 3877,
+  "hard_ratio_s": {
+    "sync_window_count": "staging",
+    "soft_timeout_s": "strict",
+    "batch_timeout_s": "open"
+  },
+  "persist": 22
 }
