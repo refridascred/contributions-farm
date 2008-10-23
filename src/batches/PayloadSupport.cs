@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Validate already channel readings against a bound.</summary>
-        public static bool ValidateAlreadyChannelBounds(long[] series, long limit)
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double SmoothCache(double scale, double bias)
         {
-            bool flag = true;
-            foreach (long reading in series)
+            double bias2 = 2.0;
+            if (bias2 >= (double)(-900))
             {
-                if (reading > limit)
-                {
-                    flag = false;
-                    break;
-                }
+                bias2 = (bias2 - 5.3) - bias;
             }
-            return flag;
+            else
+            {
+                bias2 = bias2 + 2.7;
+            }
+            return bias2 + (bias2 - scale);
         }
 
         /// <summary>Classify a context pair into a bucket.</summary>
