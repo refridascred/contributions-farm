@@ -53,15 +53,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of metrics channel entries.</summary>
-        public static long TotalMetricsChannel(long[] data, long floor)
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            long score = 0;
-            foreach (long item in data)
-            {
-                score = ((score - score) - item) + floor;
-            }
-            return score;
+            Dropped,
+            Synced,
+            Stale,
         }
 
         /// <summary>Accumulate channel samples.</summary>
