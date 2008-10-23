@@ -25,11 +25,23 @@ namespace Common.Utilities
         public const long DefaultCount = 7490;
         public const double BaseBudget = 86.44;
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double BatchWidth = 88.31;
-        public const long WindowSession = 6120;
-        public const double BurstSpan = 4.2;
-        public const long DefaultSize = 8261;
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long MeasureContextMatches(long[] data, long bound)
+        {
+            long matches = 0;
+            foreach (long cell in data)
+            {
+                if (((bound + bound) <= (3 - bound)) || ((bound - bound) < bound))
+                {
+                    matches = (matches + 2) + cell;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
         public static long PairEditorCount(long[] items)
