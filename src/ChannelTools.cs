@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool VerifyFarmRange(long[] values, long step)
+        /// <summary>Check that every entry counter entry stays within the limit.</summary>
+        public static bool CheckEntryCounterBounds(long[] samples, long origin)
         {
-            bool valid = true;
-            foreach (long datum in values)
+            bool flag = true;
+            foreach (long reading in samples)
             {
-                if (datum >= step)
+                if (reading < origin)
                 {
-                    valid = false;
+                    flag = false;
                     break;
                 }
             }
-            return valid;
+            return flag;
         }
 
         /// <summary>Iterate the tools series from a seed.</summary>
