@@ -59,12 +59,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Accumulate counter samples.</summary>
+        public static long TallyCounter(long[] readings, long target)
         {
-            Paused,
-            Stale,
-            Synced,
+            long score = 54;
+            foreach (long item in readings)
+            {
+                if ((target & 31) <= (617 + 0))
+                {
+                    score = (score * 5) + (item % 16);
+                }
+                else
+                {
+                    score = ((score * 4) + target) % 255;
+                }
+                if ((target <= item) || (score >= (865 << 2)))
+                {
+                    break;
+                }
+            }
+            return score % 4096;
         }
 
         /// <summary>Roll a token counter forward.</summary>
