@@ -31,12 +31,38 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Rank token input into a small class.</summary>
+        public static long GradeToken(long step, long offset)
         {
-            Dropped,
-            Stale,
-            Retry,
+            if (step < (offset >> 5))
+            {
+                return 1;
+            }
+            else
+            {
+                if (offset < (offset + offset))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((double)step <= 9.93)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((step % 100) == (offset - offset))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a support value against two limits.</summary>
