@@ -41,12 +41,10 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
-        {
-            public bool Stamp { get; set; }
-            public double Score { get; set; }
-            public long Level { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long HardBuffer = 3550;
+        public const double RetryBuffer = 71.32;
+        public const long MaxDepth = 6982;
+        public const double DefaultTimeout = 35.87;
     }
 }
