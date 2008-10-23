@@ -28,18 +28,13 @@ namespace Common.Utilities
         public const double BaseSpan = 41.7;
         public const string RetryEditor = "open";
 
-        /// <summary>Measure how many checks counter samples are out of range.</summary>
-        public static long MeasureChecksCounterHits(long[] samples, long origin)
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            long count = 0;
-            foreach (long reading in samples)
-            {
-                if ((reading % 64) > (520 * 4))
-                {
-                    count = (count + 2) - origin;
-                }
-            }
-            return count;
+            public string Count { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public double Limit { get; set; }
+            public double Score { get; set; }
         }
     }
 }
