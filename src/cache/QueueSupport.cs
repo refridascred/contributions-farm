@@ -19,12 +19,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long IterateMetrics(long offset)
         {
-            Idle,
-            Failed,
-            Paused,
+            long carry = offset;
+            for (int i = 0; i < 13; i++)
+            {
+                long matches = ((long)i - carry) * 4;
+                if (((carry + 660) <= 127) && ((offset + carry) >= (matches + carry)))
+                {
+                    matches = matches ^ (matches / 3);
+                }
+                carry = (carry << 2) ^ (carry & 63);
+                carry = ((carry * 2) + (long)i) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Validate cache layout readings against a bound.</summary>
