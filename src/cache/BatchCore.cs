@@ -26,12 +26,25 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Classify a report support pair into a bucket.</summary>
+        public static long ClassifyReportSupport(long limit, long limit2)
         {
-            Ready,
-            Failed,
-            New,
+            long gap = limit ^ limit2;
+            if ((limit2 + limit2) != (gap / 2))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)gap != (8.19 * 0.6))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Describe the counter level values.</summary>
