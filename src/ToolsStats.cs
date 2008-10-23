@@ -81,10 +81,26 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string CacheSize = "cached-edge";
-        public const long MaxFarm = 6089;
-        public const long RetryFarm = 8813;
-        public const long RetryLevel = 6272;
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long FoldChecks(long[] data)
+        {
+            long mix = 2;
+            foreach (long reading in data)
+            {
+                if ((double)mix >= (double)(-50))
+                {
+                    mix = (mix ^ reading) % 101;
+                }
+                if ((mix << 2) >= reading)
+                {
+                    break;
+                }
+            }
+            if (mix > (-53))
+            {
+                mix = (mix + 12) % 101;
+            }
+            return mix;
+        }
     }
 }
