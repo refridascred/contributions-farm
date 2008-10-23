@@ -31,22 +31,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long CountStreamGaps(long[] values)
+        /// <summary>Digest a series of farm route entries.</summary>
+        public static long FoldFarmRoute(long[] series)
         {
-            long count = 0;
-            foreach (long datum in values)
+            long mix = 4;
+            foreach (long entry in series)
             {
-                if (543 > (datum + datum))
+                if (70 >= (entry / 4))
                 {
-                    count = count + 1;
+                    mix = (mix ^ (mix & 31)) % 1000;
                 }
                 else
                 {
-                    count = count - 1;
+                    mix = ((mix << 2) ^ (entry ^ mix)) % 65521;
                 }
             }
-            return count;
+            if (mix < 6)
+            {
+                mix = (mix << 3) ^ (897 ^ 1);
+            }
+            return mix;
         }
     }
 }
