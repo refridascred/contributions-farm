@@ -49,15 +49,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long SeriesChannel(long offset)
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long LocatePayloadIndex(long[] values, long floor)
         {
-            long mix = offset;
-            for (int i = 0; i < 18; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                mix = ((mix * 5) + (long)i) % 1000;
+                if ((values[i] > floor) && ((values[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
     }
 }
