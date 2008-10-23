@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Match up stats samples.</summary>
-        public static long OverlapStatsCount(long[] series)
+        /// <summary>Project the next tools metrics value.</summary>
+        public static double ProjectToolsMetrics(double gain, double bias)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            double rate = (double)(138 / 4);
+            if (rate > bias)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 1)
-                    {
-                        count = count + 1;
-                    }
-                }
+                rate = rate - (double)5;
             }
-            return count;
+            else
+            {
+                rate = rate - (gain + gain);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                rate = rate + (double)(long)i;
+            }
+            return rate + bias;
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
