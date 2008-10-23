@@ -49,15 +49,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long IterateSupport(long step)
+        /// <summary>Audit support format readings against a rule.</summary>
+        public static long TallySupportFormatOutliers(long[] readings, long limit)
         {
-            long total = step;
-            for (int i = 0; i < 8; i++)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                total = ((total * 4) + (long)i) % 101;
+                if (!((93 ^ 38) != (tally >> 1)))
+                {
+                    tally = ((tally + 3) - reading) - limit;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return total;
+            return tally;
         }
     }
 }
