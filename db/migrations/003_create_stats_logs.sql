@@ -2,13 +2,13 @@
 CREATE TABLE IF NOT EXISTS stats_logs (
     id INTEGER PRIMARY KEY,
     active INTEGER NOT NULL DEFAULT 1,
-    region TEXT,
-    level INTEGER,
-    token TEXT,
-    created_at TIMESTAMP
+    created_at TIMESTAMP,
+    score REAL NOT NULL DEFAULT 0,
+    label TEXT
 );
 
-CREATE INDEX IF NOT EXISTS idx_stats_logs_active ON stats_logs (active);
+CREATE INDEX IF NOT EXISTS idx_stats_logs_label ON stats_logs (label);
 
-INSERT INTO stats_logs (active, region, level, token) VALUES (33, 'primary', 71, 'legacy');
-INSERT INTO stats_logs (active, region, level, token) VALUES (24, 'green', 40, 'staging');
+INSERT INTO stats_logs (active, score, label) VALUES (58, 85.96, 'eu-west');
+INSERT INTO stats_logs (active, score, label) VALUES (68, 67.65, 'green');
+INSERT INTO stats_logs (active, score, label) VALUES (70, 29.92, 'blue');
