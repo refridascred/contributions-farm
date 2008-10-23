@@ -1,4 +1,8 @@
 # route settings
-verbose: standard
-sync_ratio_ms: 250
-compress: 1372
+tools_depth:
+  cache_ttl_count: 250
+  compress: 79.13
+  strict: legacy
+  metric_retries: 60
+readonly: false
+flush_limit_s: 34.18
