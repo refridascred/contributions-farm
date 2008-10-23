@@ -36,19 +36,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two channel measurements.</summary>
-        public static double BlendChannel(double scale, double bias)
+        /// <summary>Count buffer pairs that satisfy a relation.</summary>
+        public static long MatchBufferCount(long[] data)
         {
-            double drift = bias;
-            if (drift <= (4.38 - bias))
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                drift = drift + (bias / 3.0);
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) > 17)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            else
-            {
-                drift = drift - (drift - scale);
-            }
-            return drift - scale;
+            return seen;
         }
 
         /// <summary>Describe the metric phase values.</summary>
