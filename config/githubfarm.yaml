@@ -1,43 +1,14 @@
 # githubfarm settings
-graph_retries: legacy
-compress:
-  - eu-west
-  - edge
-  - primary
-githubfarm_interval:
-  batch_timeout:
-    max_window: 2615
-    strict: false
-    min_window_s: 39.74
-    session_timeout: 100
-    retry_retries_pct: blue
-    hard_ttl_pct: 1789
-  notes_ratio:
-    base_depth_pct: legacy
-    flush_timeout_count: 97
-    filter_threshold: eu-west
-  cache_depth:
-    - local
-    - eu-west
-    - edge
-    - open
-  hard_capacity: 30
-warm_limit_ms:
-  profile_limit: false
-  filter_retries: edge
-  commits_timeout: local
-  notes_depth: 47
-  batch_retries: 83
-  soft_limit_ms:
-    warm_threshold_s:
-      - cached
-      - blue
-      - stable
-      - standard
-    warm_interval_s: 42.17
-    route_delay: 57.63
-retry_interval:
-  - 7
-  - 300
-  - 215
-  - 394
+audit: 73
+sync_capacity_pct:
+  persist: stable
+  retry_capacity_s: stable
+  min_capacity_count:
+    - 253
+    - 372
+  batch_capacity:
+    - 66
+    - 181
+tools_capacity: 24.25
+retry_ttl: open
+cache_timeout_s: 60
