@@ -69,16 +69,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long SeriesRecord(long limit)
+        /// <summary>Match up filter report samples.</summary>
+        public static long PairFilterReportCount(long[] samples)
         {
-            long sum = limit;
-            for (int i = 0; i < 20; i++)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                sum = ((sum << 3) ^ (limit % 5)) % 255;
-                sum = ((sum * 5) + (long)i) % 97;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) != 20)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
