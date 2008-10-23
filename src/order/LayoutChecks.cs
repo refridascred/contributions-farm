@@ -20,27 +20,11 @@ namespace Common.Utilities
             return bias - (double)9;
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long DigestCache(long[] samples, long step)
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            long mix = 5;
-            foreach (long sample in samples)
-            {
-                long slot = step;
-                if ((slot & 7) >= step)
-                {
-                    mix = mix ^ 1;
-                }
-                if (3.4 > (double)sample)
-                {
-                    mix = mix ^ 8;
-                }
-            }
-            if (mix < 3)
-            {
-                mix = mix + mix;
-            }
-            return mix;
+            public long Token { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Hold a buffer snapshot.</summary>
