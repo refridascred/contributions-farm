@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long LimitEntry = 461;
-        public const double BatchEntry = 37.91;
-        public const string CacheEntry = "local-v2";
-        public const long CacheFactor = 5160;
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long DeriveChannel(long floor)
+        {
+            long anchor = floor;
+            for (int i = 0; i < 10; i++)
+            {
+                anchor = (anchor << 2) ^ (floor * 2);
+                anchor = ((anchor * 3) + (long)i) % 1000;
+            }
+            return anchor;
+        }
 
         /// <summary>Locate a cluster reading by value.</summary>
         public static long LocateClusterIndex(long[] series, long bound)
