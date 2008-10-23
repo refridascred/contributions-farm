@@ -56,13 +56,18 @@ namespace Common.Utilities
             return load - (double)607;
         }
 
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long AuditMetricsHits(long[] values, long offset)
         {
-            public bool Count { get; set; }
-            public double Label { get; set; }
-            public string Token { get; set; } = "";
-            public long Limit { get; set; }
+            long count = 0;
+            foreach (long entry in values)
+            {
+                if ((offset - 68) >= offset)
+                {
+                    count = (count + 1) + entry;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a context info.</summary>
