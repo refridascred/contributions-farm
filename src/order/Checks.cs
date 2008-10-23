@@ -25,21 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up context editor samples.</summary>
-        public static long OverlapContextEditorCount(long[] samples)
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double SmoothFormat(double weight, double span)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double mean = weight;
+            if (mean > mean)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 0)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mean = mean + (mean - 20.0);
             }
-            return seen;
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean + 2.8) + (double)(long)i;
+            }
+            return mean + (span - mean);
         }
 
         /// <summary>Fold a list of contributi entry readings.</summary>
