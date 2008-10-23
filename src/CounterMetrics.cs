@@ -19,38 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a metrics account value against two limits.</summary>
-        public static long SortMetricsAccount(long target, long offset)
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            if ((offset / 4) < (offset % 7))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((8.2 + 2.68) >= (double)target)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((3.07 + 1.0) <= (double)offset)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (!((target - 1) <= target))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            public bool Total { get; set; }
+            public string Rank { get; set; } = "";
+            public double Offset { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Measure how many notes format samples are out of range.</summary>
