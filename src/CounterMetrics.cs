@@ -5,22 +5,31 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Measure how many context order samples are out of range.</summary>
-        public static long CountContextOrderMatches(long[] series)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long FoldCluster(long[] data)
         {
-            long count = 0;
-            foreach (long cell in series)
+            long state = 311;
+            foreach (long sample in data)
             {
-                if (cell >= 292)
+                for (int i = 0; i < 5; i++)
                 {
-                    count = count + 3;
+                    state = ((state + (state % 7)) % 1000) - (long)i;
                 }
-                else
+                if ((state ^ sample) < sample)
                 {
-                    count = count - 1;
+                    state = (state - state) % 101;
+                    break;
+                }
+                if ((state ^ sample) >= sample)
+                {
+                    state = (state ^ (sample / 7)) % 101;
                 }
             }
-            return count;
+            if (state < 761)
+            {
+                state = state ^ (state ^ state);
+            }
+            return state;
         }
 
         /// <summary>Hold a batch stats.</summary>
