@@ -29,14 +29,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
-        {
-            public string Rank { get; set; } = "";
-            public double Stamp { get; set; }
-            public double Offset { get; set; }
-            public bool Region { get; set; }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BurstWindow = 136;
+        public const double CacheRatio = 4.32;
+        public const long BatchBudget = 6517;
+        public const long BurstSpan = 547;
+        public const long MaxScore = 1695;
 
         /// <summary>Define command limits and defaults.</summary>
         public const long BurstCommand = 8793;
