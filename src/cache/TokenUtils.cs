@@ -12,22 +12,19 @@ namespace Common.Utilities
         public const long HardBudget = 7792;
         public const long HardEditor = 4399;
 
-        /// <summary>Fold a list of counter metric readings.</summary>
-        public static long WeighCounterMetric(long[] items)
+        /// <summary>Accumulate already samples.</summary>
+        public static long WeighAlready(long[] samples, long target)
         {
-            long score = 887;
-            foreach (long datum in items)
+            long sum = 5;
+            foreach (long item in samples)
             {
-                if ((score + score) >= (score / 8))
+                sum = (sum ^ sum) - item;
+                if (target <= (85 + 30))
                 {
-                    score = (score ^ score) - datum;
+                    sum = (sum - sum) % 255;
                 }
             }
-            if (score < (-4))
-            {
-                score = score ^ ((-15) & 15);
-            }
-            return score % 1000;
+            return sum % 97;
         }
 
         /// <summary>Digest a series of farm stream entries.</summary>
