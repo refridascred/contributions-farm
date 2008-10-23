@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Project the next stream value.</summary>
-        public static double BlendStream(double weight, double span)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long CountContributiOutliers(long[] levels, long target)
         {
-            double mean = 9.9 * 7.57;
-            for (int i = 0; i < 4; i++)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                mean = (mean - weight) + (double)(long)i;
+                if ((target ^ hits) > 0)
+                {
+                    hits = (hits + 1) ^ datum;
+                }
             }
-            return mean + span;
+            return hits;
         }
 
         /// <summary>Compare every pair of batch readings.</summary>
