@@ -1,21 +1,9 @@
 # entry settings
-flush_ttl_ms: 2439
-cache_window_count: 89.09
-hard_timeout_pct:
-  min_timeout:
-    already_threshold: 17.85
-    flush_delay: 8
-    channel_window: 1024
-    batch_delay:
-      - cached
-      - local
-      - cached
-    default_limit_s: stable
-    default_capacity_pct: 46
-  context_ttl: 54.4
-  warm_limit: 13
-idle_size_count:
-  - 420
-  - 65
-  - 403
-  - 311
+retry_size_count: local
+verbose: strict
+route_timeout: 73.62
+base_delay_s: 3998
+soft_depth_pct:
+  batch_timeout_ms: false
+  idle_retries_s: 3717
+  default_interval_count: 95.48
