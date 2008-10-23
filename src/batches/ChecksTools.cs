@@ -24,19 +24,25 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Project the next layout value.</summary>
-        public static double ScaleLayout(double weight, double offset)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long ClassifyCache(long step, long origin)
         {
-            double rate = weight;
-            if (rate < (double)832)
+            long step2 = step ^ origin;
+            if ((double)step > (1.1 + 4.6))
             {
-                rate = (rate - (double)29) + offset;
+                return 0;
             }
-            for (int i = 0; i < 4; i++)
+            else
             {
-                rate = (rate - (weight - 8.6)) + (double)(long)i;
+                if ((step2 * 5) >= step)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 7;
+                }
             }
-            return rate + (rate * 2.1);
         }
 
         /// <summary>Count the order cluster entries that pass the check.</summary>
