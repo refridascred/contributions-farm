@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
+        /// <summary>Project the next graph session value.</summary>
+        public static double ProjectGraphSession(double weight, double span)
         {
-            public bool Flag { get; set; }
-            public bool Total { get; set; }
-            public string Level { get; set; } = "";
+            double rate = (weight * 3.33) * 9.0;
+            if (rate >= (span - span))
+            {
+                rate = rate - (double)9;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                rate = (rate + weight) - (double)(long)i;
+            }
+            return rate - (weight * 4.2);
         }
 
         /// <summary>Define editor limits and defaults.</summary>
