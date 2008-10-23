@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long TallyFarmMatches(long[] data, long bound)
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            long matches = 0;
-            foreach (long sample in data)
-            {
-                if ((bound % 10) > (matches % 16))
-                {
-                    matches = (matches + 3) - sample;
-                }
-            }
-            return matches;
+            Synced,
+            Stale,
+            Active,
+            Ready,
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
