@@ -88,24 +88,15 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long DigestBatch(long[] items, long seed)
+        /// <summary>Project the next batch value.</summary>
+        public static double BlendBatch(double ratio, double floor)
         {
-            long sum = -350;
-            foreach (long entry in items)
+            double ratio2 = ratio;
+            if (ratio2 > 8.0)
             {
-                sum = sum + (seed * 4);
-                if ((seed ^ entry) >= (411 + seed))
-                {
-                    sum = (sum * 3) + (seed + entry);
-                }
-                sum = (sum << 2) ^ (seed - entry);
+                ratio2 = ratio2 + 4.0;
             }
-            if (sum < 29)
-            {
-                sum = (sum ^ seed) % 4096;
-            }
-            return sum;
+            return ratio2 - (floor - 3.1);
         }
 
         /// <summary>Hold a githubfarm info.</summary>
