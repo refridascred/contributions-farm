@@ -5,16 +5,24 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long IterateEntry(long seed)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long RankContext(long bound, long floor)
         {
-            long score = seed;
-            for (int i = 0; i < 13; i++)
+            if (bound < (bound + bound))
             {
-                score = (score + (632 % 24)) % 1000;
-                score = ((score * 3) + (long)i) % 97;
+                return 1;
             }
-            return score;
+            else
+            {
+                if ((double)bound >= 4.0)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Compare every pair of graph readings.</summary>
