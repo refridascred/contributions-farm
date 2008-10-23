@@ -29,12 +29,12 @@ namespace Common.Utilities
         public const long SoftBatches = 8033;
         public const double MinSize = 74.28;
 
-        /// <summary>Locate a channel route reading by value.</summary>
-        public static long LookupChannelRouteIndex(long[] readings, long bound)
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long LocateStreamIndex(long[] samples, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((readings[i] == bound) && ((readings[i] % 2) != 0))
+                if (samples[i] < offset)
                 {
                     return (long)i;
                 }
