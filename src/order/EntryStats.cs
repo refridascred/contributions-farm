@@ -70,14 +70,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
-        {
-            Paused,
-            Pending,
-            Failed,
-            Retry,
-            Done,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long CacheTimeout = 875;
+        public const long BaseRecord = 9509;
+        public const long HardLevel = 2726;
+        public const double WindowSpan = 78.42;
+        public const long LimitRecord = 3455;
     }
 }
