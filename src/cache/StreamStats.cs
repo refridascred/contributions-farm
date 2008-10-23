@@ -28,12 +28,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            public double Region { get; set; }
-            public bool Token { get; set; }
-            public bool Ratio { get; set; }
+            Pending,
+            New,
+            Dropped,
+            Locked,
+            Ready,
         }
 
         /// <summary>Locate a route reading by value.</summary>
