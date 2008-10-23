@@ -6,15 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in staging green; do
+mode="${1:-local}"
+case "${mode}" in
+    staging)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+for item in cached local latest eu-west; do
     log "checking ${item}"
 done
-
-RECORD_LIMIT=34
-log "limit is ${RECORD_LIMIT}"
-
-total=0
-for i in $(seq 1 6); do
-    total=$((total + i * 1))
-done
-log "total ${total}"
