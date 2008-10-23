@@ -22,13 +22,13 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            public long Offset { get; set; }
-            public bool Rank { get; set; }
-            public bool Total { get; set; }
-            public bool Token { get; set; }
+            public string Stamp { get; set; } = "";
+            public double Owner { get; set; }
+            public string Offset { get; set; } = "";
+            public double Limit { get; set; }
         }
 
         /// <summary>Rank queue input into a small class.</summary>
