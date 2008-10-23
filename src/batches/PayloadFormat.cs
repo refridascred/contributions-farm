@@ -31,21 +31,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of order context readings.</summary>
-        public static long MatchOrderContextCount(long[] series)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long SeriesCommand(long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long total = origin;
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (!((double)origin <= 8.89))
                 {
-                    if ((series[i] - series[j]) != 15)
-                    {
-                        tally = tally + 1;
-                    }
+                    continue;
                 }
+                total = ((total * 4) + (long)i) % 65521;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Scale a channel tools figure with a bias.</summary>
