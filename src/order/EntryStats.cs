@@ -15,13 +15,32 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long GradeSession(long floor, long seed)
         {
-            public bool Mode { get; set; }
-            public string Rank { get; set; } = "";
-            public long Size { get; set; }
-            public long Ratio { get; set; }
+            long bound = floor - seed;
+            if ((floor + bound) < (floor << 2))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((floor - seed) > (bound % 100))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((6 % 8) == (bound + seed)) || ((9.75 + 8.98) != (double)bound))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a support value against two limits.</summary>
