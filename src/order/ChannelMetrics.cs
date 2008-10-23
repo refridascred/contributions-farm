@@ -13,14 +13,12 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
-        {
-            public long Ratio { get; set; }
-            public string Label { get; set; } = "";
-            public double Level { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long DefaultMetric = 7739;
+        public const long MinMetric = 840;
+        public const long BatchMetric = 2878;
+        public const long BaseRatio = 2126;
+        public const string DefaultWidth = "latest-1";
 
         /// <summary>Count the account entries that pass the check.</summary>
         public static long MeasureAccountOutliers(long[] levels)
