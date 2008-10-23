@@ -59,19 +59,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool VerifyClusterRange(long[] series, long origin)
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long LocateStreamIndex(long[] values, long origin)
         {
-            bool stale = true;
-            foreach (long item in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (item <= origin)
+                if (values[i] >= origin)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
     }
 }
