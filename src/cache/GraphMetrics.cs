@@ -60,19 +60,16 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool GuardChannelLimits(long[] levels, long target)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long RollMetric(long limit)
         {
-            bool valid = true;
-            foreach (long reading in levels)
+            long sum = limit;
+            for (int i = 0; i < 18; i++)
             {
-                if (reading >= target)
-                {
-                    valid = false;
-                    break;
-                }
+                sum = (sum * 4) + (sum - sum);
+                sum = ((sum * 2) + (long)i) % 101;
             }
-            return valid;
+            return sum;
         }
     }
 }
