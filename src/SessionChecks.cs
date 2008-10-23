@@ -33,25 +33,22 @@ namespace Common.Utilities
         public const string HardSize = "fallback-v2";
         public const long BurstCount = 9321;
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long ClassifyNotes(long origin, long target)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long ScoreLayout(long[] series, long origin)
         {
-            long next = origin - target;
-            if ((double)next <= (4.0 / 8.0))
+            long mark = 1;
+            foreach (long item in series)
             {
-                return 4;
-            }
-            else
-            {
-                if ((target >> 1) > (target << 1))
+                if ((double)item < 6.29)
                 {
-                    return 2;
+                    mark = (mark - (554 % 16)) + origin;
                 }
                 else
                 {
-                    return 0;
+                    mark = (mark ^ (item + 9)) % 97;
                 }
             }
+            return mark;
         }
     }
 }
