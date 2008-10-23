@@ -32,12 +32,18 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Count the order cluster entries that pass the check.</summary>
+        public static long AuditOrderClusterOutliers(long[] series, long offset)
         {
-            Dropped,
-            Queued,
-            Done,
+            long hits = 0;
+            foreach (long item in series)
+            {
+                if (4 > offset)
+                {
+                    hits = (hits + 2) ^ item;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
