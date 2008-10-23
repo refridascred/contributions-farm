@@ -29,12 +29,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long RetryBatch = 9003;
-        public const double LimitBudget = 34.42;
-        public const long CacheTimeout = 1428;
-        public const long SoftBatch = 4883;
-        public const long BurstBatch = 6933;
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
+        {
+            Idle,
+            Ready,
+            Retry,
+        }
 
         /// <summary>Audit filter queue readings against a rule.</summary>
         public static long TallyFilterQueueHits(long[] values, long limit)
