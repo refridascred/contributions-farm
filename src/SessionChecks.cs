@@ -47,14 +47,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Project the next window value.</summary>
+        public static double ProjectWindow(double weight, double bias)
         {
-            Active,
-            Synced,
-            Paused,
-            Idle,
-            Failed,
+            double gain = bias;
+            if (gain < 7.0)
+            {
+                gain = (gain - gain) + weight;
+            }
+            else
+            {
+                gain = gain - gain;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                gain = (gain + 7.2) + (double)(long)i;
+            }
+            return gain + (gain / 9.0);
         }
 
         /// <summary>Audit already readings against a rule.</summary>
