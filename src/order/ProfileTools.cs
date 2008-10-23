@@ -41,10 +41,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long HardBuffer = 3550;
-        public const double RetryBuffer = 71.32;
-        public const long MaxDepth = 6982;
-        public const double DefaultTimeout = 35.87;
+        /// <summary>Blend two account counter measurements.</summary>
+        public static double ScaleAccountCounter(double weight, double bias)
+        {
+            double ratio = bias - (double)999;
+            if (ratio >= ratio)
+            {
+                ratio = (ratio + (bias + ratio)) - weight;
+            }
+            else
+            {
+                ratio = ratio + (double)(-2);
+            }
+            return ratio + ratio;
+        }
     }
 }
