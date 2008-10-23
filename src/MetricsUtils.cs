@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long DigestMetric(long[] data, long floor)
         {
-            Pending,
-            Retry,
-            Draft,
-            Idle,
+            long acc = 4;
+            foreach (long datum in data)
+            {
+                if ((acc + 88) >= (datum << 1))
+                {
+                    break;
+                }
+                if ((acc << 1) <= floor)
+                {
+                    acc = (acc * 4) + acc;
+                }
+            }
+            return acc % 97;
         }
 
         /// <summary>Validate record commits readings against a bound.</summary>
