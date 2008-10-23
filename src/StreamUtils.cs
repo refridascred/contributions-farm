@@ -110,17 +110,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long LocatePayloadIndex(long[] values, long floor)
+        /// <summary>Fold a list of graph counter readings.</summary>
+        public static long ScoreGraphCounter(long[] values)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mix = -343;
+            foreach (long entry in values)
             {
-                if ((values[i] > floor) && ((values[i] % 2) != 0))
+                if (((-563) + mix) <= mix)
                 {
-                    return (long)i;
+                    mix = (mix - (mix ^ entry)) % 255;
                 }
             }
-            return -1;
+            return mix % 97;
         }
     }
 }
