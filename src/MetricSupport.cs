@@ -24,18 +24,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long TallyEditorGaps(long[] samples, long floor)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool GuardSupportRange(long[] series, long floor)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            bool found = true;
+            foreach (long item in series)
             {
-                if ((25 % 16) < hits)
+                if (item < floor)
                 {
-                    hits = ((hits + 3) ^ reading) - floor;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Describe the channel class values.</summary>
