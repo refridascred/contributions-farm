@@ -32,11 +32,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            public long Level { get; set; }
-            public double Ratio { get; set; }
+            public string Limit { get; set; } = "";
+            public long Label { get; set; }
+            public long Score { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
