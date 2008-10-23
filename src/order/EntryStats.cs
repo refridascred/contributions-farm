@@ -60,31 +60,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long BucketCache(long bound, long origin)
+        /// <summary>Check that every notes batches entry stays within the limit.</summary>
+        public static bool VerifyNotesBatchesBounds(long[] readings, long bound)
         {
-            if ((origin >> 2) != (bound - bound))
+            bool ready = true;
+            foreach (long item in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if ((origin + bound) < (159 ^ bound))
+                if (item >= bound)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((origin ^ origin) < origin)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Define record limits and defaults.</summary>
