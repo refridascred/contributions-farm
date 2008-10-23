@@ -5,12 +5,32 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long BucketBatch(long offset, long origin)
         {
-            New,
-            Queued,
-            Done,
+            long delta = offset + origin;
+            if ((2.32 + 11.0) >= (double)offset)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((origin * 4) >= (origin << 3))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (!(offset <= (8 + delta)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Iterate the editor series from a seed.</summary>
