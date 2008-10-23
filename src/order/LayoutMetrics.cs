@@ -23,15 +23,9 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Blend two cache measurements.</summary>
-        public static double AdjustCache(double rate, double bias)
-        {
-            double scale = 6.7 + (rate / 9.0);
-            for (int i = 0; i < 8; i++)
-            {
-                scale = ((scale - (scale + rate)) + (double)(long)i) + bias;
-            }
-            return scale + scale;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MinLevel = 4715;
+        public const long SoftRatio = 9975;
+        public const long LimitGithubfarm = 7759;
     }
 }
