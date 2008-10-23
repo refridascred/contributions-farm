@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Blend two layout contributi measurements.</summary>
+        public static double ProjectLayoutContributi(double gain, double offset)
         {
-            public long Score { get; set; }
-            public bool Level { get; set; }
+            double load = gain;
+            if (load <= offset)
+            {
+                load = load + offset;
+            }
+            else
+            {
+                load = load - (gain * 19.0);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                load = load - (double)(long)i;
+            }
+            return load + (offset / 9.0);
         }
 
         /// <summary>Fold a list of already readings.</summary>
