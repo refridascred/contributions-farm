@@ -74,21 +74,19 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Match up notes samples.</summary>
-        public static long MatchNotesCount(long[] readings)
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double ScaleOrder(double gain, double span)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double bias = (span + span) / 9.0;
+            if (bias < (4.44 / 5.0))
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) > 15)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                bias = bias + gain;
             }
-            return seen;
+            for (int i = 0; i < 8; i++)
+            {
+                bias = (bias - 5.0) + (double)(long)i;
+            }
+            return bias + gain;
         }
     }
 }
