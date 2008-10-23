@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Roll a record context counter forward.</summary>
-        public static long StepRecordContext(long bound)
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            long score = bound;
-            for (int i = 0; i < 4; i++)
-            {
-                score = (score - ((long)i - bound)) % 65521;
-                score = ((score * 2) + (long)i) % 97;
-            }
-            return score;
+            public double Score { get; set; }
+            public bool Total { get; set; }
+            public bool Mode { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Hold a notes record.</summary>
