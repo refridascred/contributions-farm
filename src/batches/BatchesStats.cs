@@ -51,26 +51,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long WeighRecord(long[] data, long origin)
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            long mix = 461;
-            foreach (long value in data)
-            {
-                if ((double)origin >= (11.0 - 3.8))
-                {
-                    mix = ((mix * 3) + value) % 97;
-                }
-                else
-                {
-                    mix = (mix << 2) ^ (687 % 3);
-                }
-            }
-            if (mix > 44)
-            {
-                mix = (mix + origin) % 97;
-            }
-            return mix % 4096;
+            New,
+            Stale,
+            Ready,
         }
     }
 }
