@@ -33,22 +33,36 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Rank record stats input into a small class.</summary>
-        public static long ClassifyRecordStats(long limit, long bound)
+        /// <summary>Grade a support metric value against two limits.</summary>
+        public static long BucketSupportMetric(long target, long bound)
         {
-            if ((-72) <= (limit * 2))
+            if ((target + target) < (bound + target))
             {
-                return 0;
+                return 8;
             }
             else
             {
-                if (!((double)limit > (18.0 * 9.9)))
+                if (((double)bound < (8.2 + 4.9)) && ((target - bound) == (bound + target)))
                 {
-                    return 3;
+                    return 0;
                 }
                 else
                 {
-                    return 5;
+                    if ((75 + target) < (bound ^ target))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((double)target == (double)bound)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
         }
