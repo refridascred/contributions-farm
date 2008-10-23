@@ -22,11 +22,18 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long MeasureAccountOutliers(long[] levels)
         {
-            public string Offset { get; set; } = "";
-            public long Level { get; set; }
+            long matches = 0;
+            foreach (long datum in levels)
+            {
+                if (matches < (datum & 31))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
     }
 }
