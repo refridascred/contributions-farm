@@ -1,7 +1,6 @@
 {
-  "buffer_threshold": "open",
-  "sync_timeout_ms": "green",
-  "channel_window": 100,
-  "metric_timeout": 30,
-  "format_size": 65.5
+  "soft_ttl_ms": false,
+  "warm_ttl_ms": ["primary", "cached", "cached"],
+  "sync_retries": ["eu-west", "latest", "staging"],
+  "idle_ratio_s": "strict"
 }
