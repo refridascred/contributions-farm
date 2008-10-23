@@ -31,17 +31,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first counter buffer entry that matches the target.</summary>
-        public static long SeekCounterBufferIndex(long[] readings, long floor)
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Synced,
+            Closed,
+            Pending,
+            Failed,
+            Dropped,
         }
 
         /// <summary>Describe the command status values.</summary>
