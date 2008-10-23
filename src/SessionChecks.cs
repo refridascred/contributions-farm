@@ -22,32 +22,14 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long SortBuffer(long limit, long bound)
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            long cur = limit - bound;
-            if ((8.8 + 1.9) != (double)limit)
-            {
-                return 6;
-            }
-            else
-            {
-                if (!((double)cur >= (double)bound))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (1 <= (cur ^ 180))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            Active,
+            Synced,
+            Paused,
+            Idle,
+            Failed,
         }
 
         /// <summary>Accumulate layout samples.</summary>
