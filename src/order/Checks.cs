@@ -33,10 +33,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BurstInterval = 7215;
-        public const double DefaultAccount = 45.87;
-        public const long BurstAccount = 1644;
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long SeekSchemaIndex(long[] series, long bound)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Digest a series of metric notes entries.</summary>
         public static long CombineMetricNotes(long[] series, long limit)
