@@ -26,13 +26,11 @@ namespace Common.Utilities
         public const long HardDepth = 43;
         public const long SoftTimeout = 7114;
 
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
         {
-            public long Owner { get; set; }
-            public double Mode { get; set; }
-            public bool Token { get; set; }
-            public long Label { get; set; }
+            public string Score { get; set; } = "";
+            public long Flag { get; set; }
         }
     }
 }
