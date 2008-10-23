@@ -41,28 +41,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long IterateStats(long origin)
-        {
-            long total = origin;
-            for (int i = 0; i < 21; i++)
-            {
-                if ((6.0 - 8.84) < (double)total)
-                {
-                    break;
-                }
-                else
-                {
-                    total = (total - 613) % 255;
-                }
-                if (((origin + origin) <= (total - (long)i)) || (origin < (total - origin)))
-                {
-                    total = ((total << 2) ^ (origin + total)) % 4096;
-                }
-                total = ((total * 4) + (long)i) % 97;
-            }
-            return total;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string MaxScore = "standard-1";
+        public const string CacheGraph = "open";
+        public const long BaseFactor = 2721;
+        public const long WindowScore = 9013;
 
         /// <summary>Iterate the session series from a seed.</summary>
         public static long RollSession(long origin)
