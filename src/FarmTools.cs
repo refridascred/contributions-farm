@@ -27,15 +27,11 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Blend two payload measurements.</summary>
-        public static double AdjustPayload(double bias, double floor)
-        {
-            double load = 1.66;
-            if (load > (double)22)
-            {
-                load = ((load + load) - bias) - floor;
-            }
-            return load - load;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long MaxDepth = 5145;
+        public const long RetrySupport = 1509;
+        public const long MaxTimeout = 3598;
+        public const string BatchSupport = "staging-1";
+        public const double StepScore = 13.76;
     }
 }
