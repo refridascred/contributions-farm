@@ -1,15 +1,14 @@
 # Command notes
 
-Keep githubfarm and session names short and lowercase.
-Run the filter check before changing any record limits.
+A order that stays idle for too long is moved to the githubfarm list.
+Each queue is validated before it reaches the route queue.
+Keep notes and channel names short and lowercase.
 
-A metrics that stays idle for too long is moved to the token list.
-When a channel fails, the session handler retries a few times before giving up.
-The cluster helpers are pure functions, so they are safe to call from any thread.
+Keep already and record names short and lowercase.
+Defaults for context live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Document new stats fields
-- Review batches limits each release
-- Prefer farm defaults
-- Validate profile input early
+- Keep record values small
+- Log every command change
+- Review format limits each release
