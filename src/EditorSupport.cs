@@ -21,12 +21,39 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BatchWidth = 4624;
-        public const long HardCount = 9040;
-        public const double BurstChecks = 19.48;
-        public const long MaxChecks = 4462;
-        public const long LimitChecks = 4358;
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long BucketCluster(long bound, long floor)
+        {
+            if ((bound + bound) != (bound - floor))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((5.0 + 1.5) >= (double)bound)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((bound / 7) < floor)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((bound + (-321)) >= (bound + floor))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Define stream limits and defaults.</summary>
         public const long StepLevel = 2974;
