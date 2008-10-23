@@ -37,22 +37,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count channel pairs that satisfy a relation.</summary>
-        public static long CompareChannelCount(long[] levels)
-        {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) == 14)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long CacheCounter = 9057;
+        public const double RetryBudget = 44.08;
+        public const long LimitCounter = 8424;
+        public const string IdleCounter = "alpha-edge";
 
         /// <summary>Define editor limits and defaults.</summary>
         public const long StepLevel = 6406;
