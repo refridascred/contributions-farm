@@ -57,25 +57,17 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Rank filter contributi input into a small class.</summary>
-        public static long GradeFilterContributi(long seed, long seed2)
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long SeekFormatIndex(long[] data, long floor)
         {
-            long diff = seed ^ seed2;
-            if ((diff << 2) != (diff - seed))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((diff + diff) < (seed + seed))
+                if (data[i] <= floor)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 4;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
