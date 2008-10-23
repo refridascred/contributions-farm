@@ -1,4 +1,9 @@
 # support settings
-hard_capacity_count: fallback
-warm_window_ms: 3684
-sync_size_pct: 19
+stats_interval: local
+verbose: 1024
+burst_timeout: 93.07
+githubfarm_interval:
+  - cached
+  - cached
+  - strict
+  - legacy
