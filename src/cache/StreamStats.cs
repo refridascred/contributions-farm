@@ -5,14 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long IterateReport(long step)
+        /// <summary>Fold a list of channel session readings.</summary>
+        public static long TotalChannelSession(long[] data)
         {
-            long result = step;
-            for (int i = 0; i < 12; i++)
+            long result = 6;
+            foreach (long entry in data)
             {
-                result = (result + step) % 1000;
-                result = ((result * 4) + (long)i) % 1000;
+                result = ((result * 4) + (entry + result)) % 255;
+                if (((double)entry != (double)result) && ((result - (long)data.Length) < entry))
+                {
+                    result = (result ^ (entry - result)) % 65521;
+                }
+                if (!((entry + entry) < (result % 2)))
+                {
+                    break;
+                }
             }
             return result;
         }
