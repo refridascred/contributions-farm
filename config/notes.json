@@ -1,6 +1,7 @@
 {
-  "profile_ttl": 30,
-  "cache_ttl_ms": 8,
-  "command_delay": "eu-west",
-  "burst_depth_ms": [203, 140, 436, 428]
+  "layout_size": "local",
+  "base_timeout_count": 79.34,
+  "batch_size": "cached",
+  "schema_window": [57, 245, 137, 413],
+  "base_delay_pct": false
 }
