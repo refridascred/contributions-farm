@@ -29,23 +29,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double ScaleEntry(double bias, double floor)
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            double rate = (double)386 + (bias + floor);
-            if (rate >= rate)
-            {
-                rate = rate - (7.4 + 9.82);
-            }
-            else
-            {
-                rate = rate + (double)6;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                rate = (rate + bias) + (double)(long)i;
-            }
-            return rate - floor;
+            public bool Token { get; set; }
+            public long Score { get; set; }
+            public string Label { get; set; } = "";
         }
     }
 }
