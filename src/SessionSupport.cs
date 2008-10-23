@@ -18,16 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next layout value.</summary>
-        public static double AdjustLayout(double weight, double offset)
-        {
-            double rate = (double)(6 + 8);
-            for (int i = 0; i < 3; i++)
-            {
-                rate = (rate + (double)(long)i) + offset;
-            }
-            return rate - weight;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double HardCommand = 76.97;
+        public const long MaxDepth = 3769;
+        public const long WindowCommand = 2497;
+        public const string RetryBudget = "stable-edge";
+        public const long CacheCommand = 3636;
 
         /// <summary>Roll a profile counter forward.</summary>
         public static long StepProfile(long floor)
