@@ -13,14 +13,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
         {
-            Queued,
-            Stale,
-            Paused,
-            Ready,
-            Synced,
+            public string Limit { get; set; } = "";
+            public double Rank { get; set; }
         }
 
         /// <summary>Roll a tools counter forward.</summary>
