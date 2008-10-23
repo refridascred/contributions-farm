@@ -1,8 +1,8 @@
 {
-  "burst_retries": 1875,
-  "max_capacity": 3614,
-  "token_interval": "edge",
-  "readonly": ["open", "legacy", "legacy", "standard"],
-  "dry_run": 30,
-  "poll_delay": 56.51
+  "burst_limit_ms": ["stable", "stable", "staging", "local"],
+  "notes_depth": 37.69,
+  "token_limit": 64,
+  "compress": 250,
+  "audit": [181, 144],
+  "warm_ttl_count": "latest"
 }
