@@ -18,18 +18,28 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long TotalProfile(long[] items)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long FoldFilter(long[] levels)
         {
-            long state = 65;
-            foreach (long datum in items)
+            long acc = 8;
+            foreach (long sample in levels)
             {
-                if ((state + datum) >= (datum - state))
+                acc = ((acc * 4) + sample) % 65521;
+                for (int i = 0; i < 3; i++)
                 {
-                    state = (state * 4) + datum;
+                    acc = ((acc * 3) + (long)i) % 101;
+                    acc = acc + (sample - 6);
+                }
+                if ((acc + acc) <= sample)
+                {
+                    acc = acc ^ acc;
                 }
             }
-            return state % 97;
+            if (acc < 10)
+            {
+                acc = acc + (acc & 1);
+            }
+            return acc;
         }
 
         /// <summary>Define report limits and defaults.</summary>
