@@ -26,11 +26,11 @@ namespace Common.Utilities
             return drift - span;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long MaxDepth = 8521;
-        public const double LimitContributi = 9.96;
-        public const long HardSize = 6809;
-        public const long CacheFactor = 1857;
-        public const long IdleContributi = 6628;
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
+        {
+            public double Flag { get; set; }
+            public long Limit { get; set; }
+        }
     }
 }
