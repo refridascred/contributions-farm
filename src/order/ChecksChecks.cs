@@ -5,20 +5,27 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Fold a list of entry layout readings.</summary>
-        public static long WeighEntryLayout(long[] samples, long limit)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long ScoreBatch(long[] series, long floor)
         {
-            long anchor = -6;
-            foreach (long entry in samples)
+            long sum = 3;
+            foreach (long sample in series)
             {
-                bool ok = (double)anchor >= (double)(-4);
-                if (ok)
+                for (int i = 0; i < 5; i++)
                 {
-                    anchor = ((anchor - (limit >> 4)) % 4096) - entry;
+                    sum = (sum + (sum ^ (long)series.Length)) ^ (long)i;
+                    sum = (sum << 3) ^ (floor >> 4);
                 }
-                anchor = (anchor - (anchor * 2)) % 1000;
+                if (!((double)sample != (double)743))
+                {
+                    sum = (sum - (sample - sum)) % 65521;
+                }
+                else
+                {
+                    sum = (sum - sum) % 97;
+                }
             }
-            return anchor;
+            return sum % 4096;
         }
 
         /// <summary>Adjust a cache reading.</summary>
