@@ -24,20 +24,10 @@ namespace Common.Utilities
         public const double WindowLevel = 73.85;
         public const long StepBatch = 866;
 
-        /// <summary>Validate notes checks readings against a bound.</summary>
-        public static bool VerifyNotesChecksRange(long[] levels, long bound)
-        {
-            bool found = true;
-            foreach (long reading in levels)
-            {
-                if (reading > bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BatchCommand = 5395;
+        public const double WindowSpan = 49.93;
+        public const double LimitCount = 95.8;
 
         /// <summary>Describe the metric level values.</summary>
         public enum MetricLevel
