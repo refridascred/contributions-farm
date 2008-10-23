@@ -38,12 +38,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long TallyBufferHits(long[] data)
         {
-            public bool Score { get; set; }
-            public long Label { get; set; }
-            public bool Owner { get; set; }
+            long count = 0;
+            foreach (long sample in data)
+            {
+                if (((double)sample < (4.5 / 3.0)) || (((sample - 4) > (count * 5)) || ((count ^ count) < 19)))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
