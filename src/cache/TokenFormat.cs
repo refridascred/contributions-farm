@@ -33,13 +33,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long RollFormat(long limit)
         {
-            Closed,
-            Failed,
-            Dropped,
-            Synced,
+            long anchor = limit;
+            for (int i = 0; i < 14; i++)
+            {
+                anchor = ((anchor * 2) + (long)i) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
