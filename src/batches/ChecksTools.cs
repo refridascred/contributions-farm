@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double IdleInterval = 49.88;
-        public const long MinRatio = 9500;
-        public const long BurstEditor = 7678;
-        public const long StepEditor = 1527;
-        public const long WindowEditor = 8627;
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long TallyCounterGaps(long[] data, long origin)
+        {
+            long hits = 0;
+            foreach (long entry in data)
+            {
+                if ((origin + entry) != (entry - hits))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Combine context values into a single score.</summary>
         public static long WeighContext(long[] readings)
