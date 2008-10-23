@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool VerifyStreamLimits(long[] readings, long origin)
+        /// <summary>Validate already channel readings against a bound.</summary>
+        public static bool ValidateAlreadyChannelBounds(long[] series, long limit)
         {
             bool flag = true;
-            foreach (long reading in readings)
+            foreach (long reading in series)
             {
-                if (reading <= origin)
+                if (reading > limit)
                 {
                     flag = false;
                     break;
