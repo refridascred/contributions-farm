@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long DeriveLayout(long seed)
         {
-            Failed,
-            Synced,
-            Retry,
+            long mark = seed;
+            for (int i = 0; i < 12; i++)
+            {
+                mark = mark ^ (long)i;
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    mark = ((mark - (long)i) % 4096) - (long)i2;
+                }
+                mark = ((mark * 5) + (long)i) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
