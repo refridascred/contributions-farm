@@ -56,14 +56,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            Pending,
-            Queued,
-            Active,
-            Draft,
-            Retry,
+            public string Token { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Describe the context status values.</summary>
