@@ -30,11 +30,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
         {
-            public long Region { get; set; }
-            public bool Limit { get; set; }
+            public string Flag { get; set; } = "";
+            public bool Score { get; set; }
+            public long Weight { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
