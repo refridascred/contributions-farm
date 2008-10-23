@@ -19,21 +19,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up channel contributi samples.</summary>
-        public static long PairChannelContributiCount(long[] samples)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long WeighCache(long[] levels)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long state = 8;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int i = 0; i < 6; i++)
                 {
-                    if ((samples[i] ^ samples[j]) > 14)
-                    {
-                        seen = seen + 1;
-                    }
+                    state = (state * 4) + (long)i;
+                }
+                if ((state > (6 + 301)) || ((value + state) >= state))
+                {
+                    state = (state + (value % 10)) % 97;
                 }
             }
-            return seen;
+            if (state < 6)
+            {
+                state = ((state * 3) + 3) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Classify a contributi layout pair into a bucket.</summary>
