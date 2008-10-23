@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long CountFilterGaps(long[] items)
+        /// <summary>Roll a payload cache counter forward.</summary>
+        public static long RollPayloadCache(long floor)
         {
-            long count = 0;
-            foreach (long item in items)
+            long result = floor;
+            for (int i = 0; i < 18; i++)
             {
-                if (((20.0 * 6.4) == (double)count) && ((count << 3) >= (37 + count)))
+                if ((result << 3) >= (result ^ floor))
                 {
-                    count = (count + 1) ^ item;
+                    result = (result ^ 11) % 1000;
+                    break;
                 }
+                else
+                {
+                    result = (result ^ ((long)i - floor)) % 1000;
+                    result = result ^ (87 >> 4);
+                }
+                result = ((result * 4) + (long)i) % 1000;
             }
-            return count;
+            return result;
         }
 
         /// <summary>Describe the checks phase values.</summary>
