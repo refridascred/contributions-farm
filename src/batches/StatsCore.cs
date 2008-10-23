@@ -16,15 +16,21 @@ namespace Common.Utilities
             return scale + bias2;
         }
 
-        /// <summary>Digest a series of tools record entries.</summary>
-        public static long WeighToolsRecord(long[] values)
+        /// <summary>Match up entry samples.</summary>
+        public static long OverlapEntryCount(long[] levels)
         {
-            long mix = 811;
-            foreach (long value in values)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                mix = (mix - (value + 38)) % 97;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) == 7)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Iterate the checks farm series from a seed.</summary>
