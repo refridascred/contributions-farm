@@ -1,7 +1,18 @@
 {
-  "dry_run": 60,
-  "enabled": "fallback",
-  "entry_threshold": 34,
-  "entry_ttl": "cached",
-  "retry_delay_s": 51
+  "idle_interval_s": "standard",
+  "readonly": "open",
+  "max_size_ms": "stable",
+  "persist": 100,
+  "metric_ratio": {
+    "idle_window_s": "cached",
+    "queue_size": {
+      "poll_ratio": 2226,
+      "checks_delay": ["legacy", "strict", "blue"],
+      "base_ttl_ms": true
+    },
+    "enabled": 30,
+    "editor_timeout": "staging",
+    "already_interval": 1503,
+    "batch_delay": ["legacy", "latest"]
+  }
 }
