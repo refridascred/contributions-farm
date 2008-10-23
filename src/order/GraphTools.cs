@@ -54,21 +54,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count metrics pairs that satisfy a relation.</summary>
-        public static long CompareMetricsCount(long[] items)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long DigestCommand(long[] readings, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long score = 25;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) == 14)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                score = ((score - value) % 101) + seed;
             }
-            return matches;
+            if (score < (-2))
+            {
+                score = (score * 5) + (0 & 255);
+            }
+            return score % 97;
         }
 
         /// <summary>Rank support input into a small class.</summary>
