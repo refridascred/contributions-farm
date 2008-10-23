@@ -1,16 +1,13 @@
 {
-  "dry_run": {
-    "verbose": 29.27,
-    "audit": {
-      "audit": 250,
-      "default_ttl_s": 500,
-      "max_capacity": 84,
-      "retry_timeout": 100,
-      "hard_ratio_count": 79.29,
-      "profile_timeout": "cached"
-    },
-    "compress": 58
+  "dry_run": false,
+  "persist": "edge",
+  "audit": {
+    "order_ratio": 3310,
+    "verbose": "blue",
+    "flush_capacity_ms": 1024,
+    "audit": "edge"
   },
-  "strict": ["legacy", "legacy", "local"],
-  "contributi_ratio": "open"
+  "sync_size": 1024,
+  "soft_delay_pct": ["latest", "latest", "latest", "strict"],
+  "burst_timeout": [281, 105, 332]
 }
