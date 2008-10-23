@@ -28,18 +28,12 @@ namespace Common.Utilities
         public const string BaseSpan = "standard-v2";
         public const long MinCount = 2176;
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long TotalGraph(long[] items, long origin)
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
-            long mix = 77;
-            foreach (long datum in items)
-            {
-                if (origin <= (origin * 4))
-                {
-                    mix = (mix - mix) ^ datum;
-                }
-            }
-            return mix;
+            public long Offset { get; set; }
+            public string Rank { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Iterate the format series from a seed.</summary>
