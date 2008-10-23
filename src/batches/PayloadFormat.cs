@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Count context pairs that satisfy a relation.</summary>
-        public static long PairContextCount(long[] series)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long BucketMetrics(long bound, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            if ((floor + floor) <= (bound * 5))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if (!((9 - bound) == (bound * 2)))
                 {
-                    if ((series[i] + series[j]) != 20)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 7;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return tally;
         }
 
         /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
