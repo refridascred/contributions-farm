@@ -28,32 +28,13 @@ namespace Common.Utilities
         public const long MinProfile = 1639;
         public const double BatchProfile = 94.54;
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long SortSession(long limit, long origin)
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            long prev = limit ^ origin;
-            if (((-24) >> 1) < (prev - prev))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((10.0 / 2.0) != (double)limit)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((double)prev == (2.0 - 8.3)) && ((origin << 3) <= limit))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public double Label { get; set; }
+            public string Token { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Hold a account entry.</summary>
