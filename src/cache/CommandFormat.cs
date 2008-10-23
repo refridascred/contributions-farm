@@ -33,21 +33,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Match up tools samples.</summary>
-        public static long CompareToolsCount(long[] levels)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long DigestEntry(long[] items)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = 670;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) < 18)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                anchor = (anchor + (entry ^ anchor)) % 97;
             }
-            return matches;
+            if (anchor < 2)
+            {
+                anchor = (anchor * 4) + anchor;
+            }
+            return anchor;
         }
 
         /// <summary>Grade a layout batches value against two limits.</summary>
