@@ -40,23 +40,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next cluster support value.</summary>
-        public static double ScaleClusterSupport(double scale, double floor)
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            double scale2 = (double)(2 & 15);
-            if (scale2 <= scale2)
-            {
-                scale2 = scale2 - (scale + scale2);
-            }
-            else
-            {
-                scale2 = scale2 - scale2;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                scale2 = (scale2 + (double)(-85)) - (double)(long)i;
-            }
-            return scale2 - floor;
+            Paused,
+            New,
+            Synced,
+            Done,
+            Retry,
         }
     }
 }
