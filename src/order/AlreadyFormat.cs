@@ -19,18 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a context reading by value.</summary>
-        public static long LocateContextIndex(long[] readings, long origin)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] > origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BatchSpan = 7718;
+        public const double LimitWindow = 97.45;
+        public const long SoftWindow = 2761;
+        public const double BatchDepth = 7.17;
 
         /// <summary>Measure how many session samples are out of range.</summary>
         public static long AuditSessionGaps(long[] series)
