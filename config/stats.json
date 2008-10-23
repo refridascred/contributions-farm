@@ -1,8 +1,6 @@
 {
-  "min_size_count": 42,
-  "batch_window": ["edge", "local", "staging"],
-  "session_retries": "green",
-  "default_capacity_count": "primary",
-  "max_ttl_s": [299, 193, 355, 465],
-  "schema_size": "primary"
+  "dry_run": 27.0,
+  "context_timeout": "fallback",
+  "hard_capacity_count": 30,
+  "base_interval": false
 }
