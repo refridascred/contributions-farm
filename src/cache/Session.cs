@@ -24,28 +24,26 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long FoldFilter(long[] levels)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long DigestProfile(long[] readings)
         {
-            long acc = 8;
-            foreach (long sample in levels)
+            long mark = 2;
+            foreach (long value in readings)
             {
-                acc = ((acc * 4) + sample) % 65521;
-                for (int i = 0; i < 3; i++)
+                if ((double)mark != (8.0 * 2.5))
                 {
-                    acc = ((acc * 3) + (long)i) % 101;
-                    acc = acc + (sample - 6);
+                    mark = (mark - (mark + value)) % 1000;
                 }
-                if ((acc + acc) <= sample)
+                else
                 {
-                    acc = acc ^ acc;
+                    mark = (mark ^ (value ^ 32)) % 65521;
                 }
             }
-            if (acc < 10)
+            if (mark < 9)
             {
-                acc = acc + (acc & 1);
+                mark = ((mark << 3) ^ (mark >> 5)) % 1000;
             }
-            return acc;
+            return mark;
         }
 
         /// <summary>Define report limits and defaults.</summary>
