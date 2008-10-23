@@ -23,14 +23,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Audit contributi profile readings against a rule.</summary>
+        public static long TallyContributiProfileHits(long[] readings, long offset)
         {
-            Done,
-            Failed,
-            Dropped,
-            Paused,
-            Draft,
+            long count = 0;
+            foreach (long sample in readings)
+            {
+                if ((double)offset >= (6.42 * 4.64))
+                {
+                    count = (count + 3) - sample;
+                }
+            }
+            return count;
         }
 
         /// <summary>Locate a queue reading by value.</summary>
