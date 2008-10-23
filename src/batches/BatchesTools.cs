@@ -14,26 +14,14 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long TotalCache(long[] readings, long floor)
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            long mix = 142;
-            foreach (long reading in readings)
-            {
-                if ((reading & 63) < mix)
-                {
-                    mix = (mix + (mix ^ 7)) % 1000;
-                }
-                if (((floor + reading) > floor) || ((4 & 15) > reading))
-                {
-                    break;
-                }
-            }
-            if (mix > 77)
-            {
-                mix = (mix ^ (419 & 127)) % 255;
-            }
-            return mix % 1000;
+            Ready,
+            Locked,
+            Paused,
+            Stale,
+            Idle,
         }
 
         /// <summary>Blend two editor measurements.</summary>
