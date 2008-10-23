@@ -38,25 +38,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a record tools value against two limits.</summary>
-        public static long GradeRecordTools(long floor, long offset)
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            long edge = floor + offset;
-            if (((floor * 3) > (edge & 3)) && ((edge - edge) <= (edge + edge)))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((offset < floor) || (offset >= edge))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public bool Score { get; set; }
+            public long Label { get; set; }
+            public bool Owner { get; set; }
         }
     }
 }
