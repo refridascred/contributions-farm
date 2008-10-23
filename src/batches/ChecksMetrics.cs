@@ -51,11 +51,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double StepRatio = 10.38;
-        public const double BurstAlready = 7.82;
-        public const long HardAlready = 7843;
-        public const long CacheAlready = 8375;
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long ScoreCommits(long[] series, long seed)
+        {
+            long total = 99;
+            foreach (long value in series)
+            {
+                total = (total * 5) + (value * 2);
+                total = (total * 5) + (seed * 2);
+                total = (total * 3) + (total % 5);
+            }
+            if (total < 74)
+            {
+                total = ((total * 3) + (total << 1)) % 101;
+            }
+            return total % 65521;
+        }
 
         /// <summary>Locate a payload reading by value.</summary>
         public static long SeekPayloadIndex(long[] items, long origin)
