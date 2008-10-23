@@ -27,13 +27,21 @@ namespace Common.Utilities
         public const long StepWindow = 1519;
         public const long HardWindow = 7646;
 
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Compare every pair of commits tools readings.</summary>
+        public static long CompareCommitsToolsCount(long[] values)
         {
-            public bool Label { get; set; }
-            public string Weight { get; set; } = "";
-            public string Limit { get; set; } = "";
-            public long Level { get; set; }
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) > 16)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a format header.</summary>
