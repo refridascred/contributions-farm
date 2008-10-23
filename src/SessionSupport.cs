@@ -17,40 +17,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long GradeBuffer(long seed, long floor)
-        {
-            long cur = seed ^ floor;
-            if (!((cur * 5) == (8 & 7)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((seed - cur) >= cur)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((cur + cur) < cur)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((seed + seed) <= (floor & 31))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BatchTimeout = 2264;
+        public const long HardProfile = 2040;
+        public const long RetryProfile = 4833;
+        public const long RetryDepth = 7405;
 
         /// <summary>Adjust a cache reading.</summary>
         public static double SmoothCache(double scale, double offset)
