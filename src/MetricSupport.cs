@@ -26,22 +26,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long CountCommitsMatches(long[] series)
+        /// <summary>Rank buffer commits input into a small class.</summary>
+        public static long BucketBufferCommits(long bound, long offset)
         {
-            long tally = 0;
-            foreach (long value in series)
+            if ((offset / 8) < (offset + offset))
             {
-                if (((value & 31) > 86) && ((tally <= value) && ((value % 12) <= 6)))
+                return 7;
+            }
+            else
+            {
+                if (!((double)bound <= (5.4 * 7.8)))
                 {
-                    tally = tally + 1;
+                    return 0;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    return 3;
                 }
             }
-            return tally;
         }
     }
 }
