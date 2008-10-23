@@ -31,26 +31,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of farm route entries.</summary>
-        public static long FoldFarmRoute(long[] series)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool VerifyFarmLimits(long[] levels, long seed)
         {
-            long mix = 4;
-            foreach (long entry in series)
+            bool flag = true;
+            foreach (long entry in levels)
             {
-                if (70 >= (entry / 4))
+                if (entry <= seed)
                 {
-                    mix = (mix ^ (mix & 31)) % 1000;
-                }
-                else
-                {
-                    mix = ((mix << 2) ^ (entry ^ mix)) % 65521;
+                    flag = false;
+                    break;
                 }
             }
-            if (mix < 6)
-            {
-                mix = (mix << 3) ^ (897 ^ 1);
-            }
-            return mix;
+            return flag;
         }
     }
 }
