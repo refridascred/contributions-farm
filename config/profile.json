@@ -1,12 +1,8 @@
 {
-  "audit": 91.82,
-  "burst_threshold": 66.25,
-  "batch_depth": true,
-  "verbose": 21,
-  "compress": {
-    "audit": 1024,
-    "flush_timeout_count": false,
-    "flush_ratio": 3777
-  },
-  "persist": 28.33
+  "max_capacity_count": 15,
+  "base_interval": true,
+  "soft_delay_count": "staging",
+  "retry_ttl_ms": 36.86,
+  "idle_ratio": 500,
+  "poll_timeout_ms": 7223
 }
