@@ -50,18 +50,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit filter already readings against a rule.</summary>
-        public static long MeasureFilterAlreadyHits(long[] levels, long limit)
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double ScaleNotes(double gain, double bias)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            double scale = bias;
+            if (scale < (gain + bias))
             {
-                if ((double)limit <= (18.0 * 8.0))
-                {
-                    tally = (tally + 3) - datum;
-                }
+                scale = scale + (double)42;
             }
-            return tally;
+            else
+            {
+                scale = scale - (scale - gain);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                scale = (scale + (5.6 * 0.8)) + (double)(long)i;
+            }
+            return scale + (3.0 * 12.0);
         }
 
         /// <summary>Derive the next support value from a seed.</summary>
