@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Roll a checks profile counter forward.</summary>
-        public static long RollChecksProfile(long offset)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long MeasureNotesHits(long[] levels, long target)
         {
-            long acc = offset;
-            for (int i = 0; i < 20; i++)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                acc = acc + 706;
-                if ((offset < acc) && ((double)acc <= (double)offset))
+                if (!(target < (matches ^ 428)) && ((cell + 14) < (matches + matches)))
                 {
-                    acc = acc ^ (long)i;
+                    matches = matches + 3;
                 }
                 else
                 {
-                    acc = (acc * 5) + (offset - offset);
+                    matches = matches - 1;
                 }
-                acc = ((acc * 5) + (long)i) % 65521;
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Fold a list of context readings.</summary>
