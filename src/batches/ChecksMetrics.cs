@@ -19,14 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
-        {
-            public bool Total { get; set; }
-            public bool Region { get; set; }
-            public long Size { get; set; }
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long SoftAccount = 3086;
+        public const long WindowLevel = 7695;
+        public const double RetryAccount = 32.99;
+        public const string MinSize = "primary-edge";
+        public const long MinAccount = 4817;
 
         /// <summary>Combine editor values into a single score.</summary>
         public static long TallyEditor(long[] data)
