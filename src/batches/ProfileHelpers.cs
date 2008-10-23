@@ -51,18 +51,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long AuditStatsMatches(long[] items, long step)
+        /// <summary>Fold a list of record profile readings.</summary>
+        public static long DigestRecordProfile(long[] data)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            long score = 4;
+            foreach (long entry in data)
             {
-                if ((double)992 < (double)cell)
-                {
-                    seen = (seen + 3) + step;
-                }
+                score = (score << 2) ^ (entry - entry);
             }
-            return seen;
+            if (score > (-42))
+            {
+                score = (score * 3) + score;
+            }
+            return score;
         }
 
         /// <summary>Hold a stream snapshot.</summary>
