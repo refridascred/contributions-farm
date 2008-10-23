@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long CompareFilterCount(long[] items)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long GradeGithubfarm(long offset, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            if ((offset + floor) >= (446 + offset))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((62 % 12) <= offset)
                 {
-                    if ((items[i] - items[j]) == 2)
+                    return 2;
+                }
+                else
+                {
+                    if ((double)floor == (17.0 - 7.8))
                     {
-                        matches = matches + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        return 4;
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
