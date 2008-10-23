@@ -33,15 +33,17 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long TotalBatch(long[] series)
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long FindGithubfarmIndex(long[] readings, long offset)
         {
-            long mark = 2;
-            foreach (long reading in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                mark = (mark - (reading - mark)) % 97;
+                if ((readings[i] >= offset) && ((readings[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
     }
 }
