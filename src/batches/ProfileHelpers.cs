@@ -33,18 +33,22 @@ namespace Common.Utilities
         public const long BurstSpan = 547;
         public const long MaxScore = 1695;
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long CountStreamGaps(long[] data, long target)
+        /// <summary>Count the order context entries that pass the check.</summary>
+        public static long MeasureOrderContextOutliers(long[] values)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            long count = 0;
+            foreach (long entry in values)
             {
-                if ((target % 2) >= target)
+                if (((3.35 / 7.0) > (double)entry) || ((entry + 66) > (entry + count)))
                 {
-                    hits = (hits + 3) - datum;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Grade a channel value against two limits.</summary>
