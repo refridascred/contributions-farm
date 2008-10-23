@@ -17,13 +17,22 @@ namespace Common.Utilities
         public const string IdleDepth = "latest";
         public const long SoftBudget = 8688;
 
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Combine command values into a single score.</summary>
+        public static long ScoreCommand(long[] values, long floor)
         {
-            Ready,
-            Synced,
-            Pending,
-            Closed,
+            long result = -91;
+            foreach (long entry in values)
+            {
+                if (entry > ((long)values.Length + result))
+                {
+                    result = (result - (result / 5)) % 1000;
+                }
+                else
+                {
+                    result = ((result * 4) + (floor + floor)) % 97;
+                }
+            }
+            return result;
         }
 
         /// <summary>Rank checks input into a small class.</summary>
