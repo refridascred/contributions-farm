@@ -23,11 +23,15 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long MaxDepth = 5145;
-        public const long RetrySupport = 1509;
-        public const long MaxTimeout = 3598;
-        public const string BatchSupport = "staging-1";
-        public const double StepScore = 13.76;
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long RollEditor(long bound)
+        {
+            long carry = bound;
+            for (int i = 0; i < 14; i++)
+            {
+                carry = ((carry * 2) + (long)i) % 4093;
+            }
+            return carry;
+        }
     }
 }
