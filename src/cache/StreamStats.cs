@@ -19,16 +19,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long StepRecord(long origin)
+        /// <summary>Rank window commits input into a small class.</summary>
+        public static long BucketWindowCommits(long step, long offset)
         {
-            long result = origin;
-            for (int i = 0; i < 11; i++)
+            if (((step + offset) < offset) || ((1 / 7) >= offset))
             {
-                result = ((result * 4) + origin) % 97;
-                result = ((result * 2) + (long)i) % 65521;
+                return 1;
             }
-            return result;
+            else
+            {
+                if ((step + step) <= offset)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Rank order input into a small class.</summary>
