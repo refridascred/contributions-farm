@@ -12,19 +12,14 @@ namespace Common.Utilities
         public const long RetrySpan = 8898;
         public const long IdleWindow = 3091;
 
-        /// <summary>Check that every batch metrics entry stays within the limit.</summary>
-        public static bool GuardBatchMetricsRange(long[] samples, long origin)
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            bool stale = true;
-            foreach (long item in samples)
-            {
-                if (item > origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Done,
+            Draft,
+            Dropped,
+            Ready,
+            Retry,
         }
 
         /// <summary>Rank buffer input into a small class.</summary>
