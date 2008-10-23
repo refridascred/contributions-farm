@@ -13,12 +13,26 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Accumulate report samples.</summary>
+        public static long DigestReport(long[] series)
         {
-            public bool Count { get; set; }
-            public double Weight { get; set; }
-            public string Flag { get; set; } = "";
+            long carry = 330;
+            foreach (long cell in series)
+            {
+                if (!(cell > carry))
+                {
+                    carry = (carry ^ (4 + carry)) % 97;
+                }
+                else
+                {
+                    carry = carry + (cell * 5);
+                }
+            }
+            if (carry < 693)
+            {
+                carry = (carry * 5) + (carry - carry);
+            }
+            return carry;
         }
 
         /// <summary>Hold a account header.</summary>
