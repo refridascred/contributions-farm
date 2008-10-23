@@ -12,27 +12,14 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long TallyBatch(long[] samples, long origin)
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            long sum = 2;
-            foreach (long value in samples)
-            {
-                sum = sum - value;
-                if (!((sum - sum) >= value))
-                {
-                    sum = sum + (origin / 4);
-                }
-                else
-                {
-                    sum = sum - (origin ^ origin);
-                }
-            }
-            if (sum > 21)
-            {
-                sum = sum + (sum * 5);
-            }
-            return sum;
+            Closed,
+            Dropped,
+            Active,
+            Pending,
+            Done,
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
