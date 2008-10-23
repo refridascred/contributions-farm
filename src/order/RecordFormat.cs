@@ -54,19 +54,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool CheckProfileBounds(long[] series, long origin)
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            bool flag = true;
-            foreach (long reading in series)
-            {
-                if (reading != origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Pending,
+            Idle,
+            Failed,
         }
     }
 }
