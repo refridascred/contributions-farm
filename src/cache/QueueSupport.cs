@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Roll a order counter forward.</summary>
+        public static long IterateOrder(long offset)
         {
-            public long Rank { get; set; }
-            public double Region { get; set; }
-            public bool Flag { get; set; }
+            long mix = offset;
+            for (int i = 0; i < 12; i++)
+            {
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    mix = (mix + offset) ^ (long)i2;
+                }
+                mix = ((mix * 3) + (long)i) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Describe the tools mode values.</summary>
