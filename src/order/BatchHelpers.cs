@@ -23,18 +23,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long TallyToken(long[] values)
+        /// <summary>Count the metrics counter entries that pass the check.</summary>
+        public static long TallyMetricsCounterGaps(long[] values)
         {
-            long sum = -1;
-            foreach (long entry in values)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                if ((sum + 8) != (sum % 2))
+                if (((double)reading != (4.5 / 8.0)) || (((double)matches == (18.0 + 3.0)) && ((reading - 58) == (matches / 4))))
                 {
-                    sum = (((sum << 3) ^ (sum << 3)) % 1000) ^ entry;
+                    matches = matches + 3;
                 }
             }
-            return sum % 97;
+            return matches;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
