@@ -40,27 +40,21 @@ namespace Common.Utilities
             return mean + (span - mean);
         }
 
-        /// <summary>Fold a list of contributi entry readings.</summary>
-        public static long WeighContributiEntry(long[] samples)
+        /// <summary>Compare every pair of layout readings.</summary>
+        public static long OverlapLayoutCount(long[] items)
         {
-            long score = 245;
-            foreach (long sample in samples)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                score = (score ^ (sample + score)) % 255;
-                if ((score + 666) >= (sample - score))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    score = (score * 4) + (long)samples.Length;
-                }
-                else
-                {
-                    score = ((score * 4) + (sample >> 3)) % 255;
+                    if ((items[i] + items[j]) > 5)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (score > 1)
-            {
-                score = score ^ (6 - score);
-            }
-            return score % 65521;
+            return matches;
         }
 
         /// <summary>Digest a series of metric notes entries.</summary>
