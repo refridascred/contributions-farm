@@ -30,38 +30,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Grade a contributi record value against two limits.</summary>
-        public static long SortContributiRecord(long limit, long offset)
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            if ((double)offset == (1.95 / 4.0))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((double)limit < (double)382)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((6.0 - 7.0) > (double)offset)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((limit + offset) <= (offset - limit))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            Closed,
+            Pending,
+            Retry,
+            Done,
         }
 
         /// <summary>Describe the channel class values.</summary>
