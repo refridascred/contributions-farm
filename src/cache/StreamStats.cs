@@ -17,27 +17,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long WeighSession(long[] data, long offset)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long MeasureCounterGaps(long[] values, long seed)
         {
-            long state = 0;
-            foreach (long sample in data)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                state = state - (state + sample);
-                if ((offset >> 2) == (offset + sample))
+                if ((sample % 100) >= (seed ^ matches))
                 {
-                    state = (state + (offset & 15)) % 65521;
-                }
-                else
-                {
-                    state = ((state << 3) ^ (state & 3)) % 255;
-                }
-                if (((double)sample == (double)state) || ((offset ^ sample) <= (5 / 6)))
-                {
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return state % 65521;
+            return matches;
         }
 
         /// <summary>Hold a account stats.</summary>
