@@ -5,32 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long ClassifyStream(long step, long origin)
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
         {
-            long prev = step ^ origin;
-            if ((origin < (455 >> 1)) && (prev < (origin + 61)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((5 % 64) >= (prev >> 3))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((7.79 / 9.0) < (double)prev)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public string Count { get; set; } = "";
+            public long Flag { get; set; }
+            public string Region { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Hold a session snapshot.</summary>
