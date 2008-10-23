@@ -1,18 +1,7 @@
 {
-  "sync_threshold_s": 22.26,
-  "verbose": 41.29,
-  "min_timeout_pct": "stable",
-  "min_window": {
-    "route_interval": {
-      "order_ttl": "strict",
-      "readonly": "eu-west",
-      "base_ratio_pct": 73,
-      "cache_threshold": [321, 109, 47]
-    },
-    "idle_threshold": 32,
-    "session_delay": "stable",
-    "entry_interval": ["stable", "cached"],
-    "default_window": false,
-    "queue_depth": "edge"
-  }
+  "githubfarm_capacity": 26,
+  "verbose": 10.84,
+  "audit": false,
+  "persist": "blue",
+  "hard_window_s": "local"
 }
