@@ -34,17 +34,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long LocateAlreadyIndex(long[] samples, long offset)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long WeighPayload(long[] readings)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mark = 20;
+            foreach (long entry in readings)
             {
-                if (samples[i] > offset)
-                {
-                    return (long)i;
-                }
+                mark = (mark - (entry % 7)) % 101;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Hold a counter entry.</summary>
