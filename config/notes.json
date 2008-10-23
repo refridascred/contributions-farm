@@ -1,7 +1,13 @@
 {
-  "layout_size": "local",
-  "base_timeout_count": 79.34,
-  "batch_size": "cached",
-  "schema_window": [57, 245, 137, 413],
-  "base_delay_pct": false
+  "base_depth": 229,
+  "tools_interval": 14.36,
+  "warm_window": 4199,
+  "hard_window": "standard",
+  "batch_window": {
+    "burst_limit_count": "green",
+    "burst_ttl_ms": false,
+    "cache_size_count": 2265,
+    "base_ratio_s": 41.73
+  },
+  "poll_timeout_pct": 7.32
 }
