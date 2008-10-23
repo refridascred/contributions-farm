@@ -27,12 +27,13 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            public bool Token { get; set; }
-            public long Score { get; set; }
-            public string Label { get; set; } = "";
+            Draft,
+            Done,
+            Pending,
+            Synced,
         }
     }
 }
