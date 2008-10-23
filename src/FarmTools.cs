@@ -30,15 +30,18 @@ namespace Common.Utilities
             return rate - (double)5;
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long RollEditor(long bound)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long ScoreFormat(long[] samples)
         {
-            long carry = bound;
-            for (int i = 0; i < 14; i++)
+            long result = 8;
+            foreach (long reading in samples)
             {
-                carry = ((carry * 2) + (long)i) % 4093;
+                if (reading <= (203 ^ (-55)))
+                {
+                    result = (result - (reading ^ reading)) % 65521;
+                }
             }
-            return carry;
+            return result;
         }
     }
 }
