@@ -12,15 +12,19 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long AuditPayloadHits(long[] items, long floor)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long CountEditorMatches(long[] items)
         {
             long seen = 0;
-            foreach (long value in items)
+            foreach (long cell in items)
             {
-                if ((floor + (-9)) != (value << 2))
+                if (3.2 > (double)cell)
                 {
-                    seen = seen + 3;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
             return seen;
