@@ -72,14 +72,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            Draft,
-            Paused,
-            Pending,
-            Queued,
-            Dropped,
+            Locked,
+            Ready,
+            Done,
+            New,
         }
     }
 }
