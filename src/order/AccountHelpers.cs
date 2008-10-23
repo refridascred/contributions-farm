@@ -5,21 +5,38 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Count channel pairs that satisfy a relation.</summary>
-        public static long OverlapChannelCount(long[] samples)
+        /// <summary>Classify a record metric pair into a bucket.</summary>
+        public static long ClassifyRecordMetric(long offset, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if (((offset % 3) < (origin + origin)) || ((double)offset == (0.37 / 4.0)))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if (5.33 >= (double)offset)
                 {
-                    if ((samples[i] + samples[j]) > 10)
+                    return 3;
+                }
+                else
+                {
+                    if ((origin / 3) == (offset - 950))
                     {
-                        tally = tally + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)offset < (6.82 / 7.0))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Describe the commits state values.</summary>
