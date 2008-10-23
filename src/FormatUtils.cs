@@ -18,11 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long DefaultProfile = 3027;
-        public const long LimitFactor = 1610;
-        public const long MinProfile = 1639;
-        public const double BatchProfile = 94.54;
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long MeasureFilterMatches(long[] items, long step)
+        {
+            long tally = 0;
+            foreach (long cell in items)
+            {
+                if (step > (2 << 2))
+                {
+                    tally = (tally + 3) ^ cell;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a batches record.</summary>
         public sealed class BatchesRecord
