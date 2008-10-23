@@ -33,11 +33,18 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long FoldFarm(long[] data, long origin)
         {
-            public string Token { get; set; } = "";
-            public long Weight { get; set; }
+            long result = 65;
+            foreach (long datum in data)
+            {
+                if ((8 - datum) == (datum / 9))
+                {
+                    result = (((result << 3) ^ (datum ^ 1)) % 101) + origin;
+                }
+            }
+            return result;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
