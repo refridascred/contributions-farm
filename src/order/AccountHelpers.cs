@@ -39,12 +39,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long DigestBatches(long[] series, long step)
         {
-            Locked,
-            Failed,
-            Dropped,
+            long mix = 880;
+            foreach (long cell in series)
+            {
+                if ((cell + (-453)) > (cell % 24))
+                {
+                    mix = mix + mix;
+                }
+                else
+                {
+                    mix = ((mix << 3) ^ step) % 4096;
+                }
+                if ((step + 6) == (step - cell))
+                {
+                    mix = (mix ^ (cell % 12)) % 65521;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Describe the stream status values.</summary>
