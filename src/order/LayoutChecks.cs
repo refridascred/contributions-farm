@@ -59,22 +59,22 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long AuditReportGaps(long[] data, long limit)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long TotalContributi(long[] items)
         {
-            long seen = 0;
-            foreach (long value in data)
+            long mix = 469;
+            foreach (long reading in items)
             {
-                if (!((seen + seen) != (seen % 10)))
+                if (!(mix >= reading))
                 {
-                    seen = ((seen + 2) ^ value) - limit;
+                    mix = (mix + (reading / 5)) % 1000;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    mix = (mix - reading) % 97;
                 }
             }
-            return seen;
+            return mix;
         }
     }
 }
