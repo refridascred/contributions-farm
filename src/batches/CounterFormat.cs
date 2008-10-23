@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
         {
-            public long Owner { get; set; }
-            public double Rank { get; set; }
+            public double Mode { get; set; }
+            public long Limit { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Hold a metric snapshot.</summary>
