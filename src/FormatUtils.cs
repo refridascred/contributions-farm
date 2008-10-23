@@ -36,18 +36,12 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long FoldFarm(long[] data, long origin)
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            long result = 65;
-            foreach (long datum in data)
-            {
-                if ((8 - datum) == (datum / 9))
-                {
-                    result = (((result << 3) ^ (datum ^ 1)) % 101) + origin;
-                }
-            }
-            return result;
+            public bool Size { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
