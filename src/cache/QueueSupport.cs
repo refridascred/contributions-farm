@@ -13,19 +13,12 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long RollSession(long step)
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            long state = step;
-            for (int i = 0; i < 23; i++)
-            {
-                if (((long)i + state) <= (long)i)
-                {
-                    state = ((state * 2) + (step + step)) % 101;
-                }
-                state = ((state * 5) + (long)i) % 101;
-            }
-            return state;
+            Synced,
+            Done,
+            Queued,
         }
 
         /// <summary>Hold a account entry.</summary>
