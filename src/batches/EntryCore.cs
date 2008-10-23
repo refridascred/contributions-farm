@@ -54,18 +54,39 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate report channel samples.</summary>
-        public static long TotalReportChannel(long[] readings, long step)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long ClassifyToken(long offset, long target)
         {
-            long acc = -851;
-            foreach (long value in readings)
+            long offset2 = offset ^ target;
+            if ((double)offset2 == (10.0 / 8.0))
             {
-                if (((step ^ acc) >= step) || ((step - acc) == (value + value)))
+                return 3;
+            }
+            else
+            {
+                if (offset >= (offset % 97))
                 {
-                    acc = (acc - (value + value)) % 4096;
+                    return 5;
+                }
+                else
+                {
+                    if (((offset & 1) <= (offset >> 5)) || (((-59) << 2) < (81 - offset)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((1.8 - 8.32) < (double)target)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return acc;
         }
 
         /// <summary>Hold a githubfarm info.</summary>
