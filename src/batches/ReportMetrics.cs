@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long TallyCommitsHits(long[] series, long offset)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long MeasureGithubfarmGaps(long[] items)
         {
-            long count = 0;
-            foreach (long reading in series)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                if (2 > (48 ^ count))
+                if (((2 + sample) < (sample + tally)) && !((sample & 7) == (sample - tally)))
                 {
-                    count = ((count + 2) + reading) + offset;
+                    tally = tally + 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
