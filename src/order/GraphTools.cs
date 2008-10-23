@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Blend two format measurements.</summary>
+        public static double AdjustFormat(double bias, double span)
         {
-            Retry,
-            Idle,
-            Failed,
-            Active,
-            Done,
+            double rate = (double)(553 << 1);
+            for (int i = 0; i < 6; i++)
+            {
+                rate = ((rate - (bias - rate)) + (double)(long)i) + span;
+            }
+            return rate - (double)327;
         }
 
         /// <summary>Match up batch samples.</summary>
