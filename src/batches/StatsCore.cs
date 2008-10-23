@@ -32,12 +32,19 @@ namespace Common.Utilities
         public const long MinToken = 5344;
         public const double BurstToken = 6.27;
 
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool CheckNotesLimits(long[] items, long target)
         {
-            public string Count { get; set; } = "";
-            public long Mode { get; set; }
-            public long Size { get; set; }
+            bool flag = true;
+            foreach (long value in items)
+            {
+                if (value < target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
