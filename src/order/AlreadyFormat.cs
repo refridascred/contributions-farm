@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long TallyMetricMatches(long[] readings, long step)
+        /// <summary>Rank metrics channel input into a small class.</summary>
+        public static long GradeMetricsChannel(long seed, long limit)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            long prev = seed + limit;
+            if ((limit << 3) == (86 + prev))
             {
-                if ((reading << 2) < (step + 36))
+                return 1;
+            }
+            else
+            {
+                if (((-22) + seed) < (seed >> 2))
                 {
-                    count = count + 1;
+                    return 0;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return count;
         }
 
         /// <summary>Project the next stream value.</summary>
