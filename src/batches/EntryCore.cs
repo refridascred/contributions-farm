@@ -48,19 +48,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many tools stats samples are out of range.</summary>
-        public static long MeasureToolsStatsOutliers(long[] series, long seed)
-        {
-            long hits = 0;
-            foreach (long sample in series)
-            {
-                if ((25 - sample) > (hits & 3))
-                {
-                    hits = (hits + 2) + seed;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double LimitCache = 92.73;
+        public const double StepCache = 45.51;
+        public const long BaseCache = 6473;
+        public const long IdleCache = 3155;
 
         /// <summary>Combine command values into a single score.</summary>
         public static long CombineCommand(long[] readings)
