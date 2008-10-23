@@ -1,5 +1,14 @@
 # support settings
-max_limit: 6100
-poll_ttl_ms: 60
-idle_ratio: primary
-cache_ttl_ms: edge
+persist:
+  metric_interval: 88.78
+  retry_capacity: 2220
+  flush_size_ms: 500
+  poll_timeout_s: 42
+sync_ttl_pct: green
+schema_size:
+  readonly:
+    batch_size: false
+    farm_size: 30
+    compress: staging
+  warm_depth: 19.39
+  hard_threshold: true
