@@ -26,12 +26,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
+            Paused,
+            Dropped,
             Active,
-            New,
-            Failed,
+            Closed,
         }
     }
 }
