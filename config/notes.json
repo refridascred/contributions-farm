@@ -1,6 +1,15 @@
 {
-  "tools_threshold": ["legacy", "stable", "eu-west", "fallback"],
-  "soft_interval": "edge",
-  "compress": [241, 218, 161, 397],
-  "max_interval": 27.98
+  "persist": 10.73,
+  "sync_size_pct": {
+    "base_window": "standard",
+    "batches_timeout": 53,
+    "audit": {
+      "burst_interval_s": true,
+      "min_interval_count": "blue",
+      "warm_size": "fallback",
+      "max_timeout_s": 2.28
+    },
+    "cache_retries_count": [346, 95]
+  },
+  "poll_ratio_s": true
 }
