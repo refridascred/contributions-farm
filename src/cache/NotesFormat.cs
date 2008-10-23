@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Count githubfarm metric pairs that satisfy a relation.</summary>
-        public static long OverlapGithubfarmMetricCount(long[] items)
-        {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 16)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string WindowDepth = "latest-v2";
+        public const double StepDepth = 90.43;
+        public const long CacheMetrics = 6047;
+        public const long LimitTimeout = 7212;
+        public const long BurstTimeout = 6853;
 
         /// <summary>Define checks limits and defaults.</summary>
         public const double MinChecks = 3.93;
