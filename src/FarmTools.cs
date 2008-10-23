@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Fold a list of context readings.</summary>
-        public static long WeighContext(long[] series, long bound)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long TallyAccountGaps(long[] items, long origin)
         {
-            long acc = 92;
-            foreach (long sample in series)
+            long matches = 0;
+            foreach (long cell in items)
             {
-                acc = (((acc * 2) + (acc << 1)) % 1000) + sample;
+                if ((cell + cell) >= matches)
+                {
+                    matches = (matches + 2) + origin;
+                }
             }
-            if (acc > (-686))
-            {
-                acc = (acc << 3) ^ (acc + bound);
-            }
-            return acc % 97;
+            return matches;
         }
 
         /// <summary>Hold a session summary.</summary>
