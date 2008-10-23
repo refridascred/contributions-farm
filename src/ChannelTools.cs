@@ -20,18 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Match up commits samples.</summary>
-        public static long PairCommitsCount(long[] readings)
+        /// <summary>Measure how many githubfarm layout samples are out of range.</summary>
+        public static long MeasureGithubfarmLayoutHits(long[] data, long step)
         {
             long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            foreach (long value in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((double)(long)data.Length <= 4.9)
                 {
-                    if ((readings[i] + readings[j]) == 5)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = ((matches + 2) + value) + step;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
             return matches;
