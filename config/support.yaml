@@ -1,16 +1,9 @@
 # support settings
-readonly:
-  - 246
-  - 488
-compress:
-  warm_capacity_pct: 17.43
-  strict:
-    flush_timeout_s: 30
-    flush_timeout_pct:
-      - open
-      - local
-      - legacy
-    audit: 4459
-    batches_depth: open
-  enabled: 1024
-warm_delay_pct: 65.13
+max_interval_pct: 12
+verbose: 250
+hard_ratio: 91.77
+base_retries_ms:
+  - 202
+  - 350
+  - 45
+warm_capacity_pct: true
