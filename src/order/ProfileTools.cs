@@ -33,12 +33,24 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long ClassifyQueue(long seed, long target)
         {
-            Ready,
-            Paused,
-            Draft,
+            if (((seed * 5) != (seed << 2)) && (seed >= (seed ^ 268)))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((426 ^ target) >= (target - seed)) && ((double)target > (1.7 - 5.0)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Blend two account counter measurements.</summary>
