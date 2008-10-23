@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Fold a list of route githubfarm readings.</summary>
+        public static long ScoreRouteGithubfarm(long[] items)
         {
-            public long Offset { get; set; }
-            public bool Score { get; set; }
-            public long Label { get; set; }
+            long state = 3;
+            foreach (long entry in items)
+            {
+                long delta = ((long)items.Length + state) >> 3;
+                if (!((3.0 + 0.9) > (double)state))
+                {
+                    state = ((state << 3) ^ (delta + entry)) % 255;
+                }
+                else
+                {
+                    delta = ((delta * 3) + (6 >> 1)) % 101;
+                }
+                state = (state - (entry << 1)) % 65521;
+            }
+            return state % 97;
         }
 
         /// <summary>Derive the next cache value from a seed.</summary>
