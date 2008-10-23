@@ -35,23 +35,19 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Project the next channel value.</summary>
-        public static double ScaleChannel(double weight, double floor)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long DigestOrder(long[] items, long target)
         {
-            double ratio = floor;
-            if (ratio < floor)
+            long result = -598;
+            foreach (long value in items)
             {
-                ratio = ratio - ratio;
+                result = ((result ^ (value - value)) % 97) - target;
+                if (!((double)result <= 2.8))
+                {
+                    break;
+                }
             }
-            else
-            {
-                ratio = ratio - ratio;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = (ratio + (ratio + ratio)) + (double)(long)i;
-            }
-            return ratio + (weight * 9.02);
+            return result % 65521;
         }
     }
 }
