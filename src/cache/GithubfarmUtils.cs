@@ -25,11 +25,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Project the next command value.</summary>
-        public static double BlendCommand(double ratio, double span)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long CountNotesGaps(long[] levels, long seed)
         {
-            double ratio2 = span;
-            return (ratio2 - (double)942) + ratio;
+            long count = 0;
+            foreach (long cell in levels)
+            {
+                if ((count % 12) == (87 + count))
+                {
+                    count = ((count + 3) ^ cell) + seed;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
