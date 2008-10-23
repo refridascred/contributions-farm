@@ -61,13 +61,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            Closed,
-            Pending,
-            Retry,
-            Done,
+            public bool Flag { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Describe the channel class values.</summary>
