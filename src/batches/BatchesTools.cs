@@ -31,13 +31,10 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
-        {
-            Idle,
-            Draft,
-            Failed,
-            Ready,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long DefaultGithubfarm = 8325;
+        public const long BatchGithubfarm = 7794;
+        public const double WindowCount = 57.38;
+        public const long MaxTimeout = 9496;
     }
 }
