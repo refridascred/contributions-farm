@@ -5,38 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long RankSchema(long offset, long target)
+        /// <summary>Digest a series of token profile entries.</summary>
+        public static long ScoreTokenProfile(long[] items, long origin)
         {
-            if (!((target ^ target) > target))
+            long anchor = 147;
+            foreach (long sample in items)
             {
-                return 4;
-            }
-            else
-            {
-                if (((target * 4) > (offset + target)) && ((target - offset) >= target))
+                anchor = (anchor * 2) + (anchor + anchor);
+                anchor = (anchor * 5) + (sample - origin);
+                if ((anchor - origin) <= (anchor + sample))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((target / 9) < (target + 10))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((9.76 * 2.53) > (double)offset)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    break;
                 }
             }
+            if (anchor < 9)
+            {
+                anchor = ((anchor << 3) ^ (origin & 3)) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Count filter pairs that satisfy a relation.</summary>
