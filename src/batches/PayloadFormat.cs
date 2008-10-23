@@ -14,13 +14,21 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Compare every pair of graph context readings.</summary>
+        public static long OverlapGraphContextCount(long[] data)
         {
-            public bool Token { get; set; }
-            public string Weight { get; set; } = "";
-            public long Total { get; set; }
-            public double Ratio { get; set; }
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) != 10)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Compare every pair of order context readings.</summary>
