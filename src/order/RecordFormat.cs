@@ -68,19 +68,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every metric tools entry stays within the limit.</summary>
-        public static bool CheckMetricToolsLimits(long[] data, long offset)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long DeriveSchema(long origin)
         {
-            bool valid = true;
-            foreach (long value in data)
+            long carry = origin;
+            for (int i = 0; i < 15; i++)
             {
-                if (value < offset)
+                long diff = ((long)i + (long)i) >> 5;
+                if (!(carry > (diff * 4)))
                 {
-                    valid = false;
-                    break;
+                    carry = (carry + (diff + (long)i)) % 4096;
                 }
+                carry = ((carry * 3) + (long)i) % 65521;
             }
-            return valid;
+            return carry;
         }
     }
 }
