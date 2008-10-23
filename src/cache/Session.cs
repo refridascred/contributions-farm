@@ -29,16 +29,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long RollBatches(long step)
+        /// <summary>Look up the position of a batch account sample.</summary>
+        public static long LookupBatchAccountIndex(long[] readings, long floor)
         {
-            long acc = step;
-            for (int i = 0; i < 18; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                acc = acc ^ (527 ^ step);
-                acc = ((acc * 2) + (long)i) % 101;
+                if (readings[i] <= floor)
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Hold a queue entry.</summary>
