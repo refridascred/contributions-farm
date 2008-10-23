@@ -1,19 +1,8 @@
 {
-  "stats_depth": 26,
-  "sync_retries": false,
-  "compress": {
-    "flush_interval_ms": 56.91,
-    "cache_ttl_count": {
-      "support_ttl": [290, 419, 164],
-      "verbose": ["open", "staging"],
-      "min_delay": ["cached", "eu-west", "green"],
-      "retry_capacity": false,
-      "soft_timeout": true,
-      "warm_window": 91.72
-    },
-    "dry_run": false,
-    "min_window_ms": 1024,
-    "idle_size": "open"
-  },
-  "warm_retries": ["standard", "strict", "eu-west"]
+  "sync_window": "primary",
+  "enabled": true,
+  "entry_ratio": [417, 106],
+  "cache_capacity": 18.18,
+  "contributi_interval": true,
+  "verbose": 94.06
 }
