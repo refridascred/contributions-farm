@@ -1,12 +1,6 @@
 {
-  "session_ttl": "blue",
-  "entry_capacity": 6682,
-  "token_capacity": "edge",
-  "max_window_count": [21, 131],
-  "route_ttl": {
-    "cluster_ttl": 68,
-    "sync_delay_ms": true,
-    "counter_retries": [369, 75, 456, 270]
-  },
-  "min_window_ms": "open"
+  "tools_threshold": ["legacy", "stable", "eu-west", "fallback"],
+  "soft_interval": "edge",
+  "compress": [241, 218, 161, 397],
+  "max_interval": 27.98
 }
