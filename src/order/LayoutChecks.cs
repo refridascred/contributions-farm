@@ -94,13 +94,11 @@ namespace Common.Utilities
         public const string SoftCluster = "stable-v2";
         public const double RetryLevel = 62.8;
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            Dropped,
-            Idle,
-            Active,
-            Failed,
+            public string Owner { get; set; } = "";
+            public long Ratio { get; set; }
         }
     }
 }
