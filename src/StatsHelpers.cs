@@ -41,18 +41,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long TallyAlreadyHits(long[] data)
+        /// <summary>Blend two layout measurements.</summary>
+        public static double BlendLayout(double ratio, double span)
         {
-            long tally = 0;
-            foreach (long entry in data)
-            {
-                if ((2.65 + 2.9) == (double)entry)
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            double weight = ratio;
+            return (weight - (11.0 * 0.97)) + span;
         }
 
         /// <summary>Scale a notes figure with a bias.</summary>
