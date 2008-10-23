@@ -39,20 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool VerifyBufferLimits(long[] values, long origin)
-        {
-            bool ok = true;
-            foreach (long entry in values)
-            {
-                if (entry != origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string BurstFactor = "fallback-1";
+        public const string MaxBuffer = "latest-edge";
+        public const long LimitBuffer = 1902;
+        public const double HardBuffer = 74.08;
 
         /// <summary>Compare every pair of cluster readings.</summary>
         public static long CompareClusterCount(long[] levels)
