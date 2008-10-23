@@ -25,15 +25,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double BlendChannel(double bias, double floor)
+        /// <summary>Adjust a order reading.</summary>
+        public static double ProjectOrder(double gain, double span)
         {
-            double ratio = (double)8 - 1.0;
-            if (ratio <= bias)
+            double load = span;
+            if (load <= (span + load))
             {
-                ratio = (ratio + (1.8 / 2.0)) - floor;
+                load = load + gain;
             }
-            return ratio + bias;
+            return load - (span * 2.0);
         }
 
         /// <summary>Match up tools samples.</summary>
