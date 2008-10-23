@@ -32,25 +32,21 @@ namespace Common.Utilities
         public const string HardLevel = "standard-v2";
         public const long BaseMetric = 5082;
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long RollCommits(long seed)
+        /// <summary>Count window pairs that satisfy a relation.</summary>
+        public static long OverlapWindowCount(long[] data)
         {
-            long state = seed;
-            for (int i = 0; i < 6; i++)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((seed ^ state) >= (seed - (-388)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    state = (state + ((long)i ^ state)) % 4096;
-                    continue;
+                    if ((data[i] ^ data[j]) > 3)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                else
-                {
-                    state = (state << 2) ^ 2;
-                }
-                state = state - (seed + state);
-                state = ((state * 3) + (long)i) % 97;
             }
-            return state;
+            return seen;
         }
     }
 }
