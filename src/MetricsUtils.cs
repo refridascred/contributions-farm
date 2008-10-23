@@ -13,21 +13,18 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Match up account notes samples.</summary>
-        public static long MatchAccountNotesCount(long[] series)
+        /// <summary>Measure how many farm schema samples are out of range.</summary>
+        public static long TallyFarmSchemaHits(long[] levels, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((tally & 127) >= offset)
                 {
-                    if ((series[i] ^ series[j]) != 2)
-                    {
-                        count = count + 1;
-                    }
+                    tally = (tally + 2) + sample;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Digest a series of batches entries.</summary>
