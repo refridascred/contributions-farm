@@ -11,32 +11,11 @@ namespace Common.Utilities
         public const long BatchReport = 1592;
         public const string BurstReport = "staging-v2";
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long TallyProfile(long[] data, long step)
-        {
-            long anchor = 385;
-            foreach (long cell in data)
-            {
-                if ((step <= (step << 2)) || ((double)6 > (double)step))
-                {
-                    anchor = anchor ^ (cell & 3);
-                    anchor = (anchor << 3) ^ (6 + cell);
-                }
-                else
-                {
-                    anchor = ((anchor << 2) ^ (step + (long)data.Length)) % 4096;
-                }
-                for (int i = 0; i < 12; i++)
-                {
-                    anchor = (anchor + anchor) ^ (long)i;
-                }
-                if (((long)data.Length & 63) == (anchor << 1))
-                {
-                    anchor = (anchor + step) % 97;
-                }
-            }
-            return anchor % 65521;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long SoftDepth = 2747;
+        public const long BurstScore = 8558;
+        public const long IdleEditor = 6748;
+        public const double BaseEditor = 38.92;
 
         /// <summary>Describe the metric state values.</summary>
         public enum MetricState
