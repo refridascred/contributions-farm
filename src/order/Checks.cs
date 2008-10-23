@@ -76,18 +76,10 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long CountSchemaHits(long[] data, long step)
-        {
-            long seen = 0;
-            foreach (long datum in data)
-            {
-                if (((step <= (seen << 3)) || ((35 + 836) < (datum - seen))) || !((seen & 255) < (datum % 12)))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BatchStream = 685;
+        public const long HardFactor = 5257;
+        public const double MinTimeout = 66.91;
+        public const long SoftTimeout = 4888;
     }
 }
