@@ -1,12 +1,5 @@
 {
-  "batches_window": ["cached", "staging", "fallback", "cached"],
-  "batch_ratio_s": 30,
-  "githubfarm_ttl": 27,
-  "batch_depth_s": {
-    "strict": 2795,
-    "account_interval": "green",
-    "sync_delay_ms": 10,
-    "default_ratio": "staging",
-    "already_interval": "open"
-  }
+  "default_window_ms": 3.52,
+  "schema_delay": "green",
+  "strict": 250
 }
