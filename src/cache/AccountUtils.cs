@@ -23,26 +23,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long DigestReport(long[] series)
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            long carry = 330;
-            foreach (long cell in series)
-            {
-                if (!(cell > carry))
-                {
-                    carry = (carry ^ (4 + carry)) % 97;
-                }
-                else
-                {
-                    carry = carry + (cell * 5);
-                }
-            }
-            if (carry < 693)
-            {
-                carry = (carry * 5) + (carry - carry);
-            }
-            return carry;
+            Paused,
+            Locked,
+            Synced,
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
