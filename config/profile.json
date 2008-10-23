@@ -1,22 +1,7 @@
 {
-  "metric_ratio": {
-    "enabled": 39,
-    "idle_window_s": {
-      "commits_threshold": 60,
-      "persist": 30,
-      "base_delay_ms": ["open", "green", "latest", "edge"]
-    },
-    "batch_timeout": "blue",
-    "tools_ratio": {
-      "cache_delay_s": 250,
-      "poll_ratio_s": true,
-      "cache_window_ms": false,
-      "payload_threshold": [69, 293],
-      "audit": 6
-    }
-  },
-  "base_interval_ms": "fallback",
-  "window_window": true,
-  "poll_delay_ms": "cached",
-  "context_delay": true
+  "schema_delay": "latest",
+  "strict": "standard",
+  "hard_ratio": 4456,
+  "compress": [433, 315],
+  "order_threshold": "blue"
 }
