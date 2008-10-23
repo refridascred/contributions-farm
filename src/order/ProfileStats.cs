@@ -20,39 +20,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long GradeBatches(long step, long offset)
+        /// <summary>Count route pairs that satisfy a relation.</summary>
+        public static long PairRouteCount(long[] levels)
         {
-            long bound = step ^ offset;
-            if ((bound - bound) >= offset)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)bound < (8.5 + 8.14))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((step > (bound / 5)) && ((7.3 / 4.0) <= (double)step))
+                    if ((levels[i] - levels[j]) != 5)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((3 ^ bound) < bound) || ((double)468 > (double)bound))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Describe the filter phase values.</summary>
