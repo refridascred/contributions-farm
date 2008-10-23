@@ -21,36 +21,28 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Rank schema entry input into a small class.</summary>
-        public static long RankSchemaEntry(long step, long step2)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long SortCommits(long seed, long origin)
         {
-            long span = step ^ step2;
-            if ((64 - span) > (step2 % 10))
+            if (seed <= (origin * 3))
             {
-                return 4;
+                return 5;
             }
             else
             {
-                if ((span << 1) < step2)
+                if (!((origin ^ seed) > origin))
                 {
-                    return 8;
+                    return 1;
                 }
                 else
                 {
-                    if ((step2 + step2) < (step / 7))
+                    if ((origin >= (seed << 2)) && (5.7 >= (double)seed))
                     {
-                        return 3;
+                        return 6;
                     }
                     else
                     {
-                        if ((span % 2) < step2)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
+                        return 3;
                     }
                 }
             }
