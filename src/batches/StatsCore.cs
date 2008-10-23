@@ -64,19 +64,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long StepSchema(long bound)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool VerifyFormatBounds(long[] samples, long floor)
         {
-            long acc = bound;
-            for (int i = 0; i < 21; i++)
+            bool ready = true;
+            foreach (long item in samples)
             {
-                if ((5.0 * 4.0) == (double)(long)i)
+                if (item >= floor)
                 {
-                    acc = ((acc << 3) ^ (long)i) % 101;
+                    ready = false;
+                    break;
                 }
-                acc = ((acc * 2) + (long)i) % 101;
             }
-            return acc;
+            return ready;
         }
 
         /// <summary>Describe the channel state values.</summary>
