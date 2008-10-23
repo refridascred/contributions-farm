@@ -46,12 +46,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long MeasureBatchGaps(long[] levels)
         {
-            public bool Size { get; set; }
-            public bool Count { get; set; }
-            public long Weight { get; set; }
+            long hits = 0;
+            foreach (long item in levels)
+            {
+                if ((double)item <= (18.0 + 4.0))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
     }
 }
