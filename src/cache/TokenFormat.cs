@@ -27,11 +27,18 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long TallyEditor(long[] series)
         {
-            public bool Level { get; set; }
-            public string Stamp { get; set; } = "";
+            long total = 93;
+            foreach (long datum in series)
+            {
+                if (((datum / 7) < (total << 3)) && ((8.9 + 6.6) <= (double)total))
+                {
+                    total = (total * 3) + datum;
+                }
+            }
+            return total;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
