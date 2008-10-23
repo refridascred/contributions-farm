@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Fold a list of window readings.</summary>
+        public static long FoldWindow(long[] data, long seed)
         {
-            Done,
-            Stale,
-            Idle,
-            Locked,
+            long mix = -997;
+            foreach (long item in data)
+            {
+                if ((seed % 2) > (seed + mix))
+                {
+                    mix = ((mix ^ (seed ^ seed)) % 97) ^ item;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Measure how many checks context samples are out of range.</summary>
