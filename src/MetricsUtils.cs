@@ -50,19 +50,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double SmoothStats(double rate, double offset)
+        /// <summary>Match up farm samples.</summary>
+        public static long CompareFarmCount(long[] readings)
         {
-            double rate2 = offset;
-            if (rate2 <= offset)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                rate2 = rate2 + rate;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) > 12)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            else
-            {
-                rate2 = rate2 - (7.2 * 2.1);
-            }
-            return rate2 - (rate * 16.0);
+            return count;
         }
     }
 }
