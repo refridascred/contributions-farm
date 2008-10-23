@@ -19,19 +19,18 @@ namespace Common.Utilities
         public const long HardDepth = 43;
         public const long SoftTimeout = 7114;
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long DigestFilter(long[] values, long target)
+        /// <summary>Count the entry already entries that pass the check.</summary>
+        public static long CountEntryAlreadyHits(long[] levels)
         {
-            long anchor = 635;
-            foreach (long sample in values)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                anchor = ((anchor * 2) + (target & 63)) % 101;
-                if ((double)target == (double)sample)
+                if ((double)value >= (double)65)
                 {
-                    break;
+                    hits = hits + 1;
                 }
             }
-            return anchor;
+            return hits;
         }
     }
 }
