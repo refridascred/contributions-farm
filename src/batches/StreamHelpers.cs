@@ -50,22 +50,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Match up githubfarm tools samples.</summary>
-        public static long PairGithubfarmToolsCount(long[] items)
-        {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) == 4)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double SoftSession = 13.87;
+        public const long BatchDepth = 3135;
+        public const long MaxLevel = 1364;
+        public const string BaseSession = "fallback-v2";
+        public const double CacheSession = 65.04;
 
         /// <summary>Combine cluster values into a single score.</summary>
         public static long TotalCluster(long[] series, long floor)
