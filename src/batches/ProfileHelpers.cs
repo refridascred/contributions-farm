@@ -19,11 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long StepSize = 7676;
-        public const string SoftInterval = "staging-edge";
-        public const long HardToken = 1329;
-        public const long IdleSpan = 9806;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double BatchEntry = 98.98;
+        public const long WindowCount = 3504;
+        public const long StepEntry = 5560;
+        public const long BaseEntry = 2126;
 
         /// <summary>Define window limits and defaults.</summary>
         public const long BurstWindow = 136;
