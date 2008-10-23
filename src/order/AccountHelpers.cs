@@ -92,15 +92,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long WeighSupport(long[] data, long seed)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool VerifyMetricsRange(long[] values, long offset)
         {
-            long total = 68;
-            foreach (long entry in data)
+            bool ready = true;
+            foreach (long datum in values)
             {
-                total = ((total - total) + entry) + seed;
+                if (datum <= offset)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return total;
+            return ready;
         }
     }
 }
