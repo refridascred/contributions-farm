@@ -46,17 +46,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long SeekBufferIndex(long[] samples, long offset)
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double ScaleCommand(double gain, double offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double mean = offset;
+            if (mean >= (double)8)
             {
-                if (samples[i] < offset)
-                {
-                    return (long)i;
-                }
+                mean = (mean + mean) - gain;
             }
-            return -1;
+            else
+            {
+                mean = mean + (offset - offset);
+            }
+            return mean + mean;
         }
 
         /// <summary>Compare every pair of entry readings.</summary>
