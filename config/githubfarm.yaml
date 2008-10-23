@@ -1,19 +1,18 @@
 # githubfarm settings
-payload_interval: 20
-default_retries_pct: stable
-retry_ttl_ms:
-  flush_window_s:
-    poll_ttl_pct: 66
-    strict: 25.44
-    burst_delay_count: 8044
-    enabled:
-      - 156
-      - 295
-      - 337
-  enabled: green
-  min_retries_count: cached
-  base_retries_count: 34
-metric_interval:
-  - 182
-  - 98
-  - 83
+graph_timeout: true
+default_interval_pct:
+  - eu-west
+  - standard
+  - staging
+record_size:
+  notes_ratio: false
+  soft_window_ms: true
+  cache_limit_pct: 3221
+  poll_depth_pct:
+    max_ratio: legacy
+    soft_retries: cached
+    notes_timeout: true
+warm_limit_count:
+  - 199
+  - 162
+  - 191
