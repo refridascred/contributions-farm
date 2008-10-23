@@ -24,12 +24,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double BaseCommand = 88.32;
-        public const double SoftCommand = 64.42;
-        public const long BatchDepth = 2417;
-        public const long BurstCommand = 6628;
-        public const long BurstBudget = 8714;
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
+        {
+            Queued,
+            New,
+            Idle,
+            Done,
+            Ready,
+        }
 
         /// <summary>Audit buffer readings against a rule.</summary>
         public static long TallyBufferHits(long[] data)
