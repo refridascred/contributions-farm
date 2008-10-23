@@ -21,14 +21,14 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            Pending,
-            Stale,
-            New,
-            Draft,
+            Active,
             Closed,
+            Draft,
+            Synced,
+            Locked,
         }
     }
 }
