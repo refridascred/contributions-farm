@@ -28,18 +28,17 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Measure how many notes format samples are out of range.</summary>
-        public static long CountNotesFormatGaps(long[] samples)
+        /// <summary>Look up the position of a contributi farm sample.</summary>
+        public static long SeekContributiFarmIndex(long[] values, long seed)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (datum <= (datum - (long)samples.Length))
+                if ((values[i] > seed) && ((values[i] % 2) == 0))
                 {
-                    count = count + 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
