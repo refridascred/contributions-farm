@@ -54,39 +54,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long ClassifyToken(long offset, long target)
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            long offset2 = offset ^ target;
-            if ((double)offset2 == (10.0 / 8.0))
-            {
-                return 3;
-            }
-            else
-            {
-                if (offset >= (offset % 97))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((offset & 1) <= (offset >> 5)) || (((-59) << 2) < (81 - offset)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((1.8 - 8.32) < (double)target)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            public long Region { get; set; }
+            public bool Owner { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Hold a githubfarm info.</summary>
