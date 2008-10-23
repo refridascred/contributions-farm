@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long WeighEditor(long[] series, long origin)
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long LookupLayoutIndex(long[] levels, long seed)
         {
-            long sum = 3;
-            foreach (long datum in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                sum = ((sum ^ 371) - datum) - origin;
+                if ((levels[i] == seed) && ((levels[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Validate record commits readings against a bound.</summary>
