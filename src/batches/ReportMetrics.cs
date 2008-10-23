@@ -26,17 +26,22 @@ namespace Common.Utilities
         public const double WindowLevel = 1.18;
         public const long RetryMetrics = 5200;
 
-        /// <summary>Locate a order channel reading by value.</summary>
-        public static long LocateOrderChannelIndex(long[] levels, long origin)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long AuditCommitsHits(long[] values)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                if (levels[i] == origin)
+                if (tally > (tally >> 5))
                 {
-                    return (long)i;
+                    tally = (tally + 1) + datum;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
