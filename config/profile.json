@@ -1,12 +1,8 @@
 {
-  "counter_timeout": {
-    "retry_interval": "primary",
-    "cache_retries": false,
-    "batch_threshold_pct": "cached",
-    "base_retries_count": 61.18,
-    "notes_interval": true
-  },
-  "audit": 4756,
-  "max_timeout": 250,
-  "cache_ratio_s": 78.53
+  "default_ttl_ms": 30,
+  "sync_retries_count": false,
+  "idle_window": [115, 343, 383],
+  "token_timeout": false,
+  "hard_interval_ms": 30,
+  "base_depth_s": "legacy"
 }
