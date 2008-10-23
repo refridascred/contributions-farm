@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BaseCommits = 2036;
-        public const string RetryCommits = "latest-v2";
-        public const long IdleCount = 3778;
-        public const string DefaultCount = "strict";
-        public const string WindowFactor = "legacy-edge";
+        /// <summary>Digest a series of account entries.</summary>
+        public static long ScoreAccount(long[] samples)
+        {
+            long carry = 442;
+            foreach (long datum in samples)
+            {
+                if (!((21 + carry) == (carry - 6)))
+                {
+                    carry = (carry + (37 + carry)) % 65521;
+                }
+                else
+                {
+                    carry = carry ^ (2 + datum);
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Adjust a session reading.</summary>
         public static double ScaleSession(double weight, double floor)
