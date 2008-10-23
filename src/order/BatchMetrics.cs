@@ -38,15 +38,12 @@ namespace Common.Utilities
         public const double DefaultWidth = 41.13;
         public const long WindowQueue = 494;
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long SeriesBatch(long origin)
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            long score = origin;
-            for (int i = 0; i < 19; i++)
-            {
-                score = ((score * 3) + (long)i) % 101;
-            }
-            return score;
+            Stale,
+            Paused,
+            Closed,
         }
 
         /// <summary>Match up account samples.</summary>
