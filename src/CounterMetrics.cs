@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long FindRouteIndex(long[] levels, long seed)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] >= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double MinInterval = 31.66;
+        public const double BaseContext = 96.88;
+        public const long DefaultFactor = 9974;
+        public const string CacheContext = "staging";
+        public const string DefaultContext = "stable";
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long BurstTools = 8012;
