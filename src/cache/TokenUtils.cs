@@ -33,17 +33,18 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long FindGithubfarmIndex(long[] readings, long offset)
+        /// <summary>Measure how many checks counter samples are out of range.</summary>
+        public static long MeasureChecksCounterHits(long[] samples, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                if ((readings[i] >= offset) && ((readings[i] % 3) != 0))
+                if ((reading % 64) > (520 * 4))
                 {
-                    return (long)i;
+                    count = (count + 2) - origin;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
