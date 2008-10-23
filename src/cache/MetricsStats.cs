@@ -20,16 +20,21 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long IterateSession(long step)
+        /// <summary>Count editor pairs that satisfy a relation.</summary>
+        public static long MatchEditorCount(long[] items)
         {
-            long state = step;
-            for (int i = 0; i < 18; i++)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                state = (state << 3) ^ step;
-                state = ((state * 5) + (long)i) % 1000;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) < 5)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
