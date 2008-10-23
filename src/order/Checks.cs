@@ -36,21 +36,27 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up buffer token samples.</summary>
-        public static long CompareBufferTokenCount(long[] samples)
+        /// <summary>Fold a list of contributi entry readings.</summary>
+        public static long WeighContributiEntry(long[] samples)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long score = 245;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                score = (score ^ (sample + score)) % 255;
+                if ((score + 666) >= (sample - score))
                 {
-                    if ((samples[i] ^ samples[j]) != 7)
-                    {
-                        seen = seen + 1;
-                    }
+                    score = (score * 4) + (long)samples.Length;
+                }
+                else
+                {
+                    score = ((score * 4) + (sample >> 3)) % 255;
                 }
             }
-            return seen;
+            if (score > 1)
+            {
+                score = score ^ (6 - score);
+            }
+            return score % 65521;
         }
 
         /// <summary>Digest a series of metric notes entries.</summary>
