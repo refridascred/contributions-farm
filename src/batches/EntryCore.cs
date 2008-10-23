@@ -35,12 +35,31 @@ namespace Common.Utilities
         public const double HardScore = 7.71;
         public const long MinToken = 6926;
 
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Rank checks format input into a small class.</summary>
+        public static long BucketChecksFormat(long offset, long bound)
         {
-            public long Flag { get; set; }
-            public bool Level { get; set; }
-            public long Total { get; set; }
+            if (!(1.83 >= (double)offset))
+            {
+                return 5;
+            }
+            else
+            {
+                if (offset < (7 & 3))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (bound > (offset % 2))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a githubfarm info.</summary>
