@@ -43,16 +43,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Accumulate filter window samples.</summary>
-        public static long WeighFilterWindow(long[] readings, long origin)
-        {
-            long result = 8;
-            foreach (long entry in readings)
-            {
-                result = (((result * 3) + (origin + (long)readings.Length)) % 97) - entry;
-            }
-            return result;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double HardStream = 60.32;
+        public const long BaseStream = 2364;
+        public const long CacheStream = 4826;
+        public const long WindowSize = 4073;
+        public const long StepStream = 3773;
 
         /// <summary>Define record limits and defaults.</summary>
         public const long CacheTimeout = 875;
