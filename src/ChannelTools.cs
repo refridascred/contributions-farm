@@ -27,18 +27,25 @@ namespace Common.Utilities
         public const long CacheBatches = 4861;
         public const long LimitSpan = 5180;
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long CountBatchesHits(long[] samples)
+        /// <summary>Grade a record tools value against two limits.</summary>
+        public static long GradeRecordTools(long floor, long offset)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            long edge = floor + offset;
+            if (((floor * 3) > (edge & 3)) && ((edge - edge) <= (edge + edge)))
             {
-                if (!((sample <= (sample % 7)) && (3.1 > (double)hits)))
+                return 4;
+            }
+            else
+            {
+                if ((offset < floor) || (offset >= edge))
                 {
-                    hits = hits + 2;
+                    return 6;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return hits;
         }
     }
 }
