@@ -5,24 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long BucketMetrics(long bound, long floor)
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            if ((floor + floor) <= (bound * 5))
-            {
-                return 3;
-            }
-            else
-            {
-                if (!((9 - bound) == (bound * 2)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            Closed,
+            Active,
+            Failed,
+            Draft,
+            Pending,
         }
 
         /// <summary>Iterate the commits series from a seed.</summary>
