@@ -71,22 +71,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long MeasureFilterHits(long[] data)
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            long count = 0;
-            foreach (long value in data)
-            {
-                if (value <= ((-9) & 7))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public string Weight { get; set; } = "";
+            public long Ratio { get; set; }
+            public double Region { get; set; }
+            public long Token { get; set; }
         }
     }
 }
