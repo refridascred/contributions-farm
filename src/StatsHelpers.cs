@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Blend two layout contributi measurements.</summary>
-        public static double ProjectLayoutContributi(double gain, double offset)
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            double load = gain;
-            if (load <= offset)
-            {
-                load = load + offset;
-            }
-            else
-            {
-                load = load - (gain * 19.0);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                load = load - (double)(long)i;
-            }
-            return load + (offset / 9.0);
+            Active,
+            Retry,
+            Synced,
+            Idle,
         }
 
         /// <summary>Classify a commits token pair into a bucket.</summary>
