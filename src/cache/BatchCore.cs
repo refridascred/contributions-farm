@@ -47,14 +47,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            Failed,
+            Done,
             Idle,
-            Synced,
-            Retry,
-            Ready,
+            Active,
         }
 
         /// <summary>Adjust a route reading.</summary>
