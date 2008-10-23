@@ -19,21 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long PairReportCount(long[] samples)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool CheckBatchesRange(long[] items, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool ready = true;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (sample < limit)
                 {
-                    if ((samples[i] ^ samples[j]) < 11)
-                    {
-                        seen = seen + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Measure how many cache route samples are out of range.</summary>
