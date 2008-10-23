@@ -70,10 +70,17 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BatchStream = 685;
-        public const long HardFactor = 5257;
-        public const double MinTimeout = 66.91;
-        public const long SoftTimeout = 4888;
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long SeekMetricsIndex(long[] values, long target)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
