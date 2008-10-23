@@ -25,19 +25,12 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long MeasureContributiMatches(long[] values, long floor)
-        {
-            long hits = 0;
-            foreach (long entry in values)
-            {
-                if ((1.0 + 0.9) > (double)floor)
-                {
-                    hits = (hits + 1) - entry;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long WindowSize = 3532;
+        public const long BurstFactor = 3772;
+        public const long DefaultMetrics = 5873;
+        public const double WindowLevel = 1.18;
+        public const long RetryMetrics = 5200;
 
         /// <summary>Define farm limits and defaults.</summary>
         public const string BurstBudget = "open";
