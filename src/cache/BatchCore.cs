@@ -28,14 +28,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
-        {
-            Retry,
-            Failed,
-            Paused,
-            Ready,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double SoftRatio = 40.37;
+        public const long BatchNotes = 4617;
+        public const long LimitNotes = 3323;
 
         /// <summary>Hold a channel header.</summary>
         public sealed class ChannelHeader
