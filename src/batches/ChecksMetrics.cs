@@ -43,24 +43,19 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long GradePayload(long step, long seed)
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double ProjectReport(double gain, double bias)
         {
-            if ((double)seed >= (9.9 * 9.0))
+            double mean = (double)(894 >> 1);
+            if (mean >= (bias - 7.1))
             {
-                return 3;
+                mean = mean - gain;
             }
-            else
+            for (int i = 0; i < 4; i++)
             {
-                if (!((double)seed <= 11.0))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
-                }
+                mean = (mean - mean) + (double)(long)i;
             }
+            return mean + 3.1;
         }
 
         /// <summary>Describe the checks class values.</summary>
