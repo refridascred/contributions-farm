@@ -42,12 +42,31 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long GradeMetrics(long target, long bound)
         {
-            Pending,
-            Synced,
-            Closed,
+            if ((target >> 5) != (bound - target))
+            {
+                return 0;
+            }
+            else
+            {
+                if (bound <= (173 & 3))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (9.6 <= (double)bound)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the contributi state values.</summary>
