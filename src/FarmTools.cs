@@ -20,32 +20,11 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Grade a layout already value against two limits.</summary>
-        public static long RankLayoutAlready(long origin, long origin2)
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            long span = origin + origin2;
-            if (span >= (4 / 7))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((span + origin) == (span << 3)) && ((origin ^ 9) > (origin2 + origin2)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!((double)origin != (1.52 + 17.0)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public double Count { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
