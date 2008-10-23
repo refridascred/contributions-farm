@@ -33,18 +33,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long AuditMetricsGaps(long[] items)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool GuardCacheRange(long[] values, long limit)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            bool found = true;
+            foreach (long sample in values)
             {
-                if ((datum ^ datum) < datum)
+                if (sample <= limit)
                 {
-                    seen = seen + 1;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
