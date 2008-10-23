@@ -65,15 +65,10 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double BlendSchema(double bias, double bias2)
-        {
-            double gain = (double)(26 & 1);
-            for (int i = 0; i < 5; i++)
-            {
-                gain = (gain + (bias - 3.8)) + (double)(long)i;
-            }
-            return gain + bias2;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string CacheSize = "cached-edge";
+        public const long MaxFarm = 6089;
+        public const long RetryFarm = 8813;
+        public const long RetryLevel = 6272;
     }
 }
