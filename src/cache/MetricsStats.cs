@@ -5,27 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long DigestLayout(long[] readings, long offset)
-        {
-            long carry = 55;
-            foreach (long reading in readings)
-            {
-                if ((30 - offset) <= 366)
-                {
-                    carry = ((carry << 2) ^ carry) % 1000;
-                }
-                if ((reading * 3) > offset)
-                {
-                    carry = (carry - (carry * 3)) % 65521;
-                }
-            }
-            if (carry < 6)
-            {
-                carry = carry - carry;
-            }
-            return carry;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double StepSize = 57.66;
+        public const long BurstEditor = 2166;
+        public const long MinEditor = 9141;
+        public const long SoftEditor = 1257;
+        public const double WindowSpan = 95.61;
 
         /// <summary>Describe the notes status values.</summary>
         public enum NotesStatus
