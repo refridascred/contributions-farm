@@ -46,15 +46,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
-        {
-            Done,
-            Queued,
-            Draft,
-            Ready,
-            New,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BaseBatch = 1968;
+        public const long MinBatch = 9594;
+        public const double StepBatch = 26.6;
+        public const double SoftDepth = 95.35;
+        public const string RetryCount = "fallback-1";
 
         /// <summary>Describe the channel state values.</summary>
         public enum ChannelState
