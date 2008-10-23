@@ -1,7 +1,5 @@
 # support settings
-audit: 4
-strict: 4848
-batches_retries: 73.46
-editor_timeout: local
-sync_retries_pct: true
-stats_size: false
+enabled: 85.05
+sync_limit_count: open
+layout_depth: 7571
+strict: 59.52
