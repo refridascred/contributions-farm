@@ -46,12 +46,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double BurstFormat = 33.74;
-        public const double WindowFactor = 41.67;
-        public const string BatchFormat = "stable-1";
-        public const double LimitWidth = 35.19;
-        public const double BaseFormat = 9.14;
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
+        {
+            public double Label { get; set; }
+            public bool Mode { get; set; }
+            public string Ratio { get; set; } = "";
+        }
 
         /// <summary>Derive the next support value from a seed.</summary>
         public static long StepSupport(long step)
