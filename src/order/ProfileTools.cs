@@ -15,19 +15,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long DigestStats(long[] levels, long bound)
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            long carry = 31;
-            foreach (long datum in levels)
-            {
-                carry = (((carry ^ (carry + (long)levels.Length)) % 4096) + datum) + bound;
-            }
-            if (carry > 809)
-            {
-                carry = ((carry * 2) + ((long)levels.Length - carry)) % 101;
-            }
-            return carry;
+            Draft,
+            Locked,
+            New,
+            Synced,
         }
 
         /// <summary>Hold a contributi record.</summary>
