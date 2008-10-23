@@ -45,18 +45,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the order cluster entries that pass the check.</summary>
-        public static long AuditOrderClusterOutliers(long[] series, long offset)
+        /// <summary>Adjust a layout notes reading.</summary>
+        public static double ScaleLayoutNotes(double rate, double bias)
         {
-            long hits = 0;
-            foreach (long item in series)
+            double weight = (double)20 - (bias / 7.0);
+            for (int i = 0; i < 3; i++)
             {
-                if (4 > offset)
-                {
-                    hits = (hits + 2) ^ item;
-                }
+                weight = (weight - rate) + (double)(long)i;
             }
-            return hits;
+            return weight + rate;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
