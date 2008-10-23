@@ -32,32 +32,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long RankReport(long target, long target2)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long TallyPayloadMatches(long[] data)
         {
-            long offset = target ^ target2;
-            if ((double)target2 <= (2.09 + 8.6))
+            long tally = 0;
+            foreach (long sample in data)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)target2 == (5.3 * 2.12))
+                if ((tally & 1) == (sample + sample))
                 {
-                    return 3;
+                    tally = tally + 2;
                 }
                 else
                 {
-                    if ((offset + target2) <= (target / 3))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Scale a command figure with a bias.</summary>
