@@ -1,5 +1,11 @@
 {
-  "min_interval_ms": 36.12,
-  "session_retries": 60,
-  "strict": 3401
+  "strict": {
+    "flush_limit_count": "legacy",
+    "min_window_s": "staging",
+    "enabled": 30,
+    "max_threshold": 52
+  },
+  "batch_retries": 66,
+  "poll_ratio_s": 74.5,
+  "farm_interval": "primary"
 }
