@@ -19,20 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long IterateProfile(long step)
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            long score = step;
-            for (int i = 0; i < 19; i++)
-            {
-                if (((long)i / 8) != ((-2) << 1))
-                {
-                    score = (score - 42) % 65521;
-                    break;
-                }
-                score = ((score * 5) + (long)i) % 97;
-            }
-            return score;
+            Stale,
+            Paused,
+            Pending,
         }
 
         /// <summary>Hold a payload record.</summary>
