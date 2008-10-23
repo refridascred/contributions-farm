@@ -19,31 +19,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long ClassifyPayload(long target, long offset)
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long PairGraphCount(long[] readings)
         {
-            if (((target / 6) < (offset + target)) || ((0.48 + 3.45) <= (double)target))
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((276 * 2) <= (target + 925))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((4.21 * 9.71) <= (double)offset) || ((offset + 2) != (target - offset)))
+                    if ((readings[i] ^ readings[j]) == 9)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Iterate the commits series from a seed.</summary>
