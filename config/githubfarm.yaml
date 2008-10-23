@@ -1,11 +1,39 @@
 # githubfarm settings
-flush_capacity_ms: true
-retry_ratio_pct: 48
-default_timeout: 59.17
-idle_delay: 60
-metric_ratio:
-  - 190
-  - 165
-  - 492
-  - 186
-compress: cached
+filter_threshold:
+  retry_depth:
+    persist:
+      - fallback
+      - standard
+    strict: standard
+    buffer_retries: fallback
+    readonly:
+      - fallback
+      - primary
+      - blue
+  burst_delay:
+    - staging
+    - legacy
+    - green
+  compress: cached
+  hard_depth:
+    poll_ratio_count: latest
+    warm_retries_ms:
+      - 295
+      - 219
+      - 448
+      - 364
+    strict: eu-west
+    burst_retries_s: 34
+base_delay_pct:
+  max_threshold_count: 1024
+  poll_interval_pct: open
+  buffer_ttl:
+    buffer_ttl: 54
+    batch_limit: false
+    verbose: 51
+    batch_delay_ms: true
+    dry_run: 655
+    strict: 500
+  window_delay: 500
+  already_ratio: true
+strict: strict
