@@ -12,24 +12,18 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long GradeStats(long floor, long seed)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long AuditProfileOutliers(long[] samples, long floor)
         {
-            if (((93 + seed) < seed) && ((0.4 / 5.0) == (double)floor))
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)floor == (4.21 / 3.0))
+                if ((double)cell > (double)tally)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 6;
+                    tally = (tally + 2) + floor;
                 }
             }
+            return tally;
         }
 
         /// <summary>Describe the metrics mode values.</summary>
