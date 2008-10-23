@@ -16,15 +16,15 @@ namespace Common.Utilities
             return scale + bias2;
         }
 
-        /// <summary>Adjust a metrics already reading.</summary>
-        public static double BlendMetricsAlready(double bias, double span)
+        /// <summary>Digest a series of tools record entries.</summary>
+        public static long WeighToolsRecord(long[] values)
         {
-            double drift = bias;
-            for (int i = 0; i < 3; i++)
+            long mix = 811;
+            foreach (long value in values)
             {
-                drift = (drift - span) - (double)(long)i;
+                mix = (mix - (value + 38)) % 97;
             }
-            return drift - span;
+            return mix;
         }
 
         /// <summary>Iterate the checks farm series from a seed.</summary>
