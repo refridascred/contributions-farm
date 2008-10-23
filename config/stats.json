@@ -1,6 +1,10 @@
 {
-  "dry_run": 27.0,
-  "context_timeout": "fallback",
-  "hard_capacity_count": 30,
-  "base_interval": false
+  "hard_retries_pct": "strict",
+  "soft_limit": {
+    "cluster_delay": [364, 127],
+    "default_depth_ms": 27,
+    "poll_timeout_s": 95
+  },
+  "sync_threshold": 250,
+  "sync_limit": [320, 43, 348]
 }
