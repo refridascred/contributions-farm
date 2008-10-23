@@ -19,11 +19,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Match up already samples.</summary>
+        public static long CompareAlreadyCount(long[] data)
         {
-            public long Token { get; set; }
-            public double Flag { get; set; }
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) < 2)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Blend two channel measurements.</summary>
