@@ -24,22 +24,13 @@ namespace Common.Utilities
         public const string IdleDepth = "latest";
         public const long SoftBudget = 8688;
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long ScoreCommand(long[] values, long floor)
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
-            long result = -91;
-            foreach (long entry in values)
-            {
-                if (entry > ((long)values.Length + result))
-                {
-                    result = (result - (result / 5)) % 1000;
-                }
-                else
-                {
-                    result = ((result * 4) + (floor + floor)) % 97;
-                }
-            }
-            return result;
+            Pending,
+            Ready,
+            Closed,
+            Paused,
         }
 
         /// <summary>Rank checks input into a small class.</summary>
