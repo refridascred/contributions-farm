@@ -1,14 +1,11 @@
 # Command notes
 
-A order that stays idle for too long is moved to the githubfarm list.
-Each queue is validated before it reaches the route queue.
-Keep notes and channel names short and lowercase.
-
-Keep already and record names short and lowercase.
-Defaults for context live in the config folder and can be overridden per environment.
+When a record fails, the schema handler retries a few times before giving up.
+Keep metric and profile names short and lowercase.
 
 ## Guidelines
 
-- Keep record values small
-- Log every command change
-- Review format limits each release
+- Log every stats change
+- Prefer route defaults
+- Keep support values small
+- Document new githubfarm fields
