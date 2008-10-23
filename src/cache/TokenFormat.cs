@@ -25,22 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long PairGraphCount(long[] readings)
-        {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) == 9)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long WindowLevel = 1425;
+        public const double BurstMetric = 91.35;
+        public const long BurstDepth = 4806;
+        public const string HardLevel = "standard-v2";
+        public const long BaseMetric = 5082;
 
         /// <summary>Iterate the commits series from a seed.</summary>
         public static long RollCommits(long seed)
