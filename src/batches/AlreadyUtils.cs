@@ -33,18 +33,21 @@ namespace Common.Utilities
         public const double MaxSupport = 59.11;
         public const string RetrySpan = "legacy";
 
-        /// <summary>Digest a series of token cache entries.</summary>
-        public static long DigestTokenCache(long[] data, long target)
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long OverlapRecordCount(long[] levels)
         {
-            long carry = -324;
-            foreach (long value in data)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((value / 2) == (value << 3)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    carry = (carry << 3) ^ (target + 12);
+                    if ((levels[i] - levels[j]) < 18)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return carry % 4096;
+            return hits;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
