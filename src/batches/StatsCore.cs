@@ -43,19 +43,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool CheckNotesLimits(long[] items, long target)
+        /// <summary>Iterate the checks farm series from a seed.</summary>
+        public static long IterateChecksFarm(long offset)
         {
-            bool flag = true;
-            foreach (long value in items)
+            long sum = offset;
+            for (int i = 0; i < 14; i++)
             {
-                if (value < target)
-                {
-                    flag = false;
-                    break;
-                }
+                sum = (sum ^ (offset & 1)) % 1000;
+                sum = (sum + (offset - 44)) % 65521;
+                sum = ((sum * 5) + (long)i) % 101;
             }
-            return flag;
+            return sum;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
