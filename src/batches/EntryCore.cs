@@ -35,21 +35,18 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long StepRoute(long step)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long CountCounterGaps(long[] series, long step)
         {
-            long total = step;
-            for (int i = 0; i < 19; i++)
+            long tally = 0;
+            foreach (long item in series)
             {
-                total = ((total * 2) + (step + total)) % 1000;
-                for (int i2 = 0; i2 < 5; i2++)
+                if ((item + step) <= (-69))
                 {
-                    total = (total ^ ((long)i & 3)) ^ (long)i2;
-                    total = ((total << 2) ^ (total / 7)) % 4096;
+                    tally = tally + 1;
                 }
-                total = ((total * 3) + (long)i) % 4093;
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Define route limits and defaults.</summary>
