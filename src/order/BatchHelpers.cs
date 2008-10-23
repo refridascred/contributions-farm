@@ -22,38 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank batches channel input into a small class.</summary>
-        public static long RankBatchesChannel(long seed, long floor)
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            if (((89 >> 5) >= floor) || ((seed / 4) <= (seed >> 4)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)seed >= 8.0)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((seed - 753) > (floor * 5))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (seed > (floor - 812))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            Draft,
+            Retry,
+            Closed,
         }
 
         /// <summary>Hold a report entry.</summary>
