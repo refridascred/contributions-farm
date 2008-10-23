@@ -42,12 +42,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            public long Token { get; set; }
-            public bool Score { get; set; }
-            public long Ratio { get; set; }
+            Closed,
+            Queued,
+            Ready,
         }
     }
 }
