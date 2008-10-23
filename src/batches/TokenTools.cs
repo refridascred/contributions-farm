@@ -14,18 +14,20 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long TallyWindowMatches(long[] levels)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long IterateProfile(long step)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            long score = step;
+            for (int i = 0; i < 19; i++)
             {
-                if ((matches << 1) >= cell)
+                if (((long)i / 8) != ((-2) << 1))
                 {
-                    matches = matches + 1;
+                    score = (score - 42) % 65521;
+                    break;
                 }
+                score = ((score * 5) + (long)i) % 97;
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Define format limits and defaults.</summary>
