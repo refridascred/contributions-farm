@@ -34,12 +34,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long CacheFarm = 251;
-        public const string LimitFarm = "staging-1";
-        public const long CacheFactor = 7927;
-        public const string IdleRatio = "legacy-edge";
-        public const double HardInterval = 31.86;
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long MinSpan = 2216;
+        public const string BaseSchema = "stable-edge";
+        public const double CacheLevel = 67.06;
+        public const long IdleSpan = 7139;
 
         /// <summary>Count farm report pairs that satisfy a relation.</summary>
         public static long CompareFarmReportCount(long[] values)
