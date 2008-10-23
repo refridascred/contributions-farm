@@ -20,15 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Combine contributi metrics values into a single score.</summary>
-        public static long TotalContributiMetrics(long[] values, long bound)
+        /// <summary>Digest a series of session commits entries.</summary>
+        public static long WeighSessionCommits(long[] data, long bound)
         {
-            long mix = 1;
-            foreach (long value in values)
+            long state = 575;
+            foreach (long datum in data)
             {
-                mix = ((mix + (mix ^ mix)) - value) - bound;
+                state = (state - (state << 2)) - datum;
             }
-            return mix % 65521;
+            if (state > 39)
+            {
+                state = state - bound;
+            }
+            return state;
         }
 
         /// <summary>Rank token input into a small class.</summary>
