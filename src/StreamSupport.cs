@@ -11,17 +11,18 @@ namespace Common.Utilities
         public const long StepMetrics = 6765;
         public const long RetrySize = 866;
 
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long LocatePayloadIndex(long[] series, long floor)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long AuditPayloadHits(long[] items, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long value in items)
             {
-                if ((series[i] < floor) && ((series[i] % 5) != 0))
+                if ((floor + (-9)) != (value << 2))
                 {
-                    return (long)i;
+                    seen = seen + 3;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Accumulate token samples.</summary>
