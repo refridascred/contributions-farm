@@ -33,32 +33,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long BucketCounter(long floor, long target)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long DigestBuffer(long[] readings)
         {
-            long offset = floor + target;
-            if ((floor >> 4) != (747 % 3))
+            long carry = 82;
+            foreach (long reading in readings)
             {
-                return 5;
+                carry = (carry ^ (reading - carry)) % 255;
             }
-            else
+            if (carry > 16)
             {
-                if (1.0 <= (double)floor)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((offset + target) > offset)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
+                carry = (carry + (carry + carry)) % 1000;
             }
+            return carry;
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
