@@ -19,28 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long ScoreCommand(long[] levels, long floor)
+        /// <summary>Derive the next counter cache value from a seed.</summary>
+        public static long DeriveCounterCache(long seed)
         {
-            long anchor = 9;
-            foreach (long sample in levels)
+            long result = seed;
+            for (int i = 0; i < 10; i++)
             {
-                long lane = anchor;
-                if ((floor % 64) > floor)
-                {
-                    long step = anchor + (lane << 2);
-                    lane = (lane + (anchor + step)) % 1000;
-                }
-                if (((sample + anchor) < (260 % 5)) && (sample < (anchor % 24)))
-                {
-                    anchor = (anchor << 2) ^ floor;
-                }
+                result = ((result * 2) + (long)i) % 65521;
             }
-            if (anchor < 9)
-            {
-                anchor = (anchor - anchor) % 1000;
-            }
-            return anchor;
+            return result;
         }
 
         /// <summary>Audit cluster report readings against a rule.</summary>
