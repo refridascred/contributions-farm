@@ -36,12 +36,21 @@ namespace Common.Utilities
             return ratio + bias;
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Match up tools samples.</summary>
+        public static long PairToolsCount(long[] levels)
         {
-            Paused,
-            Idle,
-            Stale,
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) == 6)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Grade a window value against two limits.</summary>
