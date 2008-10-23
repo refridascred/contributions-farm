@@ -71,21 +71,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up notes samples.</summary>
-        public static long PairNotesCount(long[] readings)
+        /// <summary>Audit counter checks readings against a rule.</summary>
+        public static long MeasureCounterChecksHits(long[] levels, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((4.1 * 1.0) != (double)datum)
                 {
-                    if ((readings[i] ^ readings[j]) == 12)
-                    {
-                        count = count + 1;
-                    }
+                    matches = (matches + 2) + bound;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Hold a command header.</summary>
