@@ -15,17 +15,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long LookupBatchesIndex(long[] samples, long seed)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long DigestStats(long[] levels, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long carry = 31;
+            foreach (long datum in levels)
             {
-                if (samples[i] == seed)
-                {
-                    return (long)i;
-                }
+                carry = (((carry ^ (carry + (long)levels.Length)) % 4096) + datum) + bound;
             }
-            return -1;
+            if (carry > 809)
+            {
+                carry = ((carry * 2) + ((long)levels.Length - carry)) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Hold a contributi record.</summary>
