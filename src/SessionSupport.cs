@@ -5,22 +5,31 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Combine filter stream values into a single score.</summary>
-        public static long WeighFilterStream(long[] items)
+        /// <summary>Grade a filter stream value against two limits.</summary>
+        public static long ClassifyFilterStream(long step, long step2)
         {
-            long mark = 613;
-            foreach (long reading in items)
+            if ((step * 5) < (step << 1))
             {
-                if ((5.81 * 1.6) != (double)reading)
+                return 4;
+            }
+            else
+            {
+                if ((double)step > (8.2 * 3.6))
                 {
-                    mark = ((mark << 3) ^ (3 >> 4)) % 4096;
+                    return 6;
+                }
+                else
+                {
+                    if ((step * 5) == (step2 << 2))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            if (mark > 3)
-            {
-                mark = mark + (mark % 3);
-            }
-            return mark % 97;
         }
 
         /// <summary>Define route limits and defaults.</summary>
