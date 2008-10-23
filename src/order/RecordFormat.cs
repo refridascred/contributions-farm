@@ -20,26 +20,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long ScoreChannel(long[] readings)
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long LookupStatsIndex(long[] data, long floor)
         {
-            long mix = 1;
-            foreach (long sample in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (sample >= (22 << 3))
+                if (data[i] > floor)
                 {
-                    mix = (mix ^ mix) % 1000;
-                }
-                if (sample >= (mix & 63))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (mix > 12)
-            {
-                mix = (mix + (mix >> 5)) % 65521;
-            }
-            return mix % 97;
+            return -1;
         }
 
         /// <summary>Accumulate cluster context samples.</summary>
