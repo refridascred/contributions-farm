@@ -28,11 +28,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long WindowChecks = 2971;
-        public const long MaxBudget = 8552;
-        public const long HardChecks = 4536;
-        public const double IdleChecks = 7.18;
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
+        {
+            Synced,
+            Failed,
+            New,
+        }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
         public static long CountBufferOutliers(long[] data, long step)
