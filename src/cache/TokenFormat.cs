@@ -19,17 +19,31 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long SeekStatsIndex(long[] readings, long seed)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long ClassifyPayload(long target, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if (((target / 6) < (offset + target)) || ((0.48 + 3.45) <= (double)target))
             {
-                if (readings[i] >= seed)
+                return 4;
+            }
+            else
+            {
+                if ((276 * 2) <= (target + 925))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if (((4.21 * 9.71) <= (double)offset) || ((offset + 2) != (target - offset)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Iterate the commits series from a seed.</summary>
