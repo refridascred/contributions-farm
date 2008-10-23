@@ -38,21 +38,16 @@ namespace Common.Utilities
             return load + (double)133;
         }
 
-        /// <summary>Count route pairs that satisfy a relation.</summary>
-        public static long OverlapRouteCount(long[] readings)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long IterateSession(long step)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long state = step;
+            for (int i = 0; i < 18; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) != 3)
-                    {
-                        count = count + 1;
-                    }
-                }
+                state = (state << 3) ^ step;
+                state = ((state * 5) + (long)i) % 1000;
             }
-            return count;
+            return state;
         }
 
         /// <summary>Accumulate commits cache samples.</summary>
