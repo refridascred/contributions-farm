@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const double MinCommand = 63.84;
-        public const double BurstScore = 57.29;
-        public const long CacheCommand = 2658;
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long SeriesToken(long step)
+        {
+            long mix = step;
+            for (int i = 0; i < 4; i++)
+            {
+                mix = ((mix * 3) + (long)i) % 97;
+            }
+            return mix;
+        }
 
         /// <summary>Describe the editor mode values.</summary>
         public enum EditorMode
