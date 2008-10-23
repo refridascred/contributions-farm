@@ -14,17 +14,24 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Find the first batch cluster entry that matches the target.</summary>
-        public static long SeekBatchClusterIndex(long[] data, long floor)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long BucketEntry(long bound, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            if (((double)bound < (4.2 * 13.0)) && ((double)floor == (15.0 / 6.0)))
             {
-                if (data[i] <= floor)
+                return 3;
+            }
+            else
+            {
+                if ((double)bound > (7.6 + 7.13))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return -1;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
