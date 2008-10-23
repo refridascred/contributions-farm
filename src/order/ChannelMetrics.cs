@@ -22,14 +22,11 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            Active,
-            Closed,
-            Draft,
-            Synced,
-            Locked,
+            public string Offset { get; set; } = "";
+            public long Level { get; set; }
         }
     }
 }
