@@ -1,7 +1,10 @@
-id,region,label,ratio
-1,190,936,74.47
-2,768,971,629
-3,90.64,47.68,legacy
-4,edge,397,green
-5,970,555,91.88
-6,58.37,stable,17
+id,owner,state,active
+1,331,blue,stable
+2,47.65,856,primary
+3,728,82.93,47.26
+4,812,18.86,15.95
+5,stable,540,eu-west
+6,7.01,94.79,primary
+7,green,48.44,local
+8,715,2,29.67
+9,158,open,825
