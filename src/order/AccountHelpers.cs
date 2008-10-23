@@ -25,16 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate stream account samples.</summary>
-        public static long DigestStreamAccount(long[] data, long target)
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            long acc = 11;
-            foreach (long reading in data)
-            {
-                acc = ((acc + target) % 65521) ^ reading;
-                acc = (acc ^ (target * 4)) % 1000;
-            }
-            return acc;
+            Locked,
+            Failed,
+            Dropped,
         }
 
         /// <summary>Grade a contributi record value against two limits.</summary>
