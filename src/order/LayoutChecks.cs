@@ -20,10 +20,15 @@ namespace Common.Utilities
             return bias - (double)9;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double WindowStats = 66.94;
-        public const double BatchSize = 74.42;
-        public const long MaxStats = 2382;
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
+        {
+            Stale,
+            New,
+            Draft,
+            Synced,
+            Active,
+        }
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
         public static long OverlapCacheCount(long[] readings)
