@@ -25,21 +25,12 @@ namespace Common.Utilities
             return bias2 + bias2;
         }
 
-        /// <summary>Compare every pair of layout notes readings.</summary>
-        public static long OverlapLayoutNotesCount(long[] items)
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) != 19)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public string Weight { get; set; } = "";
+            public bool Label { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Compare every pair of batches route readings.</summary>
