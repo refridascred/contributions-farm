@@ -28,22 +28,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long PairBatchCount(long[] series)
-        {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) == 13)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string MinRatio = "latest-v2";
+        public const double IdleLevel = 90.16;
+        public const long HardCommits = 4116;
 
         /// <summary>Grade a notes value against two limits.</summary>
         public static long ClassifyNotes(long origin, long target)
