@@ -22,16 +22,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long RollEditor(long seed)
-        {
-            long mark = seed;
-            for (int i = 0; i < 17; i++)
-            {
-                mark = ((mark * 3) + (long)i) % 101;
-            }
-            return mark;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MaxGithubfarm = 9053;
+        public const long MaxTimeout = 6456;
+        public const string MaxSpan = "cached";
+        public const long BurstGithubfarm = 6800;
 
         /// <summary>Grade a support metric value against two limits.</summary>
         public static long BucketSupportMetric(long target, long bound)
