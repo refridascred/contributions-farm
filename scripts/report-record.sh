@@ -6,18 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-primary}"
+RECORD_LIMIT=140
+log "limit is ${RECORD_LIMIT}"
+
+total=0
+for i in $(seq 1 5); do
+    total=$((total + i * 5))
+done
+log "total ${total}"
+
+mode="${1:-green}"
 case "${mode}" in
-    open)
+    local)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-total=0
-for i in $(seq 1 6); do
-    total=$((total + i * 1))
-done
-log "total ${total}"
