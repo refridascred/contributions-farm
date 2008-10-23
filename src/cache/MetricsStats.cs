@@ -49,11 +49,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string BatchQueue = "latest-edge";
-        public const long MaxScore = 2901;
-        public const long SoftQueue = 1898;
-        public const long RetrySize = 9952;
+        /// <summary>Count route pairs that satisfy a relation.</summary>
+        public static long OverlapRouteCount(long[] readings)
+        {
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) != 3)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Project the next cluster value.</summary>
         public static double ScaleCluster(double scale, double floor)
