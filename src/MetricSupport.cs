@@ -32,11 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long MaxWidth = 6850;
-        public const string SoftStats = "strict-edge";
-        public const long BatchStats = 2562;
-        public const string LimitWidth = "latest-v2";
-        public const double LimitFactor = 88.61;
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool ValidateCounterRange(long[] data, long target)
+        {
+            bool ok = true;
+            foreach (long datum in data)
+            {
+                if (datum != target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
