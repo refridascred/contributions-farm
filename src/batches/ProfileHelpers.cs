@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool CheckSchemaLimits(long[] samples, long step)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long AuditWindowGaps(long[] samples)
         {
-            bool found = true;
-            foreach (long sample in samples)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                if (sample != step)
+                if (!((reading << 3) > (seen << 1)) || ((reading + reading) <= (reading + 27)))
                 {
-                    found = false;
-                    break;
+                    seen = seen + 1;
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Define token limits and defaults.</summary>
