@@ -30,19 +30,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool GuardRouteLimits(long[] values, long step)
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            bool ok = true;
-            foreach (long value in values)
-            {
-                if (value >= step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Ready,
+            Retry,
+            Queued,
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
