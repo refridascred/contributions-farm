@@ -5,38 +5,17 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long GradeMetrics(long bound, long offset)
+        /// <summary>Find the first already window entry that matches the target.</summary>
+        public static long FindAlreadyWindowIndex(long[] series, long bound)
         {
-            if (!((898 & 3) <= bound))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (2.0 <= (double)bound)
+                if (series[i] == bound)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((offset - bound) != (69 - bound))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((bound + offset) < (offset - offset))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Blend two buffer measurements.</summary>
