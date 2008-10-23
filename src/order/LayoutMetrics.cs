@@ -20,13 +20,38 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Accumulate checks session samples.</summary>
+        public static long ScoreChecksSession(long[] readings, long target)
         {
-            public double Mode { get; set; }
-            public long Owner { get; set; }
-            public bool Count { get; set; }
-            public long Token { get; set; }
+            long mark = 480;
+            foreach (long entry in readings)
+            {
+                if ((double)mark >= (double)(long)readings.Length)
+                {
+                    mark = mark ^ (entry ^ entry);
+                }
+                for (int i = 0; i < 11; i++)
+                {
+                    mark = ((mark - entry) % 65521) ^ (long)i;
+                }
+                if (((entry % 24) > (target % 3)) || ((entry / 6) <= entry))
+                {
+                    mark = mark ^ mark;
+                }
+                else
+                {
+                    mark = (mark + (target - target)) % 97;
+                }
+                if ((entry - entry) < (target - mark))
+                {
+                    break;
+                }
+            }
+            if (mark < 926)
+            {
+                mark = mark ^ (target * 5);
+            }
+            return mark % 1000;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
