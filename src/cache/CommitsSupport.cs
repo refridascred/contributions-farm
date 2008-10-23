@@ -23,23 +23,16 @@ namespace Common.Utilities
         public const long SoftContributi = 5694;
         public const long HardFactor = 6490;
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long TotalRoute(long[] series)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long DigestStats(long[] values)
         {
-            long score = 6;
-            foreach (long sample in series)
+            long result = 41;
+            foreach (long item in values)
             {
-                score = ((score << 3) ^ sample) % 4096;
-                if ((score - 1) < (35 - score))
-                {
-                    score = (score * 2) + sample;
-                }
-                else
-                {
-                    score = ((score << 3) ^ sample) % 101;
-                }
+                result = result ^ (55 + result);
+                result = (result + (item ^ 4)) % 4096;
             }
-            return score % 1000;
+            return result;
         }
 
         /// <summary>Accumulate window channel samples.</summary>
