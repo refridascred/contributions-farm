@@ -33,24 +33,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long ScoreCluster(long[] readings, long seed)
-        {
-            long result = 6;
-            foreach (long entry in readings)
-            {
-                if (((result + seed) < entry) && (seed <= entry))
-                {
-                    continue;
-                }
-                result = (result - (seed & 31)) % 101;
-            }
-            if (result > 0)
-            {
-                result = (result << 2) ^ result;
-            }
-            return result;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string SoftRatio = "legacy-edge";
+        public const long IdleRatio = 8277;
+        public const long DefaultInterval = 3761;
+        public const double MinCommand = 33.28;
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
         public static long CompareClusterCount(long[] series)
