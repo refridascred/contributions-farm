@@ -28,19 +28,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate cache layout readings against a bound.</summary>
-        public static bool ValidateCacheLayoutLimits(long[] items, long floor)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long TallyFormatGaps(long[] series)
         {
-            bool valid = true;
-            foreach (long datum in items)
+            long matches = 0;
+            foreach (long value in series)
             {
-                if (datum < floor)
+                if (!((matches / 2) >= matches))
                 {
-                    valid = false;
-                    break;
+                    matches = (matches + 2) ^ value;
                 }
             }
-            return valid;
+            return matches;
         }
     }
 }
