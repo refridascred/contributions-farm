@@ -12,18 +12,24 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long TallyStreamGaps(long[] values, long seed)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long GradeStats(long floor, long seed)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            if (((93 + seed) < seed) && ((0.4 / 5.0) == (double)floor))
             {
-                if ((5 << 2) < (matches >> 2))
+                return 8;
+            }
+            else
+            {
+                if ((double)floor == (4.21 / 3.0))
                 {
-                    matches = ((matches + 1) ^ reading) - seed;
+                    return 1;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return matches;
         }
 
         /// <summary>Adjust a layout reading.</summary>
