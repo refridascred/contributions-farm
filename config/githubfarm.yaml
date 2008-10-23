@@ -1,15 +1,27 @@
 # githubfarm settings
-stats_ttl: 7885
-compress:
-  min_timeout_pct: legacy
-  idle_depth_pct:
-    - eu-west
-    - legacy
-    - latest
+strict:
+  verbose: green
+  default_size:
+    idle_limit_count:
+      - latest
+      - legacy
+      - local
+      - local
+    poll_capacity_pct: strict
+    persist: 78.8
+  max_size_count: fallback
+  max_delay_pct:
+    - 179
+    - 129
+  readonly: 12.61
+persist: 1591
+batch_ratio: latest
+batch_ttl:
+  max_limit: true
+  hard_depth: strict
+  min_ratio_ms:
     - primary
-  retry_depth_count: 2651
-  layout_timeout: 19.68
-  verbose: 6056
-format_threshold: green
-token_delay: edge
-verbose: blue
+    - cached
+    - primary
+    - blue
+  soft_size_ms: 53
