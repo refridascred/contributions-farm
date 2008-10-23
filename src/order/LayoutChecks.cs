@@ -20,14 +20,27 @@ namespace Common.Utilities
             return bias - (double)9;
         }
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long DigestCache(long[] samples, long step)
         {
-            Stale,
-            New,
-            Draft,
-            Synced,
-            Active,
+            long mix = 5;
+            foreach (long sample in samples)
+            {
+                long slot = step;
+                if ((slot & 7) >= step)
+                {
+                    mix = mix ^ 1;
+                }
+                if (3.4 > (double)sample)
+                {
+                    mix = mix ^ 8;
+                }
+            }
+            if (mix < 3)
+            {
+                mix = mix + mix;
+            }
+            return mix;
         }
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
