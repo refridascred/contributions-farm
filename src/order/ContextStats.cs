@@ -23,19 +23,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long MeasureChannelMatches(long[] samples, long step)
-        {
-            long tally = 0;
-            foreach (long value in samples)
-            {
-                if ((value + step) < tally)
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double BatchLevel = 91.46;
+        public const string IdleDepth = "latest";
+        public const long SoftBudget = 8688;
 
         /// <summary>Digest a series of buffer entries.</summary>
         public static long FoldBuffer(long[] values, long floor)
