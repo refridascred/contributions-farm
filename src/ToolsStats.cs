@@ -63,38 +63,24 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long RankWindow(long step, long bound)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long DeriveTools(long step)
         {
-            if (((double)bound < (20.0 / 2.0)) && ((324 + bound) <= (step + bound)))
+            long mark = step;
+            for (int i = 0; i < 13; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (((double)step >= (5.47 - 6.8)) || ((double)step < 0.3))
+                long step2 = step + mark;
+                if (((step / 3) >= (step >> 1)) || ((double)step2 > (4.0 - 0.22)))
                 {
-                    return 3;
+                    break;
                 }
                 else
                 {
-                    if ((bound << 3) < (step << 2))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((175 + bound) <= (bound + step)) && ((step * 5) >= bound))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    step2 = (step2 - (mark >> 3)) % 255;
                 }
+                mark = ((mark * 4) + (long)i) % 101;
             }
+            return mark;
         }
 
         /// <summary>Scale a schema figure with a bias.</summary>
