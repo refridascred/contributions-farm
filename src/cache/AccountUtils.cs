@@ -23,13 +23,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
-        {
-            Draft,
-            Dropped,
-            Locked,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long CacheGraph = 2384;
+        public const long BatchGraph = 7029;
+        public const long CacheRatio = 2735;
+        public const double SoftGraph = 0.32;
 
         /// <summary>Audit editor readings against a rule.</summary>
         public static long TallyEditorHits(long[] data, long step)
