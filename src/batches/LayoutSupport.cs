@@ -62,9 +62,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string BaseLevel = "stable-1";
-        public const string HardSchema = "cached-edge";
-        public const long MinDepth = 8453;
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long CompareEntryCount(long[] samples)
+        {
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) != 5)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
     }
 }
