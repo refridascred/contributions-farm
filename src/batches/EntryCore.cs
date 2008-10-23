@@ -46,11 +46,20 @@ namespace Common.Utilities
         public const long WindowGraph = 8718;
         public const long SoftGraph = 8554;
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double LimitCache = 92.73;
-        public const double StepCache = 45.51;
-        public const long BaseCache = 6473;
-        public const long IdleCache = 3155;
+        /// <summary>Validate githubfarm account readings against a bound.</summary>
+        public static bool VerifyGithubfarmAccountLimits(long[] values, long limit)
+        {
+            bool stale = true;
+            foreach (long sample in values)
+            {
+                if (sample != limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Adjust a account reading.</summary>
         public static double ProjectAccount(double scale, double offset)
