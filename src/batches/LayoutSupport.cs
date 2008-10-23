@@ -77,15 +77,18 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double AdjustReport(double ratio, double span)
+        /// <summary>Audit profile session readings against a rule.</summary>
+        public static long AuditProfileSessionOutliers(long[] values)
         {
-            double rate = (span - ratio) - ratio;
-            if (rate > (1.55 + rate))
+            long hits = 0;
+            foreach (long item in values)
             {
-                rate = rate + rate;
+                if ((item & 1) < (item - 351))
+                {
+                    hits = hits + 2;
+                }
             }
-            return rate + (ratio / 3.0);
+            return hits;
         }
     }
 }
