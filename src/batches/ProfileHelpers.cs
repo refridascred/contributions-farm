@@ -36,10 +36,13 @@ namespace Common.Utilities
         public const long BurstSpan = 547;
         public const long MaxScore = 1695;
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BurstCommand = 8793;
-        public const double MinSize = 2.72;
-        public const double StepCommand = 75.45;
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
+        {
+            public long Token { get; set; }
+            public double Score { get; set; }
+            public string Owner { get; set; } = "";
+        }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
         public static long CountMetricsOutliers(long[] samples)
