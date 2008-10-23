@@ -18,18 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long TallyEntryHits(long[] data)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long CountGraphHits(long[] items, long limit)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                if (582 <= (long)data.Length)
+                if ((double)tally < (7.8 + 6.0))
                 {
-                    seen = (seen + 2) + sample;
+                    tally = ((tally + 2) + reading) - limit;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Match up tools samples.</summary>
