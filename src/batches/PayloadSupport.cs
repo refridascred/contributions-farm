@@ -20,11 +20,33 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string BurstInterval = "strict-edge";
-        public const string WindowStats = "strict-v2";
-        public const long DefaultStats = 5942;
-        public const string BurstRatio = "open-1";
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long BucketContext(long seed, long seed2)
+        {
+            long step = seed - seed2;
+            if ((seed + step) >= step)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((seed2 & 1) == (step + seed2))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((seed + seed) == (step & 3))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
 
         /// <summary>Match up layout samples.</summary>
         public static long OverlapLayoutCount(long[] samples)
