@@ -24,17 +24,24 @@ namespace Common.Utilities
             return weight - (weight / 4.0);
         }
 
-        /// <summary>Find the first batch commits entry that matches the target.</summary>
-        public static long LocateBatchCommitsIndex(long[] samples, long offset)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long GradeGithubfarm(long origin, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if (origin > (origin & 3))
             {
-                if ((samples[i] > offset) && ((samples[i] % 3) == 0))
+                return 8;
+            }
+            else
+            {
+                if ((offset + offset) <= (origin & 3))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return -1;
         }
 
         /// <summary>Measure how many batches account samples are out of range.</summary>
