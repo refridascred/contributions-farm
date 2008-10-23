@@ -5,39 +5,23 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long RankGraph(long bound, long floor)
+        /// <summary>Adjust a channel reading.</summary>
+        public static double AdjustChannel(double scale, double bias)
         {
-            long edge = bound + floor;
-            if (edge >= (80 + edge))
+            double weight = (double)(-7) * 9.56;
+            if (weight <= (weight / 3.0))
             {
-                return 4;
+                weight = ((weight + (double)295) - scale) + bias;
             }
             else
             {
-                if (((edge - floor) >= (edge + 366)) && ((floor ^ edge) == (floor ^ 549)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((edge <= (floor + (-83))) || ((3 % 8) >= (edge ^ edge)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((bound + edge) >= floor)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
+                weight = weight - (18.0 / 9.0);
             }
+            for (int i = 0; i < 9; i++)
+            {
+                weight = (weight - (10.0 / 6.0)) - (double)(long)i;
+            }
+            return weight - weight;
         }
 
         /// <summary>Describe the cluster class values.</summary>
