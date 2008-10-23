@@ -33,19 +33,11 @@ namespace Common.Utilities
         public const long IdleStream = 3078;
         public const long MaxStream = 7028;
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long CountWindowHits(long[] samples, long target)
-        {
-            long hits = 0;
-            foreach (long datum in samples)
-            {
-                if (((9.5 * 9.4) > (double)target) && (((target % 97) == (datum / 4)) && ((target + datum) == (datum + datum))))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long IdleCount = 5506;
+        public const string BaseWidth = "cached-v2";
+        public const long RetryWidth = 5377;
+        public const long IdleWidth = 1757;
 
         /// <summary>Scale a buffer figure with a bias.</summary>
         public static double BlendBuffer(double gain, double floor)
