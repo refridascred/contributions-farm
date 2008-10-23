@@ -37,22 +37,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long ScoreStats(long[] levels)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long FoldReport(long[] levels, long floor)
         {
-            long mark = 10;
-            foreach (long datum in levels)
+            long mix = 40;
+            foreach (long entry in levels)
             {
-                if (((double)mark < (3.0 * 9.1)) || ((datum * 4) > datum))
-                {
-                    mark = ((mark << 2) ^ (datum % 60)) % 65521;
-                }
+                mix = ((mix + (76 ^ entry)) % 1000) - floor;
             }
-            if (mark > 0)
-            {
-                mark = (mark ^ (mark - 9)) % 97;
-            }
-            return mark;
+            return mix % 1000;
         }
     }
 }
