@@ -46,11 +46,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two cache entry measurements.</summary>
-        public static double SmoothCacheEntry(double gain, double floor)
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double AdjustToken(double rate, double floor)
         {
-            double load = floor;
-            return load - gain;
+            double weight = 9.77;
+            if (weight < (double)43)
+            {
+                weight = ((weight + 9.68) + rate) - floor;
+            }
+            else
+            {
+                weight = weight + weight;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                weight = (weight + 4.88) + (double)(long)i;
+            }
+            return weight - (double)9;
         }
 
         /// <summary>Define route limits and defaults.</summary>
