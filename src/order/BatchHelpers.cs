@@ -32,22 +32,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine queue command values into a single score.</summary>
-        public static long FoldQueueCommand(long[] levels, long floor)
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            long result = 643;
-            foreach (long item in levels)
-            {
-                if ((double)result > (double)9)
-                {
-                    result = result - (842 + floor);
-                }
-                if ((item + 45) > (result % 5))
-                {
-                    result = (result << 3) ^ floor;
-                }
-            }
-            return result;
+            public bool Limit { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
