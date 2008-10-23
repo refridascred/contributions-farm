@@ -5,24 +5,31 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long WeighChecks(long[] readings)
+        /// <summary>Rank channel tools input into a small class.</summary>
+        public static long SortChannelTools(long seed, long floor)
         {
-            long sum = -94;
-            foreach (long entry in readings)
+            if (((seed & 7) == (464 & 15)) && ((5.1 + 4.82) > (double)floor))
             {
-                for (int i = 0; i < 11; i++)
+                return 2;
+            }
+            else
+            {
+                if (((seed % 64) <= seed) && ((floor / 2) <= floor))
                 {
-                    sum = ((sum - (1 / 4)) % 97) + (long)i;
-                    sum = (sum ^ (sum >> 4)) % 1000;
+                    return 6;
                 }
-                sum = (sum + (entry ^ (-1))) % 4096;
+                else
+                {
+                    if ((floor >= 10) || ((seed * 3) > seed))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
             }
-            if (sum < 2)
-            {
-                sum = ((sum << 2) ^ (sum & 7)) % 101;
-            }
-            return sum % 4096;
         }
 
         /// <summary>Rank report input into a small class.</summary>
