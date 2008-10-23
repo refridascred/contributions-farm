@@ -1,8 +1,7 @@
 {
-  "hard_delay_count": "legacy",
-  "audit": 90.04,
-  "poll_capacity_pct": "eu-west",
-  "idle_ratio_pct": true,
-  "format_ttl": 508,
-  "compress": 1705
+  "dry_run": 60,
+  "enabled": "fallback",
+  "entry_threshold": 34,
+  "entry_ttl": "cached",
+  "retry_delay_s": 51
 }
