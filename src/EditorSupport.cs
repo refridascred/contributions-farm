@@ -60,22 +60,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long FoldToken(long[] items)
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
-            long mark = 81;
-            foreach (long sample in items)
-            {
-                if ((double)mark != (4.17 + 15.0))
-                {
-                    mark = ((mark * 4) + (956 - mark)) % 4096;
-                }
-                else
-                {
-                    mark = (mark - (sample / 8)) % 1000;
-                }
-            }
-            return mark % 65521;
+            public bool Flag { get; set; }
+            public bool Label { get; set; }
+            public long Level { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
