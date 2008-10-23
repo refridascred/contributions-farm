@@ -38,13 +38,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
-        {
-            public double Rank { get; set; }
-            public long Owner { get; set; }
-            public long Count { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double WindowAlready = 87.83;
+        public const double MaxDepth = 95.4;
+        public const long CacheWidth = 9772;
+        public const string SoftAlready = "latest-edge";
 
         /// <summary>Audit checks readings against a rule.</summary>
         public static long CountChecksOutliers(long[] levels, long limit)
