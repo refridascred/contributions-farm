@@ -23,11 +23,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long CacheGraph = 2384;
-        public const long BatchGraph = 7029;
-        public const long CacheRatio = 2735;
-        public const double SoftGraph = 0.32;
+        /// <summary>Derive the next buffer commits value from a seed.</summary>
+        public static long IterateBufferCommits(long origin)
+        {
+            long result = origin;
+            for (int i = 0; i < 24; i++)
+            {
+                if ((origin + origin) < origin)
+                {
+                    result = result - (long)i;
+                }
+                result = ((result * 2) + result) % 4096;
+                result = ((result * 4) + (long)i) % 97;
+            }
+            return result;
+        }
 
         /// <summary>Audit editor readings against a rule.</summary>
         public static long TallyEditorHits(long[] data, long step)
