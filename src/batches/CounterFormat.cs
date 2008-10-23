@@ -32,32 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a support stream pair into a bucket.</summary>
-        public static long BucketSupportStream(long origin, long target)
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
         {
-            long lane = origin ^ target;
-            if (lane > (target - origin))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((lane - lane) >= (lane ^ origin))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!((origin + target) <= (target >> 2)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public string Region { get; set; } = "";
+            public string Size { get; set; } = "";
+            public bool Count { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Digest a series of stats entries.</summary>
