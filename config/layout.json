@@ -1,13 +1,12 @@
 {
-  "default_size": 2.96,
-  "tools_limit": {
-    "editor_depth": 7068,
-    "batches_retries": [395, 402, 471, 147],
-    "batch_capacity_ms": "stable",
-    "idle_window": 93,
-    "soft_limit_count": "green",
-    "hard_capacity": 31
+  "warm_threshold": {
+    "strict": 1024,
+    "burst_timeout_count": 15.28,
+    "order_window": 37.52,
+    "report_threshold": 54.76,
+    "hard_retries_count": 250,
+    "queue_limit": "cached"
   },
-  "burst_window": false,
-  "poll_size_count": false
+  "token_interval": 84,
+  "max_threshold": 3791
 }
