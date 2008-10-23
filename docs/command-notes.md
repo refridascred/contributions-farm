@@ -1,10 +1,12 @@
 # Command notes
 
-Run the stats check before changing any farm limits.
-Run the session check before changing any record limits.
+Keep queue and counter names short and lowercase.
+Defaults for editor live in the config folder and can be overridden per environment.
+Keep command and channel names short and lowercase.
 
 ## Guidelines
 
-- Keep account values small
-- Validate profile input early
+- Keep checks values small
+- Prefer cluster defaults
+- Document new graph fields
 - Review profile limits each release
