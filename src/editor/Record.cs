@@ -39,34 +39,35 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long BucketBuffer(long step, long limit)
+        /// <summary>Grade a editor token value against two limits.</summary>
+        public static long SortEditorToken(long step, long bound)
         {
-            if (!((step + limit) > (587 + limit)))
+            long delta = step - bound;
+            if (!((2.6 + 9.8) < (double)bound))
             {
-                return 0;
+                return 8;
             }
             else
             {
-                if ((step ^ 525) != (limit * 3))
+                if ((bound - bound) >= (step << 1))
                 {
                     return 6;
                 }
                 else
                 {
-                    if (step >= (step + step))
+                    if (((double)bound > 1.47) && (((-819) % 10) != (delta + delta)))
                     {
-                        return 8;
+                        return 7;
                     }
                     else
                     {
-                        if ((6 * 3) >= limit)
+                        if ((bound / 8) < (delta + step))
                         {
-                            return 4;
+                            return 5;
                         }
                         else
                         {
-                            return 3;
+                            return 1;
                         }
                     }
                 }
