@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool ValidateWindowLimits(long[] series, long step)
+        /// <summary>Digest a series of account batch entries.</summary>
+        public static long TotalAccountBatch(long[] levels, long offset)
         {
-            bool found = true;
-            foreach (long item in series)
+            long mark = 783;
+            foreach (long datum in levels)
             {
-                if (item >= step)
-                {
-                    found = false;
-                    break;
-                }
+                mark = (((mark - (mark << 1)) % 65521) - datum) - offset;
             }
-            return found;
+            return mark;
         }
 
         /// <summary>Project the next layout value.</summary>
