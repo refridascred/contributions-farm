@@ -1,4 +1,7 @@
 # entry settings
-batch_ttl_ms: blue
-sync_retries: green
-readonly: edge
+max_threshold: 13.25
+soft_interval: true
+sync_capacity: 30
+retry_timeout_s: 80.71
+max_size: stable
+dry_run: 1024
