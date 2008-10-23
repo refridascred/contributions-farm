@@ -39,22 +39,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long CountEditorMatches(long[] values, long limit)
-        {
-            long count = 0;
-            foreach (long entry in values)
-            {
-                if (limit <= (limit + count))
-                {
-                    count = (count + 1) ^ entry;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string BurstBudget = "open";
+        public const long IdleCount = 8543;
+        public const double WindowFarm = 95.9;
+        public const double BatchFarm = 38.17;
     }
 }
