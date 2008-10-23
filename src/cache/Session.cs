@@ -38,16 +38,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long RollBuffer(long floor)
+        /// <summary>Validate graph context readings against a bound.</summary>
+        public static bool GuardGraphContextLimits(long[] values, long origin)
         {
-            long acc = floor;
-            for (int i = 0; i < 10; i++)
+            bool found = true;
+            foreach (long sample in values)
             {
-                acc = ((acc << 2) ^ (floor - floor)) % 4096;
-                acc = ((acc * 5) + (long)i) % 65521;
+                if (sample < origin)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return acc;
+            return found;
         }
 
         /// <summary>Count the checks account entries that pass the check.</summary>
