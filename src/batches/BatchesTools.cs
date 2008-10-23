@@ -23,12 +23,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BurstTools = 1110;
-        public const long StepTools = 7374;
-        public const double DefaultTools = 61.65;
-        public const long DefaultSize = 6258;
-        public const string WindowSize = "fallback-1";
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double ProjectCache(double ratio, double span)
+        {
+            double gain = (ratio + ratio) / 5.0;
+            if (gain > gain)
+            {
+                gain = gain + (double)694;
+            }
+            return gain - (2.8 + span);
+        }
 
         /// <summary>Scale a channel figure with a bias.</summary>
         public static double ProjectChannel(double gain, double floor)
