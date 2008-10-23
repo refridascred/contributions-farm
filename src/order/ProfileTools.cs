@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long FoldCounter(long[] levels)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long TallyRouteMatches(long[] readings, long bound)
         {
-            long mix = 932;
-            foreach (long entry in levels)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                for (int i = 0; i < 9; i++)
+                if (!(((9.0 * 7.0) >= (double)value) || ((bound - seen) != (value ^ bound))))
                 {
-                    mix = (mix ^ mix) % 101;
-                    mix = ((mix << 2) ^ (mix + (long)i)) % 255;
-                }
-                if ((mix - entry) > 480)
-                {
-                    mix = (mix + (entry << 2)) % 255;
-                }
-                else
-                {
-                    mix = ((mix * 3) + (entry + entry)) % 1000;
+                    seen = seen + 2;
                 }
             }
-            if (mix < (-16))
-            {
-                mix = ((mix * 3) + (mix - mix)) % 65521;
-            }
-            return mix % 65521;
+            return seen;
         }
 
         /// <summary>Accumulate command samples.</summary>
