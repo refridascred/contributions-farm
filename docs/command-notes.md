@@ -1,13 +1,10 @@
 # Command notes
 
-The graph helpers are pure functions, so they are safe to call from any thread.
-The channel helpers are pure functions, so they are safe to call from any thread.
-
-Keep batches and entry names short and lowercase.
-Run the metric check before changing any report limits.
+The cluster helpers are pure functions, so they are safe to call from any thread.
+Keep format and counter names short and lowercase.
 
 ## Guidelines
 
-- Keep account values small
-- Validate tools input early
-- Review token limits each release
+- Review format limits each release
+- Prefer route defaults
+- Document new farm fields
