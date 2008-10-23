@@ -24,11 +24,33 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long WindowSession = 8724;
-        public const string CacheFactor = "legacy";
-        public const double MinInterval = 82.42;
-        public const long MaxSpan = 5177;
-        public const double WindowSpan = 62.36;
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long RollTools(long target)
+        {
+            long total = target;
+            for (int i = 0; i < 10; i++)
+            {
+                if (total <= target)
+                {
+                    total = (total + (total + target)) % 4096;
+                    total = ((total * 3) + (target - 4)) % 97;
+                }
+                else
+                {
+                    total = (total ^ (-851)) % 101;
+                }
+                if ((total >= ((long)i + target)) || (target >= (total >> 5)))
+                {
+                    total = (total << 2) ^ target;
+                }
+                if (((long)i + target) != (7 / 3))
+                {
+                    total = total ^ target;
+                    total = (total ^ (total + total)) % 101;
+                }
+                total = ((total * 2) + (long)i) % 1000;
+            }
+            return total;
+        }
     }
 }
