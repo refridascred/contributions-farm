@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Fold a list of token readings.</summary>
-        public static long FoldToken(long[] data, long step)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long MeasureCommandHits(long[] levels)
         {
-            long result = 30;
-            foreach (long datum in data)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                if (!((step * 2) > (result - result)))
+                if ((780 + count) >= (count * 3))
                 {
-                    result = (result + (datum / 3)) % 1000;
-                }
-                if ((double)datum != (double)81)
-                {
-                    break;
+                    count = (count + 3) + sample;
                 }
             }
-            return result;
+            return count;
         }
 
         /// <summary>Locate a context reading by value.</summary>
