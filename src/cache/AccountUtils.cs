@@ -22,15 +22,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double SmoothCluster(double weight, double bias)
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            double ratio = 13.0;
-            if (ratio >= (ratio - bias))
-            {
-                ratio = (ratio + (double)6) - weight;
-            }
-            return ratio + ratio;
+            Queued,
+            Stale,
+            Paused,
+            Ready,
+            Synced,
         }
 
         /// <summary>Define session limits and defaults.</summary>
