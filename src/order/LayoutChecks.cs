@@ -69,21 +69,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up filter report samples.</summary>
-        public static long PairFilterReportCount(long[] samples)
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 20)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Level { get; set; }
+            public long Ratio { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
