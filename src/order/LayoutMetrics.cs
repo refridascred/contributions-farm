@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Audit batch session readings against a rule.</summary>
-        public static long AuditBatchSessionOutliers(long[] data, long target)
-        {
-            long seen = 0;
-            foreach (long sample in data)
-            {
-                if (!((2 + target) <= target))
-                {
-                    seen = (seen + 3) ^ sample;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long SoftTimeout = 4160;
+        public const long StepRatio = 2374;
+        public const string BaseFormat = "standard-v2";
 
         /// <summary>Rank report input into a small class.</summary>
         public static long ClassifyReport(long seed, long seed2)
