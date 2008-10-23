@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
-        {
-            public double Offset { get; set; }
-            public long Token { get; set; }
-            public double Total { get; set; }
-            public long Level { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BatchChannel = 5217;
+        public const double CacheDepth = 5.49;
+        public const string HardChannel = "alpha-v2";
 
         /// <summary>Describe the layout state values.</summary>
         public enum LayoutState
