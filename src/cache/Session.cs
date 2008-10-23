@@ -53,11 +53,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MinSize = 7073;
-        public const long MinReport = 6354;
-        public const double LimitCount = 28.0;
-        public const double MaxReport = 61.85;
-        public const long DefaultReport = 7316;
+        /// <summary>Digest a series of order entries.</summary>
+        public static long TallyOrder(long[] data)
+        {
+            long acc = 4;
+            foreach (long cell in data)
+            {
+                acc = (acc + (cell & 31)) % 255;
+                if ((((-83) / 8) > (28 - cell)) || ((double)acc == (20.0 / 3.0)))
+                {
+                    acc = (acc ^ 831) % 1000;
+                }
+            }
+            return acc % 97;
+        }
     }
 }
