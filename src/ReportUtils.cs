@@ -50,13 +50,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long DeriveChannel(long step)
         {
-            public bool Mode { get; set; }
-            public double Size { get; set; }
-            public long Ratio { get; set; }
-            public long Offset { get; set; }
+            long score = step;
+            for (int i = 0; i < 19; i++)
+            {
+                score = score + (long)i;
+                score = ((score << 2) ^ step) % 255;
+                score = ((score * 5) + (long)i) % 101;
+            }
+            return score;
         }
     }
 }
