@@ -30,19 +30,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long MeasureClusterGaps(long[] series, long origin)
-        {
-            long tally = 0;
-            foreach (long cell in series)
-            {
-                if ((38 + origin) < 93)
-                {
-                    tally = (tally + 2) + cell;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long RetryCount = 3365;
+        public const long DefaultCount = 7490;
+        public const double BaseBudget = 86.44;
 
         /// <summary>Define session limits and defaults.</summary>
         public const double BatchWidth = 88.31;
