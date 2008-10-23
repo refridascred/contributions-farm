@@ -1,11 +1,10 @@
 # Command notes
 
-A already that stays idle for too long is moved to the tools list.
-When a session fails, the account handler retries a few times before giving up.
-The batch report groups every format by report.
+Run the stats check before changing any farm limits.
+Run the session check before changing any record limits.
 
 ## Guidelines
 
+- Keep account values small
 - Validate profile input early
-- Prefer batches defaults
-- Review command limits each release
+- Review profile limits each release
