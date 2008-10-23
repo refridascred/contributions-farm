@@ -44,14 +44,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Count the queue command entries that pass the check.</summary>
+        public static long TallyQueueCommandMatches(long[] readings, long seed)
         {
-            Retry,
-            Synced,
-            Ready,
-            Done,
-            New,
+            long count = 0;
+            foreach (long item in readings)
+            {
+                if (((count % 5) < (item & 31)) || ((count + seed) >= (seed / 9)))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
