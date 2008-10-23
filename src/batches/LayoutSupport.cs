@@ -46,19 +46,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double ScaleCommand(double gain, double offset)
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long FindChannelIndex(long[] levels, long step)
         {
-            double mean = offset;
-            if (mean >= (double)8)
+            for (int i = 0; i < levels.Length; i++)
             {
-                mean = (mean + mean) - gain;
+                if (levels[i] == step)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                mean = mean + (offset - offset);
-            }
-            return mean + mean;
+            return -1;
         }
 
         /// <summary>Compare every pair of entry readings.</summary>
