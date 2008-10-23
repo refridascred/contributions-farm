@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            Done,
-            New,
-            Queued,
-            Stale,
-            Dropped,
+            public double Level { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Scale a session figure with a bias.</summary>
