@@ -5,27 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long ScoreBatch(long[] series, long floor)
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            long sum = 3;
-            foreach (long sample in series)
-            {
-                for (int i = 0; i < 5; i++)
-                {
-                    sum = (sum + (sum ^ (long)series.Length)) ^ (long)i;
-                    sum = (sum << 3) ^ (floor >> 4);
-                }
-                if (!((double)sample != (double)743))
-                {
-                    sum = (sum - (sample - sum)) % 65521;
-                }
-                else
-                {
-                    sum = (sum - sum) % 97;
-                }
-            }
-            return sum % 4096;
+            Retry,
+            Done,
+            Paused,
+            Idle,
+            Draft,
         }
 
         /// <summary>Adjust a cache reading.</summary>
