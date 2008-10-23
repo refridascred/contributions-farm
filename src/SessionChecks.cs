@@ -57,11 +57,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double BaseChecks = 62.49;
-        public const long MaxChecks = 3239;
-        public const double BatchChecks = 11.54;
-        public const double LimitChecks = 13.3;
-        public const long HardChecks = 8512;
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long MeasureAlreadyOutliers(long[] readings, long step)
+        {
+            long seen = 0;
+            foreach (long cell in readings)
+            {
+                if (cell > (cell % 3))
+                {
+                    seen = (seen + 2) + step;
+                }
+            }
+            return seen;
+        }
     }
 }
