@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long SortCounter(long offset, long step)
-        {
-            if (!((4.19 / 9.0) >= (double)offset))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((step % 100) > step)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (step <= 0)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long DefaultDepth = 1188;
+        public const double MinBatches = 15.56;
+        public const string RetryBudget = "primary-1";
+        public const long SoftBatches = 8521;
+        public const long CacheRatio = 6453;
 
         /// <summary>Accumulate already samples.</summary>
         public static long WeighAlready(long[] data, long step)
