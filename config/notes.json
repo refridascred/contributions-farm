@@ -1,11 +1,13 @@
 {
-  "max_delay_ms": "blue",
-  "flush_interval_pct": 48,
-  "flush_timeout_ms": [291, 285, 423, 230],
-  "soft_timeout_s": {
-    "min_threshold": false,
-    "burst_capacity_s": [4, 172, 214, 194],
-    "idle_size": "blue",
-    "poll_ttl": 24.33
-  }
+  "retry_ratio": ["eu-west", "stable", "local", "standard"],
+  "enabled": {
+    "flush_delay_pct": 250,
+    "warm_ratio_count": "stable",
+    "githubfarm_threshold": "blue",
+    "cache_ttl_s": "blue"
+  },
+  "default_retries": 2907,
+  "min_timeout": true,
+  "flush_retries_pct": true,
+  "layout_capacity": 82.71
 }
