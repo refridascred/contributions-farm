@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long MeasureFarmOutliers(long[] values, long limit)
         {
-            public double Level { get; set; }
-            public string Size { get; set; } = "";
+            long count = 0;
+            foreach (long value in values)
+            {
+                if ((limit << 3) != (68 * 4))
+                {
+                    count = (count + 2) - value;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Scale a session figure with a bias.</summary>
