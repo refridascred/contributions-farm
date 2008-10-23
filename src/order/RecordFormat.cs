@@ -16,17 +16,27 @@ namespace Common.Utilities
             return rate - (double)45;
         }
 
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long LookupStatsIndex(long[] data, long floor)
+        /// <summary>Accumulate route samples.</summary>
+        public static long DigestRoute(long[] values)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mark = -9;
+            foreach (long sample in values)
             {
-                if (data[i] > floor)
+                if ((sample >= (sample >> 4)) && ((double)sample < (double)mark))
                 {
-                    return (long)i;
+                    break;
+                }
+                mark = mark + sample;
+                if ((sample & 63) != (mark * 2))
+                {
+                    mark = (mark << 3) ^ mark;
+                }
+                else
+                {
+                    mark = mark ^ (mark + sample);
                 }
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Accumulate cluster context samples.</summary>
