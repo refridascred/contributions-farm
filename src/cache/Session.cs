@@ -16,21 +16,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Match up context samples.</summary>
-        public static long MatchContextCount(long[] levels)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long MeasureContributiOutliers(long[] values)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long value in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (!(((50 + value) < (46 - value)) || ((double)value == (5.0 / 7.0))))
                 {
-                    if ((levels[i] - levels[j]) > 1)
-                    {
-                        seen = seen + 1;
-                    }
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Look up the position of a batches sample.</summary>
