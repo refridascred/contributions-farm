@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long LocateFarmIndex(long[] data, long seed)
+        /// <summary>Audit cache tools readings against a rule.</summary>
+        public static long TallyCacheToolsMatches(long[] readings)
         {
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                if ((data[i] < seed) && ((data[i] % 3) != 0))
+                if (((tally + entry) > tally) && (tally < (tally - entry)))
                 {
-                    return (long)i;
+                    tally = tally + 3;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
