@@ -25,12 +25,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long MeasureSupportMatches(long[] readings, long limit)
         {
-            public long Score { get; set; }
-            public double Token { get; set; }
-            public long Ratio { get; set; }
+            long hits = 0;
+            foreach (long sample in readings)
+            {
+                if (!((618 + 1) == (hits / 9)))
+                {
+                    hits = ((hits + 2) + sample) + limit;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
