@@ -6,9 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
+count=0
+while [ "${count}" -lt 8 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
 mode="${1:-blue}"
 case "${mode}" in
-    staging)
+    stable)
         log "fast path"
         ;;
     *)
