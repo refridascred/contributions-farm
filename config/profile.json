@@ -1,8 +1,8 @@
 {
-  "buffer_delay": 2108,
-  "queue_retries": ["cached", "strict", "fallback", "latest"],
-  "enabled": 79.56,
-  "idle_delay": 64.36,
-  "max_capacity": 4048,
-  "order_depth": false
+  "burst_retries": 1875,
+  "max_capacity": 3614,
+  "token_interval": "edge",
+  "readonly": ["open", "legacy", "legacy", "standard"],
+  "dry_run": 30,
+  "poll_delay": 56.51
 }
