@@ -20,12 +20,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            public string Stamp { get; set; } = "";
-            public bool Weight { get; set; }
-            public double Rank { get; set; }
+            public double Mode { get; set; }
+            public long Owner { get; set; }
+            public bool Count { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Define farm limits and defaults.</summary>
