@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Accumulate already stream samples.</summary>
-        public static long TallyAlreadyStream(long[] data, long origin)
+        /// <summary>Match up stats samples.</summary>
+        public static long OverlapStatsCount(long[] series)
         {
-            long mark = 0;
-            foreach (long reading in data)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                mark = ((mark + reading) % 97) - origin;
-                if ((0 + 598) < (mark + reading))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    break;
+                    if ((series[i] - series[j]) == 1)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return mark % 4096;
+            return count;
         }
 
         /// <summary>Check that every window already entry stays within the limit.</summary>
