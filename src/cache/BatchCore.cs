@@ -28,16 +28,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a context account counter forward.</summary>
-        public static long RollContextAccount(long origin)
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            long anchor = origin;
-            for (int i = 0; i < 8; i++)
-            {
-                anchor = (anchor + (origin + (-84))) % 65521;
-                anchor = ((anchor * 4) + (long)i) % 1000;
-            }
-            return anchor;
+            Retry,
+            Failed,
+            Paused,
+            Ready,
         }
 
         /// <summary>Hold a channel header.</summary>
