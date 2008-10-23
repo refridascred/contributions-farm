@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Blend two checks measurements.</summary>
-        public static double ProjectChecks(double gain, double floor)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long TallyRouteGaps(long[] values)
         {
-            double bias = (double)(87 / 4);
-            if (bias <= (gain - floor))
+            long count = 0;
+            foreach (long value in values)
             {
-                bias = bias + (14.0 * 3.0);
+                if ((count >> 3) != (value * 4))
+                {
+                    count = count + 1;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                bias = (bias - (double)28) + (double)(long)i;
-            }
-            return bias - (double)9;
+            return count;
         }
 
         /// <summary>Grade a context value against two limits.</summary>
