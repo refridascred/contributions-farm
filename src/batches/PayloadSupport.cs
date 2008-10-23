@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long SeriesBatch(long floor)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool VerifyStreamLimits(long[] readings, long origin)
         {
-            long result = floor;
-            for (int i = 0; i < 22; i++)
+            bool flag = true;
+            foreach (long reading in readings)
             {
-                result = (result ^ result) % 4096;
-                result = (result + floor) % 65521;
-                if ((9.0 - 3.1) > (double)floor)
+                if (reading <= origin)
                 {
-                    result = ((result * 2) + 290) % 65521;
+                    flag = false;
                     break;
                 }
-                result = ((result * 4) + (long)i) % 4093;
             }
-            return result;
+            return flag;
         }
 
         /// <summary>Count filter pairs that satisfy a relation.</summary>
