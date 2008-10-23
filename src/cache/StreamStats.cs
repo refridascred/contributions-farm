@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Iterate the layout metrics series from a seed.</summary>
-        public static long RollLayoutMetrics(long target)
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
         {
-            long total = target;
-            for (int i = 0; i < 8; i++)
-            {
-                total = total + (25 + target);
-                total = ((total * 2) + (long)i) % 101;
-            }
-            return total;
+            public long Limit { get; set; }
+            public bool Region { get; set; }
+            public bool Owner { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
