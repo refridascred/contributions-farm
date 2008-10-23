@@ -20,20 +20,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool VerifyGraphBounds(long[] items, long bound)
-        {
-            bool found = true;
-            foreach (long item in items)
-            {
-                if (item > bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long WindowCount = 9213;
+        public const double BatchFormat = 6.71;
+        public const long SoftTimeout = 7207;
+        public const long MinBudget = 4278;
 
         /// <summary>Accumulate farm order samples.</summary>
         public static long ScoreFarmOrder(long[] values, long step)
