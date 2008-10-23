@@ -50,12 +50,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Count batches metrics pairs that satisfy a relation.</summary>
+        public static long OverlapBatchesMetricsCount(long[] readings)
         {
-            public string Total { get; set; } = "";
-            public long Ratio { get; set; }
-            public long Level { get; set; }
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) < 18)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Derive the next schema profile value from a seed.</summary>
