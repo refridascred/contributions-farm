@@ -23,10 +23,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BurstInterval = 1326;
-        public const long CacheScore = 4329;
-        public const string MaxDepth = "primary-1";
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double CacheCount = 30.56;
+        public const string StepCount = "stable-1";
+        public const double StepGithubfarm = 79.14;
+        public const long BaseSpan = 2149;
+        public const long MinScore = 1969;
 
         /// <summary>Digest a series of entry entries.</summary>
         public static long CombineEntry(long[] readings)
