@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Count the entry filter entries that pass the check.</summary>
+        public static long TallyEntryFilterOutliers(long[] levels, long target)
         {
-            Failed,
-            Queued,
-            New,
+            long hits = 0;
+            foreach (long cell in levels)
+            {
+                if (((1 ^ target) > (hits + hits)) || (0 >= (cell + hits)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
