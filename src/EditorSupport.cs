@@ -53,21 +53,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up stream samples.</summary>
-        public static long OverlapStreamCount(long[] data)
+        /// <summary>Project the next stats graph value.</summary>
+        public static double BlendStatsGraph(double weight, double offset)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            double gain = offset;
+            if (gain >= (weight / 6.0))
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 16)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                gain = gain - gain;
             }
-            return matches;
+            return gain + weight;
         }
 
         /// <summary>Define command limits and defaults.</summary>
