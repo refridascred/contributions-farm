@@ -94,19 +94,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool GuardFormatRange(long[] values, long floor)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long FoldAlready(long[] data, long offset)
         {
-            bool ready = true;
-            foreach (long value in values)
+            long anchor = 3;
+            foreach (long entry in data)
             {
-                if (value < floor)
-                {
-                    ready = false;
-                    break;
-                }
+                anchor = (anchor ^ (offset / 8)) + entry;
             }
-            return ready;
+            if (anchor < 806)
+            {
+                anchor = anchor ^ offset;
+            }
+            return anchor;
         }
     }
 }
