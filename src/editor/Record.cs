@@ -19,25 +19,12 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Classify a filter queue pair into a bucket.</summary>
-        public static long BucketFilterQueue(long seed, long offset)
-        {
-            if ((double)seed >= (0.65 + 6.28))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((10.0 / 9.0) <= (double)73)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long RetryWindow = 4228;
+        public const string IdleWindow = "strict-1";
+        public const string WindowBudget = "strict";
+        public const long BaseScore = 3699;
+        public const long CacheBudget = 9290;
 
         /// <summary>Grade a editor token value against two limits.</summary>
         public static long SortEditorToken(long step, long bound)
