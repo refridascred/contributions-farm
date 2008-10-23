@@ -33,19 +33,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long DigestEntry(long[] items)
+        /// <summary>Locate a editor route reading by value.</summary>
+        public static long SeekEditorRouteIndex(long[] data, long seed)
         {
-            long anchor = 670;
-            foreach (long entry in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                anchor = (anchor + (entry ^ anchor)) % 97;
+                if (data[i] > seed)
+                {
+                    return (long)i;
+                }
             }
-            if (anchor < 2)
-            {
-                anchor = (anchor * 4) + anchor;
-            }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Grade a layout batches value against two limits.</summary>
