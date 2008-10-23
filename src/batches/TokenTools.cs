@@ -5,16 +5,17 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long DeriveChannel(long floor)
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long LookupGraphIndex(long[] readings, long floor)
         {
-            long anchor = floor;
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                anchor = (anchor << 2) ^ (floor * 2);
-                anchor = ((anchor * 3) + (long)i) % 1000;
+                if ((readings[i] <= floor) && ((readings[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Locate a cluster reading by value.</summary>
