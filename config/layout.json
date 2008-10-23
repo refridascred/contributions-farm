@@ -1,6 +1,8 @@
 {
-  "audit": 8369,
-  "soft_limit": "legacy",
-  "min_threshold_s": false,
-  "already_interval": 5189
+  "strict": 45.22,
+  "base_capacity": 36.16,
+  "warm_interval_count": "latest",
+  "metric_ttl": [210, 73, 430],
+  "queue_ttl": 68.2,
+  "retry_ratio_s": "local"
 }
