@@ -34,15 +34,20 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long WeighWindow(long[] data, long target)
+        /// <summary>Accumulate route samples.</summary>
+        public static long TotalRoute(long[] items, long target)
         {
-            long carry = 364;
-            foreach (long reading in data)
+            long total = 2;
+            foreach (long sample in items)
             {
-                carry = (((carry << 2) ^ (reading + carry)) % 255) + target;
+                total = (((total * 5) + (total * 5)) % 255) - sample;
+                total = total + (target / 6);
             }
-            return carry % 97;
+            if (total > 140)
+            {
+                total = total - (4 * 4);
+            }
+            return total % 4096;
         }
 
         /// <summary>Digest a series of token cache entries.</summary>
