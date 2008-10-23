@@ -29,17 +29,26 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long LookupMetricsIndex(long[] series, long step)
+        /// <summary>Derive the next command counter value from a seed.</summary>
+        public static long RollCommandCounter(long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            long anchor = limit;
+            for (int i = 0; i < 20; i++)
             {
-                if (series[i] <= step)
+                if (((long)i <= (anchor % 100)) && ((double)limit == (double)(long)i))
                 {
-                    return (long)i;
+                    anchor = anchor ^ (anchor & 7);
+                    anchor = anchor + (anchor & 255);
+                    continue;
                 }
+                anchor = ((anchor * 2) + ((long)i + (long)i)) % 4096;
+                if (((9.12 / 3.0) < (double)(long)i) && ((anchor & 3) < limit))
+                {
+                    anchor = ((anchor << 3) ^ ((long)i / 4)) % 97;
+                }
+                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Audit commits editor readings against a rule.</summary>
