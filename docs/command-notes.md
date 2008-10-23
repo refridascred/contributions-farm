@@ -1,12 +1,15 @@
 # Command notes
 
-A farm that stays idle for too long is moved to the channel list.
-A stats that stays idle for too long is moved to the metric list.
-The counter report groups every cache by order.
+Keep githubfarm and session names short and lowercase.
+Run the filter check before changing any record limits.
+
+A metrics that stays idle for too long is moved to the token list.
+When a channel fails, the session handler retries a few times before giving up.
+The cluster helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Keep filter values small
-- Log every editor change
-- Prefer tools defaults
-- Document new command fields
+- Document new stats fields
+- Review batches limits each release
+- Prefer farm defaults
+- Validate profile input early
