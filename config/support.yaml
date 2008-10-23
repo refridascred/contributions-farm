@@ -1,8 +1,4 @@
 # support settings
-hard_interval_ms: 94.33
-persist: 8428
-channel_size:
-  - standard
-  - stable
-  - edge
-  - strict
+hard_capacity_count: fallback
+warm_window_ms: 3684
+sync_size_pct: 19
