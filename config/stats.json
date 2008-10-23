@@ -1,16 +1,9 @@
 {
-  "hard_depth_count": {
-    "dry_run": false,
-    "enabled": [146, 156, 330, 480],
-    "audit": "local"
-  },
-  "tools_threshold": {
-    "sync_interval_s": true,
-    "window_delay": "open",
-    "commits_capacity": 60,
-    "warm_ttl_s": "standard",
-    "default_ttl": "fallback",
-    "audit": false
-  },
-  "buffer_threshold": [111, 188, 106]
+  "buffer_window": false,
+  "poll_capacity_pct": 51,
+  "max_depth_s": {
+    "min_limit": 30,
+    "min_delay_pct": "local",
+    "report_timeout": 29
+  }
 }
