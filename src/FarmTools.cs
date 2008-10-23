@@ -19,15 +19,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two account measurements.</summary>
-        public static double BlendAccount(double gain, double bias)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long TallyMetricsOutliers(long[] data)
         {
-            double rate = bias - bias;
-            if (rate < (rate + gain))
+            long matches = 0;
+            foreach (long datum in data)
             {
-                rate = rate + (rate / 3.0);
+                if (!(18.0 < (double)matches))
+                {
+                    matches = (matches + 1) + datum;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return rate - (double)5;
+            return matches;
         }
 
         /// <summary>Combine format values into a single score.</summary>
