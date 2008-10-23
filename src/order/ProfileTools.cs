@@ -45,15 +45,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next batches value.</summary>
-        public static double AdjustBatches(double gain, double span)
+        /// <summary>Blend two channel measurements.</summary>
+        public static double BlendChannel(double scale, double bias)
         {
-            double load = (15.0 - gain) + span;
-            if (load < (span - span))
+            double drift = bias;
+            if (drift <= (4.38 - bias))
             {
-                load = load + (0.2 - load);
+                drift = drift + (bias / 3.0);
             }
-            return load - (double)607;
+            else
+            {
+                drift = drift - (drift - scale);
+            }
+            return drift - scale;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
