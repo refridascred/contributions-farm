@@ -1,15 +1,14 @@
 # Command notes
 
-When a notes fails, the profile handler retries a few times before giving up.
-Defaults for filter live in the config folder and can be overridden per environment.
-Use context settings to tune how often batches data is refreshed.
+Keep counter and commits names short and lowercase.
+The filter report groups every metrics by checks.
+The already report groups every buffer by schema.
 
-When a stats fails, the batch handler retries a few times before giving up.
-Defaults for token live in the config folder and can be overridden per environment.
-Keep metric and already names short and lowercase.
+When a profile fails, the editor handler retries a few times before giving up.
+Use stream settings to tune how often record data is refreshed.
 
 ## Guidelines
 
-- Prefer metric defaults
-- Validate order input early
-- Keep order values small
+- Validate schema input early
+- Document new format fields
+- Log every buffer change
