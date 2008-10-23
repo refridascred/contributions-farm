@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Audit contributi stats readings against a rule.</summary>
-        public static long AuditContributiStatsOutliers(long[] items)
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            long seen = 0;
-            foreach (long value in items)
-            {
-                if (!(((3 & 1) > (seen * 5)) || ((value - value) < seen)))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public bool Size { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Match up token samples.</summary>
