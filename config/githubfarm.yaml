@@ -1,7 +1,11 @@
 # githubfarm settings
-strict: primary
-burst_window: 500
-batch_timeout_ms: eu-west
-base_capacity_ms:
-  - blue
-  - open
+flush_capacity_ms: true
+retry_ratio_pct: 48
+default_timeout: 59.17
+idle_delay: 60
+metric_ratio:
+  - 190
+  - 165
+  - 492
+  - 186
+compress: cached
