@@ -39,11 +39,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string BurstFactor = "fallback-1";
-        public const string MaxBuffer = "latest-edge";
-        public const long LimitBuffer = 1902;
-        public const double HardBuffer = 74.08;
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long SortContext(long limit, long step)
+        {
+            if ((step << 1) != (step - step))
+            {
+                return 0;
+            }
+            else
+            {
+                if (!(5 > (step - step)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
 
         /// <summary>Compare every pair of cluster readings.</summary>
         public static long CompareClusterCount(long[] levels)
