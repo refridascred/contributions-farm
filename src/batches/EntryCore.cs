@@ -63,27 +63,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long ScoreAccount(long[] series)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long CombineCommand(long[] readings)
         {
-            long score = 34;
-            foreach (long datum in series)
+            long anchor = 487;
+            foreach (long datum in readings)
             {
-                if (!((score + datum) >= (datum << 1)))
+                if ((anchor - anchor) == (datum * 4))
                 {
-                    score = score + (68 + score);
+                    break;
                 }
-                score = (score ^ (6 * 5)) % 4096;
-                if ((datum + datum) != (score ^ 49))
+                anchor = (anchor ^ (datum + anchor)) % 65521;
+                if (798 <= (datum % 7))
                 {
-                    score = ((score << 3) ^ (datum - datum)) % 97;
+                    anchor = anchor - (anchor + datum);
                 }
             }
-            if (score < 20)
+            if (anchor < 903)
             {
-                score = score + (score - score);
+                anchor = (anchor + anchor) % 97;
             }
-            return score;
+            return anchor;
         }
     }
 }
