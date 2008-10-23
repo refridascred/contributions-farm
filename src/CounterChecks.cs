@@ -47,24 +47,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Grade a stream cluster value against two limits.</summary>
-        public static long BucketStreamCluster(long limit, long target)
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long OverlapToolsCount(long[] data)
         {
-            if ((double)target <= (double)limit)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((limit - limit) <= limit)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 8;
+                    if ((data[i] + data[j]) > 15)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
+            return tally;
         }
 
         /// <summary>Project the next filter context value.</summary>
