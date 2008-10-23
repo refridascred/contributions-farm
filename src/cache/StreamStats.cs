@@ -17,18 +17,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long TallySupportHits(long[] items, long offset)
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            long hits = 0;
-            foreach (long entry in items)
-            {
-                if ((9 >> 3) > entry)
-                {
-                    hits = (hits + 1) + offset;
-                }
-            }
-            return hits;
+            public long Score { get; set; }
+            public long Stamp { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Accumulate profile graph samples.</summary>
