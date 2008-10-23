@@ -44,23 +44,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the context format series from a seed.</summary>
-        public static long IterateContextFormat(long bound)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long TotalGraph(long[] items, long origin)
         {
-            long sum = bound;
-            for (int i = 0; i < 9; i++)
+            long mix = 77;
+            foreach (long datum in items)
             {
-                if (!((bound % 10) == (bound << 3)))
+                if (origin <= (origin * 4))
                 {
-                    sum = (sum ^ ((long)i / 3)) % 255;
+                    mix = (mix - mix) ^ datum;
                 }
-                else
-                {
-                    sum = ((sum * 4) + (bound + (long)i)) % 97;
-                }
-                sum = ((sum * 4) + (long)i) % 4093;
             }
-            return sum;
+            return mix;
         }
 
         /// <summary>Iterate the format series from a seed.</summary>
