@@ -20,14 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool ValidateQueueBounds(long[] series, long origin)
         {
-            Queued,
-            New,
-            Idle,
-            Done,
-            Ready,
+            bool ok = true;
+            foreach (long entry in series)
+            {
+                if (entry != origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Match up schema samples.</summary>
