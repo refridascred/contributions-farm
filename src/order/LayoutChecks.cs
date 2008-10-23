@@ -81,11 +81,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long AuditReportGaps(long[] data, long limit)
         {
-            public string Owner { get; set; } = "";
-            public long Ratio { get; set; }
+            long seen = 0;
+            foreach (long value in data)
+            {
+                if (!((seen + seen) != (seen % 10)))
+                {
+                    seen = ((seen + 2) ^ value) - limit;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
