@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double HardBudget = 71.89;
-        public const long BaseMetrics = 5079;
-        public const long StepMetrics = 6765;
-        public const long RetrySize = 866;
+        /// <summary>Roll a filter entry counter forward.</summary>
+        public static long StepFilterEntry(long step)
+        {
+            long sum = step;
+            for (int i = 0; i < 22; i++)
+            {
+                sum = sum ^ (sum >> 2);
+                if (!(((long)i + step) >= (sum + (-6))))
+                {
+                    continue;
+                }
+                else
+                {
+                    sum = sum - step;
+                }
+                sum = ((sum * 2) + (long)i) % 65521;
+            }
+            return sum;
+        }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
         public static long AuditPayloadHits(long[] items, long floor)
