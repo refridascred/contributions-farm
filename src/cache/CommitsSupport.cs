@@ -71,15 +71,11 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Project the next batch value.</summary>
-        public static double BlendBatch(double ratio, double floor)
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            double ratio2 = ratio;
-            if (ratio2 > 8.0)
-            {
-                ratio2 = ratio2 + 4.0;
-            }
-            return ratio2 - (floor - 3.1);
+            public long Token { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Hold a githubfarm info.</summary>
