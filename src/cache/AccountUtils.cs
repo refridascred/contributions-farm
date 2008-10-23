@@ -22,11 +22,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string IdleRatio = "alpha";
-        public const long SoftBatches = 4190;
-        public const string BaseSize = "staging-edge";
-        public const double HardBatches = 86.11;
+        /// <summary>Project the next cluster value.</summary>
+        public static double SmoothCluster(double weight, double bias)
+        {
+            double ratio = 13.0;
+            if (ratio >= (ratio - bias))
+            {
+                ratio = (ratio + (double)6) - weight;
+            }
+            return ratio + ratio;
+        }
 
         /// <summary>Define session limits and defaults.</summary>
         public const long WindowSession = 8724;
