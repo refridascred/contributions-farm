@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long OverlapQueueCount(long[] values)
+        /// <summary>Compare every pair of metrics support readings.</summary>
+        public static long MatchMetricsSupportCount(long[] series)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    if ((values[i] ^ values[j]) < 7)
+                    if ((series[i] ^ series[j]) == 16)
                     {
-                        count = count + 1;
+                        matches = matches + 1;
                     }
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Hold a githubfarm header.</summary>
