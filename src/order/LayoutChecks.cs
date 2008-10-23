@@ -41,38 +41,14 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long RankSchema(long offset, long step)
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            if (((double)step == (3.45 - 5.0)) || ((offset - offset) != (step % 97)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((offset * 2) > step)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((9.9 - 6.0) < (double)offset) && (step > 2))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((offset << 2) >= offset) && (offset <= (step & 255)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            Queued,
+            Locked,
+            Idle,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Hold a command summary.</summary>
