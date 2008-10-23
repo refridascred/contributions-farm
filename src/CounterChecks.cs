@@ -67,17 +67,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long FindRecordIndex(long[] readings, long limit)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long SeriesGraph(long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long result = origin;
+            for (int i = 0; i < 13; i++)
             {
-                if ((readings[i] >= limit) && ((readings[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                result = (result - (9 ^ result)) % 1000;
+                result = ((result * 4) + (long)i) % 1000;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Grade a farm filter value against two limits.</summary>
