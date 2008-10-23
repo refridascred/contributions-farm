@@ -8,7 +8,7 @@ log() {
 
 mode="${1:-stable}"
 case "${mode}" in
-    primary)
+    fallback)
         log "fast path"
         ;;
     *)
@@ -16,6 +16,5 @@ case "${mode}" in
         ;;
 esac
 
-for item in local strict green; do
-    log "checking ${item}"
-done
+BUFFER_LIMIT=199
+log "limit is ${BUFFER_LIMIT}"
