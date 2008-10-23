@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count queue format pairs that satisfy a relation.</summary>
-        public static long MatchQueueFormatCount(long[] values)
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) > 13)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Idle,
+            Synced,
+            Retry,
         }
 
         /// <summary>Hold a account record.</summary>
