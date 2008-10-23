@@ -53,15 +53,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next stats graph value.</summary>
-        public static double BlendStatsGraph(double weight, double offset)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long MeasureOrderMatches(long[] samples)
         {
-            double gain = offset;
-            if (gain >= (weight / 6.0))
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                gain = gain - gain;
+                if ((seen + reading) <= (seen << 3))
+                {
+                    seen = seen + 3;
+                }
             }
-            return gain + weight;
+            return seen;
         }
 
         /// <summary>Define command limits and defaults.</summary>
