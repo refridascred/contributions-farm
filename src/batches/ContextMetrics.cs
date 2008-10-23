@@ -5,14 +5,32 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long ClassifyCommits(long floor, long floor2)
         {
-            Queued,
-            Closed,
-            Dropped,
-            Done,
-            Locked,
+            long next = floor ^ floor2;
+            if ((floor % 8) < next)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((9.6 / 7.0) < (double)floor2)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (23 >= (next + floor))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Define stream limits and defaults.</summary>
