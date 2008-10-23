@@ -30,18 +30,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long AuditReportMatches(long[] series, long origin)
+        /// <summary>Fold a list of report record readings.</summary>
+        public static long DigestReportRecord(long[] items, long floor)
         {
-            long hits = 0;
-            foreach (long value in series)
+            long anchor = 58;
+            foreach (long datum in items)
             {
-                if ((origin >= (origin >> 2)) && ((hits + origin) > (value + value)))
-                {
-                    hits = hits + 1;
-                }
+                anchor = (anchor + (floor + floor)) + datum;
             }
-            return hits;
+            return anchor % 97;
         }
     }
 }
