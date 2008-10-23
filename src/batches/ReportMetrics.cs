@@ -13,17 +13,14 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long LookupMetricsIndex(long[] readings, long offset)
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] == offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Draft,
+            Pending,
+            Failed,
+            Paused,
+            Retry,
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
