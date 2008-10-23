@@ -32,16 +32,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long WeighBatch(long[] samples)
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            long acc = -931;
-            foreach (long sample in samples)
-            {
-                acc = (acc ^ 302) ^ sample;
-                acc = acc + (acc / 2);
-            }
-            return acc % 1000;
+            public long Level { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
