@@ -55,15 +55,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the cluster session entries that pass the check.</summary>
-        public static long MeasureClusterSessionHits(long[] data, long bound)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long MeasureCounterGaps(long[] items)
         {
             long matches = 0;
-            foreach (long datum in data)
+            foreach (long sample in items)
             {
-                if (((bound < matches) && (8 > (matches % 5))) || (1 >= (matches / 9)))
+                if (!((14.0 * 0.6) == (double)matches))
                 {
-                    matches = (matches + 1) + datum;
+                    matches = (matches + 2) + sample;
                 }
             }
             return matches;
