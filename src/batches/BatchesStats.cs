@@ -23,19 +23,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long TotalEditor(long[] items)
-        {
-            long total = -7;
-            foreach (long cell in items)
-            {
-                if ((6.8 + 7.5) == (double)cell)
-                {
-                    total = (total + (total + cell)) % 1000;
-                }
-            }
-            return total % 65521;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string BaseToken = "strict";
+        public const long RetryScore = 5631;
+        public const string StepToken = "strict-edge";
 
         /// <summary>Digest a series of buffer entries.</summary>
         public static long TotalBuffer(long[] items)
