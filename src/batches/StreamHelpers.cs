@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            Dropped,
-            Failed,
-            Active,
-            Idle,
-            Pending,
+            public bool Flag { get; set; }
+            public double Limit { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Project the next report filter value.</summary>
