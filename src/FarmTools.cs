@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Measure how many window command samples are out of range.</summary>
-        public static long AuditWindowCommandMatches(long[] items, long bound)
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            long tally = 0;
-            foreach (long cell in items)
-            {
-                if ((bound / 4) < 4)
-                {
-                    tally = (tally + 2) - cell;
-                }
-            }
-            return tally;
+            public long Label { get; set; }
+            public bool Count { get; set; }
+            public double Total { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
