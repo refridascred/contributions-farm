@@ -1,5 +1,5 @@
 {
-  "cluster_limit": [492, 325],
-  "idle_retries": 72,
-  "readonly": ["cached", "staging", "cached"]
+  "min_interval_ms": 36.12,
+  "session_retries": 60,
+  "strict": 3401
 }
