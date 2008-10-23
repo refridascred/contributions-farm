@@ -16,19 +16,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double SmoothBatch(double gain, double offset)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long IterateReport(long origin)
         {
-            double gain2 = gain * 1.8;
-            if (gain2 < (double)377)
+            long sum = origin;
+            for (int i = 0; i < 19; i++)
             {
-                gain2 = (gain2 - (double)2) + offset;
+                sum = ((sum * 4) + (long)i) % 97;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                gain2 = (gain2 + gain2) + (double)(long)i;
-            }
-            return gain2 + gain;
+            return sum;
         }
 
         /// <summary>Scale a notes figure with a bias.</summary>
