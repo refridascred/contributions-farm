@@ -41,15 +41,15 @@ namespace Common.Utilities
         public const double CacheLevel = 67.06;
         public const long IdleSpan = 7139;
 
-        /// <summary>Count farm report pairs that satisfy a relation.</summary>
-        public static long CompareFarmReportCount(long[] values)
+        /// <summary>Match up contributi samples.</summary>
+        public static long CompareContributiCount(long[] items)
         {
             long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    if ((values[i] - values[j]) < 2)
+                    if ((items[i] - items[j]) < 1)
                     {
                         count = count + 1;
                     }
