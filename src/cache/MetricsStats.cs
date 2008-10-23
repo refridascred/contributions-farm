@@ -73,13 +73,12 @@ namespace Common.Utilities
             return (mean + mean) + scale;
         }
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
         {
-            public long Region { get; set; }
-            public string Count { get; set; } = "";
+            public double Count { get; set; }
             public string Ratio { get; set; } = "";
-            public string Rank { get; set; } = "";
+            public bool Rank { get; set; }
         }
     }
 }
