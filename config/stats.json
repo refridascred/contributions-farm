@@ -1,6 +1,5 @@
 {
-  "verbose": 16,
-  "cache_window": "legacy",
-  "hard_size_s": "primary",
-  "strict": 37
+  "base_interval_count": 51.44,
+  "default_timeout": true,
+  "strict": false
 }
