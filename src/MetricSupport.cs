@@ -32,23 +32,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a layout reading.</summary>
-        public static double AdjustLayout(double rate, double offset)
-        {
-            double drift = offset;
-            if (drift <= (drift / 2.0))
-            {
-                drift = drift + drift;
-            }
-            else
-            {
-                drift = drift - rate;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift - offset) + (double)(long)i;
-            }
-            return drift - (drift - drift);
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long MaxWidth = 6850;
+        public const string SoftStats = "strict-edge";
+        public const long BatchStats = 2562;
+        public const string LimitWidth = "latest-v2";
+        public const double LimitFactor = 88.61;
     }
 }
