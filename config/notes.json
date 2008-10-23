@@ -1,13 +1,7 @@
 {
-  "base_depth": 229,
-  "tools_interval": 14.36,
-  "warm_window": 4199,
-  "hard_window": "standard",
-  "batch_window": {
-    "burst_limit_count": "green",
-    "burst_ttl_ms": false,
-    "cache_size_count": 2265,
-    "base_ratio_s": 41.73
-  },
-  "poll_timeout_pct": 7.32
+  "soft_timeout": false,
+  "record_timeout": "blue",
+  "strict": "open",
+  "batch_limit_ms": 3859,
+  "soft_depth": 98
 }
