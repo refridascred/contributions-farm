@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Audit contributi stats readings against a rule.</summary>
+        public static long AuditContributiStatsOutliers(long[] items)
         {
-            public string Ratio { get; set; } = "";
-            public long Total { get; set; }
+            long seen = 0;
+            foreach (long value in items)
+            {
+                if (!(((3 & 1) > (seen * 5)) || ((value - value) < seen)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the metrics kind values.</summary>
