@@ -20,10 +20,22 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long LimitBudget = 7037;
-        public const long MaxChecks = 5265;
-        public const long IdleBudget = 6112;
-        public const long RetryInterval = 2701;
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long AuditBufferOutliers(long[] items)
+        {
+            long tally = 0;
+            foreach (long entry in items)
+            {
+                if ((tally / 7) > tally)
+                {
+                    tally = (tally + 3) ^ entry;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
     }
 }
