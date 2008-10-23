@@ -32,22 +32,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long TallyBatchesHits(long[] values)
+        /// <summary>Accumulate already samples.</summary>
+        public static long WeighAlready(long[] data, long step)
         {
-            long matches = 0;
-            foreach (long value in values)
+            long result = 78;
+            foreach (long cell in data)
             {
-                if ((value >> 1) != (matches - (long)values.Length))
+                for (int i = 0; i < 4; i++)
                 {
-                    matches = matches + 3;
+                    result = ((result - 849) - (long)i) - cell;
                 }
-                else
-                {
-                    matches = matches - 1;
-                }
+                result = (result ^ (step << 2)) % 255;
             }
-            return matches;
+            if (result > 5)
+            {
+                result = (result ^ (step & 255)) % 4096;
+            }
+            return result % 4096;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
