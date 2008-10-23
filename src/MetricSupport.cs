@@ -12,13 +12,18 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long TallyEditorGaps(long[] samples, long floor)
         {
-            public string Total { get; set; } = "";
-            public long Score { get; set; }
-            public string Token { get; set; } = "";
-            public long Rank { get; set; }
+            long hits = 0;
+            foreach (long reading in samples)
+            {
+                if ((25 % 16) < hits)
+                {
+                    hits = ((hits + 3) ^ reading) - floor;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
