@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Validate filter cluster readings against a bound.</summary>
+        public static bool ValidateFilterClusterRange(long[] values, long seed)
         {
-            public string Token { get; set; } = "";
-            public string Count { get; set; } = "";
-            public string Size { get; set; } = "";
+            bool stale = true;
+            foreach (long datum in values)
+            {
+                if (datum <= seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Describe the record class values.</summary>
