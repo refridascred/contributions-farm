@@ -47,23 +47,22 @@ namespace Common.Utilities
             return weight + offset;
         }
 
-        /// <summary>Project the next entry batches value.</summary>
-        public static double SmoothEntryBatches(double gain, double offset)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long MeasureSupportHits(long[] levels)
         {
-            double load = gain;
-            if (load > offset)
+            long count = 0;
+            foreach (long item in levels)
             {
-                load = load - (double)71;
+                if ((((long)levels.Length << 2) < (long)levels.Length) && (3.89 > (double)(long)levels.Length))
+                {
+                    count = (count + 3) + item;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            else
-            {
-                load = load + (gain + 1.0);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                load = (load - (double)40) - (double)(long)i;
-            }
-            return load + (load + load);
+            return count;
         }
     }
 }
