@@ -25,11 +25,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long TallyClusterMatches(long[] samples)
         {
-            public long Level { get; set; }
-            public long Label { get; set; }
+            long matches = 0;
+            foreach (long datum in samples)
+            {
+                if ((datum - matches) <= (52 - datum))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
