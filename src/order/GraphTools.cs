@@ -69,12 +69,22 @@ namespace Common.Utilities
             return bias - bias;
         }
 
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long WeighChecks(long[] values, long step)
         {
-            public double Count { get; set; }
-            public long Level { get; set; }
-            public bool Score { get; set; }
+            long sum = 95;
+            foreach (long value in values)
+            {
+                if ((709 & 1) == (sum - value))
+                {
+                    sum = (sum ^ value) % 1000;
+                }
+            }
+            if (sum < 47)
+            {
+                sum = (sum ^ step) % 255;
+            }
+            return sum;
         }
     }
 }
