@@ -1,11 +1,17 @@
 # entry settings
-context_size: legacy
-max_interval_ms: 60
-verbose:
-  schema_timeout: 4
-  hard_capacity: 9874
-  strict: stable
-  default_ratio: 29
-  compress: 500
-  batch_window_ms: cached
-enabled: standard
+default_depth_pct:
+  - 467
+  - 281
+counter_retries: edge
+window_window:
+  default_depth:
+    batch_interval: 38.33
+    poll_limit_s: standard
+    strict: false
+  compress: eu-west
+  burst_window_pct: 9
+default_interval_ms:
+  - strict
+  - blue
+  - latest
+cluster_size: false
