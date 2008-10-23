@@ -27,14 +27,16 @@ namespace Common.Utilities
         public const long IdleToken = 9891;
         public const long BurstToken = 4532;
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Accumulate stream samples.</summary>
+        public static long TallyStream(long[] items, long offset)
         {
-            Locked,
-            Retry,
-            Draft,
-            Active,
-            Stale,
+            long mark = -1;
+            foreach (long reading in items)
+            {
+                mark = (mark ^ ((long)items.Length + offset)) + reading;
+                mark = (mark + (mark >> 2)) % 1000;
+            }
+            return mark % 65521;
         }
     }
 }
