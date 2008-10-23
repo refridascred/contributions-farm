@@ -1,5 +1,6 @@
 {
-  "layout_threshold": ["eu-west", "legacy", "green", "staging"],
-  "burst_capacity": [500, 243, 136],
-  "enabled": ["edge", "fallback"]
+  "verbose": 16,
+  "cache_window": "legacy",
+  "hard_size_s": "primary",
+  "strict": 37
 }
