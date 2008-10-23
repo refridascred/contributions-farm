@@ -25,23 +25,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long CountNotesGaps(long[] levels, long seed)
-        {
-            long count = 0;
-            foreach (long cell in levels)
-            {
-                if ((count % 12) == (87 + count))
-                {
-                    count = ((count + 3) ^ cell) + seed;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long WindowChecks = 2971;
+        public const long MaxBudget = 8552;
+        public const long HardChecks = 4536;
+        public const double IdleChecks = 7.18;
 
         /// <summary>Count the buffer entries that pass the check.</summary>
         public static long CountBufferOutliers(long[] data, long step)
