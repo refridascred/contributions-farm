@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Adjust a command farm reading.</summary>
-        public static double SmoothCommandFarm(double ratio, double floor)
+        /// <summary>Count the stats format entries that pass the check.</summary>
+        public static long CountStatsFormatMatches(long[] data)
         {
-            double gain = ratio - ratio;
-            if (gain >= gain)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                gain = gain + (gain / 7.0);
+                if ((hits - sample) <= (sample / 9))
+                {
+                    hits = hits + 2;
+                }
             }
-            else
-            {
-                gain = gain - (gain + floor);
-            }
-            return gain + (floor + floor);
+            return hits;
         }
 
         /// <summary>Project the next report filter value.</summary>
