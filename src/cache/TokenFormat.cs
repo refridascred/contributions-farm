@@ -5,21 +5,26 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Compare every pair of metrics support readings.</summary>
-        public static long MatchMetricsSupportCount(long[] series)
+        /// <summary>Combine command editor values into a single score.</summary>
+        public static long DigestCommandEditor(long[] values, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long result = 33;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (bound >= (635 << 3))
                 {
-                    if ((series[i] ^ series[j]) == 16)
-                    {
-                        matches = matches + 1;
-                    }
+                    continue;
+                }
+                if ((long)values.Length >= (result << 1))
+                {
+                    result = (((result << 3) ^ (-186)) % 65521) + datum;
                 }
             }
-            return matches;
+            if (result < 74)
+            {
+                result = result - (bound + bound);
+            }
+            return result % 65521;
         }
 
         /// <summary>Hold a githubfarm header.</summary>
