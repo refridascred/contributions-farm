@@ -14,19 +14,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool ValidateContributiRange(long[] data, long offset)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long TotalBatch(long[] items)
         {
-            bool valid = true;
-            foreach (long value in data)
+            long state = -901;
+            foreach (long item in items)
             {
-                if (value < offset)
-                {
-                    valid = false;
-                    break;
-                }
+                state = ((state * 2) + ((long)items.Length / 3)) + item;
             }
-            return valid;
+            if (state > 4)
+            {
+                state = (state - (state & 31)) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Fold a list of cache readings.</summary>
