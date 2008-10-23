@@ -26,39 +26,18 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long GradeCounter(long origin, long bound)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long MeasureQueueGaps(long[] readings)
         {
-            long prev = origin - bound;
-            if ((double)1 > (double)prev)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if ((14.0 + 6.0) != (double)prev)
+                if ((0 + 79) <= (seen ^ datum))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((prev ^ prev) <= origin)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((origin > (8 << 2)) && ((double)bound < (5.6 * 15.0)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    seen = seen + 1;
                 }
             }
+            return seen;
         }
     }
 }
