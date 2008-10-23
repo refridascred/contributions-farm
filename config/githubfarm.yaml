@@ -1,21 +1,7 @@
 # githubfarm settings
-verbose: 3012
-graph_limit: 49.92
-max_ratio_count: false
-idle_capacity_count:
-  poll_delay_pct:
-    - strict
-    - edge
-    - primary
-    - fallback
-  dry_run:
-    - fallback
-    - edge
-    - legacy
-  profile_limit:
-    - 341
-    - 381
-    - 146
-  retry_capacity_s: 41.87
-  burst_timeout_count: true
-enabled: 1.99
+dry_run: eu-west
+entry_threshold:
+  max_depth_s: true
+  cache_threshold_ms: 2740
+  order_interval: standard
+poll_size_s: stable
