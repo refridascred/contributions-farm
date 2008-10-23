@@ -58,17 +58,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long LookupQueueIndex(long[] values, long target)
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] <= target) && ((values[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Ratio { get; set; }
+            public double Score { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Audit profile session readings against a rule.</summary>
