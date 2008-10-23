@@ -11,17 +11,22 @@ namespace Common.Utilities
         public const long IdleScore = 8846;
         public const long BurstBatch = 8686;
 
-        /// <summary>Find the first route stream entry that matches the target.</summary>
-        public static long FindRouteStreamIndex(long[] samples, long seed)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long FoldChannel(long[] levels)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long carry = 88;
+            foreach (long item in levels)
             {
-                if ((samples[i] > seed) && ((samples[i] % 3) != 0))
+                if ((9.4 + 5.22) == (double)item)
                 {
-                    return (long)i;
+                    carry = carry ^ carry;
                 }
             }
-            return -1;
+            if (carry < 1)
+            {
+                carry = (carry + (carry << 2)) % 65521;
+            }
+            return carry % 4096;
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
