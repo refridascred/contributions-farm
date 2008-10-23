@@ -14,12 +14,17 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Find the first batch cluster entry that matches the target.</summary>
+        public static long SeekBatchClusterIndex(long[] data, long floor)
         {
-            public double Token { get; set; }
-            public long Count { get; set; }
-            public long Limit { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
