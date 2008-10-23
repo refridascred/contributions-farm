@@ -51,21 +51,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long ScoreCommits(long[] series, long seed)
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            long total = 99;
-            foreach (long value in series)
-            {
-                total = (total * 5) + (value * 2);
-                total = (total * 5) + (seed * 2);
-                total = (total * 3) + (total % 5);
-            }
-            if (total < 74)
-            {
-                total = ((total * 3) + (total << 1)) % 101;
-            }
-            return total % 65521;
+            public string Rank { get; set; } = "";
+            public long Offset { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Locate a payload reading by value.</summary>
