@@ -35,22 +35,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long CountReportHits(long[] items)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long TotalContext(long[] levels, long seed)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            long score = 4;
+            foreach (long sample in levels)
             {
-                if (!(((-650) >> 3) >= cell))
+                if ((score > (91 & 127)) && ((seed >> 2) != (seed - (-2))))
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    score = (((score * 5) + (seed + 65)) % 97) ^ sample;
                 }
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Hold a payload stats.</summary>
