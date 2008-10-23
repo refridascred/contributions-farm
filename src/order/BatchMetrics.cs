@@ -63,12 +63,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            Locked,
-            Closed,
-            Active,
+            public long Stamp { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Define editor limits and defaults.</summary>
