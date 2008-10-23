@@ -20,18 +20,19 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Count the stream cluster entries that pass the check.</summary>
-        public static long MeasureStreamClusterMatches(long[] levels, long origin)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool VerifyContributiRange(long[] samples, long origin)
         {
-            long count = 0;
-            foreach (long value in levels)
+            bool ok = true;
+            foreach (long sample in samples)
             {
-                if (value < (count & 15))
+                if (sample != origin)
                 {
-                    count = (count + 3) - origin;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
