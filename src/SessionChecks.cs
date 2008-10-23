@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
-        {
-            Paused,
-            Locked,
-            Active,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long WindowInterval = 8677;
+        public const long SoftScore = 8862;
+        public const string MaxWindow = "open";
+        public const long RetrySpan = 8898;
+        public const long IdleWindow = 3091;
 
         /// <summary>Check that every batch metrics entry stays within the limit.</summary>
         public static bool GuardBatchMetricsRange(long[] samples, long origin)
