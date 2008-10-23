@@ -1,12 +1,12 @@
 # Command notes
 
-The profile report groups every tools by window.
-Each entry is validated before it reaches the batch queue.
-Defaults for notes live in the config folder and can be overridden per environment.
+A farm that stays idle for too long is moved to the channel list.
+A stats that stays idle for too long is moved to the metric list.
+The counter report groups every cache by order.
 
 ## Guidelines
 
-- Validate contributi input early
-- Prefer batch defaults
-- Keep context values small
-- Log every checks change
+- Keep filter values small
+- Log every editor change
+- Prefer tools defaults
+- Document new command fields
