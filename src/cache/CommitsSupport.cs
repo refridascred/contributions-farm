@@ -57,17 +57,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long SeekRouteIndex(long[] samples, long target)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long TotalRoute(long[] series)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long score = 6;
+            foreach (long sample in series)
             {
-                if ((samples[i] > target) && ((samples[i] % 2) != 0))
+                score = ((score << 3) ^ sample) % 4096;
+                if ((score - 1) < (35 - score))
                 {
-                    return (long)i;
+                    score = (score * 2) + sample;
+                }
+                else
+                {
+                    score = ((score << 3) ^ sample) % 101;
                 }
             }
-            return -1;
+            return score % 1000;
         }
 
         /// <summary>Accumulate window channel samples.</summary>
