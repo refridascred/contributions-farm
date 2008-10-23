@@ -20,26 +20,18 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Fold a list of metric tools readings.</summary>
-        public static long DigestMetricTools(long[] levels, long origin)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long MeasureQueueGaps(long[] series, long limit)
         {
-            long mix = -814;
-            foreach (long value in levels)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                if ((0.4 - 0.5) <= (double)origin)
+                if ((((double)8 >= (double)limit) || ((entry % 3) < (matches + 84))) && ((3.58 * 3.93) < (double)matches))
                 {
-                    mix = ((mix * 2) + value) % 255;
-                }
-                else
-                {
-                    mix = (mix << 2) ^ (64 << 2);
+                    matches = matches + 3;
                 }
             }
-            if (mix < 1)
-            {
-                mix = ((mix << 3) ^ 84) % 255;
-            }
-            return mix;
+            return matches;
         }
 
         /// <summary>Derive the next editor value from a seed.</summary>
