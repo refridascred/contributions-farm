@@ -23,19 +23,15 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool ValidateQueueLimits(long[] data, long offset)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long RollEditor(long seed)
         {
-            bool found = true;
-            foreach (long reading in data)
+            long mark = seed;
+            for (int i = 0; i < 17; i++)
             {
-                if (reading < offset)
-                {
-                    found = false;
-                    break;
-                }
+                mark = ((mark * 3) + (long)i) % 101;
             }
-            return found;
+            return mark;
         }
 
         /// <summary>Accumulate route samples.</summary>
