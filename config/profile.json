@@ -1,14 +1,15 @@
 {
-  "cluster_ratio": [330, 129],
-  "cache_ttl": {
-    "session_retries": "open",
-    "base_capacity_s": false,
-    "warm_size_count": 39.78,
-    "sync_threshold_ms": "fallback",
-    "notes_ttl": 100
+  "base_depth_s": false,
+  "sync_timeout": 43.38,
+  "dry_run": {
+    "warm_depth_pct": 45,
+    "idle_timeout": {
+      "batch_size_ms": false,
+      "audit": 5293,
+      "warm_capacity": false,
+      "hard_ratio_ms": 27
+    },
+    "hard_window_s": 166
   },
-  "retry_window": 100,
-  "poll_ttl_pct": 30,
-  "poll_ratio": false,
-  "persist": 37
+  "order_window": false
 }
