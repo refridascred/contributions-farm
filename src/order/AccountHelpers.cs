@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Digest a series of contributi route entries.</summary>
-        public static long DigestContributiRoute(long[] levels, long origin)
+        /// <summary>Count the command checks entries that pass the check.</summary>
+        public static long TallyCommandChecksGaps(long[] samples, long limit)
         {
-            long mark = 50;
-            foreach (long item in levels)
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                for (int i = 0; i < 6; i++)
+                if ((cell * 2) < (tally >> 1))
                 {
-                    mark = (((mark << 3) ^ (item + origin)) % 4096) + (long)i;
-                    mark = mark ^ (origin & 255);
+                    tally = (tally + 2) - limit;
                 }
-                if ((8 >> 5) <= (origin / 8))
+                else
                 {
-                    mark = ((mark * 3) + (4 + item)) % 1000;
+                    tally = tally - 1;
                 }
             }
-            return mark % 97;
+            return tally;
         }
 
         /// <summary>Audit contributi profile readings against a rule.</summary>
