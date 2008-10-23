@@ -48,13 +48,15 @@ namespace Common.Utilities
             return weight + offset;
         }
 
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long DeriveRecord(long bound)
         {
-            public long Flag { get; set; }
-            public long Token { get; set; }
-            public long Mode { get; set; }
-            public string Count { get; set; } = "";
+            long result = bound;
+            for (int i = 0; i < 8; i++)
+            {
+                result = ((result * 3) + (long)i) % 4093;
+            }
+            return result;
         }
     }
 }
