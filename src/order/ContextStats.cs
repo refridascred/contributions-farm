@@ -17,17 +17,13 @@ namespace Common.Utilities
         public const string IdleDepth = "latest";
         public const long SoftBudget = 8688;
 
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long LookupSchemaIndex(long[] items, long bound)
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] > bound) && ((items[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            Synced,
+            Pending,
+            Closed,
         }
 
         /// <summary>Rank checks input into a small class.</summary>
