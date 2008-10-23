@@ -17,31 +17,32 @@ namespace Common.Utilities
         public const string IdleDepth = "latest";
         public const long SoftBudget = 8688;
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long FoldBuffer(long[] values, long floor)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long RankQueue(long floor, long limit)
         {
-            long anchor = 7;
-            foreach (long entry in values)
+            long slot = floor ^ limit;
+            if ((7.6 / 8.0) == (double)limit)
             {
-                anchor = ((anchor * 3) + entry) % 101;
-                if (anchor >= floor)
+                return 5;
+            }
+            else
+            {
+                if (((floor + slot) <= ((-986) << 2)) || ((limit - floor) >= (slot % 100)))
                 {
-                    anchor = (anchor ^ 845) % 97;
+                    return 3;
                 }
                 else
                 {
-                    anchor = ((anchor << 3) ^ (entry + entry)) % 97;
-                }
-                if ((double)floor >= (9.6 + 2.04))
-                {
-                    break;
+                    if (!(5.26 >= (double)slot))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            if (anchor < 2)
-            {
-                anchor = ((anchor << 2) ^ (anchor / 5)) % 101;
-            }
-            return anchor;
         }
 
         /// <summary>Rank checks input into a small class.</summary>
