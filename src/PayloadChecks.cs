@@ -32,13 +32,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            public long Stamp { get; set; }
-            public bool Size { get; set; }
-            public long Weight { get; set; }
-            public bool Offset { get; set; }
+            public double Mode { get; set; }
+            public double Label { get; set; }
+            public bool Ratio { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
