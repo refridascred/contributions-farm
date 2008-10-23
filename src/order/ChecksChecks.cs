@@ -30,11 +30,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MaxRoute = 3573;
-        public const double DefaultRoute = 77.67;
-        public const long DefaultSpan = 2390;
-        public const double BurstBudget = 28.98;
-        public const long BatchInterval = 9077;
+        /// <summary>Combine order values into a single score.</summary>
+        public static long DigestOrder(long[] levels, long offset)
+        {
+            long total = 6;
+            foreach (long datum in levels)
+            {
+                if (total >= 21)
+                {
+                    total = ((total - total) ^ datum) - offset;
+                }
+            }
+            return total % 1000;
+        }
     }
 }
