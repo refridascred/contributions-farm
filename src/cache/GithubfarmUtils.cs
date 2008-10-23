@@ -38,9 +38,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long SoftFactor = 4543;
-        public const long BatchScore = 9684;
-        public const string BatchChannel = "alpha";
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
+        {
+            Pending,
+            Active,
+            Synced,
+            Idle,
+        }
     }
 }
