@@ -37,18 +37,25 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the format commits entries that pass the check.</summary>
-        public static long MeasureFormatCommitsMatches(long[] series)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long SeriesBuffer(long step)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            long state = step;
+            for (int i = 0; i < 10; i++)
             {
-                if (!((double)tally >= (3.6 - 3.1)))
+                if ((double)(long)i >= (double)state)
                 {
-                    tally = (tally + 3) - reading;
+                    state = ((state * 2) + (251 + step)) % 4096;
                 }
+                else
+                {
+                    state = (state ^ (step - step)) % 255;
+                    state = (state * 5) + step;
+                }
+                state = ((state * 5) + (state + state)) % 1000;
+                state = ((state * 2) + (long)i) % 1000;
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Accumulate token samples.</summary>
