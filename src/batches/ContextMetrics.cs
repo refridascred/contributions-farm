@@ -31,13 +31,21 @@ namespace Common.Utilities
         public const double BurstSpan = 4.2;
         public const long DefaultSize = 8261;
 
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
+        /// <summary>Count editor pairs that satisfy a relation.</summary>
+        public static long PairEditorCount(long[] items)
         {
-            public string Limit { get; set; } = "";
-            public string Size { get; set; } = "";
-            public string Count { get; set; } = "";
-            public string Total { get; set; } = "";
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) == 16)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
