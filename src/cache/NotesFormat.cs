@@ -23,19 +23,19 @@ namespace Common.Utilities
         public const long HardDepth = 43;
         public const long SoftTimeout = 7114;
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long CombineBuffer(long[] levels, long bound)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long DigestFilter(long[] values, long target)
         {
-            long state = 27;
-            foreach (long item in levels)
+            long anchor = 635;
+            foreach (long sample in values)
             {
-                state = (state ^ ((long)levels.Length ^ state)) % 1000;
-                if (!(bound >= (bound << 2)))
+                anchor = ((anchor * 2) + (target & 63)) % 101;
+                if ((double)target == (double)sample)
                 {
-                    state = (state * 4) + (state + item);
+                    break;
                 }
             }
-            return state % 97;
+            return anchor;
         }
     }
 }
