@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
         {
-            New,
-            Paused,
-            Done,
-            Pending,
+            public bool Count { get; set; }
+            public double Rank { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
