@@ -41,23 +41,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long ScoreGraph(long[] data)
+        /// <summary>Count the checks account entries that pass the check.</summary>
+        public static long CountChecksAccountHits(long[] items, long origin)
         {
-            long carry = 9;
-            foreach (long reading in data)
+            long matches = 0;
+            foreach (long cell in items)
             {
-                carry = carry - (carry * 2);
-                if (reading >= (reading - carry))
+                if (((matches >> 1) <= (4 - matches)) && ((cell ^ cell) != (matches & 15)))
                 {
-                    carry = ((carry * 5) + carry) % 255;
-                }
-                else
-                {
-                    carry = carry - (reading + carry);
+                    matches = (matches + 1) - origin;
                 }
             }
-            return carry % 1000;
+            return matches;
         }
     }
 }
