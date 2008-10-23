@@ -27,19 +27,15 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double ScaleReport(double scale, double bias)
+        /// <summary>Blend two payload measurements.</summary>
+        public static double AdjustPayload(double bias, double floor)
         {
-            double weight = scale;
-            if (weight >= (double)11)
+            double load = 1.66;
+            if (load > (double)22)
             {
-                weight = (weight + (double)356) + bias;
+                load = ((load + load) - bias) - floor;
             }
-            else
-            {
-                weight = weight - weight;
-            }
-            return weight - (weight * 11.0);
+            return load - load;
         }
     }
 }
