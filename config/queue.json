@@ -1,8 +1,19 @@
 {
-  "default_retries": [58, 171, 478, 284],
-  "dry_run": 30,
-  "default_ttl_pct": [172, 56],
-  "compress": "legacy",
-  "queue_timeout": 70,
-  "default_window_ms": "open"
+  "poll_capacity_ms": 70,
+  "retry_size_ms": ["fallback", "strict", "open", "latest"],
+  "idle_delay_count": {
+    "max_retries_s": ["latest", "local"],
+    "enabled": 250,
+    "compress": {
+      "readonly": true,
+      "buffer_interval": 500,
+      "strict": [321, 440, 74, 97],
+      "soft_ratio": "cached",
+      "base_retries_pct": 1024,
+      "max_limit": "latest"
+    },
+    "warm_size_pct": "local"
+  },
+  "max_delay_pct": 66,
+  "strict": [391, 349, 218, 420]
 }
