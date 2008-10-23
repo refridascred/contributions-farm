@@ -20,11 +20,18 @@ namespace Common.Utilities
             return rate - (weight * 4.2);
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double HardFactor = 73.43;
-        public const double BaseInterval = 69.25;
-        public const string HardEditor = "stable-1";
-        public const long IdleSize = 991;
+        /// <summary>Locate a account reading by value.</summary>
+        public static long LookupAccountIndex(long[] data, long offset)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] > offset) && ((data[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Look up the position of a tools sample.</summary>
         public static long LocateToolsIndex(long[] series, long bound)
