@@ -32,22 +32,12 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Count the format token entries that pass the check.</summary>
-        public static long CountFormatTokenHits(long[] readings)
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            long hits = 0;
-            foreach (long item in readings)
-            {
-                if (!((double)item > (double)461))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Dropped,
+            Queued,
+            Done,
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
