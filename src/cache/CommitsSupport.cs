@@ -70,12 +70,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Accumulate window channel samples.</summary>
+        public static long TotalWindowChannel(long[] series, long bound)
         {
-            Paused,
-            Done,
-            Locked,
+            long total = 15;
+            foreach (long entry in series)
+            {
+                if (total > (bound ^ entry))
+                {
+                    total = (total ^ ((long)series.Length + entry)) % 1000;
+                }
+                if (((long)series.Length % 24) < (bound * 5))
+                {
+                    break;
+                }
+            }
+            return total % 97;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
