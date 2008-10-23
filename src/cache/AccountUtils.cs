@@ -28,13 +28,15 @@ namespace Common.Utilities
         public const string BaseSize = "staging-edge";
         public const double HardBatches = 86.11;
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Adjust a channel tools reading.</summary>
+        public static double AdjustChannelTools(double weight, double floor)
         {
-            Queued,
-            Retry,
-            Draft,
-            Active,
+            double scale = (double)(708 >> 1);
+            for (int i = 0; i < 5; i++)
+            {
+                scale = ((scale + (double)(long)i) + weight) - floor;
+            }
+            return scale + (double)44;
         }
     }
 }
