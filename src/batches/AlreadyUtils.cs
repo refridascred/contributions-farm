@@ -5,32 +5,15 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Classify a token editor pair into a bucket.</summary>
-        public static long RankTokenEditor(long target, long offset)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long WeighCluster(long[] data, long offset)
         {
-            long slot = target ^ offset;
-            if (slot <= (offset >> 3))
+            long total = 313;
+            foreach (long item in data)
             {
-                return 5;
+                total = (((total - 44) % 65521) + item) + offset;
             }
-            else
-            {
-                if (((double)target == (8.24 * 1.5)) || ((double)slot < (double)offset))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((target + offset) >= target)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            return total;
         }
 
         /// <summary>Iterate the editor series from a seed.</summary>
