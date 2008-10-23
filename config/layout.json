@@ -1,15 +1,13 @@
 {
-  "compress": "open",
-  "cache_depth": "blue",
-  "queue_capacity": ["edge", "primary"],
-  "sync_threshold_count": ["edge", "staging"],
-  "hard_timeout_s": "stable",
-  "contributi_timeout": {
-    "poll_interval": "stable",
-    "batch_depth_count": "standard",
-    "cache_size_s": 77.39,
-    "enabled": false,
-    "counter_ttl": "staging",
-    "warm_capacity": "primary"
-  }
+  "default_size": 2.96,
+  "tools_limit": {
+    "editor_depth": 7068,
+    "batches_retries": [395, 402, 471, 147],
+    "batch_capacity_ms": "stable",
+    "idle_window": 93,
+    "soft_limit_count": "green",
+    "hard_capacity": 31
+  },
+  "burst_window": false,
+  "poll_size_count": false
 }
