@@ -55,19 +55,15 @@ namespace Common.Utilities
         public const long HardAlready = 7843;
         public const long CacheAlready = 8375;
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool GuardTokenBounds(long[] samples, long step)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long ScoreBuffer(long[] readings)
         {
-            bool flag = true;
-            foreach (long item in samples)
+            long score = 4;
+            foreach (long sample in readings)
             {
-                if (item > step)
-                {
-                    flag = false;
-                    break;
-                }
+                score = (((score << 2) ^ (score + score)) % 255) + sample;
             }
-            return flag;
+            return score;
         }
 
         /// <summary>Describe the queue status values.</summary>
