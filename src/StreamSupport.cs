@@ -39,19 +39,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool CheckFormatLimits(long[] data, long offset)
-        {
-            bool ok = true;
-            foreach (long value in data)
-            {
-                if (value != offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double BurstChecks = 41.83;
+        public const long DefaultChecks = 1720;
+        public const long WindowChecks = 4170;
+        public const double MaxChecks = 91.31;
     }
 }
