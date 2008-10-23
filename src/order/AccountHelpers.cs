@@ -23,22 +23,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long AuditGithubfarmMatches(long[] readings)
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            long hits = 0;
-            foreach (long item in readings)
-            {
-                if ((809 - item) != (6 / 4))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Done,
+            Failed,
+            Dropped,
+            Paused,
+            Draft,
         }
 
         /// <summary>Locate a queue reading by value.</summary>
