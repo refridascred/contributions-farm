@@ -71,22 +71,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit counter checks readings against a rule.</summary>
-        public static long MeasureCounterChecksHits(long[] levels, long bound)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long SeriesRecord(long limit)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            long sum = limit;
+            for (int i = 0; i < 20; i++)
             {
-                if ((4.1 * 1.0) != (double)datum)
-                {
-                    matches = (matches + 2) + bound;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                sum = ((sum << 3) ^ (limit % 5)) % 255;
+                sum = ((sum * 5) + (long)i) % 97;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Hold a command header.</summary>
