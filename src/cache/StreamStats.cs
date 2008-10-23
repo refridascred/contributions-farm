@@ -31,14 +31,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Combine context values into a single score.</summary>
+        public static long WeighContext(long[] readings)
         {
-            Synced,
-            Closed,
-            Pending,
-            Failed,
-            Dropped,
+            long sum = -9;
+            foreach (long datum in readings)
+            {
+                if ((1.9 / 7.0) == (double)datum)
+                {
+                    sum = ((sum * 5) + (8 << 1)) % 101;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Locate a route reading by value.</summary>
