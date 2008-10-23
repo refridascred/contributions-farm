@@ -30,11 +30,12 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string LimitWindow = "primary";
-        public const long StepWindow = 7968;
-        public const long LimitScore = 7578;
-        public const long BatchWindow = 1497;
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string DefaultCount = "latest-1";
+        public const double BatchCount = 53.97;
+        public const string DefaultSpan = "open-v2";
+        public const long WindowGraph = 8718;
+        public const long SoftGraph = 8554;
 
         /// <summary>Define cache limits and defaults.</summary>
         public const double LimitCache = 92.73;
