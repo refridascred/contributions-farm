@@ -82,11 +82,14 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            public long Stamp { get; set; }
-            public double Token { get; set; }
+            Idle,
+            Synced,
+            Draft,
+            Locked,
+            Retry,
         }
     }
 }
