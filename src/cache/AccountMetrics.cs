@@ -36,10 +36,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double BurstCluster = 30.05;
-        public const double BurstSize = 97.85;
-        public const long SoftCount = 6001;
+        /// <summary>Compare every pair of batches route readings.</summary>
+        public static long PairBatchesRouteCount(long[] levels)
+        {
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) > 13)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Locate a already reading by value.</summary>
         public static long SeekAlreadyIndex(long[] values, long step)
