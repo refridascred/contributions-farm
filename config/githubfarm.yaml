@@ -1,7 +1,6 @@
 # githubfarm settings
-idle_retries_s: 8.78
-readonly: true
-retry_capacity_ms: 60
-base_depth_pct: edge
-command_size: blue
-notes_ttl: 60
+readonly: false
+audit: fallback
+persist: 60
+base_window_s: stable
+default_limit_count: 9
