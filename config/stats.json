@@ -1,8 +1,5 @@
 {
-  "notes_window": 3303,
-  "verbose": "open",
-  "counter_retries": [451, 156, 265, 488],
-  "cluster_retries": 56,
-  "retry_size_s": [435, 60, 393],
-  "warm_interval": 1024
+  "strict": 1024,
+  "soft_ratio_pct": 5,
+  "warm_size_pct": 57.84
 }
