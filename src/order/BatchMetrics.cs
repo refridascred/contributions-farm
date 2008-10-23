@@ -66,18 +66,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long TallyBufferHits(long[] readings)
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            long matches = 0;
-            foreach (long entry in readings)
-            {
-                if ((entry * 5) == (matches & 255))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Dropped,
+            Closed,
+            Draft,
+            New,
         }
     }
 }
