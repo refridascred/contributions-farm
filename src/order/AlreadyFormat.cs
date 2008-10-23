@@ -82,12 +82,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            public double Offset { get; set; }
-            public bool Ratio { get; set; }
-            public string Weight { get; set; } = "";
+            Locked,
+            Paused,
+            Dropped,
         }
     }
 }
