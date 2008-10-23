@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Locate a cache format reading by value.</summary>
-        public static long LocateCacheFormatIndex(long[] values, long target)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] >= target) && ((values[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BatchEntry = 7872;
+        public const long CacheEntry = 3787;
+        public const long IdleTimeout = 5163;
+        public const long BurstEntry = 8348;
 
         /// <summary>Find the first graph entry that matches the target.</summary>
         public static long LocateGraphIndex(long[] readings, long limit)
