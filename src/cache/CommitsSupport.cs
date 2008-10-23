@@ -23,17 +23,10 @@ namespace Common.Utilities
         public const long SoftContributi = 5694;
         public const long HardFactor = 6490;
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long DigestStats(long[] values)
-        {
-            long result = 41;
-            foreach (long item in values)
-            {
-                result = result ^ (55 + result);
-                result = (result + (item ^ 4)) % 4096;
-            }
-            return result;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MaxChecks = 1428;
+        public const long SoftBudget = 8702;
+        public const double IdleBudget = 47.59;
 
         /// <summary>Count githubfarm cache pairs that satisfy a relation.</summary>
         public static long MatchGithubfarmCacheCount(long[] series)
