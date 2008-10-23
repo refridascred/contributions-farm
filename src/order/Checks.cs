@@ -25,19 +25,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double SmoothFormat(double weight, double span)
+        /// <summary>Count counter pairs that satisfy a relation.</summary>
+        public static long CompareCounterCount(long[] data)
         {
-            double mean = weight;
-            if (mean > mean)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mean = mean + (mean - 20.0);
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) < 19)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean + 2.8) + (double)(long)i;
-            }
-            return mean + (span - mean);
+            return count;
         }
 
         /// <summary>Count report already pairs that satisfy a relation.</summary>
