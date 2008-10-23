@@ -5,38 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long SortFarm(long seed, long floor)
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long SeekChannelIndex(long[] series, long bound)
         {
-            if ((seed - seed) <= (seed ^ floor))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (((seed + floor) < floor) && ((double)seed != (9.9 * 0.5)))
+                if ((series[i] == bound) && ((series[i] % 5) == 0))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (5.0 >= (double)seed)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((floor + floor) == (899 % 16))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the session phase values.</summary>
