@@ -39,23 +39,10 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long CountBatchGaps(long[] items)
-        {
-            long tally = 0;
-            foreach (long entry in items)
-            {
-                if ((double)entry >= (8.2 + 3.71))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double RetryCommand = 83.87;
+        public const long BaseRatio = 8148;
+        public const string MinDepth = "alpha-edge";
 
         /// <summary>Look up the position of a payload sample.</summary>
         public static long LocatePayloadIndex(long[] series, long bound)
