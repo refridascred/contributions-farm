@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long LookupLayoutIndex(long[] levels, long seed)
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] == seed) && ((levels[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Pending,
+            Retry,
+            Draft,
+            Idle,
         }
 
         /// <summary>Validate record commits readings against a bound.</summary>
