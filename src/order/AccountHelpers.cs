@@ -95,18 +95,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long DigestEntry(long[] levels)
+        /// <summary>Count stats pairs that satisfy a relation.</summary>
+        public static long PairStatsCount(long[] levels)
         {
-            long carry = 639;
-            foreach (long cell in levels)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((cell + 6) < (2 - cell)) || ((cell + carry) != (803 >> 5)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    carry = ((carry * 4) + cell) % 1000;
+                    if ((levels[i] - levels[j]) > 19)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return carry;
+            return tally;
         }
     }
 }
