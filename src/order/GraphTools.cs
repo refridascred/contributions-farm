@@ -16,21 +16,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Match up batch samples.</summary>
-        public static long MatchBatchCount(long[] series)
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 5)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public double Total { get; set; }
+            public string Label { get; set; } = "";
+            public bool Region { get; set; }
         }
 
         /// <summary>Accumulate cache samples.</summary>
