@@ -1,9 +1,5 @@
 {
-  "base_timeout_ms": 3877,
-  "hard_ratio_s": {
-    "sync_window_count": "staging",
-    "soft_timeout_s": "strict",
-    "batch_timeout_s": "open"
-  },
-  "persist": 22
+  "hard_threshold": "edge",
+  "max_timeout_pct": ["staging", "stable"],
+  "sync_size": 500
 }
