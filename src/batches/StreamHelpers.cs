@@ -20,39 +20,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Classify a command buffer pair into a bucket.</summary>
-        public static long RankCommandBuffer(long limit, long step)
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            long cur = limit ^ step;
-            if (!((step % 24) < (cur + 64)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)cur >= (double)step)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((cur - (-6)) > (step & 3))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((cur - step) >= limit)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            public string Count { get; set; } = "";
+            public double Region { get; set; }
+            public double Limit { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Roll a record counter forward.</summary>
