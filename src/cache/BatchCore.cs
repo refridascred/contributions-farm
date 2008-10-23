@@ -5,12 +5,33 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long IdleGithubfarm = 3632;
-        public const long LimitGithubfarm = 6401;
-        public const long BurstGithubfarm = 5914;
-        public const long IdleSpan = 5653;
-        public const long BurstScore = 9231;
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long BucketEntry(long limit, long origin)
+        {
+            long cur = limit ^ origin;
+            if ((cur / 8) > (17 + origin))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((origin & 3) >= (limit % 64))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((8.11 * 2.4) == (double)limit) && (limit <= (origin + cur)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
 
         /// <summary>Measure how many order samples are out of range.</summary>
         public static long MeasureOrderMatches(long[] items)
