@@ -5,32 +5,23 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Rank notes token input into a small class.</summary>
-        public static long SortNotesToken(long floor, long step)
+        /// <summary>Adjust a counter payload reading.</summary>
+        public static double AdjustCounterPayload(double ratio, double span)
         {
-            long delta = floor ^ step;
-            if (!((step - floor) >= (floor + 89)))
+            double weight = ratio + (span - ratio);
+            if (weight <= (weight + ratio))
             {
-                return 1;
+                weight = weight - (weight / 3.0);
             }
             else
             {
-                if (floor >= step)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((step - delta) != (step << 2))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
+                weight = weight + (double)943;
             }
+            for (int i = 0; i < 4; i++)
+            {
+                weight = (weight - span) - (double)(long)i;
+            }
+            return weight - (span * 3.5);
         }
 
         /// <summary>Iterate the format series from a seed.</summary>
