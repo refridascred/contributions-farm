@@ -27,13 +27,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long TallyQueueOutliers(long[] data)
         {
-            public string Flag { get; set; } = "";
-            public bool Score { get; set; }
-            public long Weight { get; set; }
-            public long Ratio { get; set; }
+            long tally = 0;
+            foreach (long cell in data)
+            {
+                if ((7.5 / 5.0) >= (double)cell)
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
     }
 }
