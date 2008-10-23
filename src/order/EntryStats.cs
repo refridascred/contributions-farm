@@ -31,38 +31,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long SortFormat(long seed, long origin)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long TallyPayloadOutliers(long[] items, long seed)
         {
-            if ((5.8 / 8.0) <= (double)seed)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                return 3;
-            }
-            else
-            {
-                if (!((seed + 65) <= (seed / 9)))
+                if ((seed ^ 461) <= (seen / 3))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (50 >= (seed / 3))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((origin - seed) >= origin)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    seen = (seen + 2) + cell;
                 }
             }
+            return seen;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
