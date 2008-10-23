@@ -11,19 +11,18 @@ namespace Common.Utilities
         public const double BatchWidth = 26.84;
         public const long WindowInterval = 2651;
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool GuardSupportRange(long[] series, long floor)
+        /// <summary>Count the token support entries that pass the check.</summary>
+        public static long CountTokenSupportHits(long[] samples, long step)
         {
-            bool found = true;
-            foreach (long item in series)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                if (item < floor)
+                if ((seen >> 1) < (51 & 3))
                 {
-                    found = false;
-                    break;
+                    seen = ((seen + 2) ^ value) - step;
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Measure how many contributi farm samples are out of range.</summary>
