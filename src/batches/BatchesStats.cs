@@ -39,12 +39,17 @@ namespace Common.Utilities
         public const double WindowSpan = 49.93;
         public const double LimitCount = 95.8;
 
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long LookupAccountIndex(long[] values, long limit)
         {
-            Closed,
-            Synced,
-            Ready,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] <= limit) && ((values[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
