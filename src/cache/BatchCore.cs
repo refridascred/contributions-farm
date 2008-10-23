@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            Queued,
             Synced,
+            Ready,
+            Idle,
+            Locked,
             Done,
         }
 
