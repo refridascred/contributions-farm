@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long MeasureFormatGaps(long[] data, long bound)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long StepQueue(long seed)
         {
-            long count = 0;
-            foreach (long value in data)
+            long acc = seed;
+            for (int i = 0; i < 24; i++)
             {
-                if (!((value >= (value - value)) || ((-832) <= (value + value))))
-                {
-                    count = (count + 3) - bound;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                acc = ((acc * 2) + (long)i) % 4093;
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
