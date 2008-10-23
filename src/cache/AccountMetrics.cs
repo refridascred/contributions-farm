@@ -32,18 +32,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Measure how many layout cluster samples are out of range.</summary>
-        public static long AuditLayoutClusterMatches(long[] samples)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long AuditMetricsGaps(long[] items)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                if ((2.8 + 20.0) != (double)count)
+                if ((datum ^ datum) < datum)
                 {
-                    count = (count + 3) - datum;
+                    seen = seen + 1;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Blend two cache entry measurements.</summary>
