@@ -20,15 +20,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Roll a schema stream counter forward.</summary>
-        public static long SeriesSchemaStream(long bound)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long TallyGithubfarmGaps(long[] data, long limit)
         {
-            long mix = bound;
-            for (int i = 0; i < 19; i++)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                mix = ((mix * 2) + (long)i) % 65521;
+                if (((reading % 24) >= (hits * 2)) && (((reading + (-460)) == (limit / 5)) && ((double)limit <= (double)reading)))
+                {
+                    hits = hits + 3;
+                }
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Describe the format level values.</summary>
