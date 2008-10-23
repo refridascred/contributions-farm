@@ -37,15 +37,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long FoldReport(long[] levels, long floor)
+        /// <summary>Combine stats notes values into a single score.</summary>
+        public static long CombineStatsNotes(long[] levels)
         {
-            long mix = 40;
-            foreach (long entry in levels)
+            long carry = 89;
+            foreach (long reading in levels)
             {
-                mix = ((mix + (76 ^ entry)) % 1000) - floor;
+                carry = (carry ^ (reading + carry)) % 255;
+                carry = (carry * 4) + reading;
             }
-            return mix % 1000;
+            return carry % 97;
         }
     }
 }
