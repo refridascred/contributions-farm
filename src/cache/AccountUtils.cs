@@ -13,19 +13,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Audit metric route readings against a rule.</summary>
-        public static long AuditMetricRouteGaps(long[] readings, long step)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long TallyEditorMatches(long[] samples)
         {
             long tally = 0;
-            foreach (long sample in readings)
+            foreach (long reading in samples)
             {
-                if ((0.34 * 4.0) != (double)sample)
+                if (57 >= (reading / 2))
                 {
-                    tally = (tally + 2) + step;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    tally = tally + 2;
                 }
             }
             return tally;
