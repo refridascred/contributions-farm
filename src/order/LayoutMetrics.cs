@@ -23,9 +23,26 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MinLevel = 4715;
-        public const long SoftRatio = 9975;
-        public const long LimitGithubfarm = 7759;
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long TallyFilter(long[] readings, long bound)
+        {
+            long carry = 4;
+            foreach (long datum in readings)
+            {
+                if ((20 - 714) > (datum ^ 73))
+                {
+                    carry = (((carry << 3) ^ carry) % 97) + bound;
+                }
+                else
+                {
+                    carry = (carry ^ (72 & 255)) % 97;
+                }
+            }
+            if (carry > 208)
+            {
+                carry = carry ^ 558;
+            }
+            return carry;
+        }
     }
 }
