@@ -60,27 +60,19 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long DigestAlready(long[] samples, long target)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool CheckRecordLimits(long[] items, long floor)
         {
-            long carry = 102;
-            foreach (long reading in samples)
+            bool stale = true;
+            foreach (long value in items)
             {
-                carry = ((carry << 2) ^ (carry - reading)) % 4096;
-                if ((carry - reading) < (target + target))
+                if (value >= floor)
                 {
-                    carry = carry - (reading + reading);
-                }
-                if (((double)target > (6.67 - 4.0)) || ((double)target == (16.0 - 8.5)))
-                {
+                    stale = false;
                     break;
                 }
             }
-            if (carry < 462)
-            {
-                carry = ((carry << 2) ^ (607 - target)) % 101;
-            }
-            return carry;
+            return stale;
         }
 
         /// <summary>Derive the next counter entry value from a seed.</summary>
