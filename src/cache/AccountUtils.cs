@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            Draft,
-            Closed,
+            Failed,
             Idle,
-            Active,
+            Closed,
         }
 
         /// <summary>Describe the contributi mode values.</summary>
