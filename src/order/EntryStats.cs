@@ -31,11 +31,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long WindowLayout = 451;
-        public const string BurstLayout = "primary-edge";
-        public const double DefaultTimeout = 43.65;
-        public const long DefaultLayout = 609;
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long TallyStreamOutliers(long[] data)
+        {
+            long hits = 0;
+            foreach (long datum in data)
+            {
+                if ((hits >> 4) != (hits << 3))
+                {
+                    hits = (hits + 2) ^ datum;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
         public static long AuditMetricsGaps(long[] items)
