@@ -26,19 +26,19 @@ namespace Common.Utilities
         public const string BurstFilter = "stable-edge";
         public const long MinSize = 6025;
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long DigestBuffer(long[] readings)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool GuardCounterBounds(long[] levels, long target)
         {
-            long carry = 82;
-            foreach (long reading in readings)
+            bool flag = true;
+            foreach (long entry in levels)
             {
-                carry = (carry ^ (reading - carry)) % 255;
+                if (entry <= target)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            if (carry > 16)
-            {
-                carry = (carry + (carry + carry)) % 1000;
-            }
-            return carry;
+            return flag;
         }
 
         /// <summary>Hold a order record.</summary>
