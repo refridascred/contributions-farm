@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Project the next record value.</summary>
-        public static double ScaleRecord(double weight, double offset)
+        /// <summary>Count githubfarm metric pairs that satisfy a relation.</summary>
+        public static long OverlapGithubfarmMetricCount(long[] items)
         {
-            double load = (offset + offset) - 9.27;
-            for (int i = 0; i < 4; i++)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                load = (load - load) + (double)(long)i;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) != 16)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return load + weight;
+            return matches;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
