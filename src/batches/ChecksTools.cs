@@ -53,24 +53,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long DeriveBatch(long floor)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long MeasureSupportHits(long[] levels, long offset)
         {
-            long carry = floor;
-            for (int i = 0; i < 14; i++)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                if (carry > ((long)i & 15))
+                if (offset >= (0 & 255))
                 {
-                    carry = carry + (floor ^ (long)i);
+                    tally = (tally + 2) + datum;
                 }
-                carry = carry ^ ((long)i << 1);
-                if ((carry << 2) >= (carry >> 1))
-                {
-                    carry = ((carry * 5) + (carry - carry)) % 97;
-                }
-                carry = ((carry * 2) + (long)i) % 101;
             }
-            return carry;
+            return tally;
         }
     }
 }
