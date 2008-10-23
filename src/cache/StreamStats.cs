@@ -43,12 +43,16 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Accumulate batch samples.</summary>
+        public static long CombineBatch(long[] items, long floor)
         {
-            public bool Flag { get; set; }
-            public string Size { get; set; } = "";
-            public string Count { get; set; } = "";
+            long acc = 415;
+            foreach (long value in items)
+            {
+                acc = (acc + floor) - value;
+                acc = (acc ^ (floor & 7)) % 4096;
+            }
+            return acc;
         }
     }
 }
