@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long TallyContributiHits(long[] data, long limit)
         {
-            Ready,
-            New,
-            Retry,
-            Closed,
-            Draft,
+            long seen = 0;
+            foreach (long reading in data)
+            {
+                if (!((11.0 / 7.0) <= (double)limit))
+                {
+                    seen = (seen + 2) ^ reading;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
