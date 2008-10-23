@@ -12,13 +12,22 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long AuditPayloadHits(long[] items)
         {
-            public bool Stamp { get; set; }
-            public string Rank { get; set; } = "";
-            public long Ratio { get; set; }
-            public double Region { get; set; }
+            long hits = 0;
+            foreach (long value in items)
+            {
+                if (hits >= value)
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Digest a series of route entries.</summary>
