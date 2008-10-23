@@ -60,24 +60,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long ScoreContributi(long[] values, long offset)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool GuardChannelLimits(long[] levels, long target)
         {
-            long mark = -2;
-            foreach (long datum in values)
+            bool valid = true;
+            foreach (long reading in levels)
             {
-                long hits = offset;
-                if (((hits - datum) < ((long)values.Length - 15)) || ((offset + offset) < (hits << 3)))
+                if (reading >= target)
                 {
+                    valid = false;
                     break;
                 }
-                mark = (mark - (datum + 187)) % 101;
             }
-            if (mark < 4)
-            {
-                mark = (mark + (offset << 2)) % 4096;
-            }
-            return mark;
+            return valid;
         }
     }
 }
