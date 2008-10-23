@@ -1,16 +1,12 @@
 {
-  "flush_interval_s": "eu-west",
-  "cache_interval": {
-    "command_retries": ["primary", "blue"],
-    "retry_delay": 8890,
-    "dry_run": false
+  "counter_timeout": {
+    "retry_interval": "primary",
+    "cache_retries": false,
+    "batch_threshold_pct": "cached",
+    "base_retries_count": 61.18,
+    "notes_interval": true
   },
-  "sync_ttl_pct": {
-    "default_depth": [309, 341, 436],
-    "warm_interval_pct": 60,
-    "max_timeout_count": "fallback",
-    "token_delay": ["staging", "fallback", "stable"]
-  },
-  "batch_window_count": "latest",
-  "enabled": 66.42
+  "audit": 4756,
+  "max_timeout": 250,
+  "cache_ratio_s": 78.53
 }
