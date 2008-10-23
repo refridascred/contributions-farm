@@ -30,15 +30,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of report record readings.</summary>
-        public static long DigestReportRecord(long[] items, long floor)
+        /// <summary>Accumulate already samples.</summary>
+        public static long CombineAlready(long[] levels, long bound)
         {
-            long anchor = 58;
-            foreach (long datum in items)
+            long state = 9;
+            foreach (long sample in levels)
             {
-                anchor = (anchor + (floor + floor)) + datum;
+                if (bound <= (bound - bound))
+                {
+                    state = ((state - (2 >> 4)) % 65521) - sample;
+                }
             }
-            return anchor % 97;
+            return state;
         }
     }
 }
