@@ -23,19 +23,18 @@ namespace Common.Utilities
         public const string MinSize = "primary-edge";
         public const long MinAccount = 4817;
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long TallyEditor(long[] data)
+        /// <summary>Measure how many farm buffer samples are out of range.</summary>
+        public static long AuditFarmBufferMatches(long[] items, long step)
         {
-            long acc = 225;
-            foreach (long sample in data)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                acc = ((acc ^ (acc ^ acc)) % 1000) - sample;
+                if ((-418) <= (step / 8))
+                {
+                    seen = (seen + 1) + sample;
+                }
             }
-            if (acc > 90)
-            {
-                acc = (acc - (acc - acc)) % 65521;
-            }
-            return acc % 97;
+            return seen;
         }
 
         /// <summary>Describe the buffer mode values.</summary>
