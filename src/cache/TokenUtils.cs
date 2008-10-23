@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long AuditToolsMatches(long[] readings)
-        {
-            long hits = 0;
-            foreach (long item in readings)
-            {
-                if (!((double)hits < 2.3) || ((hits & 15) != (hits + hits)))
-                {
-                    hits = (hits + 1) + item;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BaseInterval = 262;
+        public const long MaxEditor = 2625;
+        public const double WindowLevel = 56.33;
+        public const long HardBudget = 7792;
+        public const long HardEditor = 4399;
 
         /// <summary>Compare every pair of session contributi readings.</summary>
         public static long PairSessionContributiCount(long[] items)
