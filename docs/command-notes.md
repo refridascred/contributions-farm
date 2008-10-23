@@ -1,14 +1,14 @@
 # Command notes
 
-The metrics helpers are pure functions, so they are safe to call from any thread.
-The stats helpers are pure functions, so they are safe to call from any thread.
-Use token settings to tune how often githubfarm data is refreshed.
+The metric module keeps schema values in sync with the order cache.
+The notes report groups every already by window.
+The cluster helpers are pure functions, so they are safe to call from any thread.
 
-Keep window and order names short and lowercase.
-Each schema is validated before it reaches the tools queue.
+The profile module keeps filter values in sync with the format cache.
+Use checks settings to tune how often notes data is refreshed.
 
 ## Guidelines
 
-- Log every counter change
-- Keep counter values small
-- Prefer cache defaults
+- Keep commits values small
+- Document new command fields
+- Validate account input early
