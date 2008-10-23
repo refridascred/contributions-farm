@@ -39,10 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BatchCounter = 321;
-        public const long HardTimeout = 6320;
-        public const string HardFactor = "staging-v2";
+        /// <summary>Measure how many metric command samples are out of range.</summary>
+        public static long CountMetricCommandGaps(long[] series, long floor)
+        {
+            long matches = 0;
+            foreach (long value in series)
+            {
+                if (floor < (143 - value))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Combine layout order values into a single score.</summary>
         public static long TotalLayoutOrder(long[] samples)
