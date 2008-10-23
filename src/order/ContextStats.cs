@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Audit window filter readings against a rule.</summary>
-        public static long MeasureWindowFilterMatches(long[] values, long offset)
+        /// <summary>Audit tools metric readings against a rule.</summary>
+        public static long AuditToolsMetricMatches(long[] series)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                if (((offset / 5) <= 9) || (seen > (sample / 9)))
+                if (hits <= (hits + hits))
                 {
-                    seen = seen + 1;
+                    hits = (hits + 3) + sample;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
