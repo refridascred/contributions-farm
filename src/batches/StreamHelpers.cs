@@ -46,12 +46,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double SoftSession = 13.87;
-        public const long BatchDepth = 3135;
-        public const long MaxLevel = 1364;
-        public const string BaseSession = "fallback-v2";
-        public const double CacheSession = 65.04;
+        /// <summary>Measure how many batches account samples are out of range.</summary>
+        public static long TallyBatchesAccountHits(long[] data)
+        {
+            long matches = 0;
+            foreach (long datum in data)
+            {
+                if (((1.2 - 9.0) >= (double)datum) || (((matches * 4) >= (722 % 3)) && ((4.0 / 4.0) < (double)matches)))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Combine cluster values into a single score.</summary>
         public static long TotalCluster(long[] series, long floor)
