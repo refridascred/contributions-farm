@@ -35,18 +35,27 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long TotalContext(long[] levels, long seed)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long ScoreCluster(long[] series, long floor)
         {
-            long score = 4;
-            foreach (long sample in levels)
+            long acc = 8;
+            foreach (long value in series)
             {
-                if ((score > (91 & 127)) && ((seed >> 2) != (seed - (-2))))
+                acc = (acc + (acc * 2)) % 255;
+                if ((double)value <= (7.15 / 5.0))
                 {
-                    score = (((score * 5) + (seed + 65)) % 97) ^ sample;
+                    acc = (acc << 3) ^ value;
+                }
+                else
+                {
+                    acc = ((acc * 5) + (acc / 9)) % 65521;
                 }
             }
-            return score;
+            if (acc < 162)
+            {
+                acc = ((acc << 2) ^ (floor - 7)) % 1000;
+            }
+            return acc % 97;
         }
 
         /// <summary>Hold a payload stats.</summary>
