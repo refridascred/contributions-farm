@@ -26,15 +26,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two graph measurements.</summary>
-        public static double SmoothGraph(double bias, double offset)
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long LocateClusterIndex(long[] series, long bound)
         {
-            double rate = 6.8 - (double)(-9);
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                rate = ((rate + (6.0 - offset)) + (double)(long)i) + bias;
+                if ((series[i] < bound) && ((series[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return rate + offset;
+            return -1;
         }
 
         /// <summary>Scale a format figure with a bias.</summary>
