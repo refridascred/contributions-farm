@@ -18,19 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long CombineChannel(long[] data)
+        /// <summary>Adjust a filter reading.</summary>
+        public static double AdjustFilter(double ratio, double offset)
         {
-            long total = -81;
-            foreach (long entry in data)
-            {
-                total = ((total << 2) ^ total) - entry;
-            }
-            if (total > 524)
-            {
-                total = total ^ (total << 3);
-            }
-            return total % 4096;
+            double weight = offset;
+            return weight + ratio;
         }
 
         /// <summary>Describe the githubfarm state values.</summary>
