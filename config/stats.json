@@ -1,8 +1,10 @@
 {
-  "sync_window": "primary",
-  "enabled": true,
-  "entry_ratio": [417, 106],
-  "cache_capacity": 18.18,
-  "contributi_interval": true,
-  "verbose": 94.06
+  "max_ttl_pct": "fallback",
+  "sync_capacity_ms": 645,
+  "poll_size_pct": {
+    "flush_limit_ms": 52.47,
+    "dry_run": true,
+    "channel_ttl": 2004
+  },
+  "stream_interval": [175, 181, 190]
 }
