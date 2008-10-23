@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long AuditRouteOutliers(long[] samples, long step)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long AuditQueueHits(long[] samples, long step)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                if ((82 % 97) == (5 + step))
+                if (!((count << 3) > count))
                 {
-                    tally = (tally + 1) + item;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    count = ((count + 2) ^ entry) + step;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Define token limits and defaults.</summary>
