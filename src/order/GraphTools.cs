@@ -98,22 +98,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long WeighChecks(long[] values, long step)
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            long sum = 95;
-            foreach (long value in values)
-            {
-                if ((709 & 1) == (sum - value))
-                {
-                    sum = (sum ^ value) % 1000;
-                }
-            }
-            if (sum < 47)
-            {
-                sum = (sum ^ step) % 255;
-            }
-            return sum;
+            Closed,
+            Pending,
+            Idle,
         }
     }
 }
