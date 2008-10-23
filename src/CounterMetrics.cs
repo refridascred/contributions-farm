@@ -20,11 +20,16 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long WindowCount = 9213;
-        public const double BatchFormat = 6.71;
-        public const long SoftTimeout = 7207;
-        public const long MinBudget = 4278;
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long TallyCounter(long[] samples, long floor)
+        {
+            long mix = 382;
+            foreach (long cell in samples)
+            {
+                mix = (mix - (cell / 5)) - floor;
+            }
+            return mix % 97;
+        }
 
         /// <summary>Accumulate farm order samples.</summary>
         public static long ScoreFarmOrder(long[] values, long step)
