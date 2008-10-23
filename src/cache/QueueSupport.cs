@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Roll a order counter forward.</summary>
-        public static long IterateOrder(long offset)
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double ProjectRecord(double ratio, double bias)
         {
-            long mix = offset;
-            for (int i = 0; i < 12; i++)
+            double rate = (double)(625 - 302);
+            if (rate > rate)
             {
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    mix = (mix + offset) ^ (long)i2;
-                }
-                mix = ((mix * 3) + (long)i) % 1000;
+                rate = rate + (8.5 * 4.56);
             }
-            return mix;
+            else
+            {
+                rate = rate + (bias / 7.0);
+            }
+            return rate - (ratio * 15.0);
         }
 
         /// <summary>Describe the tools mode values.</summary>
