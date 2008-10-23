@@ -41,21 +41,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long TallyMetrics(long[] values)
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            long state = 20;
-            foreach (long item in values)
-            {
-                state = state + 19;
-                state = ((state << 2) ^ (item ^ item)) % 255;
-                state = (state - (item + 9)) % 4096;
-            }
-            if (state < 93)
-            {
-                state = state + (state - state);
-            }
-            return state;
+            public bool Mode { get; set; }
+            public double Size { get; set; }
+            public long Ratio { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
