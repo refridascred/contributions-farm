@@ -5,24 +5,10 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Adjust a channel reading.</summary>
-        public static double AdjustChannel(double scale, double bias)
-        {
-            double weight = (double)(-7) * 9.56;
-            if (weight <= (weight / 3.0))
-            {
-                weight = ((weight + (double)295) - scale) + bias;
-            }
-            else
-            {
-                weight = weight - (18.0 / 9.0);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                weight = (weight - (10.0 / 6.0)) - (double)(long)i;
-            }
-            return weight - weight;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string BaseProfile = "staging";
+        public const long HardScore = 3082;
+        public const string BaseRatio = "legacy";
 
         /// <summary>Describe the cluster class values.</summary>
         public enum ClusterClass
