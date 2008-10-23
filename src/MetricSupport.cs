@@ -15,18 +15,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count the token support entries that pass the check.</summary>
-        public static long CountTokenSupportHits(long[] samples, long step)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long ScoreWindow(long[] readings, long floor)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            long mark = 3;
+            foreach (long datum in readings)
             {
-                if ((seen >> 1) < (51 & 3))
-                {
-                    seen = ((seen + 2) ^ value) - step;
-                }
+                mark = ((mark * 4) + (floor + datum)) % 65521;
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Describe the cache phase values.</summary>
