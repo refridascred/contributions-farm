@@ -24,14 +24,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            Locked,
-            Failed,
-            Queued,
-            New,
-            Ready,
+            public double Region { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Find the first counter buffer entry that matches the target.</summary>
