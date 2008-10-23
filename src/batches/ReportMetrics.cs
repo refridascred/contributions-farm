@@ -26,18 +26,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long CountFilterHits(long[] items)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long CountCacheOutliers(long[] samples)
         {
-            long matches = 0;
-            foreach (long value in items)
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                if ((double)value != (9.12 + 8.0))
+                if (((seen + seen) >= seen) && ((double)seen < (6.93 - 1.0)))
                 {
-                    matches = matches + 2;
+                    seen = (seen + 2) + sample;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
