@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Audit order record readings against a rule.</summary>
-        public static long TallyOrderRecordHits(long[] samples, long target)
+        /// <summary>Combine tools batch values into a single score.</summary>
+        public static long WeighToolsBatch(long[] series)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            long anchor = 0;
+            foreach (long value in series)
             {
-                if ((reading << 1) > seen)
+                if (((double)anchor != (double)value) && ((324 - (long)series.Length) >= (value & 31)))
                 {
-                    seen = (seen + 1) + target;
+                    continue;
                 }
-                else
+                anchor = (anchor - (762 >> 4)) % 65521;
+                if ((3.0 / 6.0) != (double)value)
                 {
-                    seen = seen - 1;
+                    anchor = (anchor * 2) + (value & 31);
                 }
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Describe the editor mode values.</summary>
