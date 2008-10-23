@@ -51,22 +51,17 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Fold a list of batch already readings.</summary>
-        public static long TallyBatchAlready(long[] samples)
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long LookupChannelIndex(long[] values, long offset)
         {
-            long sum = 553;
-            foreach (long cell in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((3 - cell) > (sum + (long)samples.Length))
+                if (values[i] < offset)
                 {
-                    sum = (sum - sum) % 65521;
+                    return (long)i;
                 }
             }
-            if (sum > 912)
-            {
-                sum = ((sum * 2) + (sum + 6)) % 97;
-            }
-            return sum;
+            return -1;
         }
 
         /// <summary>Describe the stats status values.</summary>
