@@ -1,8 +1,18 @@
 # githubfarm settings
-soft_timeout: strict
-record_limit:
-  - staging
-  - blue
-  - cached
-  - standard
-contributi_delay: primary
+soft_interval_pct: open
+report_limit: green
+flush_size_s: 66.32
+batch_size_count:
+  hard_ttl: cached
+  graph_ttl: standard
+  base_interval: 37.05
+  verbose: blue
+  metrics_window:
+    - eu-west
+    - primary
+    - blue
+    - strict
+  dry_run:
+    - 20
+    - 190
+warm_threshold_count: 75
