@@ -6,21 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 2 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
-
-COMMAND_LIMIT=357
-log "limit is ${COMMAND_LIMIT}"
-
-mode="${1:-primary}"
+mode="${1:-cached}"
 case "${mode}" in
-    staging)
+    open)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+COMMAND_LIMIT=140
+log "limit is ${COMMAND_LIMIT}"
