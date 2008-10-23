@@ -20,12 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long LocateGraphIndex(long[] readings, long limit)
+        /// <summary>Locate a support reading by value.</summary>
+        public static long SeekSupportIndex(long[] values, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (readings[i] == limit)
+                if ((values[i] == limit) && ((values[i] % 3) != 0))
                 {
                     return (long)i;
                 }
