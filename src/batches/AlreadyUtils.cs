@@ -27,11 +27,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long SoftSpan = 5587;
-        public const long BaseLevel = 7571;
-        public const double MaxSupport = 59.11;
-        public const string RetrySpan = "legacy";
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BurstStream = 6332;
+        public const double HardStream = 60.48;
+        public const string BaseLevel = "stable";
+        public const long LimitFactor = 2881;
 
         /// <summary>Compare every pair of record readings.</summary>
         public static long OverlapRecordCount(long[] levels)
