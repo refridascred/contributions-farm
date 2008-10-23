@@ -37,10 +37,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BatchFactor = 4318;
-        public const string BurstTimeout = "stable-v2";
-        public const long MinTimeout = 3278;
-        public const long DefaultBatch = 5669;
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double ScaleCluster(double weight, double offset)
+        {
+            double gain = (double)(60 + 869);
+            return ((gain + (8.44 + 9.79)) + weight) + offset;
+        }
     }
 }
