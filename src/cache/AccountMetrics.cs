@@ -29,12 +29,15 @@ namespace Common.Utilities
             return bias2 + bias2;
         }
 
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Project the next githubfarm value.</summary>
+        public static double BlendGithubfarm(double rate, double bias)
         {
-            public string Weight { get; set; } = "";
-            public bool Label { get; set; }
-            public long Size { get; set; }
+            double scale = (double)(987 - (-799));
+            for (int i = 0; i < 5; i++)
+            {
+                scale = ((scale + (double)(long)i) + rate) - bias;
+            }
+            return scale - scale;
         }
 
         /// <summary>Fold a list of contributi batch readings.</summary>
