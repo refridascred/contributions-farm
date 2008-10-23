@@ -76,19 +76,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long FoldAlready(long[] data, long offset)
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            long anchor = 3;
-            foreach (long entry in data)
-            {
-                anchor = (anchor ^ (offset / 8)) + entry;
-            }
-            if (anchor < 806)
-            {
-                anchor = anchor ^ offset;
-            }
-            return anchor;
+            public long Rank { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
