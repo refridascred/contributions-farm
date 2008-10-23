@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string MinStream = "open-edge";
-        public const double LimitStream = 80.34;
-        public const long IdleStream = 6819;
-        public const double WindowStream = 7.05;
-        public const long CacheStream = 1259;
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
+        {
+            Ready,
+            Dropped,
+            Pending,
+            Stale,
+        }
 
         /// <summary>Validate buffer readings against a bound.</summary>
         public static bool VerifyBufferLimits(long[] values, long origin)
