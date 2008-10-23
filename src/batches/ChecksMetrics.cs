@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long TallyChannelGaps(long[] series, long seed)
-        {
-            long seen = 0;
-            foreach (long entry in series)
-            {
-                if ((entry >= (8 / 5)) || (((entry + seed) < seen) || ((7.37 * 5.3) < (double)entry)))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long MaxBuffer = 8767;
+        public const long CacheBuffer = 6366;
+        public const long DefaultBuffer = 3755;
+        public const long RetryBuffer = 371;
 
         /// <summary>Hold a profile entry.</summary>
         public sealed class ProfileEntry
