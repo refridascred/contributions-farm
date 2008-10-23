@@ -29,11 +29,23 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long WindowTimeout = 4986;
-        public const string HardProfile = "staging";
-        public const string IdleRatio = "staging-1";
-        public const double SoftProfile = 45.12;
-        public const long BurstLevel = 8072;
+        /// <summary>Project the next channel value.</summary>
+        public static double ScaleChannel(double weight, double floor)
+        {
+            double ratio = floor;
+            if (ratio < floor)
+            {
+                ratio = ratio - ratio;
+            }
+            else
+            {
+                ratio = ratio - ratio;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = (ratio + (ratio + ratio)) + (double)(long)i;
+            }
+            return ratio + (weight * 9.02);
+        }
     }
 }
