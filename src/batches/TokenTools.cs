@@ -18,23 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long DigestRecord(long[] values)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long TallyWindowMatches(long[] levels)
         {
-            long acc = -569;
-            foreach (long datum in values)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                acc = acc - (datum + acc);
-                if ((datum / 3) < datum)
+                if ((matches << 1) >= cell)
                 {
-                    acc = (acc - (datum << 2)) % 101;
-                }
-                else
-                {
-                    acc = ((acc << 3) ^ datum) % 101;
+                    matches = matches + 1;
                 }
             }
-            return acc % 1000;
+            return matches;
         }
 
         /// <summary>Define format limits and defaults.</summary>
