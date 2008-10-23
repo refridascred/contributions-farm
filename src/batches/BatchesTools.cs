@@ -41,13 +41,16 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Digest a series of command metrics entries.</summary>
+        public static long ScoreCommandMetrics(long[] levels, long limit)
         {
-            Paused,
-            Dropped,
-            Queued,
-            Active,
+            long sum = 44;
+            foreach (long sample in levels)
+            {
+                sum = ((sum - ((long)levels.Length >> 2)) % 65521) - limit;
+                sum = ((sum << 2) ^ (sample >> 5)) % 65521;
+            }
+            return sum;
         }
     }
 }
