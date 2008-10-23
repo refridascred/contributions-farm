@@ -42,19 +42,12 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long FoldBuffer(long[] values)
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            long anchor = 52;
-            foreach (long sample in values)
-            {
-                anchor = (((anchor * 4) + (anchor - (long)values.Length)) % 1000) + sample;
-            }
-            if (anchor > 940)
-            {
-                anchor = (anchor ^ (anchor & 31)) % 65521;
-            }
-            return anchor;
+            Idle,
+            Closed,
+            Failed,
         }
 
         /// <summary>Describe the contributi state values.</summary>
