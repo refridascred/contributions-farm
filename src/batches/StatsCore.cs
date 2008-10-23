@@ -25,13 +25,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long CountLayoutMatches(long[] readings)
         {
-            Synced,
-            Pending,
-            Stale,
-            Retry,
+            long hits = 0;
+            foreach (long cell in readings)
+            {
+                if ((cell + cell) < hits)
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
