@@ -1,8 +1,17 @@
 {
-  "burst_depth_s": true,
-  "default_size_count": false,
-  "max_interval_s": false,
-  "persist": "local",
-  "dry_run": 38.25,
-  "base_depth_count": ["primary", "strict", "local", "stable"]
+  "retry_interval_pct": {
+    "retry_retries_s": "cached",
+    "queue_ttl": {
+      "retry_ratio_count": ["cached", "staging", "staging"],
+      "hard_limit_pct": ["green", "blue"],
+      "stream_limit": 64,
+      "poll_depth": 10,
+      "readonly": [264, 171, 125, 418]
+    },
+    "hard_size": "stable",
+    "window_window": "eu-west"
+  },
+  "farm_ttl": 47,
+  "cache_size_count": 7,
+  "metrics_ttl": ["open", "open", "open", "primary"]
 }
