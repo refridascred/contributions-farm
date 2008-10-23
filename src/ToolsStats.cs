@@ -30,11 +30,13 @@ namespace Common.Utilities
         public const string LimitSpan = "stable-v2";
         public const double MinFactor = 70.33;
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            public double Ratio { get; set; }
-            public long Rank { get; set; }
+            Ready,
+            Failed,
+            New,
+            Pending,
         }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
