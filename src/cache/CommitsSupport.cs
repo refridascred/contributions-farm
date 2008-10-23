@@ -56,15 +56,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double ProjectRoute(double ratio, double offset)
+        /// <summary>Count report farm pairs that satisfy a relation.</summary>
+        public static long OverlapReportFarmCount(long[] series)
         {
-            double weight = ratio;
-            if (weight > ratio)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                weight = weight + 1.64;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) > 19)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return weight - (offset * 9.33);
+            return tally;
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
