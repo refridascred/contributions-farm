@@ -41,16 +41,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long FoldRecord(long[] data, long floor)
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
         {
-            long total = 431;
-            foreach (long datum in data)
-            {
-                total = ((total - datum) % 101) + floor;
-                total = total - (1 + total);
-            }
-            return total;
+            public long Token { get; set; }
+            public bool Score { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
