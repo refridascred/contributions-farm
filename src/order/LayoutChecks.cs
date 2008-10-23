@@ -20,19 +20,11 @@ namespace Common.Utilities
             return bias - (double)9;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool ValidateToolsRange(long[] readings, long step)
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            bool found = true;
-            foreach (long sample in readings)
-            {
-                if (sample < step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Total { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Accumulate counter samples.</summary>
