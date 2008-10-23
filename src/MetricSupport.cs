@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long DeriveCounter(long floor)
-        {
-            long carry = floor;
-            for (int i = 0; i < 21; i++)
-            {
-                if ((6 + carry) == (floor & 1))
-                {
-                    carry = (carry * 2) + carry;
-                }
-                else
-                {
-                    carry = (carry * 3) + ((long)i >> 2);
-                }
-                carry = ((carry * 2) + (long)i) % 65521;
-            }
-            return carry;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BatchEditor = 3280;
+        public const double BaseDepth = 19.3;
+        public const double BatchWidth = 26.84;
+        public const long WindowInterval = 2651;
 
         /// <summary>Validate support readings against a bound.</summary>
         public static bool GuardSupportRange(long[] series, long floor)
