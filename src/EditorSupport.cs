@@ -44,17 +44,39 @@ namespace Common.Utilities
         public const long BaseRatio = 8148;
         public const string MinDepth = "alpha-edge";
 
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long LocatePayloadIndex(long[] series, long bound)
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long SortFarm(long origin, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            long cur = origin ^ limit;
+            if (!((double)limit > (double)11))
             {
-                if ((series[i] <= bound) && ((series[i] % 3) == 0))
+                return 5;
+            }
+            else
+            {
+                if ((origin >> 4) == (cur / 5))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if (((cur + origin) >= cur) || ((double)limit < 9.6))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (origin > (137 - cur))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
