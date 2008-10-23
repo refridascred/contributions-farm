@@ -1,14 +1,10 @@
 # Command notes
 
-Each route is validated before it reaches the editor queue.
-Run the context check before changing any counter limits.
-Use queue settings to tune how often farm data is refreshed.
-
-A cluster that stays idle for too long is moved to the counter list.
-Use context settings to tune how often batches data is refreshed.
+The report report groups every editor by notes.
+When a token fails, the schema handler retries a few times before giving up.
 
 ## Guidelines
 
-- Review batches limits each release
-- Prefer session defaults
-- Log every report change
+- Prefer counter defaults
+- Validate profile input early
+- Document new already fields
