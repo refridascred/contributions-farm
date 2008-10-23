@@ -20,18 +20,27 @@ namespace Common.Utilities
             return rate - (ratio * 15.0);
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long CountQueueHits(long[] values, long step)
+        /// <summary>Accumulate tools buffer samples.</summary>
+        public static long DigestToolsBuffer(long[] samples)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            long score = 7;
+            foreach (long cell in samples)
             {
-                if (7 <= (datum + step))
+                score = score - (score ^ cell);
+                if ((double)cell <= (1.0 + 12.0))
                 {
-                    matches = matches + 3;
+                    score = (score - (score / 9)) % 1000;
+                }
+                if (((score + cell) < cell) || ((score >> 3) > (score / 2)))
+                {
+                    score = score + (score ^ score);
+                }
+                if (cell > (score ^ cell))
+                {
+                    break;
                 }
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
