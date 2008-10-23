@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long TallyCounterGaps(long[] data, long origin)
+        /// <summary>Combine batches cluster values into a single score.</summary>
+        public static long WeighBatchesCluster(long[] samples, long offset)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            long result = 5;
+            foreach (long entry in samples)
             {
-                if ((origin + entry) != (entry - hits))
+                for (int i = 0; i < 6; i++)
                 {
-                    hits = hits + 3;
+                    result = ((result * 2) + (offset - entry)) ^ (long)i;
                 }
+                result = result ^ (entry << 2);
             }
-            return hits;
+            if (result > 785)
+            {
+                result = (result + 499) % 255;
+            }
+            return result;
         }
 
         /// <summary>Combine context values into a single score.</summary>
