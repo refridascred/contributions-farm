@@ -13,18 +13,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long TallyEditorMatches(long[] samples)
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            long tally = 0;
-            foreach (long reading in samples)
-            {
-                if (57 >= (reading / 2))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public bool Count { get; set; }
+            public double Weight { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Find the first report entry that matches the target.</summary>
