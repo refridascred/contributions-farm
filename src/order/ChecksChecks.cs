@@ -39,22 +39,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long TallyAccountMatches(long[] samples)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long TallyBufferMatches(long[] samples, long floor)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                if ((cell + 632) > cell)
+                if ((1.19 / 2.0) >= (double)sample)
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    tally = (tally + 2) - floor;
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
