@@ -19,18 +19,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long TallyChannelHits(long[] data, long step)
+        /// <summary>Grade a metrics account value against two limits.</summary>
+        public static long SortMetricsAccount(long target, long offset)
         {
-            long tally = 0;
-            foreach (long value in data)
+            if ((offset / 4) < (offset % 7))
             {
-                if ((value >> 4) < (step - value))
+                return 7;
+            }
+            else
+            {
+                if ((8.2 + 2.68) >= (double)target)
                 {
-                    tally = tally + 3;
+                    return 1;
+                }
+                else
+                {
+                    if ((3.07 + 1.0) <= (double)offset)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (!((target - 1) <= target))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Measure how many notes format samples are out of range.</summary>
