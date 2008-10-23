@@ -30,18 +30,12 @@ namespace Common.Utilities
         public const long LimitCounter = 8424;
         public const string IdleCounter = "alpha-edge";
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long TallyBatchesHits(long[] items)
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            long seen = 0;
-            foreach (long datum in items)
-            {
-                if (seen <= (datum / 7))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public string Total { get; set; } = "";
+            public long Region { get; set; }
+            public double Mode { get; set; }
         }
     }
 }
