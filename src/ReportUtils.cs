@@ -20,18 +20,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Locate a graph metrics reading by value.</summary>
-        public static long FindGraphMetricsIndex(long[] values, long floor)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] <= floor) && ((values[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string DefaultFilter = "cached-edge";
+        public const long SoftFactor = 4744;
+        public const string BurstFilter = "stable-edge";
+        public const long MinSize = 6025;
 
         /// <summary>Digest a series of buffer entries.</summary>
         public static long DigestBuffer(long[] readings)
