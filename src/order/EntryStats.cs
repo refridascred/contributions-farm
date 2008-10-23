@@ -63,17 +63,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a session notes reading by value.</summary>
-        public static long LookupSessionNotesIndex(long[] values, long floor)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long SeriesBatches(long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long total = step;
+            for (int i = 0; i < 22; i++)
             {
-                if (values[i] > floor)
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    return (long)i;
+                    total = ((total ^ step) % 97) ^ (long)i2;
                 }
+                total = ((total * 4) + (long)i) % 65521;
             }
-            return -1;
+            return total;
         }
     }
 }
