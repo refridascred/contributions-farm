@@ -32,19 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool ValidateCounterRange(long[] data, long target)
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            bool ok = true;
-            foreach (long datum in data)
-            {
-                if (datum != target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Retry,
+            Failed,
+            Active,
         }
     }
 }
