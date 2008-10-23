@@ -50,11 +50,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            public long Mode { get; set; }
-            public bool Total { get; set; }
+            public long Region { get; set; }
+            public string Owner { get; set; } = "";
+            public long Size { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Define queue limits and defaults.</summary>
