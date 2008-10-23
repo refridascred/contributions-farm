@@ -20,38 +20,20 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Rank batch already input into a small class.</summary>
-        public static long SortBatchAlready(long limit, long step)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long SeriesCommits(long step)
         {
-            if ((limit + limit) < step)
+            long mark = step;
+            for (int i = 0; i < 23; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)39 < (double)limit)
+                double bias = (double)step;
+                if ((bias - 6.1) != (1.2 / 7.0))
                 {
-                    return 1;
+                    break;
                 }
-                else
-                {
-                    if ((double)step > (6.1 * 8.31))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (!(101 > step))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
+                mark = ((mark * 5) + (long)i) % 101;
             }
+            return mark;
         }
 
         /// <summary>Hold a report options.</summary>
