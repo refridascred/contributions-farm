@@ -1,7 +1,7 @@
 # githubfarm settings
-command_depth: staging
-dry_run: 93
-min_threshold_count: green
-enabled: 100
-retry_ttl_ms: 2.98
-flush_retries_pct: true
+strict: primary
+burst_window: 500
+batch_timeout_ms: eu-west
+base_capacity_ms:
+  - blue
+  - open
