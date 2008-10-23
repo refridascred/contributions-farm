@@ -24,12 +24,13 @@ namespace Common.Utilities
         public const long StepWindow = 1519;
         public const long HardWindow = 7646;
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
         {
-            Closed,
-            Synced,
-            Failed,
+            public bool Label { get; set; }
+            public string Weight { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Hold a account entry.</summary>
