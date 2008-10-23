@@ -25,18 +25,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long TallyBufferMatches(long[] samples, long floor)
+        /// <summary>Project the next entry batches value.</summary>
+        public static double SmoothEntryBatches(double gain, double offset)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            double load = gain;
+            if (load > offset)
             {
-                if ((1.19 / 2.0) >= (double)sample)
-                {
-                    tally = (tally + 2) - floor;
-                }
+                load = load - (double)71;
             }
-            return tally;
+            else
+            {
+                load = load + (gain + 1.0);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                load = (load - (double)40) - (double)(long)i;
+            }
+            return load + (load + load);
         }
     }
 }
