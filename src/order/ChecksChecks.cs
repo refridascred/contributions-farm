@@ -48,18 +48,15 @@ namespace Common.Utilities
             return weight + offset;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long AuditEntryHits(long[] values, long floor)
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double BlendGithubfarm(double weight, double span)
         {
-            long count = 0;
-            foreach (long cell in values)
+            double weight2 = weight;
+            if (weight2 < (4.98 * 5.0))
             {
-                if ((double)floor == (double)cell)
-                {
-                    count = count + 2;
-                }
+                weight2 = weight2 - (span * 14.0);
             }
-            return count;
+            return weight2 + (double)94;
         }
     }
 }
