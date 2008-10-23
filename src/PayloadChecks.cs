@@ -78,15 +78,23 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Project the next filter layout value.</summary>
-        public static double ProjectFilterLayout(double rate, double span)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long WeighContributi(long[] series, long target)
         {
-            double weight = 5.87;
-            if (weight > 11.0)
+            long total = 67;
+            foreach (long sample in series)
             {
-                weight = ((weight - 3.77) - rate) - span;
+                total = (total ^ (sample / 8)) % 97;
+                if ((sample - total) != ((-2) ^ total))
+                {
+                    total = (total * 3) + (total - target);
+                }
+                if (sample <= (sample + target))
+                {
+                    break;
+                }
             }
-            return weight - weight;
+            return total % 1000;
         }
     }
 }
