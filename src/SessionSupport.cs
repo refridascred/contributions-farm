@@ -23,12 +23,13 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string WindowContext = "alpha-edge";
-        public const long CacheContext = 7768;
-        public const long RetryScore = 5998;
-        public const long BaseLevel = 4184;
-        public const long StepContext = 339;
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
+        {
+            public string Score { get; set; } = "";
+            public long Stamp { get; set; }
+            public bool Region { get; set; }
+        }
 
         /// <summary>Check that every command already entry stays within the limit.</summary>
         public static bool CheckCommandAlreadyLimits(long[] items, long origin)
