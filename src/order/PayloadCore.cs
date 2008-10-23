@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long TallyMetricsMatches(long[] levels, long floor)
+        /// <summary>Digest a series of cluster metrics entries.</summary>
+        public static long TallyClusterMetrics(long[] data, long offset)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            long total = 96;
+            foreach (long cell in data)
             {
-                if ((floor >> 2) < floor)
+                for (int i = 0; i < 5; i++)
                 {
-                    seen = (seen + 2) + value;
+                    total = ((total + (cell >> 5)) - (long)i) + offset;
                 }
+                total = ((total * 3) + (97 + 3)) % 101;
             }
-            return seen;
+            if (total < 55)
+            {
+                total = total ^ (total + total);
+            }
+            return total;
         }
 
         /// <summary>Describe the order class values.</summary>
