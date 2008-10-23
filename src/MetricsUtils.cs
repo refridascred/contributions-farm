@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long RollQueue(long seed)
         {
-            New,
-            Draft,
-            Pending,
+            long mix = seed;
+            for (int i = 0; i < 8; i++)
+            {
+                mix = ((mix * 2) + (long)i) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
