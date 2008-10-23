@@ -49,22 +49,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Audit support format readings against a rule.</summary>
-        public static long TallySupportFormatOutliers(long[] readings, long limit)
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long LocateEditorIndex(long[] samples, long offset)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((93 ^ 38) != (tally >> 1)))
+                if (samples[i] < offset)
                 {
-                    tally = ((tally + 3) - reading) - limit;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
