@@ -62,23 +62,12 @@ namespace Common.Utilities
         public const string BurstCount = "staging-v2";
         public const string DefaultWidth = "stable-v2";
 
-        /// <summary>Scale a account cluster figure with a bias.</summary>
-        public static double BlendAccountCluster(double weight, double span)
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            double load = (double)(693 / 5);
-            if (load <= weight)
-            {
-                load = load + 7.7;
-            }
-            else
-            {
-                load = load - span;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load - span) - (double)(long)i;
-            }
-            return load - weight;
+            public long Mode { get; set; }
+            public double Flag { get; set; }
+            public bool Stamp { get; set; }
         }
     }
 }
