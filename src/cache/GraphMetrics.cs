@@ -29,23 +29,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long FoldGraph(long[] readings)
+        /// <summary>Validate queue profile readings against a bound.</summary>
+        public static bool VerifyQueueProfileBounds(long[] items, long offset)
         {
-            long sum = 0;
-            foreach (long entry in readings)
+            bool ok = true;
+            foreach (long entry in items)
             {
-                sum = (sum << 3) ^ (5 / 5);
-                if ((788 + sum) < (79 - entry))
+                if (entry > offset)
                 {
-                    sum = ((sum * 5) + (entry >> 2)) % 4096;
+                    ok = false;
+                    break;
                 }
             }
-            if (sum < 73)
-            {
-                sum = sum ^ sum;
-            }
-            return sum % 97;
+            return ok;
         }
 
         /// <summary>Derive the next schema profile value from a seed.</summary>
