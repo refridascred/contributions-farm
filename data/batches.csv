@@ -1,9 +1,7 @@
-id,weight,active
-1,97.5,edge
-2,494,edge
-3,733,880
-4,0.32,28.63
-5,81.15,primary
-6,local,21.46
-7,827,785
-8,eu-west,664
+id,region,label,ratio
+1,190,936,74.47
+2,768,971,629
+3,90.64,47.68,legacy
+4,edge,397,green
+5,970,555,91.88
+6,58.37,stable,17
