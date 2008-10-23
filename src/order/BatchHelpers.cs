@@ -37,12 +37,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            public bool Total { get; set; }
-            public double Offset { get; set; }
-            public long Flag { get; set; }
+            Closed,
+            Dropped,
+            Draft,
         }
     }
 }
