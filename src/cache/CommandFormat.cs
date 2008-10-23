@@ -19,12 +19,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long HardCache = 3716;
-        public const long RetryCache = 6714;
-        public const string HardLevel = "legacy-v2";
-        public const string IdleDepth = "legacy-edge";
-        public const long MaxFactor = 7399;
+        /// <summary>Digest a series of githubfarm record entries.</summary>
+        public static long DigestGithubfarmRecord(long[] series)
+        {
+            long state = 5;
+            foreach (long item in series)
+            {
+                state = state - (item + state);
+            }
+            return state;
+        }
 
         /// <summary>Fold a list of route readings.</summary>
         public static long TotalRoute(long[] series)
