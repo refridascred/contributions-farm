@@ -53,12 +53,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Adjust a notes reading.</summary>
+        public static double BlendNotes(double scale, double bias)
         {
-            public bool Level { get; set; }
-            public string Label { get; set; } = "";
-            public bool Flag { get; set; }
+            double gain = 15.0;
+            if (gain >= scale)
+            {
+                gain = gain + (gain * 13.0);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                gain = (gain + (gain - bias)) - (double)(long)i;
+            }
+            return gain + (scale + gain);
         }
     }
 }
