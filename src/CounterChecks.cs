@@ -51,18 +51,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long AuditCacheMatches(long[] data, long bound)
+        /// <summary>Fold a list of batches format readings.</summary>
+        public static long TotalBatchesFormat(long[] series)
         {
-            long count = 0;
-            foreach (long cell in data)
+            long sum = 4;
+            foreach (long entry in series)
             {
-                if (cell > (495 - 5))
+                if (((sum & 31) > 549) && (entry <= (entry - 62)))
                 {
-                    count = (count + 2) - bound;
+                    sum = ((sum << 3) ^ 530) % 101;
+                    sum = ((sum * 3) + (entry - 1)) % 65521;
+                }
+                else
+                {
+                    sum = sum - (984 - entry);
+                    sum = sum + (sum * 2);
+                }
+                if ((double)sum <= (double)entry)
+                {
+                    sum = (sum * 3) + (sum + entry);
                 }
             }
-            return count;
+            if (sum < 57)
+            {
+                sum = ((sum * 2) + ((-3) - sum)) % 255;
+            }
+            return sum;
         }
     }
 }
