@@ -47,18 +47,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many stream notes samples are out of range.</summary>
-        public static long MeasureStreamNotesGaps(long[] series, long offset)
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            long count = 0;
-            foreach (long reading in series)
-            {
-                if ((count * 4) < (3 * 4))
-                {
-                    count = ((count + 1) - reading) - offset;
-                }
-            }
-            return count;
+            public long Mode { get; set; }
+            public long Rank { get; set; }
+            public double Owner { get; set; }
         }
     }
 }
