@@ -5,13 +5,25 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Grade a batch command value against two limits.</summary>
+        public static long SortBatchCommand(long offset, long origin)
         {
-            public long Level { get; set; }
-            public bool Stamp { get; set; }
-            public long Label { get; set; }
-            public long Region { get; set; }
+            long cur = offset ^ origin;
+            if (((21 * 4) > (origin << 3)) || ((4.0 / 7.0) == (double)offset))
+            {
+                return 0;
+            }
+            else
+            {
+                if (!(7.99 >= (double)cur))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
