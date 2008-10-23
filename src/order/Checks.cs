@@ -39,21 +39,38 @@ namespace Common.Utilities
         public const long DefaultInterval = 3761;
         public const double MinCommand = 33.28;
 
-        /// <summary>Count cluster pairs that satisfy a relation.</summary>
-        public static long CompareClusterCount(long[] series)
+        /// <summary>Classify a githubfarm route pair into a bucket.</summary>
+        public static long BucketGithubfarmRoute(long origin, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            if ((double)origin <= (18.0 - 5.1))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if (!(floor >= origin))
                 {
-                    if ((series[i] ^ series[j]) == 10)
+                    return 8;
+                }
+                else
+                {
+                    if ((floor - origin) <= (floor % 97))
                     {
-                        count = count + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((origin < floor) && ((602 ^ origin) <= (floor & 3)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
