@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Project the next graph session value.</summary>
-        public static double ProjectGraphSession(double weight, double span)
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long FindSessionIndex(long[] samples, long floor)
         {
-            double rate = (weight * 3.33) * 9.0;
-            if (rate >= (span - span))
+            for (int i = 0; i < samples.Length; i++)
             {
-                rate = rate - (double)9;
+                if ((samples[i] < floor) && ((samples[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                rate = (rate + weight) - (double)(long)i;
-            }
-            return rate - (weight * 4.2);
+            return -1;
         }
 
         /// <summary>Locate a account reading by value.</summary>
