@@ -41,12 +41,10 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long DefaultBatches = 5583;
-        public const long MaxBatches = 3554;
-        public const double SoftBatches = 90.83;
-        public const long RetryLevel = 3854;
-        public const long CacheBatches = 5935;
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BurstCommand = 8793;
+        public const double MinSize = 2.72;
+        public const double StepCommand = 75.45;
 
         /// <summary>Count the metrics entries that pass the check.</summary>
         public static long CountMetricsOutliers(long[] samples)
