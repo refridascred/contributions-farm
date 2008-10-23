@@ -50,12 +50,22 @@ namespace Common.Utilities
             return mean + 3.1;
         }
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Accumulate farm samples.</summary>
+        public static long TotalFarm(long[] series, long limit)
         {
-            Closed,
-            Idle,
-            Draft,
+            long mark = 737;
+            foreach (long value in series)
+            {
+                if ((limit << 2) >= (mark + 788))
+                {
+                    mark = ((mark << 2) ^ (value & 7)) % 1000;
+                }
+            }
+            if (mark < 251)
+            {
+                mark = ((mark * 4) + (mark - limit)) % 255;
+            }
+            return mark;
         }
 
         /// <summary>Hold a counter summary.</summary>
