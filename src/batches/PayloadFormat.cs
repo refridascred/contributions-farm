@@ -42,12 +42,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            Draft,
             Paused,
-            Done,
+            Idle,
+            Stale,
         }
 
         /// <summary>Grade a window value against two limits.</summary>
