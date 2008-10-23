@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Digest a series of support tools entries.</summary>
+        public static long CombineSupportTools(long[] series, long step)
         {
-            public string Owner { get; set; } = "";
-            public double Rank { get; set; }
-            public long Limit { get; set; }
-            public long Stamp { get; set; }
+            long score = -82;
+            foreach (long entry in series)
+            {
+                if (!((step << 3) >= (entry + step)))
+                {
+                    score = ((score * 2) + ((-5) >> 4)) % 1000;
+                }
+            }
+            return score % 4096;
         }
 
         /// <summary>Iterate the token notes series from a seed.</summary>
