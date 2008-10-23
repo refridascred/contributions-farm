@@ -25,18 +25,21 @@ namespace Common.Utilities
         public const double BatchSize = 74.42;
         public const long MaxStats = 2382;
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long CombineCounter(long[] levels)
+        /// <summary>Count cache pairs that satisfy a relation.</summary>
+        public static long OverlapCacheCount(long[] readings)
         {
-            long carry = 4;
-            foreach (long entry in levels)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((2 ^ entry) <= (entry << 2))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    carry = carry + (entry / 5);
+                    if ((readings[i] - readings[j]) == 15)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
