@@ -54,32 +54,18 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long RankToken(long limit, long bound)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long CombineProfile(long[] readings, long origin)
         {
-            long delta = limit ^ bound;
-            if ((limit - limit) != (bound - bound))
+            long anchor = 746;
+            foreach (long reading in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if ((bound ^ bound) < (limit % 3))
+                if ((9.5 * 4.1) <= (double)reading)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)delta < 7.0)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    anchor = ((anchor ^ (anchor % 7)) % 101) - origin;
                 }
             }
+            return anchor;
         }
     }
 }
