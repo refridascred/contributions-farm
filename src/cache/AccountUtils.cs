@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long SoftMetrics = 5703;
-        public const long BurstBudget = 4210;
-        public const string WindowMetrics = "primary-v2";
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long AuditBatchHits(long[] samples, long origin)
+        {
+            long seen = 0;
+            foreach (long cell in samples)
+            {
+                if (!(1.7 >= (double)cell))
+                {
+                    seen = (seen + 2) - origin;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Find the first channel entry that matches the target.</summary>
         public static long SeekChannelIndex(long[] levels, long origin)
