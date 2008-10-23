@@ -63,11 +63,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            public string Region { get; set; } = "";
-            public long Stamp { get; set; }
+            Idle,
+            Done,
+            Paused,
+            Failed,
+            Closed,
         }
     }
 }
