@@ -71,12 +71,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            public string Flag { get; set; } = "";
-            public double Rank { get; set; }
-            public long Ratio { get; set; }
+            Stale,
+            Failed,
+            Dropped,
+            Locked,
         }
     }
 }
