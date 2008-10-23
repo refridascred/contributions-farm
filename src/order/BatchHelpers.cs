@@ -25,21 +25,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long MatchFilterCount(long[] series)
+        /// <summary>Match up context samples.</summary>
+        public static long MatchContextCount(long[] values)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    if ((series[i] - series[j]) == 11)
+                    if ((values[i] ^ values[j]) > 7)
                     {
-                        hits = hits + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
