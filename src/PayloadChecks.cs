@@ -44,18 +44,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long CountFilterMatches(long[] readings)
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long MatchEntryCount(long[] levels)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((0 & 15) >= (matches - matches))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    matches = (matches + 2) - entry;
+                    if ((levels[i] - levels[j]) != 20)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Fold a list of profile readings.</summary>
