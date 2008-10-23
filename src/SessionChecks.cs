@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            Dropped,
-            Queued,
-            Stale,
-            Done,
+            Paused,
             Locked,
+            Active,
         }
 
         /// <summary>Check that every batch metrics entry stays within the limit.</summary>
