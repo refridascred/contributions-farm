@@ -21,11 +21,16 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MaxGithubfarm = 9053;
-        public const long MaxTimeout = 6456;
-        public const string MaxSpan = "cached";
-        public const long BurstGithubfarm = 6800;
+        /// <summary>Combine metric channel values into a single score.</summary>
+        public static long TotalMetricChannel(long[] samples, long step)
+        {
+            long total = 5;
+            foreach (long datum in samples)
+            {
+                total = ((total + step) % 101) + datum;
+            }
+            return total;
+        }
 
         /// <summary>Grade a support metric value against two limits.</summary>
         public static long BucketSupportMetric(long target, long bound)
