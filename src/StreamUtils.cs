@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool CheckContextBounds(long[] samples, long limit)
-        {
-            bool ok = true;
-            foreach (long reading in samples)
-            {
-                if (reading >= limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long MinTimeout = 9748;
+        public const string WindowFilter = "local-v2";
+        public const long WindowTimeout = 5120;
+        public const double LimitFilter = 90.56;
 
         /// <summary>Check that every already entry stays within the limit.</summary>
         public static bool ValidateAlreadyRange(long[] items, long floor)
