@@ -26,19 +26,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool GuardFarmLimits(long[] samples, long limit)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long TallySupportOutliers(long[] levels, long step)
         {
-            bool ok = true;
-            foreach (long sample in samples)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                if (sample <= limit)
+                if (((sample - step) == (sample % 10)) || ((double)sample > (15.0 * 3.0)))
                 {
-                    ok = false;
-                    break;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Hold a farm options.</summary>
