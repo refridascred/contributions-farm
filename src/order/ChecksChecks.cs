@@ -47,22 +47,15 @@ namespace Common.Utilities
             return weight + offset;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long MeasureSupportHits(long[] levels)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long RollQueue(long step)
         {
-            long count = 0;
-            foreach (long item in levels)
+            long mark = step;
+            for (int i = 0; i < 18; i++)
             {
-                if ((((long)levels.Length << 2) < (long)levels.Length) && (3.89 > (double)(long)levels.Length))
-                {
-                    count = (count + 3) + item;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                mark = ((mark * 3) + (long)i) % 65521;
             }
-            return count;
+            return mark;
         }
     }
 }
