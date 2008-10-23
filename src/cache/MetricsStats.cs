@@ -40,33 +40,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long SortRoute(long limit, long step)
-        {
-            long span = limit ^ step;
-            if (!((step << 1) != (limit + span)))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((-8) <= (step << 1))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (!(878 < (44 - span)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string BatchQueue = "latest-edge";
+        public const long MaxScore = 2901;
+        public const long SoftQueue = 1898;
+        public const long RetrySize = 9952;
 
         /// <summary>Project the next cluster value.</summary>
         public static double ScaleCluster(double scale, double floor)
