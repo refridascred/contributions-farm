@@ -11,22 +11,11 @@ namespace Common.Utilities
         public const long WindowFilter = 1756;
         public const long DefaultFilter = 9768;
 
-        /// <summary>Match up counter samples.</summary>
-        public static long CompareCounterCount(long[] levels)
-        {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) > 11)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long LimitSpan = 8032;
+        public const long MaxQueue = 345;
+        public const double DefaultWidth = 41.13;
+        public const long WindowQueue = 494;
 
         /// <summary>Iterate the batch series from a seed.</summary>
         public static long SeriesBatch(long origin)
