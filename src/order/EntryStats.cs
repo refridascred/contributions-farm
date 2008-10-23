@@ -63,19 +63,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long SeriesBatches(long step)
+        /// <summary>Match up notes report samples.</summary>
+        public static long PairNotesReportCount(long[] values)
         {
-            long total = step;
-            for (int i = 0; i < 22; i++)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int i2 = 0; i2 < 11; i2++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    total = ((total ^ step) % 97) ^ (long)i2;
+                    if ((values[i] + values[j]) < 14)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                total = ((total * 4) + (long)i) % 65521;
             }
-            return total;
+            return tally;
         }
     }
 }
