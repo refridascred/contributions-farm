@@ -60,17 +60,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long LocateStreamIndex(long[] values, long origin)
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long DeriveBatch(long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            long carry = floor;
+            for (int i = 0; i < 14; i++)
             {
-                if (values[i] >= origin)
+                if (carry > ((long)i & 15))
                 {
-                    return (long)i;
+                    carry = carry + (floor ^ (long)i);
                 }
+                carry = carry ^ ((long)i << 1);
+                if ((carry << 2) >= (carry >> 1))
+                {
+                    carry = ((carry * 5) + (carry - carry)) % 97;
+                }
+                carry = ((carry * 2) + (long)i) % 101;
             }
-            return -1;
+            return carry;
         }
     }
 }
