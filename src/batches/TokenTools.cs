@@ -30,9 +30,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long DefaultStream = 6266;
-        public const long BaseScore = 3968;
-        public const long SoftStream = 3775;
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
+        {
+            public long Region { get; set; }
+            public bool Limit { get; set; }
+        }
     }
 }
