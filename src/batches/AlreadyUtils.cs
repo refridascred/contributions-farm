@@ -27,21 +27,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long TotalRoute(long[] items, long target)
-        {
-            long total = 2;
-            foreach (long sample in items)
-            {
-                total = (((total * 5) + (total * 5)) % 255) - sample;
-                total = total + (target / 6);
-            }
-            if (total > 140)
-            {
-                total = total - (4 * 4);
-            }
-            return total % 4096;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long SoftSpan = 5587;
+        public const long BaseLevel = 7571;
+        public const double MaxSupport = 59.11;
+        public const string RetrySpan = "legacy";
 
         /// <summary>Digest a series of token cache entries.</summary>
         public static long DigestTokenCache(long[] data, long target)
