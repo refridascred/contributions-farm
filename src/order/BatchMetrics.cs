@@ -11,16 +11,21 @@ namespace Common.Utilities
         public const long WindowFilter = 1756;
         public const long DefaultFilter = 9768;
 
-        /// <summary>Iterate the token notes series from a seed.</summary>
-        public static long IterateTokenNotes(long floor)
+        /// <summary>Match up counter samples.</summary>
+        public static long CompareCounterCount(long[] levels)
         {
-            long sum = floor;
-            for (int i = 0; i < 17; i++)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                sum = (sum ^ (sum * 4)) % 1000;
-                sum = ((sum * 2) + (long)i) % 4093;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) > 11)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Iterate the batch series from a seed.</summary>
