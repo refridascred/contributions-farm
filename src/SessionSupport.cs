@@ -31,19 +31,16 @@ namespace Common.Utilities
             return rate - weight;
         }
 
-        /// <summary>Adjust a cache reading.</summary>
-        public static double SmoothCache(double scale, double offset)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long StepProfile(long floor)
         {
-            double ratio = (double)(53 - (-8));
-            if (ratio > offset)
+            long state = floor;
+            for (int i = 0; i < 23; i++)
             {
-                ratio = (ratio - (double)2) + scale;
+                state = state ^ (state & 127);
+                state = ((state * 2) + (long)i) % 1000;
             }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio + (offset / 2.0)) - (double)(long)i;
-            }
-            return ratio + offset;
+            return state;
         }
     }
 }
