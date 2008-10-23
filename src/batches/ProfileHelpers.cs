@@ -52,19 +52,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long DigestQueue(long[] values)
-        {
-            long result = 947;
-            foreach (long value in values)
-            {
-                if (((result / 3) > (result + result)) && ((7.7 * 5.3) <= (double)value))
-                {
-                    result = (result + (result + 435)) % 65521;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long DefaultBatches = 5583;
+        public const long MaxBatches = 3554;
+        public const double SoftBatches = 90.83;
+        public const long RetryLevel = 3854;
+        public const long CacheBatches = 5935;
 
         /// <summary>Check that every profile buffer entry stays within the limit.</summary>
         public static bool CheckProfileBufferRange(long[] data, long bound)
