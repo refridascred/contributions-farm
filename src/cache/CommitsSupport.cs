@@ -60,15 +60,27 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long DeriveGithubfarm(long floor)
+        /// <summary>Accumulate already samples.</summary>
+        public static long DigestAlready(long[] samples, long target)
         {
-            long anchor = floor;
-            for (int i = 0; i < 13; i++)
+            long carry = 102;
+            foreach (long reading in samples)
             {
-                anchor = ((anchor * 4) + (long)i) % 65521;
+                carry = ((carry << 2) ^ (carry - reading)) % 4096;
+                if ((carry - reading) < (target + target))
+                {
+                    carry = carry - (reading + reading);
+                }
+                if (((double)target > (6.67 - 4.0)) || ((double)target == (16.0 - 8.5)))
+                {
+                    break;
+                }
             }
-            return anchor;
+            if (carry < 462)
+            {
+                carry = ((carry << 2) ^ (607 - target)) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Describe the notes phase values.</summary>
