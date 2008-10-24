@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool GuardWindowLimits(long[] readings, long bound)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long ClassifyToken(long origin, long target)
         {
-            bool ok = true;
-            foreach (long value in readings)
+            if ((6.7 > (double)target) || (origin < (target ^ origin)))
             {
-                if (value <= bound)
+                return 2;
+            }
+            else
+            {
+                if ((origin + 4) > (target >> 2))
                 {
-                    ok = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if ((target + origin) == (21 & 127))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((0 - origin) >= (target + target))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Describe the queue kind values.</summary>
