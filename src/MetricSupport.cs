@@ -5,38 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Grade a support report value against two limits.</summary>
-        public static long ClassifySupportReport(long bound, long offset)
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double AdjustGraph(double scale, double span)
         {
-            if ((8.5 * 7.8) < (double)bound)
+            double rate = span;
+            for (int i = 0; i < 9; i++)
             {
-                return 3;
+                rate = ((rate + (8.0 / 6.0)) + (double)(long)i) + scale;
             }
-            else
-            {
-                if ((offset ^ bound) == (bound % 2))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((offset << 3) == (offset * 5))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (!((double)offset < 9.6))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            return rate + (span * 8.3);
         }
 
         /// <summary>Combine schema values into a single score.</summary>
