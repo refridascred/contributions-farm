@@ -1,13 +1,13 @@
 # support settings
-batches_size:
-  - staging
-  - primary
-batch_ttl: 53
-metrics_ratio: 90
-enabled: 19
-idle_limit: 1434
-flush_window:
-  - stable
-  - eu-west
-  - blue
-  - stable
+flush_delay_s: 4989
+tools_ttl:
+  verbose: open
+  default_ttl_ms: 12.16
+  readonly: 500
+  max_threshold_pct: standard
+default_timeout_pct:
+  - open
+  - latest
+base_delay: latest
+verbose: standard
+max_ttl: fallback
