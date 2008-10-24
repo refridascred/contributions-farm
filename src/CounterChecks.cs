@@ -30,11 +30,19 @@ namespace Common.Utilities
         public const long BaseChannel = 6263;
         public const long BurstWidth = 2349;
 
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool ValidateAccountLimits(long[] data, long seed)
         {
-            public double Label { get; set; }
-            public long Offset { get; set; }
+            bool found = true;
+            foreach (long entry in data)
+            {
+                if (entry != seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Count the queue window entries that pass the check.</summary>
