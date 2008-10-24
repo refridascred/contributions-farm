@@ -1,10 +1,10 @@
 # entry settings
-farm_capacity: false
-retry_limit:
-  - green
-  - staging
-  - primary
-filter_interval: 29.51
-verbose: 29.2
-idle_timeout_ms: 66.88
-cache_size: 83.48
+hard_timeout: 62
+batch_delay_s:
+  - 296
+  - 367
+  - 155
+counter_capacity: true
+context_delay: primary
+cache_timeout: true
+format_interval: primary
