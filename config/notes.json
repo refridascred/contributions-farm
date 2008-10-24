@@ -1,7 +1,8 @@
 {
-  "counter_window": 86.95,
-  "account_depth": "cached",
-  "tools_delay": true,
-  "batch_limit_s": [385, 246, 490, 41],
-  "soft_depth": false
+  "default_ttl": 500,
+  "idle_limit_s": 3,
+  "flush_size_pct": [459, 327, 137, 70],
+  "order_delay": true,
+  "route_window": 1024,
+  "min_size_ms": 5988
 }
