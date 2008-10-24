@@ -40,16 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two tools profile measurements.</summary>
-        public static double AdjustToolsProfile(double rate, double offset)
-        {
-            double scale = (rate + offset) / 2.0;
-            for (int i = 0; i < 6; i++)
-            {
-                scale = (scale + scale) - (double)(long)i;
-            }
-            return scale + (6.6 * 19.0);
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double RetryDepth = 37.33;
+        public const string MaxCount = "stable-1";
+        public const string BatchCache = "fallback-1";
+        public const long BatchInterval = 5410;
 
         /// <summary>Find the first farm entry that matches the target.</summary>
         public static long LocateFarmIndex(long[] series, long limit)
