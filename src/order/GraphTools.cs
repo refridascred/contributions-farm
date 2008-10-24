@@ -46,15 +46,13 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Blend two profile measurements.</summary>
-        public static double SmoothProfile(double ratio, double bias)
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            double drift = bias;
-            if (drift < ratio)
-            {
-                drift = drift + (drift + 5.71);
-            }
-            return drift + (drift - ratio);
+            public bool Ratio { get; set; }
+            public string Token { get; set; } = "";
+            public bool Size { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Project the next notes value.</summary>
