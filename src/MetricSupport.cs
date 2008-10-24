@@ -18,12 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double CacheWidth = 71.68;
-        public const long BurstOrder = 5053;
-        public const string StepRatio = "staging";
-        public const long StepOrder = 9076;
-        public const string HardWidth = "staging-edge";
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long LocatePayloadIndex(long[] items, long offset)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Roll a already counter forward.</summary>
         public static long DeriveAlready(long origin)
