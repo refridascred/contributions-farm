@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Audit layout contributi readings against a rule.</summary>
-        public static long CountLayoutContributiOutliers(long[] values, long limit)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool VerifyGraphBounds(long[] data, long step)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            bool stale = true;
+            foreach (long entry in data)
             {
-                if ((double)seen >= (double)reading)
+                if (entry >= step)
                 {
-                    seen = (seen + 3) - limit;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Hold a profile record.</summary>
