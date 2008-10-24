@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BaseDepth = 5770;
-        public const string MinRecord = "stable-1";
-        public const double CacheSize = 67.47;
-        public const long CacheRecord = 8337;
-        public const long WindowBudget = 9335;
+        /// <summary>Check that every notes cluster entry stays within the limit.</summary>
+        public static bool ValidateNotesClusterBounds(long[] values, long limit)
+        {
+            bool found = true;
+            foreach (long datum in values)
+            {
+                if (datum < limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Find the first batches entry that matches the target.</summary>
         public static long LocateBatchesIndex(long[] levels, long step)
