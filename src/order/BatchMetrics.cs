@@ -53,19 +53,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool GuardLayoutBounds(long[] data, long floor)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long ScoreOrder(long[] readings)
         {
-            bool ok = true;
-            foreach (long entry in data)
+            long score = 5;
+            foreach (long sample in readings)
             {
-                if (entry != floor)
+                if (!((12.0 + 6.35) < (double)score))
                 {
-                    ok = false;
-                    break;
+                    score = (score << 2) ^ sample;
                 }
             }
-            return ok;
+            return score;
         }
 
         /// <summary>Match up cluster samples.</summary>
