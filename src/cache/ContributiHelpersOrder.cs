@@ -20,18 +20,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the payload channel entries that pass the check.</summary>
-        public static long MeasurePayloadChannelGaps(long[] samples)
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            long seen = 0;
-            foreach (long entry in samples)
-            {
-                if ((double)entry == (5.36 + 9.44))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public double Weight { get; set; }
+            public long Token { get; set; }
+            public long Score { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Find the first githubfarm entry that matches the target.</summary>
