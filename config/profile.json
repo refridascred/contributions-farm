@@ -1,7 +1,5 @@
 {
-  "hard_ratio_pct": 5.87,
-  "metric_depth": 100,
-  "session_ttl": "eu-west",
-  "report_retries": 3.94,
-  "sync_window": 41.4
+  "counter_timeout": 9559,
+  "batch_size_count": 250,
+  "poll_depth": "stable"
 }
