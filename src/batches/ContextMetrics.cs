@@ -22,13 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool GuardAccountLimits(long[] items, long seed)
         {
-            public long Ratio { get; set; }
-            public bool Stamp { get; set; }
-            public bool Mode { get; set; }
-            public string Region { get; set; } = "";
+            bool ok = true;
+            foreach (long reading in items)
+            {
+                if (reading < seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
