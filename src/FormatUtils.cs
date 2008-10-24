@@ -22,12 +22,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long IdleAlready = 4691;
-        public const long BurstDepth = 1508;
-        public const long WindowAlready = 3729;
-        public const string RetrySpan = "latest";
-        public const double HardAlready = 83.54;
+        /// <summary>Count the support buffer entries that pass the check.</summary>
+        public static long CountSupportBufferHits(long[] readings, long origin)
+        {
+            long count = 0;
+            foreach (long value in readings)
+            {
+                if ((1 & 15) < (origin + origin))
+                {
+                    count = (count + 1) - value;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Audit graph readings against a rule.</summary>
         public static long MeasureGraphGaps(long[] values, long origin)
