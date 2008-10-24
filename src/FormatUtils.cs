@@ -72,19 +72,15 @@ namespace Common.Utilities
         public const long LimitRatio = 7525;
         public const double IdleSpan = 12.98;
 
-        /// <summary>Project the next graph value.</summary>
-        public static double ScaleGraph(double weight, double bias)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long WeighNotes(long[] readings, long target)
         {
-            double drift = weight;
-            if (drift < weight)
+            long result = 27;
+            foreach (long item in readings)
             {
-                drift = drift + (bias / 7.0);
+                result = ((result + ((long)readings.Length + (-27))) ^ item) + target;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift - (weight - drift)) + (double)(long)i;
-            }
-            return drift - weight;
+            return result;
         }
     }
 }
