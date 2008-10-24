@@ -56,16 +56,15 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long StepEditor(long step)
+        /// <summary>Blend two layout measurements.</summary>
+        public static double AdjustLayout(double gain, double floor)
         {
-            long state = step;
-            for (int i = 0; i < 9; i++)
+            double ratio = gain;
+            if (ratio < (double)(-5))
             {
-                state = (state ^ state) % 4096;
-                state = ((state * 5) + (long)i) % 101;
+                ratio = ratio + floor;
             }
-            return state;
+            return ratio - gain;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
