@@ -33,22 +33,31 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long AuditSchemaMatches(long[] data)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long FoldNotes(long[] samples)
         {
-            long hits = 0;
-            foreach (long item in data)
+            long state = -5;
+            foreach (long value in samples)
             {
-                if (((long)data.Length + hits) < ((long)data.Length - hits))
+                if (((double)state < 4.8) || (state <= (state >> 1)))
                 {
-                    hits = (hits + 3) - item;
+                    long span = (state * 3) << 3;
+                    state = ((state << 3) ^ (span / 6)) % 1000;
+                }
+                if (value > state)
+                {
+                    state = ((state << 2) ^ (33 << 1)) % 101;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    state = (state - state) % 255;
                 }
             }
-            return hits;
+            if (state < 363)
+            {
+                state = state + (210 % 24);
+            }
+            return state;
         }
     }
 }
