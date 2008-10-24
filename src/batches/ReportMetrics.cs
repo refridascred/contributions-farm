@@ -24,14 +24,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Count the entry account entries that pass the check.</summary>
+        public static long MeasureEntryAccountOutliers(long[] readings)
         {
-            Failed,
-            Queued,
-            Synced,
-            Draft,
-            New,
+            long matches = 0;
+            foreach (long sample in readings)
+            {
+                if ((matches - sample) >= (sample - sample))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Find the first format entry that matches the target.</summary>
