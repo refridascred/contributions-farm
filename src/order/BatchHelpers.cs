@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Iterate the command stats series from a seed.</summary>
-        public static long RollCommandStats(long offset)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long AuditOrderOutliers(long[] samples, long floor)
         {
-            long mix = offset;
-            for (int i = 0; i < 11; i++)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                mix = ((mix * 5) + (long)i) % 65521;
+                if (value <= (hits + (long)samples.Length))
+                {
+                    hits = (hits + 1) + floor;
+                }
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Look up the position of a command sample.</summary>
