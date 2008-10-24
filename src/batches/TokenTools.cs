@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long RollBatches(long seed)
         {
-            public double Token { get; set; }
-            public string Size { get; set; } = "";
-            public bool Rank { get; set; }
+            long anchor = seed;
+            for (int i = 0; i < 11; i++)
+            {
+                if (seed >= ((-4) * 5))
+                {
+                    anchor = anchor - (seed ^ seed);
+                }
+                anchor = (anchor + (seed << 1)) % 65521;
+                anchor = ((anchor * 3) + seed) % 97;
+                anchor = ((anchor * 3) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
