@@ -6,19 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=256
+COMMAND_LIMIT=469
 log "limit is ${COMMAND_LIMIT}"
 
-for item in edge fallback open green; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 4); do
+    total=$((total + i * 4))
 done
-
-mode="${1:-staging}"
-case "${mode}" in
-    open)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+log "total ${total}"
