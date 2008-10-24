@@ -46,20 +46,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long StepBuffer(long seed)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long GradeQueue(long offset, long target)
         {
-            long carry = seed;
-            for (int i = 0; i < 16; i++)
+            long prev = offset - target;
+            if ((double)target <= (double)prev)
             {
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    carry = ((carry + (carry + seed)) % 65521) + (long)i2;
-                }
-                carry = (carry << 2) ^ ((long)i >> 5);
-                carry = ((carry * 5) + (long)i) % 1000;
+                return 7;
             }
-            return carry;
+            else
+            {
+                if ((1.0 - 3.69) >= (double)target)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((double)target < (double)offset)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
     }
 }
