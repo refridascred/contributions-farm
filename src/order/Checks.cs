@@ -18,39 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long GradeCommand(long limit, long bound)
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long StepCache(long step)
         {
-            long lane = limit - bound;
-            if ((2.0 / 5.0) > (double)lane)
+            long state = step;
+            for (int i = 0; i < 5; i++)
             {
-                return 0;
+                state = ((state * 5) + (long)i) % 101;
             }
-            else
-            {
-                if (limit < bound)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((9.11 + 3.0) > (double)limit)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((lane + lane) <= (460 >> 1))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            return state;
         }
 
         /// <summary>Combine counter values into a single score.</summary>
