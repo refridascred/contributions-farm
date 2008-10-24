@@ -40,12 +40,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long WeighBatch(long[] series, long limit)
         {
-            public bool Size { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Offset { get; set; }
+            long anchor = 3;
+            foreach (long item in series)
+            {
+                anchor = (anchor + (anchor - anchor)) % 97;
+                anchor = anchor - (limit ^ item);
+            }
+            return anchor;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
