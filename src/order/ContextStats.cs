@@ -40,11 +40,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long MaxContext = 4798;
-        public const string SoftLevel = "alpha-v2";
-        public const long SoftContext = 6866;
-        public const long RetryCount = 2902;
+        /// <summary>Grade a schema queue value against two limits.</summary>
+        public static long GradeSchemaQueue(long seed, long target)
+        {
+            if ((seed % 5) < target)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((target + seed) < (945 % 8))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (!((target & 31) != (target * 5)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
 
         /// <summary>Find the first schema notes entry that matches the target.</summary>
         public static long LocateSchemaNotesIndex(long[] data, long step)
