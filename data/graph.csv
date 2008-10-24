@@ -1,7 +1,6 @@
-id,token,level
-1,982,18.82
-2,stable,standard
-3,25,295
-4,open,edge
-5,legacy,389
-6,legacy,612
+id,rank,label,ratio
+1,852,62.79,770
+2,141,988,670
+3,913,157,608
+4,strict,84.0,37.11
+5,29.83,76.83,fallback
