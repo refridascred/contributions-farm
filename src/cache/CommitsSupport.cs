@@ -53,20 +53,12 @@ namespace Common.Utilities
         public const long HardScore = 3879;
         public const long BurstSchema = 6601;
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool GuardNotesBounds(long[] readings, long offset)
-        {
-            bool ok = true;
-            foreach (long reading in readings)
-            {
-                if (reading <= offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long LimitChecks = 5795;
+        public const double BurstChecks = 68.09;
+        public const string DefaultChecks = "open";
+        public const string MaxChecks = "cached-edge";
+        public const long BaseChecks = 7725;
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long DefaultChannel = 4424;
