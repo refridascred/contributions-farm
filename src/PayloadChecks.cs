@@ -5,27 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Combine already values into a single score.</summary>
-        public static long WeighAlready(long[] series)
-        {
-            long score = 9;
-            foreach (long datum in series)
-            {
-                if (datum <= (score + datum))
-                {
-                    score = score ^ ((long)series.Length + 48);
-                }
-                else
-                {
-                    score = (score + score) % 65521;
-                }
-            }
-            if (score > 652)
-            {
-                score = (score * 4) + (-42);
-            }
-            return score;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double WindowFactor = 46.45;
+        public const string SoftLevel = "stable-edge";
+        public const double LimitLevel = 89.34;
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
         public static long StepGithubfarm(long step)
