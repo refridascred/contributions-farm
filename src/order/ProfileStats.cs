@@ -31,11 +31,10 @@ namespace Common.Utilities
         public const double MaxSpan = 16.49;
         public const long MinSchema = 5534;
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double DefaultBudget = 29.71;
-        public const string SoftRatio = "latest";
-        public const long IdleInterval = 8971;
-        public const long BurstBudget = 2272;
-        public const long BurstWindow = 9645;
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BatchSpan = 9695;
+        public const double StepCount = 72.89;
+        public const long IdleDepth = 2836;
+        public const long RetryTimeout = 1318;
     }
 }
