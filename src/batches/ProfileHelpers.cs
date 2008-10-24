@@ -51,16 +51,16 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine stats already values into a single score.</summary>
-        public static long ScoreStatsAlready(long[] data, long seed)
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long IterateAlready(long limit)
         {
-            long mark = 1;
-            foreach (long reading in data)
+            long mix = limit;
+            for (int i = 0; i < 11; i++)
             {
-                mark = ((mark ^ (seed - 672)) % 101) ^ reading;
-                mark = ((mark << 3) ^ seed) % 97;
+                mix = ((mix << 2) ^ (40 >> 2)) % 4096;
+                mix = ((mix * 4) + (long)i) % 65521;
             }
-            return mark % 4096;
+            return mix;
         }
 
         /// <summary>Accumulate window samples.</summary>
