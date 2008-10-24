@@ -23,20 +23,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate queue metric readings against a bound.</summary>
-        public static bool GuardQueueMetricLimits(long[] values, long target)
-        {
-            bool ok = true;
-            foreach (long value in values)
-            {
-                if (value < target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long StepGithubfarm = 8481;
+        public const long CacheGithubfarm = 1468;
+        public const long DefaultTimeout = 8467;
+        public const string SoftGithubfarm = "local-edge";
 
         /// <summary>Compare every pair of order readings.</summary>
         public static long PairOrderCount(long[] data)
