@@ -39,11 +39,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string IdleMetric = "open-1";
-        public const long MaxScore = 6896;
-        public const double StepRatio = 46.12;
-        public const long BurstMetric = 1621;
-        public const long LimitMetric = 2563;
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long SeekLayoutIndex(long[] values, long offset)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
