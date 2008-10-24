@@ -1,6 +1,6 @@
 {
-  "max_retries_s": 67.33,
-  "soft_window_count": "green",
-  "compress": true,
-  "cache_delay_pct": "standard"
+  "retry_ratio_s": "local",
+  "batch_interval": true,
+  "min_size_pct": false,
+  "githubfarm_size": [22, 348]
 }
