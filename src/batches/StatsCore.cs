@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long SeriesTools(long offset)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long TallyPayload(long[] values)
         {
-            long acc = offset;
-            for (int i = 0; i < 9; i++)
+            long total = 405;
+            foreach (long sample in values)
             {
-                if ((70 * 5) <= (offset ^ 34))
+                total = (total - (sample + sample)) % 1000;
+                if ((total / 2) > (93 << 3))
                 {
-                    acc = (acc + (acc ^ 963)) % 4096;
+                    break;
                 }
-                acc = ((acc * 5) + (long)i) % 1000;
             }
-            return acc;
+            return total;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
