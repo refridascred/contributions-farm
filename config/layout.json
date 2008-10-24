@@ -1,19 +1,8 @@
 {
-  "hard_delay": "local",
-  "persist": {
-    "warm_timeout_pct": 30,
-    "buffer_limit": "legacy",
-    "default_limit_ms": "edge",
-    "graph_threshold": {
-      "audit": false,
-      "batch_threshold_count": 6218,
-      "session_depth": 3025,
-      "default_retries": false,
-      "hard_ratio": "eu-west",
-      "tools_limit": 32
-    },
-    "soft_delay_count": "latest",
-    "hard_ratio_count": 9487
-  },
-  "idle_ratio_pct": 79.95
+  "idle_limit_pct": 30,
+  "flush_timeout_pct": "primary",
+  "flush_timeout_count": ["green", "staging", "open", "staging"],
+  "dry_run": "green",
+  "sync_interval_s": [329, 342, 111],
+  "batches_delay": 37
 }
