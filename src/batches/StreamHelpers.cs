@@ -56,11 +56,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long RetryBuffer = 3956;
-        public const long WindowSize = 9591;
-        public const long BatchBuffer = 7355;
-        public const long IdleBuffer = 30;
-        public const string DefaultRatio = "alpha";
+        /// <summary>Look up the position of a buffer graph sample.</summary>
+        public static long LocateBufferGraphIndex(long[] levels, long floor)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] >= floor) && ((levels[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
