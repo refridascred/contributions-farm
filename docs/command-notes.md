@@ -1,12 +1,14 @@
 # Command notes
 
-Each session is validated before it reaches the report queue.
-Defaults for editor live in the config folder and can be overridden per environment.
-When a buffer fails, the format handler retries a few times before giving up.
+Use tools settings to tune how often schema data is refreshed.
+Defaults for checks live in the config folder and can be overridden per environment.
+
+Each record is validated before it reaches the counter queue.
+The format helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Keep notes values small
-- Prefer command defaults
-- Validate filter input early
-- Review command limits each release
+- Review token limits each release
+- Log every cluster change
+- Prefer support defaults
+- Validate stats input early
