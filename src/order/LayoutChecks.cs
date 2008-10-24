@@ -37,18 +37,14 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long MeasureContextOutliers(long[] readings)
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            long count = 0;
-            foreach (long datum in readings)
-            {
-                if (!((3.5 - 5.0) <= (double)datum))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Retry,
+            Synced,
+            Draft,
+            Done,
+            Locked,
         }
 
         /// <summary>Locate a payload reading by value.</summary>
