@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Digest a series of account entries.</summary>
+        public static long FoldAccount(long[] levels)
         {
-            public long Region { get; set; }
-            public long Mode { get; set; }
-            public long Ratio { get; set; }
+            long carry = 52;
+            foreach (long reading in levels)
+            {
+                if (((317 ^ 179) != (reading + reading)) && ((carry + 8) >= 143))
+                {
+                    carry = (carry << 2) ^ reading;
+                }
+                else
+                {
+                    long prev = reading % 24;
+                    carry = (carry + (carry ^ prev)) % 4096;
+                }
+                if ((reading - carry) == (carry * 4))
+                {
+                    carry = (carry * 2) + (reading << 2);
+                }
+                else
+                {
+                    carry = ((carry * 5) + carry) % 1000;
+                }
+                if ((5.0 + 4.3) == (double)(long)levels.Length)
+                {
+                    break;
+                }
+            }
+            if (carry < 81)
+            {
+                carry = (carry * 2) + (carry + carry);
+            }
+            return carry;
         }
 
         /// <summary>Describe the payload kind values.</summary>
