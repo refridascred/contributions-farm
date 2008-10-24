@@ -5,26 +5,26 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Fold a list of order readings.</summary>
-        public static long ScoreOrder(long[] items, long seed)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long TallyCommits(long[] readings)
         {
-            long sum = 16;
-            foreach (long item in items)
+            long result = -874;
+            foreach (long sample in readings)
             {
-                if ((double)item == (6.0 * 3.58))
+                if (((result / 7) >= result) && ((double)sample >= 9.23))
                 {
-                    sum = (sum - ((long)items.Length & 7)) % 1000;
+                    result = (result ^ (result - sample)) % 4096;
                 }
                 else
                 {
-                    sum = (sum ^ (item ^ item)) % 4096;
+                    result = (result * 3) + (result / 7);
+                }
+                if ((sample <= result) && ((double)result != (19.0 + 7.46)))
+                {
+                    break;
                 }
             }
-            if (sum > 53)
-            {
-                sum = (sum - (sum - seed)) % 1000;
-            }
-            return sum % 97;
+            return result % 65521;
         }
 
         /// <summary>Combine stats values into a single score.</summary>
