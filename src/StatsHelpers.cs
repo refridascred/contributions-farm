@@ -29,11 +29,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long MinCache = 4820;
-        public const long BaseLevel = 7952;
-        public const long BurstCache = 3747;
-        public const long BatchScore = 6571;
+        /// <summary>Count record support pairs that satisfy a relation.</summary>
+        public static long MatchRecordSupportCount(long[] levels)
+        {
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) != 5)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Roll a profile counter forward.</summary>
         public static long SeriesProfile(long seed)
