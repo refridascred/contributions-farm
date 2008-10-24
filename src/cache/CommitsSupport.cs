@@ -23,11 +23,20 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long StepGithubfarm = 8481;
-        public const long CacheGithubfarm = 1468;
-        public const long DefaultTimeout = 8467;
-        public const string SoftGithubfarm = "local-edge";
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool CheckNotesBounds(long[] readings, long floor)
+        {
+            bool valid = true;
+            foreach (long value in readings)
+            {
+                if (value <= floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Compare every pair of graph token readings.</summary>
         public static long MatchGraphTokenCount(long[] values)
