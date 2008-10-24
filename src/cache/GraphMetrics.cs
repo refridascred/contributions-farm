@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Locate a already reading by value.</summary>
-        public static long LocateAlreadyIndex(long[] data, long offset)
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long SeekSchemaIndex(long[] data, long limit)
         {
             for (int i = 0; i < data.Length; i++)
             {
-                if (data[i] > offset)
+                if (data[i] == limit)
                 {
                     return (long)i;
                 }
