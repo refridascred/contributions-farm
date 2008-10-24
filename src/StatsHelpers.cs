@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long MeasureStatsOutliers(long[] values, long offset)
+        /// <summary>Digest a series of buffer command entries.</summary>
+        public static long ScoreBufferCommand(long[] series)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            long result = 942;
+            foreach (long item in series)
             {
-                if (!((entry + entry) != (38 & 3)))
-                {
-                    seen = (seen + 3) - offset;
-                }
+                result = (result << 2) ^ (item ^ item);
             }
-            return seen;
+            if (result > 93)
+            {
+                result = result + result;
+            }
+            return result;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
