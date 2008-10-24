@@ -34,22 +34,20 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long AuditLayoutMatches(long[] levels, long limit)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long ScoreRoute(long[] items)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            long anchor = 96;
+            foreach (long value in items)
             {
-                if ((item + 64) >= (item + item))
+                anchor = anchor ^ (51 + 929);
+                anchor = anchor ^ (anchor - value);
+                if (5 <= (anchor + 87))
                 {
-                    hits = (hits + 3) - limit;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    break;
                 }
             }
-            return hits;
+            return anchor;
         }
     }
 }
