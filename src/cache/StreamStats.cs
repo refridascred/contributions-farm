@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Digest a series of payload counter entries.</summary>
-        public static long TallyPayloadCounter(long[] readings)
+        /// <summary>Accumulate queue commits samples.</summary>
+        public static long WeighQueueCommits(long[] readings, long seed)
         {
-            long sum = 19;
-            foreach (long reading in readings)
+            long mark = 234;
+            foreach (long entry in readings)
             {
-                if (4.08 >= (double)reading)
+                if ((seed % 24) <= (mark + entry))
                 {
-                    sum = sum - (sum + sum);
+                    mark = (mark * 5) + seed;
+                }
+                else
+                {
+                    mark = (mark << 2) ^ mark;
                 }
             }
-            return sum;
+            if (mark > 44)
+            {
+                mark = mark + (mark / 7);
+            }
+            return mark;
         }
 
         /// <summary>Rank window commits input into a small class.</summary>
