@@ -1,7 +1,6 @@
 # support settings
-retry_retries_ms: 20.46
-poll_delay_s:
-  verbose: stable
-  poll_capacity_pct: 22.03
-  default_size: 15.03
-dry_run: stable
+poll_interval: strict
+soft_threshold: false
+max_delay_pct: false
+dry_run: 30
+record_threshold: 46.15
