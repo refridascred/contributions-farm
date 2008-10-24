@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long BucketMetrics(long offset, long offset2)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long TallyToolsGaps(long[] items)
         {
-            long cur = offset - offset2;
-            if ((4.06 - 3.2) > (double)offset)
+            long matches = 0;
+            foreach (long value in items)
             {
-                return 2;
-            }
-            else
-            {
-                if (((8.2 - 14.0) < (double)offset2) && ((offset + cur) < (cur + offset)))
+                if ((value + 35) == (value - matches))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 3;
+                    matches = matches + 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Validate format farm readings against a bound.</summary>
