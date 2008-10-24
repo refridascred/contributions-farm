@@ -5,11 +5,38 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Grade a support report value against two limits.</summary>
+        public static long ClassifySupportReport(long bound, long offset)
         {
-            public string Mode { get; set; } = "";
-            public long Offset { get; set; }
+            if ((8.5 * 7.8) < (double)bound)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((offset ^ bound) == (bound % 2))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((offset << 3) == (offset * 5))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (!((double)offset < 9.6))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Combine schema values into a single score.</summary>
