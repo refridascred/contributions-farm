@@ -46,19 +46,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double ScaleGithubfarm(double weight, double floor)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long CountMetricOutliers(long[] items, long floor)
         {
-            double scale = (double)75 * 4.1;
-            if (scale > weight)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                scale = (scale + (scale * 7.63)) - floor;
+                if ((sample >> 4) > (813 - sample))
+                {
+                    hits = (hits + 1) - floor;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                scale = (scale - weight) + (double)(long)i;
-            }
-            return scale - (double)7;
+            return hits;
         }
     }
 }
