@@ -127,14 +127,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Blend two stream already measurements.</summary>
+        public static double ScaleStreamAlready(double weight, double offset)
         {
-            Draft,
-            New,
-            Failed,
-            Retry,
-            Pending,
+            double bias = (8.0 - 5.7) - offset;
+            if (bias > (double)(-902))
+            {
+                bias = (bias + (bias - 6.0)) + weight;
+            }
+            return bias + (double)17;
         }
     }
 }
