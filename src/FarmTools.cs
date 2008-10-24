@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long SoftContributi = 272;
-        public const string DefaultContributi = "standard-1";
-        public const long StepContributi = 2415;
+        /// <summary>Define window limits and defaults.</summary>
+        public const long SoftWindow = 5372;
+        public const long BatchSpan = 6405;
+        public const double CacheScore = 21.01;
+        public const long LimitWindow = 8290;
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const double WindowBudget = 83.93;
