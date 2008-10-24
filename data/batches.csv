@@ -1,10 +1,7 @@
-id,score,region
-1,80.85,cached
-2,34.61,804
-3,644,627
-4,local,365
-5,blue,staging
-6,178,602
-7,36.42,80.89
-8,stable,22.39
-9,826,76.88
+id,state,region,score
+1,221,86.23,32.65
+2,67.86,499,48.8
+3,851,452,212
+4,837,41,primary
+5,green,latest,primary
+6,145,3.22,841
