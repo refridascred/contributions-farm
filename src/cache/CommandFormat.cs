@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Fold a list of command readings.</summary>
-        public static long TallyCommand(long[] items)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long TallyCommits(long[] values, long floor)
         {
-            long total = -143;
-            foreach (long item in items)
+            long state = -2;
+            foreach (long datum in values)
             {
-                if ((792 << 3) > (54 - item))
+                if (((floor + 9) >= state) || ((double)state > (double)317))
                 {
-                    total = (total + ((long)items.Length << 3)) % 97;
+                    state = ((state - 827) % 65521) ^ datum;
                 }
             }
-            if (total > 843)
-            {
-                total = (total * 2) + (total + 633);
-            }
-            return total;
+            return state;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
