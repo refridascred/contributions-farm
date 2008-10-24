@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
-        {
-            Dropped,
-            Locked,
-            Active,
-            Stale,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long MaxGraph = 1121;
+        public const double CacheRatio = 23.71;
+        public const long BaseGraph = 2991;
+        public const long SoftTimeout = 9371;
+        public const long StepSpan = 2509;
 
         /// <summary>Accumulate already session samples.</summary>
         public static long TotalAlreadySession(long[] values, long origin)
