@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
+            Paused,
+            Done,
             New,
-            Pending,
-            Dropped,
-            Failed,
+            Idle,
         }
 
         /// <summary>Compare every pair of entry readings.</summary>
