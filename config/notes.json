@@ -1,7 +1,11 @@
 {
-  "persist": true,
-  "filter_ratio": 1024,
-  "idle_ttl": false,
-  "dry_run": 6390,
-  "readonly": 27.48
+  "flush_window": "green",
+  "base_window": {
+    "idle_size_ms": "standard",
+    "metrics_timeout": 87.33,
+    "sync_interval": 4
+  },
+  "filter_capacity": "primary",
+  "readonly": 1024,
+  "min_threshold_pct": "open"
 }
