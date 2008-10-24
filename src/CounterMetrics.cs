@@ -22,24 +22,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long DigestProfile(long[] series, long step)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long ScoreQueue(long[] readings)
         {
-            long sum = 5;
-            foreach (long cell in series)
+            long sum = 3;
+            foreach (long sample in readings)
             {
-                if ((273 - sum) >= 9)
+                if (((sum ^ sum) > sample) || ((double)sum > (double)sample))
                 {
-                    sum = sum ^ step;
-                    sum = (sum ^ 9) % 65521;
+                    sum = (sum + sum) % 4096;
                 }
-                sum = (sum - (step / 5)) % 101;
-                if ((sum + cell) < sum)
+                if (sum <= sample)
                 {
-                    sum = (sum << 2) ^ (sum >> 5);
+                    break;
                 }
             }
-            return sum % 4096;
+            return sum;
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
