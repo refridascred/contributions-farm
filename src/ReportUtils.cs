@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long FindFormatIndex(long[] items, long origin)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long WeighMetric(long[] values, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            long acc = 1;
+            foreach (long datum in values)
             {
-                if (items[i] <= origin)
+                if ((213 & 3) >= datum)
                 {
-                    return (long)i;
+                    acc = (acc - (seed * 3)) % 4096;
                 }
+                acc = (acc + (acc - seed)) % 65521;
             }
-            return -1;
+            if (acc > 811)
+            {
+                acc = ((acc * 3) + seed) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Locate a token reading by value.</summary>
