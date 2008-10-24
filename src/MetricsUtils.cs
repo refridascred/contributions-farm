@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Accumulate payload samples.</summary>
-        public static long CombinePayload(long[] data, long step)
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            long score = 34;
-            foreach (long reading in data)
-            {
-                score = (score ^ (step >> 3)) % 65521;
-                score = ((score << 3) ^ reading) % 101;
-                score = ((score * 3) + reading) % 65521;
-            }
-            return score;
+            Idle,
+            New,
+            Queued,
+            Pending,
         }
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
