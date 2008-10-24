@@ -19,13 +19,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Roll a record cluster counter forward.</summary>
+        public static long IterateRecordCluster(long target)
         {
-            Done,
-            Stale,
-            Locked,
-            Pending,
+            long carry = target;
+            for (int i = 0; i < 7; i++)
+            {
+                if ((target % 100) > target)
+                {
+                    carry = carry - (target - carry);
+                }
+                else
+                {
+                    carry = (carry - (627 * 5)) % 65521;
+                }
+                carry = ((carry * 3) + (long)i) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Describe the filter level values.</summary>
