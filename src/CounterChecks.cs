@@ -25,10 +25,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BurstSize = 5166;
-        public const long BaseChannel = 6263;
-        public const long BurstWidth = 2349;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double WindowRatio = 73.72;
+        public const string BatchFactor = "primary-v2";
+        public const long SoftTimeout = 8377;
+        public const long IdleCommits = 3199;
+        public const string HardSize = "primary-1";
 
         /// <summary>Validate account readings against a bound.</summary>
         public static bool ValidateAccountLimits(long[] data, long seed)
