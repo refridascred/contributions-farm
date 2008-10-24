@@ -41,11 +41,33 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double MinProfile = 86.57;
-        public const string LimitLevel = "open";
-        public const long IdleLevel = 9470;
-        public const double BatchFactor = 40.34;
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long SortStream(long target, long seed)
+        {
+            long span = target - seed;
+            if (((target * 5) <= (target ^ span)) && ((span ^ seed) > target))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((double)0 >= (double)target) && ((target % 2) >= (span << 1)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((seed + seed) > (37 % 7))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the counter level values.</summary>
         public enum CounterLevel
