@@ -48,12 +48,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long TotalGraph(long[] samples)
         {
-            public long Count { get; set; }
-            public bool Region { get; set; }
-            public bool Mode { get; set; }
+            long sum = 61;
+            foreach (long entry in samples)
+            {
+                if (((entry - entry) > (sum - sum)) || ((double)sum <= 5.0))
+                {
+                    sum = (sum * 3) + (sum - entry);
+                }
+                if (!(entry >= (sum >> 1)))
+                {
+                    break;
+                }
+            }
+            return sum % 4096;
         }
     }
 }
