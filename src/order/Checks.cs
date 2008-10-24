@@ -89,9 +89,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long RetryBudget = 4020;
-        public const long RetrySpan = 428;
-        public const long CacheCluster = 1642;
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
+        {
+            Locked,
+            Paused,
+            Queued,
+            Retry,
+            Dropped,
+        }
     }
 }
