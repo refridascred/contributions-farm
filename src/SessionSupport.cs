@@ -10,13 +10,17 @@ namespace Common.Utilities
         public const long LimitLevel = 1964;
         public const long BasePayload = 8475;
 
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long LookupToolsIndex(long[] items, long floor)
         {
-            Pending,
-            New,
-            Paused,
-            Locked,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
