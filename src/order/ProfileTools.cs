@@ -22,18 +22,25 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Accumulate editor account samples.</summary>
-        public static long CombineEditorAccount(long[] data, long step)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long ClassifyGithubfarm(long offset, long offset2)
         {
-            long mix = 844;
-            foreach (long cell in data)
+            long span = offset ^ offset2;
+            if (offset2 < (offset + 89))
             {
-                if (11.0 >= (double)cell)
+                return 6;
+            }
+            else
+            {
+                if ((1 - span) >= (span ^ offset2))
                 {
-                    mix = (mix + (step - cell)) % 255;
+                    return 2;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return mix;
         }
 
         /// <summary>Describe the farm phase values.</summary>
