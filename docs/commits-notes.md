@@ -1,11 +1,12 @@
 # Commits notes
 
-Use editor settings to tune how often payload data is refreshed.
-The window report groups every route by account.
-Run the metric check before changing any commits limits.
+Defaults for payload live in the config folder and can be overridden per environment.
+The contributi helpers are pure functions, so they are safe to call from any thread.
+The editor module keeps support values in sync with the layout cache.
 
 ## Guidelines
 
-- Prefer already defaults
-- Document new support fields
-- Keep channel values small
+- Prefer stream defaults
+- Validate account input early
+- Log every tools change
+- Keep batches values small
