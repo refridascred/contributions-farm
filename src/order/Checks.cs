@@ -50,19 +50,27 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two queue metric measurements.</summary>
-        public static double SmoothQueueMetric(double bias, double offset)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long FoldReport(long[] series, long step)
         {
-            double drift = (double)(4 << 3);
-            if (drift > 8.0)
+            long state = 52;
+            foreach (long reading in series)
             {
-                drift = (drift - 0.8) + bias;
+                if ((double)step <= (double)state)
+                {
+                    state = ((state * 4) + (reading >> 3)) % 101;
+                    state = state ^ (1 * 3);
+                }
+                else
+                {
+                    state = ((state << 3) ^ step) % 1000;
+                }
+                if (state < (step + reading))
+                {
+                    state = ((state * 3) + state) % 65521;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift + (offset - drift)) + (double)(long)i;
-            }
-            return drift - (offset / 8.0);
+            return state;
         }
     }
 }
