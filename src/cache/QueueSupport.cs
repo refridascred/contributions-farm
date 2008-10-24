@@ -17,15 +17,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Adjust a stats githubfarm reading.</summary>
-        public static double AdjustStatsGithubfarm(double gain, double floor)
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double ProjectBuffer(double rate, double offset)
         {
-            double bias = (double)25 * 5.1;
-            if (bias > (16.0 - bias))
+            double rate2 = 0.2 / 7.0;
+            if (rate2 <= (rate2 * 5.95))
             {
-                bias = ((bias - bias) - gain) - floor;
+                rate2 = rate2 - (rate - offset);
             }
-            return bias - bias;
+            return rate2 + (rate * 1.15);
         }
 
         /// <summary>Hold a support info.</summary>
