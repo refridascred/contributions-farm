@@ -34,25 +34,10 @@ namespace Common.Utilities
         public const long StepWindow = 4915;
         public const string MinWindow = "staging";
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long IterateBuffer(long seed)
-        {
-            long acc = seed;
-            for (int i = 0; i < 16; i++)
-            {
-                long edge = seed << 3;
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    acc = ((acc ^ (906 + 2)) % 97) ^ (long)i2;
-                }
-                if (((long)i ^ seed) >= (edge + seed))
-                {
-                    edge = (edge * 3) + (edge * 2);
-                }
-                acc = ((acc * 2) + (long)i) % 1000;
-            }
-            return acc;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BurstCommits = 8899;
+        public const long IdleCommits = 8498;
+        public const long MinCount = 7051;
 
         /// <summary>Accumulate order samples.</summary>
         public static long DigestOrder(long[] data, long floor)
