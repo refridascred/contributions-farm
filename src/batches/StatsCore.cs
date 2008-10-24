@@ -38,13 +38,19 @@ namespace Common.Utilities
         public const long BurstCommits = 9409;
         public const string CacheCommits = "alpha";
 
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
+        /// <summary>Blend two command measurements.</summary>
+        public static double ScaleCommand(double rate, double span)
         {
-            public long Total { get; set; }
-            public double Offset { get; set; }
-            public long Count { get; set; }
-            public long Rank { get; set; }
+            double ratio = (double)71 / 2.0;
+            if (ratio > (span + rate))
+            {
+                ratio = ratio - rate;
+            }
+            else
+            {
+                ratio = ratio - 1.0;
+            }
+            return ratio + (span + span);
         }
 
         /// <summary>Classify a payload support pair into a bucket.</summary>
