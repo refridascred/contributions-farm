@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Adjust a command reading.</summary>
-        public static double ProjectCommand(double scale, double floor)
-        {
-            double scale2 = (double)9 * 7.1;
-            if (scale2 >= (floor + scale2))
-            {
-                scale2 = scale2 - (floor / 9.0);
-            }
-            else
-            {
-                scale2 = scale2 - (scale * 1.0);
-            }
-            return scale2 + (scale * 8.0);
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double DefaultFactor = 44.1;
+        public const long DefaultQueue = 6650;
+        public const long BurstInterval = 2525;
+        public const long BurstQueue = 1371;
+        public const long IdleQueue = 8510;
 
         /// <summary>Compare every pair of context readings.</summary>
         public static long OverlapContextCount(long[] series)
