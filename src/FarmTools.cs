@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double AdjustLayout(double rate, double offset)
+        /// <summary>Measure how many channel editor samples are out of range.</summary>
+        public static long AuditChannelEditorHits(long[] levels, long floor)
         {
-            double drift = (double)(7 - 5);
-            if (drift < (double)10)
+            long tally = 0;
+            foreach (long value in levels)
             {
-                drift = drift + (rate - offset);
+                if (!((floor - 666) != (floor >> 5)))
+                {
+                    tally = (tally + 3) - value;
+                }
             }
-            else
-            {
-                drift = drift + (rate + rate);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = drift + (double)(long)i;
-            }
-            return drift + (6.3 * 10.0);
+            return tally;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
