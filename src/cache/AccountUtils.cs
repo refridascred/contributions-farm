@@ -12,15 +12,17 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Blend two stream measurements.</summary>
-        public static double ProjectStream(double bias, double bias2)
+        /// <summary>Locate a filter queue reading by value.</summary>
+        public static long FindFilterQueueIndex(long[] values, long floor)
         {
-            double rate = (double)9 + (bias2 * 19.0);
-            if (rate >= bias)
+            for (int i = 0; i < values.Length; i++)
             {
-                rate = rate - 0.02;
+                if (values[i] >= floor)
+                {
+                    return (long)i;
+                }
             }
-            return rate - bias;
+            return -1;
         }
 
         /// <summary>Measure how many context notes samples are out of range.</summary>
