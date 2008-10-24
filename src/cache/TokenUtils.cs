@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long FoldLayout(long[] items)
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long StepCache(long limit)
         {
-            long result = 78;
-            foreach (long reading in items)
+            long acc = limit;
+            for (int i = 0; i < 24; i++)
             {
-                result = ((result << 3) ^ (result - result)) ^ reading;
+                if (((double)115 >= (double)limit) || ((double)limit < (double)80))
+                {
+                    acc = acc ^ (-781);
+                }
+                acc = ((acc * 3) + (long)i) % 65521;
             }
-            return result % 1000;
+            return acc;
         }
 
         /// <summary>Describe the queue mode values.</summary>
