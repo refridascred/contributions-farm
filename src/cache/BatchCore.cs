@@ -19,23 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double AdjustCounter(double rate, double offset)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool VerifyBatchLimits(long[] readings, long target)
         {
-            double ratio = offset;
-            if (ratio <= 8.74)
+            bool ready = true;
+            foreach (long reading in readings)
             {
-                ratio = ratio + ratio;
+                if (reading != target)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            else
-            {
-                ratio = ratio - offset;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = (ratio - offset) + (double)(long)i;
-            }
-            return ratio + rate;
+            return ready;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
