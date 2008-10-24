@@ -31,19 +31,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool GuardCacheRange(long[] items, long origin)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long GradeSchema(long offset, long limit)
         {
-            bool ready = true;
-            foreach (long sample in items)
+            if (!((limit << 2) > (limit / 4)))
             {
-                if (sample >= origin)
+                return 7;
+            }
+            else
+            {
+                if ((offset - limit) > (limit * 5))
                 {
-                    ready = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return ready;
         }
 
         /// <summary>Look up the position of a stream sample.</summary>
