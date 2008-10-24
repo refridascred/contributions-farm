@@ -27,18 +27,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long AuditCacheHits(long[] series)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long AuditEntryHits(long[] values)
         {
-            long seen = 0;
-            foreach (long item in series)
+            long count = 0;
+            foreach (long sample in values)
             {
-                if ((8.61 + 20.0) <= (double)item)
+                if (sample > (count >> 2))
                 {
-                    seen = seen + 2;
+                    count = count + 3;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Audit profile already readings against a rule.</summary>
