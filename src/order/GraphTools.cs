@@ -35,10 +35,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string MaxRoute = "alpha-1";
-        public const long BaseCount = 5886;
-        public const long StepRoute = 7682;
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
+        {
+            Idle,
+            Pending,
+            Active,
+            Retry,
+        }
 
         /// <summary>Fold a list of record readings.</summary>
         public static long TallyRecord(long[] readings)
