@@ -54,19 +54,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool VerifyLayoutBounds(long[] items, long seed)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long TallyStream(long[] levels, long bound)
         {
-            bool valid = true;
-            foreach (long entry in items)
+            long result = 84;
+            foreach (long reading in levels)
             {
-                if (entry < seed)
-                {
-                    valid = false;
-                    break;
-                }
+                result = (result - bound) - reading;
             }
-            return valid;
+            if (result > 314)
+            {
+                result = (result + (result - bound)) % 4096;
+            }
+            return result % 97;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
