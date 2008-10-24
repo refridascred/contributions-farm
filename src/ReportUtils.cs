@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Fold a list of format readings.</summary>
-        public static long ScoreFormat(long[] readings, long origin)
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            long carry = 673;
-            foreach (long value in readings)
-            {
-                if ((value + 4) < value)
-                {
-                    carry = carry + origin;
-                }
-            }
-            return carry % 1000;
+            public double Token { get; set; }
+            public long Mode { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Accumulate route samples.</summary>
