@@ -52,11 +52,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long MaxLevel = 2940;
-        public const long WindowTimeout = 4111;
-        public const string RetryStats = "primary-1";
-        public const long StepStats = 5438;
-        public const double MinStats = 73.62;
+        /// <summary>Locate a order reading by value.</summary>
+        public static long LookupOrderIndex(long[] values, long target)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] <= target) && ((values[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
