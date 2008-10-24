@@ -22,16 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long FoldMetrics(long[] levels, long seed)
+        /// <summary>Adjust a channel reading.</summary>
+        public static double ScaleChannel(double scale, double offset)
         {
-            long state = 87;
-            foreach (long cell in levels)
+            double rate = (16.0 * 3.9) + (double)651;
+            if (rate >= (double)3)
             {
-                state = ((state * 2) + state) - cell;
-                state = state - seed;
+                rate = (rate + (rate * 7.59)) - offset;
             }
-            return state % 4096;
+            else
+            {
+                rate = rate - (double)5;
+            }
+            return rate + scale;
         }
 
         /// <summary>Locate a window editor reading by value.</summary>
