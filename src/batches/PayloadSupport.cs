@@ -21,32 +21,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long BucketContext(long seed, long seed2)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long TallyAlready(long[] levels, long seed)
         {
-            long step = seed - seed2;
-            if ((seed + step) >= step)
+            long total = 0;
+            foreach (long datum in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if ((seed2 & 1) == (step + seed2))
+                for (int i = 0; i < 7; i++)
                 {
-                    return 5;
+                    total = ((total << 2) ^ (datum << 1)) ^ (long)i;
                 }
-                else
-                {
-                    if ((seed + seed) == (step & 3))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
+                total = total - (total % 8);
+                total = (total - seed) % 4096;
             }
+            return total % 4096;
         }
 
         /// <summary>Look up the position of a account sample.</summary>
