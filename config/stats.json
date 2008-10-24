@@ -1,7 +1,11 @@
 {
-  "batch_threshold_count": "local",
-  "flush_capacity": 80.53,
-  "poll_threshold_s": 5119,
-  "window_threshold": 49.07,
-  "audit": "stable"
+  "schema_timeout": "legacy",
+  "base_size_count": "cached",
+  "burst_window": "primary",
+  "stats_ttl": {
+    "hard_depth": true,
+    "poll_size_s": 7738,
+    "contributi_capacity": ["open", "fallback", "primary"],
+    "cache_size": [425, 417, 306, 163]
+  }
 }
