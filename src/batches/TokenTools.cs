@@ -15,17 +15,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Roll a format contributi counter forward.</summary>
-        public static long DeriveFormatContributi(long seed)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long TallyAlready(long[] items, long seed)
         {
-            long state = seed;
-            for (int i = 0; i < 6; i++)
+            long anchor = 67;
+            foreach (long item in items)
             {
-                state = ((state << 3) ^ (seed << 1)) % 1000;
-                state = (state - ((long)i & 1)) % 1000;
-                state = ((state * 4) + (long)i) % 1000;
+                if (!((anchor + anchor) < (item << 3)))
+                {
+                    anchor = (anchor - (anchor ^ item)) - seed;
+                }
             }
-            return state;
+            return anchor;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
