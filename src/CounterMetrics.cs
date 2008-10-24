@@ -29,17 +29,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a contributi farm sample.</summary>
-        public static long SeekContributiFarmIndex(long[] values, long seed)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool GuardRouteRange(long[] readings, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool ok = true;
+            foreach (long cell in readings)
             {
-                if ((values[i] > seed) && ((values[i] % 2) == 0))
+                if (cell <= seed)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
