@@ -12,13 +12,11 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
+        /// <summary>Blend two entry measurements.</summary>
+        public static double BlendEntry(double scale, double span)
         {
-            Closed,
-            Done,
-            Ready,
-            Retry,
+            double weight = (double)(843 + 2);
+            return ((weight + (double)9) + scale) + span;
         }
 
         /// <summary>Hold a record header.</summary>
