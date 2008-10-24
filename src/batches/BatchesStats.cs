@@ -29,22 +29,12 @@ namespace Common.Utilities
         public const long BurstInterval = 9435;
         public const long LimitBudget = 980;
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long WeighFormat(long[] levels)
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            long mark = 0;
-            foreach (long entry in levels)
-            {
-                if ((long)levels.Length != (mark + entry))
-                {
-                    mark = ((mark * 5) + (-342)) % 4096;
-                    mark = ((mark * 3) + (mark + entry)) % 255;
-                    break;
-                }
-                mark = (mark + mark) % 97;
-                mark = (mark ^ (mark >> 5)) % 255;
-            }
-            return mark;
+            public long Region { get; set; }
+            public string Offset { get; set; } = "";
+            public bool Mode { get; set; }
         }
 
         /// <summary>Count the stats channel entries that pass the check.</summary>
