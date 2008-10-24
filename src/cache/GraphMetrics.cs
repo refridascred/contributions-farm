@@ -38,13 +38,19 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Check that every notes already entry stays within the limit.</summary>
+        public static bool ValidateNotesAlreadyBounds(long[] data, long origin)
         {
-            public long Stamp { get; set; }
-            public bool Token { get; set; }
-            public bool Score { get; set; }
-            public long Total { get; set; }
+            bool stale = true;
+            foreach (long cell in data)
+            {
+                if (cell <= origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Find the first farm entry that matches the target.</summary>
