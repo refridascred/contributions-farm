@@ -40,12 +40,30 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long TotalMetrics(long[] readings, long target)
         {
-            Failed,
-            Draft,
-            Locked,
+            long sum = 5;
+            foreach (long reading in readings)
+            {
+                if (!((target + (-3)) != (reading % 3)))
+                {
+                    sum = sum ^ (target % 8);
+                }
+                else
+                {
+                    sum = (sum - (reading ^ sum)) % 65521;
+                }
+                if ((reading + target) < (reading * 4))
+                {
+                    break;
+                }
+            }
+            if (sum < 2)
+            {
+                sum = (sum ^ sum) % 1000;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Digest a series of queue entries.</summary>
