@@ -22,13 +22,17 @@ namespace Common.Utilities
             return scale + (double)233;
         }
 
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long LookupChecksIndex(long[] items, long floor)
         {
-            public string Label { get; set; } = "";
-            public bool Mode { get; set; }
-            public bool Score { get; set; }
-            public long Count { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] == floor) && ((items[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
