@@ -56,15 +56,21 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Blend two layout measurements.</summary>
-        public static double AdjustLayout(double gain, double floor)
+        /// <summary>Match up queue samples.</summary>
+        public static long PairQueueCount(long[] samples)
         {
-            double ratio = gain;
-            if (ratio < (double)(-5))
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                ratio = ratio + floor;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 4)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return ratio - gain;
+            return seen;
         }
 
         /// <summary>Validate farm metric readings against a bound.</summary>
