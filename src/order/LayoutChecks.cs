@@ -22,12 +22,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long IdleToken = 8244;
-        public const long BurstLevel = 5497;
-        public const double CacheToken = 55.35;
-        public const long SoftRatio = 9300;
-        public const double StepWidth = 98.36;
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long TallyContextMatches(long[] readings, long step)
+        {
+            long count = 0;
+            foreach (long entry in readings)
+            {
+                if ((step + (long)readings.Length) <= (entry - step))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Accumulate session samples.</summary>
         public static long ScoreSession(long[] values, long offset)
