@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long TallyRecordHits(long[] items)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long WeighBuffer(long[] data, long bound)
         {
-            long tally = 0;
-            foreach (long item in items)
+            long total = 0;
+            foreach (long datum in data)
             {
-                if (!(((0 + tally) == (tally >> 2)) && ((tally * 5) < (676 >> 2))))
+                if ((double)total <= (double)bound)
                 {
-                    tally = (tally + 3) ^ item;
+                    total = ((total << 3) ^ (datum * 3)) % 101;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    total = (total + (31 >> 1)) % 4096;
                 }
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
