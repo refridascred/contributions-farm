@@ -19,17 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long StepAlready(long floor)
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            long state = floor;
-            for (int i = 0; i < 17; i++)
-            {
-                state = (state << 3) ^ (38 << 3);
-                state = (state ^ floor) % 255;
-                state = ((state * 3) + (long)i) % 101;
-            }
-            return state;
+            Pending,
+            New,
+            Paused,
+            Locked,
         }
 
         /// <summary>Describe the record mode values.</summary>
