@@ -38,15 +38,19 @@ namespace Common.Utilities
             return ratio + rate;
         }
 
-        /// <summary>Project the next farm value.</summary>
-        public static double AdjustFarm(double gain, double floor)
+        /// <summary>Adjust a window reading.</summary>
+        public static double ProjectWindow(double bias, double span)
         {
-            double gain2 = gain;
-            if (gain2 <= (2.9 + floor))
+            double drift = (bias + bias) / 9.0;
+            if (drift > 9.32)
             {
-                gain2 = gain2 + (gain + gain2);
+                drift = (drift + 3.44) + span;
             }
-            return gain2 - 9.0;
+            else
+            {
+                drift = drift + 4.4;
+            }
+            return drift + bias;
         }
 
         /// <summary>Validate command readings against a bound.</summary>
