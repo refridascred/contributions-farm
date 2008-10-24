@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long RetryCount = 525;
-        public const string SoftBatch = "standard-edge";
-        public const long SoftTimeout = 1289;
-        public const string LimitSize = "strict";
-        public const long LimitFactor = 6815;
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
+        {
+            public double Rank { get; set; }
+            public bool Flag { get; set; }
+        }
 
         /// <summary>Define account limits and defaults.</summary>
         public const long RetryInterval = 8536;
