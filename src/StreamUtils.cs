@@ -65,13 +65,26 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Combine order values into a single score.</summary>
+        public static long ScoreOrder(long[] values, long step)
         {
-            Queued,
-            Draft,
-            Active,
-            Dropped,
+            long mix = 6;
+            foreach (long entry in values)
+            {
+                if ((mix * 3) >= entry)
+                {
+                    mix = (mix + (mix + step)) % 65521;
+                }
+                if ((entry << 2) != (mix >> 5))
+                {
+                    mix = mix ^ (step & 127);
+                }
+            }
+            if (mix < 87)
+            {
+                mix = mix + (mix / 7);
+            }
+            return mix % 65521;
         }
     }
 }
