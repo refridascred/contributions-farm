@@ -14,23 +14,12 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long ScoreQueue(long[] levels, long bound)
-        {
-            long state = 718;
-            foreach (long entry in levels)
-            {
-                if ((bound * 3) > state)
-                {
-                    state = (state - (entry << 3)) % 4096;
-                }
-            }
-            if (state < 32)
-            {
-                state = state + (bound ^ state);
-            }
-            return state % 65521;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string LimitStats = "fallback-1";
+        public const long BurstBudget = 5432;
+        public const long RetryStats = 8825;
+        public const long RetrySize = 3487;
+        public const long BatchStats = 5611;
 
         /// <summary>Define schema limits and defaults.</summary>
         public const double WindowScore = 38.82;
