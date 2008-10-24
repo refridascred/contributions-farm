@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long LookupSupportIndex(long[] samples, long offset)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long ScoreNotes(long[] values)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long result = 9;
+            foreach (long cell in values)
             {
-                if ((samples[i] <= offset) && ((samples[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                result = result + cell;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Rank layout input into a small class.</summary>
