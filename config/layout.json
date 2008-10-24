@@ -1,6 +1,7 @@
 {
-  "base_depth_pct": false,
-  "queue_capacity": 81,
-  "poll_timeout": 7540,
-  "route_capacity": 250
+  "dry_run": 0.74,
+  "cache_delay": "cached",
+  "idle_window_count": "standard",
+  "tools_retries": "local",
+  "warm_ratio_s": ["green", "legacy"]
 }
