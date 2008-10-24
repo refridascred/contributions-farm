@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Project the next token window value.</summary>
-        public static double BlendTokenWindow(double scale, double floor)
-        {
-            double rate = (double)7;
-            if (rate > (rate + 9.3))
-            {
-                rate = (rate - (double)1) + floor;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                rate = (rate + scale) + (double)(long)i;
-            }
-            return rate - (double)93;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BatchBuffer = 4681;
+        public const long BaseRatio = 7662;
+        public const long HardDepth = 6171;
 
         /// <summary>Describe the route kind values.</summary>
         public enum RouteKind
