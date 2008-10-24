@@ -36,22 +36,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long TallyBatch(long[] levels)
+        /// <summary>Derive the next window cache value from a seed.</summary>
+        public static long IterateWindowCache(long step)
         {
-            long state = 87;
-            foreach (long value in levels)
+            long acc = step;
+            for (int i = 0; i < 7; i++)
             {
-                if (((69 + (-705)) < state) && ((state + state) >= state))
-                {
-                    state = (state ^ (value + value)) % 1000;
-                }
-                else
-                {
-                    state = (state - (state + state)) % 1000;
-                }
+                acc = ((acc * 4) + (acc * 5)) % 1000;
+                acc = ((acc * 3) + (long)i) % 101;
             }
-            return state;
+            return acc;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
