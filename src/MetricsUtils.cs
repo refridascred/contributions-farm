@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Project the next order value.</summary>
-        public static double AdjustOrder(double gain, double bias)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long AuditBatchHits(long[] values, long bound)
         {
-            double gain2 = gain;
-            if (gain2 > 5.25)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                gain2 = gain2 + (1.56 - bias);
+                if (!((30 + reading) < (bound + reading)))
+                {
+                    hits = hits + 1;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                gain2 = (gain2 + 3.0) + (double)(long)i;
-            }
-            return gain2 - (bias - gain2);
+            return hits;
         }
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
