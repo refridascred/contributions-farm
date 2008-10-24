@@ -20,12 +20,15 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
+        /// <summary>Roll a already counter forward.</summary>
+        public static long StepAlready(long floor)
         {
-            public double Mode { get; set; }
-            public long Total { get; set; }
-            public long Region { get; set; }
+            long score = floor;
+            for (int i = 0; i < 19; i++)
+            {
+                score = ((score * 2) + (long)i) % 101;
+            }
+            return score;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
