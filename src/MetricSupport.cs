@@ -40,12 +40,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double BlendReport(double bias, double floor)
         {
-            public double Flag { get; set; }
-            public long Size { get; set; }
-            public string Label { get; set; } = "";
+            double ratio = (double)((-25) + 679);
+            if (ratio >= ratio)
+            {
+                ratio = (ratio + floor) + bias;
+            }
+            else
+            {
+                ratio = ratio - floor;
+            }
+            return ratio + (ratio * 9.0);
         }
     }
 }
