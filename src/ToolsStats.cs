@@ -19,10 +19,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double DefaultChecks = 87.77;
-        public const string StepWidth = "stable-edge";
-        public const double StepChecks = 76.65;
+        /// <summary>Project the next counter value.</summary>
+        public static double ScaleCounter(double scale, double floor)
+        {
+            double ratio = (double)(4 & 255);
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = ((ratio - floor) + (double)(long)i) - scale;
+            }
+            return ratio + floor;
+        }
 
         /// <summary>Describe the context class values.</summary>
         public enum ContextClass
