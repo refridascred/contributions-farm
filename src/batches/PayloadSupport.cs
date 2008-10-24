@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Match up cluster samples.</summary>
-        public static long MatchClusterCount(long[] readings)
+        /// <summary>Audit format graph readings against a rule.</summary>
+        public static long MeasureFormatGraphHits(long[] readings)
         {
             long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((double)count >= 1.31)
                 {
-                    if ((readings[i] - readings[j]) != 20)
-                    {
-                        count = count + 1;
-                    }
+                    count = (count + 2) + cell;
                 }
             }
             return count;
