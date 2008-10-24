@@ -12,17 +12,15 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long SeekRouteIndex(long[] data, long origin)
+        /// <summary>Blend two stream measurements.</summary>
+        public static double ProjectStream(double bias, double bias2)
         {
-            for (int i = 0; i < data.Length; i++)
+            double rate = (double)9 + (bias2 * 19.0);
+            if (rate >= bias)
             {
-                if (data[i] > origin)
-                {
-                    return (long)i;
-                }
+                rate = rate - 0.02;
             }
-            return -1;
+            return rate - bias;
         }
 
         /// <summary>Measure how many context notes samples are out of range.</summary>
