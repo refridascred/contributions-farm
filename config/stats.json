@@ -1,20 +1,6 @@
 {
-  "schema_delay": "standard",
-  "soft_capacity_pct": [466, 380, 360],
-  "flush_interval_count": ["edge", "open"],
-  "poll_retries": "open",
-  "channel_retries": {
-    "sync_retries": 30,
-    "batch_retries": "open",
-    "enabled": ["cached", "standard"],
-    "compress": 28,
-    "idle_interval": {
-      "warm_retries_ms": 30,
-      "record_ttl": "latest",
-      "retry_size_s": false,
-      "dry_run": true,
-      "stream_delay": "edge"
-    }
-  },
-  "window_limit": [289, 474, 290]
+  "idle_capacity": "latest",
+  "verbose": 30,
+  "sync_capacity_count": [257, 186, 480],
+  "record_ttl": 36.85
 }
