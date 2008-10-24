@@ -61,13 +61,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long TallyContributiHits(long[] samples)
         {
-            Active,
-            Failed,
-            Retry,
-            Queued,
+            long matches = 0;
+            foreach (long value in samples)
+            {
+                if ((433 + 5) < (value - 83))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Project the next account record value.</summary>
