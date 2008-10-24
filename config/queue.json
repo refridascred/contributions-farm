@@ -1,12 +1,6 @@
 {
-  "cluster_size": {
-    "burst_size_s": ["blue", "primary", "eu-west"],
-    "stream_limit": "blue",
-    "min_capacity_ms": "edge",
-    "farm_delay": 8342
-  },
-  "stream_ratio": 78.08,
+  "batch_retries": 67,
   "dry_run": "primary",
-  "default_window": 100,
-  "poll_ratio_pct": true
+  "filter_depth": true,
+  "cache_delay": "green"
 }
