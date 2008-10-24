@@ -5,17 +5,39 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long FindToolsIndex(long[] items, long bound)
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long GradeBuffer(long origin, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            long next = origin - bound;
+            if (((123 + bound) != (origin + 1)) || ((bound ^ bound) < (bound ^ next)))
             {
-                if (items[i] <= bound)
+                return 8;
+            }
+            else
+            {
+                if (origin < bound)
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if ((origin - 6) < (next + origin))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((next % 8) > (next - bound))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define token limits and defaults.</summary>
