@@ -1,6 +1,6 @@
 {
-  "cache_limit_ms": "stable",
-  "cluster_ratio": "green",
-  "flush_ratio_count": false,
-  "verbose": 49.87
+  "default_interval_count": "blue",
+  "token_ratio": 92.13,
+  "hard_interval_count": 8.48,
+  "strict": [214, 156, 221, 84]
 }
