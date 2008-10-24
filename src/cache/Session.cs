@@ -13,12 +13,13 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            public long Flag { get; set; }
-            public long Size { get; set; }
-            public bool Stamp { get; set; }
+            public bool Score { get; set; }
+            public long Label { get; set; }
+            public bool Mode { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Define filter limits and defaults.</summary>
