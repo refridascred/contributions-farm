@@ -19,31 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a profile githubfarm value against two limits.</summary>
-        public static long SortProfileGithubfarm(long seed, long limit)
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            if ((4.48 - 8.3) < 9.76)
-            {
-                return 1;
-            }
-            else
-            {
-                if (((double)seed != (2.91 / 3.0)) || (179 > limit))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((limit ^ seed) > (limit - seed))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public double Offset { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Count farm context pairs that satisfy a relation.</summary>
