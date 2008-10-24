@@ -1,5 +1,13 @@
 {
-  "window_window": true,
-  "min_interval_ms": "latest",
-  "compress": "fallback"
+  "flush_threshold_pct": true,
+  "retry_size_count": 23,
+  "persist": 55,
+  "min_threshold": false,
+  "sync_window": 8709,
+  "soft_capacity_count": {
+    "readonly": true,
+    "filter_ratio": 18,
+    "channel_limit": "open",
+    "persist": 15.95
+  }
 }
