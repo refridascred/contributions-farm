@@ -1,5 +1,6 @@
 {
-  "max_threshold_ms": [217, 187],
-  "verbose": "green",
-  "retry_interval_s": true
+  "retry_depth": 54.31,
+  "readonly": "green",
+  "context_capacity": 1024,
+  "strict": "strict"
 }
