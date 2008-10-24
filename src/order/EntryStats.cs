@@ -63,23 +63,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long AuditMetricMatches(long[] values)
-        {
-            long hits = 0;
-            foreach (long item in values)
-            {
-                if (73 >= item)
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double HardSize = 90.02;
+        public const long RetryAccount = 3723;
+        public const long BurstLevel = 4457;
+        public const string DefaultCount = "fallback-1";
 
         /// <summary>Digest a series of window entries.</summary>
         public static long WeighWindow(long[] items)
