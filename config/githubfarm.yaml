@@ -1,4 +1,6 @@
 # githubfarm settings
-min_capacity_count: 366
-flush_threshold: 100
-verbose: latest
+token_threshold:
+  - primary
+  - staging
+burst_delay_count: legacy
+idle_window: eu-west
