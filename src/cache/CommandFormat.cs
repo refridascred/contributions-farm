@@ -40,32 +40,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long ClassifyChecks(long step, long origin)
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            long slot = step - origin;
-            if ((step % 2) >= slot)
-            {
-                return 6;
-            }
-            else
-            {
-                if (((double)step > (double)origin) || ((1 & 63) > origin))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((slot >> 2) >= (origin ^ origin))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public long Token { get; set; }
+            public long Score { get; set; }
+            public double Level { get; set; }
         }
     }
 }
