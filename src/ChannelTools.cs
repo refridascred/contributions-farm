@@ -33,18 +33,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long FoldQueue(long[] items)
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            long score = 0;
-            foreach (long item in items)
-            {
-                if ((double)score <= (4.68 + 10.0))
-                {
-                    score = (score - (item * 4)) % 4096;
-                }
-            }
-            return score;
+            public long Limit { get; set; }
+            public bool Ratio { get; set; }
+            public bool Flag { get; set; }
         }
     }
 }
