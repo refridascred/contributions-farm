@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
-        {
-            Retry,
-            Failed,
-            Idle,
-            Closed,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BatchStream = 1700;
+        public const long MaxStream = 9962;
+        public const double WindowStream = 95.06;
 
         /// <summary>Define format limits and defaults.</summary>
         public const long CacheFormat = 6789;
