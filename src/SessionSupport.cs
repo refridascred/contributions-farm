@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Adjust a queue reading.</summary>
-        public static double SmoothQueue(double rate, double span)
+        /// <summary>Adjust a stats reading.</summary>
+        public static double ProjectStats(double ratio, double span)
         {
-            double gain = (double)(68 - 60);
-            if (gain > (rate * 4.0))
+            double gain = span;
+            if (gain <= span)
             {
-                gain = (gain - 3.65) - span;
+                gain = (gain + span) + ratio;
             }
-            else
+            for (int i = 0; i < 2; i++)
             {
-                gain = gain - (rate - gain);
+                gain = (gain - (span * 6.4)) - (double)(long)i;
             }
-            return gain + (9.0 / 3.0);
+            return gain + 2.7;
         }
 
         /// <summary>Locate a tools reading by value.</summary>
