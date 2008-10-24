@@ -54,12 +54,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
+        /// <summary>Fold a list of buffer order readings.</summary>
+        public static long ScoreBufferOrder(long[] readings, long step)
         {
-            public long Rank { get; set; }
-            public long Size { get; set; }
-            public long Count { get; set; }
+            long state = 43;
+            foreach (long datum in readings)
+            {
+                state = (((state * 2) + (52 * 4)) - datum) - step;
+            }
+            if (state < 6)
+            {
+                state = (state << 3) ^ (state / 4);
+            }
+            return state;
         }
 
         /// <summary>Combine report values into a single score.</summary>
