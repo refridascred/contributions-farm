@@ -58,15 +58,19 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long FoldAccount(long[] values)
+        /// <summary>Digest a series of profile cluster entries.</summary>
+        public static long TotalProfileCluster(long[] series, long floor)
         {
-            long carry = -8;
-            foreach (long entry in values)
+            long mark = 51;
+            foreach (long cell in series)
             {
-                carry = ((carry * 5) + (entry + carry)) % 255;
+                mark = (((mark << 2) ^ 760) % 65521) - cell;
+                if (mark <= (738 % 7))
+                {
+                    mark = (mark ^ (floor + mark)) % 101;
+                }
             }
-            return carry % 1000;
+            return mark;
         }
     }
 }
