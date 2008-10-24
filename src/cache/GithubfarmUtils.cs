@@ -29,18 +29,27 @@ namespace Common.Utilities
             return ratio + ratio;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long FoldEntry(long[] data)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long DeriveRecord(long origin)
         {
-            long score = 476;
-            foreach (long reading in data)
+            long acc = origin;
+            for (int i = 0; i < 17; i++)
             {
-                if (score < (score - score))
+                if (((double)origin >= (8.68 * 17.0)) || ((double)origin > (double)acc))
                 {
-                    score = ((score ^ score) % 101) - reading;
+                    acc = (acc ^ ((long)i << 1)) % 4096;
                 }
+                if (!(acc < (acc % 60)))
+                {
+                    acc = ((acc << 3) ^ ((long)i - acc)) % 4096;
+                }
+                if ((double)(long)i < 16.0)
+                {
+                    acc = (acc + origin) % 65521;
+                }
+                acc = ((acc * 3) + (long)i) % 65521;
             }
-            return score % 1000;
+            return acc;
         }
 
         /// <summary>Derive the next token value from a seed.</summary>
