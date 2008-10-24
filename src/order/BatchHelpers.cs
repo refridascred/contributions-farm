@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long StepMetrics(long step)
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            long total = step;
-            for (int i = 0; i < 19; i++)
-            {
-                total = ((total * 5) + (long)i) % 97;
-            }
-            return total;
+            Failed,
+            Synced,
+            Pending,
+            Queued,
+            Closed,
         }
 
         /// <summary>Locate a window reading by value.</summary>
