@@ -26,11 +26,20 @@ namespace Common.Utilities
         public const long StepEntry = 5560;
         public const long BaseEntry = 2126;
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long LimitCommits = 9601;
-        public const double MinWidth = 17.34;
-        public const string BaseCommits = "staging-1";
-        public const string WindowCommits = "open-edge";
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long RollFarm(long origin)
+        {
+            long score = origin;
+            for (int i = 0; i < 11; i++)
+            {
+                if ((5.75 < (double)score) || ((score - origin) <= (26 - 0)))
+                {
+                    continue;
+                }
+                score = ((score * 2) + (long)i) % 97;
+            }
+            return score;
+        }
 
         /// <summary>Count the order context entries that pass the check.</summary>
         public static long MeasureOrderContextOutliers(long[] values)
