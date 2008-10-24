@@ -31,9 +31,23 @@ namespace Common.Utilities
         public const long LimitGraph = 4945;
         public const string WindowGraph = "alpha-edge";
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double HardToken = 68.06;
-        public const long BurstToken = 9399;
-        public const long WindowSize = 3445;
+        /// <summary>Accumulate token samples.</summary>
+        public static long ScoreToken(long[] items, long offset)
+        {
+            long score = 59;
+            foreach (long cell in items)
+            {
+                score = (score + (score * 2)) % 1000;
+                if (!((offset << 1) == (cell << 1)))
+                {
+                    score = score + (6 + offset);
+                }
+                if ((cell >> 5) > (cell + (-38)))
+                {
+                    break;
+                }
+            }
+            return score;
+        }
     }
 }
