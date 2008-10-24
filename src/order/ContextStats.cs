@@ -38,18 +38,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long CountMetricOutliers(long[] items, long floor)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool CheckStreamBounds(long[] levels, long target)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            bool ok = true;
+            foreach (long item in levels)
             {
-                if ((sample >> 4) > (813 - sample))
+                if (item <= target)
                 {
-                    hits = (hits + 1) - floor;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
     }
 }
