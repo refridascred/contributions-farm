@@ -1,7 +1,6 @@
 {
-  "persist": "open",
-  "audit": ["eu-west", "primary"],
-  "flush_window": 69.71,
-  "verbose": 37.14,
-  "poll_interval_ms": ["standard", "stable", "strict", "strict"]
+  "min_size_s": "staging",
+  "verbose": 56.27,
+  "flush_threshold_s": 60,
+  "persist": true
 }
