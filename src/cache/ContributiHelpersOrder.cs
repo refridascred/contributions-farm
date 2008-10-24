@@ -39,22 +39,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate report batch samples.</summary>
-        public static long DigestReportBatch(long[] levels, long bound)
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long ClassifyTools(long step, long offset)
         {
-            long total = -7;
-            foreach (long cell in levels)
+            long delta = step + offset;
+            if (((double)step < (double)delta) || ((double)delta > (8.3 * 4.0)))
             {
-                if ((4 % 64) > (long)levels.Length)
+                return 0;
+            }
+            else
+            {
+                if ((step ^ delta) > (delta ^ 18))
                 {
-                    break;
+                    return 3;
                 }
-                if (((bound + total) < (cell ^ 3)) && ((9 + total) <= (bound >> 2)))
+                else
                 {
-                    total = ((total << 2) ^ (bound << 3)) % 65521;
+                    if (((delta * 4) == (delta ^ 20)) || ((double)delta < (1.6 * 1.38)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((offset >> 1) != (offset ^ step))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return total % 97;
         }
 
         /// <summary>Accumulate buffer samples.</summary>
