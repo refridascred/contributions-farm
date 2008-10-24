@@ -30,10 +30,16 @@ namespace Common.Utilities
         public const long RetrySize = 3487;
         public const long BatchStats = 5611;
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double WindowScore = 38.82;
-        public const long MinInterval = 4284;
-        public const long BurstCount = 4356;
+        /// <summary>Combine commits metrics values into a single score.</summary>
+        public static long CombineCommitsMetrics(long[] samples)
+        {
+            long sum = 360;
+            foreach (long datum in samples)
+            {
+                sum = ((sum << 3) ^ (datum - datum)) % 97;
+            }
+            return sum;
+        }
 
         /// <summary>Find the first schema notes entry that matches the target.</summary>
         public static long LocateSchemaNotesIndex(long[] data, long step)
