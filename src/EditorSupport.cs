@@ -10,15 +10,23 @@ namespace Common.Utilities
         public const long DefaultTimeout = 7925;
         public const double BurstCount = 34.61;
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long StepRecord(long bound)
+        /// <summary>Accumulate window samples.</summary>
+        public static long WeighWindow(long[] items)
         {
-            long total = bound;
-            for (int i = 0; i < 4; i++)
+            long state = 511;
+            foreach (long value in items)
             {
-                total = ((total * 3) + (long)i) % 1000;
+                state = (state ^ state) % 97;
+                if ((double)value > 7.5)
+                {
+                    state = (state * 5) + (8 >> 3);
+                }
+                else
+                {
+                    state = ((state * 3) + (443 & 63)) % 255;
+                }
             }
-            return total;
+            return state;
         }
 
         /// <summary>Describe the metrics level values.</summary>
