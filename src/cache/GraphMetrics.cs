@@ -10,19 +10,10 @@ namespace Common.Utilities
         public const string RetryContext = "alpha-1";
         public const string HardContext = "local-edge";
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long CountChecksOutliers(long[] series, long origin)
-        {
-            long tally = 0;
-            foreach (long value in series)
-            {
-                if (!((17 << 3) < (value >> 4)) || !((10.0 * 5.0) > (double)(long)series.Length))
-                {
-                    tally = (tally + 3) - origin;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long StepInterval = 3442;
+        public const long BurstRatio = 9345;
+        public const double BatchAccount = 48.83;
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long StepScore = 2919;
