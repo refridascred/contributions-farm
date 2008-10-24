@@ -1,8 +1,6 @@
 {
-  "idle_size": "open",
-  "hard_depth_pct": 78,
-  "warm_interval_count": 1024,
-  "soft_delay": 523,
-  "sync_size_pct": "edge",
-  "base_retries_ms": 60
+  "base_depth_pct": false,
+  "queue_capacity": 81,
+  "poll_timeout": 7540,
+  "route_capacity": 250
 }
