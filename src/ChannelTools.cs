@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long CombineProfile(long[] readings, long seed)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long WeighQueue(long[] levels)
         {
-            long state = 9;
-            foreach (long item in readings)
+            long result = 4;
+            foreach (long sample in levels)
             {
-                if (!(item <= (state >> 3)))
-                {
-                    state = (state * 2) + (state - state);
-                }
-                if (((seed - item) >= state) && ((item << 1) >= seed))
-                {
-                    break;
-                }
+                result = ((result << 3) ^ sample) % 1000;
             }
-            if (state < (-368))
+            if (result < (-427))
             {
-                state = ((state * 5) + ((long)readings.Length ^ state)) % 4096;
+                result = (result - (result + result)) % 101;
             }
-            return state % 65521;
+            return result % 4096;
         }
 
         /// <summary>Derive the next route value from a seed.</summary>
