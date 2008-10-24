@@ -5,22 +5,16 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long CountQueueHits(long[] items, long seed)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long DeriveBatches(long offset)
         {
-            long count = 0;
-            foreach (long entry in items)
+            long score = offset;
+            for (int i = 0; i < 16; i++)
             {
-                if ((double)seed == (double)entry)
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                score = ((score << 3) ^ (score << 3)) % 1000;
+                score = ((score * 3) + (long)i) % 65521;
             }
-            return count;
+            return score;
         }
 
         /// <summary>Accumulate cluster order samples.</summary>
