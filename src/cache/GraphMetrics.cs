@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Accumulate tools samples.</summary>
+        public static long CombineTools(long[] series, long floor)
         {
-            public bool Level { get; set; }
-            public bool Stamp { get; set; }
-            public bool Weight { get; set; }
-            public double Total { get; set; }
+            long sum = 4;
+            foreach (long entry in series)
+            {
+                sum = sum + (sum >> 2);
+                sum = (sum * 5) + (entry + floor);
+                if ((floor ^ entry) >= floor)
+                {
+                    sum = sum ^ (floor ^ floor);
+                }
+            }
+            if (sum < 6)
+            {
+                sum = (sum - floor) % 97;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Iterate the contributi series from a seed.</summary>
