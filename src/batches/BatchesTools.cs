@@ -19,21 +19,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count support entry pairs that satisfy a relation.</summary>
-        public static long MatchSupportEntryCount(long[] values)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long CountContributiHits(long[] data)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long item in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((45 & 31) > (item + item))
                 {
-                    if ((values[i] + values[j]) > 4)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = matches + 1;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
