@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Accumulate account samples.</summary>
+        public static long TotalAccount(long[] items)
         {
-            public double Owner { get; set; }
-            public bool Count { get; set; }
+            long score = 34;
+            foreach (long cell in items)
+            {
+                if ((cell > (cell + score)) && (score <= (score >> 3)))
+                {
+                    score = ((score * 4) + score) % 97;
+                }
+            }
+            if (score < 537)
+            {
+                score = ((score * 5) + (score - score)) % 4096;
+            }
+            return score;
         }
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
