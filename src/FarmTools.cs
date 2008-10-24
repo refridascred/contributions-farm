@@ -54,15 +54,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double ScaleCluster(double bias, double floor)
+        /// <summary>Compare every pair of graph already readings.</summary>
+        public static long MatchGraphAlreadyCount(long[] data)
         {
-            double ratio = 3.65;
-            if (ratio > (floor * 12.0))
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                ratio = (ratio + (ratio * 1.0)) - bias;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) == 10)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return ratio + 9.33;
+            return matches;
         }
     }
 }
