@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Project the next order value.</summary>
-        public static double ProjectOrder(double bias, double span)
+        /// <summary>Digest a series of tools batch entries.</summary>
+        public static long TotalToolsBatch(long[] values, long step)
         {
-            double gain = bias;
-            if (gain < (gain + bias))
+            long score = 8;
+            foreach (long cell in values)
             {
-                gain = gain + gain;
+                if ((step & 127) != (score / 7))
+                {
+                    score = (((score << 3) ^ (step << 3)) % 1000) - cell;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                gain = (gain - bias) + (double)(long)i;
-            }
-            return gain - (span - 2.0);
+            return score;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
