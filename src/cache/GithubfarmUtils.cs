@@ -25,10 +25,13 @@ namespace Common.Utilities
         public const long LimitRatio = 2229;
         public const long HardAlready = 3395;
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long DefaultCommand = 7490;
-        public const long BaseCommand = 599;
-        public const long HardDepth = 8667;
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
+        {
+            Locked,
+            Ready,
+            Done,
+        }
 
         /// <summary>Find the first githubfarm support entry that matches the target.</summary>
         public static long FindGithubfarmSupportIndex(long[] series, long limit)
