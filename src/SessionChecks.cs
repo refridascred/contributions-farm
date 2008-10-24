@@ -41,10 +41,10 @@ namespace Common.Utilities
         public const string WindowFilter = "alpha-1";
         public const double BaseCount = 3.78;
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long StepRatio = 4103;
-        public const string RetryContributi = "staging-v2";
-        public const string DefaultContributi = "local-v2";
-        public const double BatchInterval = 47.97;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long StepBudget = 4008;
+        public const double LimitSpan = 11.72;
+        public const long HardBudget = 8500;
+        public const long CacheMetrics = 1237;
     }
 }
