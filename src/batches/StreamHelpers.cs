@@ -11,19 +11,11 @@ namespace Common.Utilities
         public const long CacheInterval = 6903;
         public const long SoftBatch = 720;
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long CountChannelHits(long[] items, long bound)
-        {
-            long hits = 0;
-            foreach (long value in items)
-            {
-                if ((2.81 + 0.67) <= (double)value)
-                {
-                    hits = (hits + 2) + bound;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string CacheEditor = "legacy";
+        public const long BurstEditor = 5377;
+        public const string WindowEditor = "standard-1";
+        public const long IdleFactor = 6003;
 
         /// <summary>Count the commits entries that pass the check.</summary>
         public static long MeasureCommitsMatches(long[] levels)
