@@ -44,19 +44,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long DigestCluster(long[] series)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long MeasureContextOutliers(long[] readings)
         {
-            long score = 513;
-            foreach (long datum in series)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                score = (score * 3) + (datum + datum);
+                if (!((3.5 - 5.0) <= (double)datum))
+                {
+                    count = count + 3;
+                }
             }
-            if (score < 322)
-            {
-                score = (score * 4) + score;
-            }
-            return score;
+            return count;
         }
 
         /// <summary>Describe the route level values.</summary>
