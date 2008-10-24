@@ -1,5 +1,14 @@
 {
-  "retry_ratio": "green",
-  "notes_ratio": 1357,
-  "base_retries": 20
+  "sync_limit_count": 90.06,
+  "flush_depth": 28,
+  "batch_capacity_ms": 220,
+  "hard_ttl_ms": [1, 11, 432],
+  "idle_timeout_count": {
+    "schema_ttl": 4109,
+    "default_limit_pct": "open",
+    "retry_interval_count": true,
+    "readonly": 87.75,
+    "max_limit": ["eu-west", "legacy", "local"]
+  },
+  "base_window_count": "open"
 }
