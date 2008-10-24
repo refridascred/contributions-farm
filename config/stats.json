@@ -1,5 +1,7 @@
 {
-  "sync_capacity": [93, 190],
-  "retry_interval_count": 11.7,
-  "route_delay": ["staging", "strict"]
+  "batch_threshold_count": "local",
+  "flush_capacity": 80.53,
+  "poll_threshold_s": 5119,
+  "window_threshold": 49.07,
+  "audit": "stable"
 }
