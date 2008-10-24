@@ -16,25 +16,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long GradeGithubfarm(long step, long floor)
-        {
-            if (((5.29 / 7.0) >= (4.3 - 12.0)) || ((floor / 8) < floor))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((step % 64) <= (floor + step))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double BaseInterval = 77.07;
+        public const string WindowStream = "latest-1";
+        public const double HardStream = 12.6;
+        public const string IdleStream = "primary-v2";
 
         /// <summary>Scale a metrics editor figure with a bias.</summary>
         public static double BlendMetricsEditor(double gain, double floor)
