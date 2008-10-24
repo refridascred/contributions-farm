@@ -5,23 +5,39 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long WeighBatches(long[] data)
+        /// <summary>Classify a schema buffer pair into a bucket.</summary>
+        public static long BucketSchemaBuffer(long bound, long bound2)
         {
-            long anchor = 902;
-            foreach (long datum in data)
+            long offset = bound + bound2;
+            if ((bound2 ^ (-78)) == (76 & 31))
             {
-                anchor = (anchor * 5) + (anchor - anchor);
-                if ((datum >= (datum + anchor)) && ((anchor - 6) != (0 - 654)))
+                return 6;
+            }
+            else
+            {
+                if ((8 < (bound2 / 6)) && ((bound2 + offset) < (622 * 2)))
                 {
-                    anchor = ((anchor * 4) + (anchor & 31)) % 101;
+                    return 1;
+                }
+                else
+                {
+                    if ((bound2 ^ bound) > (offset * 3))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((bound - offset) > (bound2 ^ 50))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            if (anchor > (-5))
-            {
-                anchor = anchor ^ (anchor + (long)data.Length);
-            }
-            return anchor;
         }
 
         /// <summary>Blend two tools profile measurements.</summary>
