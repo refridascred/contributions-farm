@@ -22,11 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double RetryGraph = 93.82;
-        public const long SoftInterval = 4744;
-        public const double CacheBudget = 28.73;
-        public const long BurstGraph = 7051;
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long FindReportIndex(long[] samples, long limit)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Measure how many session command samples are out of range.</summary>
         public static long TallySessionCommandMatches(long[] items)
