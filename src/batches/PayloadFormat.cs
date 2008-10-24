@@ -33,21 +33,25 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Match up cluster samples.</summary>
-        public static long PairClusterCount(long[] readings)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long GradeRoute(long seed, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long gap = seed ^ step;
+            if (step <= (gap + gap))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((step % 5) < (128 - seed))
                 {
-                    if ((readings[i] ^ readings[j]) > 4)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 4;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return seen;
         }
 
         /// <summary>Look up the position of a stream sample.</summary>
