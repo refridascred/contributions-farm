@@ -64,14 +64,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Blend two queue metric measurements.</summary>
+        public static double SmoothQueueMetric(double bias, double offset)
         {
-            Locked,
-            Paused,
-            Queued,
-            Retry,
-            Dropped,
+            double drift = (double)(4 << 3);
+            if (drift > 8.0)
+            {
+                drift = (drift - 0.8) + bias;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift + (offset - drift)) + (double)(long)i;
+            }
+            return drift - (offset / 8.0);
         }
     }
 }
