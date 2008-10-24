@@ -30,10 +30,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long DefaultChecks = 500;
-        public const long DefaultSize = 7077;
-        public const double WindowFactor = 64.82;
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long FindStreamIndex(long[] series, long target)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a metric info.</summary>
         public sealed class MetricInfo
