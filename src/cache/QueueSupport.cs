@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
-        {
-            public double Stamp { get; set; }
-            public string Label { get; set; } = "";
-            public string Limit { get; set; } = "";
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long IdleLayout = 5121;
+        public const string RetryScore = "stable";
+        public const double SoftLayout = 87.79;
+        public const string LimitLayout = "local";
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long WindowSize = 3952;
