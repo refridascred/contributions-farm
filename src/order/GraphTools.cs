@@ -49,19 +49,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Adjust a support reading.</summary>
-        public static double AdjustSupport(double gain, double floor)
+        /// <summary>Check that every context counter entry stays within the limit.</summary>
+        public static bool CheckContextCounterBounds(long[] values, long bound)
         {
-            double load = (double)(4 - 309);
-            if (load <= 7.8)
+            bool ok = true;
+            foreach (long cell in values)
             {
-                load = (load - load) - floor;
+                if (cell < bound)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load - (gain - load)) - (double)(long)i;
-            }
-            return load + (gain + gain);
+            return ok;
         }
 
         /// <summary>Describe the window level values.</summary>
