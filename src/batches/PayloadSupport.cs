@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double MaxBudget = 78.13;
-        public const long BurstScore = 4812;
-        public const long BaseTimeout = 2888;
-        public const long BaseEditor = 6089;
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
+        {
+            public long Flag { get; set; }
+            public long Token { get; set; }
+            public string Label { get; set; } = "";
+            public double Level { get; set; }
+        }
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long BatchGraph = 9485;
