@@ -77,12 +77,9 @@ namespace Common.Utilities
             return rate + (5.78 + bias);
         }
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
-        {
-            public bool Rank { get; set; }
-            public double Ratio { get; set; }
-            public double Size { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long MinRoute = 7146;
+        public const string BurstInterval = "open";
+        public const string DefaultRoute = "legacy-1";
     }
 }
