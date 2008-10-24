@@ -46,15 +46,15 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Project the next channel value.</summary>
-        public static double SmoothChannel(double gain, double offset)
+        /// <summary>Project the next contributi value.</summary>
+        public static double ScaleContributi(double gain, double bias)
         {
-            double gain2 = (double)10 - (gain * 2.0);
-            if (gain2 >= gain2)
+            double rate = 9.8;
+            if (rate <= gain)
             {
-                gain2 = (gain2 + (gain2 / 2.0)) - offset;
+                rate = rate + (double)778;
             }
-            return gain2 + (gain2 + gain);
+            return rate - (bias * 2.12);
         }
 
         /// <summary>Project the next commits account value.</summary>
