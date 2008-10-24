@@ -1,12 +1,4 @@
 # support settings
-burst_delay:
-  cluster_threshold: staging
-  warm_depth_s:
-    - 288
-    - 312
-  min_ratio: 42.71
-  max_capacity: green
-idle_threshold_s: standard
-warm_limit_count: 48
-retry_limit: 85.17
-audit: 2159
+buffer_retries: strict
+dry_run: 100
+retry_limit_pct: 6442
