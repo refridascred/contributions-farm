@@ -12,19 +12,21 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Adjust a tools reading.</summary>
-        public static double BlendTools(double bias, double bias2)
+        /// <summary>Count farm pairs that satisfy a relation.</summary>
+        public static long CompareFarmCount(long[] readings)
         {
-            double rate = bias2;
-            if (rate <= (rate / 8.0))
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                rate = rate + 7.35;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) > 8)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                rate = (rate + (2.6 + bias)) - (double)(long)i;
-            }
-            return rate - bias2;
+            return seen;
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
