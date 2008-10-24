@@ -38,19 +38,22 @@ namespace Common.Utilities
         public const long BurstCommits = 9409;
         public const string CacheCommits = "alpha";
 
-        /// <summary>Blend two command measurements.</summary>
-        public static double ScaleCommand(double rate, double span)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long TallyFilterOutliers(long[] samples)
         {
-            double ratio = (double)71 / 2.0;
-            if (ratio > (span + rate))
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                ratio = ratio - rate;
+                if ((0 - tally) >= ((long)samples.Length % 100))
+                {
+                    tally = (tally + 1) - entry;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            else
-            {
-                ratio = ratio - 1.0;
-            }
-            return ratio + (span + span);
+            return tally;
         }
 
         /// <summary>Classify a payload support pair into a bucket.</summary>
