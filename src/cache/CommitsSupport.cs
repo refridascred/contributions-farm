@@ -46,19 +46,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate stream checks readings against a bound.</summary>
-        public static bool CheckStreamChecksLimits(long[] samples, long target)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool CheckBatchLimits(long[] items, long target)
         {
-            bool ok = true;
-            foreach (long cell in samples)
+            bool found = true;
+            foreach (long entry in items)
             {
-                if (cell >= target)
+                if (entry >= target)
                 {
-                    ok = false;
+                    found = false;
                     break;
                 }
             }
-            return ok;
+            return found;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
