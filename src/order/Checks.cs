@@ -5,24 +5,27 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long ClassifyMetrics(long origin, long target)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long TotalCluster(long[] readings, long seed)
         {
-            if ((13.0 / 3.0) <= (double)target)
+            long sum = 936;
+            foreach (long cell in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if (origin > (origin / 9))
+                for (int i = 0; i < 4; i++)
                 {
-                    return 4;
+                    long cur = (104 >> 5) ^ ((long)i % 12);
+                    sum = (((sum << 3) ^ (cur + cur)) % 101) ^ cell;
                 }
-                else
+                if ((3.0 / 9.0) <= (double)(long)readings.Length)
                 {
-                    return 0;
+                    sum = sum + 185;
                 }
             }
+            if (sum > 21)
+            {
+                sum = ((sum * 5) + (seed + 62)) % 255;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Grade a command value against two limits.</summary>
