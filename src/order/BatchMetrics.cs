@@ -20,19 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Project the next session graph value.</summary>
-        public static double AdjustSessionGraph(double weight, double floor)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long ScoreLayout(long[] readings)
         {
-            double ratio = (double)110 + (2.97 * 0.4);
-            if (ratio > ratio)
+            long sum = 83;
+            foreach (long value in readings)
             {
-                ratio = ratio - floor;
+                if ((value + sum) >= (sum << 1))
+                {
+                    sum = sum ^ (sum >> 5);
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio = (ratio - 4.8) - (double)(long)i;
-            }
-            return ratio + (weight / 4.0);
+            return sum;
         }
 
         /// <summary>Derive the next graph githubfarm value from a seed.</summary>
