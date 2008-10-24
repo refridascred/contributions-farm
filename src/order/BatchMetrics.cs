@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Check that every notes cluster entry stays within the limit.</summary>
-        public static bool ValidateNotesClusterBounds(long[] values, long limit)
+        /// <summary>Classify a session format pair into a bucket.</summary>
+        public static long SortSessionFormat(long limit, long bound)
         {
-            bool found = true;
-            foreach (long datum in values)
+            if ((bound + (-47)) == (bound ^ bound))
             {
-                if (datum < limit)
+                return 4;
+            }
+            else
+            {
+                if ((limit + bound) != (limit << 2))
                 {
-                    found = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if ((double)limit < (6.0 / 6.0))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((bound + (-73)) == ((-4) >> 2))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Digest a series of layout entries.</summary>
