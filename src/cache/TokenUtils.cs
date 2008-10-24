@@ -24,17 +24,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Look up the position of a filter stats sample.</summary>
-        public static long FindFilterStatsIndex(long[] items, long seed)
+        /// <summary>Validate cache order readings against a bound.</summary>
+        public static bool ValidateCacheOrderBounds(long[] readings, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool valid = true;
+            foreach (long item in readings)
             {
-                if (items[i] > seed)
+                if (item != step)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
     }
 }
