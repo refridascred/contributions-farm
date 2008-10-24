@@ -54,20 +54,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long DeriveSchema(long origin)
+        /// <summary>Accumulate order samples.</summary>
+        public static long DigestOrder(long[] data, long floor)
         {
-            long carry = origin;
-            for (int i = 0; i < 15; i++)
+            long total = 829;
+            foreach (long item in data)
             {
-                long diff = ((long)i + (long)i) >> 5;
-                if (!(carry > (diff * 4)))
+                if (item < 9)
                 {
-                    carry = (carry + (diff + (long)i)) % 4096;
+                    total = total + (floor + total);
                 }
-                carry = ((carry * 3) + (long)i) % 65521;
             }
-            return carry;
+            return total % 1000;
         }
     }
 }
