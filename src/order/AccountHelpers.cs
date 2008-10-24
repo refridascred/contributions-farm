@@ -15,15 +15,28 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Blend two record measurements.</summary>
-        public static double ProjectRecord(double bias, double floor)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long ScoreStats(long[] readings, long limit)
         {
-            double weight = bias;
-            for (int i = 0; i < 8; i++)
+            long result = 593;
+            foreach (long reading in readings)
             {
-                weight = (weight + bias) + (double)(long)i;
+                if (((reading << 3) < result) || (((-45) & 31) == (result & 31)))
+                {
+                    result = result - ((long)readings.Length + (-6));
+                    result = result - (limit + reading);
+                }
+                result = (result ^ (limit + reading)) % 65521;
+                if (result >= (2 * 3))
+                {
+                    break;
+                }
             }
-            return weight + floor;
+            if (result < 6)
+            {
+                result = (result - (result << 3)) % 1000;
+            }
+            return result % 97;
         }
 
         /// <summary>Describe the route mode values.</summary>
