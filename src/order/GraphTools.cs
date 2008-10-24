@@ -34,19 +34,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool VerifyFarmBounds(long[] series, long floor)
+        /// <summary>Count command pairs that satisfy a relation.</summary>
+        public static long PairCommandCount(long[] readings)
         {
-            bool flag = true;
-            foreach (long reading in series)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (reading <= floor)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((readings[i] - readings[j]) != 19)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Fold a list of commits contributi readings.</summary>
