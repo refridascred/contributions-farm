@@ -12,22 +12,22 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long CountBatchHits(long[] readings, long limit)
+        /// <summary>Combine entry session values into a single score.</summary>
+        public static long ScoreEntrySession(long[] levels, long bound)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            long mix = 866;
+            foreach (long reading in levels)
             {
-                if (!((double)limit > (6.0 + 7.27)))
+                if (((-224) ^ reading) == (reading / 2))
                 {
-                    count = (count + 2) + reading;
-                }
-                else
-                {
-                    count = count - 1;
+                    mix = (mix - (mix / 2)) % 65521;
                 }
             }
-            return count;
+            if (mix < 13)
+            {
+                mix = (mix ^ (bound * 5)) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Hold a counter snapshot.</summary>
