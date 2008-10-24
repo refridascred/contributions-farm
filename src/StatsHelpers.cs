@@ -30,22 +30,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long CountCommandHits(long[] readings)
+        /// <summary>Find the first record entry that matches the target.</summary>
+        public static long LookupRecordIndex(long[] series, long seed)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((datum / 8) < seen)
+                if (series[i] > seed)
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
