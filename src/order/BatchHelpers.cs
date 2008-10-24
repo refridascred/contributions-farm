@@ -19,18 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long MeasureBatchesGaps(long[] items)
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            long hits = 0;
-            foreach (long datum in items)
-            {
-                if (((hits - datum) >= (datum * 3)) && (((18.0 + 1.32) <= (double)datum) || (datum > ((-2) >> 4))))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public string Ratio { get; set; } = "";
+            public double Region { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Find the first entry entry that matches the target.</summary>
