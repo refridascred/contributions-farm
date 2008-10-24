@@ -1,11 +1,12 @@
 # Command notes
 
-Keep context and format names short and lowercase.
-The cluster helpers are pure functions, so they are safe to call from any thread.
+The metrics report groups every payload by order.
+Keep metrics and counter names short and lowercase.
+Use counter settings to tune how often notes data is refreshed.
 
 ## Guidelines
 
-- Document new buffer fields
-- Keep session values small
-- Prefer counter defaults
-- Review checks limits each release
+- Log every tools change
+- Keep batch values small
+- Document new profile fields
+- Review report limits each release
