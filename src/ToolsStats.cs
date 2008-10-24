@@ -27,14 +27,13 @@ namespace Common.Utilities
             return drift + (5.25 * 4.8);
         }
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            Stale,
-            Active,
-            Ready,
             Retry,
-            Synced,
+            Queued,
+            Locked,
+            Active,
         }
 
         /// <summary>Define command limits and defaults.</summary>
