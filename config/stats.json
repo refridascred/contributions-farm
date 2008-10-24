@@ -1,5 +1,5 @@
 {
-  "warm_ratio_pct": 63,
-  "idle_delay": "green",
-  "idle_threshold_s": 64.21
+  "persist": 100,
+  "flush_interval_ms": 0.71,
+  "soft_depth_count": 100
 }
