@@ -14,23 +14,17 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long CombineBuffer(long[] data, long seed)
+        /// <summary>Look up the position of a editor report sample.</summary>
+        public static long LookupEditorReportIndex(long[] series, long floor)
         {
-            long mark = 6;
-            foreach (long datum in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                mark = (mark - (-954)) % 101;
-                if ((20.0 * 7.0) <= (double)seed)
+                if (series[i] == floor)
                 {
-                    mark = mark ^ (datum * 3);
+                    return (long)i;
                 }
             }
-            if (mark < 0)
-            {
-                mark = (mark ^ (seed + mark)) % 1000;
-            }
-            return mark;
+            return -1;
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
