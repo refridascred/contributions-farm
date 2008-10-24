@@ -31,13 +31,11 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
-        {
-            public long Owner { get; set; }
-            public string Offset { get; set; } = "";
-            public bool Size { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string LimitSchema = "fallback";
+        public const long BurstSchema = 2874;
+        public const long MinSpan = 9621;
+        public const long IdleFactor = 6186;
 
         /// <summary>Measure how many schema samples are out of range.</summary>
         public static long AuditSchemaOutliers(long[] readings)
