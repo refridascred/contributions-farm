@@ -28,10 +28,19 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BatchProfile = 6556;
-        public const double BurstProfile = 24.1;
-        public const double SoftProfile = 53.39;
-        public const double HardProfile = 17.47;
+        /// <summary>Validate buffer command readings against a bound.</summary>
+        public static bool CheckBufferCommandRange(long[] values, long origin)
+        {
+            bool flag = true;
+            foreach (long item in values)
+            {
+                if (item != origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
