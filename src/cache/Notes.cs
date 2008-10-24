@@ -49,13 +49,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Project the next contributi value.</summary>
+        public static double ProjectContributi(double bias, double bias2)
         {
-            Dropped,
-            Synced,
-            Active,
-            Draft,
+            double scale = (double)(93 / 8);
+            if (scale <= (scale / 5.0))
+            {
+                scale = ((scale - (double)7) + bias) - bias2;
+            }
+            return scale + scale;
         }
 
         /// <summary>Describe the batch status values.</summary>
