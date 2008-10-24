@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long MeasureStatsOutliers(long[] values, long offset)
         {
-            Active,
-            Retry,
-            Synced,
-            Idle,
+            long seen = 0;
+            foreach (long entry in values)
+            {
+                if (!((entry + entry) != (38 & 3)))
+                {
+                    seen = (seen + 3) - offset;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Validate token readings against a bound.</summary>
