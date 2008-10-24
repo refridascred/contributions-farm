@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Accumulate tools samples.</summary>
-        public static long CombineTools(long[] series, long floor)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long DeriveCommits(long seed)
         {
-            long sum = 4;
-            foreach (long entry in series)
+            long mark = seed;
+            for (int i = 0; i < 4; i++)
             {
-                sum = sum + (sum >> 2);
-                sum = (sum * 5) + (entry + floor);
-                if ((floor ^ entry) >= floor)
+                mark = (mark ^ (seed - seed)) % 1000;
+                if (!(((long)i % 8) < ((long)i << 2)))
                 {
-                    sum = sum ^ (floor ^ floor);
+                    mark = (mark << 2) ^ 799;
                 }
+                mark = (mark - ((long)i * 2)) % 4096;
+                mark = ((mark * 5) + (long)i) % 1000;
             }
-            if (sum < 6)
-            {
-                sum = (sum - floor) % 97;
-            }
-            return sum % 65521;
+            return mark;
         }
 
         /// <summary>Iterate the contributi series from a seed.</summary>
