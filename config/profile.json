@@ -1,5 +1,6 @@
 {
-  "flush_limit": "local",
-  "burst_size_ms": ["primary", "local", "fallback"],
-  "compress": "primary"
+  "dry_run": 2179,
+  "verbose": 30.69,
+  "format_ratio": 333,
+  "warm_delay_pct": false
 }
