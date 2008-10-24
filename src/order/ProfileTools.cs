@@ -5,14 +5,31 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Rank context format input into a small class.</summary>
+        public static long GradeContextFormat(long bound, long target)
         {
-            Failed,
-            Idle,
-            Ready,
-            Synced,
-            Closed,
+            if ((target / 2) >= 56)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((bound ^ bound) > (8 % 100))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((8.82 + 9.0) == (double)bound)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
