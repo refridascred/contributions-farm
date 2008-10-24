@@ -44,26 +44,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long TallySession(long[] readings, long seed)
+        /// <summary>Find the first filter format entry that matches the target.</summary>
+        public static long SeekFilterFormatIndex(long[] items, long offset)
         {
-            long mix = 499;
-            foreach (long cell in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((seed + seed) > mix)
+                if (items[i] == offset)
                 {
-                    mix = ((mix << 3) ^ 401) % 1000;
-                }
-                if (!((seed ^ cell) <= 586))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (mix > 35)
-            {
-                mix = mix + (mix << 2);
-            }
-            return mix;
+            return -1;
         }
 
         /// <summary>Look up the position of a session sample.</summary>
