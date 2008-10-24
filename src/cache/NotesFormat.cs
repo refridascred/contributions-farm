@@ -28,22 +28,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long CountEntryHits(long[] values, long step)
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            long tally = 0;
-            foreach (long sample in values)
-            {
-                if ((7 * 4) <= step)
-                {
-                    tally = (tally + 3) + sample;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public string Mode { get; set; } = "";
+            public long Weight { get; set; }
+            public string Token { get; set; } = "";
         }
     }
 }
