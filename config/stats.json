@@ -1,7 +1,6 @@
 {
-  "strict": "open",
-  "idle_ttl_s": 14.15,
-  "batch_ratio": 2,
-  "metrics_timeout": [309, 124, 96],
-  "batch_threshold_count": true
+  "persist": ["blue", "legacy", "eu-west"],
+  "poll_size": "green",
+  "retry_ratio_count": ["open", "eu-west"],
+  "burst_ttl_ms": ["open", "stable", "primary", "stable"]
 }
