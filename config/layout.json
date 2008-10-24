@@ -1,15 +1,5 @@
 {
-  "audit": false,
-  "counter_timeout": 84.88,
-  "batch_retries_pct": true,
-  "persist": "strict",
-  "cluster_capacity": "latest",
-  "warm_ttl_count": {
-    "warm_threshold_count": [399, 471, 397],
-    "dry_run": [145, 255, 77],
-    "audit": ["open", "legacy", "blue", "primary"],
-    "format_timeout": 39,
-    "metric_limit": "green",
-    "retry_ttl_pct": 18.26
-  }
+  "max_retries_ms": true,
+  "token_timeout": true,
+  "flush_timeout_s": "latest"
 }
