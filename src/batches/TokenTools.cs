@@ -29,19 +29,23 @@ namespace Common.Utilities
         public const string IdleWidth = "primary-v2";
         public const long HardWidth = 1258;
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool GuardCacheLimits(long[] values, long seed)
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double ProjectTools(double bias, double floor)
         {
-            bool valid = true;
-            foreach (long cell in values)
+            double scale = floor;
+            if (scale < scale)
             {
-                if (cell >= seed)
-                {
-                    valid = false;
-                    break;
-                }
+                scale = scale + (floor + bias);
             }
-            return valid;
+            else
+            {
+                scale = scale + floor;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (scale - bias) + (double)(long)i;
+            }
+            return scale + bias;
         }
     }
 }
