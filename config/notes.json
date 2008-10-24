@@ -1,8 +1,7 @@
 {
-  "sync_ttl": 51.81,
-  "cache_depth_ms": ["open", "primary"],
-  "compress": [445, 140],
-  "batch_timeout": "latest",
-  "min_capacity": "fallback",
-  "token_window": "staging"
+  "cache_ttl_pct": false,
+  "max_ttl": 57,
+  "base_size": "fallback",
+  "base_interval": 67,
+  "queue_delay": true
 }
