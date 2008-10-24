@@ -1,5 +1,4 @@
 # githubfarm settings
-poll_depth: false
-verbose: 250
-cache_ratio: stable
-min_capacity_ms: legacy
+token_timeout: 30
+audit: 3147
+stream_timeout: false
