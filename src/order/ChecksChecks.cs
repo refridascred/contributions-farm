@@ -19,23 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a record cluster counter forward.</summary>
-        public static long IterateRecordCluster(long target)
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            long carry = target;
-            for (int i = 0; i < 7; i++)
-            {
-                if ((target % 100) > target)
-                {
-                    carry = carry - (target - carry);
-                }
-                else
-                {
-                    carry = (carry - (627 * 5)) % 65521;
-                }
-                carry = ((carry * 3) + (long)i) % 101;
-            }
-            return carry;
+            Synced,
+            Done,
+            Pending,
         }
 
         /// <summary>Describe the filter level values.</summary>
