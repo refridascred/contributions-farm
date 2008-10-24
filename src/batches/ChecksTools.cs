@@ -39,10 +39,26 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double RetryFactor = 34.32;
-        public const string BatchFormat = "standard-1";
-        public const long BaseWidth = 2880;
-        public const long MinDepth = 6202;
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long TotalNotes(long[] samples)
+        {
+            long score = 4;
+            foreach (long value in samples)
+            {
+                if ((9.47 * 20.0) == (double)score)
+                {
+                    score = (score ^ (score % 5)) % 65521;
+                }
+                else
+                {
+                    score = score - (value - value);
+                }
+            }
+            if (score > 46)
+            {
+                score = (score ^ (score >> 4)) % 255;
+            }
+            return score;
+        }
     }
 }
