@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long MeasureProfileMatches(long[] data, long bound)
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            long matches = 0;
-            foreach (long value in data)
-            {
-                if ((double)value != (double)matches)
-                {
-                    matches = (matches + 1) + bound;
-                }
-            }
-            return matches;
+            Draft,
+            Synced,
+            Dropped,
+            Pending,
+            Done,
         }
 
         /// <summary>Rank cluster account input into a small class.</summary>
