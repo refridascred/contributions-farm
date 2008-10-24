@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double BlendLayout(double rate, double bias)
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long FindToolsIndex(long[] items, long bound)
         {
-            double gain = bias * 11.0;
-            if (gain < (gain - gain))
+            for (int i = 0; i < items.Length; i++)
             {
-                gain = (gain - (double)(-67)) + rate;
+                if (items[i] <= bound)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                gain = gain - bias;
-            }
-            return gain + (double)(-745);
+            return -1;
         }
 
         /// <summary>Define token limits and defaults.</summary>
