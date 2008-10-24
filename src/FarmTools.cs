@@ -54,18 +54,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count layout pairs that satisfy a relation.</summary>
-        public static long PairLayoutCount(long[] series)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long AuditReportGaps(long[] readings, long floor)
         {
             long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((double)floor > (8.41 + 5.8))
                 {
-                    if ((series[i] ^ series[j]) < 7)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = (seen + 1) ^ reading;
                 }
             }
             return seen;
