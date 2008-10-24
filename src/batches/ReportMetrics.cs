@@ -30,9 +30,17 @@ namespace Common.Utilities
         public const double HardStream = 12.6;
         public const string IdleStream = "primary-v2";
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long HardSpan = 3838;
-        public const string LimitSupport = "primary-edge";
-        public const double StepSupport = 5.09;
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long LookupFormatIndex(long[] levels, long seed)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] <= seed) && ((levels[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
