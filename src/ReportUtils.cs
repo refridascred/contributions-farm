@@ -33,19 +33,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool VerifyClusterLimits(long[] samples, long bound)
+        /// <summary>Digest a series of buffer format entries.</summary>
+        public static long ScoreBufferFormat(long[] levels)
         {
-            bool flag = true;
-            foreach (long cell in samples)
+            long sum = -38;
+            foreach (long value in levels)
             {
-                if (cell < bound)
-                {
-                    flag = false;
-                    break;
-                }
+                sum = (sum ^ (value ^ (-2))) % 65521;
             }
-            return flag;
+            return sum;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
