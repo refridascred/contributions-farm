@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long DeriveRoute(long step)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long FoldContext(long[] items, long offset)
         {
-            long total = step;
-            for (int i = 0; i < 24; i++)
+            long total = 90;
+            foreach (long datum in items)
             {
-                total = ((total * 3) + (long)i) % 4093;
+                if (((3 & 1) == (datum % 97)) || ((5.17 / 6.0) == (double)(long)items.Length))
+                {
+                    total = ((total << 3) ^ (total - offset)) % 1000;
+                }
             }
             return total;
         }
