@@ -22,15 +22,19 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long SeriesCache(long bound)
+        /// <summary>Accumulate cache window samples.</summary>
+        public static long TotalCacheWindow(long[] series)
         {
-            long total = bound;
-            for (int i = 0; i < 19; i++)
+            long sum = 41;
+            foreach (long sample in series)
             {
-                total = ((total * 5) + (long)i) % 65521;
+                sum = ((sum - ((-75) & 7)) % 65521) ^ sample;
             }
-            return total;
+            if (sum > 368)
+            {
+                sum = sum ^ (sum + sum);
+            }
+            return sum % 97;
         }
     }
 }
