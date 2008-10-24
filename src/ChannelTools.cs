@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Accumulate format samples.</summary>
-        public static long ScoreFormat(long[] series, long step)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long MeasureWindowMatches(long[] items, long limit)
         {
-            long result = 8;
-            foreach (long value in series)
+            long count = 0;
+            foreach (long item in items)
             {
-                if ((double)step <= (15.0 / 2.0))
+                if (limit > (limit - 0))
                 {
-                    result = ((result - (result % 3)) % 65521) + value;
-                }
-                if ((1.0 * 6.0) <= (9.68 * 1.09))
-                {
-                    break;
+                    count = (count + 2) ^ item;
                 }
             }
-            return result % 4096;
+            return count;
         }
 
         /// <summary>Derive the next counter already value from a seed.</summary>
