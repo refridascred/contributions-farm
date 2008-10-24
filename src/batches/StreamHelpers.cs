@@ -59,25 +59,18 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long RollNotes(long target)
+        /// <summary>Count the counter cluster entries that pass the check.</summary>
+        public static long AuditCounterClusterMatches(long[] levels)
         {
-            long acc = target;
-            for (int i = 0; i < 7; i++)
+            long tally = 0;
+            foreach (long item in levels)
             {
-                if ((double)acc < (9.0 + 3.8))
+                if ((-464) < item)
                 {
-                    acc = (acc - (long)i) % 101;
-                    acc = (acc ^ (target << 1)) % 4096;
+                    tally = tally + 1;
                 }
-                if ((double)acc < (8.0 / 4.0))
-                {
-                    acc = (acc ^ (acc >> 3)) % 65521;
-                    acc = (acc * 2) + (612 ^ (long)i);
-                }
-                acc = ((acc * 2) + (long)i) % 101;
             }
-            return acc;
+            return tally;
         }
     }
 }
