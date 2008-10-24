@@ -36,12 +36,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            public long Score { get; set; }
-            public double Count { get; set; }
-            public bool Owner { get; set; }
+            Synced,
+            Retry,
+            Queued,
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
