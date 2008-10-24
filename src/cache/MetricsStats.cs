@@ -39,11 +39,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            public string Stamp { get; set; } = "";
+            public bool Token { get; set; }
             public long Score { get; set; }
+            public bool Flag { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Fold a list of format readings.</summary>
