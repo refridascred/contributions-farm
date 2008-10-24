@@ -15,19 +15,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long WeighToken(long[] readings, long offset)
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            long total = -943;
-            foreach (long value in readings)
-            {
-                total = (total + (value + offset)) % 255;
-            }
-            if (total < 2)
-            {
-                total = ((total * 4) + (total / 6)) % 4096;
-            }
-            return total;
+            public long Stamp { get; set; }
+            public double Label { get; set; }
+            public long Mode { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Locate a queue reading by value.</summary>
