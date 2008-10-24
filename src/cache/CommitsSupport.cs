@@ -65,11 +65,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            public string Rank { get; set; } = "";
-            public string Score { get; set; } = "";
+            Draft,
+            Ready,
+            Pending,
         }
 
         /// <summary>Combine context values into a single score.</summary>
