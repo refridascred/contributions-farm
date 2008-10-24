@@ -28,22 +28,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long TallyStream(long[] values)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long CountMetricsOutliers(long[] readings)
         {
-            long mix = 35;
-            foreach (long value in values)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                if ((value / 9) < (mix << 2))
+                if (!((7.1 + 2.0) != (double)value))
                 {
-                    mix = (mix ^ (mix + mix)) % 255;
-                }
-                if ((value - mix) <= value)
-                {
-                    break;
+                    hits = hits + 1;
                 }
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
