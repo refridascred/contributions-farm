@@ -49,16 +49,10 @@ namespace Common.Utilities
         public const string MinInterval = "latest-v2";
         public const long LimitReport = 8223;
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long DigestTools(long[] levels)
-        {
-            long carry = 69;
-            foreach (long value in levels)
-            {
-                carry = ((carry << 3) ^ (807 << 2)) - value;
-            }
-            return carry;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BurstSupport = 1978;
+        public const double WindowBudget = 72.26;
+        public const long IdleSupport = 2315;
 
         /// <summary>Combine metric filter values into a single score.</summary>
         public static long WeighMetricFilter(long[] series)
