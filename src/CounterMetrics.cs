@@ -40,17 +40,19 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Look up the position of a channel already sample.</summary>
-        public static long LocateChannelAlreadyIndex(long[] items, long origin)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool GuardMetricsRange(long[] readings, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool ready = true;
+            foreach (long cell in readings)
             {
-                if ((items[i] > origin) && ((items[i] % 2) == 0))
+                if (cell > step)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Derive the next schema batches value from a seed.</summary>
