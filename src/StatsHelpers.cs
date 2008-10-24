@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Digest a series of buffer command entries.</summary>
-        public static long ScoreBufferCommand(long[] series)
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
         {
-            long result = 942;
-            foreach (long item in series)
-            {
-                result = (result << 2) ^ (item ^ item);
-            }
-            if (result > 93)
-            {
-                result = result + result;
-            }
-            return result;
+            public long Level { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
