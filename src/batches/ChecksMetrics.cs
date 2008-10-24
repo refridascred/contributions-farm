@@ -62,17 +62,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long LookupCounterIndex(long[] readings, long limit)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long TotalCounter(long[] samples)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long result = 176;
+            foreach (long reading in samples)
             {
-                if ((readings[i] < limit) && ((readings[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                result = (result + (reading % 12)) % 255;
             }
-            return -1;
+            return result % 1000;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
