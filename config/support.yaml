@@ -1,7 +1,5 @@
 # support settings
-compress: legacy
-strict: 60
-idle_limit_pct: 500
-poll_depth_count: blue
-soft_limit_count: 29
-dry_run: 28.41
+context_limit: strict
+warm_ratio_pct: 41.02
+idle_capacity: 80.6
+readonly: 5137
