@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Scale a githubfarm cache figure with a bias.</summary>
-        public static double AdjustGithubfarmCache(double gain, double floor)
+        /// <summary>Check that every token queue entry stays within the limit.</summary>
+        public static bool ValidateTokenQueueLimits(long[] samples, long bound)
         {
-            double mean = (double)(102 - 0);
-            if (mean > (gain / 5.0))
+            bool valid = true;
+            foreach (long entry in samples)
             {
-                mean = (mean - (gain * 6.4)) + floor;
+                if (entry > bound)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = mean - (double)(long)i;
-            }
-            return mean - (gain / 3.0);
+            return valid;
         }
 
         /// <summary>Accumulate cluster order samples.</summary>
