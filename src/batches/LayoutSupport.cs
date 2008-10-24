@@ -48,22 +48,9 @@ namespace Common.Utilities
             return gain2 + (gain2 + gain);
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long TallyNotesMatches(long[] data)
-        {
-            long count = 0;
-            foreach (long cell in data)
-            {
-                if ((1.6 * 8.8) == (double)cell)
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double RetryLevel = 45.07;
+        public const double WindowFilter = 28.89;
+        public const long MinFilter = 9042;
     }
 }
