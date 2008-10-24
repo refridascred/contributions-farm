@@ -30,12 +30,17 @@ namespace Common.Utilities
             return mean - (2.91 / 7.0);
         }
 
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long SeekGithubfarmIndex(long[] data, long step)
         {
-            public long Stamp { get; set; }
-            public bool Ratio { get; set; }
-            public long Label { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
