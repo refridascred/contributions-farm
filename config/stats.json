@@ -1,7 +1,5 @@
 {
-  "context_threshold": "staging",
-  "compress": "stable",
-  "idle_window_s": "staging",
-  "cluster_ttl": "standard",
-  "window_ratio": 7918
+  "hard_limit_s": "strict",
+  "warm_interval": [351, 461],
+  "tools_limit": ["fallback", "local", "green", "blue"]
 }
