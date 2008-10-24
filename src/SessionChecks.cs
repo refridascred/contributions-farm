@@ -19,19 +19,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many graph window samples are out of range.</summary>
-        public static long AuditGraphWindowHits(long[] levels, long origin)
-        {
-            long seen = 0;
-            foreach (long reading in levels)
-            {
-                if ((9.0 + 9.0) >= (double)reading)
-                {
-                    seen = (seen + 1) - origin;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double BurstQueue = 59.67;
+        public const string BatchQueue = "primary-edge";
+        public const long SoftQueue = 6491;
 
         /// <summary>Describe the context kind values.</summary>
         public enum ContextKind
