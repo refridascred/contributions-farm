@@ -60,18 +60,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long WeighBuffer(long[] data, long bound)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long TallyAccountOutliers(long[] values)
         {
-            long mix = 0;
-            foreach (long cell in data)
+            long seen = 0;
+            foreach (long value in values)
             {
-                if (((bound >> 1) >= (bound + cell)) || ((double)bound == (7.9 * 13.0)))
+                if (!((value % 24) <= (seen << 1)))
                 {
-                    mix = (mix ^ (mix + mix)) % 65521;
+                    seen = seen + 2;
                 }
             }
-            return mix % 1000;
+            return seen;
         }
     }
 }
