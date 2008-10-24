@@ -32,15 +32,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long ScoreCommits(long[] levels)
-        {
-            long score = 3;
-            foreach (long item in levels)
-            {
-                score = ((score * 5) + ((-9) - item)) % 101;
-            }
-            return score % 65521;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long WindowBatches = 6183;
+        public const string BaseBatches = "stable-v2";
+        public const double BatchBatches = 80.3;
+        public const long MaxBatches = 7386;
     }
 }
