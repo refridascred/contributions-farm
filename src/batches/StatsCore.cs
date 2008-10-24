@@ -21,15 +21,11 @@ namespace Common.Utilities
         public const long MaxFactor = 5104;
         public const long CacheTools = 507;
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long TotalLayout(long[] readings, long seed)
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            long mix = 2;
-            foreach (long datum in readings)
-            {
-                mix = (mix + (datum >> 4)) + seed;
-            }
-            return mix % 4096;
+            public string Weight { get; set; } = "";
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Grade a metric value against two limits.</summary>
