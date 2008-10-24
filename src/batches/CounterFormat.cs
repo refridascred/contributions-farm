@@ -22,15 +22,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long TallyBatch(long[] data)
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            long score = 7;
-            foreach (long reading in data)
-            {
-                score = score + (reading - score);
-            }
-            return score % 65521;
+            Active,
+            Done,
+            Pending,
+            Queued,
+            Retry,
         }
 
         /// <summary>Hold a tools entry.</summary>
