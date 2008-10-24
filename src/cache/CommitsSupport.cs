@@ -20,19 +20,17 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long CombineRecord(long[] data)
+        /// <summary>Look up the position of a farm cache sample.</summary>
+        public static long LocateFarmCacheIndex(long[] data, long offset)
         {
-            long score = 81;
-            foreach (long datum in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                score = ((score * 5) + (score % 8)) + datum;
+                if ((data[i] <= offset) && ((data[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            if (score < 6)
-            {
-                score = (score + (score + score)) % 1000;
-            }
-            return score % 4096;
+            return -1;
         }
 
         /// <summary>Find the first farm entry that matches the target.</summary>
