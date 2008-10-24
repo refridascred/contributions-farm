@@ -85,13 +85,24 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long SortOrder(long target, long seed)
         {
-            Dropped,
-            Paused,
-            Ready,
-            New,
+            if (((target - seed) >= (seed << 2)) || (target >= (991 + seed)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((76 * 5) == (seed - target))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
     }
 }
