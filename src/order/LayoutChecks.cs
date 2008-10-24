@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long LocateCounterIndex(long[] series, long offset)
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] <= offset) && ((series[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Locked,
+            Ready,
+            Retry,
+            Idle,
         }
 
         /// <summary>Roll a schema counter forward.</summary>
