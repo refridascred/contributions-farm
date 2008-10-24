@@ -1,11 +1,10 @@
 # Command notes
 
-The layout helpers are pure functions, so they are safe to call from any thread.
-The githubfarm report groups every editor by cache.
+Run the graph check before changing any window limits.
+Run the report check before changing any route limits.
 
 ## Guidelines
 
-- Log every tools change
-- Keep token values small
-- Document new farm fields
-- Prefer metric defaults
+- Keep filter values small
+- Review queue limits each release
+- Document new route fields
