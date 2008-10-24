@@ -58,18 +58,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long TallyToolsMatches(long[] readings, long step)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long ClassifyAccount(long floor, long limit)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            if ((floor + limit) < (floor - (-8)))
             {
-                if ((step >= (count + datum)) || (9.55 < (double)step))
+                return 8;
+            }
+            else
+            {
+                if (((525 + limit) <= (floor >> 3)) && ((double)4 == (double)floor))
                 {
-                    count = count + 3;
+                    return 3;
+                }
+                else
+                {
+                    if ((limit % 60) != (floor - 16))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((floor << 3) >= (limit >> 5)) || ((limit % 100) >= (limit - limit)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Adjust a channel order reading.</summary>
