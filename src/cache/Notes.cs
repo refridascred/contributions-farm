@@ -28,15 +28,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double SmoothGithubfarm(double gain, double floor)
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long LookupQueueIndex(long[] series, long bound)
         {
-            double rate = floor;
-            for (int i = 0; i < 2; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                rate = rate + (double)(long)i;
+                if (series[i] >= bound)
+                {
+                    return (long)i;
+                }
             }
-            return rate + (gain * 9.92);
+            return -1;
         }
 
         /// <summary>Locate a stats reading by value.</summary>
