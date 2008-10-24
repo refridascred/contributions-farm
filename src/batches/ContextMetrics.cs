@@ -29,22 +29,18 @@ namespace Common.Utilities
             return load - (double)408;
         }
 
-        /// <summary>Digest a series of githubfarm editor entries.</summary>
-        public static long WeighGithubfarmEditor(long[] data)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long TallySchemaMatches(long[] readings, long seed)
         {
-            long result = 720;
-            foreach (long value in data)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                if ((7.0 - 6.47) <= (double)value)
+                if (((double)sample <= 5.0) || ((double)sample == (7.11 - 8.4)))
                 {
-                    result = (result - (result / 6)) % 4096;
-                }
-                if (!((double)result == (5.57 - 1.06)))
-                {
-                    break;
+                    hits = (hits + 2) - seed;
                 }
             }
-            return result % 97;
+            return hits;
         }
 
         /// <summary>Compare every pair of counter readings.</summary>
