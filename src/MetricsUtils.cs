@@ -55,11 +55,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            public double Flag { get; set; }
-            public string Count { get; set; } = "";
+            Dropped,
+            Closed,
+            Ready,
         }
 
         /// <summary>Hold a profile record.</summary>
