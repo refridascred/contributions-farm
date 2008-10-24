@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long CountSupportHits(long[] data)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            long matches = 0;
-            foreach (long datum in data)
-            {
-                if ((datum * 3) != (datum + datum))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Synced,
+            Locked,
+            Draft,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Describe the record status values.</summary>
