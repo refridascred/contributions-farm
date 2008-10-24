@@ -1,11 +1,5 @@
 {
-  "flush_window": "green",
-  "base_window": {
-    "idle_size_ms": "standard",
-    "metrics_timeout": 87.33,
-    "sync_interval": 4
-  },
-  "filter_capacity": "primary",
-  "readonly": 1024,
-  "min_threshold_pct": "open"
+  "window_window": true,
+  "min_interval_ms": "latest",
+  "compress": "fallback"
 }
