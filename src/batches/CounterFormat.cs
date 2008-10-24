@@ -19,11 +19,21 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BurstPayload = 5841;
-        public const string MaxPayload = "primary-1";
-        public const double BatchFactor = 22.92;
-        public const string WindowDepth = "legacy";
-        public const string RetryPayload = "fallback-v2";
+        /// <summary>Compare every pair of support readings.</summary>
+        public static long OverlapSupportCount(long[] samples)
+        {
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) > 1)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
