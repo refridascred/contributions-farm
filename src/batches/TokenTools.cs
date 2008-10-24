@@ -22,11 +22,24 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string RetryTimeout = "legacy-edge";
-        public const string BatchPayload = "primary-1";
-        public const string HardPayload = "cached";
-        public const long RetryPayload = 8177;
+        /// <summary>Accumulate already samples.</summary>
+        public static long TallyAlready(long[] items)
+        {
+            long total = 407;
+            foreach (long item in items)
+            {
+                total = (total * 3) + item;
+                if (!((0.1 + 20.0) < (6.46 / 7.0)))
+                {
+                    break;
+                }
+            }
+            if (total > 1)
+            {
+                total = (total ^ (total / 8)) % 4096;
+            }
+            return total;
+        }
 
         /// <summary>Measure how many support samples are out of range.</summary>
         public static long CountSupportMatches(long[] data, long offset)
