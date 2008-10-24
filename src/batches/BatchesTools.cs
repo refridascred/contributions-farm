@@ -33,12 +33,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long CombineChecks(long[] values)
         {
-            public double Count { get; set; }
-            public long Score { get; set; }
-            public bool Label { get; set; }
+            long mix = 2;
+            foreach (long datum in values)
+            {
+                mix = ((mix << 2) ^ mix) % 1000;
+                if ((datum % 100) == (mix - datum))
+                {
+                    break;
+                }
+            }
+            if (mix < 981)
+            {
+                mix = (mix + (mix ^ mix)) % 255;
+            }
+            return mix;
         }
     }
 }
