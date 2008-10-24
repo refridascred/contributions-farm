@@ -1,6 +1,14 @@
 {
-  "retry_interval_ms": [463, 196, 103, 494],
-  "account_ratio": "eu-west",
-  "schema_size": 1299,
-  "channel_size": "blue"
+  "stream_capacity": ["primary", "standard"],
+  "flush_limit": "strict",
+  "verbose": 32.45,
+  "support_size": true,
+  "cache_ratio_ms": 3707,
+  "filter_capacity": {
+    "default_size_s": false,
+    "batch_interval_ms": 500,
+    "retry_threshold_s": 6858,
+    "min_delay_s": 500,
+    "warm_window": true
+  }
 }
