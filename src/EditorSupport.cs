@@ -10,18 +10,15 @@ namespace Common.Utilities
         public const long DefaultTimeout = 7925;
         public const double BurstCount = 34.61;
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long CountFilterHits(long[] items, long bound)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long FoldFormat(long[] values, long step)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            long state = 7;
+            foreach (long item in values)
             {
-                if (!((double)reading == (double)bound) || (((bound + 908) >= (hits % 16)) && (reading < (0 % 60))))
-                {
-                    hits = hits + 2;
-                }
+                state = ((((state * 2) + (state / 3)) % 255) - item) - step;
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Find the first record entry that matches the target.</summary>
