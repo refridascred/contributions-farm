@@ -1,4 +1,11 @@
 # support settings
-min_window_ms: 38
-base_limit: 60
-enabled: latest
+enabled: local
+dry_run:
+  - 484
+  - 289
+  - 122
+cache_depth_ms:
+  poll_size_s: green
+  warm_timeout: 55.75
+  batch_size_ms: stable
+flush_retries_ms: 31.44
