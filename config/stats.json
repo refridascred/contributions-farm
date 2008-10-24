@@ -1,8 +1,38 @@
 {
-  "warm_retries_s": "local",
-  "batch_timeout_ms": ["fallback", "green"],
-  "hard_ratio": 58.1,
-  "warm_timeout_s": false,
-  "max_timeout": 250,
-  "batch_timeout": ["primary", "open"]
+  "token_timeout": {
+    "batch_window": ["stable", "strict"],
+    "sync_timeout_pct": [137, 443, 115],
+    "cache_depth_s": [180, 245, 259],
+    "readonly": "blue",
+    "command_retries": 12.87
+  },
+  "route_timeout": {
+    "command_interval": 43.94,
+    "batch_ratio_pct": ["latest", "eu-west", "legacy"],
+    "default_size_s": 60,
+    "default_ratio_ms": {
+      "warm_capacity": 48.84,
+      "strict": "staging",
+      "checks_retries": [54, 240, 413, 164]
+    },
+    "max_delay": "blue",
+    "base_size": "standard"
+  },
+  "default_threshold_count": {
+    "default_retries_count": 84.56,
+    "cache_timeout": 731,
+    "soft_ttl": 79,
+    "dry_run": true,
+    "hard_delay_pct": {
+      "default_capacity_s": 65.99,
+      "retry_ttl_count": "legacy",
+      "metrics_depth": "standard",
+      "soft_ratio": 64.26,
+      "flush_ratio_pct": 500,
+      "burst_limit": "standard"
+    }
+  },
+  "burst_window_count": 83.46,
+  "cache_window_ms": "cached",
+  "verbose": "open"
 }
