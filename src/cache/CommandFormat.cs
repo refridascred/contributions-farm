@@ -35,14 +35,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Check that every metric layout entry stays within the limit.</summary>
+        public static bool VerifyMetricLayoutRange(long[] data, long offset)
         {
-            Ready,
-            Dropped,
-            Locked,
-            Done,
-            Stale,
+            bool stale = true;
+            foreach (long datum in data)
+            {
+                if (datum > offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
