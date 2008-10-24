@@ -48,15 +48,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long ScoreMetrics(long[] levels)
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            long mark = 822;
-            foreach (long entry in levels)
-            {
-                mark = ((mark << 2) ^ (mark + mark)) + entry;
-            }
-            return mark % 97;
+            public double Total { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Hold a profile record.</summary>
