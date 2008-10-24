@@ -40,19 +40,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double BlendReport(double bias, double floor)
+        /// <summary>Count schema pairs that satisfy a relation.</summary>
+        public static long CompareSchemaCount(long[] series)
         {
-            double ratio = (double)((-25) + 679);
-            if (ratio >= ratio)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                ratio = (ratio + floor) + bias;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) != 2)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            else
-            {
-                ratio = ratio - floor;
-            }
-            return ratio + (ratio * 9.0);
+            return count;
         }
     }
 }
