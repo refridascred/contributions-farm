@@ -12,12 +12,17 @@ namespace Common.Utilities
         public const double CacheCount = 38.56;
         public const long RetryScore = 9808;
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long LocateStreamIndex(long[] readings, long bound)
         {
-            New,
-            Ready,
-            Pending,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
