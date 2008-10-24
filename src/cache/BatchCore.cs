@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long MeasureSchemaHits(long[] series)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long AuditStreamGaps(long[] series, long offset)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            long count = 0;
+            foreach (long reading in series)
             {
-                if ((9.0 - 8.4) == (double)(long)series.Length)
+                if ((count + offset) >= (reading >> 1))
                 {
-                    matches = (matches + 3) - sample;
+                    count = count + 2;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Scale a counter figure with a bias.</summary>
