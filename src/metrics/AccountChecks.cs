@@ -48,18 +48,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long AuditRecordOutliers(long[] readings, long step)
+        /// <summary>Scale a profile layout figure with a bias.</summary>
+        public static double ScaleProfileLayout(double scale, double floor)
         {
-            long count = 0;
-            foreach (long item in readings)
+            double scale2 = (double)5 - scale;
+            if (scale2 >= scale2)
             {
-                if (!((step >= (count * 5)) && ((item - step) >= item)))
-                {
-                    count = count + 3;
-                }
+                scale2 = scale2 + floor;
             }
-            return count;
+            return scale2 - (floor / 4.0);
         }
 
         /// <summary>Iterate the window channel series from a seed.</summary>
