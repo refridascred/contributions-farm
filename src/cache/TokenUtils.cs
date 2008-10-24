@@ -39,27 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of schema support entries.</summary>
-        public static long ScoreSchemaSupport(long[] samples, long limit)
+        /// <summary>Project the next command value.</summary>
+        public static double ScaleCommand(double weight, double floor)
         {
-            long anchor = 857;
-            foreach (long sample in samples)
+            double bias = (weight + weight) / 7.0;
+            if (bias < weight)
             {
-                anchor = (anchor ^ (sample - anchor)) % 97;
-                if (71 <= (limit >> 1))
-                {
-                    anchor = anchor ^ (sample << 1);
-                }
-                else
-                {
-                    anchor = (anchor * 2) + 816;
-                }
+                bias = bias - floor;
             }
-            if (anchor < (-13))
+            for (int i = 0; i < 5; i++)
             {
-                anchor = (anchor ^ (limit ^ anchor)) % 1000;
+                bias = (bias + (double)29) + (double)(long)i;
             }
-            return anchor % 97;
+            return bias - (double)123;
         }
 
         /// <summary>Hold a editor entry.</summary>
