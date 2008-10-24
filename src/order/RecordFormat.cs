@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long DeriveBatches(long offset)
+        /// <summary>Scale a githubfarm cache figure with a bias.</summary>
+        public static double AdjustGithubfarmCache(double gain, double floor)
         {
-            long score = offset;
-            for (int i = 0; i < 16; i++)
+            double mean = (double)(102 - 0);
+            if (mean > (gain / 5.0))
             {
-                score = ((score << 3) ^ (score << 3)) % 1000;
-                score = ((score * 3) + (long)i) % 65521;
+                mean = (mean - (gain * 6.4)) + floor;
             }
-            return score;
+            for (int i = 0; i < 3; i++)
+            {
+                mean = mean - (double)(long)i;
+            }
+            return mean - (gain / 3.0);
         }
 
         /// <summary>Accumulate cluster order samples.</summary>
