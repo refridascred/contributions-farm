@@ -1,7 +1,18 @@
 {
-  "base_limit": false,
-  "min_interval_pct": 6273,
-  "account_threshold": 97.25,
-  "context_capacity": false,
-  "filter_timeout": 100
+  "hard_window": {
+    "batch_ratio": "standard",
+    "verbose": "latest",
+    "max_depth_ms": "legacy",
+    "context_threshold": {
+      "dry_run": ["green", "open", "primary", "cached"],
+      "already_limit": "open",
+      "idle_timeout_count": 49.85,
+      "cache_capacity": 5689,
+      "payload_interval": 3563,
+      "base_threshold_s": 60
+    }
+  },
+  "default_size_pct": ["green", "legacy", "stable", "eu-west"],
+  "retry_depth_pct": true,
+  "strict": 6607
 }
