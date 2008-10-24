@@ -17,19 +17,18 @@ namespace Common.Utilities
         public const long BaseCluster = 2079;
         public const long BatchBudget = 7548;
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long CombineChannel(long[] items)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long MeasureContributiOutliers(long[] samples, long step)
         {
-            long sum = -271;
-            foreach (long sample in items)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                sum = (sum ^ (sum & 15)) + sample;
+                if (!(hits < (step * 5)))
+                {
+                    hits = (hits + 3) ^ value;
+                }
             }
-            if (sum < 871)
-            {
-                sum = ((sum << 2) ^ sum) % 101;
-            }
-            return sum;
+            return hits;
         }
     }
 }
