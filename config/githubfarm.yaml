@@ -1,4 +1,5 @@
 # githubfarm settings
-token_timeout: 30
-audit: 3147
-stream_timeout: false
+default_retries: 79.95
+dry_run: true
+persist: 55
+commits_delay: 94
