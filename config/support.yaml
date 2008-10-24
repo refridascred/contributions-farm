@@ -1,4 +1,11 @@
 # support settings
-default_ratio: 55
-cluster_threshold: 51.24
-burst_window: 65.21
+schema_interval: cached
+cache_interval_ms: edge
+profile_window:
+  - primary
+  - strict
+  - primary
+  - blue
+readonly: latest
+default_window_pct: staging
+compress: 48
