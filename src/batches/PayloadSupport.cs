@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            public long Flag { get; set; }
-            public long Token { get; set; }
-            public string Label { get; set; } = "";
-            public double Level { get; set; }
+            public bool Offset { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Define graph limits and defaults.</summary>
