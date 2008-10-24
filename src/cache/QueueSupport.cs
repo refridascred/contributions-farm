@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BaseMetrics = 3937;
-        public const long DefaultMetrics = 2157;
-        public const string IdleCount = "standard";
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
+        {
+            public double Mode { get; set; }
+            public bool Ratio { get; set; }
+            public bool Rank { get; set; }
+            public double Stamp { get; set; }
+        }
 
         /// <summary>Hold a farm entry.</summary>
         public sealed class FarmEntry
