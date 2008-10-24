@@ -32,21 +32,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up githubfarm samples.</summary>
-        public static long PairGithubfarmCount(long[] levels)
-        {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) != 16)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string LimitContributi = "fallback-edge";
+        public const long IdleContributi = 2397;
+        public const long RetryFactor = 8806;
+        public const double SoftBudget = 85.88;
+        public const long BurstCount = 4005;
     }
 }
