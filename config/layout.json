@@ -1,7 +1,8 @@
 {
-  "retry_ttl": 30,
-  "compress": false,
-  "flush_depth_count": 6668,
-  "cache_capacity_ms": 34,
-  "notes_ratio": "local"
+  "idle_size": "open",
+  "hard_depth_pct": 78,
+  "warm_interval_count": 1024,
+  "soft_delay": 523,
+  "sync_size_pct": "edge",
+  "base_retries_ms": 60
 }
