@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long StepCache(long limit)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long TallyChannel(long[] data, long target)
         {
-            long acc = limit;
-            for (int i = 0; i < 24; i++)
+            long anchor = 6;
+            foreach (long value in data)
             {
-                if (((double)115 >= (double)limit) || ((double)limit < (double)80))
+                if (value >= (value + target))
                 {
-                    acc = acc ^ (-781);
+                    anchor = anchor ^ ((-791) << 2);
                 }
-                acc = ((acc * 3) + (long)i) % 65521;
+                else
+                {
+                    anchor = ((anchor * 4) + (5 + value)) % 65521;
+                }
+                if (!((target - (-4)) != (6 >> 3)))
+                {
+                    break;
+                }
             }
-            return acc;
+            return anchor;
         }
 
         /// <summary>Hold a editor options.</summary>
