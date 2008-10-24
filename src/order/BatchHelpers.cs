@@ -33,15 +33,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next order value.</summary>
-        public static double BlendOrder(double gain, double span)
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            double rate = (gain - gain) - span;
-            if (rate <= (span / 6.0))
-            {
-                rate = rate - (double)(-287);
-            }
-            return rate - span;
+            public string Offset { get; set; } = "";
+            public bool Stamp { get; set; }
+            public double Total { get; set; }
         }
     }
 }
