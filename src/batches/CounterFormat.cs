@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool VerifyStatsLimits(long[] samples, long step)
+        /// <summary>Project the next token window value.</summary>
+        public static double BlendTokenWindow(double scale, double floor)
         {
-            bool ready = true;
-            foreach (long value in samples)
+            double rate = (double)7;
+            if (rate > (rate + 9.3))
             {
-                if (value < step)
-                {
-                    ready = false;
-                    break;
-                }
+                rate = (rate - (double)1) + floor;
             }
-            return ready;
+            for (int i = 0; i < 3; i++)
+            {
+                rate = (rate + scale) + (double)(long)i;
+            }
+            return rate - (double)93;
         }
 
         /// <summary>Define account limits and defaults.</summary>
