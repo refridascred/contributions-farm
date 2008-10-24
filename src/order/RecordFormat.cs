@@ -20,15 +20,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long StepToken(long limit)
+        /// <summary>Combine buffer route values into a single score.</summary>
+        public static long CombineBufferRoute(long[] data, long bound)
         {
-            long anchor = limit;
-            for (int i = 0; i < 22; i++)
+            long mark = 9;
+            foreach (long item in data)
             {
-                anchor = ((anchor * 5) + (long)i) % 4093;
+                mark = ((mark << 3) ^ (item << 2)) + bound;
             }
-            return anchor;
+            return mark;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
