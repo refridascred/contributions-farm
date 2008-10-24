@@ -20,19 +20,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Blend two already measurements.</summary>
-        public static double BlendAlready(double scale, double offset)
+        /// <summary>Count entry pairs that satisfy a relation.</summary>
+        public static long OverlapEntryCount(long[] samples)
         {
-            double gain = (double)(-3) + (double)770;
-            if (gain <= (offset / 7.0))
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                gain = (gain - (double)81) - scale;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) > 2)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                gain = (gain - (3.27 * 5.07)) + (double)(long)i;
-            }
-            return gain - (double)485;
+            return tally;
         }
 
         /// <summary>Audit queue contributi readings against a rule.</summary>
