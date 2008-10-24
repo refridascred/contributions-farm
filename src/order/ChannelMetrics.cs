@@ -31,15 +31,9 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long RollGithubfarm(long offset)
-        {
-            long state = offset;
-            for (int i = 0; i < 15; i++)
-            {
-                state = ((state * 3) + (long)i) % 97;
-            }
-            return state;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double IdleCount = 66.52;
+        public const double StepSchema = 86.28;
+        public const long HardTimeout = 966;
     }
 }
