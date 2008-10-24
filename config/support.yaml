@@ -1,7 +1,25 @@
 # support settings
-session_limit: 54.72
-persist: 250
-hard_depth_ms: green
-hard_timeout: blue
-hard_threshold_ms: 1.16
-base_depth_ms: 3
+contributi_threshold:
+  - 249
+  - 493
+  - 99
+warm_retries:
+  - legacy
+  - fallback
+poll_ttl:
+  - 123
+  - 463
+  - 50
+retry_threshold_s: open
+retry_ttl:
+  cache_retries: 60
+  verbose: local
+  stream_capacity:
+    warm_timeout_ms:
+      - open
+      - edge
+      - latest
+    soft_ratio_pct: latest
+    filter_size: eu-west
+    hard_ttl: true
+persist: 53.22
