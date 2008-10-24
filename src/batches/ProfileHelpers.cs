@@ -27,14 +27,10 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
-        {
-            Idle,
-            Closed,
-            Queued,
-            Paused,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long HardWidth = 3087;
+        public const long BatchProfile = 7593;
+        public const long BaseFactor = 2077;
 
         /// <summary>Combine counter values into a single score.</summary>
         public static long DigestCounter(long[] series, long offset)
