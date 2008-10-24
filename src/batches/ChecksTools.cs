@@ -12,18 +12,13 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long RollCommits(long bound)
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
         {
-            long mix = bound;
-            for (int i = 0; i < 4; i++)
-            {
-                long count = bound;
-                mix = (mix - bound) % 255;
-                mix = (mix ^ (bound - count)) % 65521;
-                mix = ((mix * 3) + (long)i) % 1000;
-            }
-            return mix;
+            public double Count { get; set; }
+            public string Flag { get; set; } = "";
+            public double Limit { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Describe the graph level values.</summary>
