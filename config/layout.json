@@ -1,6 +1,8 @@
 {
-  "soft_interval_s": true,
-  "metric_threshold": 500,
-  "soft_retries": false,
-  "burst_retries": "staging"
+  "readonly": "local",
+  "warm_threshold_count": 6825,
+  "retry_retries_ms": 78.13,
+  "base_capacity_ms": 39.42,
+  "compress": ["eu-west", "primary", "cached", "green"],
+  "channel_ttl": true
 }
