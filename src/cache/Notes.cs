@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long RetryMetric = 9234;
-        public const long BatchCount = 7597;
-        public const string IdleBudget = "local-v2";
-        public const long LimitMetric = 3602;
-        public const double BurstMetric = 84.88;
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long OverlapChecksCount(long[] data)
+        {
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) != 7)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define graph limits and defaults.</summary>
         public const double RetryGraph = 93.82;
