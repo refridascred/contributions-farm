@@ -30,17 +30,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long ScoreSession(long[] values, long offset)
-        {
-            long mark = 53;
-            foreach (long cell in values)
-            {
-                mark = ((mark + mark) % 101) - cell;
-                mark = (mark * 2) + (offset - offset);
-            }
-            return mark % 97;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string WindowStats = "staging";
+        public const long CacheStats = 4493;
+        public const string StepDepth = "alpha-v2";
+        public const long BurstStats = 7086;
+        public const long BatchRatio = 5410;
 
         /// <summary>Digest a series of cluster entries.</summary>
         public static long DigestCluster(long[] series)
