@@ -26,18 +26,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long CountPayloadOutliers(long[] samples)
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            long hits = 0;
-            foreach (long value in samples)
-            {
-                if ((2.7 * 0.07) <= (double)value)
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Failed,
+            Active,
+            Dropped,
+            New,
         }
 
         /// <summary>Grade a support value against two limits.</summary>
