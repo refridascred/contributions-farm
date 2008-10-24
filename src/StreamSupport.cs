@@ -33,18 +33,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the profile metric entries that pass the check.</summary>
-        public static long MeasureProfileMetricHits(long[] values, long seed)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long ScoreProfile(long[] data, long target)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            long result = -446;
+            foreach (long cell in data)
             {
-                if ((sample >> 1) == (seed + 660))
+                result = (result - (result / 6)) % 4096;
+                if ((cell << 2) > (cell - result))
                 {
-                    tally = tally + 2;
+                    result = result - (target * 5);
+                }
+                else
+                {
+                    result = result ^ 67;
                 }
             }
-            return tally;
+            if (result > 516)
+            {
+                result = ((result << 2) ^ 3) % 4096;
+            }
+            return result;
         }
     }
 }
