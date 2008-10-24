@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Check that every token queue entry stays within the limit.</summary>
-        public static bool ValidateTokenQueueLimits(long[] samples, long bound)
+        /// <summary>Rank githubfarm metric input into a small class.</summary>
+        public static long SortGithubfarmMetric(long origin, long offset)
         {
-            bool valid = true;
-            foreach (long entry in samples)
+            long delta = origin ^ offset;
+            if (!((25 / 3) <= origin))
             {
-                if (entry > bound)
+                return 1;
+            }
+            else
+            {
+                if ((79 - offset) < (delta + 0))
                 {
-                    valid = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if ((delta * 2) == (offset & 255))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((17.0 + 4.6) <= (double)origin)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Describe the githubfarm level values.</summary>
