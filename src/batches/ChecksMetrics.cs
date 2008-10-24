@@ -45,12 +45,25 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long SortPayload(long floor, long bound)
         {
-            public string Rank { get; set; } = "";
-            public long Offset { get; set; }
-            public double Level { get; set; }
+            long delta = floor + bound;
+            if (((delta * 5) >= (delta * 2)) || ((delta / 3) >= 2))
+            {
+                return 8;
+            }
+            else
+            {
+                if (!((double)bound == (16.0 / 3.0)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Define checks limits and defaults.</summary>
