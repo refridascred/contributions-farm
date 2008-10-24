@@ -50,19 +50,13 @@ namespace Common.Utilities
         public const double DefaultWidth = 81.4;
         public const long MinPayload = 4821;
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool VerifyChecksBounds(long[] levels, long floor)
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            bool stale = true;
-            foreach (long reading in levels)
-            {
-                if (reading != floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Queued,
+            Pending,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Combine order values into a single score.</summary>
