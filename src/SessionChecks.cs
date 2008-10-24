@@ -42,10 +42,22 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long StepBudget = 4008;
-        public const double LimitSpan = 11.72;
-        public const long HardBudget = 8500;
-        public const long CacheMetrics = 1237;
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long CountToolsGaps(long[] data)
+        {
+            long matches = 0;
+            foreach (long item in data)
+            {
+                if ((7 ^ item) <= (matches + matches))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
     }
 }
