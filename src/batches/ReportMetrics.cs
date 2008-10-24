@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
         {
-            Idle,
-            Closed,
-            Retry,
-            Failed,
-            Done,
+            public long Flag { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Iterate the contributi farm series from a seed.</summary>
