@@ -20,18 +20,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long CountFilterOutliers(long[] readings)
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            long hits = 0;
-            foreach (long sample in readings)
-            {
-                if (11.0 < (double)sample)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Queued,
+            Draft,
+            Done,
+            New,
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
