@@ -43,13 +43,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Validate cache token readings against a bound.</summary>
+        public static bool ValidateCacheTokenRange(long[] readings, long target)
         {
-            public double Level { get; set; }
-            public string Rank { get; set; } = "";
-            public long Weight { get; set; }
-            public bool Total { get; set; }
+            bool found = true;
+            foreach (long sample in readings)
+            {
+                if (sample > target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
