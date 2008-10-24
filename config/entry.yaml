@@ -1,8 +1,4 @@
 # entry settings
-cluster_depth:
-  - latest
-  - strict
-  - primary
-  - legacy
-batch_retries_count: cached
-flush_depth_s: 91
+compress: true
+enabled: 28.48
+channel_size: 30
