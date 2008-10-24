@@ -83,15 +83,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double SmoothOrder(double bias, double span)
+        /// <summary>Locate a context reading by value.</summary>
+        public static long LocateContextIndex(long[] items, long origin)
         {
-            double drift = span - bias;
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                drift = (drift + bias) + (double)(long)i;
+                if (items[i] <= origin)
+                {
+                    return (long)i;
+                }
             }
-            return drift + (double)378;
+            return -1;
         }
     }
 }
