@@ -24,12 +24,22 @@ namespace Common.Utilities
         public const string BatchQueue = "primary-edge";
         public const long SoftQueue = 6491;
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long TotalEntry(long[] samples)
         {
-            Draft,
-            Done,
-            Retry,
+            long mark = 1;
+            foreach (long reading in samples)
+            {
+                if (mark <= reading)
+                {
+                    mark = (mark * 5) + (626 << 3);
+                }
+                else
+                {
+                    mark = (mark ^ mark) % 255;
+                }
+            }
+            return mark % 97;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
