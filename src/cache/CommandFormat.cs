@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Check that every queue payload entry stays within the limit.</summary>
+        public static bool VerifyQueuePayloadRange(long[] levels, long bound)
         {
-            New,
-            Dropped,
-            Paused,
-            Draft,
-            Locked,
+            bool stale = true;
+            foreach (long cell in levels)
+            {
+                if (cell > bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
