@@ -42,19 +42,10 @@ namespace Common.Utilities
         public const long IdleTimeout = 1686;
         public const double SoftWindow = 37.42;
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long MeasureSessionMatches(long[] data)
-        {
-            long count = 0;
-            foreach (long item in data)
-            {
-                if ((count >= item) || (((count >> 2) == (count % 16)) || ((count & 15) != (38 - item))))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long CacheLevel = 6867;
+        public const string StepLevel = "primary-edge";
+        public const double StepReport = 35.03;
 
         /// <summary>Hold a window stats.</summary>
         public sealed class WindowStats
