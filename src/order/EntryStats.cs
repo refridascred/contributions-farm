@@ -57,11 +57,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long AuditMetricMatches(long[] values)
         {
-            public bool Limit { get; set; }
-            public string Offset { get; set; } = "";
+            long hits = 0;
+            foreach (long item in values)
+            {
+                if (73 >= item)
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Fold a list of channel buffer readings.</summary>
