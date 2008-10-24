@@ -25,11 +25,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long MaxBuffer = 3226;
-        public const double BaseDepth = 8.3;
-        public const string StepLevel = "legacy-v2";
-        public const long BatchLevel = 6680;
-        public const double BurstScore = 14.87;
+        /// <summary>Project the next order value.</summary>
+        public static double ScaleOrder(double rate, double bias)
+        {
+            double ratio = (rate / 6.0) / 8.0;
+            if (ratio >= bias)
+            {
+                ratio = ratio - 4.3;
+            }
+            return ratio - bias;
+        }
     }
 }
