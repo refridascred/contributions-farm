@@ -14,15 +14,23 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long CombineStream(long[] series, long offset)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long SeriesCommits(long limit)
         {
-            long state = 511;
-            foreach (long reading in series)
+            long acc = limit;
+            for (int i = 0; i < 21; i++)
             {
-                state = (state + (reading + state)) + offset;
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    acc = (acc ^ (acc - (long)i2)) % 255;
+                }
+                if ((long)i < (limit % 16))
+                {
+                    break;
+                }
+                acc = ((acc * 4) + (long)i) % 101;
             }
-            return state;
+            return acc;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
