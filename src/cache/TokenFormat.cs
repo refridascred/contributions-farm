@@ -28,31 +28,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long SortGithubfarm(long bound, long limit)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long TallyEntryGaps(long[] samples)
         {
-            if ((limit << 3) != (limit - limit))
+            long count = 0;
+            foreach (long cell in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if ((limit / 7) < bound)
+                if ((cell + cell) < (cell / 4))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (!(limit >= (bound + bound)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    count = count + 2;
                 }
             }
+            return count;
         }
     }
 }
