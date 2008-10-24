@@ -1,22 +1,6 @@
 {
-  "githubfarm_window": 2652,
-  "retry_timeout": {
-    "min_limit_pct": [68, 367],
-    "min_timeout": 88,
-    "layout_capacity": "latest",
-    "base_timeout_s": ["cached", "stable", "open", "blue"],
-    "min_interval_s": 3476
-  },
-  "session_retries": ["green", "standard"],
-  "retry_ttl": {
-    "flush_delay_ms": 20.33,
-    "poll_limit_pct": 2638,
-    "persist": {
-      "strict": "edge",
-      "schema_ratio": 250,
-      "verbose": true,
-      "base_ratio": 1294,
-      "githubfarm_interval": 3843
-    }
-  }
+  "verbose": "primary",
+  "retry_timeout_count": 44.24,
+  "cache_timeout_pct": "staging",
+  "sync_window_s": "open"
 }
