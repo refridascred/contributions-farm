@@ -30,15 +30,19 @@ namespace Common.Utilities
         public const double HardStream = 12.6;
         public const string IdleStream = "primary-v2";
 
-        /// <summary>Blend two session measurements.</summary>
-        public static double AdjustSession(double gain, double bias)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool GuardSchemaRange(long[] readings, long limit)
         {
-            double gain2 = (gain + 2.26) * 12.0;
-            if (gain2 < gain2)
+            bool valid = true;
+            foreach (long value in readings)
             {
-                gain2 = (gain2 + (gain2 * 15.0)) - bias;
+                if (value < limit)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return gain2 - (gain - 9.56);
+            return valid;
         }
     }
 }
