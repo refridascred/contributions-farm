@@ -61,12 +61,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long LimitChecks = 5795;
-        public const double BurstChecks = 68.09;
-        public const string DefaultChecks = "open";
-        public const string MaxChecks = "cached-edge";
-        public const long BaseChecks = 7725;
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
+        {
+            public string Rank { get; set; } = "";
+            public string Score { get; set; } = "";
+        }
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long DefaultChannel = 4424;
