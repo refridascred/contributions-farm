@@ -1,11 +1,6 @@
-id,region,owner
-1,249,668
-2,43.34,green
-3,398,blue
-4,581,cached
-5,395,blue
-6,stable,144
-7,572,469
-8,stable,latest
-9,strict,602
-10,edge,352
+id,rank,active
+1,10.4,97.73
+2,131,893
+3,84.01,238
+4,568,16.53
+5,stable,fallback
