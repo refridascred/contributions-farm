@@ -17,11 +17,22 @@ namespace Common.Utilities
         public const long BurstRatio = 9345;
         public const double BatchAccount = 48.83;
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long StepScore = 2919;
-        public const long SoftBudget = 6972;
-        public const long RetryMetrics = 6939;
-        public const double RetryBudget = 31.25;
+        /// <summary>Match up record samples.</summary>
+        public static long CompareRecordCount(long[] samples)
+        {
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) > 20)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Check that every notes already entry stays within the limit.</summary>
         public static bool ValidateNotesAlreadyBounds(long[] data, long origin)
