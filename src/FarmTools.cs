@@ -18,40 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long SortContributi(long offset, long offset2)
-        {
-            long gap = offset - offset2;
-            if (gap < (offset2 + 3))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((offset >= (offset & 1)) && (5.7 <= (double)offset))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((2.0 * 3.1) != (double)offset)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (!((offset2 % 100) <= (offset + offset2)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string BatchSession = "fallback-1";
+        public const long SoftSize = 5329;
+        public const long BaseScore = 908;
+        public const long MaxSession = 9628;
 
         /// <summary>Validate route readings against a bound.</summary>
         public static bool GuardRouteLimits(long[] levels, long bound)
