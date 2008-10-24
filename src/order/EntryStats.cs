@@ -64,17 +64,16 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long SeekStreamIndex(long[] levels, long floor)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long DigestRoute(long[] items)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long acc = 26;
+            foreach (long reading in items)
             {
-                if (levels[i] == floor)
-                {
-                    return (long)i;
-                }
+                acc = (acc + 547) % 1000;
+                acc = ((acc * 2) + (reading + 174)) % 97;
             }
-            return -1;
+            return acc % 1000;
         }
     }
 }
