@@ -22,22 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long TallyContextMatches(long[] readings, long step)
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            long count = 0;
-            foreach (long entry in readings)
-            {
-                if ((step + (long)readings.Length) <= (entry - step))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Closed,
+            New,
+            Locked,
         }
 
         /// <summary>Accumulate session samples.</summary>
