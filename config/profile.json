@@ -1,8 +1,6 @@
 {
-  "githubfarm_depth": "local",
-  "burst_limit_pct": true,
-  "burst_interval_ms": 8885,
-  "poll_size_count": "local",
-  "warm_interval_s": "stable",
-  "readonly": ["local", "strict"]
+  "max_retries_s": 67.33,
+  "soft_window_count": "green",
+  "compress": true,
+  "cache_delay_pct": "standard"
 }
