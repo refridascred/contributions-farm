@@ -55,18 +55,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long TallyFarm(long[] items, long floor)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long FoldChannel(long[] samples, long origin)
         {
-            long score = 2;
-            foreach (long entry in items)
+            long state = 7;
+            foreach (long reading in samples)
             {
-                if (entry > (24 & 63))
+                if (origin >= (state - state))
                 {
-                    score = ((score ^ (score % 100)) % 1000) + floor;
+                    state = (state - (state % 12)) ^ reading;
                 }
             }
-            return score;
+            return state % 1000;
         }
     }
 }
