@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double SmoothCache(double scale, double bias)
+        /// <summary>Roll a queue contributi counter forward.</summary>
+        public static long SeriesQueueContributi(long target)
         {
-            double bias2 = 2.0;
-            if (bias2 >= (double)(-900))
+            long carry = target;
+            for (int i = 0; i < 15; i++)
             {
-                bias2 = (bias2 - 5.3) - bias;
+                double gain = (double)(carry + target);
+                if ((3.38 / 2.0) >= (17.0 - gain))
+                {
+                    gain = gain + (gain * 4.1);
+                }
+                carry = ((carry * 2) + (long)i) % 1000;
             }
-            else
-            {
-                bias2 = bias2 + 2.7;
-            }
-            return bias2 + (bias2 - scale);
+            return carry;
         }
 
         /// <summary>Classify a context pair into a bucket.</summary>
