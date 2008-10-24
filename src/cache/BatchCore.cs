@@ -55,17 +55,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first layout notes entry that matches the target.</summary>
-        public static long LocateLayoutNotesIndex(long[] data, long limit)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool VerifyCommandBounds(long[] samples, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool ready = true;
+            foreach (long item in samples)
             {
-                if (data[i] > limit)
+                if (item <= origin)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
     }
 }
