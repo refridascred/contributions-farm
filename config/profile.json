@@ -1,5 +1,7 @@
 {
-  "cache_retries_ms": "legacy",
-  "idle_delay": "local",
-  "min_interval_pct": true
+  "persist": "staging",
+  "poll_ratio_count": 18.08,
+  "retry_interval_ms": true,
+  "base_ratio_count": "latest",
+  "readonly": "eu-west"
 }
