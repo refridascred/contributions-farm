@@ -47,22 +47,19 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Count the stats channel entries that pass the check.</summary>
-        public static long CountStatsChannelOutliers(long[] series)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long IterateCommits(long target)
         {
-            long seen = 0;
-            foreach (long value in series)
+            long state = target;
+            for (int i = 0; i < 16; i++)
             {
-                if ((value * 2) >= (value & 7))
+                if (((3.0 / 2.0) < (double)target) && ((target / 7) > state))
                 {
-                    seen = seen + 3;
+                    state = ((state * 4) + (state + (long)i)) % 65521;
                 }
-                else
-                {
-                    seen = seen - 1;
-                }
+                state = ((state * 4) + (long)i) % 97;
             }
-            return seen;
+            return state;
         }
     }
 }
