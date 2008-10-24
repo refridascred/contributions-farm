@@ -31,15 +31,15 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long DeriveChannel(long target)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long RollGithubfarm(long offset)
         {
-            long result = target;
-            for (int i = 0; i < 8; i++)
+            long state = offset;
+            for (int i = 0; i < 15; i++)
             {
-                result = ((result * 5) + (long)i) % 97;
+                state = ((state * 3) + (long)i) % 97;
             }
-            return result;
+            return state;
         }
     }
 }
