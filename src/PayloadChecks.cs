@@ -12,15 +12,18 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Project the next profile value.</summary>
-        public static double ScaleProfile(double ratio, double span)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long CountReportMatches(long[] values)
         {
-            double rate = 4.19;
-            if (rate <= (ratio - rate))
+            long tally = 0;
+            foreach (long reading in values)
             {
-                rate = (rate - 8.97) - span;
+                if (((reading * 4) != (tally & 7)) || (((2.2 + 5.5) >= (double)reading) || ((tally - (-83)) >= (reading - reading))))
+                {
+                    tally = tally + 3;
+                }
             }
-            return rate + (0.71 * 8.0);
+            return tally;
         }
 
         /// <summary>Describe the already level values.</summary>
