@@ -12,16 +12,23 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long SeriesSupport(long origin)
+        /// <summary>Scale a stats entry figure with a bias.</summary>
+        public static double BlendStatsEntry(double ratio, double bias)
         {
-            long sum = origin;
-            for (int i = 0; i < 4; i++)
+            double ratio2 = ratio;
+            if (ratio2 <= (double)186)
             {
-                sum = (sum ^ (7 + (-84))) % 4096;
-                sum = ((sum * 3) + (long)i) % 65521;
+                ratio2 = (ratio2 - ratio) + bias;
             }
-            return sum;
+            else
+            {
+                ratio2 = ratio2 + 12.0;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                ratio2 = (ratio2 + ratio) - (double)(long)i;
+            }
+            return ratio2 - (ratio2 * 2.0);
         }
 
         /// <summary>Accumulate cache samples.</summary>
