@@ -26,22 +26,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the support buffer entries that pass the check.</summary>
-        public static long CountSupportBufferHits(long[] readings, long origin)
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double SmoothMetrics(double ratio, double span)
         {
-            long count = 0;
-            foreach (long value in readings)
+            double gain = (double)4 * 2.5;
+            if (gain > (double)(-2))
             {
-                if ((1 & 15) < (origin + origin))
-                {
-                    count = (count + 1) - value;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                gain = ((gain - gain) - ratio) - span;
             }
-            return count;
+            else
+            {
+                gain = gain + gain;
+            }
+            return gain - (gain / 7.0);
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
