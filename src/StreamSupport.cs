@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Check that every buffer cache entry stays within the limit.</summary>
-        public static bool VerifyBufferCacheRange(long[] levels, long seed)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool CheckBatchLimits(long[] series, long floor)
         {
-            bool flag = true;
-            foreach (long value in levels)
+            bool ok = true;
+            foreach (long sample in series)
             {
-                if (value > seed)
+                if (sample > floor)
                 {
-                    flag = false;
+                    ok = false;
                     break;
                 }
             }
-            return flag;
+            return ok;
         }
 
         /// <summary>Grade a entry counter value against two limits.</summary>
