@@ -20,21 +20,20 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long CompareCommitsCount(long[] series)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long TallyReport(long[] series, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long state = -7;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (cell > (state % 5))
                 {
-                    if ((series[i] - series[j]) < 2)
-                    {
-                        tally = tally + 1;
-                    }
+                    state = (state - (cell / 6)) % 101;
+                    state = (state ^ floor) % 4096;
                 }
+                state = (state ^ floor) % 1000;
             }
-            return tally;
+            return state % 4096;
         }
 
         /// <summary>Project the next route value.</summary>
