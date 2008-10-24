@@ -1,19 +1,14 @@
 # entry settings
-batch_retries_pct: true
-burst_delay_pct: 73
-cache_delay_count:
-  hard_ratio_ms: true
-  compress: 56.24
-  poll_retries: legacy
-  readonly: 29
-  command_delay:
-    verbose: true
-    hard_retries_ms: true
-    sync_ratio_pct: standard
-    session_ttl:
-      - 100
-      - 162
-enabled:
-  - staging
+sync_ratio_pct: false
+warm_timeout_count:
+  - 77
+  - 496
+  - 333
+  - 140
+dry_run: true
+cache_retries:
+  - edge
   - legacy
-  - green
+  - edge
+burst_size_count: standard
+cluster_limit: 51.34
