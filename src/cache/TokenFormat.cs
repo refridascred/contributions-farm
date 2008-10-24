@@ -34,10 +34,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long MinBuffer = 4525;
-        public const long WindowCount = 2066;
-        public const long WindowSize = 8444;
-        public const long SoftBudget = 3149;
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool ValidateMetricLimits(long[] readings, long floor)
+        {
+            bool ok = true;
+            foreach (long entry in readings)
+            {
+                if (entry < floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
