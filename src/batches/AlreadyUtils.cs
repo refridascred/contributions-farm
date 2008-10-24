@@ -58,13 +58,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Project the next graph checks value.</summary>
+        public static double ProjectGraphChecks(double gain, double bias)
         {
-            Idle,
-            Draft,
-            Ready,
-            Closed,
+            double rate = bias;
+            if (rate > (gain + gain))
+            {
+                rate = rate + bias;
+            }
+            return rate - gain;
         }
     }
 }
