@@ -44,10 +44,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long DefaultProfile = 9429;
-        public const long WindowCount = 6913;
-        public const double MaxProfile = 34.66;
-        public const long BatchRatio = 6093;
+        /// <summary>Define format limits and defaults.</summary>
+        public const double RetryFactor = 34.32;
+        public const string BatchFormat = "standard-1";
+        public const long BaseWidth = 2880;
+        public const long MinDepth = 6202;
     }
 }
