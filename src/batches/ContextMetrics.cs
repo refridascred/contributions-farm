@@ -23,13 +23,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
-        {
-            public long Level { get; set; }
-            public long Region { get; set; }
-            public long Rank { get; set; }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long CacheFormat = 6789;
+        public const long DefaultRatio = 639;
+        public const string RetrySize = "latest-v2";
 
         /// <summary>Validate schema readings against a bound.</summary>
         public static bool ValidateSchemaLimits(long[] series, long offset)
