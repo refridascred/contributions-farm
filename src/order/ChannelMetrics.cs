@@ -39,9 +39,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double IdleCount = 66.52;
-        public const double StepSchema = 86.28;
-        public const long HardTimeout = 966;
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long MeasureMetricsHits(long[] samples, long offset)
+        {
+            long matches = 0;
+            foreach (long sample in samples)
+            {
+                if (((sample - sample) < sample) && ((matches + sample) == (73 - matches)))
+                {
+                    matches = (matches + 3) + offset;
+                }
+            }
+            return matches;
+        }
     }
 }
