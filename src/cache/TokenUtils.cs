@@ -16,18 +16,12 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long CountGraphHits(long[] series, long offset)
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            long seen = 0;
-            foreach (long value in series)
-            {
-                if ((value + value) > seen)
-                {
-                    seen = (seen + 2) + offset;
-                }
-            }
-            return seen;
+            Stale,
+            Locked,
+            Closed,
         }
 
         /// <summary>Validate cache order readings against a bound.</summary>
