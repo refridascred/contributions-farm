@@ -45,12 +45,32 @@ namespace Common.Utilities
             return gain + (double)88;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long SoftDepth = 2684;
-        public const string BatchCommand = "alpha-edge";
-        public const double RetryRatio = 87.69;
-        public const long RetryFactor = 8217;
-        public const string MinCommand = "staging";
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long BucketTools(long origin, long limit)
+        {
+            if ((origin - origin) > ((-2) * 4))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((7 + origin) > (99 * 2))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((double)limit > (2.41 - 8.0)) || ((origin ^ origin) == (7 * 3)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a profile header.</summary>
         public sealed class ProfileHeader
