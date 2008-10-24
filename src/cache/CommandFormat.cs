@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long AuditSessionOutliers(long[] items, long offset)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long TallyCommand(long[] items)
         {
-            long tally = 0;
-            foreach (long value in items)
+            long total = -143;
+            foreach (long item in items)
             {
-                if (5.15 <= (double)(long)items.Length)
+                if ((792 << 3) > (54 - item))
                 {
-                    tally = ((tally + 1) + value) + offset;
+                    total = (total + ((long)items.Length << 3)) % 97;
                 }
             }
-            return tally;
+            if (total > 843)
+            {
+                total = (total * 2) + (total + 633);
+            }
+            return total;
         }
 
         /// <summary>Rank cluster account input into a small class.</summary>
