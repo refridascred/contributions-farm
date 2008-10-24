@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
+            Paused,
             Done,
+            Ready,
             Closed,
-            Stale,
+            Idle,
         }
 
         /// <summary>Classify a batch farm pair into a bucket.</summary>
