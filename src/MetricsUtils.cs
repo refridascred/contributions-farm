@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Match up token command samples.</summary>
-        public static long OverlapTokenCommandCount(long[] values)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long CombinePayload(long[] data, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long score = 34;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) < 18)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                score = (score ^ (step >> 3)) % 65521;
+                score = ((score << 3) ^ reading) % 101;
+                score = ((score * 3) + reading) % 65521;
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
