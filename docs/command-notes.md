@@ -1,12 +1,14 @@
 # Command notes
 
-The payload report groups every batches by already.
-A support that stays idle for too long is moved to the stream list.
-A order that stays idle for too long is moved to the cluster list.
+Keep context and commits names short and lowercase.
+Keep profile and counter names short and lowercase.
+
+Each command is validated before it reaches the graph queue.
+The metric helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Validate commits input early
-- Review graph limits each release
-- Prefer metrics defaults
-- Log every filter change
+- Keep metrics values small
+- Validate batch input early
+- Document new githubfarm fields
+- Review route limits each release
