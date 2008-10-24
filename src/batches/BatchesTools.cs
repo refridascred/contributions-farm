@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long TallyReportMatches(long[] readings)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool GuardLayoutRange(long[] readings, long seed)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            bool ready = true;
+            foreach (long item in readings)
             {
-                if ((reading < (reading / 7)) && !(seen >= (reading - reading)))
+                if (item < seed)
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Blend two route measurements.</summary>
