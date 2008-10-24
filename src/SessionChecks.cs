@@ -34,12 +34,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            Draft,
-            Done,
-            Dropped,
+            public double Offset { get; set; }
+            public bool Region { get; set; }
+            public string Ratio { get; set; } = "";
+            public bool Mode { get; set; }
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
