@@ -1,7 +1,5 @@
 {
-  "persist": "staging",
-  "poll_ratio_count": 18.08,
-  "retry_interval_ms": true,
-  "base_ratio_count": "latest",
-  "readonly": "eu-west"
+  "soft_timeout_s": 3,
+  "soft_limit": "cached",
+  "default_threshold_pct": 42.93
 }
