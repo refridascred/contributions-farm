@@ -55,19 +55,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of buffer contributi readings.</summary>
-        public static long CombineBufferContributi(long[] data, long bound)
+        /// <summary>Look up the position of a notes filter sample.</summary>
+        public static long LookupNotesFilterIndex(long[] series, long origin)
         {
-            long result = 2;
-            foreach (long value in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                result = (result ^ value) % 97;
-                if ((result <= (bound * 3)) && (0 > (bound >> 5)))
+                if (series[i] > origin)
                 {
-                    result = ((result << 2) ^ value) % 65521;
+                    return (long)i;
                 }
             }
-            return result % 65521;
+            return -1;
         }
     }
 }
