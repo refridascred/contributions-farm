@@ -35,13 +35,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            Queued,
-            Dropped,
-            Locked,
-            Idle,
+            public long Region { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Describe the profile state values.</summary>
