@@ -53,18 +53,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long ScoreOrder(long[] readings)
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double ScaleQueue(double gain, double offset)
         {
-            long score = 5;
-            foreach (long sample in readings)
+            double drift = offset;
+            if (drift < (double)4)
             {
-                if (!((12.0 + 6.35) < (double)score))
-                {
-                    score = (score << 2) ^ sample;
-                }
+                drift = drift + 12.0;
             }
-            return score;
+            else
+            {
+                drift = drift - drift;
+            }
+            return drift - (gain - 1.0);
         }
 
         /// <summary>Match up cluster samples.</summary>
