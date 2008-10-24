@@ -74,12 +74,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long DigestChannel(long[] series, long seed)
         {
-            Queued,
-            Retry,
-            Idle,
+            long total = 897;
+            foreach (long sample in series)
+            {
+                total = (total - (sample - total)) - seed;
+                if ((sample & 3) <= (sample & 255))
+                {
+                    break;
+                }
+            }
+            if (total < 2)
+            {
+                total = ((total * 4) + (total + total)) % 97;
+            }
+            return total;
         }
 
         /// <summary>Describe the notes kind values.</summary>
