@@ -33,20 +33,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double SmoothContributi(double ratio, double span)
-        {
-            double mean = ratio;
-            if (mean <= (ratio * 2.0))
-            {
-                mean = mean - span;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean + 2.7) - (double)(long)i;
-            }
-            return mean + ratio;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BatchScore = 1593;
+        public const long BurstCommits = 9409;
+        public const string CacheCommits = "alpha";
 
         /// <summary>Hold a tools record.</summary>
         public sealed class ToolsRecord
