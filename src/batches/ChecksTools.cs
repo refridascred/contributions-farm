@@ -21,17 +21,19 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Look up the position of a queue format sample.</summary>
-        public static long LookupQueueFormatIndex(long[] samples, long bound)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool VerifyChecksBounds(long[] values, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool valid = true;
+            foreach (long datum in values)
             {
-                if ((samples[i] > bound) && ((samples[i] % 5) != 0))
+                if (datum <= origin)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
