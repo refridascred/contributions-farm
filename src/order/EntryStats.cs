@@ -34,14 +34,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long SeriesChecks(long seed)
         {
-            Active,
-            Failed,
-            Pending,
-            Retry,
-            Idle,
+            long anchor = seed;
+            for (int i = 0; i < 17; i++)
+            {
+                anchor = ((anchor * 5) + (long)i) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Find the first filter format entry that matches the target.</summary>
