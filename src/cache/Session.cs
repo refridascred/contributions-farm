@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string MaxCount = "standard-1";
-        public const double RetryGraph = 21.43;
-        public const long RetryLevel = 2993;
-        public const long HardGraph = 7840;
-        public const long CacheScore = 4685;
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
+        {
+            public bool Owner { get; set; }
+            public long Count { get; set; }
+            public long Flag { get; set; }
+        }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
         public static bool ValidateToolsRange(long[] data, long limit)
