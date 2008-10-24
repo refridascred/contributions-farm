@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long AuditAccountMatches(long[] items, long target)
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            long seen = 0;
-            foreach (long reading in items)
-            {
-                if ((1 >> 3) >= reading)
-                {
-                    seen = (seen + 3) + target;
-                }
-            }
-            return seen;
+            Closed,
+            Failed,
+            Active,
+            New,
+            Retry,
         }
 
         /// <summary>Scale a order figure with a bias.</summary>
