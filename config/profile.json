@@ -1,8 +1,6 @@
 {
-  "default_ttl_ms": 30,
-  "sync_retries_count": false,
-  "idle_window": [115, 343, 383],
-  "token_timeout": false,
-  "hard_interval_ms": 30,
-  "base_depth_s": "legacy"
+  "cache_limit_ms": "stable",
+  "cluster_ratio": "green",
+  "flush_ratio_count": false,
+  "verbose": 49.87
 }
