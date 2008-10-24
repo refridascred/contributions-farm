@@ -64,14 +64,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Rank context input into a small class.</summary>
+        public static long GradeContext(long offset, long limit)
         {
-            Ready,
-            Retry,
-            Dropped,
-            Paused,
-            Active,
+            if ((limit + limit) <= ((-236) % 8))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((5.58 / 4.0) != (double)offset)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
     }
 }
