@@ -55,11 +55,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long WeighBuffer(long[] data, long bound)
         {
-            public string Rank { get; set; } = "";
-            public bool Score { get; set; }
+            long mix = 0;
+            foreach (long cell in data)
+            {
+                if (((bound >> 1) >= (bound + cell)) || ((double)bound == (7.9 * 13.0)))
+                {
+                    mix = (mix ^ (mix + mix)) % 65521;
+                }
+            }
+            return mix % 1000;
         }
     }
 }
