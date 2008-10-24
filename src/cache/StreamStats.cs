@@ -67,24 +67,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long RollCluster(long seed)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool VerifyBatchesRange(long[] values, long bound)
         {
-            long result = seed;
-            for (int i = 0; i < 13; i++)
+            bool ok = true;
+            foreach (long cell in values)
             {
-                if ((seed % 16) == (seed ^ result))
+                if (cell >= bound)
                 {
-                    result = (result - (seed - seed)) % 101;
-                    result = (result << 2) ^ (29 + seed);
+                    ok = false;
+                    break;
                 }
-                if ((seed - result) != (174 << 1))
-                {
-                    result = result + seed;
-                }
-                result = ((result * 2) + (long)i) % 97;
             }
-            return result;
+            return ok;
         }
     }
 }
