@@ -49,12 +49,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
-        {
-            Pending,
-            Retry,
-            Done,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long DefaultProfile = 9429;
+        public const long WindowCount = 6913;
+        public const double MaxProfile = 34.66;
+        public const long BatchRatio = 6093;
     }
 }
