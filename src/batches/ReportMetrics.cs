@@ -30,19 +30,9 @@ namespace Common.Utilities
         public const double HardStream = 12.6;
         public const string IdleStream = "primary-v2";
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool GuardSchemaRange(long[] readings, long limit)
-        {
-            bool valid = true;
-            foreach (long value in readings)
-            {
-                if (value < limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long HardSpan = 3838;
+        public const string LimitSupport = "primary-edge";
+        public const double StepSupport = 5.09;
     }
 }
