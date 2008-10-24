@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long DigestCommits(long[] readings, long floor)
+        /// <summary>Compare every pair of stream session readings.</summary>
+        public static long CompareStreamSessionCount(long[] values)
         {
-            long state = 55;
-            foreach (long entry in readings)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((state + floor) > entry)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    state = state + 675;
-                }
-                else
-                {
-                    state = (state ^ (entry / 5)) % 4096;
+                    if ((values[i] ^ values[j]) == 14)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Look up the position of a context sample.</summary>
