@@ -34,11 +34,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string SoftTimeout = "cached-v2";
-        public const long StepBatch = 8272;
-        public const string BurstSize = "stable-1";
-        public const double HardBatch = 81.57;
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
+        {
+            public long Rank { get; set; }
+            public string Level { get; set; } = "";
+            public double Region { get; set; }
+            public bool Count { get; set; }
+        }
 
         /// <summary>Match up buffer cluster samples.</summary>
         public static long OverlapBufferClusterCount(long[] samples)
