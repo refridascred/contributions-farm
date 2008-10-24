@@ -1,6 +1,6 @@
 {
-  "cache_interval": "cached",
-  "retry_window_s": true,
-  "already_size": 3,
-  "graph_interval": "latest"
+  "persist": "local",
+  "dry_run": ["local", "eu-west", "edge", "local"],
+  "hard_interval_count": [377, 166],
+  "strict": "eu-west"
 }
