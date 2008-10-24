@@ -32,21 +32,38 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Compare every pair of channel readings.</summary>
-        public static long MatchChannelCount(long[] values)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long BucketMetric(long step, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            if (12.0 >= (double)step)
             {
-                for (int j = 0; j < values.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if (((offset - 729) > (step * 5)) && ((offset >> 2) <= (step + step)))
                 {
-                    if ((values[i] - values[j]) != 0)
+                    return 1;
+                }
+                else
+                {
+                    if (!((offset >> 2) == (offset % 10)))
                     {
-                        tally = tally + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)offset > (double)step)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Blend two payload measurements.</summary>
