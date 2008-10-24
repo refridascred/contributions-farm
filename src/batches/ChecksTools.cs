@@ -12,11 +12,16 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string CacheScore = "alpha-1";
-        public const long SoftDepth = 4158;
-        public const string BurstMetric = "stable";
-        public const double BaseSpan = 22.02;
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long RollWindow(long bound)
+        {
+            long anchor = bound;
+            for (int i = 0; i < 5; i++)
+            {
+                anchor = ((anchor * 3) + (long)i) % 101;
+            }
+            return anchor;
+        }
 
         /// <summary>Look up the position of a stats sample.</summary>
         public static long SeekStatsIndex(long[] data, long origin)
