@@ -21,14 +21,17 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Look up the position of a queue format sample.</summary>
+        public static long LookupQueueFormatIndex(long[] samples, long bound)
         {
-            Ready,
-            Draft,
-            Active,
-            Idle,
-            Stale,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] > bound) && ((samples[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
