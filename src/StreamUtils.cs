@@ -28,18 +28,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long CountMetricsOutliers(long[] readings)
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            long hits = 0;
-            foreach (long value in readings)
-            {
-                if (!((7.1 + 2.0) != (double)value))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public long Level { get; set; }
+            public bool Rank { get; set; }
+            public long Mode { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Define payload limits and defaults.</summary>
