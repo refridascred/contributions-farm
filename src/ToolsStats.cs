@@ -58,10 +58,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long CacheLevel = 6867;
-        public const string StepLevel = "primary-edge";
-        public const double StepReport = 35.03;
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long SeekCounterIndex(long[] data, long origin)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Look up the position of a editor sample.</summary>
         public static long LocateEditorIndex(long[] samples, long seed)
