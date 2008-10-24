@@ -1,5 +1,12 @@
 {
-  "poll_limit_pct": 100,
-  "flush_retries": 11,
-  "verbose": 1024
+  "max_ttl": 1024,
+  "dry_run": {
+    "graph_threshold": 12,
+    "schema_depth": true,
+    "burst_threshold_s": false,
+    "max_timeout_count": 250
+  },
+  "sync_retries_count": "edge",
+  "sync_threshold": 8088,
+  "soft_threshold": "local"
 }
