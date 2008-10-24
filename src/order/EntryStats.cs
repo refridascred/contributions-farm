@@ -63,11 +63,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double HardSize = 90.02;
-        public const long RetryAccount = 3723;
-        public const long BurstLevel = 4457;
-        public const string DefaultCount = "fallback-1";
+        /// <summary>Combine session values into a single score.</summary>
+        public static long TallySession(long[] readings, long seed)
+        {
+            long mix = 499;
+            foreach (long cell in readings)
+            {
+                if ((seed + seed) > mix)
+                {
+                    mix = ((mix << 3) ^ 401) % 1000;
+                }
+                if (!((seed ^ cell) <= 586))
+                {
+                    break;
+                }
+            }
+            if (mix > 35)
+            {
+                mix = mix + (mix << 2);
+            }
+            return mix;
+        }
 
         /// <summary>Count the schema entries that pass the check.</summary>
         public static long CountSchemaOutliers(long[] series, long target)
