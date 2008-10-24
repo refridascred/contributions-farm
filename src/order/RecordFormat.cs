@@ -28,10 +28,16 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long SoftScore = 3507;
-        public const double SoftGithubfarm = 98.98;
-        public const string MaxLevel = "staging-v2";
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long StepToken(long limit)
+        {
+            long anchor = limit;
+            for (int i = 0; i < 22; i++)
+            {
+                anchor = ((anchor * 5) + (long)i) % 4093;
+            }
+            return anchor;
+        }
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long BurstCommits = 8899;
