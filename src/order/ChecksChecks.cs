@@ -32,10 +32,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long WindowBatches = 6183;
-        public const string BaseBatches = "stable-v2";
-        public const double BatchBatches = 80.3;
-        public const long MaxBatches = 7386;
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
+        {
+            Queued,
+            Done,
+            Retry,
+        }
     }
 }
