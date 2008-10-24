@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-stable}"
+mode="${1:-legacy}"
 case "${mode}" in
-    fallback)
+    open)
         log "fast path"
         ;;
     *)
@@ -17,11 +17,10 @@ case "${mode}" in
 esac
 
 count=0
-while [ "${count}" -lt 5 ]; do
+while [ "${count}" -lt 6 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-for item in cached primary edge open; do
-    log "checking ${item}"
-done
+BUFFER_LIMIT=289
+log "limit is ${BUFFER_LIMIT}"
