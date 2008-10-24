@@ -1,7 +1,10 @@
-id,count,region,active
-1,stable,cached,834
-2,79,15,3.61
-3,473,local,cached
-4,674,740,open
-5,cached,79.06,89.93
-6,253,local,8.55
+id,token,ratio
+1,304,14.72
+2,236,13.71
+3,fallback,primary
+4,998,22.27
+5,220,98
+6,550,77.2
+7,latest,57.43
+8,776,edge
+9,legacy,stable
