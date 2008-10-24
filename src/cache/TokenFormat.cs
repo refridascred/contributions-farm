@@ -35,14 +35,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
+            Locked,
             Pending,
-            Dropped,
-            Closed,
             Failed,
-            Draft,
+            Done,
         }
     }
 }
