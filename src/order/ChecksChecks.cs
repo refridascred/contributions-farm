@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long FindToolsIndex(long[] items, long target)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long WeighBatch(long[] samples)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mark = 0;
+            foreach (long datum in samples)
             {
-                if (items[i] <= target)
+                if (mark < datum)
                 {
-                    return (long)i;
+                    mark = ((mark << 2) ^ (96 / 9)) % 255;
                 }
             }
-            return -1;
+            return mark % 97;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
