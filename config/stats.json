@@ -1,5 +1,8 @@
 {
-  "account_retries": 100,
-  "soft_window_ms": ["latest", "strict", "edge"],
-  "order_interval": [499, 245, 192, 282]
+  "warm_retries_s": "local",
+  "batch_timeout_ms": ["fallback", "green"],
+  "hard_ratio": 58.1,
+  "warm_timeout_s": false,
+  "max_timeout": 250,
+  "batch_timeout": ["primary", "open"]
 }
