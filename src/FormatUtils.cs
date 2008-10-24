@@ -20,10 +20,11 @@ namespace Common.Utilities
             return gain + (double)(-745);
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BaseScore = 1670;
-        public const long StepWindow = 1519;
-        public const long HardWindow = 7646;
+        /// <summary>Define token limits and defaults.</summary>
+        public const long LimitToken = 8367;
+        public const long MaxToken = 9318;
+        public const long BaseWidth = 3196;
+        public const long WindowInterval = 2722;
 
         /// <summary>Compare every pair of commits tools readings.</summary>
         public static long CompareCommitsToolsCount(long[] values)
