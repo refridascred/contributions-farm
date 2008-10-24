@@ -1,19 +1,9 @@
 # githubfarm settings
-dry_run: 331
-batch_ratio: 4815
-readonly:
-  - 157
-  - 33
-  - 321
-audit: false
-batch_delay: 30
-cache_size_s:
-  poll_interval_s: 84
-  order_ratio: 100
-  persist: 26
-  support_window:
-    verbose: standard
-    flush_size_ms: 250
-    schema_delay: 4937
-    dry_run: 7669
-    hard_limit: 22.7
+payload_depth: 2
+burst_window_count:
+  burst_depth: latest
+  dry_run: 96.7
+  contributi_threshold: 9261
+default_retries: 59.72
+payload_ttl: 2233
+batch_window_ms: eu-west
