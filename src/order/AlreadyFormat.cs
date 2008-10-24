@@ -12,18 +12,13 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long TallyGithubfarmOutliers(long[] levels)
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            long tally = 0;
-            foreach (long item in levels)
-            {
-                if ((double)tally >= (double)item)
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public double Rank { get; set; }
+            public long Region { get; set; }
+            public string Label { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
