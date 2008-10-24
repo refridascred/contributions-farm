@@ -65,22 +65,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long MeasureChecksHits(long[] samples)
+        /// <summary>Adjust a channel order reading.</summary>
+        public static double BlendChannelOrder(double rate, double offset)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            double rate2 = 1.52 + (18.0 / 9.0);
+            if (rate2 < (offset * 9.79))
             {
-                if (!(hits < (hits / 8)))
-                {
-                    hits = (hits + 2) ^ sample;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                rate2 = (rate2 - (double)48) - rate;
             }
-            return hits;
+            for (int i = 0; i < 7; i++)
+            {
+                rate2 = (rate2 - rate2) - (double)(long)i;
+            }
+            return rate2 - (17.0 + 19.0);
         }
     }
 }
