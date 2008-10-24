@@ -43,15 +43,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many batches account samples are out of range.</summary>
-        public static long TallyBatchesAccountHits(long[] data)
+        /// <summary>Count graph pairs that satisfy a relation.</summary>
+        public static long OverlapGraphCount(long[] data)
         {
             long matches = 0;
-            foreach (long datum in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((1.2 - 9.0) >= (double)datum) || (((matches * 4) >= (722 % 3)) && ((4.0 / 4.0) < (double)matches)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    matches = matches + 3;
+                    if ((data[i] ^ data[j]) < 15)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
