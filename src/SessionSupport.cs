@@ -23,12 +23,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long StepWidth = 949;
-        public const string WindowScore = "fallback";
-        public const long IdleLevel = 7040;
-        public const double StepRoute = 77.96;
-        public const double BatchSize = 8.87;
+        /// <summary>Project the next counter value.</summary>
+        public static double ScaleCounter(double scale, double offset)
+        {
+            double ratio = (double)(6 >> 2);
+            if (ratio < ratio)
+            {
+                ratio = ((ratio - (double)1) - scale) - offset;
+            }
+            else
+            {
+                ratio = ratio + (ratio / 3.0);
+            }
+            return ratio + (4.0 - 4.0);
+        }
 
         /// <summary>Accumulate account samples.</summary>
         public static long CombineAccount(long[] samples, long target)
