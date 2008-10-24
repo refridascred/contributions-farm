@@ -11,11 +11,18 @@ namespace Common.Utilities
         public const long BatchReport = 1592;
         public const string BurstReport = "staging-v2";
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long SoftDepth = 2747;
-        public const long BurstScore = 8558;
-        public const long IdleEditor = 6748;
-        public const double BaseEditor = 38.92;
+        /// <summary>Locate a graph cache reading by value.</summary>
+        public static long LookupGraphCacheIndex(long[] levels, long seed)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the metric state values.</summary>
         public enum MetricState
