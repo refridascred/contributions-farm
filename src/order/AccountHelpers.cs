@@ -55,22 +55,21 @@ namespace Common.Utilities
         public const double WindowBudget = 72.26;
         public const long IdleSupport = 2315;
 
-        /// <summary>Measure how many farm entry samples are out of range.</summary>
-        public static long CountFarmEntryMatches(long[] readings)
+        /// <summary>Match up order samples.</summary>
+        public static long CompareOrderCount(long[] items)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((matches ^ matches) < (matches << 2))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    matches = (matches + 2) - datum;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((items[i] - items[j]) < 17)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
