@@ -5,21 +5,39 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Match up metrics notes samples.</summary>
-        public static long PairMetricsNotesCount(long[] values)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long BucketGithubfarm(long limit, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long offset = limit ^ target;
+            if ((double)limit >= (1.24 + 3.14))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((offset <= (target + offset)) || ((double)target != (double)0))
                 {
-                    if ((values[i] ^ values[j]) > 17)
+                    return 0;
+                }
+                else
+                {
+                    if ((target + 670) > (offset * 5))
                     {
-                        seen = seen + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((2 + 131) < (target + limit)) || ((double)limit < (1.02 * 0.29)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Rank farm input into a small class.</summary>
