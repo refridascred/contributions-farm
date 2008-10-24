@@ -1,5 +1,6 @@
 {
-  "persist": 100,
-  "flush_interval_ms": 0.71,
-  "soft_depth_count": 100
+  "layout_ratio": "latest",
+  "audit": 39,
+  "hard_size": 100,
+  "notes_threshold": 98.95
 }
