@@ -1,7 +1,8 @@
-id,score,owner,ratio
-1,347,140,41.14
-2,79.85,38,45
-3,cached,39.32,standard
-4,892,941,fallback
-5,green,812,primary
-6,5.72,117,76.87
+id,count,ratio,score
+1,legacy,eu-west,69.26
+2,92.06,open,fallback
+3,65.66,235,standard
+4,primary,local,local
+5,latest,406,93.41
+6,open,691,23
+7,670,867,973
