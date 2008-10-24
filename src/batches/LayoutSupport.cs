@@ -48,9 +48,19 @@ namespace Common.Utilities
             return gain2 + (gain2 + gain);
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double RetryLevel = 45.07;
-        public const double WindowFilter = 28.89;
-        public const long MinFilter = 9042;
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long FoldGithubfarm(long[] items, long step)
+        {
+            long total = 3;
+            foreach (long cell in items)
+            {
+                total = ((total - (68 + total)) ^ cell) - step;
+            }
+            if (total < 4)
+            {
+                total = (total * 5) + total;
+            }
+            return total % 1000;
+        }
     }
 }
