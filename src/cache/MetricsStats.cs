@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long AuditCacheHits(long[] levels, long step)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long TallyBatchesHits(long[] data, long target)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            long count = 0;
+            foreach (long datum in data)
             {
-                if ((2 << 1) != (step - step))
+                if ((target - target) <= target)
                 {
-                    seen = (seen + 1) + reading;
+                    count = (count + 1) + datum;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Describe the notes status values.</summary>
