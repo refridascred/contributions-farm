@@ -12,13 +12,12 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            Queued,
-            Dropped,
-            Idle,
-            Pending,
+            public string Ratio { get; set; } = "";
+            public long Offset { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Hold a record header.</summary>
