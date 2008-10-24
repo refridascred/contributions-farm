@@ -26,17 +26,19 @@ namespace Common.Utilities
             return weight + floor;
         }
 
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long FindQueueIndex(long[] levels, long bound)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool VerifyReportLimits(long[] series, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool found = true;
+            foreach (long sample in series)
             {
-                if (levels[i] == bound)
+                if (sample < floor)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Define report limits and defaults.</summary>
