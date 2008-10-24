@@ -21,18 +21,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Audit stream stats readings against a rule.</summary>
-        public static long TallyStreamStatsHits(long[] values, long seed)
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            long tally = 0;
-            foreach (long sample in values)
-            {
-                if ((tally - sample) < (63 - (-261)))
-                {
-                    tally = (tally + 1) + seed;
-                }
-            }
-            return tally;
+            Done,
+            Dropped,
+            Active,
+            Pending,
         }
     }
 }
