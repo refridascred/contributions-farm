@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long CountRecordOutliers(long[] readings)
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
         {
-            long matches = 0;
-            foreach (long reading in readings)
-            {
-                if ((reading + 521) <= reading)
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public string Region { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public bool Score { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Describe the window level values.</summary>
