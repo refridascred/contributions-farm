@@ -42,22 +42,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long CountSupportMatches(long[] data, long offset)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool GuardCacheLimits(long[] values, long seed)
         {
-            long matches = 0;
-            foreach (long value in data)
+            bool valid = true;
+            foreach (long cell in values)
             {
-                if ((matches <= (939 << 3)) && ((offset ^ offset) != (value + value)))
+                if (cell >= seed)
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
     }
 }
