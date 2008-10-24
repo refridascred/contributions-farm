@@ -1,4 +1,5 @@
 # entry settings
-compress: true
-enabled: 28.48
-channel_size: 30
+account_interval: cached
+audit: 6830
+retry_size_count: 7257
+sync_retries_s: 30
