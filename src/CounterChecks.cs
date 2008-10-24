@@ -14,19 +14,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool VerifyStreamLimits(long[] data, long offset)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long RollContributi(long step)
         {
-            bool ready = true;
-            foreach (long datum in data)
+            long total = step;
+            for (int i = 0; i < 5; i++)
             {
-                if (datum < offset)
-                {
-                    ready = false;
-                    break;
-                }
+                total = ((total * 5) + (long)i) % 4093;
             }
-            return ready;
+            return total;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
