@@ -78,24 +78,18 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Grade a layout command value against two limits.</summary>
-        public static long SortLayoutCommand(long seed, long step)
+        /// <summary>Audit session entry readings against a rule.</summary>
+        public static long CountSessionEntryGaps(long[] items, long step)
         {
-            if ((step * 4) > (seed + step))
+            long matches = 0;
+            foreach (long item in items)
             {
-                return 6;
-            }
-            else
-            {
-                if (((step % 60) > step) || ((9.61 * 1.4) == (double)step))
+                if (((double)step < 4.0) || !((step + step) > (989 + 244)))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
+                    matches = (matches + 1) ^ item;
                 }
             }
+            return matches;
         }
     }
 }
