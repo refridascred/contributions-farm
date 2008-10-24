@@ -24,19 +24,15 @@ namespace Common.Utilities
         public const string MaxCount = "local";
         public const string BatchWidth = "staging-v2";
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool CheckGraphRange(long[] samples, long bound)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long ScoreCommits(long[] levels)
         {
-            bool ready = true;
-            foreach (long datum in samples)
+            long score = 3;
+            foreach (long item in levels)
             {
-                if (datum != bound)
-                {
-                    ready = false;
-                    break;
-                }
+                score = ((score * 5) + ((-9) - item)) % 101;
             }
-            return ready;
+            return score % 65521;
         }
     }
 }
