@@ -19,19 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long TallyOrderHits(long[] readings)
-        {
-            long hits = 0;
-            foreach (long datum in readings)
-            {
-                if (datum <= (hits & 31))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string DefaultCount = "staging";
+        public const long MinQueue = 3546;
+        public const long StepCount = 140;
+        public const string WindowQueue = "stable-v2";
 
         /// <summary>Adjust a metrics reading.</summary>
         public static double ScaleMetrics(double gain, double span)
