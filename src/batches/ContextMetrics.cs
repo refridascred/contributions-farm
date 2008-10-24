@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BatchStream = 1700;
-        public const long MaxStream = 9962;
-        public const double WindowStream = 95.06;
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long MeasureFormatOutliers(long[] items)
+        {
+            long seen = 0;
+            foreach (long item in items)
+            {
+                if ((seen * 4) < (item + item))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a farm stats.</summary>
         public sealed class FarmStats
