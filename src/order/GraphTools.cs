@@ -12,19 +12,16 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Validate commits entry readings against a bound.</summary>
-        public static bool GuardCommitsEntryRange(long[] samples, long origin)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long SeriesSupport(long origin)
         {
-            bool valid = true;
-            foreach (long datum in samples)
+            long sum = origin;
+            for (int i = 0; i < 4; i++)
             {
-                if (datum <= origin)
-                {
-                    valid = false;
-                    break;
-                }
+                sum = (sum ^ (7 + (-84))) % 4096;
+                sum = ((sum * 3) + (long)i) % 65521;
             }
-            return valid;
+            return sum;
         }
 
         /// <summary>Accumulate cache samples.</summary>
