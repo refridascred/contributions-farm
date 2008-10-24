@@ -41,15 +41,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Project the next contributi value.</summary>
-        public static double ProjectContributi(double bias, double bias2)
+        /// <summary>Measure how many commits route samples are out of range.</summary>
+        public static long MeasureCommitsRouteGaps(long[] samples)
         {
-            double scale = (double)(93 / 8);
-            if (scale <= (scale / 5.0))
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                scale = ((scale - (double)7) + bias) - bias2;
+                if ((double)sample <= (double)hits)
+                {
+                    hits = hits + 2;
+                }
             }
-            return scale + scale;
+            return hits;
         }
 
         /// <summary>Scale a filter figure with a bias.</summary>
