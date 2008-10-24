@@ -30,13 +30,22 @@ namespace Common.Utilities
             return bias2 - 8.03;
         }
 
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long TallyStatsHits(long[] values)
         {
-            public bool Ratio { get; set; }
-            public long Rank { get; set; }
-            public string Level { get; set; } = "";
-            public double Flag { get; set; }
+            long hits = 0;
+            foreach (long sample in values)
+            {
+                if ((3 >> 2) <= hits)
+                {
+                    hits = (hits + 3) + sample;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
