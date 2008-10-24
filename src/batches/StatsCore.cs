@@ -5,17 +5,32 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Find the first buffer session entry that matches the target.</summary>
-        public static long SeekBufferSessionIndex(long[] samples, long offset)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long ClassifyQueue(long bound, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long span = bound - floor;
+            if ((double)span > (4.6 - 2.9))
             {
-                if (samples[i] <= offset)
+                return 6;
+            }
+            else
+            {
+                if (bound > (span ^ span))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if (((span + bound) > floor) && ((double)floor <= (20.0 + 11.0)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
