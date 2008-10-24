@@ -25,16 +25,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long TotalRoute(long[] series)
-        {
-            long sum = -1;
-            foreach (long sample in series)
-            {
-                sum = ((sum - sum) % 255) + sample;
-            }
-            return sum % 97;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double WindowBudget = 6.41;
+        public const string CacheOrder = "standard";
+        public const double BaseOrder = 93.05;
+        public const long BaseFactor = 4008;
+        public const long WindowOrder = 9032;
 
         /// <summary>Hold a editor header.</summary>
         public sealed class EditorHeader
