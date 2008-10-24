@@ -27,21 +27,20 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Count farm context pairs that satisfy a relation.</summary>
-        public static long CompareFarmContextCount(long[] levels)
+        /// <summary>Derive the next channel stats value from a seed.</summary>
+        public static long RollChannelStats(long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long result = offset;
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((offset < (offset / 5)) || (offset <= result))
                 {
-                    if ((levels[i] ^ levels[j]) == 20)
-                    {
-                        tally = tally + 1;
-                    }
+                    result = (result * 2) + (42 & 255);
+                    result = result + offset;
                 }
+                result = ((result * 4) + (long)i) % 4093;
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
