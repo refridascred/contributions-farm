@@ -5,38 +5,22 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long ClassifyEditor(long limit, long target)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long CountSupportHits(long[] data)
         {
-            if (((limit - target) != (limit & 255)) && ((target & 63) <= (598 & 7)))
+            long matches = 0;
+            foreach (long datum in data)
             {
-                return 8;
-            }
-            else
-            {
-                if (limit <= target)
+                if ((datum * 3) != (datum + datum))
                 {
-                    return 3;
+                    matches = matches + 2;
                 }
                 else
                 {
-                    if ((double)target != (10.0 * 5.33))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((double)limit <= (5.62 / 3.0))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Describe the record status values.</summary>
