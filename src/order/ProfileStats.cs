@@ -12,15 +12,15 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Scale a payload commits figure with a bias.</summary>
-        public static double SmoothPayloadCommits(double scale, double offset)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long TallySession(long[] data)
         {
-            double ratio = offset;
-            if (ratio > (scale / 9.0))
+            long state = -871;
+            foreach (long item in data)
             {
-                ratio = ratio + (scale + scale);
+                state = (state ^ (long)data.Length) ^ item;
             }
-            return ratio - offset;
+            return state;
         }
 
         /// <summary>Describe the metric state values.</summary>
