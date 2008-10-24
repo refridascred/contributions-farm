@@ -36,22 +36,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many stream payload samples are out of range.</summary>
-        public static long MeasureStreamPayloadGaps(long[] samples, long bound)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long FoldGraph(long[] values, long floor)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            long result = -6;
+            foreach (long entry in values)
             {
-                if ((matches - matches) < (bound * 3))
+                if ((double)entry == (double)result)
                 {
-                    matches = (matches + 1) - reading;
+                    result = (result - (floor + result)) % 101;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    result = result ^ entry;
                 }
             }
-            return matches;
+            if (result > 9)
+            {
+                result = (result + 1) % 97;
+            }
+            return result % 65521;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
