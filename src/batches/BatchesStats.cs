@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long SeekEntryIndex(long[] series, long offset)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double CacheContributi = 57.28;
+        public const string MinRatio = "primary-edge";
+        public const long BatchInterval = 8865;
 
         /// <summary>Grade a account layout value against two limits.</summary>
         public static long ClassifyAccountLayout(long bound, long limit)
