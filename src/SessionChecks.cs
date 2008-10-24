@@ -34,22 +34,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long TotalEntry(long[] samples)
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            long mark = 1;
-            foreach (long reading in samples)
-            {
-                if (mark <= reading)
-                {
-                    mark = (mark * 5) + (626 << 3);
-                }
-                else
-                {
-                    mark = (mark ^ mark) % 255;
-                }
-            }
-            return mark % 97;
+            Draft,
+            Done,
+            Dropped,
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
