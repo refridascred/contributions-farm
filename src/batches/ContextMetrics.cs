@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long MeasureNotesHits(long[] levels, long target)
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            long matches = 0;
-            foreach (long cell in levels)
-            {
-                if (!(target < (matches ^ 428)) && ((cell + 14) < (matches + matches)))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Retry,
+            Failed,
+            Idle,
+            Closed,
         }
 
         /// <summary>Define format limits and defaults.</summary>
