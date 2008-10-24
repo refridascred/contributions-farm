@@ -37,17 +37,12 @@ namespace Common.Utilities
             return rate + scale;
         }
 
-        /// <summary>Locate a window editor reading by value.</summary>
-        public static long LocateWindowEditorIndex(long[] data, long floor)
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Stamp { get; set; }
+            public bool Rank { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Blend two githubfarm measurements.</summary>
