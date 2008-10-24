@@ -29,18 +29,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long MeasureGraphGaps(long[] values, long floor)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long FoldSchema(long[] items)
         {
-            long count = 0;
-            foreach (long datum in values)
+            long anchor = 26;
+            foreach (long reading in items)
             {
-                if ((count % 24) > count)
+                if ((reading * 3) < (reading + reading))
                 {
-                    count = ((count + 1) + datum) - floor;
+                    anchor = anchor - 934;
                 }
             }
-            return count;
+            if (anchor < 3)
+            {
+                anchor = (anchor ^ (anchor - anchor)) % 1000;
+            }
+            return anchor;
         }
     }
 }
