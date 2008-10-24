@@ -44,22 +44,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine format stats values into a single score.</summary>
-        public static long CombineFormatStats(long[] values, long limit)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool VerifySupportBounds(long[] levels, long offset)
         {
-            long anchor = 351;
-            foreach (long sample in values)
+            bool ready = true;
+            foreach (long value in levels)
             {
-                for (int i = 0; i < 4; i++)
+                if (value != offset)
                 {
-                    anchor = ((((anchor << 2) ^ 90) % 97) + (long)i) ^ sample;
-                }
-                if (((limit - 853) >= (limit % 12)) || ((double)limit <= (1.2 - 8.02)))
-                {
-                    anchor = (anchor * 2) + limit;
+                    ready = false;
+                    break;
                 }
             }
-            return anchor % 97;
+            return ready;
         }
 
         /// <summary>Rank context input into a small class.</summary>
