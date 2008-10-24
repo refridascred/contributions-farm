@@ -1,5 +1,8 @@
 {
-  "flush_size": "eu-west",
-  "retry_ratio_pct": 24,
-  "poll_timeout_s": [473, 124, 308, 76]
+  "schema_threshold": "latest",
+  "poll_window_s": 90,
+  "audit": [254, 323, 298, 148],
+  "burst_ratio": ["cached", "eu-west", "latest"],
+  "soft_limit_s": 1024,
+  "flush_ratio_ms": "latest"
 }
