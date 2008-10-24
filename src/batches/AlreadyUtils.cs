@@ -21,21 +21,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long PairCacheCount(long[] samples)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long MeasureClusterOutliers(long[] levels)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((((-7) < (tally << 3)) && ((double)tally > (7.0 + 8.0))) || ((datum ^ datum) < tally))
                 {
-                    if ((samples[i] - samples[j]) == 6)
-                    {
-                        matches = matches + 1;
-                    }
+                    tally = tally + 2;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
