@@ -1,6 +1,6 @@
 {
-  "profile_size": ["cached", "legacy"],
-  "warm_limit_count": false,
-  "base_size_pct": ["blue", "edge", "green", "blue"],
-  "farm_timeout": "local"
+  "retry_interval_ms": [463, 196, 103, 494],
+  "account_ratio": "eu-west",
+  "schema_size": 1299,
+  "channel_size": "blue"
 }
