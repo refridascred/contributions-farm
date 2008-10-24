@@ -15,15 +15,17 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Project the next counter value.</summary>
-        public static double ScaleCounter(double scale, double floor)
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long SeekSessionIndex(long[] series, long bound)
         {
-            double ratio = (double)(4 & 255);
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                ratio = ((ratio - floor) + (double)(long)i) - scale;
+                if ((series[i] >= bound) && ((series[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return ratio + floor;
+            return -1;
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
