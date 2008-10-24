@@ -34,17 +34,19 @@ namespace Common.Utilities
             return scale + (double)233;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long WeighProfile(long[] items, long step)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool VerifyMetricBounds(long[] samples, long floor)
         {
-            long carry = 603;
-            foreach (long sample in items)
+            bool found = true;
+            foreach (long reading in samples)
             {
-                carry = (((carry * 3) + carry) % 1000) - sample;
-                carry = (carry << 3) ^ (step - step);
-                carry = ((carry << 3) ^ (70 >> 5)) % 65521;
+                if (reading != floor)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return carry;
+            return found;
         }
     }
 }
