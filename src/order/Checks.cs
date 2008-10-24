@@ -61,23 +61,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate session tools samples.</summary>
-        public static long TallySessionTools(long[] data)
+        /// <summary>Measure how many graph batches samples are out of range.</summary>
+        public static long CountGraphBatchesMatches(long[] samples)
         {
-            long total = 33;
-            foreach (long reading in data)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                total = total - (reading ^ reading);
-                if (total > (total - reading))
+                if ((5 - count) > (reading - count))
                 {
-                    total = ((total * 3) + (51 >> 4)) % 101;
+                    count = count + 2;
                 }
                 else
                 {
-                    total = total + (total + reading);
+                    count = count - 1;
                 }
             }
-            return total % 65521;
+            return count;
         }
     }
 }
