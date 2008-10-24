@@ -1,14 +1,14 @@
 # Command notes
 
-When a stats fails, the report handler retries a few times before giving up.
-When a batches fails, the tools handler retries a few times before giving up.
+When a payload fails, the stats handler retries a few times before giving up.
+Keep notes and order names short and lowercase.
+A cluster that stays idle for too long is moved to the order list.
 
-A batches that stays idle for too long is moved to the context list.
-Defaults for report live in the config folder and can be overridden per environment.
-Run the batch check before changing any schema limits.
+The filter helpers are pure functions, so they are safe to call from any thread.
+When a batch fails, the command handler retries a few times before giving up.
 
 ## Guidelines
 
-- Review batches limits each release
-- Keep buffer values small
-- Prefer batch defaults
+- Validate report input early
+- Review batch limits each release
+- Document new commits fields
