@@ -68,15 +68,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long IterateBatches(long step)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long SortBatch(long origin, long bound)
         {
-            long carry = step;
-            for (int i = 0; i < 14; i++)
+            long next = origin + bound;
+            if (origin <= (bound >> 4))
             {
-                carry = ((carry * 2) + (long)i) % 1000;
+                return 3;
             }
-            return carry;
+            else
+            {
+                if (bound >= (bound + origin))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (bound < (bound - bound))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((-8) + next) >= next)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
     }
 }
