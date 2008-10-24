@@ -1,6 +1,6 @@
 {
-  "cache_threshold": true,
-  "persist": 30,
-  "default_retries_count": true,
-  "payload_ratio": false
+  "window_limit": false,
+  "verbose": [428, 314, 130],
+  "metric_timeout": [121, 391],
+  "cache_size": 250
 }
