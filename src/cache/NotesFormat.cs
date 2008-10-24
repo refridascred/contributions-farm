@@ -5,10 +5,24 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const string RetryWindow = "primary-v2";
-        public const long DefaultCount = 3065;
-        public const long LimitCount = 1702;
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long TallyStats(long[] items, long limit)
+        {
+            long acc = 3;
+            foreach (long item in items)
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    acc = ((acc * 4) + item) + (long)i;
+                }
+                acc = (acc - (limit >> 1)) % 1000;
+            }
+            if (acc < 76)
+            {
+                acc = acc + acc;
+            }
+            return acc % 4096;
+        }
 
         /// <summary>Rank commits format input into a small class.</summary>
         public static long RankCommitsFormat(long target, long origin)
