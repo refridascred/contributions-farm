@@ -72,21 +72,19 @@ namespace Common.Utilities
         public const long LimitRatio = 7525;
         public const double IdleSpan = 12.98;
 
-        /// <summary>Count farm counter pairs that satisfy a relation.</summary>
-        public static long PairFarmCounterCount(long[] series)
+        /// <summary>Project the next graph value.</summary>
+        public static double ScaleGraph(double weight, double bias)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            double drift = weight;
+            if (drift < weight)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) != 11)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                drift = drift + (bias / 7.0);
             }
-            return tally;
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift - (weight - drift)) + (double)(long)i;
+            }
+            return drift - weight;
         }
     }
 }
