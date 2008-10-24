@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long RetryReport = 742;
-        public const long BaseTimeout = 6930;
-        public const long SoftReport = 5145;
-        public const long StepCount = 1177;
+        /// <summary>Compare every pair of route stats readings.</summary>
+        public static long CompareRouteStatsCount(long[] samples)
+        {
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) == 7)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Roll a already counter forward.</summary>
         public static long StepAlready(long floor)
