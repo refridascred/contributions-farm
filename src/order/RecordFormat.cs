@@ -20,26 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate cluster order samples.</summary>
-        public static long TotalClusterOrder(long[] data, long seed)
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            long mix = 49;
-            foreach (long datum in data)
-            {
-                if (seed < (5 - mix))
-                {
-                    mix = (mix ^ datum) % 1000;
-                }
-                if (((mix << 2) <= (seed ^ seed)) && ((69 & 63) == (datum >> 1)))
-                {
-                    break;
-                }
-            }
-            if (mix < 8)
-            {
-                mix = mix ^ (seed % 3);
-            }
-            return mix % 1000;
+            Dropped,
+            Ready,
+            Failed,
         }
 
         /// <summary>Define window limits and defaults.</summary>
