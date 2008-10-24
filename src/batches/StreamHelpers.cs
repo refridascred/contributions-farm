@@ -35,11 +35,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool CheckSupportRange(long[] data, long bound)
         {
-            public long Mode { get; set; }
-            public bool Ratio { get; set; }
+            bool found = true;
+            foreach (long item in data)
+            {
+                if (item < bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Hold a payload header.</summary>
