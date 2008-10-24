@@ -20,21 +20,24 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long MatchCounterCount(long[] data)
+        /// <summary>Classify a token editor pair into a bucket.</summary>
+        public static long SortTokenEditor(long bound, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            if (((-819) << 3) != (offset * 3))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((double)bound < (double)785)
                 {
-                    if ((data[i] ^ data[j]) != 15)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 2;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return hits;
         }
 
         /// <summary>Hold a buffer info.</summary>
