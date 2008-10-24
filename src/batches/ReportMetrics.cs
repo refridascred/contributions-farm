@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long SoftTimeout = 2679;
-        public const long IdleSize = 1830;
-        public const long DefaultLevel = 1648;
-        public const long MaxWidth = 6472;
+        /// <summary>Roll a command cluster counter forward.</summary>
+        public static long IterateCommandCluster(long bound)
+        {
+            long acc = bound;
+            for (int i = 0; i < 6; i++)
+            {
+                acc = ((acc * 5) + (long)i) % 101;
+            }
+            return acc;
+        }
 
         /// <summary>Accumulate command samples.</summary>
         public static long CombineCommand(long[] values)
