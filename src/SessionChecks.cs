@@ -18,18 +18,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long TallyEntryMatches(long[] levels, long origin)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long RankLayout(long step, long floor)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            if ((-5) < (floor + step))
             {
-                if ((11.0 - 7.0) != (double)count)
+                return 7;
+            }
+            else
+            {
+                if ((double)floor != (4.6 + 2.41))
                 {
-                    count = ((count + 1) + reading) - origin;
+                    return 0;
+                }
+                else
+                {
+                    if (((double)step < 7.8) || ((floor / 8) < step))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (step > (step / 6))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Hold a order summary.</summary>
