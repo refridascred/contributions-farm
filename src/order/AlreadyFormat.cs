@@ -42,39 +42,18 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long ClassifyMetrics(long origin, long limit)
+        /// <summary>Audit profile already readings against a rule.</summary>
+        public static long CountProfileAlreadyGaps(long[] readings)
         {
-            long span = origin ^ limit;
-            if (((double)span == (0.53 - 2.0)) && (87 >= (limit * 5)))
+            long matches = 0;
+            foreach (long value in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if ((9.71 - 4.06) >= (double)limit)
+                if ((matches + 97) >= (value & 3))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)span == (16.0 + 4.0))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (!((origin & 15) < (span ^ span)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    matches = matches + 2;
                 }
             }
+            return matches;
         }
 
         /// <summary>Describe the contributi phase values.</summary>
