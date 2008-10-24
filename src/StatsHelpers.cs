@@ -37,12 +37,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a layout counter figure with a bias.</summary>
-        public static double ScaleLayoutCounter(double bias, double offset)
-        {
-            double load = offset;
-            return (load + load) + bias;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long StepCount = 9592;
+        public const long BaseBudget = 209;
+        public const double BurstFactor = 17.83;
 
         /// <summary>Hold a context snapshot.</summary>
         public sealed class ContextSnapshot
