@@ -40,22 +40,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long TallyProfileGaps(long[] levels)
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            long matches = 0;
-            foreach (long datum in levels)
-            {
-                if ((double)datum != (16.0 - 9.7))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Ready,
+            Dropped,
+            Locked,
+            Done,
+            Stale,
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
