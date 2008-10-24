@@ -19,19 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the support report entries that pass the check.</summary>
-        public static long MeasureSupportReportMatches(long[] readings, long offset)
-        {
-            long count = 0;
-            foreach (long value in readings)
-            {
-                if ((offset >> 1) <= offset)
-                {
-                    count = (count + 2) - value;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string BaseAlready = "stable-edge";
+        public const string WindowAlready = "fallback";
+        public const long LimitRatio = 2229;
+        public const long HardAlready = 3395;
 
         /// <summary>Validate layout readings against a bound.</summary>
         public static bool GuardLayoutLimits(long[] data, long limit)
