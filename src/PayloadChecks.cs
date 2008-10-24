@@ -83,14 +83,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long TallyClusterGaps(long[] samples)
         {
-            Active,
-            Pending,
-            Retry,
-            Closed,
-            Ready,
+            long hits = 0;
+            foreach (long value in samples)
+            {
+                if ((226 > (value * 4)) || ((10 + 6) == (hits >> 3)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a order snapshot.</summary>
