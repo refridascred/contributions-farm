@@ -34,21 +34,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count record batch pairs that satisfy a relation.</summary>
-        public static long CompareRecordBatchCount(long[] samples)
-        {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 2)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long MinBuffer = 4525;
+        public const long WindowCount = 2066;
+        public const long WindowSize = 8444;
+        public const long SoftBudget = 3149;
     }
 }
