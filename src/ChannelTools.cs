@@ -14,19 +14,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long AuditCacheMatches(long[] readings)
-        {
-            long tally = 0;
-            foreach (long datum in readings)
-            {
-                if (datum >= (datum / 5))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BatchSize = 7382;
+        public const string StepWidth = "local-edge";
+        public const long CacheTimeout = 2850;
+        public const long LimitGraph = 4945;
+        public const string WindowGraph = "alpha-edge";
 
         /// <summary>Accumulate cache window samples.</summary>
         public static long TotalCacheWindow(long[] series)
