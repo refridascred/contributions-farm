@@ -20,19 +20,11 @@ namespace Common.Utilities
             return rate + 1.3;
         }
 
-        /// <summary>Validate buffer cluster readings against a bound.</summary>
-        public static bool VerifyBufferClusterRange(long[] data, long offset)
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
         {
-            bool ready = true;
-            foreach (long item in data)
-            {
-                if (item >= offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public string Owner { get; set; } = "";
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
