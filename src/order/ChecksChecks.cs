@@ -17,20 +17,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long DigestChecks(long[] readings, long step)
-        {
-            long mark = 9;
-            foreach (long value in readings)
-            {
-                mark = (mark << 3) ^ (value / 3);
-            }
-            if (mark > 765)
-            {
-                mark = (mark - (step / 5)) % 4096;
-            }
-            return mark;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long DefaultDepth = 2778;
+        public const long MinProfile = 6630;
+        public const double BurstInterval = 29.63;
+        public const long CacheSize = 7452;
 
         /// <summary>Describe the checks class values.</summary>
         public enum ChecksClass
