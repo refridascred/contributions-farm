@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Project the next context filter value.</summary>
-        public static double ProjectContextFilter(double rate, double floor)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long AuditCommandMatches(long[] data, long target)
         {
-            double bias = floor;
-            if (bias > (floor * 5.0))
+            long seen = 0;
+            foreach (long value in data)
             {
-                bias = (bias - (bias - floor)) + rate;
+                if ((value ^ seen) <= value)
+                {
+                    seen = (seen + 2) + target;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                bias = bias + (double)(long)i;
-            }
-            return bias + bias;
+            return seen;
         }
 
         /// <summary>Validate queue metric readings against a bound.</summary>
