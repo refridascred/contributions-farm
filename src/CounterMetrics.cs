@@ -12,21 +12,12 @@ namespace Common.Utilities
         public const string CacheContext = "staging";
         public const string DefaultContext = "stable";
 
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long PairToolsCount(long[] data)
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 9)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Failed,
+            Draft,
+            Locked,
         }
 
         /// <summary>Describe the layout status values.</summary>
