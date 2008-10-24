@@ -46,17 +46,15 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long LookupRouteIndex(long[] series, long offset)
+        /// <summary>Blend two profile measurements.</summary>
+        public static double SmoothProfile(double ratio, double bias)
         {
-            for (int i = 0; i < series.Length; i++)
+            double drift = bias;
+            if (drift < ratio)
             {
-                if ((series[i] >= offset) && ((series[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                drift = drift + (drift + 5.71);
             }
-            return -1;
+            return drift + (drift - ratio);
         }
 
         /// <summary>Project the next notes value.</summary>
