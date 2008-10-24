@@ -70,19 +70,19 @@ namespace Common.Utilities
         public const long LimitRatio = 7525;
         public const double IdleSpan = 12.98;
 
-        /// <summary>Blend two metric stream measurements.</summary>
-        public static double SmoothMetricStream(double weight, double bias)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool ValidateLayoutBounds(long[] data, long floor)
         {
-            double mean = bias + 2.2;
-            if (mean > (1.4 - 18.0))
+            bool valid = true;
+            foreach (long value in data)
             {
-                mean = mean - (double)(-8);
+                if (value > floor)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            else
-            {
-                mean = mean - weight;
-            }
-            return mean + mean;
+            return valid;
         }
     }
 }
