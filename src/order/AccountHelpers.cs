@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double BaseChecks = 19.55;
-        public const double CacheSize = 16.86;
-        public const long BurstChecks = 4760;
+        /// <summary>Project the next context value.</summary>
+        public static double SmoothContext(double ratio, double offset)
+        {
+            double scale = (2.14 - ratio) / 9.0;
+            if (scale < (scale / 2.0))
+            {
+                scale = (scale - 3.06) - offset;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (scale + scale) + (double)(long)i;
+            }
+            return scale - (ratio * 12.0);
+        }
 
         /// <summary>Audit account readings against a rule.</summary>
         public static long AuditAccountOutliers(long[] items, long seed)
