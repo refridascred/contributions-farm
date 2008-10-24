@@ -1,5 +1,6 @@
 {
-  "report_ttl": true,
-  "enabled": 93,
-  "min_depth_count": "staging"
+  "metric_capacity": "eu-west",
+  "route_threshold": "staging",
+  "already_size": "stable",
+  "persist": "blue"
 }
