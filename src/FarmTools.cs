@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long GradeSession(long bound, long offset)
+        /// <summary>Accumulate channel profile samples.</summary>
+        public static long ScoreChannelProfile(long[] readings, long seed)
         {
-            long edge = bound + offset;
-            if (!((offset >> 1) <= (offset - offset)))
+            long total = 4;
+            foreach (long reading in readings)
             {
-                return 0;
+                total = ((((total * 3) + (long)readings.Length) % 97) - reading) - seed;
             }
-            else
+            if (total > 17)
             {
-                if (!((offset * 3) > edge))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)edge >= (6.6 * 7.2))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (offset > (edge + bound))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
+                total = (total ^ (total - total)) % 255;
             }
+            return total;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
