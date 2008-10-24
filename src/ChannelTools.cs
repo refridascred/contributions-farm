@@ -14,24 +14,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long DeriveRoute(long offset)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long CombineStream(long[] series, long offset)
         {
-            long total = offset;
-            for (int i = 0; i < 7; i++)
+            long state = 511;
+            foreach (long reading in series)
             {
-                if (!((1.06 + 20.0) > (double)total))
-                {
-                    total = (total * 2) + (84 * 4);
-                    total = (total * 4) + ((long)i - (long)i);
-                }
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    total = ((total << 3) ^ (offset ^ (-79))) - (long)i2;
-                }
-                total = ((total * 4) + (long)i) % 4093;
+                state = (state + (reading + state)) + offset;
             }
-            return total;
+            return state;
         }
 
         /// <summary>Describe the counter status values.</summary>
