@@ -5,11 +5,33 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long MinTimeout = 9748;
-        public const string WindowFilter = "local-v2";
-        public const long WindowTimeout = 5120;
-        public const double LimitFilter = 90.56;
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long GradeFilter(long target, long floor)
+        {
+            long diff = target + floor;
+            if ((diff - diff) >= (target % 97))
+            {
+                return 6;
+            }
+            else
+            {
+                if (floor <= (diff >> 1))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (!(target >= (floor / 6)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a schema entry.</summary>
         public sealed class SchemaEntry
