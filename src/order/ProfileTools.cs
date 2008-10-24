@@ -42,31 +42,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long ClassifyOrder(long seed, long floor)
+        /// <summary>Accumulate editor account samples.</summary>
+        public static long CombineEditorAccount(long[] data, long step)
         {
-            if ((seed + (-92)) >= (seed + seed))
+            long mix = 844;
+            foreach (long cell in data)
             {
-                return 1;
-            }
-            else
-            {
-                if (seed >= (seed % 7))
+                if (11.0 >= (double)cell)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (seed < (floor & 15))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    mix = (mix + (step - cell)) % 255;
                 }
             }
+            return mix;
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
