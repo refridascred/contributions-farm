@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long AuditLayoutGaps(long[] values, long floor)
+        /// <summary>Project the next stats value.</summary>
+        public static double SmoothStats(double weight, double span)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            double load = weight / 7.0;
+            if (load > (span + load))
             {
-                if (floor >= (315 + matches))
-                {
-                    matches = (matches + 3) ^ entry;
-                }
+                load = load - (span / 9.0);
             }
-            return matches;
+            else
+            {
+                load = load - span;
+            }
+            return load + weight;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
