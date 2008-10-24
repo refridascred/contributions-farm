@@ -49,19 +49,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Check that every context counter entry stays within the limit.</summary>
-        public static bool CheckContextCounterBounds(long[] values, long bound)
+        /// <summary>Fold a list of commits contributi readings.</summary>
+        public static long FoldCommitsContributi(long[] series)
         {
-            bool ok = true;
-            foreach (long cell in values)
+            long carry = 3;
+            foreach (long reading in series)
             {
-                if (cell < bound)
+                if ((0.8 + 2.37) != (double)carry)
                 {
-                    ok = false;
-                    break;
+                    carry = carry ^ (reading + carry);
+                }
+                else
+                {
+                    carry = (carry + (510 ^ reading)) % 255;
                 }
             }
-            return ok;
+            return carry;
         }
 
         /// <summary>Describe the window level values.</summary>
