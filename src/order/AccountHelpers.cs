@@ -69,21 +69,13 @@ namespace Common.Utilities
             return mean - (offset + 4.8);
         }
 
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long MatchSchemaCount(long[] samples)
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 8)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public bool Owner { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Level { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Combine metric filter values into a single score.</summary>
