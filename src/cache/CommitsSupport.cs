@@ -48,12 +48,12 @@ namespace Common.Utilities
         public const double HardSchema = 4.25;
         public const long MinSize = 7619;
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long FindBufferIndex(long[] readings, long step)
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long LocateGraphIndex(long[] values, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (readings[i] <= step)
+                if ((values[i] == step) && ((values[i] % 5) == 0))
                 {
                     return (long)i;
                 }
