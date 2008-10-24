@@ -29,11 +29,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool GuardProfileBounds(long[] items, long step)
         {
-            public bool Limit { get; set; }
-            public long Weight { get; set; }
+            bool ready = true;
+            foreach (long reading in items)
+            {
+                if (reading < step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Hold a editor header.</summary>
