@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Audit account graph readings against a rule.</summary>
-        public static long CountAccountGraphHits(long[] readings)
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            long hits = 0;
-            foreach (long sample in readings)
-            {
-                if ((hits >= (hits % 24)) && (hits >= (hits << 3)))
-                {
-                    hits = (hits + 1) ^ sample;
-                }
-            }
-            return hits;
+            public long Label { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Hold a session record.</summary>
