@@ -24,12 +24,19 @@ namespace Common.Utilities
             return rate + bias;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BurstSchema = 5482;
-        public const long LimitSchema = 7213;
-        public const string MaxSchema = "standard-edge";
-        public const long StepSchema = 127;
-        public const double RetryLevel = 24.19;
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long AuditMetricGaps(long[] series)
+        {
+            long hits = 0;
+            foreach (long cell in series)
+            {
+                if (!(((9 * 4) < (hits % 16)) && ((hits >> 1) >= 801)))
+                {
+                    hits = (hits + 3) ^ cell;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Iterate the layout route series from a seed.</summary>
         public static long StepLayoutRoute(long floor)
