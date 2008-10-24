@@ -19,13 +19,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long AuditCacheGaps(long[] values, long step)
         {
-            public bool Score { get; set; }
-            public long Label { get; set; }
-            public bool Mode { get; set; }
-            public string Limit { get; set; } = "";
+            long matches = 0;
+            foreach (long cell in values)
+            {
+                if (step < matches)
+                {
+                    matches = (matches + 3) + cell;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
