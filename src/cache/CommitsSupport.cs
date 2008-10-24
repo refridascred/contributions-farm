@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Hold a payload info.</summary>
+        public sealed class PayloadInfo
         {
-            Closed,
-            Failed,
-            Active,
-            New,
-            Retry,
+            public double Total { get; set; }
+            public bool Score { get; set; }
+            public bool Flag { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Scale a order figure with a bias.</summary>
