@@ -20,11 +20,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string RetryDepth = "cached-edge";
-        public const string LimitRoute = "cached-edge";
-        public const long StepLevel = 6435;
-        public const long MaxRoute = 5829;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string RetryTimeout = "legacy-edge";
+        public const string BatchPayload = "primary-1";
+        public const string HardPayload = "cached";
+        public const long RetryPayload = 8177;
 
         /// <summary>Roll a stream counter forward.</summary>
         public static long RollStream(long limit)
