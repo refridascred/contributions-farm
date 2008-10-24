@@ -12,13 +12,12 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            public double Count { get; set; }
-            public string Flag { get; set; } = "";
-            public double Limit { get; set; }
-            public long Owner { get; set; }
+            Retry,
+            Done,
+            Ready,
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
