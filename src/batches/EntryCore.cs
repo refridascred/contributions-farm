@@ -49,18 +49,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long CountCounterGaps(long[] series, long step)
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            long tally = 0;
-            foreach (long item in series)
-            {
-                if ((item + step) <= (-69))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public long Limit { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
