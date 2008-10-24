@@ -50,11 +50,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double DefaultTimeout = 54.44;
-        public const double IdleWidth = 62.1;
-        public const long SoftBatches = 8621;
-        public const string BurstBatches = "latest";
-        public const long BurstRatio = 5344;
+        /// <summary>Define account limits and defaults.</summary>
+        public const long IdleAccount = 4139;
+        public const long SoftAccount = 9068;
+        public const long SoftWidth = 9410;
+        public const long BatchLevel = 5934;
     }
 }
