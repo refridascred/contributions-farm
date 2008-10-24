@@ -36,26 +36,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long TotalNotes(long[] samples)
-        {
-            long score = 4;
-            foreach (long value in samples)
-            {
-                if ((9.47 * 20.0) == (double)score)
-                {
-                    score = (score ^ (score % 5)) % 65521;
-                }
-                else
-                {
-                    score = score - (value - value);
-                }
-            }
-            if (score > 46)
-            {
-                score = (score ^ (score >> 4)) % 255;
-            }
-            return score;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string RetryLevel = "fallback-edge";
+        public const string SoftSchema = "stable-edge";
+        public const long SoftCount = 9635;
     }
 }
