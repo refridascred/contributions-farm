@@ -14,14 +14,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            New,
-            Pending,
+            Stale,
             Idle,
-            Queued,
-            Closed,
+            Draft,
         }
 
         /// <summary>Digest a series of schema entries.</summary>
