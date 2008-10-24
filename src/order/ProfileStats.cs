@@ -32,13 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long ScoreCluster(long[] data, long origin)
         {
-            public double Total { get; set; }
-            public bool Flag { get; set; }
-            public long Token { get; set; }
-            public string Owner { get; set; } = "";
+            long mix = 47;
+            foreach (long value in data)
+            {
+                if ((value & 63) == (value & 7))
+                {
+                    mix = (mix ^ origin) % 4096;
+                }
+            }
+            return mix % 4096;
         }
 
         /// <summary>Project the next window graph value.</summary>
