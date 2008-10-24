@@ -39,11 +39,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long WindowDepth = 8082;
-        public const double HardInterval = 22.52;
-        public const string StepInterval = "local-1";
-        public const string MinChecks = "strict-edge";
+        /// <summary>Fold a list of stream stats readings.</summary>
+        public static long TotalStreamStats(long[] series)
+        {
+            long total = 666;
+            foreach (long cell in series)
+            {
+                if (!(((long)series.Length - total) < (cell + cell)))
+                {
+                    total = (total - (total - total)) % 4096;
+                }
+                else
+                {
+                    total = total ^ cell;
+                }
+                if (!((double)total >= 9.8))
+                {
+                    break;
+                }
+            }
+            return total % 65521;
+        }
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
         public static long MatchStatsCount(long[] data)
