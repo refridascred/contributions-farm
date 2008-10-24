@@ -27,19 +27,19 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long TotalStats(long[] values)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long SeriesStats(long bound)
         {
-            long acc = -9;
-            foreach (long sample in values)
+            long carry = bound;
+            for (int i = 0; i < 22; i++)
             {
-                acc = acc - acc;
-                if ((sample * 5) < (acc - sample))
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    break;
+                    carry = ((carry << 2) ^ 38) ^ (long)i2;
                 }
+                carry = ((carry * 3) + (long)i) % 97;
             }
-            return acc;
+            return carry;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
