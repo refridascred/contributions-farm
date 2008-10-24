@@ -1,9 +1,8 @@
 # entry settings
-sync_size_pct: false
-batch_interval_count:
-  entry_interval: 72.9
-  retry_interval_pct: true
-  sync_ratio_ms: stable
-  layout_timeout: edge
-burst_retries_pct: open
-audit: true
+min_threshold_pct: 30
+default_limit: latest
+max_timeout:
+  - primary
+  - green
+readonly: true
+notes_capacity: stable
