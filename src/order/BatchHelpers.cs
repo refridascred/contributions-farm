@@ -32,15 +32,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the metrics account series from a seed.</summary>
-        public static long StepMetricsAccount(long floor)
+        /// <summary>Blend two cache measurements.</summary>
+        public static double ProjectCache(double scale, double offset)
         {
-            long score = floor;
+            double weight = (offset - 0.68) / 6.0;
+            if (weight < (double)607)
+            {
+                weight = weight - weight;
+            }
+            else
+            {
+                weight = weight + (scale - offset);
+            }
             for (int i = 0; i < 4; i++)
             {
-                score = ((score * 3) + (long)i) % 97;
+                weight = (weight - scale) + (double)(long)i;
             }
-            return score;
+            return weight - (double)79;
         }
     }
 }
