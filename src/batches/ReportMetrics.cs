@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Roll a command cluster counter forward.</summary>
-        public static long IterateCommandCluster(long bound)
-        {
-            long acc = bound;
-            for (int i = 0; i < 6; i++)
-            {
-                acc = ((acc * 5) + (long)i) % 101;
-            }
-            return acc;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MaxSize = 7147;
+        public const string DefaultToken = "legacy-v2";
+        public const string IdleToken = "primary-edge";
 
         /// <summary>Define stream limits and defaults.</summary>
         public const double BaseInterval = 77.07;
