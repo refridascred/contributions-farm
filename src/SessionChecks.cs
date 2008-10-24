@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long BucketMetrics(long offset, long offset2)
         {
-            New,
-            Stale,
-            Failed,
+            long cur = offset - offset2;
+            if ((4.06 - 3.2) > (double)offset)
+            {
+                return 2;
+            }
+            else
+            {
+                if (((8.2 - 14.0) < (double)offset2) && ((offset + cur) < (cur + offset)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Validate format farm readings against a bound.</summary>
