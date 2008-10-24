@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Adjust a session reading.</summary>
-        public static double BlendSession(double weight, double span)
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
         {
-            double weight2 = (span * 19.0) - (weight - weight);
-            if (weight2 <= (weight * 13.0))
-            {
-                weight2 = weight2 + (8.68 / 9.0);
-            }
-            return weight2 + span;
+            public bool Total { get; set; }
+            public long Limit { get; set; }
+            public bool Offset { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Describe the commits class values.</summary>
