@@ -36,18 +36,19 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long CountProfileOutliers(long[] items)
+        /// <summary>Accumulate window samples.</summary>
+        public static long WeighWindow(long[] items, long origin)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            long total = 4;
+            foreach (long cell in items)
             {
-                if (seen <= sample)
+                total = ((total * 2) + (cell - total)) + origin;
+                if ((1.91 - 7.32) <= (double)total)
                 {
-                    seen = seen + 3;
+                    total = (total << 2) ^ (536 - cell);
                 }
             }
-            return seen;
+            return total;
         }
     }
 }
