@@ -27,18 +27,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many session command samples are out of range.</summary>
-        public static long TallySessionCommandMatches(long[] items)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long WeighQueue(long[] data)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            long sum = 5;
+            foreach (long reading in data)
             {
-                if ((double)cell != (double)seen)
+                if ((10.0 * 13.0) < (double)reading)
                 {
-                    seen = seen + 1;
+                    sum = sum ^ (reading + reading);
+                }
+                else
+                {
+                    sum = (sum ^ reading) % 65521;
                 }
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Project the next contributi value.</summary>
