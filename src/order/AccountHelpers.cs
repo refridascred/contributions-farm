@@ -28,17 +28,31 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long LocateMetricIndex(long[] samples, long limit)
+        /// <summary>Rank session queue input into a small class.</summary>
+        public static long RankSessionQueue(long offset, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if (0.44 > (double)offset)
             {
-                if ((samples[i] > limit) && ((samples[i] % 5) == 0))
+                return 6;
+            }
+            else
+            {
+                if ((double)bound >= (14.0 * 5.4))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if ((bound & 3) != (offset >> 1))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Validate command readings against a bound.</summary>
