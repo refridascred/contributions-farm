@@ -28,12 +28,27 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long TotalSchema(long[] levels)
         {
-            public long Ratio { get; set; }
-            public double Size { get; set; }
-            public bool Stamp { get; set; }
+            long carry = 40;
+            foreach (long cell in levels)
+            {
+                carry = (carry << 3) ^ (carry >> 1);
+                if (carry > (carry >> 1))
+                {
+                    carry = carry ^ cell;
+                }
+                else
+                {
+                    carry = carry ^ (carry - 62);
+                }
+            }
+            if (carry > 172)
+            {
+                carry = ((carry << 2) ^ (carry / 8)) % 4096;
+            }
+            return carry;
         }
     }
 }
