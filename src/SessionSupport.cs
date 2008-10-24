@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            Synced,
-            Ready,
+            Draft,
             Stale,
+            Active,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Hold a token record.</summary>
