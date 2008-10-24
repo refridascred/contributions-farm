@@ -22,13 +22,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long RankFarm(long origin, long target)
         {
-            public double Weight { get; set; }
-            public long Token { get; set; }
-            public long Score { get; set; }
-            public bool Region { get; set; }
+            if ((target - 82) < (22 * 2))
+            {
+                return 0;
+            }
+            else
+            {
+                if (target <= origin)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((target ^ target) >= origin) && ((839 & 255) == (origin + 27)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the context phase values.</summary>
