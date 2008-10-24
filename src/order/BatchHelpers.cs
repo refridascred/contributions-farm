@@ -16,12 +16,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            public string Ratio { get; set; } = "";
-            public double Region { get; set; }
-            public long Limit { get; set; }
+            Synced,
+            New,
+            Paused,
+            Idle,
         }
 
         /// <summary>Define editor limits and defaults.</summary>
