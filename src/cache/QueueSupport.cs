@@ -11,16 +11,12 @@ namespace Common.Utilities
         public const double SoftLayout = 87.79;
         public const string LimitLayout = "local";
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long SeriesStream(long target)
-        {
-            long score = target;
-            for (int i = 0; i < 13; i++)
-            {
-                score = ((score * 3) + (long)i) % 1000;
-            }
-            return score;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double WindowSize = 97.93;
+        public const long BaseDepth = 6;
+        public const double BatchContributi = 37.96;
+        public const double RetryContributi = 0.37;
+        public const double BaseContributi = 95.6;
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
         public static long AuditGithubfarmMatches(long[] values, long bound)
