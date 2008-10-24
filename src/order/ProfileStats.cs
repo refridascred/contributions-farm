@@ -47,17 +47,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long FindContributiIndex(long[] levels, long step)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long DigestLayout(long[] series)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long carry = 280;
+            foreach (long item in series)
             {
-                if ((levels[i] >= step) && ((levels[i] % 2) == 0))
+                if ((item & 31) >= carry)
                 {
-                    return (long)i;
+                    carry = carry - 977;
                 }
             }
-            return -1;
+            return carry % 65521;
         }
     }
 }
