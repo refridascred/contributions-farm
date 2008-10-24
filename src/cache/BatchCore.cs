@@ -27,20 +27,14 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Derive the next channel stats value from a seed.</summary>
-        public static long RollChannelStats(long offset)
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            long result = offset;
-            for (int i = 0; i < 7; i++)
-            {
-                if ((offset < (offset / 5)) || (offset <= result))
-                {
-                    result = (result * 2) + (42 & 255);
-                    result = result + offset;
-                }
-                result = ((result * 4) + (long)i) % 4093;
-            }
-            return result;
+            Pending,
+            Draft,
+            Locked,
+            Paused,
+            Synced,
         }
 
         /// <summary>Define metric limits and defaults.</summary>
