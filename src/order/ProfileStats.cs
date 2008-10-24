@@ -20,15 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long TallySession(long[] data)
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            long state = -871;
-            foreach (long item in data)
-            {
-                state = (state ^ (long)data.Length) ^ item;
-            }
-            return state;
+            public string Mode { get; set; } = "";
+            public string Label { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Find the first order contributi entry that matches the target.</summary>
