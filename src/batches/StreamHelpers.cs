@@ -27,24 +27,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long GradeGithubfarm(long origin, long offset)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long MeasureCommitsMatches(long[] levels)
         {
-            if (origin > (origin & 3))
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if ((offset + offset) <= (origin & 3))
+                if ((matches >> 4) > (matches + matches))
                 {
-                    return 7;
+                    matches = (matches + 1) + entry;
                 }
                 else
                 {
-                    return 0;
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Measure how many batches account samples are out of range.</summary>
