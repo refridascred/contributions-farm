@@ -16,21 +16,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long CompareCounterCount(long[] data)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long CountFilterOutliers(long[] items, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((reading & 3) > seen)
                 {
-                    if ((data[i] - data[j]) < 19)
-                    {
-                        count = count + 1;
-                    }
+                    seen = (seen + 3) - bound;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Combine counter values into a single score.</summary>
