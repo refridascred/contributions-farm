@@ -35,25 +35,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long StepFormat(long limit)
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long PairOrderCount(long[] data)
         {
-            long mix = limit;
-            for (int i = 0; i < 21; i++)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)mix < (4.4 - 9.0))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    mix = (mix + mix) % 65521;
+                    if ((data[i] ^ data[j]) < 15)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                if ((mix + mix) > ((long)i >> 2))
-                {
-                    mix = (mix - (mix - mix)) % 65521;
-                    mix = ((mix * 3) + (mix + 47)) % 65521;
-                }
-                mix = (mix + (mix / 7)) % 65521;
-                mix = ((mix * 5) + (long)i) % 1000;
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
