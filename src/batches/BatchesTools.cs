@@ -20,15 +20,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Blend two route measurements.</summary>
-        public static double SmoothRoute(double scale, double offset)
+        /// <summary>Count support entry pairs that satisfy a relation.</summary>
+        public static long MatchSupportEntryCount(long[] values)
         {
-            double rate = offset;
-            if (rate < (13.0 - offset))
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                rate = rate + scale;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) > 4)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return rate + (offset * 7.0);
+            return tally;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
