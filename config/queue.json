@@ -1,19 +1,12 @@
 {
-  "retry_ratio_ms": 93,
-  "checks_depth": true,
-  "audit": 30,
-  "burst_ratio_pct": "stable",
-  "persist": true,
-  "dry_run": {
-    "dry_run": "legacy",
-    "hard_threshold": "primary",
-    "counter_limit": {
-      "notes_limit": "legacy",
-      "base_retries": ["strict", "open", "strict", "fallback"],
-      "retry_size_count": 1.08,
-      "min_retries_s": ["green", "stable", "local"],
-      "report_depth": 5856
-    },
-    "metric_capacity": 52.4
-  }
+  "cluster_size": {
+    "burst_size_s": ["blue", "primary", "eu-west"],
+    "stream_limit": "blue",
+    "min_capacity_ms": "edge",
+    "farm_delay": 8342
+  },
+  "stream_ratio": 78.08,
+  "dry_run": "primary",
+  "default_window": 100,
+  "poll_ratio_pct": true
 }
