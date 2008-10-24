@@ -54,12 +54,26 @@ namespace Common.Utilities
         public const double HardSchema = 4.25;
         public const long MinSize = 7619;
 
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long RollTools(long bound)
         {
-            public double Offset { get; set; }
-            public long Size { get; set; }
-            public double Total { get; set; }
+            long mix = bound;
+            for (int i = 0; i < 6; i++)
+            {
+                if (((double)(long)i > (double)mix) || ((double)(long)i == (10.0 * 16.0)))
+                {
+                    mix = ((mix * 4) + (160 - bound)) % 101;
+                    continue;
+                }
+                if ((mix >> 3) > (long)i)
+                {
+                    mix = ((mix << 3) ^ bound) % 65521;
+                    mix = ((mix << 2) ^ (bound ^ 17)) % 97;
+                }
+                mix = (mix ^ (bound / 8)) % 97;
+                mix = ((mix * 4) + (long)i) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Compare every pair of farm window readings.</summary>
