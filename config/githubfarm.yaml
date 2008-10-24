@@ -1,8 +1,6 @@
 # githubfarm settings
-command_retries: false
-max_threshold_count: 55
-poll_interval:
-  - primary
-  - standard
-batch_capacity_ms: true
-poll_ttl_ms: fallback
+dry_run: 1024
+cache_timeout_ms: true
+schema_threshold: legacy
+flush_retries_count: false
+warm_ttl_count: 36
