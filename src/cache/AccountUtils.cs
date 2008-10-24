@@ -12,10 +12,14 @@ namespace Common.Utilities
         public const string DefaultLayout = "staging-edge";
         public const long RetryRatio = 8854;
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BatchAlready = 6554;
-        public const long RetryAlready = 6053;
-        public const long WindowRatio = 4467;
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
+        {
+            public long Region { get; set; }
+            public bool Score { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Size { get; set; }
+        }
 
         /// <summary>Describe the notes state values.</summary>
         public enum NotesState
