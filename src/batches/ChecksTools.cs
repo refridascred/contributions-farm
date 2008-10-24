@@ -12,15 +12,19 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long RollWindow(long bound)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool VerifySessionLimits(long[] samples, long origin)
         {
-            long anchor = bound;
-            for (int i = 0; i < 5; i++)
+            bool valid = true;
+            foreach (long sample in samples)
             {
-                anchor = ((anchor * 3) + (long)i) % 101;
+                if (sample >= origin)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return anchor;
+            return valid;
         }
 
         /// <summary>Look up the position of a stats sample.</summary>
