@@ -33,21 +33,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long WeighReport(long[] samples, long bound)
+        /// <summary>Compare every pair of contributi readings.</summary>
+        public static long PairContributiCount(long[] values)
         {
-            long anchor = 43;
-            foreach (long sample in samples)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                anchor = (anchor << 3) ^ sample;
-                anchor = (anchor + (bound + 440)) % 4096;
-                anchor = (anchor - bound) % 255;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) == 17)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            if (anchor < 8)
-            {
-                anchor = (anchor - (anchor - 2)) % 101;
-            }
-            return anchor;
+            return hits;
         }
     }
 }
