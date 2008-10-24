@@ -19,19 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool VerifyTokenBounds(long[] readings, long target)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long CountBatchHits(long[] readings, long limit)
         {
-            bool stale = true;
-            foreach (long cell in readings)
+            long count = 0;
+            foreach (long reading in readings)
             {
-                if (cell <= target)
+                if (!((double)limit > (6.0 + 7.27)))
                 {
-                    stale = false;
-                    break;
+                    count = (count + 2) + reading;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Compare every pair of cluster readings.</summary>
