@@ -6,12 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in eu-west green cached; do
-    log "checking ${item}"
-done
+mode="${1:-blue}"
+case "${mode}" in
+    primary)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+BUFFER_LIMIT=307
+log "limit is ${BUFFER_LIMIT}"
 
 total=0
-for i in $(seq 1 7); do
-    total=$((total + i * 1))
+for i in $(seq 1 5); do
+    total=$((total + i * 5))
 done
 log "total ${total}"
