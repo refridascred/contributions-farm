@@ -67,13 +67,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
-        {
-            public long Owner { get; set; }
-            public long Region { get; set; }
-            public double Limit { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long CacheCounter = 8402;
+        public const string StepCounter = "stable-v2";
+        public const long WindowCounter = 3753;
+        public const double BatchFactor = 68.79;
 
         /// <summary>Accumulate contributi samples.</summary>
         public static long TotalContributi(long[] items)
