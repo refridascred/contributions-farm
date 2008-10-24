@@ -1,7 +1,11 @@
 {
-  "dry_run": 0.74,
-  "cache_delay": "cached",
-  "idle_window_count": "standard",
-  "tools_retries": "local",
-  "warm_ratio_s": ["green", "legacy"]
+  "hard_timeout": "eu-west",
+  "githubfarm_ratio": true,
+  "soft_delay_ms": 600,
+  "verbose": {
+    "default_ttl_pct": "strict",
+    "batch_window_pct": 30.19,
+    "dry_run": 70.34,
+    "support_interval": 5730
+  }
 }
