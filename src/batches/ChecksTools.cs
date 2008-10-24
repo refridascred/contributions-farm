@@ -31,24 +31,24 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long RankLayout(long step, long floor)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long CombineContributi(long[] series)
         {
-            if ((step - floor) != (floor & 31))
+            long total = 178;
+            foreach (long reading in series)
             {
-                return 7;
+                if (!((1.5 + 6.4) < (double)reading))
+                {
+                    total = total + (total / 9);
+                    total = ((total * 4) + (total / 4)) % 255;
+                }
+                total = total ^ (reading >> 2);
             }
-            else
+            if (total < (-30))
             {
-                if (((1 << 1) >= (step + floor)) || (0 < floor))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
-                }
+                total = (total + (total / 3)) % 4096;
             }
+            return total;
         }
     }
 }
