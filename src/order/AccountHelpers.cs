@@ -78,26 +78,22 @@ namespace Common.Utilities
         public const double WindowBudget = 72.26;
         public const long IdleSupport = 2315;
 
-        /// <summary>Combine metric filter values into a single score.</summary>
-        public static long WeighMetricFilter(long[] series)
+        /// <summary>Measure how many farm entry samples are out of range.</summary>
+        public static long CountFarmEntryMatches(long[] readings)
         {
-            long mark = 65;
-            foreach (long item in series)
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                if (!((item - item) >= (mark + mark)))
+                if ((matches ^ matches) < (matches << 2))
                 {
-                    mark = mark ^ (mark + item);
+                    matches = (matches + 2) - datum;
                 }
                 else
                 {
-                    mark = ((mark * 3) + item) % 255;
+                    matches = matches - 1;
                 }
             }
-            if (mark < 27)
-            {
-                mark = ((mark * 5) + mark) % 101;
-            }
-            return mark;
+            return matches;
         }
     }
 }
