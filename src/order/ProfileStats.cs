@@ -31,20 +31,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long WeighMetrics(long[] data)
+        /// <summary>Find the first order contributi entry that matches the target.</summary>
+        public static long LocateOrderContributiIndex(long[] items, long step)
         {
-            long acc = -19;
-            foreach (long cell in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                acc = (acc ^ cell) % 4096;
-                acc = (acc - acc) % 97;
-                if (!((449 ^ acc) >= (acc + acc)))
+                if (items[i] > step)
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Accumulate layout samples.</summary>
