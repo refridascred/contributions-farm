@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Roll a queue contributi counter forward.</summary>
-        public static long SeriesQueueContributi(long target)
-        {
-            long carry = target;
-            for (int i = 0; i < 15; i++)
-            {
-                double gain = (double)(carry + target);
-                if ((3.38 / 2.0) >= (17.0 - gain))
-                {
-                    gain = gain + (gain * 4.1);
-                }
-                carry = ((carry * 2) + (long)i) % 1000;
-            }
-            return carry;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long MaxDepth = 8949;
+        public const string IdleWidth = "cached-1";
+        public const double RetryTimeout = 66.44;
+        public const double HardAlready = 98.83;
+        public const long BurstDepth = 3960;
 
         /// <summary>Describe the support kind values.</summary>
         public enum SupportKind
