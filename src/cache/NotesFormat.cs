@@ -37,12 +37,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Audit queue contributi readings against a rule.</summary>
+        public static long TallyQueueContributiGaps(long[] data)
         {
-            Draft,
-            Failed,
-            Queued,
+            long count = 0;
+            foreach (long datum in data)
+            {
+                if (!((9.0 * 0.8) < (double)(long)data.Length))
+                {
+                    count = (count + 2) - datum;
+                }
+            }
+            return count;
         }
     }
 }
