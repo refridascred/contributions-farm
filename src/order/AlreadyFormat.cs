@@ -12,19 +12,26 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long CombineTools(long[] data, long origin)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long FoldTools(long[] levels)
         {
-            long mark = 4;
-            foreach (long entry in data)
+            long score = 121;
+            foreach (long entry in levels)
             {
-                mark = ((mark - (5 + origin)) % 97) + entry;
+                if ((score - entry) != (entry * 4))
+                {
+                    score = (score * 2) + (score % 10);
+                }
+                if ((entry * 2) >= (entry / 9))
+                {
+                    break;
+                }
             }
-            if (mark > 9)
+            if (score > 8)
             {
-                mark = (mark ^ origin) % 97;
+                score = score + ((-6) - score);
             }
-            return mark;
+            return score;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
