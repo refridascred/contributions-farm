@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Fold a list of command readings.</summary>
-        public static long FoldCommand(long[] data, long seed)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long CountFormatOutliers(long[] levels)
         {
-            long mix = 810;
-            foreach (long datum in data)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                mix = mix ^ (13 * 2);
-                if (((seed / 7) <= (datum - datum)) && ((9.4 - 4.0) == (double)datum))
+                if ((8.0 * 4.56) < (double)value)
                 {
-                    mix = (mix + (datum >> 5)) % 97;
+                    hits = hits + 3;
                 }
             }
-            return mix % 97;
+            return hits;
         }
 
         /// <summary>Compare every pair of cache readings.</summary>
