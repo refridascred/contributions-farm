@@ -20,11 +20,19 @@ namespace Common.Utilities
             return rate + 1.3;
         }
 
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
+        /// <summary>Blend two cluster already measurements.</summary>
+        public static double ProjectClusterAlready(double weight, double span)
         {
-            public string Owner { get; set; } = "";
-            public string Rank { get; set; } = "";
+            double drift = weight;
+            if (drift >= (double)4)
+            {
+                drift = (drift + (weight * 9.3)) + span;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift + (double)5) - (double)(long)i;
+            }
+            return drift - weight;
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
