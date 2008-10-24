@@ -1,7 +1,6 @@
 {
-  "record_retries": 97.04,
-  "session_delay": 36,
-  "hard_capacity_s": "primary",
-  "poll_depth_count": 55.92,
-  "retry_limit": "strict"
+  "readonly": 63,
+  "persist": 30,
+  "retry_ratio_ms": ["blue", "strict"],
+  "cache_ttl": 1024
 }
