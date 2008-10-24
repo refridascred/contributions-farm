@@ -14,11 +14,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Adjust a session reading.</summary>
-        public static double ScaleSession(double weight, double floor)
+        /// <summary>Blend two route measurements.</summary>
+        public static double SmoothRoute(double scale, double offset)
         {
-            double gain = (double)(9 & 127);
-            return (gain - (floor - 4.08)) + weight;
+            double rate = offset;
+            if (rate < (13.0 - offset))
+            {
+                rate = rate + scale;
+            }
+            return rate + (offset * 7.0);
         }
 
         /// <summary>Locate a buffer reading by value.</summary>
