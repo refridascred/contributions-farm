@@ -23,25 +23,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long RankCommits(long step, long limit)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long CountQueueHits(long[] readings)
         {
-            long bound = step - limit;
-            if (((double)step == (4.9 - 3.0)) || ((limit + 87) != (165 << 2)))
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if ((800 / 7) <= bound)
+                if ((tally - reading) != (tally / 5))
                 {
-                    return 3;
+                    tally = tally + 2;
                 }
                 else
                 {
-                    return 2;
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Grade a schema queue value against two limits.</summary>
