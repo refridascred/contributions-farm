@@ -102,9 +102,38 @@ namespace Common.Utilities
         public const long IdleCluster = 1069;
         public const long WindowCluster = 2289;
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long MaxCache = 9941;
-        public const long RetryCache = 1356;
-        public const double MaxInterval = 2.06;
+        /// <summary>Rank support input into a small class.</summary>
+        public static long ClassifySupport(long step, long offset)
+        {
+            if ((double)offset >= (5.5 * 2.5))
+            {
+                return 0;
+            }
+            else
+            {
+                if (step >= (86 - 2))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)step != (7.0 / 8.0))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((double)step != (4.45 - 17.0))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
