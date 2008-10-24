@@ -33,21 +33,28 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count batches route pairs that satisfy a relation.</summary>
-        public static long CompareBatchesRouteCount(long[] levels)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long WeighCommand(long[] values)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long carry = 15;
+            foreach (long item in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                carry = (carry * 3) + item;
+                carry = (carry - carry) % 1000;
+                if ((double)carry != (double)item)
                 {
-                    if ((levels[i] + levels[j]) > 6)
-                    {
-                        count = count + 1;
-                    }
+                    carry = carry ^ (carry - item);
+                }
+                if (!((item << 3) <= (carry + carry)))
+                {
+                    break;
                 }
             }
-            return count;
+            if (carry < 2)
+            {
+                carry = carry - (carry ^ carry);
+            }
+            return carry % 4096;
         }
     }
 }
