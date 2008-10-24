@@ -64,12 +64,14 @@ namespace Common.Utilities
         public const double SoftDepth = 95.35;
         public const string RetryCount = "fallback-1";
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            Locked,
-            Idle,
-            New,
+            Ready,
+            Retry,
+            Dropped,
+            Paused,
+            Active,
         }
     }
 }
