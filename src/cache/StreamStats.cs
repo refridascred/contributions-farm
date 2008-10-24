@@ -27,19 +27,15 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long SeriesStats(long bound)
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long RollMetrics(long limit)
         {
-            long carry = bound;
-            for (int i = 0; i < 22; i++)
+            long result = limit;
+            for (int i = 0; i < 5; i++)
             {
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    carry = ((carry << 2) ^ 38) ^ (long)i2;
-                }
-                carry = ((carry * 3) + (long)i) % 97;
+                result = ((result * 5) + (long)i) % 65521;
             }
-            return carry;
+            return result;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
