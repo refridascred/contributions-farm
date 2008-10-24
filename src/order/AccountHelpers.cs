@@ -26,19 +26,21 @@ namespace Common.Utilities
             return weight + floor;
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool VerifyReportLimits(long[] series, long floor)
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long OverlapStatsCount(long[] readings)
         {
-            bool found = true;
-            foreach (long sample in series)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (sample < floor)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((readings[i] + readings[j]) != 1)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Define report limits and defaults.</summary>
