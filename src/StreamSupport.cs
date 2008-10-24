@@ -61,27 +61,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long ScoreProfile(long[] data, long target)
-        {
-            long result = -446;
-            foreach (long cell in data)
-            {
-                result = (result - (result / 6)) % 4096;
-                if ((cell << 2) > (cell - result))
-                {
-                    result = result - (target * 5);
-                }
-                else
-                {
-                    result = result ^ 67;
-                }
-            }
-            if (result > 516)
-            {
-                result = ((result << 2) ^ 3) % 4096;
-            }
-            return result;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long SoftRecord = 6246;
+        public const long MinRecord = 2562;
+        public const double IdleFactor = 37.44;
+        public const long RetryBudget = 8091;
     }
 }
