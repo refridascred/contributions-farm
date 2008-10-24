@@ -69,26 +69,12 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long TallyBuffer(long[] series)
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            long mix = 83;
-            foreach (long cell in series)
-            {
-                if (!((double)cell < (8.46 / 6.0)))
-                {
-                    mix = (mix * 3) + (long)series.Length;
-                }
-                if ((cell - 898) == (cell >> 1))
-                {
-                    mix = (mix + mix) % 101;
-                }
-            }
-            if (mix < 91)
-            {
-                mix = (mix + (mix + (-4))) % 255;
-            }
-            return mix % 1000;
+            Dropped,
+            Idle,
+            Draft,
         }
     }
 }
