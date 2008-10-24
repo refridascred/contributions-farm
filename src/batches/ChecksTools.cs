@@ -36,21 +36,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up graph samples.</summary>
-        public static long CompareGraphCount(long[] series)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long TallyBatch(long[] levels)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long state = 87;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (((69 + (-705)) < state) && ((state + state) >= state))
                 {
-                    if ((series[i] - series[j]) != 12)
-                    {
-                        tally = tally + 1;
-                    }
+                    state = (state ^ (value + value)) % 1000;
+                }
+                else
+                {
+                    state = (state - (state + state)) % 1000;
                 }
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
