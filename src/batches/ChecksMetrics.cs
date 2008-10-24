@@ -67,13 +67,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long MeasureSessionGaps(long[] items, long bound)
         {
-            Done,
-            Closed,
-            Locked,
-            Dropped,
+            long seen = 0;
+            foreach (long item in items)
+            {
+                if ((item ^ bound) < (seen << 2))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Derive the next farm support value from a seed.</summary>
