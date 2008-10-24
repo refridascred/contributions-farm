@@ -77,14 +77,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Count the record schema entries that pass the check.</summary>
+        public static long MeasureRecordSchemaHits(long[] levels)
         {
-            Idle,
-            Stale,
-            Paused,
-            Failed,
-            Ready,
+            long matches = 0;
+            foreach (long entry in levels)
+            {
+                if ((entry << 3) >= (31 + matches))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
     }
 }
