@@ -18,16 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long StepCounter(long offset)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long AuditFilterGaps(long[] values, long limit)
         {
-            long total = offset;
-            for (int i = 0; i < 7; i++)
+            long count = 0;
+            foreach (long datum in values)
             {
-                total = (total + total) % 101;
-                total = ((total * 3) + (long)i) % 1000;
+                if ((count - 885) < (713 << 2))
+                {
+                    count = ((count + 3) ^ datum) - limit;
+                }
             }
-            return total;
+            return count;
         }
 
         /// <summary>Define format limits and defaults.</summary>
