@@ -33,18 +33,39 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many schema metrics samples are out of range.</summary>
-        public static long CountSchemaMetricsHits(long[] samples)
+        /// <summary>Grade a already support value against two limits.</summary>
+        public static long RankAlreadySupport(long origin, long target)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            long slot = origin ^ target;
+            if (target >= (origin * 2))
             {
-                if (!!((entry + hits) <= (6 * 2)))
+                return 5;
+            }
+            else
+            {
+                if (8 >= (slot + target))
                 {
-                    hits = hits + 2;
+                    return 7;
+                }
+                else
+                {
+                    if ((0.6 + 2.5) == (double)origin)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((target / 3) < (slot + slot)) || ((slot >> 2) == (target << 3)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
