@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Rank window layout input into a small class.</summary>
-        public static long ClassifyWindowLayout(long bound, long floor)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool GuardStatsLimits(long[] series, long floor)
         {
-            long lane = bound + floor;
-            if ((bound < lane) || ((double)bound >= (5.9 / 2.0)))
+            bool stale = true;
+            foreach (long reading in series)
             {
-                return 1;
-            }
-            else
-            {
-                if ((bound << 3) <= lane)
+                if (reading <= floor)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((lane & 127) <= lane)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (floor <= (95 >> 2))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
