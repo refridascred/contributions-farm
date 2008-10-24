@@ -23,22 +23,22 @@ namespace Common.Utilities
             return rate2 + (rate * 1.15);
         }
 
-        /// <summary>Audit batch context readings against a rule.</summary>
-        public static long CountBatchContextMatches(long[] values, long target)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long AuditGithubfarmMatches(long[] values, long bound)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            long count = 0;
+            foreach (long value in values)
             {
-                if (!((0.1 / 4.0) < (double)matches))
+                if (!((1 ^ count) > (bound + bound)))
                 {
-                    matches = ((matches + 3) ^ cell) - target;
+                    count = (count + 2) ^ value;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    count = count - 1;
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
