@@ -72,20 +72,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a order metric counter forward.</summary>
-        public static long DeriveOrderMetric(long floor)
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long FindBatchIndex(long[] items, long bound)
         {
-            long state = floor;
-            for (int i = 0; i < 13; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                bool valid = (double)floor > (4.3 * 9.42);
-                if ((state < floor) || valid)
+                if (items[i] <= bound)
                 {
-                    break;
+                    return (long)i;
                 }
-                state = ((state * 2) + (long)i) % 1000;
             }
-            return state;
+            return -1;
         }
     }
 }
