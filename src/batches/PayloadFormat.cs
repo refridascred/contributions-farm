@@ -33,23 +33,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of batch notes entries.</summary>
-        public static long DigestBatchNotes(long[] levels)
+        /// <summary>Combine already batches values into a single score.</summary>
+        public static long TotalAlreadyBatches(long[] data)
         {
-            long mark = 6;
-            foreach (long reading in levels)
+            long sum = 0;
+            foreach (long reading in data)
             {
-                if ((mark / 9) >= (-999))
+                if ((reading ^ reading) > (reading / 7))
                 {
-                    mark = (mark ^ (mark - reading)) % 97;
-                    mark = (mark << 3) ^ (reading + mark);
+                    sum = (sum * 2) + ((long)data.Length + sum);
                 }
-                if (mark > (mark & 127))
+                else
                 {
-                    mark = (mark - (reading % 24)) % 4096;
+                    sum = ((sum << 3) ^ (reading % 24)) % 65521;
                 }
             }
-            return mark;
+            return sum % 97;
         }
 
         /// <summary>Look up the position of a stream sample.</summary>
