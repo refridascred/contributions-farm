@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool GuardLayoutRange(long[] readings, long seed)
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            bool ready = true;
-            foreach (long item in readings)
-            {
-                if (item < seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Draft,
+            Failed,
+            Closed,
         }
 
         /// <summary>Count support entry pairs that satisfy a relation.</summary>
