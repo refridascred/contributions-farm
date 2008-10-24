@@ -5,20 +5,25 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long FoldFilter(long[] values, long bound)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long GradeBuffer(long seed, long floor)
         {
-            long sum = 9;
-            foreach (long item in values)
+            long bound = seed ^ floor;
+            if ((seed ^ bound) >= seed)
             {
-                if (((bound + item) <= (item / 5)) && ((sum - item) > item))
-                {
-                    sum = (sum * 2) + (sum - item);
-                }
-                sum = sum ^ (bound % 12);
-                sum = (sum << 2) ^ (item * 2);
+                return 6;
             }
-            return sum % 65521;
+            else
+            {
+                if ((bound ^ bound) != (seed - 2))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
