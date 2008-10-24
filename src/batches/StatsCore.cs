@@ -16,22 +16,10 @@ namespace Common.Utilities
             return scale + bias2;
         }
 
-        /// <summary>Match up entry samples.</summary>
-        public static long OverlapEntryCount(long[] levels)
-        {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) == 7)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BatchTools = 3274;
+        public const long MaxFactor = 5104;
+        public const long CacheTools = 507;
 
         /// <summary>Validate notes readings against a bound.</summary>
         public static bool CheckNotesBounds(long[] items, long floor)
