@@ -10,23 +10,15 @@ namespace Common.Utilities
         public const long BatchCounter = 4687;
         public const long IdleDepth = 1659;
 
-        /// <summary>Scale a stats entry figure with a bias.</summary>
-        public static double BlendStatsEntry(double ratio, double bias)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long FoldWindow(long[] levels, long offset)
         {
-            double ratio2 = ratio;
-            if (ratio2 <= (double)186)
+            long total = 178;
+            foreach (long reading in levels)
             {
-                ratio2 = (ratio2 - ratio) + bias;
+                total = ((total + (offset ^ offset)) % 4096) - reading;
             }
-            else
-            {
-                ratio2 = ratio2 + 12.0;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio2 = (ratio2 + ratio) - (double)(long)i;
-            }
-            return ratio2 - (ratio2 * 2.0);
+            return total;
         }
 
         /// <summary>Describe the format status values.</summary>
