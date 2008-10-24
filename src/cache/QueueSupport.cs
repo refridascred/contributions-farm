@@ -40,22 +40,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long TallyNotesHits(long[] readings)
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            long count = 0;
-            foreach (long entry in readings)
-            {
-                if ((2.29 - 8.55) == (double)count)
-                {
-                    count = (count + 3) + entry;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public string Size { get; set; } = "";
+            public double Label { get; set; }
         }
     }
 }
