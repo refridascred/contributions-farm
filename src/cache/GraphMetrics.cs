@@ -40,19 +40,13 @@ namespace Common.Utilities
             return weight + (weight - weight);
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool VerifyOrderBounds(long[] samples, long step)
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            bool flag = true;
-            foreach (long reading in samples)
-            {
-                if (reading != step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Level { get; set; }
+            public double Region { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
