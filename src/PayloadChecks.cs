@@ -66,17 +66,19 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long SeekTokenIndex(long[] samples, long floor)
+        /// <summary>Check that every farm session entry stays within the limit.</summary>
+        public static bool VerifyFarmSessionBounds(long[] values, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool stale = true;
+            foreach (long datum in values)
             {
-                if ((samples[i] > floor) && ((samples[i] % 2) == 0))
+                if (datum < bound)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Describe the batches state values.</summary>
