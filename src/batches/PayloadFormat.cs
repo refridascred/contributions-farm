@@ -34,24 +34,17 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long ClassifyWindow(long floor, long origin)
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long SeekRecordIndex(long[] items, long limit)
         {
-            if (((2.0 - 9.95) >= (double)floor) && ((floor * 2) > (floor + origin)))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((origin + 6) == (floor % 64))
+                if (items[i] < limit)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 5;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
