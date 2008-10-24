@@ -1,8 +1,4 @@
 # githubfarm settings
-readonly: 3328
-enabled: 6482
-support_depth:
-  channel_delay: staging
-  readonly: fallback
-  batch_capacity_pct: 7886
-retry_window: standard
+filter_ttl: local
+max_window_ms: false
+readonly: 60
