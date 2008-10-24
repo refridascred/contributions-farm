@@ -27,15 +27,21 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Blend two schema measurements.</summary>
-        public static double SmoothSchema(double scale, double span)
+        /// <summary>Count tools route pairs that satisfy a relation.</summary>
+        public static long PairToolsRouteCount(long[] levels)
         {
-            double scale2 = span - 3.0;
-            if (scale2 < (scale - 5.51))
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                scale2 = scale2 + (scale / 3.0);
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) < 17)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return scale2 - (double)13;
+            return tally;
         }
     }
 }
