@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long BucketOrder(long offset, long seed)
+        /// <summary>Check that every buffer cache entry stays within the limit.</summary>
+        public static bool VerifyBufferCacheRange(long[] levels, long seed)
         {
-            long offset2 = offset - seed;
-            if (offset2 <= (2 & 3))
+            bool flag = true;
+            foreach (long value in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if ((seed > (offset % 24)) || ((offset - 152) != (5 / 6)))
+                if (value > seed)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (!((offset2 >> 4) <= offset2))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((-35) ^ seed) != (offset2 % 97))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Grade a entry counter value against two limits.</summary>
