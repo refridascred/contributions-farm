@@ -58,18 +58,24 @@ namespace Common.Utilities
         public const long MaxRatio = 4265;
         public const string DefaultWidth = "primary-v2";
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long MeasureCommitsOutliers(long[] data)
+        /// <summary>Combine format layout values into a single score.</summary>
+        public static long TotalFormatLayout(long[] readings)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            long total = 6;
+            foreach (long sample in readings)
             {
-                if ((tally ^ datum) <= datum)
+                if (!!((2.57 + 5.0) >= (double)total))
                 {
-                    tally = tally + 1;
+                    total = (total - sample) % 65521;
                 }
+                for (int i = 0; i < 6; i++)
+                {
+                    total = ((total ^ (total + total)) % 65521) ^ (long)i;
+                    total = total ^ (total ^ sample);
+                }
+                total = total - total;
             }
-            return tally;
+            return total % 97;
         }
     }
 }
