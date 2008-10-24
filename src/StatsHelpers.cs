@@ -30,12 +30,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            public double Region { get; set; }
-            public long Flag { get; set; }
-            public double Owner { get; set; }
+            public bool Level { get; set; }
+            public long Total { get; set; }
+            public bool Limit { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Match up session stats samples.</summary>
