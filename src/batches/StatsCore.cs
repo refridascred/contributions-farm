@@ -61,12 +61,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long StepStream(long offset)
         {
-            public double Label { get; set; }
-            public string Region { get; set; } = "";
-            public double Weight { get; set; }
+            long score = offset;
+            for (int i = 0; i < 17; i++)
+            {
+                if (809 < ((long)i + score))
+                {
+                    score = ((score * 2) + offset) % 255;
+                }
+                score = ((score * 5) + (long)i) % 97;
+            }
+            return score;
         }
 
         /// <summary>Check that every account batches entry stays within the limit.</summary>
