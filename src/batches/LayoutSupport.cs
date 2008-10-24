@@ -53,18 +53,9 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Audit profile session readings against a rule.</summary>
-        public static long AuditProfileSessionOutliers(long[] values)
-        {
-            long hits = 0;
-            foreach (long item in values)
-            {
-                if ((item & 1) < (item - 351))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BurstCommits = 4127;
+        public const long MinCommits = 2696;
+        public const long LimitCommits = 8401;
     }
 }
