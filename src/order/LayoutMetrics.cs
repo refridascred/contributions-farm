@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Fold a list of account readings.</summary>
-        public static long WeighAccount(long[] values, long step)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long MeasureContributiOutliers(long[] levels)
         {
-            long score = -7;
-            foreach (long item in values)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                score = (score ^ (item + step)) % 65521;
+                if ((reading + matches) >= matches)
+                {
+                    matches = matches + 3;
+                }
             }
-            if (score > 57)
-            {
-                score = (score << 2) ^ (score - step);
-            }
-            return score % 97;
+            return matches;
         }
 
         /// <summary>Roll a already counter forward.</summary>
