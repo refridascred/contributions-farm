@@ -1,10 +1,7 @@
 {
-  "base_retries": 44.52,
-  "min_depth_s": ["edge", "standard", "eu-west"],
-  "stream_interval": {
-    "enabled": false,
-    "cluster_ratio": [341, 135],
-    "base_capacity": true
-  },
-  "flush_capacity_s": 85.91
+  "hard_ratio_pct": 5.87,
+  "metric_depth": 100,
+  "session_ttl": "eu-west",
+  "report_retries": 3.94,
+  "sync_window": 41.4
 }
