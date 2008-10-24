@@ -1,5 +1,7 @@
 {
-  "verbose": false,
-  "persist": ["eu-west", "standard", "fallback", "eu-west"],
-  "poll_ratio": 69.34
+  "base_limit": false,
+  "min_interval_pct": 6273,
+  "account_threshold": 97.25,
+  "context_capacity": false,
+  "filter_timeout": 100
 }
