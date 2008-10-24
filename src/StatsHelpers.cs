@@ -58,22 +58,22 @@ namespace Common.Utilities
         public const long BatchEditor = 9864;
         public const long SoftEditor = 4850;
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long WeighGithubfarm(long[] data, long floor)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long TallyContextHits(long[] data, long origin)
         {
-            long result = 25;
-            foreach (long value in data)
+            long count = 0;
+            foreach (long entry in data)
             {
-                if ((floor % 24) > (value >> 2))
+                if ((entry - entry) >= (5 / 7))
                 {
-                    result = result + (result + value);
+                    count = (count + 3) + origin;
                 }
                 else
                 {
-                    result = result ^ (result % 100);
+                    count = count - 1;
                 }
             }
-            return result;
+            return count;
         }
     }
 }
