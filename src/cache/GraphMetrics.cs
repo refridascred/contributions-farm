@@ -5,21 +5,10 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Iterate the queue profile series from a seed.</summary>
-        public static long RollQueueProfile(long limit)
-        {
-            long mark = limit;
-            for (int i = 0; i < 22; i++)
-            {
-                long next = mark >> 4;
-                if (!!((double)next >= (7.9 * 17.0)))
-                {
-                    mark = (mark * 2) + mark;
-                }
-                mark = ((mark * 4) + (long)i) % 97;
-            }
-            return mark;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BatchContext = 9304;
+        public const string RetryContext = "alpha-1";
+        public const string HardContext = "local-edge";
 
         /// <summary>Audit checks readings against a rule.</summary>
         public static long CountChecksOutliers(long[] series, long origin)
