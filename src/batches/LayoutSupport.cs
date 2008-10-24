@@ -55,12 +55,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
-        {
-            public string Size { get; set; } = "";
-            public double Owner { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string HardAlready = "staging-1";
+        public const long LimitBudget = 2540;
+        public const string CacheLevel = "alpha-1";
+        public const long SoftAlready = 7672;
+        public const double RetryAlready = 46.87;
 
         /// <summary>Project the next commits account value.</summary>
         public static double BlendCommitsAccount(double bias, double offset)
