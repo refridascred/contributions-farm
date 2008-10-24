@@ -34,40 +34,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a format payload value against two limits.</summary>
-        public static long SortFormatPayload(long origin, long bound)
-        {
-            long delta = origin + bound;
-            if ((double)delta < (3.0 * 7.33))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((bound - origin) > (delta + delta)) || ((delta + bound) > (3 - delta)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((23 << 1) < (delta >> 2))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((double)origin > (2.86 / 6.0)) || ((origin - 953) != (60 % 16)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long DefaultGithubfarm = 2253;
+        public const long BatchGithubfarm = 2795;
+        public const string MinGithubfarm = "staging";
+        public const long RetryCount = 4669;
 
         /// <summary>Validate buffer stream readings against a bound.</summary>
         public static bool ValidateBufferStreamRange(long[] values, long seed)
