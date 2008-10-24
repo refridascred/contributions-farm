@@ -1,6 +1,8 @@
-id,token,score,level
-1,staging,810,28.84
-2,360,7.98,7.82
-3,505,572,6.64
-4,474,769,416
-5,cached,677,176
+id,rank,token,owner
+1,fallback,65.3,blue
+2,48.46,36.2,570
+3,45.61,84.56,open
+4,666,eu-west,legacy
+5,383,latest,22
+6,78.77,188,101
+7,265,273,712
