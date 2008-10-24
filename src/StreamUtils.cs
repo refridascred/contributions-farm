@@ -14,11 +14,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Compare every pair of contributi account readings.</summary>
+        public static long MatchContributiAccountCount(long[] series)
         {
-            public bool Flag { get; set; }
-            public long Region { get; set; }
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) < 4)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Combine schema values into a single score.</summary>
