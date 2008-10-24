@@ -1,6 +1,6 @@
-id,token,label
-1,704,871
-2,17.89,20.77
-3,478,46.83
-4,686,906
-5,local,398
+id,level,active,count,state
+1,736,primary,147,blue
+2,local,24.75,455,edge
+3,893,16.12,86.2,49
+4,686,cached,40.79,fallback
+5,848,89.22,primary,724
