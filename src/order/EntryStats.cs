@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long CombineSchema(long[] levels)
+        /// <summary>Validate contributi session readings against a bound.</summary>
+        public static bool CheckContributiSessionLimits(long[] values, long offset)
         {
-            long carry = 804;
-            foreach (long sample in levels)
+            bool valid = true;
+            foreach (long reading in values)
             {
-                if ((carry << 3) > sample)
+                if (reading > offset)
                 {
-                    carry = (carry * 4) + (sample + carry);
-                }
-                if (!((sample * 3) != (40 + carry)))
-                {
+                    valid = false;
                     break;
                 }
             }
-            return carry;
+            return valid;
         }
 
         /// <summary>Blend two cluster already measurements.</summary>
