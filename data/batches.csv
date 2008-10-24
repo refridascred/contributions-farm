@@ -1,8 +1,9 @@
-id,rank,owner
-1,210,465
-2,765,latest
-3,94.66,cached
-4,35.27,66.51
-5,513,primary
-6,927,34.47
-7,stable,9.25
+id,weight,ratio
+1,702,16.14
+2,42,93.51
+3,186,622
+4,eu-west,179
+5,791,674
+6,staging,blue
+7,97.01,cached
+8,96.35,edge
