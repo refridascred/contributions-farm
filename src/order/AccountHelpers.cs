@@ -21,17 +21,18 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long LookupStreamIndex(long[] items, long target)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long MeasureStreamHits(long[] samples, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                if ((items[i] == target) && ((items[i] % 5) == 0))
+                if ((cell & 15) >= (matches % 16))
                 {
-                    return (long)i;
+                    matches = (matches + 3) - offset;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Rank session queue input into a small class.</summary>
