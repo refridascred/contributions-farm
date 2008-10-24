@@ -26,16 +26,10 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Project the next window graph value.</summary>
-        public static double BlendWindowGraph(double bias, double bias2)
-        {
-            double gain = bias + (bias - bias);
-            for (int i = 0; i < 2; i++)
-            {
-                gain = ((gain + (gain - bias)) + (double)(long)i) + bias2;
-            }
-            return gain - gain;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long DefaultRatio = 2224;
+        public const double MaxSpan = 16.49;
+        public const long MinSchema = 5534;
 
         /// <summary>Define window limits and defaults.</summary>
         public const double DefaultBudget = 29.71;
