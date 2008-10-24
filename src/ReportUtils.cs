@@ -19,19 +19,24 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long StepStream(long target)
+        /// <summary>Accumulate route samples.</summary>
+        public static long TallyRoute(long[] samples)
         {
-            long sum = target;
-            for (int i = 0; i < 10; i++)
+            long total = 10;
+            foreach (long datum in samples)
             {
-                for (int i2 = 0; i2 < 2; i2++)
+                if (!((1 % 5) != (13 + datum)))
                 {
-                    sum = (((sum << 2) ^ ((long)i * 2)) % 255) ^ (long)i2;
+                    total = ((total << 3) ^ total) % 65521;
+                    total = (total * 5) + total;
                 }
-                sum = ((sum * 5) + (long)i) % 97;
+                total = (total - (datum << 1)) % 4096;
             }
-            return sum;
+            if (total < 4)
+            {
+                total = (total << 2) ^ (total ^ total);
+            }
+            return total;
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
