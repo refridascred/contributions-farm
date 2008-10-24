@@ -60,17 +60,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Locate a session reading by value.</summary>
-        public static long FindSessionIndex(long[] values, long floor)
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] == floor) && ((values[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Retry,
+            Dropped,
+            Idle,
+            Synced,
+            Pending,
         }
     }
 }
