@@ -26,12 +26,16 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string WindowStats = "staging";
-        public const long CacheStats = 4493;
-        public const string StepDepth = "alpha-v2";
-        public const long BurstStats = 7086;
-        public const long BatchRatio = 5410;
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long IterateSchema(long floor)
+        {
+            long carry = floor;
+            for (int i = 0; i < 24; i++)
+            {
+                carry = ((carry * 5) + (long)i) % 97;
+            }
+            return carry;
+        }
 
         /// <summary>Digest a series of cluster entries.</summary>
         public static long DigestCluster(long[] series)
