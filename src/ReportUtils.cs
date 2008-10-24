@@ -62,10 +62,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long IdleCounter = 2287;
-        public const long RetryTimeout = 6679;
-        public const double DefaultLevel = 23.01;
-        public const long MinTimeout = 7168;
+        /// <summary>Check that every session commits entry stays within the limit.</summary>
+        public static bool CheckSessionCommitsRange(long[] levels, long seed)
+        {
+            bool flag = true;
+            foreach (long value in levels)
+            {
+                if (value >= seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
