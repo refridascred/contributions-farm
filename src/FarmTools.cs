@@ -28,19 +28,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate buffer command readings against a bound.</summary>
-        public static bool CheckBufferCommandRange(long[] values, long origin)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long CombineChannel(long[] items)
         {
-            bool flag = true;
-            foreach (long item in values)
+            long sum = -271;
+            foreach (long sample in items)
             {
-                if (item != origin)
-                {
-                    flag = false;
-                    break;
-                }
+                sum = (sum ^ (sum & 15)) + sample;
             }
-            return flag;
+            if (sum < 871)
+            {
+                sum = ((sum << 2) ^ sum) % 101;
+            }
+            return sum;
         }
     }
 }
