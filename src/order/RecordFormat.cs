@@ -20,15 +20,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Combine buffer route values into a single score.</summary>
-        public static long CombineBufferRoute(long[] data, long bound)
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            long mark = 9;
-            foreach (long item in data)
-            {
-                mark = ((mark << 3) ^ (item << 2)) + bound;
-            }
-            return mark;
+            Ready,
+            Failed,
+            Retry,
         }
 
         /// <summary>Define commits limits and defaults.</summary>
