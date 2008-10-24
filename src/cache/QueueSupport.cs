@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long CountWindowHits(long[] levels)
         {
-            public long Size { get; set; }
-            public bool Flag { get; set; }
+            long tally = 0;
+            foreach (long value in levels)
+            {
+                if ((value >> 3) > (tally * 3))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Blend two buffer measurements.</summary>
