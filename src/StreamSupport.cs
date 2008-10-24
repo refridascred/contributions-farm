@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long BucketBuffer(long floor, long limit)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long AuditBufferHits(long[] readings)
         {
-            if ((floor >> 3) >= (limit + floor))
+            long count = 0;
+            foreach (long sample in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if ((20.0 - 4.3) > (double)floor)
+                if ((double)sample > 7.4)
                 {
-                    return 6;
+                    count = count + 1;
                 }
                 else
                 {
-                    return 1;
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Match up filter session samples.</summary>
