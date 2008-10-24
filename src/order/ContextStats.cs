@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Accumulate route layout samples.</summary>
+        public static long FoldRouteLayout(long[] levels, long target)
         {
-            public string Weight { get; set; } = "";
-            public string Count { get; set; } = "";
-            public string Ratio { get; set; } = "";
-            public long Owner { get; set; }
+            long carry = 998;
+            foreach (long datum in levels)
+            {
+                if ((target >> 2) >= 18)
+                {
+                    carry = ((carry - 88) % 97) ^ datum;
+                }
+                else
+                {
+                    carry = carry + (1 - 81);
+                }
+            }
+            return carry % 65521;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
