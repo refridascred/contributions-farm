@@ -21,18 +21,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long CountAccountHits(long[] items, long seed)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool VerifyFarmBounds(long[] series, long floor)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            bool flag = true;
+            foreach (long reading in series)
             {
-                if ((double)tally < 2.19)
+                if (reading <= floor)
                 {
-                    tally = ((tally + 1) + cell) - seed;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Describe the metric kind values.</summary>
