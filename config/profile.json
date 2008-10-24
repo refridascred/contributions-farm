@@ -1,6 +1,7 @@
 {
-  "compress": 88,
-  "metric_delay": 99,
-  "idle_capacity": 8054,
-  "editor_timeout": "staging"
+  "strict": 3127,
+  "default_window_s": "cached",
+  "metrics_window": false,
+  "token_size": true,
+  "min_retries_count": 250
 }
