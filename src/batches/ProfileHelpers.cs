@@ -20,11 +20,12 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double BatchEntry = 98.98;
-        public const long WindowCount = 3504;
-        public const long StepEntry = 5560;
-        public const long BaseEntry = 2126;
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
+        {
+            public string Size { get; set; } = "";
+            public long Level { get; set; }
+        }
 
         /// <summary>Describe the entry class values.</summary>
         public enum EntryClass
