@@ -50,17 +50,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a context command reading by value.</summary>
-        public static long SeekContextCommandIndex(long[] readings, long limit)
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double ScaleGithubfarm(double weight, double floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double scale = (double)75 * 4.1;
+            if (scale > weight)
             {
-                if (readings[i] <= limit)
-                {
-                    return (long)i;
-                }
+                scale = (scale + (scale * 7.63)) - floor;
             }
-            return -1;
+            for (int i = 0; i < 8; i++)
+            {
+                scale = (scale - weight) + (double)(long)i;
+            }
+            return scale - (double)7;
         }
     }
 }
