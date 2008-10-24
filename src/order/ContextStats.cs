@@ -22,22 +22,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count layout editor pairs that satisfy a relation.</summary>
-        public static long PairLayoutEditorCount(long[] series)
-        {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 3)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double IdleTimeout = 77.96;
+        public const long DefaultLayout = 5094;
+        public const double MinDepth = 21.65;
 
         /// <summary>Locate a window editor reading by value.</summary>
         public static long LocateWindowEditorIndex(long[] data, long floor)
