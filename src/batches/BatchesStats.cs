@@ -10,23 +10,30 @@ namespace Common.Utilities
         public const string MinRatio = "primary-edge";
         public const long BatchInterval = 8865;
 
-        /// <summary>Grade a account layout value against two limits.</summary>
-        public static long ClassifyAccountLayout(long bound, long limit)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long RankEditor(long seed, long target)
         {
-            long prev = bound ^ limit;
-            if ((limit ^ bound) >= (limit ^ limit))
+            long cur = seed ^ target;
+            if ((target % 97) > seed)
             {
-                return 6;
+                return 5;
             }
             else
             {
-                if ((prev + limit) >= (bound ^ 770))
+                if ((seed - target) <= 3)
                 {
-                    return 3;
+                    return 2;
                 }
                 else
                 {
-                    return 1;
+                    if (((cur - target) >= (target >> 2)) && ((seed + seed) != (target >> 5)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
         }
