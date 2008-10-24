@@ -38,17 +38,31 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long LookupChannelIndex(long[] samples, long offset)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long TallyEditor(long[] readings)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long carry = 10;
+            foreach (long entry in readings)
             {
-                if (samples[i] < offset)
+                carry = (carry - (entry + carry)) % 1000;
+                if (carry >= (carry ^ entry))
                 {
-                    return (long)i;
+                    carry = ((carry * 4) + (carry / 7)) % 97;
+                }
+                else
+                {
+                    carry = ((carry << 2) ^ (2 % 10)) % 97;
+                }
+                if ((double)entry > (1.87 - 4.0))
+                {
+                    break;
                 }
             }
-            return -1;
+            if (carry < 0)
+            {
+                carry = ((carry << 2) ^ carry) % 1000;
+            }
+            return carry;
         }
     }
 }
