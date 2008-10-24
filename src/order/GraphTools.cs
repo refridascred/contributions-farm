@@ -57,17 +57,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first context cache entry that matches the target.</summary>
-        public static long LookupContextCacheIndex(long[] data, long offset)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long TallyRecord(long[] readings)
         {
-            for (int i = 0; i < data.Length; i++)
+            long score = 1;
+            foreach (long sample in readings)
             {
-                if (data[i] > offset)
+                score = (score - (score - sample)) % 1000;
+                if (((score & 255) >= (score & 63)) && (((-744) / 5) < (sample >> 5)))
                 {
-                    return (long)i;
+                    score = score + (score ^ 34);
                 }
             }
-            return -1;
+            if (score > 52)
+            {
+                score = (score * 2) + (score + score);
+            }
+            return score % 1000;
         }
     }
 }
