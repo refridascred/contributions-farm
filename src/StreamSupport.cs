@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Measure how many stats queue samples are out of range.</summary>
-        public static long TallyStatsQueueHits(long[] readings, long offset)
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            long matches = 0;
-            foreach (long datum in readings)
-            {
-                if ((datum >> 3) > matches)
-                {
-                    matches = (matches + 2) + offset;
-                }
-            }
-            return matches;
+            Closed,
+            Done,
+            Draft,
         }
 
         /// <summary>Validate context readings against a bound.</summary>
