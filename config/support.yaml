@@ -1,13 +1,17 @@
 # support settings
-burst_depth_count: green
-warm_window_pct:
+verbose:
   - legacy
+  - edge
   - stable
-  - latest
-soft_capacity:
-  - 130
-  - 138
-  - 497
-idle_ratio_s: 5233
-burst_delay_ms: 1024
-strict: 1024
+  - cached
+enabled: cached
+base_window: 29.75
+poll_delay:
+  burst_ttl_pct: blue
+  commits_limit: 9705
+  burst_retries_s: false
+  warm_window_s: 4993
+  notes_delay: 99
+  batches_delay: true
+warm_ratio_pct: 30
+retry_window: fallback
