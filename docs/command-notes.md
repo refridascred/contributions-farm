@@ -1,10 +1,11 @@
 # Command notes
 
-Run the graph check before changing any window limits.
-Run the report check before changing any route limits.
+Keep report and githubfarm names short and lowercase.
+Defaults for support live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Keep filter values small
-- Review queue limits each release
-- Document new route fields
+- Keep notes values small
+- Log every queue change
+- Validate graph input early
+- Prefer record defaults
