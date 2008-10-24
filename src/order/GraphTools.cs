@@ -51,12 +51,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Project the next notes value.</summary>
+        public static double BlendNotes(double scale, double span)
         {
-            Idle,
-            Stale,
-            Closed,
+            double rate = scale;
+            if (rate > (double)565)
+            {
+                rate = (rate + scale) - span;
+            }
+            return rate - (scale * 6.44);
         }
     }
 }
