@@ -27,15 +27,32 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long RollMetrics(long limit)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long RankContext(long step, long bound)
         {
-            long result = limit;
-            for (int i = 0; i < 5; i++)
+            long delta = step ^ bound;
+            if (((582 << 3) >= bound) || ((step * 4) < (198 + delta)))
             {
-                result = ((result * 5) + (long)i) % 65521;
+                return 1;
             }
-            return result;
+            else
+            {
+                if (2.82 <= (double)delta)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((step & 7) != (bound - 27))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Validate record readings against a bound.</summary>
