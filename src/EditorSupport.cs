@@ -62,18 +62,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long TallyTools(long[] samples)
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            long score = -89;
-            foreach (long item in samples)
-            {
-                if ((long)samples.Length != (score * 3))
-                {
-                    score = ((score << 3) ^ (score >> 4)) - item;
-                }
-            }
-            return score % 97;
+            public string Weight { get; set; } = "";
+            public double Stamp { get; set; }
         }
     }
 }
