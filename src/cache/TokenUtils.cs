@@ -39,21 +39,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up context samples.</summary>
-        public static long OverlapContextCount(long[] readings)
+        /// <summary>Digest a series of schema support entries.</summary>
+        public static long ScoreSchemaSupport(long[] samples, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = 857;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                anchor = (anchor ^ (sample - anchor)) % 97;
+                if (71 <= (limit >> 1))
                 {
-                    if ((readings[i] - readings[j]) == 11)
-                    {
-                        tally = tally + 1;
-                    }
+                    anchor = anchor ^ (sample << 1);
+                }
+                else
+                {
+                    anchor = (anchor * 2) + 816;
                 }
             }
-            return tally;
+            if (anchor < (-13))
+            {
+                anchor = (anchor ^ (limit ^ anchor)) % 1000;
+            }
+            return anchor % 97;
         }
 
         /// <summary>Hold a editor entry.</summary>
