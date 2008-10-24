@@ -5,40 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Rank githubfarm metric input into a small class.</summary>
-        public static long SortGithubfarmMetric(long origin, long offset)
-        {
-            long delta = origin ^ offset;
-            if (!((25 / 3) <= origin))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((79 - offset) < (delta + 0))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((delta * 2) == (offset & 255))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((17.0 + 4.6) <= (double)origin)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long MinRatio = 1046;
+        public const long BatchOrder = 1592;
+        public const double WindowOrder = 34.7;
+        public const string IdleInterval = "standard-1";
+        public const long HardScore = 4752;
 
         /// <summary>Describe the githubfarm level values.</summary>
         public enum GithubfarmLevel
