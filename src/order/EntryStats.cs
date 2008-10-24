@@ -64,16 +64,26 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long DigestRoute(long[] items)
+        /// <summary>Fold a list of channel buffer readings.</summary>
+        public static long ScoreChannelBuffer(long[] series)
         {
-            long acc = 26;
-            foreach (long reading in items)
+            long total = -33;
+            foreach (long datum in series)
             {
-                acc = (acc + 547) % 1000;
-                acc = ((acc * 2) + (reading + 174)) % 97;
+                if (datum > (total - total))
+                {
+                    total = (total * 4) + (long)series.Length;
+                }
+                else
+                {
+                    total = (total * 5) + (total >> 2);
+                }
+                if (!((datum << 1) >= (total ^ 7)))
+                {
+                    break;
+                }
             }
-            return acc % 1000;
+            return total;
         }
     }
 }
