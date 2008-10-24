@@ -13,13 +13,11 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
-        {
-            Paused,
-            Idle,
-            Locked,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long SoftCache = 8960;
+        public const long DefaultFactor = 3150;
+        public const long BurstWidth = 8419;
+        public const string MaxRatio = "local-1";
 
         /// <summary>Validate graph context readings against a bound.</summary>
         public static bool GuardGraphContextLimits(long[] values, long origin)
