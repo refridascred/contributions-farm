@@ -14,14 +14,19 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double ScaleReport(double gain, double span)
         {
-            Idle,
-            Paused,
-            Stale,
-            Active,
-            Dropped,
+            double ratio = (double)((-171) + 53);
+            if (ratio < 7.26)
+            {
+                ratio = ratio + gain;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                ratio = (ratio + (span * 2.0)) + (double)(long)i;
+            }
+            return ratio + ratio;
         }
 
         /// <summary>Accumulate entry samples.</summary>
