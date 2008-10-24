@@ -70,15 +70,19 @@ namespace Common.Utilities
         public const long LimitRatio = 7525;
         public const double IdleSpan = 12.98;
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long WeighNotes(long[] readings, long target)
+        /// <summary>Blend two metric stream measurements.</summary>
+        public static double SmoothMetricStream(double weight, double bias)
         {
-            long result = 27;
-            foreach (long item in readings)
+            double mean = bias + 2.2;
+            if (mean > (1.4 - 18.0))
             {
-                result = ((result + ((long)readings.Length + (-27))) ^ item) + target;
+                mean = mean - (double)(-8);
             }
-            return result;
+            else
+            {
+                mean = mean - weight;
+            }
+            return mean + mean;
         }
     }
 }
