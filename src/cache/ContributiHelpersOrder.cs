@@ -14,10 +14,23 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long CacheMetrics = 9620;
-        public const long LimitMetrics = 226;
-        public const long CacheLevel = 9870;
+        /// <summary>Accumulate report batch samples.</summary>
+        public static long DigestReportBatch(long[] levels, long bound)
+        {
+            long total = -7;
+            foreach (long cell in levels)
+            {
+                if ((4 % 64) > (long)levels.Length)
+                {
+                    break;
+                }
+                if (((bound + total) < (cell ^ 3)) && ((9 + total) <= (bound >> 2)))
+                {
+                    total = ((total << 2) ^ (bound << 3)) % 65521;
+                }
+            }
+            return total % 97;
+        }
 
         /// <summary>Accumulate buffer samples.</summary>
         public static long CombineBuffer(long[] readings, long floor)
