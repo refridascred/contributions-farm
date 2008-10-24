@@ -43,12 +43,12 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            Queued,
-            Paused,
-            Active,
+            public bool Flag { get; set; }
+            public bool Score { get; set; }
+            public double Region { get; set; }
         }
     }
 }
