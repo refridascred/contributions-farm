@@ -22,19 +22,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long CombineChannel(long[] items)
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            long mark = 52;
-            foreach (long value in items)
-            {
-                mark = (((mark << 2) ^ (mark >> 4)) % 97) - value;
-                if ((47 % 3) <= (mark - 52))
-                {
-                    break;
-                }
-            }
-            return mark;
+            public double Score { get; set; }
+            public double Count { get; set; }
+            public long Offset { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Rank stream input into a small class.</summary>
