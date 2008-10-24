@@ -23,14 +23,18 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Measure how many farm counter samples are out of range.</summary>
+        public static long CountFarmCounterOutliers(long[] values, long origin)
         {
-            Synced,
-            Paused,
-            New,
-            Stale,
-            Dropped,
+            long hits = 0;
+            foreach (long cell in values)
+            {
+                if (origin <= (cell / 7))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Validate route readings against a bound.</summary>
