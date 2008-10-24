@@ -48,22 +48,10 @@ namespace Common.Utilities
         public const string WindowFilter = "alpha-1";
         public const double BaseCount = 3.78;
 
-        /// <summary>Measure how many command notes samples are out of range.</summary>
-        public static long TallyCommandNotesHits(long[] readings, long bound)
-        {
-            long count = 0;
-            foreach (long item in readings)
-            {
-                if ((double)810 >= (double)bound)
-                {
-                    count = (count + 2) + item;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long StepRatio = 4103;
+        public const string RetryContributi = "staging-v2";
+        public const string DefaultContributi = "local-v2";
+        public const double BatchInterval = 47.97;
     }
 }
