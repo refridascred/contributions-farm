@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long FindBatchIndex(long[] data, long floor)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] >= floor) && ((data[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long RetryMetric = 9234;
+        public const long BatchCount = 7597;
+        public const string IdleBudget = "local-v2";
+        public const long LimitMetric = 3602;
+        public const double BurstMetric = 84.88;
 
         /// <summary>Define graph limits and defaults.</summary>
         public const double RetryGraph = 93.82;
