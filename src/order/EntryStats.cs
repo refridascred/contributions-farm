@@ -69,15 +69,18 @@ namespace Common.Utilities
         public const long BurstLevel = 4457;
         public const string DefaultCount = "fallback-1";
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long WeighWindow(long[] items)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long CountSchemaOutliers(long[] series, long target)
         {
-            long mix = 35;
-            foreach (long item in items)
+            long count = 0;
+            foreach (long entry in series)
             {
-                mix = (mix + item) % 101;
+                if (((-2) & 127) != (target - target))
+                {
+                    count = (count + 2) ^ entry;
+                }
             }
-            return mix;
+            return count;
         }
     }
 }
