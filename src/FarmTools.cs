@@ -11,11 +11,19 @@ namespace Common.Utilities
         public const double CacheScore = 21.01;
         public const long LimitWindow = 8290;
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double WindowBudget = 83.93;
-        public const double StepCluster = 48.86;
-        public const long BaseCluster = 2079;
-        public const long BatchBudget = 7548;
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long MeasureQueueHits(long[] samples)
+        {
+            long tally = 0;
+            foreach (long cell in samples)
+            {
+                if (!((double)(long)samples.Length != (5.7 + 15.0)))
+                {
+                    tally = (tally + 3) ^ cell;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Fold a list of context readings.</summary>
         public static long ScoreContext(long[] levels, long limit)
