@@ -58,12 +58,18 @@ namespace Common.Utilities
         public const long MaxRatio = 4265;
         public const string DefaultWidth = "primary-v2";
 
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long MeasureCommitsOutliers(long[] data)
         {
-            public long Token { get; set; }
-            public long Total { get; set; }
-            public string Flag { get; set; } = "";
+            long tally = 0;
+            foreach (long datum in data)
+            {
+                if ((tally ^ datum) <= datum)
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
     }
 }
