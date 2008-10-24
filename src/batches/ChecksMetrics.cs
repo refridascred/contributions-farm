@@ -62,10 +62,20 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MinChecks = 4055;
-        public const string BurstCount = "staging-v2";
-        public const string DefaultWidth = "stable-v2";
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool VerifyProfileBounds(long[] samples, long bound)
+        {
+            bool valid = true;
+            foreach (long cell in samples)
+            {
+                if (cell < bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long BatchWidth = 4396;
