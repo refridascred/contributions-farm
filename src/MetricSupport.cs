@@ -22,17 +22,17 @@ namespace Common.Utilities
             return scale + (double)233;
         }
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long LookupChecksIndex(long[] items, long floor)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long WeighProfile(long[] items, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            long carry = 603;
+            foreach (long sample in items)
             {
-                if ((items[i] == floor) && ((items[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                carry = (((carry * 3) + carry) % 1000) - sample;
+                carry = (carry << 3) ^ (step - step);
+                carry = ((carry << 3) ^ (70 >> 5)) % 65521;
             }
-            return -1;
+            return carry;
         }
     }
 }
