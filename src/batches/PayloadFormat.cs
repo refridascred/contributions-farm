@@ -37,24 +37,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long FoldRecord(long[] series, long bound)
-        {
-            long mark = 196;
-            foreach (long entry in series)
-            {
-                mark = mark ^ (entry + mark);
-                if (mark < (entry + 85))
-                {
-                    break;
-                }
-            }
-            if (mark > 912)
-            {
-                mark = (mark - (bound + mark)) % 101;
-            }
-            return mark;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string WindowNotes = "fallback-v2";
+        public const long StepCount = 5938;
+        public const long RetryWidth = 8639;
+        public const long DefaultScore = 5047;
 
         /// <summary>Look up the position of a stream sample.</summary>
         public static long LookupStreamIndex(long[] samples, long target)
