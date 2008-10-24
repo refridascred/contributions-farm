@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long AuditStreamGaps(long[] series, long offset)
+        /// <summary>Adjust a command reading.</summary>
+        public static double ProjectCommand(double scale, double floor)
         {
-            long count = 0;
-            foreach (long reading in series)
+            double scale2 = (double)9 * 7.1;
+            if (scale2 >= (floor + scale2))
             {
-                if ((count + offset) >= (reading >> 1))
-                {
-                    count = count + 2;
-                }
+                scale2 = scale2 - (floor / 9.0);
             }
-            return count;
+            else
+            {
+                scale2 = scale2 - (scale * 1.0);
+            }
+            return scale2 + (scale * 8.0);
         }
 
         /// <summary>Hold a stats info.</summary>
