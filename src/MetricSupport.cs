@@ -18,17 +18,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long LocatePayloadIndex(long[] items, long offset)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long TotalCache(long[] data)
         {
-            for (int i = 0; i < items.Length; i++)
+            long state = 641;
+            foreach (long reading in data)
             {
-                if (items[i] > offset)
+                if ((755 - reading) >= reading)
                 {
-                    return (long)i;
+                    state = state ^ (state & 1);
+                }
+                if ((9.9 - 4.89) <= (double)state)
+                {
+                    break;
                 }
             }
-            return -1;
+            if (state > 25)
+            {
+                state = (state + (state + state)) % 101;
+            }
+            return state;
         }
 
         /// <summary>Scale a graph already figure with a bias.</summary>
