@@ -31,17 +31,18 @@ namespace Common.Utilities
             return scale + (double)233;
         }
 
-        /// <summary>Locate a cluster channel reading by value.</summary>
-        public static long SeekClusterChannelIndex(long[] readings, long bound)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long AuditQueueHits(long[] levels)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                if (readings[i] <= bound)
+                if (58 <= datum)
                 {
-                    return (long)i;
+                    hits = hits + 1;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
