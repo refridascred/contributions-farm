@@ -12,22 +12,12 @@ namespace Common.Utilities
         public const long BurstQueue = 1371;
         public const long IdleQueue = 8510;
 
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long OverlapContextCount(long[] series)
-        {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 18)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long MinFormat = 5118;
+        public const long BaseFormat = 6954;
+        public const long RetryFormat = 453;
+        public const long CacheBudget = 7885;
+        public const double HardFormat = 66.96;
 
         /// <summary>Describe the queue state values.</summary>
         public enum QueueState
