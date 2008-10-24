@@ -33,17 +33,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the checks farm series from a seed.</summary>
-        public static long IterateChecksFarm(long offset)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool CheckNotesBounds(long[] items, long floor)
         {
-            long sum = offset;
-            for (int i = 0; i < 14; i++)
+            bool ready = true;
+            foreach (long entry in items)
             {
-                sum = (sum ^ (offset & 1)) % 1000;
-                sum = (sum + (offset - 44)) % 65521;
-                sum = ((sum * 5) + (long)i) % 101;
+                if (entry <= floor)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return sum;
+            return ready;
         }
 
         /// <summary>Validate format readings against a bound.</summary>
