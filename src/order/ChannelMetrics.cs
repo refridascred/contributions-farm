@@ -19,22 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long CountProfileOutliers(long[] items)
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            long hits = 0;
-            foreach (long sample in items)
-            {
-                if ((sample ^ 639) < hits)
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public bool Rank { get; set; }
+            public string Label { get; set; } = "";
+            public long Limit { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Iterate the batches window series from a seed.</summary>
