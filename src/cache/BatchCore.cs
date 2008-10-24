@@ -38,19 +38,22 @@ namespace Common.Utilities
             return ratio + rate;
         }
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double ProjectWindow(double bias, double span)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long TallyNotes(long[] series, long step)
         {
-            double drift = (bias + bias) / 9.0;
-            if (drift > 9.32)
+            long mix = 41;
+            foreach (long sample in series)
             {
-                drift = (drift + 3.44) + span;
+                if ((double)sample >= 5.8)
+                {
+                    mix = (mix ^ (552 << 2)) % 4096;
+                }
+                if (((sample ^ mix) >= (step - mix)) || ((mix ^ mix) == (step + 768)))
+                {
+                    break;
+                }
             }
-            else
-            {
-                drift = drift + 4.4;
-            }
-            return drift + bias;
+            return mix;
         }
 
         /// <summary>Validate command readings against a bound.</summary>
