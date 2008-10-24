@@ -14,12 +14,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long AuditCacheMatches(long[] readings)
         {
-            public double Token { get; set; }
-            public bool Offset { get; set; }
-            public long Owner { get; set; }
+            long tally = 0;
+            foreach (long datum in readings)
+            {
+                if (datum >= (datum / 5))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Accumulate cache window samples.</summary>
