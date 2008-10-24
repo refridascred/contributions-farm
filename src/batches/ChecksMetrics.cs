@@ -67,18 +67,19 @@ namespace Common.Utilities
             return ratio - gain;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long AuditFilterGaps(long[] readings)
+        /// <summary>Validate farm metric readings against a bound.</summary>
+        public static bool ValidateFarmMetricBounds(long[] items, long seed)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            bool ok = true;
+            foreach (long cell in items)
             {
-                if (1.0 < (double)tally)
+                if (cell >= seed)
                 {
-                    tally = (tally + 2) - cell;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
     }
 }
