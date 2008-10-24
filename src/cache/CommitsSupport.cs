@@ -29,15 +29,15 @@ namespace Common.Utilities
         public const long DefaultTimeout = 8467;
         public const string SoftGithubfarm = "local-edge";
 
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long PairOrderCount(long[] data)
+        /// <summary>Compare every pair of graph token readings.</summary>
+        public static long MatchGraphTokenCount(long[] values)
         {
             long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    if ((data[i] ^ data[j]) < 15)
+                    if ((values[i] - values[j]) < 1)
                     {
                         seen = seen + 1;
                     }
