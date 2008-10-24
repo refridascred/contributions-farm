@@ -59,18 +59,12 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Count the counter cluster entries that pass the check.</summary>
-        public static long AuditCounterClusterMatches(long[] levels)
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            long tally = 0;
-            foreach (long item in levels)
-            {
-                if ((-464) < item)
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public long Score { get; set; }
+            public string Total { get; set; } = "";
+            public bool Level { get; set; }
         }
     }
 }
