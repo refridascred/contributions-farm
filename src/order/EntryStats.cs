@@ -81,19 +81,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two batches measurements.</summary>
-        public static double ScaleBatches(double gain, double span)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long TallyBatchesHits(long[] items)
         {
-            double rate = (span - gain) - (gain / 5.0);
-            if (rate >= rate)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                rate = rate - gain;
+                if ((5 << 3) > sample)
+                {
+                    hits = hits + 2;
+                }
             }
-            else
-            {
-                rate = rate - (rate * 5.11);
-            }
-            return rate - 1.0;
+            return hits;
         }
     }
 }
