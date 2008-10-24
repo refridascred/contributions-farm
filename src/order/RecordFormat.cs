@@ -28,13 +28,10 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
-        {
-            public double Owner { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Size { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long SoftScore = 3507;
+        public const double SoftGithubfarm = 98.98;
+        public const string MaxLevel = "staging-v2";
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long BurstCommits = 8899;
