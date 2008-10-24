@@ -1,5 +1,17 @@
 {
-  "counter_timeout": 9559,
-  "batch_size_count": 250,
-  "poll_depth": "stable"
+  "strict": {
+    "verbose": 93,
+    "readonly": 75.55,
+    "base_timeout": true
+  },
+  "hard_interval_count": 30,
+  "flush_window_pct": "primary",
+  "record_ttl": ["stable", "strict", "edge"],
+  "buffer_window": {
+    "window_threshold": "fallback",
+    "entry_timeout": 38,
+    "verbose": "legacy",
+    "min_retries_count": [365, 440, 111, 342],
+    "strict": 60
+  }
 }
