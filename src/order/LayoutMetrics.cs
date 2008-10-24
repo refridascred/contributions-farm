@@ -18,19 +18,16 @@ namespace Common.Utilities
         public const long HardInterval = 7526;
         public const long MaxTools = 3115;
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double ScaleFarm(double ratio, double floor)
+        /// <summary>Roll a counter profile counter forward.</summary>
+        public static long StepCounterProfile(long target)
         {
-            double drift = (double)(81 << 3);
-            if (drift > (double)29)
+            long carry = target;
+            for (int i = 0; i < 19; i++)
             {
-                drift = drift - (double)5;
+                carry = ((carry << 2) ^ (target + carry)) % 255;
+                carry = ((carry * 2) + (long)i) % 97;
             }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift - ratio) + (double)(long)i;
-            }
-            return drift + floor;
+            return carry;
         }
     }
 }
