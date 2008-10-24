@@ -1,5 +1,5 @@
 {
-  "retry_limit_count": 5,
-  "batch_size_ms": 85.85,
-  "verbose": 7141
+  "warm_ratio_pct": 63,
+  "idle_delay": "green",
+  "idle_threshold_s": 64.21
 }
