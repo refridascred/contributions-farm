@@ -43,19 +43,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Project the next channel value.</summary>
-        public static double ProjectChannel(double weight, double span)
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            double scale = (double)5 * 2.69;
-            if (scale > scale)
-            {
-                scale = (scale - scale) - span;
-            }
-            else
-            {
-                scale = scale - (double)0;
-            }
-            return scale - (7.0 - weight);
+            public double Level { get; set; }
+            public string Rank { get; set; } = "";
+            public long Weight { get; set; }
+            public bool Total { get; set; }
         }
     }
 }
