@@ -1,6 +1,7 @@
-id,score,active,label
-1,70,open,standard
-2,192,29.39,96
-3,74.07,49.96,blue
-4,legacy,119,local
-5,latest,cached,417
+id,level,active,count
+1,green,888,46.57
+2,897,edge,primary
+3,763,17.5,standard
+4,32.24,672,284
+5,edge,937,821
+6,546,80,fallback
