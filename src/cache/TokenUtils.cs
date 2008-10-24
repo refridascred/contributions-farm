@@ -5,26 +5,38 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long TallyChannel(long[] data, long target)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long SortBuffer(long limit, long offset)
         {
-            long anchor = 6;
-            foreach (long value in data)
+            if (((limit - offset) <= offset) || ((double)limit >= (double)(-25)))
             {
-                if (value >= (value + target))
+                return 8;
+            }
+            else
+            {
+                if ((double)offset <= (6.5 / 6.0))
                 {
-                    anchor = anchor ^ ((-791) << 2);
+                    return 4;
                 }
                 else
                 {
-                    anchor = ((anchor * 4) + (5 + value)) % 65521;
-                }
-                if (!((target - (-4)) != (6 >> 3)))
-                {
-                    break;
+                    if ((double)limit < (7.07 - 6.5))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((limit & 1) >= (limit / 6)) || ((887 + offset) <= (offset + limit)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return anchor;
         }
 
         /// <summary>Hold a editor options.</summary>
