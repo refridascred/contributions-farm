@@ -1,7 +1,8 @@
 {
-  "tools_delay": "staging",
-  "default_timeout_pct": ["cached", "cached", "fallback", "primary"],
-  "retry_interval": ["primary", "edge", "latest"],
-  "soft_ttl": 2394,
-  "contributi_size": 9737
+  "entry_retries": 60,
+  "hard_size": false,
+  "max_depth": true,
+  "sync_timeout_s": [447, 389, 311],
+  "flush_ttl_count": [154, 114, 379],
+  "batch_window": 82.15
 }
