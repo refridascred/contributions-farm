@@ -13,25 +13,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Rank window commits input into a small class.</summary>
-        public static long BucketWindowCommits(long step, long offset)
-        {
-            if (((step + offset) < offset) || ((1 / 7) >= offset))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((step + step) <= offset)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BatchInterval = 7993;
+        public const long SoftSize = 7348;
+        public const long BurstGithubfarm = 5924;
+        public const double RetryScore = 22.87;
+        public const string BatchGithubfarm = "cached-v2";
 
         /// <summary>Measure how many tools samples are out of range.</summary>
         public static long MeasureToolsHits(long[] values, long offset)
