@@ -1,8 +1,9 @@
-id,weight,state,ratio
-1,latest,401,706
-2,161,241,569
-3,930,10.77,862
-4,721,787,stable
-5,38.03,771,85.4
-6,edge,625,28.7
-7,14.79,local,428
+id,ratio,region,token,count
+1,70.49,8.47,50.48,legacy
+2,standard,343,green,150
+3,primary,blue,12.49,legacy
+4,97.41,60,edge,legacy
+5,fallback,729,426,blue
+6,latest,651,896,336
+7,523,local,465,468
+8,14.46,45.43,143,26
