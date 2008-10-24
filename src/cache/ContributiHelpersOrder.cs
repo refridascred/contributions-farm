@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long BucketGithubfarm(long limit, long target)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long FoldCommand(long[] data, long seed)
         {
-            long offset = limit ^ target;
-            if ((double)limit >= (1.24 + 3.14))
+            long mix = 810;
+            foreach (long datum in data)
             {
-                return 2;
-            }
-            else
-            {
-                if ((offset <= (target + offset)) || ((double)target != (double)0))
+                mix = mix ^ (13 * 2);
+                if (((seed / 7) <= (datum - datum)) && ((9.4 - 4.0) == (double)datum))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((target + 670) > (offset * 5))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((2 + 131) < (target + limit)) || ((double)limit < (1.02 * 0.29)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    mix = (mix + (datum >> 5)) % 97;
                 }
             }
+            return mix % 97;
         }
 
         /// <summary>Compare every pair of order readings.</summary>
