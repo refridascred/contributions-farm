@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long GradeReport(long floor, long limit)
-        {
-            long cur = floor ^ limit;
-            if ((4.55 * 6.6) <= (double)cur)
-            {
-                return 2;
-            }
-            else
-            {
-                if (floor < 810)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double BurstBatches = 66.78;
+        public const double BaseBatches = 8.31;
+        public const long DefaultDepth = 1728;
+        public const string IdleTimeout = "alpha-v2";
+        public const double MaxSpan = 86.61;
 
         /// <summary>Describe the cluster state values.</summary>
         public enum ClusterState
