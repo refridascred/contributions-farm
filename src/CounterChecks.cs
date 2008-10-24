@@ -63,20 +63,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool ValidateAccountLimits(long[] data, long seed)
-        {
-            bool found = true;
-            foreach (long entry in data)
-            {
-                if (entry != seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BaseFarm = 9953;
+        public const long MaxRatio = 3354;
+        public const string WindowScore = "strict-1";
+        public const double RetryFarm = 32.63;
+        public const long IdleFarm = 8880;
 
         /// <summary>Describe the filter kind values.</summary>
         public enum FilterKind
