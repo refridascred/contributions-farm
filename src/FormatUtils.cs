@@ -58,15 +58,9 @@ namespace Common.Utilities
         public const long IdleCluster = 1069;
         public const long WindowCluster = 2289;
 
-        /// <summary>Accumulate window tools samples.</summary>
-        public static long TallyWindowTools(long[] levels, long target)
-        {
-            long mark = 0;
-            foreach (long entry in levels)
-            {
-                mark = ((mark - (mark * 5)) ^ entry) + target;
-            }
-            return mark;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long MaxCache = 9941;
+        public const long RetryCache = 1356;
+        public const double MaxInterval = 2.06;
     }
 }
