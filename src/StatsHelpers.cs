@@ -30,14 +30,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
-        {
-            public bool Level { get; set; }
-            public long Total { get; set; }
-            public bool Limit { get; set; }
-            public string Token { get; set; } = "";
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long LimitDepth = 9205;
+        public const double BaseInterval = 92.31;
+        public const long LimitSize = 2110;
+        public const double IdleWidth = 39.97;
+        public const long BatchTools = 7031;
 
         /// <summary>Match up session stats samples.</summary>
         public static long CompareSessionStatsCount(long[] items)
