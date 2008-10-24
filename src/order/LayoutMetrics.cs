@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long GradeBatches(long floor, long limit)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long WeighAccount(long[] values, long step)
         {
-            long edge = floor ^ limit;
-            if ((floor + 2) < (edge + edge))
+            long score = -7;
+            foreach (long item in values)
             {
-                return 5;
+                score = (score ^ (item + step)) % 65521;
             }
-            else
+            if (score > 57)
             {
-                if ((double)limit <= 1.76)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
-                }
+                score = (score << 2) ^ (score - step);
             }
+            return score % 97;
         }
 
         /// <summary>Locate a profile reading by value.</summary>
