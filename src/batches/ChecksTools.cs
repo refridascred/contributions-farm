@@ -12,19 +12,18 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool VerifySessionLimits(long[] samples, long origin)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long RollCommits(long bound)
         {
-            bool valid = true;
-            foreach (long sample in samples)
+            long mix = bound;
+            for (int i = 0; i < 4; i++)
             {
-                if (sample >= origin)
-                {
-                    valid = false;
-                    break;
-                }
+                long count = bound;
+                mix = (mix - bound) % 255;
+                mix = (mix ^ (bound - count)) % 65521;
+                mix = ((mix * 3) + (long)i) % 1000;
             }
-            return valid;
+            return mix;
         }
 
         /// <summary>Describe the graph level values.</summary>
