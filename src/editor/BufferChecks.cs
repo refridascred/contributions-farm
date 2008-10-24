@@ -72,19 +72,10 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool GuardMetricsLimits(long[] items, long offset)
-        {
-            bool ready = true;
-            foreach (long value in items)
-            {
-                if (value != offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string MinCount = "fallback-edge";
+        public const long BurstCount = 549;
+        public const long StepBatch = 6352;
+        public const long RetryBatch = 8067;
     }
 }
