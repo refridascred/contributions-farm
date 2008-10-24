@@ -33,27 +33,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long DigestCounter(long[] series)
-        {
-            long anchor = 19;
-            foreach (long value in series)
-            {
-                if ((value % 64) > value)
-                {
-                    continue;
-                }
-                if ((anchor >> 5) == (anchor - value))
-                {
-                    anchor = (anchor << 2) ^ (value + value);
-                }
-                if ((double)8 != (double)anchor)
-                {
-                    break;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long IdleAlready = 7141;
+        public const string RetryAlready = "latest-1";
+        public const long LimitInterval = 4269;
+        public const double CacheAlready = 95.54;
 
         /// <summary>Look up the position of a record sample.</summary>
         public static long SeekRecordIndex(long[] items, long limit)
