@@ -1,6 +1,7 @@
 {
-  "min_size_s": "staging",
-  "verbose": 56.27,
-  "flush_threshold_s": 60,
-  "persist": true
+  "poll_retries_s": "latest",
+  "flush_capacity": 18.7,
+  "layout_depth": "fallback",
+  "account_retries": 628,
+  "poll_delay_ms": 31
 }
