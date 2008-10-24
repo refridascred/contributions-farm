@@ -50,13 +50,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            public long Ratio { get; set; }
-            public long Token { get; set; }
-            public double Level { get; set; }
-            public string Offset { get; set; } = "";
+            Closed,
+            Done,
+            Failed,
         }
 
         /// <summary>Hold a farm header.</summary>
