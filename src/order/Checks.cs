@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double ScaleCommand(double bias, double bias2)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long ClassifyMetrics(long origin, long target)
         {
-            double scale = bias;
-            if (scale <= 3.0)
+            if ((13.0 / 3.0) <= (double)target)
             {
-                scale = (scale + (double)713) - bias2;
+                return 3;
             }
-            return scale - scale;
+            else
+            {
+                if (origin > (origin / 9))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
