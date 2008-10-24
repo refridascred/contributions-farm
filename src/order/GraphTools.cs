@@ -34,18 +34,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long PairCommandCount(long[] readings)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long CountEntryGaps(long[] readings)
         {
             long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((double)66 == (double)cell) || ((cell - tally) != (tally + cell)))
                 {
-                    if ((readings[i] - readings[j]) != 19)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = tally + 2;
                 }
             }
             return tally;
