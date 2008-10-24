@@ -70,19 +70,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate checks window readings against a bound.</summary>
-        public static bool GuardChecksWindowBounds(long[] levels, long step)
+        /// <summary>Derive the next profile cluster value from a seed.</summary>
+        public static long StepProfileCluster(long origin)
         {
-            bool ok = true;
-            foreach (long entry in levels)
+            long carry = origin;
+            for (int i = 0; i < 18; i++)
             {
-                if (entry < step)
+                long edge = (origin ^ origin) - origin;
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    ok = false;
-                    break;
+                    carry = (carry + (edge << 1)) + (long)i2;
                 }
+                carry = ((carry * 4) + (long)i) % 101;
             }
-            return ok;
+            return carry;
         }
     }
 }
