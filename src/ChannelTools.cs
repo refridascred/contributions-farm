@@ -21,19 +21,19 @@ namespace Common.Utilities
         public const long LimitGraph = 4945;
         public const string WindowGraph = "alpha-edge";
 
-        /// <summary>Accumulate cache window samples.</summary>
-        public static long TotalCacheWindow(long[] series)
+        /// <summary>Check that every queue stream entry stays within the limit.</summary>
+        public static bool GuardQueueStreamRange(long[] values, long origin)
         {
-            long sum = 41;
-            foreach (long sample in series)
+            bool flag = true;
+            foreach (long datum in values)
             {
-                sum = ((sum - ((-75) & 7)) % 65521) ^ sample;
+                if (datum < origin)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            if (sum > 368)
-            {
-                sum = sum ^ (sum + sum);
-            }
-            return sum % 97;
+            return flag;
         }
     }
 }
