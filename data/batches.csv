@@ -1,11 +1,6 @@
-id,region,state
-1,810,323
-2,11.98,5.6
-3,76.78,969
-4,fallback,edge
-5,645,56.43
-6,primary,159
-7,cached,84.92
-8,84.5,675
-9,181,latest
-10,405,9.86
+id,active,region,level,count
+1,701,0.0,14.18,20.19
+2,legacy,cached,81.66,246
+3,64.28,320,344,eu-west
+4,624,edge,9.71,850
+5,555,standard,legacy,21
