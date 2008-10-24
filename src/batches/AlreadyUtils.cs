@@ -38,22 +38,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of token stats readings.</summary>
-        public static long CompareTokenStatsCount(long[] items)
-        {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) != 0)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long RetryPayload = 9446;
+        public const long HardRatio = 5719;
+        public const long IdlePayload = 4238;
 
         /// <summary>Validate support readings against a bound.</summary>
         public static bool ValidateSupportLimits(long[] items, long target)
