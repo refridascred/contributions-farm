@@ -33,19 +33,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool GuardAlreadyRange(long[] levels, long floor)
+        /// <summary>Accumulate report samples.</summary>
+        public static long WeighReport(long[] samples, long bound)
         {
-            bool valid = true;
-            foreach (long datum in levels)
+            long anchor = 43;
+            foreach (long sample in samples)
             {
-                if (datum > floor)
-                {
-                    valid = false;
-                    break;
-                }
+                anchor = (anchor << 3) ^ sample;
+                anchor = (anchor + (bound + 440)) % 4096;
+                anchor = (anchor - bound) % 255;
             }
-            return valid;
+            if (anchor < 8)
+            {
+                anchor = (anchor - (anchor - 2)) % 101;
+            }
+            return anchor;
         }
     }
 }
