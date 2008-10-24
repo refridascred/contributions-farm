@@ -24,12 +24,17 @@ namespace Common.Utilities
         public const long BatchDepth = 6534;
         public const double BaseCount = 61.55;
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long LocateMetricIndex(long[] samples, long limit)
         {
-            Done,
-            Synced,
-            New,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] > limit) && ((samples[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Locate a checks stats reading by value.</summary>
