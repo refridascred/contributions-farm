@@ -5,23 +5,32 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Project the next tools metrics value.</summary>
-        public static double ProjectToolsMetrics(double gain, double bias)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long SortStats(long target, long bound)
         {
-            double rate = (double)(138 / 4);
-            if (rate > bias)
+            long offset = target ^ bound;
+            if ((target % 8) < (6 ^ (-531)))
             {
-                rate = rate - (double)5;
+                return 8;
             }
             else
             {
-                rate = rate - (gain + gain);
+                if ((target + target) >= offset)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((offset - bound) > bound)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                rate = rate + (double)(long)i;
-            }
-            return rate + bias;
         }
 
         /// <summary>Describe the notes kind values.</summary>
