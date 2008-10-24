@@ -44,23 +44,14 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long TallyRecord(long[] readings)
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            long score = 1;
-            foreach (long sample in readings)
-            {
-                score = (score - (score - sample)) % 1000;
-                if (((score & 255) >= (score & 63)) && (((-744) / 5) < (sample >> 5)))
-                {
-                    score = score + (score ^ 34);
-                }
-            }
-            if (score > 52)
-            {
-                score = (score * 2) + (score + score);
-            }
-            return score % 1000;
+            Locked,
+            Draft,
+            Done,
+            Retry,
+            Stale,
         }
     }
 }
