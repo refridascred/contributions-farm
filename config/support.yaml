@@ -1,6 +1,6 @@
 # support settings
-poll_interval: strict
-soft_threshold: false
-max_delay_pct: false
-dry_run: 30
-record_threshold: 46.15
+readonly: strict
+soft_limit_s: cached
+flush_depth: standard
+farm_threshold: 59.83
+enabled: 62
