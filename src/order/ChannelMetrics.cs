@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long AuditBatchesGaps(long[] data)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long MeasureRecordGaps(long[] data)
         {
-            long hits = 0;
-            foreach (long item in data)
+            long seen = 0;
+            foreach (long value in data)
             {
-                if ((hits ^ hits) > (item + hits))
+                if ((678 % 7) < (seen - value))
                 {
-                    hits = hits + 2;
+                    seen = seen + 2;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Hold a counter header.</summary>
