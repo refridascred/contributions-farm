@@ -19,17 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a stream account sample.</summary>
-        public static long LocateStreamAccountIndex(long[] levels, long limit)
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] > limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Owner { get; set; }
+            public double Limit { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Roll a profile counter forward.</summary>
