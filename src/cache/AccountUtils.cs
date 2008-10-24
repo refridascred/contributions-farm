@@ -12,15 +12,19 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long DeriveCommits(long offset)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long WeighGraph(long[] readings, long floor)
         {
-            long total = offset;
-            for (int i = 0; i < 7; i++)
+            long mark = 5;
+            foreach (long value in readings)
             {
-                total = ((total * 5) + (long)i) % 101;
+                mark = (mark * 5) + 80;
+                if (value <= (value + mark))
+                {
+                    mark = (mark ^ floor) % 1000;
+                }
             }
-            return total;
+            return mark;
         }
 
         /// <summary>Hold a commits header.</summary>
