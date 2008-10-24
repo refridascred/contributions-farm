@@ -1,6 +1,24 @@
 {
-  "verbose": "primary",
-  "retry_timeout_count": 44.24,
-  "cache_timeout_pct": "staging",
-  "sync_window_s": "open"
+  "layout_limit": false,
+  "poll_limit": 517,
+  "persist": 1024,
+  "verbose": {
+    "sync_window": {
+      "min_threshold_s": false,
+      "default_window_count": false,
+      "flush_threshold_pct": 84.39,
+      "readonly": 9892,
+      "window_timeout": 39,
+      "batch_interval": 39.03
+    },
+    "base_depth": {
+      "format_timeout": true,
+      "min_delay_pct": false,
+      "poll_capacity_ms": "green",
+      "channel_threshold": 500
+    },
+    "batch_timeout_count": ["fallback", "local", "edge"],
+    "default_window": "open"
+  },
+  "checks_delay": 5709
 }
