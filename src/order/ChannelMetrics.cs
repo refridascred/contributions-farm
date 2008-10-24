@@ -19,22 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit filter batches readings against a rule.</summary>
-        public static long MeasureFilterBatchesMatches(long[] items)
+        /// <summary>Blend two batches measurements.</summary>
+        public static double SmoothBatches(double weight, double span)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            double load = weight;
+            for (int i = 0; i < 3; i++)
             {
-                if ((hits & 127) > (hits + hits))
-                {
-                    hits = (hits + 3) - reading;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                load = (load + span) + (double)(long)i;
             }
-            return hits;
+            return load - weight;
         }
 
         /// <summary>Iterate the batches window series from a seed.</summary>
