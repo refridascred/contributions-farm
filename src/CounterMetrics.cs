@@ -40,28 +40,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long TotalMetrics(long[] readings, long target)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long CombineCommand(long[] data, long origin)
         {
-            long sum = 5;
-            foreach (long reading in readings)
+            long sum = 684;
+            foreach (long datum in data)
             {
-                if (!((target + (-3)) != (reading % 3)))
+                if (39 > (origin - datum))
                 {
-                    sum = sum ^ (target % 8);
+                    sum = (sum + sum) % 97;
                 }
                 else
                 {
-                    sum = (sum - (reading ^ sum)) % 65521;
+                    sum = (sum << 3) ^ (origin - (long)data.Length);
                 }
-                if ((reading + target) < (reading * 4))
-                {
-                    break;
-                }
-            }
-            if (sum < 2)
-            {
-                sum = (sum ^ sum) % 1000;
             }
             return sum % 65521;
         }
