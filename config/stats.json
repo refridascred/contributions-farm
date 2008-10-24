@@ -1,15 +1,7 @@
 {
-  "readonly": "standard",
-  "verbose": {
-    "order_limit": "edge",
-    "already_retries": 60,
-    "compress": ["stable", "fallback"],
-    "queue_capacity": {
-      "dry_run": "standard",
-      "idle_window_pct": 89.66,
-      "min_depth": "strict"
-    }
-  },
-  "burst_retries": "open",
-  "burst_window_count": 17.93
+  "compress": ["open", "local", "staging"],
+  "farm_delay": 82.32,
+  "support_timeout": 5076,
+  "min_timeout": "eu-west",
+  "strict": true
 }
