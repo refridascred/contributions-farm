@@ -46,39 +46,21 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long ClassifyChecks(long floor, long limit)
+        /// <summary>Match up session stats samples.</summary>
+        public static long CompareSessionStatsCount(long[] items)
         {
-            long offset = floor ^ limit;
-            if ((offset >> 5) != (floor ^ limit))
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((offset - offset) != (limit / 3))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (limit > (floor + limit))
+                    if ((items[i] ^ items[j]) == 9)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)limit <= (15.0 / 9.0))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Validate command readings against a bound.</summary>
