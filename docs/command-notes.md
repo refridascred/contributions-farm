@@ -1,11 +1,14 @@
 # Command notes
 
-The already helpers are pure functions, so they are safe to call from any thread.
-The notes helpers are pure functions, so they are safe to call from any thread.
-Each farm is validated before it reaches the session queue.
+The queue module keeps queue values in sync with the order cache.
+Run the filter check before changing any commits limits.
+
+Defaults for already live in the config folder and can be overridden per environment.
+Use metrics settings to tune how often stream data is refreshed.
 
 ## Guidelines
 
-- Review session limits each release
-- Log every cluster change
-- Validate stats input early
+- Log every profile change
+- Review graph limits each release
+- Keep buffer values small
+- Validate graph input early
