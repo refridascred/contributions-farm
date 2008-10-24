@@ -66,18 +66,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long MeasureRecordMatches(long[] items)
+        /// <summary>Project the next payload value.</summary>
+        public static double SmoothPayload(double bias, double bias2)
         {
-            long hits = 0;
-            foreach (long value in items)
+            double gain = 2.0 / 6.0;
+            if (gain < bias2)
             {
-                if (((value + value) == (805 * 2)) && ((4.25 + 7.16) >= (double)(long)items.Length))
-                {
-                    hits = hits + 1;
-                }
+                gain = gain - bias;
             }
-            return hits;
+            return gain + (bias * 20.0);
         }
     }
 }
