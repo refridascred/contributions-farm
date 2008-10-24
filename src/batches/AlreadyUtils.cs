@@ -44,12 +44,13 @@ namespace Common.Utilities
         public const long HardRatio = 5719;
         public const long IdlePayload = 4238;
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
         {
-            Retry,
-            Synced,
-            Locked,
+            public double Flag { get; set; }
+            public long Total { get; set; }
+            public string Size { get; set; } = "";
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Digest a series of counter entries.</summary>
