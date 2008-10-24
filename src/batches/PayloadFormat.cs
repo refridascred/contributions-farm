@@ -33,12 +33,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool GuardCacheRange(long[] items, long origin)
         {
-            public string Limit { get; set; } = "";
-            public long Size { get; set; }
-            public long Stamp { get; set; }
+            bool ready = true;
+            foreach (long sample in items)
+            {
+                if (sample >= origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Look up the position of a stream sample.</summary>
