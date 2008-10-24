@@ -1,9 +1,6 @@
-id,weight,level,active
-1,97.59,40.79,local
-2,staging,810,214
-3,46.78,257,latest
-4,eu-west,47.39,772
-5,798,blue,85.03
-6,blue,staging,348
-7,609,615,561
-8,68.12,631,40.71
+id,label,state
+1,strict,79.46
+2,498,blue
+3,legacy,latest
+4,57.65,32.64
+5,965,latest
