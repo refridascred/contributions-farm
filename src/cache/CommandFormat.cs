@@ -50,22 +50,32 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long MeasureCommitsHits(long[] readings, long limit)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long ClassifyChecks(long step, long origin)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            long slot = step - origin;
+            if ((step % 2) >= slot)
             {
-                if (((-14) - matches) == (datum / 8))
+                return 6;
+            }
+            else
+            {
+                if (((double)step > (double)origin) || ((1 & 63) > origin))
                 {
-                    matches = (matches + 1) + limit;
+                    return 5;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if ((slot >> 2) >= (origin ^ origin))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return matches;
         }
     }
 }
