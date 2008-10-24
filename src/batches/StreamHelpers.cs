@@ -42,12 +42,17 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Find the first order route entry that matches the target.</summary>
+        public static long SeekOrderRouteIndex(long[] values, long step)
         {
-            Closed,
-            Done,
-            Failed,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a farm header.</summary>
