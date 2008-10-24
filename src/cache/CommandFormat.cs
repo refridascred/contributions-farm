@@ -43,11 +43,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Validate account cache readings against a bound.</summary>
+        public static bool VerifyAccountCacheRange(long[] samples, long floor)
         {
-            public string Total { get; set; } = "";
-            public long Offset { get; set; }
+            bool valid = true;
+            foreach (long cell in samples)
+            {
+                if (cell < floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
