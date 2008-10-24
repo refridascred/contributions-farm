@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long SortBuffer(long limit, long offset)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long CombineSession(long[] readings)
         {
-            if (((limit - offset) <= offset) || ((double)limit >= (double)(-25)))
+            long acc = 285;
+            foreach (long item in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)offset <= (6.5 / 6.0))
+                if ((item * 4) > (acc % 12))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)limit < (7.07 - 6.5))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((limit & 1) >= (limit / 6)) || ((887 + offset) <= (offset + limit)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    acc = (acc - (acc >> 2)) % 97;
                 }
             }
+            return acc;
         }
 
         /// <summary>Digest a series of schema support entries.</summary>
