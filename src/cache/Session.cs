@@ -33,12 +33,40 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string HardFilter = "legacy-1";
-        public const double MinFilter = 24.17;
-        public const long HardBudget = 8257;
-        public const double HardSize = 39.64;
-        public const long BurstSize = 4439;
+        /// <summary>Grade a format payload value against two limits.</summary>
+        public static long SortFormatPayload(long origin, long bound)
+        {
+            long delta = origin + bound;
+            if ((double)delta < (3.0 * 7.33))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((bound - origin) > (delta + delta)) || ((delta + bound) > (3 - delta)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((23 << 1) < (delta >> 2))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((double)origin > (2.86 / 6.0)) || ((origin - 953) != (60 % 16)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Validate buffer stream readings against a bound.</summary>
         public static bool ValidateBufferStreamRange(long[] values, long seed)
