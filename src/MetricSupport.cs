@@ -23,15 +23,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double BlendNotes(double gain, double offset)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long MeasureContributiMatches(long[] readings, long bound)
         {
-            double scale = offset;
-            for (int i = 0; i < 3; i++)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                scale = (scale - (gain + gain)) + (double)(long)i;
+                if ((reading + reading) != (reading + 9))
+                {
+                    hits = (hits + 1) - bound;
+                }
             }
-            return scale + (double)233;
+            return hits;
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
