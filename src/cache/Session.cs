@@ -15,12 +15,20 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string BurstRatio = "stable-v2";
-        public const string MaxSession = "local";
-        public const string LimitSession = "legacy-1";
-        public const double HardSession = 78.44;
-        public const long IdleSession = 7706;
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool ValidateToolsRange(long[] data, long limit)
+        {
+            bool valid = true;
+            foreach (long item in data)
+            {
+                if (item > limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Define filter limits and defaults.</summary>
         public const string HardFilter = "legacy-1";
