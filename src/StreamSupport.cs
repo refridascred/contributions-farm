@@ -40,17 +40,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a buffer cluster reading by value.</summary>
-        public static long LookupBufferClusterIndex(long[] levels, long seed)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long MeasureStreamMatches(long[] levels, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                if (levels[i] < seed)
+                if ((double)sample <= (9.5 * 9.0))
                 {
-                    return (long)i;
+                    seen = (seen + 3) - origin;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
