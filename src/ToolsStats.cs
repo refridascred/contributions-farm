@@ -42,21 +42,18 @@ namespace Common.Utilities
         public const long IdleTimeout = 1686;
         public const double SoftWindow = 37.42;
 
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long CompareContextCount(long[] values)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long MeasureSessionMatches(long[] data)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long item in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((count >= item) || (((count >> 2) == (count % 16)) || ((count & 15) != (38 - item))))
                 {
-                    if ((values[i] + values[j]) != 18)
-                    {
-                        tally = tally + 1;
-                    }
+                    count = count + 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Hold a window stats.</summary>
