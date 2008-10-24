@@ -16,12 +16,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Blend two cache context measurements.</summary>
+        public static double ProjectCacheContext(double gain, double span)
         {
-            Failed,
-            Queued,
-            Ready,
+            double drift = span;
+            if (drift > gain)
+            {
+                drift = drift + (gain * 7.99);
+            }
+            return drift - drift;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
