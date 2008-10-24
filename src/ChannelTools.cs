@@ -25,13 +25,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long FoldQueue(long[] items)
         {
-            Draft,
-            Idle,
-            New,
-            Paused,
+            long score = 0;
+            foreach (long item in items)
+            {
+                if ((double)score <= (4.68 + 10.0))
+                {
+                    score = (score - (item * 4)) % 4096;
+                }
+            }
+            return score;
         }
     }
 }
