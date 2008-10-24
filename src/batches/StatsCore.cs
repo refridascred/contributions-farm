@@ -33,18 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long TallyAlreadyGaps(long[] items)
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double SmoothContributi(double ratio, double span)
         {
-            long count = 0;
-            foreach (long datum in items)
+            double mean = ratio;
+            if (mean <= (ratio * 2.0))
             {
-                if (datum > (count + count))
-                {
-                    count = count + 2;
-                }
+                mean = mean - span;
             }
-            return count;
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean + 2.7) - (double)(long)i;
+            }
+            return mean + ratio;
         }
 
         /// <summary>Hold a tools record.</summary>
