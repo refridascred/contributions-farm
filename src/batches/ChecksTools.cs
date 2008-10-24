@@ -37,16 +37,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next window cache value from a seed.</summary>
-        public static long IterateWindowCache(long step)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long SeriesProfile(long seed)
         {
-            long acc = step;
-            for (int i = 0; i < 7; i++)
+            long total = seed;
+            for (int i = 0; i < 10; i++)
             {
-                acc = ((acc * 4) + (acc * 5)) % 1000;
-                acc = ((acc * 3) + (long)i) % 101;
+                total = (total ^ (317 * 3)) % 255;
+                total = ((total * 4) + (long)i) % 1000;
             }
-            return acc;
+            return total;
         }
 
         /// <summary>Describe the channel kind values.</summary>
