@@ -1,5 +1,8 @@
 {
-  "poll_retries_ms": 81,
-  "soft_limit_pct": 1024,
-  "audit": false
+  "githubfarm_depth": "local",
+  "burst_limit_pct": true,
+  "burst_interval_ms": 8885,
+  "poll_size_count": "local",
+  "warm_interval_s": "stable",
+  "readonly": ["local", "strict"]
 }
