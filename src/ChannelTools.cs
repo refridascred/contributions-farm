@@ -35,23 +35,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long ScoreToken(long[] items, long offset)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long AuditLayoutMatches(long[] levels, long limit)
         {
-            long score = 59;
-            foreach (long cell in items)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                score = (score + (score * 2)) % 1000;
-                if (!((offset << 1) == (cell << 1)))
+                if ((item + 64) >= (item + item))
                 {
-                    score = score + (6 + offset);
+                    hits = (hits + 3) - limit;
                 }
-                if ((cell >> 5) > (cell + (-38)))
+                else
                 {
-                    break;
+                    hits = hits - 1;
                 }
             }
-            return score;
+            return hits;
         }
     }
 }
