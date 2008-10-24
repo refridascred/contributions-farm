@@ -56,32 +56,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long ClassifyEditor(long seed, long limit)
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long LookupCounterIndex(long[] readings, long limit)
         {
-            long span = seed ^ limit;
-            if ((3.9 - 5.9) != (double)span)
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)limit == (20.0 / 6.0))
+                if ((readings[i] < limit) && ((readings[i] % 2) != 0))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((11.0 + 6.92) <= (double)limit) && (0 >= (span << 3)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
