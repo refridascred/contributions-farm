@@ -1,5 +1,5 @@
 {
-  "hard_limit_s": "strict",
-  "warm_interval": [351, 461],
-  "tools_limit": ["fallback", "local", "green", "blue"]
+  "dry_run": true,
+  "hard_limit_s": 250,
+  "default_delay": "fallback"
 }
