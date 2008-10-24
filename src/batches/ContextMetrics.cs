@@ -29,12 +29,19 @@ namespace Common.Utilities
             return load - (double)408;
         }
 
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool VerifyProfileRange(long[] series, long limit)
         {
-            public double Rank { get; set; }
-            public string Count { get; set; } = "";
-            public bool Flag { get; set; }
+            bool ok = true;
+            foreach (long entry in series)
+            {
+                if (entry <= limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
