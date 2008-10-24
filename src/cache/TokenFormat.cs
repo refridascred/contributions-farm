@@ -22,14 +22,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long LocateWindowIndex(long[] items, long bound)
         {
-            Locked,
-            Ready,
-            Pending,
-            Dropped,
-            Queued,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] < bound) && ((items[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the channel level values.</summary>
