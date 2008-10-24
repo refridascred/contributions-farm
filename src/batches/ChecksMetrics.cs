@@ -5,29 +5,29 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long SortStats(long target, long bound)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long SortCache(long offset, long bound)
         {
-            long offset = target ^ bound;
-            if ((target % 8) < (6 ^ (-531)))
+            long prev = offset ^ bound;
+            if ((prev >= (882 << 3)) && ((offset % 60) != ((-738) * 4)))
             {
-                return 8;
+                return 3;
             }
             else
             {
-                if ((target + target) >= offset)
+                if ((double)offset != (double)70)
                 {
                     return 1;
                 }
                 else
                 {
-                    if ((offset - bound) > bound)
+                    if (!((offset * 4) == (bound >> 5)))
                     {
-                        return 6;
+                        return 0;
                     }
                     else
                     {
-                        return 3;
+                        return 6;
                     }
                 }
             }
