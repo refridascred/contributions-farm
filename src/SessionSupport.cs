@@ -35,21 +35,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Match up checks entry samples.</summary>
-        public static long PairChecksEntryCount(long[] values)
+        /// <summary>Scale a editor profile figure with a bias.</summary>
+        public static double AdjustEditorProfile(double weight, double floor)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            double mean = weight;
+            if (mean >= (double)88)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) > 16)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                mean = mean + (5.2 + weight);
             }
-            return matches;
+            else
+            {
+                mean = mean + (weight / 7.0);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean - (weight / 2.0)) + (double)(long)i;
+            }
+            return mean + floor;
         }
     }
 }
