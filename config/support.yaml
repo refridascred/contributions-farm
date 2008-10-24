@@ -1,25 +1,11 @@
 # support settings
-contributi_threshold:
-  - 249
-  - 493
-  - 99
-warm_retries:
-  - legacy
-  - fallback
-poll_ttl:
-  - 123
-  - 463
-  - 50
-retry_threshold_s: open
-retry_ttl:
-  cache_retries: 60
-  verbose: local
-  stream_capacity:
-    warm_timeout_ms:
-      - open
-      - edge
-      - latest
-    soft_ratio_pct: latest
-    filter_size: eu-west
-    hard_ttl: true
-persist: 53.22
+already_threshold: staging
+compress: 2694
+retry_threshold_count:
+  - open
+  - standard
+poll_depth_pct:
+  - 269
+  - 61
+  - 33
+  - 452
