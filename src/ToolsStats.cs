@@ -25,18 +25,10 @@ namespace Common.Utilities
             return ratio + floor;
         }
 
-        /// <summary>Locate a order reading by value.</summary>
-        public static long LocateOrderIndex(long[] readings, long floor)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string MinEntry = "cached";
+        public const long WindowEntry = 1285;
+        public const double DefaultEntry = 60.09;
 
         /// <summary>Define command limits and defaults.</summary>
         public const long RetryCommand = 1820;
