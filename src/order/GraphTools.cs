@@ -26,18 +26,19 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long CountEntryGaps(long[] readings)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool CheckOrderBounds(long[] values, long step)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            bool stale = true;
+            foreach (long value in values)
             {
-                if (((double)66 == (double)cell) || ((cell - tally) != (tally + cell)))
+                if (value < step)
                 {
-                    tally = tally + 2;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Fold a list of graph format readings.</summary>
