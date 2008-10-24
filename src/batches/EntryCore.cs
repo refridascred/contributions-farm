@@ -17,12 +17,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long MinCounter = 6725;
-        public const long HardCounter = 3913;
-        public const long BaseSize = 1870;
-        public const long IdleCounter = 7954;
-        public const string LimitBudget = "open";
+        /// <summary>Match up report samples.</summary>
+        public static long CompareReportCount(long[] values)
+        {
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) != 8)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Accumulate report samples.</summary>
         public static long TallyReport(long[] data)
