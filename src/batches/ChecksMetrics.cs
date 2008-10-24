@@ -67,13 +67,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            Idle,
-            Stale,
-            Ready,
+            Done,
             Closed,
+            Locked,
+            Dropped,
         }
 
         /// <summary>Derive the next farm support value from a seed.</summary>
