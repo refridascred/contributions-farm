@@ -1,11 +1,25 @@
 # support settings
-already_threshold: staging
-compress: 2694
-retry_threshold_count:
-  - open
-  - standard
-poll_depth_pct:
-  - 269
-  - 61
-  - 33
-  - 452
+readonly: true
+persist:
+  - 274
+  - 197
+  - 107
+  - 329
+context_ttl:
+  metric_interval: primary
+  min_limit_s:
+    - 464
+    - 66
+    - 329
+    - 343
+  hard_ttl_s: 2061
+  audit: strict
+  queue_timeout: 6401
+  retry_ratio_ms:
+    already_limit: 0.11
+    profile_ttl: 9723
+    counter_window: 90.4
+    poll_ttl: 4.34
+    base_depth_pct: false
+sync_window: 500
+queue_retries: 1024
