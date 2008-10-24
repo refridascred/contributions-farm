@@ -19,10 +19,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double DefaultSchema = 18.35;
-        public const long RetrySize = 9100;
-        public const long CacheSchema = 7209;
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
+        {
+            public bool Offset { get; set; }
+            public bool Level { get; set; }
+            public long Stamp { get; set; }
+            public long Count { get; set; }
+        }
 
         /// <summary>Check that every metric layout entry stays within the limit.</summary>
         public static bool VerifyMetricLayoutRange(long[] data, long offset)
