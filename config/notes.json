@@ -1,6 +1,6 @@
 {
-  "persist": "local",
-  "dry_run": ["local", "eu-west", "edge", "local"],
-  "hard_interval_count": [377, 166],
-  "strict": "eu-west"
+  "strict": 11.57,
+  "buffer_depth": ["green", "green", "edge"],
+  "already_window": 88.79,
+  "cache_ttl": 5344
 }
