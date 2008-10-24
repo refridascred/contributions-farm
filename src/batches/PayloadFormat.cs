@@ -27,12 +27,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            Queued,
-            Pending,
-            Active,
+            public bool Token { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Grade a window value against two limits.</summary>
