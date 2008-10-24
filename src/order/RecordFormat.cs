@@ -42,20 +42,11 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double AdjustReport(double scale, double bias)
-        {
-            double bias2 = scale * 2.8;
-            if (bias2 < bias2)
-            {
-                bias2 = (bias2 - (double)4) + bias;
-            }
-            else
-            {
-                bias2 = bias2 - (double)334;
-            }
-            return bias2 + (bias2 / 6.0);
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long LimitBudget = 8820;
+        public const long HardWidth = 7970;
+        public const long StepWindow = 4915;
+        public const string MinWindow = "staging";
 
         /// <summary>Derive the next buffer value from a seed.</summary>
         public static long IterateBuffer(long seed)
