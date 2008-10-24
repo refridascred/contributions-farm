@@ -60,18 +60,22 @@ namespace Common.Utilities
         public const double LimitProfile = 53.45;
         public const long MinProfile = 9525;
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long MeasureClusterHits(long[] readings)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long MeasureGraphHits(long[] samples, long bound)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                if ((datum * 3) == (74 / 9))
+                if ((3.5 - 7.51) > (double)sample)
                 {
-                    tally = tally + 1;
+                    seen = (seen + 1) - bound;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Combine filter channel values into a single score.</summary>
