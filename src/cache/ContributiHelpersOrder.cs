@@ -5,13 +5,38 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long ClassifyEditor(long limit, long target)
         {
-            Failed,
-            Stale,
-            Draft,
-            New,
+            if (((limit - target) != (limit & 255)) && ((target & 63) <= (598 & 7)))
+            {
+                return 8;
+            }
+            else
+            {
+                if (limit <= target)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)target != (10.0 * 5.33))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((double)limit <= (5.62 / 3.0))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate report batch samples.</summary>
