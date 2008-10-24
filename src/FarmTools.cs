@@ -53,12 +53,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            New,
+            Dropped,
             Active,
-            Pending,
+            Retry,
+            Draft,
         }
     }
 }
