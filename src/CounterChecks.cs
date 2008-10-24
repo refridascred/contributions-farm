@@ -14,32 +14,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long GradePayload(long target, long limit)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long FoldAccount(long[] samples, long target)
         {
-            long diff = target ^ limit;
-            if (limit <= target)
+            long total = 6;
+            foreach (long value in samples)
             {
-                return 7;
+                total = total ^ (value + value);
             }
-            else
+            if (total < 110)
             {
-                if (!((target >> 5) >= (target + diff)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((17.0 / 9.0) == (double)diff)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
+                total = (total ^ (target + total)) % 255;
             }
+            return total;
         }
 
         /// <summary>Validate command readings against a bound.</summary>
