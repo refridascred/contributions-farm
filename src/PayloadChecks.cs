@@ -66,20 +66,12 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Check that every farm session entry stays within the limit.</summary>
-        public static bool VerifyFarmSessionBounds(long[] values, long bound)
-        {
-            bool stale = true;
-            foreach (long datum in values)
-            {
-                if (datum < bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long HardContributi = 1012;
+        public const double WindowBudget = 60.28;
+        public const long RetryContributi = 1307;
+        public const long BatchContributi = 5163;
+        public const double CacheSize = 47.77;
 
         /// <summary>Describe the batches state values.</summary>
         public enum BatchesState
