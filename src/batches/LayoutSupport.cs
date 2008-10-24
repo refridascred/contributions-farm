@@ -20,22 +20,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long CountBatchesMatches(long[] levels, long bound)
+        /// <summary>Audit tools stats readings against a rule.</summary>
+        public static long TallyToolsStatsHits(long[] items)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                if ((bound + 713) > (count / 6))
+                if (hits <= (14 >> 2))
                 {
-                    count = (count + 3) + cell;
+                    hits = (hits + 3) ^ entry;
                 }
                 else
                 {
-                    count = count - 1;
+                    hits = hits - 1;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Hold a queue summary.</summary>
