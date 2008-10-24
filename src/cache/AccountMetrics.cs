@@ -33,18 +33,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long TallyEntryMatches(long[] data)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long TallyCache(long[] levels, long seed)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            long anchor = -38;
+            foreach (long entry in levels)
             {
-                if (1 > (cell + tally))
+                if (((double)entry <= 3.09) || ((87 * 5) >= (entry << 2)))
                 {
-                    tally = tally + 2;
+                    anchor = ((anchor * 5) + entry) % 1000;
+                }
+                else
+                {
+                    anchor = ((anchor * 3) + (anchor - seed)) % 1000;
                 }
             }
-            return tally;
+            if (anchor < 8)
+            {
+                anchor = (anchor - (seed ^ seed)) % 65521;
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Combine token values into a single score.</summary>
