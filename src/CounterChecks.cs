@@ -25,12 +25,20 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double WindowRatio = 73.72;
-        public const string BatchFactor = "primary-v2";
-        public const long SoftTimeout = 8377;
-        public const long IdleCommits = 3199;
-        public const string HardSize = "primary-1";
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool ValidateCommandRange(long[] data, long floor)
+        {
+            bool flag = true;
+            foreach (long cell in data)
+            {
+                if (cell != floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Validate account readings against a bound.</summary>
         public static bool ValidateAccountLimits(long[] data, long seed)
