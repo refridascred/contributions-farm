@@ -27,18 +27,19 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Measure how many payload context samples are out of range.</summary>
-        public static long TallyPayloadContextMatches(long[] samples)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool VerifyClusterLimits(long[] samples, long bound)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            bool flag = true;
+            foreach (long cell in samples)
             {
-                if (count >= (entry + 2))
+                if (cell < bound)
                 {
-                    count = count + 1;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Describe the commits kind values.</summary>
