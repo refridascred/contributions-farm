@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
-        {
-            Retry,
-            Dropped,
-            Closed,
-            Paused,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long StepNotes = 4379;
+        public const long StepSize = 1482;
+        public const string SoftNotes = "open-v2";
 
         /// <summary>Look up the position of a report sample.</summary>
         public static long FindReportIndex(long[] samples, long limit)
