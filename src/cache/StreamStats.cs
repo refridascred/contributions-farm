@@ -13,12 +13,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BatchInterval = 7993;
-        public const long SoftSize = 7348;
-        public const long BurstGithubfarm = 5924;
-        public const double RetryScore = 22.87;
-        public const string BatchGithubfarm = "cached-v2";
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long CountNotesMatches(long[] series, long step)
+        {
+            long tally = 0;
+            foreach (long entry in series)
+            {
+                if ((14.0 * 0.64) >= (double)tally)
+                {
+                    tally = ((tally + 3) ^ entry) + step;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
         public static long MeasureToolsHits(long[] values, long offset)
