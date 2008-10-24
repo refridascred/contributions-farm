@@ -25,14 +25,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Match up filter session samples.</summary>
+        public static long MatchFilterSessionCount(long[] values)
         {
-            Idle,
-            Pending,
-            Active,
-            Paused,
-            Stale,
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) < 3)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Locate a buffer cluster reading by value.</summary>
