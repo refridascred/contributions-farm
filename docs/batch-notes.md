@@ -1,11 +1,11 @@
 # Batch notes
 
-Defaults for farm live in the config folder and can be overridden per environment.
-When a githubfarm fails, the profile handler retries a few times before giving up.
-The commits report groups every format by report.
+Keep record and window names short and lowercase.
+When a booking fails, the command handler retries a few times before giving up.
 
 ## Guidelines
 
-- Prefer channel defaults
-- Review metric limits each release
-- Document new format fields
+- Keep order values small
+- Validate cache input early
+- Prefer layout defaults
+- Log every command change
