@@ -12,10 +12,14 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BatchGraph = 9485;
-        public const string HardSpan = "cached-v2";
-        public const long BurstSpan = 3705;
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
+        {
+            Queued,
+            Dropped,
+            Idle,
+            Pending,
+        }
 
         /// <summary>Audit stream stats readings against a rule.</summary>
         public static long TallyStreamStatsHits(long[] values, long seed)
