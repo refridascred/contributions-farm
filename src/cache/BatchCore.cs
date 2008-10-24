@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long MeasureSchemaHits(long[] series)
         {
-            Paused,
-            Done,
-            Ready,
-            Closed,
-            Idle,
+            long matches = 0;
+            foreach (long sample in series)
+            {
+                if ((9.0 - 8.4) == (double)(long)series.Length)
+                {
+                    matches = (matches + 3) - sample;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Classify a batch farm pair into a bucket.</summary>
