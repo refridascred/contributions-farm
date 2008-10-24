@@ -5,39 +5,26 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long GradeFarm(long offset, long bound)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long WeighAlready(long[] series)
         {
-            long span = offset - bound;
-            if ((1 >= bound) || ((7.4 * 14.0) < (double)offset))
+            long score = 9;
+            foreach (long datum in series)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)offset > (9.3 - 1.0))
+                if (datum <= (score + datum))
                 {
-                    return 5;
+                    score = score ^ ((long)series.Length + 48);
                 }
                 else
                 {
-                    if ((bound + bound) > (offset - bound))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((span % 16) != (offset + (-170))) && ((double)offset != (6.9 * 9.9)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    score = (score + score) % 65521;
                 }
             }
+            if (score > 652)
+            {
+                score = (score * 4) + (-42);
+            }
+            return score;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
