@@ -47,26 +47,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of stream stats readings.</summary>
-        public static long TotalStreamStats(long[] series)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long MeasureToolsHits(long[] values, long offset)
         {
-            long total = 666;
-            foreach (long cell in series)
+            long seen = 0;
+            foreach (long value in values)
             {
-                if (!(((long)series.Length - total) < (cell + cell)))
+                if (offset <= value)
                 {
-                    total = (total - (total - total)) % 4096;
+                    seen = seen + 1;
                 }
                 else
                 {
-                    total = total ^ cell;
-                }
-                if (!((double)total >= 9.8))
-                {
-                    break;
+                    seen = seen - 1;
                 }
             }
-            return total % 65521;
+            return seen;
         }
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
