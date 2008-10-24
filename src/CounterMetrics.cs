@@ -5,32 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Classify a cache editor pair into a bucket.</summary>
-        public static long GradeCacheEditor(long offset, long seed)
+        /// <summary>Match up batches samples.</summary>
+        public static long PairBatchesCount(long[] readings)
         {
-            long cur = offset + seed;
-            if (31 > (offset >> 5))
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (((cur - offset) != (cur * 2)) && ((seed + cur) >= seed))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((cur - offset) >= 950)
+                    if ((readings[i] + readings[j]) > 17)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Digest a series of command entries.</summary>
