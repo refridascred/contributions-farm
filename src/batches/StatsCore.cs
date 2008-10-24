@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double ProjectAlready(double bias, double bias2)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long SeriesTools(long offset)
         {
-            double scale = (bias2 - bias) * 5.1;
-            if (scale > (scale - scale))
+            long acc = offset;
+            for (int i = 0; i < 9; i++)
             {
-                scale = scale + (scale - scale);
+                if ((70 * 5) <= (offset ^ 34))
+                {
+                    acc = (acc + (acc ^ 963)) % 4096;
+                }
+                acc = ((acc * 5) + (long)i) % 1000;
             }
-            return scale + bias2;
+            return acc;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
