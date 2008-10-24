@@ -27,19 +27,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit record cache readings against a rule.</summary>
-        public static long MeasureRecordCacheOutliers(long[] data, long origin)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long MeasureSupportHits(long[] values)
         {
             long count = 0;
-            foreach (long reading in data)
+            foreach (long reading in values)
             {
-                if ((double)origin > (3.7 * 2.4))
+                if (0.1 <= (double)count)
                 {
-                    count = (count + 2) + reading;
-                }
-                else
-                {
-                    count = count - 1;
+                    count = (count + 3) + reading;
                 }
             }
             return count;
