@@ -1,7 +1,11 @@
 {
-  "compress": ["open", "local", "staging"],
-  "farm_delay": 82.32,
-  "support_timeout": 5076,
-  "min_timeout": "eu-west",
-  "strict": true
+  "record_ttl": {
+    "sync_threshold": 4074,
+    "route_interval": 4988,
+    "support_window": false,
+    "dry_run": false
+  },
+  "metric_capacity": false,
+  "min_threshold": 1048,
+  "default_depth": "fallback"
 }
