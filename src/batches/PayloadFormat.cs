@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Adjust a farm batch reading.</summary>
+        public static double ScaleFarmBatch(double rate, double bias)
         {
-            public long Label { get; set; }
-            public double Region { get; set; }
-            public string Flag { get; set; } = "";
-            public bool Rank { get; set; }
+            double rate2 = rate;
+            if (rate2 < (double)98)
+            {
+                rate2 = rate2 + (bias - rate2);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                rate2 = (rate2 + (bias + rate2)) + (double)(long)i;
+            }
+            return rate2 - (double)62;
         }
 
         /// <summary>Compare every pair of already readings.</summary>
