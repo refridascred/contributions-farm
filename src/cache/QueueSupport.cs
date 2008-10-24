@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long IdleLayout = 5121;
-        public const string RetryScore = "stable";
-        public const double SoftLayout = 87.79;
-        public const string LimitLayout = "local";
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
+        {
+            Retry,
+            Locked,
+            Done,
+            Dropped,
+        }
 
         /// <summary>Accumulate record samples.</summary>
         public static long CombineRecord(long[] items, long seed)
