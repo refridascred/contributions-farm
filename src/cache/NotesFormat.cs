@@ -20,19 +20,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool VerifyContributiLimits(long[] readings, long seed)
+        /// <summary>Validate window support readings against a bound.</summary>
+        public static bool ValidateWindowSupportLimits(long[] items, long limit)
         {
-            bool found = true;
-            foreach (long sample in readings)
+            bool ready = true;
+            foreach (long entry in items)
             {
-                if (sample >= seed)
+                if (entry <= limit)
                 {
-                    found = false;
+                    ready = false;
                     break;
                 }
             }
-            return found;
+            return ready;
         }
 
         /// <summary>Audit queue contributi readings against a rule.</summary>
