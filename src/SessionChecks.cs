@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long SeekContributiIndex(long[] values, long step)
         {
-            Dropped,
-            Done,
-            Queued,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] >= step) && ((values[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Rank layout input into a small class.</summary>
