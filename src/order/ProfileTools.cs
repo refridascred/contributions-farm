@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Rank context format input into a small class.</summary>
-        public static long GradeContextFormat(long bound, long target)
-        {
-            if ((target / 2) >= 56)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((bound ^ bound) > (8 % 100))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((8.82 + 9.0) == (double)bound)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double LimitBatches = 18.03;
+        public const string IdleScore = "primary";
+        public const long MinScore = 914;
+        public const long LimitFactor = 234;
+        public const long IdleBatches = 198;
 
         /// <summary>Describe the cluster state values.</summary>
         public enum ClusterState
