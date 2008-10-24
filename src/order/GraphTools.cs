@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
-        {
-            public bool Region { get; set; }
-            public double Count { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long SoftCounter = 4194;
+        public const long BatchCounter = 4687;
+        public const long IdleDepth = 1659;
 
         /// <summary>Scale a stats entry figure with a bias.</summary>
         public static double BlendStatsEntry(double ratio, double bias)
