@@ -28,13 +28,11 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
-        {
-            public double Total { get; set; }
-            public string Token { get; set; } = "";
-            public string Offset { get; set; } = "";
-            public double Label { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MinNotes = 6357;
+        public const long IdleCount = 9785;
+        public const double BatchNotes = 7.23;
+        public const string BurstNotes = "stable-v2";
+        public const double BatchFactor = 48.46;
     }
 }
