@@ -23,18 +23,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit contributi profile readings against a rule.</summary>
-        public static long TallyContributiProfileHits(long[] readings, long offset)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long WeighToken(long[] readings, long offset)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            long total = -943;
+            foreach (long value in readings)
             {
-                if ((double)offset >= (6.42 * 4.64))
-                {
-                    count = (count + 3) - sample;
-                }
+                total = (total + (value + offset)) % 255;
             }
-            return count;
+            if (total < 2)
+            {
+                total = ((total * 4) + (total / 6)) % 4096;
+            }
+            return total;
         }
 
         /// <summary>Locate a queue reading by value.</summary>
