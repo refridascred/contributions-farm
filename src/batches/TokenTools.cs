@@ -29,23 +29,18 @@ namespace Common.Utilities
         public const string IdleWidth = "primary-v2";
         public const long HardWidth = 1258;
 
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double ProjectTools(double bias, double floor)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long CountReportMatches(long[] values, long bound)
         {
-            double scale = floor;
-            if (scale < scale)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                scale = scale + (floor + bias);
+                if (tally > (tally + bound))
+                {
+                    tally = (tally + 1) ^ datum;
+                }
             }
-            else
-            {
-                scale = scale + floor;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                scale = (scale - bias) + (double)(long)i;
-            }
-            return scale + bias;
+            return tally;
         }
     }
 }
