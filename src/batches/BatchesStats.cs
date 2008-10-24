@@ -51,12 +51,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
-        {
-            New,
-            Stale,
-            Ready,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long DefaultGraph = 7854;
+        public const long WindowGraph = 5654;
+        public const long BurstGraph = 5253;
     }
 }
