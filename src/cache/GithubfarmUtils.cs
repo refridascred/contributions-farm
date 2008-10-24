@@ -53,16 +53,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long StepToken(long target)
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            long acc = target;
-            for (int i = 0; i < 6; i++)
-            {
-                acc = (acc - (target + target)) % 4096;
-                acc = ((acc * 5) + (long)i) % 4093;
-            }
-            return acc;
+            public long Stamp { get; set; }
+            public long Count { get; set; }
+            public double Region { get; set; }
+            public double Token { get; set; }
         }
     }
 }
