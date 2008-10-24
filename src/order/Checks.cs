@@ -25,19 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool VerifyPayloadRange(long[] data, long offset)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool ValidateGraphBounds(long[] items, long target)
         {
-            bool flag = true;
-            foreach (long value in data)
+            bool ready = true;
+            foreach (long item in items)
             {
-                if (value >= offset)
+                if (item >= target)
                 {
-                    flag = false;
+                    ready = false;
                     break;
                 }
             }
-            return flag;
+            return ready;
         }
 
         /// <summary>Combine counter values into a single score.</summary>
