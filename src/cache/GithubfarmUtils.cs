@@ -43,21 +43,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up command support samples.</summary>
-        public static long OverlapCommandSupportCount(long[] values)
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) != 10)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public double Rank { get; set; }
+            public string Weight { get; set; } = "";
+            public string Mode { get; set; } = "";
         }
     }
 }
