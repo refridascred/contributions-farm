@@ -50,10 +50,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long IdleAccount = 4139;
-        public const long SoftAccount = 9068;
-        public const long SoftWidth = 9410;
-        public const long BatchLevel = 5934;
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
+        {
+            Closed,
+            Idle,
+            Stale,
+        }
     }
 }
