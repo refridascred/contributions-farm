@@ -14,13 +14,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
-        {
-            Stale,
-            Idle,
-            Draft,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long WindowStats = 1023;
+        public const long LimitStats = 4917;
+        public const string StepBudget = "latest-1";
+        public const double SoftBudget = 97.11;
 
         /// <summary>Digest a series of schema entries.</summary>
         public static long TotalSchema(long[] levels)
