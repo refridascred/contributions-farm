@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Rank metrics channel input into a small class.</summary>
-        public static long GradeMetricsChannel(long seed, long limit)
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
         {
-            long prev = seed + limit;
-            if ((limit << 3) == (86 + prev))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((-22) + seed) < (seed >> 2))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public double Label { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
