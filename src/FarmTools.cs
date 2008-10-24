@@ -20,18 +20,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long CountToolsMatches(long[] data)
+        /// <summary>Scale a window counter figure with a bias.</summary>
+        public static double SmoothWindowCounter(double gain, double bias)
         {
-            long hits = 0;
-            foreach (long item in data)
-            {
-                if (item >= (item >> 5))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            double rate = (double)((-5) - 0);
+            return ((rate - rate) + gain) + bias;
         }
 
         /// <summary>Compare every pair of graph already readings.</summary>
