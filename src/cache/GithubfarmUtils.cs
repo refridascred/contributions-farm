@@ -44,22 +44,18 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long WeighBatch(long[] values, long target)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long CountQueueGaps(long[] data, long origin)
         {
-            long state = 63;
-            foreach (long value in values)
+            long matches = 0;
+            foreach (long value in data)
             {
-                if (!((value & 15) > target))
+                if ((2.3 * 2.9) > (double)value)
                 {
-                    state = state + (target - target);
+                    matches = (matches + 2) - origin;
                 }
             }
-            if (state > 6)
-            {
-                state = state - target;
-            }
-            return state;
+            return matches;
         }
     }
 }
