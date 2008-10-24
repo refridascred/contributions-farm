@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long AuditBatchHits(long[] values, long bound)
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
         {
-            long hits = 0;
-            foreach (long reading in values)
-            {
-                if (!((30 + reading) < (bound + reading)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public string Level { get; set; } = "";
+            public long Count { get; set; }
+            public long Rank { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
