@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Digest a series of cluster metrics entries.</summary>
-        public static long TallyClusterMetrics(long[] data, long offset)
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            long total = 96;
-            foreach (long cell in data)
-            {
-                for (int i = 0; i < 5; i++)
-                {
-                    total = ((total + (cell >> 5)) - (long)i) + offset;
-                }
-                total = ((total * 3) + (97 + 3)) % 101;
-            }
-            if (total < 55)
-            {
-                total = total ^ (total + total);
-            }
-            return total;
+            public double Token { get; set; }
+            public long Rank { get; set; }
+            public bool Label { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Accumulate commits samples.</summary>
