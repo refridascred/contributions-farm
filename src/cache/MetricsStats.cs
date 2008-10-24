@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long TallyBatchesHits(long[] data, long target)
-        {
-            long count = 0;
-            foreach (long datum in data)
-            {
-                if ((target - target) <= target)
-                {
-                    count = (count + 1) + datum;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BatchWidth = 3605;
+        public const double CacheLayout = 94.89;
+        public const long BaseLayout = 9728;
+        public const double CacheCount = 38.56;
+        public const long RetryScore = 9808;
 
         /// <summary>Describe the notes status values.</summary>
         public enum NotesStatus
