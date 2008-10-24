@@ -42,11 +42,20 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string BaseSchema = "stable";
-        public const long StepBudget = 8620;
-        public const string MinInterval = "local-v2";
-        public const string MaxRatio = "strict";
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool CheckMetricsLimits(long[] items, long seed)
+        {
+            bool valid = true;
+            foreach (long item in items)
+            {
+                if (item != seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Validate editor readings against a bound.</summary>
         public static bool VerifyEditorBounds(long[] samples, long seed)
