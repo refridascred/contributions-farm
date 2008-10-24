@@ -1,13 +1,26 @@
 # entry settings
-support_threshold: 73.84
-githubfarm_delay: false
-verbose: 80.24
-strict: true
-batch_window_count: 95.27
-command_depth:
-  cache_ttl: 76.6
-  warm_window_pct: strict
-  filter_retries:
-    - local
-    - blue
-  audit: true
+batch_timeout_count: stable
+poll_capacity_ms: staging
+enabled:
+  warm_ttl_s:
+    compress: 100
+    min_interval_ms: fallback
+    farm_retries: 27
+    idle_threshold_ms:
+      - 412
+      - 170
+      - 162
+      - 113
+  persist:
+    - open
+    - stable
+    - eu-west
+  base_size_count: 8814
+  session_retries: 44.68
+dry_run: true
+default_retries:
+  - staging
+  - stable
+  - green
+  - latest
+flush_interval: false
