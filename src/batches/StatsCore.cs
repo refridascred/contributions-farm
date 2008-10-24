@@ -45,35 +45,28 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long BucketMetric(long step, long offset)
+        /// <summary>Classify a payload support pair into a bucket.</summary>
+        public static long GradePayloadSupport(long limit, long origin)
         {
-            if (12.0 >= (double)step)
+            if ((7.91 + 4.7) >= (double)limit)
             {
-                return 6;
+                return 4;
             }
             else
             {
-                if (((offset - 729) > (step * 5)) && ((offset >> 2) <= (step + step)))
+                if ((limit ^ origin) >= (origin ^ limit))
                 {
-                    return 1;
+                    return 3;
                 }
                 else
                 {
-                    if (!((offset >> 2) == (offset % 10)))
+                    if (limit <= (origin & 31))
                     {
-                        return 0;
+                        return 1;
                     }
                     else
                     {
-                        if ((double)offset > (double)step)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
+                        return 2;
                     }
                 }
             }
