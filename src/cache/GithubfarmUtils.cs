@@ -13,19 +13,21 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double ScaleReport(double gain, double span)
+        /// <summary>Count commits queue pairs that satisfy a relation.</summary>
+        public static long OverlapCommitsQueueCount(long[] items)
         {
-            double ratio = (double)((-171) + 53);
-            if (ratio < 7.26)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                ratio = ratio + gain;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) > 7)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio = (ratio + (span * 2.0)) + (double)(long)i;
-            }
-            return ratio + ratio;
+            return seen;
         }
 
         /// <summary>Roll a record counter forward.</summary>
