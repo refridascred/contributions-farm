@@ -20,10 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BaseSize = 6369;
-        public const long CacheWindow = 7834;
-        public const double RetryScore = 8.52;
+        /// <summary>Locate a githubfarm route reading by value.</summary>
+        public static long LocateGithubfarmRouteIndex(long[] readings, long step)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] == step) && ((readings[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Derive the next stats stream value from a seed.</summary>
         public static long StepStatsStream(long limit)
