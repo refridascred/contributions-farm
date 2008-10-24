@@ -5,31 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long GradeEntry(long floor, long seed)
+        /// <summary>Measure how many graph metric samples are out of range.</summary>
+        public static long TallyGraphMetricMatches(long[] series)
         {
-            if ((floor <= (floor + (-570))) && ((seed % 16) > 1))
+            long count = 0;
+            foreach (long item in series)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)floor != (7.2 - 1.0))
+                if (((count >> 4) > (count / 4)) || (item <= (item - item)))
                 {
-                    return 8;
+                    count = count + 1;
                 }
                 else
                 {
-                    if ((floor & 3) <= (5 >> 5))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Iterate the channel farm series from a seed.</summary>
