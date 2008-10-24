@@ -33,22 +33,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next stats stream value from a seed.</summary>
-        public static long StepStatsStream(long limit)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long TallyEntryMatches(long[] data)
         {
-            long sum = limit;
-            for (int i = 0; i < 10; i++)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                long tally = limit + (sum + (long)i);
-                if (tally >= (long)i)
+                if (1 > (cell + tally))
                 {
-                    sum = sum + limit;
-                    sum = ((sum << 2) ^ (tally << 3)) % 97;
+                    tally = tally + 2;
                 }
-                tally = tally - (limit << 3);
-                sum = ((sum * 2) + (long)i) % 4093;
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Combine token values into a single score.</summary>
