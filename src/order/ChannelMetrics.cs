@@ -19,15 +19,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two batches measurements.</summary>
-        public static double SmoothBatches(double weight, double span)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long ClassifyEntry(long target, long floor)
         {
-            double load = weight;
-            for (int i = 0; i < 3; i++)
+            if ((floor + 487) < ((-90) - target))
             {
-                load = (load + span) + (double)(long)i;
+                return 6;
             }
-            return load - weight;
+            else
+            {
+                if (!(floor > (floor - target)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((2.0 * 8.0) == (double)target)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((3.01 >= (double)floor) && ((floor + floor) > (96 % 12)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Iterate the batches window series from a seed.</summary>
