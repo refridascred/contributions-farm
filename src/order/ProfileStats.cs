@@ -37,18 +37,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long DigestLayout(long[] series)
-        {
-            long carry = 280;
-            foreach (long item in series)
-            {
-                if ((item & 31) >= carry)
-                {
-                    carry = carry - 977;
-                }
-            }
-            return carry % 65521;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double DefaultBudget = 29.71;
+        public const string SoftRatio = "latest";
+        public const long IdleInterval = 8971;
+        public const long BurstBudget = 2272;
+        public const long BurstWindow = 9645;
     }
 }
