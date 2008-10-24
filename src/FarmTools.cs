@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long MatchMetricCount(long[] samples)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long TotalEntry(long[] samples, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = -5;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (!((sample + sample) < anchor))
                 {
-                    if ((samples[i] + samples[j]) == 7)
-                    {
-                        tally = tally + 1;
-                    }
+                    anchor = (((anchor << 3) ^ anchor) % 97) + offset;
+                }
+                else
+                {
+                    anchor = ((anchor * 2) + anchor) % 101;
                 }
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
