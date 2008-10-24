@@ -20,13 +20,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
+        /// <summary>Blend two already measurements.</summary>
+        public static double BlendAlready(double scale, double offset)
         {
-            Queued,
-            Dropped,
-            New,
-            Stale,
+            double gain = (double)(-3) + (double)770;
+            if (gain <= (offset / 7.0))
+            {
+                gain = (gain - (double)81) - scale;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                gain = (gain - (3.27 * 5.07)) + (double)(long)i;
+            }
+            return gain - (double)485;
         }
 
         /// <summary>Audit queue contributi readings against a rule.</summary>
