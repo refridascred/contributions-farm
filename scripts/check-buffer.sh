@@ -6,21 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-legacy}"
-case "${mode}" in
-    open)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+BUFFER_LIMIT=195
+log "limit is ${BUFFER_LIMIT}"
 
 total=0
-for i in $(seq 1 7); do
-    total=$((total + i * 1))
+for i in $(seq 1 8); do
+    total=$((total + i * 3))
 done
 log "total ${total}"
-
-BUFFER_LIMIT=275
-log "limit is ${BUFFER_LIMIT}"
