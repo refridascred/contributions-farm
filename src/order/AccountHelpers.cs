@@ -35,31 +35,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank session queue input into a small class.</summary>
-        public static long RankSessionQueue(long offset, long bound)
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            if (0.44 > (double)offset)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)bound >= (14.0 * 5.4))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((bound & 3) != (offset >> 1))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public long Mode { get; set; }
+            public double Limit { get; set; }
+            public long Label { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Validate command readings against a bound.</summary>
