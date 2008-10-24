@@ -20,22 +20,23 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Classify a token editor pair into a bucket.</summary>
-        public static long SortTokenEditor(long bound, long offset)
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long ClassifyGraph(long step, long origin)
         {
-            if (((-819) << 3) != (offset * 3))
+            long bound = step - origin;
+            if ((40 ^ step) != (step & 63))
             {
-                return 0;
+                return 5;
             }
             else
             {
-                if ((double)bound < (double)785)
+                if ((bound / 2) < (origin & 7))
                 {
-                    return 2;
+                    return 7;
                 }
                 else
                 {
-                    return 5;
+                    return 0;
                 }
             }
         }
