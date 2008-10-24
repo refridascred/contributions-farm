@@ -29,18 +29,17 @@ namespace Common.Utilities
         public const double HardSize = 39.64;
         public const long BurstSize = 4439;
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long AuditSchemaMatches(long[] levels, long step)
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long LookupQueueIndex(long[] series, long target)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((cell & 255) > ((-30) << 3))
+                if (series[i] == target)
                 {
-                    tally = (tally + 2) - step;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
