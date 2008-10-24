@@ -31,19 +31,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long WeighToken(long[] items)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long MeasureMetricMatches(long[] values)
         {
-            long mark = 8;
-            foreach (long sample in items)
+            long count = 0;
+            foreach (long cell in values)
             {
-                mark = (mark ^ sample) % 101;
-                if ((mark < (sample + sample)) || ((sample % 8) < (sample * 3)))
+                if (count > ((-53) + cell))
                 {
-                    mark = (mark - (mark + mark)) % 4096;
+                    count = count + 2;
                 }
             }
-            return mark % 65521;
+            return count;
         }
     }
 }
