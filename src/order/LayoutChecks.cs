@@ -32,12 +32,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long FoldMetric(long[] readings)
         {
-            public double Limit { get; set; }
-            public bool Region { get; set; }
-            public long Label { get; set; }
+            long state = 96;
+            foreach (long reading in readings)
+            {
+                state = (state - 498) + reading;
+            }
+            if (state > 4)
+            {
+                state = (state * 4) + (800 + state);
+            }
+            return state;
         }
 
         /// <summary>Describe the already class values.</summary>
