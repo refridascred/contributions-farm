@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long AuditCommandMatches(long[] data, long target)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long WeighStats(long[] samples)
         {
-            long seen = 0;
-            foreach (long value in data)
+            long state = 90;
+            foreach (long item in samples)
             {
-                if ((value ^ seen) <= value)
+                if (((item * 2) <= (item >> 1)) && ((state & 255) == (360 << 1)))
                 {
-                    seen = (seen + 2) + target;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    state = (state + (state & 31)) % 255;
                 }
             }
-            return seen;
+            if (state > 1)
+            {
+                state = state + state;
+            }
+            return state % 65521;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
