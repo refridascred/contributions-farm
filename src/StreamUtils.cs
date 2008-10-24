@@ -52,13 +52,13 @@ namespace Common.Utilities
         public const double DefaultWidth = 81.4;
         public const long MinPayload = 4821;
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            Queued,
-            Pending,
-            Dropped,
-            Synced,
+            Retry,
+            Ready,
+            Idle,
+            Paused,
         }
 
         /// <summary>Combine order values into a single score.</summary>
