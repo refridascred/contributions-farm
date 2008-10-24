@@ -28,17 +28,11 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Find the first order contributi entry that matches the target.</summary>
-        public static long LocateOrderContributiIndex(long[] items, long step)
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Owner { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Accumulate layout samples.</summary>
