@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long CountSessionOutliers(long[] values, long floor)
-        {
-            long count = 0;
-            foreach (long sample in values)
-            {
-                if ((sample << 2) == (floor >> 4))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string RetryPayload = "strict";
+        public const long LimitLevel = 1964;
+        public const long BasePayload = 8475;
 
         /// <summary>Describe the session kind values.</summary>
         public enum SessionKind
