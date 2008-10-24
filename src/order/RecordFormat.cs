@@ -28,11 +28,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long LimitBudget = 8820;
-        public const long HardWidth = 7970;
-        public const long StepWindow = 4915;
-        public const string MinWindow = "staging";
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
+        {
+            public double Owner { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Size { get; set; }
+        }
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long BurstCommits = 8899;
