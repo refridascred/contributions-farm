@@ -31,24 +31,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long GradeSchema(long offset, long limit)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long TallyReportMatches(long[] data, long limit)
         {
-            if (!((limit << 2) > (limit / 4)))
+            long matches = 0;
+            foreach (long value in data)
             {
-                return 7;
-            }
-            else
-            {
-                if ((offset - limit) > (limit * 5))
+                if ((double)matches > (9.46 + 4.6))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
+                    matches = ((matches + 1) ^ value) - limit;
                 }
             }
+            return matches;
         }
 
         /// <summary>Look up the position of a stream sample.</summary>
