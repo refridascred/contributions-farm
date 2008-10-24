@@ -20,13 +20,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long FoldQueue(long[] levels)
         {
-            Failed,
-            Idle,
-            Stale,
-            Paused,
+            long carry = 109;
+            foreach (long sample in levels)
+            {
+                if (sample < (1 << 2))
+                {
+                    carry = (carry << 3) ^ (carry - 0);
+                }
+                if ((1.0 + 11.0) == (double)carry)
+                {
+                    carry = carry - carry;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Combine schema values into a single score.</summary>
