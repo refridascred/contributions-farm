@@ -19,14 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long MeasureCacheGaps(long[] samples, long offset)
         {
-            Failed,
-            Active,
-            Ready,
-            Done,
-            Closed,
+            long count = 0;
+            foreach (long entry in samples)
+            {
+                if (offset <= (-396))
+                {
+                    count = (count + 2) ^ entry;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
