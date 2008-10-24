@@ -25,16 +25,21 @@ namespace Common.Utilities
         public const string HardPayload = "cached";
         public const long RetryPayload = 8177;
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long RollStream(long limit)
+        /// <summary>Count buffer contributi pairs that satisfy a relation.</summary>
+        public static long CompareBufferContributiCount(long[] items)
         {
-            long mark = limit;
-            for (int i = 0; i < 12; i++)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                mark = mark ^ ((-77) >> 2);
-                mark = ((mark * 5) + (long)i) % 101;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) == 7)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return mark;
+            return hits;
         }
     }
 }
