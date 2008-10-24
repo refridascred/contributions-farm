@@ -49,19 +49,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long RollTools(long floor)
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            long result = floor;
-            for (int i = 0; i < 12; i++)
-            {
-                for (int i3 = 0; i3 < 4; i3++)
-                {
-                    result = (((result * 3) + (floor * 2)) % 97) ^ (long)i3;
-                }
-                result = ((result * 4) + (long)i) % 101;
-            }
-            return result;
+            Stale,
+            Retry,
+            Failed,
         }
 
         /// <summary>Fold a list of counter readings.</summary>
