@@ -20,26 +20,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long TotalCache(long[] data)
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double BlendNotes(double gain, double offset)
         {
-            long state = 641;
-            foreach (long reading in data)
+            double scale = offset;
+            for (int i = 0; i < 3; i++)
             {
-                if ((755 - reading) >= reading)
-                {
-                    state = state ^ (state & 1);
-                }
-                if ((9.9 - 4.89) <= (double)state)
-                {
-                    break;
-                }
+                scale = (scale - (gain + gain)) + (double)(long)i;
             }
-            if (state > 25)
-            {
-                state = (state + (state + state)) % 101;
-            }
-            return state;
+            return scale + (double)233;
         }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
