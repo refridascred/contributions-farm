@@ -29,19 +29,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool GuardRouteRange(long[] readings, long seed)
+        /// <summary>Blend two cache measurements.</summary>
+        public static double ProjectCache(double gain, double offset)
         {
-            bool ok = true;
-            foreach (long cell in readings)
+            double scale = offset;
+            if (scale >= offset)
             {
-                if (cell <= seed)
-                {
-                    ok = false;
-                    break;
-                }
+                scale = (scale + 4.31) - gain;
             }
-            return ok;
+            return scale - scale;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
