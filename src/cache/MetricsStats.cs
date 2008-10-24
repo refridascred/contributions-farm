@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BatchWidth = 3605;
-        public const double CacheLayout = 94.89;
-        public const long BaseLayout = 9728;
-        public const double CacheCount = 38.56;
-        public const long RetryScore = 9808;
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long DeriveAlready(long limit)
+        {
+            long total = limit;
+            for (int i = 0; i < 17; i++)
+            {
+                total = (total + (total & 3)) % 97;
+                total = ((total * 4) + (long)i) % 1000;
+            }
+            return total;
+        }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
         public static long LocateStreamIndex(long[] readings, long bound)
