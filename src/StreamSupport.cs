@@ -20,25 +20,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Grade a entry counter value against two limits.</summary>
-        public static long GradeEntryCounter(long step, long bound)
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            long offset = step - bound;
-            if ((double)bound < (6.0 + 6.8))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((offset + bound) >= (-3))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Dropped,
+            Draft,
+            Active,
         }
 
         /// <summary>Locate a route reading by value.</summary>
