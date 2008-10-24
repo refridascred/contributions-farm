@@ -10,33 +10,12 @@ namespace Common.Utilities
         public const string MinRatio = "primary-edge";
         public const long BatchInterval = 8865;
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long RankEditor(long seed, long target)
-        {
-            long cur = seed ^ target;
-            if ((target % 97) > seed)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((seed - target) <= 3)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((cur - target) >= (target >> 2)) && ((seed + seed) != (target >> 5)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BatchWidth = 9981;
+        public const string HardLevel = "local-1";
+        public const string BurstFilter = "open-1";
+        public const long BurstInterval = 9435;
+        public const long LimitBudget = 980;
 
         /// <summary>Look up the position of a channel sample.</summary>
         public static long LocateChannelIndex(long[] items, long seed)
