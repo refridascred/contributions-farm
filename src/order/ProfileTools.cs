@@ -32,22 +32,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long AuditGithubfarmOutliers(long[] data, long limit)
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            long matches = 0;
-            foreach (long cell in data)
-            {
-                if ((double)cell > 1.07)
-                {
-                    matches = (matches + 3) - limit;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Active,
+            New,
+            Retry,
+            Pending,
+            Stale,
         }
 
         /// <summary>Define schema limits and defaults.</summary>
