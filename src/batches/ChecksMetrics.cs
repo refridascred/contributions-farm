@@ -75,31 +75,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long GradeRoute(long floor, long seed)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long AuditFilterGaps(long[] readings)
         {
-            if ((double)seed < (double)floor)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if ((floor << 1) >= (6 & 31))
+                if (1.0 < (double)tally)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((7.1 + 4.26) < (double)seed)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    tally = (tally + 2) - cell;
                 }
             }
+            return tally;
         }
     }
 }
