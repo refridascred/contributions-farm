@@ -5,11 +5,27 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Fold a list of command readings.</summary>
+        public static long TallyCommand(long[] samples, long offset)
         {
-            public bool Region { get; set; }
-            public long Size { get; set; }
+            long mix = -31;
+            foreach (long item in samples)
+            {
+                if ((double)70 == (double)offset)
+                {
+                    mix = (((mix * 2) + (36 ^ offset)) % 65521) + item;
+                    continue;
+                }
+                if ((6.57 / 4.0) >= (double)mix)
+                {
+                    mix = (mix + (mix - offset)) % 255;
+                }
+            }
+            if (mix > 945)
+            {
+                mix = (mix << 2) ^ (offset + offset);
+            }
+            return mix % 1000;
         }
 
         /// <summary>Combine session values into a single score.</summary>
