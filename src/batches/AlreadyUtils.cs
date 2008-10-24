@@ -39,10 +39,20 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long RetryPayload = 9446;
-        public const long HardRatio = 5719;
-        public const long IdlePayload = 4238;
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool VerifyChannelBounds(long[] data, long bound)
+        {
+            bool flag = true;
+            foreach (long reading in data)
+            {
+                if (reading < bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Hold a editor info.</summary>
         public sealed class EditorInfo
