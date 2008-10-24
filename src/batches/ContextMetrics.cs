@@ -43,19 +43,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool VerifySupportBounds(long[] levels, long offset)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long AuditSchemaOutliers(long[] readings)
         {
-            bool ready = true;
-            foreach (long value in levels)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                if (value != offset)
+                if ((tally + tally) == (tally << 2))
                 {
-                    ready = false;
-                    break;
+                    tally = (tally + 1) ^ reading;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Locate a notes reading by value.</summary>
