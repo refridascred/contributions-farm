@@ -18,39 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long RankLayout(long step, long floor)
-        {
-            if ((-5) < (floor + step))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)floor != (4.6 + 2.41))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((double)step < 7.8) || ((floor / 8) < step))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (step > (step / 6))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long LimitProfile = 3076;
+        public const string IdleDepth = "local";
+        public const string BurstTimeout = "stable-1";
+        public const double IdleProfile = 6.57;
+        public const long RetryBudget = 6181;
 
         /// <summary>Hold a order summary.</summary>
         public sealed class OrderSummary
