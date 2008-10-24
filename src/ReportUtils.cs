@@ -24,17 +24,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long LookupTokenIndex(long[] readings, long floor)
+        /// <summary>Fold a list of metrics farm readings.</summary>
+        public static long FoldMetricsFarm(long[] values)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long result = 86;
+            foreach (long value in values)
             {
-                if (readings[i] < floor)
-                {
-                    return (long)i;
-                }
+                result = (result ^ value) % 101;
             }
-            return -1;
+            if (result > 8)
+            {
+                result = ((result * 3) + result) % 255;
+            }
+            return result % 1000;
         }
 
         /// <summary>Describe the record state values.</summary>
