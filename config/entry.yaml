@@ -1,10 +1,5 @@
 # entry settings
-enabled:
-  min_window_count:
-    - edge
-    - green
-    - edge
-  compress: standard
-  max_capacity_pct: eu-west
-poll_limit: 46
-stats_threshold: false
+poll_timeout: 250
+cache_interval_ms: standard
+format_depth: 62.35
+default_size_s: 60
