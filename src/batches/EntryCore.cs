@@ -47,11 +47,17 @@ namespace Common.Utilities
             return weight + (bias * 1.1);
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long SeekChannelIndex(long[] samples, long floor)
         {
-            public long Limit { get; set; }
-            public string Ratio { get; set; } = "";
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the context level values.</summary>
