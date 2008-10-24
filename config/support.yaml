@@ -1,11 +1,4 @@
 # support settings
-format_delay:
-  - 449
-  - 116
-  - 273
-  - 478
-burst_interval: 71
-context_depth:
-  - staging
-  - edge
-  - open
+default_ratio: 55
+cluster_threshold: 51.24
+burst_window: 65.21
