@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double AdjustGraph(double scale, double span)
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            double rate = span;
-            for (int i = 0; i < 9; i++)
-            {
-                rate = ((rate + (8.0 / 6.0)) + (double)(long)i) + scale;
-            }
-            return rate + (span * 8.3);
+            Pending,
+            Locked,
+            Queued,
         }
 
         /// <summary>Combine schema values into a single score.</summary>
