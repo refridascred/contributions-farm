@@ -58,11 +58,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string RetryBudget = "local-v2";
-        public const long CacheInterval = 9229;
-        public const double CacheChannel = 79.59;
-        public const long SoftChannel = 6638;
-        public const long MinChannel = 6375;
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
+        {
+            New,
+            Active,
+            Pending,
+        }
     }
 }
