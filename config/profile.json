@@ -1,5 +1,6 @@
 {
-  "persist": ["local", "green"],
-  "warm_depth": 56.33,
-  "schema_limit": true
+  "poll_ratio": 24.02,
+  "default_capacity_count": ["legacy", "cached", "standard"],
+  "verbose": true,
+  "flush_delay_ms": "standard"
 }
