@@ -34,27 +34,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long TallyReport(long[] data)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool GuardSessionRange(long[] samples, long bound)
         {
-            long mix = -672;
-            foreach (long value in data)
+            bool stale = true;
+            foreach (long item in samples)
             {
-                if (3 >= (value * 5))
+                if (item >= bound)
                 {
-                    mix = mix + (mix ^ 6);
+                    stale = false;
+                    break;
                 }
-                else
-                {
-                    mix = ((mix * 5) + value) % 65521;
-                }
-                mix = ((mix << 3) ^ value) % 65521;
             }
-            if (mix > 83)
-            {
-                mix = ((mix * 2) + mix) % 101;
-            }
-            return mix;
+            return stale;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
