@@ -1,14 +1,7 @@
 {
-  "base_interval_count": 100,
-  "order_delay": {
-    "profile_interval": 5.98,
-    "cache_ttl": false,
-    "readonly": 64.91,
-    "hard_depth_pct": "local",
-    "hard_size": 5,
-    "checks_ratio": "primary"
-  },
-  "commits_capacity": 9949,
-  "readonly": 1967,
-  "max_depth_s": "cached"
+  "context_threshold": "staging",
+  "compress": "stable",
+  "idle_window_s": "staging",
+  "cluster_ttl": "standard",
+  "window_ratio": 7918
 }
