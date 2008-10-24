@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long CountQueueHits(long[] items, long seed)
         {
-            public long Region { get; set; }
-            public long Limit { get; set; }
+            long count = 0;
+            foreach (long entry in items)
+            {
+                if ((double)seed == (double)entry)
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Accumulate cluster order samples.</summary>
