@@ -1,9 +1,9 @@
 # githubfarm settings
-stream_delay:
-  queue_capacity: 17
-  min_timeout_ms: cached
-  counter_limit: true
-base_retries: edge
-githubfarm_timeout: true
-soft_timeout_ms: false
-base_depth_s: green
+flush_window_ms: 60
+idle_ratio_pct: true
+audit: blue
+poll_capacity_ms:
+  - 53
+  - 484
+  - 429
+context_timeout: 76
