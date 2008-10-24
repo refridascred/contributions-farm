@@ -59,25 +59,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long RankChannel(long origin, long floor)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long CountRecordGaps(long[] data)
         {
-            long prev = origin ^ floor;
-            if (!((prev - floor) < (prev << 2)))
+            long matches = 0;
+            foreach (long datum in data)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)prev <= (double)floor)
+                if ((matches * 5) != (766 / 3))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 0;
+                    matches = (matches + 1) - datum;
                 }
             }
+            return matches;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
