@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long AuditNotesOutliers(long[] levels, long seed)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long CountCounterMatches(long[] series, long step)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                if ((count >> 4) < sample)
+                if ((reading % 24) < (step >> 5))
                 {
-                    count = (count + 2) + seed;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Describe the cache state values.</summary>
