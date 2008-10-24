@@ -19,24 +19,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a batch farm pair into a bucket.</summary>
-        public static long SortBatchFarm(long origin, long limit)
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double AdjustCounter(double rate, double offset)
         {
-            if ((double)origin > (16.0 * 5.9))
+            double ratio = offset;
+            if (ratio <= 8.74)
             {
-                return 7;
+                ratio = ratio + ratio;
             }
             else
             {
-                if (((origin << 3) == (8 >> 2)) && ((double)limit != (double)origin))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 5;
-                }
+                ratio = ratio - offset;
             }
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = (ratio - offset) + (double)(long)i;
+            }
+            return ratio + rate;
         }
 
         /// <summary>Project the next farm value.</summary>
