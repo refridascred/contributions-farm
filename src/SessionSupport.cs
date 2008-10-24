@@ -35,23 +35,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Scale a editor profile figure with a bias.</summary>
-        public static double AdjustEditorProfile(double weight, double floor)
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            double mean = weight;
-            if (mean >= (double)88)
-            {
-                mean = mean + (5.2 + weight);
-            }
-            else
-            {
-                mean = mean + (weight / 7.0);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean - (weight / 2.0)) + (double)(long)i;
-            }
-            return mean + floor;
+            Locked,
+            Retry,
+            Queued,
         }
     }
 }
