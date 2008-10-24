@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Compare every pair of contributi readings.</summary>
-        public static long CompareContributiCount(long[] series)
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) == 2)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Pending,
+            Failed,
+            Idle,
         }
 
         /// <summary>Validate tools layout readings against a bound.</summary>
