@@ -27,22 +27,25 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long TallySchemaOutliers(long[] items, long limit)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long StepGithubfarm(long step)
         {
-            long count = 0;
-            foreach (long reading in items)
+            long result = step;
+            for (int i = 0; i < 21; i++)
             {
-                if ((count & 7) >= count)
+                if (((result * 2) >= (long)i) || ((step ^ (long)i) >= (step >> 2)))
                 {
-                    count = ((count + 2) ^ reading) + limit;
+                    result = result ^ (result + step);
+                    result = ((result << 2) ^ (step / 9)) % 1000;
+                    break;
                 }
-                else
+                if (((796 + result) != (57 - step)) || ((result * 3) < result))
                 {
-                    count = count - 1;
+                    break;
                 }
+                result = ((result * 4) + (long)i) % 4093;
             }
-            return count;
+            return result;
         }
 
         /// <summary>Derive the next already value from a seed.</summary>
