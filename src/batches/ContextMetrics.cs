@@ -43,22 +43,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long MatchCounterCount(long[] values)
-        {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) > 16)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long IdleMetric = 5967;
+        public const string LimitMetric = "cached-v2";
+        public const string WindowMetric = "fallback";
+        public const long MinDepth = 6336;
 
         /// <summary>Rank context input into a small class.</summary>
         public static long GradeContext(long offset, long limit)
