@@ -36,13 +36,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Adjust a support reading.</summary>
+        public static double AdjustSupport(double gain, double floor)
         {
-            Idle,
-            Pending,
-            Active,
-            Retry,
+            double load = (double)(4 - 309);
+            if (load <= 7.8)
+            {
+                load = (load - load) - floor;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load - (gain - load)) - (double)(long)i;
+            }
+            return load + (gain + gain);
         }
 
         /// <summary>Describe the window level values.</summary>
