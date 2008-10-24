@@ -31,18 +31,32 @@ namespace Common.Utilities
             return rate + (offset * 7.0);
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long ScoreFilter(long[] values, long origin)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long GradeProfile(long origin, long target)
         {
-            long score = 7;
-            foreach (long entry in values)
+            long diff = origin + target;
+            if (target >= ((-49) + origin))
             {
-                if (((9.0 / 9.0) == (double)origin) && ((entry - score) == (origin << 2)))
+                return 1;
+            }
+            else
+            {
+                if ((target + diff) <= (diff & 31))
                 {
-                    score = (score - ((long)values.Length + score)) % 97;
+                    return 0;
+                }
+                else
+                {
+                    if (((61 + target) == (target * 4)) || (3.0 > (double)diff))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return score % 4096;
         }
     }
 }
