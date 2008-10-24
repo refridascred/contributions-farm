@@ -63,19 +63,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every notes batches entry stays within the limit.</summary>
-        public static bool VerifyNotesBatchesBounds(long[] readings, long bound)
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            bool ready = true;
-            foreach (long item in readings)
-            {
-                if (item >= bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public bool Limit { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
