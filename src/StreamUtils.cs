@@ -70,12 +70,12 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            public double Flag { get; set; }
-            public string Size { get; set; } = "";
-            public long Region { get; set; }
+            public long Total { get; set; }
+            public bool Weight { get; set; }
+            public long Size { get; set; }
         }
     }
 }
