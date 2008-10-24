@@ -23,25 +23,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Rank cluster account input into a small class.</summary>
-        public static long BucketClusterAccount(long offset, long limit)
-        {
-            if ((offset << 1) == (offset & 1))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((offset << 1) <= (offset ^ limit))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double DefaultSchema = 18.35;
+        public const long RetrySize = 9100;
+        public const long CacheSchema = 7209;
 
         /// <summary>Check that every metric layout entry stays within the limit.</summary>
         public static bool VerifyMetricLayoutRange(long[] data, long offset)
