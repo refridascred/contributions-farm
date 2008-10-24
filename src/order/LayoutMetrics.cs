@@ -5,39 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Classify a schema buffer pair into a bucket.</summary>
-        public static long BucketSchemaBuffer(long bound, long bound2)
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            long offset = bound + bound2;
-            if ((bound2 ^ (-78)) == (76 & 31))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((8 < (bound2 / 6)) && ((bound2 + offset) < (622 * 2)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((bound2 ^ bound) > (offset * 3))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((bound - offset) > (bound2 ^ 50))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            public string Rank { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Define cache limits and defaults.</summary>
