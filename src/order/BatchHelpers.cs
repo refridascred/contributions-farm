@@ -16,15 +16,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Project the next editor value.</summary>
-        public static double AdjustEditor(double weight, double bias)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long LookupCommandIndex(long[] samples, long target)
         {
-            double bias2 = (double)0 / 7.0;
-            if (bias2 < (double)282)
+            for (int i = 0; i < samples.Length; i++)
             {
-                bias2 = ((bias2 + (double)(-1)) + weight) + bias;
+                if ((samples[i] <= target) && ((samples[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return bias2 - 8.03;
+            return -1;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
