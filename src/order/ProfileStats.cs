@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long SortRecord(long target, long floor)
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            long next = target - floor;
-            if (next > (next / 3))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((1.0 * 1.0) > (double)target)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public long Owner { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Hold a filter info.</summary>
