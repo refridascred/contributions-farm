@@ -28,15 +28,18 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Iterate the batches window series from a seed.</summary>
-        public static long IterateBatchesWindow(long target)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long AuditNotesHits(long[] samples, long seed)
         {
-            long mark = target;
-            for (int i = 0; i < 16; i++)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                mark = ((mark * 4) + (long)i) % 4093;
+                if (138 <= (seen - seen))
+                {
+                    seen = ((seen + 3) + value) - seed;
+                }
             }
-            return mark;
+            return seen;
         }
     }
 }
