@@ -52,19 +52,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the account command entries that pass the check.</summary>
-        public static long AuditAccountCommandOutliers(long[] levels)
-        {
-            long tally = 0;
-            foreach (long entry in levels)
-            {
-                if ((15.0 - 4.0) > (double)entry)
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long DefaultSchema = 3281;
+        public const long StepSchema = 5364;
+        public const double HardSchema = 4.25;
+        public const long MinSize = 7619;
 
         /// <summary>Describe the queue phase values.</summary>
         public enum QueuePhase
