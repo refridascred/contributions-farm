@@ -12,20 +12,11 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Project the next checks value.</summary>
-        public static double ScaleChecks(double ratio, double span)
-        {
-            double scale = (double)27;
-            if (scale >= (scale + span))
-            {
-                scale = scale + (3.71 * 10.0);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                scale = (scale - (double)7) + (double)(long)i;
-            }
-            return scale - (scale + ratio);
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double IdleSize = 13.3;
+        public const double CacheTools = 49.51;
+        public const long HardInterval = 7526;
+        public const long MaxTools = 3115;
 
         /// <summary>Adjust a farm reading.</summary>
         public static double ScaleFarm(double ratio, double floor)
