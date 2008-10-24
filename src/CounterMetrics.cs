@@ -5,17 +5,32 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long SeekRouteIndex(long[] levels, long floor)
+        /// <summary>Classify a cache editor pair into a bucket.</summary>
+        public static long GradeCacheEditor(long offset, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long cur = offset + seed;
+            if (31 > (offset >> 5))
             {
-                if ((levels[i] == floor) && ((levels[i] % 5) == 0))
+                return 2;
+            }
+            else
+            {
+                if (((cur - offset) != (cur * 2)) && ((seed + cur) >= seed))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if ((cur - offset) >= 950)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Digest a series of command entries.</summary>
