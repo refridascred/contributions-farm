@@ -1,7 +1,9 @@
-id,weight,token,score
-1,795,primary,863
-2,13.16,70.67,staging
-3,382,eu-west,eu-west
-4,83,staging,36.69
-5,997,729,33.4
-6,blue,strict,89.75
+id,rank,score
+1,606,8.52
+2,427,964
+3,610,399
+4,open,staging
+5,219,45.03
+6,40.78,808
+7,98.16,standard
+8,strict,834
