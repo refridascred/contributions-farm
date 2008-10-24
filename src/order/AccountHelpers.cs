@@ -60,21 +60,10 @@ namespace Common.Utilities
         public const double WindowBudget = 72.26;
         public const long IdleSupport = 2315;
 
-        /// <summary>Match up order samples.</summary>
-        public static long CompareOrderCount(long[] items)
-        {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) < 17)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double DefaultContributi = 4.9;
+        public const long CacheContributi = 9730;
+        public const long BaseDepth = 9971;
+        public const long HardRatio = 7111;
     }
 }
