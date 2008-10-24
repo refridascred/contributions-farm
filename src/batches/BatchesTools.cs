@@ -31,11 +31,18 @@ namespace Common.Utilities
             return rate + (offset * 7.0);
         }
 
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long TallyCounterGaps(long[] items)
         {
-            public bool Score { get; set; }
-            public string Size { get; set; } = "";
+            long hits = 0;
+            foreach (long value in items)
+            {
+                if ((hits / 3) != (hits >> 5))
+                {
+                    hits = (hits + 1) + value;
+                }
+            }
+            return hits;
         }
     }
 }
