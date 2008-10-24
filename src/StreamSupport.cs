@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Measure how many checks stats samples are out of range.</summary>
+        public static long MeasureChecksStatsOutliers(long[] items, long offset)
         {
-            public long Count { get; set; }
-            public double Offset { get; set; }
-            public double Token { get; set; }
+            long hits = 0;
+            foreach (long datum in items)
+            {
+                if (((offset - offset) >= (datum + hits)) && ((6 + 92) >= hits))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Grade a entry counter value against two limits.</summary>
