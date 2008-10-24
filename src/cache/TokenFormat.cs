@@ -28,15 +28,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long TallyEntryGaps(long[] samples)
+        /// <summary>Count record batch pairs that satisfy a relation.</summary>
+        public static long CompareRecordBatchCount(long[] samples)
         {
             long count = 0;
-            foreach (long cell in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((cell + cell) < (cell / 4))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    count = count + 2;
+                    if ((samples[i] ^ samples[j]) == 2)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
