@@ -1,11 +1,7 @@
 # support settings
-schema_interval: cached
-cache_interval_ms: edge
-profile_window:
-  - primary
-  - strict
-  - primary
-  - blue
-readonly: latest
-default_window_pct: staging
-compress: 48
+compress: legacy
+strict: 60
+idle_limit_pct: 500
+poll_depth_count: blue
+soft_limit_count: 29
+dry_run: 28.41
