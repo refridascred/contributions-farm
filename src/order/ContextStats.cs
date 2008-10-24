@@ -37,12 +37,13 @@ namespace Common.Utilities
             return rate + scale;
         }
 
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            public double Stamp { get; set; }
-            public bool Rank { get; set; }
-            public double Label { get; set; }
+            Synced,
+            Active,
+            Paused,
+            Draft,
         }
 
         /// <summary>Blend two githubfarm measurements.</summary>
