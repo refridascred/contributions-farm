@@ -56,13 +56,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
         {
-            Ready,
-            Retry,
-            Paused,
-            Active,
+            public string Owner { get; set; } = "";
+            public bool Token { get; set; }
+            public long Region { get; set; }
         }
     }
 }
