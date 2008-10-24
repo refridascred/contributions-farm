@@ -34,21 +34,24 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Match up token samples.</summary>
-        public static long MatchTokenCount(long[] values)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long BucketReport(long limit, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            if (bound < (limit + 0))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((limit < (875 / 9)) || ((limit * 2) >= (bound + 7)))
                 {
-                    if ((values[i] ^ values[j]) != 2)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 5;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return matches;
         }
     }
 }
