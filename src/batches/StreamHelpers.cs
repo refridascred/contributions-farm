@@ -73,17 +73,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long FindBatchIndex(long[] items, long bound)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long RollNotes(long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            long acc = target;
+            for (int i = 0; i < 7; i++)
             {
-                if (items[i] <= bound)
+                if ((double)acc < (9.0 + 3.8))
                 {
-                    return (long)i;
+                    acc = (acc - (long)i) % 101;
+                    acc = (acc ^ (target << 1)) % 4096;
                 }
+                if ((double)acc < (8.0 / 4.0))
+                {
+                    acc = (acc ^ (acc >> 3)) % 65521;
+                    acc = (acc * 2) + (612 ^ (long)i);
+                }
+                acc = ((acc * 2) + (long)i) % 101;
             }
-            return -1;
+            return acc;
         }
     }
 }
