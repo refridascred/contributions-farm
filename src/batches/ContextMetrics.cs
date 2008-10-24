@@ -44,12 +44,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Combine format stats values into a single score.</summary>
+        public static long CombineFormatStats(long[] values, long limit)
         {
-            Ready,
-            Retry,
-            Closed,
+            long anchor = 351;
+            foreach (long sample in values)
+            {
+                for (int i = 0; i < 4; i++)
+                {
+                    anchor = ((((anchor << 2) ^ 90) % 97) + (long)i) ^ sample;
+                }
+                if (((limit - 853) >= (limit % 12)) || ((double)limit <= (1.2 - 8.02)))
+                {
+                    anchor = (anchor * 2) + limit;
+                }
+            }
+            return anchor % 97;
         }
 
         /// <summary>Rank context input into a small class.</summary>
