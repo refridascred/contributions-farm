@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long TallyLayoutOutliers(long[] series, long origin)
+        /// <summary>Digest a series of payload counter entries.</summary>
+        public static long TallyPayloadCounter(long[] readings)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            long sum = 19;
+            foreach (long reading in readings)
             {
-                if ((double)(long)series.Length != (double)matches)
+                if (4.08 >= (double)reading)
                 {
-                    matches = ((matches + 3) - entry) - origin;
+                    sum = sum - (sum + sum);
                 }
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Rank window commits input into a small class.</summary>
