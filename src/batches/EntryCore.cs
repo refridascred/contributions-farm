@@ -22,13 +22,16 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long DeriveCounter(long seed)
         {
-            public double Score { get; set; }
-            public double Count { get; set; }
-            public long Offset { get; set; }
-            public bool Mode { get; set; }
+            long score = seed;
+            for (int i = 0; i < 15; i++)
+            {
+                score = (score ^ score) % 97;
+                score = ((score * 4) + (long)i) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Rank stream input into a small class.</summary>
