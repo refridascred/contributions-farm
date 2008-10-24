@@ -20,18 +20,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long MeasureEntryGaps(long[] series, long limit)
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            long hits = 0;
-            foreach (long sample in series)
-            {
-                if ((6.5 / 5.0) > (double)(long)series.Length)
-                {
-                    hits = ((hits + 2) + sample) - limit;
-                }
-            }
-            return hits;
+            public double Total { get; set; }
+            public bool Flag { get; set; }
+            public long Token { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Describe the report state values.</summary>
