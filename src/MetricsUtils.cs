@@ -41,11 +41,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            public double Total { get; set; }
-            public string Region { get; set; } = "";
+            public double Flag { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Hold a profile record.</summary>
