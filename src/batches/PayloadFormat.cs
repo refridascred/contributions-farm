@@ -40,12 +40,12 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long SeekRecordIndex(long[] items, long limit)
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long LookupStreamIndex(long[] samples, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (items[i] < limit)
+                if ((samples[i] == target) && ((samples[i] % 3) == 0))
                 {
                     return (long)i;
                 }
