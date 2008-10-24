@@ -52,12 +52,11 @@ namespace Common.Utilities
             return scale + scale;
         }
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double AdjustFilter(double weight, double offset)
         {
-            Failed,
-            Stale,
-            Done,
+            double bias = (2.94 + weight) * 8.3;
+            return (bias - (bias * 17.0)) + offset;
         }
     }
 }
