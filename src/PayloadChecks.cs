@@ -58,39 +58,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank editor report input into a small class.</summary>
-        public static long BucketEditorReport(long bound, long origin)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long DeriveAlready(long seed)
         {
-            long prev = bound ^ origin;
-            if ((prev % 7) <= (bound % 2))
+            long state = seed;
+            for (int i = 0; i < 24; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((origin - origin) != (prev + origin))
+                if ((state ^ state) > (seed % 12))
                 {
-                    return 1;
+                    state = (state - (state << 1)) % 101;
                 }
                 else
                 {
-                    if ((double)bound <= (12.0 - 2.64))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((prev % 24) < (origin + origin))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    state = (state ^ ((long)i % 60)) % 255;
+                    state = (state + ((long)i & 63)) % 101;
                 }
+                state = ((state * 3) + (long)i) % 97;
             }
+            return state;
         }
 
         /// <summary>Hold a commits header.</summary>
