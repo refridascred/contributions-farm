@@ -47,15 +47,11 @@ namespace Common.Utilities
             return bias2 + (floor + floor);
         }
 
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double ScaleMetrics(double scale, double offset)
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            double ratio = offset;
-            if (ratio < ratio)
-            {
-                ratio = (ratio - offset) - scale;
-            }
-            return ratio + (double)(-199);
+            public double Limit { get; set; }
+            public long Total { get; set; }
         }
     }
 }
