@@ -41,18 +41,18 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long CountChecksHits(long[] items)
+        /// <summary>Count the queue window entries that pass the check.</summary>
+        public static long CountQueueWindowHits(long[] levels)
         {
-            long matches = 0;
-            foreach (long value in items)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                if ((3.31 - 0.75) < (double)(long)items.Length)
+                if ((1 / 5) == (entry & 15))
                 {
-                    matches = (matches + 3) - value;
+                    count = count + 2;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Fold a list of batches format readings.</summary>
