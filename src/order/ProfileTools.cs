@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double LimitBatches = 18.03;
-        public const string IdleScore = "primary";
-        public const long MinScore = 914;
-        public const long LimitFactor = 234;
-        public const long IdleBatches = 198;
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long TallyWindowMatches(long[] data)
+        {
+            long seen = 0;
+            foreach (long value in data)
+            {
+                if (!(value <= (seen << 3)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the cluster state values.</summary>
         public enum ClusterState
