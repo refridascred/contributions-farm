@@ -46,20 +46,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool CheckBatchLimits(long[] items, long target)
-        {
-            bool found = true;
-            foreach (long entry in items)
-            {
-                if (entry >= target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long LimitAccount = 4126;
+        public const string BaseAccount = "stable-edge";
+        public const string MinAccount = "standard-1";
 
         /// <summary>Hold a batches info.</summary>
         public sealed class BatchesInfo
