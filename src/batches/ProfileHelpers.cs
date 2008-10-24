@@ -80,21 +80,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up order stream samples.</summary>
-        public static long MatchOrderStreamCount(long[] readings)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long MeasureChecksHits(long[] samples)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (!(hits < (hits / 8)))
                 {
-                    if ((readings[i] + readings[j]) < 11)
-                    {
-                        count = count + 1;
-                    }
+                    hits = (hits + 2) ^ sample;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
