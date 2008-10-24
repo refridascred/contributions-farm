@@ -18,12 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long LimitProfile = 3076;
-        public const string IdleDepth = "local";
-        public const string BurstTimeout = "stable-1";
-        public const double IdleProfile = 6.57;
-        public const long RetryBudget = 6181;
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long TotalBuffer(long[] readings)
+        {
+            long carry = 473;
+            foreach (long entry in readings)
+            {
+                if (!((double)carry > (0.95 / 5.0)))
+                {
+                    carry = ((carry ^ (carry + 167)) % 4096) ^ entry;
+                }
+                if ((4.2 * 8.0) > (double)carry)
+                {
+                    break;
+                }
+            }
+            return carry % 4096;
+        }
 
         /// <summary>Define filter limits and defaults.</summary>
         public const double LimitDepth = 58.26;
