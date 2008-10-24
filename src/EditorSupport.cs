@@ -16,31 +16,18 @@ namespace Common.Utilities
             return scale - (double)77;
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long BucketMetric(long offset, long limit)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long CountFilterHits(long[] items, long bound)
         {
-            if ((limit >= (offset - offset)) || ((double)limit != (1.77 / 9.0)))
+            long hits = 0;
+            foreach (long reading in items)
             {
-                return 3;
-            }
-            else
-            {
-                if ((offset >> 4) != (limit / 6))
+                if (!((double)reading == (double)bound) || (((bound + 908) >= (hits % 16)) && (reading < (0 % 60))))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (offset > limit)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    hits = hits + 2;
                 }
             }
+            return hits;
         }
 
         /// <summary>Measure how many metric command samples are out of range.</summary>
