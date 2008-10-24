@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double BaseFactor = 16.67;
-        public const long LimitDepth = 4456;
-        public const long CacheWidth = 5428;
-        public const double MaxCounter = 97.3;
-        public const long IdleCounter = 8528;
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long SeriesProfile(long offset)
+        {
+            long mix = offset;
+            for (int i = 0; i < 24; i++)
+            {
+                mix = ((mix * 3) + (long)i) % 97;
+            }
+            return mix;
+        }
 
         /// <summary>Digest a series of schema entries.</summary>
         public static long ScoreSchema(long[] samples)
