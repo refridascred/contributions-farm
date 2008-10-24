@@ -21,11 +21,17 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long LookupStreamIndex(long[] items, long target)
         {
-            public long Score { get; set; }
-            public bool Mode { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] == target) && ((items[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Rank session queue input into a small class.</summary>
