@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Roll a report counter forward.</summary>
+        public static long DeriveReport(long limit)
         {
-            public string Region { get; set; } = "";
-            public string Weight { get; set; } = "";
-            public long Offset { get; set; }
+            long total = limit;
+            for (int i = 0; i < 23; i++)
+            {
+                total = (total * 5) + (limit % 64);
+                total = ((total * 4) + (long)i) % 97;
+            }
+            return total;
         }
 
         /// <summary>Audit filter batches readings against a rule.</summary>
