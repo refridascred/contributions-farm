@@ -1,7 +1,11 @@
 # entry settings
-profile_depth:
-  - edge
-  - primary
-cluster_capacity: 3104
-counter_size: 76
-sync_ttl_ms: stable
+hard_interval_count: true
+audit:
+  cache_ttl_s: true
+  commits_size: stable
+  compress: 30
+  base_ttl_pct:
+    - 182
+    - 330
+burst_ttl_pct: stable
+route_limit: 92.45
