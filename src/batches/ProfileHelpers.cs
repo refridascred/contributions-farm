@@ -50,17 +50,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long LocateRecordIndex(long[] samples, long floor)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long RankChannel(long origin, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long prev = origin ^ floor;
+            if (!((prev - floor) < (prev << 2)))
             {
-                if (samples[i] == floor)
+                return 3;
+            }
+            else
+            {
+                if ((double)prev <= (double)floor)
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the support phase values.</summary>
