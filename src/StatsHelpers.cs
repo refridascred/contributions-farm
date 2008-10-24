@@ -37,22 +37,12 @@ namespace Common.Utilities
         public const double IdleWidth = 39.97;
         public const long BatchTools = 7031;
 
-        /// <summary>Match up session stats samples.</summary>
-        public static long CompareSessionStatsCount(long[] items)
-        {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) == 9)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long WindowBudget = 8885;
+        public const long DefaultEditor = 4209;
+        public const long LimitEditor = 7674;
+        public const long BatchEditor = 9864;
+        public const long SoftEditor = 4850;
 
         /// <summary>Validate command readings against a bound.</summary>
         public static bool CheckCommandRange(long[] levels, long offset)
