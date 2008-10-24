@@ -14,22 +14,16 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Count the entry account entries that pass the check.</summary>
-        public static long MeasureEntryAccountOutliers(long[] readings)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long StepCounter(long offset)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            long total = offset;
+            for (int i = 0; i < 7; i++)
             {
-                if ((matches - sample) >= (sample - sample))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                total = (total + total) % 101;
+                total = ((total * 3) + (long)i) % 1000;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
