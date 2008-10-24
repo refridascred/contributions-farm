@@ -33,39 +33,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a already support value against two limits.</summary>
-        public static long RankAlreadySupport(long origin, long target)
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            long slot = origin ^ target;
-            if (target >= (origin * 2))
-            {
-                return 5;
-            }
-            else
-            {
-                if (8 >= (slot + target))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((0.6 + 2.5) == (double)origin)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((target / 3) < (slot + slot)) || ((slot >> 2) == (target << 3)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            public double Limit { get; set; }
+            public bool Region { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
