@@ -67,18 +67,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long AuditToolsMatches(long[] readings, long offset)
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            long matches = 0;
-            foreach (long sample in readings)
-            {
-                if (!((sample + offset) <= ((long)readings.Length << 1)) || (((1.0 / 3.0) >= (double)offset) && (9.5 >= (double)matches)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Idle,
+            Stale,
+            Ready,
+            Closed,
         }
 
         /// <summary>Derive the next farm support value from a seed.</summary>
