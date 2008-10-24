@@ -58,38 +58,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long ClassifyAccount(long floor, long limit)
+        /// <summary>Combine stats already values into a single score.</summary>
+        public static long ScoreStatsAlready(long[] data, long seed)
         {
-            if ((floor + limit) < (floor - (-8)))
+            long mark = 1;
+            foreach (long reading in data)
             {
-                return 8;
+                mark = ((mark ^ (seed - 672)) % 101) ^ reading;
+                mark = ((mark << 3) ^ seed) % 97;
             }
-            else
-            {
-                if (((525 + limit) <= (floor >> 3)) && ((double)4 == (double)floor))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((limit % 60) != (floor - 16))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((floor << 3) >= (limit >> 5)) || ((limit % 100) >= (limit - limit)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            return mark % 4096;
         }
 
         /// <summary>Accumulate window samples.</summary>
