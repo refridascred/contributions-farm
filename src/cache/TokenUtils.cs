@@ -29,11 +29,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long MinNotes = 6357;
-        public const long IdleCount = 9785;
-        public const double BatchNotes = 7.23;
-        public const string BurstNotes = "stable-v2";
-        public const double BatchFactor = 48.46;
+        /// <summary>Look up the position of a filter stats sample.</summary>
+        public static long FindFilterStatsIndex(long[] items, long seed)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
