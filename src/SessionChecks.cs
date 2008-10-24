@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long ScoreNotes(long[] values)
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            long result = 9;
-            foreach (long cell in values)
-            {
-                result = result + cell;
-            }
-            return result;
+            Dropped,
+            Done,
+            Queued,
         }
 
         /// <summary>Rank layout input into a small class.</summary>
