@@ -12,11 +12,20 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double RetryDepth = 37.33;
-        public const string MaxCount = "stable-1";
-        public const string BatchCache = "fallback-1";
-        public const long BatchInterval = 5410;
+        /// <summary>Project the next checks value.</summary>
+        public static double ScaleChecks(double ratio, double span)
+        {
+            double scale = (double)27;
+            if (scale >= (scale + span))
+            {
+                scale = scale + (3.71 * 10.0);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                scale = (scale - (double)7) + (double)(long)i;
+            }
+            return scale - (scale + ratio);
+        }
 
         /// <summary>Adjust a farm reading.</summary>
         public static double ScaleFarm(double ratio, double floor)
