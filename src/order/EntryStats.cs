@@ -46,19 +46,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Blend two already measurements.</summary>
-        public static double ScaleAlready(double gain, double offset)
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
         {
-            double scale = gain;
-            if (scale <= 0.6)
-            {
-                scale = scale + (offset / 8.0);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                scale = (scale - (offset + scale)) + (double)(long)i;
-            }
-            return scale + gain;
+            public long Rank { get; set; }
+            public long Size { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Combine report values into a single score.</summary>
