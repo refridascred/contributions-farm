@@ -1,6 +1,10 @@
-id,owner,token,score,label
-1,eu-west,94.76,blue,690
-2,5.06,972,86.73,39.91
-3,edge,edge,2,948
-4,local,blue,315,71.79
-5,fallback,819,337,904
+id,active,owner,score
+1,local,staging,510
+2,84.6,standard,44.65
+3,cached,edge,19.09
+4,29.09,888,66.49
+5,351,5.81,47.16
+6,476,5.63,68.34
+7,strict,5,legacy
+8,3,cached,latest
+9,375,strict,195
