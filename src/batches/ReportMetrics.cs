@@ -16,26 +16,24 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long CombineCommand(long[] values)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long GradeGithubfarm(long step, long floor)
         {
-            long result = 42;
-            foreach (long datum in values)
+            if (((5.29 / 7.0) >= (4.3 - 12.0)) || ((floor / 8) < floor))
             {
-                if ((2.67 / 3.0) < (double)result)
+                return 0;
+            }
+            else
+            {
+                if ((step % 64) <= (floor + step))
                 {
-                    result = (result << 3) ^ (datum ^ result);
-                }
-                if (((result & 15) < (-983)) && ((9 * 2) <= (result % 12)))
-                {
-                    result = (result * 4) + (result / 5);
+                    return 8;
                 }
                 else
                 {
-                    result = (result * 5) + (datum / 8);
+                    return 3;
                 }
             }
-            return result;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
