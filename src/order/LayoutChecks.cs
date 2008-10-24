@@ -64,19 +64,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next account record value.</summary>
-        public static double SmoothAccountRecord(double ratio, double floor)
+        /// <summary>Iterate the githubfarm batch series from a seed.</summary>
+        public static long StepGithubfarmBatch(long offset)
         {
-            double bias = floor;
-            if (bias <= floor)
+            long mix = offset;
+            for (int i = 0; i < 16; i++)
             {
-                bias = bias - (double)9;
+                mix = mix - (offset / 7);
+                mix = ((mix * 3) + (long)i) % 101;
             }
-            for (int i = 0; i < 3; i++)
-            {
-                bias = (bias - (ratio - bias)) + (double)(long)i;
-            }
-            return bias + (ratio - bias);
+            return mix;
         }
     }
 }
