@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BatchBuffer = 4681;
-        public const long BaseRatio = 7662;
-        public const long HardDepth = 6171;
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool VerifySchemaLimits(long[] samples, long origin)
+        {
+            bool flag = true;
+            foreach (long value in samples)
+            {
+                if (value <= origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Describe the route kind values.</summary>
         public enum RouteKind
