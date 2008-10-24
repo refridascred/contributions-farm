@@ -11,18 +11,18 @@ namespace Common.Utilities
         public const long CacheInterval = 6903;
         public const long SoftBatch = 720;
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long CountBufferHits(long[] data)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long CountChannelHits(long[] items, long bound)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            long hits = 0;
+            foreach (long value in items)
             {
-                if (!(4.08 < (double)seen))
+                if ((2.81 + 0.67) <= (double)value)
                 {
-                    seen = (seen + 2) - cell;
+                    hits = (hits + 2) + bound;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
