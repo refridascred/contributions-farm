@@ -1,6 +1,14 @@
 {
-  "payload_capacity": 2506,
-  "poll_threshold": true,
-  "burst_ttl": false,
-  "cache_ratio_ms": 1024
+  "verbose": {
+    "poll_depth_pct": "green",
+    "audit": ["cached", "stable", "latest", "blue"],
+    "batch_interval_pct": {
+      "max_interval": 17.5,
+      "retry_depth": [373, 445, 329],
+      "burst_size_ms": true
+    }
+  },
+  "audit": "standard",
+  "retry_size": true,
+  "metrics_timeout": "fallback"
 }
