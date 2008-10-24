@@ -42,11 +42,13 @@ namespace Common.Utilities
         public const long BaseBudget = 209;
         public const double BurstFactor = 17.83;
 
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            public double Size { get; set; }
-            public bool Stamp { get; set; }
+            public long Mode { get; set; }
+            public string Token { get; set; } = "";
+            public bool Count { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Audit cache commits readings against a rule.</summary>
