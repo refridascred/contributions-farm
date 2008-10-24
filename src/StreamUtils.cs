@@ -5,32 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long GradeFilter(long target, long floor)
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            long diff = target + floor;
-            if ((diff - diff) >= (target % 97))
-            {
-                return 6;
-            }
-            else
-            {
-                if (floor <= (diff >> 1))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (!(target >= (floor / 6)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Locked,
+            Synced,
+            Draft,
+            New,
         }
 
         /// <summary>Hold a schema entry.</summary>
