@@ -38,19 +38,18 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool VerifyRecordLimits(long[] series, long offset)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long MeasureNotesHits(long[] samples)
         {
-            bool ok = true;
-            foreach (long reading in series)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                if (reading >= offset)
+                if (((datum + 0) >= datum) || ((4.5 / 9.0) <= (double)hits))
                 {
-                    ok = false;
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return ok;
+            return hits;
         }
 
         /// <summary>Locate a already reading by value.</summary>
