@@ -1,7 +1,10 @@
 # githubfarm settings
-idle_delay_s: 60
-sync_retries: 93.98
-notes_capacity: 53
-burst_capacity: 34.63
-warm_ttl_pct: 500
-readonly: 4127
+checks_depth:
+  base_threshold_pct: true
+  audit: stable
+  max_size_ms: fallback
+  sync_depth_ms: 11
+  poll_size_ms: false
+persist: 58
+commits_depth: legacy
+dry_run: 76
