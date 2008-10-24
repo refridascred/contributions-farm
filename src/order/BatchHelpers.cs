@@ -32,11 +32,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double LimitBatch = 88.1;
-        public const long HardBatch = 7451;
-        public const string RetryLevel = "fallback-v2";
-        public const long SoftBatch = 3380;
-        public const long MaxInterval = 67;
+        /// <summary>Iterate the metrics account series from a seed.</summary>
+        public static long StepMetricsAccount(long floor)
+        {
+            long score = floor;
+            for (int i = 0; i < 4; i++)
+            {
+                score = ((score * 3) + (long)i) % 97;
+            }
+            return score;
+        }
     }
 }
