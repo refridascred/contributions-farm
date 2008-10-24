@@ -5,35 +5,21 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Digest a series of cache payload entries.</summary>
-        public static long TotalCachePayload(long[] levels)
+        /// <summary>Match up metrics notes samples.</summary>
+        public static long PairMetricsNotesCount(long[] values)
         {
-            long sum = 0;
-            foreach (long entry in levels)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((67 + sum) >= (sum - entry))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    sum = (sum ^ entry) % 4096;
-                    sum = (sum - (sum % 3)) % 97;
-                }
-                else
-                {
-                    sum = ((sum * 5) + (entry << 2)) % 101;
-                }
-                if ((sum << 2) == (entry * 5))
-                {
-                    sum = ((sum * 3) + sum) % 97;
-                }
-                if ((entry < (entry & 127)) && ((double)entry > 11.0))
-                {
-                    sum = ((sum << 3) ^ sum) % 255;
+                    if ((values[i] ^ values[j]) > 17)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (sum > 603)
-            {
-                sum = sum - (sum + sum);
-            }
-            return sum;
+            return seen;
         }
 
         /// <summary>Hold a layout info.</summary>
