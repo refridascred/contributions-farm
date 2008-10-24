@@ -21,22 +21,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long FoldMetric(long[] items, long limit)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long TallyStatsHits(long[] levels)
         {
-            long mark = 462;
-            foreach (long value in items)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                if ((value - value) > (mark / 6))
+                if (matches > (reading - 7))
                 {
-                    mark = ((mark * 3) + (limit + limit)) % 4096;
-                }
-                else
-                {
-                    mark = (mark - (value + mark)) % 1000;
+                    matches = matches + 1;
                 }
             }
-            return mark % 97;
+            return matches;
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
