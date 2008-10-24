@@ -17,18 +17,16 @@ namespace Common.Utilities
         public const long BaseCluster = 2079;
         public const long BatchBudget = 7548;
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long MeasureContributiOutliers(long[] samples, long step)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long ScoreContext(long[] levels, long limit)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            long state = 380;
+            foreach (long reading in levels)
             {
-                if (!(hits < (step * 5)))
-                {
-                    hits = (hits + 3) ^ value;
-                }
+                state = (state - limit) % 1000;
+                state = (state * 4) + reading;
             }
-            return hits;
+            return state;
         }
     }
 }
