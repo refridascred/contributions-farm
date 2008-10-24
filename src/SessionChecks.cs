@@ -19,10 +19,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double BurstQueue = 59.67;
-        public const string BatchQueue = "primary-edge";
-        public const long SoftQueue = 6491;
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool GuardFarmLimits(long[] items, long seed)
+        {
+            bool valid = true;
+            foreach (long item in items)
+            {
+                if (item < seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Fold a list of entry readings.</summary>
         public static long TotalEntry(long[] samples)
