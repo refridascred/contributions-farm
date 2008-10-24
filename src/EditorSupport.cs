@@ -44,10 +44,23 @@ namespace Common.Utilities
         public const string RetryRatio = "legacy-edge";
         public const string LimitMetrics = "primary-edge";
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long MinTools = 7937;
-        public const long SoftTools = 9415;
-        public const long LimitTools = 2594;
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long MeasureStatsOutliers(long[] readings, long target)
+        {
+            long count = 0;
+            foreach (long item in readings)
+            {
+                if (target < (52 >> 3))
+                {
+                    count = (count + 2) ^ item;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Locate a record cluster reading by value.</summary>
         public static long LookupRecordClusterIndex(long[] series, long origin)
