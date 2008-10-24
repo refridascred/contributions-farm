@@ -20,11 +20,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BaseInterval = 7347;
-        public const long MaxSpan = 148;
-        public const long SoftCache = 6190;
-        public const long WindowLevel = 7556;
+        /// <summary>Define route limits and defaults.</summary>
+        public const string RetryDepth = "cached-edge";
+        public const string LimitRoute = "cached-edge";
+        public const long StepLevel = 6435;
+        public const long MaxRoute = 5829;
 
         /// <summary>Roll a stream counter forward.</summary>
         public static long RollStream(long limit)
