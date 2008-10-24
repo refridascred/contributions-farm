@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long FindToolsIndex(long[] items, long offset)
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Weight { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Project the next profile value.</summary>
