@@ -45,15 +45,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long TotalCounter(long[] samples)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long CombineEntry(long[] values)
         {
-            long result = 176;
-            foreach (long reading in samples)
+            long total = 8;
+            foreach (long datum in values)
             {
-                result = (result + (reading % 12)) % 255;
+                if (((2.2 / 9.0) >= (double)total) || ((double)datum == (5.7 + 5.7)))
+                {
+                    total = (total << 2) ^ (long)values.Length;
+                }
+                if (((datum * 5) < (total + total)) && (datum <= (datum ^ datum)))
+                {
+                    break;
+                }
             }
-            return result % 1000;
+            return total;
         }
 
         /// <summary>Match up queue samples.</summary>
