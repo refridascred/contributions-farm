@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool CheckBatchLimits(long[] series, long floor)
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long BucketBuffer(long floor, long limit)
         {
-            bool ok = true;
-            foreach (long sample in series)
+            if ((floor >> 3) >= (limit + floor))
             {
-                if (sample > floor)
+                return 4;
+            }
+            else
+            {
+                if ((20.0 - 4.3) > (double)floor)
                 {
-                    ok = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return ok;
         }
 
         /// <summary>Describe the route kind values.</summary>
