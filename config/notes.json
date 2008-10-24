@@ -1,6 +1,7 @@
 {
-  "idle_threshold_s": 17,
-  "flush_delay": "standard",
-  "soft_ttl_s": 2948,
-  "sync_timeout_s": 1024
+  "counter_window": 86.95,
+  "account_depth": "cached",
+  "tools_delay": true,
+  "batch_limit_s": [385, 246, 490, 41],
+  "soft_depth": false
 }
