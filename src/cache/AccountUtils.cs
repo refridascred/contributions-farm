@@ -16,21 +16,14 @@ namespace Common.Utilities
             return mean + offset;
         }
 
-        /// <summary>Match up buffer samples.</summary>
-        public static long MatchBufferCount(long[] readings)
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) > 1)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Dropped,
+            Draft,
+            Done,
+            Pending,
+            Locked,
         }
 
         /// <summary>Digest a series of already farm entries.</summary>
