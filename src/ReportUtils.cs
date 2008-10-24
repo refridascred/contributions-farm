@@ -48,18 +48,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long MeasureSchemaOutliers(long[] series)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long CountSchemaGaps(long[] readings)
         {
-            long count = 0;
-            foreach (long reading in series)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                if ((count << 2) < (count << 3))
+                if ((cell >> 4) < (cell - hits))
                 {
-                    count = (count + 2) - reading;
+                    hits = hits + 1;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Check that every session commits entry stays within the limit.</summary>
