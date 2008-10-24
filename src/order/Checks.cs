@@ -16,18 +16,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the counter token entries that pass the check.</summary>
-        public static long MeasureCounterTokenHits(long[] values)
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long LookupCacheIndex(long[] values, long target)
         {
-            long count = 0;
-            foreach (long cell in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)cell <= (double)1)
+                if (values[i] <= target)
                 {
-                    count = count + 3;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Combine counter values into a single score.</summary>
