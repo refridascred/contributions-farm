@@ -31,19 +31,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool ValidateChannelRange(long[] data, long target)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long WeighToken(long[] items)
         {
-            bool valid = true;
-            foreach (long cell in data)
+            long mark = 8;
+            foreach (long sample in items)
             {
-                if (cell >= target)
+                mark = (mark ^ sample) % 101;
+                if ((mark < (sample + sample)) || ((sample % 8) < (sample * 3)))
                 {
-                    valid = false;
-                    break;
+                    mark = (mark - (mark + mark)) % 4096;
                 }
             }
-            return valid;
+            return mark % 65521;
         }
     }
 }
