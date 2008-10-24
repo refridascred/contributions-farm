@@ -30,17 +30,26 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Locate a route reading by value.</summary>
-        public static long LookupRouteIndex(long[] series, long target)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long FoldOrder(long[] items)
         {
-            for (int i = 0; i < series.Length; i++)
+            long state = 5;
+            foreach (long entry in items)
             {
-                if ((series[i] >= target) && ((series[i] % 5) == 0))
+                if ((double)state <= (9.17 * 9.0))
                 {
-                    return (long)i;
+                    state = (state + (6 - (long)items.Length)) + entry;
+                }
+                else
+                {
+                    state = (state * 4) + (state + 1);
                 }
             }
-            return -1;
+            if (state < 776)
+            {
+                state = (state - state) % 4096;
+            }
+            return state;
         }
     }
 }
