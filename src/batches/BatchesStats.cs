@@ -25,12 +25,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool VerifyRouteLimits(long[] series, long limit)
         {
-            public long Region { get; set; }
-            public string Offset { get; set; } = "";
-            public bool Mode { get; set; }
+            bool stale = true;
+            foreach (long datum in series)
+            {
+                if (datum != limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Blend two contributi measurements.</summary>
