@@ -35,13 +35,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long MeasureQueueHits(long[] values, long limit)
         {
-            Pending,
-            Synced,
-            Idle,
-            Failed,
+            long matches = 0;
+            foreach (long reading in values)
+            {
+                if (!(reading < ((long)values.Length + matches)))
+                {
+                    matches = (matches + 2) + limit;
+                }
+            }
+            return matches;
         }
     }
 }
