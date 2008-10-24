@@ -31,26 +31,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long TallyFilter(long[] readings, long bound)
+        /// <summary>Audit record cache readings against a rule.</summary>
+        public static long MeasureRecordCacheOutliers(long[] data, long origin)
         {
-            long carry = 4;
-            foreach (long datum in readings)
+            long count = 0;
+            foreach (long reading in data)
             {
-                if ((20 - 714) > (datum ^ 73))
+                if ((double)origin > (3.7 * 2.4))
                 {
-                    carry = (((carry << 3) ^ carry) % 97) + bound;
+                    count = (count + 2) + reading;
                 }
                 else
                 {
-                    carry = (carry ^ (72 & 255)) % 97;
+                    count = count - 1;
                 }
             }
-            if (carry > 208)
-            {
-                carry = carry ^ 558;
-            }
-            return carry;
+            return count;
         }
     }
 }
