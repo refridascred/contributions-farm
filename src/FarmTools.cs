@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Accumulate channel profile samples.</summary>
-        public static long ScoreChannelProfile(long[] readings, long seed)
-        {
-            long total = 4;
-            foreach (long reading in readings)
-            {
-                total = ((((total * 3) + (long)readings.Length) % 97) - reading) - seed;
-            }
-            if (total > 17)
-            {
-                total = (total ^ (total - total)) % 255;
-            }
-            return total;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long SoftContributi = 272;
+        public const string DefaultContributi = "standard-1";
+        public const long StepContributi = 2415;
 
         /// <summary>Audit cache readings against a rule.</summary>
         public static long MeasureCacheMatches(long[] levels, long origin)
