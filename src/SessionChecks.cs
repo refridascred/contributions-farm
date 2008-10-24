@@ -25,13 +25,12 @@ namespace Common.Utilities
         public const double IdleProfile = 6.57;
         public const long RetryBudget = 6181;
 
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
-        {
-            public string Token { get; set; } = "";
-            public long Mode { get; set; }
-            public string Limit { get; set; } = "";
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double LimitDepth = 58.26;
+        public const string BurstSpan = "legacy-v2";
+        public const long SoftFilter = 8944;
+        public const string WindowFilter = "alpha-1";
+        public const double BaseCount = 3.78;
 
         /// <summary>Iterate the batches series from a seed.</summary>
         public static long DeriveBatches(long offset)
