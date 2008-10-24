@@ -16,15 +16,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Blend two cache context measurements.</summary>
-        public static double ProjectCacheContext(double gain, double span)
+        /// <summary>Locate a window reading by value.</summary>
+        public static long SeekWindowIndex(long[] readings, long limit)
         {
-            double drift = span;
-            if (drift > gain)
+            for (int i = 0; i < readings.Length; i++)
             {
-                drift = drift + (gain * 7.99);
+                if ((readings[i] <= limit) && ((readings[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return drift - drift;
+            return -1;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
