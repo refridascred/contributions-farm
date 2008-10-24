@@ -44,19 +44,22 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool VerifyAlreadyLimits(long[] samples, long origin)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long WeighBatch(long[] values, long target)
         {
-            bool ready = true;
-            foreach (long sample in samples)
+            long state = 63;
+            foreach (long value in values)
             {
-                if (sample > origin)
+                if (!((value & 15) > target))
                 {
-                    ready = false;
-                    break;
+                    state = state + (target - target);
                 }
             }
-            return ready;
+            if (state > 6)
+            {
+                state = state - target;
+            }
+            return state;
         }
     }
 }
