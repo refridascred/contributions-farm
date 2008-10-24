@@ -37,11 +37,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool VerifyAccountLimits(long[] levels, long offset)
         {
-            public long Mode { get; set; }
-            public long Limit { get; set; }
+            bool found = true;
+            foreach (long item in levels)
+            {
+                if (item >= offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
