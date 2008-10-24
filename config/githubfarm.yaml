@@ -1,9 +1,9 @@
 # githubfarm settings
-payload_depth: 2
-burst_window_count:
-  burst_depth: latest
-  dry_run: 96.7
-  contributi_threshold: 9261
-default_retries: 59.72
-payload_ttl: 2233
-batch_window_ms: eu-west
+stream_delay:
+  queue_capacity: 17
+  min_timeout_ms: cached
+  counter_limit: true
+base_retries: edge
+githubfarm_timeout: true
+soft_timeout_ms: false
+base_depth_s: green
