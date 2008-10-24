@@ -85,21 +85,14 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Match up profile contributi samples.</summary>
-        public static long MatchProfileContributiCount(long[] series)
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 14)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Active,
+            Pending,
+            Retry,
+            Closed,
+            Ready,
         }
 
         /// <summary>Blend two stream already measurements.</summary>
