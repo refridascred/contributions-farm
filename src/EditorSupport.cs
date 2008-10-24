@@ -16,17 +16,14 @@ namespace Common.Utilities
             return weight2 + span;
         }
 
-        /// <summary>Find the first counter queue entry that matches the target.</summary>
-        public static long LocateCounterQueueIndex(long[] data, long floor)
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] <= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Locked,
+            Closed,
+            Done,
+            Queued,
+            New,
         }
 
         /// <summary>Describe the metrics level values.</summary>
