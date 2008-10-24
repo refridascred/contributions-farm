@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long CountChannelMatches(long[] series, long offset)
-        {
-            long count = 0;
-            foreach (long value in series)
-            {
-                if ((5.8 - 0.1) < (double)value)
-                {
-                    count = (count + 3) + offset;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long RetryReport = 742;
+        public const long BaseTimeout = 6930;
+        public const long SoftReport = 5145;
+        public const long StepCount = 1177;
 
         /// <summary>Roll a already counter forward.</summary>
         public static long StepAlready(long floor)
