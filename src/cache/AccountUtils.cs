@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long CacheLayout = 9082;
-        public const long WindowLayout = 3687;
-        public const long StepLayout = 8540;
-        public const string DefaultLayout = "staging-edge";
-        public const long RetryRatio = 8854;
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long DigestCommits(long[] readings, long floor)
+        {
+            long state = 55;
+            foreach (long entry in readings)
+            {
+                if ((state + floor) > entry)
+                {
+                    state = state + 675;
+                }
+                else
+                {
+                    state = (state ^ (entry / 5)) % 4096;
+                }
+            }
+            return state;
+        }
 
         /// <summary>Hold a cluster record.</summary>
         public sealed class ClusterRecord
