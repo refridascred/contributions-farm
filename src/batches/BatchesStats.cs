@@ -37,12 +37,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Measure how many githubfarm counter samples are out of range.</summary>
+        public static long CountGithubfarmCounterMatches(long[] samples, long offset)
         {
-            Draft,
-            Stale,
-            Idle,
+            long matches = 0;
+            foreach (long cell in samples)
+            {
+                if ((double)cell == (double)offset)
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the cluster phase values.</summary>
