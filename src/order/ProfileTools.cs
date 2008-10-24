@@ -72,12 +72,9 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
-        {
-            public bool Score { get; set; }
-            public long Flag { get; set; }
-            public long Offset { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string HardSchema = "stable-1";
+        public const string CacheSchema = "open-edge";
+        public const long WindowBudget = 6799;
     }
 }
