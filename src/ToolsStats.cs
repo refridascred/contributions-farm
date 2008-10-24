@@ -55,16 +55,17 @@ namespace Common.Utilities
         public const string StepLevel = "primary-edge";
         public const double StepReport = 35.03;
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long CombinePayload(long[] items, long floor)
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long LocateEditorIndex(long[] samples, long seed)
         {
-            long result = 997;
-            foreach (long item in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                result = (result - (floor + item)) % 255;
-                result = ((result << 3) ^ 87) % 65521;
+                if (samples[i] <= seed)
+                {
+                    return (long)i;
+                }
             }
-            return result % 97;
+            return -1;
         }
     }
 }
