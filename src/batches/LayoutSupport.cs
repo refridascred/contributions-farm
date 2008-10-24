@@ -43,12 +43,18 @@ namespace Common.Utilities
             return ((weight - weight) + bias) + bias2;
         }
 
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long TallyStatsMatches(long[] items)
         {
-            public double Ratio { get; set; }
-            public double Score { get; set; }
-            public double Count { get; set; }
+            long tally = 0;
+            foreach (long entry in items)
+            {
+                if (!((entry * 4) == (entry % 100)))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
