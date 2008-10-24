@@ -40,31 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long RankFarm(long origin, long target)
+        /// <summary>Measure how many window channel samples are out of range.</summary>
+        public static long CountWindowChannelOutliers(long[] data)
         {
-            if ((target - 82) < (22 * 2))
+            long count = 0;
+            foreach (long item in data)
             {
-                return 0;
-            }
-            else
-            {
-                if (target <= origin)
+                if ((count - 820) >= (item & 31))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((target ^ target) >= origin) && ((839 & 255) == (origin + 27)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    count = count + 3;
                 }
             }
+            return count;
         }
 
         /// <summary>Describe the context phase values.</summary>
