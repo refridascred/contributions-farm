@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long TallyQueue(long[] levels)
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            long anchor = 99;
-            foreach (long sample in levels)
-            {
-                anchor = (anchor + (anchor ^ sample)) % 97;
-                if ((sample & 15) >= anchor)
-                {
-                    anchor = (anchor + (sample + anchor)) % 97;
-                }
-            }
-            return anchor;
+            public long Token { get; set; }
+            public bool Offset { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Match up queue payload samples.</summary>
