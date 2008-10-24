@@ -1,18 +1,6 @@
 {
-  "base_retries_pct": 1490,
-  "hard_ratio_s": [27, 44, 321, 394],
-  "base_threshold_s": 68,
-  "already_retries": {
-    "idle_interval": false,
-    "base_limit_ms": 52.11,
-    "idle_ratio": 4.62,
-    "retry_ttl_s": {
-      "soft_threshold_count": 81,
-      "default_retries": 631,
-      "sync_window_count": true
-    },
-    "max_retries_pct": false
-  },
-  "compress": "latest",
-  "batches_depth": 89
+  "support_size": [434, 265, 456, 247],
+  "commits_size": 8793,
+  "hard_capacity_s": true,
+  "buffer_depth": [158, 260, 107, 187]
 }
