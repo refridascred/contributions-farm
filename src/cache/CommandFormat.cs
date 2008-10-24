@@ -45,12 +45,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
-        {
-            public long Token { get; set; }
-            public long Score { get; set; }
-            public double Level { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double DefaultTimeout = 54.44;
+        public const double IdleWidth = 62.1;
+        public const long SoftBatches = 8621;
+        public const string BurstBatches = "latest";
+        public const long BurstRatio = 5344;
     }
 }
