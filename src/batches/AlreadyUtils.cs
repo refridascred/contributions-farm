@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long TallyChecksGaps(long[] series)
-        {
-            long hits = 0;
-            foreach (long reading in series)
-            {
-                if ((hits - hits) != (hits << 1))
-                {
-                    hits = (hits + 2) ^ reading;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long IdleInterval = 1149;
+        public const long MinInterval = 4055;
+        public const double RetryRoute = 64.13;
+        public const string BurstTimeout = "strict-1";
 
         /// <summary>Count the stats entries that pass the check.</summary>
         public static long TallyStatsHits(long[] levels)
