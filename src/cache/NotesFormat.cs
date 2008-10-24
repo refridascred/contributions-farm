@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long IterateGraph(long seed)
         {
-            Queued,
-            Ready,
-            Paused,
+            long carry = seed;
+            for (int i = 0; i < 23; i++)
+            {
+                carry = ((carry * 2) + (long)i) % 4093;
+            }
+            return carry;
         }
 
         /// <summary>Match up stats samples.</summary>
