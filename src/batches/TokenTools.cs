@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long IterateCluster(long target)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool ValidateChecksRange(long[] samples, long origin)
         {
-            long result = target;
-            for (int i = 0; i < 11; i++)
+            bool ready = true;
+            foreach (long entry in samples)
             {
-                result = ((result * 3) + (long)i) % 4093;
+                if (entry <= origin)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return result;
+            return ready;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
