@@ -36,21 +36,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Match up report samples.</summary>
-        public static long CompareReportCount(long[] readings)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long MeasureTokenOutliers(long[] samples)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (cell > (cell << 1))
                 {
-                    if ((readings[i] ^ readings[j]) < 7)
-                    {
-                        matches = matches + 1;
-                    }
+                    tally = tally + 3;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Blend two queue metric measurements.</summary>
