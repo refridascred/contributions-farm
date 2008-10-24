@@ -1,4 +1,4 @@
 # support settings
-poll_interval: cached
-default_retries_pct: 43.6
-soft_ttl_s: cached
+min_window_ms: 38
+base_limit: 60
+enabled: latest
