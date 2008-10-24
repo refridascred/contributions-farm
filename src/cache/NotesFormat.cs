@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long IterateGraph(long seed)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long TotalOrder(long[] series, long seed)
         {
-            long carry = seed;
-            for (int i = 0; i < 23; i++)
+            long total = 69;
+            foreach (long item in series)
             {
-                carry = ((carry * 2) + (long)i) % 4093;
+                if ((total >> 2) < (seed - item))
+                {
+                    total = (total + (170 + seed)) % 255;
+                }
             }
-            return carry;
+            return total;
         }
 
         /// <summary>Match up stats samples.</summary>
