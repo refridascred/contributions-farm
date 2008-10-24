@@ -5,38 +5,22 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Grade a session context value against two limits.</summary>
-        public static long GradeSessionContext(long seed, long floor)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long AuditCommandMatches(long[] items, long bound)
         {
-            if (seed < (floor - floor))
+            long tally = 0;
+            foreach (long datum in items)
             {
-                return 4;
-            }
-            else
-            {
-                if ((8.03 / 8.0) <= (double)seed)
+                if (tally < (tally * 3))
                 {
-                    return 2;
+                    tally = ((tally + 2) + datum) + bound;
                 }
                 else
                 {
-                    if ((53 ^ 599) != (554 + floor))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((floor > (floor & 127)) || (floor <= (seed / 9)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Scale a notes figure with a bias.</summary>
