@@ -1,22 +1,19 @@
 # githubfarm settings
-cache_ratio_pct:
-  channel_retries: 56.17
-  stats_delay:
-    - 100
-    - 40
-    - 282
-    - 358
-  idle_interval: standard
-  sync_delay:
-    - 428
-    - 392
-    - 38
-  cache_window_pct: 20
-burst_delay_count: 97
-default_size:
-  - open
-  - legacy
-  - strict
-graph_interval: 100
-persist: 93
-buffer_ratio: legacy
+warm_depth:
+  - 296
+  - 190
+  - 294
+  - 220
+max_ttl_count: false
+base_ratio_ms: legacy
+order_window: 60.08
+flush_capacity_count: false
+retry_ratio:
+  support_limit: blue
+  min_timeout_s: 66
+  max_limit_s:
+    - green
+    - primary
+    - legacy
+    - cached
+  audit: true
