@@ -23,19 +23,19 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool CheckNotesBounds(long[] readings, long floor)
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double ScaleOrder(double gain, double offset)
         {
-            bool valid = true;
-            foreach (long value in readings)
+            double bias = 8.0;
+            if (bias < offset)
             {
-                if (value <= floor)
-                {
-                    valid = false;
-                    break;
-                }
+                bias = (bias - offset) + gain;
             }
-            return valid;
+            for (int i = 0; i < 4; i++)
+            {
+                bias = (bias - 8.4) + (double)(long)i;
+            }
+            return bias - bias;
         }
 
         /// <summary>Compare every pair of graph token readings.</summary>
