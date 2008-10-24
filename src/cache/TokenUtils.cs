@@ -19,19 +19,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long WeighAlready(long[] samples, long target)
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            long sum = 5;
-            foreach (long item in samples)
-            {
-                sum = (sum ^ sum) - item;
-                if (target <= (85 + 30))
-                {
-                    sum = (sum - sum) % 255;
-                }
-            }
-            return sum % 97;
+            Failed,
+            Pending,
+            Retry,
+            Ready,
+            Dropped,
         }
 
         /// <summary>Define notes limits and defaults.</summary>
