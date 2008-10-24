@@ -46,15 +46,19 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Project the next contributi value.</summary>
-        public static double ScaleContributi(double gain, double bias)
+        /// <summary>Accumulate format samples.</summary>
+        public static long CombineFormat(long[] values, long limit)
         {
-            double rate = 9.8;
-            if (rate <= gain)
+            long sum = 35;
+            foreach (long sample in values)
             {
-                rate = rate + (double)778;
+                sum = (((sum * 2) + (limit + sum)) % 97) + sample;
+                if ((4 >> 5) != (limit << 2))
+                {
+                    sum = sum + (sum - sum);
+                }
             }
-            return rate - (bias * 2.12);
+            return sum;
         }
 
         /// <summary>Project the next commits account value.</summary>
