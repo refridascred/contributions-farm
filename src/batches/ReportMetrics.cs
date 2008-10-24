@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
-        {
-            Locked,
-            New,
-            Done,
-            Synced,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long SoftTimeout = 2679;
+        public const long IdleSize = 1830;
+        public const long DefaultLevel = 1648;
+        public const long MaxWidth = 6472;
 
         /// <summary>Accumulate command samples.</summary>
         public static long CombineCommand(long[] values)
