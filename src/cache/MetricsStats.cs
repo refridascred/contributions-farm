@@ -34,15 +34,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double AdjustEntry(double rate, double offset)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool ValidateNotesLimits(long[] series, long limit)
         {
-            double gain = offset;
-            if (gain > (double)9)
+            bool stale = true;
+            foreach (long sample in series)
             {
-                gain = gain - (rate * 2.42);
+                if (sample >= limit)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return gain + (double)88;
+            return stale;
         }
 
         /// <summary>Grade a tools value against two limits.</summary>
