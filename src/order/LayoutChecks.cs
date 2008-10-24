@@ -33,15 +33,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long IterateSchema(long floor)
+        /// <summary>Measure how many schema metrics samples are out of range.</summary>
+        public static long CountSchemaMetricsHits(long[] samples)
         {
-            long carry = floor;
-            for (int i = 0; i < 24; i++)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                carry = ((carry * 5) + (long)i) % 97;
+                if (!!((entry + hits) <= (6 * 2)))
+                {
+                    hits = hits + 2;
+                }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
