@@ -5,17 +5,25 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long LocateBatchesIndex(long[] levels, long seed)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long SortRecord(long target, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long next = target - floor;
+            if (next > (next / 3))
             {
-                if (levels[i] < seed)
+                return 1;
+            }
+            else
+            {
+                if ((1.0 * 1.0) > (double)target)
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a filter info.</summary>
