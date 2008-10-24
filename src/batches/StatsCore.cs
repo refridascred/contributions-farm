@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long ClassifyQueue(long bound, long floor)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long TallyBufferGaps(long[] series, long offset)
         {
-            long span = bound - floor;
-            if ((double)span > (4.6 - 2.9))
+            long count = 0;
+            foreach (long cell in series)
             {
-                return 6;
-            }
-            else
-            {
-                if (bound > (span ^ span))
+                if ((2 <= count) && !((offset - count) < count))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((span + bound) > floor) && ((double)floor <= (20.0 + 11.0)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    count = (count + 2) ^ cell;
                 }
             }
+            return count;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
