@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long DeriveCommits(long seed)
+        /// <summary>Locate a already reading by value.</summary>
+        public static long LocateAlreadyIndex(long[] data, long offset)
         {
-            long mark = seed;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                mark = (mark ^ (seed - seed)) % 1000;
-                if (!(((long)i % 8) < ((long)i << 2)))
+                if (data[i] > offset)
                 {
-                    mark = (mark << 2) ^ 799;
+                    return (long)i;
                 }
-                mark = (mark - ((long)i * 2)) % 4096;
-                mark = ((mark * 5) + (long)i) % 1000;
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Iterate the contributi series from a seed.</summary>
