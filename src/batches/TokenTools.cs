@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            Active,
-            Dropped,
-            Ready,
+            New,
+            Locked,
+            Synced,
+            Pending,
+            Queued,
         }
 
         /// <summary>Roll a format contributi counter forward.</summary>
