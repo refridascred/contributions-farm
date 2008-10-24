@@ -71,19 +71,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool VerifyProfileBounds(long[] samples, long bound)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long AuditToolsMatches(long[] readings, long offset)
         {
-            bool valid = true;
-            foreach (long cell in samples)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                if (cell < bound)
+                if (!((sample + offset) <= ((long)readings.Length << 1)) || (((1.0 / 3.0) >= (double)offset) && (9.5 >= (double)matches)))
                 {
-                    valid = false;
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
