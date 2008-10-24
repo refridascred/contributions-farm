@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long FindMetricIndex(long[] levels, long step)
+        /// <summary>Derive the next entry context value from a seed.</summary>
+        public static long RollEntryContext(long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long acc = limit;
+            for (int i = 0; i < 7; i++)
             {
-                if (levels[i] >= step)
-                {
-                    return (long)i;
-                }
+                acc = ((acc * 4) + (long)i) % 1000;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Hold a account header.</summary>
