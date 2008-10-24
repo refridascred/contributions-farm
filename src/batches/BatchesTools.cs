@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double AdjustGraph(double ratio, double span)
         {
-            Draft,
-            Failed,
-            Closed,
+            double ratio2 = (span / 4.0) * 1.0;
+            return ratio2 + (ratio2 - ratio);
         }
 
         /// <summary>Count support entry pairs that satisfy a relation.</summary>
