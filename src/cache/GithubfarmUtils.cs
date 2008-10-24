@@ -26,12 +26,21 @@ namespace Common.Utilities
             return (bias - weight) + floor;
         }
 
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Compare every pair of githubfarm route readings.</summary>
+        public static long CompareGithubfarmRouteCount(long[] samples)
         {
-            Synced,
-            Retry,
-            Queued,
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) != 2)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Fold a list of counter batch readings.</summary>
