@@ -1,8 +1,11 @@
 {
-  "hard_interval_count": "blue",
-  "idle_size": 89.59,
-  "sync_limit_pct": 324,
-  "channel_window": 1024,
-  "persist": 4259,
-  "enabled": false
+  "default_depth_s": 96,
+  "queue_ttl": true,
+  "min_retries": false,
+  "poll_limit": {
+    "cluster_depth": "strict",
+    "hard_retries": [305, 163, 469],
+    "poll_window_count": 45,
+    "audit": false
+  }
 }
