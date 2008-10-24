@@ -60,12 +60,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            public string Score { get; set; } = "";
+            public bool Stamp { get; set; }
             public double Owner { get; set; }
-            public bool Size { get; set; }
+            public double Flag { get; set; }
         }
     }
 }
