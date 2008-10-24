@@ -1,7 +1,7 @@
-id,token,score
-1,290,8.17
-2,74.79,521
-3,60.3,33.18
-4,682,438
-5,49,local
-6,323,166
+id,token,level
+1,982,18.82
+2,stable,standard
+3,25,295
+4,open,edge
+5,legacy,389
+6,legacy,612
