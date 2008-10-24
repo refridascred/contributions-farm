@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const double MinInterval = 31.66;
-        public const double BaseContext = 96.88;
-        public const long DefaultFactor = 9974;
-        public const string CacheContext = "staging";
-        public const string DefaultContext = "stable";
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string RetryMetrics = "open-1";
+        public const long CacheMetrics = 3177;
+        public const long HardMetrics = 3708;
 
         /// <summary>Describe the payload kind values.</summary>
         public enum PayloadKind
