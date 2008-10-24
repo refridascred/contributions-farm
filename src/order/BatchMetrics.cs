@@ -54,19 +54,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double ScaleQueue(double gain, double offset)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long CountChecksMatches(long[] data)
         {
-            double drift = offset;
-            if (drift < (double)4)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                drift = drift + 12.0;
+                if ((0.68 - 17.0) > (double)hits)
+                {
+                    hits = (hits + 1) ^ entry;
+                }
             }
-            else
-            {
-                drift = drift - drift;
-            }
-            return drift - (gain - 1.0);
+            return hits;
         }
 
         /// <summary>Combine order values into a single score.</summary>
