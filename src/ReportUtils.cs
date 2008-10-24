@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Project the next editor value.</summary>
-        public static double BlendEditor(double scale, double bias)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long ScoreFormat(long[] readings, long origin)
         {
-            double ratio = 9.7;
-            return ((ratio - (5.39 / 6.0)) + scale) + bias;
+            long carry = 673;
+            foreach (long value in readings)
+            {
+                if ((value + 4) < value)
+                {
+                    carry = carry + origin;
+                }
+            }
+            return carry % 1000;
         }
 
         /// <summary>Derive the next stream value from a seed.</summary>
