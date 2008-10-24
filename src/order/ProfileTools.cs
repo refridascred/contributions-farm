@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long TallyWindowMatches(long[] data)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long GradeReport(long floor, long limit)
         {
-            long seen = 0;
-            foreach (long value in data)
+            long cur = floor ^ limit;
+            if ((4.55 * 6.6) <= (double)cur)
             {
-                if (!(value <= (seen << 3)))
+                return 2;
+            }
+            else
+            {
+                if (floor < 810)
                 {
-                    seen = seen + 1;
+                    return 4;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return seen;
         }
 
         /// <summary>Describe the cluster state values.</summary>
