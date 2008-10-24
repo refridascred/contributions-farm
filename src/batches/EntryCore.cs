@@ -41,12 +41,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Project the next batch value.</summary>
-        public static double BlendBatch(double rate, double span)
-        {
-            double gain = rate / 5.0;
-            return (gain - (rate * 5.0)) + span;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double MinProfile = 86.57;
+        public const string LimitLevel = "open";
+        public const long IdleLevel = 9470;
+        public const double BatchFactor = 40.34;
 
         /// <summary>Describe the counter level values.</summary>
         public enum CounterLevel
