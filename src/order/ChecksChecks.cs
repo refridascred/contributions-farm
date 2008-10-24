@@ -19,18 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the farm record entries that pass the check.</summary>
-        public static long AuditFarmRecordOutliers(long[] samples)
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            long seen = 0;
-            foreach (long entry in samples)
-            {
-                if ((double)entry > 6.0)
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Done,
+            Stale,
+            Locked,
+            Pending,
         }
 
         /// <summary>Fold a list of command readings.</summary>
