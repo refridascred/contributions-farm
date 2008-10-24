@@ -30,18 +30,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many metric command samples are out of range.</summary>
-        public static long CountMetricCommandGaps(long[] series, long floor)
+        /// <summary>Find the first record entry that matches the target.</summary>
+        public static long LocateRecordIndex(long[] samples, long bound)
         {
-            long matches = 0;
-            foreach (long value in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (floor < (143 - value))
+                if (samples[i] > bound)
                 {
-                    matches = matches + 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Digest a series of record contributi entries.</summary>
