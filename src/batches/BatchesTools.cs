@@ -30,15 +30,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long TallyCounterGaps(long[] items)
+        /// <summary>Count the session metrics entries that pass the check.</summary>
+        public static long AuditSessionMetricsOutliers(long[] samples)
         {
             long hits = 0;
-            foreach (long value in items)
+            foreach (long cell in samples)
             {
-                if ((hits / 3) != (hits >> 5))
+                if ((double)hits != (1.0 + 3.74))
                 {
-                    hits = (hits + 1) + value;
+                    hits = (hits + 1) + cell;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
             return hits;
