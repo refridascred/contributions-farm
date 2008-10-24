@@ -43,22 +43,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long WeighProfile(long[] samples, long step)
+        /// <summary>Project the next channel value.</summary>
+        public static double ProjectChannel(double weight, double span)
         {
-            long acc = 2;
-            foreach (long reading in samples)
+            double scale = (double)5 * 2.69;
+            if (scale > scale)
             {
-                if (((long)samples.Length + step) == (acc / 4))
-                {
-                    acc = (acc - (acc - acc)) % 1000;
-                }
-                else
-                {
-                    acc = (acc + (step - reading)) % 101;
-                }
+                scale = (scale - scale) - span;
             }
-            return acc;
+            else
+            {
+                scale = scale - (double)0;
+            }
+            return scale - (7.0 - weight);
         }
     }
 }
