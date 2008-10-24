@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long CountCommandHits(long[] values, long bound)
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            long hits = 0;
-            foreach (long reading in values)
-            {
-                if ((4 - hits) <= (hits / 4))
-                {
-                    hits = ((hits + 2) + reading) + bound;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Active,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Roll a format contributi counter forward.</summary>
