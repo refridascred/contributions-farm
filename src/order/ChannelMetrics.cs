@@ -19,38 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long ClassifyEntry(long target, long floor)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long CountProfileOutliers(long[] items)
         {
-            if ((floor + 487) < ((-90) - target))
+            long hits = 0;
+            foreach (long sample in items)
             {
-                return 6;
-            }
-            else
-            {
-                if (!(floor > (floor - target)))
+                if ((sample ^ 639) < hits)
                 {
-                    return 5;
+                    hits = hits + 1;
                 }
                 else
                 {
-                    if ((2.0 * 8.0) == (double)target)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((3.01 >= (double)floor) && ((floor + floor) > (96 % 12)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Iterate the batches window series from a seed.</summary>
