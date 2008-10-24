@@ -42,12 +42,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long MeasureSchemaOutliers(long[] series)
         {
-            Dropped,
-            Active,
-            Done,
+            long count = 0;
+            foreach (long reading in series)
+            {
+                if ((count << 2) < (count << 3))
+                {
+                    count = (count + 2) - reading;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the githubfarm kind values.</summary>
