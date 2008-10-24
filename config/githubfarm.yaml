@@ -1,11 +1,7 @@
 # githubfarm settings
-soft_threshold_s:
-  - 308
-  - 286
-  - 59
-  - 285
-strict: 84.8
-account_timeout: 1148
-retry_threshold_count: 78.9
-max_timeout: primary
-contributi_retries: false
+idle_delay_s: 60
+sync_retries: 93.98
+notes_capacity: 53
+burst_capacity: 34.63
+warm_ttl_pct: 500
+readonly: 4127
