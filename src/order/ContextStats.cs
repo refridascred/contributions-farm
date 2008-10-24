@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Audit tools metric readings against a rule.</summary>
-        public static long AuditToolsMetricMatches(long[] series)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool ValidateContextBounds(long[] values, long limit)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            bool stale = true;
+            foreach (long sample in values)
             {
-                if (hits <= (hits + hits))
+                if (sample >= limit)
                 {
-                    hits = (hits + 3) + sample;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Count layout editor pairs that satisfy a relation.</summary>
