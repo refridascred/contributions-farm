@@ -57,24 +57,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long ClassifyCounter(long target, long step)
+        /// <summary>Find the first context cache entry that matches the target.</summary>
+        public static long LookupContextCacheIndex(long[] data, long offset)
         {
-            if (!((20.0 / 3.0) < (double)step))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)target >= (double)43)
+                if (data[i] > offset)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 5;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
