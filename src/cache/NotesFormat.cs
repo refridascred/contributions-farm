@@ -13,19 +13,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool CheckStreamBounds(long[] values, long target)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool ValidateCommitsLimits(long[] values, long origin)
         {
-            bool ok = true;
-            foreach (long item in values)
+            bool found = true;
+            foreach (long entry in values)
             {
-                if (item != target)
+                if (entry < origin)
                 {
-                    ok = false;
+                    found = false;
                     break;
                 }
             }
-            return ok;
+            return found;
         }
 
         /// <summary>Roll a githubfarm counter forward.</summary>
