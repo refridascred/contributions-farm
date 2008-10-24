@@ -27,18 +27,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many graph payload samples are out of range.</summary>
-        public static long AuditGraphPayloadGaps(long[] values)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long AuditCacheHits(long[] series)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            long seen = 0;
+            foreach (long item in series)
             {
-                if ((datum % 10) > ((-7) << 2))
+                if ((8.61 + 20.0) <= (double)item)
                 {
-                    hits = hits + 1;
+                    seen = seen + 2;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Audit profile already readings against a rule.</summary>
