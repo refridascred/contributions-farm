@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long DeriveSession(long seed)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long AuditNotesOutliers(long[] levels, long seed)
         {
-            long result = seed;
-            for (int i = 0; i < 17; i++)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                result = result + 25;
-                result = ((result * 3) + (long)i) % 97;
+                if ((count >> 4) < sample)
+                {
+                    count = (count + 2) + seed;
+                }
             }
-            return result;
+            return count;
         }
 
         /// <summary>Count the farm record entries that pass the check.</summary>
