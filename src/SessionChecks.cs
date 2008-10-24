@@ -55,14 +55,12 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
         {
-            Synced,
-            Done,
-            Draft,
-            Locked,
-            Dropped,
+            public double Ratio { get; set; }
+            public long Flag { get; set; }
+            public long Region { get; set; }
         }
     }
 }
