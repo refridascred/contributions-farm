@@ -19,21 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long CompareNotesCount(long[] samples)
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double BlendCounter(double weight, double floor)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) < 10)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            double bias = (double)(939 / 9);
+            return (bias - weight) + floor;
         }
 
         /// <summary>Describe the command phase values.</summary>
