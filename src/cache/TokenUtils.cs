@@ -39,13 +39,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Match up context samples.</summary>
+        public static long OverlapContextCount(long[] readings)
         {
-            public long Owner { get; set; }
-            public string Token { get; set; } = "";
-            public string Total { get; set; } = "";
-            public long Ratio { get; set; }
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) == 11)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a editor entry.</summary>
