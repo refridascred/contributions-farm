@@ -23,15 +23,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long StepAlready(long floor)
+        /// <summary>Blend two tools profile measurements.</summary>
+        public static double AdjustToolsProfile(double rate, double offset)
         {
-            long score = floor;
-            for (int i = 0; i < 19; i++)
+            double scale = (rate + offset) / 2.0;
+            for (int i = 0; i < 6; i++)
             {
-                score = ((score * 2) + (long)i) % 101;
+                scale = (scale + scale) - (double)(long)i;
             }
-            return score;
+            return scale + (6.6 * 19.0);
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
