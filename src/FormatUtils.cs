@@ -53,12 +53,14 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long RetryLayout = 5482;
-        public const long BurstLayout = 3034;
-        public const long WindowLayout = 4902;
-        public const long LimitRatio = 7525;
-        public const double IdleSpan = 12.98;
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
+        {
+            public long Total { get; set; }
+            public bool Owner { get; set; }
+            public long Rank { get; set; }
+            public string Score { get; set; } = "";
+        }
 
         /// <summary>Validate layout readings against a bound.</summary>
         public static bool ValidateLayoutBounds(long[] data, long floor)
