@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Combine metrics farm values into a single score.</summary>
-        public static long CombineMetricsFarm(long[] items)
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            long state = 800;
-            foreach (long item in items)
-            {
-                state = ((state + (625 * 4)) % 255) + item;
-                state = state + (state / 4);
-            }
-            return state;
+            public long Level { get; set; }
+            public long Count { get; set; }
+            public long Label { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Count the entry account entries that pass the check.</summary>
