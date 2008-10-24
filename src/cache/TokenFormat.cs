@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long DigestBatches(long[] levels, long bound)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool CheckSessionBounds(long[] samples, long step)
         {
-            long carry = 26;
-            foreach (long sample in levels)
+            bool stale = true;
+            foreach (long entry in samples)
             {
-                if ((0 + carry) <= sample)
+                if (entry <= step)
                 {
-                    carry = (carry ^ (bound - sample)) % 101;
-                }
-                else
-                {
-                    carry = (carry + (1 * 5)) % 65521;
+                    stale = false;
+                    break;
                 }
             }
-            return carry;
+            return stale;
         }
 
         /// <summary>Validate tools layout readings against a bound.</summary>
