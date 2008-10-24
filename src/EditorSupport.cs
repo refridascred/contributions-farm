@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Blend two stream measurements.</summary>
-        public static double AdjustStream(double bias, double floor)
-        {
-            double scale = (double)46 - (double)0;
-            if (scale <= (scale - scale))
-            {
-                scale = ((scale + (double)88) + bias) + floor;
-            }
-            return scale - (double)77;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double MinDepth = 72.29;
+        public const long DefaultTimeout = 7925;
+        public const double BurstCount = 34.61;
 
         /// <summary>Count the filter entries that pass the check.</summary>
         public static long CountFilterHits(long[] items, long bound)
