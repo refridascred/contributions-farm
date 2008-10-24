@@ -42,13 +42,39 @@ namespace Common.Utilities
         public const long BaseBudget = 209;
         public const double BurstFactor = 17.83;
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long ClassifyChecks(long floor, long limit)
         {
-            public long Mode { get; set; }
-            public string Token { get; set; } = "";
-            public bool Count { get; set; }
-            public string Level { get; set; } = "";
+            long offset = floor ^ limit;
+            if ((offset >> 5) != (floor ^ limit))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((offset - offset) != (limit / 3))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (limit > (floor + limit))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)limit <= (15.0 / 9.0))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Audit cache commits readings against a rule.</summary>
