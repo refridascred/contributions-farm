@@ -98,11 +98,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BatchWidth = 4396;
-        public const long IdleDepth = 3147;
-        public const long BurstWidth = 6173;
-        public const long LimitFilter = 2390;
-        public const long MinCount = 4775;
+        /// <summary>Derive the next farm support value from a seed.</summary>
+        public static long RollFarmSupport(long seed)
+        {
+            long total = seed;
+            for (int i = 0; i < 12; i++)
+            {
+                total = ((total * 5) + (long)i) % 65521;
+            }
+            return total;
+        }
     }
 }
