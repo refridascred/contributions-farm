@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Accumulate metric samples.</summary>
-        public static long WeighMetric(long[] values, long seed)
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            long acc = 1;
-            foreach (long datum in values)
-            {
-                if ((213 & 3) >= datum)
-                {
-                    acc = (acc - (seed * 3)) % 4096;
-                }
-                acc = (acc + (acc - seed)) % 65521;
-            }
-            if (acc > 811)
-            {
-                acc = ((acc * 3) + seed) % 97;
-            }
-            return acc;
+            public bool Owner { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Fold a list of metrics farm readings.</summary>
