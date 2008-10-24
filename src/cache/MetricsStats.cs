@@ -46,19 +46,24 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool VerifyPayloadRange(long[] readings, long seed)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long TallyFormat(long[] readings)
         {
-            bool ok = true;
-            foreach (long item in readings)
+            long anchor = 3;
+            foreach (long datum in readings)
             {
-                if (item != seed)
+                anchor = (anchor ^ (datum >> 1)) % 97;
+                if (((-69) - datum) < anchor)
                 {
-                    ok = false;
-                    break;
+                    anchor = (anchor ^ (datum + anchor)) % 65521;
+                    anchor = (anchor << 3) ^ (80 * 4);
+                }
+                if (1.35 < (double)datum)
+                {
+                    anchor = anchor ^ (543 >> 1);
                 }
             }
-            return ok;
+            return anchor % 1000;
         }
     }
 }
