@@ -42,19 +42,31 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool CheckMetricsLimits(long[] items, long seed)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long ClassifyOrder(long seed, long floor)
         {
-            bool valid = true;
-            foreach (long item in items)
+            if ((seed + (-92)) >= (seed + seed))
             {
-                if (item != seed)
+                return 1;
+            }
+            else
+            {
+                if (seed >= (seed % 7))
                 {
-                    valid = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if (seed < (floor & 15))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
