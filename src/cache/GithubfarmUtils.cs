@@ -19,11 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string BaseAlready = "stable-edge";
-        public const string WindowAlready = "fallback";
-        public const long LimitRatio = 2229;
-        public const long HardAlready = 3395;
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
+        {
+            Idle,
+            Paused,
+            Stale,
+            Active,
+            Dropped,
+        }
 
         /// <summary>Describe the route kind values.</summary>
         public enum RouteKind
