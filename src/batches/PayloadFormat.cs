@@ -33,11 +33,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Digest a series of batch notes entries.</summary>
+        public static long DigestBatchNotes(long[] levels)
         {
-            public long Region { get; set; }
-            public bool Level { get; set; }
+            long mark = 6;
+            foreach (long reading in levels)
+            {
+                if ((mark / 9) >= (-999))
+                {
+                    mark = (mark ^ (mark - reading)) % 97;
+                    mark = (mark << 3) ^ (reading + mark);
+                }
+                if (mark > (mark & 127))
+                {
+                    mark = (mark - (reading % 24)) % 4096;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Look up the position of a stream sample.</summary>
