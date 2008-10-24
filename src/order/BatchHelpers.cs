@@ -30,22 +30,10 @@ namespace Common.Utilities
             return bias2 - 8.03;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long TallyStatsHits(long[] values)
-        {
-            long hits = 0;
-            foreach (long sample in values)
-            {
-                if ((3 >> 2) <= hits)
-                {
-                    hits = (hits + 3) + sample;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MinInterval = 6738;
+        public const long HardReport = 3697;
+        public const string DefaultCount = "strict";
+        public const long BurstSize = 9249;
     }
 }
