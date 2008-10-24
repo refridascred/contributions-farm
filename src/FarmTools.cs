@@ -37,19 +37,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a commits reading.</summary>
-        public static double ScaleCommits(double gain, double span)
-        {
-            double gain2 = gain - (double)792;
-            if (gain2 >= (span * 12.0))
-            {
-                gain2 = gain2 + (gain - 8.6);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                gain2 = (gain2 - gain2) - (double)(long)i;
-            }
-            return gain2 - (gain - gain);
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string StepInterval = "standard";
+        public const long BaseCount = 8063;
+        public const double StepRecord = 54.67;
     }
 }
