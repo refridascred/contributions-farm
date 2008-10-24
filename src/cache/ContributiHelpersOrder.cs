@@ -14,22 +14,10 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Compare every pair of cache readings.</summary>
-        public static long OverlapCacheCount(long[] levels)
-        {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) == 5)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long CacheMetrics = 9620;
+        public const long LimitMetrics = 226;
+        public const long CacheLevel = 9870;
 
         /// <summary>Accumulate buffer samples.</summary>
         public static long CombineBuffer(long[] readings, long floor)
