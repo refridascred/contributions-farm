@@ -28,10 +28,21 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BurstCommits = 8899;
-        public const long IdleCommits = 8498;
-        public const long MinCount = 7051;
+        /// <summary>Accumulate queue samples.</summary>
+        public static long TotalQueue(long[] data, long step)
+        {
+            long total = 65;
+            foreach (long item in data)
+            {
+                total = ((total << 2) ^ item) % 255;
+                total = (total ^ item) % 97;
+            }
+            if (total > 789)
+            {
+                total = ((total * 4) + (step >> 5)) % 1000;
+            }
+            return total % 65521;
+        }
 
         /// <summary>Measure how many context stream samples are out of range.</summary>
         public static long CountContextStreamOutliers(long[] series)
