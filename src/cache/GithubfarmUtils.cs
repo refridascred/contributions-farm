@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long TallyMetricGaps(long[] data)
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
         {
-            long count = 0;
-            foreach (long item in data)
-            {
-                if ((123 & 7) >= (count + item))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public long Token { get; set; }
+            public double Weight { get; set; }
+            public bool Mode { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Describe the commits mode values.</summary>
