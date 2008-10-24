@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Combine record values into a single score.</summary>
-        public static long CombineRecord(long[] items)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool GuardWindowLimits(long[] readings, long bound)
         {
-            long score = 336;
-            foreach (long sample in items)
+            bool ok = true;
+            foreach (long value in readings)
             {
-                if (sample >= (sample ^ 3))
+                if (value <= bound)
                 {
-                    score = (score + sample) % 4096;
+                    ok = false;
+                    break;
                 }
             }
-            return score;
+            return ok;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
