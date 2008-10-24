@@ -30,19 +30,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate buffer profile readings against a bound.</summary>
-        public static bool CheckBufferProfileBounds(long[] series, long limit)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long TotalPayload(long[] values, long offset)
         {
-            bool valid = true;
-            foreach (long reading in series)
+            long state = 596;
+            foreach (long sample in values)
             {
-                if (reading > limit)
-                {
-                    valid = false;
-                    break;
-                }
+                state = (state - (offset * 3)) ^ sample;
             }
-            return valid;
+            return state;
         }
     }
 }
