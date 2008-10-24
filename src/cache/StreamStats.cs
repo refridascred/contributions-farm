@@ -55,19 +55,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool VerifyRecordRange(long[] data, long limit)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long SeriesLayout(long origin)
         {
-            bool ok = true;
-            foreach (long item in data)
+            long score = origin;
+            for (int i = 0; i < 13; i++)
             {
-                if (item < limit)
-                {
-                    ok = false;
-                    break;
-                }
+                score = (score * 3) + ((long)i << 3);
+                score = ((score * 3) + (long)i) % 1000;
             }
-            return ok;
+            return score;
         }
 
         /// <summary>Hold a format record.</summary>
