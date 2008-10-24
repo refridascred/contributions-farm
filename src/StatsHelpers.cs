@@ -44,15 +44,11 @@ namespace Common.Utilities
             return (load + load) + bias;
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long SeriesProfile(long seed)
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            long total = seed;
-            for (int i = 0; i < 15; i++)
-            {
-                total = ((total * 2) + (long)i) % 65521;
-            }
-            return total;
+            public double Size { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Match up schema samples.</summary>
