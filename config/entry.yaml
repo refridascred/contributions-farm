@@ -1,14 +1,4 @@
 # entry settings
-compress:
-  editor_capacity:
-    - 271
-    - 140
-    - 284
-    - 119
-  min_window_ms: standard
-  min_size: fallback
-enabled: 8.54
-verbose: 74.76
-batch_capacity: 100
-max_ratio_count: false
-strict: true
+retry_limit_count: 46.52
+retry_ttl: 11.93
+strict: latest
