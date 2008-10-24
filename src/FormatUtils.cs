@@ -54,19 +54,15 @@ namespace Common.Utilities
         public const long IdleCluster = 1069;
         public const long WindowCluster = 2289;
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool VerifyGithubfarmBounds(long[] items, long step)
+        /// <summary>Accumulate window tools samples.</summary>
+        public static long TallyWindowTools(long[] levels, long target)
         {
-            bool flag = true;
-            foreach (long sample in items)
+            long mark = 0;
+            foreach (long entry in levels)
             {
-                if (sample > step)
-                {
-                    flag = false;
-                    break;
-                }
+                mark = ((mark - (mark * 5)) ^ entry) + target;
             }
-            return flag;
+            return mark;
         }
     }
 }
