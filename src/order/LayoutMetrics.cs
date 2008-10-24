@@ -30,11 +30,25 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double BatchLevel = 1.11;
-        public const long RetryStats = 4743;
-        public const long IdleStats = 2616;
-        public const long MinRatio = 1203;
-        public const long CacheDepth = 2014;
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long GradeNotes(long origin, long step)
+        {
+            long diff = origin ^ step;
+            if (21 < (origin - diff))
+            {
+                return 4;
+            }
+            else
+            {
+                if (diff >= (diff & 63))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
     }
 }
