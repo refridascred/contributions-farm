@@ -33,11 +33,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long IdleAlready = 7141;
-        public const string RetryAlready = "latest-1";
-        public const long LimitInterval = 4269;
-        public const double CacheAlready = 95.54;
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
+        {
+            public long Region { get; set; }
+            public bool Level { get; set; }
+        }
 
         /// <summary>Look up the position of a record sample.</summary>
         public static long SeekRecordIndex(long[] items, long limit)
