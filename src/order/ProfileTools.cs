@@ -36,19 +36,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool VerifyEditorBounds(long[] samples, long seed)
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            bool found = true;
-            foreach (long reading in samples)
-            {
-                if (reading != seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Active,
+            Queued,
+            Ready,
+            Draft,
         }
 
         /// <summary>Define schema limits and defaults.</summary>
