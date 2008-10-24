@@ -35,19 +35,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool GuardEditorLimits(long[] items, long offset)
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            bool flag = true;
-            foreach (long datum in items)
-            {
-                if (datum >= offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Idle,
+            Dropped,
+            Done,
         }
 
         /// <summary>Hold a format header.</summary>
