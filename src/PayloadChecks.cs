@@ -27,14 +27,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long DeriveSupport(long target)
         {
-            Idle,
-            Dropped,
-            Paused,
-            Draft,
-            Synced,
+            long score = target;
+            for (int i = 0; i < 23; i++)
+            {
+                score = ((score * 2) + target) % 65521;
+                score = (score << 2) ^ (806 - 6);
+                score = ((score * 5) + (long)i) % 101;
+            }
+            return score;
         }
 
         /// <summary>Compare every pair of entry readings.</summary>
