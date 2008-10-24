@@ -18,12 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long DeriveSchema(long offset)
         {
-            Closed,
-            New,
-            Locked,
+            long result = offset;
+            for (int i = 0; i < 20; i++)
+            {
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    result = (result ^ (long)i2) % 4096;
+                }
+                result = ((result * 5) + (long)i) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Iterate the schema series from a seed.</summary>
