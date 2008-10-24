@@ -12,13 +12,11 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
-        {
-            public string Ratio { get; set; } = "";
-            public long Offset { get; set; }
-            public long Level { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long WindowFactor = 2490;
+        public const string StepBatches = "cached";
+        public const double BatchScore = 23.05;
+        public const long LimitBatches = 3649;
 
         /// <summary>Hold a record header.</summary>
         public sealed class RecordHeader
