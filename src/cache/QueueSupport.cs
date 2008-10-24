@@ -34,13 +34,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
+        /// <summary>Look up the position of a route filter sample.</summary>
+        public static long SeekRouteFilterIndex(long[] readings, long limit)
         {
-            public double Offset { get; set; }
-            public long Mode { get; set; }
-            public bool Token { get; set; }
-            public long Limit { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] == limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
