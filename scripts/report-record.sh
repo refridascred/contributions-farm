@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-eu-west}"
+mode="${1:-standard}"
 case "${mode}" in
-    blue)
+    green)
         log "fast path"
         ;;
     *)
@@ -16,9 +16,8 @@ case "${mode}" in
         ;;
 esac
 
-for item in edge standard open primary; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 5); do
+    total=$((total + i * 2))
 done
-
-RECORD_LIMIT=453
-log "limit is ${RECORD_LIMIT}"
+log "total ${total}"
