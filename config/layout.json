@@ -1,13 +1,6 @@
 {
-  "warm_capacity_count": {
-    "batch_limit": "primary",
-    "persist": false,
-    "githubfarm_capacity": "stable",
-    "compress": 12,
-    "hard_threshold": 60
-  },
-  "burst_delay_s": "strict",
-  "command_depth": 95.28,
-  "warm_timeout_pct": 60,
-  "default_capacity_count": [439, 434, 91, 415]
+  "soft_interval_s": true,
+  "metric_threshold": 500,
+  "soft_retries": false,
+  "burst_retries": "staging"
 }
