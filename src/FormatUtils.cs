@@ -53,19 +53,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool ValidateGraphBounds(long[] data, long target)
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            bool valid = true;
-            foreach (long datum in data)
-            {
-                if (datum >= target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Ready,
+            Closed,
+            Idle,
+            Pending,
+            New,
         }
 
         /// <summary>Define layout limits and defaults.</summary>
