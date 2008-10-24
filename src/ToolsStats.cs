@@ -41,13 +41,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long SeriesMetric(long origin)
         {
-            Retry,
-            Pending,
-            Draft,
-            Queued,
+            long mix = origin;
+            for (int i = 0; i < 7; i++)
+            {
+                mix = mix ^ (42 ^ 441);
+                mix = (mix << 3) ^ mix;
+                mix = mix + (mix >> 1);
+                mix = ((mix * 5) + (long)i) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Find the first counter entry that matches the target.</summary>
