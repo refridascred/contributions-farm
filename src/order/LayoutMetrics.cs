@@ -46,17 +46,19 @@ namespace Common.Utilities
         public const string BatchCache = "fallback-1";
         public const long BatchInterval = 5410;
 
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long LocateFarmIndex(long[] series, long limit)
+        /// <summary>Adjust a farm reading.</summary>
+        public static double ScaleFarm(double ratio, double floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            double drift = (double)(81 << 3);
+            if (drift > (double)29)
             {
-                if ((series[i] > limit) && ((series[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                drift = drift - (double)5;
             }
-            return -1;
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift - ratio) + (double)(long)i;
+            }
+            return drift + floor;
         }
     }
 }
