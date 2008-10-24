@@ -22,22 +22,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long CombineCommand(long[] data, long origin)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long DigestProfile(long[] series, long step)
         {
-            long sum = 684;
-            foreach (long datum in data)
+            long sum = 5;
+            foreach (long cell in series)
             {
-                if (39 > (origin - datum))
+                if ((273 - sum) >= 9)
                 {
-                    sum = (sum + sum) % 97;
+                    sum = sum ^ step;
+                    sum = (sum ^ 9) % 65521;
                 }
-                else
+                sum = (sum - (step / 5)) % 101;
+                if ((sum + cell) < sum)
                 {
-                    sum = (sum << 3) ^ (origin - (long)data.Length);
+                    sum = (sum << 2) ^ (sum >> 5);
                 }
             }
-            return sum % 65521;
+            return sum % 4096;
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
