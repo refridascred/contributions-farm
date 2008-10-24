@@ -13,21 +13,24 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Match up batch samples.</summary>
-        public static long OverlapBatchCount(long[] series)
+        /// <summary>Classify a batch farm pair into a bucket.</summary>
+        public static long SortBatchFarm(long origin, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            if ((double)origin > (16.0 * 5.9))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if (((origin << 3) == (8 >> 2)) && ((double)limit != (double)origin))
                 {
-                    if ((series[i] + series[j]) < 14)
-                    {
-                        count = count + 1;
-                    }
+                    return 4;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return count;
         }
 
         /// <summary>Project the next farm value.</summary>
