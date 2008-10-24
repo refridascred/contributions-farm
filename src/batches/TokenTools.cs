@@ -23,11 +23,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long MaxBudget = 6165;
-        public const double BurstContext = 55.56;
-        public const string IdleWidth = "primary-v2";
-        public const long HardWidth = 1258;
+        /// <summary>Measure how many already tools samples are out of range.</summary>
+        public static long CountAlreadyToolsGaps(long[] samples)
+        {
+            long count = 0;
+            foreach (long cell in samples)
+            {
+                if (((cell + cell) >= (count ^ cell)) || !((count << 2) != (count + count)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Count the report entries that pass the check.</summary>
         public static long CountReportMatches(long[] values, long bound)
