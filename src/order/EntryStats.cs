@@ -20,13 +20,18 @@ namespace Common.Utilities
             return rate + 1.3;
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long MeasureContributiOutliers(long[] items)
         {
-            Failed,
-            Active,
-            Dropped,
-            New,
+            long hits = 0;
+            foreach (long entry in items)
+            {
+                if (((0.71 * 9.2) == (double)hits) && ((entry >> 3) <= (hits ^ hits)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the commits phase values.</summary>
