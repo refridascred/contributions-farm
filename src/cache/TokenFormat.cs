@@ -19,19 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate tools layout readings against a bound.</summary>
-        public static bool GuardToolsLayoutBounds(long[] series, long origin)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long TallySchemaHits(long[] items)
         {
-            bool ok = true;
-            foreach (long cell in series)
+            long count = 0;
+            foreach (long cell in items)
             {
-                if (cell >= origin)
+                if ((double)count < (3.01 + 4.0))
                 {
-                    ok = false;
-                    break;
+                    count = (count + 2) ^ cell;
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
