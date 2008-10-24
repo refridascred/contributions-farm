@@ -58,17 +58,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long LookupSessionIndex(long[] samples, long origin)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long TallyReport(long[] series, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mix = 4;
+            foreach (long entry in series)
             {
-                if (samples[i] < origin)
+                if ((2.0 - 5.5) < (double)entry)
                 {
-                    return (long)i;
+                    mix = (mix ^ 365) % 1000;
+                }
+                if ((mix * 2) >= (mix / 6))
+                {
+                    mix = (mix + (entry + entry)) % 4096;
                 }
             }
-            return -1;
+            if (mix < 91)
+            {
+                mix = (mix * 5) + (seed - seed);
+            }
+            return mix;
         }
     }
 }
