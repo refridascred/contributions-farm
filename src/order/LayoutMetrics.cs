@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            public string Rank { get; set; } = "";
-            public long Token { get; set; }
+            public string Mode { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public bool Region { get; set; }
         }
 
         /// <summary>Define tools limits and defaults.</summary>
