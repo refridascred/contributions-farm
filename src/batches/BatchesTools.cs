@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double AdjustGraph(double ratio, double span)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long DigestCommand(long[] readings)
         {
-            double ratio2 = (span / 4.0) * 1.0;
-            return ratio2 + (ratio2 - ratio);
+            long state = 2;
+            foreach (long entry in readings)
+            {
+                if (3.8 < (double)entry)
+                {
+                    state = (state + (state - state)) % 1000;
+                }
+            }
+            return state;
         }
 
         /// <summary>Count support entry pairs that satisfy a relation.</summary>
