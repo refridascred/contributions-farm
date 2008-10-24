@@ -54,13 +54,22 @@ namespace Common.Utilities
             return bias - (double)123;
         }
 
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
+        /// <summary>Accumulate queue cache samples.</summary>
+        public static long DigestQueueCache(long[] readings, long seed)
         {
-            public double Level { get; set; }
-            public bool Weight { get; set; }
-            public double Count { get; set; }
-            public long Stamp { get; set; }
+            long sum = 5;
+            foreach (long datum in readings)
+            {
+                if ((datum % 97) < (2 / 6))
+                {
+                    sum = ((sum ^ (sum - sum)) % 65521) + seed;
+                }
+                else
+                {
+                    sum = (sum - (sum << 3)) % 255;
+                }
+            }
+            return sum;
         }
     }
 }
