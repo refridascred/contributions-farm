@@ -20,21 +20,21 @@ namespace Common.Utilities
         public const string StepBudget = "latest-1";
         public const double SoftBudget = 97.11;
 
-        /// <summary>Match up token samples.</summary>
-        public static long PairTokenCount(long[] items)
+        /// <summary>Match up entry samples.</summary>
+        public static long OverlapEntryCount(long[] series)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    if ((items[i] - items[j]) > 17)
+                    if ((series[i] ^ series[j]) < 16)
                     {
-                        seen = seen + 1;
+                        count = count + 1;
                     }
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
