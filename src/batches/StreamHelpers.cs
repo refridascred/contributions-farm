@@ -35,11 +35,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            public long Region { get; set; }
-            public double Ratio { get; set; }
+            New,
+            Draft,
+            Retry,
         }
 
         /// <summary>Find the first order route entry that matches the target.</summary>
