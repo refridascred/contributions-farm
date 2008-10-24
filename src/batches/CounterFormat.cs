@@ -33,11 +33,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
-        {
-            public long Mode { get; set; }
-            public long Count { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BurstPayload = 5841;
+        public const string MaxPayload = "primary-1";
+        public const double BatchFactor = 22.92;
+        public const string WindowDepth = "legacy";
+        public const string RetryPayload = "fallback-v2";
     }
 }
