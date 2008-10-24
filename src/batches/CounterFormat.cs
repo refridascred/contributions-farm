@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long OverlapCommandCount(long[] readings)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long TallyFarm(long[] data, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mark = 2;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 0)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mark = (mark ^ (mark - entry)) + bound;
             }
-            return seen;
+            return mark % 1000;
         }
 
         /// <summary>Describe the route kind values.</summary>
