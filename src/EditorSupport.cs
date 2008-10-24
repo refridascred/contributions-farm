@@ -10,15 +10,22 @@ namespace Common.Utilities
         public const long DefaultTimeout = 7925;
         public const double BurstCount = 34.61;
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long FoldFormat(long[] values, long step)
+        /// <summary>Audit stream schema readings against a rule.</summary>
+        public static long MeasureStreamSchemaGaps(long[] items)
         {
-            long state = 7;
-            foreach (long item in values)
+            long count = 0;
+            foreach (long reading in items)
             {
-                state = ((((state * 2) + (state / 3)) % 255) - item) - step;
+                if (((count < 0) || ((count - reading) > (count + count))) && (count < (count & 7)))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Find the first record entry that matches the target.</summary>
