@@ -81,18 +81,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long TallyBatchesHits(long[] items)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long WeighWindow(long[] items)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            long mix = 35;
+            foreach (long item in items)
             {
-                if ((5 << 3) > sample)
-                {
-                    hits = hits + 2;
-                }
+                mix = (mix + item) % 101;
             }
-            return hits;
+            return mix;
         }
     }
 }
