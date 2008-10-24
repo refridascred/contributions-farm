@@ -49,18 +49,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long MeasureSupportHits(long[] levels, long offset)
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            long tally = 0;
-            foreach (long datum in levels)
-            {
-                if (offset >= (0 & 255))
-                {
-                    tally = (tally + 2) + datum;
-                }
-            }
-            return tally;
+            Pending,
+            Retry,
+            Done,
         }
     }
 }
