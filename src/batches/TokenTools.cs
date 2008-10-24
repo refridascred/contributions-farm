@@ -22,39 +22,16 @@ namespace Common.Utilities
         public const long SoftCache = 6190;
         public const long WindowLevel = 7556;
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long RankFormat(long seed, long origin)
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long RollStream(long limit)
         {
-            long slot = seed ^ origin;
-            if ((seed & 63) != (origin + slot))
+            long mark = limit;
+            for (int i = 0; i < 12; i++)
             {
-                return 1;
+                mark = mark ^ ((-77) >> 2);
+                mark = ((mark * 5) + (long)i) % 101;
             }
-            else
-            {
-                if ((883 << 3) <= (seed - slot))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)slot < (10.0 + 8.3))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((seed + seed) != (seed ^ 333)) && ((double)slot <= (double)seed))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            return mark;
         }
     }
 }
