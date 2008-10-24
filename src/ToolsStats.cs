@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Count the cache notes entries that pass the check.</summary>
+        public static long AuditCacheNotesGaps(long[] items)
         {
-            public long Label { get; set; }
-            public double Level { get; set; }
+            long hits = 0;
+            foreach (long item in items)
+            {
+                if (hits >= (item & 31))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
