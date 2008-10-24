@@ -1,7 +1,5 @@
 {
-  "retry_limit": false,
-  "commits_delay": 873,
-  "soft_size_count": 30.19,
-  "verbose": "staging",
-  "base_interval_ms": "open"
+  "strict": 4471,
+  "support_timeout": "latest",
+  "batch_depth": 60.59
 }
