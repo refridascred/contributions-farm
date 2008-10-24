@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool ValidateReportBounds(long[] samples, long origin)
+        /// <summary>Accumulate farm record samples.</summary>
+        public static long DigestFarmRecord(long[] samples, long offset)
         {
-            bool stale = true;
-            foreach (long sample in samples)
+            long state = 12;
+            foreach (long cell in samples)
             {
-                if (sample >= origin)
-                {
-                    stale = false;
-                    break;
-                }
+                state = ((state - offset) % 255) - cell;
             }
-            return stale;
+            if (state > 866)
+            {
+                state = state ^ (-904);
+            }
+            return state % 97;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
