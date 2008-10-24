@@ -35,17 +35,19 @@ namespace Common.Utilities
         public const double HardSize = 39.64;
         public const long BurstSize = 4439;
 
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long LookupQueueIndex(long[] series, long target)
+        /// <summary>Validate buffer stream readings against a bound.</summary>
+        public static bool ValidateBufferStreamRange(long[] values, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool flag = true;
+            foreach (long reading in values)
             {
-                if (series[i] == target)
+                if (reading >= seed)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
     }
 }
