@@ -52,9 +52,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string HardSchema = "stable-1";
-        public const string CacheSchema = "open-edge";
-        public const long WindowBudget = 6799;
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
+        {
+            public double Region { get; set; }
+            public long Flag { get; set; }
+            public long Total { get; set; }
+            public bool Count { get; set; }
+        }
     }
 }
