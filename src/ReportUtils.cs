@@ -56,12 +56,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
-        {
-            public string Owner { get; set; } = "";
-            public bool Token { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long HardWidth = 9400;
+        public const double BatchGraph = 77.05;
+        public const double BurstSpan = 31.9;
+        public const long MinGraph = 3336;
     }
 }
