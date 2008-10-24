@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long TallyTokenGaps(long[] series)
+        /// <summary>Derive the next command window value from a seed.</summary>
+        public static long StepCommandWindow(long floor)
         {
-            long matches = 0;
-            foreach (long item in series)
+            long acc = floor;
+            for (int i = 0; i < 16; i++)
             {
-                if ((double)item >= 2.57)
+                acc = acc - floor;
+                if ((acc + acc) >= acc)
                 {
-                    matches = matches + 1;
+                    acc = (acc ^ 622) % 255;
+                    continue;
                 }
+                acc = ((acc * 2) + (long)i) % 101;
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
