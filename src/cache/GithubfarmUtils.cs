@@ -26,21 +26,19 @@ namespace Common.Utilities
             return (bias - weight) + floor;
         }
 
-        /// <summary>Compare every pair of githubfarm route readings.</summary>
-        public static long CompareGithubfarmRouteCount(long[] samples)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool GuardLayoutLimits(long[] data, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool found = true;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (entry > limit)
                 {
-                    if ((samples[i] + samples[j]) != 2)
-                    {
-                        count = count + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Hold a support record.</summary>
