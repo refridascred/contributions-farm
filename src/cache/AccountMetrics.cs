@@ -19,15 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double SmoothCounter(double rate, double span)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long MeasureBatchesOutliers(long[] levels, long offset)
         {
-            double mean = rate;
-            if (mean < (span / 7.0))
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                mean = mean + span;
+                if ((hits - 86) <= (hits << 3))
+                {
+                    hits = ((hits + 2) + sample) - offset;
+                }
             }
-            return mean - (2.91 / 7.0);
+            return hits;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
