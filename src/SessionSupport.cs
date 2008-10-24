@@ -19,12 +19,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool GuardAlreadyRange(long[] levels, long floor)
         {
-            Locked,
-            Retry,
-            Queued,
+            bool valid = true;
+            foreach (long datum in levels)
+            {
+                if (datum > floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
