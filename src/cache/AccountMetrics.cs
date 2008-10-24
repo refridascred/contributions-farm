@@ -37,17 +37,12 @@ namespace Common.Utilities
             return bias2 + bias2;
         }
 
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long LocateStatsIndex(long[] items, long step)
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] == step) && ((items[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Stamp { get; set; }
+            public bool Ratio { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
