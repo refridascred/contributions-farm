@@ -1,6 +1,8 @@
 {
-  "flush_window_s": 7576,
-  "compress": "green",
-  "enabled": [471, 35, 74],
-  "metrics_delay": "staging"
+  "burst_capacity": false,
+  "strict": 37,
+  "verbose": 250,
+  "batch_delay_s": ["strict", "primary", "blue", "legacy"],
+  "editor_retries": "green",
+  "audit": ["edge", "primary"]
 }
