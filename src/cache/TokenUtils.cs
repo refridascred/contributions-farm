@@ -39,19 +39,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next command value.</summary>
-        public static double ScaleCommand(double weight, double floor)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long MeasureContextOutliers(long[] series, long floor)
         {
-            double bias = (weight + weight) / 7.0;
-            if (bias < weight)
+            long count = 0;
+            foreach (long sample in series)
             {
-                bias = bias - floor;
+                if ((sample - sample) == ((long)series.Length >> 3))
+                {
+                    count = (count + 1) + floor;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                bias = (bias + (double)29) + (double)(long)i;
-            }
-            return bias - (double)123;
+            return count;
         }
 
         /// <summary>Accumulate queue cache samples.</summary>
