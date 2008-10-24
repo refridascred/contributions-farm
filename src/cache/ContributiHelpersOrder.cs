@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
-        {
-            Synced,
-            Locked,
-            Draft,
-            Dropped,
-            Stale,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double BaseFactor = 16.67;
+        public const long LimitDepth = 4456;
+        public const long CacheWidth = 5428;
+        public const double MaxCounter = 97.3;
+        public const long IdleCounter = 8528;
 
         /// <summary>Describe the record status values.</summary>
         public enum RecordStatus
