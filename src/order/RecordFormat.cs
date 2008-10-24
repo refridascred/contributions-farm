@@ -60,12 +60,24 @@ namespace Common.Utilities
             return bias2 + (bias2 / 6.0);
         }
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long IterateBuffer(long seed)
         {
-            New,
-            Paused,
-            Retry,
+            long acc = seed;
+            for (int i = 0; i < 16; i++)
+            {
+                long edge = seed << 3;
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    acc = ((acc ^ (906 + 2)) % 97) ^ (long)i2;
+                }
+                if (((long)i ^ seed) >= (edge + seed))
+                {
+                    edge = (edge * 3) + (edge * 2);
+                }
+                acc = ((acc * 2) + (long)i) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Derive the next schema value from a seed.</summary>
