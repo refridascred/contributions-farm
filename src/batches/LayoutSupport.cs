@@ -46,15 +46,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long RollProfile(long limit)
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            long anchor = limit;
-            for (int i = 0; i < 16; i++)
-            {
-                anchor = ((anchor * 5) + (long)i) % 4093;
-            }
-            return anchor;
+            public string Size { get; set; } = "";
+            public double Owner { get; set; }
         }
 
         /// <summary>Project the next commits account value.</summary>
