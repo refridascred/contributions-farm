@@ -23,24 +23,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long SortReport(long origin, long floor)
+        /// <summary>Roll a already counter forward.</summary>
+        public static long StepAlready(long floor)
         {
-            if (((4.28 / 9.0) == (double)floor) && ((origin - floor) <= (origin % 8)))
+            long state = floor;
+            for (int i = 0; i < 17; i++)
             {
-                return 0;
+                state = (state << 3) ^ (38 << 3);
+                state = (state ^ floor) % 255;
+                state = ((state * 3) + (long)i) % 101;
             }
-            else
-            {
-                if (((origin % 7) <= origin) && ((floor - (-147)) <= floor))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            return state;
         }
 
         /// <summary>Match up checks entry samples.</summary>
