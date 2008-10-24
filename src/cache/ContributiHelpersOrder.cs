@@ -45,21 +45,13 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Match up tools samples.</summary>
-        public static long CompareToolsCount(long[] readings)
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) > 9)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Stale,
+            Idle,
+            Synced,
+            Ready,
         }
     }
 }
