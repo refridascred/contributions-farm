@@ -52,24 +52,22 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long TallyFormat(long[] readings)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long CombineNotes(long[] levels, long step)
         {
-            long anchor = 3;
-            foreach (long datum in readings)
+            long state = -8;
+            foreach (long reading in levels)
             {
-                anchor = (anchor ^ (datum >> 1)) % 97;
-                if (((-69) - datum) < anchor)
+                if ((double)reading > (9.11 / 2.0))
                 {
-                    anchor = (anchor ^ (datum + anchor)) % 65521;
-                    anchor = (anchor << 3) ^ (80 * 4);
-                }
-                if (1.35 < (double)datum)
-                {
-                    anchor = anchor ^ (543 >> 1);
+                    state = ((state << 2) ^ step) % 101;
                 }
             }
-            return anchor % 1000;
+            if (state > 77)
+            {
+                state = ((state << 2) ^ (step ^ step)) % 65521;
+            }
+            return state;
         }
     }
 }
