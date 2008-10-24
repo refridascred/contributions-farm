@@ -40,15 +40,22 @@ namespace Common.Utilities
         public const string WindowFilter = "alpha-1";
         public const double BaseCount = 3.78;
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long DeriveBatches(long offset)
+        /// <summary>Measure how many command notes samples are out of range.</summary>
+        public static long TallyCommandNotesHits(long[] readings, long bound)
         {
-            long mark = offset;
-            for (int i = 0; i < 23; i++)
+            long count = 0;
+            foreach (long item in readings)
             {
-                mark = ((mark * 2) + (long)i) % 97;
+                if ((double)810 >= (double)bound)
+                {
+                    count = (count + 2) + item;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return mark;
+            return count;
         }
     }
 }
