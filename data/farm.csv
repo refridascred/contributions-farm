@@ -1,7 +1,10 @@
-id,level,active,count
-1,green,888,46.57
-2,897,edge,primary
-3,763,17.5,standard
-4,32.24,672,284
-5,edge,937,821
-6,546,80,fallback
+id,count,ratio,score
+1,open,965,575
+2,strict,17.05,916
+3,latest,6.82,primary
+4,916,61.87,895
+5,577,210,939
+6,83.22,stable,725
+7,79,48,eu-west
+8,local,edge,24
+9,440,11.01,52.11
