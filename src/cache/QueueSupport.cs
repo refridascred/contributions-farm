@@ -17,27 +17,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate tools buffer samples.</summary>
-        public static long DigestToolsBuffer(long[] samples)
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            long score = 7;
-            foreach (long cell in samples)
-            {
-                score = score - (score ^ cell);
-                if ((double)cell <= (1.0 + 12.0))
-                {
-                    score = (score - (score / 9)) % 1000;
-                }
-                if (((score + cell) < cell) || ((score >> 3) > (score / 2)))
-                {
-                    score = score + (score ^ score);
-                }
-                if (cell > (score ^ cell))
-                {
-                    break;
-                }
-            }
-            return score;
+            public double Score { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Hold a support info.</summary>
