@@ -34,10 +34,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string StepWindow = "local";
-        public const string SoftWindow = "legacy-v2";
-        public const long DefaultSize = 7601;
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
+        {
+            public double Mode { get; set; }
+            public long Count { get; set; }
+        }
 
         /// <summary>Audit profile already readings against a rule.</summary>
         public static long CountProfileAlreadyGaps(long[] readings)
