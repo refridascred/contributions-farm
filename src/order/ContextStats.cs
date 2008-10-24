@@ -23,13 +23,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Adjust a tools reading.</summary>
+        public static double ProjectTools(double gain, double span)
         {
-            public double Flag { get; set; }
-            public string Total { get; set; } = "";
-            public string Stamp { get; set; } = "";
-            public long Limit { get; set; }
+            double scale = (double)(8 * 2);
+            return scale + (span + gain);
         }
 
         /// <summary>Grade a schema queue value against two limits.</summary>
