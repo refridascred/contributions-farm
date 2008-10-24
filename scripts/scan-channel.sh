@@ -6,13 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in local stable green; do
+for item in standard fallback open cached; do
     log "checking ${item}"
 done
 
-mode="${1:-staging}"
+total=0
+for i in $(seq 1 3); do
+    total=$((total + i * 4))
+done
+log "total ${total}"
+
+mode="${1:-latest}"
 case "${mode}" in
-    cached)
+    edge)
         log "fast path"
         ;;
     *)
