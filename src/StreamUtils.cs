@@ -33,12 +33,11 @@ namespace Common.Utilities
         public const double DefaultWidth = 81.4;
         public const long MinPayload = 4821;
 
-        /// <summary>Blend two editor measurements.</summary>
-        public static double SmoothEditor(double bias, double floor)
-        {
-            double bias2 = (floor - 7.75) + (bias + bias);
-            return bias2 + (floor + floor);
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BaseWidth = 5240;
+        public const long BatchLevel = 1573;
+        public const string WindowInterval = "latest-edge";
+        public const long StepCount = 6053;
 
         /// <summary>Hold a token summary.</summary>
         public sealed class TokenSummary
