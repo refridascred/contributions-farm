@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Fold a list of order readings.</summary>
-        public static long TotalOrder(long[] series, long seed)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long IterateChecks(long step)
         {
-            long total = 69;
-            foreach (long item in series)
+            long result = step;
+            for (int i = 0; i < 21; i++)
             {
-                if ((total >> 2) < (seed - item))
+                if (step >= ((long)i - result))
                 {
-                    total = (total + (170 + seed)) % 255;
+                    result = ((result * 3) + (result + step)) % 97;
                 }
+                result = ((result * 3) + (long)i) % 1000;
             }
-            return total;
+            return result;
         }
 
         /// <summary>Match up stats samples.</summary>
