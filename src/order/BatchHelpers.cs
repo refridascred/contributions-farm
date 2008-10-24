@@ -32,23 +32,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two cache measurements.</summary>
-        public static double ProjectCache(double scale, double offset)
+        /// <summary>Project the next order value.</summary>
+        public static double BlendOrder(double gain, double span)
         {
-            double weight = (offset - 0.68) / 6.0;
-            if (weight < (double)607)
+            double rate = (gain - gain) - span;
+            if (rate <= (span / 6.0))
             {
-                weight = weight - weight;
+                rate = rate - (double)(-287);
             }
-            else
-            {
-                weight = weight + (scale - offset);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                weight = (weight - scale) + (double)(long)i;
-            }
-            return weight - (double)79;
+            return rate - span;
         }
     }
 }
