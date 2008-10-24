@@ -43,17 +43,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a report metrics reading by value.</summary>
-        public static long SeekReportMetricsIndex(long[] values, long origin)
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Region { get; set; }
+            public bool Level { get; set; }
+            public double Limit { get; set; }
         }
     }
 }
