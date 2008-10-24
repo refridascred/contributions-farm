@@ -27,18 +27,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine account checks values into a single score.</summary>
-        public static long ScoreAccountChecks(long[] values, long target)
+        /// <summary>Derive the next stats stream value from a seed.</summary>
+        public static long StepStatsStream(long limit)
         {
-            long acc = 6;
-            foreach (long reading in values)
+            long sum = limit;
+            for (int i = 0; i < 10; i++)
             {
-                if ((37 + target) <= acc)
+                long tally = limit + (sum + (long)i);
+                if (tally >= (long)i)
                 {
-                    acc = ((acc ^ (target + target)) % 1000) + reading;
+                    sum = sum + limit;
+                    sum = ((sum << 2) ^ (tally << 3)) % 97;
                 }
+                tally = tally - (limit << 3);
+                sum = ((sum * 2) + (long)i) % 4093;
             }
-            return acc;
+            return sum;
         }
 
         /// <summary>Validate buffer notes readings against a bound.</summary>
