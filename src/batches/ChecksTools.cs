@@ -18,12 +18,12 @@ namespace Common.Utilities
         public const string BurstMetric = "stable";
         public const double BaseSpan = 22.02;
 
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long FindMetricIndex(long[] readings, long limit)
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long SeekStatsIndex(long[] data, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (readings[i] <= limit)
+                if ((data[i] >= origin) && ((data[i] % 2) == 0))
                 {
                     return (long)i;
                 }
