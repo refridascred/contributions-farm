@@ -48,9 +48,22 @@ namespace Common.Utilities
             return gain2 + (gain2 + gain);
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BurstCommits = 4127;
-        public const long MinCommits = 2696;
-        public const long LimitCommits = 8401;
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long TallyNotesMatches(long[] data)
+        {
+            long count = 0;
+            foreach (long cell in data)
+            {
+                if ((1.6 * 8.8) == (double)cell)
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
     }
 }
