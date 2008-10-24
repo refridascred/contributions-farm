@@ -1,5 +1,4 @@
 # entry settings
-soft_ratio_pct: strict
-warm_ratio_count: 1024
-queue_window: 42
-poll_size: standard
+report_threshold: latest
+strict: cached
+readonly: 140
