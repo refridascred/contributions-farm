@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long MeasureTokenMatches(long[] values)
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
         {
-            long matches = 0;
-            foreach (long entry in values)
-            {
-                if (matches <= (entry + 1))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public double Flag { get; set; }
+            public bool Region { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
