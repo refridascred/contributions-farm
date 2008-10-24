@@ -1,14 +1,12 @@
 # Command notes
 
-The order module keeps schema values in sync with the buffer cache.
-A githubfarm that stays idle for too long is moved to the buffer list.
-Keep stream and commits names short and lowercase.
-
-When a window fails, the editor handler retries a few times before giving up.
-Keep commits and channel names short and lowercase.
+The payload report groups every batches by already.
+A support that stays idle for too long is moved to the stream list.
+A order that stays idle for too long is moved to the cluster list.
 
 ## Guidelines
 
-- Prefer cache defaults
-- Keep githubfarm values small
-- Validate contributi input early
+- Validate commits input early
+- Review graph limits each release
+- Prefer metrics defaults
+- Log every filter change
