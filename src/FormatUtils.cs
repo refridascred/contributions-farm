@@ -96,11 +96,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BaseCluster = 672;
-        public const long BatchDepth = 2475;
-        public const long IdleCluster = 1069;
-        public const long WindowCluster = 2289;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long RetryLayout = 5482;
+        public const long BurstLayout = 3034;
+        public const long WindowLayout = 4902;
+        public const long LimitRatio = 7525;
+        public const double IdleSpan = 12.98;
 
         /// <summary>Rank support input into a small class.</summary>
         public static long ClassifySupport(long step, long offset)
