@@ -1,22 +1,8 @@
 {
-  "compress": {
-    "verbose": 73.39,
-    "stream_threshold": 24.81,
-    "retry_threshold": "green",
-    "idle_depth": "latest"
-  },
-  "flush_delay": 37,
-  "metrics_delay": 71,
-  "max_limit_count": {
-    "default_retries_ms": 14,
-    "layout_window": "fallback",
-    "idle_ttl_s": 50.28,
-    "readonly": {
-      "retry_ratio": 47.2,
-      "sync_delay_s": true,
-      "burst_window_ms": "green"
-    }
-  },
-  "support_size": 5287,
-  "queue_timeout": ["fallback", "fallback", "strict", "primary"]
+  "flush_retries_count": 100,
+  "min_capacity_pct": "latest",
+  "persist": 59.03,
+  "compress": [39, 238, 134],
+  "dry_run": 15.6,
+  "strict": 22.86
 }
