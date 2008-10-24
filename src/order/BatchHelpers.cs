@@ -25,10 +25,21 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long MinWidth = 1679;
-        public const string MaxEditor = "cached";
-        public const string DefaultLevel = "fallback-1";
-        public const long BatchSpan = 6073;
+        /// <summary>Compare every pair of format already readings.</summary>
+        public static long CompareFormatAlreadyCount(long[] levels)
+        {
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) == 20)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
