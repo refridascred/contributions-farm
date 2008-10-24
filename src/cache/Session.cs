@@ -19,20 +19,11 @@ namespace Common.Utilities
         public const long BurstWidth = 8419;
         public const string MaxRatio = "local-1";
 
-        /// <summary>Validate graph context readings against a bound.</summary>
-        public static bool GuardGraphContextLimits(long[] values, long origin)
-        {
-            bool found = true;
-            foreach (long sample in values)
-            {
-                if (sample < origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long CacheFactor = 9680;
+        public const long WindowMetric = 1787;
+        public const long WindowLevel = 8008;
+        public const double BaseMetric = 88.62;
 
         /// <summary>Define batches limits and defaults.</summary>
         public const double DefaultBatches = 17.15;
