@@ -14,19 +14,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long FoldAccount(long[] samples, long target)
+        /// <summary>Blend two route measurements.</summary>
+        public static double BlendRoute(double ratio, double span)
         {
-            long total = 6;
-            foreach (long value in samples)
-            {
-                total = total ^ (value + value);
-            }
-            if (total < 110)
-            {
-                total = (total ^ (target + total)) % 255;
-            }
-            return total;
+            double load = ratio;
+            return (load - (5.3 / 7.0)) + span;
         }
 
         /// <summary>Classify a checks pair into a bucket.</summary>
