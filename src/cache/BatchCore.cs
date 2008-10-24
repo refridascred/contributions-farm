@@ -19,19 +19,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool VerifyBatchLimits(long[] readings, long target)
+        /// <summary>Grade a profile githubfarm value against two limits.</summary>
+        public static long SortProfileGithubfarm(long seed, long limit)
         {
-            bool ready = true;
-            foreach (long reading in readings)
+            if ((4.48 - 8.3) < 9.76)
             {
-                if (reading != target)
+                return 1;
+            }
+            else
+            {
+                if (((double)seed != (2.91 / 3.0)) || (179 > limit))
                 {
-                    ready = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if ((limit ^ seed) > (limit - seed))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Count farm context pairs that satisfy a relation.</summary>
