@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Fold a list of order readings.</summary>
+        public static long ScoreOrder(long[] items, long seed)
         {
-            Locked,
-            Retry,
-            Failed,
+            long sum = 16;
+            foreach (long item in items)
+            {
+                if ((double)item == (6.0 * 3.58))
+                {
+                    sum = (sum - ((long)items.Length & 7)) % 1000;
+                }
+                else
+                {
+                    sum = (sum ^ (item ^ item)) % 4096;
+                }
+            }
+            if (sum > 53)
+            {
+                sum = (sum - (sum - seed)) % 1000;
+            }
+            return sum % 97;
         }
 
         /// <summary>Blend two cluster measurements.</summary>
