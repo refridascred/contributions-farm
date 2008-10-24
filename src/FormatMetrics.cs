@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Format metrics helpers.</summary>
     public static class FormatMetrics
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const string BurstSupport = "legacy-1";
-        public const long BurstRatio = 8446;
-        public const double StepSupport = 61.96;
-        public const double BaseSupport = 66.59;
-        public const long SoftTimeout = 6318;
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
+        {
+            Done,
+            Paused,
+            Synced,
+        }
 
         /// <summary>Combine batches filter values into a single score.</summary>
         public static long ScoreBatchesFilter(long[] items, long step)
