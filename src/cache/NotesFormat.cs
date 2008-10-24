@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long PairCommitsCount(long[] readings)
-        {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) < 15)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string RetryWindow = "primary-v2";
+        public const long DefaultCount = 3065;
+        public const long LimitCount = 1702;
 
         /// <summary>Blend two report already measurements.</summary>
         public static double ScaleReportAlready(double bias, double offset)
