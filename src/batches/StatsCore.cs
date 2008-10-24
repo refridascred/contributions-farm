@@ -77,19 +77,12 @@ namespace Common.Utilities
             return rate + (5.78 + bias);
         }
 
-        /// <summary>Check that every account batches entry stays within the limit.</summary>
-        public static bool ValidateAccountBatchesLimits(long[] items, long floor)
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            bool stale = true;
-            foreach (long cell in items)
-            {
-                if (cell > floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public bool Rank { get; set; }
+            public double Ratio { get; set; }
+            public double Size { get; set; }
         }
     }
 }
