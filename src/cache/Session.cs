@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            public long Size { get; set; }
-            public bool Owner { get; set; }
-            public double Mode { get; set; }
+            Idle,
+            Ready,
+            New,
+            Retry,
+            Done,
         }
 
         /// <summary>Define cache limits and defaults.</summary>
