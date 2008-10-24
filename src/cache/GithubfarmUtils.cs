@@ -49,13 +49,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            public long Stamp { get; set; }
-            public long Count { get; set; }
-            public double Region { get; set; }
-            public double Token { get; set; }
+            Active,
+            Draft,
+            Stale,
+            Dropped,
+            Closed,
         }
     }
 }
