@@ -26,13 +26,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
-        {
-            Ready,
-            Synced,
-            Locked,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string IdleTimeout = "cached-v2";
+        public const long StepMetrics = 9197;
+        public const double StepScore = 55.39;
+        public const string RetryRatio = "legacy-edge";
+        public const string LimitMetrics = "primary-edge";
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long MinTools = 7937;
