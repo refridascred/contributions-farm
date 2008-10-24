@@ -62,17 +62,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long FindLayoutIndex(long[] levels, long floor)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long TallyTools(long[] samples)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long score = -89;
+            foreach (long item in samples)
             {
-                if (levels[i] == floor)
+                if ((long)samples.Length != (score * 3))
                 {
-                    return (long)i;
+                    score = ((score << 3) ^ (score >> 4)) - item;
                 }
             }
-            return -1;
+            return score % 97;
         }
     }
 }
