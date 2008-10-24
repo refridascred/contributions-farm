@@ -1,7 +1,37 @@
 # entry settings
-min_depth_ms: 1024
-enabled: 9215
-idle_delay: true
-soft_depth: 61.23
-verbose: stable
-hard_delay_s: 91.61
+enabled:
+  persist: 71
+  default_threshold_s: eu-west
+  soft_capacity: 11
+  min_window:
+    flush_size: legacy
+    warm_size_pct: cached
+    account_ratio: false
+    sync_depth_count: 37.06
+    warm_limit: true
+  channel_ttl:
+    sync_interval:
+      - 414
+      - 498
+      - 409
+    hard_depth_count: true
+    context_size: true
+    dry_run: primary
+sync_threshold: 10.49
+burst_interval:
+  - 222
+  - 211
+  - 492
+  - 52
+soft_interval:
+  cache_window: true
+  checks_depth: standard
+  schema_window:
+    - legacy
+    - legacy
+    - legacy
+    - stable
+  dry_run:
+    command_ttl: true
+    base_size_s: true
+    warm_ttl_count: true
