@@ -38,22 +38,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long MeasureToolsHits(long[] values, long offset)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool VerifyRecordRange(long[] data, long limit)
         {
-            long seen = 0;
-            foreach (long value in values)
+            bool ok = true;
+            foreach (long item in data)
             {
-                if (offset <= value)
+                if (item < limit)
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Hold a format record.</summary>
