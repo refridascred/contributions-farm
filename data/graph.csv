@@ -1,8 +1,8 @@
-id,rank,count,active
-1,58.41,84,214
-2,28.64,latest,41
-3,713,68.28,46.2
-4,92.75,554,staging
-5,68.75,333,85.66
-6,blue,27.48,381
-7,18.74,local,73.8
+id,token,count,active
+1,eu-west,primary,35
+2,824,277,open
+3,27.51,81.36,144
+4,850,standard,34
+5,313,fallback,standard
+6,167,34.81,1.1
+7,590,920,153
