@@ -37,19 +37,18 @@ namespace Common.Utilities
         public const long MinInterval = 4284;
         public const long BurstCount = 4356;
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool CheckStreamBounds(long[] levels, long target)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long MeasureEntryHits(long[] values)
         {
-            bool ok = true;
-            foreach (long item in levels)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                if (item <= target)
+                if ((entry + matches) < (950 & 127))
                 {
-                    ok = false;
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return ok;
+            return matches;
         }
     }
 }
