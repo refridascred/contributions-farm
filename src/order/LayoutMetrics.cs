@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long MeasureContributiOutliers(long[] levels)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long FoldContributi(long[] data, long seed)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            long acc = 1;
+            foreach (long entry in data)
             {
-                if ((reading + matches) >= matches)
+                if (((acc << 2) > seed) || ((94 / 8) < entry))
                 {
-                    matches = matches + 3;
+                    acc = (acc + (seed - 56)) % 4096;
                 }
             }
-            return matches;
+            if (acc < 0)
+            {
+                acc = ((acc * 4) + (64 & 7)) % 255;
+            }
+            return acc;
         }
 
         /// <summary>Roll a already counter forward.</summary>
