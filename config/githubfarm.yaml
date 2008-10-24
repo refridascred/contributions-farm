@@ -1,19 +1,6 @@
 # githubfarm settings
-warm_depth:
-  - 296
-  - 190
-  - 294
-  - 220
-max_ttl_count: false
-base_ratio_ms: legacy
-order_window: 60.08
-flush_capacity_count: false
-retry_ratio:
-  support_limit: blue
-  min_timeout_s: 66
-  max_limit_s:
-    - green
-    - primary
-    - legacy
-    - cached
-  audit: true
+dry_run: 46.27
+checks_size: legacy
+readonly: 1778
+persist: latest
+compress: eu-west
