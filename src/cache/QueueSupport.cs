@@ -10,11 +10,13 @@ namespace Common.Utilities
         public const long DefaultMetrics = 2157;
         public const string IdleCount = "standard";
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            public bool Offset { get; set; }
-            public string Weight { get; set; } = "";
+            public double Size { get; set; }
+            public double Region { get; set; }
+            public double Level { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
