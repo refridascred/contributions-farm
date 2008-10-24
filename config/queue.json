@@ -1,8 +1,7 @@
 {
-  "readonly": [338, 262, 327, 198],
-  "channel_ttl": true,
-  "warm_timeout_ms": 30,
-  "idle_timeout": 73.75,
-  "strict": true,
-  "compress": 76
+  "compress": true,
+  "cache_interval_count": ["edge", "standard", "staging"],
+  "base_ttl": 10.14,
+  "base_timeout_pct": "primary",
+  "stream_timeout": false
 }
