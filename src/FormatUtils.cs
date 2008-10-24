@@ -26,21 +26,18 @@ namespace Common.Utilities
         public const long BaseWidth = 3196;
         public const long WindowInterval = 2722;
 
-        /// <summary>Compare every pair of commits tools readings.</summary>
-        public static long CompareCommitsToolsCount(long[] values)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long MeasureGraphGaps(long[] values, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long value in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((double)origin > 10.0)
                 {
-                    if ((values[i] + values[j]) > 16)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = (tally + 2) ^ value;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Hold a format header.</summary>
