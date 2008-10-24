@@ -58,24 +58,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long GradeContext(long offset, long limit)
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long FindNotesIndex(long[] samples, long target)
         {
-            if ((limit + limit) <= ((-236) % 8))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((5.58 / 4.0) != (double)offset)
+                if (samples[i] <= target)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
