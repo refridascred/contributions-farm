@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            public double Mode { get; set; }
-            public bool Ratio { get; set; }
-            public bool Rank { get; set; }
             public double Stamp { get; set; }
+            public string Label { get; set; } = "";
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Define cache limits and defaults.</summary>
