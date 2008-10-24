@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            public double Weight { get; set; }
-            public string Score { get; set; } = "";
+            Dropped,
+            Stale,
+            Pending,
         }
 
         /// <summary>Audit report readings against a rule.</summary>
