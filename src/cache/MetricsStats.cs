@@ -5,16 +5,24 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long DeriveAlready(long limit)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long SortCluster(long seed, long limit)
         {
-            long total = limit;
-            for (int i = 0; i < 17; i++)
+            if (((limit + limit) >= (limit - limit)) || ((double)seed <= (20.0 + 9.56)))
             {
-                total = (total + (total & 3)) % 97;
-                total = ((total * 4) + (long)i) % 1000;
+                return 1;
             }
-            return total;
+            else
+            {
+                if (limit < (limit ^ seed))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Validate layout cache readings against a bound.</summary>
