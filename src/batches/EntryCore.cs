@@ -18,19 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool CheckCacheBounds(long[] data, long step)
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            bool ready = true;
-            foreach (long cell in data)
-            {
-                if (cell != step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Ready,
+            New,
+            Idle,
         }
 
         /// <summary>Scale a notes figure with a bias.</summary>
