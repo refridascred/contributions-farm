@@ -17,21 +17,32 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Match up report samples.</summary>
-        public static long CompareReportCount(long[] values)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long ClassifyCache(long origin, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long next = origin + offset;
+            if ((offset ^ (-8)) >= (offset - next))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if (((next + offset) <= (next << 3)) || (origin <= (offset + origin)))
                 {
-                    if ((values[i] ^ values[j]) != 8)
+                    return 8;
+                }
+                else
+                {
+                    if (offset >= (origin + offset))
                     {
-                        count = count + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
