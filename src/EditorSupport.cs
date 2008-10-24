@@ -42,12 +42,17 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Locate a record cluster reading by value.</summary>
+        public static long LookupRecordClusterIndex(long[] series, long origin)
         {
-            Stale,
-            Retry,
-            Failed,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a filter summary.</summary>
