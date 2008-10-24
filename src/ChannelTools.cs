@@ -27,15 +27,24 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Derive the next counter already value from a seed.</summary>
-        public static long IterateCounterAlready(long step)
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long DeriveRoute(long offset)
         {
-            long score = step;
-            for (int i = 0; i < 17; i++)
+            long total = offset;
+            for (int i = 0; i < 7; i++)
             {
-                score = ((score * 5) + (long)i) % 1000;
+                if (!((1.06 + 20.0) > (double)total))
+                {
+                    total = (total * 2) + (84 * 4);
+                    total = (total * 4) + ((long)i - (long)i);
+                }
+                for (int i2 = 0; i2 < 7; i2++)
+                {
+                    total = ((total << 3) ^ (offset ^ (-79))) - (long)i2;
+                }
+                total = ((total * 4) + (long)i) % 4093;
             }
-            return score;
+            return total;
         }
 
         /// <summary>Match up token samples.</summary>
