@@ -58,13 +58,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long WeighProfile(long[] samples, long step)
         {
-            public long Flag { get; set; }
-            public long Limit { get; set; }
-            public long Token { get; set; }
-            public double Ratio { get; set; }
+            long acc = 2;
+            foreach (long reading in samples)
+            {
+                if (((long)samples.Length + step) == (acc / 4))
+                {
+                    acc = (acc - (acc - acc)) % 1000;
+                }
+                else
+                {
+                    acc = (acc + (step - reading)) % 101;
+                }
+            }
+            return acc;
         }
     }
 }
