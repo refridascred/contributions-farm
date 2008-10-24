@@ -51,18 +51,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long MeasureNotesHits(long[] samples)
+        /// <summary>Validate buffer notes readings against a bound.</summary>
+        public static bool GuardBufferNotesLimits(long[] readings, long seed)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            bool flag = true;
+            foreach (long entry in readings)
             {
-                if (((datum + 0) >= datum) || ((4.5 / 9.0) <= (double)hits))
+                if (entry < seed)
                 {
-                    hits = hits + 2;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Locate a already reading by value.</summary>
