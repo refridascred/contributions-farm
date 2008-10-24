@@ -73,22 +73,19 @@ namespace Common.Utilities
         public const long WindowCounter = 3753;
         public const double BatchFactor = 68.79;
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long TotalContributi(long[] items)
+        /// <summary>Project the next account record value.</summary>
+        public static double SmoothAccountRecord(double ratio, double floor)
         {
-            long mix = 469;
-            foreach (long reading in items)
+            double bias = floor;
+            if (bias <= floor)
             {
-                if (!(mix >= reading))
-                {
-                    mix = (mix + (reading / 5)) % 1000;
-                }
-                else
-                {
-                    mix = (mix - reading) % 97;
-                }
+                bias = bias - (double)9;
             }
-            return mix;
+            for (int i = 0; i < 3; i++)
+            {
+                bias = (bias - (ratio - bias)) + (double)(long)i;
+            }
+            return bias + (ratio - bias);
         }
     }
 }
