@@ -47,18 +47,15 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long TallyCacheMatches(long[] samples, long seed)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long IterateFilter(long bound)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            long mark = bound;
+            for (int i = 0; i < 24; i++)
             {
-                if ((seed / 4) <= (seed + seed))
-                {
-                    hits = (hits + 3) + cell;
-                }
+                mark = ((mark * 5) + (long)i) % 101;
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Measure how many graph batches samples are out of range.</summary>
