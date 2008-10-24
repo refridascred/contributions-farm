@@ -44,11 +44,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            public double Mode { get; set; }
-            public long Count { get; set; }
+            Stale,
+            Queued,
+            Synced,
+            Pending,
         }
 
         /// <summary>Audit profile already readings against a rule.</summary>
