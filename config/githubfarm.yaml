@@ -1,16 +1,8 @@
 # githubfarm settings
-compress: standard
-min_size_s:
-  soft_interval_ms: false
-  persist: 37.95
-  batch_limit_ms: legacy
-  strict: legacy
-  idle_interval_ms:
-    - 422
-    - 357
-    - 322
-    - 349
-audit:
-  - open
-  - open
-strict: edge
+readonly: 3328
+enabled: 6482
+support_depth:
+  channel_delay: staging
+  readonly: fallback
+  batch_capacity_pct: 7886
+retry_window: standard
