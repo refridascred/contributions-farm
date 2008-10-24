@@ -1,18 +1,9 @@
 # entry settings
-default_ttl_pct: 100
-batches_depth: strict
-batches_size:
-  verbose: 2175
-  commits_depth: blue
-  min_retries: primary
-  batches_interval:
-    - 472
-    - 167
-    - 166
-    - 479
-  compress:
-    cache_ratio_pct: 57
-    enabled: 86.93
-    soft_retries: eu-west
-    sync_depth: 30
-  sync_interval_pct: 27
+sync_size_pct: false
+batch_interval_count:
+  entry_interval: 72.9
+  retry_interval_pct: true
+  sync_ratio_ms: stable
+  layout_timeout: edge
+burst_retries_pct: open
+audit: true
