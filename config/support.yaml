@@ -1,4 +1,9 @@
 # support settings
-buffer_retries: strict
-dry_run: 100
-retry_limit_pct: 6442
+retry_capacity_ms:
+  - 70
+  - 16
+  - 224
+sync_ratio_count:
+  - standard
+  - local
+dry_run: 72
