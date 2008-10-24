@@ -12,14 +12,14 @@ namespace Common.Utilities
         public const string IdleTimeout = "alpha-v2";
         public const double MaxSpan = 86.61;
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            Active,
-            New,
+            Failed,
             Retry,
-            Pending,
-            Stale,
+            Done,
+            Draft,
+            Locked,
         }
 
         /// <summary>Accumulate editor account samples.</summary>
