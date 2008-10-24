@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long OverlapQueueCount(long[] levels)
+        /// <summary>Project the next token value.</summary>
+        public static double SmoothToken(double ratio, double bias)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) == 12)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            double weight = ratio;
+            return (weight - (4.6 / 2.0)) + bias;
         }
 
         /// <summary>Look up the position of a window sample.</summary>
