@@ -1,4 +1,10 @@
 # githubfarm settings
-stream_threshold: 68.19
-soft_timeout_pct: 29.07
-githubfarm_limit: 1024
+base_ratio_count: 500
+idle_depth_ms: 8.83
+verbose: 4447
+metrics_window: 1204
+burst_delay_s: edge
+idle_timeout_count:
+  - edge
+  - fallback
+  - green
