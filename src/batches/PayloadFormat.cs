@@ -27,11 +27,26 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long DigestCounter(long[] series)
         {
-            public bool Token { get; set; }
-            public string Size { get; set; } = "";
+            long anchor = 19;
+            foreach (long value in series)
+            {
+                if ((value % 64) > value)
+                {
+                    continue;
+                }
+                if ((anchor >> 5) == (anchor - value))
+                {
+                    anchor = (anchor << 2) ^ (value + value);
+                }
+                if ((double)8 != (double)anchor)
+                {
+                    break;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Look up the position of a record sample.</summary>
