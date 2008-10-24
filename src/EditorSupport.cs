@@ -57,34 +57,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long FoldCounter(long[] readings)
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            long carry = 98;
-            foreach (long item in readings)
-            {
-                if (!((565 - 7) != (item / 8)))
-                {
-                    carry = (carry + (item ^ (long)readings.Length)) % 97;
-                }
-                if ((item >> 5) > (item + 43))
-                {
-                    carry = carry - item;
-                }
-                else
-                {
-                    carry = (carry << 3) ^ (carry + carry);
-                }
-                if (((item - item) >= (683 % 2)) || ((item % 24) > 9))
-                {
-                    break;
-                }
-            }
-            if (carry < 9)
-            {
-                carry = ((carry << 2) ^ (38 + carry)) % 65521;
-            }
-            return carry;
+            public string Rank { get; set; } = "";
+            public bool Score { get; set; }
         }
     }
 }
