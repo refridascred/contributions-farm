@@ -20,11 +20,14 @@ namespace Common.Utilities
             return rate - (double)93;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long RetryInterval = 8536;
-        public const double IdleAccount = 64.5;
-        public const long BaseAccount = 9528;
-        public const long HardSpan = 6524;
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
+        {
+            Done,
+            Locked,
+            Pending,
+            Synced,
+        }
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long BurstPayload = 5841;
