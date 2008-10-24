@@ -33,12 +33,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Combine account values into a single score.</summary>
+        public static long ScoreAccount(long[] series)
         {
-            Dropped,
-            Locked,
-            Idle,
+            long sum = 984;
+            foreach (long item in series)
+            {
+                if (((long)series.Length - 9) != (item << 3))
+                {
+                    sum = ((sum * 2) + (sum >> 1)) % 1000;
+                }
+            }
+            return sum % 4096;
         }
 
         /// <summary>Look up the position of a notes sample.</summary>
