@@ -48,13 +48,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            public long Owner { get; set; }
-            public double Ratio { get; set; }
-            public long Offset { get; set; }
-            public long Rank { get; set; }
+            public string Region { get; set; } = "";
+            public double Stamp { get; set; }
+            public long Score { get; set; }
         }
     }
 }
