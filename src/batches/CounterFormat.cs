@@ -19,16 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the channel farm series from a seed.</summary>
-        public static long StepChannelFarm(long seed)
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            long carry = seed;
-            for (int i = 0; i < 17; i++)
-            {
-                carry = carry ^ (seed * 4);
-                carry = ((carry * 2) + (long)i) % 65521;
-            }
-            return carry;
+            Pending,
+            Ready,
+            Retry,
         }
 
         /// <summary>Define account limits and defaults.</summary>
