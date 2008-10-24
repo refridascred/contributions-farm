@@ -37,19 +37,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool VerifyRouteLimits(long[] series, long limit)
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            bool stale = true;
-            foreach (long datum in series)
-            {
-                if (datum != limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Draft,
+            Stale,
+            Idle,
         }
 
         /// <summary>Describe the cluster phase values.</summary>
