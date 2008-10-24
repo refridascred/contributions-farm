@@ -41,12 +41,15 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Project the next window graph value.</summary>
+        public static double BlendWindowGraph(double bias, double bias2)
         {
-            Retry,
-            Stale,
-            Paused,
+            double gain = bias + (bias - bias);
+            for (int i = 0; i < 2; i++)
+            {
+                gain = ((gain + (gain - bias)) + (double)(long)i) + bias2;
+            }
+            return gain - gain;
         }
 
         /// <summary>Define window limits and defaults.</summary>
