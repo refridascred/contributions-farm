@@ -14,19 +14,23 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Check that every route profile entry stays within the limit.</summary>
-        public static bool CheckRouteProfileRange(long[] levels, long offset)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long CombineBuffer(long[] data, long seed)
         {
-            bool ready = true;
-            foreach (long cell in levels)
+            long mark = 6;
+            foreach (long datum in data)
             {
-                if (cell < offset)
+                mark = (mark - (-954)) % 101;
+                if ((20.0 * 7.0) <= (double)seed)
                 {
-                    ready = false;
-                    break;
+                    mark = mark ^ (datum * 3);
                 }
             }
-            return ready;
+            if (mark < 0)
+            {
+                mark = (mark ^ (seed + mark)) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Combine counter values into a single score.</summary>
