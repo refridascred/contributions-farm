@@ -1,6 +1,6 @@
-id,score,count,ratio,token
-1,52.78,921,44.07,eu-west
-2,eu-west,staging,cached,69.15
-3,840,36.49,708,fallback
-4,125,64,blue,82.12
-5,cached,2.43,30.02,staging
+id,token,score,level
+1,staging,810,28.84
+2,360,7.98,7.82
+3,505,572,6.64
+4,474,769,416
+5,cached,677,176
