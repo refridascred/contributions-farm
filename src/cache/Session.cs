@@ -28,15 +28,18 @@ namespace Common.Utilities
         public const double HardSize = 39.64;
         public const long BurstSize = 4439;
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long RollFarm(long step)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long AuditSchemaMatches(long[] levels, long step)
         {
-            long carry = step;
-            for (int i = 0; i < 8; i++)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                carry = ((carry * 4) + (long)i) % 97;
+                if ((cell & 255) > ((-30) << 3))
+                {
+                    tally = (tally + 2) - step;
+                }
             }
-            return carry;
+            return tally;
         }
     }
 }
