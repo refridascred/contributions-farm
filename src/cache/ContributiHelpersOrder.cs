@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Rank order graph input into a small class.</summary>
-        public static long RankOrderGraph(long offset, long seed)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool ValidateWindowBounds(long[] data, long offset)
         {
-            if (295 > (offset % 2))
+            bool stale = true;
+            foreach (long sample in data)
             {
-                return 7;
-            }
-            else
-            {
-                if (((seed ^ seed) > seed) || ((offset / 3) > offset))
+                if (sample > offset)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Count the payload channel entries that pass the check.</summary>
