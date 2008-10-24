@@ -22,13 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long CountBatchesMatches(long[] items)
         {
-            public bool Rank { get; set; }
-            public string Label { get; set; } = "";
-            public long Limit { get; set; }
-            public double Flag { get; set; }
+            long hits = 0;
+            foreach (long cell in items)
+            {
+                if ((hits + 0) == (hits - cell))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
