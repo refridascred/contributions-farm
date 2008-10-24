@@ -37,9 +37,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long IdleAccount = 7589;
-        public const long MaxDepth = 7146;
-        public const string StepAccount = "strict-1";
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
+        {
+            public long Mode { get; set; }
+            public long Count { get; set; }
+        }
     }
 }
