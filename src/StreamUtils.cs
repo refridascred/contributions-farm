@@ -18,13 +18,22 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long TallyRouteGaps(long[] items)
         {
-            public long Level { get; set; }
-            public bool Rank { get; set; }
-            public long Mode { get; set; }
-            public double Count { get; set; }
+            long tally = 0;
+            foreach (long datum in items)
+            {
+                if ((tally ^ tally) > (tally - datum))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
