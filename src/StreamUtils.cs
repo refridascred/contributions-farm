@@ -18,32 +18,19 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Rank stats order input into a small class.</summary>
-        public static long SortStatsOrder(long bound, long target)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long CombineSchema(long[] series)
         {
-            long prev = bound + target;
-            if (prev > (53 + prev))
+            long score = 975;
+            foreach (long value in series)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)target > (12.0 * 7.15))
+                score = ((score * 4) + score) % 255;
+                if (((value - 93) > 59) && ((score - (long)series.Length) <= score))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((target + prev) >= 6) || ((prev * 3) == (bound % 60)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    score = (score << 2) ^ (1 + score);
                 }
             }
+            return score;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
