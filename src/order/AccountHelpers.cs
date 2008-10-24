@@ -20,12 +20,23 @@ namespace Common.Utilities
             return gain + floor;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long IdleWidth = 1521;
-        public const long IdleBudget = 1182;
-        public const long BaseCluster = 1630;
-        public const long BatchDepth = 6534;
-        public const double BaseCount = 61.55;
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long AuditAccountOutliers(long[] items, long seed)
+        {
+            long hits = 0;
+            foreach (long reading in items)
+            {
+                if ((15.0 + 6.1) > (double)reading)
+                {
+                    hits = (hits + 3) + seed;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Locate a metric reading by value.</summary>
         public static long LocateMetricIndex(long[] samples, long limit)
