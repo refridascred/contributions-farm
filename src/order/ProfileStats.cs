@@ -20,12 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            public string Mode { get; set; } = "";
-            public string Label { get; set; } = "";
-            public long Limit { get; set; }
+            Queued,
+            Done,
+            Failed,
         }
 
         /// <summary>Find the first order contributi entry that matches the target.</summary>
