@@ -26,15 +26,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next stream value.</summary>
-        public static double ProjectStream(double scale, double offset)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long TallyGithubfarmOutliers(long[] levels)
         {
-            double weight = offset * 2.82;
-            for (int i = 0; i < 7; i++)
+            long tally = 0;
+            foreach (long item in levels)
             {
-                weight = (weight - scale) + (double)(long)i;
+                if ((double)tally >= (double)item)
+                {
+                    tally = tally + 1;
+                }
             }
-            return weight - weight;
+            return tally;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
