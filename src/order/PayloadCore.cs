@@ -43,22 +43,12 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long TotalGraph(long[] samples)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            long sum = 61;
-            foreach (long entry in samples)
-            {
-                if (((entry - entry) > (sum - sum)) || ((double)sum <= 5.0))
-                {
-                    sum = (sum * 3) + (sum - entry);
-                }
-                if (!(entry >= (sum >> 1)))
-                {
-                    break;
-                }
-            }
-            return sum % 4096;
+            Queued,
+            Paused,
+            Active,
         }
     }
 }
