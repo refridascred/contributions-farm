@@ -31,19 +31,15 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool VerifyProfileRange(long[] series, long limit)
+        /// <summary>Project the next entry schema value.</summary>
+        public static double ScaleEntrySchema(double scale, double offset)
         {
-            bool ok = true;
-            foreach (long entry in series)
+            double rate = offset + offset;
+            for (int i = 0; i < 5; i++)
             {
-                if (entry <= limit)
-                {
-                    ok = false;
-                    break;
-                }
+                rate = ((rate - (17.0 - 1.3)) + (double)(long)i) + scale;
             }
-            return ok;
+            return rate + (0.5 + offset);
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
