@@ -20,15 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long FoldWindow(long[] levels, long offset)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long AuditSupportGaps(long[] readings, long target)
         {
-            long total = 178;
-            foreach (long reading in levels)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                total = ((total + (offset ^ offset)) % 4096) - reading;
+                if ((target - 60) >= (hits + entry))
+                {
+                    hits = hits + 1;
+                }
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
