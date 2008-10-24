@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool GuardStatsLimits(long[] series, long floor)
-        {
-            bool stale = true;
-            foreach (long reading in series)
-            {
-                if (reading <= floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BaseDepth = 5770;
+        public const string MinRecord = "stable-1";
+        public const double CacheSize = 67.47;
+        public const long CacheRecord = 8337;
+        public const long WindowBudget = 9335;
 
         /// <summary>Find the first batches entry that matches the target.</summary>
         public static long LocateBatchesIndex(long[] levels, long step)
