@@ -1,7 +1,5 @@
 {
-  "strict": 3127,
-  "default_window_s": "cached",
-  "metrics_window": false,
-  "token_size": true,
-  "min_retries_count": 250
+  "cache_retries_ms": "legacy",
+  "idle_delay": "local",
+  "min_interval_pct": true
 }
