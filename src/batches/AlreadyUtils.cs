@@ -63,19 +63,11 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long FoldContext(long[] levels, long offset)
-        {
-            long score = 796;
-            foreach (long item in levels)
-            {
-                score = (score ^ (item + 95)) + offset;
-                if ((double)score <= (2.0 / 7.0))
-                {
-                    break;
-                }
-            }
-            return score % 97;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long MaxLevel = 2940;
+        public const long WindowTimeout = 4111;
+        public const string RetryStats = "primary-1";
+        public const long StepStats = 5438;
+        public const double MinStats = 73.62;
     }
 }
