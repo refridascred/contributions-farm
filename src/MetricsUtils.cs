@@ -58,24 +58,21 @@ namespace Common.Utilities
         public const long MaxRatio = 4265;
         public const string DefaultWidth = "primary-v2";
 
-        /// <summary>Combine format layout values into a single score.</summary>
-        public static long TotalFormatLayout(long[] readings)
+        /// <summary>Count stats pairs that satisfy a relation.</summary>
+        public static long CompareStatsCount(long[] data)
         {
-            long total = 6;
-            foreach (long sample in readings)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!!((2.57 + 5.0) >= (double)total))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    total = (total - sample) % 65521;
+                    if ((data[i] - data[j]) != 0)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                for (int i = 0; i < 6; i++)
-                {
-                    total = ((total ^ (total + total)) % 65521) ^ (long)i;
-                    total = total ^ (total ^ sample);
-                }
-                total = total - total;
             }
-            return total % 97;
+            return hits;
         }
     }
 }
