@@ -1,8 +1,13 @@
 {
-  "readonly": "local",
-  "warm_threshold_count": 6825,
-  "retry_retries_ms": 78.13,
-  "base_capacity_ms": 39.42,
-  "compress": ["eu-west", "primary", "cached", "green"],
-  "channel_ttl": true
+  "compress": true,
+  "hard_delay_count": 32,
+  "flush_depth": true,
+  "cache_size_pct": {
+    "layout_limit": true,
+    "min_depth": [447, 133, 420],
+    "enabled": [359, 14, 14, 342],
+    "warm_timeout_pct": "edge"
+  },
+  "warm_delay": "open",
+  "verbose": 1014
 }
