@@ -54,12 +54,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            Closed,
-            Idle,
-            Stale,
+            public long Flag { get; set; }
+            public long Limit { get; set; }
+            public long Token { get; set; }
+            public double Ratio { get; set; }
         }
     }
 }
