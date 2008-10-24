@@ -14,22 +14,11 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Fold a list of entry cache readings.</summary>
-        public static long ScoreEntryCache(long[] readings, long seed)
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            long acc = 61;
-            foreach (long cell in readings)
-            {
-                if (!((cell + cell) < seed))
-                {
-                    acc = (acc << 3) ^ (916 + seed);
-                }
-                else
-                {
-                    acc = (acc * 3) + (seed - acc);
-                }
-            }
-            return acc % 65521;
+            public long Stamp { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Look up the position of a command sample.</summary>
