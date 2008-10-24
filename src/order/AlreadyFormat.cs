@@ -67,13 +67,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool ValidateStreamLimits(long[] data, long target)
         {
-            Retry,
-            Locked,
-            Ready,
-            Active,
+            bool ok = true;
+            foreach (long reading in data)
+            {
+                if (reading != target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
