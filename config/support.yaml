@@ -1,11 +1,19 @@
 # support settings
-enabled: local
-dry_run:
-  - 484
-  - 289
-  - 122
-cache_depth_ms:
-  poll_size_s: green
-  warm_timeout: 55.75
-  batch_size_ms: stable
-flush_retries_ms: 31.44
+soft_capacity_pct: blue
+persist:
+  queue_size:
+    retry_limit: 76
+    githubfarm_window: 89.87
+    base_ttl_ms: 9409
+  persist: 19
+  hard_interval_count: 27.29
+  already_window: 8568
+  commits_ttl: 49.9
+  compress:
+    - 114
+    - 128
+    - 147
+    - 160
+enabled: 9
+max_size: false
+token_retries: 1024
