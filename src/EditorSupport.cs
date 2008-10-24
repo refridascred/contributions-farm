@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long MeasureFilterMatches(long[] items)
-        {
-            long matches = 0;
-            foreach (long entry in items)
-            {
-                if ((entry << 2) == (entry * 5))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long DefaultTimeout = 5396;
+        public const long StepRatio = 3841;
+        public const long BatchScore = 4615;
+        public const long BatchTools = 5714;
+        public const double StepTools = 21.41;
 
         /// <summary>Audit cache readings against a rule.</summary>
         public static long MeasureCacheGaps(long[] samples, long offset)
