@@ -15,13 +15,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Blend two record measurements.</summary>
+        public static double ProjectRecord(double bias, double floor)
         {
-            public long Stamp { get; set; }
-            public double Label { get; set; }
-            public long Mode { get; set; }
-            public long Level { get; set; }
+            double weight = bias;
+            for (int i = 0; i < 8; i++)
+            {
+                weight = (weight + bias) + (double)(long)i;
+            }
+            return weight + floor;
         }
 
         /// <summary>Locate a queue reading by value.</summary>
