@@ -45,25 +45,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long SortPayload(long floor, long bound)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool GuardToolsBounds(long[] data, long limit)
         {
-            long delta = floor + bound;
-            if (((delta * 5) >= (delta * 2)) || ((delta / 3) >= 2))
+            bool found = true;
+            foreach (long item in data)
             {
-                return 8;
-            }
-            else
-            {
-                if (!((double)bound == (16.0 / 3.0)))
+                if (item > limit)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
