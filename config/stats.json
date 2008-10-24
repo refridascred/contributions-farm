@@ -1,5 +1,7 @@
 {
-  "sync_size": ["strict", "green", "blue", "primary"],
-  "verbose": [451, 141, 258, 80],
-  "default_size_ms": 89
+  "entry_threshold": 95.61,
+  "verbose": 9487,
+  "compress": 78,
+  "channel_capacity": 60,
+  "base_depth": true
 }
