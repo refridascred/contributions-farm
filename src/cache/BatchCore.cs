@@ -20,11 +20,21 @@ namespace Common.Utilities
             return scale2 + (scale * 8.0);
         }
 
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long OverlapContextCount(long[] series)
         {
-            public double Offset { get; set; }
-            public long Score { get; set; }
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) < 18)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the queue state values.</summary>
