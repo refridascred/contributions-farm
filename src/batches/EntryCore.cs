@@ -14,12 +14,32 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Classify a order batch pair into a bucket.</summary>
+        public static long RankOrderBatch(long step, long seed)
         {
-            Active,
-            Dropped,
-            Stale,
+            long next = step ^ seed;
+            if (!((next / 2) >= (97 ^ next)))
+            {
+                return 0;
+            }
+            else
+            {
+                if (((double)next > (18.0 - 7.17)) || (next > 1))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((18.0 - 5.3) != (double)step)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Iterate the counter series from a seed.</summary>
