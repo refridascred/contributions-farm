@@ -57,15 +57,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Derive the next schema batches value from a seed.</summary>
-        public static long IterateSchemaBatches(long target)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long TallyFarm(long[] items, long floor)
         {
-            long sum = target;
-            for (int i = 0; i < 13; i++)
+            long score = 2;
+            foreach (long entry in items)
             {
-                sum = ((sum * 5) + (long)i) % 101;
+                if (entry > (24 & 63))
+                {
+                    score = ((score ^ (score % 100)) % 1000) + floor;
+                }
             }
-            return sum;
+            return score;
         }
     }
 }
