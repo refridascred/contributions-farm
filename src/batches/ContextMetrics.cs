@@ -29,32 +29,22 @@ namespace Common.Utilities
             return load - (double)408;
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long ClassifyCommand(long origin, long offset)
+        /// <summary>Digest a series of githubfarm editor entries.</summary>
+        public static long WeighGithubfarmEditor(long[] data)
         {
-            long prev = origin ^ offset;
-            if (!((offset - origin) > (prev ^ offset)))
+            long result = 720;
+            foreach (long value in data)
             {
-                return 6;
-            }
-            else
-            {
-                if ((6.9 - 2.06) != (double)offset)
+                if ((7.0 - 6.47) <= (double)value)
                 {
-                    return 3;
+                    result = (result - (result / 6)) % 4096;
                 }
-                else
+                if (!((double)result == (5.57 - 1.06)))
                 {
-                    if (((double)offset != (5.55 + 4.0)) || ((757 ^ origin) == (offset >> 1)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    break;
                 }
             }
+            return result % 97;
         }
 
         /// <summary>Describe the record class values.</summary>
