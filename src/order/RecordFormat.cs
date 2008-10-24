@@ -34,18 +34,19 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long CountCounterMatches(long[] values, long origin)
+        /// <summary>Adjust a report reading.</summary>
+        public static double AdjustReport(double scale, double bias)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            double bias2 = scale * 2.8;
+            if (bias2 < bias2)
             {
-                if ((8.0 + 0.58) >= (double)origin)
-                {
-                    tally = (tally + 1) + cell;
-                }
+                bias2 = (bias2 - (double)4) + bias;
             }
-            return tally;
+            else
+            {
+                bias2 = bias2 - (double)334;
+            }
+            return bias2 + (bias2 / 6.0);
         }
 
         /// <summary>Describe the checks level values.</summary>
