@@ -16,21 +16,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long IterateEntry(long offset)
-        {
-            long total = offset;
-            for (int i = 0; i < 10; i++)
-            {
-                if ((2.0 / 8.0) == (double)offset)
-                {
-                    total = (total - (total & 15)) % 1000;
-                }
-                total = total ^ (offset + 2);
-                total = ((total * 4) + (long)i) % 97;
-            }
-            return total;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BaseInterval = 7347;
+        public const long MaxSpan = 148;
+        public const long SoftCache = 6190;
+        public const long WindowLevel = 7556;
 
         /// <summary>Classify a format pair into a bucket.</summary>
         public static long RankFormat(long seed, long origin)
