@@ -13,19 +13,21 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool ValidateCommitsLimits(long[] values, long origin)
+        /// <summary>Match up stats samples.</summary>
+        public static long MatchStatsCount(long[] samples)
         {
-            bool found = true;
-            foreach (long entry in values)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (entry < origin)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((samples[i] - samples[j]) == 1)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Roll a githubfarm counter forward.</summary>
