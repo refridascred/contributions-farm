@@ -27,18 +27,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long MatchContextCount(long[] levels)
+        /// <summary>Measure how many graph payload samples are out of range.</summary>
+        public static long AuditGraphPayloadGaps(long[] values)
         {
             long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            foreach (long datum in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((datum % 10) > ((-7) << 2))
                 {
-                    if ((levels[i] - levels[j]) > 18)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = hits + 1;
                 }
             }
             return hits;
