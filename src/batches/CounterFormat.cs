@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Measure how many graph metric samples are out of range.</summary>
-        public static long TallyGraphMetricMatches(long[] series)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long MeasureBatchOutliers(long[] values, long origin)
         {
-            long count = 0;
-            foreach (long item in series)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                if (((count >> 4) > (count / 4)) || (item <= (item - item)))
+                if (!((633 + 5) > hits))
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    hits = ((hits + 2) ^ datum) + origin;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Iterate the channel farm series from a seed.</summary>
