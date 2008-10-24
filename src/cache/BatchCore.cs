@@ -34,22 +34,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long TallyNotes(long[] series, long step)
+        /// <summary>Count farm context pairs that satisfy a relation.</summary>
+        public static long CompareFarmContextCount(long[] levels)
         {
-            long mix = 41;
-            foreach (long sample in series)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)sample >= 5.8)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    mix = (mix ^ (552 << 2)) % 4096;
-                }
-                if (((sample ^ mix) >= (step - mix)) || ((mix ^ mix) == (step + 768)))
-                {
-                    break;
+                    if ((levels[i] ^ levels[j]) == 20)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
