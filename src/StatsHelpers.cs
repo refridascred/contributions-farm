@@ -14,32 +14,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Classify a commits token pair into a bucket.</summary>
-        public static long ClassifyCommitsToken(long origin, long bound)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool VerifyTokenBounds(long[] readings, long target)
         {
-            long lane = origin + bound;
-            if (lane < (bound * 5))
+            bool stale = true;
+            foreach (long cell in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if ((lane * 3) >= (lane + 9))
+                if (cell <= target)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((2.0 / 6.0) <= (8.0 / 8.0))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Hold a counter entry.</summary>
