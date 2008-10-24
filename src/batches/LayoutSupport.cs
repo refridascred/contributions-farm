@@ -20,19 +20,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate checks payload readings against a bound.</summary>
-        public static bool GuardChecksPayloadRange(long[] samples, long bound)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long CountBatchesMatches(long[] levels, long bound)
         {
-            bool found = true;
-            foreach (long item in samples)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                if (item <= bound)
+                if ((bound + 713) > (count / 6))
                 {
-                    found = false;
-                    break;
+                    count = (count + 3) + cell;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Hold a queue summary.</summary>
