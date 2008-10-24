@@ -1,7 +1,9 @@
 # entry settings
-batch_ratio_count: 38.74
-base_delay_s: stable
-payload_capacity:
+compress: 96.4
+farm_window: 14.2
+audit: 1934
+cache_interval:
   - primary
-  - open
-  - stable
+  - cached
+sync_depth_ms: 1024
+account_depth: cached
