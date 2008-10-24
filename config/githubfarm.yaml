@@ -1,6 +1,7 @@
 # githubfarm settings
-dry_run: 46.27
-checks_size: legacy
-readonly: 1778
-persist: latest
-compress: eu-west
+min_depth_ms: local
+min_ttl_s: 13
+entry_ratio: 43.48
+sync_delay_count: local
+tools_threshold: 59.62
+session_ttl: 86.37
