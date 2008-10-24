@@ -24,15 +24,15 @@ namespace Common.Utilities
         public const double StepChecks = 89.29;
         public const double BurstScore = 1.29;
 
-        /// <summary>Digest a series of format record entries.</summary>
-        public static long CombineFormatRecord(long[] samples)
+        /// <summary>Project the next entry value.</summary>
+        public static double ProjectEntry(double rate, double span)
         {
-            long score = 3;
-            foreach (long item in samples)
+            double bias = (double)(9 / 6);
+            for (int i = 0; i < 9; i++)
             {
-                score = (score - ((-72) + score)) - item;
+                bias = ((bias - span) + (double)(long)i) + rate;
             }
-            return score % 1000;
+            return bias + (bias - 9.2);
         }
 
         /// <summary>Measure how many commits route samples are out of range.</summary>
