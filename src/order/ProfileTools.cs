@@ -39,10 +39,20 @@ namespace Common.Utilities
         public const string MinInterval = "local-v2";
         public const string MaxRatio = "strict";
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long HardCount = 6026;
-        public const double SoftRatio = 93.02;
-        public const long LimitSize = 4887;
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool GuardCacheLimits(long[] levels, long floor)
+        {
+            bool ok = true;
+            foreach (long reading in levels)
+            {
+                if (reading <= floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Hold a order entry.</summary>
         public sealed class OrderEntry
