@@ -1,13 +1,11 @@
 # Command notes
 
-Run the report check before changing any token limits.
-When a route fails, the token handler retries a few times before giving up.
-
-The checks helpers are pure functions, so they are safe to call from any thread.
-When a channel fails, the record handler retries a few times before giving up.
+Each metrics is validated before it reaches the farm queue.
+Each payload is validated before it reaches the githubfarm queue.
 
 ## Guidelines
 
-- Document new layout fields
-- Prefer buffer defaults
-- Keep commits values small
+- Log every cluster change
+- Keep queue values small
+- Document new queue fields
+- Prefer layout defaults
