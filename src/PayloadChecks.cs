@@ -82,15 +82,21 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Blend two stream already measurements.</summary>
-        public static double ScaleStreamAlready(double weight, double offset)
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long OverlapFormatCount(long[] data)
         {
-            double bias = (8.0 - 5.7) - offset;
-            if (bias > (double)(-902))
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                bias = (bias + (bias - 6.0)) + weight;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) > 10)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return bias + (double)17;
+            return seen;
         }
     }
 }
