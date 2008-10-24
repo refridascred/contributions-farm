@@ -42,18 +42,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Audit profile already readings against a rule.</summary>
-        public static long CountProfileAlreadyGaps(long[] readings)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long TallyClusterMatches(long[] series)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                if ((matches + 97) >= (value & 3))
+                if ((double)datum > (double)tally)
                 {
-                    matches = matches + 2;
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Hold a editor options.</summary>
