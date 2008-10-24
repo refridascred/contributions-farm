@@ -5,25 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Rank notes filter input into a small class.</summary>
-        public static long RankNotesFilter(long offset, long floor)
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            long step = offset - floor;
-            if (((double)offset == (double)floor) || ((50 * 3) <= floor))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((96 - step) < floor)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            Pending,
+            Failed,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Describe the context status values.</summary>
