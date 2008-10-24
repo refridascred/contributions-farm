@@ -33,22 +33,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine already batches values into a single score.</summary>
-        public static long TotalAlreadyBatches(long[] data)
+        /// <summary>Match up cluster samples.</summary>
+        public static long PairClusterCount(long[] readings)
         {
-            long sum = 0;
-            foreach (long reading in data)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((reading ^ reading) > (reading / 7))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    sum = (sum * 2) + ((long)data.Length + sum);
-                }
-                else
-                {
-                    sum = ((sum << 3) ^ (reading % 24)) % 65521;
+                    if ((readings[i] ^ readings[j]) > 4)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return sum % 97;
+            return seen;
         }
 
         /// <summary>Look up the position of a stream sample.</summary>
