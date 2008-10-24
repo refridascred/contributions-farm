@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            public long Score { get; set; }
-            public long Offset { get; set; }
-            public double Count { get; set; }
-            public bool Label { get; set; }
+            New,
+            Stale,
+            Queued,
+            Retry,
+            Closed,
         }
 
         /// <summary>Project the next counter value.</summary>
