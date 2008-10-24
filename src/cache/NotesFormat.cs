@@ -10,19 +10,18 @@ namespace Common.Utilities
         public const long DefaultCount = 3065;
         public const long LimitCount = 1702;
 
-        /// <summary>Blend two report already measurements.</summary>
-        public static double ScaleReportAlready(double bias, double offset)
+        /// <summary>Count the batch contributi entries that pass the check.</summary>
+        public static long CountBatchContributiMatches(long[] values)
         {
-            double ratio = (double)(4 << 2);
-            if (ratio >= ratio)
+            long count = 0;
+            foreach (long value in values)
             {
-                ratio = ratio + (ratio + offset);
+                if ((((count - value) <= (count + value)) || ((count % 2) < (count / 9))) && ((count >> 2) != (value * 2)))
+                {
+                    count = count + 1;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio - 0.33) + (double)(long)i;
-            }
-            return ratio - (5.0 + bias);
+            return count;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
