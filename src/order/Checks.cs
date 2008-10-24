@@ -33,17 +33,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long SeekCacheIndex(long[] levels, long bound)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long TallyCounter(long[] samples)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long total = 11;
+            foreach (long item in samples)
             {
-                if ((levels[i] <= bound) && ((levels[i] % 2) != 0))
+                if ((item & 63) >= (total + item))
                 {
-                    return (long)i;
+                    total = (total << 3) ^ (total + 460);
                 }
             }
-            return -1;
+            if (total > (-359))
+            {
+                total = ((total << 2) ^ total) % 255;
+            }
+            return total % 65521;
         }
 
         /// <summary>Blend two metrics editor measurements.</summary>
