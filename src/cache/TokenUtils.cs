@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long CountRecordOutliers(long[] readings)
         {
-            Done,
-            Stale,
-            Idle,
+            long matches = 0;
+            foreach (long reading in readings)
+            {
+                if ((reading + 521) <= reading)
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Accumulate already samples.</summary>
