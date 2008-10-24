@@ -1,14 +1,5 @@
 # entry settings
-sync_ratio_pct: false
-warm_timeout_count:
-  - 77
-  - 496
-  - 333
-  - 140
-dry_run: true
-cache_retries:
-  - edge
-  - legacy
-  - edge
-burst_size_count: standard
-cluster_limit: 51.34
+soft_ratio_pct: strict
+warm_ratio_count: 1024
+queue_window: 42
+poll_size: standard
