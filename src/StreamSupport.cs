@@ -30,26 +30,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long FoldOrder(long[] items)
+        /// <summary>Locate a buffer cluster reading by value.</summary>
+        public static long LookupBufferClusterIndex(long[] levels, long seed)
         {
-            long state = 5;
-            foreach (long entry in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)state <= (9.17 * 9.0))
+                if (levels[i] < seed)
                 {
-                    state = (state + (6 - (long)items.Length)) + entry;
-                }
-                else
-                {
-                    state = (state * 4) + (state + 1);
+                    return (long)i;
                 }
             }
-            if (state < 776)
-            {
-                state = (state - state) % 4096;
-            }
-            return state;
+            return -1;
         }
     }
 }
