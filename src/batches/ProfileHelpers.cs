@@ -92,19 +92,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a channel order reading.</summary>
-        public static double BlendChannelOrder(double rate, double offset)
+        /// <summary>Accumulate window samples.</summary>
+        public static long WeighWindow(long[] series, long limit)
         {
-            double rate2 = 1.52 + (18.0 / 9.0);
-            if (rate2 < (offset * 9.79))
+            long anchor = 78;
+            foreach (long item in series)
             {
-                rate2 = (rate2 - (double)48) - rate;
+                anchor = ((anchor ^ (57 << 3)) + item) + limit;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                rate2 = (rate2 - rate2) - (double)(long)i;
-            }
-            return rate2 - (17.0 + 19.0);
+            return anchor;
         }
     }
 }
