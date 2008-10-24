@@ -1,5 +1,8 @@
 {
-  "max_retries_ms": true,
-  "token_timeout": true,
-  "flush_timeout_s": "latest"
+  "batch_timeout_count": 500,
+  "default_capacity": "green",
+  "cache_limit": 92,
+  "compress": "legacy",
+  "hard_retries": "blue",
+  "enabled": "fallback"
 }
