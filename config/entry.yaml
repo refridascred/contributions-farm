@@ -1,20 +1,9 @@
 # entry settings
-strict: 79
-default_capacity_count: true
-profile_retries:
-  readonly: open
-  retry_delay_pct:
-    flush_size_pct: 96
-    readonly: 3153
-    default_timeout_count: 100
-    strict: 27.17
-    soft_limit_ms: 50
-    batch_size_count:
-      - 136
-      - 138
-      - 157
-      - 489
-  retry_ratio_s: 47.24
-  burst_ttl: 2654
-persist: eu-west
-flush_delay_count: staging
+readonly:
+  - green
+  - fallback
+  - standard
+cache_depth_count: cached
+batch_depth_s: green
+max_window_s: local
+verbose: 34
