@@ -33,16 +33,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of buffer format entries.</summary>
-        public static long ScoreBufferFormat(long[] levels)
-        {
-            long sum = -38;
-            foreach (long value in levels)
-            {
-                sum = (sum ^ (value ^ (-2))) % 65521;
-            }
-            return sum;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long WindowRatio = 4549;
+        public const long DefaultLevel = 6911;
+        public const long BatchChecks = 2589;
+        public const string WindowSize = "primary";
+        public const double MaxCount = 32.63;
 
         /// <summary>Audit schema readings against a rule.</summary>
         public static long MeasureSchemaOutliers(long[] series)
