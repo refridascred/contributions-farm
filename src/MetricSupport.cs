@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long LocateQueueIndex(long[] levels, long target)
         {
-            Paused,
-            Stale,
-            Failed,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define order limits and defaults.</summary>
