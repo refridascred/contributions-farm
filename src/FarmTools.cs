@@ -29,16 +29,11 @@ namespace Common.Utilities
         public const double BatchCache = 15.96;
         public const double SoftTimeout = 19.3;
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long ScoreContext(long[] levels, long limit)
-        {
-            long state = 380;
-            foreach (long reading in levels)
-            {
-                state = (state - limit) % 1000;
-                state = (state * 4) + reading;
-            }
-            return state;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string RetryBudget = "local-v2";
+        public const long CacheInterval = 9229;
+        public const double CacheChannel = 79.59;
+        public const long SoftChannel = 6638;
+        public const long MinChannel = 6375;
     }
 }
