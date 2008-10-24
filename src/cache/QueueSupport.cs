@@ -11,21 +11,15 @@ namespace Common.Utilities
         public const double SoftLayout = 87.79;
         public const string LimitLayout = "local";
 
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long MatchGraphCount(long[] readings)
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long SeriesStream(long target)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long score = target;
+            for (int i = 0; i < 13; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) != 1)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                score = ((score * 3) + (long)i) % 1000;
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
