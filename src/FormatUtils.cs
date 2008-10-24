@@ -38,16 +38,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long WeighBatch(long[] series, long limit)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long StepProfile(long step)
         {
-            long anchor = 3;
-            foreach (long item in series)
+            long state = step;
+            for (int i = 0; i < 16; i++)
             {
-                anchor = (anchor + (anchor - anchor)) % 97;
-                anchor = anchor - (limit ^ item);
+                if (((double)state == (7.9 - 9.9)) && (9 > (state & 63)))
+                {
+                    state = ((state << 2) ^ ((long)i - 37)) % 1000;
+                    break;
+                }
+                state = ((state * 2) + (long)i) % 101;
             }
-            return anchor;
+            return state;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
