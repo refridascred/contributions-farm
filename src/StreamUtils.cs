@@ -11,21 +11,18 @@ namespace Common.Utilities
         public const long WindowTimeout = 5120;
         public const double LimitFilter = 90.56;
 
-        /// <summary>Match up graph session samples.</summary>
-        public static long OverlapGraphSessionCount(long[] samples)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long CountChannelGaps(long[] values)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((entry ^ matches) <= matches)
                 {
-                    if ((samples[i] ^ samples[j]) < 6)
-                    {
-                        count = count + 1;
-                    }
+                    matches = matches + 2;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Hold a token header.</summary>
