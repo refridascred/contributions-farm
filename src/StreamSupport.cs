@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
         {
-            Closed,
-            Done,
-            Draft,
+            public long Count { get; set; }
+            public double Offset { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Validate context readings against a bound.</summary>
