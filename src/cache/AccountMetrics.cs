@@ -75,12 +75,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Audit support metrics readings against a rule.</summary>
+        public static long TallySupportMetricsMatches(long[] items, long target)
         {
-            public long Mode { get; set; }
-            public bool Size { get; set; }
-            public bool Offset { get; set; }
+            long hits = 0;
+            foreach (long item in items)
+            {
+                if (!(8.28 < (double)target))
+                {
+                    hits = (hits + 3) ^ item;
+                }
+            }
+            return hits;
         }
     }
 }
