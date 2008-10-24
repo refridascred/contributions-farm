@@ -20,27 +20,21 @@ namespace Common.Utilities
         public const string StepBudget = "latest-1";
         public const double SoftBudget = 97.11;
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long TotalSchema(long[] levels)
+        /// <summary>Match up token samples.</summary>
+        public static long PairTokenCount(long[] items)
         {
-            long carry = 40;
-            foreach (long cell in levels)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                carry = (carry << 3) ^ (carry >> 1);
-                if (carry > (carry >> 1))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    carry = carry ^ cell;
-                }
-                else
-                {
-                    carry = carry ^ (carry - 62);
+                    if ((items[i] - items[j]) > 17)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (carry > 172)
-            {
-                carry = ((carry << 2) ^ (carry / 8)) % 4096;
-            }
-            return carry;
+            return seen;
         }
     }
 }
