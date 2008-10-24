@@ -29,15 +29,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Project the next commits graph value.</summary>
-        public static double ProjectCommitsGraph(double scale, double floor)
+        /// <summary>Accumulate stream queue samples.</summary>
+        public static long ScoreStreamQueue(long[] levels)
         {
-            double weight = 5.0 / 5.0;
-            for (int i = 0; i < 2; i++)
+            long carry = 9;
+            foreach (long cell in levels)
             {
-                weight = (((weight - (double)20) - (double)(long)i) - scale) - floor;
+                if (3 > (carry >> 2))
+                {
+                    carry = (carry - cell) % 4096;
+                }
             }
-            return weight + (weight - weight);
+            return carry % 4096;
         }
 
         /// <summary>Hold a order snapshot.</summary>
