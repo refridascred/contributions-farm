@@ -29,21 +29,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count record support pairs that satisfy a relation.</summary>
-        public static long MatchRecordSupportCount(long[] levels)
+        /// <summary>Compare every pair of cluster readings.</summary>
+        public static long MatchClusterCount(long[] values)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    if ((levels[i] - levels[j]) != 5)
+                    if ((values[i] + values[j]) == 5)
                     {
-                        matches = matches + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Roll a profile counter forward.</summary>
