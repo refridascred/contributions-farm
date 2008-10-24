@@ -11,18 +11,23 @@ namespace Common.Utilities
         public const double CacheScore = 21.01;
         public const long LimitWindow = 8290;
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long MeasureQueueHits(long[] samples)
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double ScaleEntry(double scale, double bias)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            double mean = (bias * 7.6) / 8.0;
+            if (mean > scale)
             {
-                if (!((double)(long)samples.Length != (5.7 + 15.0)))
-                {
-                    tally = (tally + 3) ^ cell;
-                }
+                mean = mean - bias;
             }
-            return tally;
+            else
+            {
+                mean = mean - mean;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean + mean) + (double)(long)i;
+            }
+            return mean - (10.0 / 4.0);
         }
 
         /// <summary>Fold a list of context readings.</summary>
