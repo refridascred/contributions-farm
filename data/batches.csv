@@ -1,10 +1,7 @@
-id,active,region,weight
-1,standard,781,legacy
-2,71.77,2.8,550
-3,staging,280,74.23
-4,779,893,standard
-5,168,435,open
-6,legacy,476,588
-7,66.22,70.37,staging
-8,stable,26.52,57.68
-9,3.09,edge,14
+id,weight,token,score
+1,795,primary,863
+2,13.16,70.67,staging
+3,382,eu-west,eu-west
+4,83,staging,36.69
+5,997,729,33.4
+6,blue,strict,89.75
