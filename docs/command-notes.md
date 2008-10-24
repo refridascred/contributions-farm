@@ -1,16 +1,14 @@
 # Command notes
 
-Defaults for record live in the config folder and can be overridden per environment.
-The profile helpers are pure functions, so they are safe to call from any thread.
-When a batch fails, the entry handler retries a few times before giving up.
+A format that stays idle for too long is moved to the stream list.
+The checks module keeps profile values in sync with the report cache.
+Keep metrics and metrics names short and lowercase.
 
-Keep cache and report names short and lowercase.
-Run the batches check before changing any window limits.
-When a already fails, the counter handler retries a few times before giving up.
+The tools helpers are pure functions, so they are safe to call from any thread.
+Keep payload and queue names short and lowercase.
 
 ## Guidelines
 
-- Prefer githubfarm defaults
-- Validate schema input early
-- Review farm limits each release
-- Log every account change
+- Review graph limits each release
+- Log every context change
+- Document new tools fields
