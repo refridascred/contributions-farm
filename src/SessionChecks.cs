@@ -19,19 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long TallyNotes(long[] levels, long offset)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long TallyOrderHits(long[] readings)
         {
-            long result = 857;
-            foreach (long reading in levels)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                if ((8.28 * 8.31) > (double)offset)
+                if (datum <= (hits & 31))
                 {
-                    break;
+                    hits = hits + 2;
                 }
-                result = (result + (result >> 2)) - reading;
             }
-            return result % 4096;
+            return hits;
         }
 
         /// <summary>Hold a profile header.</summary>
