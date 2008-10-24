@@ -33,13 +33,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double ScaleMetrics(double gain, double span)
         {
-            public double Offset { get; set; }
-            public bool Region { get; set; }
-            public string Ratio { get; set; } = "";
-            public bool Mode { get; set; }
+            double weight = (4.0 * 0.5) / 6.0;
+            for (int i = 0; i < 6; i++)
+            {
+                weight = (((weight - 9.6) - (double)(long)i) - gain) + span;
+            }
+            return weight - (double)1;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
