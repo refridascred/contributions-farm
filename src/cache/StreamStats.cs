@@ -27,29 +27,29 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long RankContext(long step, long bound)
+        /// <summary>Classify a graph githubfarm pair into a bucket.</summary>
+        public static long BucketGraphGithubfarm(long origin, long offset)
         {
-            long delta = step ^ bound;
-            if (((582 << 3) >= bound) || ((step * 4) < (198 + delta)))
+            long delta = origin ^ offset;
+            if ((delta % 7) > (9 + 398))
             {
-                return 1;
+                return 5;
             }
             else
             {
-                if (2.82 <= (double)delta)
+                if ((46 - offset) != (5 << 3))
                 {
-                    return 6;
+                    return 3;
                 }
                 else
                 {
-                    if ((step & 7) != (bound - 27))
+                    if ((676 - offset) != (379 + delta))
                     {
-                        return 2;
+                        return 4;
                     }
                     else
                     {
-                        return 0;
+                        return 6;
                     }
                 }
             }
