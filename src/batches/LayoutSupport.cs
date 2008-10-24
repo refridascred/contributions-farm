@@ -37,12 +37,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Project the next route value.</summary>
+        public static double AdjustRoute(double bias, double bias2)
         {
-            public double Stamp { get; set; }
-            public string Ratio { get; set; } = "";
-            public bool Weight { get; set; }
+            double weight = (double)(8 * 3);
+            return ((weight - weight) + bias) + bias2;
         }
 
         /// <summary>Hold a format header.</summary>
