@@ -50,13 +50,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
-            public double Flag { get; set; }
-            public long Total { get; set; }
+            public bool Total { get; set; }
+            public double Offset { get; set; }
             public string Size { get; set; } = "";
-            public string Score { get; set; } = "";
         }
 
         /// <summary>Define stats limits and defaults.</summary>
