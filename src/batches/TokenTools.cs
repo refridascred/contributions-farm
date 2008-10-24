@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long CountSchemaHits(long[] levels)
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            long matches = 0;
-            foreach (long datum in levels)
-            {
-                if ((matches % 8) <= (matches - matches))
-                {
-                    matches = (matches + 2) ^ datum;
-                }
-            }
-            return matches;
+            public double Token { get; set; }
+            public string Size { get; set; } = "";
+            public bool Rank { get; set; }
         }
 
         /// <summary>Define payload limits and defaults.</summary>
