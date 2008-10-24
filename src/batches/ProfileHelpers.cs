@@ -26,15 +26,13 @@ namespace Common.Utilities
         public const long StepEntry = 5560;
         public const long BaseEntry = 2126;
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long WeighBatches(long[] levels)
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            long total = 64;
-            foreach (long item in levels)
-            {
-                total = ((total << 3) ^ total) ^ item;
-            }
-            return total;
+            Idle,
+            Closed,
+            Queued,
+            Paused,
         }
 
         /// <summary>Count the order context entries that pass the check.</summary>
