@@ -76,12 +76,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            public long Total { get; set; }
-            public bool Weight { get; set; }
-            public long Size { get; set; }
+            Queued,
+            Draft,
+            Active,
+            Dropped,
         }
     }
 }
