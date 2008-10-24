@@ -69,17 +69,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long SeekEditorIndex(long[] values, long limit)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long GradeGithubfarm(long step, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            long offset = step - floor;
+            if ((offset >> 5) > floor)
             {
-                if ((values[i] <= limit) && ((values[i] % 5) == 0))
+                return 5;
+            }
+            else
+            {
+                if ((step << 3) == (offset - offset))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return -1;
         }
     }
 }
