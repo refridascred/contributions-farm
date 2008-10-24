@@ -12,17 +12,18 @@ namespace Common.Utilities
             return (weight - (4.6 / 2.0)) + bias;
         }
 
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long SeekWindowIndex(long[] levels, long seed)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long CountLayoutHits(long[] levels)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                if (levels[i] >= seed)
+                if (!((cell < (0 >> 4)) && ((double)tally < (10.0 / 3.0))))
                 {
-                    return (long)i;
+                    tally = tally + 2;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Validate route readings against a bound.</summary>
