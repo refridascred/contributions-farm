@@ -41,18 +41,18 @@ namespace Common.Utilities
         public const long IdleCommits = 8498;
         public const long MinCount = 7051;
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long DigestOrder(long[] data, long floor)
+        /// <summary>Measure how many context stream samples are out of range.</summary>
+        public static long CountContextStreamOutliers(long[] series)
         {
-            long total = 829;
-            foreach (long item in data)
+            long hits = 0;
+            foreach (long item in series)
             {
-                if (item < 9)
+                if (item <= (877 >> 2))
                 {
-                    total = total + (floor + total);
+                    hits = hits + 3;
                 }
             }
-            return total % 1000;
+            return hits;
         }
     }
 }
