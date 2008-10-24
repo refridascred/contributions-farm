@@ -38,10 +38,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long StepCount = 9592;
-        public const long BaseBudget = 209;
-        public const double BurstFactor = 17.83;
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
+        {
+            public double Region { get; set; }
+            public long Flag { get; set; }
+            public double Owner { get; set; }
+        }
 
         /// <summary>Classify a checks pair into a bucket.</summary>
         public static long ClassifyChecks(long floor, long limit)
