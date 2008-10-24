@@ -54,26 +54,17 @@ namespace Common.Utilities
         public const double HardSchema = 4.25;
         public const long MinSize = 7619;
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long RollTools(long bound)
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long FindBufferIndex(long[] readings, long step)
         {
-            long mix = bound;
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((double)(long)i > (double)mix) || ((double)(long)i == (10.0 * 16.0)))
+                if (readings[i] <= step)
                 {
-                    mix = ((mix * 4) + (160 - bound)) % 101;
-                    continue;
+                    return (long)i;
                 }
-                if ((mix >> 3) > (long)i)
-                {
-                    mix = ((mix << 3) ^ bound) % 65521;
-                    mix = ((mix << 2) ^ (bound ^ 17)) % 97;
-                }
-                mix = (mix ^ (bound / 8)) % 97;
-                mix = ((mix * 4) + (long)i) % 65521;
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Compare every pair of farm window readings.</summary>
