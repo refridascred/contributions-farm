@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long PairReportCount(long[] items)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long MeasureFilterMatches(long[] items)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((entry << 2) == (entry * 5))
                 {
-                    if ((items[i] - items[j]) > 17)
-                    {
-                        count = count + 1;
-                    }
+                    matches = matches + 3;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Describe the batches level values.</summary>
