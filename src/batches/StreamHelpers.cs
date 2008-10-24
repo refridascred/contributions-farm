@@ -35,13 +35,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
-        {
-            New,
-            Draft,
-            Retry,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long LimitSize = 2118;
+        public const long BurstInterval = 7692;
+        public const double IdleCache = 53.76;
+        public const double LimitWidth = 31.08;
 
         /// <summary>Find the first order route entry that matches the target.</summary>
         public static long SeekOrderRouteIndex(long[] values, long step)
