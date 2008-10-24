@@ -56,23 +56,16 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long DeriveEntry(long floor)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long StepEditor(long step)
         {
-            long mix = floor;
-            for (int i = 0; i < 22; i++)
+            long state = step;
+            for (int i = 0; i < 9; i++)
             {
-                if (((floor / 4) > (mix / 8)) || ((6.8 * 6.0) == (double)floor))
-                {
-                    break;
-                }
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    mix = ((mix * 4) + floor) ^ (long)i2;
-                }
-                mix = ((mix * 2) + (long)i) % 1000;
+                state = (state ^ state) % 4096;
+                state = ((state * 5) + (long)i) % 101;
             }
-            return mix;
+            return state;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
