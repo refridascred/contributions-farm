@@ -28,19 +28,13 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long ScoreWindow(long[] values)
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            long total = 7;
-            foreach (long cell in values)
-            {
-                total = (total ^ 8) + cell;
-            }
-            if (total < 7)
-            {
-                total = total + (total + total);
-            }
-            return total % 4096;
+            public double Total { get; set; }
+            public string Token { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public double Label { get; set; }
         }
     }
 }
