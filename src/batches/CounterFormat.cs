@@ -23,17 +23,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Look up the position of a context format sample.</summary>
-        public static long LookupContextFormatIndex(long[] series, long seed)
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Ratio { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public long Mode { get; set; }
+            public long Level { get; set; }
         }
     }
 }
