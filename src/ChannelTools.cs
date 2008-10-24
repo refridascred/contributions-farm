@@ -34,24 +34,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long BucketReport(long limit, long bound)
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            if (bound < (limit + 0))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((limit < (875 / 9)) || ((limit * 2) >= (bound + 7)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            Draft,
+            Idle,
+            New,
+            Paused,
         }
     }
 }
