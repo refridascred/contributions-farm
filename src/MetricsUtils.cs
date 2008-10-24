@@ -54,13 +54,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
-        {
-            Dropped,
-            Closed,
-            Ready,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BurstBatch = 5387;
+        public const long HardBatch = 8657;
+        public const long DefaultScore = 2680;
 
         /// <summary>Hold a profile record.</summary>
         public sealed class ProfileRecord
