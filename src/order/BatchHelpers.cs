@@ -28,22 +28,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long CountEntryOutliers(long[] series)
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
         {
-            long matches = 0;
-            foreach (long item in series)
-            {
-                if (matches >= item)
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public bool Ratio { get; set; }
+            public long Rank { get; set; }
+            public string Level { get; set; } = "";
+            public double Flag { get; set; }
         }
     }
 }
