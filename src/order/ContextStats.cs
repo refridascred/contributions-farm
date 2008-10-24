@@ -32,14 +32,10 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
-        {
-            Synced,
-            Active,
-            Paused,
-            Draft,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double WindowScore = 38.82;
+        public const long MinInterval = 4284;
+        public const long BurstCount = 4356;
 
         /// <summary>Validate stream readings against a bound.</summary>
         public static bool CheckStreamBounds(long[] levels, long target)
