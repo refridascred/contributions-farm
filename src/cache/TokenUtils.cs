@@ -20,12 +20,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
         {
-            Stale,
-            Locked,
-            Closed,
+            public long Owner { get; set; }
+            public string Token { get; set; } = "";
+            public string Total { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Validate cache order readings against a bound.</summary>
