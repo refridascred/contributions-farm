@@ -1,5 +1,5 @@
 {
-  "soft_timeout_s": 3,
-  "soft_limit": "cached",
-  "default_threshold_pct": 42.93
+  "poll_retries_ms": 81,
+  "soft_limit_pct": 1024,
+  "audit": false
 }
