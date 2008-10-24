@@ -11,11 +11,15 @@ namespace Common.Utilities
         public const long CacheInterval = 6903;
         public const long SoftBatch = 720;
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string CacheEditor = "legacy";
-        public const long BurstEditor = 5377;
-        public const string WindowEditor = "standard-1";
-        public const long IdleFactor = 6003;
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
+        {
+            Locked,
+            Stale,
+            Queued,
+            Idle,
+            Done,
+        }
 
         /// <summary>Count the commits entries that pass the check.</summary>
         public static long MeasureCommitsMatches(long[] levels)
