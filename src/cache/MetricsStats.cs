@@ -17,21 +17,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count format pairs that satisfy a relation.</summary>
-        public static long OverlapFormatCount(long[] samples)
+        /// <summary>Validate layout cache readings against a bound.</summary>
+        public static bool GuardLayoutCacheLimits(long[] series, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool found = true;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (sample > limit)
                 {
-                    if ((samples[i] ^ samples[j]) < 3)
-                    {
-                        hits = hits + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Describe the graph class values.</summary>
