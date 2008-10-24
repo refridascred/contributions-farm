@@ -12,12 +12,22 @@ namespace Common.Utilities
         public const string CacheContext = "staging";
         public const string DefaultContext = "stable";
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BurstTools = 8012;
-        public const long MaxTools = 7893;
-        public const long StepFactor = 2064;
-        public const long BurstScore = 3748;
-        public const string IdleTools = "fallback-1";
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long PairToolsCount(long[] data)
+        {
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) == 9)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Look up the position of a contributi farm sample.</summary>
         public static long SeekContributiFarmIndex(long[] values, long seed)
