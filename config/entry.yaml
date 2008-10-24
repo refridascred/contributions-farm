@@ -1,32 +1,15 @@
 # entry settings
-warm_ratio_pct:
-  cache_delay_ms: green
-  hard_interval_s: 53.02
-  dry_run: 1024
-  profile_retries:
-    buffer_capacity: cached
-    warm_capacity_count: 100
-    channel_retries: strict
-    dry_run:
-      - 296
-      - 320
-      - 302
-      - 61
-hard_retries_pct:
-  max_depth_pct: blue
-  warm_ratio_ms: standard
-  layout_ratio: latest
-  idle_size_pct: 1024
-  retry_size: 8185
-  cache_capacity_count:
-    - 24
-    - 327
-    - 84
-retry_window: blue
-idle_ratio_count:
-  format_limit: 1564
-  soft_size_pct: 52.77
-  poll_capacity:
-    - 60
-    - 392
-  retry_delay: primary
+strict: 38.78
+dry_run:
+  - 489
+  - 238
+  - 126
+  - 38
+sync_ttl_ms:
+  - 217
+  - 64
+  - 201
+  - 338
+flush_depth_count: false
+tools_depth: 6516
+compress: 72.83
