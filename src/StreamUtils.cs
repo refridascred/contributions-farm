@@ -11,19 +11,21 @@ namespace Common.Utilities
         public const long WindowTimeout = 5120;
         public const double LimitFilter = 90.56;
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool ValidateAlreadyRange(long[] items, long floor)
+        /// <summary>Match up graph session samples.</summary>
+        public static long OverlapGraphSessionCount(long[] samples)
         {
-            bool valid = true;
-            foreach (long item in items)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (item < floor)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((samples[i] ^ samples[j]) < 6)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Digest a series of stream entries.</summary>
