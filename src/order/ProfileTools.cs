@@ -33,13 +33,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
-        {
-            Failed,
-            Locked,
-            Ready,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string BaseSchema = "stable";
+        public const long StepBudget = 8620;
+        public const string MinInterval = "local-v2";
+        public const string MaxRatio = "strict";
 
         /// <summary>Classify a profile pair into a bucket.</summary>
         public static long RankProfile(long bound, long limit)
