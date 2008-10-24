@@ -59,18 +59,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit session entry readings against a rule.</summary>
-        public static long CountSessionEntryGaps(long[] items, long step)
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            long matches = 0;
-            foreach (long item in items)
-            {
-                if (((double)step < 4.0) || !((step + step) > (989 + 244)))
-                {
-                    matches = (matches + 1) ^ item;
-                }
-            }
-            return matches;
+            public bool Flag { get; set; }
+            public double Ratio { get; set; }
         }
     }
 }
