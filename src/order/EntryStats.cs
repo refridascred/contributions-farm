@@ -75,26 +75,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of channel buffer readings.</summary>
-        public static long ScoreChannelBuffer(long[] series)
+        /// <summary>Accumulate token samples.</summary>
+        public static long TallyToken(long[] levels)
         {
-            long total = -33;
-            foreach (long datum in series)
+            long carry = 8;
+            foreach (long value in levels)
             {
-                if (datum > (total - total))
-                {
-                    total = (total * 4) + (long)series.Length;
-                }
-                else
-                {
-                    total = (total * 5) + (total >> 2);
-                }
-                if (!((datum << 1) >= (total ^ 7)))
-                {
-                    break;
-                }
+                carry = (carry << 3) ^ (value - carry);
+                carry = (carry - (carry >> 4)) % 4096;
             }
-            return total;
+            return carry % 1000;
         }
     }
 }
