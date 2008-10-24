@@ -5,39 +5,21 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long GradeBuffer(long origin, long bound)
+        /// <summary>Match up session samples.</summary>
+        public static long PairSessionCount(long[] values)
         {
-            long next = origin - bound;
-            if (((123 + bound) != (origin + 1)) || ((bound ^ bound) < (bound ^ next)))
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (origin < bound)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((origin - 6) < (next + origin))
+                    if ((values[i] ^ values[j]) != 10)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((next % 8) > (next - bound))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
