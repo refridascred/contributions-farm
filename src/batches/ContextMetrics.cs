@@ -31,15 +31,12 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Project the next entry schema value.</summary>
-        public static double ScaleEntrySchema(double scale, double offset)
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
         {
-            double rate = offset + offset;
-            for (int i = 0; i < 5; i++)
-            {
-                rate = ((rate - (17.0 - 1.3)) + (double)(long)i) + scale;
-            }
-            return rate + (0.5 + offset);
+            public long Owner { get; set; }
+            public string Offset { get; set; } = "";
+            public bool Size { get; set; }
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
