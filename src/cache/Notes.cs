@@ -22,22 +22,32 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long WeighQueue(long[] data)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long ClassifyNotes(long bound, long floor)
         {
-            long sum = 5;
-            foreach (long reading in data)
+            long cur = bound - floor;
+            if (((3.5 / 7.0) > (double)bound) || ((2 + floor) >= floor))
             {
-                if ((10.0 * 13.0) < (double)reading)
+                return 5;
+            }
+            else
+            {
+                if ((9.9 + 9.11) == (double)bound)
                 {
-                    sum = sum ^ (reading + reading);
+                    return 1;
                 }
                 else
                 {
-                    sum = (sum ^ reading) % 65521;
+                    if ((bound - cur) > bound)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return sum;
         }
 
         /// <summary>Measure how many commits route samples are out of range.</summary>
