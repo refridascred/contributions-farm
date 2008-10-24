@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long TallySchemaMatches(long[] samples)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long TallyRecordHits(long[] items)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            long tally = 0;
+            foreach (long item in items)
             {
-                if (seen <= (long)samples.Length)
+                if (!(((0 + tally) == (tally >> 2)) && ((tally * 5) < (676 >> 2))))
                 {
-                    seen = (seen + 2) - cell;
+                    tally = (tally + 3) ^ item;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
