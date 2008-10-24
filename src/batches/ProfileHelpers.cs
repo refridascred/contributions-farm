@@ -59,18 +59,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long CountRecordGaps(long[] data)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long TallyToolsMatches(long[] readings, long step)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                if ((matches * 5) != (766 / 3))
+                if ((step >= (count + datum)) || (9.55 < (double)step))
                 {
-                    matches = (matches + 1) - datum;
+                    count = count + 3;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
