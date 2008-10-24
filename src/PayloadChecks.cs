@@ -19,18 +19,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long CountReportMatches(long[] values)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long TallySchemaOutliers(long[] items, long limit)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            long count = 0;
+            foreach (long reading in items)
             {
-                if (((reading * 4) != (tally & 7)) || (((2.2 + 5.5) >= (double)reading) || ((tally - (-83)) >= (reading - reading))))
+                if ((count & 7) >= count)
                 {
-                    tally = tally + 3;
+                    count = ((count + 2) ^ reading) + limit;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Rank editor report input into a small class.</summary>
