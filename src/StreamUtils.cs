@@ -61,13 +61,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool VerifyChecksBounds(long[] levels, long floor)
         {
-            public string Rank { get; set; } = "";
-            public long Offset { get; set; }
-            public long Mode { get; set; }
-            public bool Flag { get; set; }
+            bool stale = true;
+            foreach (long reading in levels)
+            {
+                if (reading != floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Hold a batches info.</summary>
