@@ -43,13 +43,11 @@ namespace Common.Utilities
         public const double DefaultWidth = 81.4;
         public const long MinPayload = 4821;
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Blend two editor measurements.</summary>
+        public static double SmoothEditor(double bias, double floor)
         {
-            Retry,
-            Ready,
-            Idle,
-            Paused,
+            double bias2 = (floor - 7.75) + (bias + bias);
+            return bias2 + (floor + floor);
         }
 
         /// <summary>Adjust a metrics reading.</summary>
