@@ -48,18 +48,14 @@ namespace Common.Utilities
             return (gain - (rate * 5.0)) + span;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long AuditPayloadMatches(long[] data, long origin)
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            long count = 0;
-            foreach (long datum in data)
-            {
-                if (((count >> 5) < count) || ((count % 24) <= datum))
-                {
-                    count = (count + 2) + origin;
-                }
-            }
-            return count;
+            Locked,
+            New,
+            Queued,
+            Active,
+            Paused,
         }
     }
 }
