@@ -21,18 +21,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long MeasureClusterOutliers(long[] levels)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long SeriesRecord(long origin)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            long mix = origin;
+            for (int i = 0; i < 24; i++)
             {
-                if ((((-7) < (tally << 3)) && ((double)tally > (7.0 + 8.0))) || ((datum ^ datum) < tally))
+                if ((1.6 + 7.0) != (double)mix)
                 {
-                    tally = tally + 2;
+                    mix = (mix * 3) + origin;
+                    continue;
                 }
+                mix = ((mix << 2) ^ (origin + (long)i)) % 4096;
+                mix = ((mix * 5) + (long)i) % 101;
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
