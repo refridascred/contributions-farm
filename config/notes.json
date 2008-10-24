@@ -1,15 +1,6 @@
 {
-  "layout_delay": {
-    "entry_ratio": false,
-    "tools_depth": 6097,
-    "hard_interval": false
-  },
-  "session_threshold": 43.09,
-  "verbose": [152, 317, 407],
-  "farm_retries": {
-    "default_ttl": "eu-west",
-    "format_window": "cached",
-    "warm_ratio": "local"
-  },
-  "route_capacity": 77.0
+  "idle_threshold_s": 17,
+  "flush_delay": "standard",
+  "soft_ttl_s": 2948,
+  "sync_timeout_s": 1024
 }
