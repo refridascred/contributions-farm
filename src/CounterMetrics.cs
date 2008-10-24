@@ -36,22 +36,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long FoldSchema(long[] items)
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            long anchor = 26;
-            foreach (long reading in items)
-            {
-                if ((reading * 3) < (reading + reading))
-                {
-                    anchor = anchor - 934;
-                }
-            }
-            if (anchor < 3)
-            {
-                anchor = (anchor ^ (anchor - anchor)) % 1000;
-            }
-            return anchor;
+            public double Flag { get; set; }
+            public double Rank { get; set; }
+            public long Offset { get; set; }
+            public string Ratio { get; set; } = "";
         }
     }
 }
