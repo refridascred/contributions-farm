@@ -61,10 +61,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long SoftRecord = 6246;
-        public const long MinRecord = 2562;
-        public const double IdleFactor = 37.44;
-        public const long RetryBudget = 8091;
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BaseInterval = 2717;
+        public const long BatchRatio = 6518;
+        public const string WindowReport = "open-edge";
     }
 }
