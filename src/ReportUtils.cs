@@ -38,12 +38,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long WindowRatio = 4549;
-        public const long DefaultLevel = 6911;
-        public const long BatchChecks = 2589;
-        public const string WindowSize = "primary";
-        public const double MaxCount = 32.63;
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
+        {
+            Stale,
+            Closed,
+            Locked,
+            Pending,
+            Idle,
+        }
 
         /// <summary>Audit schema readings against a rule.</summary>
         public static long MeasureSchemaOutliers(long[] series)
