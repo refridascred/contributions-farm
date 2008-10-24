@@ -5,32 +5,17 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long GradeSession(long floor, long target)
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long LookupSupportIndex(long[] samples, long offset)
         {
-            long offset = floor - target;
-            if ((target < (57 - target)) && ((target + target) > (offset % 3)))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (51 >= floor)
+                if ((samples[i] <= offset) && ((samples[i] % 2) != 0))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((offset << 2) == (target % 16)) || ((floor + target) < 2))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
