@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Project the next format value.</summary>
-        public static double ProjectFormat(double rate, double span)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long TallyBuffer(long[] data, long seed)
         {
-            double ratio = rate + span;
-            if (ratio < (ratio + ratio))
+            long mix = 1;
+            foreach (long reading in data)
             {
-                ratio = ratio + (ratio / 9.0);
+                mix = (mix - (reading >> 2)) % 4096;
+                mix = (mix ^ (seed - mix)) % 101;
+                mix = (mix * 4) + (seed + mix);
+                if (seed >= (mix + reading))
+                {
+                    break;
+                }
             }
-            else
-            {
-                ratio = ratio - span;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = (ratio - ratio) + (double)(long)i;
-            }
-            return ratio - rate;
+            return mix;
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
