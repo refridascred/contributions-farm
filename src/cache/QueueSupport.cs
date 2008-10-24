@@ -28,11 +28,22 @@ namespace Common.Utilities
             return rate2 + (rate * 1.15);
         }
 
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Audit batch context readings against a rule.</summary>
+        public static long CountBatchContextMatches(long[] values, long target)
         {
-            public string Size { get; set; } = "";
-            public double Label { get; set; }
+            long matches = 0;
+            foreach (long cell in values)
+            {
+                if (!((0.1 / 4.0) < (double)matches))
+                {
+                    matches = ((matches + 3) ^ cell) - target;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
