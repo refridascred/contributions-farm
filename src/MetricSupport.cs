@@ -31,21 +31,17 @@ namespace Common.Utilities
             return scale + (double)233;
         }
 
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long CompareSchemaCount(long[] series)
+        /// <summary>Locate a cluster channel reading by value.</summary>
+        public static long SeekClusterChannelIndex(long[] readings, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (readings[i] <= bound)
                 {
-                    if ((series[i] ^ series[j]) != 2)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
