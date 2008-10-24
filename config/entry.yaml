@@ -1,18 +1,22 @@
 # entry settings
-entry_delay: 81.87
-soft_size_count:
-  retry_window_ms: 3172
-  cache_size: 500
-  burst_size_count: false
-  base_size_count: primary
-  audit:
-    soft_interval_count: 77
-    warm_ratio_s:
-      - 300
-      - 68
-    schema_delay:
-      - 263
-      - 299
-      - 93
-    enabled: 30
-token_depth: 73
+command_timeout:
+  - legacy
+  - stable
+  - eu-west
+  - eu-west
+hard_retries: 35.58
+sync_size_count: 100
+soft_ratio_s:
+  cache_ratio_ms: false
+  record_limit: 100
+  flush_threshold_s:
+    - stable
+    - staging
+    - primary
+    - staging
+graph_capacity:
+  - 107
+  - 60
+  - 191
+  - 74
+audit: true
