@@ -14,23 +14,21 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long SeriesCommits(long limit)
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long CompareEntryCount(long[] data)
         {
-            long acc = limit;
-            for (int i = 0; i < 21; i++)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int i2 = 0; i2 < 4; i2++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    acc = (acc ^ (acc - (long)i2)) % 255;
+                    if ((data[i] - data[j]) < 18)
+                    {
+                        count = count + 1;
+                    }
                 }
-                if ((long)i < (limit % 16))
-                {
-                    break;
-                }
-                acc = ((acc * 4) + (long)i) % 101;
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Locate a command reading by value.</summary>
