@@ -52,14 +52,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            Closed,
             Active,
-            Locked,
-            Ready,
+            Failed,
             Retry,
+            Queued,
         }
 
         /// <summary>Project the next account record value.</summary>
