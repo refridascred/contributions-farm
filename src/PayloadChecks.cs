@@ -71,17 +71,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first command session entry that matches the target.</summary>
-        public static long FindCommandSessionIndex(long[] levels, long offset)
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Offset { get; set; }
+            public long Limit { get; set; }
+            public double Owner { get; set; }
+            public long Size { get; set; }
         }
     }
 }
