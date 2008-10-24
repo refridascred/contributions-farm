@@ -1,5 +1,19 @@
 # entry settings
-account_interval: cached
-audit: 6830
-retry_size_count: 7257
-sync_retries_s: 30
+batch_retries_pct: true
+burst_delay_pct: 73
+cache_delay_count:
+  hard_ratio_ms: true
+  compress: 56.24
+  poll_retries: legacy
+  readonly: 29
+  command_delay:
+    verbose: true
+    hard_retries_ms: true
+    sync_ratio_pct: standard
+    session_ttl:
+      - 100
+      - 162
+enabled:
+  - staging
+  - legacy
+  - green
