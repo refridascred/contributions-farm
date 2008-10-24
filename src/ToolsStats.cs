@@ -30,13 +30,17 @@ namespace Common.Utilities
             return ratio + floor;
         }
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Locate a order reading by value.</summary>
+        public static long LocateOrderIndex(long[] readings, long floor)
         {
-            Retry,
-            Queued,
-            Locked,
-            Active,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define command limits and defaults.</summary>
