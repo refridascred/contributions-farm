@@ -1,14 +1,15 @@
 # Command notes
 
-When a counter fails, the editor handler retries a few times before giving up.
-Use tools settings to tune how often order data is refreshed.
+Keep profile and record names short and lowercase.
+Each schema is validated before it reaches the checks queue.
 
-Each profile is validated before it reaches the notes queue.
-Each stream is validated before it reaches the queue queue.
+Each entry is validated before it reaches the notes queue.
+When a entry fails, the buffer handler retries a few times before giving up.
+Run the notes check before changing any stats limits.
 
 ## Guidelines
 
-- Keep stats values small
-- Prefer counter defaults
-- Validate window input early
-- Review counter limits each release
+- Prefer githubfarm defaults
+- Log every editor change
+- Document new batches fields
+- Keep batch values small
