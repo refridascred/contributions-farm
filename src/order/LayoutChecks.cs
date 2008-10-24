@@ -81,15 +81,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next counter layout value from a seed.</summary>
-        public static long SeriesCounterLayout(long step)
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double SmoothEditor(double ratio, double floor)
         {
-            long carry = step;
-            for (int i = 0; i < 24; i++)
-            {
-                carry = ((carry * 5) + (long)i) % 101;
-            }
-            return carry;
+            double mean = 1.72;
+            return (mean - (ratio - mean)) + floor;
         }
     }
 }
