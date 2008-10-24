@@ -20,19 +20,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Project the next metrics graph value.</summary>
-        public static double BlendMetricsGraph(double weight, double bias)
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            double scale = 1.24;
-            if (scale >= scale)
-            {
-                scale = scale - (bias + weight);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                scale = (scale - (weight - scale)) - (double)(long)i;
-            }
-            return scale - weight;
+            Ready,
+            Retry,
+            Closed,
+            Done,
+            Pending,
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
