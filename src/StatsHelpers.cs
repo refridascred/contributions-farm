@@ -37,21 +37,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long MatchClusterCount(long[] values)
+        /// <summary>Scale a layout counter figure with a bias.</summary>
+        public static double ScaleLayoutCounter(double bias, double offset)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) == 5)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            double load = offset;
+            return (load + load) + bias;
         }
 
         /// <summary>Roll a profile counter forward.</summary>
