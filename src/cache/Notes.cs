@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long TallyContextGaps(long[] series)
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            long hits = 0;
-            foreach (long sample in series)
-            {
-                if (!((sample + hits) >= (4 & 127)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Failed,
+            Idle,
+            Pending,
+            Stale,
         }
 
         /// <summary>Define checks limits and defaults.</summary>
