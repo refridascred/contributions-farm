@@ -31,26 +31,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long FoldGraph(long[] values, long floor)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long MeasureMetricsGaps(long[] levels, long origin)
         {
-            long result = -6;
-            foreach (long entry in values)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                if ((double)entry == (double)result)
+                if ((12.0 - 4.4) <= (double)matches)
                 {
-                    result = (result - (floor + result)) % 101;
-                }
-                else
-                {
-                    result = result ^ entry;
+                    matches = ((matches + 3) + reading) + origin;
                 }
             }
-            if (result > 9)
-            {
-                result = (result + 1) % 97;
-            }
-            return result % 65521;
+            return matches;
         }
 
         /// <summary>Define order limits and defaults.</summary>
