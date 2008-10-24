@@ -23,12 +23,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string HardCommand = "cached-1";
-        public const long WindowCommand = 9180;
-        public const double LimitCommand = 47.52;
-        public const long MinCommand = 3215;
-        public const string BatchLevel = "stable-edge";
+        /// <summary>Define context limits and defaults.</summary>
+        public const long MaxBudget = 6165;
+        public const double BurstContext = 55.56;
+        public const string IdleWidth = "primary-v2";
+        public const long HardWidth = 1258;
 
         /// <summary>Validate cache readings against a bound.</summary>
         public static bool GuardCacheLimits(long[] values, long seed)
