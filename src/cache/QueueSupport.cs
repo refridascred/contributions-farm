@@ -18,19 +18,13 @@ namespace Common.Utilities
         public const double RetryContributi = 0.37;
         public const double BaseContributi = 95.6;
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long TallyChecks(long[] readings, long seed)
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
         {
-            long score = 0;
-            foreach (long cell in readings)
-            {
-                score = (score - (seed << 3)) + cell;
-                if (((-783) + score) != (seed / 3))
-                {
-                    score = score + score;
-                }
-            }
-            return score;
+            public double Offset { get; set; }
+            public long Mode { get; set; }
+            public bool Token { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
