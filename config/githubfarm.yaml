@@ -1,10 +1,19 @@
 # githubfarm settings
-base_ratio_count: 500
-idle_depth_ms: 8.83
-verbose: 4447
-metrics_window: 1204
-burst_delay_s: edge
-idle_timeout_count:
-  - edge
-  - fallback
-  - green
+audit:
+  - 377
+  - 133
+cache_threshold: true
+notes_interval:
+  - 130
+  - 41
+  - 63
+command_delay: false
+soft_timeout_ms:
+  retry_retries:
+    - primary
+    - local
+    - cached
+  hard_timeout_count: blue
+  cache_capacity_pct: true
+  sync_limit_ms: stable
+  batches_size: 7608
