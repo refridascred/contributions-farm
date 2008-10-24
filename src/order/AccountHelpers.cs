@@ -86,12 +86,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Combine metric filter values into a single score.</summary>
+        public static long WeighMetricFilter(long[] series)
         {
-            public bool Offset { get; set; }
-            public long Stamp { get; set; }
-            public string Rank { get; set; } = "";
+            long mark = 65;
+            foreach (long item in series)
+            {
+                if (!((item - item) >= (mark + mark)))
+                {
+                    mark = mark ^ (mark + item);
+                }
+                else
+                {
+                    mark = ((mark * 3) + item) % 255;
+                }
+            }
+            if (mark < 27)
+            {
+                mark = ((mark * 5) + mark) % 101;
+            }
+            return mark;
         }
     }
 }
