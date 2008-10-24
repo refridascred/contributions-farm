@@ -35,13 +35,24 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long SortCommits(long limit, long target)
         {
-            public bool Ratio { get; set; }
-            public string Token { get; set; } = "";
-            public bool Size { get; set; }
-            public double Score { get; set; }
+            if ((5.0 / 9.0) <= (double)limit)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((target - limit) <= limit)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Project the next notes value.</summary>
