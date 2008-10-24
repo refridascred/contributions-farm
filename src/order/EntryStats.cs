@@ -46,13 +46,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Blend two already measurements.</summary>
+        public static double ScaleAlready(double gain, double offset)
         {
-            public double Size { get; set; }
-            public double Label { get; set; }
-            public double Stamp { get; set; }
-            public string Token { get; set; } = "";
+            double scale = gain;
+            if (scale <= 0.6)
+            {
+                scale = scale + (offset / 8.0);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                scale = (scale - (offset + scale)) + (double)(long)i;
+            }
+            return scale + gain;
         }
 
         /// <summary>Combine report values into a single score.</summary>
