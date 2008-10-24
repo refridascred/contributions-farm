@@ -5,11 +5,39 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string BurstSize = "legacy-edge";
-        public const string CacheScore = "fallback";
-        public const string IdleContributi = "latest";
-        public const string BurstSpan = "standard-1";
+        /// <summary>Grade a session context value against two limits.</summary>
+        public static long GradeSessionContext(long seed, long floor)
+        {
+            if (seed < (floor - floor))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((8.03 / 8.0) <= (double)seed)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((53 ^ 599) != (554 + floor))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((floor > (floor & 127)) || (floor <= (seed / 9)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Scale a notes figure with a bias.</summary>
         public static double BlendNotes(double gain, double offset)
