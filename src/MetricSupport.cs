@@ -12,11 +12,21 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BurstEditor = 9842;
-        public const long BatchSpan = 7974;
-        public const double MaxEditor = 37.93;
-        public const long SoftEditor = 1211;
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long TotalSchema(long[] series, long seed)
+        {
+            long carry = -47;
+            foreach (long sample in series)
+            {
+                carry = (carry + (sample & 255)) % 255;
+                carry = (carry - (carry * 5)) % 97;
+                if (((sample ^ sample) <= (523 - sample)) && (seed > (sample / 5)))
+                {
+                    carry = (carry + (36 * 4)) % 4096;
+                }
+            }
+            return carry % 1000;
+        }
 
         /// <summary>Define command limits and defaults.</summary>
         public const long RetryTimeout = 8462;
