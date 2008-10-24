@@ -41,17 +41,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a counter layout sample.</summary>
-        public static long FindCounterLayoutIndex(long[] items, long step)
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] <= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Dropped,
+            Active,
+            Done,
         }
 
         /// <summary>Describe the githubfarm kind values.</summary>
