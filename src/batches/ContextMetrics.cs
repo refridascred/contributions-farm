@@ -47,12 +47,21 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Compare every pair of counter readings.</summary>
+        public static long MatchCounterCount(long[] values)
         {
-            Failed,
-            Paused,
-            Ready,
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) > 16)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the stats phase values.</summary>
