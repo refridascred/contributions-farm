@@ -51,14 +51,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            Dropped,
-            Queued,
+            Idle,
             Stale,
-            New,
-            Pending,
+            Closed,
         }
     }
 }
