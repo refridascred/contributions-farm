@@ -30,10 +30,13 @@ namespace Common.Utilities
             return bias2 - 8.03;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MinInterval = 6738;
-        public const long HardReport = 3697;
-        public const string DefaultCount = "strict";
-        public const long BurstSize = 9249;
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
+        {
+            public long Ratio { get; set; }
+            public long Score { get; set; }
+            public string Region { get; set; } = "";
+            public string Mode { get; set; } = "";
+        }
     }
 }
