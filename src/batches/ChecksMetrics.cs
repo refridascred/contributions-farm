@@ -71,15 +71,31 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Derive the next farm support value from a seed.</summary>
-        public static long RollFarmSupport(long seed)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long GradeRoute(long floor, long seed)
         {
-            long total = seed;
-            for (int i = 0; i < 12; i++)
+            if ((double)seed < (double)floor)
             {
-                total = ((total * 5) + (long)i) % 65521;
+                return 4;
             }
-            return total;
+            else
+            {
+                if ((floor << 1) >= (6 & 31))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((7.1 + 4.26) < (double)seed)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
     }
 }
