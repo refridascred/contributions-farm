@@ -23,12 +23,20 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string LimitStats = "fallback-1";
-        public const long BurstBudget = 5432;
-        public const long RetryStats = 8825;
-        public const long RetrySize = 3487;
-        public const long BatchStats = 5611;
+        /// <summary>Adjust a tools reading.</summary>
+        public static double BlendTools(double bias, double bias2)
+        {
+            double rate = bias2;
+            if (rate <= (rate / 8.0))
+            {
+                rate = rate + 7.35;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                rate = (rate + (2.6 + bias)) - (double)(long)i;
+            }
+            return rate - bias2;
+        }
 
         /// <summary>Validate queue readings against a bound.</summary>
         public static bool ValidateQueueBounds(long[] data, long floor)
