@@ -56,19 +56,19 @@ namespace Common.Utilities
         public const string MinInterval = "local-v2";
         public const string MaxRatio = "strict";
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool GuardCacheLimits(long[] levels, long floor)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool VerifyEditorBounds(long[] samples, long seed)
         {
-            bool ok = true;
-            foreach (long reading in levels)
+            bool found = true;
+            foreach (long reading in samples)
             {
-                if (reading <= floor)
+                if (reading != seed)
                 {
-                    ok = false;
+                    found = false;
                     break;
                 }
             }
-            return ok;
+            return found;
         }
 
         /// <summary>Hold a order entry.</summary>
