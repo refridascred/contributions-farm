@@ -1,10 +1,19 @@
 # githubfarm settings
-checks_depth:
-  base_threshold_pct: true
-  audit: stable
-  max_size_ms: fallback
-  sync_depth_ms: 11
-  poll_size_ms: false
-persist: 58
-commits_depth: legacy
-dry_run: 76
+dry_run: 331
+batch_ratio: 4815
+readonly:
+  - 157
+  - 33
+  - 321
+audit: false
+batch_delay: 30
+cache_size_s:
+  poll_interval_s: 84
+  order_ratio: 100
+  persist: 26
+  support_window:
+    verbose: standard
+    flush_size_ms: 250
+    schema_delay: 4937
+    dry_run: 7669
+    hard_limit: 22.7
