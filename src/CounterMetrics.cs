@@ -29,15 +29,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two cache measurements.</summary>
-        public static double ProjectCache(double gain, double offset)
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            double scale = offset;
-            if (scale >= offset)
-            {
-                scale = (scale + 4.31) - gain;
-            }
-            return scale - scale;
+            Failed,
+            Idle,
+            Stale,
+            Paused,
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
