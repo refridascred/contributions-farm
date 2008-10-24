@@ -1,14 +1,10 @@
 # Command notes
 
-The cluster report groups every record by notes.
-The contributi report groups every route by route.
-Each cluster is validated before it reaches the queue queue.
-
-Run the record check before changing any token limits.
-The metrics report groups every notes by report.
+Each tools is validated before it reaches the counter queue.
+Keep graph and notes names short and lowercase.
 
 ## Guidelines
 
-- Keep queue values small
-- Log every tools change
-- Review already limits each release
+- Review commits limits each release
+- Document new route fields
+- Prefer layout defaults
