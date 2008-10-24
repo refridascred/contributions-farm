@@ -20,32 +20,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long ClassifyEntry(long limit, long target)
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            long next = limit - target;
-            if ((double)limit > (6.82 + 4.3))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((target + 53) >= (next + 9))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)next >= 9.6)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            Locked,
+            Ready,
+            Pending,
+            Dropped,
+            Queued,
         }
 
         /// <summary>Describe the channel level values.</summary>
