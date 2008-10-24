@@ -36,19 +36,18 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Validate cache order readings against a bound.</summary>
-        public static bool ValidateCacheOrderBounds(long[] readings, long step)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long CountProfileOutliers(long[] items)
         {
-            bool valid = true;
-            foreach (long item in readings)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                if (item != step)
+                if (seen <= sample)
                 {
-                    valid = false;
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return valid;
+            return seen;
         }
     }
 }
