@@ -40,18 +40,26 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long MeasureMetricsHits(long[] samples, long offset)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long TotalCache(long[] readings, long floor)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            long carry = 342;
+            foreach (long reading in readings)
             {
-                if (((sample - sample) < sample) && ((matches + sample) == (73 - matches)))
+                if (9.3 <= (double)carry)
                 {
-                    matches = (matches + 3) + offset;
+                    carry = (carry + (reading + (long)readings.Length)) - floor;
+                }
+                else
+                {
+                    carry = ((carry * 5) + (carry % 64)) % 255;
                 }
             }
-            return matches;
+            if (carry > 70)
+            {
+                carry = ((carry * 4) + carry) % 65521;
+            }
+            return carry % 4096;
         }
     }
 }
