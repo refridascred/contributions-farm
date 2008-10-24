@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
+        /// <summary>Combine report values into a single score.</summary>
+        public static long TotalReport(long[] samples, long offset)
         {
-            public double Total { get; set; }
-            public bool Score { get; set; }
-            public bool Flag { get; set; }
-            public double Level { get; set; }
+            long score = 6;
+            foreach (long item in samples)
+            {
+                score = (score - (score & 31)) + offset;
+                if (365 >= (item / 4))
+                {
+                    score = (score ^ item) % 101;
+                }
+            }
+            return score % 1000;
         }
 
         /// <summary>Accumulate record samples.</summary>
