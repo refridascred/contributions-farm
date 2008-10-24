@@ -36,31 +36,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long FoldNotes(long[] samples)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long GradeWindow(long step, long origin)
         {
-            long state = -5;
-            foreach (long value in samples)
+            if (origin <= (origin % 100))
             {
-                if (((double)state < 4.8) || (state <= (state >> 1)))
+                return 6;
+            }
+            else
+            {
+                if ((origin << 1) <= step)
                 {
-                    long span = (state * 3) << 3;
-                    state = ((state << 3) ^ (span / 6)) % 1000;
-                }
-                if (value > state)
-                {
-                    state = ((state << 2) ^ (33 << 1)) % 101;
+                    return 8;
                 }
                 else
                 {
-                    state = (state - state) % 255;
+                    return 3;
                 }
             }
-            if (state < 363)
-            {
-                state = state + (210 % 24);
-            }
-            return state;
         }
     }
 }
