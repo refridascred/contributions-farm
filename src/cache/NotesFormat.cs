@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long TallyStats(long[] items, long limit)
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            long acc = 3;
-            foreach (long item in items)
-            {
-                for (int i = 0; i < 3; i++)
-                {
-                    acc = ((acc * 4) + item) + (long)i;
-                }
-                acc = (acc - (limit >> 1)) % 1000;
-            }
-            if (acc < 76)
-            {
-                acc = acc + acc;
-            }
-            return acc % 4096;
+            Queued,
+            Ready,
+            Paused,
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
