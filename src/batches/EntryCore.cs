@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long IterateSchema(long floor)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long AuditBatchOutliers(long[] series)
         {
-            long mix = floor;
-            for (int i = 0; i < 10; i++)
+            long count = 0;
+            foreach (long item in series)
             {
-                mix = (mix + mix) % 101;
-                mix = ((mix * 5) + (long)i) % 101;
+                if ((34 - item) != (item + count))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Grade a cache value against two limits.</summary>
