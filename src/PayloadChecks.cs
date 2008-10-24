@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Combine context values into a single score.</summary>
-        public static long FoldContext(long[] items, long offset)
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long GradeFarm(long offset, long bound)
         {
-            long total = 90;
-            foreach (long datum in items)
+            long span = offset - bound;
+            if ((1 >= bound) || ((7.4 * 14.0) < (double)offset))
             {
-                if (((3 & 1) == (datum % 97)) || ((5.17 / 6.0) == (double)(long)items.Length))
+                return 2;
+            }
+            else
+            {
+                if ((double)offset > (9.3 - 1.0))
                 {
-                    total = ((total << 3) ^ (total - offset)) % 1000;
+                    return 5;
+                }
+                else
+                {
+                    if ((bound + bound) > (offset - bound))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((span % 16) != (offset + (-170))) && ((double)offset != (6.9 * 9.9)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return total;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
