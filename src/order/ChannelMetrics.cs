@@ -22,21 +22,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long PairCommitsCount(long[] items)
+        /// <summary>Digest a series of report cluster entries.</summary>
+        public static long WeighReportCluster(long[] levels, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long state = 82;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((double)floor <= (double)5)
                 {
-                    if ((items[i] - items[j]) == 1)
-                    {
-                        count = count + 1;
-                    }
+                    state = (state - (value & 127)) % 4096;
                 }
             }
-            return count;
+            if (state > 933)
+            {
+                state = ((state << 3) ^ (floor ^ floor)) % 255;
+            }
+            return state % 4096;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
