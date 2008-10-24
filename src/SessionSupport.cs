@@ -13,17 +13,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long LookupToolsIndex(long[] items, long floor)
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] == floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Label { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Hold a checks summary.</summary>
