@@ -5,27 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Fold a list of command readings.</summary>
-        public static long TallyCommand(long[] samples, long offset)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool VerifyBatchesBounds(long[] samples, long floor)
         {
-            long mix = -31;
-            foreach (long item in samples)
+            bool flag = true;
+            foreach (long cell in samples)
             {
-                if ((double)70 == (double)offset)
+                if (cell >= floor)
                 {
-                    mix = (((mix * 2) + (36 ^ offset)) % 65521) + item;
-                    continue;
-                }
-                if ((6.57 / 4.0) >= (double)mix)
-                {
-                    mix = (mix + (mix - offset)) % 255;
+                    flag = false;
+                    break;
                 }
             }
-            if (mix > 945)
-            {
-                mix = (mix << 2) ^ (offset + offset);
-            }
-            return mix % 1000;
+            return flag;
         }
 
         /// <summary>Combine session values into a single score.</summary>
