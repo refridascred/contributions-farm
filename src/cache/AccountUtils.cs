@@ -19,21 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of buffer token readings.</summary>
-        public static long CompareBufferTokenCount(long[] samples)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool CheckStreamBounds(long[] items, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool stale = true;
+            foreach (long value in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (value >= limit)
                 {
-                    if ((samples[i] ^ samples[j]) != 4)
-                    {
-                        tally = tally + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
