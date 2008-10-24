@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long SoftCounter = 4194;
-        public const long BatchCounter = 4687;
-        public const long IdleDepth = 1659;
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool GuardWindowRange(long[] series, long bound)
+        {
+            bool found = true;
+            foreach (long entry in series)
+            {
+                if (entry <= bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Combine window values into a single score.</summary>
         public static long FoldWindow(long[] levels, long offset)
