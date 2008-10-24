@@ -34,19 +34,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool ValidateNotesLimits(long[] series, long limit)
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            bool stale = true;
-            foreach (long sample in series)
-            {
-                if (sample >= limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Queued,
+            Ready,
+            Retry,
+            Active,
+            Stale,
         }
 
         /// <summary>Grade a tools value against two limits.</summary>
