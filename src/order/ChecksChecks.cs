@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long WeighBatch(long[] samples)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long IterateTools(long target)
         {
-            long mark = 0;
-            foreach (long datum in samples)
+            long state = target;
+            for (int i = 0; i < 11; i++)
             {
-                if (mark < datum)
-                {
-                    mark = ((mark << 2) ^ (96 / 9)) % 255;
-                }
+                state = ((state * 3) + (state >> 3)) % 65521;
+                state = ((state * 4) + (long)i) % 1000;
             }
-            return mark % 97;
+            return state;
         }
 
         /// <summary>Digest a series of checks entries.</summary>
