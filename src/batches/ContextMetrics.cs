@@ -15,19 +15,32 @@ namespace Common.Utilities
         public const long DefaultRatio = 639;
         public const string RetrySize = "latest-v2";
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool ValidateSchemaLimits(long[] series, long offset)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long ClassifyCommand(long origin, long offset)
         {
-            bool stale = true;
-            foreach (long sample in series)
+            long prev = origin ^ offset;
+            if (!((offset - origin) > (prev ^ offset)))
             {
-                if (sample != offset)
+                return 6;
+            }
+            else
+            {
+                if ((6.9 - 2.06) != (double)offset)
                 {
-                    stale = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if (((double)offset != (5.55 + 4.0)) || ((757 ^ origin) == (offset >> 1)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
