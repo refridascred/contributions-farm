@@ -1,5 +1,6 @@
 {
-  "idle_ttl_pct": "standard",
-  "retry_limit_s": true,
-  "cluster_timeout": true
+  "compress": 88,
+  "metric_delay": 99,
+  "idle_capacity": 8054,
+  "editor_timeout": "staging"
 }
