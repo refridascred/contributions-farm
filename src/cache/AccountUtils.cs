@@ -12,17 +12,15 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Locate a filter queue reading by value.</summary>
-        public static long FindFilterQueueIndex(long[] values, long floor)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long DeriveCommits(long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long total = offset;
+            for (int i = 0; i < 7; i++)
             {
-                if (values[i] >= floor)
-                {
-                    return (long)i;
-                }
+                total = ((total * 5) + (long)i) % 101;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Hold a commits header.</summary>
