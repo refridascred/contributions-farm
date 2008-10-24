@@ -30,12 +30,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long LimitDepth = 9205;
-        public const double BaseInterval = 92.31;
-        public const long LimitSize = 2110;
-        public const double IdleWidth = 39.97;
-        public const long BatchTools = 7031;
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
+        {
+            Paused,
+            Done,
+            Draft,
+            Failed,
+            Locked,
+        }
 
         /// <summary>Define editor limits and defaults.</summary>
         public const long WindowBudget = 8885;
