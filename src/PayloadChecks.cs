@@ -48,24 +48,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long DeriveAlready(long seed)
+        /// <summary>Accumulate context samples.</summary>
+        public static long FoldContext(long[] levels, long seed)
         {
-            long state = seed;
-            for (int i = 0; i < 24; i++)
+            long sum = 442;
+            foreach (long datum in levels)
             {
-                if ((state ^ state) > (seed % 12))
+                for (int i = 0; i < 10; i++)
                 {
-                    state = (state - (state << 1)) % 101;
+                    sum = ((sum + sum) % 101) - (long)i;
                 }
-                else
+                if ((seed + 5) < datum)
                 {
-                    state = (state ^ ((long)i % 60)) % 255;
-                    state = (state + ((long)i & 63)) % 101;
+                    sum = ((sum << 3) ^ datum) % 4096;
                 }
-                state = ((state * 3) + (long)i) % 97;
             }
-            return state;
+            return sum % 65521;
         }
 
         /// <summary>Look up the position of a token sample.</summary>
