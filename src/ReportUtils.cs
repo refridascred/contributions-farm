@@ -20,17 +20,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Locate a support reading by value.</summary>
-        public static long SeekSupportIndex(long[] values, long limit)
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] == limit) && ((values[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Score { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Measure how many payload context samples are out of range.</summary>
