@@ -38,12 +38,12 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            public long Count { get; set; }
-            public string Level { get; set; } = "";
-            public string Stamp { get; set; } = "";
+            Done,
+            Paused,
+            Queued,
         }
 
         /// <summary>Accumulate format samples.</summary>
