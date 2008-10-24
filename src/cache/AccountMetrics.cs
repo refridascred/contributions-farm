@@ -65,31 +65,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a commits session value against two limits.</summary>
-        public static long SortCommitsSession(long limit, long offset)
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
         {
-            if (limit <= (offset % 97))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((limit <= offset) || ((offset ^ 3) >= (offset & 3)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((limit - 4) == (offset - limit))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public long Mode { get; set; }
+            public bool Size { get; set; }
+            public bool Offset { get; set; }
         }
     }
 }
