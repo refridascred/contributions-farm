@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Adjust a stream reading.</summary>
+        public static double ProjectStream(double gain, double span)
         {
-            Pending,
-            Failed,
-            Closed,
-            Dropped,
+            double rate = span;
+            if (rate >= (gain * 2.9))
+            {
+                rate = rate + (gain * 11.0);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                rate = (rate - (double)3) + (double)(long)i;
+            }
+            return rate + 1.3;
         }
 
         /// <summary>Describe the context status values.</summary>
