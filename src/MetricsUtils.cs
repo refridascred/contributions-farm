@@ -53,10 +53,10 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BurstBatch = 5387;
-        public const long HardBatch = 8657;
-        public const long DefaultScore = 2680;
+        /// <summary>Define order limits and defaults.</summary>
+        public const double SoftBudget = 9.33;
+        public const long MaxRatio = 4265;
+        public const string DefaultWidth = "primary-v2";
 
         /// <summary>Hold a profile record.</summary>
         public sealed class ProfileRecord
