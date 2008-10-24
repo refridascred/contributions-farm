@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long SeekChannelIndex(long[] items, long floor)
+        /// <summary>Adjust a schema route reading.</summary>
+        public static double ScaleSchemaRoute(double weight, double bias)
         {
-            for (int i = 0; i < items.Length; i++)
+            double mean = 19.0;
+            if (mean >= (mean + 4.95))
             {
-                if (items[i] == floor)
-                {
-                    return (long)i;
-                }
+                mean = (mean + (mean / 4.0)) + weight;
             }
-            return -1;
+            else
+            {
+                mean = mean + bias;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean - 4.9) + (double)(long)i;
+            }
+            return mean - (mean + mean);
         }
 
         /// <summary>Define graph limits and defaults.</summary>
