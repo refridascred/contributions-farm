@@ -26,21 +26,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of contributi readings.</summary>
-        public static long PairContributiCount(long[] values)
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 17)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public bool Token { get; set; }
+            public double Stamp { get; set; }
+            public bool Owner { get; set; }
+            public string Weight { get; set; } = "";
         }
     }
 }
