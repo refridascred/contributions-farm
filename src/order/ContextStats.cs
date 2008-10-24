@@ -30,15 +30,19 @@ namespace Common.Utilities
         public const long RetrySize = 3487;
         public const long BatchStats = 5611;
 
-        /// <summary>Combine commits metrics values into a single score.</summary>
-        public static long CombineCommitsMetrics(long[] samples)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool ValidateQueueBounds(long[] data, long floor)
         {
-            long sum = 360;
-            foreach (long datum in samples)
+            bool stale = true;
+            foreach (long value in data)
             {
-                sum = ((sum << 3) ^ (datum - datum)) % 97;
+                if (value > floor)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return sum;
+            return stale;
         }
 
         /// <summary>Find the first schema notes entry that matches the target.</summary>
