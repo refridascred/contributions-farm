@@ -1,6 +1,25 @@
 # githubfarm settings
-token_threshold:
-  - primary
-  - staging
-burst_delay_count: legacy
-idle_window: eu-west
+flush_ratio: true
+default_size_count:
+  cache_ttl_count: stable
+  profile_depth: 21.31
+  metrics_window:
+    audit: 8.25
+    sync_threshold_count:
+      - green
+      - cached
+      - stable
+    max_retries_count: 4790
+    persist: fallback
+  context_delay: eu-west
+  idle_timeout_count: true
+  readonly: true
+audit: 60
+githubfarm_ratio:
+  support_delay: true
+  base_threshold_count: cached
+  strict: 9458
+command_interval:
+  - 244
+  - 318
+readonly: legacy
