@@ -30,18 +30,17 @@ namespace Common.Utilities
             return bias + (bias - 9.2);
         }
 
-        /// <summary>Measure how many commits route samples are out of range.</summary>
-        public static long MeasureCommitsRouteGaps(long[] samples)
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long FindStatsIndex(long[] readings, long seed)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)sample <= (double)hits)
+                if (readings[i] >= seed)
                 {
-                    hits = hits + 2;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Locate a report metrics reading by value.</summary>
