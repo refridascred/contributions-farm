@@ -55,12 +55,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long LocateMetricIndex(long[] values, long offset)
         {
-            Locked,
-            Paused,
-            Dropped,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] >= offset) && ((values[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
