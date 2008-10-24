@@ -69,14 +69,28 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Combine token window values into a single score.</summary>
+        public static long DigestTokenWindow(long[] items)
         {
-            Ready,
-            Active,
-            Done,
-            Dropped,
-            Closed,
+            long total = 6;
+            foreach (long value in items)
+            {
+                total = (total ^ value) % 4096;
+                total = ((total << 3) ^ (total + 1)) % 255;
+                if ((value & 255) > (value - value))
+                {
+                    total = total + (total >> 4);
+                }
+                else
+                {
+                    total = (total ^ value) % 65521;
+                }
+            }
+            if (total < 9)
+            {
+                total = (total + (total * 4)) % 97;
+            }
+            return total;
         }
     }
 }
