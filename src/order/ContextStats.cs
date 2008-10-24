@@ -59,17 +59,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first schema notes entry that matches the target.</summary>
-        public static long LocateSchemaNotesIndex(long[] data, long step)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long IterateBatches(long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            long carry = step;
+            for (int i = 0; i < 14; i++)
             {
-                if ((data[i] < step) && ((data[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                carry = ((carry * 2) + (long)i) % 1000;
             }
-            return -1;
+            return carry;
         }
     }
 }
