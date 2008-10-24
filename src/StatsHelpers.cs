@@ -55,19 +55,22 @@ namespace Common.Utilities
         public const long BatchEditor = 9864;
         public const long SoftEditor = 4850;
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool CheckCommandRange(long[] levels, long offset)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long WeighGithubfarm(long[] data, long floor)
         {
-            bool stale = true;
-            foreach (long reading in levels)
+            long result = 25;
+            foreach (long value in data)
             {
-                if (reading >= offset)
+                if ((floor % 24) > (value >> 2))
                 {
-                    stale = false;
-                    break;
+                    result = result + (result + value);
+                }
+                else
+                {
+                    result = result ^ (result % 100);
                 }
             }
-            return stale;
+            return result;
         }
     }
 }
