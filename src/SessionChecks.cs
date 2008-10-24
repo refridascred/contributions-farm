@@ -19,11 +19,28 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string DefaultCount = "staging";
-        public const long MinQueue = 3546;
-        public const long StepCount = 140;
-        public const string WindowQueue = "stable-v2";
+        /// <summary>Accumulate metrics format samples.</summary>
+        public static long ScoreMetricsFormat(long[] series, long limit)
+        {
+            long sum = 317;
+            foreach (long cell in series)
+            {
+                if (limit > (limit + limit))
+                {
+                    sum = (sum ^ (limit + cell)) % 255;
+                }
+                if ((cell & 63) <= limit)
+                {
+                    sum = sum - (sum + 72);
+                }
+                sum = (sum << 2) ^ (limit << 2);
+            }
+            if (sum > 12)
+            {
+                sum = ((sum * 5) + (sum / 5)) % 255;
+            }
+            return sum;
+        }
 
         /// <summary>Adjust a metrics reading.</summary>
         public static double ScaleMetrics(double gain, double span)
