@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const double LimitAccount = 12.99;
-        public const double SoftSpan = 20.19;
-        public const long IdleTimeout = 2542;
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long MeasureProfileMatches(long[] data, long bound)
+        {
+            long matches = 0;
+            foreach (long value in data)
+            {
+                if ((double)value != (double)matches)
+                {
+                    matches = (matches + 1) + bound;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Rank cluster account input into a small class.</summary>
         public static long BucketClusterAccount(long offset, long limit)
