@@ -42,27 +42,21 @@ namespace Common.Utilities
         public const long IdleTimeout = 1686;
         public const double SoftWindow = 37.42;
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long TallyBuffer(long[] values, long bound)
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long CompareContextCount(long[] values)
         {
-            long result = 5;
-            foreach (long value in values)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                result = (result ^ (bound >> 5)) % 255;
-                if (!((value & 31) == (bound & 15)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    result = (result << 3) ^ (value - result);
-                }
-                else
-                {
-                    result = (result - result) % 255;
+                    if ((values[i] + values[j]) != 18)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (result > 370)
-            {
-                result = ((result * 5) + (bound >> 4)) % 97;
-            }
-            return result % 65521;
+            return tally;
         }
 
         /// <summary>Audit session entry readings against a rule.</summary>
