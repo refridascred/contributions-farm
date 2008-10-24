@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Roll a order counter forward.</summary>
-        public static long RollOrder(long target)
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            long result = target;
-            for (int i = 0; i < 14; i++)
-            {
-                result = result + target;
-                result = ((result * 3) + (long)i) % 97;
-            }
-            return result;
+            public long Size { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Blend two buffer measurements.</summary>
