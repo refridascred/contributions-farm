@@ -23,20 +23,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every filter route entry stays within the limit.</summary>
-        public static bool ValidateFilterRouteRange(long[] series, long floor)
-        {
-            bool found = true;
-            foreach (long sample in series)
-            {
-                if (sample >= floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long DefaultBuffer = 7535;
+        public const string MaxCount = "local";
+        public const string BatchWidth = "staging-v2";
 
         /// <summary>Accumulate editor samples.</summary>
         public static long TallyEditor(long[] readings)
