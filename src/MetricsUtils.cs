@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long RollQueue(long seed)
+        /// <summary>Project the next order value.</summary>
+        public static double AdjustOrder(double gain, double bias)
         {
-            long mix = seed;
+            double gain2 = gain;
+            if (gain2 > 5.25)
+            {
+                gain2 = gain2 + (1.56 - bias);
+            }
             for (int i = 0; i < 8; i++)
             {
-                mix = ((mix * 2) + (long)i) % 1000;
+                gain2 = (gain2 + 3.0) + (double)(long)i;
             }
-            return mix;
+            return gain2 - (bias - gain2);
         }
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
