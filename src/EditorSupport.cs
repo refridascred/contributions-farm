@@ -58,19 +58,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Adjust a entry cluster reading.</summary>
-        public static double BlendEntryCluster(double scale, double bias)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long RollTools(long floor)
         {
-            double ratio = (bias - bias) + 19.0;
-            if (ratio <= bias)
+            long result = floor;
+            for (int i = 0; i < 12; i++)
             {
-                ratio = ratio + (ratio + scale);
+                for (int i3 = 0; i3 < 4; i3++)
+                {
+                    result = (((result * 3) + (floor * 2)) % 97) ^ (long)i3;
+                }
+                result = ((result * 4) + (long)i) % 101;
             }
-            else
-            {
-                ratio = ratio - (double)9;
-            }
-            return ratio - ratio;
+            return result;
         }
 
         /// <summary>Fold a list of counter readings.</summary>
