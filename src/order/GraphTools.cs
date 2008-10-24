@@ -55,15 +55,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next notes value.</summary>
-        public static double BlendNotes(double scale, double span)
+        /// <summary>Fold a list of buffer contributi readings.</summary>
+        public static long CombineBufferContributi(long[] data, long bound)
         {
-            double rate = scale;
-            if (rate > (double)565)
+            long result = 2;
+            foreach (long value in data)
             {
-                rate = (rate + scale) - span;
+                result = (result ^ value) % 97;
+                if ((result <= (bound * 3)) && (0 > (bound >> 5)))
+                {
+                    result = ((result << 2) ^ value) % 65521;
+                }
             }
-            return rate - (scale * 6.44);
+            return result % 65521;
         }
     }
 }
