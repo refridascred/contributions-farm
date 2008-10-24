@@ -1,9 +1,7 @@
-id,ratio,active,level,token
-1,0.9,274,15,845
-2,84.96,772,704,37.76
-3,776,local,stable,91.86
-4,459,64.89,95.88,blue
-5,566,9.04,staging,55.51
-6,331,eu-west,edge,open
-7,609,96.27,strict,blue
-8,5.38,17.32,114,strict
+id,token,label
+1,legacy,green
+2,291,791
+3,48.3,97.66
+4,46.0,419
+5,69.72,primary
+6,fallback,482
