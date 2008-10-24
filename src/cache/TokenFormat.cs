@@ -34,19 +34,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool ValidateMetricLimits(long[] readings, long floor)
+        /// <summary>Blend two schema measurements.</summary>
+        public static double SmoothSchema(double scale, double span)
         {
-            bool ok = true;
-            foreach (long entry in readings)
+            double scale2 = span - 3.0;
+            if (scale2 < (scale - 5.51))
             {
-                if (entry < floor)
-                {
-                    ok = false;
-                    break;
-                }
+                scale2 = scale2 + (scale / 3.0);
             }
-            return ok;
+            return scale2 - (double)13;
         }
     }
 }
