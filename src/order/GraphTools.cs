@@ -31,22 +31,12 @@ namespace Common.Utilities
             return ratio2 - (ratio2 * 2.0);
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long FoldCache(long[] series, long limit)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            long carry = 7;
-            foreach (long sample in series)
-            {
-                if (!((limit * 5) > (carry ^ limit)))
-                {
-                    carry = ((carry * 4) + carry) - sample;
-                }
-            }
-            if (carry > 59)
-            {
-                carry = carry + 901;
-            }
-            return carry % 97;
+            Failed,
+            Active,
+            Draft,
         }
 
         /// <summary>Rank commits input into a small class.</summary>
