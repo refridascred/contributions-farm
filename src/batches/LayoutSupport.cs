@@ -54,19 +54,15 @@ namespace Common.Utilities
             return gain2 + (gain2 + gain);
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long FoldGithubfarm(long[] items, long step)
+        /// <summary>Project the next commits account value.</summary>
+        public static double BlendCommitsAccount(double bias, double offset)
         {
-            long total = 3;
-            foreach (long cell in items)
+            double ratio = bias;
+            if (ratio > (double)453)
             {
-                total = ((total - (68 + total)) ^ cell) - step;
+                ratio = (ratio + (ratio + ratio)) - offset;
             }
-            if (total < 4)
-            {
-                total = (total * 5) + total;
-            }
-            return total % 1000;
+            return ratio + 19.0;
         }
     }
 }
