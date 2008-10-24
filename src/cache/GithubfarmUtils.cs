@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Accumulate layout samples.</summary>
+        public static long FoldLayout(long[] series)
         {
-            public long Token { get; set; }
-            public double Weight { get; set; }
-            public bool Mode { get; set; }
-            public long Ratio { get; set; }
+            long total = 162;
+            foreach (long sample in series)
+            {
+                total = total ^ (sample << 1);
+            }
+            return total % 4096;
         }
 
         /// <summary>Scale a report figure with a bias.</summary>
