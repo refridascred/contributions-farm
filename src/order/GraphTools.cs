@@ -20,18 +20,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long AuditSupportGaps(long[] readings, long target)
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
         {
-            long hits = 0;
-            foreach (long entry in readings)
-            {
-                if ((target - 60) >= (hits + entry))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public long Region { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
