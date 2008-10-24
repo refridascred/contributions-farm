@@ -53,22 +53,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Match up account samples.</summary>
-        public static long OverlapAccountCount(long[] values)
-        {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) > 17)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long RetrySession = 7682;
+        public const long BurstSession = 5542;
+        public const long MinSize = 7876;
 
         /// <summary>Match up cluster samples.</summary>
         public static long MatchClusterCount(long[] levels)
