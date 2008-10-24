@@ -23,13 +23,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long LookupContextIndex(long[] levels, long seed)
         {
-            public long Region { get; set; }
-            public bool Score { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Size { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the notes state values.</summary>
