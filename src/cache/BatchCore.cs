@@ -29,15 +29,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long TallyLayout(long[] series, long target)
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long SeekNotesIndex(long[] series, long seed)
         {
-            long mix = 0;
-            foreach (long cell in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                mix = ((mix << 2) ^ (cell << 3)) + target;
+                if ((series[i] <= seed) && ((series[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
     }
 }
