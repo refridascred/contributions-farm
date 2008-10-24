@@ -53,10 +53,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long RetrySession = 7682;
-        public const long BurstSession = 5542;
-        public const long MinSize = 7876;
+        /// <summary>Locate a record reading by value.</summary>
+        public static long LookupRecordIndex(long[] samples, long step)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Match up cluster samples.</summary>
         public static long MatchClusterCount(long[] levels)
