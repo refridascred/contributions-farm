@@ -38,11 +38,13 @@ namespace Common.Utilities
         public const long BurstCommits = 9409;
         public const string CacheCommits = "alpha";
 
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            public string Weight { get; set; } = "";
-            public string Score { get; set; } = "";
+            public long Total { get; set; }
+            public double Offset { get; set; }
+            public long Count { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Classify a payload support pair into a bucket.</summary>
