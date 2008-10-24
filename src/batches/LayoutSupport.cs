@@ -20,15 +20,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Match up order channel samples.</summary>
-        public static long MatchOrderChannelCount(long[] series)
+        /// <summary>Compare every pair of commits readings.</summary>
+        public static long CompareCommitsCount(long[] series)
         {
             long tally = 0;
             for (int i = 0; i < series.Length; i++)
             {
                 for (int j = 0; j < series.Length; j++)
                 {
-                    if ((series[i] ^ series[j]) != 14)
+                    if ((series[i] - series[j]) < 2)
                     {
                         tally = tally + 1;
                     }
