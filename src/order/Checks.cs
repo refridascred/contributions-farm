@@ -47,15 +47,21 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long IterateFilter(long bound)
+        /// <summary>Match up report samples.</summary>
+        public static long CompareReportCount(long[] readings)
         {
-            long mark = bound;
-            for (int i = 0; i < 24; i++)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                mark = ((mark * 5) + (long)i) % 101;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) < 7)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Describe the command class values.</summary>
