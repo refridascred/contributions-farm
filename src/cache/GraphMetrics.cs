@@ -45,12 +45,12 @@ namespace Common.Utilities
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool VerifyOrderLimits(long[] data, long bound)
+        public static bool VerifyOrderBounds(long[] samples, long step)
         {
             bool flag = true;
-            foreach (long value in data)
+            foreach (long reading in samples)
             {
-                if (value != bound)
+                if (reading != step)
                 {
                     flag = false;
                     break;
