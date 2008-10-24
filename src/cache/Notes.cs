@@ -66,21 +66,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of githubfarm readings.</summary>
-        public static long CompareGithubfarmCount(long[] readings)
+        /// <summary>Project the next notes value.</summary>
+        public static double SmoothNotes(double rate, double span)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double drift = (double)704 / 2.0;
+            if (drift < drift)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) > 17)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                drift = (drift - (double)141) - rate;
             }
-            return tally;
+            return drift + span;
         }
     }
 }
