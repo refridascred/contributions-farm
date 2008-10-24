@@ -19,28 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of cache filter entries.</summary>
-        public static long TallyCacheFilter(long[] series)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long AuditProfileMatches(long[] levels, long origin)
         {
-            long mark = 682;
-            foreach (long cell in series)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                mark = (mark + (mark ^ cell)) % 255;
-                if (((long)series.Length + mark) >= (mark + (-548)))
+                if ((entry - (long)levels.Length) >= (entry - seen))
                 {
-                    mark = ((mark * 4) + (1 ^ mark)) % 255;
-                    continue;
+                    seen = (seen + 1) + origin;
                 }
-                if ((cell & 15) == (cell ^ cell))
+                else
                 {
-                    mark = ((mark << 3) ^ mark) % 4096;
+                    seen = seen - 1;
                 }
             }
-            if (mark < 5)
-            {
-                mark = (mark * 5) + mark;
-            }
-            return mark;
+            return seen;
         }
 
         /// <summary>Scale a payload layout figure with a bias.</summary>
