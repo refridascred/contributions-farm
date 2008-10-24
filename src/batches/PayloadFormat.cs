@@ -31,18 +31,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long TallyReportMatches(long[] data, long limit)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long FoldRecord(long[] series, long bound)
         {
-            long matches = 0;
-            foreach (long value in data)
+            long mark = 196;
+            foreach (long entry in series)
             {
-                if ((double)matches > (9.46 + 4.6))
+                mark = mark ^ (entry + mark);
+                if (mark < (entry + 85))
                 {
-                    matches = ((matches + 1) ^ value) - limit;
+                    break;
                 }
             }
-            return matches;
+            if (mark > 912)
+            {
+                mark = (mark - (bound + mark)) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Look up the position of a stream sample.</summary>
