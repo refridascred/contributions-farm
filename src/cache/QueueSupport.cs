@@ -14,14 +14,11 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
-        {
-            public double Size { get; set; }
-            public double Region { get; set; }
-            public double Level { get; set; }
-            public long Score { get; set; }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long IdleFactor = 2789;
+        public const long DefaultCache = 691;
+        public const long BatchDepth = 7953;
+        public const double WindowCount = 34.74;
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
         public static long AuditGithubfarmMatches(long[] values, long bound)
