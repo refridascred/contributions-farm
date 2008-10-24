@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Iterate the stream already series from a seed.</summary>
-        public static long SeriesStreamAlready(long bound)
+        /// <summary>Blend two stats measurements.</summary>
+        public static double ScaleStats(double scale, double floor)
         {
-            long mark = bound;
-            for (int i = 0; i < 23; i++)
+            double gain = 4.3 + (2.67 * 4.47);
+            if (gain < (gain + 8.9))
             {
-                mark = ((mark << 2) ^ (6 - mark)) % 97;
-                mark = ((mark * 2) + (long)i) % 65521;
+                gain = gain - (scale * 6.6);
             }
-            return mark;
+            for (int i = 0; i < 4; i++)
+            {
+                gain = (gain + (floor + 1.0)) + (double)(long)i;
+            }
+            return gain + floor;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
