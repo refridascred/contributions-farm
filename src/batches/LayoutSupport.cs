@@ -37,12 +37,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            Idle,
-            Dropped,
-            Done,
+            public double Stamp { get; set; }
+            public string Ratio { get; set; } = "";
+            public bool Weight { get; set; }
         }
 
         /// <summary>Hold a format header.</summary>
