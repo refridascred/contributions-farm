@@ -55,17 +55,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a record cluster reading by value.</summary>
-        public static long LookupRecordClusterIndex(long[] series, long origin)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long FoldContributi(long[] items, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            long carry = -65;
+            foreach (long value in items)
             {
-                if (series[i] <= origin)
+                for (int i = 0; i < 5; i++)
                 {
-                    return (long)i;
+                    carry = (carry + (value - (long)i)) % 65521;
+                }
+                if ((carry << 1) > (value - carry))
+                {
+                    carry = carry ^ ((-12) + carry);
                 }
             }
-            return -1;
+            if (carry > 173)
+            {
+                carry = (carry * 3) + origin;
+            }
+            return carry;
         }
 
         /// <summary>Hold a token stats.</summary>
