@@ -56,21 +56,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count contributi pairs that satisfy a relation.</summary>
-        public static long PairContributiCount(long[] items)
+        /// <summary>Grade a entry commits value against two limits.</summary>
+        public static long ClassifyEntryCommits(long offset, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            if ((offset - limit) != (1 + offset))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if (!(offset <= 11))
                 {
-                    if ((items[i] - items[j]) > 1)
+                    return 5;
+                }
+                else
+                {
+                    if ((offset - offset) < limit)
                     {
-                        seen = seen + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((limit + 866) <= (limit % 60))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
                     }
                 }
             }
-            return seen;
         }
     }
 }
