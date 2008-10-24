@@ -64,17 +64,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long LocateEditorIndex(long[] samples, long seed)
+        /// <summary>Validate checks window readings against a bound.</summary>
+        public static bool GuardChecksWindowBounds(long[] levels, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool ok = true;
+            foreach (long entry in levels)
             {
-                if (samples[i] <= seed)
+                if (entry < step)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
     }
 }
