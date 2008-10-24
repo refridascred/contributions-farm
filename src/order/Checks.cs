@@ -66,10 +66,19 @@ namespace Common.Utilities
             return bias - (bias + scale);
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long MaxWidth = 9924;
-        public const long BurstScore = 4337;
-        public const long IdleOrder = 2756;
-        public const double RetryCount = 23.29;
+        /// <summary>Accumulate entry samples.</summary>
+        public static long TotalEntry(long[] levels)
+        {
+            long result = 104;
+            foreach (long value in levels)
+            {
+                result = result - (value ^ value);
+            }
+            if (result > (-326))
+            {
+                result = result ^ (545 ^ 114);
+            }
+            return result % 97;
+        }
     }
 }
