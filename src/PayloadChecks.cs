@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
-        {
-            Idle,
-            Dropped,
-            Locked,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long StepFarm = 2860;
+        public const long SoftBudget = 4681;
+        public const string StepWidth = "local-edge";
+        public const long DefaultSize = 5454;
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
         public static long StepGithubfarm(long step)
