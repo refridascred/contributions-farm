@@ -72,18 +72,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the queue window entries that pass the check.</summary>
-        public static long CountQueueWindowHits(long[] levels)
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            long count = 0;
-            foreach (long entry in levels)
-            {
-                if ((1 / 5) == (entry & 15))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Dropped,
+            Queued,
+            Retry,
+            Failed,
         }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
