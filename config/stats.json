@@ -1,9 +1,15 @@
 {
-  "min_retries_ms": 8.36,
-  "batch_retries": 30,
-  "dry_run": {
-    "warm_ttl": 7445,
-    "compress": "eu-west",
-    "retry_ttl": "strict"
-  }
+  "readonly": "standard",
+  "verbose": {
+    "order_limit": "edge",
+    "already_retries": 60,
+    "compress": ["stable", "fallback"],
+    "queue_capacity": {
+      "dry_run": "standard",
+      "idle_window_pct": 89.66,
+      "min_depth": "strict"
+    }
+  },
+  "burst_retries": "open",
+  "burst_window_count": 17.93
 }
