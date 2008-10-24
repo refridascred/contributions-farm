@@ -46,10 +46,28 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long LimitAccount = 4126;
-        public const string BaseAccount = "stable-edge";
-        public const string MinAccount = "standard-1";
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long IterateBatches(long floor)
+        {
+            long total = floor;
+            for (int i = 0; i < 21; i++)
+            {
+                if (((floor - floor) == (long)i) || (total <= (floor - 34)))
+                {
+                    total = (total * 2) + (8 - floor);
+                }
+                else
+                {
+                    total = (total << 3) ^ total;
+                }
+                if (!((6.13 - 2.88) < (double)(long)i))
+                {
+                    total = (total - (5 >> 5)) % 4096;
+                }
+                total = ((total * 5) + (long)i) % 4093;
+            }
+            return total;
+        }
 
         /// <summary>Hold a batches info.</summary>
         public sealed class BatchesInfo
