@@ -28,17 +28,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long FindStreamIndex(long[] items, long limit)
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] == limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Score { get; set; }
+            public double Count { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
