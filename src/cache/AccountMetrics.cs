@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Compare every pair of record stream readings.</summary>
-        public static long CompareRecordStreamCount(long[] data)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long MeasureTokenMatches(long[] values)
         {
             long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            foreach (long entry in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (matches <= (entry + 1))
                 {
-                    if ((data[i] ^ data[j]) > 6)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = matches + 1;
                 }
             }
             return matches;
