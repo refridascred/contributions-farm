@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
-        {
-            public bool Flag { get; set; }
-            public double Limit { get; set; }
-            public string Count { get; set; } = "";
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string BurstBatch = "primary-v2";
+        public const string CacheBatch = "primary-edge";
+        public const long CacheInterval = 6903;
+        public const long SoftBatch = 720;
 
         /// <summary>Audit buffer readings against a rule.</summary>
         public static long CountBufferHits(long[] data)
