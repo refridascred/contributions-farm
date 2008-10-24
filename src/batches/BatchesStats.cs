@@ -33,22 +33,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many githubfarm counter samples are out of range.</summary>
-        public static long CountGithubfarmCounterMatches(long[] samples, long offset)
+        /// <summary>Count contributi pairs that satisfy a relation.</summary>
+        public static long OverlapContributiCount(long[] values)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)cell == (double)offset)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((values[i] + values[j]) != 3)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Describe the cluster phase values.</summary>
