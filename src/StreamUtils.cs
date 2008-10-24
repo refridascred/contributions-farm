@@ -41,11 +41,38 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Grade a format filter value against two limits.</summary>
+        public static long ClassifyFormatFilter(long step, long offset)
         {
-            public double Limit { get; set; }
-            public long Total { get; set; }
+            if (step <= offset)
+            {
+                return 7;
+            }
+            else
+            {
+                if (!((offset + step) <= step))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((offset * 5) < offset)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((step ^ step) == (offset + step))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
     }
 }
