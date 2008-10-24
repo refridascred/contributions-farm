@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long DeriveLayout(long seed)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long TallyChecksGaps(long[] series)
         {
-            long mark = seed;
-            for (int i = 0; i < 12; i++)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                mark = mark ^ (long)i;
-                for (int i2 = 0; i2 < 11; i2++)
+                if ((hits - hits) != (hits << 1))
                 {
-                    mark = ((mark - (long)i) % 4096) - (long)i2;
+                    hits = (hits + 2) ^ reading;
                 }
-                mark = ((mark * 5) + (long)i) % 65521;
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
