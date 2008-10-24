@@ -6,9 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in legacy edge eu-west; do
+mode="${1:-eu-west}"
+case "${mode}" in
+    blue)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+for item in edge standard open primary; do
     log "checking ${item}"
 done
 
-RECORD_LIMIT=38
+RECORD_LIMIT=453
 log "limit is ${RECORD_LIMIT}"
