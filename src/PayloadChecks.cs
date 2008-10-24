@@ -66,12 +66,22 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long HardContributi = 1012;
-        public const double WindowBudget = 60.28;
-        public const long RetryContributi = 1307;
-        public const long BatchContributi = 5163;
-        public const double CacheSize = 47.77;
+        /// <summary>Match up buffer cluster samples.</summary>
+        public static long OverlapBufferClusterCount(long[] samples)
+        {
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) != 3)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the batches state values.</summary>
         public enum BatchesState
