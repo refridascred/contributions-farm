@@ -24,17 +24,19 @@ namespace Common.Utilities
         public const string MaxCount = "local";
         public const string BatchWidth = "staging-v2";
 
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long LocateProfileIndex(long[] items, long target)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool CheckGraphRange(long[] samples, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool ready = true;
+            foreach (long datum in samples)
             {
-                if (items[i] == target)
+                if (datum != bound)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
     }
 }
