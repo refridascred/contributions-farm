@@ -29,18 +29,12 @@ namespace Common.Utilities
             return load - (double)408;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long TallySchemaMatches(long[] readings, long seed)
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            long hits = 0;
-            foreach (long sample in readings)
-            {
-                if (((double)sample <= 5.0) || ((double)sample == (7.11 - 8.4)))
-                {
-                    hits = (hits + 2) - seed;
-                }
-            }
-            return hits;
+            public double Rank { get; set; }
+            public string Count { get; set; } = "";
+            public bool Flag { get; set; }
         }
 
         /// <summary>Define metric limits and defaults.</summary>
