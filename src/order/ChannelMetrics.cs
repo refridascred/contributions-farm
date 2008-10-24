@@ -28,31 +28,15 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long ClassifyCommits(long origin, long limit)
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long DeriveChannel(long target)
         {
-            if (!(origin >= (696 >> 1)))
+            long result = target;
+            for (int i = 0; i < 8; i++)
             {
-                return 5;
+                result = ((result * 5) + (long)i) % 97;
             }
-            else
-            {
-                if ((4 + limit) < limit)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)origin == (5.8 * 11.0))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            return result;
         }
     }
 }
