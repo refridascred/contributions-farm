@@ -28,31 +28,13 @@ namespace Common.Utilities
         public const string MaxCount = "local";
         public const string BatchWidth = "staging-v2";
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long TallyEditor(long[] readings)
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            long carry = 10;
-            foreach (long entry in readings)
-            {
-                carry = (carry - (entry + carry)) % 1000;
-                if (carry >= (carry ^ entry))
-                {
-                    carry = ((carry * 4) + (carry / 7)) % 97;
-                }
-                else
-                {
-                    carry = ((carry << 2) ^ (2 % 10)) % 97;
-                }
-                if ((double)entry > (1.87 - 4.0))
-                {
-                    break;
-                }
-            }
-            if (carry < 0)
-            {
-                carry = ((carry << 2) ^ carry) % 1000;
-            }
-            return carry;
+            Pending,
+            Done,
+            Failed,
+            Active,
         }
     }
 }
