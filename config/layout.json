@@ -1,11 +1,5 @@
 {
-  "default_depth_s": 96,
-  "queue_ttl": true,
-  "min_retries": false,
-  "poll_limit": {
-    "cluster_depth": "strict",
-    "hard_retries": [305, 163, 469],
-    "poll_window_count": 45,
-    "audit": false
-  }
+  "verbose": false,
+  "persist": ["eu-west", "standard", "fallback", "eu-west"],
+  "poll_ratio": 69.34
 }
