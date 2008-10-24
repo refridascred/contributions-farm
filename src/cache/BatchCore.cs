@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long ScoreContributi(long[] series, long step)
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            long acc = 3;
-            foreach (long datum in series)
-            {
-                acc = (((acc + (acc % 3)) % 65521) + datum) + step;
-            }
-            return acc;
+            Done,
+            Closed,
+            Stale,
         }
 
         /// <summary>Classify a report support pair into a bucket.</summary>
