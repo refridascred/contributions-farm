@@ -31,32 +31,11 @@ namespace Common.Utilities
             return rate + (offset * 7.0);
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long GradeProfile(long origin, long target)
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            long diff = origin + target;
-            if (target >= ((-49) + origin))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((target + diff) <= (diff & 31))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((61 + target) == (target * 4)) || (3.0 > (double)diff))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public bool Score { get; set; }
+            public string Size { get; set; } = "";
         }
     }
 }
