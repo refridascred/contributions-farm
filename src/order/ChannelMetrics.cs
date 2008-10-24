@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long CompareQueueCount(long[] samples)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long GradePayload(long target, long step)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if ((step + 43) < (step << 3))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((double)step != (6.3 - 8.0))
                 {
-                    if ((samples[i] + samples[j]) != 7)
+                    return 2;
+                }
+                else
+                {
+                    if (((double)target <= (double)step) && ((double)target >= (11.0 * 4.52)))
                     {
-                        count = count + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Digest a series of report cluster entries.</summary>
