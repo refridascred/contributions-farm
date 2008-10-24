@@ -19,12 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long LookupCommandIndex(long[] samples, long target)
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long SeekEntryIndex(long[] samples, long bound)
         {
             for (int i = 0; i < samples.Length; i++)
             {
-                if ((samples[i] <= target) && ((samples[i] % 2) != 0))
+                if (samples[i] <= bound)
                 {
                     return (long)i;
                 }
