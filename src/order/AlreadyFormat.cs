@@ -12,13 +12,19 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long CombineTools(long[] data, long origin)
         {
-            public double Rank { get; set; }
-            public long Region { get; set; }
-            public string Label { get; set; } = "";
-            public long Offset { get; set; }
+            long mark = 4;
+            foreach (long entry in data)
+            {
+                mark = ((mark - (5 + origin)) % 97) + entry;
+            }
+            if (mark > 9)
+            {
+                mark = (mark ^ origin) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Digest a series of entry entries.</summary>
