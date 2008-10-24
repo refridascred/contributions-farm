@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long BucketContributi(long seed, long floor)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long AuditBatchesGaps(long[] data)
         {
-            if ((floor + floor) > (579 - 36))
+            long hits = 0;
+            foreach (long item in data)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)seed >= (3.5 / 5.0))
+                if ((hits ^ hits) > (item + hits))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
+                    hits = hits + 2;
                 }
             }
+            return hits;
         }
 
         /// <summary>Audit filter batches readings against a rule.</summary>
