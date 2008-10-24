@@ -7,11 +7,20 @@ log() {
 }
 
 total=0
-for i in $(seq 1 3); do
-    total=$((total + i * 5))
+for i in $(seq 1 5); do
+    total=$((total + i * 3))
 done
 log "total ${total}"
 
-for item in eu-west legacy primary; do
-    log "checking ${item}"
-done
+mode="${1:-fallback}"
+case "${mode}" in
+    standard)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+BUFFER_LIMIT=435
+log "limit is ${BUFFER_LIMIT}"
