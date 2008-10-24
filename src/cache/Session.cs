@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long TallyBuffer(long[] data, long seed)
-        {
-            long mix = 1;
-            foreach (long reading in data)
-            {
-                mix = (mix - (reading >> 2)) % 4096;
-                mix = (mix ^ (seed - mix)) % 101;
-                mix = (mix * 4) + (seed + mix);
-                if (seed >= (mix + reading))
-                {
-                    break;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string MaxCount = "standard-1";
+        public const double RetryGraph = 21.43;
+        public const long RetryLevel = 2993;
+        public const long HardGraph = 7840;
+        public const long CacheScore = 4685;
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
         public static bool ValidateToolsRange(long[] data, long limit)
