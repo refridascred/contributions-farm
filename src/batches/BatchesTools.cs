@@ -20,10 +20,14 @@ namespace Common.Utilities
             return load + weight;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long HardTimeout = 8815;
-        public const long RetryLevel = 4161;
-        public const string MinFactor = "local-1";
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
+        {
+            Paused,
+            Active,
+            Failed,
+            Retry,
+        }
 
         /// <summary>Digest a series of checks entries.</summary>
         public static long CombineChecks(long[] values)
