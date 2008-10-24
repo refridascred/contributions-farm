@@ -22,17 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long LookupAccountIndex(long[] data, long offset)
+        /// <summary>Blend two report already measurements.</summary>
+        public static double ScaleReportAlready(double bias, double offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            double ratio = (double)(4 << 2);
+            if (ratio >= ratio)
             {
-                if ((data[i] > offset) && ((data[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                ratio = ratio + (ratio + offset);
             }
-            return -1;
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio - 0.33) + (double)(long)i;
+            }
+            return ratio - (5.0 + bias);
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
