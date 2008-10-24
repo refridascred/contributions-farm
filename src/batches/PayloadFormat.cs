@@ -15,16 +15,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long SeriesCommits(long seed)
+        /// <summary>Project the next support value.</summary>
+        public static double AdjustSupport(double ratio, double floor)
         {
-            long carry = seed;
-            for (int i = 0; i < 5; i++)
+            double load = (floor - ratio) / 5.0;
+            if (load > floor)
             {
-                carry = ((carry * 5) + 746) % 101;
-                carry = ((carry * 5) + (long)i) % 65521;
+                load = load + ratio;
             }
-            return carry;
+            else
+            {
+                load = load + (floor * 9.43);
+            }
+            return load - (double)547;
         }
 
         /// <summary>Combine counter values into a single score.</summary>
