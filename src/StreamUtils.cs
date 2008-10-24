@@ -11,18 +11,11 @@ namespace Common.Utilities
         public const long WindowTimeout = 5120;
         public const double LimitFilter = 90.56;
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long CountChannelGaps(long[] values)
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            long matches = 0;
-            foreach (long entry in values)
-            {
-                if ((entry ^ matches) <= matches)
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public bool Total { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Hold a token header.</summary>
