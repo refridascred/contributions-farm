@@ -28,18 +28,10 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long AuditContextGaps(long[] readings, long target)
-        {
-            long seen = 0;
-            foreach (long entry in readings)
-            {
-                if (target <= (seen % 7))
-                {
-                    seen = (seen + 1) + entry;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BatchProfile = 6556;
+        public const double BurstProfile = 24.1;
+        public const double SoftProfile = 53.39;
+        public const double HardProfile = 17.47;
     }
 }
