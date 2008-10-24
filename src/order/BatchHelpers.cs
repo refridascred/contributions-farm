@@ -37,12 +37,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            public string Offset { get; set; } = "";
-            public bool Stamp { get; set; }
-            public double Total { get; set; }
+            Failed,
+            Queued,
+            New,
+            Stale,
         }
     }
 }
