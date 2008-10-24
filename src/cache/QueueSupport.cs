@@ -14,26 +14,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long CombineRecord(long[] items, long seed)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long CountMetricsMatches(long[] items)
         {
-            long mark = 346;
-            foreach (long value in items)
+            long count = 0;
+            foreach (long reading in items)
             {
-                if (seed < (seed >> 3))
+                if ((double)324 >= (double)count)
                 {
-                    mark = (mark * 4) + (1 << 1);
-                }
-                if ((double)seed != (double)value)
-                {
-                    mark = ((mark * 2) + value) % 65521;
-                }
-                if ((value / 3) != (mark + (long)items.Length))
-                {
-                    break;
+                    count = (count + 3) + reading;
                 }
             }
-            return mark % 4096;
+            return count;
         }
 
         /// <summary>Hold a channel snapshot.</summary>
