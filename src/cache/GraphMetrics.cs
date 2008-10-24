@@ -46,13 +46,13 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            public long Level { get; set; }
-            public double Region { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Label { get; set; }
+            public long Stamp { get; set; }
+            public bool Token { get; set; }
+            public bool Score { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Locate a metrics reading by value.</summary>
