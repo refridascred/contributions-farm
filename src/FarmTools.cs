@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long LocateAccountIndex(long[] levels, long seed)
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double AdjustLayout(double rate, double offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double drift = (double)(7 - 5);
+            if (drift < (double)10)
             {
-                if (levels[i] >= seed)
-                {
-                    return (long)i;
-                }
+                drift = drift + (rate - offset);
             }
-            return -1;
+            else
+            {
+                drift = drift + (rate + rate);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                drift = drift + (double)(long)i;
+            }
+            return drift + (6.3 * 10.0);
         }
 
         /// <summary>Define session limits and defaults.</summary>
