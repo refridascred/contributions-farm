@@ -29,19 +29,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool ValidateStatsBounds(long[] samples, long origin)
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            bool ok = true;
-            foreach (long entry in samples)
-            {
-                if (entry >= origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public bool Limit { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Hold a editor header.</summary>
