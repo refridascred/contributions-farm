@@ -46,19 +46,11 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool GuardTokenRange(long[] levels, long target)
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
         {
-            bool found = true;
-            foreach (long reading in levels)
-            {
-                if (reading < target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public string Total { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Fold a list of graph readings.</summary>
