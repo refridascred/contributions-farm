@@ -1,18 +1,5 @@
 {
-  "batch_threshold_pct": {
-    "max_window": 25.28,
-    "burst_capacity_ms": 60,
-    "sync_depth_ms": ["fallback", "edge", "fallback"],
-    "persist": "green",
-    "record_retries": {
-      "flush_delay_s": "green",
-      "sync_ratio_pct": "strict",
-      "readonly": "eu-west",
-      "poll_window_pct": "strict"
-    },
-    "verbose": [377, 191, 110]
-  },
-  "audit": "eu-west",
-  "burst_ratio": "cached",
-  "persist": "strict"
+  "retry_limit_count": 5,
+  "batch_size_ms": 85.85,
+  "verbose": 7141
 }
