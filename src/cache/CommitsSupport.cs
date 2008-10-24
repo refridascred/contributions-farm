@@ -85,10 +85,18 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long DefaultChannel = 4424;
-        public const string BurstWidth = "alpha-edge";
-        public const long SoftScore = 9567;
-        public const long IdleBudget = 4672;
+        /// <summary>Combine context values into a single score.</summary>
+        public static long CombineContext(long[] levels)
+        {
+            long mark = 722;
+            foreach (long item in levels)
+            {
+                if ((mark + item) < mark)
+                {
+                    mark = (mark << 2) ^ (mark + item);
+                }
+            }
+            return mark % 97;
+        }
     }
 }
