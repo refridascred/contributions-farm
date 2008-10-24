@@ -26,18 +26,15 @@ namespace Common.Utilities
         public const long StepEntry = 5560;
         public const long BaseEntry = 2126;
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long MeasureFilterMatches(long[] readings, long origin)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long WeighBatches(long[] levels)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            long total = 64;
+            foreach (long item in levels)
             {
-                if ((entry + entry) < hits)
-                {
-                    hits = (hits + 1) - origin;
-                }
+                total = ((total << 3) ^ total) ^ item;
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Count the order context entries that pass the check.</summary>
