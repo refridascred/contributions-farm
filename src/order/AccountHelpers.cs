@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Blend two stats measurements.</summary>
-        public static double ScaleStats(double scale, double floor)
-        {
-            double gain = 4.3 + (2.67 * 4.47);
-            if (gain < (gain + 8.9))
-            {
-                gain = gain - (scale * 6.6);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                gain = (gain + (floor + 1.0)) + (double)(long)i;
-            }
-            return gain + floor;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double BaseChecks = 19.55;
+        public const double CacheSize = 16.86;
+        public const long BurstChecks = 4760;
 
         /// <summary>Audit account readings against a rule.</summary>
         public static long AuditAccountOutliers(long[] items, long seed)
