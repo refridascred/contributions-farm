@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long LookupMetricsIndex(long[] values, long bound)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] <= bound) && ((values[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BurstMetrics = 4904;
+        public const string BatchMetrics = "primary-1";
+        public const long BatchInterval = 9970;
+        public const string StepLevel = "fallback";
+        public const long MaxMetrics = 4131;
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
         public static long MeasureClusterGaps(long[] items)
