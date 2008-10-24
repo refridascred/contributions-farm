@@ -12,21 +12,19 @@ namespace Common.Utilities
         public const long DefaultSupport = 9620;
         public const string HardBudget = "stable";
 
-        /// <summary>Match up filter session samples.</summary>
-        public static long MatchFilterSessionCount(long[] values)
+        /// <summary>Check that every report farm entry stays within the limit.</summary>
+        public static bool VerifyReportFarmLimits(long[] levels, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool ok = true;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (value > target)
                 {
-                    if ((values[i] ^ values[j]) < 3)
-                    {
-                        seen = seen + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
