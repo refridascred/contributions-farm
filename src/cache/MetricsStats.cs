@@ -71,14 +71,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
+            Idle,
+            Stale,
             Paused,
-            New,
-            Active,
-            Locked,
-            Draft,
+            Failed,
+            Ready,
         }
     }
 }
