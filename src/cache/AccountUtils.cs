@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long AuditBatchHits(long[] samples, long origin)
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double AdjustCommand(double ratio, double offset)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            double mean = offset - 3.5;
+            if (mean <= 3.4)
             {
-                if (!(1.7 >= (double)cell))
-                {
-                    seen = (seen + 2) - origin;
-                }
+                mean = (mean + (double)391) - ratio;
             }
-            return seen;
+            return mean + offset;
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
