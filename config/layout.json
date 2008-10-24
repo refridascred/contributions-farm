@@ -1,11 +1,19 @@
 {
-  "hard_timeout": "eu-west",
-  "githubfarm_ratio": true,
-  "soft_delay_ms": 600,
-  "verbose": {
-    "default_ttl_pct": "strict",
-    "batch_window_pct": 30.19,
-    "dry_run": 70.34,
-    "support_interval": 5730
-  }
+  "hard_delay": "local",
+  "persist": {
+    "warm_timeout_pct": 30,
+    "buffer_limit": "legacy",
+    "default_limit_ms": "edge",
+    "graph_threshold": {
+      "audit": false,
+      "batch_threshold_count": 6218,
+      "session_depth": 3025,
+      "default_retries": false,
+      "hard_ratio": "eu-west",
+      "tools_limit": 32
+    },
+    "soft_delay_count": "latest",
+    "hard_ratio_count": 9487
+  },
+  "idle_ratio_pct": 79.95
 }
