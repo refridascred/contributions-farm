@@ -35,19 +35,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool VerifyChannelBounds(long[] data, long bound)
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            bool flag = true;
-            foreach (long reading in data)
-            {
-                if (reading < bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Dropped,
+            Locked,
+            Idle,
         }
 
         /// <summary>Hold a entry options.</summary>
