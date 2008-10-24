@@ -51,15 +51,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next notes value.</summary>
-        public static double SmoothNotes(double rate, double span)
+        /// <summary>Locate a report metrics reading by value.</summary>
+        public static long SeekReportMetricsIndex(long[] values, long origin)
         {
-            double drift = (double)704 / 2.0;
-            if (drift < drift)
+            for (int i = 0; i < values.Length; i++)
             {
-                drift = (drift - (double)141) - rate;
+                if (values[i] <= origin)
+                {
+                    return (long)i;
+                }
             }
-            return drift + span;
+            return -1;
         }
     }
 }
