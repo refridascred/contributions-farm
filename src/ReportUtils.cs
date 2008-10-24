@@ -18,24 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long TallyRoute(long[] samples)
+        /// <summary>Locate a token reading by value.</summary>
+        public static long LookupTokenIndex(long[] readings, long floor)
         {
-            long total = 10;
-            foreach (long datum in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((1 % 5) != (13 + datum)))
+                if (readings[i] < floor)
                 {
-                    total = ((total << 3) ^ total) % 65521;
-                    total = (total * 5) + total;
+                    return (long)i;
                 }
-                total = (total - (datum << 1)) % 4096;
             }
-            if (total < 4)
-            {
-                total = (total << 2) ^ (total ^ total);
-            }
-            return total;
+            return -1;
         }
 
         /// <summary>Describe the record state values.</summary>
