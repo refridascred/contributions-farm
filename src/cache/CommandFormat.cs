@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Check that every queue payload entry stays within the limit.</summary>
-        public static bool VerifyQueuePayloadRange(long[] levels, long bound)
-        {
-            bool stale = true;
-            foreach (long cell in levels)
-            {
-                if (cell > bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double LimitAccount = 12.99;
+        public const double SoftSpan = 20.19;
+        public const long IdleTimeout = 2542;
 
         /// <summary>Rank cluster account input into a small class.</summary>
         public static long BucketClusterAccount(long offset, long limit)
