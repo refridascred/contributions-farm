@@ -58,19 +58,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool VerifyContributiBounds(long[] values, long target)
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            bool stale = true;
-            foreach (long value in values)
-            {
-                if (value >= target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Failed,
+            Stale,
+            Done,
         }
     }
 }
