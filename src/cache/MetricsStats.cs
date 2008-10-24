@@ -72,13 +72,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            public bool Limit { get; set; }
-            public long Rank { get; set; }
-            public long Mode { get; set; }
-            public double Size { get; set; }
+            Paused,
+            New,
+            Active,
+            Locked,
+            Draft,
         }
     }
 }
