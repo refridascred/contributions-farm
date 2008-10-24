@@ -1,8 +1,8 @@
 # entry settings
-min_threshold_pct: 30
-default_limit: latest
-max_timeout:
+cluster_depth:
+  - latest
+  - strict
   - primary
-  - green
-readonly: true
-notes_capacity: stable
+  - legacy
+batch_retries_count: cached
+flush_depth_s: 91
