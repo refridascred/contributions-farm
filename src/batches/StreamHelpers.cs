@@ -35,19 +35,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool CheckSupportRange(long[] data, long bound)
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            bool found = true;
-            foreach (long item in data)
-            {
-                if (item < bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Queued,
+            Dropped,
+            Locked,
+            Idle,
         }
 
         /// <summary>Describe the profile state values.</summary>
