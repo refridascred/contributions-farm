@@ -36,19 +36,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool GuardFormatBounds(long[] levels, long seed)
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long LookupGithubfarmIndex(long[] values, long bound)
         {
-            bool valid = true;
-            foreach (long cell in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (cell != seed)
+                if ((values[i] < bound) && ((values[i] % 2) != 0))
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Match up window cluster samples.</summary>
