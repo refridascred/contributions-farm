@@ -58,12 +58,12 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long LookupMetricsIndex(long[] data, long origin)
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long FindFarmIndex(long[] values, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (data[i] == origin)
+                if (values[i] == target)
                 {
                     return (long)i;
                 }
