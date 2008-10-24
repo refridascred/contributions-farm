@@ -31,12 +31,22 @@ namespace Common.Utilities
         public const long WindowEntry = 1285;
         public const double DefaultEntry = 60.09;
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long RetryCommand = 1820;
-        public const string CacheScore = "staging-edge";
-        public const long MaxRatio = 3197;
-        public const long DefaultWidth = 3379;
-        public const long StepDepth = 7716;
+        /// <summary>Count cluster profile pairs that satisfy a relation.</summary>
+        public static long MatchClusterProfileCount(long[] values)
+        {
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) > 7)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define report limits and defaults.</summary>
         public const long CacheLevel = 6867;
