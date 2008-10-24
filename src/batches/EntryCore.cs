@@ -45,19 +45,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool GuardSessionRange(long[] samples, long bound)
+        /// <summary>Classify a githubfarm support pair into a bucket.</summary>
+        public static long SortGithubfarmSupport(long seed, long floor)
         {
-            bool stale = true;
-            foreach (long item in samples)
+            long cur = seed ^ floor;
+            if ((floor - 45) >= cur)
             {
-                if (item >= bound)
+                return 6;
+            }
+            else
+            {
+                if ((double)cur > (3.7 / 9.0))
                 {
-                    stale = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if ((4.97 / 7.0) == (double)seed)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((5.0 * 7.7) < (double)cur) || ((double)cur == (19.0 * 7.0)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Hold a command summary.</summary>
