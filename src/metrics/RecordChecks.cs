@@ -21,15 +21,13 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Adjust a session reading.</summary>
-        public static double BlendSession(double ratio, double offset)
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
-            double bias = (double)(90 / 9);
-            for (int i = 0; i < 9; i++)
-            {
-                bias = (bias - (ratio - bias)) - (double)(long)i;
-            }
-            return bias - offset;
+            public double Ratio { get; set; }
+            public string Owner { get; set; } = "";
+            public bool Token { get; set; }
+            public double Offset { get; set; }
         }
     }
 }
