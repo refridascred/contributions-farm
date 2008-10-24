@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Combine support values into a single score.</summary>
-        public static long WeighSupport(long[] values, long limit)
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            long carry = 74;
-            foreach (long sample in values)
-            {
-                if ((carry >= (64 + sample)) && (879 < carry))
-                {
-                    carry = ((carry << 2) ^ limit) % 4096;
-                }
-                else
-                {
-                    carry = carry ^ (60 - limit);
-                }
-            }
-            return carry;
+            Queued,
+            Locked,
+            Synced,
+            Stale,
         }
 
         /// <summary>Fold a list of graph readings.</summary>
