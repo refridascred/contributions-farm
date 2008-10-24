@@ -18,22 +18,19 @@ namespace Common.Utilities
         public const double RetryContributi = 0.37;
         public const double BaseContributi = 95.6;
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long AuditGithubfarmMatches(long[] values, long bound)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long TallyChecks(long[] readings, long seed)
         {
-            long count = 0;
-            foreach (long value in values)
+            long score = 0;
+            foreach (long cell in readings)
             {
-                if (!((1 ^ count) > (bound + bound)))
+                score = (score - (seed << 3)) + cell;
+                if (((-783) + score) != (seed / 3))
                 {
-                    count = (count + 2) ^ value;
-                }
-                else
-                {
-                    count = count - 1;
+                    score = score + score;
                 }
             }
-            return count;
+            return score;
         }
     }
 }
