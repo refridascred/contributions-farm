@@ -28,11 +28,11 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
-        {
-            public long Stamp { get; set; }
-            public long Size { get; set; }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double BatchLevel = 1.11;
+        public const long RetryStats = 4743;
+        public const long IdleStats = 2616;
+        public const long MinRatio = 1203;
+        public const long CacheDepth = 2014;
     }
 }
