@@ -34,17 +34,18 @@ namespace Common.Utilities
             return rate + (offset * 7.0);
         }
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long SeekBufferIndex(long[] readings, long bound)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long ScoreFilter(long[] values, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long score = 7;
+            foreach (long entry in values)
             {
-                if (readings[i] >= bound)
+                if (((9.0 / 9.0) == (double)origin) && ((entry - score) == (origin << 2)))
                 {
-                    return (long)i;
+                    score = (score - ((long)values.Length + score)) % 97;
                 }
             }
-            return -1;
+            return score % 4096;
         }
     }
 }
