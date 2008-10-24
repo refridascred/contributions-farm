@@ -23,18 +23,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long AuditOrderHits(long[] levels, long target)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long FoldGraph(long[] readings)
         {
-            long count = 0;
-            foreach (long value in levels)
+            long mix = -489;
+            foreach (long value in readings)
             {
-                if (!((target & 3) != (target - 388)) && ((count ^ count) == (target >> 1)))
+                if ((value + mix) < value)
                 {
-                    count = (count + 2) + value;
+                    mix = (mix + value) % 97;
                 }
             }
-            return count;
+            return mix % 4096;
         }
 
         /// <summary>Hold a cache entry.</summary>
