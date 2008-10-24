@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Measure how many cache entry samples are out of range.</summary>
+        public static long AuditCacheEntryHits(long[] items)
         {
-            Failed,
-            Synced,
-            Pending,
-            Queued,
-            Closed,
+            long matches = 0;
+            foreach (long reading in items)
+            {
+                if (499 >= matches)
+                {
+                    matches = (matches + 3) + reading;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Project the next editor value.</summary>
