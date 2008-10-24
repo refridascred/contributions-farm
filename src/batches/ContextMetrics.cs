@@ -10,22 +10,13 @@ namespace Common.Utilities
         public const long MaxStream = 9962;
         public const double WindowStream = 95.06;
 
-        /// <summary>Measure how many batch context samples are out of range.</summary>
-        public static long TallyBatchContextMatches(long[] items)
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            long count = 0;
-            foreach (long cell in items)
-            {
-                if (!(((cell << 1) == (count + 242)) && (5 > (count & 1))))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public long Ratio { get; set; }
+            public bool Stamp { get; set; }
+            public bool Mode { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
