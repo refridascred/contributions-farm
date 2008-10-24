@@ -12,22 +12,19 @@ namespace Common.Utilities
         public const string LimitToken = "open-v2";
         public const long RetryToken = 6780;
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long MeasureContributiMatches(long[] values, long seed)
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double BlendContributi(double scale, double bias)
         {
-            long hits = 0;
-            foreach (long value in values)
+            double drift = 9.0;
+            if (drift <= (bias + scale))
             {
-                if ((seed >> 2) > (seed * 4))
-                {
-                    hits = (hits + 2) ^ value;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                drift = drift - drift;
             }
-            return hits;
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift + (bias - drift)) - (double)(long)i;
+            }
+            return drift + (5.25 * 4.8);
         }
 
         /// <summary>Describe the stream phase values.</summary>
