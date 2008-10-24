@@ -25,15 +25,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next order value.</summary>
-        public static double ScaleOrder(double rate, double bias)
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
         {
-            double ratio = (rate / 6.0) / 8.0;
-            if (ratio >= bias)
-            {
-                ratio = ratio - 4.3;
-            }
-            return ratio - bias;
+            public string Offset { get; set; } = "";
+            public string Ratio { get; set; } = "";
         }
     }
 }
