@@ -1,10 +1,12 @@
 # Command notes
 
-Each tools is validated before it reaches the counter queue.
-Keep graph and notes names short and lowercase.
+Keep report and layout names short and lowercase.
+The counter module keeps entry values in sync with the format cache.
+A cache that stays idle for too long is moved to the queue list.
 
 ## Guidelines
 
-- Review commits limits each release
-- Document new route fields
-- Prefer layout defaults
+- Document new layout fields
+- Prefer graph defaults
+- Validate tools input early
+- Review notes limits each release
