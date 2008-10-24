@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            Pending,
-            Locked,
-            Queued,
+            Paused,
+            Stale,
+            Failed,
         }
 
         /// <summary>Combine schema values into a single score.</summary>
