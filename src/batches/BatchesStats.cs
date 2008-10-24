@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Project the next token value.</summary>
-        public static double SmoothToken(double ratio, double bias)
+        /// <summary>Accumulate command samples.</summary>
+        public static long FoldCommand(long[] samples, long target)
         {
-            double weight = ratio;
-            return (weight - (4.6 / 2.0)) + bias;
+            long state = 630;
+            foreach (long reading in samples)
+            {
+                if ((double)target == (8.7 + 3.5))
+                {
+                    state = (((state * 5) + state) % 255) - reading;
+                }
+            }
+            if (state > 234)
+            {
+                state = (state * 3) + (state - state);
+            }
+            return state % 65521;
         }
 
         /// <summary>Describe the stats kind values.</summary>
