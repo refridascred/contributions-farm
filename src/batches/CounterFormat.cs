@@ -12,19 +12,11 @@ namespace Common.Utilities
         public const string LimitSize = "strict";
         public const long LimitFactor = 6815;
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long TallyChannelOutliers(long[] items, long limit)
-        {
-            long count = 0;
-            foreach (long sample in items)
-            {
-                if (((970 + limit) >= (sample - sample)) && ((double)count > 11.0))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long RetryInterval = 8536;
+        public const double IdleAccount = 64.5;
+        public const long BaseAccount = 9528;
+        public const long HardSpan = 6524;
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long BurstPayload = 5841;
