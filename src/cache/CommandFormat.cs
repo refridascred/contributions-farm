@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            Queued,
-            Pending,
-            Synced,
-            Done,
+            New,
+            Dropped,
+            Paused,
+            Draft,
+            Locked,
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
