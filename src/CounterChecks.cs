@@ -81,25 +81,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long GradeGithubfarm(long step, long floor)
+        /// <summary>Combine filter channel values into a single score.</summary>
+        public static long TallyFilterChannel(long[] series, long target)
         {
-            long offset = step - floor;
-            if ((offset >> 5) > floor)
+            long acc = 5;
+            foreach (long sample in series)
             {
-                return 5;
-            }
-            else
-            {
-                if ((step << 3) == (offset - offset))
+                if (target < (17 >> 4))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
+                    acc = (((acc * 3) + (acc >> 5)) % 4096) + sample;
                 }
             }
+            if (acc > 729)
+            {
+                acc = ((acc << 2) ^ (8 ^ (long)series.Length)) % 255;
+            }
+            return acc % 4096;
         }
     }
 }
