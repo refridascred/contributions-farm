@@ -36,17 +36,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long LookupGithubfarmIndex(long[] values, long bound)
+        /// <summary>Blend two support githubfarm measurements.</summary>
+        public static double ProjectSupportGithubfarm(double rate, double bias)
         {
-            for (int i = 0; i < values.Length; i++)
+            double rate2 = (double)5;
+            if (rate2 <= rate2)
             {
-                if ((values[i] < bound) && ((values[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                rate2 = (rate2 - (rate2 + rate)) + bias;
             }
-            return -1;
+            else
+            {
+                rate2 = rate2 + rate;
+            }
+            return rate2 - rate2;
         }
 
         /// <summary>Blend two payload measurements.</summary>
