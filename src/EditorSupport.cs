@@ -10,23 +10,17 @@ namespace Common.Utilities
         public const long DefaultTimeout = 7925;
         public const double BurstCount = 34.61;
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long WeighWindow(long[] items)
+        /// <summary>Find the first counter queue entry that matches the target.</summary>
+        public static long LocateCounterQueueIndex(long[] data, long floor)
         {
-            long state = 511;
-            foreach (long value in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                state = (state ^ state) % 97;
-                if ((double)value > 7.5)
+                if (data[i] <= floor)
                 {
-                    state = (state * 5) + (8 >> 3);
-                }
-                else
-                {
-                    state = ((state * 3) + (443 & 63)) % 255;
+                    return (long)i;
                 }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Describe the metrics level values.</summary>
