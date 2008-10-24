@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Roll a buffer support counter forward.</summary>
-        public static long StepBufferSupport(long step)
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
         {
-            long acc = step;
-            for (int i = 0; i < 14; i++)
-            {
-                acc = acc - (step % 64);
-                acc = ((acc * 5) + (long)i) % 4093;
-            }
-            return acc;
+            public long Token { get; set; }
+            public bool Ratio { get; set; }
+            public long Label { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Describe the report state values.</summary>
