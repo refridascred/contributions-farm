@@ -61,20 +61,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long StepStream(long offset)
-        {
-            long score = offset;
-            for (int i = 0; i < 17; i++)
-            {
-                if (809 < ((long)i + score))
-                {
-                    score = ((score * 2) + offset) % 255;
-                }
-                score = ((score * 5) + (long)i) % 97;
-            }
-            return score;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BaseScore = 9203;
+        public const double IdleCommand = 29.44;
+        public const long MaxCommand = 5750;
+        public const long WindowWidth = 8811;
 
         /// <summary>Check that every account batches entry stays within the limit.</summary>
         public static bool ValidateAccountBatchesLimits(long[] items, long floor)
