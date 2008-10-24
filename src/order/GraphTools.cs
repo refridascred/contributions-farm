@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool GuardWindowRange(long[] series, long bound)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long AuditLayoutGaps(long[] values, long target)
         {
-            bool found = true;
-            foreach (long entry in series)
+            long matches = 0;
+            foreach (long item in values)
             {
-                if (entry <= bound)
+                if ((6 - target) > 9)
                 {
-                    found = false;
-                    break;
+                    matches = (matches + 1) - item;
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Hold a schema summary.</summary>
