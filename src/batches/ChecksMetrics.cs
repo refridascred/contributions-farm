@@ -72,12 +72,11 @@ namespace Common.Utilities
         public const string BurstCount = "staging-v2";
         public const string DefaultWidth = "stable-v2";
 
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
-        {
-            public long Mode { get; set; }
-            public double Flag { get; set; }
-            public bool Stamp { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BatchWidth = 4396;
+        public const long IdleDepth = 3147;
+        public const long BurstWidth = 6173;
+        public const long LimitFilter = 2390;
+        public const long MinCount = 4775;
     }
 }
