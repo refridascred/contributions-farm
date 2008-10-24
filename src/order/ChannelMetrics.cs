@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long MeasureRecordGaps(long[] data)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long IterateAccount(long floor)
         {
-            long seen = 0;
-            foreach (long value in data)
+            long total = floor;
+            for (int i = 0; i < 6; i++)
             {
-                if ((678 % 7) < (seen - value))
-                {
-                    seen = seen + 2;
-                }
+                total = (total + (total * 2)) % 101;
+                total = total ^ (floor + total);
+                total = ((total * 4) + (long)i) % 97;
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Hold a counter header.</summary>
