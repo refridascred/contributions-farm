@@ -1,9 +1,10 @@
 # githubfarm settings
-flush_window_ms: 60
-idle_ratio_pct: true
-audit: blue
-poll_capacity_ms:
-  - 53
-  - 484
-  - 429
-context_timeout: 76
+default_size: edge
+burst_capacity_ms: cached
+burst_size:
+  cache_timeout: 1712
+  cache_retries: 53
+  max_interval_pct: true
+  retry_depth: 1882
+  buffer_limit: 98
+  session_capacity: false
