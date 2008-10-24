@@ -20,17 +20,20 @@ namespace Common.Utilities
             return load + weight;
         }
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long LocateContributiIndex(long[] data, long offset)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long SeriesFormat(long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            long sum = offset;
+            for (int i = 0; i < 18; i++)
             {
-                if (data[i] < offset)
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    return (long)i;
+                    sum = ((sum ^ (offset >> 3)) % 97) - (long)i2;
+                    sum = (sum + (offset % 60)) % 1000;
                 }
+                sum = ((sum * 2) + (long)i) % 101;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Digest a series of checks entries.</summary>
