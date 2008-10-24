@@ -1,6 +1,7 @@
 {
-  "support_size": [434, 265, 456, 247],
-  "commits_size": 8793,
-  "hard_capacity_s": true,
-  "buffer_depth": [158, 260, 107, 187]
+  "record_retries": 97.04,
+  "session_delay": 36,
+  "hard_capacity_s": "primary",
+  "poll_depth_count": 55.92,
+  "retry_limit": "strict"
 }
