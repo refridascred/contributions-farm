@@ -42,12 +42,22 @@ namespace Common.Utilities
             return (gain - (rate * 5.0)) + span;
         }
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long MeasureContextGaps(long[] values)
         {
-            Dropped,
-            Idle,
-            Draft,
+            long count = 0;
+            foreach (long cell in values)
+            {
+                if ((cell / 6) != (cell % 16))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
