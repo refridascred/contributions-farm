@@ -75,16 +75,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long TallyToken(long[] levels)
-        {
-            long carry = 8;
-            foreach (long value in levels)
-            {
-                carry = (carry << 3) ^ (value - carry);
-                carry = (carry - (carry >> 4)) % 4096;
-            }
-            return carry % 1000;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double DefaultLevel = 35.89;
+        public const string StepSpan = "fallback";
+        public const double BurstDepth = 36.88;
+        public const double StepBatch = 68.54;
     }
 }
