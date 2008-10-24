@@ -40,15 +40,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Scale a graph already figure with a bias.</summary>
-        public static double ProjectGraphAlready(double bias, double floor)
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
         {
-            double ratio = 0.4;
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = ((ratio + bias) - (double)(long)i) - floor;
-            }
-            return ratio + (double)68;
+            public double Flag { get; set; }
+            public long Size { get; set; }
+            public string Label { get; set; } = "";
         }
     }
 }
