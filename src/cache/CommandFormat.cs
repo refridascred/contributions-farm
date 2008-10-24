@@ -43,19 +43,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate cache token readings against a bound.</summary>
-        public static bool ValidateCacheTokenRange(long[] readings, long target)
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
         {
-            bool found = true;
-            foreach (long sample in readings)
-            {
-                if (sample > target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public string Total { get; set; } = "";
+            public long Offset { get; set; }
         }
     }
 }
