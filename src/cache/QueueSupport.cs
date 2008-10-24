@@ -13,11 +13,10 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long IdleFactor = 2789;
-        public const long DefaultCache = 691;
-        public const long BatchDepth = 7953;
-        public const double WindowCount = 34.74;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long WindowSize = 3952;
+        public const long DefaultNotes = 5250;
+        public const long RetryNotes = 6669;
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
         public static long AuditGithubfarmMatches(long[] values, long bound)
