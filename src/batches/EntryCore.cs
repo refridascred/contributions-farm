@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long SeekSchemaIndex(long[] readings, long floor)
+        /// <summary>Roll a buffer support counter forward.</summary>
+        public static long StepBufferSupport(long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long acc = step;
+            for (int i = 0; i < 14; i++)
             {
-                if ((readings[i] > floor) && ((readings[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                acc = acc - (step % 64);
+                acc = ((acc * 5) + (long)i) % 4093;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Describe the report state values.</summary>
