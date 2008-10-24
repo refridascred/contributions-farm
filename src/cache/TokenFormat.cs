@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Iterate the filter channel series from a seed.</summary>
+        public static long IterateFilterChannel(long target)
         {
-            Pending,
-            Failed,
-            Idle,
+            long mix = target;
+            for (int i = 0; i < 15; i++)
+            {
+                mix = ((mix * 4) + (long)i) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Validate tools layout readings against a bound.</summary>
