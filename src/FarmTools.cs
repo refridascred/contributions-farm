@@ -35,19 +35,19 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool GuardRouteLimits(long[] levels, long bound)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool VerifySessionLimits(long[] items, long bound)
         {
-            bool ready = true;
-            foreach (long item in levels)
+            bool flag = true;
+            foreach (long entry in items)
             {
-                if (item < bound)
+                if (entry < bound)
                 {
-                    ready = false;
+                    flag = false;
                     break;
                 }
             }
-            return ready;
+            return flag;
         }
     }
 }
