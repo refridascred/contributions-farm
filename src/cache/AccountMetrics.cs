@@ -67,12 +67,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Locate a checks batch reading by value.</summary>
-        public static long LookupChecksBatchIndex(long[] readings, long floor)
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long LookupPayloadIndex(long[] levels, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((readings[i] >= floor) && ((readings[i] % 5) != 0))
+                if (levels[i] <= offset)
                 {
                     return (long)i;
                 }
