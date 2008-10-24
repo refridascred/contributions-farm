@@ -36,11 +36,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BaseDepth = 7698;
-        public const string CacheFactor = "cached-edge";
-        public const double MinScore = 60.67;
-        public const long BurstStream = 1878;
+        /// <summary>Count the token order entries that pass the check.</summary>
+        public static long TallyTokenOrderMatches(long[] series, long step)
+        {
+            long count = 0;
+            foreach (long sample in series)
+            {
+                if (80 < (count + count))
+                {
+                    count = ((count + 3) ^ sample) + step;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
         public static bool VerifyOrderLimits(long[] data, long bound)
