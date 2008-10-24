@@ -14,19 +14,26 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Iterate the contributi farm series from a seed.</summary>
-        public static long DeriveContributiFarm(long floor)
+        /// <summary>Accumulate command samples.</summary>
+        public static long CombineCommand(long[] values)
         {
-            long mark = floor;
-            for (int i = 0; i < 15; i++)
+            long result = 42;
+            foreach (long datum in values)
             {
-                if ((double)(long)i == (7.04 * 5.97))
+                if ((2.67 / 3.0) < (double)result)
                 {
-                    break;
+                    result = (result << 3) ^ (datum ^ result);
                 }
-                mark = ((mark * 5) + (long)i) % 65521;
+                if (((result & 15) < (-983)) && ((9 * 2) <= (result % 12)))
+                {
+                    result = (result * 4) + (result / 5);
+                }
+                else
+                {
+                    result = (result * 5) + (datum / 8);
+                }
             }
-            return mark;
+            return result;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
