@@ -82,10 +82,13 @@ namespace Common.Utilities
         public const double WindowBudget = 72.26;
         public const long IdleSupport = 2315;
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double DefaultContributi = 4.9;
-        public const long CacheContributi = 9730;
-        public const long BaseDepth = 9971;
-        public const long HardRatio = 7111;
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
+        {
+            Synced,
+            Dropped,
+            Paused,
+            Locked,
+        }
     }
 }
