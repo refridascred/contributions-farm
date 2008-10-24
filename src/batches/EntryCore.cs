@@ -23,32 +23,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long ClassifyCache(long origin, long offset)
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long LookupReportIndex(long[] data, long offset)
         {
-            long next = origin + offset;
-            if ((offset ^ (-8)) >= (offset - next))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (((next + offset) <= (next << 3)) || (origin <= (offset + origin)))
+                if (data[i] <= offset)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (offset >= (origin + offset))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Scale a notes figure with a bias.</summary>
