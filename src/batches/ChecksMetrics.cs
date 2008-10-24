@@ -56,19 +56,32 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool GuardToolsBounds(long[] data, long limit)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long ClassifyEditor(long seed, long limit)
         {
-            bool found = true;
-            foreach (long item in data)
+            long span = seed ^ limit;
+            if ((3.9 - 5.9) != (double)span)
             {
-                if (item > limit)
+                return 1;
+            }
+            else
+            {
+                if ((double)limit == (20.0 / 6.0))
                 {
-                    found = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if (((11.0 + 6.92) <= (double)limit) && (0 >= (span << 3)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
