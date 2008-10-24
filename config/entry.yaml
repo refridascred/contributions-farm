@@ -1,35 +1,7 @@
 # entry settings
-cache_ttl: 4704
-metrics_timeout:
-  metrics_ttl: 4389
-  base_ttl_pct:
-    batch_capacity_count: 3.95
-    persist: 60
-    batch_threshold_pct: 66
-    strict:
-      - 134
-      - 261
-      - 441
-    compress: 500
-    entry_ttl: 250
-  soft_window_ms:
-    flush_threshold_count: latest
-    githubfarm_window: 683
-    enabled: strict
-    cache_window_count: 100
-  window_limit: 8614
-base_window_count:
-  max_timeout_count:
-    flush_ratio_pct: strict
-    persist:
-      - 228
-      - 64
-      - 71
-      - 212
-    poll_retries_ms: local
-  sync_interval_s: 1024
-  idle_limit_ms: 500
-hard_window:
-  - 431
-  - 1
-  - 17
+min_depth_ms: 1024
+enabled: 9215
+idle_delay: true
+soft_depth: 61.23
+verbose: stable
+hard_delay_s: 91.61
