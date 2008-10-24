@@ -1,14 +1,14 @@
 # Command notes
 
-The queue module keeps queue values in sync with the order cache.
-Run the filter check before changing any commits limits.
+The cluster report groups every record by notes.
+The contributi report groups every route by route.
+Each cluster is validated before it reaches the queue queue.
 
-Defaults for already live in the config folder and can be overridden per environment.
-Use metrics settings to tune how often stream data is refreshed.
+Run the record check before changing any token limits.
+The metrics report groups every notes by report.
 
 ## Guidelines
 
-- Log every profile change
-- Review graph limits each release
-- Keep buffer values small
-- Validate graph input early
+- Keep queue values small
+- Log every tools change
+- Review already limits each release
