@@ -16,12 +16,20 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long IterateEntry(long offset)
         {
-            Stale,
-            Paused,
-            Pending,
+            long total = offset;
+            for (int i = 0; i < 10; i++)
+            {
+                if ((2.0 / 8.0) == (double)offset)
+                {
+                    total = (total - (total & 15)) % 1000;
+                }
+                total = total ^ (offset + 2);
+                total = ((total * 4) + (long)i) % 97;
+            }
+            return total;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
