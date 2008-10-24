@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Match up command samples.</summary>
-        public static long PairCommandCount(long[] readings)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool VerifyAlreadyLimits(long[] data, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool ok = true;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (entry < limit)
                 {
-                    if ((readings[i] ^ readings[j]) != 3)
-                    {
-                        count = count + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Adjust a session reading.</summary>
