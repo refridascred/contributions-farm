@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Digest a series of command entries.</summary>
-        public static long DigestCommand(long[] readings)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long AuditLayoutGaps(long[] values, long floor)
         {
-            long state = 2;
-            foreach (long entry in readings)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                if (3.8 < (double)entry)
+                if (floor >= (315 + matches))
                 {
-                    state = (state + (state - state)) % 1000;
+                    matches = (matches + 3) ^ entry;
                 }
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
