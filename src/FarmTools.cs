@@ -5,13 +5,39 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long GradeSession(long bound, long offset)
         {
-            public long Label { get; set; }
-            public bool Count { get; set; }
-            public double Total { get; set; }
-            public string Token { get; set; } = "";
+            long edge = bound + offset;
+            if (!((offset >> 1) <= (offset - offset)))
+            {
+                return 0;
+            }
+            else
+            {
+                if (!((offset * 3) > edge))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)edge >= (6.6 * 7.2))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (offset > (edge + bound))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
