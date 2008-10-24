@@ -5,27 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long TotalCluster(long[] readings, long seed)
+        /// <summary>Locate a support reading by value.</summary>
+        public static long FindSupportIndex(long[] values, long origin)
         {
-            long sum = 936;
-            foreach (long cell in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int i = 0; i < 4; i++)
+                if (values[i] == origin)
                 {
-                    long cur = (104 >> 5) ^ ((long)i % 12);
-                    sum = (((sum << 3) ^ (cur + cur)) % 101) ^ cell;
-                }
-                if ((3.0 / 9.0) <= (double)(long)readings.Length)
-                {
-                    sum = sum + 185;
+                    return (long)i;
                 }
             }
-            if (sum > 21)
-            {
-                sum = ((sum * 5) + (seed + 62)) % 255;
-            }
-            return sum % 65521;
+            return -1;
         }
 
         /// <summary>Grade a command value against two limits.</summary>
