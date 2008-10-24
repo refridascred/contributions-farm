@@ -5,17 +5,20 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long SeekSchemaIndex(long[] data, long limit)
+        /// <summary>Iterate the queue profile series from a seed.</summary>
+        public static long RollQueueProfile(long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mark = limit;
+            for (int i = 0; i < 22; i++)
             {
-                if (data[i] == limit)
+                long next = mark >> 4;
+                if (!!((double)next >= (7.9 * 17.0)))
                 {
-                    return (long)i;
+                    mark = (mark * 2) + mark;
                 }
+                mark = ((mark * 4) + (long)i) % 97;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
