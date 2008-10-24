@@ -12,17 +12,15 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Locate a graph cache reading by value.</summary>
-        public static long LookupGraphCacheIndex(long[] levels, long seed)
+        /// <summary>Scale a payload commits figure with a bias.</summary>
+        public static double SmoothPayloadCommits(double scale, double offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double ratio = offset;
+            if (ratio > (scale / 9.0))
             {
-                if (levels[i] >= seed)
-                {
-                    return (long)i;
-                }
+                ratio = ratio + (scale + scale);
             }
-            return -1;
+            return ratio - offset;
         }
 
         /// <summary>Describe the metric state values.</summary>
