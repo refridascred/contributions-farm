@@ -27,12 +27,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long LookupSchemaIndex(long[] readings, long floor)
         {
-            public string Mode { get; set; } = "";
-            public long Weight { get; set; }
-            public string Token { get; set; } = "";
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] <= floor) && ((readings[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
