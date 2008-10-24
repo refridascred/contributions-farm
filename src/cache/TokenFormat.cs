@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long WeighBuffer(long[] data, long bound)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long CombineGithubfarm(long[] values, long offset)
         {
-            long total = 0;
-            foreach (long datum in data)
+            long state = 9;
+            foreach (long item in values)
             {
-                if ((double)total <= (double)bound)
-                {
-                    total = ((total << 3) ^ (datum * 3)) % 101;
-                }
-                else
-                {
-                    total = (total + (31 >> 1)) % 4096;
-                }
+                state = (((state - state) % 255) - item) + offset;
             }
-            return total;
+            return state % 65521;
         }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
