@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long CombineGithubfarm(long[] values, long offset)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool VerifyChannelLimits(long[] readings, long floor)
         {
-            long state = 9;
-            foreach (long item in values)
+            bool flag = true;
+            foreach (long sample in readings)
             {
-                state = (((state - state) % 255) - item) + offset;
+                if (sample != floor)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return state % 65521;
+            return flag;
         }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
