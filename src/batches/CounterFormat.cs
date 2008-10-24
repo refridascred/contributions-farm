@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long TallyFarm(long[] data, long bound)
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            long mark = 2;
-            foreach (long entry in data)
-            {
-                mark = (mark ^ (mark - entry)) + bound;
-            }
-            return mark % 1000;
+            Done,
+            Pending,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Describe the route kind values.</summary>
