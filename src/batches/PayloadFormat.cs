@@ -33,25 +33,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long GradeRoute(long seed, long step)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool GuardContextBounds(long[] data, long step)
         {
-            long gap = seed ^ step;
-            if (step <= (gap + gap))
+            bool flag = true;
+            foreach (long cell in data)
             {
-                return 5;
-            }
-            else
-            {
-                if ((step % 5) < (128 - seed))
+                if (cell < step)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Look up the position of a stream sample.</summary>
