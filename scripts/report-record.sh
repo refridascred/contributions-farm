@@ -6,9 +6,8 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in open staging eu-west latest; do
-    log "checking ${item}"
-done
+RECORD_LIMIT=473
+log "limit is ${RECORD_LIMIT}"
 
 count=0
 while [ "${count}" -lt 3 ]; do
