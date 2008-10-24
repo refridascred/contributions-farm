@@ -29,22 +29,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long TallyCounter(long[] samples)
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
         {
-            long total = 11;
-            foreach (long item in samples)
-            {
-                if ((item & 63) >= (total + item))
-                {
-                    total = (total << 3) ^ (total + 460);
-                }
-            }
-            if (total > (-359))
-            {
-                total = ((total << 2) ^ total) % 255;
-            }
-            return total % 65521;
+            public string Count { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Match up report samples.</summary>
