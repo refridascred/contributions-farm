@@ -1,22 +1,7 @@
 {
-  "batch_size_s": 14.9,
-  "batch_depth_s": {
-    "stats_limit": 100,
-    "session_retries": false,
-    "burst_size": "staging",
-    "cache_threshold_s": false
-  },
-  "retry_ttl": "green",
-  "poll_size_ms": true,
-  "enabled": "stable",
-  "account_timeout": {
-    "cache_size": 100,
-    "default_interval_ms": {
-      "default_delay": 558,
-      "token_interval": [326, 243],
-      "compress": false,
-      "soft_retries": 46.25
-    },
-    "poll_limit": "green"
-  }
+  "tools_delay": "staging",
+  "default_timeout_pct": ["cached", "cached", "fallback", "primary"],
+  "retry_interval": ["primary", "edge", "latest"],
+  "soft_ttl": 2394,
+  "contributi_size": 9737
 }
