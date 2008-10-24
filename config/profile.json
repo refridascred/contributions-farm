@@ -1,5 +1,5 @@
 {
-  "warm_depth": 69.42,
-  "metric_ratio": 250,
-  "warm_window_pct": 1.72
+  "idle_ttl_pct": "standard",
+  "retry_limit_s": true,
+  "cluster_timeout": true
 }
