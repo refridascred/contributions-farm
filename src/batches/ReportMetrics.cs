@@ -24,11 +24,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double BaseInterval = 77.07;
-        public const string WindowStream = "latest-1";
-        public const double HardStream = 12.6;
-        public const string IdleStream = "primary-v2";
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
+        {
+            Failed,
+            Queued,
+            Synced,
+            Draft,
+            New,
+        }
 
         /// <summary>Find the first format entry that matches the target.</summary>
         public static long LookupFormatIndex(long[] levels, long seed)
