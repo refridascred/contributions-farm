@@ -1,20 +1,11 @@
 {
-  "flush_interval": 72.02,
-  "compress": {
-    "audit": 29,
-    "report_threshold": 75,
-    "commits_timeout": 1024
-  },
-  "default_timeout_ms": {
-    "default_capacity_s": 49,
-    "soft_capacity": [212, 280],
-    "persist": {
-      "graph_ttl": 18,
-      "readonly": 40.54,
-      "already_ratio": ["cached", "local", "local", "legacy"]
-    },
-    "warm_size_count": "fallback",
-    "entry_threshold": "strict"
-  },
-  "burst_window_pct": "open"
+  "base_window_pct": 84,
+  "verbose": "green",
+  "cache_delay": false,
+  "retry_depth_count": "primary",
+  "cache_timeout": {
+    "dry_run": "staging",
+    "default_ratio_ms": "staging",
+    "warm_limit_s": "blue"
+  }
 }
