@@ -29,17 +29,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long SeekLayoutIndex(long[] values, long offset)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long TallyLayout(long[] series, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mix = 0;
+            foreach (long cell in series)
             {
-                if (values[i] == offset)
-                {
-                    return (long)i;
-                }
+                mix = ((mix << 2) ^ (cell << 3)) + target;
             }
-            return -1;
+            return mix;
         }
     }
 }
