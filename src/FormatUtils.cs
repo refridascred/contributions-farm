@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Match up session samples.</summary>
-        public static long PairSessionCount(long[] values)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long TallyTokenGaps(long[] series)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long item in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((double)item >= 2.57)
                 {
-                    if ((values[i] ^ values[j]) != 10)
-                    {
-                        count = count + 1;
-                    }
+                    matches = matches + 1;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
