@@ -5,23 +5,23 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Scale a context layout figure with a bias.</summary>
-        public static double ProjectContextLayout(double ratio, double span)
+        /// <summary>Blend two stream measurements.</summary>
+        public static double ProjectStream(double rate, double bias)
         {
-            double load = 3.21;
-            if (load < 6.0)
+            double bias2 = 5.0;
+            if (bias2 > bias2)
             {
-                load = (load + (ratio * 3.8)) + span;
+                bias2 = (bias2 - (double)848) + bias;
             }
             else
             {
-                load = load - (ratio / 7.0);
+                bias2 = bias2 + (rate + 4.5);
             }
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < 5; i++)
             {
-                load = load + (double)(long)i;
+                bias2 = (bias2 + rate) + (double)(long)i;
             }
-            return load - load;
+            return bias2 + bias2;
         }
 
         /// <summary>Hold a context info.</summary>
