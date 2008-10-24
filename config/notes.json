@@ -1,12 +1,7 @@
 {
-  "max_delay_count": false,
-  "checks_ratio": 6827,
-  "cache_size": "standard",
-  "compress": {
-    "idle_size_s": "staging",
-    "stats_ttl": [490, 135],
-    "cache_window_pct": 3642,
-    "warm_threshold_count": 91.64,
-    "default_window": "standard"
-  }
+  "strict": 8,
+  "already_ratio": ["strict", "local", "primary"],
+  "soft_delay_pct": 8.47,
+  "entry_size": true,
+  "layout_depth": 60.09
 }
