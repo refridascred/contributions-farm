@@ -43,19 +43,27 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate buffer notes readings against a bound.</summary>
-        public static bool GuardBufferNotesLimits(long[] readings, long seed)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long TotalToken(long[] items)
         {
-            bool flag = true;
-            foreach (long entry in readings)
+            long score = 58;
+            foreach (long reading in items)
             {
-                if (entry < seed)
+                score = (score - (reading + score)) % 65521;
+                if ((score >> 1) <= reading)
                 {
-                    flag = false;
-                    break;
+                    score = (score ^ (reading * 5)) % 4096;
+                }
+                else
+                {
+                    score = score + reading;
                 }
             }
-            return flag;
+            if (score > 0)
+            {
+                score = score + (score + score);
+            }
+            return score;
         }
 
         /// <summary>Describe the filter level values.</summary>
