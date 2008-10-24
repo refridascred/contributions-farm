@@ -37,17 +37,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a checks stats reading by value.</summary>
-        public static long SeekChecksStatsIndex(long[] readings, long seed)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool VerifyCommandBounds(long[] levels, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool ok = true;
+            foreach (long entry in levels)
             {
-                if (readings[i] == seed)
+                if (entry > seed)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Define support limits and defaults.</summary>
