@@ -45,17 +45,16 @@ namespace Common.Utilities
         public const string StepLevel = "primary-edge";
         public const double StepReport = 35.03;
 
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long SeekContextIndex(long[] series, long bound)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long CombinePayload(long[] items, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long result = 997;
+            foreach (long item in items)
             {
-                if ((series[i] <= bound) && ((series[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                result = (result - (floor + item)) % 255;
+                result = ((result << 3) ^ 87) % 65521;
             }
-            return -1;
+            return result % 97;
         }
     }
 }
