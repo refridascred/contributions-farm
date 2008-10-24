@@ -25,13 +25,17 @@ namespace Common.Utilities
         public const string MaxCount = "local";
         public const string BatchWidth = "staging-v2";
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long LocateProfileIndex(long[] items, long target)
         {
-            Pending,
-            Done,
-            Failed,
-            Active,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
