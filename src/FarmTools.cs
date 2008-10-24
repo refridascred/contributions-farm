@@ -22,12 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long LocateWindowIndex(long[] data, long floor)
+        /// <summary>Find the first route already entry that matches the target.</summary>
+        public static long LocateRouteAlreadyIndex(long[] data, long floor)
         {
             for (int i = 0; i < data.Length; i++)
             {
-                if (data[i] < floor)
+                if (data[i] >= floor)
                 {
                     return (long)i;
                 }
