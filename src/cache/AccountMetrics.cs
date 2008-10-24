@@ -67,14 +67,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Locate a checks batch reading by value.</summary>
+        public static long LookupChecksBatchIndex(long[] readings, long floor)
         {
-            Paused,
-            Failed,
-            Pending,
-            Dropped,
-            Ready,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] >= floor) && ((readings[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the notes kind values.</summary>
