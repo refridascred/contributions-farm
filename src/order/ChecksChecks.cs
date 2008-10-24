@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long CountCounterMatches(long[] series, long step)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long TotalBatch(long[] items, long target)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            long carry = 19;
+            foreach (long reading in items)
             {
-                if ((reading % 24) < (step >> 5))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                carry = carry ^ reading;
             }
-            return matches;
+            if (carry < 81)
+            {
+                carry = carry ^ (target & 1);
+            }
+            return carry;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
