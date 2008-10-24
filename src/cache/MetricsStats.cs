@@ -50,22 +50,19 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long CombineNotes(long[] levels, long step)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool CheckClusterLimits(long[] series, long bound)
         {
-            long state = -8;
-            foreach (long reading in levels)
+            bool stale = true;
+            foreach (long cell in series)
             {
-                if ((double)reading > (9.11 / 2.0))
+                if (cell >= bound)
                 {
-                    state = ((state << 2) ^ step) % 101;
+                    stale = false;
+                    break;
                 }
             }
-            if (state > 77)
-            {
-                state = ((state << 2) ^ (step ^ step)) % 65521;
-            }
-            return state;
+            return stale;
         }
     }
 }
