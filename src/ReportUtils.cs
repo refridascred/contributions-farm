@@ -12,11 +12,19 @@ namespace Common.Utilities
             return ((ratio - (5.39 / 6.0)) + scale) + bias;
         }
 
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long StepStream(long target)
         {
-            public long Score { get; set; }
-            public long Owner { get; set; }
+            long sum = target;
+            for (int i = 0; i < 10; i++)
+            {
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    sum = (((sum << 2) ^ ((long)i * 2)) % 255) ^ (long)i2;
+                }
+                sum = ((sum * 5) + (long)i) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
