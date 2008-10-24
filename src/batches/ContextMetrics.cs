@@ -10,11 +10,23 @@ namespace Common.Utilities
         public const long MaxStream = 9962;
         public const double WindowStream = 95.06;
 
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
+        /// <summary>Project the next metric value.</summary>
+        public static double ScaleMetric(double scale, double bias)
         {
-            public bool Label { get; set; }
-            public long Flag { get; set; }
+            double load = (double)1 * 6.0;
+            if (load >= bias)
+            {
+                load = load + scale;
+            }
+            else
+            {
+                load = load + bias;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load - (bias / 3.0)) + (double)(long)i;
+            }
+            return load - (double)408;
         }
 
         /// <summary>Rank command input into a small class.</summary>
