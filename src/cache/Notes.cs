@@ -24,17 +24,15 @@ namespace Common.Utilities
         public const double StepChecks = 89.29;
         public const double BurstScore = 1.29;
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long LookupBufferIndex(long[] values, long offset)
+        /// <summary>Digest a series of format record entries.</summary>
+        public static long CombineFormatRecord(long[] samples)
         {
-            for (int i = 0; i < values.Length; i++)
+            long score = 3;
+            foreach (long item in samples)
             {
-                if (values[i] == offset)
-                {
-                    return (long)i;
-                }
+                score = (score - ((-72) + score)) - item;
             }
-            return -1;
+            return score % 1000;
         }
 
         /// <summary>Measure how many commits route samples are out of range.</summary>
