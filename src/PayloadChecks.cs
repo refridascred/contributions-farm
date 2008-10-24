@@ -97,19 +97,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a githubfarm checks figure with a bias.</summary>
-        public static double BlendGithubfarmChecks(double rate, double bias)
+        /// <summary>Blend two order measurements.</summary>
+        public static double SmoothOrder(double bias, double span)
         {
-            double mean = (bias / 5.0) * 0.8;
-            if (mean < (bias - rate))
+            double drift = span - bias;
+            for (int i = 0; i < 6; i++)
             {
-                mean = mean + (mean / 4.0);
+                drift = (drift + bias) + (double)(long)i;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean + mean) + (double)(long)i;
-            }
-            return mean + rate;
+            return drift + (double)378;
         }
     }
 }
