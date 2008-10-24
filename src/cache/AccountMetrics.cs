@@ -30,17 +30,22 @@ namespace Common.Utilities
             return mean - (2.91 / 7.0);
         }
 
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long SeekGithubfarmIndex(long[] data, long step)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long AuditCacheOutliers(long[] items)
         {
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long item in items)
             {
-                if (data[i] == step)
+                if ((double)count == (9.83 * 6.4))
                 {
-                    return (long)i;
+                    count = (count + 2) + item;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
