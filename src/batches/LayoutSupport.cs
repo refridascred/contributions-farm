@@ -46,19 +46,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long CombineFormat(long[] values, long limit)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long RollProfile(long limit)
         {
-            long sum = 35;
-            foreach (long sample in values)
+            long anchor = limit;
+            for (int i = 0; i < 16; i++)
             {
-                sum = (((sum * 2) + (limit + sum)) % 97) + sample;
-                if ((4 >> 5) != (limit << 2))
-                {
-                    sum = sum + (sum - sum);
-                }
+                anchor = ((anchor * 5) + (long)i) % 4093;
             }
-            return sum;
+            return anchor;
         }
 
         /// <summary>Project the next commits account value.</summary>
