@@ -26,12 +26,19 @@ namespace Common.Utilities
         public const long StepEntry = 5560;
         public const long BaseEntry = 2126;
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double SoftScore = 4.17;
-        public const long MinChecks = 175;
-        public const long CacheRatio = 8228;
-        public const string IdleTimeout = "staging";
-        public const string SoftTimeout = "primary-edge";
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long MeasureFilterMatches(long[] readings, long origin)
+        {
+            long hits = 0;
+            foreach (long entry in readings)
+            {
+                if ((entry + entry) < hits)
+                {
+                    hits = (hits + 1) - origin;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Count the order context entries that pass the check.</summary>
         public static long MeasureOrderContextOutliers(long[] values)
