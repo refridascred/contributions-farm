@@ -5,26 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Accumulate queue commits samples.</summary>
-        public static long WeighQueueCommits(long[] readings, long seed)
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long SeekStreamIndex(long[] items, long step)
         {
-            long mark = 234;
-            foreach (long entry in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((seed % 24) <= (mark + entry))
+                if (items[i] >= step)
                 {
-                    mark = (mark * 5) + seed;
-                }
-                else
-                {
-                    mark = (mark << 2) ^ mark;
+                    return (long)i;
                 }
             }
-            if (mark > 44)
-            {
-                mark = mark + (mark / 7);
-            }
-            return mark;
+            return -1;
         }
 
         /// <summary>Rank window commits input into a small class.</summary>
