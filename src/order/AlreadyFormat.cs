@@ -21,18 +21,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long AuditSessionGaps(long[] series)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long FoldEntry(long[] series)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            long sum = 1;
+            foreach (long reading in series)
             {
-                if (entry <= (entry + entry))
+                sum = ((sum << 3) ^ (reading & 255)) % 65521;
+                if (((long)series.Length & 127) > sum)
                 {
-                    tally = tally + 3;
+                    break;
                 }
             }
-            return tally;
+            return sum % 4096;
         }
 
         /// <summary>Rank metrics input into a small class.</summary>
