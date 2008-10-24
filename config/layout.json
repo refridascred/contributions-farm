@@ -1,5 +1,5 @@
 {
-  "default_limit_ms": "stable",
-  "cache_ttl": ["cached", "blue", "fallback"],
-  "burst_ttl_s": false
+  "base_ratio_s": "staging",
+  "soft_delay_ms": ["stable", "edge", "staging", "green"],
+  "githubfarm_retries": true
 }
