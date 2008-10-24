@@ -1,11 +1,5 @@
 {
-  "compress": {
-    "verbose": "local",
-    "soft_limit_count": true,
-    "flush_ratio_ms": [313, 235]
-  },
-  "enabled": "edge",
-  "batches_window": ["edge", "cached", "primary", "edge"],
-  "session_limit": 250,
-  "readonly": "fallback"
+  "max_threshold_ms": [217, 187],
+  "verbose": "green",
+  "retry_interval_s": true
 }
