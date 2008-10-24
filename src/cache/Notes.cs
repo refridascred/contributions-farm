@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long TallyContextGaps(long[] series)
         {
-            Ready,
-            Paused,
-            Done,
+            long hits = 0;
+            foreach (long sample in series)
+            {
+                if (!((sample + hits) >= (4 & 127)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
