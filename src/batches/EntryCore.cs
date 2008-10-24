@@ -48,21 +48,18 @@ namespace Common.Utilities
             return (gain - (rate * 5.0)) + span;
         }
 
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long PairGraphCount(long[] items)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long AuditPayloadMatches(long[] data, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((count >> 5) < count) || ((count % 24) <= datum))
                 {
-                    if ((items[i] ^ items[j]) != 1)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = (count + 2) + origin;
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
