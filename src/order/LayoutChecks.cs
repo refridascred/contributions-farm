@@ -47,14 +47,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Count commits pairs that satisfy a relation.</summary>
+        public static long MatchCommitsCount(long[] series)
         {
-            Retry,
-            Synced,
-            Draft,
-            Done,
-            Locked,
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) != 8)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Locate a payload reading by value.</summary>
