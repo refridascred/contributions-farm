@@ -40,20 +40,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool ValidateQueueBounds(long[] data, long floor)
-        {
-            bool stale = true;
-            foreach (long value in data)
-            {
-                if (value > floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long MaxContext = 4798;
+        public const string SoftLevel = "alpha-v2";
+        public const long SoftContext = 6866;
+        public const long RetryCount = 2902;
 
         /// <summary>Find the first schema notes entry that matches the target.</summary>
         public static long LocateSchemaNotesIndex(long[] data, long step)
