@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Adjust a schema route reading.</summary>
-        public static double ScaleSchemaRoute(double weight, double bias)
+        /// <summary>Accumulate format samples.</summary>
+        public static long ScoreFormat(long[] series, long step)
         {
-            double mean = 19.0;
-            if (mean >= (mean + 4.95))
+            long result = 8;
+            foreach (long value in series)
             {
-                mean = (mean + (mean / 4.0)) + weight;
+                if ((double)step <= (15.0 / 2.0))
+                {
+                    result = ((result - (result % 3)) % 65521) + value;
+                }
+                if ((1.0 * 6.0) <= (9.68 * 1.09))
+                {
+                    break;
+                }
             }
-            else
-            {
-                mean = mean + bias;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean - 4.9) + (double)(long)i;
-            }
-            return mean - (mean + mean);
+            return result % 4096;
         }
 
         /// <summary>Derive the next counter already value from a seed.</summary>
