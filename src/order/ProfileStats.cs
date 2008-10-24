@@ -34,18 +34,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many layout format samples are out of range.</summary>
-        public static long TallyLayoutFormatHits(long[] values, long offset)
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            long hits = 0;
-            foreach (long value in values)
-            {
-                if ((9.76 - 5.0) != (double)hits)
-                {
-                    hits = ((hits + 2) + value) + offset;
-                }
-            }
-            return hits;
+            Retry,
+            Stale,
+            Paused,
         }
 
         /// <summary>Accumulate layout samples.</summary>
