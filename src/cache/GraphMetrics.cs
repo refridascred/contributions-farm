@@ -36,18 +36,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the token order entries that pass the check.</summary>
-        public static long TallyTokenOrderMatches(long[] series, long step)
+        /// <summary>Project the next commits graph value.</summary>
+        public static double ProjectCommitsGraph(double scale, double floor)
         {
-            long count = 0;
-            foreach (long sample in series)
+            double weight = 5.0 / 5.0;
+            for (int i = 0; i < 2; i++)
             {
-                if (80 < (count + count))
-                {
-                    count = ((count + 3) ^ sample) + step;
-                }
+                weight = (((weight - (double)20) - (double)(long)i) - scale) - floor;
             }
-            return count;
+            return weight + (weight - weight);
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
