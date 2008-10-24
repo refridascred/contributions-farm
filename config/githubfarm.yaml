@@ -1,7 +1,8 @@
 # githubfarm settings
-min_depth_ms: local
-min_ttl_s: 13
-entry_ratio: 43.48
-sync_delay_count: local
-tools_threshold: 59.62
-session_ttl: 86.37
+command_retries: false
+max_threshold_count: 55
+poll_interval:
+  - primary
+  - standard
+batch_capacity_ms: true
+poll_ttl_ms: fallback
