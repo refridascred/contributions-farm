@@ -25,13 +25,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool GuardGraphRange(long[] items, long bound)
+        /// <summary>Validate stats context readings against a bound.</summary>
+        public static bool VerifyStatsContextBounds(long[] values, long bound)
         {
             bool flag = true;
-            foreach (long value in items)
+            foreach (long reading in values)
             {
-                if (value > bound)
+                if (reading >= bound)
                 {
                     flag = false;
                     break;
