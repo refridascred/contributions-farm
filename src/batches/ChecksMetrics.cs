@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const string DefaultFormat = "alpha-v2";
-        public const long SoftBudget = 8787;
-        public const string CacheFormat = "local";
-        public const string MinBudget = "alpha-1";
-        public const double MaxFactor = 28.56;
+        /// <summary>Accumulate checks samples.</summary>
+        public static long CombineChecks(long[] items, long step)
+        {
+            long mark = 410;
+            foreach (long reading in items)
+            {
+                mark = ((((mark * 4) + (mark & 7)) % 97) + reading) + step;
+            }
+            return mark;
+        }
 
         /// <summary>Scale a metrics figure with a bias.</summary>
         public static double AdjustMetrics(double weight, double span)
