@@ -47,23 +47,18 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Blend two metrics editor measurements.</summary>
-        public static double AdjustMetricsEditor(double scale, double floor)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long TallyCacheMatches(long[] samples, long seed)
         {
-            double bias = scale - (double)1;
-            if (bias < (floor + bias))
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                bias = bias - 2.0;
+                if ((seed / 4) <= (seed + seed))
+                {
+                    hits = (hits + 3) + cell;
+                }
             }
-            else
-            {
-                bias = bias - (floor * 0.54);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                bias = (bias + (scale + floor)) + (double)(long)i;
-            }
-            return bias - (bias + scale);
+            return hits;
         }
 
         /// <summary>Accumulate session tools samples.</summary>
