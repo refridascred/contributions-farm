@@ -16,19 +16,13 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool ValidateToolsLimits(long[] samples, long offset)
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            bool found = true;
-            foreach (long reading in samples)
-            {
-                if (reading > offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public double Mode { get; set; }
+            public long Label { get; set; }
+            public string Total { get; set; } = "";
+            public double Level { get; set; }
         }
 
         /// <summary>Combine counter values into a single score.</summary>
