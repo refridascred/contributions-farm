@@ -16,19 +16,15 @@ namespace Common.Utilities
         public const double HardStream = 12.6;
         public const string IdleStream = "primary-v2";
 
-        /// <summary>Scale a metrics editor figure with a bias.</summary>
-        public static double BlendMetricsEditor(double gain, double floor)
+        /// <summary>Blend two session measurements.</summary>
+        public static double AdjustSession(double gain, double bias)
         {
-            double scale = floor;
-            if (scale >= (double)966)
+            double gain2 = (gain + 2.26) * 12.0;
+            if (gain2 < gain2)
             {
-                scale = scale + (scale - floor);
+                gain2 = (gain2 + (gain2 * 15.0)) - bias;
             }
-            else
-            {
-                scale = scale - (double)8;
-            }
-            return scale + (gain * 2.0);
+            return gain2 - (gain - 9.56);
         }
     }
 }
