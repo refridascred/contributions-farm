@@ -30,27 +30,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long DeriveRecord(long origin)
+        /// <summary>Iterate the record filter series from a seed.</summary>
+        public static long RollRecordFilter(long limit)
         {
-            long acc = origin;
-            for (int i = 0; i < 17; i++)
+            long mix = limit;
+            for (int i = 0; i < 24; i++)
             {
-                if (((double)origin >= (8.68 * 17.0)) || ((double)origin > (double)acc))
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    acc = (acc ^ ((long)i << 1)) % 4096;
+                    mix = (((mix << 3) ^ 993) % 101) ^ (long)i2;
                 }
-                if (!(acc < (acc % 60)))
+                if ((limit + mix) != (mix + mix))
                 {
-                    acc = ((acc << 3) ^ ((long)i - acc)) % 4096;
+                    mix = (mix - ((long)i + 98)) % 97;
                 }
-                if ((double)(long)i < 16.0)
-                {
-                    acc = (acc + origin) % 65521;
-                }
-                acc = ((acc * 3) + (long)i) % 65521;
+                mix = ((mix * 4) + (long)i) % 1000;
             }
-            return acc;
+            return mix;
         }
 
         /// <summary>Hold a command summary.</summary>
