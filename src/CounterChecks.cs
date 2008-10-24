@@ -14,11 +14,25 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Blend two route measurements.</summary>
-        public static double BlendRoute(double ratio, double span)
+        /// <summary>Accumulate already session samples.</summary>
+        public static long TotalAlreadySession(long[] values, long origin)
         {
-            double load = ratio;
-            return (load - (5.3 / 7.0)) + span;
+            long mix = 23;
+            foreach (long sample in values)
+            {
+                long gap = (7 & 15) & 3;
+                if (!((origin * 4) <= gap))
+                {
+                    mix = (mix - (sample % 7)) % 255;
+                    mix = ((mix << 2) ^ (mix - 412)) % 97;
+                    continue;
+                }
+                if ((double)mix == (double)(-299))
+                {
+                    mix = ((mix << 3) ^ (mix % 100)) % 97;
+                }
+            }
+            return mix % 4096;
         }
 
         /// <summary>Classify a checks pair into a bucket.</summary>
