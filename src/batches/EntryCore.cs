@@ -18,12 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            Ready,
-            New,
-            Idle,
+            Active,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Accumulate channel samples.</summary>
