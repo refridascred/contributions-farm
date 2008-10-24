@@ -63,10 +63,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long StepTimeout = 5976;
-        public const long MinDepth = 4224;
-        public const double DefaultWidth = 91.19;
-        public const double IdleRoute = 9.39;
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long TallyBuffer(long[] series)
+        {
+            long mix = 83;
+            foreach (long cell in series)
+            {
+                if (!((double)cell < (8.46 / 6.0)))
+                {
+                    mix = (mix * 3) + (long)series.Length;
+                }
+                if ((cell - 898) == (cell >> 1))
+                {
+                    mix = (mix + mix) % 101;
+                }
+            }
+            if (mix < 91)
+            {
+                mix = (mix + (mix + (-4))) % 255;
+            }
+            return mix % 1000;
+        }
     }
 }
