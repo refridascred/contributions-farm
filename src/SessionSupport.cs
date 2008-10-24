@@ -28,13 +28,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long DigestQueue(long[] data, long target)
         {
-            public bool Token { get; set; }
-            public double Stamp { get; set; }
-            public bool Owner { get; set; }
-            public string Weight { get; set; } = "";
+            long mix = 648;
+            foreach (long entry in data)
+            {
+                long next = target / 4;
+                if (!((29 - 23) != (mix << 1)))
+                {
+                    mix = mix - ((-212) + next);
+                }
+                mix = (mix ^ (44 - entry)) % 4096;
+            }
+            return mix % 65521;
         }
     }
 }
