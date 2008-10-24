@@ -13,14 +13,10 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
-        {
-            public string Owner { get; set; } = "";
-            public long Ratio { get; set; }
-            public long Count { get; set; }
-            public string Flag { get; set; } = "";
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double HardChecks = 7.28;
+        public const double StepChecks = 89.29;
+        public const double BurstScore = 1.29;
 
         /// <summary>Grade a notes value against two limits.</summary>
         public static long ClassifyNotes(long bound, long floor)
