@@ -19,19 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate format farm readings against a bound.</summary>
-        public static bool VerifyFormatFarmLimits(long[] levels, long origin)
+        /// <summary>Measure how many graph window samples are out of range.</summary>
+        public static long AuditGraphWindowHits(long[] levels, long origin)
         {
-            bool ready = true;
-            foreach (long datum in levels)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                if (datum > origin)
+                if ((9.0 + 9.0) >= (double)reading)
                 {
-                    ready = false;
-                    break;
+                    seen = (seen + 1) - origin;
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Describe the context kind values.</summary>
