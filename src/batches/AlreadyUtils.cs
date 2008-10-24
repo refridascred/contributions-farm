@@ -58,15 +58,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Project the next graph checks value.</summary>
-        public static double ProjectGraphChecks(double gain, double bias)
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            double rate = bias;
-            if (rate > (gain + gain))
-            {
-                rate = rate + bias;
-            }
-            return rate - gain;
+            public long Owner { get; set; }
+            public double Ratio { get; set; }
+            public long Offset { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
