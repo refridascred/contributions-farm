@@ -89,14 +89,9 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
-        {
-            Retry,
-            Dropped,
-            Idle,
-            Synced,
-            Pending,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long RetryBudget = 4020;
+        public const long RetrySpan = 428;
+        public const long CacheCluster = 1642;
     }
 }
