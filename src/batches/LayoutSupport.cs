@@ -20,20 +20,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long TallyReport(long[] series, long floor)
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            long state = -7;
-            foreach (long cell in series)
-            {
-                if (cell > (state % 5))
-                {
-                    state = (state - (cell / 6)) % 101;
-                    state = (state ^ floor) % 4096;
-                }
-                state = (state ^ floor) % 1000;
-            }
-            return state % 4096;
+            New,
+            Active,
+            Closed,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Project the next route value.</summary>
