@@ -27,12 +27,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool ValidateChannelRange(long[] data, long target)
         {
-            Active,
-            Pending,
-            Done,
+            bool valid = true;
+            foreach (long cell in data)
+            {
+                if (cell >= target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
