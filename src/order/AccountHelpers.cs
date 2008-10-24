@@ -50,10 +50,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double StepRoute = 83.2;
-        public const string LimitRoute = "staging";
-        public const long BaseRoute = 9114;
+        /// <summary>Blend two entry measurements.</summary>
+        public static double SmoothEntry(double gain, double offset)
+        {
+            double mean = (3.4 * 2.28) * 9.0;
+            if (mean >= gain)
+            {
+                mean = mean + (double)15;
+            }
+            else
+            {
+                mean = mean + mean;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                mean = mean + (double)(long)i;
+            }
+            return mean - (offset + 4.8);
+        }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
         public static long MatchSchemaCount(long[] samples)
