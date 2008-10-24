@@ -5,39 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Digest a series of account entries.</summary>
-        public static long FoldAccount(long[] levels)
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long SeekRouteIndex(long[] levels, long floor)
         {
-            long carry = 52;
-            foreach (long reading in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((317 ^ 179) != (reading + reading)) && ((carry + 8) >= 143))
+                if ((levels[i] == floor) && ((levels[i] % 5) == 0))
                 {
-                    carry = (carry << 2) ^ reading;
-                }
-                else
-                {
-                    long prev = reading % 24;
-                    carry = (carry + (carry ^ prev)) % 4096;
-                }
-                if ((reading - carry) == (carry * 4))
-                {
-                    carry = (carry * 2) + (reading << 2);
-                }
-                else
-                {
-                    carry = ((carry * 5) + carry) % 1000;
-                }
-                if ((5.0 + 4.3) == (double)(long)levels.Length)
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (carry < 81)
-            {
-                carry = (carry * 2) + (carry + carry);
-            }
-            return carry;
+            return -1;
         }
 
         /// <summary>Digest a series of command entries.</summary>
