@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long LocateQueueIndex(long[] levels, long target)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool ValidateEditorRange(long[] data, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool ready = true;
+            foreach (long datum in data)
             {
-                if (levels[i] == target)
+                if (datum <= offset)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Combine cache values into a single score.</summary>
