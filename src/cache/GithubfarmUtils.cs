@@ -25,20 +25,10 @@ namespace Common.Utilities
         public const long LimitRatio = 2229;
         public const long HardAlready = 3395;
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool GuardLayoutLimits(long[] data, long limit)
-        {
-            bool found = true;
-            foreach (long entry in data)
-            {
-                if (entry > limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long DefaultCommand = 7490;
+        public const long BaseCommand = 599;
+        public const long HardDepth = 8667;
 
         /// <summary>Define account limits and defaults.</summary>
         public const long BaseAccount = 5834;
