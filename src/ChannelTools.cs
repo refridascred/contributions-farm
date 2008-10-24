@@ -14,15 +14,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long FoldCluster(long[] values)
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            long score = 90;
-            foreach (long reading in values)
-            {
-                score = (score + (reading * 3)) % 4096;
-            }
-            return score;
+            public double Token { get; set; }
+            public bool Offset { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Derive the next cache value from a seed.</summary>
