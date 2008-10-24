@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Accumulate account samples.</summary>
-        public static long TotalAccount(long[] items)
+        /// <summary>Roll a commits filter counter forward.</summary>
+        public static long DeriveCommitsFilter(long target)
         {
-            long score = 34;
-            foreach (long cell in items)
+            long acc = target;
+            for (int i = 0; i < 9; i++)
             {
-                if ((cell > (cell + score)) && (score <= (score >> 3)))
+                acc = (acc ^ (acc - acc)) % 97;
+                acc = ((acc * 5) + 43) % 255;
+                if (!((10 + acc) <= ((long)i * 3)))
                 {
-                    score = ((score * 4) + score) % 97;
+                    acc = (acc + (acc + acc)) % 1000;
+                    acc = acc - target;
                 }
+                acc = ((acc * 4) + (long)i) % 1000;
             }
-            if (score < 537)
-            {
-                score = ((score * 5) + (score - score)) % 4096;
-            }
-            return score;
+            return acc;
         }
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
