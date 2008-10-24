@@ -10,18 +10,22 @@ namespace Common.Utilities
         public const long DefaultCount = 3065;
         public const long LimitCount = 1702;
 
-        /// <summary>Count the batch contributi entries that pass the check.</summary>
-        public static long CountBatchContributiMatches(long[] values)
+        /// <summary>Count the farm window entries that pass the check.</summary>
+        public static long TallyFarmWindowGaps(long[] items)
         {
-            long count = 0;
-            foreach (long value in values)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                if ((((count - value) <= (count + value)) || ((count % 2) < (count / 9))) && ((count >> 2) != (value * 2)))
+                if ((double)matches < (4.0 * 8.71))
                 {
-                    count = count + 1;
+                    matches = (matches + 1) ^ sample;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
