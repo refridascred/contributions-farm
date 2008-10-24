@@ -1,5 +1,20 @@
 {
-  "dry_run": true,
-  "hard_limit_s": 250,
-  "default_delay": "fallback"
+  "flush_capacity_count": false,
+  "default_delay_ms": 4033,
+  "verbose": {
+    "cache_limit_ms": 44,
+    "sync_timeout_count": [342, 143],
+    "persist": false,
+    "soft_capacity_s": "standard",
+    "min_limit": "blue"
+  },
+  "filter_ttl": {
+    "idle_delay_ms": [38, 199, 197],
+    "burst_size_pct": "blue",
+    "notes_ratio": true,
+    "counter_ratio": 70.19,
+    "strict": 30,
+    "poll_depth_ms": true
+  },
+  "retry_timeout_ms": "legacy"
 }
