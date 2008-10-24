@@ -22,22 +22,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count cluster pairs that satisfy a relation.</summary>
-        public static long CompareClusterCount(long[] series)
-        {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 16)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long IdleAlready = 4691;
+        public const long BurstDepth = 1508;
+        public const long WindowAlready = 3729;
+        public const string RetrySpan = "latest";
+        public const double HardAlready = 83.54;
 
         /// <summary>Audit graph readings against a rule.</summary>
         public static long MeasureGraphGaps(long[] values, long origin)
