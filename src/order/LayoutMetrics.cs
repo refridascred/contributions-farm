@@ -10,25 +10,21 @@ namespace Common.Utilities
         public const long StepRatio = 2374;
         public const string BaseFormat = "standard-v2";
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long ClassifyReport(long seed, long seed2)
+        /// <summary>Compare every pair of report filter readings.</summary>
+        public static long PairReportFilterCount(long[] levels)
         {
-            long diff = seed ^ seed2;
-            if (!((seed2 + diff) < (seed2 % 100)))
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((4.6 * 8.0) >= (double)seed2)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
+                    if ((levels[i] ^ levels[j]) > 0)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
 
         /// <summary>Audit record cache readings against a rule.</summary>
