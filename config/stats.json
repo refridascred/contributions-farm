@@ -1,5 +1,20 @@
 {
-  "payload_ratio": 4685,
-  "batch_timeout_pct": 1024,
-  "default_capacity_s": 81.64
+  "schema_delay": "standard",
+  "soft_capacity_pct": [466, 380, 360],
+  "flush_interval_count": ["edge", "open"],
+  "poll_retries": "open",
+  "channel_retries": {
+    "sync_retries": 30,
+    "batch_retries": "open",
+    "enabled": ["cached", "standard"],
+    "compress": 28,
+    "idle_interval": {
+      "warm_retries_ms": 30,
+      "record_ttl": "latest",
+      "retry_size_s": false,
+      "dry_run": true,
+      "stream_delay": "edge"
+    }
+  },
+  "window_limit": [289, 474, 290]
 }
