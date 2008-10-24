@@ -31,18 +31,13 @@ namespace Common.Utilities
             return scale + (double)233;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long AuditQueueHits(long[] levels)
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
         {
-            long hits = 0;
-            foreach (long datum in levels)
-            {
-                if (58 <= datum)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public string Label { get; set; } = "";
+            public bool Mode { get; set; }
+            public bool Score { get; set; }
+            public long Count { get; set; }
         }
     }
 }
