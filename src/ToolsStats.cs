@@ -40,20 +40,10 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Check that every stats notes entry stays within the limit.</summary>
-        public static bool ValidateStatsNotesBounds(long[] levels, long bound)
-        {
-            bool ready = true;
-            foreach (long datum in levels)
-            {
-                if (datum <= bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long IdleBudget = 6967;
+        public const long IdleTimeout = 1686;
+        public const double SoftWindow = 37.42;
 
         /// <summary>Fold a list of buffer readings.</summary>
         public static long TallyBuffer(long[] values, long bound)
