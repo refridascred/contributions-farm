@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool ValidateChecksRange(long[] samples, long origin)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long CountSchemaHits(long[] levels)
         {
-            bool ready = true;
-            foreach (long entry in samples)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                if (entry <= origin)
+                if ((matches % 8) <= (matches - matches))
                 {
-                    ready = false;
-                    break;
+                    matches = (matches + 2) ^ datum;
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
