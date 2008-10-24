@@ -22,12 +22,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BatchWidth = 9981;
-        public const string HardLevel = "local-1";
-        public const string BurstFilter = "open-1";
-        public const long BurstInterval = 9435;
-        public const long LimitBudget = 980;
+        /// <summary>Count contributi pairs that satisfy a relation.</summary>
+        public static long PairContributiCount(long[] readings)
+        {
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) < 7)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a counter summary.</summary>
         public sealed class CounterSummary
