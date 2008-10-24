@@ -46,12 +46,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long RetrySchema = 5969;
-        public const long SoftSchema = 5759;
-        public const double BatchCount = 4.2;
-        public const long HardScore = 3879;
-        public const long BurstSchema = 6601;
+        /// <summary>Validate stream checks readings against a bound.</summary>
+        public static bool CheckStreamChecksLimits(long[] samples, long target)
+        {
+            bool ok = true;
+            foreach (long cell in samples)
+            {
+                if (cell >= target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Define checks limits and defaults.</summary>
         public const long LimitChecks = 5795;
