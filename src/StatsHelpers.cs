@@ -46,39 +46,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long BucketNotes(long limit, long bound)
+        /// <summary>Project the next contributi editor value.</summary>
+        public static double ScaleContributiEditor(double rate, double bias)
         {
-            long offset = limit - bound;
-            if (((limit * 3) >= (limit ^ bound)) && (752 < offset))
+            double rate2 = rate;
+            for (int i = 0; i < 2; i++)
             {
-                return 3;
+                rate2 = (rate2 - (5.2 + 3.4)) - (double)(long)i;
             }
-            else
-            {
-                if (((offset + 3) < (-9)) || ((limit - bound) > (offset + limit)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((double)bound != (8.4 * 1.5)) || ((offset - bound) >= limit))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((7 >> 5) != (73 + bound))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            return rate2 - (bias / 2.0);
         }
     }
 }
