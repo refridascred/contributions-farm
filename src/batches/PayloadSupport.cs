@@ -26,38 +26,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long BucketEditor(long origin, long target)
+        /// <summary>Match up channel samples.</summary>
+        public static long MatchChannelCount(long[] data)
         {
-            if ((double)target <= (8.5 / 3.0))
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((target & 3) >= (origin + 16))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (origin > (origin + target))
+                    if ((data[i] - data[j]) < 18)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (target >= (origin << 2))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
     }
 }
