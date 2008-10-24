@@ -54,18 +54,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long AuditReportGaps(long[] readings, long floor)
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double ScaleCluster(double bias, double floor)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            double ratio = 3.65;
+            if (ratio > (floor * 12.0))
             {
-                if ((double)floor > (8.41 + 5.8))
-                {
-                    seen = (seen + 1) ^ reading;
-                }
+                ratio = (ratio + (ratio * 1.0)) - bias;
             }
-            return seen;
+            return ratio + 9.33;
         }
     }
 }
