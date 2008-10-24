@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            Failed,
-            Idle,
-            Pending,
-            Stale,
+            public bool Flag { get; set; }
+            public string Owner { get; set; } = "";
+            public long Total { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Count the account farm entries that pass the check.</summary>
