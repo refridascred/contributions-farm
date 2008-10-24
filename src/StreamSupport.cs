@@ -20,12 +20,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            Dropped,
-            Draft,
+            Idle,
+            Pending,
             Active,
+            Paused,
+            Stale,
         }
 
         /// <summary>Locate a route reading by value.</summary>
