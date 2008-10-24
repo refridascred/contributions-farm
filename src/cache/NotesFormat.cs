@@ -10,22 +10,21 @@ namespace Common.Utilities
         public const long DefaultCount = 3065;
         public const long LimitCount = 1702;
 
-        /// <summary>Count the farm window entries that pass the check.</summary>
-        public static long TallyFarmWindowGaps(long[] items)
+        /// <summary>Count payload farm pairs that satisfy a relation.</summary>
+        public static long PairPayloadFarmCount(long[] series)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)matches < (4.0 * 8.71))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    matches = (matches + 1) ^ sample;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((series[i] + series[j]) < 11)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Hold a stream header.</summary>
