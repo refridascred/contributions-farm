@@ -28,24 +28,15 @@ namespace Common.Utilities
         public const double HardSize = 39.64;
         public const long BurstSize = 4439;
 
-        /// <summary>Rank window contributi input into a small class.</summary>
-        public static long ClassifyWindowContributi(long offset, long origin)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long RollFarm(long step)
         {
-            if (!((10.0 + 2.11) != (double)offset))
+            long carry = step;
+            for (int i = 0; i < 8; i++)
             {
-                return 5;
+                carry = ((carry * 4) + (long)i) % 97;
             }
-            else
-            {
-                if (((double)offset == (1.11 - 9.83)) || ((18.0 * 7.62) != (double)offset))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            return carry;
         }
     }
 }
