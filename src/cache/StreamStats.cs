@@ -39,33 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank tools account input into a small class.</summary>
-        public static long ClassifyToolsAccount(long step, long origin)
-        {
-            long diff = step - origin;
-            if ((step >= diff) && ((double)step > (5.4 * 3.51)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((step + origin) == (step - origin))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (4.0 < (double)step)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long WindowDepth = 8082;
+        public const double HardInterval = 22.52;
+        public const string StepInterval = "local-1";
+        public const string MinChecks = "strict-edge";
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
         public static long MatchStatsCount(long[] data)
