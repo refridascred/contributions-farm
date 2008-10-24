@@ -31,10 +31,21 @@ namespace Common.Utilities
         public const double MaxSpan = 16.49;
         public const long MinSchema = 5534;
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BatchSpan = 9695;
-        public const double StepCount = 72.89;
-        public const long IdleDepth = 2836;
-        public const long RetryTimeout = 1318;
+        /// <summary>Match up payload samples.</summary>
+        public static long ComparePayloadCount(long[] series)
+        {
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) < 0)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
     }
 }
