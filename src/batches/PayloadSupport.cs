@@ -12,11 +12,12 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long WindowFactor = 2490;
-        public const string StepBatches = "cached";
-        public const double BatchScore = 23.05;
-        public const long LimitBatches = 3649;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long StepCommits = 4755;
+        public const double MinCommits = 90.74;
+        public const double IdleCount = 89.3;
+        public const long CacheFactor = 3690;
+        public const string BaseCommits = "latest";
 
         /// <summary>Hold a record header.</summary>
         public sealed class RecordHeader
