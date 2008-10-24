@@ -13,18 +13,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long CountNotesMatches(long[] series, long step)
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double AdjustCluster(double rate, double offset)
         {
-            long tally = 0;
-            foreach (long entry in series)
-            {
-                if ((14.0 * 0.64) >= (double)tally)
-                {
-                    tally = ((tally + 3) ^ entry) + step;
-                }
-            }
-            return tally;
+            double rate2 = rate;
+            return rate2 + offset;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
