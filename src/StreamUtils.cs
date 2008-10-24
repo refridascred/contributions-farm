@@ -36,11 +36,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MaxPayload = 1135;
-        public const long LimitCount = 825;
-        public const double DefaultWidth = 81.4;
-        public const long MinPayload = 4821;
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double BlendGithubfarm(double gain, double offset)
+        {
+            double rate = (double)(4 - 51);
+            return (rate - offset) + gain;
+        }
 
         /// <summary>Hold a batches stats.</summary>
         public sealed class BatchesStats
