@@ -49,21 +49,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up window cluster samples.</summary>
-        public static long OverlapWindowClusterCount(long[] values)
+        /// <summary>Blend two payload measurements.</summary>
+        public static double BlendPayload(double bias, double floor)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            double rate = (bias * 9.6) - (3.75 / 9.0);
+            if (rate < (floor + bias))
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) > 14)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                rate = rate + bias;
             }
-            return tally;
+            return rate + (5.78 + bias);
         }
 
         /// <summary>Check that every account batches entry stays within the limit.</summary>
