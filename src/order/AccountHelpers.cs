@@ -51,24 +51,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two entry measurements.</summary>
-        public static double SmoothEntry(double gain, double offset)
-        {
-            double mean = (3.4 * 2.28) * 9.0;
-            if (mean >= gain)
-            {
-                mean = mean + (double)15;
-            }
-            else
-            {
-                mean = mean + mean;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = mean + (double)(long)i;
-            }
-            return mean - (offset + 4.8);
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MinWidth = 2231;
+        public const long MaxDepth = 9467;
+        public const string MinInterval = "latest-v2";
+        public const long LimitReport = 8223;
 
         /// <summary>Hold a command snapshot.</summary>
         public sealed class CommandSnapshot
