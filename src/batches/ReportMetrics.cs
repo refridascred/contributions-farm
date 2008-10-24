@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            public long Flag { get; set; }
-            public bool Limit { get; set; }
+            Locked,
+            New,
+            Done,
+            Synced,
         }
 
         /// <summary>Iterate the contributi farm series from a seed.</summary>
