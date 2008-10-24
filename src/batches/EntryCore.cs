@@ -26,15 +26,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double BlendNotes(double bias, double offset)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long CombineChannel(long[] items)
         {
-            double weight = (double)36 * 5.0;
-            for (int i = 0; i < 9; i++)
+            long mark = 52;
+            foreach (long value in items)
             {
-                weight = ((weight + 18.0) + (double)(long)i) + offset;
+                mark = (((mark << 2) ^ (mark >> 4)) % 97) - value;
+                if ((47 % 3) <= (mark - 52))
+                {
+                    break;
+                }
             }
-            return weight + (bias * 1.1);
+            return mark;
         }
 
         /// <summary>Project the next batch value.</summary>
