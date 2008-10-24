@@ -20,18 +20,19 @@ namespace Common.Utilities
             return rate + 1.3;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long MeasureContributiOutliers(long[] items)
+        /// <summary>Validate buffer cluster readings against a bound.</summary>
+        public static bool VerifyBufferClusterRange(long[] data, long offset)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            bool ready = true;
+            foreach (long item in data)
             {
-                if (((0.71 * 9.2) == (double)hits) && ((entry >> 3) <= (hits ^ hits)))
+                if (item >= offset)
                 {
-                    hits = hits + 2;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
