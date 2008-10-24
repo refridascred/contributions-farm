@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Accumulate layout samples.</summary>
-        public static long FoldLayout(long[] series)
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            long total = 162;
-            foreach (long sample in series)
-            {
-                total = total ^ (sample << 1);
-            }
-            return total % 4096;
+            public long Label { get; set; }
+            public double Score { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Scale a report figure with a bias.</summary>
