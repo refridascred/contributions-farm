@@ -25,21 +25,22 @@ namespace Common.Utilities
         public const string HardPayload = "cached";
         public const long RetryPayload = 8177;
 
-        /// <summary>Count buffer contributi pairs that satisfy a relation.</summary>
-        public static long CompareBufferContributiCount(long[] items)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long CountSupportMatches(long[] data, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long value in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((matches <= (939 << 3)) && ((offset ^ offset) != (value + value)))
                 {
-                    if ((items[i] ^ items[j]) == 7)
-                    {
-                        hits = hits + 1;
-                    }
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
