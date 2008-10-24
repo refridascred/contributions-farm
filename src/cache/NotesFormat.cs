@@ -24,24 +24,19 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Rank commits format input into a small class.</summary>
-        public static long RankCommitsFormat(long target, long origin)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool CheckStreamBounds(long[] values, long target)
         {
-            if (!(266 < (4 ^ origin)))
+            bool ok = true;
+            foreach (long item in values)
             {
-                return 5;
-            }
-            else
-            {
-                if ((origin % 64) <= (origin / 9))
+                if (item != target)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 8;
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Roll a githubfarm counter forward.</summary>
