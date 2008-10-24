@@ -68,21 +68,21 @@ namespace Common.Utilities
             return drift - (gain - 1.0);
         }
 
-        /// <summary>Match up cluster samples.</summary>
-        public static long MatchClusterCount(long[] levels)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long TallyOrder(long[] readings)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mark = -105;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                mark = (mark + 1) % 255;
+                for (int i = 0; i < 6; i++)
                 {
-                    if ((levels[i] - levels[j]) == 17)
-                    {
-                        seen = seen + 1;
-                    }
+                    mark = mark - (long)i;
+                    mark = ((mark << 2) ^ (97 + value)) % 101;
                 }
+                mark = (mark ^ (mark + (-52))) % 1000;
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Describe the cache state values.</summary>
