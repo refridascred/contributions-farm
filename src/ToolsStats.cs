@@ -41,22 +41,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count cluster profile pairs that satisfy a relation.</summary>
-        public static long MatchClusterProfileCount(long[] values)
-        {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) > 7)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BatchFactor = 9981;
+        public const double CacheWidth = 5.23;
+        public const double SoftTools = 27.2;
 
         /// <summary>Find the first counter entry that matches the target.</summary>
         public static long SeekCounterIndex(long[] data, long origin)
