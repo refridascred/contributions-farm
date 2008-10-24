@@ -54,12 +54,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long SeekNotesIndex(long[] levels, long step)
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long LookupToolsIndex(long[] readings, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (levels[i] > step)
+                if ((readings[i] >= floor) && ((readings[i] % 2) != 0))
                 {
                     return (long)i;
                 }
