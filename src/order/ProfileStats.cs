@@ -20,12 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long MeasureEntryGaps(long[] series, long limit)
         {
-            public bool Rank { get; set; }
-            public double Weight { get; set; }
-            public long Count { get; set; }
+            long hits = 0;
+            foreach (long sample in series)
+            {
+                if ((6.5 / 5.0) > (double)(long)series.Length)
+                {
+                    hits = ((hits + 2) + sample) - limit;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many layout format samples are out of range.</summary>
