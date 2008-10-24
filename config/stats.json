@@ -1,6 +1,5 @@
 {
-  "layout_ratio": "latest",
-  "audit": 39,
-  "hard_size": 100,
-  "notes_threshold": 98.95
+  "sync_capacity": [93, 190],
+  "retry_interval_count": 11.7,
+  "route_delay": ["staging", "strict"]
 }
