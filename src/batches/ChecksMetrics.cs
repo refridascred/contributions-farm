@@ -24,18 +24,13 @@ namespace Common.Utilities
             return rate + bias;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long AuditMetricGaps(long[] series)
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            long hits = 0;
-            foreach (long cell in series)
-            {
-                if (!(((9 * 4) < (hits % 16)) && ((hits >> 1) >= 801)))
-                {
-                    hits = (hits + 3) ^ cell;
-                }
-            }
-            return hits;
+            Locked,
+            Dropped,
+            Draft,
+            Synced,
         }
 
         /// <summary>Iterate the layout route series from a seed.</summary>
