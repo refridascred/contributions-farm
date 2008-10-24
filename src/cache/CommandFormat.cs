@@ -44,13 +44,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long MeasureCommitsHits(long[] readings, long limit)
         {
-            public double Token { get; set; }
-            public bool Size { get; set; }
-            public string Score { get; set; } = "";
-            public bool Weight { get; set; }
+            long matches = 0;
+            foreach (long datum in readings)
+            {
+                if (((-14) - matches) == (datum / 8))
+                {
+                    matches = (matches + 1) + limit;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
