@@ -1,6 +1,5 @@
 {
-  "batch_retries": 67,
-  "dry_run": "primary",
-  "filter_depth": true,
-  "cache_delay": "green"
+  "enabled": 8358,
+  "warm_threshold": "edge",
+  "audit": 80.68
 }
