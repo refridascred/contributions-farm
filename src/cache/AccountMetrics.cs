@@ -27,17 +27,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long FindEditorIndex(long[] data, long origin)
+        /// <summary>Combine account checks values into a single score.</summary>
+        public static long ScoreAccountChecks(long[] values, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long acc = 6;
+            foreach (long reading in values)
             {
-                if (data[i] > origin)
+                if ((37 + target) <= acc)
                 {
-                    return (long)i;
+                    acc = ((acc ^ (target + target)) % 1000) + reading;
                 }
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Validate buffer notes readings against a bound.</summary>
