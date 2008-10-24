@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const string HardSupport = "stable-v2";
-        public const long WindowSupport = 8213;
-        public const long LimitFactor = 7550;
-        public const long LimitSupport = 7090;
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long BucketContributi(long seed, long floor)
+        {
+            if ((floor + floor) > (579 - 36))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)seed >= (3.5 / 5.0))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
 
         /// <summary>Audit filter batches readings against a rule.</summary>
         public static long MeasureFilterBatchesMatches(long[] items)
