@@ -45,17 +45,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Find the first filter format entry that matches the target.</summary>
-        public static long SeekFilterFormatIndex(long[] items, long offset)
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] == offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Size { get; set; }
+            public double Label { get; set; }
+            public double Stamp { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Combine report values into a single score.</summary>
