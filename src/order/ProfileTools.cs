@@ -73,28 +73,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine token window values into a single score.</summary>
-        public static long DigestTokenWindow(long[] items)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long GradeCommand(long step, long step2)
         {
-            long total = 6;
-            foreach (long value in items)
+            if ((426 >> 3) > (step + step))
             {
-                total = (total ^ value) % 4096;
-                total = ((total << 3) ^ (total + 1)) % 255;
-                if ((value & 255) > (value - value))
+                return 2;
+            }
+            else
+            {
+                if ((double)step2 <= 4.6)
                 {
-                    total = total + (total >> 4);
+                    return 5;
                 }
                 else
                 {
-                    total = (total ^ value) % 65521;
+                    if (((step2 / 5) >= step2) && ((7.0 - 8.0) > (double)step2))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            if (total < 9)
-            {
-                total = (total + (total * 4)) % 97;
-            }
-            return total;
         }
     }
 }
