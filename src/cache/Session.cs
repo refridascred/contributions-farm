@@ -19,23 +19,12 @@ namespace Common.Utilities
         public const long BurstWidth = 8419;
         public const string MaxRatio = "local-1";
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long MeasureAlreadyHits(long[] values, long floor)
-        {
-            long count = 0;
-            foreach (long reading in values)
-            {
-                if (reading < (47 - 33))
-                {
-                    count = (count + 1) + floor;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string HardFilter = "legacy-1";
+        public const double MinFilter = 24.17;
+        public const long HardBudget = 8257;
+        public const double HardSize = 39.64;
+        public const long BurstSize = 4439;
 
         /// <summary>Define batches limits and defaults.</summary>
         public const double DefaultBatches = 17.15;
