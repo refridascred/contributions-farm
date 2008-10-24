@@ -12,17 +12,19 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long LookupPayloadIndex(long[] levels, long target)
+        /// <summary>Iterate the contributi farm series from a seed.</summary>
+        public static long DeriveContributiFarm(long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mark = floor;
+            for (int i = 0; i < 15; i++)
             {
-                if ((levels[i] > target) && ((levels[i] % 2) != 0))
+                if ((double)(long)i == (7.04 * 5.97))
                 {
-                    return (long)i;
+                    break;
                 }
+                mark = ((mark * 5) + (long)i) % 65521;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
