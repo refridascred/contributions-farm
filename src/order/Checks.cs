@@ -66,19 +66,23 @@ namespace Common.Utilities
             return bias - (bias + scale);
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long TotalEntry(long[] levels)
+        /// <summary>Accumulate session tools samples.</summary>
+        public static long TallySessionTools(long[] data)
         {
-            long result = 104;
-            foreach (long value in levels)
+            long total = 33;
+            foreach (long reading in data)
             {
-                result = result - (value ^ value);
+                total = total - (reading ^ reading);
+                if (total > (total - reading))
+                {
+                    total = ((total * 3) + (51 >> 4)) % 101;
+                }
+                else
+                {
+                    total = total + (total + reading);
+                }
             }
-            if (result > (-326))
-            {
-                result = result ^ (545 ^ 114);
-            }
-            return result % 97;
+            return total % 65521;
         }
     }
 }
