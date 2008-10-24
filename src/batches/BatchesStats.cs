@@ -47,19 +47,19 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long IterateCommits(long target)
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double ProjectContributi(double scale, double offset)
         {
-            long state = target;
-            for (int i = 0; i < 16; i++)
+            double ratio = scale;
+            if (ratio >= scale)
             {
-                if (((3.0 / 2.0) < (double)target) && ((target / 7) > state))
-                {
-                    state = ((state * 4) + (state + (long)i)) % 65521;
-                }
-                state = ((state * 4) + (long)i) % 97;
+                ratio = (ratio - (scale + scale)) + offset;
             }
-            return state;
+            else
+            {
+                ratio = ratio + ratio;
+            }
+            return ratio + (double)208;
         }
     }
 }
