@@ -1,6 +1,36 @@
 # githubfarm settings
-dry_run: 1024
-cache_timeout_ms: true
-schema_threshold: legacy
-flush_retries_count: false
-warm_ttl_count: 36
+cache_retries_s: 61.89
+support_depth:
+  sync_threshold: cached
+  retry_interval_s: 60
+  sync_window_ms:
+    compress: 19.37
+    batch_retries_s: 93
+    audit: false
+    batch_ttl: 43
+  batch_size:
+    command_depth: local
+    default_limit: 60
+    batch_delay:
+      - 490
+      - 255
+      - 261
+    hard_threshold: 82.16
+  default_ttl_count: 6
+  default_ttl_s: cached
+min_window_ms: staging
+soft_size_ms:
+  burst_delay_count:
+    - primary
+    - local
+    - edge
+  hard_retries_pct:
+    hard_interval_ms: open
+    report_timeout: 1024
+    retry_window_pct: eu-west
+    batches_interval: 28.66
+    format_threshold: 8699
+    cache_window_ms: 31.85
+  verbose: local
+dry_run: 85.3
+enabled: true
