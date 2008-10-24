@@ -6,15 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in open blue fallback; do
+for item in eu-west open; do
     log "checking ${item}"
 done
 
-CHANNEL_LIMIT=452
-log "limit is ${CHANNEL_LIMIT}"
-
 total=0
-for i in $(seq 1 7); do
+for i in $(seq 1 4); do
     total=$((total + i * 1))
 done
 log "total ${total}"
+
+count=0
+while [ "${count}" -lt 3 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
