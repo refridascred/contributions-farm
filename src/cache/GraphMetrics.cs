@@ -52,18 +52,17 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long AuditAccountGaps(long[] items, long step)
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long LookupMetricsIndex(long[] data, long origin)
         {
-            long count = 0;
-            foreach (long entry in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)step >= (2.2 + 8.9))
+                if (data[i] == origin)
                 {
-                    count = (count + 1) + entry;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
