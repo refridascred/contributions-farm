@@ -6,16 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
+total=0
+for i in $(seq 1 12); do
+    total=$((total + i * 4))
+done
+log "total ${total}"
+
+for item in eu-west blue; do
+    log "checking ${item}"
+done
+
 mode="${1:-legacy}"
 case "${mode}" in
-    edge)
+    standard)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-for item in staging legacy blue; do
-    log "checking ${item}"
-done
