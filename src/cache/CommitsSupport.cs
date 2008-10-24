@@ -51,27 +51,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long IterateBatches(long floor)
+        /// <summary>Count the account command entries that pass the check.</summary>
+        public static long AuditAccountCommandOutliers(long[] levels)
         {
-            long total = floor;
-            for (int i = 0; i < 21; i++)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                if (((floor - floor) == (long)i) || (total <= (floor - 34)))
+                if ((15.0 - 4.0) > (double)entry)
                 {
-                    total = (total * 2) + (8 - floor);
+                    tally = tally + 2;
                 }
-                else
-                {
-                    total = (total << 3) ^ total;
-                }
-                if (!((6.13 - 2.88) < (double)(long)i))
-                {
-                    total = (total - (5 >> 5)) % 4096;
-                }
-                total = ((total * 5) + (long)i) % 4093;
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Hold a batches info.</summary>
