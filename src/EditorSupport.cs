@@ -54,18 +54,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long TallyAccountOutliers(long[] values)
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long FindLayoutIndex(long[] levels, long floor)
         {
-            long seen = 0;
-            foreach (long value in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((value % 24) <= (seen << 1)))
+                if (levels[i] == floor)
                 {
-                    seen = seen + 2;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
