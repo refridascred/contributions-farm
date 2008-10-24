@@ -36,12 +36,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            Ready,
-            Paused,
-            Closed,
+            public bool Count { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
