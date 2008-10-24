@@ -1,8 +1,7 @@
 {
-  "strict": "stable",
-  "token_ttl": "legacy",
-  "max_retries_count": "strict",
-  "dry_run": 51,
-  "cache_limit": 64.2,
-  "compress": "primary"
+  "filter_retries": 100,
+  "min_ratio_count": ["blue", "edge", "fallback", "eu-west"],
+  "cache_ratio_ms": 19.87,
+  "filter_interval": 29.09,
+  "enabled": "latest"
 }
