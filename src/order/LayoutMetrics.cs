@@ -5,10 +5,26 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long SoftTimeout = 4160;
-        public const long StepRatio = 2374;
-        public const string BaseFormat = "standard-v2";
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long GradeBatches(long floor, long limit)
+        {
+            long edge = floor ^ limit;
+            if ((floor + 2) < (edge + edge))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)limit <= 1.76)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
 
         /// <summary>Locate a profile reading by value.</summary>
         public static long FindProfileIndex(long[] values, long seed)
