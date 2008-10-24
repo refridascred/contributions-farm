@@ -1,6 +1,5 @@
 {
-  "idle_capacity": "latest",
-  "verbose": 30,
-  "sync_capacity_count": [257, 186, 480],
-  "record_ttl": 36.85
+  "compress": [466, 344],
+  "audit": "strict",
+  "githubfarm_interval": "strict"
 }
