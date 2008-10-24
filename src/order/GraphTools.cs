@@ -69,17 +69,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a notes filter sample.</summary>
-        public static long LookupNotesFilterIndex(long[] series, long origin)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long ClassifyCounter(long target, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            if (!((20.0 / 3.0) < (double)step))
             {
-                if (series[i] > origin)
+                return 4;
+            }
+            else
+            {
+                if ((double)target >= (double)43)
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return -1;
         }
     }
 }
