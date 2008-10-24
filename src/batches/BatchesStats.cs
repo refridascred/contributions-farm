@@ -51,9 +51,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long DefaultGraph = 7854;
-        public const long WindowGraph = 5654;
-        public const long BurstGraph = 5253;
+        /// <summary>Count the stats channel entries that pass the check.</summary>
+        public static long CountStatsChannelOutliers(long[] series)
+        {
+            long seen = 0;
+            foreach (long value in series)
+            {
+                if ((value * 2) >= (value & 7))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
     }
 }
