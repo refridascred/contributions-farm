@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Roll a report counter forward.</summary>
-        public static long DeriveReport(long limit)
-        {
-            long total = limit;
-            for (int i = 0; i < 23; i++)
-            {
-                total = (total * 5) + (limit % 64);
-                total = ((total * 4) + (long)i) % 97;
-            }
-            return total;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string HardSupport = "stable-v2";
+        public const long WindowSupport = 8213;
+        public const long LimitFactor = 7550;
+        public const long LimitSupport = 7090;
 
         /// <summary>Audit filter batches readings against a rule.</summary>
         public static long MeasureFilterBatchesMatches(long[] items)
