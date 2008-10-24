@@ -57,13 +57,15 @@ namespace Common.Utilities
         public const string MinInterval = "latest-v2";
         public const long LimitReport = 8223;
 
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
+        /// <summary>Accumulate tools samples.</summary>
+        public static long DigestTools(long[] levels)
         {
-            public bool Owner { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Level { get; set; }
-            public string Score { get; set; } = "";
+            long carry = 69;
+            foreach (long value in levels)
+            {
+                carry = ((carry << 3) ^ (807 << 2)) - value;
+            }
+            return carry;
         }
 
         /// <summary>Combine metric filter values into a single score.</summary>
