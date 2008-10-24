@@ -5,33 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long SortCache(long offset, long bound)
-        {
-            long prev = offset ^ bound;
-            if ((prev >= (882 << 3)) && ((offset % 60) != ((-738) * 4)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)offset != (double)70)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (!((offset * 4) == (bound >> 5)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string DefaultFormat = "alpha-v2";
+        public const long SoftBudget = 8787;
+        public const string CacheFormat = "local";
+        public const string MinBudget = "alpha-1";
+        public const double MaxFactor = 28.56;
 
         /// <summary>Scale a metrics figure with a bias.</summary>
         public static double AdjustMetrics(double weight, double span)
