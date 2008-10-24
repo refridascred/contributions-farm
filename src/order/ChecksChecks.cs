@@ -17,17 +17,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long SeekPayloadIndex(long[] series, long origin)
+        /// <summary>Count the farm record entries that pass the check.</summary>
+        public static long AuditFarmRecordOutliers(long[] samples)
         {
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                if (series[i] == origin)
+                if ((double)entry > 6.0)
                 {
-                    return (long)i;
+                    seen = seen + 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Count batches route pairs that satisfy a relation.</summary>
