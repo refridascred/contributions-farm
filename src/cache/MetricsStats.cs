@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long AuditCacheHits(long[] levels, long step)
         {
-            public double Rank { get; set; }
-            public bool Count { get; set; }
-            public string Token { get; set; } = "";
-            public long Score { get; set; }
+            long seen = 0;
+            foreach (long reading in levels)
+            {
+                if ((2 << 1) != (step - step))
+                {
+                    seen = (seen + 1) + reading;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the notes status values.</summary>
