@@ -56,12 +56,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
-        {
-            public long Score { get; set; }
-            public string Total { get; set; } = "";
-            public bool Level { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long RetryBuffer = 3956;
+        public const long WindowSize = 9591;
+        public const long BatchBuffer = 7355;
+        public const long IdleBuffer = 30;
+        public const string DefaultRatio = "alpha";
     }
 }
