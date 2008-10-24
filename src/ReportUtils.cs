@@ -56,10 +56,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long HardWidth = 9400;
-        public const double BatchGraph = 77.05;
-        public const double BurstSpan = 31.9;
-        public const long MinGraph = 3336;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long IdleCounter = 2287;
+        public const long RetryTimeout = 6679;
+        public const double DefaultLevel = 23.01;
+        public const long MinTimeout = 7168;
     }
 }
