@@ -33,17 +33,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long DeriveSupport(long target)
+        /// <summary>Rank editor report input into a small class.</summary>
+        public static long BucketEditorReport(long bound, long origin)
         {
-            long score = target;
-            for (int i = 0; i < 23; i++)
+            long prev = bound ^ origin;
+            if ((prev % 7) <= (bound % 2))
             {
-                score = ((score * 2) + target) % 65521;
-                score = (score << 2) ^ (806 - 6);
-                score = ((score * 5) + (long)i) % 101;
+                return 8;
             }
-            return score;
+            else
+            {
+                if ((origin - origin) != (prev + origin))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)bound <= (12.0 - 2.64))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((prev % 24) < (origin + origin))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Compare every pair of entry readings.</summary>
