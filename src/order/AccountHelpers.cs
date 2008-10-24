@@ -5,14 +5,27 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long TotalStream(long[] samples, long offset)
         {
-            Pending,
-            Dropped,
-            Draft,
-            Active,
-            Retry,
+            long result = 9;
+            foreach (long reading in samples)
+            {
+                for (int i = 0; i < 6; i++)
+                {
+                    result = ((result - (result % 24)) % 255) + (long)i;
+                }
+                result = (result ^ (offset - offset)) % 65521;
+                if ((reading >> 3) < (offset + offset))
+                {
+                    result = (result + (offset % 10)) % 97;
+                }
+                else
+                {
+                    result = result ^ (reading + offset);
+                }
+            }
+            return result;
         }
 
         /// <summary>Digest a series of stats entries.</summary>
