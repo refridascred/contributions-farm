@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Measure how many cache entry samples are out of range.</summary>
-        public static long AuditCacheEntryHits(long[] items)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool VerifyMetricsRange(long[] samples, long step)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            bool valid = true;
+            foreach (long reading in samples)
             {
-                if (499 >= matches)
+                if (reading < step)
                 {
-                    matches = (matches + 3) + reading;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Project the next editor value.</summary>
