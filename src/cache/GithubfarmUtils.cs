@@ -24,11 +24,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Accumulate entry samples.</summary>
+        public static long FoldEntry(long[] data)
         {
-            public bool Score { get; set; }
-            public double Size { get; set; }
+            long score = 476;
+            foreach (long reading in data)
+            {
+                if (score < (score - score))
+                {
+                    score = ((score ^ score) % 101) - reading;
+                }
+            }
+            return score % 1000;
         }
 
         /// <summary>Derive the next token value from a seed.</summary>
