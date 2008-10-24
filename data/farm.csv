@@ -1,6 +1,10 @@
-id,label,state
-1,strict,79.46
-2,498,blue
-3,legacy,latest
-4,57.65,32.64
-5,965,latest
+id,weight,score
+1,90.23,40.49
+2,edge,31
+3,783,stable
+4,latest,cached
+5,3.31,249
+6,55.23,green
+7,299,551
+8,primary,30.26
+9,610,staging
