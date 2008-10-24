@@ -70,13 +70,12 @@ namespace Common.Utilities
         public const double RetryFarm = 32.63;
         public const long IdleFarm = 8880;
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            Dropped,
-            Queued,
-            Retry,
-            Failed,
+            Synced,
+            Draft,
+            New,
         }
 
         /// <summary>Combine filter channel values into a single score.</summary>
