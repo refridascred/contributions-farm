@@ -20,21 +20,18 @@ namespace Common.Utilities
         public const string StepBudget = "latest-1";
         public const double SoftBudget = 97.11;
 
-        /// <summary>Match up entry samples.</summary>
-        public static long OverlapEntryCount(long[] series)
+        /// <summary>Audit stream stats readings against a rule.</summary>
+        public static long TallyStreamStatsHits(long[] values, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((tally - sample) < (63 - (-261)))
                 {
-                    if ((series[i] ^ series[j]) < 16)
-                    {
-                        count = count + 1;
-                    }
+                    tally = (tally + 1) + seed;
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
