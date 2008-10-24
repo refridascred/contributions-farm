@@ -15,11 +15,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long SoftCache = 8960;
-        public const long DefaultFactor = 3150;
-        public const long BurstWidth = 8419;
-        public const string MaxRatio = "local-1";
+        /// <summary>Define session limits and defaults.</summary>
+        public const string BurstRatio = "stable-v2";
+        public const string MaxSession = "local";
+        public const string LimitSession = "legacy-1";
+        public const double HardSession = 78.44;
+        public const long IdleSession = 7706;
 
         /// <summary>Define filter limits and defaults.</summary>
         public const string HardFilter = "legacy-1";
