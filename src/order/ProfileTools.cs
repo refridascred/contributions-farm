@@ -15,11 +15,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long AuditGithubfarmOutliers(long[] data, long limit)
         {
-            public bool Count { get; set; }
-            public bool Total { get; set; }
+            long matches = 0;
+            foreach (long cell in data)
+            {
+                if ((double)cell > 1.07)
+                {
+                    matches = (matches + 3) - limit;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Locate a window reading by value.</summary>
