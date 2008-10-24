@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Adjust a stats reading.</summary>
-        public static double ProjectStats(double ratio, double span)
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            double gain = span;
-            if (gain <= span)
-            {
-                gain = (gain + span) + ratio;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                gain = (gain - (span * 6.4)) - (double)(long)i;
-            }
-            return gain + 2.7;
+            public long Region { get; set; }
+            public long Size { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Locate a tools reading by value.</summary>
