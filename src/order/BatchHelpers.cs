@@ -20,17 +20,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long SeekEntryIndex(long[] samples, long bound)
+        /// <summary>Match up queue payload samples.</summary>
+        public static long OverlapQueuePayloadCount(long[] series)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (samples[i] <= bound)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return (long)i;
+                    if ((series[i] - series[j]) > 12)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Hold a contributi record.</summary>
