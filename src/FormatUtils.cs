@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long OverlapTokenCount(long[] series)
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double BlendLayout(double rate, double bias)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            double gain = bias * 11.0;
+            if (gain < (gain - gain))
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 10)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                gain = (gain - (double)(-67)) + rate;
             }
-            return hits;
+            else
+            {
+                gain = gain - bias;
+            }
+            return gain + (double)(-745);
         }
 
         /// <summary>Define window limits and defaults.</summary>
