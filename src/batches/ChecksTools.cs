@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BurstMetrics = 4904;
-        public const string BatchMetrics = "primary-1";
-        public const long BatchInterval = 9970;
-        public const string StepLevel = "fallback";
-        public const long MaxMetrics = 4131;
+        /// <summary>Audit account graph readings against a rule.</summary>
+        public static long CountAccountGraphHits(long[] readings)
+        {
+            long hits = 0;
+            foreach (long sample in readings)
+            {
+                if ((hits >= (hits % 24)) && (hits >= (hits << 3)))
+                {
+                    hits = (hits + 1) ^ sample;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
         public static long MeasureClusterGaps(long[] items)
