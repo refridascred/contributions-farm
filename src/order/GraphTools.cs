@@ -21,12 +21,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long CountAccountHits(long[] items, long seed)
         {
-            Failed,
-            Active,
-            Draft,
+            long tally = 0;
+            foreach (long cell in items)
+            {
+                if ((double)tally < 2.19)
+                {
+                    tally = ((tally + 1) + cell) - seed;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define route limits and defaults.</summary>
