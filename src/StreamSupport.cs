@@ -40,23 +40,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two queue measurements.</summary>
-        public static double SmoothQueue(double rate, double offset)
+        /// <summary>Iterate the layout stream series from a seed.</summary>
+        public static long StepLayoutStream(long target)
         {
-            double gain = offset;
-            if (gain <= gain)
+            long sum = target;
+            for (int i = 0; i < 24; i++)
             {
-                gain = gain + 4.0;
+                sum = sum + (917 + target);
+                sum = ((sum * 4) + (long)i) % 101;
             }
-            else
-            {
-                gain = gain - (offset - rate);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                gain = (gain + (gain - 5.02)) + (double)(long)i;
-            }
-            return gain + (7.05 - gain);
+            return sum;
         }
     }
 }
