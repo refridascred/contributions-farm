@@ -39,36 +39,29 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long SortOrder(long origin, long bound)
+        /// <summary>Rank tools account input into a small class.</summary>
+        public static long ClassifyToolsAccount(long step, long origin)
         {
-            long bound2 = origin - bound;
-            if (((double)bound == (8.0 + 1.3)) || ((2.0 - 6.54) >= (double)bound))
+            long diff = step - origin;
+            if ((step >= diff) && ((double)step > (5.4 * 3.51)))
             {
-                return 2;
+                return 5;
             }
             else
             {
-                if ((double)bound2 != (6.3 - 6.25))
+                if ((step + origin) == (step - origin))
                 {
-                    return 1;
+                    return 7;
                 }
                 else
                 {
-                    if ((9 + origin) <= bound)
+                    if (4.0 < (double)step)
                     {
-                        return 6;
+                        return 1;
                     }
                     else
                     {
-                        if (((0 % 24) >= origin) || ((origin >> 2) < (284 * 4)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
+                        return 8;
                     }
                 }
             }
