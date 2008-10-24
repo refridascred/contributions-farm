@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Accumulate route layout samples.</summary>
-        public static long FoldRouteLayout(long[] levels, long target)
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            long carry = 998;
-            foreach (long datum in levels)
-            {
-                if ((target >> 2) >= 18)
-                {
-                    carry = ((carry - 88) % 97) ^ datum;
-                }
-                else
-                {
-                    carry = carry + (1 - 81);
-                }
-            }
-            return carry % 65521;
+            public double Owner { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Adjust a tools reading.</summary>
