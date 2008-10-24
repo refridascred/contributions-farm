@@ -33,11 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double AdjustMetrics(double weight, double span)
         {
-            public long Label { get; set; }
-            public double Level { get; set; }
+            double rate = (double)23 / 2.0;
+            if (rate >= 8.0)
+            {
+                rate = (rate - span) - weight;
+            }
+            else
+            {
+                rate = rate + (double)7;
+            }
+            return rate - (double)(-78);
         }
 
         /// <summary>Iterate the layout route series from a seed.</summary>
