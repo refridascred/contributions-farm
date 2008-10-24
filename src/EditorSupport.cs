@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double MinDepth = 72.29;
-        public const long DefaultTimeout = 7925;
-        public const double BurstCount = 34.61;
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
+        {
+            public long Rank { get; set; }
+            public long Offset { get; set; }
+        }
 
         /// <summary>Find the first counter queue entry that matches the target.</summary>
         public static long LocateCounterQueueIndex(long[] data, long floor)
