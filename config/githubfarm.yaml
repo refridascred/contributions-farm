@@ -1,10 +1,19 @@
 # githubfarm settings
-default_size: edge
-burst_capacity_ms: cached
-burst_size:
-  cache_timeout: 1712
-  cache_retries: 53
-  max_interval_pct: true
-  retry_depth: 1882
-  buffer_limit: 98
-  session_capacity: false
+batch_retries: green
+batch_size:
+  - 213
+  - 13
+  - 53
+max_ratio_count:
+  warm_delay_ms: 30
+  idle_retries_count: true
+  verbose: 99
+  persist: 6187
+  sync_ttl_s: 13
+  flush_ratio_ms: 52
+base_depth:
+  - strict
+  - green
+  - stable
+  - local
+metrics_window: fallback
