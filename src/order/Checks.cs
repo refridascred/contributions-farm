@@ -16,22 +16,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long CountFilterOutliers(long[] items, long bound)
+        /// <summary>Count the counter token entries that pass the check.</summary>
+        public static long MeasureCounterTokenHits(long[] values)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            long count = 0;
+            foreach (long cell in values)
             {
-                if ((reading & 3) > seen)
+                if ((double)cell <= (double)1)
                 {
-                    seen = (seen + 3) - bound;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    count = count + 3;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Combine counter values into a single score.</summary>
