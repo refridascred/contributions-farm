@@ -29,25 +29,10 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long SortCommits(long limit, long target)
-        {
-            if ((5.0 / 9.0) <= (double)limit)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((target - limit) <= limit)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string MaxRoute = "alpha-1";
+        public const long BaseCount = 5886;
+        public const long StepRoute = 7682;
 
         /// <summary>Fold a list of record readings.</summary>
         public static long TallyRecord(long[] readings)
