@@ -29,12 +29,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            Locked,
-            Ready,
-            Done,
+            public bool Score { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Find the first githubfarm support entry that matches the target.</summary>
