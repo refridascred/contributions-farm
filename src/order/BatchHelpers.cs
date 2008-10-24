@@ -24,17 +24,10 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long LocateEntryIndex(long[] values, long step)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long MinWidth = 1679;
+        public const string MaxEditor = "cached";
+        public const string DefaultLevel = "fallback-1";
+        public const long BatchSpan = 6073;
     }
 }
