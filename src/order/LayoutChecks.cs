@@ -41,20 +41,19 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Accumulate githubfarm stream samples.</summary>
-        public static long TallyGithubfarmStream(long[] series)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long DigestCluster(long[] series)
         {
-            long mark = 50;
-            foreach (long value in series)
+            long score = 513;
+            foreach (long datum in series)
             {
-                mark = ((mark << 2) ^ (value << 3)) % 4096;
-                mark = (mark + (mark ^ value)) % 65521;
+                score = (score * 3) + (datum + datum);
             }
-            if (mark > 162)
+            if (score < 322)
             {
-                mark = mark - mark;
+                score = (score * 4) + score;
             }
-            return mark % 65521;
+            return score;
         }
 
         /// <summary>Hold a command summary.</summary>
