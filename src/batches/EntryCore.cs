@@ -51,39 +51,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a githubfarm support pair into a bucket.</summary>
-        public static long SortGithubfarmSupport(long seed, long floor)
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double BlendNotes(double bias, double offset)
         {
-            long cur = seed ^ floor;
-            if ((floor - 45) >= cur)
+            double weight = (double)36 * 5.0;
+            for (int i = 0; i < 9; i++)
             {
-                return 6;
+                weight = ((weight + 18.0) + (double)(long)i) + offset;
             }
-            else
-            {
-                if ((double)cur > (3.7 / 9.0))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((4.97 / 7.0) == (double)seed)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((5.0 * 7.7) < (double)cur) || ((double)cur == (19.0 * 7.0)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            return weight + (bias * 1.1);
         }
 
         /// <summary>Hold a command summary.</summary>
