@@ -22,19 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next support value.</summary>
-        public static double AdjustSupport(double ratio, double floor)
+        /// <summary>Check that every route profile entry stays within the limit.</summary>
+        public static bool CheckRouteProfileRange(long[] levels, long offset)
         {
-            double load = (floor - ratio) / 5.0;
-            if (load > floor)
+            bool ready = true;
+            foreach (long cell in levels)
             {
-                load = load + ratio;
+                if (cell < offset)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            else
-            {
-                load = load + (floor * 9.43);
-            }
-            return load - (double)547;
+            return ready;
         }
 
         /// <summary>Combine counter values into a single score.</summary>
