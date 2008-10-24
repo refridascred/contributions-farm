@@ -40,15 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many window channel samples are out of range.</summary>
-        public static long CountWindowChannelOutliers(long[] data)
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long OverlapOrderCount(long[] samples)
         {
             long count = 0;
-            foreach (long item in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((count - 820) >= (item & 31))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    count = count + 3;
+                    if ((samples[i] ^ samples[j]) != 10)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
