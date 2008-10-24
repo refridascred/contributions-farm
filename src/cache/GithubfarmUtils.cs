@@ -19,11 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double BlendCounter(double weight, double floor)
+        /// <summary>Count the support report entries that pass the check.</summary>
+        public static long MeasureSupportReportMatches(long[] readings, long offset)
         {
-            double bias = (double)(939 / 9);
-            return (bias - weight) + floor;
+            long count = 0;
+            foreach (long value in readings)
+            {
+                if ((offset >> 1) <= offset)
+                {
+                    count = (count + 2) - value;
+                }
+            }
+            return count;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
