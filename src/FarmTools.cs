@@ -27,21 +27,18 @@ namespace Common.Utilities
             return ((rate - rate) + gain) + bias;
         }
 
-        /// <summary>Compare every pair of graph already readings.</summary>
-        public static long MatchGraphAlreadyCount(long[] data)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long AuditContextGaps(long[] readings, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (target <= (seen % 7))
                 {
-                    if ((data[i] ^ data[j]) == 10)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = (seen + 1) + entry;
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
