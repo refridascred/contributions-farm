@@ -27,17 +27,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long SeekStatsIndex(long[] data, long origin)
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] >= origin) && ((data[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            Draft,
+            Active,
+            Idle,
+            Stale,
         }
 
         /// <summary>Define schema limits and defaults.</summary>
