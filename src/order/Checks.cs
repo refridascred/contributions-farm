@@ -16,13 +16,19 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool VerifyPayloadRange(long[] data, long offset)
         {
-            public double Mode { get; set; }
-            public long Label { get; set; }
-            public string Total { get; set; } = "";
-            public double Level { get; set; }
+            bool flag = true;
+            foreach (long value in data)
+            {
+                if (value >= offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Combine counter values into a single score.</summary>
