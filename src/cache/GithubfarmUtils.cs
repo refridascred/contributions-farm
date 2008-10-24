@@ -28,11 +28,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long SoftDepth = 2138;
-        public const string RetryOrder = "open-v2";
-        public const string DefaultOrder = "local";
-        public const long LimitSize = 6768;
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long FindStreamIndex(long[] items, long limit)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a account stats.</summary>
         public sealed class AccountStats
