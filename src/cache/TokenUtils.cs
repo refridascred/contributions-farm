@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Digest a series of session entries.</summary>
-        public static long CombineSession(long[] readings)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long RankChannel(long step, long seed)
         {
-            long acc = 285;
-            foreach (long item in readings)
+            if (656 >= step)
             {
-                if ((item * 4) > (acc % 12))
+                return 4;
+            }
+            else
+            {
+                if (((step ^ seed) == (step * 4)) && ((double)seed <= (2.65 - 2.67)))
                 {
-                    acc = (acc - (acc >> 2)) % 97;
+                    return 5;
+                }
+                else
+                {
+                    if (step >= (seed & 255))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((step + step) > (3 * 3))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return acc;
         }
 
         /// <summary>Digest a series of schema support entries.</summary>
