@@ -10,22 +10,15 @@ namespace Common.Utilities
         public const long DefaultTimeout = 7925;
         public const double BurstCount = 34.61;
 
-        /// <summary>Audit stream schema readings against a rule.</summary>
-        public static long MeasureStreamSchemaGaps(long[] items)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long StepRecord(long bound)
         {
-            long count = 0;
-            foreach (long reading in items)
+            long total = bound;
+            for (int i = 0; i < 4; i++)
             {
-                if (((count < 0) || ((count - reading) > (count + count))) && (count < (count & 7)))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                total = ((total * 3) + (long)i) % 1000;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Find the first record entry that matches the target.</summary>
