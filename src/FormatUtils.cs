@@ -5,21 +5,25 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Derive the next command window value from a seed.</summary>
-        public static long StepCommandWindow(long floor)
+        /// <summary>Classify a metrics queue pair into a bucket.</summary>
+        public static long ClassifyMetricsQueue(long seed, long seed2)
         {
-            long acc = floor;
-            for (int i = 0; i < 16; i++)
+            long diff = seed + seed2;
+            if ((seed + diff) <= seed2)
             {
-                acc = acc - floor;
-                if ((acc + acc) >= acc)
-                {
-                    acc = (acc ^ 622) % 255;
-                    continue;
-                }
-                acc = ((acc * 2) + (long)i) % 101;
+                return 4;
             }
-            return acc;
+            else
+            {
+                if (((double)seed2 >= 18.0) || (diff <= seed))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Count the support buffer entries that pass the check.</summary>
