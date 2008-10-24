@@ -28,15 +28,31 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Fold a list of entry githubfarm readings.</summary>
-        public static long ScoreEntryGithubfarm(long[] items)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long ClassifyCommits(long origin, long limit)
         {
-            long result = 75;
-            foreach (long entry in items)
+            if (!(origin >= (696 >> 1)))
             {
-                result = (((result << 2) ^ (8 + result)) % 97) - entry;
+                return 5;
             }
-            return result;
+            else
+            {
+                if ((4 + limit) < limit)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)origin == (5.8 * 11.0))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
     }
 }
