@@ -1,17 +1,12 @@
 {
-  "strict": {
-    "verbose": 93,
-    "readonly": 75.55,
-    "base_timeout": true
+  "poll_window_s": "fallback",
+  "farm_delay": false,
+  "dry_run": {
+    "soft_interval_pct": true,
+    "poll_ttl_count": "cached",
+    "strict": "green",
+    "order_capacity": "strict",
+    "compress": 1024
   },
-  "hard_interval_count": 30,
-  "flush_window_pct": "primary",
-  "record_ttl": ["stable", "strict", "edge"],
-  "buffer_window": {
-    "window_threshold": "fallback",
-    "entry_timeout": 38,
-    "verbose": "legacy",
-    "min_retries_count": [365, 440, 111, 342],
-    "strict": 60
-  }
+  "base_interval_pct": ["primary", "open", "edge"]
 }
