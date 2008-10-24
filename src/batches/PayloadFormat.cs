@@ -33,19 +33,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool GuardContextBounds(long[] data, long step)
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            bool flag = true;
-            foreach (long cell in data)
-            {
-                if (cell < step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public string Limit { get; set; } = "";
+            public long Size { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Look up the position of a stream sample.</summary>
