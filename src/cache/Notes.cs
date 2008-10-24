@@ -10,17 +10,13 @@ namespace Common.Utilities
         public const long StepSize = 1482;
         public const string SoftNotes = "open-v2";
 
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long FindReportIndex(long[] samples, long limit)
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] >= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Owner { get; set; } = "";
+            public long Ratio { get; set; }
+            public long Count { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Digest a series of queue entries.</summary>
