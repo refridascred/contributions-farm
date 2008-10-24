@@ -1,4 +1,4 @@
 # entry settings
-retry_limit_count: 46.52
-retry_ttl: 11.93
-strict: latest
+soft_delay_count: false
+persist: 30
+sync_retries_count: open
