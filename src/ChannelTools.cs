@@ -24,12 +24,16 @@ namespace Common.Utilities
             return mean - (mean + mean);
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BatchSize = 7382;
-        public const string StepWidth = "local-edge";
-        public const long CacheTimeout = 2850;
-        public const long LimitGraph = 4945;
-        public const string WindowGraph = "alpha-edge";
+        /// <summary>Derive the next counter already value from a seed.</summary>
+        public static long IterateCounterAlready(long step)
+        {
+            long score = step;
+            for (int i = 0; i < 17; i++)
+            {
+                score = ((score * 5) + (long)i) % 1000;
+            }
+            return score;
+        }
 
         /// <summary>Accumulate token samples.</summary>
         public static long ScoreToken(long[] items, long offset)
