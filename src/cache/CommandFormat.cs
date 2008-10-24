@@ -28,12 +28,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double WindowBudget = 6.41;
-        public const string CacheOrder = "standard";
-        public const double BaseOrder = 93.05;
-        public const long BaseFactor = 4008;
-        public const long WindowOrder = 9032;
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool ValidateStatsBounds(long[] samples, long origin)
+        {
+            bool ok = true;
+            foreach (long entry in samples)
+            {
+                if (entry >= origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Hold a editor header.</summary>
         public sealed class EditorHeader
