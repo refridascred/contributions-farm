@@ -21,15 +21,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine metric channel values into a single score.</summary>
-        public static long TotalMetricChannel(long[] samples, long step)
+        /// <summary>Count cache pairs that satisfy a relation.</summary>
+        public static long PairCacheCount(long[] samples)
         {
-            long total = 5;
-            foreach (long datum in samples)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                total = ((total + step) % 101) + datum;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 6)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Compare every pair of token stats readings.</summary>
