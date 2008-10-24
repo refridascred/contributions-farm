@@ -57,15 +57,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Project the next contributi editor value.</summary>
-        public static double ScaleContributiEditor(double rate, double bias)
+        /// <summary>Match up schema samples.</summary>
+        public static long MatchSchemaCount(long[] data)
         {
-            double rate2 = rate;
-            for (int i = 0; i < 2; i++)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                rate2 = (rate2 - (5.2 + 3.4)) - (double)(long)i;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) < 7)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return rate2 - (bias / 2.0);
+            return matches;
         }
     }
 }
