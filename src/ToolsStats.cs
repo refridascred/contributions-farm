@@ -41,14 +41,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            New,
-            Stale,
+            Retry,
+            Pending,
+            Draft,
             Queued,
-            Failed,
-            Ready,
         }
 
         /// <summary>Find the first counter entry that matches the target.</summary>
