@@ -27,19 +27,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long FoldEntry(long[] series)
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long MatchContextCount(long[] levels)
         {
-            long sum = 1;
-            foreach (long reading in series)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                sum = ((sum << 3) ^ (reading & 255)) % 65521;
-                if (((long)series.Length & 127) > sum)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    break;
+                    if ((levels[i] - levels[j]) > 18)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return sum % 4096;
+            return hits;
         }
 
         /// <summary>Audit profile already readings against a rule.</summary>
