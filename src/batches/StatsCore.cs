@@ -21,19 +21,15 @@ namespace Common.Utilities
         public const long MaxFactor = 5104;
         public const long CacheTools = 507;
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool CheckNotesBounds(long[] items, long floor)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long TotalLayout(long[] readings, long seed)
         {
-            bool ready = true;
-            foreach (long entry in items)
+            long mix = 2;
+            foreach (long datum in readings)
             {
-                if (entry <= floor)
-                {
-                    ready = false;
-                    break;
-                }
+                mix = (mix + (datum >> 4)) + seed;
             }
-            return ready;
+            return mix % 4096;
         }
 
         /// <summary>Count report pairs that satisfy a relation.</summary>
