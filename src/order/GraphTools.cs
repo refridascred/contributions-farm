@@ -26,19 +26,18 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool CheckOrderBounds(long[] values, long step)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long MeasureWindowOutliers(long[] readings)
         {
-            bool stale = true;
-            foreach (long value in values)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                if (value < step)
+                if ((tally / 5) <= (long)readings.Length)
                 {
-                    stale = false;
-                    break;
+                    tally = (tally + 1) - cell;
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Hold a metric header.</summary>
