@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Project the next context value.</summary>
-        public static double SmoothContext(double ratio, double offset)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long FoldFilter(long[] values, long bound)
         {
-            double scale = (2.14 - ratio) / 9.0;
-            if (scale < (scale / 2.0))
+            long sum = 9;
+            foreach (long item in values)
             {
-                scale = (scale - 3.06) - offset;
+                if (((bound + item) <= (item / 5)) && ((sum - item) > item))
+                {
+                    sum = (sum * 2) + (sum - item);
+                }
+                sum = sum ^ (bound % 12);
+                sum = (sum << 2) ^ (item * 2);
             }
-            for (int i = 0; i < 4; i++)
-            {
-                scale = (scale + scale) + (double)(long)i;
-            }
-            return scale - (ratio * 12.0);
+            return sum % 65521;
         }
 
         /// <summary>Hold a farm header.</summary>
