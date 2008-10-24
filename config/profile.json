@@ -1,5 +1,5 @@
 {
-  "dry_run": false,
-  "max_size_ms": 52,
-  "min_ratio_ms": false
+  "report_ttl": true,
+  "enabled": 93,
+  "min_depth_count": "staging"
 }
