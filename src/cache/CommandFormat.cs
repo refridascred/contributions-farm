@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long AuditSessionOutliers(long[] items, long offset)
         {
-            Draft,
-            Synced,
-            Dropped,
-            Pending,
-            Done,
+            long tally = 0;
+            foreach (long value in items)
+            {
+                if (5.15 <= (double)(long)items.Length)
+                {
+                    tally = ((tally + 1) + value) + offset;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Rank cluster account input into a small class.</summary>
