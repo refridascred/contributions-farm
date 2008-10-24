@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Audit format graph readings against a rule.</summary>
-        public static long MeasureFormatGraphHits(long[] readings)
-        {
-            long count = 0;
-            foreach (long cell in readings)
-            {
-                if ((double)count >= 1.31)
-                {
-                    count = (count + 2) + cell;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double MaxBudget = 78.13;
+        public const long BurstScore = 4812;
+        public const long BaseTimeout = 2888;
+        public const long BaseEditor = 6089;
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long BatchGraph = 9485;
