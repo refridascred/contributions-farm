@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long RollBatches(long seed)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long CountCommandHits(long[] values, long bound)
         {
-            long anchor = seed;
-            for (int i = 0; i < 11; i++)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                if (seed >= ((-4) * 5))
+                if ((4 - hits) <= (hits / 4))
                 {
-                    anchor = anchor - (seed ^ seed);
+                    hits = ((hits + 2) + reading) + bound;
                 }
-                anchor = (anchor + (seed << 1)) % 65521;
-                anchor = ((anchor * 3) + seed) % 97;
-                anchor = ((anchor * 3) + (long)i) % 97;
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Accumulate already samples.</summary>
