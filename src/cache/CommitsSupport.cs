@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Combine report values into a single score.</summary>
-        public static long TotalReport(long[] samples, long offset)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool ValidateQueueRange(long[] data, long step)
         {
-            long score = 6;
-            foreach (long item in samples)
+            bool found = true;
+            foreach (long cell in data)
             {
-                score = (score - (score & 31)) + offset;
-                if (365 >= (item / 4))
+                if (cell < step)
                 {
-                    score = (score ^ item) % 101;
+                    found = false;
+                    break;
                 }
             }
-            return score % 1000;
+            return found;
         }
 
         /// <summary>Look up the position of a farm cache sample.</summary>
