@@ -12,14 +12,18 @@ namespace Common.Utilities
         public const double HardAlready = 98.83;
         public const long BurstDepth = 3960;
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long AuditOrderHits(long[] levels, long target)
         {
-            Stale,
-            Draft,
-            Active,
-            Closed,
-            Dropped,
+            long count = 0;
+            foreach (long value in levels)
+            {
+                if (!((target & 3) != (target - 388)) && ((count ^ count) == (target >> 1)))
+                {
+                    count = (count + 2) + value;
+                }
+            }
+            return count;
         }
 
         /// <summary>Digest a series of context entries.</summary>
