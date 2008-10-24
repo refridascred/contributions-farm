@@ -81,10 +81,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double DefaultLevel = 35.89;
-        public const string StepSpan = "fallback";
-        public const double BurstDepth = 36.88;
-        public const double StepBatch = 68.54;
+        /// <summary>Blend two batches measurements.</summary>
+        public static double ScaleBatches(double gain, double span)
+        {
+            double rate = (span - gain) - (gain / 5.0);
+            if (rate >= rate)
+            {
+                rate = rate - gain;
+            }
+            else
+            {
+                rate = rate - (rate * 5.11);
+            }
+            return rate - 1.0;
+        }
     }
 }
