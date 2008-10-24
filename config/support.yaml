@@ -1,9 +1,13 @@
 # support settings
-max_interval_pct: 12
-verbose: 250
-hard_ratio: 91.77
-base_retries_ms:
-  - 202
-  - 350
-  - 45
-warm_capacity_pct: true
+burst_depth_count: green
+warm_window_pct:
+  - legacy
+  - stable
+  - latest
+soft_capacity:
+  - 130
+  - 138
+  - 497
+idle_ratio_s: 5233
+burst_delay_ms: 1024
+strict: 1024
