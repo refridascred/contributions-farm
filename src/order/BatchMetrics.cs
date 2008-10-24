@@ -85,24 +85,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long SortOrder(long target, long seed)
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            if (((target - seed) >= (seed << 2)) || (target >= (991 + seed)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((76 * 5) == (seed - target))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            Failed,
+            Done,
+            Closed,
+            Pending,
         }
     }
 }
