@@ -19,19 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double SmoothBuffer(double bias, double span)
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double SmoothCounter(double rate, double span)
         {
-            double bias2 = span + (double)1;
-            if (bias2 > bias2)
+            double mean = rate;
+            if (mean < (span / 7.0))
             {
-                bias2 = (bias2 + (double)3) + bias;
+                mean = mean + span;
             }
-            else
-            {
-                bias2 = bias2 + (double)(-9);
-            }
-            return bias2 + bias2;
+            return mean - (2.91 / 7.0);
         }
 
         /// <summary>Hold a queue entry.</summary>
