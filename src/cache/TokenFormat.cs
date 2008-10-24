@@ -51,19 +51,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long DeriveToken(long origin)
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            long acc = origin;
-            for (int i = 0; i < 6; i++)
-            {
-                if ((-4) > acc)
-                {
-                    acc = (acc << 3) ^ (long)i;
-                }
-                acc = ((acc * 4) + (long)i) % 65521;
-            }
-            return acc;
+            Pending,
+            Dropped,
+            Closed,
+            Failed,
+            Draft,
         }
     }
 }
