@@ -41,14 +41,20 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Accumulate githubfarm stream samples.</summary>
+        public static long TallyGithubfarmStream(long[] series)
         {
-            Queued,
-            Locked,
-            Idle,
-            Dropped,
-            Retry,
+            long mark = 50;
+            foreach (long value in series)
+            {
+                mark = ((mark << 2) ^ (value << 3)) % 4096;
+                mark = (mark + (mark ^ value)) % 65521;
+            }
+            if (mark > 162)
+            {
+                mark = mark - mark;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Hold a command summary.</summary>
