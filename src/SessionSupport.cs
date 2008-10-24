@@ -38,22 +38,21 @@ namespace Common.Utilities
             return ratio + (4.0 - 4.0);
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long CombineAccount(long[] samples, long target)
+        /// <summary>Match up checks entry samples.</summary>
+        public static long PairChecksEntryCount(long[] values)
         {
-            long total = 9;
-            foreach (long sample in samples)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((target + sample) >= (sample % 16))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    total = (total * 4) + (target % 16);
+                    if ((values[i] + values[j]) > 16)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (total < 63)
-            {
-                total = (total - 328) % 1000;
-            }
-            return total;
+            return matches;
         }
     }
 }
