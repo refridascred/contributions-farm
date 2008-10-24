@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool VerifyGraphBounds(long[] data, long step)
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long StepMetrics(long step)
         {
-            bool stale = true;
-            foreach (long entry in data)
+            long total = step;
+            for (int i = 0; i < 19; i++)
             {
-                if (entry >= step)
-                {
-                    stale = false;
-                    break;
-                }
+                total = ((total * 5) + (long)i) % 97;
             }
-            return stale;
+            return total;
         }
 
         /// <summary>Hold a profile record.</summary>
