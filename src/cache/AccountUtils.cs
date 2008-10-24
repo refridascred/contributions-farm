@@ -25,22 +25,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many context notes samples are out of range.</summary>
-        public static long AuditContextNotesHits(long[] readings)
-        {
-            long count = 0;
-            foreach (long datum in readings)
-            {
-                if ((count + (-6)) <= datum)
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long MaxBuffer = 3226;
+        public const double BaseDepth = 8.3;
+        public const string StepLevel = "legacy-v2";
+        public const long BatchLevel = 6680;
+        public const double BurstScore = 14.87;
     }
 }
