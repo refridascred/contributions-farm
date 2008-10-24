@@ -31,18 +31,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long CountSessionGaps(long[] levels)
+        /// <summary>Look up the position of a context format sample.</summary>
+        public static long LookupContextFormatIndex(long[] series, long seed)
         {
-            long count = 0;
-            foreach (long value in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((2 + value) >= (count + value))
+                if (series[i] > seed)
                 {
-                    count = count + 2;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
