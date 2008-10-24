@@ -27,13 +27,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long TallyAccountHits(long[] series, long limit)
         {
-            public long Total { get; set; }
-            public string Count { get; set; } = "";
-            public double Rank { get; set; }
-            public double Level { get; set; }
+            long seen = 0;
+            foreach (long sample in series)
+            {
+                if (986 >= ((long)series.Length * 4))
+                {
+                    seen = ((seen + 3) + sample) + limit;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
