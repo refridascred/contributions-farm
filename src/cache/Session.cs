@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Combine record values into a single score.</summary>
+        public static long CombineRecord(long[] items)
         {
-            public bool Owner { get; set; }
-            public long Count { get; set; }
-            public long Flag { get; set; }
+            long score = 336;
+            foreach (long sample in items)
+            {
+                if (sample >= (sample ^ 3))
+                {
+                    score = (score + sample) % 4096;
+                }
+            }
+            return score;
         }
 
         /// <summary>Hold a record record.</summary>
