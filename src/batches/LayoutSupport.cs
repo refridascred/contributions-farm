@@ -38,12 +38,21 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Count contributi order pairs that satisfy a relation.</summary>
+        public static long OverlapContributiOrderCount(long[] series)
         {
-            Done,
-            Paused,
-            Queued,
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) == 13)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a contributi header.</summary>
