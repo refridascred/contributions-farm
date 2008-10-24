@@ -30,14 +30,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long CountCommandHits(long[] readings)
         {
-            Paused,
-            Done,
-            Draft,
-            Failed,
-            Locked,
+            long seen = 0;
+            foreach (long datum in readings)
+            {
+                if ((datum / 8) < seen)
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
