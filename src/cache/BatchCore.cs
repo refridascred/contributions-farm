@@ -13,25 +13,21 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Classify a report support pair into a bucket.</summary>
-        public static long ClassifyReportSupport(long limit, long limit2)
+        /// <summary>Match up batch samples.</summary>
+        public static long OverlapBatchCount(long[] series)
         {
-            long gap = limit ^ limit2;
-            if ((limit2 + limit2) != (gap / 2))
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)gap != (8.19 * 0.6))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 0;
+                    if ((series[i] + series[j]) < 14)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
+            return count;
         }
 
         /// <summary>Project the next farm value.</summary>
