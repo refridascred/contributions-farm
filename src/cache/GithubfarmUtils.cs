@@ -36,17 +36,16 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Find the first githubfarm support entry that matches the target.</summary>
-        public static long FindGithubfarmSupportIndex(long[] series, long limit)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long StepToken(long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            long acc = target;
+            for (int i = 0; i < 6; i++)
             {
-                if (series[i] == limit)
-                {
-                    return (long)i;
-                }
+                acc = (acc - (target + target)) % 4096;
+                acc = ((acc * 5) + (long)i) % 4093;
             }
-            return -1;
+            return acc;
         }
     }
 }
