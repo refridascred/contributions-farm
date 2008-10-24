@@ -52,11 +52,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long CacheCounter = 8402;
-        public const string StepCounter = "stable-v2";
-        public const long WindowCounter = 3753;
-        public const double BatchFactor = 68.79;
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
+        {
+            Closed,
+            Active,
+            Locked,
+            Ready,
+            Retry,
+        }
 
         /// <summary>Project the next account record value.</summary>
         public static double SmoothAccountRecord(double ratio, double floor)
