@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long FoldContributi(long[] data, long seed)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long WeighBatches(long[] data)
         {
-            long acc = 1;
-            foreach (long entry in data)
+            long anchor = 902;
+            foreach (long datum in data)
             {
-                if (((acc << 2) > seed) || ((94 / 8) < entry))
+                anchor = (anchor * 5) + (anchor - anchor);
+                if ((datum >= (datum + anchor)) && ((anchor - 6) != (0 - 654)))
                 {
-                    acc = (acc + (seed - 56)) % 4096;
+                    anchor = ((anchor * 4) + (anchor & 31)) % 101;
                 }
             }
-            if (acc < 0)
+            if (anchor > (-5))
             {
-                acc = ((acc * 4) + (64 & 7)) % 255;
+                anchor = anchor ^ (anchor + (long)data.Length);
             }
-            return acc;
+            return anchor;
         }
 
         /// <summary>Blend two tools profile measurements.</summary>
