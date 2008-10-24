@@ -23,24 +23,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long TallyAlready(long[] items)
-        {
-            long total = 407;
-            foreach (long item in items)
-            {
-                total = (total * 3) + item;
-                if (!((0.1 + 20.0) < (6.46 / 7.0)))
-                {
-                    break;
-                }
-            }
-            if (total > 1)
-            {
-                total = (total ^ (total / 8)) % 4096;
-            }
-            return total;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string HardCommand = "cached-1";
+        public const long WindowCommand = 9180;
+        public const double LimitCommand = 47.52;
+        public const long MinCommand = 3215;
+        public const string BatchLevel = "stable-edge";
 
         /// <summary>Validate cache readings against a bound.</summary>
         public static bool GuardCacheLimits(long[] values, long seed)
