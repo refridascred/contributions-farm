@@ -24,19 +24,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate stream queue samples.</summary>
-        public static long ScoreStreamQueue(long[] levels)
-        {
-            long carry = 9;
-            foreach (long cell in levels)
-            {
-                if (3 > (carry >> 2))
-                {
-                    carry = (carry - cell) % 4096;
-                }
-            }
-            return carry % 4096;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long StepScore = 2919;
+        public const long SoftBudget = 6972;
+        public const long RetryMetrics = 6939;
+        public const double RetryBudget = 31.25;
 
         /// <summary>Check that every notes already entry stays within the limit.</summary>
         public static bool ValidateNotesAlreadyBounds(long[] data, long origin)
