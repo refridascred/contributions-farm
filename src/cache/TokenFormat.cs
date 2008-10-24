@@ -32,18 +32,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long AuditAlreadyOutliers(long[] data)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long DeriveToken(long origin)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            long acc = origin;
+            for (int i = 0; i < 6; i++)
             {
-                if ((entry << 2) > matches)
+                if ((-4) > acc)
                 {
-                    matches = matches + 3;
+                    acc = (acc << 3) ^ (long)i;
                 }
+                acc = ((acc * 4) + (long)i) % 65521;
             }
-            return matches;
+            return acc;
         }
     }
 }
