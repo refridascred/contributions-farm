@@ -51,20 +51,11 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool CheckPayloadBounds(long[] values, long step)
-        {
-            bool found = true;
-            foreach (long item in values)
-            {
-                if (item >= step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BaseCluster = 672;
+        public const long BatchDepth = 2475;
+        public const long IdleCluster = 1069;
+        public const long WindowCluster = 2289;
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
         public static bool VerifyGithubfarmBounds(long[] items, long step)
