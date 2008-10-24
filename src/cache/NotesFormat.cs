@@ -37,16 +37,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long StepGithubfarm(long target)
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            long score = target;
-            for (int i = 0; i < 8; i++)
-            {
-                score = (score << 2) ^ ((long)i - 87);
-                score = ((score * 4) + (long)i) % 4093;
-            }
-            return score;
+            Draft,
+            Failed,
+            Queued,
         }
     }
 }
