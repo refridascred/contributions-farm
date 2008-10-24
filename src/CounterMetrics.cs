@@ -51,22 +51,17 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long FoldQueue(long[] levels)
+        /// <summary>Look up the position of a channel already sample.</summary>
+        public static long LocateChannelAlreadyIndex(long[] items, long origin)
         {
-            long carry = 109;
-            foreach (long sample in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (sample < (1 << 2))
+                if ((items[i] > origin) && ((items[i] % 2) == 0))
                 {
-                    carry = (carry << 3) ^ (carry - 0);
-                }
-                if ((1.0 + 11.0) == (double)carry)
-                {
-                    carry = carry - carry;
+                    return (long)i;
                 }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
