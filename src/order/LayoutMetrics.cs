@@ -34,25 +34,11 @@ namespace Common.Utilities
             return scale + (6.6 * 19.0);
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long GradeNotes(long origin, long step)
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            long diff = origin ^ step;
-            if (21 < (origin - diff))
-            {
-                return 4;
-            }
-            else
-            {
-                if (diff >= (diff & 63))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public bool Level { get; set; }
+            public bool Stamp { get; set; }
         }
     }
 }
