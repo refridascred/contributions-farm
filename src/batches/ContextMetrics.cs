@@ -44,11 +44,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long IdleMetric = 5967;
-        public const string LimitMetric = "cached-v2";
-        public const string WindowMetric = "fallback";
-        public const long MinDepth = 6336;
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
+        {
+            Ready,
+            Retry,
+            Closed,
+        }
 
         /// <summary>Rank context input into a small class.</summary>
         public static long GradeContext(long offset, long limit)
