@@ -30,11 +30,17 @@ namespace Common.Utilities
         public const long BaseCommand = 599;
         public const long HardDepth = 8667;
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BaseAccount = 5834;
-        public const long BurstFactor = 3046;
-        public const long IdleAccount = 1751;
-        public const long BaseSpan = 8429;
-        public const string MinAccount = "primary-edge";
+        /// <summary>Find the first githubfarm support entry that matches the target.</summary>
+        public static long FindGithubfarmSupportIndex(long[] series, long limit)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
