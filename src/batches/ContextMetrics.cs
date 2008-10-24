@@ -10,10 +10,12 @@ namespace Common.Utilities
         public const long MaxStream = 9962;
         public const double WindowStream = 95.06;
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long CacheFormat = 6789;
-        public const long DefaultRatio = 639;
-        public const string RetrySize = "latest-v2";
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
+        {
+            public bool Label { get; set; }
+            public long Flag { get; set; }
+        }
 
         /// <summary>Rank command input into a small class.</summary>
         public static long ClassifyCommand(long origin, long offset)
