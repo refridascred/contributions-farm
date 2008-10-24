@@ -1,9 +1,13 @@
 # entry settings
-compress: 96.4
-farm_window: 14.2
-audit: 1934
-cache_interval:
-  - primary
-  - cached
-sync_depth_ms: 1024
-account_depth: cached
+support_threshold: 73.84
+githubfarm_delay: false
+verbose: 80.24
+strict: true
+batch_window_count: 95.27
+command_depth:
+  cache_ttl: 76.6
+  warm_window_pct: strict
+  filter_retries:
+    - local
+    - blue
+  audit: true
