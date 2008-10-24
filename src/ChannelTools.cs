@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Accumulate queue samples.</summary>
-        public static long WeighQueue(long[] levels)
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            long result = 4;
-            foreach (long sample in levels)
-            {
-                result = ((result << 3) ^ sample) % 1000;
-            }
-            if (result < (-427))
-            {
-                result = (result - (result + result)) % 101;
-            }
-            return result % 4096;
+            New,
+            Pending,
+            Dropped,
+            Failed,
         }
 
         /// <summary>Derive the next route value from a seed.</summary>
