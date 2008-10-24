@@ -33,19 +33,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool ValidateAlreadyRange(long[] levels, long floor)
+        /// <summary>Count filter pairs that satisfy a relation.</summary>
+        public static long CompareFilterCount(long[] data)
         {
-            bool flag = true;
-            foreach (long datum in levels)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (datum != floor)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((data[i] ^ data[j]) == 14)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Hold a route entry.</summary>
