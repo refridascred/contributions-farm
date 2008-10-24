@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long AuditBufferHits(long[] readings)
-        {
-            long count = 0;
-            foreach (long sample in readings)
-            {
-                if ((double)sample > 7.4)
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double BatchBudget = 8.08;
+        public const long StepSupport = 9728;
+        public const string RetrySupport = "alpha-v2";
+        public const long DefaultSupport = 9620;
+        public const string HardBudget = "stable";
 
         /// <summary>Match up filter session samples.</summary>
         public static long MatchFilterSessionCount(long[] values)
