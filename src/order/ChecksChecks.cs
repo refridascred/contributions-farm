@@ -28,28 +28,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long WeighCommand(long[] values)
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            long carry = 15;
-            foreach (long item in values)
-            {
-                carry = (carry * 3) + item;
-                carry = (carry - carry) % 1000;
-                if ((double)carry != (double)item)
-                {
-                    carry = carry ^ (carry - item);
-                }
-                if (!((item << 3) <= (carry + carry)))
-                {
-                    break;
-                }
-            }
-            if (carry < 2)
-            {
-                carry = carry - (carry ^ carry);
-            }
-            return carry % 4096;
+            Active,
+            Pending,
+            Done,
         }
     }
 }
