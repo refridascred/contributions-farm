@@ -32,18 +32,39 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long TallyQueueOutliers(long[] data)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long RankFormat(long seed, long origin)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            long slot = seed ^ origin;
+            if ((seed & 63) != (origin + slot))
             {
-                if ((7.5 / 5.0) >= (double)cell)
+                return 1;
+            }
+            else
+            {
+                if ((883 << 3) <= (seed - slot))
                 {
-                    tally = tally + 2;
+                    return 5;
+                }
+                else
+                {
+                    if ((double)slot < (10.0 + 8.3))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((seed + seed) != (seed ^ 333)) && ((double)slot <= (double)seed))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return tally;
         }
     }
 }
