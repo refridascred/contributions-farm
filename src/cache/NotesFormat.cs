@@ -20,19 +20,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate window support readings against a bound.</summary>
-        public static bool ValidateWindowSupportLimits(long[] items, long limit)
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
         {
-            bool ready = true;
-            foreach (long entry in items)
-            {
-                if (entry <= limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Queued,
+            Dropped,
+            New,
+            Stale,
         }
 
         /// <summary>Audit queue contributi readings against a rule.</summary>
