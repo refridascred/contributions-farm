@@ -56,17 +56,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Locate a already reading by value.</summary>
-        public static long SeekAlreadyIndex(long[] values, long step)
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Paused,
+            Failed,
+            Pending,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Audit support metrics readings against a rule.</summary>
