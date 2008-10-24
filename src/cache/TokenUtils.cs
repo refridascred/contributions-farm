@@ -48,19 +48,13 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long WeighWindow(long[] items, long origin)
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            long total = 4;
-            foreach (long cell in items)
-            {
-                total = ((total * 2) + (cell - total)) + origin;
-                if ((1.91 - 7.32) <= (double)total)
-                {
-                    total = (total << 2) ^ (536 - cell);
-                }
-            }
-            return total;
+            public double Level { get; set; }
+            public bool Weight { get; set; }
+            public double Count { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
