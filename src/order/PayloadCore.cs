@@ -24,13 +24,26 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Accumulate commits samples.</summary>
+        public static long DigestCommits(long[] readings)
         {
-            Pending,
-            New,
-            Paused,
-            Queued,
+            long result = 443;
+            foreach (long item in readings)
+            {
+                if ((result - item) == (result >> 4))
+                {
+                    result = (result + (result / 5)) % 101;
+                }
+                if (((8.2 - 12.0) <= (double)result) && ((double)result == (double)item))
+                {
+                    break;
+                }
+            }
+            if (result < 5)
+            {
+                result = (result ^ (result - result)) % 1000;
+            }
+            return result % 65521;
         }
 
         /// <summary>Validate token readings against a bound.</summary>
