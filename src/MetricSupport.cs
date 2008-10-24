@@ -31,15 +31,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long DeriveAlready(long origin)
+        /// <summary>Scale a graph already figure with a bias.</summary>
+        public static double ProjectGraphAlready(double bias, double floor)
         {
-            long total = origin;
-            for (int i = 0; i < 22; i++)
+            double ratio = 0.4;
+            for (int i = 0; i < 2; i++)
             {
-                total = ((total * 3) + (long)i) % 4093;
+                ratio = ((ratio + bias) - (double)(long)i) - floor;
             }
-            return total;
+            return ratio + (double)68;
         }
     }
 }
