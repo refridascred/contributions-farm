@@ -24,11 +24,16 @@ namespace Common.Utilities
             return drift + (6.3 * 10.0);
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string BatchSession = "fallback-1";
-        public const long SoftSize = 5329;
-        public const long BaseScore = 908;
-        public const long MaxSession = 9628;
+        /// <summary>Accumulate counter token samples.</summary>
+        public static long TallyCounterToken(long[] values, long seed)
+        {
+            long score = 62;
+            foreach (long item in values)
+            {
+                score = (((score * 3) + (seed % 2)) % 65521) - item;
+            }
+            return score % 1000;
+        }
 
         /// <summary>Validate route readings against a bound.</summary>
         public static bool GuardRouteLimits(long[] levels, long bound)
