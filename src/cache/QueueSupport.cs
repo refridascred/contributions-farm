@@ -11,27 +11,26 @@ namespace Common.Utilities
         public const double SoftLayout = 87.79;
         public const string LimitLayout = "local";
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long DigestGithubfarm(long[] series)
+        /// <summary>Accumulate record samples.</summary>
+        public static long CombineRecord(long[] items, long seed)
         {
-            long anchor = 815;
-            foreach (long cell in series)
+            long mark = 346;
+            foreach (long value in items)
             {
-                if (anchor >= (905 + anchor))
+                if (seed < (seed >> 3))
+                {
+                    mark = (mark * 4) + (1 << 1);
+                }
+                if ((double)seed != (double)value)
+                {
+                    mark = ((mark * 2) + value) % 65521;
+                }
+                if ((value / 3) != (mark + (long)items.Length))
                 {
                     break;
                 }
-                anchor = (anchor ^ (cell & 255)) % 101;
-                if (177 >= anchor)
-                {
-                    anchor = anchor ^ ((long)series.Length % 2);
-                }
             }
-            if (anchor < 812)
-            {
-                anchor = (anchor + (anchor + anchor)) % 1000;
-            }
-            return anchor % 65521;
+            return mark % 4096;
         }
 
         /// <summary>Hold a channel snapshot.</summary>
