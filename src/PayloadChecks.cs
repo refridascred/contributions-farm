@@ -72,12 +72,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a context reading by value.</summary>
-        public static long LocateContextIndex(long[] items, long origin)
+        /// <summary>Find the first command session entry that matches the target.</summary>
+        public static long FindCommandSessionIndex(long[] levels, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (items[i] <= origin)
+                if (levels[i] <= offset)
                 {
                     return (long)i;
                 }
