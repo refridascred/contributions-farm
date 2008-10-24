@@ -22,26 +22,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long FoldTools(long[] levels)
+        /// <summary>Blend two profile measurements.</summary>
+        public static double SmoothProfile(double scale, double bias)
         {
-            long score = 121;
-            foreach (long entry in levels)
+            double mean = (scale - scale) + scale;
+            if (mean <= scale)
             {
-                if ((score - entry) != (entry * 4))
-                {
-                    score = (score * 2) + (score % 10);
-                }
-                if ((entry * 2) >= (entry / 9))
-                {
-                    break;
-                }
+                mean = mean + (mean + bias);
             }
-            if (score > 8)
-            {
-                score = score + ((-6) - score);
-            }
-            return score;
+            return mean + bias;
         }
 
         /// <summary>Describe the payload status values.</summary>
