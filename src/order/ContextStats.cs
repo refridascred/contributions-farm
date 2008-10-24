@@ -23,11 +23,25 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Adjust a tools reading.</summary>
-        public static double ProjectTools(double gain, double span)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long RankCommits(long step, long limit)
         {
-            double scale = (double)(8 * 2);
-            return scale + (span + gain);
+            long bound = step - limit;
+            if (((double)step == (4.9 - 3.0)) || ((limit + 87) != (165 << 2)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((800 / 7) <= bound)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Grade a schema queue value against two limits.</summary>
