@@ -58,12 +58,12 @@ namespace Common.Utilities
         public const double HardSchema = 4.25;
         public const long MinSize = 7619;
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            Draft,
-            Ready,
-            Pending,
+            public double Offset { get; set; }
+            public long Size { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Compare every pair of farm window readings.</summary>
