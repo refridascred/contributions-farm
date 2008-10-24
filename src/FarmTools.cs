@@ -32,18 +32,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long ScoreFormat(long[] samples)
+        /// <summary>Count layout pairs that satisfy a relation.</summary>
+        public static long PairLayoutCount(long[] series)
         {
-            long result = 8;
-            foreach (long reading in samples)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (reading <= (203 ^ (-55)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    result = (result - (reading ^ reading)) % 65521;
+                    if ((series[i] ^ series[j]) < 7)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return result;
+            return seen;
         }
     }
 }
