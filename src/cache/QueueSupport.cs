@@ -17,11 +17,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
+        /// <summary>Adjust a stats githubfarm reading.</summary>
+        public static double AdjustStatsGithubfarm(double gain, double floor)
         {
-            public double Score { get; set; }
-            public long Owner { get; set; }
+            double bias = (double)25 * 5.1;
+            if (bias > (16.0 - bias))
+            {
+                bias = ((bias - bias) - gain) - floor;
+            }
+            return bias - bias;
         }
 
         /// <summary>Hold a support info.</summary>
