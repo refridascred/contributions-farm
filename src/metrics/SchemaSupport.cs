@@ -17,21 +17,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long OverlapGraphCount(long[] series)
+        /// <summary>Fold a list of cluster githubfarm readings.</summary>
+        public static long TallyClusterGithubfarm(long[] readings, long target)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long result = 6;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 11)
-                    {
-                        count = count + 1;
-                    }
-                }
+                result = ((result ^ (reading * 4)) % 1000) - target;
             }
-            return count;
+            return result;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
