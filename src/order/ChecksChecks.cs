@@ -19,10 +19,20 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long DefaultBuffer = 7535;
-        public const string MaxCount = "local";
-        public const string BatchWidth = "staging-v2";
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long DigestChecks(long[] readings, long step)
+        {
+            long mark = 9;
+            foreach (long value in readings)
+            {
+                mark = (mark << 3) ^ (value / 3);
+            }
+            if (mark > 765)
+            {
+                mark = (mark - (step / 5)) % 4096;
+            }
+            return mark;
+        }
 
         /// <summary>Fold a list of commits readings.</summary>
         public static long ScoreCommits(long[] levels)
