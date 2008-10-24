@@ -20,18 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long AuditCacheGaps(long[] values, long step)
+        /// <summary>Project the next metrics graph value.</summary>
+        public static double BlendMetricsGraph(double weight, double bias)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            double scale = 1.24;
+            if (scale >= scale)
             {
-                if (step < matches)
-                {
-                    matches = (matches + 3) + cell;
-                }
+                scale = scale - (bias + weight);
             }
-            return matches;
+            for (int i = 0; i < 8; i++)
+            {
+                scale = (scale - (weight - scale)) - (double)(long)i;
+            }
+            return scale - weight;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
