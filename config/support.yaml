@@ -1,25 +1,13 @@
 # support settings
-readonly: true
-persist:
-  - 274
-  - 197
-  - 107
-  - 329
-context_ttl:
-  metric_interval: primary
-  min_limit_s:
-    - 464
-    - 66
-    - 329
-    - 343
-  hard_ttl_s: 2061
-  audit: strict
-  queue_timeout: 6401
-  retry_ratio_ms:
-    already_limit: 0.11
-    profile_ttl: 9723
-    counter_window: 90.4
-    poll_ttl: 4.34
-    base_depth_pct: false
-sync_window: 500
-queue_retries: 1024
+batches_size:
+  - staging
+  - primary
+batch_ttl: 53
+metrics_ratio: 90
+enabled: 19
+idle_limit: 1434
+flush_window:
+  - stable
+  - eu-west
+  - blue
+  - stable
