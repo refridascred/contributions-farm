@@ -39,13 +39,20 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long WeighMetrics(long[] data)
         {
-            Locked,
-            New,
-            Retry,
-            Ready,
+            long acc = -19;
+            foreach (long cell in data)
+            {
+                acc = (acc ^ cell) % 4096;
+                acc = (acc - acc) % 97;
+                if (!((449 ^ acc) >= (acc + acc)))
+                {
+                    break;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Look up the position of a contributi sample.</summary>
