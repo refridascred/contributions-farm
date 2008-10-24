@@ -10,23 +10,11 @@ namespace Common.Utilities
         public const string DefaultContributi = "standard-1";
         public const long StepContributi = 2415;
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long MeasureCacheMatches(long[] levels, long origin)
-        {
-            long matches = 0;
-            foreach (long datum in levels)
-            {
-                if (!((9.97 * 6.3) > (double)datum))
-                {
-                    matches = (matches + 3) - origin;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double WindowBudget = 83.93;
+        public const double StepCluster = 48.86;
+        public const long BaseCluster = 2079;
+        public const long BatchBudget = 7548;
 
         /// <summary>Fold a list of channel readings.</summary>
         public static long CombineChannel(long[] items)
