@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long GradePayload(long limit, long target)
         {
-            public long Total { get; set; }
-            public long Stamp { get; set; }
-            public long Level { get; set; }
+            long lane = limit ^ target;
+            if ((double)target >= (double)lane)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((target + target) >= (8 & 15))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((lane & 255) <= lane)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (!((lane % 5) == (target << 2)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Locate a tools reading by value.</summary>
