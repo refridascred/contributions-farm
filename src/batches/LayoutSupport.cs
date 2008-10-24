@@ -20,14 +20,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Validate checks payload readings against a bound.</summary>
+        public static bool GuardChecksPayloadRange(long[] samples, long bound)
         {
-            New,
-            Active,
-            Closed,
-            Dropped,
-            Pending,
+            bool found = true;
+            foreach (long item in samples)
+            {
+                if (item <= bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Hold a queue summary.</summary>
