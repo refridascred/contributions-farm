@@ -43,18 +43,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of counter batch readings.</summary>
-        public static long FoldCounterBatch(long[] levels, long offset)
+        /// <summary>Match up command support samples.</summary>
+        public static long OverlapCommandSupportCount(long[] values)
         {
-            long state = 966;
-            foreach (long entry in levels)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (state <= 4)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    state = ((((state << 3) ^ (state * 4)) % 65521) + entry) - offset;
+                    if ((values[i] - values[j]) != 10)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return state % 1000;
+            return tally;
         }
     }
 }
