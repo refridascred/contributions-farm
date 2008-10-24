@@ -1,11 +1,10 @@
 {
-  "sync_ttl_s": {
-    "soft_ratio_ms": "stable",
-    "dry_run": 40.22,
-    "metric_threshold": [152, 66]
+  "base_retries": 44.52,
+  "min_depth_s": ["edge", "standard", "eu-west"],
+  "stream_interval": {
+    "enabled": false,
+    "cluster_ratio": [341, 135],
+    "base_capacity": true
   },
-  "min_depth_count": true,
-  "warm_delay_ms": 60,
-  "max_ttl": 66,
-  "enabled": 4380
+  "flush_capacity_s": 85.91
 }
