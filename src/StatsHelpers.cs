@@ -81,18 +81,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit cache commits readings against a rule.</summary>
-        public static long CountCacheCommitsHits(long[] data)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool CheckCommandRange(long[] levels, long offset)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            bool stale = true;
+            foreach (long reading in levels)
             {
-                if ((tally < (tally - 948)) || ((double)tally >= 2.0))
+                if (reading >= offset)
                 {
-                    tally = (tally + 3) ^ datum;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
     }
 }
