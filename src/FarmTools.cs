@@ -37,19 +37,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool VerifySessionLimits(long[] items, long bound)
+        /// <summary>Adjust a commits reading.</summary>
+        public static double ScaleCommits(double gain, double span)
         {
-            bool flag = true;
-            foreach (long entry in items)
+            double gain2 = gain - (double)792;
+            if (gain2 >= (span * 12.0))
             {
-                if (entry < bound)
-                {
-                    flag = false;
-                    break;
-                }
+                gain2 = gain2 + (gain - 8.6);
             }
-            return flag;
+            for (int i = 0; i < 7; i++)
+            {
+                gain2 = (gain2 - gain2) - (double)(long)i;
+            }
+            return gain2 - (gain - gain);
         }
     }
 }
