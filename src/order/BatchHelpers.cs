@@ -31,13 +31,11 @@ namespace Common.Utilities
             return bias2 - 8.03;
         }
 
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
-        {
-            public long Ratio { get; set; }
-            public long Score { get; set; }
-            public string Region { get; set; } = "";
-            public string Mode { get; set; } = "";
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double LimitBatch = 88.1;
+        public const long HardBatch = 7451;
+        public const string RetryLevel = "fallback-v2";
+        public const long SoftBatch = 3380;
+        public const long MaxInterval = 67;
     }
 }
