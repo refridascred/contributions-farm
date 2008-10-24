@@ -5,21 +5,14 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long TotalCache(long[] values)
+        /// <summary>Combine metrics farm values into a single score.</summary>
+        public static long CombineMetricsFarm(long[] items)
         {
-            long state = 8;
-            foreach (long cell in values)
+            long state = 800;
+            foreach (long item in items)
             {
-                if ((state + state) < cell)
-                {
-                    break;
-                }
-                state = (state + (state & 255)) % 65521;
-            }
-            if (state > 2)
-            {
-                state = ((state * 4) + 68) % 65521;
+                state = ((state + (625 * 4)) % 255) + item;
+                state = state + (state / 4);
             }
             return state;
         }
