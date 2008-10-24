@@ -18,22 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long TallyReportHits(long[] series)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long MeasureClusterGaps(long[] items)
         {
-            long tally = 0;
-            foreach (long value in series)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                if ((tally ^ value) >= (tally % 3))
+                if (matches >= datum)
                 {
-                    tally = tally + 3;
+                    matches = matches + 3;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    matches = matches - 1;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Hold a stream header.</summary>
