@@ -77,16 +77,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the githubfarm batch series from a seed.</summary>
-        public static long StepGithubfarmBatch(long offset)
+        /// <summary>Derive the next counter layout value from a seed.</summary>
+        public static long SeriesCounterLayout(long step)
         {
-            long mix = offset;
-            for (int i = 0; i < 16; i++)
+            long carry = step;
+            for (int i = 0; i < 24; i++)
             {
-                mix = mix - (offset / 7);
-                mix = ((mix * 3) + (long)i) % 101;
+                carry = ((carry * 5) + (long)i) % 101;
             }
-            return mix;
+            return carry;
         }
     }
 }
