@@ -14,15 +14,32 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long RollContributi(long step)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long GradePayload(long target, long limit)
         {
-            long total = step;
-            for (int i = 0; i < 5; i++)
+            long diff = target ^ limit;
+            if (limit <= target)
             {
-                total = ((total * 5) + (long)i) % 4093;
+                return 7;
             }
-            return total;
+            else
+            {
+                if (!((target >> 5) >= (target + diff)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((17.0 / 9.0) == (double)diff)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Validate command readings against a bound.</summary>
