@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Blend two stream measurements.</summary>
-        public static double ProjectStream(double rate, double bias)
+        /// <summary>Project the next editor value.</summary>
+        public static double BlendEditor(double scale, double bias)
         {
-            double bias2 = 5.0;
-            if (bias2 > bias2)
-            {
-                bias2 = (bias2 - (double)848) + bias;
-            }
-            else
-            {
-                bias2 = bias2 + (rate + 4.5);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                bias2 = (bias2 + rate) + (double)(long)i;
-            }
-            return bias2 + bias2;
+            double ratio = 9.7;
+            return ((ratio - (5.39 / 6.0)) + scale) + bias;
         }
 
         /// <summary>Hold a context info.</summary>
