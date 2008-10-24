@@ -51,22 +51,21 @@ namespace Common.Utilities
             return (gain - (rate * 5.0)) + span;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long MeasureContextGaps(long[] values)
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long PairGraphCount(long[] items)
         {
-            long count = 0;
-            foreach (long cell in values)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((cell / 6) != (cell % 16))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((items[i] ^ items[j]) != 1)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
