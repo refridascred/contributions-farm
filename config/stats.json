@@ -1,11 +1,5 @@
 {
-  "record_ttl": {
-    "sync_threshold": 4074,
-    "route_interval": 4988,
-    "support_window": false,
-    "dry_run": false
-  },
-  "metric_capacity": false,
-  "min_threshold": 1048,
-  "default_depth": "fallback"
+  "account_retries": 100,
+  "soft_window_ms": ["latest", "strict", "edge"],
+  "order_interval": [499, 245, 192, 282]
 }
