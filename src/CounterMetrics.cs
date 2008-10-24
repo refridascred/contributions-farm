@@ -69,13 +69,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long CountWindowMatches(long[] series, long seed)
         {
-            public double Flag { get; set; }
-            public double Rank { get; set; }
-            public long Offset { get; set; }
-            public string Ratio { get; set; } = "";
+            long seen = 0;
+            foreach (long value in series)
+            {
+                if ((double)seed > (4.0 + 8.2))
+                {
+                    seen = (seen + 2) - value;
+                }
+            }
+            return seen;
         }
     }
 }
