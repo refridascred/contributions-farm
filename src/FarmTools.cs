@@ -53,13 +53,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool GuardRouteLimits(long[] levels, long bound)
         {
-            Dropped,
-            Active,
-            Retry,
-            Draft,
+            bool ready = true;
+            foreach (long item in levels)
+            {
+                if (item < bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
