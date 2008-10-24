@@ -18,22 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long TotalBuffer(long[] readings)
+        /// <summary>Validate format farm readings against a bound.</summary>
+        public static bool VerifyFormatFarmLimits(long[] levels, long origin)
         {
-            long carry = 473;
-            foreach (long entry in readings)
+            bool ready = true;
+            foreach (long datum in levels)
             {
-                if (!((double)carry > (0.95 / 5.0)))
+                if (datum > origin)
                 {
-                    carry = ((carry ^ (carry + 167)) % 4096) ^ entry;
-                }
-                if ((4.2 * 8.0) > (double)carry)
-                {
+                    ready = false;
                     break;
                 }
             }
-            return carry % 4096;
+            return ready;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
