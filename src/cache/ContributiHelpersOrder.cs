@@ -54,13 +54,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            Stale,
-            Idle,
+            Paused,
+            New,
             Synced,
-            Ready,
+            Retry,
         }
     }
 }
