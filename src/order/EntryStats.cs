@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Adjust a stream reading.</summary>
-        public static double ProjectStream(double gain, double span)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long CombineSchema(long[] levels)
         {
-            double rate = span;
-            if (rate >= (gain * 2.9))
+            long carry = 804;
+            foreach (long sample in levels)
             {
-                rate = rate + (gain * 11.0);
+                if ((carry << 3) > sample)
+                {
+                    carry = (carry * 4) + (sample + carry);
+                }
+                if (!((sample * 3) != (40 + carry)))
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                rate = (rate - (double)3) + (double)(long)i;
-            }
-            return rate + 1.3;
+            return carry;
         }
 
         /// <summary>Blend two cluster already measurements.</summary>
