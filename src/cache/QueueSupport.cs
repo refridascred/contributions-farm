@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long CountWindowHits(long[] levels)
-        {
-            long tally = 0;
-            foreach (long value in levels)
-            {
-                if ((value >> 3) > (tally * 3))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BaseMetrics = 3937;
+        public const long DefaultMetrics = 2157;
+        public const string IdleCount = "standard";
 
         /// <summary>Hold a schema info.</summary>
         public sealed class SchemaInfo
