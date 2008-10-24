@@ -1,31 +1,11 @@
 # support settings
-default_capacity:
-  window_depth: stable
-  strict: 28.32
-  warm_timeout_s:
-    - 193
-    - 443
-  cache_limit_s: false
-sync_timeout_count:
-  hard_ratio_count: 3090
-  verbose: local
-  format_retries: 27.19
-readonly:
-  farm_ratio: edge
-  cache_interval:
-    - cached
-    - fallback
-    - open
-  cache_ratio_pct:
-    audit: edge
-    batch_interval_pct: 24
-    poll_interval_ms:
-      - 417
-      - 6
-      - 25
-      - 265
-    sync_window_s:
-      - edge
-      - edge
-    record_size: 395
-    compress: primary
+format_delay:
+  - 449
+  - 116
+  - 273
+  - 478
+burst_interval: 71
+context_depth:
+  - staging
+  - edge
+  - open
