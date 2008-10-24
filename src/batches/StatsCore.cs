@@ -18,10 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BatchTools = 3274;
-        public const long MaxFactor = 5104;
-        public const long CacheTools = 507;
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long TallyAlreadyGaps(long[] items)
+        {
+            long count = 0;
+            foreach (long datum in items)
+            {
+                if (datum > (count + count))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a tools record.</summary>
         public sealed class ToolsRecord
