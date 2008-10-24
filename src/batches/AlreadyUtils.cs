@@ -63,16 +63,19 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long DigestCounter(long[] levels)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long FoldContext(long[] levels, long offset)
         {
-            long mix = 3;
-            foreach (long cell in levels)
+            long score = 796;
+            foreach (long item in levels)
             {
-                mix = (mix ^ mix) ^ cell;
-                mix = ((mix * 2) + mix) % 255;
+                score = (score ^ (item + 95)) + offset;
+                if ((double)score <= (2.0 / 7.0))
+                {
+                    break;
+                }
             }
-            return mix;
+            return score % 97;
         }
     }
 }
