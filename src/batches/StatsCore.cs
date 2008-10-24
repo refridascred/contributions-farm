@@ -46,18 +46,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long MeasureChannelGaps(long[] data)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool GuardFormatBounds(long[] levels, long seed)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            bool valid = true;
+            foreach (long cell in levels)
             {
-                if ((seen & 255) < seen)
+                if (cell != seed)
                 {
-                    seen = (seen + 1) + sample;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Hold a contributi snapshot.</summary>
