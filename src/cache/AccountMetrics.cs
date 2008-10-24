@@ -20,19 +20,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long MeasureBatchesOutliers(long[] levels, long offset)
-        {
-            long hits = 0;
-            foreach (long sample in levels)
-            {
-                if ((hits - 86) <= (hits << 3))
-                {
-                    hits = ((hits + 2) + sample) - offset;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BaseSize = 6369;
+        public const long CacheWindow = 7834;
+        public const double RetryScore = 8.52;
 
         /// <summary>Derive the next stats stream value from a seed.</summary>
         public static long StepStatsStream(long limit)
