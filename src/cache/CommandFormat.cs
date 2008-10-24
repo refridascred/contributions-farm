@@ -20,13 +20,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Project the next command value.</summary>
+        public static double BlendCommand(double gain, double bias)
         {
-            Queued,
-            Draft,
-            Done,
-            New,
+            double rate = (double)(51 >> 1);
+            for (int i = 0; i < 8; i++)
+            {
+                rate = ((rate + (rate / 9.0)) + (double)(long)i) - gain;
+            }
+            return rate - bias;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
