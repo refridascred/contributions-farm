@@ -12,25 +12,18 @@ namespace Common.Utilities
         public const string LimitSize = "strict";
         public const long LimitFactor = 6815;
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long ClassifyGraph(long step, long origin)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long TallyChannelOutliers(long[] items, long limit)
         {
-            long bound = step - origin;
-            if ((40 ^ step) != (step & 63))
+            long count = 0;
+            foreach (long sample in items)
             {
-                return 5;
-            }
-            else
-            {
-                if ((bound / 2) < (origin & 7))
+                if (((970 + limit) >= (sample - sample)) && ((double)count > 11.0))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 0;
+                    count = count + 3;
                 }
             }
+            return count;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
