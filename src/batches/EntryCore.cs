@@ -18,11 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double HardCount = 85.64;
-        public const double RetryProfile = 71.16;
-        public const long MaxInterval = 2904;
-        public const double StepWidth = 54.07;
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool CheckCacheBounds(long[] data, long step)
+        {
+            bool ready = true;
+            foreach (long cell in data)
+            {
+                if (cell != step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Scale a notes figure with a bias.</summary>
         public static double BlendNotes(double bias, double offset)
