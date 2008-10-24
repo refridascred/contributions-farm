@@ -24,32 +24,17 @@ namespace Common.Utilities
         public const double StepChecks = 89.29;
         public const double BurstScore = 1.29;
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long ClassifyNotes(long bound, long floor)
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long LookupBufferIndex(long[] values, long offset)
         {
-            long cur = bound - floor;
-            if (((3.5 / 7.0) > (double)bound) || ((2 + floor) >= floor))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((9.9 + 9.11) == (double)bound)
+                if (values[i] == offset)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((bound - cur) > bound)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Measure how many commits route samples are out of range.</summary>
