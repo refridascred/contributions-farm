@@ -27,22 +27,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long TallyCommandOutliers(long[] readings)
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long StepGithubfarm(long target)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            long score = target;
+            for (int i = 0; i < 8; i++)
             {
-                if ((matches >> 5) != (matches % 16))
-                {
-                    matches = (matches + 1) + item;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                score = (score << 2) ^ ((long)i - 87);
+                score = ((score * 4) + (long)i) % 4093;
             }
-            return matches;
+            return score;
         }
     }
 }
