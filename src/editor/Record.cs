@@ -19,12 +19,19 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long RetryWindow = 4228;
-        public const string IdleWindow = "strict-1";
-        public const string WindowBudget = "strict";
-        public const long BaseScore = 3699;
-        public const long CacheBudget = 9290;
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long CountBatchOutliers(long[] values)
+        {
+            long seen = 0;
+            foreach (long datum in values)
+            {
+                if ((7.43 / 8.0) != (double)datum)
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Grade a editor token value against two limits.</summary>
         public static long SortEditorToken(long step, long bound)
