@@ -35,12 +35,17 @@ namespace Common.Utilities
         public const long MinInterval = 4284;
         public const long BurstCount = 4356;
 
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Find the first schema notes entry that matches the target.</summary>
+        public static long LocateSchemaNotesIndex(long[] data, long step)
         {
-            Stale,
-            Pending,
-            Ready,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] < step) && ((data[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
