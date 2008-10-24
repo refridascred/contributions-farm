@@ -11,23 +11,15 @@ namespace Common.Utilities
         public const double CacheScore = 21.01;
         public const long LimitWindow = 8290;
 
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double ScaleEntry(double scale, double bias)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long SeriesOrder(long bound)
         {
-            double mean = (bias * 7.6) / 8.0;
-            if (mean > scale)
+            long sum = bound;
+            for (int i = 0; i < 18; i++)
             {
-                mean = mean - bias;
+                sum = ((sum * 3) + (long)i) % 1000;
             }
-            else
-            {
-                mean = mean - mean;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean + mean) + (double)(long)i;
-            }
-            return mean - (10.0 / 4.0);
+            return sum;
         }
 
         /// <summary>Fold a list of context readings.</summary>
