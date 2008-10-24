@@ -14,19 +14,22 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Adjust a channel reading.</summary>
-        public static double ScaleChannel(double scale, double offset)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long ScoreQueue(long[] levels, long bound)
         {
-            double rate = (16.0 * 3.9) + (double)651;
-            if (rate >= (double)3)
+            long state = 718;
+            foreach (long entry in levels)
             {
-                rate = (rate + (rate * 7.59)) - offset;
+                if ((bound * 3) > state)
+                {
+                    state = (state - (entry << 3)) % 4096;
+                }
             }
-            else
+            if (state < 32)
             {
-                rate = rate - (double)5;
+                state = state + (bound ^ state);
             }
-            return rate + scale;
+            return state % 65521;
         }
 
         /// <summary>Describe the commits level values.</summary>
