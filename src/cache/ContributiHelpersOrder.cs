@@ -12,12 +12,22 @@ namespace Common.Utilities
         public const double MaxCounter = 97.3;
         public const long IdleCounter = 8528;
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long ScoreSchema(long[] samples)
         {
-            Dropped,
-            Closed,
-            Done,
+            long carry = 317;
+            foreach (long entry in samples)
+            {
+                if ((entry & 127) < (entry + carry))
+                {
+                    carry = (carry ^ (carry & 7)) % 1000;
+                }
+                else
+                {
+                    carry = carry + entry;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Accumulate buffer samples.</summary>
