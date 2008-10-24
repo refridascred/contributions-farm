@@ -14,14 +14,13 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            Failed,
+            Draft,
+            Locked,
+            Active,
             Pending,
-            Retry,
-            Ready,
-            Dropped,
         }
 
         /// <summary>Validate cache order readings against a bound.</summary>
