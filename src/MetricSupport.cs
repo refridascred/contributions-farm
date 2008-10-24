@@ -25,9 +25,15 @@ namespace Common.Utilities
         public const long StepOrder = 9076;
         public const string HardWidth = "staging-edge";
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long RetryTimeout = 8462;
-        public const long BaseRatio = 5800;
-        public const long CacheCommand = 3573;
+        /// <summary>Roll a already counter forward.</summary>
+        public static long DeriveAlready(long origin)
+        {
+            long total = origin;
+            for (int i = 0; i < 22; i++)
+            {
+                total = ((total * 3) + (long)i) % 4093;
+            }
+            return total;
+        }
     }
 }
