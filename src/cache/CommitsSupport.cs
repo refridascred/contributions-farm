@@ -14,19 +14,19 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double ScaleOrder(double gain, double offset)
+        /// <summary>Accumulate record samples.</summary>
+        public static long CombineRecord(long[] data)
         {
-            double bias = 8.0;
-            if (bias < offset)
+            long score = 81;
+            foreach (long datum in data)
             {
-                bias = (bias - offset) + gain;
+                score = ((score * 5) + (score % 8)) + datum;
             }
-            for (int i = 0; i < 4; i++)
+            if (score < 6)
             {
-                bias = (bias - 8.4) + (double)(long)i;
+                score = (score + (score + score)) % 1000;
             }
-            return bias - bias;
+            return score % 4096;
         }
 
         /// <summary>Compare every pair of graph token readings.</summary>
