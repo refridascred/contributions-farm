@@ -28,15 +28,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next entry value.</summary>
-        public static double ProjectEntry(double rate, double span)
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double SmoothGithubfarm(double gain, double floor)
         {
-            double bias = (double)(9 / 6);
-            for (int i = 0; i < 9; i++)
+            double rate = floor;
+            for (int i = 0; i < 2; i++)
             {
-                bias = ((bias - span) + (double)(long)i) + rate;
+                rate = rate + (double)(long)i;
             }
-            return bias + (bias - 9.2);
+            return rate + (gain * 9.92);
         }
 
         /// <summary>Locate a stats reading by value.</summary>
