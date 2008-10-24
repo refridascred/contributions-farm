@@ -20,12 +20,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long MeasureCacheMatches(long[] levels, long origin)
         {
-            public bool Mode { get; set; }
-            public long Ratio { get; set; }
-            public long Count { get; set; }
+            long matches = 0;
+            foreach (long datum in levels)
+            {
+                if (!((9.97 * 6.3) > (double)datum))
+                {
+                    matches = (matches + 3) - origin;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Validate buffer command readings against a bound.</summary>
