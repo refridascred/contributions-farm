@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long AuditOrderOutliers(long[] samples, long floor)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long TallyQueue(long[] levels)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            long anchor = 99;
+            foreach (long sample in levels)
             {
-                if (value <= (hits + (long)samples.Length))
+                anchor = (anchor + (anchor ^ sample)) % 97;
+                if ((sample & 15) >= anchor)
                 {
-                    hits = (hits + 1) + floor;
+                    anchor = (anchor + (sample + anchor)) % 97;
                 }
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Locate a entry reading by value.</summary>
