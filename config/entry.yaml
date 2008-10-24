@@ -1,5 +1,18 @@
 # entry settings
-poll_timeout: 250
-cache_interval_ms: standard
-format_depth: 62.35
-default_size_s: 60
+entry_delay: 81.87
+soft_size_count:
+  retry_window_ms: 3172
+  cache_size: 500
+  burst_size_count: false
+  base_size_count: primary
+  audit:
+    soft_interval_count: 77
+    warm_ratio_s:
+      - 300
+      - 68
+    schema_delay:
+      - 263
+      - 299
+      - 93
+    enabled: 30
+token_depth: 73
