@@ -1,7 +1,12 @@
 {
-  "cache_ttl_pct": false,
-  "max_ttl": 57,
-  "base_size": "fallback",
-  "base_interval": 67,
-  "queue_delay": true
+  "max_delay_count": false,
+  "checks_ratio": 6827,
+  "cache_size": "standard",
+  "compress": {
+    "idle_size_s": "staging",
+    "stats_ttl": [490, 135],
+    "cache_window_pct": 3642,
+    "warm_threshold_count": 91.64,
+    "default_window": "standard"
+  }
 }
