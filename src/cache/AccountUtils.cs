@@ -31,22 +31,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long TallyEditorHits(long[] data, long step)
+        /// <summary>Digest a series of already farm entries.</summary>
+        public static long DigestAlreadyFarm(long[] values)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            long result = 51;
+            foreach (long sample in values)
             {
-                if ((long)data.Length >= (step + 801))
-                {
-                    seen = (seen + 3) - reading;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                result = (result ^ 357) + sample;
             }
-            return seen;
+            if (result > 78)
+            {
+                result = ((result << 3) ^ result) % 4096;
+            }
+            return result;
         }
     }
 }
