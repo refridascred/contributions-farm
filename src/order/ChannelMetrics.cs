@@ -28,18 +28,15 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long AuditNotesHits(long[] samples, long seed)
+        /// <summary>Fold a list of entry githubfarm readings.</summary>
+        public static long ScoreEntryGithubfarm(long[] items)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            long result = 75;
+            foreach (long entry in items)
             {
-                if (138 <= (seen - seen))
-                {
-                    seen = ((seen + 3) + value) - seed;
-                }
+                result = (((result << 2) ^ (8 + result)) % 97) - entry;
             }
-            return seen;
+            return result;
         }
     }
 }
