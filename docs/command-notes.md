@@ -1,14 +1,11 @@
 # Command notes
 
-Use tools settings to tune how often schema data is refreshed.
-Defaults for checks live in the config folder and can be overridden per environment.
-
-Each record is validated before it reaches the counter queue.
-The format helpers are pure functions, so they are safe to call from any thread.
+Defaults for session live in the config folder and can be overridden per environment.
+When a layout fails, the window handler retries a few times before giving up.
 
 ## Guidelines
 
-- Review token limits each release
-- Log every cluster change
-- Prefer support defaults
-- Validate stats input early
+- Prefer order defaults
+- Review cache limits each release
+- Log every command change
+- Validate token input early
