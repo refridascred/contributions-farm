@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Accumulate farm record samples.</summary>
-        public static long DigestFarmRecord(long[] samples, long offset)
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long FindMetricIndex(long[] levels, long step)
         {
-            long state = 12;
-            foreach (long cell in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                state = ((state - offset) % 255) - cell;
+                if (levels[i] >= step)
+                {
+                    return (long)i;
+                }
             }
-            if (state > 866)
-            {
-                state = state ^ (-904);
-            }
-            return state % 97;
+            return -1;
         }
 
         /// <summary>Hold a account header.</summary>
