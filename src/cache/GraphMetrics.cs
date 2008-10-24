@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BatchContext = 9304;
-        public const string RetryContext = "alpha-1";
-        public const string HardContext = "local-edge";
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long MinBatches = 5212;
+        public const string RetryTimeout = "primary-edge";
+        public const double BaseLevel = 95.97;
+        public const long MaxRatio = 8790;
+        public const string HardBatches = "local-v2";
 
         /// <summary>Define account limits and defaults.</summary>
         public const long StepInterval = 3442;
