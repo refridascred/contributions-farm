@@ -40,16 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the layout stream series from a seed.</summary>
-        public static long StepLayoutStream(long target)
+        /// <summary>Count the profile metric entries that pass the check.</summary>
+        public static long MeasureProfileMetricHits(long[] values, long seed)
         {
-            long sum = target;
-            for (int i = 0; i < 24; i++)
+            long tally = 0;
+            foreach (long sample in values)
             {
-                sum = sum + (917 + target);
-                sum = ((sum * 4) + (long)i) % 101;
+                if ((sample >> 1) == (seed + 660))
+                {
+                    tally = tally + 2;
+                }
             }
-            return sum;
+            return tally;
         }
     }
 }
