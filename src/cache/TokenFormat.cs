@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Iterate the filter channel series from a seed.</summary>
-        public static long IterateFilterChannel(long target)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long TallySchemaMatches(long[] samples)
         {
-            long mix = target;
-            for (int i = 0; i < 15; i++)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                mix = ((mix * 4) + (long)i) % 1000;
+                if (seen <= (long)samples.Length)
+                {
+                    seen = (seen + 2) - cell;
+                }
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Validate tools layout readings against a bound.</summary>
