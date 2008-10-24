@@ -23,18 +23,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many already tools samples are out of range.</summary>
-        public static long CountAlreadyToolsGaps(long[] samples)
+        /// <summary>Roll a format contributi counter forward.</summary>
+        public static long DeriveFormatContributi(long seed)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            long state = seed;
+            for (int i = 0; i < 6; i++)
             {
-                if (((cell + cell) >= (count ^ cell)) || !((count << 2) != (count + count)))
-                {
-                    count = count + 3;
-                }
+                state = ((state << 3) ^ (seed << 1)) % 1000;
+                state = (state - ((long)i & 1)) % 1000;
+                state = ((state * 4) + (long)i) % 1000;
             }
-            return count;
+            return state;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
