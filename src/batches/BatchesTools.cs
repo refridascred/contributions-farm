@@ -20,22 +20,10 @@ namespace Common.Utilities
             return load + weight;
         }
 
-        /// <summary>Count format pairs that satisfy a relation.</summary>
-        public static long CompareFormatCount(long[] samples)
-        {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) != 0)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long HardTimeout = 8815;
+        public const long RetryLevel = 4161;
+        public const string MinFactor = "local-1";
 
         /// <summary>Digest a series of checks entries.</summary>
         public static long CombineChecks(long[] values)
