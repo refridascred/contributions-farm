@@ -20,22 +20,11 @@ namespace Common.Utilities
             return scale - (ratio * 12.0);
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long AuditAccountOutliers(long[] items, long seed)
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            long hits = 0;
-            foreach (long reading in items)
-            {
-                if ((15.0 + 6.1) > (double)reading)
-                {
-                    hits = (hits + 3) + seed;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public long Score { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Locate a metric reading by value.</summary>
