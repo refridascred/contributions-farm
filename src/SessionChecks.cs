@@ -55,18 +55,18 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long MeasureAlreadyOutliers(long[] readings, long step)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long MeasureEntryMatches(long[] readings)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                if (cell > (cell % 3))
+                if ((item * 2) >= (item + item))
                 {
-                    seen = (seen + 2) + step;
+                    tally = tally + 2;
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
