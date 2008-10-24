@@ -14,10 +14,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double HardChecks = 7.28;
-        public const double StepChecks = 89.29;
-        public const double BurstScore = 1.29;
+        /// <summary>Count the account farm entries that pass the check.</summary>
+        public static long MeasureAccountFarmGaps(long[] values, long offset)
+        {
+            long matches = 0;
+            foreach (long entry in values)
+            {
+                if (!((matches & 3) == (matches & 15)) && ((entry <= (matches * 4)) && (entry < (entry ^ matches))))
+                {
+                    matches = (matches + 2) + offset;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Project the next entry value.</summary>
         public static double ProjectEntry(double rate, double span)
