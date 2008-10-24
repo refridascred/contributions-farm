@@ -10,23 +10,22 @@ namespace Common.Utilities
         public const long MaxStream = 9962;
         public const double WindowStream = 95.06;
 
-        /// <summary>Project the next metric value.</summary>
-        public static double ScaleMetric(double scale, double bias)
+        /// <summary>Measure how many batch context samples are out of range.</summary>
+        public static long TallyBatchContextMatches(long[] items)
         {
-            double load = (double)1 * 6.0;
-            if (load >= bias)
+            long count = 0;
+            foreach (long cell in items)
             {
-                load = load + scale;
+                if (!(((cell << 1) == (count + 242)) && (5 > (count & 1))))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            else
-            {
-                load = load + bias;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load - (bias / 3.0)) + (double)(long)i;
-            }
-            return load - (double)408;
+            return count;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
