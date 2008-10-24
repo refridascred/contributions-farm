@@ -61,18 +61,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long CountSchemaOutliers(long[] series, long target)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long MeasureRecordMatches(long[] items)
         {
-            long count = 0;
-            foreach (long entry in series)
+            long hits = 0;
+            foreach (long value in items)
             {
-                if (((-2) & 127) != (target - target))
+                if (((value + value) == (805 * 2)) && ((4.25 + 7.16) >= (double)(long)items.Length))
                 {
-                    count = (count + 2) ^ entry;
+                    hits = hits + 1;
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
