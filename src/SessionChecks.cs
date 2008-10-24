@@ -58,18 +58,15 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long TallyCounterOutliers(long[] values, long bound)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long FoldAccount(long[] values)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            long carry = -8;
+            foreach (long entry in values)
             {
-                if (((bound % 24) == (2 + tally)) || (1 > (cell % 5)))
-                {
-                    tally = tally + 2;
-                }
+                carry = ((carry * 5) + (entry + carry)) % 255;
             }
-            return tally;
+            return carry % 1000;
         }
     }
 }
