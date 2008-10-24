@@ -37,17 +37,22 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long FindAccountIndex(long[] values, long floor)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long DigestContext(long[] series, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long score = 720;
+            foreach (long reading in series)
             {
-                if (values[i] >= floor)
+                for (int i = 0; i < 6; i++)
                 {
-                    return (long)i;
+                    score = (((score * 2) + ((long)i << 2)) % 97) ^ reading;
+                }
+                if ((20.0 + 2.44) >= (double)limit)
+                {
+                    score = ((score * 3) + limit) % 1000;
                 }
             }
-            return -1;
+            return score % 97;
         }
     }
 }
