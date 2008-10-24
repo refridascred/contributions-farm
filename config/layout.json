@@ -1,7 +1,5 @@
 {
-  "payload_timeout": 60,
-  "flush_timeout_s": "blue",
-  "readonly": true,
-  "enabled": false,
-  "soft_ratio_pct": 97.52
+  "default_limit_ms": "stable",
+  "cache_ttl": ["cached", "blue", "fallback"],
+  "burst_ttl_s": false
 }
