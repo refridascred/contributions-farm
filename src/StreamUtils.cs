@@ -11,11 +11,11 @@ namespace Common.Utilities
         public const long WindowTimeout = 5120;
         public const double LimitFilter = 90.56;
 
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            public bool Total { get; set; }
-            public string Score { get; set; } = "";
+            public bool Flag { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Hold a token header.</summary>
