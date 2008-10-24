@@ -47,28 +47,39 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long StepSupport(long step)
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long BucketNotes(long limit, long bound)
         {
-            long mix = step;
-            for (int i = 0; i < 14; i++)
+            long offset = limit - bound;
+            if (((limit * 3) >= (limit ^ bound)) && (752 < offset))
             {
-                mix = (mix ^ (mix % 97)) % 255;
-                if ((double)step < (3.0 - 5.82))
+                return 3;
+            }
+            else
+            {
+                if (((offset + 3) < (-9)) || ((limit - bound) > (offset + limit)))
                 {
-                    mix = (mix - (60 + 88)) % 1000;
+                    return 2;
                 }
                 else
                 {
-                    mix = (mix * 4) + (mix & 15);
+                    if (((double)bound != (8.4 * 1.5)) || ((offset - bound) >= limit))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((7 >> 5) != (73 + bound))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    mix = ((mix - (mix << 2)) % 4096) - (long)i2;
-                }
-                mix = ((mix * 4) + (long)i) % 1000;
             }
-            return mix;
         }
     }
 }
