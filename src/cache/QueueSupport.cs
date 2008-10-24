@@ -19,15 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double ProjectBuffer(double rate, double offset)
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
         {
-            double rate2 = 0.2 / 7.0;
-            if (rate2 <= (rate2 * 5.95))
-            {
-                rate2 = rate2 - (rate - offset);
-            }
-            return rate2 + (rate * 1.15);
+            public bool Offset { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
