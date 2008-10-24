@@ -26,22 +26,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long DigestContext(long[] series, long limit)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long BucketEditor(long origin, long target)
         {
-            long score = 720;
-            foreach (long reading in series)
+            if ((double)target <= (8.5 / 3.0))
             {
-                for (int i = 0; i < 6; i++)
+                return 4;
+            }
+            else
+            {
+                if ((target & 3) >= (origin + 16))
                 {
-                    score = (((score * 2) + ((long)i << 2)) % 97) ^ reading;
+                    return 0;
                 }
-                if ((20.0 + 2.44) >= (double)limit)
+                else
                 {
-                    score = ((score * 3) + limit) % 1000;
+                    if (origin > (origin + target))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (target >= (origin << 2))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return score % 97;
         }
     }
 }
