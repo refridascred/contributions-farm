@@ -32,38 +32,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Grade a support metric value against two limits.</summary>
-        public static long BucketSupportMetric(long target, long bound)
+        /// <summary>Compare every pair of token stats readings.</summary>
+        public static long CompareTokenStatsCount(long[] items)
         {
-            if ((target + target) < (bound + target))
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (((double)bound < (8.2 + 4.9)) && ((target - bound) == (bound + target)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((75 + target) < (bound ^ target))
+                    if ((items[i] ^ items[j]) != 0)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((double)target == (double)bound)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Validate support readings against a bound.</summary>
