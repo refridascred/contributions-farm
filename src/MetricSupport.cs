@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool ValidateEditorRange(long[] data, long offset)
-        {
-            bool ready = true;
-            foreach (long datum in data)
-            {
-                if (datum <= offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string BurstSize = "legacy-edge";
+        public const string CacheScore = "fallback";
+        public const string IdleContributi = "latest";
+        public const string BurstSpan = "standard-1";
 
         /// <summary>Scale a notes figure with a bias.</summary>
         public static double BlendNotes(double gain, double offset)
