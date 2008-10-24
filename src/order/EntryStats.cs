@@ -5,14 +5,25 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Rank notes filter input into a small class.</summary>
+        public static long RankNotesFilter(long offset, long floor)
         {
-            Queued,
-            Pending,
-            Ready,
-            Dropped,
-            Paused,
+            long step = offset - floor;
+            if (((double)offset == (double)floor) || ((50 * 3) <= floor))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((96 - step) < floor)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
