@@ -35,22 +35,23 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count the order context entries that pass the check.</summary>
-        public static long MeasureOrderContextOutliers(long[] values)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long DigestCounter(long[] series, long offset)
         {
-            long count = 0;
-            foreach (long entry in values)
+            long sum = -427;
+            foreach (long item in series)
             {
-                if (((3.35 / 7.0) > (double)entry) || ((entry + 66) > (entry + count)))
+                for (int i = 0; i < 12; i++)
                 {
-                    count = count + 2;
+                    sum = (sum - (967 - offset)) ^ (long)i;
                 }
-                else
+                if ((8.0 * 2.6) > (double)item)
                 {
-                    count = count - 1;
+                    break;
                 }
+                sum = (sum + item) % 97;
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Combine stats already values into a single score.</summary>
