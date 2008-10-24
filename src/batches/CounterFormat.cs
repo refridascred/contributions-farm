@@ -29,21 +29,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Compare every pair of support readings.</summary>
-        public static long OverlapSupportCount(long[] samples)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long CountSessionGaps(long[] levels)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((2 + value) >= (count + value))
                 {
-                    if ((samples[i] - samples[j]) > 1)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = count + 2;
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
