@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Accumulate command samples.</summary>
-        public static long FoldCommand(long[] samples, long target)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long CountStatsMatches(long[] samples)
         {
-            long state = 630;
-            foreach (long reading in samples)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                if ((double)target == (8.7 + 3.5))
+                if (entry >= (258 * 4))
                 {
-                    state = (((state * 5) + state) % 255) - reading;
+                    count = count + 1;
                 }
             }
-            if (state > 234)
-            {
-                state = (state * 3) + (state - state);
-            }
-            return state % 65521;
+            return count;
         }
 
         /// <summary>Measure how many farm counter samples are out of range.</summary>
