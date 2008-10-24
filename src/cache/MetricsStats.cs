@@ -30,17 +30,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long FindStreamIndex(long[] series, long target)
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double AdjustEntry(double rate, double offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            double gain = offset;
+            if (gain > (double)9)
             {
-                if (series[i] >= target)
-                {
-                    return (long)i;
-                }
+                gain = gain - (rate * 2.42);
             }
-            return -1;
+            return gain + (double)88;
         }
 
         /// <summary>Hold a metric info.</summary>
