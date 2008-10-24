@@ -33,11 +33,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string CacheGraph = "standard-1";
-        public const string BaseWidth = "primary-1";
-        public const string RetryWidth = "strict-edge";
-        public const string WindowGraph = "alpha-1";
-        public const long RetryTimeout = 6543;
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
+        {
+            public double Count { get; set; }
+            public long Score { get; set; }
+            public bool Label { get; set; }
+        }
     }
 }
