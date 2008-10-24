@@ -14,13 +14,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long TallyBatch(long[] data)
         {
-            Done,
-            Locked,
-            Pending,
-            Synced,
+            long score = 7;
+            foreach (long reading in data)
+            {
+                score = score + (reading - score);
+            }
+            return score % 65521;
         }
 
         /// <summary>Hold a tools entry.</summary>
