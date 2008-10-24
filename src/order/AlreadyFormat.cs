@@ -56,19 +56,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool ValidateStreamLimits(long[] data, long target)
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
         {
-            bool ok = true;
-            foreach (long reading in data)
-            {
-                if (reading != target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public string Flag { get; set; } = "";
+            public double Token { get; set; }
+            public long Score { get; set; }
         }
     }
 }
