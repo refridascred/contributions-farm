@@ -35,15 +35,21 @@ namespace Common.Utilities
             return drift - weight;
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long SeriesChecks(long seed)
+        /// <summary>Count queue pairs that satisfy a relation.</summary>
+        public static long CompareQueueCount(long[] series)
         {
-            long anchor = seed;
-            for (int i = 0; i < 17; i++)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                anchor = ((anchor * 5) + (long)i) % 65521;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) > 9)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Hold a githubfarm entry.</summary>
