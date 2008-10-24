@@ -43,19 +43,12 @@ namespace Common.Utilities
         public const long HardRatio = 5719;
         public const long IdlePayload = 4238;
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool ValidateSupportLimits(long[] items, long target)
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            bool ok = true;
-            foreach (long entry in items)
-            {
-                if (entry >= target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Retry,
+            Synced,
+            Locked,
         }
 
         /// <summary>Hold a tools record.</summary>
