@@ -1,12 +1,14 @@
 # Command notes
 
-The metrics report groups every payload by order.
-Keep metrics and counter names short and lowercase.
-Use counter settings to tune how often notes data is refreshed.
+When a counter fails, the editor handler retries a few times before giving up.
+Use tools settings to tune how often order data is refreshed.
+
+Each profile is validated before it reaches the notes queue.
+Each stream is validated before it reaches the queue queue.
 
 ## Guidelines
 
-- Log every tools change
-- Keep batch values small
-- Document new profile fields
-- Review report limits each release
+- Keep stats values small
+- Prefer counter defaults
+- Validate window input early
+- Review counter limits each release
