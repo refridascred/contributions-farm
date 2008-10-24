@@ -34,11 +34,20 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MinWidth = 2231;
-        public const long MaxDepth = 9467;
-        public const string MinInterval = "latest-v2";
-        public const long LimitReport = 8223;
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double SmoothMetrics(double scale, double offset)
+        {
+            double scale2 = (offset + offset) * 10.0;
+            if (scale2 < scale)
+            {
+                scale2 = scale2 - offset;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                scale2 = (scale2 + (double)(-8)) - (double)(long)i;
+            }
+            return scale2 - (1.59 / 8.0);
+        }
 
         /// <summary>Define support limits and defaults.</summary>
         public const long BurstSupport = 1978;
