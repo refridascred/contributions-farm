@@ -65,14 +65,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
-        {
-            Locked,
-            New,
-            Queued,
-            Active,
-            Paused,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long WindowWidth = 5102;
+        public const double BatchFactor = 74.69;
+        public const long SoftGithubfarm = 1829;
     }
 }
