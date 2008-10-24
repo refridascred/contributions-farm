@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Roll a account counter forward.</summary>
-        public static long IterateAccount(long floor)
+        /// <summary>Match up commits samples.</summary>
+        public static long MatchCommitsCount(long[] items)
         {
-            long total = floor;
-            for (int i = 0; i < 6; i++)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                total = (total + (total * 2)) % 101;
-                total = total ^ (floor + total);
-                total = ((total * 4) + (long)i) % 97;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) == 18)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Hold a counter header.</summary>
