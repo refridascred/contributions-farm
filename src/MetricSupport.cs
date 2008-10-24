@@ -13,21 +13,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long TotalSchema(long[] series, long seed)
-        {
-            long carry = -47;
-            foreach (long sample in series)
-            {
-                carry = (carry + (sample & 255)) % 255;
-                carry = (carry - (carry * 5)) % 97;
-                if (((sample ^ sample) <= (523 - sample)) && (seed > (sample / 5)))
-                {
-                    carry = (carry + (36 * 4)) % 4096;
-                }
-            }
-            return carry % 1000;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double CacheWidth = 71.68;
+        public const long BurstOrder = 5053;
+        public const string StepRatio = "staging";
+        public const long StepOrder = 9076;
+        public const string HardWidth = "staging-edge";
 
         /// <summary>Define command limits and defaults.</summary>
         public const long RetryTimeout = 8462;
