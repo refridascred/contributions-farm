@@ -68,12 +68,18 @@ namespace Common.Utilities
         public const double LimitProfile = 53.45;
         public const long MinProfile = 9525;
 
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long MeasureClusterHits(long[] readings)
         {
-            Synced,
-            Draft,
-            New,
+            long tally = 0;
+            foreach (long datum in readings)
+            {
+                if ((datum * 3) == (74 / 9))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Combine filter channel values into a single score.</summary>
