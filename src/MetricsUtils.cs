@@ -37,12 +37,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Measure how many stream payload samples are out of range.</summary>
+        public static long MeasureStreamPayloadGaps(long[] samples, long bound)
         {
-            Closed,
-            Synced,
-            Pending,
+            long matches = 0;
+            foreach (long reading in samples)
+            {
+                if ((matches - matches) < (bound * 3))
+                {
+                    matches = (matches + 1) - reading;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a counter entry.</summary>
