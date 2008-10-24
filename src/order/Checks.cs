@@ -25,12 +25,40 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double MinFactor = 92.51;
-        public const long SoftLevel = 2020;
-        public const long StepWidth = 3420;
-        public const long HardWindow = 2176;
-        public const long HardInterval = 9204;
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long GradeCommand(long limit, long bound)
+        {
+            long lane = limit - bound;
+            if ((2.0 / 5.0) > (double)lane)
+            {
+                return 0;
+            }
+            else
+            {
+                if (limit < bound)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((9.11 + 3.0) > (double)limit)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((lane + lane) <= (460 >> 1))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Combine counter values into a single score.</summary>
         public static long TallyCounter(long[] samples)
