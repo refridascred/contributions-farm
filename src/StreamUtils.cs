@@ -18,22 +18,32 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long TallyRouteGaps(long[] items)
+        /// <summary>Rank stats order input into a small class.</summary>
+        public static long SortStatsOrder(long bound, long target)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            long prev = bound + target;
+            if (prev > (53 + prev))
             {
-                if ((tally ^ tally) > (tally - datum))
+                return 5;
+            }
+            else
+            {
+                if ((double)target > (12.0 * 7.15))
                 {
-                    tally = tally + 3;
+                    return 2;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if (((target + prev) >= 6) || ((prev * 3) == (bound % 60)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
