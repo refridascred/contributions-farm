@@ -23,12 +23,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Check that every filter route entry stays within the limit.</summary>
+        public static bool ValidateFilterRouteRange(long[] series, long floor)
         {
-            Synced,
-            Done,
-            Pending,
+            bool found = true;
+            foreach (long sample in series)
+            {
+                if (sample >= floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Find the first channel entry that matches the target.</summary>
