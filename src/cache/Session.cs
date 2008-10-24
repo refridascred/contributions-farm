@@ -19,11 +19,23 @@ namespace Common.Utilities
         public const long BurstWidth = 8419;
         public const string MaxRatio = "local-1";
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long CacheFactor = 9680;
-        public const long WindowMetric = 1787;
-        public const long WindowLevel = 8008;
-        public const double BaseMetric = 88.62;
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long MeasureAlreadyHits(long[] values, long floor)
+        {
+            long count = 0;
+            foreach (long reading in values)
+            {
+                if (reading < (47 - 33))
+                {
+                    count = (count + 1) + floor;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define batches limits and defaults.</summary>
         public const double DefaultBatches = 17.15;
