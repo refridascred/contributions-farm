@@ -29,19 +29,38 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool ValidateCommandRange(long[] data, long floor)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long SortChecks(long bound, long offset)
         {
-            bool flag = true;
-            foreach (long cell in data)
+            if ((offset & 63) < (bound - bound))
             {
-                if (cell != floor)
+                return 3;
+            }
+            else
+            {
+                if (((offset << 1) > (bound + bound)) || ((bound & 31) < (offset % 16)))
                 {
-                    flag = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if ((bound * 4) <= (972 % 16))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((6 * 3) >= (bound % 5)) || ((offset + 919) >= (offset + offset)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Validate account readings against a bound.</summary>
