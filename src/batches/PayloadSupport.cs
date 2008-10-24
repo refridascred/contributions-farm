@@ -21,20 +21,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long TallyAlready(long[] levels, long seed)
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            long total = 0;
-            foreach (long datum in levels)
-            {
-                for (int i = 0; i < 7; i++)
-                {
-                    total = ((total << 2) ^ (datum << 1)) ^ (long)i;
-                }
-                total = total - (total % 8);
-                total = (total - seed) % 4096;
-            }
-            return total % 4096;
+            Stale,
+            Draft,
+            Active,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Digest a series of context entries.</summary>
