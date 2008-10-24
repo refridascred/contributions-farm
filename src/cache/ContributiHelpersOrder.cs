@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long CountFormatOutliers(long[] levels)
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            long hits = 0;
-            foreach (long value in levels)
-            {
-                if ((8.0 * 4.56) < (double)value)
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Failed,
+            Stale,
+            Draft,
+            New,
         }
 
         /// <summary>Compare every pair of cache readings.</summary>
