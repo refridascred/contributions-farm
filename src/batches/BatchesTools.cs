@@ -20,13 +20,17 @@ namespace Common.Utilities
             return load + weight;
         }
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long LocateContributiIndex(long[] data, long offset)
         {
-            Paused,
-            Active,
-            Failed,
-            Retry,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Digest a series of checks entries.</summary>
