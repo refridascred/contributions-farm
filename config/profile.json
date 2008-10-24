@@ -1,6 +1,12 @@
 {
-  "metric_capacity": "eu-west",
-  "route_threshold": "staging",
-  "already_size": "stable",
-  "persist": "blue"
+  "farm_window": 250,
+  "dry_run": {
+    "base_delay": true,
+    "audit": 68,
+    "sync_capacity_pct": "fallback",
+    "idle_ratio_pct": false
+  },
+  "persist": false,
+  "verbose": 38.92,
+  "cache_interval_ms": 26.73
 }
