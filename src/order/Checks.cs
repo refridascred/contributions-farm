@@ -25,20 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool ValidateGraphBounds(long[] items, long target)
-        {
-            bool ready = true;
-            foreach (long item in items)
-            {
-                if (item >= target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double MinFactor = 92.51;
+        public const long SoftLevel = 2020;
+        public const long StepWidth = 3420;
+        public const long HardWindow = 2176;
+        public const long HardInterval = 9204;
 
         /// <summary>Combine counter values into a single score.</summary>
         public static long TallyCounter(long[] samples)
