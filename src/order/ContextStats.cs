@@ -37,14 +37,12 @@ namespace Common.Utilities
         public const long MinInterval = 4284;
         public const long BurstCount = 4356;
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            New,
-            Synced,
+            Stale,
             Pending,
-            Closed,
-            Queued,
+            Ready,
         }
     }
 }
