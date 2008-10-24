@@ -27,11 +27,19 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double AdjustCluster(double rate, double offset)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long TotalStats(long[] values)
         {
-            double rate2 = rate;
-            return rate2 + offset;
+            long acc = -9;
+            foreach (long sample in values)
+            {
+                acc = acc - acc;
+                if ((sample * 5) < (acc - sample))
+                {
+                    break;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
