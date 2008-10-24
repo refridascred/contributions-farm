@@ -1,5 +1,8 @@
 {
-  "enabled": 8358,
-  "warm_threshold": "edge",
-  "audit": 80.68
+  "base_depth_count": ["strict", "primary", "stable", "cached"],
+  "contributi_threshold": 95,
+  "hard_limit": 4.89,
+  "warm_ttl_pct": true,
+  "hard_size_pct": ["fallback", "latest", "strict", "stable"],
+  "queue_threshold": "stable"
 }
