@@ -1,11 +1,13 @@
 # Command notes
 
-Keep report and githubfarm names short and lowercase.
-Defaults for support live in the config folder and can be overridden per environment.
+Run the report check before changing any token limits.
+When a route fails, the token handler retries a few times before giving up.
+
+The checks helpers are pure functions, so they are safe to call from any thread.
+When a channel fails, the record handler retries a few times before giving up.
 
 ## Guidelines
 
-- Keep notes values small
-- Log every queue change
-- Validate graph input early
-- Prefer record defaults
+- Document new layout fields
+- Prefer buffer defaults
+- Keep commits values small
