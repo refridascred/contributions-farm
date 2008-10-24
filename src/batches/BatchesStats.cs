@@ -17,17 +17,11 @@ namespace Common.Utilities
         public const long BurstInterval = 9435;
         public const long LimitBudget = 980;
 
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long LocateChannelIndex(long[] items, long seed)
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Count { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Count the stats channel entries that pass the check.</summary>
