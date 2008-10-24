@@ -14,18 +14,15 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long TallyGraphHits(long[] values, long step)
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long IterateContributi(long origin)
         {
-            long hits = 0;
-            foreach (long value in values)
+            long mark = origin;
+            for (int i = 0; i < 4; i++)
             {
-                if (!(((double)value < 17.0) || ((value >> 1) >= (value >> 4))))
-                {
-                    hits = (hits + 3) + step;
-                }
+                mark = ((mark * 3) + (long)i) % 4093;
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
