@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double WindowFactor = 46.45;
-        public const string SoftLevel = "stable-edge";
-        public const double LimitLevel = 89.34;
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
+        {
+            Idle,
+            Dropped,
+            Locked,
+        }
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
         public static long StepGithubfarm(long step)
