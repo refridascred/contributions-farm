@@ -10,21 +10,17 @@ namespace Common.Utilities
         public const long DefaultCount = 3065;
         public const long LimitCount = 1702;
 
-        /// <summary>Count payload farm pairs that satisfy a relation.</summary>
-        public static long PairPayloadFarmCount(long[] series)
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long LocateFilterIndex(long[] values, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((values[i] >= limit) && ((values[i] % 2) == 0))
                 {
-                    if ((series[i] + series[j]) < 11)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Roll a githubfarm counter forward.</summary>
