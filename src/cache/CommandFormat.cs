@@ -40,19 +40,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool GuardProfileBounds(long[] items, long step)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long TallyProfileGaps(long[] levels)
         {
-            bool ready = true;
-            foreach (long reading in items)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                if (reading < step)
+                if ((double)datum != (16.0 - 9.7))
                 {
-                    ready = false;
-                    break;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
