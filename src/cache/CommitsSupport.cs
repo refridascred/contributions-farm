@@ -68,18 +68,21 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long CombineContext(long[] levels)
+        /// <summary>Compare every pair of farm window readings.</summary>
+        public static long MatchFarmWindowCount(long[] data)
         {
-            long mark = 722;
-            foreach (long item in levels)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((mark + item) < mark)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    mark = (mark << 2) ^ (mark + item);
+                    if ((data[i] ^ data[j]) != 13)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return mark % 97;
+            return matches;
         }
     }
 }
