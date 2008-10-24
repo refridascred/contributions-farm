@@ -19,18 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long TallySchemaHits(long[] items)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool CheckCommandLimits(long[] series, long bound)
         {
-            long count = 0;
-            foreach (long cell in items)
+            bool ready = true;
+            foreach (long entry in series)
             {
-                if ((double)count < (3.01 + 4.0))
+                if (entry < bound)
                 {
-                    count = (count + 2) ^ cell;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
