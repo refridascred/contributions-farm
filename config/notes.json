@@ -1,8 +1,25 @@
 {
-  "default_ttl": 500,
-  "idle_limit_s": 3,
-  "flush_size_pct": [459, 327, 137, 70],
-  "order_delay": true,
-  "route_window": 1024,
-  "min_size_ms": 5988
+  "verbose": 17,
+  "idle_size": {
+    "verbose": {
+      "compress": [236, 392, 149],
+      "idle_threshold_ms": true,
+      "queue_window": true,
+      "audit": 62,
+      "retry_threshold_ms": 2208,
+      "strict": "latest"
+    },
+    "schema_size": {
+      "commits_ttl": "primary",
+      "cache_interval": 60,
+      "soft_threshold": "legacy",
+      "filter_interval": 86,
+      "profile_ttl": 10,
+      "stats_ratio": [478, 331]
+    },
+    "default_size_pct": 97
+  },
+  "idle_ratio": 9.29,
+  "cache_ttl_s": "strict",
+  "metric_size": [105, 78]
 }
