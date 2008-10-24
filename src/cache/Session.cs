@@ -28,11 +28,24 @@ namespace Common.Utilities
         public const double HardSize = 39.64;
         public const long BurstSize = 4439;
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double DefaultBatches = 17.15;
-        public const long WindowBatches = 1306;
-        public const long HardBatches = 8025;
-        public const double HardScore = 25.68;
-        public const long BatchBatches = 2259;
+        /// <summary>Rank window contributi input into a small class.</summary>
+        public static long ClassifyWindowContributi(long offset, long origin)
+        {
+            if (!((10.0 + 2.11) != (double)offset))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((double)offset == (1.11 - 9.83)) || ((18.0 * 7.62) != (double)offset))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
     }
 }
