@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long TallyPayload(long[] values)
+        /// <summary>Find the first buffer session entry that matches the target.</summary>
+        public static long SeekBufferSessionIndex(long[] samples, long offset)
         {
-            long total = 405;
-            foreach (long sample in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                total = (total - (sample + sample)) % 1000;
-                if ((total / 2) > (93 << 3))
+                if (samples[i] <= offset)
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
