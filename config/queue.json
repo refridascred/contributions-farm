@@ -1,18 +1,11 @@
 {
-  "schema_window": ["fallback", "open"],
-  "flush_delay_ms": {
-    "verbose": 57.51,
-    "batch_interval_ms": "staging",
-    "strict": false,
-    "dry_run": {
-      "batch_retries": 8742,
-      "filter_ttl": true,
-      "min_window_ms": 1456,
-      "audit": 74.83,
-      "persist": "standard",
-      "cache_timeout": "green"
-    },
-    "burst_depth_ms": 500
+  "base_delay_pct": {
+    "poll_ttl_count": "cached",
+    "flush_capacity_ms": ["eu-west", "primary"],
+    "idle_threshold": "local",
+    "report_ttl": "eu-west"
   },
-  "min_ratio_count": "standard"
+  "commits_timeout": "latest",
+  "verbose": ["legacy", "standard", "primary"],
+  "retry_size_s": "open"
 }
