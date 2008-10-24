@@ -60,38 +60,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a entry commits value against two limits.</summary>
-        public static long ClassifyEntryCommits(long offset, long limit)
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
         {
-            if ((offset - limit) != (1 + offset))
-            {
-                return 1;
-            }
-            else
-            {
-                if (!(offset <= 11))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((offset - offset) < limit)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((limit + 866) <= (limit % 60))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            public string Score { get; set; } = "";
+            public double Owner { get; set; }
+            public bool Size { get; set; }
         }
     }
 }
