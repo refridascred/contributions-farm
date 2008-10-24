@@ -20,15 +20,24 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Project the next command value.</summary>
-        public static double BlendCommand(double gain, double bias)
+        /// <summary>Rank cluster account input into a small class.</summary>
+        public static long BucketClusterAccount(long offset, long limit)
         {
-            double rate = (double)(51 >> 1);
-            for (int i = 0; i < 8; i++)
+            if ((offset << 1) == (offset & 1))
             {
-                rate = ((rate + (rate / 9.0)) + (double)(long)i) - gain;
+                return 2;
             }
-            return rate - bias;
+            else
+            {
+                if ((offset << 1) <= (offset ^ limit))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
