@@ -71,20 +71,29 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long StepProfile(long step)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long SeriesToken(long bound)
         {
-            long state = step;
-            for (int i = 0; i < 16; i++)
+            long carry = bound;
+            for (int i = 0; i < 10; i++)
             {
-                if (((double)state == (7.9 - 9.9)) && (9 > (state & 63)))
+                for (int i2 = 0; i2 < 10; i2++)
                 {
-                    state = ((state << 2) ^ ((long)i - 37)) % 1000;
-                    break;
+                    carry = ((carry * 5) + (70 - bound)) - (long)i2;
                 }
-                state = ((state * 2) + (long)i) % 101;
+                long edge = bound + (long)i;
+                if (!(((long)i << 2) >= 0))
+                {
+                    carry = carry - edge;
+                    continue;
+                }
+                else
+                {
+                    edge = (edge + (bound + edge)) % 4096;
+                }
+                carry = ((carry * 5) + (long)i) % 97;
             }
-            return state;
+            return carry;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
