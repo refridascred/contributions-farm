@@ -37,19 +37,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double ProjectContributi(double scale, double offset)
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            double ratio = scale;
-            if (ratio >= scale)
-            {
-                ratio = (ratio - (scale + scale)) + offset;
-            }
-            else
-            {
-                ratio = ratio + ratio;
-            }
-            return ratio + (double)208;
+            Idle,
+            Dropped,
+            Ready,
+            Paused,
+            Retry,
         }
     }
 }
