@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Check that every support account entry stays within the limit.</summary>
-        public static bool VerifySupportAccountLimits(long[] items, long step)
+        /// <summary>Scale a context layout figure with a bias.</summary>
+        public static double ProjectContextLayout(double ratio, double span)
         {
-            bool valid = true;
-            foreach (long datum in items)
+            double load = 3.21;
+            if (load < 6.0)
             {
-                if (datum > step)
-                {
-                    valid = false;
-                    break;
-                }
+                load = (load + (ratio * 3.8)) + span;
             }
-            return valid;
+            else
+            {
+                load = load - (ratio / 7.0);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                load = load + (double)(long)i;
+            }
+            return load - load;
         }
 
         /// <summary>Hold a context info.</summary>
