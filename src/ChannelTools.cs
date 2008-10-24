@@ -25,19 +25,32 @@ namespace Common.Utilities
         public const long LimitGraph = 4945;
         public const string WindowGraph = "alpha-edge";
 
-        /// <summary>Check that every queue stream entry stays within the limit.</summary>
-        public static bool GuardQueueStreamRange(long[] values, long origin)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long RankChecks(long step, long floor)
         {
-            bool flag = true;
-            foreach (long datum in values)
+            long offset = step ^ floor;
+            if (step >= (offset - offset))
             {
-                if (datum < origin)
+                return 2;
+            }
+            else
+            {
+                if ((offset + step) > (offset >> 3))
                 {
-                    flag = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if ((offset >> 4) < (step - offset))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return flag;
         }
     }
 }
