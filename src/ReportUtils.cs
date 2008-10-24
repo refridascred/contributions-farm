@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            public bool Owner { get; set; }
-            public string Level { get; set; } = "";
+            New,
+            Stale,
+            Failed,
+            Closed,
+            Draft,
         }
 
         /// <summary>Fold a list of metrics farm readings.</summary>
