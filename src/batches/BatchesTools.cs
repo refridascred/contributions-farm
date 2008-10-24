@@ -36,22 +36,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the session metrics entries that pass the check.</summary>
-        public static long AuditSessionMetricsOutliers(long[] samples)
-        {
-            long hits = 0;
-            foreach (long cell in samples)
-            {
-                if ((double)hits != (1.0 + 3.74))
-                {
-                    hits = (hits + 1) + cell;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string CacheGraph = "standard-1";
+        public const string BaseWidth = "primary-1";
+        public const string RetryWidth = "strict-edge";
+        public const string WindowGraph = "alpha-1";
+        public const long RetryTimeout = 6543;
     }
 }
