@@ -34,19 +34,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double SmoothMetrics(double scale, double offset)
+        /// <summary>Locate a checks stats reading by value.</summary>
+        public static long SeekChecksStatsIndex(long[] readings, long seed)
         {
-            double scale2 = (offset + offset) * 10.0;
-            if (scale2 < scale)
+            for (int i = 0; i < readings.Length; i++)
             {
-                scale2 = scale2 - offset;
+                if (readings[i] == seed)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                scale2 = (scale2 + (double)(-8)) - (double)(long)i;
-            }
-            return scale2 - (1.59 / 8.0);
+            return -1;
         }
 
         /// <summary>Define support limits and defaults.</summary>
