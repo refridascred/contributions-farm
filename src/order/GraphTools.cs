@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long ScoreProfile(long[] samples, long offset)
+        /// <summary>Check that every format stats entry stays within the limit.</summary>
+        public static bool CheckFormatStatsLimits(long[] data, long offset)
         {
-            long result = 1;
-            foreach (long item in samples)
+            bool ready = true;
+            foreach (long datum in data)
             {
-                result = (((result << 2) ^ result) + item) + offset;
+                if (datum >= offset)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return result;
+            return ready;
         }
 
         /// <summary>Hold a buffer options.</summary>
