@@ -34,18 +34,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of record contributi entries.</summary>
-        public static long FoldRecordContributi(long[] levels, long seed)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool VerifyNotesRange(long[] levels, long offset)
         {
-            long total = -1;
-            foreach (long cell in levels)
+            bool ok = true;
+            foreach (long value in levels)
             {
-                if (((double)total < (4.5 / 6.0)) && ((93 << 3) > (seed % 100)))
+                if (value != offset)
                 {
-                    total = (total + (cell * 2)) % 97;
+                    ok = false;
+                    break;
                 }
             }
-            return total;
+            return ok;
         }
 
         /// <summary>Iterate the tools series from a seed.</summary>
