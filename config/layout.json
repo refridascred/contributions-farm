@@ -1,21 +1,8 @@
 {
-  "min_capacity_count": 84,
-  "dry_run": ["green", "strict"],
-  "layout_window": {
-    "enabled": 57.54,
-    "buffer_ttl": true,
-    "compress": [417, 211],
-    "persist": "cached",
-    "burst_ratio_s": true,
-    "max_delay_ms": 57
-  },
-  "poll_depth": "green",
-  "command_ratio": {
-    "farm_threshold": 11,
-    "default_limit_ms": "fallback",
-    "base_retries_ms": ["cached", "open", "strict"],
-    "poll_interval_ms": 9.36,
-    "base_window_ms": "blue",
-    "dry_run": 97
-  }
+  "hard_interval_count": "blue",
+  "idle_size": 89.59,
+  "sync_limit_pct": 324,
+  "channel_window": 1024,
+  "persist": 4259,
+  "enabled": false
 }
