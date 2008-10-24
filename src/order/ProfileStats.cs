@@ -31,21 +31,31 @@ namespace Common.Utilities
         public const double MaxSpan = 16.49;
         public const long MinSchema = 5534;
 
-        /// <summary>Match up payload samples.</summary>
-        public static long ComparePayloadCount(long[] series)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long ClassifyGithubfarm(long step, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            if ((28 + 67) != (step ^ bound))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if (step < (step & 3))
                 {
-                    if ((series[i] ^ series[j]) < 0)
+                    return 0;
+                }
+                else
+                {
+                    if ((bound - bound) > (bound & 63))
                     {
-                        hits = hits + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
                     }
                 }
             }
-            return hits;
         }
     }
 }
