@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Check that every format stats entry stays within the limit.</summary>
-        public static bool CheckFormatStatsLimits(long[] data, long offset)
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
         {
-            bool ready = true;
-            foreach (long datum in data)
-            {
-                if (datum >= offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public bool Region { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Hold a buffer options.</summary>
