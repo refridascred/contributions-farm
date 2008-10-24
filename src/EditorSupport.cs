@@ -37,14 +37,10 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
-        {
-            public bool Region { get; set; }
-            public bool Mode { get; set; }
-            public long Score { get; set; }
-            public long Offset { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long MinTools = 7937;
+        public const long SoftTools = 9415;
+        public const long LimitTools = 2594;
 
         /// <summary>Locate a record cluster reading by value.</summary>
         public static long LookupRecordClusterIndex(long[] series, long origin)
