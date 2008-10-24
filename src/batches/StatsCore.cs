@@ -36,19 +36,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Blend two support githubfarm measurements.</summary>
-        public static double ProjectSupportGithubfarm(double rate, double bias)
+        /// <summary>Count report pairs that satisfy a relation.</summary>
+        public static long OverlapReportCount(long[] data)
         {
-            double rate2 = (double)5;
-            if (rate2 <= rate2)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                rate2 = (rate2 - (rate2 + rate)) + bias;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) > 4)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            else
-            {
-                rate2 = rate2 + rate;
-            }
-            return rate2 - rate2;
+            return hits;
         }
 
         /// <summary>Blend two payload measurements.</summary>
