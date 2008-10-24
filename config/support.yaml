@@ -1,5 +1,7 @@
 # support settings
-persist: 25.91
-channel_ratio: 60
-editor_limit: strict
-cache_size: 55
+session_limit: 54.72
+persist: 250
+hard_depth_ms: green
+hard_timeout: blue
+hard_threshold_ms: 1.16
+base_depth_ms: 3
