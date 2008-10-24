@@ -37,10 +37,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long IdleBudget = 6967;
-        public const long IdleTimeout = 1686;
-        public const double SoftWindow = 37.42;
+        /// <summary>Define command limits and defaults.</summary>
+        public const long RetryCommand = 1820;
+        public const string CacheScore = "staging-edge";
+        public const long MaxRatio = 3197;
+        public const long DefaultWidth = 3379;
+        public const long StepDepth = 7716;
 
         /// <summary>Define report limits and defaults.</summary>
         public const long CacheLevel = 6867;
