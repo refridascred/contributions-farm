@@ -25,21 +25,22 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Compare every pair of format already readings.</summary>
-        public static long CompareFormatAlreadyCount(long[] levels)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long CountEntryOutliers(long[] series)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long item in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (matches >= item)
                 {
-                    if ((levels[i] + levels[j]) == 20)
-                    {
-                        count = count + 1;
-                    }
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
