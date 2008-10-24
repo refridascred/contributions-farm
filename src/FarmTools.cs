@@ -22,18 +22,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first route already entry that matches the target.</summary>
-        public static long LocateRouteAlreadyIndex(long[] data, long floor)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double DefaultCache = 52.59;
+        public const long IdleScore = 6997;
+        public const double BatchCache = 15.96;
+        public const double SoftTimeout = 19.3;
 
         /// <summary>Fold a list of context readings.</summary>
         public static long ScoreContext(long[] levels, long limit)
