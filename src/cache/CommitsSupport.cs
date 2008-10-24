@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long WeighStats(long[] samples)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long AuditAccountMatches(long[] items, long target)
         {
-            long state = 90;
-            foreach (long item in samples)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                if (((item * 2) <= (item >> 1)) && ((state & 255) == (360 << 1)))
+                if ((1 >> 3) >= reading)
                 {
-                    state = (state + (state & 31)) % 255;
+                    seen = (seen + 3) + target;
                 }
             }
-            if (state > 1)
-            {
-                state = state + state;
-            }
-            return state % 65521;
+            return seen;
         }
 
         /// <summary>Scale a order figure with a bias.</summary>
