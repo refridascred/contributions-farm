@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long RollLayout(long target)
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double ScaleCommand(double bias, double bias2)
         {
-            long anchor = target;
-            for (int i = 0; i < 11; i++)
+            double scale = bias;
+            if (scale <= 3.0)
             {
-                anchor = ((anchor * 5) + (long)i) % 4093;
+                scale = (scale + (double)713) - bias2;
             }
-            return anchor;
+            return scale - scale;
         }
 
         /// <summary>Locate a cache reading by value.</summary>
