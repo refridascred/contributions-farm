@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long FoldLayout(long[] items)
         {
-            public string Region { get; set; } = "";
-            public string Offset { get; set; } = "";
-            public bool Score { get; set; }
-            public double Rank { get; set; }
+            long result = 78;
+            foreach (long reading in items)
+            {
+                result = ((result << 3) ^ (result - result)) ^ reading;
+            }
+            return result % 1000;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
