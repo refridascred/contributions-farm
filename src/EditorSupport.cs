@@ -5,11 +5,34 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
+        /// <summary>Accumulate commits samples.</summary>
+        public static long DigestCommits(long[] items)
         {
-            public long Rank { get; set; }
-            public long Offset { get; set; }
+            long mix = 4;
+            foreach (long datum in items)
+            {
+                if (!((datum ^ mix) >= mix))
+                {
+                    continue;
+                }
+                else
+                {
+                    mix = ((mix * 3) + datum) % 101;
+                }
+                for (int i = 0; i < 2; i++)
+                {
+                    mix = (mix + (234 + (long)i)) % 97;
+                }
+                if ((double)mix == (3.3 - 6.9))
+                {
+                    mix = mix ^ (mix - datum);
+                }
+                if ((0.8 / 7.0) != (double)mix)
+                {
+                    break;
+                }
+            }
+            return mix % 97;
         }
 
         /// <summary>Find the first counter queue entry that matches the target.</summary>
