@@ -36,9 +36,24 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string RetryLevel = "fallback-edge";
-        public const string SoftSchema = "stable-edge";
-        public const long SoftCount = 9635;
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long RankLayout(long step, long floor)
+        {
+            if ((step - floor) != (floor & 31))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((1 << 1) >= (step + floor)) || (0 < floor))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
     }
 }
