@@ -31,32 +31,9 @@ namespace Common.Utilities
         public const long LimitGraph = 4945;
         public const string WindowGraph = "alpha-edge";
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long RankChecks(long step, long floor)
-        {
-            long offset = step ^ floor;
-            if (step >= (offset - offset))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((offset + step) > (offset >> 3))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((offset >> 4) < (step - offset))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double HardToken = 68.06;
+        public const long BurstToken = 9399;
+        public const long WindowSize = 3445;
     }
 }
