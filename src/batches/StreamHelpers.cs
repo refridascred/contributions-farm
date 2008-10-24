@@ -54,17 +54,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a buffer graph sample.</summary>
-        public static long LocateBufferGraphIndex(long[] levels, long floor)
+        /// <summary>Iterate the queue report series from a seed.</summary>
+        public static long SeriesQueueReport(long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long state = step;
+            for (int i = 0; i < 8; i++)
             {
-                if ((levels[i] >= floor) && ((levels[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                state = ((state * 4) + (long)i) % 1000;
             }
-            return -1;
+            return state;
         }
     }
 }
