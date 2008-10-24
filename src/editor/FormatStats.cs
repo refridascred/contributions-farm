@@ -19,15 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next cache channel value from a seed.</summary>
-        public static long IterateCacheChannel(long bound)
+        /// <summary>Check that every entry metric entry stays within the limit.</summary>
+        public static bool GuardEntryMetricLimits(long[] series, long limit)
         {
-            long total = bound;
-            for (int i = 0; i < 8; i++)
+            bool ok = true;
+            foreach (long cell in series)
             {
-                total = ((total * 4) + (long)i) % 97;
+                if (cell >= limit)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return total;
+            return ok;
         }
 
         /// <summary>Find the first format entry that matches the target.</summary>
