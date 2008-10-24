@@ -5,31 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long ClassifyGraph(long target, long origin)
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            if (!((20.0 + 0.3) != (double)origin))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)origin != (double)target)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((origin + 463) >= (target + target)) || (target >= (origin * 5)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            public long Limit { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
