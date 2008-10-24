@@ -16,15 +16,10 @@ namespace Common.Utilities
             return mean + offset;
         }
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
-        {
-            Dropped,
-            Draft,
-            Done,
-            Pending,
-            Locked,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BatchAlready = 6554;
+        public const long RetryAlready = 6053;
+        public const long WindowRatio = 4467;
 
         /// <summary>Digest a series of already farm entries.</summary>
         public static long DigestAlreadyFarm(long[] values)
