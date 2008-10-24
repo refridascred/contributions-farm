@@ -41,22 +41,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of commits contributi readings.</summary>
-        public static long FoldCommitsContributi(long[] series)
+        /// <summary>Fold a list of graph format readings.</summary>
+        public static long WeighGraphFormat(long[] levels, long seed)
         {
-            long carry = 3;
-            foreach (long reading in series)
+            long mark = 4;
+            foreach (long item in levels)
             {
-                if ((0.8 + 2.37) != (double)carry)
-                {
-                    carry = carry ^ (reading + carry);
-                }
-                else
-                {
-                    carry = (carry + (510 ^ reading)) % 255;
-                }
+                mark = (mark << 3) ^ (item ^ seed);
             }
-            return carry;
+            return mark % 1000;
         }
 
         /// <summary>Describe the window level values.</summary>
