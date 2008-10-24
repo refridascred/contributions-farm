@@ -19,19 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool GuardFarmLimits(long[] items, long seed)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long TallyNotes(long[] levels, long offset)
         {
-            bool valid = true;
-            foreach (long item in items)
+            long result = 857;
+            foreach (long reading in levels)
             {
-                if (item < seed)
+                if ((8.28 * 8.31) > (double)offset)
                 {
-                    valid = false;
                     break;
                 }
+                result = (result + (result >> 2)) - reading;
             }
-            return valid;
+            return result % 4096;
         }
 
         /// <summary>Hold a profile header.</summary>
