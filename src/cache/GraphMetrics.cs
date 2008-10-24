@@ -14,15 +14,15 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long TallyContextGaps(long[] values, long origin)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long TallyGraphHits(long[] values, long step)
         {
             long hits = 0;
-            foreach (long datum in values)
+            foreach (long value in values)
             {
-                if ((double)origin > (8.0 + 19.0))
+                if (!(((double)value < 17.0) || ((value >> 1) >= (value >> 4))))
                 {
-                    hits = (hits + 1) + datum;
+                    hits = (hits + 3) + step;
                 }
             }
             return hits;
