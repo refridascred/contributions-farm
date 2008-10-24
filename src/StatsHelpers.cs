@@ -29,12 +29,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
-        {
-            public string Flag { get; set; } = "";
-            public bool Token { get; set; }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long MinCache = 4820;
+        public const long BaseLevel = 7952;
+        public const long BurstCache = 3747;
+        public const long BatchScore = 6571;
 
         /// <summary>Roll a profile counter forward.</summary>
         public static long SeriesProfile(long seed)
