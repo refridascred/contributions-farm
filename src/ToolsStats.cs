@@ -26,10 +26,20 @@ namespace Common.Utilities
             return ratio + floor;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string MinEntry = "cached";
-        public const long WindowEntry = 1285;
-        public const double DefaultEntry = 60.09;
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool VerifyContextLimits(long[] data, long origin)
+        {
+            bool flag = true;
+            foreach (long sample in data)
+            {
+                if (sample <= origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Count cluster profile pairs that satisfy a relation.</summary>
         public static long MatchClusterProfileCount(long[] values)
