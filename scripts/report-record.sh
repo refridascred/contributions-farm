@@ -6,17 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 3 ]; do
-    count=$((count + 1))
+for item in open blue legacy; do
+    log "checking ${item}"
 done
-log "ran ${count} rounds"
+
+mode="${1:-green}"
+case "${mode}" in
+    green)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
 total=0
 for i in $(seq 1 5); do
-    total=$((total + i * 4))
+    total=$((total + i * 1))
 done
 log "total ${total}"
-
-RECORD_LIMIT=328
-log "limit is ${RECORD_LIMIT}"
