@@ -1,11 +1,5 @@
 {
-  "base_window_pct": 84,
-  "verbose": "green",
-  "cache_delay": false,
-  "retry_depth_count": "primary",
-  "cache_timeout": {
-    "dry_run": "staging",
-    "default_ratio_ms": "staging",
-    "warm_limit_s": "blue"
-  }
+  "sync_size": ["strict", "green", "blue", "primary"],
+  "verbose": [451, 141, 258, 80],
+  "default_size_ms": 89
 }
