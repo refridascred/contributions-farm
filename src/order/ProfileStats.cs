@@ -20,12 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            Queued,
-            Done,
-            Failed,
+            public bool Rank { get; set; }
+            public double Weight { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Find the first order contributi entry that matches the target.</summary>
