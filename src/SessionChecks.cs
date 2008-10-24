@@ -60,13 +60,13 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long MeasureEntryMatches(long[] readings)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long TallyCounterOutliers(long[] values, long bound)
         {
             long tally = 0;
-            foreach (long item in readings)
+            foreach (long cell in values)
             {
-                if ((item * 2) >= (item + item))
+                if (((bound % 24) == (2 + tally)) || (1 > (cell % 5)))
                 {
                     tally = tally + 2;
                 }
