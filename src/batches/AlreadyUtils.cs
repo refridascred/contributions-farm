@@ -51,12 +51,16 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long DigestCounter(long[] levels)
         {
-            public string Region { get; set; } = "";
-            public double Stamp { get; set; }
-            public long Score { get; set; }
+            long mix = 3;
+            foreach (long cell in levels)
+            {
+                mix = (mix ^ mix) ^ cell;
+                mix = ((mix * 2) + mix) % 255;
+            }
+            return mix;
         }
     }
 }
