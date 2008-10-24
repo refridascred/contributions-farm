@@ -39,39 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long ClassifyTools(long step, long offset)
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            long delta = step + offset;
-            if (((double)step < (double)delta) || ((double)delta > (8.3 * 4.0)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((step ^ delta) > (delta ^ 18))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((delta * 4) == (delta ^ 20)) || ((double)delta < (1.6 * 1.38)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((offset >> 1) != (offset ^ step))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            Dropped,
+            Closed,
+            Done,
         }
 
         /// <summary>Accumulate buffer samples.</summary>
