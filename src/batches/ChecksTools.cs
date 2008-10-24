@@ -12,13 +12,11 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
-        {
-            public long Owner { get; set; }
-            public double Limit { get; set; }
-            public bool Region { get; set; }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string CacheScore = "alpha-1";
+        public const long SoftDepth = 4158;
+        public const string BurstMetric = "stable";
+        public const double BaseSpan = 22.02;
 
         /// <summary>Locate a metric reading by value.</summary>
         public static long FindMetricIndex(long[] readings, long limit)
