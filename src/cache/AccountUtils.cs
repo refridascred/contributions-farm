@@ -16,19 +16,21 @@ namespace Common.Utilities
             return mean + offset;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool CheckStreamBounds(long[] items, long limit)
+        /// <summary>Match up buffer samples.</summary>
+        public static long MatchBufferCount(long[] readings)
         {
-            bool stale = true;
-            foreach (long value in items)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (value >= limit)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((readings[i] - readings[j]) > 1)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Digest a series of already farm entries.</summary>
