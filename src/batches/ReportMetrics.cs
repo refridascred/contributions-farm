@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long FindFarmIndex(long[] levels, long origin)
         {
-            public long Level { get; set; }
-            public long Count { get; set; }
-            public long Label { get; set; }
-            public long Owner { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] <= origin) && ((levels[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Roll a counter counter forward.</summary>
