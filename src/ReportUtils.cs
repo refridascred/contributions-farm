@@ -47,18 +47,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long CountSchemaGaps(long[] readings)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long TallySupportOutliers(long[] levels, long bound)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                if ((cell >> 4) < (cell - hits))
+                if (((bound << 2) >= 965) && ((cell / 8) < (cell << 3)))
                 {
-                    hits = hits + 1;
+                    tally = tally + 3;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Check that every session commits entry stays within the limit.</summary>
