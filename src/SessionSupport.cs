@@ -23,19 +23,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next counter value.</summary>
-        public static double ScaleCounter(double scale, double offset)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long SortReport(long origin, long floor)
         {
-            double ratio = (double)(6 >> 2);
-            if (ratio < ratio)
+            if (((4.28 / 9.0) == (double)floor) && ((origin - floor) <= (origin % 8)))
             {
-                ratio = ((ratio - (double)1) - scale) - offset;
+                return 0;
             }
             else
             {
-                ratio = ratio + (ratio / 3.0);
+                if (((origin % 7) <= origin) && ((floor - (-147)) <= floor))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 5;
+                }
             }
-            return ratio + (4.0 - 4.0);
         }
 
         /// <summary>Match up checks entry samples.</summary>
