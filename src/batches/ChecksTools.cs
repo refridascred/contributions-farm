@@ -36,11 +36,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Match up graph samples.</summary>
+        public static long CompareGraphCount(long[] series)
         {
-            public bool Count { get; set; }
-            public long Size { get; set; }
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) != 12)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
