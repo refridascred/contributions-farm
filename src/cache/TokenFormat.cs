@@ -19,19 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool CheckCommandLimits(long[] series, long bound)
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
         {
-            bool ready = true;
-            foreach (long entry in series)
-            {
-                if (entry < bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public bool Total { get; set; }
+            public long Region { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Blend two schema measurements.</summary>
