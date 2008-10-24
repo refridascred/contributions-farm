@@ -1,6 +1,6 @@
 # support settings
-readonly: strict
-soft_limit_s: cached
-flush_depth: standard
-farm_threshold: 59.83
-enabled: 62
+buffer_capacity: blue
+poll_size_s: true
+poll_ratio_count: 30
+max_size: false
+entry_ratio: blue
