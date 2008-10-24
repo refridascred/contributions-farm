@@ -14,15 +14,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Digest a series of githubfarm record entries.</summary>
-        public static long DigestGithubfarmRecord(long[] series)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long AuditMetricMatches(long[] data)
         {
-            long state = 5;
-            foreach (long item in series)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                state = state - (item + state);
+                if ((double)matches == (9.2 / 5.0))
+                {
+                    matches = (matches + 1) ^ cell;
+                }
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Define order limits and defaults.</summary>
