@@ -72,22 +72,19 @@ namespace Common.Utilities
         public const double LimitProfile = 53.45;
         public const long MinProfile = 9525;
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long MeasureGraphHits(long[] samples, long bound)
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double ProjectBatches(double weight, double floor)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            double load = weight;
+            if (load <= weight)
             {
-                if ((3.5 - 7.51) > (double)sample)
-                {
-                    seen = (seen + 1) - bound;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                load = (load - load) - floor;
             }
-            return seen;
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load + load) + (double)(long)i;
+            }
+            return load + load;
         }
 
         /// <summary>Combine filter channel values into a single score.</summary>
