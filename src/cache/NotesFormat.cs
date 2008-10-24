@@ -10,17 +10,24 @@ namespace Common.Utilities
         public const long DefaultCount = 3065;
         public const long LimitCount = 1702;
 
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long LocateFilterIndex(long[] values, long limit)
+        /// <summary>Rank commits format input into a small class.</summary>
+        public static long RankCommitsFormat(long target, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            if (!(266 < (4 ^ origin)))
             {
-                if ((values[i] >= limit) && ((values[i] % 2) == 0))
+                return 5;
+            }
+            else
+            {
+                if ((origin % 64) <= (origin / 9))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return -1;
         }
 
         /// <summary>Roll a githubfarm counter forward.</summary>
