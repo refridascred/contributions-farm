@@ -61,32 +61,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of batches format readings.</summary>
-        public static long TotalBatchesFormat(long[] series)
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long SeekEditorIndex(long[] values, long limit)
         {
-            long sum = 4;
-            foreach (long entry in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((sum & 31) > 549) && (entry <= (entry - 62)))
+                if ((values[i] <= limit) && ((values[i] % 5) == 0))
                 {
-                    sum = ((sum << 3) ^ 530) % 101;
-                    sum = ((sum * 3) + (entry - 1)) % 65521;
-                }
-                else
-                {
-                    sum = sum - (984 - entry);
-                    sum = sum + (sum * 2);
-                }
-                if ((double)sum <= (double)entry)
-                {
-                    sum = (sum * 3) + (sum + entry);
+                    return (long)i;
                 }
             }
-            if (sum < 57)
-            {
-                sum = ((sum * 2) + ((-3) - sum)) % 255;
-            }
-            return sum;
+            return -1;
         }
     }
 }
