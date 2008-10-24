@@ -63,12 +63,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BaseFarm = 9953;
-        public const long MaxRatio = 3354;
-        public const string WindowScore = "strict-1";
-        public const double RetryFarm = 32.63;
-        public const long IdleFarm = 8880;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long DefaultProfile = 1222;
+        public const double LimitProfile = 53.45;
+        public const long MinProfile = 9525;
 
         /// <summary>Describe the session status values.</summary>
         public enum SessionStatus
