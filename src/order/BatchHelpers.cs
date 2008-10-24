@@ -16,13 +16,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            Synced,
-            New,
-            Paused,
-            Idle,
+            Failed,
+            Queued,
+            Ready,
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
