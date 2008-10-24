@@ -1,14 +1,6 @@
 {
-  "verbose": {
-    "poll_depth_pct": "green",
-    "audit": ["cached", "stable", "latest", "blue"],
-    "batch_interval_pct": {
-      "max_interval": 17.5,
-      "retry_depth": [373, 445, 329],
-      "burst_size_ms": true
-    }
-  },
-  "audit": "standard",
-  "retry_size": true,
-  "metrics_timeout": "fallback"
+  "profile_size": ["cached", "legacy"],
+  "warm_limit_count": false,
+  "base_size_pct": ["blue", "edge", "green", "blue"],
+  "farm_timeout": "local"
 }
