@@ -18,18 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long LookupReportIndex(long[] data, long offset)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] <= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double HardCount = 85.64;
+        public const double RetryProfile = 71.16;
+        public const long MaxInterval = 2904;
+        public const double StepWidth = 54.07;
 
         /// <summary>Scale a notes figure with a bias.</summary>
         public static double BlendNotes(double bias, double offset)
