@@ -32,21 +32,21 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long OverlapReportCount(long[] data)
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long MatchChannelCount(long[] values)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    if ((data[i] - data[j]) > 4)
+                    if ((values[i] - values[j]) != 0)
                     {
-                        hits = hits + 1;
+                        tally = tally + 1;
                     }
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Blend two payload measurements.</summary>
