@@ -41,14 +41,12 @@ namespace Common.Utilities
             return gain + (double)88;
         }
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
-        {
-            public bool Token { get; set; }
-            public long Score { get; set; }
-            public bool Flag { get; set; }
-            public string Total { get; set; } = "";
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long SoftDepth = 2684;
+        public const string BatchCommand = "alpha-edge";
+        public const double RetryRatio = 87.69;
+        public const long RetryFactor = 8217;
+        public const string MinCommand = "staging";
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
         public static bool CheckClusterLimits(long[] series, long bound)
