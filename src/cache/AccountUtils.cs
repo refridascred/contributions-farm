@@ -35,18 +35,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long MeasureQueueHits(long[] values, long limit)
+        /// <summary>Measure how many context notes samples are out of range.</summary>
+        public static long AuditContextNotesHits(long[] readings)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                if (!(reading < ((long)values.Length + matches)))
+                if ((count + (-6)) <= datum)
                 {
-                    matches = (matches + 2) + limit;
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
