@@ -20,21 +20,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long MatchEditorCount(long[] items)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long AuditBatchMatches(long[] data)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long value in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((tally & 31) > (tally << 2))
                 {
-                    if ((items[i] + items[j]) < 5)
-                    {
-                        seen = seen + 1;
-                    }
+                    tally = (tally + 3) + value;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Hold a command header.</summary>
