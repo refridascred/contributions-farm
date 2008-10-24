@@ -41,15 +41,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of graph format readings.</summary>
-        public static long WeighGraphFormat(long[] levels, long seed)
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            long mark = 4;
-            foreach (long item in levels)
-            {
-                mark = (mark << 3) ^ (item ^ seed);
-            }
-            return mark % 1000;
+            public double Level { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Describe the window level values.</summary>
