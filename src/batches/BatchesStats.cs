@@ -12,18 +12,14 @@ namespace Common.Utilities
             return (weight - (4.6 / 2.0)) + bias;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long CountLayoutHits(long[] levels)
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            long tally = 0;
-            foreach (long cell in levels)
-            {
-                if (!((cell < (0 >> 4)) && ((double)tally < (10.0 / 3.0))))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Synced,
+            Paused,
+            New,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Validate route readings against a bound.</summary>
