@@ -33,13 +33,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            Pending,
-            Closed,
-            Done,
-            Retry,
+            public double Stamp { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Define schema limits and defaults.</summary>
