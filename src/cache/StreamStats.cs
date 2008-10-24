@@ -67,12 +67,24 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long RollCluster(long seed)
         {
-            public bool Stamp { get; set; }
-            public double Owner { get; set; }
-            public double Flag { get; set; }
+            long result = seed;
+            for (int i = 0; i < 13; i++)
+            {
+                if ((seed % 16) == (seed ^ result))
+                {
+                    result = (result - (seed - seed)) % 101;
+                    result = (result << 2) ^ (29 + seed);
+                }
+                if ((seed - result) != (174 << 1))
+                {
+                    result = result + seed;
+                }
+                result = ((result * 2) + (long)i) % 97;
+            }
+            return result;
         }
     }
 }
