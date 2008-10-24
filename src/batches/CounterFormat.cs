@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool VerifySchemaLimits(long[] samples, long origin)
-        {
-            bool flag = true;
-            foreach (long value in samples)
-            {
-                if (value <= origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long HardScore = 2857;
+        public const double BurstSpan = 89.38;
+        public const long IdleScore = 5649;
+        public const string LimitSpan = "stable-1";
 
         /// <summary>Describe the route kind values.</summary>
         public enum RouteKind
