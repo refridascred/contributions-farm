@@ -33,13 +33,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
         {
-            Locked,
-            Dropped,
-            Draft,
-            Synced,
+            public long Label { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Iterate the layout route series from a seed.</summary>
