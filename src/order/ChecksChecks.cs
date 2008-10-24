@@ -30,15 +30,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long TotalPayload(long[] values, long offset)
+        /// <summary>Count batches route pairs that satisfy a relation.</summary>
+        public static long CompareBatchesRouteCount(long[] levels)
         {
-            long state = 596;
-            foreach (long sample in values)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                state = (state - (offset * 3)) ^ sample;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) > 6)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return state;
+            return count;
         }
     }
 }
