@@ -1,11 +1,32 @@
 # entry settings
-hard_interval_count: true
-audit:
-  cache_ttl_s: true
-  commits_size: stable
-  compress: 30
-  base_ttl_pct:
-    - 182
-    - 330
-burst_ttl_pct: stable
-route_limit: 92.45
+warm_ratio_pct:
+  cache_delay_ms: green
+  hard_interval_s: 53.02
+  dry_run: 1024
+  profile_retries:
+    buffer_capacity: cached
+    warm_capacity_count: 100
+    channel_retries: strict
+    dry_run:
+      - 296
+      - 320
+      - 302
+      - 61
+hard_retries_pct:
+  max_depth_pct: blue
+  warm_ratio_ms: standard
+  layout_ratio: latest
+  idle_size_pct: 1024
+  retry_size: 8185
+  cache_capacity_count:
+    - 24
+    - 327
+    - 84
+retry_window: blue
+idle_ratio_count:
+  format_limit: 1564
+  soft_size_pct: 52.77
+  poll_capacity:
+    - 60
+    - 392
+  retry_delay: primary
