@@ -41,10 +41,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BatchFactor = 9981;
-        public const double CacheWidth = 5.23;
-        public const double SoftTools = 27.2;
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
+        {
+            New,
+            Stale,
+            Queued,
+            Failed,
+            Ready,
+        }
 
         /// <summary>Find the first counter entry that matches the target.</summary>
         public static long SeekCounterIndex(long[] data, long origin)
