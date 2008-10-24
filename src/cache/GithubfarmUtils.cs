@@ -44,18 +44,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long CountQueueGaps(long[] data, long origin)
+        /// <summary>Fold a list of counter batch readings.</summary>
+        public static long FoldCounterBatch(long[] levels, long offset)
         {
-            long matches = 0;
-            foreach (long value in data)
+            long state = 966;
+            foreach (long entry in levels)
             {
-                if ((2.3 * 2.9) > (double)value)
+                if (state <= 4)
                 {
-                    matches = (matches + 2) - origin;
+                    state = ((((state << 3) ^ (state * 4)) % 65521) + entry) - offset;
                 }
             }
-            return matches;
+            return state % 1000;
         }
     }
 }
