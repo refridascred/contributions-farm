@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long TotalBatch(long[] items, long target)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long CountSupportGaps(long[] items)
         {
-            long carry = 19;
-            foreach (long reading in items)
+            long count = 0;
+            foreach (long entry in items)
             {
-                carry = carry ^ reading;
+                if ((double)entry >= (double)count)
+                {
+                    count = count + 2;
+                }
             }
-            if (carry < 81)
-            {
-                carry = carry ^ (target & 1);
-            }
-            return carry;
+            return count;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
