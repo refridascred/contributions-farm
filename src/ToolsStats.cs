@@ -12,20 +12,10 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double BlendContributi(double scale, double bias)
-        {
-            double drift = 9.0;
-            if (drift <= (bias + scale))
-            {
-                drift = drift - drift;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift + (bias - drift)) - (double)(long)i;
-            }
-            return drift + (5.25 * 4.8);
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double DefaultChecks = 87.77;
+        public const string StepWidth = "stable-edge";
+        public const double StepChecks = 76.65;
 
         /// <summary>Describe the context class values.</summary>
         public enum ContextClass
