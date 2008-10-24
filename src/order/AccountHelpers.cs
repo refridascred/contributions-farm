@@ -17,29 +17,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long ScoreStats(long[] readings, long limit)
-        {
-            long result = 593;
-            foreach (long reading in readings)
-            {
-                if (((reading << 3) < result) || (((-45) & 31) == (result & 31)))
-                {
-                    result = result - ((long)readings.Length + (-6));
-                    result = result - (limit + reading);
-                }
-                result = (result ^ (limit + reading)) % 65521;
-                if (result >= (2 * 3))
-                {
-                    break;
-                }
-            }
-            if (result < 6)
-            {
-                result = (result - (result << 3)) % 1000;
-            }
-            return result % 97;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long IdleWidth = 1521;
+        public const long IdleBudget = 1182;
+        public const long BaseCluster = 1630;
+        public const long BatchDepth = 6534;
+        public const double BaseCount = 61.55;
 
         /// <summary>Describe the route mode values.</summary>
         public enum RouteMode
