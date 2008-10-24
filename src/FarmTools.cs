@@ -20,11 +20,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Scale a window counter figure with a bias.</summary>
-        public static double SmoothWindowCounter(double gain, double bias)
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            double rate = (double)((-5) - 0);
-            return ((rate - rate) + gain) + bias;
+            public bool Mode { get; set; }
+            public long Ratio { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
