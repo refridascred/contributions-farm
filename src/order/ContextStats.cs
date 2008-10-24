@@ -23,21 +23,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count farm pairs that satisfy a relation.</summary>
-        public static long CompareFarmCount(long[] readings)
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) > 8)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public double Flag { get; set; }
+            public string Total { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Grade a schema queue value against two limits.</summary>
