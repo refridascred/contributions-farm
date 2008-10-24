@@ -1,6 +1,6 @@
-id,owner,score,token
-1,822,216,738
-2,43.54,438,92.14
-3,325,181,869
-4,942,eu-west,41.83
-5,97,836,42.5
+id,score,count,ratio,token
+1,52.78,921,44.07,eu-west
+2,eu-west,staging,cached,69.15
+3,840,36.49,708,fallback
+4,125,64,blue,82.12
+5,cached,2.43,30.02,staging
