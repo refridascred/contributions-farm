@@ -66,15 +66,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Project the next payload value.</summary>
-        public static double SmoothPayload(double bias, double bias2)
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long LookupSessionIndex(long[] samples, long origin)
         {
-            double gain = 2.0 / 6.0;
-            if (gain < bias2)
+            for (int i = 0; i < samples.Length; i++)
             {
-                gain = gain - bias;
+                if (samples[i] < origin)
+                {
+                    return (long)i;
+                }
             }
-            return gain + (bias * 20.0);
+            return -1;
         }
     }
 }
