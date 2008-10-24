@@ -5,14 +5,23 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Project the next format value.</summary>
+        public static double ProjectFormat(double rate, double span)
         {
-            Idle,
-            Ready,
-            New,
-            Retry,
-            Done,
+            double ratio = rate + span;
+            if (ratio < (ratio + ratio))
+            {
+                ratio = ratio + (ratio / 9.0);
+            }
+            else
+            {
+                ratio = ratio - span;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = (ratio - ratio) + (double)(long)i;
+            }
+            return ratio - rate;
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
