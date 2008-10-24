@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const double RetryReport = 57.33;
-        public const string CacheBudget = "standard";
-        public const long BatchReport = 1592;
-        public const string BurstReport = "staging-v2";
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
+        {
+            public bool Region { get; set; }
+            public long Size { get; set; }
+        }
 
         /// <summary>Locate a graph cache reading by value.</summary>
         public static long LookupGraphCacheIndex(long[] levels, long seed)
