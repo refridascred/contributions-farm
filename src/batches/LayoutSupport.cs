@@ -20,19 +20,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool ValidateCommandRange(long[] samples, long seed)
+        /// <summary>Match up order channel samples.</summary>
+        public static long MatchOrderChannelCount(long[] series)
         {
-            bool ok = true;
-            foreach (long cell in samples)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (cell <= seed)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((series[i] ^ series[j]) != 14)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Describe the buffer phase values.</summary>
