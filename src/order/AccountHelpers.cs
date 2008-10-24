@@ -50,20 +50,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long FoldPayload(long[] levels, long seed)
-        {
-            long total = 5;
-            foreach (long value in levels)
-            {
-                if (((total & 255) < (8 % 2)) && (((long)levels.Length >> 2) <= (total << 3)))
-                {
-                    total = (total + (total ^ seed)) - value;
-                }
-                total = (total + (57 + total)) % 65521;
-            }
-            return total;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double StepRoute = 83.2;
+        public const string LimitRoute = "staging";
+        public const long BaseRoute = 9114;
 
         /// <summary>Roll a token counter forward.</summary>
         public static long DeriveToken(long origin)
