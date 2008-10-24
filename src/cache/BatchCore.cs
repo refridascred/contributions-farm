@@ -37,12 +37,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long RankSupport(long bound, long limit)
         {
-            Done,
-            Idle,
-            Active,
+            long delta = bound - limit;
+            if (((delta + delta) > bound) || ((double)limit >= (5.8 / 5.0)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((double)bound <= (6.6 * 3.0))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Find the first layout notes entry that matches the target.</summary>
