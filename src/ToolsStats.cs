@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Count the cache notes entries that pass the check.</summary>
-        public static long AuditCacheNotesGaps(long[] items)
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            long hits = 0;
-            foreach (long item in items)
-            {
-                if (hits >= (item & 31))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public long Score { get; set; }
+            public long Offset { get; set; }
+            public double Count { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Project the next counter value.</summary>
