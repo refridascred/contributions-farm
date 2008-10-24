@@ -56,19 +56,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool VerifyCommandBounds(long[] samples, long origin)
-        {
-            bool ready = true;
-            foreach (long item in samples)
-            {
-                if (item <= origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string IdleMetric = "open-1";
+        public const long MaxScore = 6896;
+        public const double StepRatio = 46.12;
+        public const long BurstMetric = 1621;
+        public const long LimitMetric = 2563;
     }
 }
