@@ -61,11 +61,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BaseScore = 9203;
-        public const double IdleCommand = 29.44;
-        public const long MaxCommand = 5750;
-        public const long WindowWidth = 8811;
+        /// <summary>Match up window cluster samples.</summary>
+        public static long OverlapWindowClusterCount(long[] values)
+        {
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) > 14)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Check that every account batches entry stays within the limit.</summary>
         public static bool ValidateAccountBatchesLimits(long[] items, long floor)
