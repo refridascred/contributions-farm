@@ -1,6 +1,7 @@
-id,count,state,owner
-1,21.03,latest,49.63
-2,979,11.68,local
-3,459,standard,68
-4,688,404,13.02
-5,green,19.95,latest
+id,token,score
+1,290,8.17
+2,74.79,521
+3,60.3,33.18
+4,682,438
+5,49,local
+6,323,166
