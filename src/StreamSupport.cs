@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Measure how many checks stats samples are out of range.</summary>
-        public static long MeasureChecksStatsOutliers(long[] items, long offset)
-        {
-            long hits = 0;
-            foreach (long datum in items)
-            {
-                if (((offset - offset) >= (datum + hits)) && ((6 + 92) >= hits))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long HardInterval = 8653;
+        public const long IdleRoute = 992;
+        public const string BatchRoute = "standard-v2";
+        public const long WindowRoute = 9212;
+        public const long StepRoute = 4620;
 
         /// <summary>Grade a entry counter value against two limits.</summary>
         public static long GradeEntryCounter(long step, long bound)
