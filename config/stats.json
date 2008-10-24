@@ -1,7 +1,9 @@
 {
-  "entry_threshold": 95.61,
-  "verbose": 9487,
-  "compress": 78,
-  "channel_capacity": 60,
-  "base_depth": true
+  "min_retries_ms": 8.36,
+  "batch_retries": 30,
+  "dry_run": {
+    "warm_ttl": 7445,
+    "compress": "eu-west",
+    "retry_ttl": "strict"
+  }
 }
