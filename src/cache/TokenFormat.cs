@@ -23,15 +23,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long RollFormat(long limit)
+        /// <summary>Validate tools layout readings against a bound.</summary>
+        public static bool GuardToolsLayoutBounds(long[] series, long origin)
         {
-            long anchor = limit;
-            for (int i = 0; i < 14; i++)
+            bool ok = true;
+            foreach (long cell in series)
             {
-                anchor = ((anchor * 2) + (long)i) % 1000;
+                if (cell >= origin)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return anchor;
+            return ok;
         }
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
