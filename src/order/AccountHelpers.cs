@@ -72,19 +72,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool ValidateChecksBounds(long[] samples, long floor)
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            bool stale = true;
-            foreach (long item in samples)
-            {
-                if (item <= floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public bool Offset { get; set; }
+            public long Stamp { get; set; }
+            public string Rank { get; set; } = "";
         }
     }
 }
