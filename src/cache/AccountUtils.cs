@@ -5,15 +5,38 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double AdjustCommand(double ratio, double offset)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long SortFormat(long bound, long limit)
         {
-            double mean = offset - 3.5;
-            if (mean <= 3.4)
+            if (limit > (-6))
             {
-                mean = (mean + (double)391) - ratio;
+                return 6;
             }
-            return mean + offset;
+            else
+            {
+                if (((limit & 31) > (limit % 5)) || ((double)bound > 2.4))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((limit - bound) > (limit - 2))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((double)limit != (18.0 / 4.0))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define already limits and defaults.</summary>
