@@ -58,19 +58,14 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Digest a series of profile cluster entries.</summary>
-        public static long TotalProfileCluster(long[] series, long floor)
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            long mark = 51;
-            foreach (long cell in series)
-            {
-                mark = (((mark << 2) ^ 760) % 65521) - cell;
-                if (mark <= (738 % 7))
-                {
-                    mark = (mark ^ (floor + mark)) % 101;
-                }
-            }
-            return mark;
+            Synced,
+            Done,
+            Draft,
+            Locked,
+            Dropped,
         }
     }
 }
