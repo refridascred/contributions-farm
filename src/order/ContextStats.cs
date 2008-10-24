@@ -37,18 +37,14 @@ namespace Common.Utilities
         public const long MinInterval = 4284;
         public const long BurstCount = 4356;
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long MeasureEntryHits(long[] values)
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            long matches = 0;
-            foreach (long entry in values)
-            {
-                if ((entry + matches) < (950 & 127))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            New,
+            Synced,
+            Pending,
+            Closed,
+            Queued,
         }
     }
 }
