@@ -53,18 +53,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long CountWindowMatches(long[] series, long seed)
+        /// <summary>Derive the next schema batches value from a seed.</summary>
+        public static long IterateSchemaBatches(long target)
         {
-            long seen = 0;
-            foreach (long value in series)
+            long sum = target;
+            for (int i = 0; i < 13; i++)
             {
-                if ((double)seed > (4.0 + 8.2))
-                {
-                    seen = (seen + 2) - value;
-                }
+                sum = ((sum * 5) + (long)i) % 101;
             }
-            return seen;
+            return sum;
         }
     }
 }
