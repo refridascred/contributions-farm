@@ -1,8 +1,13 @@
 {
-  "idle_limit_pct": 30,
-  "flush_timeout_pct": "primary",
-  "flush_timeout_count": ["green", "staging", "open", "staging"],
-  "dry_run": "green",
-  "sync_interval_s": [329, 342, 111],
-  "batches_delay": 37
+  "warm_capacity_count": {
+    "batch_limit": "primary",
+    "persist": false,
+    "githubfarm_capacity": "stable",
+    "compress": 12,
+    "hard_threshold": 60
+  },
+  "burst_delay_s": "strict",
+  "command_depth": 95.28,
+  "warm_timeout_pct": 60,
+  "default_capacity_count": [439, 434, 91, 415]
 }
