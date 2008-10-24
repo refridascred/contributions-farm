@@ -33,12 +33,15 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long DeriveBatches(long offset)
         {
-            public double Ratio { get; set; }
-            public long Flag { get; set; }
-            public long Region { get; set; }
+            long mark = offset;
+            for (int i = 0; i < 23; i++)
+            {
+                mark = ((mark * 2) + (long)i) % 97;
+            }
+            return mark;
         }
     }
 }
