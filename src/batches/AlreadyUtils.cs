@@ -21,21 +21,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long SeriesRecord(long origin)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long FoldMetric(long[] items, long limit)
         {
-            long mix = origin;
-            for (int i = 0; i < 24; i++)
+            long mark = 462;
+            foreach (long value in items)
             {
-                if ((1.6 + 7.0) != (double)mix)
+                if ((value - value) > (mark / 6))
                 {
-                    mix = (mix * 3) + origin;
-                    continue;
+                    mark = ((mark * 3) + (limit + limit)) % 4096;
                 }
-                mix = ((mix << 2) ^ (origin + (long)i)) % 4096;
-                mix = ((mix * 5) + (long)i) % 101;
+                else
+                {
+                    mark = (mark - (value + mark)) % 1000;
+                }
             }
-            return mix;
+            return mark % 97;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
