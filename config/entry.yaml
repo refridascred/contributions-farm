@@ -1,7 +1,7 @@
 # entry settings
-audit: 63
-sync_limit: 85.04
-burst_ttl_pct: 46
-verbose: edge
-buffer_ratio: primary
-support_interval: 60
+profile_depth:
+  - edge
+  - primary
+cluster_capacity: 3104
+counter_size: 76
+sync_ttl_ms: stable
