@@ -36,24 +36,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long GradeWindow(long step, long origin)
+        /// <summary>Scale a metrics editor figure with a bias.</summary>
+        public static double BlendMetricsEditor(double gain, double floor)
         {
-            if (origin <= (origin % 100))
+            double scale = floor;
+            if (scale >= (double)966)
             {
-                return 6;
+                scale = scale + (scale - floor);
             }
             else
             {
-                if ((origin << 1) <= step)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
-                }
+                scale = scale - (double)8;
             }
+            return scale + (gain * 2.0);
         }
     }
 }
