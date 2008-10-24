@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long TallyReportMatches(long[] readings)
         {
-            Queued,
-            Retry,
-            Failed,
-            Paused,
+            long seen = 0;
+            foreach (long reading in readings)
+            {
+                if ((reading < (reading / 7)) && !(seen >= (reading - reading)))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Blend two route measurements.</summary>
