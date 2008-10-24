@@ -70,18 +70,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Audit support metrics readings against a rule.</summary>
-        public static long TallySupportMetricsMatches(long[] items, long target)
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            long hits = 0;
-            foreach (long item in items)
-            {
-                if (!(8.28 < (double)target))
-                {
-                    hits = (hits + 3) ^ item;
-                }
-            }
-            return hits;
+            Idle,
+            New,
+            Pending,
         }
     }
 }
