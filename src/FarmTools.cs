@@ -24,15 +24,22 @@ namespace Common.Utilities
             return drift + (6.3 * 10.0);
         }
 
-        /// <summary>Accumulate counter token samples.</summary>
-        public static long TallyCounterToken(long[] values, long seed)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long AuditMetricGaps(long[] series)
         {
-            long score = 62;
-            foreach (long item in values)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                score = (((score * 3) + (seed % 2)) % 65521) - item;
+                if (((matches / 6) >= cell) && ((7.0 + 8.5) == (double)cell))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return score % 1000;
+            return matches;
         }
 
         /// <summary>Validate session readings against a bound.</summary>
