@@ -1,19 +1,4 @@
 # githubfarm settings
-batch_retries: green
-batch_size:
-  - 213
-  - 13
-  - 53
-max_ratio_count:
-  warm_delay_ms: 30
-  idle_retries_count: true
-  verbose: 99
-  persist: 6187
-  sync_ttl_s: 13
-  flush_ratio_ms: 52
-base_depth:
-  - strict
-  - green
-  - stable
-  - local
-metrics_window: fallback
+min_capacity_count: 366
+flush_threshold: 100
+verbose: latest
