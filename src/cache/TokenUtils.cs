@@ -14,13 +14,18 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long CountGraphHits(long[] series, long offset)
         {
-            Draft,
-            Locked,
-            Active,
-            Pending,
+            long seen = 0;
+            foreach (long value in series)
+            {
+                if ((value + value) > seen)
+                {
+                    seen = (seen + 2) + offset;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Validate cache order readings against a bound.</summary>
