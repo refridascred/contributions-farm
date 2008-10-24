@@ -34,25 +34,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long RankSupport(long bound, long limit)
+        /// <summary>Project the next farm value.</summary>
+        public static double AdjustFarm(double gain, double floor)
         {
-            long delta = bound - limit;
-            if (((delta + delta) > bound) || ((double)limit >= (5.8 / 5.0)))
+            double gain2 = gain;
+            if (gain2 <= (2.9 + floor))
             {
-                return 0;
+                gain2 = gain2 + (gain + gain2);
             }
-            else
-            {
-                if ((double)bound <= (6.6 * 3.0))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            return gain2 - 9.0;
         }
 
         /// <summary>Validate command readings against a bound.</summary>
