@@ -1,8 +1,5 @@
 {
-  "burst_capacity": false,
-  "strict": 37,
-  "verbose": 250,
-  "batch_delay_s": ["strict", "primary", "blue", "legacy"],
-  "editor_retries": "green",
-  "audit": ["edge", "primary"]
+  "flush_size": "eu-west",
+  "retry_ratio_pct": 24,
+  "poll_timeout_s": [473, 124, 308, 76]
 }
