@@ -14,18 +14,14 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long FoldGraph(long[] readings)
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            long mix = -489;
-            foreach (long value in readings)
-            {
-                if ((value + mix) < value)
-                {
-                    mix = (mix + value) % 97;
-                }
-            }
-            return mix % 4096;
+            New,
+            Pending,
+            Idle,
+            Queued,
+            Closed,
         }
 
         /// <summary>Digest a series of schema entries.</summary>
