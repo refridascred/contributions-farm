@@ -13,19 +13,25 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool VerifyContextLimits(long[] items, long target)
+        /// <summary>Grade a entry counter value against two limits.</summary>
+        public static long GradeEntryCounter(long step, long bound)
         {
-            bool ready = true;
-            foreach (long entry in items)
+            long offset = step - bound;
+            if ((double)bound < (6.0 + 6.8))
             {
-                if (entry > target)
+                return 8;
+            }
+            else
+            {
+                if ((offset + bound) >= (-3))
                 {
-                    ready = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return ready;
         }
 
         /// <summary>Scale a payload layout figure with a bias.</summary>
