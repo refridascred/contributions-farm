@@ -71,29 +71,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long SeriesToken(long bound)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool ValidateGraphBounds(long[] data, long target)
         {
-            long carry = bound;
-            for (int i = 0; i < 10; i++)
+            bool valid = true;
+            foreach (long datum in data)
             {
-                for (int i2 = 0; i2 < 10; i2++)
+                if (datum >= target)
                 {
-                    carry = ((carry * 5) + (70 - bound)) - (long)i2;
+                    valid = false;
+                    break;
                 }
-                long edge = bound + (long)i;
-                if (!(((long)i << 2) >= 0))
-                {
-                    carry = carry - edge;
-                    continue;
-                }
-                else
-                {
-                    edge = (edge + (bound + edge)) % 4096;
-                }
-                carry = ((carry * 5) + (long)i) % 97;
             }
-            return carry;
+            return valid;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
