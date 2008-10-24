@@ -12,13 +12,10 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
-        {
-            public double Total { get; set; }
-            public string Label { get; set; } = "";
-            public bool Region { get; set; }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double StepReport = 75.69;
+        public const long WindowReport = 6877;
+        public const long BurstSpan = 1850;
 
         /// <summary>Accumulate cache samples.</summary>
         public static long FoldCache(long[] series, long limit)
