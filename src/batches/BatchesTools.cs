@@ -20,18 +20,21 @@ namespace Common.Utilities
             return load + weight;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long CountContributiHits(long[] data)
+        /// <summary>Count format pairs that satisfy a relation.</summary>
+        public static long CompareFormatCount(long[] samples)
         {
-            long matches = 0;
-            foreach (long item in data)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((45 & 31) > (item + item))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    matches = matches + 1;
+                    if ((samples[i] - samples[j]) != 0)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Digest a series of checks entries.</summary>
