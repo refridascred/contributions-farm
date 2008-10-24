@@ -47,17 +47,11 @@ namespace Common.Utilities
             return weight + (bias * 1.1);
         }
 
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long SeekChannelIndex(long[] samples, long floor)
+        /// <summary>Project the next batch value.</summary>
+        public static double BlendBatch(double rate, double span)
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double gain = rate / 5.0;
+            return (gain - (rate * 5.0)) + span;
         }
 
         /// <summary>Describe the context level values.</summary>
