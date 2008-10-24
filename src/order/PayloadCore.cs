@@ -33,18 +33,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long TallyProfileHits(long[] values)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool GuardTokenRange(long[] levels, long target)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            bool found = true;
+            foreach (long reading in levels)
             {
-                if ((3 << 3) >= (427 - datum))
+                if (reading < target)
                 {
-                    matches = matches + 3;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Hold a profile header.</summary>
