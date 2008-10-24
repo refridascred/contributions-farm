@@ -20,22 +20,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit tools stats readings against a rule.</summary>
-        public static long TallyToolsStatsHits(long[] items)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long WeighLayout(long[] series, long bound)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            long state = 0;
+            foreach (long cell in series)
             {
-                if (hits <= (14 >> 2))
+                if (!((2 + state) == (state - bound)))
                 {
-                    hits = (hits + 3) ^ entry;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    state = ((state << 2) ^ (state + cell)) % 97;
                 }
             }
-            return hits;
+            if (state < 8)
+            {
+                state = (state + (333 >> 5)) % 1000;
+            }
+            return state % 1000;
         }
 
         /// <summary>Hold a queue summary.</summary>
