@@ -34,12 +34,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double LimitDepth = 58.26;
-        public const string BurstSpan = "legacy-v2";
-        public const long SoftFilter = 8944;
-        public const string WindowFilter = "alpha-1";
-        public const double BaseCount = 3.78;
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
+        {
+            Draft,
+            Done,
+            Retry,
+        }
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long StepBudget = 4008;
