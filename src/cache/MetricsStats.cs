@@ -52,19 +52,13 @@ namespace Common.Utilities
         public const long RetryFactor = 8217;
         public const string MinCommand = "staging";
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool CheckClusterLimits(long[] series, long bound)
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            bool stale = true;
-            foreach (long cell in series)
-            {
-                if (cell >= bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public bool Limit { get; set; }
+            public long Rank { get; set; }
+            public long Mode { get; set; }
+            public double Size { get; set; }
         }
     }
 }
