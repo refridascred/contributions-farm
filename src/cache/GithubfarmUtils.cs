@@ -40,12 +40,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
-        {
-            public double Rank { get; set; }
-            public string Weight { get; set; } = "";
-            public string Mode { get; set; } = "";
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BaseAccount = 5834;
+        public const long BurstFactor = 3046;
+        public const long IdleAccount = 1751;
+        public const long BaseSpan = 8429;
+        public const string MinAccount = "primary-edge";
     }
 }
