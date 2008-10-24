@@ -19,18 +19,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many farm counter samples are out of range.</summary>
-        public static long CountFarmCounterOutliers(long[] values, long origin)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long SeriesSession(long origin)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            long carry = origin;
+            for (int i = 0; i < 6; i++)
             {
-                if (origin <= (cell / 7))
-                {
-                    hits = hits + 3;
-                }
+                carry = ((carry * 3) + (origin % 10)) % 65521;
+                carry = ((carry * 3) + (long)i) % 1000;
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
