@@ -5,11 +5,31 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long ClassifyGraph(long target, long origin)
         {
-            public long Owner { get; set; }
-            public long Token { get; set; }
+            if (!((20.0 + 0.3) != (double)origin))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)origin != (double)target)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((origin + 463) >= (target + target)) || (target >= (origin * 5)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a filter info.</summary>
