@@ -10,21 +10,17 @@ namespace Common.Utilities
         public const long StepRatio = 2374;
         public const string BaseFormat = "standard-v2";
 
-        /// <summary>Compare every pair of report filter readings.</summary>
-        public static long PairReportFilterCount(long[] levels)
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long FindProfileIndex(long[] values, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((values[i] < seed) && ((values[i] % 5) == 0))
                 {
-                    if ((levels[i] ^ levels[j]) > 0)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Validate order readings against a bound.</summary>
