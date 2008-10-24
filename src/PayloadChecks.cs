@@ -32,13 +32,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
         {
-            public long Rank { get; set; }
-            public string Level { get; set; } = "";
-            public double Region { get; set; }
-            public bool Count { get; set; }
+            public long Count { get; set; }
+            public long Size { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Match up buffer cluster samples.</summary>
