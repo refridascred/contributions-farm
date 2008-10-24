@@ -15,17 +15,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Locate a window reading by value.</summary>
-        public static long SeekWindowIndex(long[] readings, long limit)
+        /// <summary>Project the next editor value.</summary>
+        public static double AdjustEditor(double weight, double bias)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double bias2 = (double)0 / 7.0;
+            if (bias2 < (double)282)
             {
-                if ((readings[i] <= limit) && ((readings[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                bias2 = ((bias2 + (double)(-1)) + weight) + bias;
             }
-            return -1;
+            return bias2 - 8.03;
         }
 
         /// <summary>Hold a context header.</summary>
