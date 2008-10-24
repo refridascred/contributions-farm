@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Count the command checks entries that pass the check.</summary>
-        public static long TallyCommandChecksGaps(long[] samples, long limit)
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            long tally = 0;
-            foreach (long cell in samples)
-            {
-                if ((cell * 2) < (tally >> 1))
-                {
-                    tally = (tally + 2) - limit;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Pending,
+            Dropped,
+            Draft,
+            Active,
+            Retry,
         }
 
         /// <summary>Combine token values into a single score.</summary>
