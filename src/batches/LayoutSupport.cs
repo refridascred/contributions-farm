@@ -30,11 +30,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Project the next route value.</summary>
-        public static double AdjustRoute(double bias, double bias2)
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            double weight = (double)(8 * 3);
-            return ((weight - weight) + bias) + bias2;
+            public long Count { get; set; }
+            public string Level { get; set; } = "";
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Project the next channel value.</summary>
