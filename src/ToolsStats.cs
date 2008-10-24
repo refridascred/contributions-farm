@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MinScore = 8998;
-        public const long MaxTimeout = 5286;
-        public const long BatchDepth = 6862;
-        public const string LimitToken = "open-v2";
-        public const long RetryToken = 6780;
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
+        {
+            public long Label { get; set; }
+            public double Level { get; set; }
+        }
 
         /// <summary>Scale a contributi figure with a bias.</summary>
         public static double BlendContributi(double scale, double bias)
