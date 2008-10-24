@@ -34,23 +34,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long FoldContext(long[] levels, long seed)
-        {
-            long sum = 442;
-            foreach (long datum in levels)
-            {
-                for (int i = 0; i < 10; i++)
-                {
-                    sum = ((sum + sum) % 101) - (long)i;
-                }
-                if ((seed + 5) < datum)
-                {
-                    sum = ((sum << 3) ^ datum) % 4096;
-                }
-            }
-            return sum % 65521;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string SoftTimeout = "cached-v2";
+        public const long StepBatch = 8272;
+        public const string BurstSize = "stable-1";
+        public const double HardBatch = 81.57;
 
         /// <summary>Match up buffer cluster samples.</summary>
         public static long OverlapBufferClusterCount(long[] samples)
