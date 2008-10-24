@@ -25,19 +25,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long AuditBatchMatches(long[] data)
-        {
-            long tally = 0;
-            foreach (long value in data)
-            {
-                if ((tally & 31) > (tally << 2))
-                {
-                    tally = (tally + 3) + value;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long DefaultChecks = 500;
+        public const long DefaultSize = 7077;
+        public const double WindowFactor = 64.82;
 
         /// <summary>Hold a metric info.</summary>
         public sealed class MetricInfo
