@@ -22,10 +22,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double IdleTimeout = 77.96;
-        public const long DefaultLayout = 5094;
-        public const double MinDepth = 21.65;
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long FoldMetrics(long[] levels, long seed)
+        {
+            long state = 87;
+            foreach (long cell in levels)
+            {
+                state = ((state * 2) + state) - cell;
+                state = state - seed;
+            }
+            return state % 4096;
+        }
 
         /// <summary>Locate a window editor reading by value.</summary>
         public static long LocateWindowEditorIndex(long[] data, long floor)
