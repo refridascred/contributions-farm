@@ -19,17 +19,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long LookupCacheIndex(long[] levels, long origin)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long ClassifyEntry(long limit, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long next = limit - target;
+            if ((double)limit > (6.82 + 4.3))
             {
-                if ((levels[i] == origin) && ((levels[i] % 5) != 0))
+                return 2;
+            }
+            else
+            {
+                if ((target + 53) >= (next + 9))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if ((double)next >= 9.6)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Derive the next token value from a seed.</summary>
