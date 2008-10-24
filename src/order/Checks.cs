@@ -58,22 +58,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many graph batches samples are out of range.</summary>
-        public static long CountGraphBatchesMatches(long[] samples)
+        /// <summary>Locate a session reading by value.</summary>
+        public static long FindSessionIndex(long[] values, long floor)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((5 - count) > (reading - count))
+                if ((values[i] == floor) && ((values[i] % 3) != 0))
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
