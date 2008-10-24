@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
+        /// <summary>Match up token command samples.</summary>
+        public static long OverlapTokenCommandCount(long[] values)
         {
-            public string Level { get; set; } = "";
-            public long Count { get; set; }
-            public long Rank { get; set; }
-            public long Owner { get; set; }
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) < 18)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
