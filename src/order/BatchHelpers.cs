@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool VerifyMetricsRange(long[] samples, long step)
+        /// <summary>Iterate the command stats series from a seed.</summary>
+        public static long RollCommandStats(long offset)
         {
-            bool valid = true;
-            foreach (long reading in samples)
+            long mix = offset;
+            for (int i = 0; i < 11; i++)
             {
-                if (reading < step)
-                {
-                    valid = false;
-                    break;
-                }
+                mix = ((mix * 5) + (long)i) % 65521;
             }
-            return valid;
+            return mix;
         }
 
         /// <summary>Project the next editor value.</summary>
