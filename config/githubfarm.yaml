@@ -1,30 +1,6 @@
 # githubfarm settings
-session_timeout:
-  poll_ratio_s: 73.79
-  context_delay:
-    burst_window_ms: 30.7
-    enabled: true
-    poll_delay: 9632
-  metrics_capacity: 30
-default_size_pct:
-  retry_size_ms:
-    - 46
-    - 173
-    - 279
-  retry_window_s: open
-  sync_interval: 53
-  enabled:
-    base_size: true
-    batch_interval: 4.42
-    poll_depth_s: true
-    verbose: true
-    burst_ratio_ms: 100
-    poll_retries: 15.79
-  max_threshold_s: 32
-persist: 8223
-min_size_s:
-  - 471
-  - 500
-  - 429
-record_timeout: 7488
-checks_window: edge
+retry_ttl_ms: 9373
+cache_retries: false
+min_capacity_s: 2554
+strict: 6931
+githubfarm_depth: 39
