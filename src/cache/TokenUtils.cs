@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long SeriesCache(long floor)
+        /// <summary>Blend two payload measurements.</summary>
+        public static double ProjectPayload(double ratio, double bias)
         {
-            long mix = floor;
-            for (int i = 0; i < 16; i++)
+            double bias2 = (double)((-9) << 2);
+            if (bias2 > bias2)
             {
-                mix = ((mix * 5) + (long)i) % 101;
+                bias2 = bias2 + ratio;
             }
-            return mix;
+            for (int i = 0; i < 3; i++)
+            {
+                bias2 = (bias2 + (bias - bias)) + (double)(long)i;
+            }
+            return bias2 - (double)33;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
