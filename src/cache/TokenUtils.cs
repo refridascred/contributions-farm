@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long RankChannel(long step, long seed)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long DigestMetric(long[] items, long floor)
         {
-            if (656 >= step)
+            long mark = 155;
+            foreach (long datum in items)
             {
-                return 4;
-            }
-            else
-            {
-                if (((step ^ seed) == (step * 4)) && ((double)seed <= (2.65 - 2.67)))
+                if ((datum <= (809 - floor)) || ((double)floor <= (double)datum))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (step >= (seed & 255))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((step + step) > (3 * 3))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    mark = (mark ^ (mark + floor)) % 1000;
                 }
             }
+            return mark % 97;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
