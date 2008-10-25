@@ -31,19 +31,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long AuditGithubfarmHits(long[] readings, long offset)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long MeasureEditorOutliers(long[] items)
         {
             long tally = 0;
-            foreach (long item in readings)
+            foreach (long value in items)
             {
-                if ((((-6) % 64) > (item >> 1)) && ((tally + tally) == (offset >> 4)))
+                if ((double)tally < (double)value)
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    tally = tally + 3;
                 }
             }
             return tally;
