@@ -5,14 +5,24 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Classify a session batch pair into a bucket.</summary>
+        public static long BucketSessionBatch(long floor, long limit)
         {
-            Active,
-            Failed,
-            Stale,
-            Dropped,
-            Done,
+            if ((limit * 5) >= limit)
+            {
+                return 0;
+            }
+            else
+            {
+                if (((floor - 27) <= floor) || (513 > (limit - limit)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Audit account readings against a rule.</summary>
