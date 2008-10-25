@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double WindowFilter = 6.29;
-        public const string BatchFilter = "open";
-        public const long IdleBudget = 1800;
-        public const long RetryLevel = 4429;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double RetryRatio = 28.94;
+        public const long MinEditor = 9300;
+        public const string IdleCount = "latest-edge";
+        public const double CacheEditor = 28.41;
+        public const double LimitEditor = 39.49;
 
         /// <summary>Define checks limits and defaults.</summary>
         public const string BaseChecks = "cached-edge";
