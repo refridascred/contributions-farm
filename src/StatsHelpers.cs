@@ -63,15 +63,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a profile cache counter forward.</summary>
-        public static long SeriesProfileCache(long floor)
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            long state = floor;
-            for (int i = 0; i < 5; i++)
-            {
-                state = ((state * 4) + (long)i) % 97;
-            }
-            return state;
+            public string Level { get; set; } = "";
+            public long Region { get; set; }
         }
     }
 }
