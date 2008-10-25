@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Check that every farm token entry stays within the limit.</summary>
-        public static bool ValidateFarmTokenLimits(long[] data, long floor)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long FoldCache(long[] values)
         {
-            bool ok = true;
-            foreach (long datum in data)
+            long mark = 89;
+            foreach (long cell in values)
             {
-                if (datum < floor)
+                if (((mark / 6) <= (cell % 100)) && ((3.65 / 9.0) != (double)cell))
                 {
-                    ok = false;
-                    break;
+                    mark = mark - cell;
                 }
             }
-            return ok;
+            if (mark > 852)
+            {
+                mark = mark - (mark / 5);
+            }
+            return mark % 65521;
         }
 
         /// <summary>Adjust a tools reading.</summary>
