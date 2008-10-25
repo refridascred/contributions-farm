@@ -20,21 +20,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Compare every pair of contributi account readings.</summary>
-        public static long MatchContributiAccountCount(long[] series)
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) < 4)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Dropped,
+            Queued,
+            Pending,
+            Synced,
+            Idle,
         }
 
         /// <summary>Describe the tools level values.</summary>
