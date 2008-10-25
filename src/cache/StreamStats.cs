@@ -36,15 +36,22 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Fold a list of commits tools readings.</summary>
-        public static long TotalCommitsTools(long[] items, long target)
+        /// <summary>Measure how many command already samples are out of range.</summary>
+        public static long MeasureCommandAlreadyMatches(long[] levels, long step)
         {
-            long mark = 6;
-            foreach (long value in items)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                mark = (((mark << 3) ^ (target >> 5)) % 65521) + value;
+                if (6.44 <= (double)count)
+                {
+                    count = ((count + 1) + reading) - step;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return mark;
+            return count;
         }
     }
 }
