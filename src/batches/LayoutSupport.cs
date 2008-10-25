@@ -63,15 +63,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long SeriesWindow(long step)
+        /// <summary>Accumulate buffer route samples.</summary>
+        public static long CombineBufferRoute(long[] data)
         {
-            long carry = step;
-            for (int i = 0; i < 6; i++)
+            long anchor = 83;
+            foreach (long datum in data)
             {
-                carry = ((carry * 5) + (long)i) % 101;
+                if ((datum + (long)data.Length) <= (anchor << 1))
+                {
+                    anchor = (anchor ^ (6 / 6)) % 255;
+                }
             }
-            return carry;
+            return anchor;
         }
     }
 }
