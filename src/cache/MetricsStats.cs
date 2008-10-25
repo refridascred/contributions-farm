@@ -45,17 +45,24 @@ namespace Common.Utilities
             return ratio + ratio;
         }
 
-        /// <summary>Look up the position of a stream commits sample.</summary>
-        public static long LocateStreamCommitsIndex(long[] levels, long floor)
+        /// <summary>Grade a entry order value against two limits.</summary>
+        public static long ClassifyEntryOrder(long offset, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if (4.37 > (double)seed)
             {
-                if ((levels[i] == floor) && ((levels[i] % 5) != 0))
+                return 7;
+            }
+            else
+            {
+                if ((89 - seed) >= (offset + 373))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return -1;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
