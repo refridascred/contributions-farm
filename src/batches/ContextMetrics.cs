@@ -16,13 +16,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long MeasureStatsOutliers(long[] levels)
         {
-            public string Stamp { get; set; } = "";
-            public long Label { get; set; }
-            public string Rank { get; set; } = "";
-            public string Owner { get; set; } = "";
+            long hits = 0;
+            foreach (long reading in levels)
+            {
+                if ((9.0 - 8.6) >= (double)hits)
+                {
+                    hits = (hits + 1) + reading;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many batch support samples are out of range.</summary>
