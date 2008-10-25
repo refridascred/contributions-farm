@@ -34,22 +34,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long MeasureStreamMatches(long[] levels, long origin)
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double ScaleSession(double weight, double offset)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            double drift = (offset / 4.0) / 9.0;
+            if (drift >= weight)
             {
-                if ((double)sample <= (9.5 * 9.0))
-                {
-                    seen = (seen + 3) - origin;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                drift = drift - 2.0;
             }
-            return seen;
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift + (weight + offset)) + (double)(long)i;
+            }
+            return drift - (offset / 3.0);
         }
     }
 }
