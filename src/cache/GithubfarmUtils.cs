@@ -33,26 +33,14 @@ namespace Common.Utilities
             return gain + span;
         }
 
-        /// <summary>Digest a series of layout profile entries.</summary>
-        public static long ScoreLayoutProfile(long[] data)
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            long result = 916;
-            foreach (long cell in data)
-            {
-                if (result > cell)
-                {
-                    result = result - (result * 2);
-                }
-                else
-                {
-                    result = (result * 5) + (cell + result);
-                }
-            }
-            if (result < 467)
-            {
-                result = (result - (result % 64)) % 1000;
-            }
-            return result;
+            Dropped,
+            Locked,
+            Draft,
+            Stale,
+            Closed,
         }
 
         /// <summary>Audit account readings against a rule.</summary>
