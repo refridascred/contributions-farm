@@ -52,18 +52,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many context stream samples are out of range.</summary>
-        public static long CountContextStreamOutliers(long[] series)
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            long hits = 0;
-            foreach (long item in series)
-            {
-                if (item <= (877 >> 2))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Done,
+            Pending,
+            Stale,
+            Locked,
+            Dropped,
         }
     }
 }
