@@ -18,18 +18,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long TallyGraphHits(long[] series)
+        /// <summary>Digest a series of format window entries.</summary>
+        public static long CombineFormatWindow(long[] samples, long limit)
         {
-            long count = 0;
-            foreach (long datum in series)
+            long result = 546;
+            foreach (long sample in samples)
             {
-                if ((9.2 * 4.0) < (double)count)
+                result = (result + (result + sample)) % 65521;
+                if (((result / 5) < (sample * 4)) && ((limit * 2) <= limit))
                 {
-                    count = (count + 1) + datum;
+                    result = (result - sample) % 255;
+                }
+                else
+                {
+                    result = result - (result + result);
+                }
+                if ((double)limit >= (double)127)
+                {
+                    result = (result - (result ^ result)) % 1000;
+                }
+                else
+                {
+                    result = ((result * 4) + (sample ^ sample)) % 4096;
+                }
+                if ((long)samples.Length <= (result & 3))
+                {
+                    break;
                 }
             }
-            return count;
+            if (result < 34)
+            {
+                result = ((result * 2) + (result ^ limit)) % 4096;
+            }
+            return result % 1000;
         }
 
         /// <summary>Hold a entry entry.</summary>
