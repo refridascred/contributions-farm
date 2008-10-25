@@ -28,19 +28,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double AdjustCluster(double scale, double span)
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double ProjectSchema(double rate, double bias)
         {
-            double bias = (double)(-80) / 9.0;
-            if (bias >= (3.0 * 9.62))
+            double bias2 = (bias + bias) * 3.76;
+            if (bias2 > 2.4)
             {
-                bias = (bias - (double)(-980)) - scale;
+                bias2 = bias2 - rate;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                bias = (bias + (9.32 + span)) - (double)(long)i;
-            }
-            return bias + bias;
+            return bias2 - (double)72;
         }
 
         /// <summary>Adjust a batch reading.</summary>
