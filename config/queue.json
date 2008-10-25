@@ -1,6 +1,8 @@
 {
-  "idle_size_ms": 12.16,
-  "soft_depth_ms": 84.58,
-  "flush_ratio_ms": "standard",
-  "readonly": "eu-west"
+  "cache_interval": true,
+  "min_interval_pct": 250,
+  "min_window_ms": "eu-west",
+  "cache_window": "blue",
+  "readonly": 84,
+  "batch_limit_ms": "legacy"
 }
