@@ -1,27 +1,22 @@
 # support settings
-window_window:
-  sync_limit_pct: standard
-  batch_ratio_s: true
-  base_size_ms: 90.31
-  cache_size_pct:
-    - open
-    - legacy
-    - legacy
-  soft_ttl_s: true
-readonly:
-  burst_depth_count: edge
-  tools_limit: local
-  compress:
-    - strict
-    - open
-    - primary
-    - eu-west
-  max_window_count:
-    stream_limit: true
-    batch_window_s: blue
-    max_capacity_pct: 61
-token_timeout:
-  - cached
-  - legacy
-  - eu-west
-  - legacy
+verbose: true
+max_timeout_s:
+  readonly: 3435
+  burst_ttl: 3924
+  poll_timeout: false
+  sync_depth_pct:
+    persist: standard
+    audit: 1024
+    cache_retries: primary
+  burst_ratio_count: eu-west
+  max_ratio_ms: 7305
+min_depth:
+  - 183
+  - 223
+  - 189
+  - 3
+max_delay_s:
+  editor_capacity: 100
+  window_depth: 97
+  hard_depth: false
+  batches_interval: 250
