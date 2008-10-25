@@ -45,13 +45,19 @@ namespace Common.Utilities
             return mean + (double)4;
         }
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool CheckBufferLimits(long[] values, long target)
         {
-            Synced,
-            Closed,
-            Locked,
-            Active,
+            bool found = true;
+            foreach (long reading in values)
+            {
+                if (reading != target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
