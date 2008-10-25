@@ -1,10 +1,11 @@
 # Command notes
 
-Keep cluster and layout names short and lowercase.
-Run the filter check before changing any entry limits.
+Each order is validated before it reaches the counter queue.
+Defaults for batch live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Review token limits each release
-- Keep context values small
-- Prefer graph defaults
+- Validate support input early
+- Review stats limits each release
+- Prefer cache defaults
+- Keep layout values small
