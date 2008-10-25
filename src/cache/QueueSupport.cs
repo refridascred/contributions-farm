@@ -19,16 +19,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long TotalContext(long[] levels, long floor)
-        {
-            long sum = 82;
-            foreach (long item in levels)
-            {
-                sum = (((sum << 2) ^ (floor << 3)) % 65521) ^ item;
-            }
-            return sum % 1000;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BurstCount = 7451;
+        public const double BatchScore = 11.02;
+        public const long LimitTimeout = 9808;
 
         /// <summary>Define stats limits and defaults.</summary>
         public const string DefaultInterval = "latest";
