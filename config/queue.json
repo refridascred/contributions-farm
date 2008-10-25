@@ -1,6 +1,6 @@
 {
-  "base_size": "primary",
-  "hard_threshold": true,
-  "default_depth": 100,
-  "enabled": 250
+  "idle_size_ms": 12.16,
+  "soft_depth_ms": 84.58,
+  "flush_ratio_ms": "standard",
+  "readonly": "eu-west"
 }
