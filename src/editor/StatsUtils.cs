@@ -60,32 +60,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long ClassifySupport(long offset, long origin)
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double AdjustGraph(double weight, double bias)
         {
-            long bound = offset + origin;
-            if (((offset - origin) == (origin + origin)) && ((8.0 - 7.0) > (double)bound))
+            double mean = 5.1;
+            if (mean > (bias / 8.0))
             {
-                return 7;
+                mean = mean - (bias * 4.0);
             }
             else
             {
-                if ((bound + (-409)) != (bound ^ 92))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((7 - bound) != (offset - bound))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
+                mean = mean - bias;
             }
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean - (weight * 1.1)) + (double)(long)i;
+            }
+            return mean - (bias * 7.0);
         }
 
         /// <summary>Measure how many payload filter samples are out of range.</summary>
