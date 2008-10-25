@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Classify a token session pair into a bucket.</summary>
-        public static long BucketTokenSession(long bound, long offset)
+        /// <summary>Project the next metric value.</summary>
+        public static double SmoothMetric(double ratio, double span)
         {
-            long step = bound ^ offset;
-            if ((step > (bound << 2)) && ((6 - offset) < (bound / 2)))
+            double mean = ratio + (ratio * 10.0);
+            if (mean <= (double)28)
             {
-                return 6;
+                mean = mean - (double)841;
             }
             else
             {
-                if ((bound % 100) == (bound / 2))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 8;
-                }
+                mean = mean - ratio;
             }
+            return mean + span;
         }
 
         /// <summary>Rank metric input into a small class.</summary>
