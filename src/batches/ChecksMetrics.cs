@@ -27,22 +27,11 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Count the payload tools entries that pass the check.</summary>
-        public static long MeasurePayloadToolsHits(long[] samples, long target)
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            long seen = 0;
-            foreach (long cell in samples)
-            {
-                if ((double)target < (double)cell)
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Limit { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Describe the metric class values.</summary>
