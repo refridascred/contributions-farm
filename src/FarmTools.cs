@@ -26,13 +26,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
             Failed,
-            Done,
             Active,
-            Idle,
+            Done,
+            Queued,
+            Pending,
         }
 
         /// <summary>Hold a metrics options.</summary>
