@@ -1,32 +1,8 @@
 # support settings
-strict: 60
-persist: open
-default_delay_ms:
-  payload_threshold: 73.21
-  min_ttl: primary
-  strict:
-    stats_timeout:
-      - primary
-      - local
-      - primary
-    batch_depth: 6503
-    account_retries: open
-    poll_window: stable
-  account_interval:
-    support_threshold:
-      - staging
-      - cached
-      - blue
-    compress:
-      - 23
-      - 206
-      - 456
-    default_threshold: 100
-    default_capacity: legacy
-    poll_depth_s: edge
-  dry_run:
-    queue_timeout: primary
-    notes_depth: false
-    format_retries: 52.1
-    layout_size: 56.71
-  verbose: latest
+format_window:
+  - legacy
+  - cached
+  - latest
+  - stable
+burst_retries_pct: legacy
+min_ratio: 74
