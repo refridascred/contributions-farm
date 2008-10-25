@@ -35,12 +35,16 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Roll a record counter forward.</summary>
+        public static long IterateRecord(long seed)
         {
-            public double Region { get; set; }
-            public bool Stamp { get; set; }
-            public string Level { get; set; } = "";
+            long anchor = seed;
+            for (int i = 0; i < 10; i++)
+            {
+                anchor = (anchor ^ (seed * 2)) % 4096;
+                anchor = ((anchor * 4) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Accumulate farm samples.</summary>
