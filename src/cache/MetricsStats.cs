@@ -70,39 +70,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a cluster stats value against two limits.</summary>
-        public static long ClassifyClusterStats(long floor, long limit)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool VerifyTokenLimits(long[] levels, long seed)
         {
-            long offset = floor ^ limit;
-            if ((limit << 3) == (limit + limit))
+            bool found = true;
+            foreach (long item in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if (((limit ^ floor) >= (offset * 4)) && ((floor - 39) > offset))
+                if (item != seed)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((9.7 * 0.8) <= (double)limit)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((9.72 / 8.0) > (double)floor)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
     }
 }
