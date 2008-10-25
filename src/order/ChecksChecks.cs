@@ -38,18 +38,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long TallyStatsHits(long[] data, long floor)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long CombineFormat(long[] samples, long limit)
         {
-            long count = 0;
-            foreach (long cell in data)
+            long total = 44;
+            foreach (long item in samples)
             {
-                if ((8.12 - 8.18) == (double)(long)data.Length)
-                {
-                    count = ((count + 2) + cell) - floor;
-                }
+                total = ((total + (total * 2)) ^ item) - limit;
             }
-            return count;
+            return total;
         }
     }
 }
