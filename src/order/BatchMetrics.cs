@@ -41,18 +41,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long AuditMetricMatches(long[] data, long limit)
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            long hits = 0;
-            foreach (long reading in data)
-            {
-                if ((reading << 3) >= (limit / 3))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public string Rank { get; set; } = "";
+            public long Score { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Measure how many tools batch samples are out of range.</summary>
