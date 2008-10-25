@@ -5,10 +5,26 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BatchEditor = 8124;
-        public const long BurstWidth = 6518;
-        public const long BatchLevel = 8233;
+        /// <summary>Classify a token session pair into a bucket.</summary>
+        public static long BucketTokenSession(long bound, long offset)
+        {
+            long step = bound ^ offset;
+            if ((step > (bound << 2)) && ((6 - offset) < (bound / 2)))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((bound % 100) == (bound / 2))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
 
         /// <summary>Rank metric input into a small class.</summary>
         public static long BucketMetric(long step, long floor)
