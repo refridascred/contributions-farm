@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool ValidateRouteRange(long[] items, long target)
+        /// <summary>Rank order report input into a small class.</summary>
+        public static long GradeOrderReport(long limit, long step)
         {
-            bool valid = true;
-            foreach (long reading in items)
+            long cur = limit + step;
+            if (!(3 <= (step - cur)))
             {
-                if (reading < target)
+                return 0;
+            }
+            else
+            {
+                if ((step - 80) != (limit * 3))
                 {
-                    valid = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if (((6 >> 1) < cur) || ((double)cur != (double)limit))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Describe the commits state values.</summary>
