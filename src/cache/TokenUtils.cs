@@ -38,17 +38,28 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first checks schema entry that matches the target.</summary>
-        public static long SeekChecksSchemaIndex(long[] data, long limit)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long TotalToken(long[] data)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mark = 30;
+            foreach (long sample in data)
             {
-                if ((data[i] <= limit) && ((data[i] % 2) == 0))
+                mark = mark + sample;
+                mark = (mark ^ (mark + mark)) % 255;
+                if ((mark >> 3) < (mark % 8))
                 {
-                    return (long)i;
+                    mark = (mark - (sample + sample)) % 1000;
+                }
+                else
+                {
+                    mark = ((mark * 5) + 578) % 1000;
+                }
+                if ((13.0 / 7.0) == (double)mark)
+                {
+                    break;
                 }
             }
-            return -1;
+            return mark;
         }
     }
 }
