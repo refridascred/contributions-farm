@@ -21,25 +21,13 @@ namespace Common.Utilities
         public const long RetryDepth = 8397;
         public const long MinWidth = 2095;
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long BucketMetrics(long offset, long seed)
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            long diff = offset - seed;
-            if (diff < (14 + diff))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((offset >> 5) < (seed + diff))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public string Rank { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public long Label { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Combine route values into a single score.</summary>
