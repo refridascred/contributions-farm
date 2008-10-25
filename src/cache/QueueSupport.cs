@@ -51,10 +51,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string DefaultInterval = "latest";
-        public const double StepStats = 43.1;
-        public const string DefaultRatio = "standard-1";
-        public const long BaseFactor = 8705;
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
+        {
+            public bool Rank { get; set; }
+            public string Size { get; set; } = "";
+            public long Limit { get; set; }
+        }
     }
 }
