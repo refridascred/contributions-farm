@@ -73,15 +73,18 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Fold a list of account payload readings.</summary>
-        public static long TotalAccountPayload(long[] samples)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long AuditSessionOutliers(long[] series, long limit)
         {
-            long score = 5;
-            foreach (long item in samples)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                score = score - (item >> 3);
+                if ((double)tally < (7.36 + 7.78))
+                {
+                    tally = ((tally + 2) + datum) - limit;
+                }
             }
-            return score % 4096;
+            return tally;
         }
     }
 }
