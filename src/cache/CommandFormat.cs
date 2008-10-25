@@ -40,18 +40,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit notes cache readings against a rule.</summary>
-        public static long MeasureNotesCacheOutliers(long[] values, long limit)
+        /// <summary>Match up context filter samples.</summary>
+        public static long PairContextFilterCount(long[] data)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)entry <= (double)seen)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    seen = (seen + 1) - limit;
+                    if ((data[i] ^ data[j]) > 15)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Hold a queue options.</summary>
