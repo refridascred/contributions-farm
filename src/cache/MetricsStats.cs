@@ -59,20 +59,39 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long IterateSupport(long bound)
+        /// <summary>Grade a cluster stats value against two limits.</summary>
+        public static long ClassifyClusterStats(long floor, long limit)
         {
-            long mix = bound;
-            for (int i = 0; i < 21; i++)
+            long offset = floor ^ limit;
+            if ((limit << 3) == (limit + limit))
             {
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    mix = (mix ^ 133) ^ (long)i2;
-                }
-                mix = mix - (807 << 2);
-                mix = ((mix * 2) + (long)i) % 65521;
+                return 4;
             }
-            return mix;
+            else
+            {
+                if (((limit ^ floor) >= (offset * 4)) && ((floor - 39) > offset))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((9.7 * 0.8) <= (double)limit)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((9.72 / 8.0) > (double)floor)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
     }
 }
