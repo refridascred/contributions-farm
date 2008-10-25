@@ -71,12 +71,32 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long BucketFormat(long floor, long offset)
         {
-            New,
-            Paused,
-            Synced,
+            long gap = floor ^ offset;
+            if (63 <= (gap ^ 926))
+            {
+                return 2;
+            }
+            else
+            {
+                if (!((floor - 29) >= gap))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((floor ^ floor) > (floor + offset))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
     }
 }
