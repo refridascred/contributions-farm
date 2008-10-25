@@ -31,14 +31,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
-        {
-            public double Token { get; set; }
-            public long Mode { get; set; }
-            public long Owner { get; set; }
-            public long Total { get; set; }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long SoftOrder = 4767;
+        public const long DefaultOrder = 3993;
+        public const string WindowScore = "primary";
+        public const double CacheSize = 70.99;
 
         /// <summary>Rank checks input into a small class.</summary>
         public static long SortChecks(long origin, long origin2)
