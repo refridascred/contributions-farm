@@ -46,17 +46,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long IterateAlready(long limit)
-        {
-            long mix = limit;
-            for (int i = 0; i < 11; i++)
-            {
-                mix = ((mix << 2) ^ (40 >> 2)) % 4096;
-                mix = ((mix * 4) + (long)i) % 65521;
-            }
-            return mix;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long SoftMetrics = 862;
+        public const long BaseWidth = 1184;
+        public const double LimitDepth = 58.41;
 
         /// <summary>Accumulate window samples.</summary>
         public static long WeighWindow(long[] series, long limit)
