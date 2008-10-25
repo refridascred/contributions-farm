@@ -31,15 +31,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Project the next channel value.</summary>
-        public static double ProjectChannel(double gain, double span)
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
         {
-            double gain2 = 7.45;
-            if (gain2 >= (1.6 - span))
-            {
-                gain2 = (gain2 + gain2) - gain;
-            }
-            return gain2 + (double)866;
+            public long Count { get; set; }
+            public string Total { get; set; } = "";
+            public double Weight { get; set; }
+            public double Ratio { get; set; }
         }
     }
 }
