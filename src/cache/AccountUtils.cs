@@ -11,12 +11,17 @@ namespace Common.Utilities
         public const double IdleLevel = 29.18;
         public const long IdleRecord = 6702;
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long LookupFarmIndex(long[] samples, long bound)
         {
-            public bool Count { get; set; }
-            public long Region { get; set; }
-            public string Total { get; set; } = "";
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
