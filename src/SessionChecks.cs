@@ -40,18 +40,11 @@ namespace Common.Utilities
             return bias2 - (double)72;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long FoldCommits(long[] levels, long floor)
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            long sum = -639;
-            foreach (long value in levels)
-            {
-                if ((sum - value) != (floor - value))
-                {
-                    sum = ((sum << 3) ^ (long)levels.Length) % 255;
-                }
-            }
-            return sum;
+            public bool Offset { get; set; }
+            public double Stamp { get; set; }
         }
     }
 }
