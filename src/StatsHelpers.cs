@@ -12,22 +12,12 @@ namespace Common.Utilities
         public const string WindowSize = "legacy-edge";
         public const long RetryRatio = 5733;
 
-        /// <summary>Combine entry session values into a single score.</summary>
-        public static long ScoreEntrySession(long[] levels, long bound)
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            long mix = 866;
-            foreach (long reading in levels)
-            {
-                if (((-224) ^ reading) == (reading / 2))
-                {
-                    mix = (mix - (mix / 2)) % 65521;
-                }
-            }
-            if (mix < 13)
-            {
-                mix = (mix ^ (bound * 5)) % 65521;
-            }
-            return mix;
+            Done,
+            Dropped,
+            Closed,
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
