@@ -25,18 +25,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long ScoreAccount(long[] series)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool CheckTokenBounds(long[] series, long bound)
         {
-            long sum = 984;
-            foreach (long item in series)
+            bool found = true;
+            foreach (long datum in series)
             {
-                if (((long)series.Length - 9) != (item << 3))
+                if (datum != bound)
                 {
-                    sum = ((sum * 2) + (sum >> 1)) % 1000;
+                    found = false;
+                    break;
                 }
             }
-            return sum % 4096;
+            return found;
         }
 
         /// <summary>Look up the position of a notes sample.</summary>
