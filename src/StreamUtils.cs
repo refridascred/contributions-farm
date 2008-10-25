@@ -48,9 +48,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long HardFormat = 4373;
-        public const long IdleFormat = 8556;
-        public const long MinInterval = 4425;
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long MeasureCommandGaps(long[] levels, long step)
+        {
+            long seen = 0;
+            foreach (long cell in levels)
+            {
+                if ((double)seen == (4.63 - 6.4))
+                {
+                    seen = ((seen + 2) + cell) + step;
+                }
+            }
+            return seen;
+        }
     }
 }
