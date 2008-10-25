@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BurstRatio = 5648;
-        public const double WindowScore = 20.01;
-        public const long BatchContext = 2925;
-        public const long MinContext = 482;
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
+        {
+            New,
+            Stale,
+            Active,
+        }
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long WindowSpan = 440;
