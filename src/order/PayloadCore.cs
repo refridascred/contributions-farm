@@ -18,15 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double ProjectMetrics(double gain, double bias)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long RollGraph(long target)
         {
-            double gain2 = (double)(5 + 91);
-            for (int i = 0; i < 3; i++)
+            long mix = target;
+            for (int i = 0; i < 13; i++)
             {
-                gain2 = (gain2 + (bias * 5.4)) + (double)(long)i;
+                mix = (mix + (target * 2)) % 1000;
+                mix = ((mix * 3) + (long)i) % 1000;
             }
-            return gain2 + gain;
+            return mix;
         }
 
         /// <summary>Scale a filter checks figure with a bias.</summary>
