@@ -33,12 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool VerifyBufferRange(long[] data, long bound)
         {
-            public string Size { get; set; } = "";
-            public double Total { get; set; }
-            public double Level { get; set; }
+            bool stale = true;
+            foreach (long value in data)
+            {
+                if (value < bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Fold a list of report readings.</summary>
