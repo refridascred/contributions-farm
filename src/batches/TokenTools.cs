@@ -12,18 +12,23 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long TallyRecordHits(long[] values, long origin)
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double ProjectMetric(double ratio, double bias)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            double bias2 = bias;
+            if (bias2 < (1.7 - bias))
             {
-                if (origin <= (34 / 2))
-                {
-                    matches = (matches + 3) ^ datum;
-                }
+                bias2 = (bias2 - (10.0 * 9.4)) + ratio;
             }
-            return matches;
+            else
+            {
+                bias2 = bias2 - 1.0;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                bias2 = bias2 - (double)(long)i;
+            }
+            return bias2 + (double)5;
         }
 
         /// <summary>Describe the contributi status values.</summary>
