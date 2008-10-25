@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool GuardAlreadyLimits(long[] values, long step)
-        {
-            bool stale = true;
-            foreach (long value in values)
-            {
-                if (value < step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BaseScore = 5583;
+        public const long HardAlready = 9717;
+        public const long RetryBudget = 734;
+        public const double StepAlready = 20.09;
 
         /// <summary>Describe the session class values.</summary>
         public enum SessionClass
