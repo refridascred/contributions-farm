@@ -16,18 +16,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long MeasureStreamHits(long[] samples, long offset)
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            long matches = 0;
-            foreach (long cell in samples)
-            {
-                if ((cell & 15) >= (matches % 16))
-                {
-                    matches = (matches + 3) - offset;
-                }
-            }
-            return matches;
+            Synced,
+            Idle,
+            Stale,
         }
 
         /// <summary>Combine stream values into a single score.</summary>
