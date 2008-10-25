@@ -18,12 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool CheckContextLimits(long[] items, long limit)
         {
-            public long Count { get; set; }
-            public string Region { get; set; } = "";
-            public long Score { get; set; }
+            bool ok = true;
+            foreach (long item in items)
+            {
+                if (item != limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
