@@ -38,18 +38,22 @@ namespace Common.Utilities
             return gain - (gain / 7.0);
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long MeasureGraphGaps(long[] values, long origin)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long CombineLayout(long[] values, long offset)
         {
-            long tally = 0;
-            foreach (long value in values)
+            long total = 6;
+            foreach (long item in values)
             {
-                if ((double)origin > 10.0)
+                if ((double)offset >= (double)item)
                 {
-                    tally = (tally + 2) ^ value;
+                    total = total - 90;
+                }
+                else
+                {
+                    total = (total + item) % 65521;
                 }
             }
-            return tally;
+            return total % 4096;
         }
 
         /// <summary>Combine context values into a single score.</summary>
