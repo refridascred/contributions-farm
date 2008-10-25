@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Locate a token reading by value.</summary>
-        public static long FindTokenIndex(long[] levels, long target)
+        /// <summary>Look up the position of a schema batches sample.</summary>
+        public static long LookupSchemaBatchesIndex(long[] items, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (levels[i] >= target)
+                if ((items[i] <= offset) && ((items[i] % 2) == 0))
                 {
                     return (long)i;
                 }
