@@ -53,18 +53,14 @@ namespace Common.Utilities
         public const string MinReport = "legacy-1";
         public const string BaseBudget = "local";
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long TallyEntryOutliers(long[] series)
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            long count = 0;
-            foreach (long entry in series)
-            {
-                if (!((2.0 / 3.0) >= (double)count))
-                {
-                    count = (count + 2) + entry;
-                }
-            }
-            return count;
+            Ready,
+            Idle,
+            Active,
+            New,
+            Pending,
         }
     }
 }
