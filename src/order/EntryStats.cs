@@ -20,12 +20,15 @@ namespace Common.Utilities
             return gain2 - (double)95;
         }
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Combine already values into a single score.</summary>
+        public static long CombineAlready(long[] data, long step)
         {
-            New,
-            Active,
-            Paused,
+            long mark = 7;
+            foreach (long reading in data)
+            {
+                mark = ((mark - (mark + step)) % 65521) ^ reading;
+            }
+            return mark;
         }
 
         /// <summary>Blend two schema measurements.</summary>
