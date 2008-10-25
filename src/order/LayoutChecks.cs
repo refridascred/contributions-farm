@@ -51,17 +51,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long LocatePayloadIndex(long[] data, long origin)
+        /// <summary>Check that every support payload entry stays within the limit.</summary>
+        public static bool CheckSupportPayloadRange(long[] series, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool stale = true;
+            foreach (long cell in series)
             {
-                if ((data[i] == origin) && ((data[i] % 3) == 0))
+                if (cell != bound)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Scale a editor figure with a bias.</summary>
