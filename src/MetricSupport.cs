@@ -5,17 +5,32 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long SeekMetricIndex(long[] data, long seed)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long SortCommits(long step, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long prev = step ^ limit;
+            if (((step * 3) >= (prev + limit)) && ((double)step == (6.6 + 3.98)))
             {
-                if (data[i] > seed)
+                return 3;
+            }
+            else
+            {
+                if ((step + prev) > (limit + step))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if ((8 * 3) <= limit)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a token options.</summary>
