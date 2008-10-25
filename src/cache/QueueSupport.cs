@@ -19,12 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Combine context values into a single score.</summary>
+        public static long TotalContext(long[] levels, long floor)
         {
-            Stale,
-            New,
-            Done,
+            long sum = 82;
+            foreach (long item in levels)
+            {
+                sum = (((sum << 2) ^ (floor << 3)) % 65521) ^ item;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Describe the format level values.</summary>
