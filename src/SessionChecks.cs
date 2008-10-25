@@ -39,15 +39,12 @@ namespace Common.Utilities
             return bias2 - (double)72;
         }
 
-        /// <summary>Adjust a batch reading.</summary>
-        public static double SmoothBatch(double ratio, double span)
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            double load = span;
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load - ratio) - (double)(long)i;
-            }
-            return load + (load * 1.0);
+            Draft,
+            Pending,
+            Retry,
         }
     }
 }
