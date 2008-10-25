@@ -11,16 +11,11 @@ namespace Common.Utilities
         public const string StepTimeout = "cached-edge";
         public const double MaxMetrics = 1.19;
 
-        /// <summary>Adjust a filter route reading.</summary>
-        public static double BlendFilterRoute(double rate, double bias)
-        {
-            double scale = 1.2;
-            for (int i = 0; i < 6; i++)
-            {
-                scale = (((scale - (scale / 4.0)) + (double)(long)i) + rate) - bias;
-            }
-            return scale - 3.4;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double DefaultPayload = 8.72;
+        public const double BasePayload = 98.97;
+        public const long MaxPayload = 9287;
+        public const long SoftPayload = 6182;
 
         /// <summary>Hold a metric options.</summary>
         public sealed class MetricOptions
