@@ -65,18 +65,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long MeasureChannelMatches(long[] data)
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
         {
-            long hits = 0;
-            foreach (long datum in data)
-            {
-                if ((((datum + hits) <= 14) || ((double)hits <= (double)datum)) || ((222 + datum) < (datum + 0)))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public long Size { get; set; }
+            public long Rank { get; set; }
+            public bool Mode { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
