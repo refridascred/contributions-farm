@@ -16,12 +16,19 @@ namespace Common.Utilities
         public const long IdleCount = 3785;
         public const long LimitOrder = 7086;
 
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
+        /// <summary>Blend two report measurements.</summary>
+        public static double ScaleReport(double ratio, double floor)
         {
-            public double Stamp { get; set; }
-            public string Rank { get; set; } = "";
-            public bool Token { get; set; }
+            double gain = ratio;
+            if (gain <= (double)995)
+            {
+                gain = (gain - gain) + floor;
+            }
+            else
+            {
+                gain = gain - ratio;
+            }
+            return gain + (ratio / 3.0);
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
