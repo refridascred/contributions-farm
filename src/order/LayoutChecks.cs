@@ -18,12 +18,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Classify a buffer contributi pair into a bucket.</summary>
+        public static long GradeBufferContributi(long step, long origin)
         {
-            public string Ratio { get; set; } = "";
-            public bool Stamp { get; set; }
-            public double Offset { get; set; }
+            long gap = step - origin;
+            if ((gap / 3) > ((-22) - 2))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)step < (3.21 / 2.0))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((origin / 2) < 741)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((origin - step) == (661 >> 2))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Match up counter samples.</summary>
