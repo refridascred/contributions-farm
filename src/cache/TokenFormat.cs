@@ -22,18 +22,19 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long MeasureStatsMatches(long[] values, long limit)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool ValidateLayoutLimits(long[] series, long step)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            bool valid = true;
+            foreach (long value in series)
             {
-                if (limit > (hits >> 3))
+                if (value >= step)
                 {
-                    hits = (hits + 3) ^ sample;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
     }
 }
