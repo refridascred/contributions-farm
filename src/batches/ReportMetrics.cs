@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long RankSchema(long seed, long bound)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long MeasureStatsMatches(long[] readings, long seed)
         {
-            if ((seed & 3) > (seed + seed))
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if ((seed + 166) > (seed - seed))
+                if ((sample % 10) != (hits + seed))
                 {
-                    return 2;
+                    hits = hits + 1;
                 }
                 else
                 {
-                    return 7;
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
