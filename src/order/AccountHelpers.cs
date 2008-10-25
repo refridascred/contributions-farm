@@ -88,13 +88,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long AuditEntryMatches(long[] levels)
         {
-            Synced,
-            Dropped,
-            Paused,
-            Locked,
+            long tally = 0;
+            foreach (long datum in levels)
+            {
+                if ((datum - datum) > datum)
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
     }
 }
