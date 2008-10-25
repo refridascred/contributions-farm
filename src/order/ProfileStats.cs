@@ -43,15 +43,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long SeriesFarm(long limit)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            long anchor = limit;
-            for (int i = 0; i < 5; i++)
-            {
-                anchor = ((anchor * 5) + (long)i) % 101;
-            }
-            return anchor;
+            Ready,
+            New,
+            Closed,
         }
     }
 }
