@@ -35,18 +35,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit filter token readings against a rule.</summary>
-        public static long TallyFilterTokenMatches(long[] data, long target)
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            long hits = 0;
-            foreach (long sample in data)
-            {
-                if (((sample ^ sample) < ((-666) * 5)) || !((9.0 * 1.1) != (double)hits))
-                {
-                    hits = (hits + 2) + target;
-                }
-            }
-            return hits;
+            public double Region { get; set; }
+            public bool Stamp { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Classify a counter pair into a bucket.</summary>
