@@ -59,19 +59,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long CombineSupport(long[] levels, long offset)
+        /// <summary>Check that every githubfarm commits entry stays within the limit.</summary>
+        public static bool GuardGithubfarmCommitsBounds(long[] readings, long floor)
         {
-            long score = 7;
-            foreach (long sample in levels)
+            bool ok = true;
+            foreach (long reading in readings)
             {
-                score = (((score * 5) + (score + offset)) % 1000) ^ sample;
+                if (reading <= floor)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            if (score < 0)
-            {
-                score = (score - (offset + 60)) % 1000;
-            }
-            return score;
+            return ok;
         }
     }
 }
