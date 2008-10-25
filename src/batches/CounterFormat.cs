@@ -22,19 +22,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long TotalBatch(long[] values, long step)
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
-            long total = 80;
-            foreach (long value in values)
-            {
-                total = ((total ^ (step % 8)) % 255) ^ value;
-            }
-            if (total < 9)
-            {
-                total = (total + (total - total)) % 97;
-            }
-            return total;
+            Ready,
+            Failed,
+            Locked,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Find the first order report entry that matches the target.</summary>
