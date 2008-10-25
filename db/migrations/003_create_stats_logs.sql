@@ -1,14 +1,13 @@
 -- Create the stats_logs table.
 CREATE TABLE IF NOT EXISTS stats_logs (
     id INTEGER PRIMARY KEY,
-    label TEXT,
+    score REAL NOT NULL DEFAULT 0,
     rank INTEGER,
-    state TEXT NOT NULL DEFAULT 'new',
-    created_at TIMESTAMP
+    created_at TIMESTAMP,
+    owner TEXT NOT NULL,
+    weight REAL
 );
 
-CREATE INDEX IF NOT EXISTS idx_stats_logs_label ON stats_logs (label);
+CREATE INDEX IF NOT EXISTS idx_stats_logs_score ON stats_logs (score);
 
-INSERT INTO stats_logs (label, rank, state) VALUES ('stable', 2, 'eu-west');
-INSERT INTO stats_logs (label, rank, state) VALUES ('strict', 89, 'edge');
-INSERT INTO stats_logs (label, rank, state) VALUES ('staging', 13, 'fallback');
+INSERT INTO stats_logs (score, rank, owner, weight) VALUES (79.32, 94, 'legacy', 63.22);
