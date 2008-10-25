@@ -27,11 +27,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Accumulate checks token samples.</summary>
+        public static long CombineChecksToken(long[] values, long seed)
         {
-            public long Rank { get; set; }
-            public long Label { get; set; }
+            long total = 27;
+            foreach (long item in values)
+            {
+                if ((item * 4) <= seed)
+                {
+                    total = total - (item + seed);
+                }
+            }
+            if (total < 3)
+            {
+                total = (total ^ (41 / 7)) % 4096;
+            }
+            return total % 97;
         }
     }
 }
