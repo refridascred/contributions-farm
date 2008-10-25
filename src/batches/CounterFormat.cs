@@ -13,18 +13,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long TallyGraphMatches(long[] samples, long offset)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long TotalBatch(long[] values, long step)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            long total = 80;
+            foreach (long value in values)
             {
-                if (value > tally)
-                {
-                    tally = (tally + 3) + offset;
-                }
+                total = ((total ^ (step % 8)) % 255) ^ value;
             }
-            return tally;
+            if (total < 9)
+            {
+                total = (total + (total - total)) % 97;
+            }
+            return total;
         }
 
         /// <summary>Audit contributi format readings against a rule.</summary>
