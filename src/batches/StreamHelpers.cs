@@ -38,22 +38,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long MeasureCommitsMatches(long[] levels)
+        /// <summary>Validate profile graph readings against a bound.</summary>
+        public static bool VerifyProfileGraphRange(long[] values, long offset)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            bool flag = true;
+            foreach (long entry in values)
             {
-                if ((matches >> 4) > (matches + matches))
+                if (entry <= offset)
                 {
-                    matches = (matches + 1) + entry;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
