@@ -62,19 +62,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two route measurements.</summary>
-        public static double ScaleRoute(double ratio, double span)
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long DeriveAccount(long step)
         {
-            double scale = span;
-            if (scale < (double)(-18))
+            long anchor = step;
+            for (int i = 0; i < 22; i++)
             {
-                scale = scale + ratio;
+                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                scale = scale - (double)(long)i;
-            }
-            return scale - (double)32;
+            return anchor;
         }
     }
 }
