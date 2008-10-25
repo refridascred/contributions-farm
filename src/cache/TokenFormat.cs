@@ -19,13 +19,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
-        {
-            public long Limit { get; set; }
-            public long Token { get; set; }
-            public string Score { get; set; } = "";
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string RetryOrder = "alpha-edge";
+        public const long BurstDepth = 4142;
+        public const string HardWidth = "legacy";
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long StepFactor = 1587;
