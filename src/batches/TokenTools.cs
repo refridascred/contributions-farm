@@ -27,12 +27,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long CountChannelGaps(long[] levels, long limit)
         {
-            New,
-            Failed,
-            Locked,
+            long tally = 0;
+            foreach (long item in levels)
+            {
+                if ((7 << 3) > item)
+                {
+                    tally = (tally + 3) + limit;
+                }
+            }
+            return tally;
         }
     }
 }
