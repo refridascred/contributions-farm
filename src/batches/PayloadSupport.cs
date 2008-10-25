@@ -23,18 +23,18 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long CountRecordGaps(long[] readings)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long TallyRouteOutliers(long[] readings)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                if (((item / 3) == (seen + item)) || ((double)seen <= (8.76 - 7.33)))
+                if (((long)readings.Length - 1) > reading)
                 {
-                    seen = seen + 2;
+                    matches = matches + 1;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Blend two counter command measurements.</summary>
