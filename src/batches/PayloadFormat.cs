@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long RankNotes(long step, long bound)
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            if (!((bound ^ bound) > bound))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((1.05 + 0.9) <= (double)bound)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Active,
+            Locked,
+            Synced,
         }
 
         /// <summary>Compare every pair of already readings.</summary>
