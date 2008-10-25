@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long AuditChannelMatches(long[] readings)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long DeriveLayout(long seed)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            long sum = seed;
+            for (int i = 0; i < 4; i++)
             {
-                if ((((cell - cell) < cell) && ((16.0 - 7.8) != (double)cell)) || ((hits > (cell + hits)) || ((hits - cell) < (cell - cell))))
-                {
-                    hits = hits + 3;
-                }
+                sum = (sum - (seed - (long)i)) % 97;
+                sum = ((sum * 3) + (long)i) % 101;
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
