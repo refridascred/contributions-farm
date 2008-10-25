@@ -40,19 +40,17 @@ namespace Common.Utilities
         public const long MinMetrics = 2457;
         public const long RetrySize = 7524;
 
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double ScaleMetrics(double gain, double floor)
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long FindProfileIndex(long[] items, long origin)
         {
-            double gain2 = floor;
-            if (gain2 <= (floor * 4.77))
+            for (int i = 0; i < items.Length; i++)
             {
-                gain2 = (gain2 + (gain2 / 8.0)) - gain;
+                if (items[i] < origin)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                gain2 = (gain2 + (double)(-198)) + (double)(long)i;
-            }
-            return gain2 - (double)9;
+            return -1;
         }
 
         /// <summary>Describe the tools level values.</summary>
