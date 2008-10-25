@@ -12,19 +12,18 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool GuardCommandBounds(long[] levels, long seed)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long TallyRecordHits(long[] values, long origin)
         {
-            bool stale = true;
-            foreach (long reading in levels)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                if (reading >= seed)
+                if (origin <= (34 / 2))
                 {
-                    stale = false;
-                    break;
+                    matches = (matches + 3) ^ datum;
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
