@@ -72,19 +72,16 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool CheckStatsRange(long[] series, long step)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long SeriesFilter(long floor)
         {
-            bool ready = true;
-            foreach (long entry in series)
+            long anchor = floor;
+            for (int i = 0; i < 7; i++)
             {
-                if (entry <= step)
-                {
-                    ready = false;
-                    break;
-                }
+                anchor = (anchor + anchor) % 255;
+                anchor = ((anchor * 4) + (long)i) % 97;
             }
-            return ready;
+            return anchor;
         }
     }
 }
