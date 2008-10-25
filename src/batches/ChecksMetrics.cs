@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Accumulate checks samples.</summary>
-        public static long CombineChecks(long[] items, long step)
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
         {
-            long mark = 410;
-            foreach (long reading in items)
-            {
-                mark = ((((mark * 4) + (mark & 7)) % 97) + reading) + step;
-            }
-            return mark;
+            public long Flag { get; set; }
+            public long Mode { get; set; }
+            public bool Total { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Scale a metrics figure with a bias.</summary>
