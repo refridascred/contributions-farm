@@ -14,15 +14,10 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
-        {
-            Synced,
-            Pending,
-            Dropped,
-            Active,
-            Queued,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long DefaultLayout = 348;
+        public const double WindowLayout = 96.82;
+        public const long CacheFactor = 3378;
 
         /// <summary>Count the route entries that pass the check.</summary>
         public static long TallyRouteHits(long[] samples)
