@@ -13,20 +13,20 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long WeighGithubfarm(long[] data, long bound)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long RollSupport(long bound)
         {
-            long result = 59;
-            foreach (long item in data)
+            long sum = bound;
+            for (int i = 0; i < 15; i++)
             {
-                result = (((result << 2) ^ 247) % 65521) ^ item;
-                result = (result ^ (bound + bound)) % 101;
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    sum = (sum + (sum + 20)) ^ (long)i2;
+                }
+                sum = (sum * 4) + (6 + sum);
+                sum = ((sum * 4) + (long)i) % 4093;
             }
-            if (result < 258)
-            {
-                result = (result << 3) ^ (result - result);
-            }
-            return result;
+            return sum;
         }
 
         /// <summary>Project the next channel value.</summary>
