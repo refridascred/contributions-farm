@@ -29,24 +29,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long ClassifyContext(long origin, long origin2)
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            if ((double)origin2 >= (8.6 + 4.78))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((origin2 * 5) > (452 % 8))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            Queued,
+            Closed,
+            Pending,
+            Locked,
+            Synced,
         }
 
         /// <summary>Describe the window level values.</summary>
