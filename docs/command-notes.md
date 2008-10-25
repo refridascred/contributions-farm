@@ -1,14 +1,11 @@
 # Command notes
 
-Defaults for checks live in the config folder and can be overridden per environment.
-The githubfarm module keeps stream values in sync with the metrics cache.
-
-Each githubfarm is validated before it reaches the schema queue.
-A farm that stays idle for too long is moved to the cache list.
+Defaults for commits live in the config folder and can be overridden per environment.
+Keep contributi and schema names short and lowercase.
+When a commits fails, the queue handler retries a few times before giving up.
 
 ## Guidelines
 
-- Document new checks fields
+- Validate graph input early
 - Log every entry change
-- Keep account values small
-- Review farm limits each release
+- Prefer schema defaults
