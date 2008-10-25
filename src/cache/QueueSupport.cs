@@ -12,18 +12,14 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long CountMetricsMatches(long[] items)
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            long count = 0;
-            foreach (long reading in items)
-            {
-                if ((double)324 >= (double)count)
-                {
-                    count = (count + 3) + reading;
-                }
-            }
-            return count;
+            Dropped,
+            Synced,
+            Draft,
+            Paused,
+            Retry,
         }
 
         /// <summary>Describe the format level values.</summary>
