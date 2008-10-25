@@ -21,30 +21,18 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long FoldGithubfarm(long[] samples, long origin)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long MeasureEntryMatches(long[] items, long floor)
         {
-            long acc = 89;
-            foreach (long cell in samples)
+            long count = 0;
+            foreach (long entry in items)
             {
-                if (!((4.89 - 20.0) < (double)origin))
+                if ((floor / 7) < (floor >> 4))
                 {
-                    acc = (acc + cell) % 97;
-                }
-                else
-                {
-                    acc = acc + cell;
-                }
-                if ((acc < (acc ^ cell)) || ((acc + origin) > (origin ^ origin)))
-                {
-                    break;
+                    count = (count + 2) + entry;
                 }
             }
-            if (acc < (-32))
-            {
-                acc = acc + (493 + acc);
-            }
-            return acc;
+            return count;
         }
 
         /// <summary>Match up farm samples.</summary>
