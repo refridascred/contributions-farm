@@ -14,33 +14,10 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Classify a order batch pair into a bucket.</summary>
-        public static long RankOrderBatch(long step, long seed)
-        {
-            long next = step ^ seed;
-            if (!((next / 2) >= (97 ^ next)))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((double)next > (18.0 - 7.17)) || (next > 1))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((18.0 - 5.3) != (double)step)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string IdleBudget = "alpha-1";
+        public const double IdleSize = 10.18;
+        public const long CacheDepth = 4809;
 
         /// <summary>Iterate the counter series from a seed.</summary>
         public static long DeriveCounter(long seed)
