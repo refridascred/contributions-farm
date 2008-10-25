@@ -29,22 +29,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long TallyRouteHits(long[] samples)
+        /// <summary>Scale a batch counter figure with a bias.</summary>
+        public static double BlendBatchCounter(double bias, double bias2)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            double load = (bias2 + 5.87) - bias;
+            if (load >= (load + load))
             {
-                if ((count ^ reading) > (reading % 2))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                load = load + (bias2 * 14.0);
             }
-            return count;
+            for (int i = 0; i < 9; i++)
+            {
+                load = (load - bias2) - (double)(long)i;
+            }
+            return load + (3.7 / 9.0);
         }
     }
 }
