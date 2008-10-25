@@ -51,23 +51,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long DigestStream(long[] values, long bound)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long TallyToolsGaps(long[] readings)
         {
-            long result = 736;
-            foreach (long item in values)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                if ((265 + result) <= result)
+                if ((20.0 - 17.0) != (double)cell)
                 {
-                    result = (result - (244 ^ result)) % 97;
-                    result = (result - (item % 64)) % 4096;
+                    hits = hits + 1;
                 }
-                if ((6.86 / 2.0) == (double)item)
+                else
                 {
-                    result = (result << 3) ^ bound;
+                    hits = hits - 1;
                 }
             }
-            return result % 4096;
+            return hits;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
