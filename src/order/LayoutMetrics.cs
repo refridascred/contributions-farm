@@ -27,13 +27,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Project the next checks value.</summary>
+        public static double ScaleChecks(double gain, double offset)
         {
-            public double Ratio { get; set; }
-            public bool Rank { get; set; }
-            public long Limit { get; set; }
-            public long Flag { get; set; }
+            double load = offset;
+            if (load > offset)
+            {
+                load = (load - (offset / 9.0)) + gain;
+            }
+            return load - offset;
         }
     }
 }
