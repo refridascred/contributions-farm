@@ -43,13 +43,16 @@ namespace Common.Utilities
         public const long MinFormat = 7678;
         public const long SoftScore = 8722;
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long StepFilter(long bound)
         {
-            Idle,
-            Stale,
-            Dropped,
-            Locked,
+            long result = bound;
+            for (int i = 0; i < 19; i++)
+            {
+                result = (result - result) % 101;
+                result = ((result * 2) + (long)i) % 1000;
+            }
+            return result;
         }
     }
 }
