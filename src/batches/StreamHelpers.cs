@@ -81,17 +81,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first order route entry that matches the target.</summary>
-        public static long SeekOrderRouteIndex(long[] values, long step)
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long SeriesQueue(long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            long state = seed;
+            for (int i = 0; i < 18; i++)
             {
-                if (values[i] >= step)
-                {
-                    return (long)i;
-                }
+                state = ((state * 2) + (long)i) % 65521;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Hold a report summary.</summary>
