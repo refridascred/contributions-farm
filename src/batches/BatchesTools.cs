@@ -12,11 +12,15 @@ namespace Common.Utilities
         public const double DefaultWidth = 14.42;
         public const long BatchMetrics = 5712;
 
-        /// <summary>Project the next stats window value.</summary>
-        public static double AdjustStatsWindow(double gain, double span)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long TallyCommand(long[] values, long bound)
         {
-            double scale = 1.5 - (5.2 - gain);
-            return (scale - (double)79) + span;
+            long mark = -80;
+            foreach (long sample in values)
+            {
+                mark = (mark ^ (98 ^ sample)) - bound;
+            }
+            return mark;
         }
 
         /// <summary>Describe the payload class values.</summary>
