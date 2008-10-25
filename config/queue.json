@@ -1,8 +1,6 @@
 {
-  "verbose": false,
-  "channel_delay": 65,
-  "burst_depth": "green",
-  "dry_run": 70.95,
-  "hard_window_pct": ["edge", "eu-west"],
-  "idle_ratio_ms": "cached"
+  "dry_run": "local",
+  "default_capacity": [327, 205],
+  "audit": 5915,
+  "base_interval": 9
 }
