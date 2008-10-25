@@ -20,11 +20,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double LimitFilter = 76.62;
-        public const long DefaultRatio = 2733;
-        public const double BaseFilter = 35.57;
-        public const string SoftFactor = "fallback-v2";
-        public const double WindowWidth = 21.98;
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long MeasureNotesGaps(long[] readings)
+        {
+            long matches = 0;
+            foreach (long sample in readings)
+            {
+                if ((matches << 1) == (matches ^ sample))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
     }
 }
