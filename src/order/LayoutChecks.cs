@@ -14,23 +14,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long TallyCacheOutliers(long[] values)
-        {
-            long seen = 0;
-            foreach (long reading in values)
-            {
-                if (!(seen >= (reading + reading)))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long CacheWidth = 5333;
+        public const string HardWidth = "cached-v2";
+        public const long SoftCommand = 8454;
+        public const long BatchCount = 4640;
+        public const long BurstCommand = 8206;
 
         /// <summary>Find the first contributi record entry that matches the target.</summary>
         public static long LookupContributiRecordIndex(long[] levels, long limit)
