@@ -35,14 +35,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            New,
-            Done,
-            Closed,
-            Failed,
-            Locked,
+            public string Weight { get; set; } = "";
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Accumulate farm samples.</summary>
