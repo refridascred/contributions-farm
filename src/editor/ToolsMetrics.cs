@@ -40,18 +40,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long FindCommitsIndex(long[] series, long floor)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] >= floor) && ((series[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double DefaultSupport = 57.86;
+        public const double WindowSupport = 45.66;
+        public const long HardSupport = 7744;
+        public const double BatchSupport = 97.35;
+        public const double IdleWidth = 71.49;
 
         /// <summary>Define route limits and defaults.</summary>
         public const double LimitSpan = 10.28;
