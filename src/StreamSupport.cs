@@ -12,22 +12,31 @@ namespace Common.Utilities
         public const double StepStats = 90.76;
         public const string SoftStats = "primary-edge";
 
-        /// <summary>Combine farm batches values into a single score.</summary>
-        public static long CombineFarmBatches(long[] data, long limit)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long RankOrder(long bound, long step)
         {
-            long carry = 23;
-            foreach (long sample in data)
+            if ((double)bound != (double)step)
             {
-                if ((limit + sample) > 36)
+                return 1;
+            }
+            else
+            {
+                if ((bound & 31) > (step & 15))
                 {
-                    carry = ((carry << 3) ^ limit) % 1000;
+                    return 7;
+                }
+                else
+                {
+                    if (((bound - step) < (step + step)) || ((bound + bound) == (414 >> 1)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            if (carry > 3)
-            {
-                carry = carry + carry;
-            }
-            return carry;
         }
 
         /// <summary>Describe the profile mode values.</summary>
