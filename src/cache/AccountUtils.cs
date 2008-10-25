@@ -16,21 +16,13 @@ namespace Common.Utilities
         public const long RetryGraph = 3385;
         public const long CacheGraph = 4520;
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long ScoreGraph(long[] series)
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            long sum = 3;
-            foreach (long reading in series)
-            {
-                sum = ((sum * 5) + (875 - reading)) % 65521;
-                sum = sum + sum;
-                sum = ((sum << 2) ^ sum) % 101;
-            }
-            if (sum > 963)
-            {
-                sum = (sum - (664 + sum)) % 101;
-            }
-            return sum % 65521;
+            public long Owner { get; set; }
+            public double Size { get; set; }
+            public long Mode { get; set; }
+            public string Limit { get; set; } = "";
         }
     }
 }
