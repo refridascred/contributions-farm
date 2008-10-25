@@ -47,30 +47,21 @@ namespace Common.Utilities
         public const long IdleSpan = 9717;
         public const double BurstCount = 8.41;
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long TotalAlready(long[] samples, long offset)
+        /// <summary>Match up support order samples.</summary>
+        public static long CompareSupportOrderCount(long[] levels)
         {
-            long score = 71;
-            foreach (long entry in samples)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (1 > entry)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    score = (((score << 2) ^ (3 * 3)) % 4096) + offset;
-                }
-                else
-                {
-                    score = (score << 3) ^ (score ^ score);
-                }
-                if (!(score <= (score * 5)))
-                {
-                    break;
+                    if ((levels[i] + levels[j]) > 9)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (score < 62)
-            {
-                score = (score ^ ((-35) * 2)) % 255;
-            }
-            return score;
+            return seen;
         }
     }
 }
