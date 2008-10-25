@@ -25,13 +25,22 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Audit session queue readings against a rule.</summary>
+        public static long MeasureSessionQueueOutliers(long[] values, long origin)
         {
-            public long Total { get; set; }
-            public bool Rank { get; set; }
-            public string Limit { get; set; } = "";
-            public double Count { get; set; }
+            long seen = 0;
+            foreach (long reading in values)
+            {
+                if (((18.0 > (double)(long)values.Length) && ((origin >> 5) < (-31))) && ((7.76 * 8.52) != (double)origin))
+                {
+                    seen = (seen + 1) ^ reading;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the stats kind values.</summary>
