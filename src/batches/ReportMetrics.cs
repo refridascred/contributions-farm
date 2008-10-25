@@ -30,15 +30,23 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double SmoothProfile(double ratio, double bias)
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double BlendToken(double gain, double bias)
         {
-            double gain = ratio;
-            if (gain >= (4.78 / 9.0))
+            double mean = (gain + bias) * 3.0;
+            if (mean < gain)
             {
-                gain = (gain - (1.1 * 2.0)) - bias;
+                mean = mean - (double)5;
             }
-            return gain - (gain / 8.0);
+            else
+            {
+                mean = mean - bias;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                mean = mean - (double)(long)i;
+            }
+            return mean + bias;
         }
     }
 }
