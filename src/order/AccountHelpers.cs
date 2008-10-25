@@ -43,11 +43,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long WindowTimeout = 2552;
-        public const double MinBudget = 19.85;
-        public const long DefaultGraph = 2164;
-        public const long SoftLevel = 1644;
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
+        {
+            public bool Token { get; set; }
+            public long Limit { get; set; }
+        }
 
         /// <summary>Describe the record mode values.</summary>
         public enum RecordMode
