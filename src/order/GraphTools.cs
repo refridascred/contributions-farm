@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long AuditLayoutGaps(long[] values, long target)
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            long matches = 0;
-            foreach (long item in values)
-            {
-                if ((6 - target) > 9)
-                {
-                    matches = (matches + 1) - item;
-                }
-            }
-            return matches;
+            Failed,
+            Locked,
+            Ready,
         }
 
         /// <summary>Fold a list of batches batch readings.</summary>
