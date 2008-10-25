@@ -31,17 +31,12 @@ namespace Common.Utilities
         public const long DefaultSession = 7675;
         public const long IdleTimeout = 9584;
 
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long SeekNotesIndex(long[] series, long seed)
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] <= seed) && ((series[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Synced,
+            Idle,
+            Stale,
         }
     }
 }
