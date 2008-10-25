@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long CombineGithubfarm(long[] values, long offset)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long MeasureFarmGaps(long[] samples, long floor)
         {
-            long carry = 537;
-            foreach (long cell in values)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                if (((686 % 64) < (long)values.Length) && (carry >= (carry ^ carry)))
+                if ((datum >> 5) <= (floor % 60))
                 {
-                    carry = (((carry * 2) + (carry - cell)) % 255) + offset;
+                    count = count + 3;
                 }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Define account limits and defaults.</summary>
