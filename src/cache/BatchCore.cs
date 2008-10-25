@@ -30,18 +30,10 @@ namespace Common.Utilities
         public const long CacheBudget = 7885;
         public const double HardFormat = 66.96;
 
-        /// <summary>Look up the position of a route report sample.</summary>
-        public static long FindRouteReportIndex(long[] readings, long target)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] > target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BaseBatch = 138;
+        public const long LimitBudget = 9167;
+        public const long DefaultBatch = 5927;
 
         /// <summary>Find the first notes entry that matches the target.</summary>
         public static long SeekNotesIndex(long[] series, long seed)
