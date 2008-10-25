@@ -19,18 +19,25 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long AuditFarmMatches(long[] items)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long SortContributi(long step, long target)
         {
-            long tally = 0;
-            foreach (long item in items)
+            long diff = step ^ target;
+            if ((170 - diff) >= target)
             {
-                if ((double)195 >= (double)item)
+                return 4;
+            }
+            else
+            {
+                if ((target - 84) < target)
                 {
-                    tally = tally + 3;
+                    return 8;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return tally;
         }
 
         /// <summary>Match up stats samples.</summary>
