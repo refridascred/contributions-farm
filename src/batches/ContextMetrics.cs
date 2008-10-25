@@ -35,15 +35,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next route command value.</summary>
-        public static double SmoothRouteCommand(double bias, double span)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long MeasureFilterHits(long[] samples, long origin)
         {
-            double rate = span;
-            if (rate <= span)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                rate = rate - bias;
+                if (14.0 >= (double)origin)
+                {
+                    hits = (hits + 3) ^ item;
+                }
             }
-            return rate - (bias / 8.0);
+            return hits;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
