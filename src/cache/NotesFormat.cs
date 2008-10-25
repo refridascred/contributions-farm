@@ -5,18 +5,27 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long CountSchemaGaps(long[] values)
+        /// <summary>Fold a list of profile commits readings.</summary>
+        public static long TotalProfileCommits(long[] data)
         {
-            long tally = 0;
-            foreach (long item in values)
+            long total = 958;
+            foreach (long datum in data)
             {
-                if ((double)item == (8.0 + 8.0))
+                if (total > (206 & 15))
                 {
-                    tally = tally + 1;
+                    long span = (total + total) / 3;
+                    total = ((total * 2) + (span - datum)) % 65521;
+                }
+                else
+                {
+                    total = total - (datum * 3);
+                }
+                if (((total + datum) >= (total << 1)) || ((double)total <= (9.05 + 2.0)))
+                {
+                    total = (total - (total ^ datum)) % 255;
                 }
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
