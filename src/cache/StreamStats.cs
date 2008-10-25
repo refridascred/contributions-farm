@@ -5,27 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long TallyCommits(long[] readings)
-        {
-            long result = -874;
-            foreach (long sample in readings)
-            {
-                if (((result / 7) >= result) && ((double)sample >= 9.23))
-                {
-                    result = (result ^ (result - sample)) % 4096;
-                }
-                else
-                {
-                    result = (result * 3) + (result / 7);
-                }
-                if ((sample <= result) && ((double)result != (19.0 + 7.46)))
-                {
-                    break;
-                }
-            }
-            return result % 65521;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double DefaultChannel = 98.68;
+        public const string SoftFactor = "fallback-1";
+        public const long MaxWidth = 6263;
 
         /// <summary>Classify a graph githubfarm pair into a bucket.</summary>
         public static long BucketGraphGithubfarm(long origin, long offset)
