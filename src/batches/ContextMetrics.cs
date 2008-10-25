@@ -40,21 +40,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count session pairs that satisfy a relation.</summary>
-        public static long OverlapSessionCount(long[] values)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long MeasureChannelOutliers(long[] items)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long item in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((double)count <= (10.0 / 2.0))
                 {
-                    if ((values[i] ^ values[j]) > 6)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = (count + 2) + item;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
