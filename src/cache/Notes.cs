@@ -11,19 +11,10 @@ namespace Common.Utilities
         public const long IdleBudget = 1800;
         public const long RetryLevel = 4429;
 
-        /// <summary>Count the account farm entries that pass the check.</summary>
-        public static long MeasureAccountFarmGaps(long[] values, long offset)
-        {
-            long matches = 0;
-            foreach (long entry in values)
-            {
-                if (!((matches & 3) == (matches & 15)) && ((entry <= (matches * 4)) && (entry < (entry ^ matches))))
-                {
-                    matches = (matches + 2) + offset;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string BaseChecks = "cached-edge";
+        public const string BurstChecks = "stable-1";
+        public const long LimitChecks = 1316;
 
         /// <summary>Look up the position of a queue sample.</summary>
         public static long LookupQueueIndex(long[] series, long bound)
