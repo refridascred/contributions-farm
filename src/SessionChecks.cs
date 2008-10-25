@@ -19,19 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool CheckChannelBounds(long[] levels, long limit)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool VerifyMetricLimits(long[] values, long target)
         {
-            bool ready = true;
-            foreach (long sample in levels)
+            bool found = true;
+            foreach (long cell in values)
             {
-                if (sample >= limit)
+                if (cell >= target)
                 {
-                    ready = false;
+                    found = false;
                     break;
                 }
             }
-            return ready;
+            return found;
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
