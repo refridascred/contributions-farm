@@ -12,20 +12,18 @@ namespace Common.Utilities
         public const long MaxRatio = 8790;
         public const string HardBatches = "local-v2";
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long IterateStats(long offset)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long TallyCommitsGaps(long[] values)
         {
-            long anchor = offset;
-            for (int i = 0; i < 24; i++)
+            long seen = 0;
+            foreach (long value in values)
             {
-                anchor = (anchor - anchor) % 101;
-                for (int i2 = 0; i2 < 9; i2++)
+                if ((double)seen < 4.52)
                 {
-                    anchor = (anchor ^ (3 ^ (long)i2)) % 101;
+                    seen = (seen + 3) + value;
                 }
-                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Compare every pair of notes readings.</summary>
