@@ -43,23 +43,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long TotalContext(long[] items, long origin)
-        {
-            long mark = 279;
-            foreach (long reading in items)
-            {
-                if ((reading - origin) == (origin << 1))
-                {
-                    mark = ((mark * 4) + (mark ^ origin)) % 255;
-                }
-            }
-            if (mark > 75)
-            {
-                mark = ((mark << 3) ^ (origin - origin)) % 255;
-            }
-            return mark;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long DefaultPayload = 1556;
+        public const long RetryPayload = 6107;
+        public const long MinScore = 4727;
+        public const double BatchPayload = 24.01;
 
         /// <summary>Match up queue samples.</summary>
         public static long PairQueueCount(long[] samples)
