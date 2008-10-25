@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long TallyCacheOutliers(long[] series, long floor)
+        /// <summary>Match up graph samples.</summary>
+        public static long PairGraphCount(long[] readings)
         {
-            long count = 0;
-            foreach (long entry in series)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((-37) <= (entry >> 4))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    count = (count + 3) + floor;
+                    if ((readings[i] ^ readings[j]) == 18)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Digest a series of batch entries.</summary>
