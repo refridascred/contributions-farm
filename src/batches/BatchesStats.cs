@@ -38,32 +38,21 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long ClassifyToken(long seed, long bound)
+        /// <summary>Match up buffer samples.</summary>
+        public static long CompareBufferCount(long[] data)
         {
-            long gap = seed + bound;
-            if (!((233 + seed) > (0 ^ bound)))
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (seed > (seed >> 5))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((seed >= 890) && ((20.0 - 9.58) > (double)gap))
+                    if ((data[i] + data[j]) < 14)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
     }
 }
