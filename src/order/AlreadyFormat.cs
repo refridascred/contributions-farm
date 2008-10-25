@@ -58,17 +58,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long DigestTools(long[] values, long origin)
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long SeekFarmIndex(long[] samples, long origin)
         {
-            long anchor = 82;
-            foreach (long sample in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                anchor = ((anchor - (origin * 3)) % 255) ^ sample;
-                anchor = ((anchor * 3) + origin) % 1000;
-                anchor = anchor ^ (70 >> 2);
+                if (samples[i] >= origin)
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Hold a editor options.</summary>
