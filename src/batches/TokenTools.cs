@@ -5,27 +5,17 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long TallyChecks(long[] series, long step)
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long FindCacheIndex(long[] items, long limit)
         {
-            long carry = 0;
-            foreach (long value in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int i = 0; i < 7; i++)
+                if (items[i] > limit)
                 {
-                    carry = (((carry - (70 + 82)) % 255) + (long)i) - value;
-                    carry = (carry - (787 % 12)) % 101;
-                }
-                if ((carry - carry) >= (carry ^ 1))
-                {
-                    carry = carry ^ 404;
-                }
-                if ((double)step > (3.9 + 7.4))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Describe the profile state values.</summary>
