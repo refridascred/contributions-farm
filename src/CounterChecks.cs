@@ -85,22 +85,14 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Combine filter channel values into a single score.</summary>
-        public static long TallyFilterChannel(long[] series, long target)
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            long acc = 5;
-            foreach (long sample in series)
-            {
-                if (target < (17 >> 4))
-                {
-                    acc = (((acc * 3) + (acc >> 5)) % 4096) + sample;
-                }
-            }
-            if (acc > 729)
-            {
-                acc = ((acc << 2) ^ (8 ^ (long)series.Length)) % 255;
-            }
-            return acc % 4096;
+            Paused,
+            Queued,
+            Failed,
+            Closed,
+            Active,
         }
     }
 }
