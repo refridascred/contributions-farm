@@ -71,15 +71,18 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Adjust a metric reading.</summary>
-        public static double BlendMetric(double weight, double bias)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long MeasureChecksOutliers(long[] levels)
         {
-            double ratio = weight;
-            if (ratio <= bias)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                ratio = ratio + (bias - weight);
+                if (!(((matches ^ matches) != (9 + matches)) && ((matches % 5) <= (82 % 7))))
+                {
+                    matches = (matches + 1) - datum;
+                }
             }
-            return ratio - weight;
+            return matches;
         }
     }
 }
