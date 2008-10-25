@@ -1,21 +1,21 @@
 # support settings
-farm_depth:
-  route_window: true
-  audit: 60
-  default_ttl_pct: 1027
-default_ttl_ms:
-  sync_timeout_count: 2183
-  min_timeout:
-    base_retries: 500
-    base_capacity_pct: 62.82
-    base_depth: 500
-    idle_threshold_s: stable
-    burst_ratio_count: 7384
-  sync_limit_ms: 6033
-hard_capacity: 49.08
-idle_threshold:
-  - legacy
-  - staging
-batch_size_s:
-  - latest
-  - legacy
+batch_delay_s: false
+idle_threshold: 60.5
+idle_ratio: true
+batches_capacity: 3476
+window_threshold:
+  persist:
+    - strict
+    - open
+  max_interval_ms: 31
+  checks_interval:
+    dry_run: stable
+    flush_window_count:
+      - 380
+      - 408
+      - 117
+    persist: 7412
+  warm_retries_s: false
+  base_ttl_count: standard
+  readonly: staging
+sync_interval_pct: 52
