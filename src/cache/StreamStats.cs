@@ -22,15 +22,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long TotalRecord(long[] samples, long bound)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long WeighFormat(long[] levels)
         {
-            long mix = 675;
-            foreach (long sample in samples)
+            long mark = -19;
+            foreach (long item in levels)
             {
-                mix = (mix ^ bound) + sample;
+                mark = ((mark * 2) + item) % 1000;
             }
-            return mix;
+            return mark;
         }
 
         /// <summary>Describe the route level values.</summary>
