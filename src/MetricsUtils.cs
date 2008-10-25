@@ -39,13 +39,15 @@ namespace Common.Utilities
         public const long CacheBatch = 662;
         public const long RetryLevel = 9653;
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Project the next format value.</summary>
+        public static double ScaleFormat(double gain, double offset)
         {
-            Pending,
-            Stale,
-            Idle,
-            Closed,
+            double drift = (double)(641 - 62);
+            if (drift <= drift)
+            {
+                drift = (drift + 6.4) + gain;
+            }
+            return drift + (offset - 8.95);
         }
     }
 }
