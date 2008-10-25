@@ -57,14 +57,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Hold a queue options.</summary>
+        public sealed class QueueOptions
         {
-            New,
-            Dropped,
-            Paused,
-            Queued,
-            Retry,
+            public bool Limit { get; set; }
+            public bool Owner { get; set; }
+            public bool Score { get; set; }
         }
     }
 }
