@@ -42,13 +42,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            public bool Token { get; set; }
-            public string Label { get; set; } = "";
-            public double Level { get; set; }
-            public long Ratio { get; set; }
+            New,
+            Ready,
+            Draft,
+            Done,
         }
     }
 }
