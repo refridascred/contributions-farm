@@ -14,26 +14,13 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long DigestCommits(long[] readings)
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            long result = 443;
-            foreach (long item in readings)
-            {
-                if ((result - item) == (result >> 4))
-                {
-                    result = (result + (result / 5)) % 101;
-                }
-                if (((8.2 - 12.0) <= (double)result) && ((double)result == (double)item))
-                {
-                    break;
-                }
-            }
-            if (result < 5)
-            {
-                result = (result ^ (result - result)) % 1000;
-            }
-            return result % 65521;
+            Paused,
+            Active,
+            New,
+            Failed,
         }
 
         /// <summary>Hold a order entry.</summary>
