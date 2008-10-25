@@ -30,14 +30,13 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            Paused,
-            Locked,
-            Dropped,
-            Failed,
-            Pending,
+            public double Flag { get; set; }
+            public long Owner { get; set; }
+            public double Ratio { get; set; }
+            public string Count { get; set; } = "";
         }
     }
 }
