@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long MeasureContextHits(long[] data, long seed)
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            long seen = 0;
-            foreach (long reading in data)
-            {
-                if ((double)reading < (6.9 + 6.37))
-                {
-                    seen = (seen + 2) + seed;
-                }
-            }
-            return seen;
+            Active,
+            Failed,
+            Stale,
+            Dropped,
+            Done,
         }
 
         /// <summary>Combine command values into a single score.</summary>
