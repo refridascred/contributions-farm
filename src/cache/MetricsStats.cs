@@ -35,11 +35,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Project the next token value.</summary>
+        public static double ProjectToken(double gain, double bias)
         {
-            public double Score { get; set; }
-            public long Rank { get; set; }
+            double ratio = gain;
+            if (ratio > (double)931)
+            {
+                ratio = (ratio + gain) - bias;
+            }
+            else
+            {
+                ratio = ratio + 4.8;
+            }
+            return ratio + ratio;
         }
 
         /// <summary>Grade a tools value against two limits.</summary>
