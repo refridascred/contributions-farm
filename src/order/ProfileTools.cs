@@ -33,12 +33,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double MaxDepth = 73.63;
-        public const long LimitTimeout = 1168;
-        public const long WindowGithubfarm = 313;
-        public const double BurstCount = 66.18;
-        public const long BaseRatio = 2395;
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long BucketStream(long seed, long target)
+        {
+            if ((target + seed) == (target & 127))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((target + target) < (seed << 2))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
 
         /// <summary>Iterate the counter series from a seed.</summary>
         public static long IterateCounter(long seed)
