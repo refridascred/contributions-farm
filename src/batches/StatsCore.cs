@@ -78,18 +78,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the batches already entries that pass the check.</summary>
-        public static long MeasureBatchesAlreadyMatches(long[] levels)
+        /// <summary>Digest a series of stats checks entries.</summary>
+        public static long WeighStatsChecks(long[] data)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            long state = 4;
+            foreach (long value in data)
             {
-                if ((count ^ count) > (863 & 3))
+                if ((double)state <= (double)value)
                 {
-                    count = (count + 2) + entry;
+                    state = (state << 3) ^ (7 + state);
                 }
             }
-            return count;
+            return state;
         }
 
         /// <summary>Describe the counter class values.</summary>
