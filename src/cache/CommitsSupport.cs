@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool ValidateQueueRange(long[] data, long step)
-        {
-            bool found = true;
-            foreach (long cell in data)
-            {
-                if (cell < step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long RetryContext = 6621;
+        public const string MinContext = "latest-v2";
+        public const double WindowContext = 2.56;
 
         /// <summary>Digest a series of notes entries.</summary>
         public static long ScoreNotes(long[] samples, long bound)
