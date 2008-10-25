@@ -12,19 +12,15 @@ namespace Common.Utilities
         public const long BatchTools = 5714;
         public const double StepTools = 21.41;
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long AuditCommandMatches(long[] levels)
+        /// <summary>Audit already queue readings against a rule.</summary>
+        public static long TallyAlreadyQueueGaps(long[] items, long limit)
         {
             long count = 0;
-            foreach (long cell in levels)
+            foreach (long entry in items)
             {
-                if ((double)cell == (double)58)
+                if (2.5 < (double)count)
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    count = ((count + 3) ^ entry) - limit;
                 }
             }
             return count;
