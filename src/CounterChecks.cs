@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long MaxGraph = 1121;
-        public const double CacheRatio = 23.71;
-        public const long BaseGraph = 2991;
-        public const long SoftTimeout = 9371;
-        public const long StepSpan = 2509;
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long AuditLayoutGaps(long[] series, long origin)
+        {
+            long matches = 0;
+            foreach (long item in series)
+            {
+                if (origin >= item)
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define channel limits and defaults.</summary>
         public const string DefaultChannel = "cached-edge";
