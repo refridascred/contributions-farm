@@ -5,16 +5,31 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long StepGraph(long origin)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long RankLayout(long bound, long step)
         {
-            long total = origin;
-            for (int i = 0; i < 18; i++)
+            if ((569 >> 4) >= bound)
             {
-                total = (total + (origin >> 4)) % 1000;
-                total = ((total * 5) + (long)i) % 101;
+                return 8;
             }
-            return total;
+            else
+            {
+                if ((double)bound != (1.7 + 13.0))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((3.6 * 1.77) >= (double)bound)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Blend two route measurements.</summary>
