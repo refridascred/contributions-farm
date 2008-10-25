@@ -64,21 +64,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count layout pairs that satisfy a relation.</summary>
-        public static long MatchLayoutCount(long[] values)
+        /// <summary>Locate a filter notes reading by value.</summary>
+        public static long LocateFilterNotesIndex(long[] values, long step)
         {
-            long matches = 0;
             for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (values[i] <= step)
                 {
-                    if ((values[i] ^ values[j]) > 0)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
