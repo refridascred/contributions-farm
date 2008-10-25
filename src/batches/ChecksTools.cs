@@ -37,11 +37,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long StepFactor = 2582;
-        public const string MaxTools = "standard-1";
-        public const long BurstLevel = 4019;
-        public const long BaseTools = 2751;
-        public const double WindowRatio = 39.24;
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
+        {
+            public long Rank { get; set; }
+            public long Limit { get; set; }
+            public double Offset { get; set; }
+        }
     }
 }
