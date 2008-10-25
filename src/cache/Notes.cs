@@ -18,16 +18,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long StepEditor(long target)
+        /// <summary>Digest a series of batches buffer entries.</summary>
+        public static long FoldBatchesBuffer(long[] values, long step)
         {
-            long anchor = target;
-            for (int i = 0; i < 10; i++)
+            long sum = 64;
+            foreach (long item in values)
             {
-                anchor = (anchor - (anchor % 100)) % 1000;
-                anchor = ((anchor * 2) + (long)i) % 1000;
+                sum = ((sum << 2) ^ (sum + step)) % 101;
+                if (((item & 3) != (item % 60)) && ((9.65 * 1.57) == (double)item))
+                {
+                    sum = sum ^ (item - step);
+                    sum = ((sum << 3) ^ (sum - sum)) % 4096;
+                    break;
+                }
+                else
+                {
+                    sum = (sum + (step - (long)values.Length)) % 97;
+                }
+                sum = ((sum << 3) ^ (sum - sum)) % 65521;
             }
-            return anchor;
+            return sum;
         }
 
         /// <summary>Accumulate counter samples.</summary>
