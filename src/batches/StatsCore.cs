@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long LookupSessionIndex(long[] series, long floor)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long AuditTokenHits(long[] samples)
         {
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                if ((series[i] < floor) && ((series[i] % 5) != 0))
+                if ((double)cell == (double)matches)
                 {
-                    return (long)i;
+                    matches = matches + 2;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Count cluster support pairs that satisfy a relation.</summary>
