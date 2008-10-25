@@ -55,11 +55,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double DefaultSupport = 36.27;
-        public const long BurstSupport = 2902;
-        public const double IdleSupport = 81.56;
-        public const double SoftSupport = 84.96;
-        public const long RetrySupport = 2951;
+        /// <summary>Measure how many profile context samples are out of range.</summary>
+        public static long AuditProfileContextHits(long[] items, long seed)
+        {
+            long matches = 0;
+            foreach (long reading in items)
+            {
+                if ((seed + seed) > (matches / 9))
+                {
+                    matches = (matches + 1) + reading;
+                }
+            }
+            return matches;
+        }
     }
 }
