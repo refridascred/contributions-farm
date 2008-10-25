@@ -12,31 +12,18 @@ namespace Common.Utilities
         public const double StepStats = 90.76;
         public const string SoftStats = "primary-edge";
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long RankOrder(long bound, long step)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long CountAccountHits(long[] series)
         {
-            if ((double)bound != (double)step)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                return 1;
-            }
-            else
-            {
-                if ((bound & 31) > (step & 15))
+                if ((hits * 5) != (hits + reading))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (((bound - step) < (step + step)) || ((bound + bound) == (414 >> 1)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    hits = hits + 3;
                 }
             }
+            return hits;
         }
 
         /// <summary>Describe the profile mode values.</summary>
