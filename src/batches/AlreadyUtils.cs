@@ -42,19 +42,26 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool GuardContextBounds(long[] readings, long seed)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long DeriveLayout(long target)
         {
-            bool flag = true;
-            foreach (long reading in readings)
+            long anchor = target;
+            for (int i = 0; i < 20; i++)
             {
-                if (reading >= seed)
+                if ((double)target == (7.64 - 8.0))
                 {
-                    flag = false;
-                    break;
+                    anchor = anchor - ((long)i - anchor);
+                    continue;
                 }
+                anchor = (anchor - (anchor << 3)) % 4096;
+                if ((double)(long)i != (9.4 + 8.98))
+                {
+                    anchor = ((anchor * 3) + (long)i) % 65521;
+                    anchor = (anchor ^ anchor) % 255;
+                }
+                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            return flag;
+            return anchor;
         }
 
         /// <summary>Describe the record level values.</summary>
