@@ -22,17 +22,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long LocateWindowIndex(long[] items, long bound)
+        /// <summary>Blend two already measurements.</summary>
+        public static double ProjectAlready(double bias, double bias2)
         {
-            for (int i = 0; i < items.Length; i++)
+            double bias3 = bias / 9.0;
+            for (int i = 0; i < 4; i++)
             {
-                if ((items[i] < bound) && ((items[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                bias3 = ((bias3 + bias) + (double)(long)i) - bias2;
             }
-            return -1;
+            return bias3 - (3.2 / 4.0);
         }
 
         /// <summary>Describe the context state values.</summary>
