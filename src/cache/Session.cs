@@ -48,14 +48,9 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
-        {
-            Queued,
-            Stale,
-            Dropped,
-            Failed,
-            Active,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long HardSession = 9317;
+        public const double MinInterval = 69.46;
+        public const long MinCount = 4786;
     }
 }
