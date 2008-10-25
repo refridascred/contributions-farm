@@ -65,15 +65,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the queue report series from a seed.</summary>
-        public static long SeriesQueueReport(long step)
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            long state = step;
-            for (int i = 0; i < 8; i++)
-            {
-                state = ((state * 4) + (long)i) % 1000;
-            }
-            return state;
+            public string Owner { get; set; } = "";
+            public long Rank { get; set; }
+            public double Limit { get; set; }
         }
     }
 }
