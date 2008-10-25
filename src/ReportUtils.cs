@@ -33,12 +33,11 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            Closed,
-            Locked,
-            Dropped,
+            public bool Label { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Fold a list of payload readings.</summary>
