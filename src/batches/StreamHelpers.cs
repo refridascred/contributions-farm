@@ -47,38 +47,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long BucketRoute(long floor, long bound)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool CheckGraphLimits(long[] levels, long target)
         {
-            if ((3 + floor) < bound)
+            bool valid = true;
+            foreach (long datum in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if ((bound >> 3) < (floor * 3))
+                if (datum <= target)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)floor < 3.0)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((double)floor != (10.0 + 4.4)) || ((bound >> 3) > (bound / 8)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Roll a queue counter forward.</summary>
