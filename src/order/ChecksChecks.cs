@@ -24,12 +24,19 @@ namespace Common.Utilities
             return (bias + rate) + offset;
         }
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long DigestChannel(long[] levels)
         {
-            Queued,
-            Done,
-            Retry,
+            long carry = 826;
+            foreach (long entry in levels)
+            {
+                carry = ((carry << 2) ^ (215 - 3)) ^ entry;
+            }
+            if (carry < 824)
+            {
+                carry = (carry << 2) ^ carry;
+            }
+            return carry % 1000;
         }
     }
 }
