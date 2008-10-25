@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Adjust a session reading.</summary>
-        public static double AdjustSession(double scale, double span)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long MeasureProfileOutliers(long[] values, long target)
         {
-            double scale2 = span;
-            return scale2 + scale;
+            long tally = 0;
+            foreach (long datum in values)
+            {
+                if (((double)target <= (15.0 + 2.5)) && !((tally - target) >= datum))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Look up the position of a metrics sample.</summary>
