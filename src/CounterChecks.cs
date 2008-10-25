@@ -57,22 +57,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long CombineAccount(long[] items)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long DeriveProfile(long floor)
         {
-            long total = 92;
-            foreach (long datum in items)
+            long sum = floor;
+            for (int i = 0; i < 13; i++)
             {
-                if (((double)datum == (4.63 / 3.0)) && (datum < total))
-                {
-                    total = total - datum;
-                }
+                sum = ((sum * 4) + (floor - floor)) % 65521;
+                sum = ((sum * 4) + (long)i) % 101;
             }
-            if (total > 6)
-            {
-                total = (total - total) % 97;
-            }
-            return total % 1000;
+            return sum;
         }
     }
 }
