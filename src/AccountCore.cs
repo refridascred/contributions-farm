@@ -25,12 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Count the support metrics entries that pass the check.</summary>
+        public static long MeasureSupportMetricsMatches(long[] values, long limit)
         {
-            public bool Label { get; set; }
-            public long Region { get; set; }
-            public double Rank { get; set; }
+            long hits = 0;
+            foreach (long sample in values)
+            {
+                if (65 >= (limit * 5))
+                {
+                    hits = (hits + 3) + sample;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Derive the next cluster farm value from a seed.</summary>
