@@ -1,21 +1,5 @@
 {
-  "compress": [460, 8, 425, 70],
-  "min_limit": false,
-  "hard_threshold": {
-    "min_ratio": false,
-    "flush_size_pct": 8009,
-    "hard_limit": "eu-west",
-    "poll_ratio_count": {
-      "default_size_count": false,
-      "min_delay": false,
-      "idle_ttl_pct": 250,
-      "poll_depth": "latest",
-      "sync_interval_count": 30
-    },
-    "queue_depth": 1024,
-    "contributi_capacity": true
-  },
-  "min_size": 18,
-  "profile_limit": ["standard", "cached", "staging"],
-  "min_capacity": "strict"
+  "enabled": false,
+  "soft_ratio_count": 30,
+  "max_depth_pct": "edge"
 }
