@@ -69,19 +69,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every githubfarm commits entry stays within the limit.</summary>
-        public static bool GuardGithubfarmCommitsBounds(long[] readings, long floor)
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            bool ok = true;
-            foreach (long reading in readings)
-            {
-                if (reading <= floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Ready,
+            Paused,
+            Dropped,
+            Done,
+            Closed,
         }
     }
 }
