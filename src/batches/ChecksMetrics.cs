@@ -38,19 +38,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many metric checks samples are out of range.</summary>
-        public static long TallyMetricChecksHits(long[] levels)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long TallyNotesHits(long[] samples)
         {
             long matches = 0;
-            foreach (long datum in levels)
+            foreach (long sample in samples)
             {
-                if (((datum & 255) == (matches - datum)) && !((7.51 + 4.96) > (double)matches))
+                if (!(sample >= (sample % 100)))
                 {
                     matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
                 }
             }
             return matches;
