@@ -28,18 +28,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long TallyMetricOutliers(long[] values, long target)
+        /// <summary>Hold a queue options.</summary>
+        public sealed class QueueOptions
         {
-            long matches = 0;
-            foreach (long entry in values)
-            {
-                if ((entry / 5) < (entry ^ target))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public string Region { get; set; } = "";
+            public bool Count { get; set; }
+            public long Size { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Combine session values into a single score.</summary>
