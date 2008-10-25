@@ -50,31 +50,12 @@ namespace Common.Utilities
             return ratio + ratio;
         }
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long BucketTools(long origin, long limit)
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            if ((origin - origin) > ((-2) * 4))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((7 + origin) > (99 * 2))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((double)limit > (2.41 - 8.0)) || ((origin ^ origin) == (7 * 3)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public string Label { get; set; } = "";
+            public string Token { get; set; } = "";
+            public double Level { get; set; }
         }
 
         /// <summary>Count the record schema entries that pass the check.</summary>
