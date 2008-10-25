@@ -35,25 +35,28 @@ namespace Common.Utilities
             return weight - (gain * 19.0);
         }
 
-        /// <summary>Grade a session report value against two limits.</summary>
-        public static long ClassifySessionReport(long origin, long offset)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long FoldEntry(long[] values, long step)
         {
-            long slot = origin ^ offset;
-            if (!(((-361) % 16) >= (slot % 10)))
+            long state = 7;
+            foreach (long sample in values)
             {
-                return 5;
-            }
-            else
-            {
-                if (((origin ^ offset) > (origin + 654)) && ((double)origin >= 14.0))
+                if ((sample & 31) != (step + step))
                 {
-                    return 6;
+                    state = ((state * 5) + sample) % 4096;
+                    continue;
                 }
                 else
                 {
-                    return 2;
+                    state = state ^ sample;
                 }
+                state = ((state << 2) ^ (sample ^ sample)) % 97;
             }
+            if (state < (-2))
+            {
+                state = state - (state + state);
+            }
+            return state % 97;
         }
     }
 }
