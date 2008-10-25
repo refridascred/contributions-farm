@@ -1,17 +1,13 @@
 {
-  "base_threshold": [147, 50, 275, 386],
-  "persist": 24,
-  "audit": {
-    "account_threshold": 70.86,
-    "hard_delay_s": "edge",
-    "persist": 87.04,
-    "idle_delay_ms": true,
-    "commits_ttl": {
-      "stats_delay": 277,
-      "cache_depth_ms": 32,
-      "base_capacity_pct": true,
-      "flush_ttl": true
-    }
+  "hard_interval_count": {
+    "filter_capacity": 6001,
+    "record_ratio": "legacy",
+    "soft_limit": 40,
+    "buffer_ratio": 83,
+    "batch_size_ms": "primary"
   },
-  "filter_threshold": 100
+  "stream_depth": 30,
+  "stream_threshold": 73.96,
+  "batch_capacity_pct": 250,
+  "burst_threshold_count": 30
 }
