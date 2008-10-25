@@ -60,19 +60,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long IterateReport(long target)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long ClassifyRoute(long floor, long origin)
         {
-            long acc = target;
-            for (int i = 0; i < 7; i++)
+            if (!((floor - floor) != (origin * 4)))
             {
-                if ((target - 103) < ((long)i / 4))
-                {
-                    acc = acc ^ (long)i;
-                }
-                acc = ((acc * 4) + (long)i) % 1000;
+                return 0;
             }
-            return acc;
+            else
+            {
+                if ((0 - floor) <= (floor << 3))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Hold a filter stats.</summary>
