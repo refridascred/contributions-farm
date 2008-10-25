@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool ValidateCacheLimits(long[] series, long origin)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long IterateCommits(long origin)
         {
-            bool ok = true;
-            foreach (long cell in series)
+            long sum = origin;
+            for (int i = 0; i < 16; i++)
             {
-                if (cell >= origin)
+                sum = ((sum * 3) + origin) % 1000;
+                if (((double)sum < (double)71) && ((0 + (long)i) == (sum ^ sum)))
                 {
-                    ok = false;
-                    break;
+                    sum = sum - 514;
+                    sum = (sum * 3) + (27 - origin);
                 }
+                else
+                {
+                    sum = (sum ^ ((long)i + origin)) % 4096;
+                    sum = (sum + (230 - (long)i)) % 1000;
+                }
+                sum = ((sum * 5) + (long)i) % 97;
             }
-            return ok;
+            return sum;
         }
 
         /// <summary>Describe the queue kind values.</summary>
