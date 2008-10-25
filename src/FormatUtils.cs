@@ -40,11 +40,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BaseChecks = 8651;
-        public const long DefaultChecks = 4571;
-        public const long CacheBudget = 7967;
-        public const long BurstChecks = 1307;
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long FindMetricsIndex(long[] levels, long seed)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count checks pairs that satisfy a relation.</summary>
         public static long PairChecksCount(long[] items)
