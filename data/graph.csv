@@ -1,9 +1,6 @@
-id,rank
-1,179
-2,61.16
-3,91.1
-4,36.63
-5,21.61
-6,69.94
-7,45.21
-8,green
+id,owner,score,weight
+1,standard,stable,709
+2,819,995,22.1
+3,48.36,316,341
+4,70.35,918,221
+5,blue,latest,stable
