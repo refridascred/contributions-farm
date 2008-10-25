@@ -65,20 +65,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every channel report entry stays within the limit.</summary>
-        public static bool ValidateChannelReportRange(long[] values, long origin)
-        {
-            bool found = true;
-            foreach (long cell in values)
-            {
-                if (cell >= origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long SoftRatio = 8150;
+        public const string LimitBudget = "cached-edge";
+        public const long WindowDepth = 7721;
+        public const string MinReport = "legacy-1";
+        public const string BaseBudget = "local";
 
         /// <summary>Measure how many entry samples are out of range.</summary>
         public static long TallyEntryOutliers(long[] series)
