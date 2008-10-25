@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double HardBudget = 93.64;
-        public const double RetryDepth = 24.26;
-        public const long DefaultDepth = 9187;
-        public const string WindowSize = "legacy-edge";
-        public const long RetryRatio = 5733;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string WindowWidth = "standard-v2";
+        public const double HardMetrics = 59.5;
+        public const long MinMetrics = 9795;
 
         /// <summary>Check that every context entry stays within the limit.</summary>
         public static bool ValidateContextLimits(long[] items, long seed)
