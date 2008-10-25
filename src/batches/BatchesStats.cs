@@ -31,38 +31,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long BucketCommand(long seed, long limit)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long RollOrder(long floor)
         {
-            if (((limit << 1) < (limit / 6)) && ((8.89 - 0.8) != (double)limit))
+            long score = floor;
+            for (int i = 0; i < 6; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((double)limit >= (double)seed))
+                if (((long)i == ((long)i / 2)) || (247 < (356 ^ (long)i)))
                 {
-                    return 1;
+                    score = (score ^ floor) % 4096;
                 }
-                else
-                {
-                    if (!((5.8 + 7.6) == (double)seed))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (seed > (limit ^ 966))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
+                score = ((score * 2) + (long)i) % 97;
             }
+            return score;
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
