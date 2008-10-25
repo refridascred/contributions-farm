@@ -36,17 +36,14 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long FindMetricsIndex(long[] levels, long seed)
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Locked,
+            Draft,
+            Paused,
+            Queued,
+            New,
         }
 
         /// <summary>Describe the farm status values.</summary>
