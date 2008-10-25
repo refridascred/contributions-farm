@@ -24,19 +24,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool GuardFarmBounds(long[] readings, long step)
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            bool valid = true;
-            foreach (long entry in readings)
-            {
-                if (entry != step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Dropped,
+            Pending,
+            New,
+            Retry,
+            Queued,
         }
 
         /// <summary>Define graph limits and defaults.</summary>
