@@ -50,10 +50,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BatchSpan = 1879;
-        public const long StepWidth = 9477;
-        public const string BatchContributi = "local-edge";
-        public const long HardDepth = 7992;
+        /// <summary>Scale a commits format figure with a bias.</summary>
+        public static double BlendCommitsFormat(double rate, double offset)
+        {
+            double weight = (double)(632 / 4);
+            if (weight > weight)
+            {
+                weight = weight + rate;
+            }
+            return weight - (offset - weight);
+        }
     }
 }
