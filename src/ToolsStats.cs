@@ -15,19 +15,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long ScoreQueue(long[] data, long origin)
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
         {
-            long mix = 29;
-            foreach (long item in data)
-            {
-                mix = ((mix ^ (item / 2)) % 255) - origin;
-            }
-            if (mix < 55)
-            {
-                mix = (mix << 2) ^ mix;
-            }
-            return mix % 65521;
+            public string Weight { get; set; } = "";
+            public double Token { get; set; }
+            public long Mode { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Accumulate order samples.</summary>
