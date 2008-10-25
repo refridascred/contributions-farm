@@ -28,11 +28,22 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long MinSpan = 256;
-        public const long CacheScore = 6106;
-        public const double BurstScore = 58.6;
-        public const long BurstCommits = 5728;
+        /// <summary>Match up stats samples.</summary>
+        public static long PairStatsCount(long[] readings)
+        {
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) != 5)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the support state values.</summary>
         public enum SupportState
