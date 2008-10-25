@@ -1,8 +1,7 @@
 {
-  "cache_window": 53.55,
-  "dry_run": 500,
-  "record_window": 17.39,
-  "warm_interval_s": "legacy",
-  "tools_threshold": [213, 396],
-  "idle_window": "local"
+  "sync_ratio_s": 2.48,
+  "sync_timeout_count": "eu-west",
+  "min_capacity_pct": 5639,
+  "sync_ttl_pct": 1.1,
+  "compress": "edge"
 }
