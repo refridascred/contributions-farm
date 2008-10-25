@@ -1,6 +1,7 @@
 # entry settings
-min_delay_s: false
-payload_capacity: 7971
-sync_size_s: legacy
-base_limit_count: 1
-token_depth: 55.25
+retry_timeout_pct: legacy
+base_interval_pct: edge
+default_delay_ms: 10
+soft_interval_count: false
+idle_timeout_pct: 3699
+warm_ttl: cached
