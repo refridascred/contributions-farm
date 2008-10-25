@@ -46,10 +46,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double RetryReport = 29.64;
-        public const double RetryRatio = 93.32;
-        public const long DefaultReport = 7097;
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long GradePayload(long bound, long target)
+        {
+            if (target <= (bound - target))
+            {
+                return 3;
+            }
+            else
+            {
+                if (!((9 + target) < (target + bound)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((bound >> 5) <= ((-20) - bound))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
 
         /// <summary>Measure how many context samples are out of range.</summary>
         public static long AuditContextOutliers(long[] levels, long bound)
