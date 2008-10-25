@@ -19,18 +19,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long CountContributiHits(long[] data)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long ClassifyBuffer(long origin, long step)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            long slot = origin - step;
+            if (((origin & 1) > slot) || ((-2) <= (slot << 3)))
             {
-                if ((matches << 2) >= entry)
+                return 1;
+            }
+            else
+            {
+                if ((step + 224) == (step + 75))
                 {
-                    matches = matches + 1;
+                    return 6;
+                }
+                else
+                {
+                    if ((step << 2) <= step)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Define format limits and defaults.</summary>
