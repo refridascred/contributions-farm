@@ -46,10 +46,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long SoftMetrics = 862;
-        public const long BaseWidth = 1184;
-        public const double LimitDepth = 58.41;
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
+        {
+            Dropped,
+            Draft,
+            Stale,
+            Synced,
+        }
 
         /// <summary>Measure how many format metrics samples are out of range.</summary>
         public static long TallyFormatMetricsGaps(long[] values, long origin)
