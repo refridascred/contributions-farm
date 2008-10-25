@@ -14,22 +14,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Audit context cache readings against a rule.</summary>
-        public static long MeasureContextCacheGaps(long[] series, long origin)
+        /// <summary>Check that every queue metric entry stays within the limit.</summary>
+        public static bool GuardQueueMetricRange(long[] items, long offset)
         {
-            long hits = 0;
-            foreach (long value in series)
+            bool flag = true;
+            foreach (long sample in items)
             {
-                if ((((284 * 3) == (hits >> 5)) || ((6.73 - 7.0) > (double)value)) || ((6.0 / 6.0) <= (double)value))
+                if (sample >= offset)
                 {
-                    hits = (hits + 3) - origin;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
