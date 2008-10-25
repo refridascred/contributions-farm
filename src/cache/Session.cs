@@ -33,19 +33,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double ProjectNotes(double scale, double floor)
+        /// <summary>Check that every checks batch entry stays within the limit.</summary>
+        public static bool CheckChecksBatchRange(long[] items, long seed)
         {
-            double scale2 = (floor + scale) - floor;
-            if (scale2 <= 1.87)
+            bool ok = true;
+            foreach (long sample in items)
             {
-                scale2 = scale2 - (scale - scale2);
+                if (sample > seed)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                scale2 = (scale2 - scale) + (double)(long)i;
-            }
-            return scale2 + (double)72;
+            return ok;
         }
 
         /// <summary>Describe the graph status values.</summary>
