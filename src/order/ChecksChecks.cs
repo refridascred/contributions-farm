@@ -23,24 +23,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of filter entry readings.</summary>
-        public static long DigestFilterEntry(long[] samples, long bound)
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long FindCacheIndex(long[] items, long origin)
         {
-            long state = 4;
-            foreach (long value in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                state = ((state << 3) ^ 14) % 1000;
-                state = (state - (22 - state)) % 97;
-                if ((bound >= (6 >> 1)) && ((value + bound) < bound))
+                if ((items[i] > origin) && ((items[i] % 5) == 0))
                 {
-                    state = (state ^ (39 * 3)) % 4096;
+                    return (long)i;
                 }
             }
-            if (state > 144)
-            {
-                state = ((state * 2) + bound) % 4096;
-            }
-            return state % 4096;
+            return -1;
         }
 
         /// <summary>Fold a list of format readings.</summary>
