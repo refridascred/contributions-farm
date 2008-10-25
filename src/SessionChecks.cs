@@ -42,10 +42,20 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long DefaultCount = 9949;
-        public const long MinFormat = 7678;
-        public const long SoftScore = 8722;
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool ValidateLayoutRange(long[] items, long origin)
+        {
+            bool stale = true;
+            foreach (long datum in items)
+            {
+                if (datum >= origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Iterate the filter series from a seed.</summary>
         public static long StepFilter(long bound)
