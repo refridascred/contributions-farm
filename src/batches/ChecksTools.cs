@@ -42,10 +42,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double DefaultPayload = 62.03;
-        public const long IdlePayload = 5657;
-        public const string BasePayload = "stable-1";
-        public const string MinPayload = "staging";
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
+        {
+            Dropped,
+            Stale,
+            Draft,
+            Idle,
+            Done,
+        }
     }
 }
