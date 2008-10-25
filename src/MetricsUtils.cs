@@ -49,19 +49,17 @@ namespace Common.Utilities
         public const long IdleStats = 240;
         public const long LimitCount = 9673;
 
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double ProjectOrder(double gain, double floor)
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long SeekBufferIndex(long[] levels, long seed)
         {
-            double bias = gain;
-            if (bias <= (bias + bias))
+            for (int i = 0; i < levels.Length; i++)
             {
-                bias = (bias - (gain - bias)) - floor;
+                if (levels[i] <= seed)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                bias = bias + (5.0 * 5.0);
-            }
-            return bias - gain;
+            return -1;
         }
     }
 }
