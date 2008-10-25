@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long ScoreChecks(long[] levels, long step)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long BucketCommits(long step, long offset)
         {
-            long acc = 91;
-            foreach (long datum in levels)
+            if (((double)offset != (7.0 + 1.8)) || ((offset / 7) <= step))
             {
-                if ((step + acc) != (acc & 3))
+                return 3;
+            }
+            else
+            {
+                if (!((double)step < (4.7 / 7.0)))
                 {
-                    acc = acc + (datum + acc);
+                    return 8;
+                }
+                else
+                {
+                    if (!((9.5 * 7.93) < (double)offset))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return acc % 65521;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
