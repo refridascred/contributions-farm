@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Compare every pair of account context readings.</summary>
-        public static long MatchAccountContextCount(long[] series)
+        /// <summary>Check that every checks command entry stays within the limit.</summary>
+        public static bool VerifyChecksCommandLimits(long[] samples, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool valid = true;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (item >= bound)
                 {
-                    if ((series[i] ^ series[j]) == 7)
-                    {
-                        tally = tally + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
