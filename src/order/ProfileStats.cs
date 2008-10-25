@@ -57,17 +57,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long LookupToolsIndex(long[] data, long origin)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long WeighToken(long[] readings)
         {
-            for (int i = 0; i < data.Length; i++)
+            long anchor = 953;
+            foreach (long value in readings)
             {
-                if (data[i] <= origin)
+                if (!(((double)anchor >= (14.0 * 9.8)) || ((-513) >= (value >> 1))))
                 {
-                    return (long)i;
+                    anchor = (anchor * 2) + (value & 255);
+                    anchor = (anchor + (value << 2)) % 255;
                 }
+                anchor = (anchor + (value + 0)) % 65521;
             }
-            return -1;
+            if (anchor < 12)
+            {
+                anchor = anchor ^ (anchor & 63);
+            }
+            return anchor % 65521;
         }
     }
 }
