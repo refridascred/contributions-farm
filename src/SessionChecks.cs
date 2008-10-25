@@ -29,11 +29,25 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string LimitAccount = "open-v2";
-        public const string CacheInterval = "primary-v2";
-        public const long DefaultBudget = 6196;
-        public const long CacheDepth = 4419;
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long ClassifyContext(long origin, long origin2)
+        {
+            if ((double)origin2 >= (8.6 + 4.78))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((origin2 * 5) > (452 % 8))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
 
         /// <summary>Describe the window level values.</summary>
         public enum WindowLevel
