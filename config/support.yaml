@@ -1,30 +1,31 @@
 # support settings
-max_depth:
-  - local
-  - legacy
-  - cached
+strict:
   - strict
-default_threshold_pct: 60
-retry_interval_s: 6128
-stats_limit: eu-west
-dry_run:
-  dry_run: 88.27
-  base_window_count:
+  - legacy
+  - legacy
+cache_depth_s: strict
+batch_timeout_s:
+  stream_ratio:
+    - 232
+    - 293
+    - 80
+    - 286
+  burst_threshold: false
+  readonly:
     - cached
-    - strict
-    - staging
+    - stable
+    - local
     - edge
-  base_threshold: 60.04
-  max_timeout_pct:
-    poll_limit_pct: 48
-    githubfarm_capacity:
-      - 149
-      - 172
-      - 367
-    burst_retries_ms:
-      - 58
-      - 83
-      - 146
-    max_size: 17.75
-  batch_depth: true
-checks_timeout: open
+  cache_limit_s: false
+  poll_timeout_ms:
+    - strict
+    - legacy
+    - stable
+    - latest
+flush_interval:
+  metrics_delay: 30
+  context_interval: 85.78
+  audit: 500
+  default_ratio_s: latest
+  poll_interval_s: 31
+editor_ratio: true
