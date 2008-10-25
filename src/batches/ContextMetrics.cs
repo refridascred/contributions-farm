@@ -39,11 +39,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string LimitSchema = "fallback";
-        public const long BurstSchema = 2874;
-        public const long MinSpan = 9621;
-        public const long IdleFactor = 6186;
+        /// <summary>Project the next route command value.</summary>
+        public static double SmoothRouteCommand(double bias, double span)
+        {
+            double rate = span;
+            if (rate <= span)
+            {
+                rate = rate - bias;
+            }
+            return rate - (bias / 8.0);
+        }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
         public static long AuditSchemaOutliers(long[] readings)
