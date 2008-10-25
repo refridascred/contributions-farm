@@ -31,26 +31,13 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long SeriesCommits(long offset)
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            long total = offset;
-            for (int i = 0; i < 19; i++)
-            {
-                if (((8.29 + 8.0) < (double)total) && ((offset & 63) > (long)i))
-                {
-                    total = (total ^ total) % 255;
-                    total = (total * 5) + (offset * 3);
-                    break;
-                }
-                else
-                {
-                    total = (total - (offset + 13)) % 65521;
-                }
-                total = (total << 2) ^ (total / 5);
-                total = ((total * 3) + (long)i) % 97;
-            }
-            return total;
+            public long Weight { get; set; }
+            public long Region { get; set; }
+            public double Offset { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
