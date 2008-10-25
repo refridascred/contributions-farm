@@ -39,11 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string CacheQueue = "latest-1";
-        public const double SoftRatio = 94.63;
-        public const long BatchQueue = 4257;
-        public const long CacheSize = 4769;
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long TallyLayoutHits(long[] data)
+        {
+            long matches = 0;
+            foreach (long reading in data)
+            {
+                if (8 > (matches - matches))
+                {
+                    matches = (matches + 3) ^ reading;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Rank record input into a small class.</summary>
         public static long SortRecord(long offset, long target)
