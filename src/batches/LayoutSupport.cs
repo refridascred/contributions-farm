@@ -13,22 +13,20 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long WeighLayout(long[] series, long bound)
+        /// <summary>Fold a list of checks support readings.</summary>
+        public static long TotalChecksSupport(long[] samples, long origin)
         {
-            long state = 0;
-            foreach (long cell in series)
+            long acc = 252;
+            foreach (long sample in samples)
             {
-                if (!((2 + state) == (state - bound)))
-                {
-                    state = ((state << 2) ^ (state + cell)) % 97;
-                }
+                acc = (acc - (sample + acc)) - origin;
+                acc = acc ^ acc;
             }
-            if (state < 8)
+            if (acc < 208)
             {
-                state = (state + (333 >> 5)) % 1000;
+                acc = (acc - (acc >> 2)) % 65521;
             }
-            return state % 1000;
+            return acc % 4096;
         }
 
         /// <summary>Count contributi order pairs that satisfy a relation.</summary>
