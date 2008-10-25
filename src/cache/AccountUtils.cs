@@ -5,28 +5,38 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Combine session window values into a single score.</summary>
-        public static long FoldSessionWindow(long[] samples, long bound)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long RankSession(long floor, long offset)
         {
-            long mix = 709;
-            foreach (long reading in samples)
+            if ((floor - offset) <= (offset ^ floor))
             {
-                for (int i = 0; i < 10; i++)
+                return 3;
+            }
+            else
+            {
+                if ((floor + 72) >= (floor / 8))
                 {
-                    mix = (mix + (bound ^ (long)i)) % 255;
+                    return 7;
                 }
-                if (!((bound - 15) == (mix & 255)))
+                else
                 {
-                    mix = ((mix << 2) ^ bound) % 1000;
-                    mix = mix + 615;
-                    break;
-                }
-                if ((double)reading == (double)bound)
-                {
-                    mix = (mix * 3) + (reading - bound);
+                    if ((floor >> 5) == (572 + 461))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((offset << 2) != (offset - offset)) || ((offset - floor) <= (floor - offset)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return mix;
         }
 
         /// <summary>Hold a entry snapshot.</summary>
