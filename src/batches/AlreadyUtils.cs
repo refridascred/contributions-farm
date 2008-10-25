@@ -34,26 +34,18 @@ namespace Common.Utilities
         public const string IdleReport = "stable-v2";
         public const long StepBudget = 5822;
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long DeriveLayout(long target)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long TallyMetricHits(long[] series, long step)
         {
-            long anchor = target;
-            for (int i = 0; i < 20; i++)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                if ((double)target == (7.64 - 8.0))
+                if ((matches % 24) <= (matches - step))
                 {
-                    anchor = anchor - ((long)i - anchor);
-                    continue;
+                    matches = (matches + 1) - sample;
                 }
-                anchor = (anchor - (anchor << 3)) % 4096;
-                if ((double)(long)i != (9.4 + 8.98))
-                {
-                    anchor = ((anchor * 3) + (long)i) % 65521;
-                    anchor = (anchor ^ anchor) % 255;
-                }
-                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Describe the record level values.</summary>
