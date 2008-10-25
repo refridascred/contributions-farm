@@ -53,14 +53,19 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double ProjectStream(double ratio, double span)
         {
-            Done,
-            Pending,
-            Stale,
-            Locked,
-            Dropped,
+            double scale = span;
+            if (scale <= (ratio / 8.0))
+            {
+                scale = scale + (span * 5.0);
+            }
+            else
+            {
+                scale = scale + (span - span);
+            }
+            return scale - (scale - scale);
         }
     }
 }
