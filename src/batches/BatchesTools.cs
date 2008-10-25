@@ -22,9 +22,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long RetryScore = 1123;
-        public const long CacheSize = 3764;
-        public const double WindowMetric = 85.38;
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
+        {
+            public long Region { get; set; }
+            public long Stamp { get; set; }
+        }
     }
 }
