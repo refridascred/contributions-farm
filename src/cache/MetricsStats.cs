@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Accumulate context contributi samples.</summary>
-        public static long WeighContextContributi(long[] data, long target)
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            long acc = 45;
-            foreach (long item in data)
-            {
-                if ((target - acc) != (acc / 4))
-                {
-                    acc = ((acc ^ (target + 257)) % 101) + item;
-                }
-                else
-                {
-                    acc = (acc ^ (1 ^ acc)) % 97;
-                }
-            }
-            return acc;
+            public bool Size { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Look up the position of a editor sample.</summary>
