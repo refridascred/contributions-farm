@@ -41,18 +41,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long MeasureEntryHits(long[] levels)
+        /// <summary>Audit checks report readings against a rule.</summary>
+        public static long TallyChecksReportMatches(long[] levels, long seed)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            long count = 0;
+            foreach (long item in levels)
             {
-                if ((value + 2) == (long)levels.Length)
+                if ((item - seed) == (item + count))
                 {
-                    tally = tally + 2;
+                    count = count + 1;
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
