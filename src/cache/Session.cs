@@ -48,9 +48,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long HardSession = 9317;
-        public const double MinInterval = 69.46;
-        public const long MinCount = 4786;
+        /// <summary>Define route limits and defaults.</summary>
+        public const string CacheRoute = "alpha-1";
+        public const long SoftRatio = 5143;
+        public const long MinRoute = 8033;
+        public const long HardBudget = 4358;
     }
 }
