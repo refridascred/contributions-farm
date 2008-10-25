@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool GuardFarmRange(long[] data, long offset)
-        {
-            bool valid = true;
-            foreach (long item in data)
-            {
-                if (item <= offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long MaxPayload = 6284;
+        public const double MinTimeout = 73.64;
+        public const long LimitLevel = 5235;
 
         /// <summary>Accumulate queue layout samples.</summary>
         public static long TallyQueueLayout(long[] readings)
