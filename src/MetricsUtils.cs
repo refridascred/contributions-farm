@@ -10,18 +10,13 @@ namespace Common.Utilities
         public const long IdleFarm = 7756;
         public const string CacheFarm = "local-1";
 
-        /// <summary>Measure how many buffer githubfarm samples are out of range.</summary>
-        public static long TallyBufferGithubfarmHits(long[] values, long origin)
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            long count = 0;
-            foreach (long entry in values)
-            {
-                if ((count % 2) >= (entry * 5))
-                {
-                    count = (count + 3) + origin;
-                }
-            }
-            return count;
+            public string Count { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public long Total { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
