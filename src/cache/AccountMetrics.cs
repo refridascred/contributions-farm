@@ -68,12 +68,18 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Audit route record readings against a rule.</summary>
+        public static long TallyRouteRecordOutliers(long[] samples, long limit)
         {
-            Idle,
-            New,
-            Pending,
+            long count = 0;
+            foreach (long entry in samples)
+            {
+                if ((limit / 5) == (count + entry))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
     }
 }
