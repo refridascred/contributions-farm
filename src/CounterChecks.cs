@@ -12,20 +12,11 @@ namespace Common.Utilities
         public const long SoftTimeout = 9371;
         public const long StepSpan = 2509;
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool ValidateSupportLimits(long[] levels, long seed)
-        {
-            bool flag = true;
-            foreach (long cell in levels)
-            {
-                if (cell < seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string DefaultChannel = "cached-edge";
+        public const long DefaultInterval = 5837;
+        public const long RetryDepth = 8397;
+        public const long MinWidth = 2095;
 
         /// <summary>Check that every buffer metric entry stays within the limit.</summary>
         public static bool CheckBufferMetricLimits(long[] levels, long floor)
