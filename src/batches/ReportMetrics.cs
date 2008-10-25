@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long FindFarmIndex(long[] levels, long origin)
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double SmoothContributi(double gain, double span)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double mean = 20.0 - (double)8;
+            if (mean >= span)
             {
-                if ((levels[i] <= origin) && ((levels[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                mean = (mean + (double)2) + gain;
             }
-            return -1;
+            else
+            {
+                mean = mean + (mean - mean);
+            }
+            return mean + (double)8;
         }
 
         /// <summary>Compare every pair of format readings.</summary>
