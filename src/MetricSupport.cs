@@ -5,32 +5,17 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long SortCommits(long step, long limit)
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long FindSessionIndex(long[] series, long limit)
         {
-            long prev = step ^ limit;
-            if (((step * 3) >= (prev + limit)) && ((double)step == (6.6 + 3.98)))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((step + prev) > (limit + step))
+                if (series[i] > limit)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((8 * 3) <= limit)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
