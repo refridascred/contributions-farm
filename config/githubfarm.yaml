@@ -1,18 +1,32 @@
 # githubfarm settings
-min_depth_s:
-  - latest
-  - strict
-  - eu-west
-  - staging
-idle_ratio:
-  flush_timeout_ms: true
-  cache_delay: 26.7
-  min_size_count: stable
-  warm_size: false
-  stream_ratio: 8
-githubfarm_interval: 66
-hard_depth_pct: 54.42
-stream_limit: strict
-burst_limit_pct:
-  - 381
-  - 247
+retry_depth_s:
+  - 12
+  - 363
+  - 115
+  - 147
+min_ratio_ms:
+  burst_limit_s: local
+  enabled:
+    - blue
+    - blue
+    - blue
+  hard_retries:
+    poll_threshold_ms: blue
+    githubfarm_threshold:
+      - 334
+      - 142
+      - 410
+    dry_run: 8766
+    batch_retries:
+      - 444
+      - 189
+flush_timeout_s: 57.15
+graph_capacity:
+  compress: 7918
+  min_size_s: 2492
+  hard_retries_s:
+    - legacy
+    - strict
+    - green
+    - local
+base_window_s: 42
