@@ -35,18 +35,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long AuditContextGaps(long[] series, long target)
+        /// <summary>Count layout pairs that satisfy a relation.</summary>
+        public static long CompareLayoutCount(long[] data)
         {
-            long hits = 0;
-            foreach (long value in series)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((501 + (-6)) > (value % 10))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    hits = (hits + 2) + target;
+                    if ((data[i] + data[j]) > 11)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Hold a context entry.</summary>
