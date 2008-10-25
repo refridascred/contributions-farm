@@ -41,19 +41,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool CheckChecksLimits(long[] samples, long limit)
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            bool valid = true;
-            foreach (long entry in samples)
-            {
-                if (entry >= limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public double Ratio { get; set; }
+            public bool Rank { get; set; }
+            public long Limit { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
