@@ -19,19 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool ValidateBatchRange(long[] readings, long origin)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long CountQueueGaps(long[] items)
         {
-            bool flag = true;
-            foreach (long reading in readings)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                if (reading < origin)
+                if (!((16.0 - 8.07) >= (double)sample))
                 {
-                    flag = false;
-                    break;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Blend two report measurements.</summary>
