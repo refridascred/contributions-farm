@@ -38,12 +38,11 @@ namespace Common.Utilities
             return gain - (gain / 7.0);
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double SoftSupport = 88.11;
-        public const long SoftBudget = 6235;
-        public const double WindowSupport = 42.44;
-        public const string IdleSize = "primary";
-        public const string LimitSupport = "staging-edge";
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BaseChecks = 8651;
+        public const long DefaultChecks = 4571;
+        public const long CacheBudget = 7967;
+        public const long BurstChecks = 1307;
 
         /// <summary>Count checks pairs that satisfy a relation.</summary>
         public static long PairChecksCount(long[] items)
