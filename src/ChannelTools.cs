@@ -67,15 +67,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two stream measurements.</summary>
-        public static double AdjustStream(double ratio, double floor)
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
         {
-            double rate = (double)(88 % 16);
-            if (rate <= (rate * 3.44))
-            {
-                rate = rate - (ratio + floor);
-            }
-            return rate + (double)8;
+            public bool Weight { get; set; }
+            public double Stamp { get; set; }
         }
     }
 }
