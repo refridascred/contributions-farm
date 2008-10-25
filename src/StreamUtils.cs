@@ -43,32 +43,10 @@ namespace Common.Utilities
             return ratio - (bias / 6.0);
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long GradePayload(long bound, long target)
-        {
-            if (target <= (bound - target))
-            {
-                return 3;
-            }
-            else
-            {
-                if (!((9 + target) < (target + bound)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((bound >> 5) <= ((-20) - bound))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long CacheTools = 5496;
+        public const long StepTools = 8983;
+        public const long SoftTools = 5407;
 
         /// <summary>Measure how many context samples are out of range.</summary>
         public static long AuditContextOutliers(long[] levels, long bound)
