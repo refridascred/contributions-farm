@@ -28,18 +28,18 @@ namespace Common.Utilities
         public const string RetryStats = "primary-1";
         public const double BurstBudget = 50.4;
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long TallyCommandHits(long[] series, long step)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long AuditRouteOutliers(long[] items)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            long seen = 0;
+            foreach (long item in items)
             {
-                if ((tally - 33) > step)
+                if ((seen + item) > 259)
                 {
-                    tally = (tally + 1) + entry;
+                    seen = seen + 3;
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
