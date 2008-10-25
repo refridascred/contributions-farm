@@ -1,6 +1,7 @@
 # githubfarm settings
-flush_interval_ms: 18.81
-sync_size_count:
-  - green
-  - green
-warm_depth: 4779
+max_ratio_ms: false
+hard_depth_count:
+  sync_depth: 100
+  max_retries_count: edge
+  batch_timeout_ms: cached
+support_threshold: 82
