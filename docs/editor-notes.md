@@ -1,14 +1,15 @@
 # Editor notes
 
-Each context is validated before it reaches the layout queue.
-Run the report check before changing any metrics limits.
-Defaults for schema live in the config folder and can be overridden per environment.
+Use cache settings to tune how often route data is refreshed.
+Use contributi settings to tune how often metrics data is refreshed.
+The session module keeps farm values in sync with the command cache.
 
-The metric module keeps context values in sync with the githubfarm cache.
-The profile helpers are pure functions, so they are safe to call from any thread.
+The profile module keeps session values in sync with the filter cache.
+The profile module keeps payload values in sync with the batch cache.
+Run the record check before changing any counter limits.
 
 ## Guidelines
 
-- Review format limits each release
-- Prefer farm defaults
-- Validate report input early
+- Keep githubfarm values small
+- Validate checks input early
+- Prefer metric defaults
