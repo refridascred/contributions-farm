@@ -15,12 +15,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Blend two session measurements.</summary>
+        public static double AdjustSession(double bias, double bias2)
         {
-            Retry,
-            Done,
-            Ready,
+            double gain = (bias * 2.0) - (double)62;
+            return gain - (bias2 + bias2);
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
