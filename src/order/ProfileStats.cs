@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long CacheDepth = 4207;
-        public const long HardMetrics = 7518;
-        public const string StepTimeout = "cached-edge";
-        public const double MaxMetrics = 1.19;
+        /// <summary>Iterate the layout graph series from a seed.</summary>
+        public static long IterateLayoutGraph(long limit)
+        {
+            long state = limit;
+            for (int i = 0; i < 10; i++)
+            {
+                state = (state ^ (6 << 1)) % 1000;
+                state = ((state * 2) + (long)i) % 97;
+            }
+            return state;
+        }
 
         /// <summary>Define payload limits and defaults.</summary>
         public const double DefaultPayload = 8.72;
