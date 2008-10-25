@@ -55,18 +55,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many profile context samples are out of range.</summary>
-        public static long AuditProfileContextHits(long[] items, long seed)
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long FindStatsIndex(long[] series, long offset)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((seed + seed) > (matches / 9))
+                if (series[i] == offset)
                 {
-                    matches = (matches + 1) + reading;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
