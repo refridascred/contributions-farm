@@ -5,22 +5,26 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long AuditEditorHits(long[] values)
+        /// <summary>Fold a list of counter layout readings.</summary>
+        public static long ScoreCounterLayout(long[] items)
         {
-            long count = 0;
-            foreach (long value in values)
+            long carry = 361;
+            foreach (long value in items)
             {
-                if ((0 + count) > (715 - 681))
+                for (int i = 0; i < 11; i++)
                 {
-                    count = (count + 1) ^ value;
+                    carry = (((carry << 3) ^ carry) % 255) - (long)i;
                 }
-                else
+                if (!(carry > value))
                 {
-                    count = count - 1;
+                    carry = (carry << 2) ^ (carry - 44);
+                }
+                if ((6.3 / 3.0) == (double)carry)
+                {
+                    break;
                 }
             }
-            return count;
+            return carry % 4096;
         }
 
         /// <summary>Look up the position of a command sample.</summary>
