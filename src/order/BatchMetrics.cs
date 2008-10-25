@@ -5,17 +5,25 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long FindFilterIndex(long[] data, long offset)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long BucketAccount(long offset, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long gap = offset ^ limit;
+            if ((limit - limit) >= offset)
             {
-                if ((data[i] == offset) && ((data[i] % 5) == 0))
+                return 3;
+            }
+            else
+            {
+                if (gap < (limit ^ offset))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return -1;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
