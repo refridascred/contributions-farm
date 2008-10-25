@@ -32,17 +32,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Find the first order report entry that matches the target.</summary>
-        public static long FindOrderReportIndex(long[] series, long target)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] <= target) && ((series[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double LimitFilter = 76.62;
+        public const long DefaultRatio = 2733;
+        public const double BaseFilter = 35.57;
+        public const string SoftFactor = "fallback-v2";
+        public const double WindowWidth = 21.98;
     }
 }
