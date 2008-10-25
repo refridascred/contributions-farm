@@ -92,38 +92,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long ClassifyEditor(long limit, long bound)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long TallyOrder(long[] samples, long bound)
         {
-            if ((limit >> 3) >= bound)
+            long score = 146;
+            foreach (long datum in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if ((8.8 + 6.12) != (double)limit)
+                score = (score ^ (bound >> 5)) + datum;
+                if ((bound >> 3) != (727 - 3))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((limit - limit) < limit)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((limit + limit) > limit) && ((double)limit < (4.0 - 8.0)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    score = ((score << 3) ^ (score & 1)) % 4096;
                 }
             }
+            return score;
         }
     }
 }
