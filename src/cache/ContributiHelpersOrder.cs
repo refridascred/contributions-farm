@@ -36,19 +36,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool CheckAccountBounds(long[] levels, long offset)
+        /// <summary>Project the next format value.</summary>
+        public static double ProjectFormat(double bias, double floor)
         {
-            bool valid = true;
-            foreach (long item in levels)
+            double bias2 = floor;
+            for (int i = 0; i < 9; i++)
             {
-                if (item != offset)
-                {
-                    valid = false;
-                    break;
-                }
+                bias2 = ((bias2 - (double)959) + (double)(long)i) + bias;
             }
-            return valid;
+            return bias2 - 3.0;
         }
     }
 }
