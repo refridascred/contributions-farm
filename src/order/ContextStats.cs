@@ -43,39 +43,22 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long SortCounter(long bound, long bound2)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long DigestFarm(long[] series)
         {
-            long slot = bound - bound2;
-            if ((5.49 + 2.8) == (double)slot)
+            long mark = 14;
+            foreach (long sample in series)
             {
-                return 7;
-            }
-            else
-            {
-                if (!((14.0 - 2.9) >= (double)bound2))
+                if ((72 & 255) >= mark)
                 {
-                    return 2;
+                    mark = (mark << 2) ^ (sample + 6);
                 }
-                else
+                if ((double)sample > (3.0 * 6.0))
                 {
-                    if (((bound + bound) != (bound2 * 3)) && ((slot / 8) < (bound + bound)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((bound - 546) < (slot << 3)) || ((4.5 - 7.8) < (double)bound2))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    mark = (mark ^ mark) % 4096;
                 }
             }
+            return mark;
         }
     }
 }
