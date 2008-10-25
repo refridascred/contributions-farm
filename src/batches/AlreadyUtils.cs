@@ -34,13 +34,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
-        {
-            New,
-            Synced,
-            Retry,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MaxInterval = 1755;
+        public const long HardSpan = 717;
+        public const long WindowCount = 4903;
+        public const string IdleReport = "stable-v2";
+        public const long StepBudget = 5822;
 
         /// <summary>Roll a layout counter forward.</summary>
         public static long DeriveLayout(long target)
