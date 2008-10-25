@@ -1,12 +1,5 @@
 # entry settings
-persist:
-  - cached
-  - legacy
-  - strict
-  - eu-west
-retry_size_s:
-  - 429
-  - 3
-  - 98
-  - 199
-poll_limit_ms: 95.84
+dry_run: true
+poll_depth_pct: 47.47
+compress: stable
+graph_capacity: 60
