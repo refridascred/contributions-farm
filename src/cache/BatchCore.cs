@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double DefaultFactor = 44.1;
-        public const long DefaultQueue = 6650;
-        public const long BurstInterval = 2525;
-        public const long BurstQueue = 1371;
-        public const long IdleQueue = 8510;
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long TallyCommandOutliers(long[] samples, long offset)
+        {
+            long tally = 0;
+            foreach (long datum in samples)
+            {
+                if ((tally < (tally ^ offset)) && (datum > offset))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define format limits and defaults.</summary>
         public const long MinFormat = 5118;
