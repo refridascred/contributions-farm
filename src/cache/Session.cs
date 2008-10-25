@@ -69,11 +69,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long StepLevel = 3601;
-        public const long RetryCount = 8156;
-        public const long MinLayout = 8038;
-        public const string RetryBudget = "alpha-edge";
-        public const double BurstLayout = 28.31;
+        /// <summary>Adjust a profile reading.</summary>
+        public static double ProjectProfile(double gain, double floor)
+        {
+            double scale = (gain + gain) - (2.28 / 7.0);
+            return (scale - (gain + scale)) + floor;
+        }
     }
 }
