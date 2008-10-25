@@ -53,12 +53,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long RollEntry(long limit)
         {
-            Paused,
-            Pending,
-            Idle,
+            long mark = limit;
+            for (int i = 0; i < 9; i++)
+            {
+                mark = (mark << 2) ^ (mark + (long)i);
+                mark = ((mark * 4) + (long)i) % 4093;
+            }
+            return mark;
         }
     }
 }
