@@ -1,4 +1,6 @@
 # entry settings
-compress: false
-sync_ratio: 97.19
-retry_timeout: 6880
+window_size: 499
+dry_run: 5014
+window_ttl: 97.72
+readonly: 3737
+burst_size_s: 250
