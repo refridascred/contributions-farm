@@ -20,20 +20,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long SeriesFormat(long offset)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long CombineEditor(long[] series)
         {
-            long sum = offset;
-            for (int i = 0; i < 18; i++)
+            long mark = 8;
+            foreach (long item in series)
             {
-                for (int i2 = 0; i2 < 2; i2++)
+                if ((item << 3) <= (mark - mark))
                 {
-                    sum = ((sum ^ (offset >> 3)) % 97) - (long)i2;
-                    sum = (sum + (offset % 60)) % 1000;
+                    mark = (mark ^ (mark / 2)) % 255;
                 }
-                sum = ((sum * 2) + (long)i) % 101;
+                else
+                {
+                    mark = (mark * 3) + (mark / 6);
+                }
             }
-            return sum;
+            return mark;
         }
 
         /// <summary>Digest a series of checks entries.</summary>
