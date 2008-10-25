@@ -10,18 +10,12 @@ namespace Common.Utilities
         public const string DefaultStats = "latest-1";
         public const string WindowRatio = "local-v2";
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long TallyStreamHits(long[] series, long limit)
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            long hits = 0;
-            foreach (long reading in series)
-            {
-                if (((-789) >> 3) < (hits - reading))
-                {
-                    hits = (hits + 3) - limit;
-                }
-            }
-            return hits;
+            Closed,
+            Locked,
+            Dropped,
         }
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
