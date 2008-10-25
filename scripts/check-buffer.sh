@@ -6,9 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-standard}"
+total=0
+for i in $(seq 1 7); do
+    total=$((total + i * 5))
+done
+log "total ${total}"
+
+mode="${1:-stable}"
 case "${mode}" in
-    primary)
+    blue)
         log "fast path"
         ;;
     *)
@@ -16,9 +22,5 @@ case "${mode}" in
         ;;
 esac
 
-for item in stable latest primary; do
-    log "checking ${item}"
-done
-
-BUFFER_LIMIT=55
+BUFFER_LIMIT=92
 log "limit is ${BUFFER_LIMIT}"
