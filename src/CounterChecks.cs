@@ -63,21 +63,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Match up cache samples.</summary>
-        public static long CompareCacheCount(long[] values)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long CombineGithubfarm(long[] readings, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long state = 161;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) != 3)
-                    {
-                        count = count + 1;
-                    }
-                }
+                state = (((state * 3) + (reading << 1)) % 1000) + seed;
             }
-            return count;
+            return state % 1000;
         }
     }
 }
