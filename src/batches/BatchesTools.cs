@@ -14,12 +14,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            public double Label { get; set; }
-            public long Region { get; set; }
-            public long Weight { get; set; }
+            Locked,
+            Retry,
+            Failed,
         }
 
         /// <summary>Hold a queue info.</summary>
