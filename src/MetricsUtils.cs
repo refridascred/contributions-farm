@@ -14,22 +14,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long MatchStatsCount(long[] items)
-        {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) == 16)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long HardTimeout = 952;
+        public const long DefaultCount = 3608;
+        public const long StepFactor = 3817;
+        public const double CacheInterval = 43.53;
 
         /// <summary>Blend two layout measurements.</summary>
         public static double SmoothLayout(double weight, double offset)
