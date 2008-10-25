@@ -31,21 +31,38 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count contributi pairs that satisfy a relation.</summary>
-        public static long OverlapContributiCount(long[] values)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long BucketCommand(long seed, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            if (((limit << 1) < (limit / 6)) && ((8.89 - 0.8) != (double)limit))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if (!((double)limit >= (double)seed))
                 {
-                    if ((values[i] + values[j]) != 3)
+                    return 1;
+                }
+                else
+                {
+                    if (!((5.8 + 7.6) == (double)seed))
                     {
-                        seen = seen + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        if (seed > (limit ^ 966))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
