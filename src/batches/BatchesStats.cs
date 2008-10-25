@@ -5,38 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long GradeStream(long bound, long step)
+        /// <summary>Count the support farm entries that pass the check.</summary>
+        public static long AuditSupportFarmGaps(long[] levels, long bound)
         {
-            if ((98 >> 4) < (bound >> 2))
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if ((bound - step) <= ((-79) & 255))
+                if ((bound >= (409 + 1)) && ((1.2 + 3.3) == (double)matches))
                 {
-                    return 4;
+                    matches = (matches + 2) - reading;
                 }
                 else
                 {
-                    if ((step + bound) == (bound % 16))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (0 > (step % 2))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Describe the commits status values.</summary>
