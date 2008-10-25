@@ -16,17 +16,22 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long LookupSessionIndex(long[] series, long limit)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long FoldCommits(long[] values)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mix = 621;
+            foreach (long entry in values)
             {
-                if (series[i] <= limit)
+                if ((558 >= (entry >> 3)) || ((48 >> 3) >= entry))
                 {
-                    return (long)i;
+                    mix = ((mix * 4) + mix) % 97;
                 }
             }
-            return -1;
+            if (mix > 15)
+            {
+                mix = mix + 4;
+            }
+            return mix % 1000;
         }
 
         /// <summary>Hold a metrics record.</summary>
