@@ -16,13 +16,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Project the next token value.</summary>
+        public static double AdjustToken(double scale, double offset)
         {
-            public string Flag { get; set; } = "";
-            public long Ratio { get; set; }
-            public long Stamp { get; set; }
-            public long Total { get; set; }
+            double weight = offset + 11.0;
+            if (weight > (double)9)
+            {
+                weight = weight + offset;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                weight = (weight + weight) + (double)(long)i;
+            }
+            return weight + scale;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
