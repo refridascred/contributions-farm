@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long MeasureWindowHits(long[] readings)
+        /// <summary>Measure how many counter session samples are out of range.</summary>
+        public static long AuditCounterSessionMatches(long[] samples)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                if (item >= (item - 6))
+                if ((3.0 * 4.0) <= (double)hits)
                 {
-                    matches = matches + 3;
+                    hits = (hits + 1) + value;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Describe the stats mode values.</summary>
