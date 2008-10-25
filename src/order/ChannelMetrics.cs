@@ -26,18 +26,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long AuditCommandMatches(long[] items)
+        /// <summary>Count the record report entries that pass the check.</summary>
+        public static long CountRecordReportGaps(long[] levels)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                if ((((entry + seen) == (seen - seen)) && ((8.0 / 9.0) >= (double)entry)) || ((entry + seen) <= (seen % 7)))
+                if (!(count <= (datum ^ count)))
                 {
-                    seen = seen + 1;
+                    count = count + 2;
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
