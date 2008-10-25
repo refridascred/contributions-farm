@@ -20,14 +20,24 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Iterate the tools stream series from a seed.</summary>
+        public static long SeriesToolsStream(long floor)
         {
-            Dropped,
-            Queued,
-            Pending,
-            Synced,
-            Idle,
+            long state = floor;
+            for (int i = 0; i < 21; i++)
+            {
+                if (floor > state)
+                {
+                    state = state ^ (floor + state);
+                    state = ((state * 5) + (state % 64)) % 97;
+                }
+                if (floor <= (floor ^ floor))
+                {
+                    state = (state ^ (state + (long)i)) % 4096;
+                }
+                state = ((state * 4) + (long)i) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Fold a list of layout readings.</summary>
