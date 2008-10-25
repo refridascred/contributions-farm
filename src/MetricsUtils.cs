@@ -44,10 +44,11 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double SoftBudget = 9.33;
-        public const long MaxRatio = 4265;
-        public const string DefaultWidth = "primary-v2";
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long StepCluster = 9921;
+        public const long BaseCluster = 6248;
+        public const string SoftCluster = "legacy-v2";
+        public const double MinCluster = 30.29;
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
         public static long CompareStatsCount(long[] data)
