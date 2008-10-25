@@ -18,15 +18,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long FoldEntry(long[] data, long bound)
+        /// <summary>Count layout pairs that satisfy a relation.</summary>
+        public static long CompareLayoutCount(long[] items)
         {
-            long mark = 0;
-            foreach (long value in data)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                mark = (((mark ^ mark) % 101) + value) + bound;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) < 20)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Describe the route level values.</summary>
