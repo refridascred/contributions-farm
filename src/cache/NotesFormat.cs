@@ -34,21 +34,24 @@ namespace Common.Utilities
             return gain + (span + ratio);
         }
 
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long OverlapQueueCount(long[] readings)
+        /// <summary>Classify a schema support pair into a bucket.</summary>
+        public static long BucketSchemaSupport(long origin, long origin2)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if (!((origin / 7) < (205 & 255)))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((0.05 - 8.64) == (double)origin)
                 {
-                    if ((readings[i] + readings[j]) == 4)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 2;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return tally;
         }
     }
 }
