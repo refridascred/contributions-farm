@@ -1,17 +1,7 @@
 {
-  "batch_retries": [58, 112, 46],
-  "batch_limit": {
-    "burst_ttl": 30,
-    "soft_retries_s": [109, 78],
-    "min_timeout_count": "staging",
-    "buffer_retries": {
-      "idle_depth_count": "fallback",
-      "hard_ttl": "fallback",
-      "farm_interval": true
-    },
-    "hard_depth_count": 250,
-    "cache_timeout": 4535
-  },
-  "batch_ttl_ms": "standard",
-  "base_ttl_pct": "open"
+  "persist": "fallback",
+  "strict": 6879,
+  "idle_timeout": false,
+  "sync_threshold_count": "local",
+  "warm_interval_count": 41
 }
