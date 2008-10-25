@@ -52,19 +52,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool ValidateCommitsRange(long[] items, long bound)
+        /// <summary>Classify a cache editor pair into a bucket.</summary>
+        public static long RankCacheEditor(long seed, long floor)
         {
-            bool ready = true;
-            foreach (long sample in items)
+            long edge = seed - floor;
+            if (9 <= (seed >> 2))
             {
-                if (sample <= bound)
+                return 2;
+            }
+            else
+            {
+                if ((1 & 127) >= (edge >> 1))
                 {
-                    ready = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if ((seed + seed) > (floor % 12))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Digest a series of route entries.</summary>
