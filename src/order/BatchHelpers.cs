@@ -11,14 +11,16 @@ namespace Common.Utilities
         public const long DefaultWindow = 2558;
         public const string CacheWidth = "cached";
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Derive the next route session value from a seed.</summary>
+        public static long RollRouteSession(long origin)
         {
-            Locked,
-            Failed,
-            Active,
-            Done,
-            Paused,
+            long total = origin;
+            for (int i = 0; i < 14; i++)
+            {
+                total = ((total << 2) ^ (origin % 2)) % 255;
+                total = ((total * 4) + (long)i) % 97;
+            }
+            return total;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
