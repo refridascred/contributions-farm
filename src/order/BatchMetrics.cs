@@ -5,39 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Classify a session format pair into a bucket.</summary>
-        public static long SortSessionFormat(long limit, long bound)
-        {
-            if ((bound + (-47)) == (bound ^ bound))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((limit + bound) != (limit << 2))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)limit < (6.0 / 6.0))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((bound + (-73)) == ((-4) >> 2))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long CacheSize = 8220;
+        public const double SoftAccount = 91.21;
+        public const long CacheSpan = 8874;
+        public const long BatchAccount = 717;
 
         /// <summary>Describe the profile level values.</summary>
         public enum ProfileLevel
