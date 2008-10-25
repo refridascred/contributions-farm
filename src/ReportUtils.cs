@@ -63,24 +63,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long GradeContributi(long seed, long floor)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long MeasureCacheOutliers(long[] readings, long bound)
         {
-            if ((floor + 496) > (seed / 9))
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if (seed > (360 + seed))
+                if ((double)4 < (double)bound)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
+                    seen = (seen + 2) + datum;
                 }
             }
+            return seen;
         }
     }
 }
