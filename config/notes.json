@@ -1,13 +1,7 @@
 {
-  "hard_interval_count": {
-    "filter_capacity": 6001,
-    "record_ratio": "legacy",
-    "soft_limit": 40,
-    "buffer_ratio": 83,
-    "batch_size_ms": "primary"
-  },
-  "stream_depth": 30,
-  "stream_threshold": 73.96,
-  "batch_capacity_pct": 250,
-  "burst_threshold_count": 30
+  "base_ratio_s": "strict",
+  "metric_retries": true,
+  "queue_retries": true,
+  "order_size": 78.74,
+  "base_ttl_count": 39.94
 }
