@@ -1,19 +1,8 @@
 {
-  "contributi_interval": 500,
-  "dry_run": "eu-west",
-  "audit": "staging",
-  "counter_limit": "latest",
-  "stream_ttl": {
-    "poll_retries_pct": 9487,
-    "support_size": "stable",
-    "poll_delay_ms": {
-      "audit": 25,
-      "cache_ratio_s": 4274,
-      "dry_run": "stable",
-      "max_threshold_count": 17.42,
-      "session_ttl": true
-    },
-    "soft_ttl_count": 86.8,
-    "sync_interval_ms": ["strict", "cached", "stable", "eu-west"]
-  }
+  "cache_capacity_count": "staging",
+  "flush_retries": 75,
+  "dry_run": "fallback",
+  "warm_interval": 9274,
+  "batch_window": false,
+  "support_capacity": "standard"
 }
