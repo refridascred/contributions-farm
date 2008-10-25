@@ -1,8 +1,6 @@
 # githubfarm settings
-base_depth: true
-poll_interval_count: strict
-stream_timeout: 5680
-hard_ratio_pct:
-  batch_ratio_count: 6437
-  base_retries: true
-  min_capacity_pct: false
+flush_interval_ms: 18.81
+sync_size_count:
+  - green
+  - green
+warm_depth: 4779
