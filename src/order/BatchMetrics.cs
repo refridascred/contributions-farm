@@ -19,38 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a metrics cluster pair into a bucket.</summary>
-        public static long GradeMetricsCluster(long offset, long origin)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long TallyGraphHits(long[] series)
         {
-            if ((offset >= (origin / 5)) || ((origin << 3) >= (origin >> 4)))
+            long count = 0;
+            foreach (long datum in series)
             {
-                return 0;
-            }
-            else
-            {
-                if ((origin + origin) > (offset >> 3))
+                if ((9.2 * 4.0) < (double)count)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (!((799 + offset) <= (offset + offset)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)origin == (5.18 / 6.0))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    count = (count + 1) + datum;
                 }
             }
+            return count;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
