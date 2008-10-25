@@ -29,15 +29,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long SeriesSchema(long offset)
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            long mark = offset;
-            for (int i = 0; i < 15; i++)
-            {
-                mark = ((mark * 2) + (long)i) % 65521;
-            }
-            return mark;
+            public long Region { get; set; }
+            public bool Token { get; set; }
+            public long Total { get; set; }
         }
     }
 }
