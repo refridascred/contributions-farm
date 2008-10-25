@@ -38,15 +38,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long IterateChannel(long step)
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double AdjustBatches(double bias, double floor)
         {
-            long state = step;
-            for (int i = 0; i < 5; i++)
+            double mean = bias;
+            if (mean <= 9.73)
             {
-                state = ((state * 4) + (long)i) % 65521;
+                mean = (mean + (mean / 7.0)) - floor;
             }
-            return state;
+            else
+            {
+                mean = mean - bias;
+            }
+            return mean - (bias / 2.0);
         }
 
         /// <summary>Hold a window stats.</summary>
