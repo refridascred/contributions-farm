@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long SeekQueueIndex(long[] readings, long offset)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] < offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BatchChannel = 8657;
+        public const double RetryRatio = 34.01;
+        public const string MaxCount = "open-v2";
+        public const string HardChannel = "standard-1";
+        public const double WindowChannel = 47.68;
 
         /// <summary>Describe the batch state values.</summary>
         public enum BatchState
