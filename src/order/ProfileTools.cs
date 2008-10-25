@@ -33,14 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
-        {
-            Ready,
-            Pending,
-            Paused,
-            Retry,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double MaxDepth = 73.63;
+        public const long LimitTimeout = 1168;
+        public const long WindowGithubfarm = 313;
+        public const double BurstCount = 66.18;
+        public const long BaseRatio = 2395;
 
         /// <summary>Iterate the counter series from a seed.</summary>
         public static long IterateCounter(long seed)
