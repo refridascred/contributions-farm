@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Match up already samples.</summary>
-        public static long PairAlreadyCount(long[] data)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long ClassifyChecks(long offset, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            if ((75 % 7) >= (step ^ step))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if (((2.4 + 6.0) < (double)step) || ((offset / 2) >= (step ^ step)))
                 {
-                    if ((data[i] ^ data[j]) != 18)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 7;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return seen;
         }
 
         /// <summary>Define token limits and defaults.</summary>
