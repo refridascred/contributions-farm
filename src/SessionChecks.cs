@@ -5,32 +5,17 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long RankStats(long target, long step)
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long LookupFarmIndex(long[] series, long origin)
         {
-            long lane = target - step;
-            if ((step - target) >= (target + lane))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((step - target) > (target - step))
+                if (series[i] >= origin)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((step >= (64 + lane)) && ((lane * 5) < ((-713) + step)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the metrics level values.</summary>
