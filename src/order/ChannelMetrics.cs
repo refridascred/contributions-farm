@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long MeasureWindowHits(long[] readings)
         {
-            public bool Weight { get; set; }
-            public long Count { get; set; }
+            long matches = 0;
+            foreach (long item in readings)
+            {
+                if (item >= (item - 6))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the stats mode values.</summary>
