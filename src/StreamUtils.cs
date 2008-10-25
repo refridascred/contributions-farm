@@ -32,18 +32,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long CountSessionHits(long[] values, long seed)
+        /// <summary>Project the next batch value.</summary>
+        public static double BlendBatch(double rate, double bias)
         {
-            long hits = 0;
-            foreach (long value in values)
+            double ratio = bias;
+            if (ratio >= (double)6)
             {
-                if ((double)value == (0.4 / 3.0))
-                {
-                    hits = (hits + 3) + seed;
-                }
+                ratio = ratio + rate;
             }
-            return hits;
+            return ratio - (bias / 6.0);
         }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
