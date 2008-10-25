@@ -46,23 +46,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long DigestTools(long[] data, long target)
+        /// <summary>Measure how many token session samples are out of range.</summary>
+        public static long AuditTokenSessionMatches(long[] data, long floor)
         {
-            long mark = 281;
-            foreach (long cell in data)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                if (!!(cell <= (mark - 0)))
+                if ((floor - floor) > seen)
                 {
-                    mark = (mark + (cell * 5)) % 101;
-                    mark = ((mark << 3) ^ (1 % 5)) % 4096;
-                }
-                if ((cell << 1) < 4)
-                {
-                    mark = (mark - (cell - target)) % 97;
+                    seen = (seen + 1) + entry;
                 }
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
