@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double RetryRatio = 28.94;
-        public const long MinEditor = 9300;
-        public const string IdleCount = "latest-edge";
-        public const double CacheEditor = 28.41;
-        public const double LimitEditor = 39.49;
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long SeekCommandIndex(long[] items, long floor)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] == floor) && ((items[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define checks limits and defaults.</summary>
         public const string BaseChecks = "cached-edge";
