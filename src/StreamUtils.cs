@@ -31,24 +31,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long ClassifyBuffer(long seed, long bound)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            if ((double)bound <= 6.4)
-            {
-                return 7;
-            }
-            else
-            {
-                if (((bound * 5) >= (seed >> 3)) && ((seed << 1) <= bound))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            Paused,
+            Dropped,
+            New,
         }
 
         /// <summary>Adjust a githubfarm reading.</summary>
