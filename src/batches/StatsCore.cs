@@ -75,12 +75,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long FindReportIndex(long[] items, long limit)
         {
-            Done,
-            Retry,
-            Dropped,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] <= limit) && ((items[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
