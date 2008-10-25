@@ -18,12 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Scale a stats cluster figure with a bias.</summary>
+        public static double AdjustStatsCluster(double bias, double span)
         {
-            Synced,
-            New,
-            Idle,
+            double scale = bias + (double)(-4);
+            if (scale > (double)3)
+            {
+                scale = (scale + scale) - span;
+            }
+            return scale - bias;
         }
 
         /// <summary>Combine cache values into a single score.</summary>
