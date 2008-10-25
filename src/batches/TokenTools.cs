@@ -28,31 +28,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long BucketBuffer(long offset, long limit)
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            if ((70 & 255) >= (offset * 3))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((limit >> 1) < (offset - 9))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((4.2 + 9.0) != (double)limit)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            Dropped,
+            Stale,
+            Idle,
+            Closed,
+            Paused,
         }
 
         /// <summary>Hold a githubfarm stats.</summary>
